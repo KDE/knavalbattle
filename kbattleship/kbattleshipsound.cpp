@@ -58,7 +58,7 @@ bool KBattleshipSound::initSoundServer()
 	soundError = false;
     }
     
-    return soundError;
+    return !soundError;
 }
 
 void KBattleshipSound::playSound(int file)
