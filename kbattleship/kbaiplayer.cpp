@@ -28,12 +28,12 @@ KBAIPlayer::KBAIPlayer()
     m_masterStrategy = 0;
     m_randomSeq = 0;
     
-    kdDebug() << "KBAIPlayer" << endl;
+//    kdDebug() << "KBAIPlayer" << endl;
 }
 
 KBAIPlayer::~KBAIPlayer()
 {
-    kdDebug() << "~KBAIPlayer" << endl;
+//    kdDebug() << "~KBAIPlayer" << endl;
     if(m_masterStrategy != 0)
 	delete m_masterStrategy;
     
@@ -83,7 +83,7 @@ void KBAIPlayer::addShips()
     	    x = (int) m_randomSeq->getLong(m_fieldRect.width() - 1);
     	    y = (int) m_randomSeq->getLong(m_fieldRect.height() - 1);
     	    vertical = m_randomSeq->getBool();
-    	    kdDebug() << "addShips: trying ship " << shiplen << " at (" << x << "/" << y << ") vertical=" << vertical << "-> " << endl;
+    	//    kdDebug() << "addShips: trying ship " << shiplen << " at (" << x << "/" << y << ") vertical=" << vertical << "-> " << endl;
 	}
 	while(!shipPlaced(shiplen, x, y, vertical));
     }	
@@ -119,7 +119,7 @@ bool KBAIPlayer::shipPlaced(int shiplen, int x, int y, bool vertical)
     QRect ship = vertical ? QRect(x, y, 1, shiplen) : QRect(x, y, shiplen, 1);
     if(!m_fieldRect.contains(ship))
     {
-	kdDebug() << "     not on field" << endl;
+//	kdDebug() << "     not on field" << endl;
 	return false;
     }
 
@@ -131,7 +131,7 @@ bool KBAIPlayer::shipPlaced(int shiplen, int x, int y, bool vertical)
     	    QPoint p2(i, y + ship.height());
 	    if(m_ships[s - 1].contains(p1) || m_ships[s - 1].contains(p2))
     	    {
-		kdDebug() << "     collides with ship " << s << endl;
+	//	kdDebug() << "     collides with ship " << s << endl;
 		return false;
     	    }
 	}
@@ -143,7 +143,7 @@ bool KBAIPlayer::shipPlaced(int shiplen, int x, int y, bool vertical)
     	    QPoint p2(x + ship.width(), i);
     	    if(m_ships[s - 1].contains(p1) || m_ships[s - 1].contains(p2))
     	    {
-		kdDebug() << "     collides with ship " << s << endl;
+	//	kdDebug() << "     collides with ship " << s << endl;
 		return false;
     	    }
 	}
@@ -156,6 +156,6 @@ bool KBAIPlayer::shipPlaced(int shiplen, int x, int y, bool vertical)
     int y1 = ship.y();
     int y2 = ship.y() + ship.height() - 1;
     m_ownShipList->addShip(x1, x2, y1, y2, shiplen - 1);
-    kdDebug() << "     is ok, addShip(" << x1 << ", " << x2 << ", " << y1 << ", " << y2 << ", " << shiplen - 1 << ")" << endl;
+//    kdDebug() << "     is ok, addShip(" << x1 << ", " << x2 << ", " << y1 << ", " << y2 << ", " << shiplen - 1 << ")" << endl;
     return true;
 }

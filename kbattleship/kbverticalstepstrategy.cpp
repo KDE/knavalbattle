@@ -21,12 +21,12 @@
 KBVerticalStepStrategy::KBVerticalStepStrategy(KBStrategy *parent) : KBStrategy(parent)
 {
     m_child = 0;
-    kdDebug() << "KBVerticalStepStrategy(" << (int) parent << ")" << endl;
+//    kdDebug() << "KBVerticalStepStrategy(" << (int) parent << ")" << endl;
 }
 
 KBVerticalStepStrategy::~KBVerticalStepStrategy()
 {
-    kdDebug() << "~KBVerticalStepStrategy" << endl;
+//    kdDebug() << "~KBVerticalStepStrategy" << endl;
     if(m_child != 0)
 	delete m_child;
 }

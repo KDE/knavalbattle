@@ -97,6 +97,7 @@ void KBattleshipApp::initShipPlacing()
 
 void KBattleshipApp::deleteAI()
 {
+    hits = 0;
     delete aiPlayer;
     aiPlayer = 0;
 }
@@ -1038,7 +1039,6 @@ void KBattleshipApp::slotViewStatusBar()
 
 void KBattleshipApp::slotStatusMsg(const QString &text)
 {
-    kdDebug() << "STATUS: " << text << endl;
     statusBar()->clear();
     statusBar()->changeItem(text, ID_STATUS_MSG);
 }
@@ -1122,15 +1122,13 @@ void KBattleshipApp::startBattleshipGame()
 
 void KBattleshipApp::slotAIReady()
 {
-    kdDebug() << "AI emitted ready" << endl;
     slotStatusMsg(i18n("Please place your ships. Use the \"Shift\" key to place the ships vertically."));
-    
     place = true;
 }
 
 void KBattleshipApp::slotAIShootsAt(const QPoint pos)
 {
-    kdDebug() << "AI shoots at (" << pos.x() << "/" << pos.y() << ")" << endl;
+//    kdDebug() << "AI shoots at (" << pos.x() << "/" << pos.y() << ")" << endl;
     int showstate = view->getOwnFieldState(pos.x(), pos.y());
 
     if(showstate == KBattleField::HIT)
@@ -1151,7 +1149,6 @@ void KBattleshipApp::slotAIShootsAt(const QPoint pos)
 
     if(hits == 10)
     {
-	hits = 0;
         playing = false;
         slotChangeOwnPlayer("-");
         slotChangeEnemyPlayer("-");
