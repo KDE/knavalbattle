@@ -1,3 +1,19 @@
+/***************************************************************************
+                             kbattleshipview.cpp
+                             -------------------
+    Developers: (c) 2000 Nikolas Zimmermann <nikoz@gymnasium-kerpen.de>
+                (c) 2000 Daniel Molkentin <molkentin@kde.org>
+
+ ***************************************************************************/
+
+/***************************************************************************
+ *                                                                         *
+ *   This program is free software; you can redistribute it and/or modify  *
+ *   it under the terms of the GNU General Public License as published by  *
+ *   the Free Software Foundation; either version 2 of the License, or     *
+ *   (at your option) any later version.                                   *
+ *                                                                         *
+ ***************************************************************************/
 
 // include files for Qt
 #include <qprinter.h>
@@ -5,7 +21,6 @@
 
 // application specific includes
 #include "kbattleshipview.h"
-#include "kbattleshipdoc.h"
 #include "kbattleship.h"
 
 #include "kbattleshipview.moc"
@@ -19,19 +34,3 @@ KBattleshipView::~KBattleshipView()
 {
 }
 
-KBattleshipDoc *KBattleshipView::getDocument() const
-{
-  KBattleshipApp *theApp=(KBattleshipApp *) parentWidget();
-
-  return theApp->getDocument();
-}
-
-void KBattleshipView::print(QPrinter *pPrinter)
-{
-  QPainter printpainter;
-  printpainter.begin(pPrinter);
-	
-  // TODO: add your printing code here
-
-  printpainter.end();
-}

@@ -3,9 +3,9 @@ INCLUDES         = $(all_includes)
 kbattleship_LDFLAGS = $(KDE_RPATH) $(all_libraries)
 kbattleship_LDADD   = -lkdecore -lkdeui -lqt -lkfile
 kbattleship_SOURCES = kmessagetype.cpp kmessage.cpp kbattleshipserver.cpp kbattleshipclient.cpp \
-                      kbattleshipdoc.cpp kbattleshipview.cpp kbattleship.cpp main.cpp
+                      kbattleshipview.cpp kbattleship.cpp main.cpp
 noinst_HEADERS   = kmessagetype.h kmessage.h kbattleshipserver.h kbattleshipclient.h \
-                   kbattleshipdoc.h kbattleshipview.h kbattleship.h
+                   kbattleshipview.h kbattleship.h
 METASOURCES = AUTO
 DISTCLEANFILES = $(METASOURCES)
 KDE_ICON = kbattleship

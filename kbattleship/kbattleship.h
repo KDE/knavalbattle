@@ -1,4 +1,19 @@
+/***************************************************************************
+                                    kbattleship.h
+                                  -----------------
+    Developers: (c) 2000 Nikolas Zimmermann <nikoz@gymnasium-kerpen.de>
+                (c) 2000 Daniel Molkentin <molkentin@kde.org>
 
+ ***************************************************************************/
+
+/***************************************************************************
+ *                                                                         *
+ *   This program is free software; you can redistribute it and/or modify  *
+ *   it under the terms of the GNU General Public License as published by  *
+ *   the Free Software Foundation; either version 2 of the License, or     *
+ *   (at your option) any later version.                                   *
+ *                                                                         *
+ ***************************************************************************/
 #ifndef KBATTLESHIP_H
 #define KBATTLESHIP_H
  
@@ -7,16 +22,12 @@
 #include <config.h>
 #endif
 
-// include files for Qt
-
-// include files for KDE 
 #include <kapp.h>
 #include <kmainwindow.h>
 #include <kaccel.h>
 #include <kaction.h>
 
 // forward declaration of the KBattleship classes
-class KBattleshipDoc;
 class KBattleshipView;
 
 /**
@@ -50,12 +61,11 @@ class KBattleshipApp : public KMainWindow
     /** returns a pointer to the current document connected to the KTMainWindow instance and is used by
      * the View class to access the document object's methods
      */	
-    KBattleshipDoc *getDocument() const; 	
 
   protected:
     /** save general Options like all bar positions and status as well as the geometry and the recent file list to the configuration
      * file
-     */ 	
+     */
     void saveOptions();
     /** read general Options again and initialize all variables like the recent file list
      */
@@ -72,62 +82,21 @@ class KBattleshipApp : public KMainWindow
     /** creates the centerwidget of the KTMainWindow instance and sets it as the view
      */
     void initView();
-    /** queryClose is called by KTMainWindow on each closeEvent of a window. Against the
-     * default implementation (only returns true), this calles saveModified() on the document object to ask if the document shall
-     * be saved if Modified; on cancel the closeEvent is rejected.
-     * @see KTMainWindow#queryClose
-     * @see KTMainWindow#closeEvent
-     */
-    virtual bool queryClose();
     /** queryExit is called by KTMainWindow when the last window of the application is going to be closed during the closeEvent().
-     * Against the default implementation that just returns true, this calls saveOptions() to save the settings of the last window's	
+     * Against the default implementation that just returns true, this calls saveOptions() to save the settings of the last window's
      * properties.
      * @see KTMainWindow#queryExit
      * @see KTMainWindow#closeEvent
      */
     virtual bool queryExit();
-    /** saves the window properties for each open window during session end to the session config file, including saving the currently
-     * opened file by a temporary filename provided by KApplication.
-     * @see KTMainWindow#saveProperties
-     */
-    virtual void saveProperties(KConfig *_cfg);
-    /** reads the session config file and restores the application's state including the last opened files and documents by reading the
-     * temporary files saved by saveProperties()
-     * @see KTMainWindow#readProperties
-     */
-    virtual void readProperties(KConfig *_cfg);
 
   public slots:
-    /** open a new application window by creating a new instance of KBattleshipApp */
-    void slotFileNewWindow();
     /** clears the document in the actual view to reuse it as the new document */
     void slotFileNew();
-    /** open a file and load it into the document*/
-    void slotFileOpen();
-    /** opens a file from the recent files menu */
-    void slotFileOpenRecent(const KURL& url);
-    /** save a document */
-    void slotFileSave();
-    /** save a document by a new filename*/
-    void slotFileSaveAs();
-    /** asks for saving if the file is modified, then closes the actual file and window*/
-    void slotFileClose();
-    /** print the actual file */
-    void slotFilePrint();
     /** closes all open windows by calling close() on each memberList item until the list is empty, then quits the application.
      * If queryClose() returns false because the user canceled the saveModified() dialog, the closing breaks.
      */
     void slotFileQuit();
-    /** put the marked text/object into the clipboard and remove
-     *	it from the document
-     */
-    void slotEditCut();
-    /** put the marked text/object into the clipboard
-     */
-    void slotEditCopy();
-    /** paste the clipboard into the document
-     */
-    void slotEditPaste();
     /** toggles the toolbar
      */
     void slotViewToolBar();
@@ -151,23 +120,12 @@ class KBattleshipApp : public KMainWindow
     /** doc represents your actual document and is created only once. It keeps
      * information such as filename and does the serialization of your files.
      */
-    KBattleshipDoc *doc;
 
     // KAction pointers to enable/disable actions
-    KAction* fileNewWindow;
     KAction* fileNew;
-    KAction* fileOpen;
-    KRecentFilesAction* fileOpenRecent;
-    KAction* fileSave;
-    KAction* fileSaveAs;
-    KAction* fileClose;
-    KAction* filePrint;
     KAction* fileQuit;
-    KAction* editCut;
-    KAction* editCopy;
-    KAction* editPaste;
     KToggleAction* viewToolBar;
     KToggleAction* viewStatusBar;
 };
- 
+
 #endif // KBATTLESHIP_H

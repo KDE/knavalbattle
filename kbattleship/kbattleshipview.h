@@ -1,3 +1,19 @@
+/***************************************************************************
+                              kbattleshipview.h
+                             -------------------
+    Developers: (c) 2000 Nikolas Zimmermann <nikoz@gymnasium-kerpen.de>
+                (c) 2000 Daniel Molkentin <molkentin@kde.org>
+
+ ***************************************************************************/
+
+/***************************************************************************
+ *                                                                         *
+ *   This program is free software; you can redistribute it and/or modify  *
+ *   it under the terms of the GNU General Public License as published by  *
+ *   the Free Software Foundation; either version 2 of the License, or     *
+ *   (at your option) any later version.                                   *
+ *                                                                         *
+ ***************************************************************************/
 
 #ifndef KBATTLESHIPVIEW_H
 #define KBATTLESHIPVIEW_H
@@ -28,18 +44,8 @@ class KBattleshipView : public QWidget
     /** Destructor for the main view */
     ~KBattleshipView();
 
-    /** returns a pointer to the document connected to the view instance. Mind that this method requires a KBattleshipApp instance as a parent
-     * widget to get to the window document pointer by calling the KBattleshipApp::getDocument() method.
-     *
-     * @see KBattleshipApp#getDocument
-     */
-    KBattleshipDoc *getDocument() const;
-
-    /** contains the implementation for printing functionality */
-    void print(QPrinter *pPrinter);
-	
   private:
-	
+
 };
 
 #endif // KBATTLESHIPVIEW_H
