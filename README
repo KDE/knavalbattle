@@ -1,4 +1,4 @@
-KBattleship 0.5
+KBattleship 0.6
 -----------------------------------
 
 KBatteship is a KDE implentation of the
@@ -15,7 +15,7 @@ KBattleship uses an XML based protocol,
 meaning you can write a compatible application
 in almost every programming or scripting
 language (Would be nice to hear of a
-GNOME port ;) 
+GNOME port) 
 
 If you have ideas or want to get involved,
 simple contanct the authors (see AUTHORS).

@@ -23,7 +23,7 @@
 #include "kbattleship.h"
 
 static const char *description = I18N_NOOP("KBattleship");
-static const char *VERSION = I18N_NOOP("0.5");
+static const char *VERSION = I18N_NOOP("0.6");
 
 int main(int argc, char *argv[])
 {

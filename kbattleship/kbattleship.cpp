@@ -121,7 +121,7 @@ void KBattleshipApp::initView()
     connect(view, SIGNAL(ownFieldClicked(int, int, int)), this, SLOT(placeShip(int, int, int)));
     connect(view, SIGNAL(mouseOverField(int, int, bool)), this, SLOT(placeShipPreview(int, int, bool)));
 
-    setCaption(i18n("KBattleship 0.5"), false);
+    setCaption(i18n("KBattleship 0.6"), false);
 }
 
 void KBattleshipApp::enemyClick(int fieldx, int fieldy)
@@ -510,7 +510,7 @@ void KBattleshipApp::askReplay()
     switch(KMessageBox::questionYesNo(this, i18n("The client asks for restarting the game. Do you accept?")))
     {
 	case KMessageBox::Yes:
-	    slotStatusMsg(i18n("Please place your ships. Use the \"Shift\" to preview the ships vertically."));
+	    slotStatusMsg(i18n("Please place your ships. Use the \"Shift\" key to place the ships vertically."));
 	    place = true;
     	    stat->clear();
             break;
@@ -538,7 +538,7 @@ void KBattleshipApp::resetServer(bool status)
 	{
 	    case KMessageBox::Yes:
     		stat->clear();
-		slotStatusMsg(i18n("Please place your ships. Use the \"Shift\" to preview the ships vertically."));
+		slotStatusMsg(i18n("Please place your ships. Use the \"Shift\" key to place the ships vertically."));
 		place = true;
 		msg->addReplayRequest();
 		if(!connection->writeable())

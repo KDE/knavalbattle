@@ -131,7 +131,7 @@ void KonnectionHandling::serverGotNewClient()
     enemy = true;
     KMessageBox::information(0L, i18n("We got a player. Let's start..."));
     emit newPlayer(true);
-    emit statusBarMessage(i18n("Please place your ships. Use the \"Shift\" to preview the ships vertically."));
+    emit statusBarMessage(i18n("Please place your ships. Use the \"Shift\" key to place the ships vertically."));
 }
 
 void KonnectionHandling::serverWroteToClient()
@@ -172,7 +172,7 @@ void KonnectionHandling::gotNewMessage(KMessage *msg)
 	        enemylist = true;
 	        emit gotEnemyShipList(msg->getField("fieldx1s1"), msg->getField("fieldy1s1"), msg->getField("fieldx2s1"), msg->getField("fieldy2s1"), msg->getField("fieldx1s2"), msg->getField("fieldy1s2"), msg->getField("fieldx2s2"), msg->getField("fieldy2s2"), msg->getField("fieldx1s3"), msg->getField("fieldy1s3"), msg->getField("fieldx2s3"), msg->getField("fieldy2s3"), msg->getField("fieldx1s4"), msg->getField("fieldy2s4"), msg->getField("fieldx2s4"), msg->getField("fieldy2s4"));
 		emit setPlaceable();
-		emit statusBarMessage(i18n("Please place your ships. Use the \"Shift\" to preview the ships vertically."));
+		emit statusBarMessage(i18n("Please place your ships. Use the \"Shift\" key to place the ships vertically."));
 		break;
 			
 	    case KMessage::ANSWER_SHOOT:

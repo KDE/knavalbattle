@@ -70,7 +70,7 @@ bool KBattleshipView::eventFilter(QObject *object, QEvent *event)
     {
 	QMouseEvent *mouseEvent = static_cast<QMouseEvent *>(event);
 	
-	if(mouseEvent->button() != LeftButton && mouseEvent->button() != RightButton)
+	if(mouseEvent->button() != LeftButton)
 	    return false;
 
 	QPoint point(mouseEvent->x(), mouseEvent->y());
@@ -117,11 +117,10 @@ bool KBattleshipView::eventFilter(QObject *object, QEvent *event)
 	    }	        
 	}
 	
-	if(newRect == ownRect)
-	    emit ownFieldClicked(fieldx, fieldy, mouseEvent->button());
-	else if(newRect == enemyRect)
-	    emit enemyFieldClicked(fieldx, fieldy);
-
+	if((mouseEvent->state() & ShiftButton) == 0)
+	    emit ownFieldClicked(fieldx, fieldy, true);
+	else
+	    emit ownFieldClicked(fieldx, fieldy, false);
 	return true;
     }
     else if(event->type() == QEvent::MouseMove)
