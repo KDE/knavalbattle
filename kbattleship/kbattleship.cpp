@@ -116,7 +116,7 @@ void KBattleshipApp::initView()
     connect(view, SIGNAL(enemyFieldClicked(int, int)), this, SLOT(enemyClick(int, int)));
     connect(view, SIGNAL(ownFieldClicked(int, int, int)), this, SLOT(placeShip(int, int, int)));
     
-    setCaption(i18n("KBattleship 0.4"), false);
+    setCaption(i18n("KBattleship 0.5"), false);
 }
 
 void KBattleshipApp::enemyClick(int fieldx, int fieldy)
