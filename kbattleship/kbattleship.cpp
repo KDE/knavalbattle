@@ -903,62 +903,26 @@ void KBattleshipApp::slotSendEnemyFieldState(int fieldx, int fieldy)
 void KBattleshipApp::slotChangeOwnFieldData(int fieldx, int fieldy, int type)
 {
     m_view->changeOwnFieldData(fieldx, fieldy, type);
+    playSound(true, type);
+}
 
-    if(m_connection == 0 && !m_aiPlaying)
-	return;
-    else if(m_connection == 0 && m_aiPlaying)
+void KBattleshipApp::playSound(bool enemy, int fieldstate)
+{
+    switch(fieldstate)
     {
-        switch(type)
-        {
-	    case KBattleField::WATER:
-		m_sound->playSound(KBattleshipSound::PLAYER_SHOOT_WATER);
-		break;
-
-	    case KBattleField::HIT:
-	        m_sound->playSound(KBattleshipSound::PLAYER1_SHOOT_HIT);
-	        break;
-
-	    case KBattleField::DEATH:
-	        m_sound->playSound(KBattleshipSound::SHIP_SINK);
-	        break;
-	}	
-	return;
-    }
-
-    switch(m_connection->getType())
-    {
-	case KonnectionHandling::SERVER:
-	    switch(type)
-	    {
-		case KBattleField::WATER:
-	    	    m_sound->playSound(KBattleshipSound::PLAYER_SHOOT_WATER);
-		    break;
-
-		case KBattleField::HIT:
-		    m_sound->playSound(KBattleshipSound::PLAYER1_SHOOT_HIT);
-		    break;
-
-		case KBattleField::DEATH:
-		    m_sound->playSound(KBattleshipSound::SHIP_SINK);
-		    break;
-	    }
+	case KBattleField::WATER:
+	    m_sound->playSound(KBattleshipSound::PLAYER_SHOOT_WATER);
 	    break;
 
-	case KonnectionHandling::CLIENT:
-	    switch(type)
-	    {
-		case KBattleField::WATER:
-		    m_sound->playSound(KBattleshipSound::PLAYER_SHOOT_WATER);
-		    break;
+	case KBattleField::HIT:
+	    if(enemy)
+		m_sound->playSound(KBattleshipSound::PLAYER1_SHOOT_HIT);
+	    else
+		m_sound->playSound(KBattleshipSound::PLAYER2_SHOOT_HIT);
+	    break;
 
-		case KBattleField::HIT:
-		    m_sound->playSound(KBattleshipSound::PLAYER2_SHOOT_HIT);
-		    break;
-
-		case KBattleField::DEATH:
-		    m_sound->playSound(KBattleshipSound::SHIP_SINK);
-		    break;
-	    }
+	case KBattleField::DEATH:
+	    m_sound->playSound(KBattleshipSound::SHIP_SINK);
 	    break;
     }
 }
@@ -966,6 +930,7 @@ void KBattleshipApp::slotChangeOwnFieldData(int fieldx, int fieldy, int type)
 void KBattleshipApp::slotChangeEnemyFieldData(int fieldx, int fieldy, int type)
 {
     m_view->changeEnemyFieldData(fieldx, fieldy, type);
+    playSound(false, type);
 }
 
 void KBattleshipApp::slotConnectToBattleshipServer()

@@ -123,6 +123,7 @@ class KBattleshipApp : public KMainWindow
         void readOptions();
 
 	void cleanup(bool placechange = true);
+	void playSound(bool enemy, int fieldstate);
 
 	bool m_placeable;
 	bool m_shootable;
