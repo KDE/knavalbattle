@@ -1,7 +1,7 @@
 INCLUDES                    =   $(all_includes)
 SUBDIRS	                    =   dialogs . pictures sounds
 
-lib_LTDLIBRARIES  	    =	kbattleship.la
+lib_LTLIBRARIES  	    =	kbattleship.la
 
 kbattleship_la_SOURCES      =   kmessage.cpp kbattleshipserver.cpp kbattleshipclient.cpp \
 				kbattleshipview.cpp kgridwidget.cpp kbattlefield.cpp \
@@ -11,7 +11,7 @@ kbattleship_la_SOURCES      =   kmessage.cpp kbattleshipserver.cpp kbattleshipcl
 		                kbattleship.cpp
 
 kbattleship_la_LIBADD       =   dialogs/libkbattleshipdialogs.la $(LIB_KFILE) -lsoundserver_idl
-kbattleship_la_LDFLAGS      =   $(KDE_PLUGIN) $(all_libraries)
+kbattleship_la_LDFLAGS      =   -module $(KDE_PLUGIN) $(all_libraries)
 
 bin_PROGRAMS                =   kbattleship
 kbattleship_LDFLAGS	    =	$(KDE_RPATH) $(all_libraries)
