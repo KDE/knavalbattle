@@ -24,7 +24,7 @@
 #include <kdebug.h>
 
 #include "kbattlefield.h"
-#include "kgridwidget.moc"
+#include "kgridwidget.h"
 
 KGridWidget::KGridWidget(QWidget *parent, bool draw) : m_drawGrid(draw)
 {

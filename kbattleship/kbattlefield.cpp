@@ -18,7 +18,7 @@
 #include "kbattleship.h"
 #include "kship.h"
 
-#include "kbattlefield.moc"
+#include "kbattlefield.h"
 
 KBattleField::KBattleField(QWidget *parent, bool grid) : KGridWidget(parent, grid)
 {
