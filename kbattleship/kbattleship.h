@@ -60,7 +60,6 @@ public:
 
 private slots:
 	void changeShipPlacementDirection();
-	void slotConfigureKeys();
 	void slotConfigureNotifications();
 	void slotLost(KMessage *msg);
 	void slotStatusMsg(const QString &text);

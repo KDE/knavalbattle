@@ -22,7 +22,6 @@
 
 #include <kgamemisc.h>
 #include <kinputdialog.h>
-#include <kkeydialog.h>
 #include <knotifyclient.h>
 #include <knotifydialog.h>
 #include <kstandarddirs.h>
@@ -82,12 +81,6 @@ void KBattleshipApp::init()
 	initShipPlacing();
 }
 
-
-void KBattleshipApp::slotConfigureKeys()
-{
-  KKeyDialog::configure( actionCollection(), this );
-}
-
 void KBattleshipApp::slotConfigureNotifications()
 {
   KNotifyDialog::configure(this);
@@ -105,7 +98,9 @@ void KBattleshipApp::initStatusBar()
 
 void KBattleshipApp::initActions()
 {
-	KStdAction::keyBindings(this, SLOT( slotConfigureKeys() ), actionCollection() );
+	KStdAction::keyBindings(guiFactory(), SLOT(configureShortcuts()), 
+actionCollection());
+   
 	KStdAction::configureNotifications(this, SLOT(slotConfigureNotifications()), actionCollection());
 	m_gameServerConnect = new KAction(i18n("&Connect to Server..."), "connect_no", Key_F2, this, SLOT(slotServerConnect()), actionCollection(), "game_serverconnect");
 	m_gameNewServer = new KAction(i18n("&Start Server..."), "network", Key_F3, this, SLOT(slotNewServer()), actionCollection(), "game_newserver");
