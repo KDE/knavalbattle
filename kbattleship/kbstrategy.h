@@ -35,13 +35,15 @@ class KBStrategy
 	virtual bool hasMoreShots() = 0;
 
     protected:
-	KBStrategy *m_parent;
-	QList<QPoint> *m_prevShots;
-	KBattleField *m_battleField;
-	QRect m_fieldRect;
-
 	virtual QList<QPoint> *getMasterShotList();
 	virtual int enemyFieldStateAt(int x, int y);
+
+	QRect m_fieldRect;
+	QList<QPoint> *m_prevShots;
+
+	KBattleField *m_battleField;
+	KBStrategy *m_parent;
+
 };
 
 #endif

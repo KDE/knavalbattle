@@ -33,7 +33,7 @@ class KBRandomShotStrategy : public KBStrategy
 	virtual bool hasMoreShots();
 	virtual void shotAt(const QPoint &pos);
 
-    protected:
+    private:
 	bool advance();
 
 	int m_row;
