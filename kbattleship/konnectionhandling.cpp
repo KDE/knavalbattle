@@ -170,6 +170,8 @@ void KonnectionHandling::gotNewMessage(KMessage *msg)
 		    
 	    case KMessage::SHIPLIST:
 	        enemylist = true;
+		if(!haveEnemy())
+		    setEnemy();
 	        emit gotEnemyShipList(msg->getField("fieldx1s1"), msg->getField("fieldy1s1"), msg->getField("fieldx2s1"), msg->getField("fieldy2s1"), msg->getField("fieldx1s2"), msg->getField("fieldy1s2"), msg->getField("fieldx2s2"), msg->getField("fieldy2s2"), msg->getField("fieldx1s3"), msg->getField("fieldy1s3"), msg->getField("fieldx2s3"), msg->getField("fieldy2s3"), msg->getField("fieldx1s4"), msg->getField("fieldy2s4"), msg->getField("fieldx2s4"), msg->getField("fieldy2s4"));
 		emit setPlaceable();
 		emit statusBarMessage(i18n("Please place your ships. Use the \"Shift\" key to place the ships vertically."));
