@@ -18,7 +18,7 @@
 #include <kcmdlineargs.h>
 #include <kaboutdata.h>
 #include <klocale.h>
-
+#include <kstandarddirs.h>
 #include "kbattleship.h"
 
 extern const char *clientName, *clientVersion, *clientDescription;
@@ -41,6 +41,14 @@ int main(int argc, char *argv[])
 	KApplication app;
 	KGlobal::locale()->insertCatalogue("libkdegames");
 
+	QString picDirCheck = locate("data", "kbattleship/pictures/");
+	QString onePicCheck = locate("data", "kbattleship/pictures/hit.png");
+	if(picDirCheck.isEmpty() || onePicCheck.isEmpty())
+	{
+		KMessageBox::error(0, i18n("You don't have KBattleship pictures installed. The game cannot run without them!"));
+		return 1;
+	}
+	
 	if( app.isRestored() )
 		RESTORE(KBattleshipApp)
 	else {

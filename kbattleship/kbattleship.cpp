@@ -46,15 +46,7 @@ KBattleshipApp::KBattleshipApp() : KMainWindow()
 	m_aiPlayer = 0;
 	m_aiHits = 0;
 
-	QString picDirCheck = locate("data", "kbattleship/pictures/");
-	QString onePicCheck = locate("data", "kbattleship/pictures/hit.png");
-	if(picDirCheck.isEmpty() || onePicCheck.isEmpty())
-	{
-		KMessageBox::error(this, i18n("You don't have KBattleship pictures installed. The game cannot run without them!"));
-		qApp->exit(1);
-	}
-	else
-		init();
+	init();
 }
 
 KBattleshipApp::~KBattleshipApp()
