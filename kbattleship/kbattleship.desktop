@@ -24,6 +24,7 @@ Icon=kbattleship
 Type=Application
 DocPath=kbattleship/index.html
 GenericName=Strategy Game
+GenericName[af]=strategie speletjie
 GenericName[ar]=لعبة اسراتيجية
 GenericName[be]=Стратэгічная гульня
 GenericName[bg]=Стратегическа Игра
