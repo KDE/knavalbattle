@@ -38,19 +38,16 @@ int main(int argc, char *argv[])
 
 	KCmdLineArgs::init(argc, argv, &aboutData);
 	KApplication app;
+    KGlobal::locale()->insertCatalogue("libkdegames");
 
 	//(kapp->dcopClient())->attach();
 	//(kapp->dcopClient())->registerAs("kbattleship");
 
-	if(app.isRestored())
-	{
+	if( app.isRestored() )
 		RESTORE(KBattleshipApp)
-	}
-	else
-	{
-		KBattleshipApp *kbattleship = new KBattleshipApp();
+    else {
+		KBattleshipApp *kbattleship = new KBattleshipApp;
 		kbattleship->show();
 	}
-
 	return app.exec();
-}  
+}

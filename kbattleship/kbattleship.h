@@ -56,7 +56,7 @@ class KBattleshipApp : public KMainWindow
 	Q_OBJECT
 public:
 	enum{ID_STATUS_MSG, ID_PLAYER_OWN, ID_PLAYER_ENEMY};
-	KBattleshipApp(QWidget *parent = 0, const char *name = 0);
+	KBattleshipApp();
 	~KBattleshipApp();
 
 	void init();
@@ -93,7 +93,6 @@ private slots:
 	void slotDeleteConnectDialog();
 	void slotNewServer();
 	void slotDeleteServerDialog();
-	void slotGameQuit();
 	void slotHighscore();
 	void slotConfigSound();
 	void slotShowGrid();
@@ -124,22 +123,22 @@ private:
 	void initShipPlacing();
 	void saveOptions();
 	void readOptions();
-	
+
 	void cleanup(bool placechange = true);
 	void playSound(bool enemy, int fieldstate);
-	
+
 	bool m_placeable;
 	bool m_shootable;
 	bool m_aiPlaying;
 	bool m_serverHasClient;
 	bool m_lost;
 	int m_aiHits;
-	
+
 	QString m_enemyClient;
 	QString m_enemyClientVersion;
 	QString m_enemyClientDescription;
 	QString m_enemyProtocolVersion;
-	
+
 	KConfig *m_config;
 	KBAIPlayer *m_aiPlayer;
 	KonnectionHandling *m_connection;
