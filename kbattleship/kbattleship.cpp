@@ -43,7 +43,7 @@ void KBattleshipApp::init()
 
 void KBattleshipApp::initActions()
 {
-    gameQuit = new KAction(i18n("&Quit"), "quit", Key_F9, this, SLOT(slotGameQuit()), actionCollection(), "gamequit");
+    gameQuit = new KAction(i18n("&Quit"), "exit", Key_F9, this, SLOT(slotGameQuit()), actionCollection(), "gamequit");
     gameServerConnect = new KAction(i18n("&Connect to server"), "connect_no", Key_F2, this, SLOT(slotServerConnect()), actionCollection(), "serverconnect");
     gameNewServer = new KAction(i18n("&Start server"), "network", Key_F3, this, SLOT(slotNewServer()), actionCollection(), "newserver");
     configSound = new KToggleAction(i18n("&Play sounds"), 0, this, SLOT(slotConfigSound()), actionCollection(), "configsound");
