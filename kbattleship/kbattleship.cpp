@@ -478,7 +478,6 @@ void KBattleshipApp::changeEnemyFieldData( int fieldx, int fieldy, int type )
 		    
 		case KBattleField::HIT:
 		    sound->playSound( KBattleshipSound::PLAYER1_SHOOT_HIT );
-		    sound->playSound( KBattleshipSound::SHIP_EXPLODE );
 		    break;
 		
 		case KBattleField::DEATH:
@@ -496,7 +495,6 @@ void KBattleshipApp::changeEnemyFieldData( int fieldx, int fieldy, int type )
 		    
 		case KBattleField::HIT:
 		    sound->playSound( KBattleshipSound::PLAYER2_SHOOT_HIT );
-		    sound->playSound( KBattleshipSound::SHIP_EXPLODE );
 		    break;
 		
 		case KBattleField::DEATH:
