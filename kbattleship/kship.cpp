@@ -17,8 +17,7 @@
 
 #include "kship.moc"
 
-KShip::KShip(int _shipxstart, int _shipxstop, int _shipystart, int _shipystop,
-int _shiplength) : QObject()
+KShip::KShip(int _shipxstart, int _shipxstop, int _shipystart, int _shipystop, int _shiplength) : QObject()
 {
     internalshipxstart = _shipxstart;
     internalshipxstop = _shipxstop;
