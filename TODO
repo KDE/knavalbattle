@@ -7,6 +7,7 @@ KBattleship ( alpha -> beta ) TODO List:
     o Communication Server <-> Client 	[x]
     o Sound Support		      	[x]
     o QDom XML Based Messaging		[x]
+    o Chat				[x]
     o Icon				[x]
     o Sounds				[x]
     o Ship-GFX				[x]
