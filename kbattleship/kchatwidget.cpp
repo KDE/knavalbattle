@@ -43,14 +43,10 @@ void KChatWidget::acceptMsg(bool value)
 
 void KChatWidget::receivedMessage(QString nickname, QString msg)
 {
-    if (msg.startsWith("/me ")) 
-    {
-    chatView->append(nickname+ QString(" ") + msg.mid(4));
-    }
+    if(msg.startsWith("/me ")) 
+	chatView->append(nickname + QString(" ") + msg.mid(4));
     else 
-    {
-    chatView->append(nickname + QString(": ") + msg);
-    }
+	chatView->append(nickname + QString(": ") + msg);
     chatView->setCursorPosition(chatView->numLines(), 0);
 }
 
