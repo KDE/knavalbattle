@@ -15,13 +15,15 @@
  *                                                                         *
  ***************************************************************************/
 
+#include <qstring.h>
+
 #include "kserverdialog.moc"
 
 KServerDialog::KServerDialog(QWidget *parent, const char *name) : serverStartDlg(parent, name)
 {
     connect(startBtn, SIGNAL(clicked()), this, SLOT(slotStartClicked()));
     connect(cancelBtn, SIGNAL(clicked()), this, SLOT(slotCancelClicked()));
-    nicknameEdit->setText(getenv("LOGNAME"));  
+    nicknameEdit->setText(QString::fromLocal8Bit(getenv("LOGNAME")));  
 }
 
 KServerDialog::~KServerDialog()

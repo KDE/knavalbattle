@@ -366,7 +366,7 @@ void KBattleshipApp::slotHighscore()
     stats->setHit(config->readNumEntry("Hit", 0));
     stats->setWater(config->readNumEntry("Water", 0));
 
-    stats->setCaption("Highscore");
+    stats->setCaption(i18n("Highscore"));
     stats->show();
 }
 
@@ -417,7 +417,7 @@ void KBattleshipApp::resetClient(bool status)
 		slotStatusMsg(i18n("Ready"));
     		slotChangeOwnPlayer("-");
     		slotChangeEnemyPlayer("-");
-		gameServerConnect->setText("&Connect to server");
+		gameServerConnect->setText(i18n("&Connect to server"));
 		gameNewServer->setEnabled(true);
 		stat->clear();
 		QTimer::singleShot(0, this, SLOT(deleteClient()));
@@ -428,7 +428,7 @@ void KBattleshipApp::resetClient(bool status)
     {
         slotChangeOwnPlayer("-");
         slotChangeEnemyPlayer("-");
-	gameServerConnect->setText("&Connect to server");
+	gameServerConnect->setText(i18n("&Connect to server"));
         gameNewServer->setEnabled(true);
 	stat->clear();
 	chat->clear();
@@ -457,7 +457,7 @@ void KBattleshipApp::askReplay()
 	    
 	case KMessageBox::No:
     	    slotStatusMsg(i18n("Ready"));
-	    gameNewServer->setText("&Start server");
+	    gameNewServer->setText(i18n("&Start server"));
 	    gameServerConnect->setEnabled(true);
     	    stat->clear();
 	    chat->clear();
@@ -474,7 +474,7 @@ void KBattleshipApp::resetServer(bool status)
     if(!status)
     {
     	KMessage *msg = new KMessage(KMessage::REPLAY);
-	switch(KMessageBox::questionYesNo(this, "Do you want to restart the game?"))
+	switch(KMessageBox::questionYesNo(this, i18n("Do you want to restart the game?")))
 	{
 	    case KMessageBox::Yes:
     		stat->clear();
@@ -498,7 +498,7 @@ void KBattleshipApp::resetServer(bool status)
 	    	slotStatusMsg(i18n("Ready"));
     	        slotChangeOwnPlayer("-");
 		slotChangeEnemyPlayer("-");
-        	gameNewServer->setText("&Start server");
+        	gameNewServer->setText(i18n("&Start server"));
 		gameServerConnect->setEnabled(true);
     		stat->clear();
 		chat->clear();
@@ -511,7 +511,7 @@ void KBattleshipApp::resetServer(bool status)
     {
         slotChangeOwnPlayer("-");
         slotChangeEnemyPlayer("-");
-        gameNewServer->setText("&Start server");
+        gameNewServer->setText(i18n("&Start server"));
         gameServerConnect->setEnabled(true);
 	stat->clear();
 	chat->clear();
@@ -564,7 +564,7 @@ void KBattleshipApp::sendGreet()
 
 void KBattleshipApp::startBattleshipServer()
 {
-    gameNewServer->setText("&Stop server");
+    gameNewServer->setText(i18n("&Stop server"));
     gameServerConnect->setEnabled(false);
     slotStatusMsg(i18n("Waiting for a player..."));
     kbserver = new KBattleshipServer((server->getPort()).toInt());
@@ -755,7 +755,7 @@ void KBattleshipApp::connectToBattleshipServer()
 	chat->setNickname(ownNickname);
 	slotChangeOwnPlayer(ownNickname);
 	delete client;
-        gameServerConnect->setText("Dis&connect from server");
+        gameServerConnect->setText(i18n("Dis&connect from server"));
         gameNewServer->setEnabled(false);
 	slotStatusMsg(i18n("Waiting for other player to place the ships..."));
 	if(connection == 0)

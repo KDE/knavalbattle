@@ -29,12 +29,12 @@ int main(int argc, char *argv[])
 {
     KAboutData aboutData("kbattleship", I18N_NOOP("KBattleship"), VERSION, description, KAboutData::License_GPL, "(c) 2000-2001  Nikolas Zimmermann, Daniel Molkentin");
 
-    aboutData.addAuthor("Nikolas Zimmermann", "Project Founder, GUI Handling, Client/Server", "wildfox@kde.org");
-    aboutData.addAuthor("Daniel Molkentin", "Dialog Stuff, Client/Server", "molkentin@kde.org");
-    aboutData.addCredit("Benjamin Adler", "Icon", "benadler@bigfoot.de");
-    aboutData.addCredit("Nils Trzebin", "Sounds", "nils.trzebin@stud.uni-hannover.de");
-    aboutData.addCredit("Elmar Hoefner", "GFX", "elmar.hoefner@uibk.ac.at");
-    aboutData.addCredit("Kevin Krammer", "Testing", "kevin.krammer@gmx.at");
+    aboutData.addAuthor("Nikolas Zimmermann", I18N_NOOP("Project Founder, GUI Handling, Client/Server"), "wildfox@kde.org");
+    aboutData.addAuthor("Daniel Molkentin", I18N_NOOP("Dialog Stuff, Client/Server"), "molkentin@kde.org");
+    aboutData.addCredit("Benjamin Adler", I18N_NOOP("Icon"), "benadler@bigfoot.de");
+    aboutData.addCredit("Nils Trzebin", I18N_NOOP("Sounds"), "nils.trzebin@stud.uni-hannover.de");
+    aboutData.addCredit("Elmar Hoefner", I18N_NOOP("GFX"), "elmar.hoefner@uibk.ac.at");
+    aboutData.addCredit("Kevin Krammer", I18N_NOOP("Testing"), "kevin.krammer@gmx.at");
     
     KCmdLineArgs::init(argc, argv, &aboutData);
     KApplication app;

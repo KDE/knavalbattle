@@ -164,7 +164,7 @@ void KonnectionHandling::gotNewMessage(KMessage *msg)
 		break;
 		    
 	    case KMessage::GREET:
-	        emit enemyNickname(msg->getField("nickname").local8Bit());
+	        emit enemyNickname(msg->getField("nickname"));
     	        emit newPlayer(true);
 	        break;
 		    
@@ -203,7 +203,7 @@ void KonnectionHandling::gotNewMessage(KMessage *msg)
 	        break;
 		    
 	    case KMessage::GREET:
-	        emit enemyNickname(msg->getField("nickname").latin1());
+	        emit enemyNickname(msg->getField("nickname"));
 	        emit giveEnemyName();
 	        break;
 		    

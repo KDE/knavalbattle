@@ -14,6 +14,7 @@
  *   (at your option) any later version.                                   *
  *                                                                         *
  ***************************************************************************/
+#include <qfile.h>
 
 #include "kbattleshipsound.moc"
 
@@ -110,7 +111,7 @@ void KBattleshipSound::playSound(int file)
 	        break;
 	}
 	
-	playObject = playObjectFactory.createPlayObject(playFile.latin1());
+	playObject = playObjectFactory.createPlayObject(playFile.local8Bit().data());
 	playObject.play();
     }
 }
