@@ -259,6 +259,15 @@ void KBattleshipApp::slotEnemyFieldClick(int fieldx, int fieldy)
 	        QTimer::singleShot(0, this, SLOT(slotDeleteAI()));
 	        slotStatusMsg(i18n("You won the game :)"));
 	        slotUpdateHighscore();
+		switch(KMessageBox::questionYesNo(this, i18n("Do you want to restart the game?")))
+    		{
+    		    case KMessageBox::Yes:
+		    	QTimer::singleShot(0, this, SLOT(slotStartBattleshipGame()));
+			break;
+
+		    case KMessageBox::No:
+			break;
+		}
 	        return;
 	    }
 	}
@@ -1113,7 +1122,8 @@ void KBattleshipApp::slotStartBattleshipGame()
     m_gameNewServer->setEnabled(false);
     m_gameServerConnect->setEnabled(false);
     slotStatusMsg(i18n("Waiting for the AI player to place the ships..."));
-    m_ownNickname = m_single->getNickname();
+    if(m_single != 0)
+	m_ownNickname = m_single->getNickname();
     slotChangeOwnPlayer(m_ownNickname);
     slotChangeEnemyPlayer(i18n("Computer"));
     delete m_single;
@@ -1179,5 +1189,19 @@ void KBattleshipApp::slotAIShootsAt(const QPoint pos)
 	QTimer::singleShot(0, this, SLOT(slotDeleteAI()));
 	slotStatusMsg(i18n("You lost the game :("));
 	slotUpdateHighscore();
+	switch(KMessageBox::questionYesNo(this, i18n("Do you want to restart the game?")))
+        {
+    	    case KMessageBox::Yes:
+		QTimer::singleShot(0, this, SLOT(slotStartBattleshipGame()));
+		break;
+
+	    case KMessageBox::No:
+		break;
+	}
+    }
+    else
+    {
+        if(!m_shootable)
+	    m_shootable = true;
     }
 }
