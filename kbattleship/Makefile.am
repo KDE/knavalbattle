@@ -1,8 +1,6 @@
 SUBDIRS	= dialogs . pictures sounds
 
 INCLUDES = -I$(top_srcdir)/libkdegames -I$(top_srcdir)/libkdegames/highscore $(all_includes)
-LDFLAGS = $(all_libraries) $(KDE_RPATH)
-LDADD = $(LIB_KDEGAMES) ./dialogs/libkbattleshipdialogs.la $(LIB_KFILE) -lsoundserver_idl
 METASOURCES = AUTO
 
 bin_PROGRAMS = kbattleship
@@ -16,6 +14,8 @@ kbattleship_SOURCES = kbaiplayer.cpp kbstrategy.cpp kbverticalstepstrategy.cpp\
 				kbattleshipsound.cpp kbdiagonalshotstrategy.cpp \
 	            konnectionhandling.cpp kship.cpp kshiplist.cpp \
 	            kbchooserstrategy.cpp kbattleship.cpp main.cpp
+kbattleship_LDADD = $(LIB_KDEGAMES) ./dialogs/libkbattleshipdialogs.la $(LIB_KFILE) -lsoundserver_idl
+kbattleship_LDFLAGS = $(all_libraries) $(KDE_RPATH)
 
 xdg_apps_DATA = kbattleship.desktop
 
