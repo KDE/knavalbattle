@@ -24,8 +24,7 @@ KBRandomShotStrategy::KBRandomShotStrategy(KBStrategy *parent) : KBStrategy(pare
 
 KBRandomShotStrategy::~KBRandomShotStrategy()
 {
-	if(m_destroyer != 0)
-		delete m_destroyer;
+	delete m_destroyer;
 }
 
 void KBRandomShotStrategy::init(KBattleField *field, const QRect &field_rect)

@@ -34,11 +34,8 @@ KBAIPlayer::KBAIPlayer()
 
 KBAIPlayer::~KBAIPlayer()
 {
-	if(m_masterStrategy != 0)
-		delete m_masterStrategy;
-
-	if(m_randomSeq != 0)
-		delete m_randomSeq;
+	delete m_masterStrategy;
+	delete m_randomSeq;
 }
 
 void KBAIPlayer::init(KBattleField *battle_field, KShipList *ai_shiplist)
@@ -85,8 +82,7 @@ void KBAIPlayer::addShips()
 
 void KBAIPlayer::chooseStrategy()
 {
-	if(m_masterStrategy != 0)
-		delete m_masterStrategy;
+	delete m_masterStrategy;
 
 	m_masterStrategy = new KBChooserStrategy();
 	m_masterStrategy->init(m_battleField, m_fieldRect);

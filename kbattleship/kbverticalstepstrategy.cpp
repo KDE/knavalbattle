@@ -36,10 +36,8 @@ KBVerticalStepStrategy::KBVerticalStepStrategy(KBStrategy *parent) : KBStrategy(
 
 KBVerticalStepStrategy::~KBVerticalStepStrategy()
 {
-	if(m_child != 0)
-		delete m_child;
-	if (m_destroyer != 0)
-		delete m_destroyer;
+	delete m_child;
+	delete m_destroyer;
 }
 
 void KBVerticalStepStrategy::init(KBattleField *field, const QRect &field_rect)
@@ -169,7 +167,7 @@ bool KBVerticalStepStrategy::hasMoreShots()
 				if(m_child->hasMoreShots())
 					return true;
 
-				m_passes++;					
+				m_passes++;
 				delete m_child;
 
 				m_child = new KBVerticalStepStrategy(this);
@@ -183,7 +181,7 @@ bool KBVerticalStepStrategy::hasMoreShots()
 				if(m_child->hasMoreShots())
 					return true;
 
-				m_passes++;					
+				m_passes++;
 				delete m_child;
 
 				m_child = new KBVerticalStepStrategy(this);

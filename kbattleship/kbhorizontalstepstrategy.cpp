@@ -34,10 +34,8 @@ KBHorizontalStepStrategy::KBHorizontalStepStrategy(KBStrategy *parent) : KBStrat
 
 KBHorizontalStepStrategy::~KBHorizontalStepStrategy()
 {
-	if(m_child != 0)
-		delete m_child;
-	if(m_destroyer != 0)
-		delete m_destroyer;
+	delete m_child;
+	delete m_destroyer;
 }
 
 void KBHorizontalStepStrategy::init(KBattleField *field, const QRect &field_rect)
@@ -166,7 +164,7 @@ bool KBHorizontalStepStrategy::hasMoreShots()
 			if(m_child->hasMoreShots())
 				return true;
 
-			m_passes++;					
+			m_passes++;
 			delete m_child;
 
 			m_child = new KBHorizontalStepStrategy(this);
@@ -180,7 +178,7 @@ bool KBHorizontalStepStrategy::hasMoreShots()
 			if(m_child->hasMoreShots())
 				return true;
 
-			m_passes++;					
+			m_passes++;
 			delete m_child;
 
 			m_child = new KBHorizontalStepStrategy(this);

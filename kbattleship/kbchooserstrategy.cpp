@@ -37,12 +37,8 @@ KBChooserStrategy::KBChooserStrategy(KBStrategy *parent) : KBStrategy(parent)
 
 KBChooserStrategy::~KBChooserStrategy()
 {
-	if(m_destroyer != 0)
-		delete m_destroyer;
-
-	if(m_child != 0)
-		delete m_child;
-
+	delete m_destroyer;
+	delete m_child;
 	delete m_random;
 }
 

@@ -35,10 +35,8 @@ KBDiagonalWrapStrategy::KBDiagonalWrapStrategy(KBStrategy *parent) : KBStrategy(
 
 KBDiagonalWrapStrategy::~KBDiagonalWrapStrategy()
 {
-	if(m_child != 0)
-		delete m_child;
-	if(m_destroyer != 0)
-		delete m_destroyer;
+	delete m_child;
+	delete m_destroyer;
 }
 
 void KBDiagonalWrapStrategy::init(KBattleField *field, const QRect &field_rect)
@@ -63,7 +61,7 @@ void KBDiagonalWrapStrategy::init(KBattleField *field, const QRect &field_rect)
 
 		case 2:
 			m_direction = KBDiagonalShotStrategy::LEFTDOWN;
-			m_column = m_fieldRect.width() - 1; 
+			m_column = m_fieldRect.width() - 1;
 			break;
 
 		default:
