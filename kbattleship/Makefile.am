@@ -1,7 +1,7 @@
 INCLUDES                    =   $(all_includes) -I$(top_srcdir)/libkdegames
 SUBDIRS	                    =   dialogs . pictures sounds
 
-lib_LTLIBRARIES  	    =	kbattleship.la
+noinst_LTLIBRARIES  	    =	kbattleship.la
 
 kbattleship_la_SOURCES      =   kbaiplayer.cpp kbstrategy.cpp kbverticalstepstrategy.cpp \
 				kbdestroyshipstrategy.cpp kbhorizontalstepstrategy.cpp \
