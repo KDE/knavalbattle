@@ -115,11 +115,7 @@ suggested, but you can choose any name you like.
 <para>
 An important point is the field <guilabel>Server</guilabel>. Here, you
 have to enter the host name of the server (the machine of the player
-that initiated the game). This can either be a name from your hosts file
-(<systemitem class="systemname">foobar</systemitem>), a internet host
-name (<systemitem class="systemname">foo.bar.org</systemitem>) or an
-IP-Address (<systemitem>192.168.0.10</systemitem>) of the host you want
-to connect to.
+that initiated the game). 
 </para>
 
 <para>
