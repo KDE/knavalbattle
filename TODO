@@ -1,13 +1,15 @@
 KBattleship TODO List:
+
+p = partially
+x = ready
+a = assigned task
+? = really necessary
+
 KB Team:
-    p = partially
-    x = ready
 
     READY :)
  
 User ideas:
-    a = assigned task
-    ? = really necessary
     
     o AI						[a] (Triskelios)
     o Ship-Placing preview				[ ] (stilborne)

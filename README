@@ -1,4 +1,4 @@
-KBattleship beta
+KBattleship 0.5
 -----------------------------------
 
 KBatteship is a KDE implentation of the
@@ -9,14 +9,13 @@ with two computers in a TCP/IP based
 network. 
 
 Artificial Intelligence is not implemented
-yet and will probably be delayed
-(or never implemented....What do you think?).
+yet, but someone is working on it. 
 
 KBattleship uses an XML based protocol,
 meaning you can write a compatible application
 in almost every programming or scripting
 language (Would be nice to hear of a
-GTK port ;) 
+GNOME port ;) 
 
 If you have ideas or want to get involved,
 simple contanct the authors (see AUTHORS).
