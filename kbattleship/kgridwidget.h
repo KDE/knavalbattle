@@ -20,23 +20,25 @@
 
 #include <kdebug.h>
 #include <qpainter.h>
+#include <qpixmap.h>
+#include <qbrush.h>
 #include <qwidget.h>
 
 class KGridWidget : public QWidget
 {
     Q_OBJECT
     public:
-        KGridWidget( QWidget *parent );
+        KGridWidget();
         ~KGridWidget();
 	
 	void setValues( int &x, int &y, int size );
-	void drawSquare( QWidget *parent );
+	void drawSquare( QPainter *painter );
 
     private:
         int internalX;
         int internalY;
         int internalSize;
-	QWidget *internalParent;
+	QPixmap *internalPixmap;
 };
 
 #endif

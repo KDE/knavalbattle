@@ -29,11 +29,11 @@ class KBattleField : public KGridWidget
     Q_OBJECT
     public:
 	enum { FREE, RESERVED, FIRE, DEATH };
-        KBattleField( QWidget *parent, const KBattleFieldType &type );
+        KBattleField( QWidget *parent, const KBattleFieldType &type, QPainter *painter );
         ~KBattleField();
 	
 	void setDrawValues( QWidget *parent );
-	void drawField();
+	void drawField( QPainter *painter );
 	int LeftV;
 	int RightV;    
 	int TopV;

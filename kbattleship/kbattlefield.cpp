@@ -17,7 +17,7 @@
 
 #include "kbattlefield.moc"
 
-KBattleField::KBattleField( QWidget *parent, const KBattleFieldType &type ) : KGridWidget( this )
+KBattleField::KBattleField( QWidget *parent, const KBattleFieldType &type, QPainter *painter ) : KGridWidget()
 {
 
     internalType = type.getType();
@@ -43,14 +43,14 @@ KBattleField::KBattleField( QWidget *parent, const KBattleFieldType &type ) : KG
     kdDebug() << "TopV: " << TopV << endl;
     kdDebug() << "BottomV: " << BottomV << endl;
     
-    drawField();    
+    drawField( painter );    
 }
 
 KBattleField::~KBattleField()
 {
 }
 
-void KBattleField::drawField()
+void KBattleField::drawField( QPainter *painter )
 {
     int it, jt;
     
@@ -59,7 +59,7 @@ void KBattleField::drawField()
 	for( jt = LeftV; jt <= RightV; jt +=40 )
 	{
 	    setValues( it, jt, 40 );	    
-	    drawSquare( this );
+	    drawSquare( painter );
 	}
     }
 

@@ -17,9 +17,8 @@
 
 #include "kgridwidget.moc"
 
-KGridWidget::KGridWidget( QWidget *parent ) : QWidget()
+KGridWidget::KGridWidget() : QWidget()
 {
-    internalParent = parent;
 }
 
 KGridWidget::~KGridWidget()
@@ -33,8 +32,16 @@ void KGridWidget::setValues( int &x, int &y, int size )
     internalSize = size;
 }
 
-void KGridWidget::drawSquare( QWidget *parent )
+void KGridWidget::drawSquare( QPainter *painter )
 {
-    QPainter painter( internalParent );
-    painter.drawRect( internalX, internalY, internalSize, internalSize );
+    if( internalPixmap )
+	delete internalPixmap;
+
+    internalPixmap = new QPixmap( internalSize, internalSize );
+    
+    QBrush blackBrush( black );
+    painter->begin( internalPixmap );
+    painter->setBrush( blackBrush );
+    painter->drawRect( internalX, internalY, internalSize, internalSize );
+    painter->end();
 }

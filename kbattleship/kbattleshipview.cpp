@@ -19,11 +19,12 @@
 
 KBattleshipView::KBattleshipView( QWidget *parent, const char *name ) : QWidget( parent, name )
 {
+    QPainter painter( this );
     setFixedSize( 500, 300 );
     setBackgroundMode( PaletteBase );
     KBattleFieldType type;
     type.setType( KBattleFieldType::OWNFIELD );
-    ownfield = new KBattleField( this, type );
+    ownfield = new KBattleField( this, type, &painter );
 }
 
 KBattleshipView::~KBattleshipView()
@@ -33,6 +34,7 @@ KBattleshipView::~KBattleshipView()
 void KBattleshipView::paintEvent( QPaintEvent * )
 {
     kdDebug() << "Repaint!" << endl;
-    ownfield->drawField();
+    QPainter painter( this );
+    ownfield->drawField( &painter );
 }
 
