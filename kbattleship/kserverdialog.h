@@ -19,9 +19,10 @@
 #define KSERVERDIALOG_H
 
 #include <kdebug.h>
+#include <qwidget.h>
 #include "dialogs/serverDlg.h"
 
-class KServerDialog : serverStartDlg
+class KServerDialog : public serverStartDlg
 {
     Q_OBJECT
     public:
