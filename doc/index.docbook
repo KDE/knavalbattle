@@ -316,11 +316,12 @@ action="simul"><keycap>Shift</keycap><keycap>F1</keycap></keycombo>
 <guimenu><accel>H</accel>elp</guimenu>
 <guimenuitem>What's <accel>T</accel>his?</guimenuitem>
 </menuchoice>
-</term>  
-<listitem>  
-<para>This changes the mouse cursor to a combination arrow and question mark.  
-Clicking on items within &kwrite; with this arrow will open a help window (if  
-one exists for the particular item) explaining the item's function.</para>  
+</term> <listitem> 
+<para>This changes the mouse cursor to a combination
+arrow and question mark.  Clicking on items within &kbattleship; with
+this arrow will open a help window (if one exists for the particular
+item) explaining the item's function.</para>
+
 </listitem>  
 </varlistentry>  
   
@@ -341,7 +342,7 @@ means of filling in a web form using the information given by the user.
 
 <varlistentry>
 <term><menuchoice>  
-<guimenu><accel>H</accel>elp</guimenu><guimenuitem><accel>A</accel>bout KWrite</guimenuitem></menuchoice></term>  
+<guimenu><accel>H</accel>elp</guimenu><guimenuitem><accel>A</accel>bout KBattleship</guimenuitem></menuchoice></term>  
 <listitem>  
 <para>This will display version and author information</para>
 </listitem>  
