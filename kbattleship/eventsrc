@@ -16,7 +16,7 @@ default_presentation=1
 
 [shoot_hit_2]
 Name=Player 2 shot
-Comment=Player 1 makes a shoot
+Comment=Player 2 makes a shoot
 default_sound=ship-player2-shoot.mp3
 default_presentation=1
 
