@@ -23,6 +23,7 @@ KServerDialog::KServerDialog( QWidget *parent, const char *name ) : serverStartD
     connect( startBtn, SIGNAL( clicked() ), this, SLOT( slotStartClicked() ) );
     connect( cancelBtn, SIGNAL( clicked() ), this, SLOT( slotCancelClicked() ) );
     nicknameEdit->setText( getenv( "LOGNAME" ) );  
+    
 }
 
 KServerDialog::~KServerDialog()

@@ -18,6 +18,8 @@
 #ifndef KCLIENTDIALOG_H
 #define KCLIENTDIALOG_H
 
+#include <kapp.h>
+#include <kconfig.h>
 #include <kdebug.h>
 #include <qstring.h>
 #include <qpushbutton.h>
@@ -41,6 +43,9 @@ class KClientDialog : public clientConnectDlg
     signals:
 	void connectServer();
 	void cancelConnect();
+	
+    private:
+	KConfig *config;
 };
 
 #endif

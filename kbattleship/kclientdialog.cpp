@@ -20,13 +20,17 @@
 
 KClientDialog::KClientDialog( QWidget *parent, const char *name ) : clientConnectDlg( parent, name )
 {
+    config = kapp->config();
+    config->setGroup( "General" );
     connect( connectBtn, SIGNAL( clicked() ), this, SLOT( slotConnectClicked() ) );
     connect( cancelBtn, SIGNAL( clicked() ), this, SLOT( slotCancelClicked() ) );
     nicknameEdit->setText( getenv( "LOGNAME" ) );
+    serverEdit->setText( config->readEntry( "lastServer" ) );
 }
 
 KClientDialog::~KClientDialog()
 {
+    config->writeEntry( "lastServer", serverEdit->text() );
 }
 
 void KClientDialog::slotConnectClicked()

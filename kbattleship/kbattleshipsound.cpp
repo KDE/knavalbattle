@@ -48,6 +48,7 @@ void KBattleshipSound::playSound( int file )
     kdDebug() << "PLAY!" << endl;
     if( isRunning() )
     {
+	kdDebug() << "NOT HERE! :(" << endl;
 	KStandardDirs *stdDirs = KGlobal::dirs();
 	QString picDir;
 	QStringList picDirl = stdDirs->findDirs( "data", "kbattleship" );
@@ -90,5 +91,4 @@ bool KBattleshipSound::isRunning()
 {
     kdDebug() << "It'll crash here!" << endl;
     return serverRunning;
-    kdDebug() << "You won't see this!" << endl;
 }
