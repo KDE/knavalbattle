@@ -129,11 +129,8 @@ void KShipList::addNewShip(int button, int fieldx, int fieldy)
 bool KShipList::addNewShip(bool vertical, int fieldx, int fieldy)
 {
     QRect ship = vertical ? QRect(fieldx, fieldy, 1, m_shipsadded) : QRect(fieldx, fieldy, m_shipsadded, 1);
-
-    if(fieldx + shipCount() > m_fieldx && !vertical)
-	return false;
-
-    if(fieldy + shipCount() > m_fieldy && vertical)
+    QRect field = QRect(0, 0, m_fieldx, m_fieldy);
+    if(!field.contains(ship))
 	return false;
 
     for(KShip *placedShip = m_shiplist.first(); placedShip != 0; placedShip = m_shiplist.next())
@@ -146,7 +143,7 @@ bool KShipList::addNewShip(bool vertical, int fieldx, int fieldy)
 
 	for(int i = fieldy; i < (fieldy + ship.height()); i++)
 	{
-    	    if(placedShip->contains(fieldx - 1, i) || placedShip->contains(fieldx + ship.height(), i))
+    	    if(placedShip->contains(fieldx - 1, i) || placedShip->contains(fieldx + ship.width(), i))
 		return false;
 	}
     }
