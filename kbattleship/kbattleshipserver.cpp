@@ -20,6 +20,7 @@
 KBattleshipServer::KBattleshipServer(int port) : QServerSocket(port)
 {
     internalPort = port;
+    serverSocket = 0;
     allowWrite();
 }
 
@@ -38,11 +39,14 @@ void KBattleshipServer::start()
 
 void KBattleshipServer::newConnection(int socket)
 {
-    serverSocket = new QSocket(this);
-    connect(serverSocket, SIGNAL(readyRead()), this, SLOT(readClient()));
-    connect(serverSocket, SIGNAL(connectionClosed()), this, SLOT(discardClient()));
-    serverSocket->setSocket(socket);
-    emit newConnect();
+    if(serverSocket == 0)
+    {
+	serverSocket = new QSocket(this);
+	connect(serverSocket, SIGNAL(readyRead()), this, SLOT(readClient()));
+	connect(serverSocket, SIGNAL(connectionClosed()), this, SLOT(discardClient()));
+	serverSocket->setSocket(socket);
+	emit newConnect();
+    }
 }
 
 void KBattleshipServer::readClient()
@@ -77,5 +81,6 @@ void KBattleshipServer::sendMessage(KMessage *msg)
 void KBattleshipServer::discardClient()
 {
     delete serverSocket;
+    serverSocket = 0;
     emit endConnect();
 }

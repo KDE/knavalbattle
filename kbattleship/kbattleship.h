@@ -57,6 +57,8 @@ class KBattleshipApp : public KMainWindow
         ~KBattleshipApp();
 
         void init();
+	
+	KShip *getXYShip(int fieldx, int fieldy);
 
     protected:
         void saveOptions();
@@ -99,8 +101,6 @@ class KBattleshipApp : public KMainWindow
         void changeStartText();
 	void resetConnection() { haveCS = false; }
         void gotEnemyShipList(QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString);
-	int getOwnFieldType(int fieldx, int fieldy);
-        int getEnemyFieldType(int fieldx, int fieldy);
 
     private slots:
 	void updateHighscore();    

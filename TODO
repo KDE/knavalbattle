@@ -4,10 +4,12 @@ KB Team:
     x = ready
 
     o Fix Ship-Placing Bug		[ ]
+    o Fix all network issues (2?)	[p]
+    o Better GFX			[p]
  
 User ideas:
     o AI						[ ] (Triskelios)
     o Place Ships synchronous, not turn based		[ ] (stilborne)
     o Ship-Placing preview				[ ] (stilborne)
-    o User-Defined Grid Sizes				[ ] (stilborne)
+    o User-Defined Grid Sizes				[p] (stilborne)
     

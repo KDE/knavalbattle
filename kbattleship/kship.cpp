@@ -19,11 +19,11 @@
 
 KShip::KShip(int _shipxstart, int _shipxstop, int _shipystart, int _shipystop, int _shiplength) : QObject()
 {
-    internalshipxstart = _shipxstart;
-    internalshipxstop = _shipxstop;
-    internalshipystart = _shipystart;
-    internalshipystop = _shipystop;
-    internalshiptype = _shiplength;
+    m_shipxstart = _shipxstart;
+    m_shipxstop = _shipxstop;
+    m_shipystart = _shipystart;
+    m_shipystop = _shipystop;
+    m_shiptype = _shiplength;
 }
 
 KShip::~KShip()
@@ -32,25 +32,25 @@ KShip::~KShip()
 
 int KShip::shipxstart()
 {
-    return internalshipxstart;
+    return m_shipxstart;
 }
 
 int KShip::shipxstop()
 {
-    return internalshipxstop;
+    return m_shipxstop;
 }
 
 int KShip::shipystart()
 {
-    return internalshipystart;
+    return m_shipystart;
 }
 
 int KShip::shipystop()
 {
-    return internalshipystop;
+    return m_shipystop;
 }
 
 int KShip::shiptype()
 {	
-    return internalshiptype;
+    return m_shiptype;
 }

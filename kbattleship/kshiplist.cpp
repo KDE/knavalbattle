@@ -21,6 +21,9 @@ KShipList::KShipList() : QObject()
 {
     shiplist.setAutoDelete(true);
     shipsadded = 4;
+    
+    m_fieldx = 8;
+    m_fieldy = 8;
 }
 
 KShipList::~KShipList()
@@ -276,7 +279,7 @@ void KShipList::addNewShip(int button, int fieldx, int fieldy)
 //	    kdDebug() << "XOKAY: " << xokay << " YOKAY: " << yokay << endl;
 
 	    }
-	    else if(button == RightButton)
+	    else
 	    {
 		int neighbourp, neighbourm, neighbourt, neighbourb;
 	    	tempy = 0;
@@ -338,38 +341,93 @@ void KShipList::addNewShip(int button, int fieldx, int fieldy)
 //	kdDebug() << "XOKAY: " << xokay << " YOKAY: " << yokay << endl;
     }
 
-    if((xokay && yokay) || (xokay && !yokay) || (!xokay && yokay))
+    if(!xokay && !yokay)
     {
-	shipsadded--;
-	if(button == LeftButton)
-	    shiplist.append(new KShip(fieldx, fieldx + shipCount(), fieldy, fieldy, shipCount()));
-	else if(button == RightButton)
-            shiplist.append(new KShip(fieldx, fieldx, fieldy, fieldy + shipCount(), shipCount()));
-
+        KMessageBox::information(0L, i18n( "You can't place the ship here." ));
+	return;
+    }
+    else
+    {
 	if(button == LeftButton)
 	{
-    	    if(fieldx + shipCount() <= 8)
+    	    if(fieldx + shipCount() <= m_fieldx)
 	    {
+		shipsadded--;
+		if(button == LeftButton)
+		    shiplist.append(new KShip(fieldx, fieldx + shipCount(), fieldy, fieldy, shipCount()));
+		else
+        	    shiplist.append(new KShip(fieldx, fieldx, fieldy, fieldy + shipCount(), shipCount()));
+
 		for(int i = 0; i < shipCount() + 1; i++)
-		    emit ownFieldDataChanged(fieldx + i, fieldy, KBattleField::SHIP);
+		{
+		    switch(shipCount())
+		    {
+			case 3:
+			    emit ownFieldDataChanged(fieldx + i, fieldy, KBattleField::SHIP4P1 + i);
+			    break;
+
+			case 2:
+			    emit ownFieldDataChanged(fieldx + i, fieldy, KBattleField::SHIP3P1 + i);
+			    break;
+
+			case 1:
+			    emit ownFieldDataChanged(fieldx + i, fieldy, KBattleField::SHIP2P1 + i);
+			    break;
+
+			case 0:
+			    emit ownFieldDataChanged(fieldx + i, fieldy, KBattleField::SHIP1P1 + i);
+			    break;
+		    }
+		}
+	    }
+	    else
+	    {
+		KMessageBox::information(0L, i18n( "You can't place the ship here." ));
+		return;
 	    }
 	}
-	else if(button == RightButton)
+	else
 	{
-	    if(fieldy + shipCount() <= 8)
+	    if(fieldy + shipCount() <= m_fieldy)
 	    {
+	    	shipsadded--;
+		if(button == LeftButton)
+		    shiplist.append(new KShip(fieldx, fieldx + shipCount(), fieldy, fieldy, shipCount()));
+	        else
+        	    shiplist.append(new KShip(fieldx, fieldx, fieldy, fieldy + shipCount(), shipCount()));
+
 	        for(int i = 0; i < shipCount() + 1; i++)
-		    emit ownFieldDataChanged(fieldx, fieldy + i, KBattleField::SHIP);
+		{
+		    switch(shipCount())
+		    {
+			case 3:
+			    emit ownFieldDataChanged(fieldx, fieldy + i, KBattleField::SHIP4P1 + i);
+			    break;
+
+			case 2:
+			    emit ownFieldDataChanged(fieldx, fieldy + i, KBattleField::SHIP3P1 + i);
+			    break;
+
+			case 1:
+			    emit ownFieldDataChanged(fieldx, fieldy + i, KBattleField::SHIP2P1 + i);
+			    break;
+
+			case 0:
+			    emit ownFieldDataChanged(fieldx, fieldy + i, KBattleField::SHIP1P1 + i);
+			    break;
+		    }
+		}
 	    }
+	    else
+	    {
+		KMessageBox::information(0L, i18n( "You can't place the ship here." ));
+		return;
+	    }
+
 	}
 
 	if(shipsadded == 0)
 	    emit lastShipAdded();
-	return;
-    }
-    else if(!xokay && !yokay)
-    {
-        KMessageBox::information(0L, i18n( "You can't place the ship here." ));
 	return;
     }
 }

@@ -56,6 +56,9 @@ class KShipList : public QObject
         int returnY1Ship(int ship);
         int returnY2Ship(int ship);
 
+	int m_fieldx;
+	int m_fieldy;
+
     signals:
         void lastShipAdded();
         void ownFieldDataChanged(int, int, int);

@@ -33,7 +33,7 @@ int main(int argc, char *argv[])
     aboutData.addAuthor("Daniel Molkentin", "Dialog Stuff, Client/Server", "molkentin@kde.org");
     aboutData.addCredit("Benjamin Adler", "Icon", "benadler@bigfoot.de");
     aboutData.addCredit("Nils Trzebin", "Sounds", "nils.trzebin@stud.uni-hannover.de");
-    aboutData.addCredit("Agnieszka Czajkowska", "GFX", "agnieszka@imagegalaxy.de");
+    aboutData.addCredit("Elmar Hoefner", "GFX", "elmar.hoefner@uibk.ac.at");
     
     KCmdLineArgs::init(argc, argv, &aboutData);
     KApplication app;

@@ -15,13 +15,17 @@
  *                                                                         *
  ***************************************************************************/
 
-#include "kbattlefield.moc"
 #include "kbattleship.h"
+#include <kship.h>
+#include "kbattlefield.moc"
 
 KBattleField::KBattleField(QWidget *parentw, const char *name, int type) : KGridWidget(parentw, name)
 {
     m_parent_widget = static_cast<QWidget *>(parent());
     m_type = type;
+    m_fieldx = 8;
+    m_fieldy = 8;
+    
     clearField();
     drawField();
 }
@@ -32,12 +36,11 @@ KBattleField::~KBattleField()
 
 void KBattleField::clearField()
 {
-    int i, j;
-    for(i = 0; i != 8; i++)
+    for(int i = 0; i != m_fieldx; i++)
     {
-        for(j = 0; j != 8; j++)
+        for(int j = 0; j != m_fieldy; j++)
     	{
-	    FieldData[i][j] = KBattleField::FREE;
+	    m_field[i][j] = KBattleField::FREE;
 	}
     }
 }
@@ -46,14 +49,12 @@ void KBattleField::drawField()
 {
     KBattleshipApp *app = static_cast<KBattleshipApp *>(parent()->parent()->parent()->parent());
 
-    int i, j;
-
-    for(i = 0; i != 8; i++)
+    for(int i = 0; i != m_fieldx; i++)
     {
-        for(j = 0; j != 8; j++)
+        for(int j = 0; j != m_fieldy; j++)
         {
-            setValues((((i + 1) * 30) + xPosition()), (((j + 1) * 30) + 5), 30);
-            switch(FieldData[i][j])
+            setValues((((i + 1) * gridSize()) + xPosition()), (j + 1) * gridSize(), gridSize());
+            switch(m_field[i][j])
 	    {
 		case KBattleField::FREE:
 		    drawSquare();	
@@ -68,10 +69,14 @@ void KBattleField::drawField()
 		    drawSquare();	
 		    if(m_type == KBattleField::OWNFIELD)
 		    {
-		        drawShipIcon(app->getOwnFieldType(i, j));
+			KShip *ship = app->getXYShip(i, j);
+			if(ship->shipxstart() != ship->shipxstop())
+			    drawShipIcon(m_field[i][j], true);
+			else
+			    drawShipIcon(m_field[i][j]);	
 			drawHitIcon();
 		    }
-                    else if(m_type == KBattleField::ENEMYFIELD)
+                    else
 			drawHitIcon();
 		    break;
 		    
@@ -79,15 +84,16 @@ void KBattleField::drawField()
 		    drawSquare();	
 		    drawDeathIcon();
 		    break;	
-
-		case KBattleField::SHIP:
+		    
+		default:
 		    drawSquare();	
-		    if(m_type == KBattleField::OWNFIELD)
-			drawShipIcon(app->getOwnFieldType(i, j));
-                    else if(m_type == KBattleField::ENEMYFIELD)
-		    	drawShipIcon(app->getEnemyFieldType(i, j));
-                    break;
-            }
+		    KShip *ship = app->getXYShip(i, j);
+		    if(ship->shipxstart() != ship->shipxstop())
+		        drawShipIcon(m_field[i][j], true);
+		    else
+		        drawShipIcon(m_field[i][j]);	
+		    break;
+	    }
         }		
     }
 }
@@ -96,11 +102,19 @@ int KBattleField::xPosition()
 {
     if(m_type == KBattleField::OWNFIELD)
         return 15;
-    else if(m_type == KBattleField::ENEMYFIELD)
+    else
         return (static_cast<QWidget *>(parent())->width() / 2);
+}
+
+int KBattleField::rectX()
+{
+    return 15;
 }
 
 QRect KBattleField::getRect()
 {
-    return QRect(30 + xPosition(), 30 + 5, (7 * 30) + xPosition(), (7 * 30) + 5);
+    if(m_type == KBattleField::OWNFIELD)
+	return QRect(gridSize() + xPosition(), gridSize(), ((m_fieldx - 1) * gridSize()) + xPosition() + (2 * m_fieldy), ((m_fieldy - 1) * gridSize()) + gridSize());
+    else
+    	return QRect(gridSize() + xPosition(), gridSize(), ((m_fieldx - 1) * gridSize()) + rectX() + (2 * m_fieldy), ((m_fieldy - 1) * gridSize()) + gridSize());
 }

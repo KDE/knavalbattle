@@ -27,23 +27,31 @@ class KBattleField : public KGridWidget
 {
     Q_OBJECT
     public:
-        enum{OWNFIELD, ENEMYFIELD, FREE, WATER, HIT, DEATH, SHIP};
+        enum{OWNFIELD, ENEMYFIELD, FREE, WATER, HIT, DEATH, SHIP1P1, SHIP2P1, SHIP2P2, SHIP3P1, SHIP3P2, SHIP3P3, SHIP4P1, SHIP4P2, SHIP4P3, SHIP4P4};
         KBattleField(QWidget *parentw, const char *name, int type);
         ~KBattleField();
     
         void drawField();
         void clearField();
-        void changeData(int &fieldx, int &fieldy, int type) { FieldData[fieldx][fieldy] = type; }
-        int getState(int fieldx, int fieldy) { return FieldData[fieldx][fieldy]; }
+        void changeData(int &fieldx, int &fieldy, int type) { m_field[fieldx][fieldy] = type; }
+        int getState(int fieldx, int fieldy) { return m_field[fieldx][fieldy]; }
 
 	QWidget *drawParent() { return m_parent_widget; }
 
 	QRect getRect();
+	
+	int gridSize() { return 30; }
 
     private:
-	int xPosition();
-        int FieldData[8][8];
+    	int xPosition();
+	int rectX();
+	
+        int m_field[15][15];
         int m_type;
+
+	int m_fieldx;
+	int m_fieldy;
+
 	QWidget *m_parent_widget;
 };
 

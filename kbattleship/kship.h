@@ -34,11 +34,11 @@ class KShip : public QObject
         int shiptype();
     
     private:
-        int internalshipxstart;
-        int internalshipxstop;
-        int internalshipystart;
-        int internalshipystop;
-        int internalshiptype;
+        int m_shipxstart;
+        int m_shipxstop;
+        int m_shipystart;
+        int m_shipystop;
+        int m_shiptype;
 };
 
 #endif

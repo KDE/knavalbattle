@@ -36,7 +36,7 @@ void KGridWidget::setValues(int x, int y, int size)
 
 void KGridWidget::drawSquare()
 {
-    QPainter *painter = new QPainter(static_cast<QWidget*>(parent()->parent()));
+    QPainter *painter = new QPainter(static_cast<QWidget *>(parent()->parent()));
     
     if(internalPixmap)
 	delete internalPixmap;
@@ -68,19 +68,105 @@ void KGridWidget::drawDeathIcon()
     drawIcon("death.png");
 }
 
-void KGridWidget::drawShipIcon(int ship)
+void KGridWidget::drawShipIcon(int type, bool rotate)
 {
-    drawIcon("ship-" + QString::number(ship + 1) + ".png");
+    int ship;
+    int part;
+
+    switch(type)
+    {
+	case KBattleField::SHIP1P1:
+	    ship = 1;
+	    part = 1;
+	    break;
+	
+	case KBattleField::SHIP2P1:
+	    ship = 2;
+	    if(!rotate)
+		part = 1;
+	    else
+		part = 2;
+	    break;
+
+	case KBattleField::SHIP2P2:
+	    ship = 2;
+	    if(!rotate)
+		part = 2;
+	    else
+		part = 1;
+	    break;
+	    
+	case KBattleField::SHIP3P1:
+	    ship = 3;
+	    if(!rotate)
+		part = 1;
+	    else
+		part = 3;
+	    break;
+	    
+	case KBattleField::SHIP3P2:
+	    ship = 3;
+	    if(!rotate)
+		part = 2;
+	    else
+		part = 2;
+	    break;
+	    
+	case KBattleField::SHIP3P3:
+	    ship = 3;
+	    if(!rotate)
+		part = 3;
+	    else
+		part = 1;
+	    break;
+	    
+	case KBattleField::SHIP4P1:
+	    ship = 4;
+	    if(!rotate)
+		part = 1;
+	    else
+		part = 4;
+	    break;
+	    
+	case KBattleField::SHIP4P2:
+	    ship = 4;
+	    if(!rotate)
+		part = 2;
+	    else
+		part = 3;
+	    break;
+	    
+	case KBattleField::SHIP4P3:
+	    ship = 4;
+	    if(!rotate)
+		part = 3;
+	    else
+		part = 2;
+	    break;
+
+	case KBattleField::SHIP4P4:
+	    ship = 4;
+	    if(!rotate)
+		part = 4;
+	    else
+		part = 1;
+	    break;
+	    
+    }
+
+    if(!rotate)
+	drawIcon("ship" + QString::number(ship) + "-" + QString::number(part) + ".png");
+    else
+	drawIcon("ship" + QString::number(ship) + "-" + QString::number(part) + "-r.png");
 }
 
 void KGridWidget::drawIcon(const QString &iconName)
 {
-    KImageIO::registerFormats();
     QString picture = locate("data", "kbattleship/pictures/" + iconName);
     if(picture.isEmpty())
 	return;
 
-    QPainter *painter = new QPainter(static_cast<QWidget*>(parent()->parent()));
+    QPainter *painter = new QPainter(static_cast<QWidget *>(parent()->parent()));
     
     if(!painter->isActive())
 	painter->begin(internalPixmap);

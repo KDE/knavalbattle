@@ -40,7 +40,7 @@ class KGridWidget : public QWidget
         void drawHitIcon();
         void drawWaterIcon();
         void drawDeathIcon();
-        void drawShipIcon(int ship);
+        void drawShipIcon(int type, bool rotate = false);
 
     private:
         void drawIcon(const QString &iconName);

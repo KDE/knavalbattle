@@ -51,7 +51,7 @@ void KBattleshipView::clearField()
 
 int KBattleshipView::getEnemyFieldState(int &fieldx, int &fieldy)
 {
-    return ownfield->getState(fieldx, fieldy);
+    return enemyfield->getState(fieldx, fieldy);
 }
 
 void KBattleshipView::changeOwnFieldData(int fieldx, int fieldy, int type)
@@ -68,88 +68,79 @@ void KBattleshipView::changeEnemyFieldData(int fieldx, int fieldy, int type)
 
 void KBattleshipView::mouseReleaseEvent(QMouseEvent *event)
 {
-    int fieldx, fieldy, fieldTopPos, fieldBottomPos, fieldLeftPos, fieldRightPos, i, j;
-    fieldx = 0;
-    fieldy = 0;
-    
-    if(event->button() != (LeftButton || RightButton))
+    if(event->button() != LeftButton && event->button() != RightButton)
 	return;
 
-    if(event->x() <= (width() / 2) - 15 && event->x() >= 46)
+    QPoint point(event->x(), event->y());
+    QRect ownRect = ownfield->getRect();
+    QRect enemyRect = enemyfield->getRect();
+    
+    int fieldx = 0;
+    int fieldy = 0;
+    
+    if(ownRect.contains(point))
     {
-    	if(event->y() >= 35 && event->y() <= (height() / 2) + 125)
-	{
-	    fieldTopPos = 35;
-	    fieldBottomPos = (height() / 2) + 125;
-	    
-	    fieldLeftPos = 45;
-	    fieldRightPos = (width() / 2) + 125;
-	    
-	    i = 0;
-	    j = 0;
-	    
-	    for(i = fieldLeftPos; i <= fieldRightPos; i += 30)
-	    {
-		j++;
-		if(event->x() >= i - 30 && event->x() <= i + 30)
-		{
-		    fieldx = j - 1;
-		    break;
-		}
-	    }
-
-	    i = 0;
-	    j = 0;
+	int j = -1;
 	
-	    for(i = fieldTopPos; i <= fieldBottomPos; i += 30)
+	for(int i = ownRect.left(); i <= ownRect.right(); i += ownfield->gridSize())
+	{
+	    j++;
+	    QRect tempRect(i, ownRect.top(), ownfield->gridSize(), ownRect.bottom() - ownRect.top());
+
+	    if(tempRect.contains(point))
 	    {
-		j++;
-		if(event->y() >= i - 30 && event->y() <= i + 30)
-		{
-		    fieldy = j - 1;
-		    break;
-		}
-	    }
-	    emit ownFieldClicked(fieldx, fieldy, event->button());
+		fieldx = j;
+		break;
+	    }	        
 	}
+
+	j = -1;
+	
+	for(int i = ownRect.top(); i <= ownRect.bottom(); i += ownfield->gridSize())
+	{
+	    j++;
+	    QRect tempRect(ownRect.left(), i, ownRect.right() - ownRect.left(), ownfield->gridSize());
+
+	    if(tempRect.contains(point))
+	    {
+		fieldy = j;
+		break;
+	    }	        
+	}
+	
+	emit ownFieldClicked(fieldx, fieldy, event->button());
     }
-    else if(event->x() >= (width() / 2) + 15 && event->x() <= width() - 46)
+    else if(enemyRect.contains(point))
     {
-    	if(event->y() >= 35 && event->y() <= (height() / 2) + 125)
-	{
-	    fieldTopPos = 35;
-	    fieldBottomPos = (height() / 2) + 125;
-	    
-	    fieldLeftPos = 45;
-	    fieldRightPos = (width() / 2) + 125;
-
-	    i = 0;
-	    j = 0;
-	    
-	    for(i = fieldLeftPos; i <= fieldRightPos; i += 30)
-	    {
-		j++;
-		if(event->x() >= i + (height() / 2) - 30 && event->x() <= i + (height() / 2) + 45)
-		{
-		    fieldx = j - 5;
-		    break;
-		}
-	    }
-        	
-	    i = 0;
-	    j = 0;
+	int j = -1;
 	
-	    for(i = fieldTopPos; i <= fieldBottomPos; i += 30)
+	for(int i = enemyRect.left(); i <= enemyRect.right(); i += ownfield->gridSize())
+	{
+	    j++;
+	    QRect tempRect(i, enemyRect.top(), ownfield->gridSize(), enemyRect.bottom() - enemyRect.top());
+
+	    if(tempRect.contains(point))
 	    {
-		j++;
-		if(event->y() >= i - 30 && event->y() <= i + 30)
-		{
-		    fieldy = j - 1;
-		    break;
-		}		
-	    }
-	    emit enemyFieldClicked(fieldx, fieldy);
+		fieldx = j;
+		break;
+	    }	        
 	}
+
+	j = -1;
+	
+	for(int i = enemyRect.top(); i <= enemyRect.bottom(); i += ownfield->gridSize())
+	{
+	    j++;
+	    QRect tempRect(enemyRect.left(), i, enemyRect.right() - enemyRect.left(), ownfield->gridSize());
+
+	    if(tempRect.contains(point))
+	    {
+		fieldy = j;
+		break;
+	    }	        
+	}
+	
+	emit enemyFieldClicked(fieldx, fieldy);
     }
 }
 

@@ -112,7 +112,7 @@ void KBattleshipApp::initView()
 
     setCentralWidget(splitV);
 
-    connect(ownshiplist, SIGNAL(lastShipAdded()), this, SLOT(sendShipList()));    
+    connect(ownshiplist, SIGNAL(lastShipAdded()), this, SLOT(sendShipList()));
     connect(view, SIGNAL(enemyFieldClicked(int, int)), this, SLOT(enemyClick(int, int)));
     connect(view, SIGNAL(ownFieldClicked(int, int, int)), this, SLOT(placeShip(int, int, int)));
     
@@ -306,6 +306,11 @@ void KBattleshipApp::clientRestart()
     stat->clear();
     deleteLists();
     connection->clear();
+}
+
+KShip *KBattleshipApp::getXYShip(int fieldx, int fieldy)
+{
+    return ownshiplist->getXYShip(fieldx, fieldy);
 }
 
 void KBattleshipApp::updateHighscore()
@@ -627,16 +632,6 @@ void KBattleshipApp::changeOwnFieldData(int fieldx, int fieldy, int type)
 	    }
 	    break;
     }
-}
-
-int KBattleshipApp::getOwnFieldType(int fieldx, int fieldy)
-{
-    return ownshiplist->getXYShipType(fieldx, fieldy);
-}
-
-int KBattleshipApp::getEnemyFieldType(int fieldx, int fieldy)
-{
-    return enemyshiplist->getXYShipType(fieldx, fieldy);
 }
 
 void KBattleshipApp::changeEnemyFieldData(int fieldx, int fieldy, int type)

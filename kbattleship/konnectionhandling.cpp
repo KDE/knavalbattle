@@ -236,6 +236,8 @@ void KonnectionHandling::gotNewMessage(KMessage *msg)
     
 void KonnectionHandling::clientLostServer()
 {
+    KMessageBox::error(0L, i18n("Connection to server lost. Aborting the game!"));
+    emit abortGameStrict(true);
 }
 
 void KonnectionHandling::clientSocketError(int error)
