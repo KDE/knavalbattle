@@ -42,7 +42,7 @@ KClientDialog::KClientDialog(QWidget *parent, const char *name)
 	connect(m_mainWidget->serverEdit, SIGNAL(textChanged(const QString &)), this, SLOT(slotCheckEnableOk()));
 	
 	m_config->setGroup("History");
-	m_browser = new DNSSD::ServiceBrowser(BATTLESHIP_SERVICE);
+	m_browser = new DNSSD::ServiceBrowser(QString::fromLatin1(BATTLESHIP_SERVICE));
 	connect(m_browser,SIGNAL(finished()),SLOT(nextBatch()));
 	m_browser->startBrowse();
 	connect(m_mainWidget->lanBox,SIGNAL(activated(int)),SLOT(gameSelected(int)));
