@@ -921,6 +921,19 @@ void KBattleshipApp::slotChangeOwnFieldData(int fieldx, int fieldy, int type)
 {
     m_view->changeOwnFieldData(fieldx, fieldy, type);
     playSound(true, type);
+    if (type == KBattleField::HIT)
+    {
+        int force = 10;
+        for (int y = 0; y < 16; ++y)
+            for (int x = 0; x < 16; ++x)
+            {
+                int state = m_view->getOwnFieldState(x, y);
+                if (state == KBattleField::HIT || state == KBattleField::DEATH)
+                    force--;
+            }
+        kdDebug() << "own force is now " << force;
+        m_stat->setOwnForce(force);
+    }
 }
 
 void KBattleshipApp::playSound(bool enemy, int fieldstate)
@@ -948,6 +961,19 @@ void KBattleshipApp::slotChangeEnemyFieldData(int fieldx, int fieldy, int type)
 {
     m_view->changeEnemyFieldData(fieldx, fieldy, type);
     playSound(false, type);
+    if (type == KBattleField::HIT)
+    {
+        int force = 10;
+        for (int y = 0; y < 16; ++y)
+            for (int x = 0; x < 16; ++x)
+            {
+                int state = m_view->getEnemyFieldState(x, y);
+                if (state == KBattleField::HIT || state == KBattleField::DEATH)
+                    force--;
+            }
+        kdDebug() << "enemy's force is now " << force;
+        m_stat->setEnemyForce(force);
+    }
 }
 
 void KBattleshipApp::slotConnectToBattleshipServer()
@@ -1224,3 +1250,4 @@ void KBattleshipApp::slotReceivedClientInformation(const QString &clientName, co
 	slotSendMessage(msg);
     }
 }
+

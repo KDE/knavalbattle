@@ -18,7 +18,6 @@
 #ifndef KSTATDIALOG_H
 #define KSTATDIALOG_H
 
-#include <qlcdnumber.h>
 #include "dialogs/statDlg.h"
 
 class KStatDialog : public statDlg
@@ -34,12 +33,17 @@ class KStatDialog : public statDlg
         void setHit(int hit);
         void setWater();
         void setWater(int water);
+        void setOwnForce(int force);
+        void setEnemyForce(int force);
     
         void clear();
 	
         int getShot();
         int getHit();
         int getWater();
+
+    private:
+        void setForce(KProgress *bar, int value);
 };
 
 #endif
