@@ -65,13 +65,14 @@ void KBattleshipClient::readData()
 {
     if(canReadLine())
     {
-    /*  fscking QSocket can readLine(), but can not "writeLine()"!
+    //fscking QSocket can readLine(), but can not "writeLine()"!
 	KMessage *msg = new KMessage();
 	msg->setDataStream(readLine());
 	emit newMessage(msg);
 	delete msg;
-    */
+    /*
     //we have to do it by bytes :(
+    //temporarily disabled
     int len = bytesAvailable();
     char *buf = new char[len + 1];
     readBlock(buf, len);
@@ -82,6 +83,7 @@ void KBattleshipClient::readData()
     emit newMessage(msg);
     delete msg;
     delete []buf;
+    */
     }
 }
 
