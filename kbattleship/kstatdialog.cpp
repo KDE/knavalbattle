@@ -19,7 +19,7 @@
 
 KStatDialog::KStatDialog(QWidget *parent, const char *name) : statDlg(parent, name)
 {
-    setMinimumSize(80, 300);
+    setMinimumSize(150, 300);
 }
 
 KStatDialog::~KStatDialog()
