@@ -27,7 +27,7 @@
      <!-- TRANS:ROLES_OF_TRANSLATORS -->
     </authorgroup>
     <date>2001-04-14</date>
-    <releaseinfo>Version 0.6</releaseinfo>
+    <releaseinfo>Version 0.7</releaseinfo>
     <abstract>
       <para>KBattleship is a network-enabled implementation of the famous "Battle Ship" game for KDE.</para>
     </abstract>
@@ -61,6 +61,7 @@
       <title>Features</title>
      <itemizedlist>
        <listitem><para>Network Gaming</para></listitem>
+       <listitem><para>Artificial Intelligence</para></listitem>
        <listitem><para>Sounds</para></listitem>
        <listitem><para>Chat</para></listitem>
        <listitem><para>Statistics</para></listitem>
