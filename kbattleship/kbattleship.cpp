@@ -181,6 +181,70 @@ void KBattleshipApp::slotEnemyFieldClick(int fieldx, int fieldy)
 		}	
 
 		slotChangeEnemyFieldData(fieldx, fieldy, showstate);
+	
+		if(showstate == KBattleField::HIT)
+		{
+	    	    if(m_enemyshiplist->getXYShipType(fieldx, fieldy) != 0 && m_enemyshiplist->getXYShipType(fieldx, fieldy) != 99)
+		    {
+			KShip *ship = m_enemyshiplist->getXYShip(fieldx, fieldy);
+			typedef QValueList<int> DeathValueList;
+			DeathValueList deathList;
+			bool xokay = true, yokay = true;
+			int tempy = 0, tempx = 0;
+				 
+			if(ship->shipystart() == ship->shipystop() && ship->shipxstart() != ship->shipxstop())
+			{
+			    for(tempx = ship->shipxstart(); tempx <= ship->shipxstop(); tempx++)
+			    {
+				if(m_view->getEnemyFieldState(tempx, fieldy) == KBattleField::HIT)
+				{
+				    deathList.append(tempx);
+				    xokay = true;
+				    yokay = false;
+				}
+				else
+				{
+				    xokay = false;
+				    yokay = false;
+            			    break;
+		                }
+			    }
+			}
+			else if(ship->shipystart() != ship->shipystop() && ship->shipxstart() == ship->shipxstop())
+			{
+			    for(tempy = ship->shipystart(); tempy <= ship->shipystop(); tempy++)
+			    {
+				if(m_view->getEnemyFieldState(fieldx, tempy) == KBattleField::HIT)
+				{
+				    deathList.append(tempy);
+				    xokay = false;
+				    yokay = true;
+				}
+				else
+				{
+				    xokay = false;
+				    yokay = false;
+				    break;
+				}
+			    }
+			}
+			
+			if(xokay)
+			{
+			    DeathValueList::Iterator it;
+			    for(it = deathList.begin(); it != deathList.end(); it++)
+				m_view->changeEnemyFieldData(*it, fieldy, KBattleField::DEATH);
+			}
+			else if(yokay)
+			{
+			    DeathValueList::Iterator it;
+			    for(it = deathList.begin(); it != deathList.end(); it++)
+				m_view->changeEnemyFieldData(fieldx, *it, KBattleField::DEATH);
+			}
+		    }
+		    else if(m_enemyshiplist->getXYShipType(fieldx, fieldy) == 0)
+			m_view->changeEnemyFieldData(fieldx, fieldy, KBattleField::DEATH);
+		}
 	    }
 	    
 	    if(m_stat->getHit() == 10 && m_aiPlaying)
