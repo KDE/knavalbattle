@@ -39,7 +39,7 @@ KBattleshipApp::KBattleshipApp(QWidget *, const char *name) : KMainWindow(0, nam
 	QString onePicCheck = locate("data", "kbattleship/pictures/hit.png");
 	if(picDirCheck.isEmpty() || onePicCheck.isEmpty())
 	{
-		KMessageBox::error(0L, i18n("You don't have KBattleship Pictures installed. The game cannot run without them!"));
+		KMessageBox::error(this, i18n("You don't have KBattleship Pictures installed. The game cannot run without them!"));
 		exit(0);
 	}
 	else
@@ -137,7 +137,7 @@ void KBattleshipApp::initView()
 
 	m_ownshiplist = new KShipList();
 	m_enemyshiplist = new KShipList();
-	m_score = new KHighscoreDialog(0L);
+	m_score = new KHighscoreDialog(this);
 
 	m_view->startDrawing();
 	setFocusProxy(m_view);
@@ -594,7 +594,7 @@ void KBattleshipApp::slotHighscore()
 
 void KBattleshipApp::slotEnemyClientInfo()
 {
-	KInfoDialog *m_info = new KInfoDialog(0L);
+	KInfoDialog *m_info = new KInfoDialog(this);
 
 	m_info->lbl_clientIdentfier->setText(m_enemyClient);
 	m_info->lbl_clientVersion->setText(m_enemyClientVersion);
