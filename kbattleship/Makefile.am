@@ -19,8 +19,6 @@ kbattleship_LDFLAGS = $(all_libraries) $(KDE_RPATH)
 
 xdg_apps_DATA = kbattleship.desktop
 
-EXTRA_DIST = $(xdg_apps_DATA)
-
 rcdir = $(kde_datadir)/kbattleship
 rc_DATA = kbattleshipui.rc
 
