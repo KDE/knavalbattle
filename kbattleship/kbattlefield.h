@@ -36,13 +36,13 @@ public:
 	void drawField();
 	void setDrawField(bool draw) { m_canDraw = draw; }
 
- 	void setOwnState(int &fieldx, int &fieldy, int type) { m_ownfield[fieldx][fieldy] = type; }
+ 	void setOwnState(int fieldx, int fieldy, int type) { m_ownfield[fieldx][fieldy] = type; }
 	int ownState(int fieldx, int fieldy) { return m_ownfield[fieldx][fieldy]; }
 
-	void setEnemyState(int &fieldx, int &fieldy, int type) { m_enemyfield[fieldx][fieldy] = type; }
+	void setEnemyState(int fieldx, int fieldy, int type) { m_enemyfield[fieldx][fieldy] = type; }
 	int enemyState(int fieldx, int fieldy) { return m_enemyfield[fieldx][fieldy]; }
 
-	void setPreviewState(int fieldx, int &fieldy, int type, bool rotate);
+	void setPreviewState(int fieldx, int fieldy, int type, bool rotate);
 
 	QRect ownRect();
 	QRect enemyRect();

@@ -71,7 +71,7 @@ void KBattleField::clearPreviewField()
 	}
 }
 
-void KBattleField::setPreviewState(int fieldx, int &fieldy, int type, bool rotate)
+void KBattleField::setPreviewState(int fieldx, int fieldy, int type, bool rotate)
 {
 	m_newfield[fieldx][fieldy] = type;
 	m_newdata[fieldx][fieldy] = true;
