@@ -18,7 +18,6 @@
 #include "kbattleshipsound.moc"
 
 using namespace Arts;
-SimpleSoundServer *soundserver = 0;
 
 KBattleshipSound::KBattleshipSound()
 {
