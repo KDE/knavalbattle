@@ -14,7 +14,6 @@
  *   (at your option) any later version.                                   *
  *                                                                         *
  ***************************************************************************/
-#include <qtextstream.h>
 
 #include "kbattleshipserver.moc"
 

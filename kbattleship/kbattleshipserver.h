@@ -35,7 +35,7 @@ class KBattleshipServer : public QServerSocket
         ~KBattleshipServer();
 
         void start();
-        void sendMessage( KMessage *msg );
+        void sendMessage(KMessage *msg);
         void allowWrite() { writeable = true; }
         void forbidWrite() { writeable = false; }
         bool write() { return writeable; }
