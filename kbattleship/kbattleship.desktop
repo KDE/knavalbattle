@@ -66,4 +66,4 @@ GenericName[zh_TW]=策略遊戲
 GenericName[zu]=Umdlalo wamaqhinga
 Terminal=0
 X-DCOP-ServiceType=Multi
-Categories=QT;KDE;Game;BoardGame
+Categories=Qt;KDE;Game;BoardGame
