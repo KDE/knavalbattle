@@ -155,7 +155,7 @@
                     </property>
                     <property>
                         <name>whatsThis</name>
-                        <string>Enter a name that identifys you in the game</string>
+                        <string>Enter a name that identifies you in the game</string>
                     </property>
                 </widget>
             </grid>

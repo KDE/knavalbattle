@@ -169,7 +169,7 @@ void KonnectionHandling::slotNewMessage(KMessage *msg)
 
 				// Got the enemy's nickname
 			case KMessage::GREET:
-				KMessageBox::information(0L, i18n("We got a player. Let's start..."));
+				KMessageBox::information(0L, i18n("We have a player. Let's start..."));
 				emit sigStatusBar(i18n("Please place your ships. Use the \"Shift\" key to place the ships vertically."));
 				emit sigEnemyNickname(msg->field("nickname"));
 				emit sigSendNickname();
