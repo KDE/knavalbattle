@@ -399,7 +399,7 @@ QString KGridWidget::findIcon(const QString &name)
 void KGridWidget::finished()
 {
     bitBlt(static_cast<QWidget *>(parent()), 0, 0, m_doubleBuffer);
-//    cleanBuffer();
+    cleanBuffer();
 }
 
 void KGridWidget::cleanBuffer()
