@@ -15,6 +15,9 @@
  *                                                                         *
  ***************************************************************************/
 
+// used for i18n debugging issues
+//#define DUMPXML 1 
+
 #include "kmessage.moc"
 
 KMessage::KMessage(int type) : QObject()
@@ -44,11 +47,17 @@ void KMessage::addField(const QString &name, const QString &content)
 
 void KMessage::setDataStream(const QString &stream)
 {
+#if DUMPXML
+    kdDebug() << "RECEIVED XML: " << stream << endl;
+#endif
     xmlDocument.setContent(stream);
 }
 
 QString KMessage::returnSendStream()
 {
+#if DUMPXML
+    kdDebug() << "SENDING XML: " << xmlDocument.toString() << endl;
+#endif
     return xmlDocument.toString();
 }
 
