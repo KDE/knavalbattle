@@ -114,6 +114,7 @@ private slots:
 	void slotSendChatMessage(const QString &text);
 	void slotEnemyClientInfo();
 	void slotReceivedClientInformation(const QString &client, const QString &clientVersion, const QString &clientInformation, const QString &protocolVersion);
+	void slotShowStatusbar();
 
 private:
 	void initActions();
@@ -155,6 +156,7 @@ private:
 	KAction *m_gameSingle;
 	KToggleAction *m_configSound;
 	KToggleAction *m_configGrid;
+	KToggleAction *m_configStatusbar;
 	KBattleshipSound *m_sound;
 	KSingleDialog *m_single;
 	KClientDialog *m_client;
