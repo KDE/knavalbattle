@@ -11,16 +11,16 @@ kbattleship_SOURCES = kbaiplayer.cpp kbstrategy.cpp kbverticalstepstrategy.cpp\
 				kbattleshipview.cpp kgridwidget.cpp kbattlefield.cpp \
 	            kchatwidget.cpp kserverdialog.cpp kclientdialog.cpp \
 				kstatdialog.cpp khighscoredialog.cpp \
-				kbattleshipsound.cpp kbdiagonalshotstrategy.cpp \
+				kbdiagonalshotstrategy.cpp \
 	            konnectionhandling.cpp kship.cpp kshiplist.cpp \
 	            kbchooserstrategy.cpp kbattleship.cpp main.cpp
-kbattleship_LDADD = $(LIB_KDEGAMES) ./dialogs/libkbattleshipdialogs.la $(LIB_KFILE) -lsoundserver_idl
+kbattleship_LDADD = $(LIB_KDEGAMES) ./dialogs/libkbattleshipdialogs.la $(LIB_KFILE)
 kbattleship_LDFLAGS = $(all_libraries) $(KDE_RPATH)
 
 xdg_apps_DATA = kbattleship.desktop
 
 rcdir = $(kde_datadir)/kbattleship
-rc_DATA = kbattleshipui.rc
+rc_DATA = kbattleshipui.rc eventsrc
 
 messages: rc.cpp
 	$(EXTRACTRC) */*.ui >> rc.cpp

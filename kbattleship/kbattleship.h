@@ -18,8 +18,6 @@
 #ifndef KBATTLESHIP_H
 #define KBATTLESHIP_H
 
-#include <arts/dispatcher.h>
-
 #include <kaction.h>
 #include <kapplication.h>
 #include <kconfig.h>
@@ -38,7 +36,6 @@
 #include "kbattleship.h"
 #include "kbattleshipclient.h"
 #include "kbattleshipserver.h"
-#include "kbattleshipsound.h"
 #include "kbattleshipview.h"
 #include "kchatwidget.h"
 #include "kclientdialog.h"
@@ -64,6 +61,7 @@ public:
 
 private slots:
 	void slotConfigureKeys();
+	void slotConfigureNotifications();
 	void slotLost(KMessage *msg);
 	void slotStatusMsg(const QString &text);
 	void slotReceivedEnemyFieldData(int fieldx, int fieldx1, int enemystate, int xstart, int xstop, int ystart, int ystop, bool death);
@@ -93,7 +91,6 @@ private slots:
 	void slotNewServer();
 	void slotDeleteServerDialog();
 	void slotHighscore();
-	void slotConfigSound();
 	void slotShowGrid();
 	void slotStartBattleshipGame();
 	void slotStartBattleshipGame(bool clearstat);
@@ -117,7 +114,6 @@ private:
 	void initStatusBar();
 	void initView();
 	void initChat();
-	void initSound();
 	void initShipPlacing();
 	void saveOptions();
 	void readOptions();
@@ -152,7 +148,6 @@ private:
 	KAction *m_gameSingle;
 	KToggleAction *m_configSound;
 	KToggleAction *m_configGrid;
-	KBattleshipSound *m_sound;
 	KClientDialog *m_client;
 	KServerDialog *m_server;
 	KHighscoreDialog *m_score;

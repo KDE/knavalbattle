@@ -23,6 +23,9 @@
 #include <kgamemisc.h>
 #include <kinputdialog.h>
 #include <kkeydialog.h>
+#include <knotifyclient.h>
+#include <knotifydialog.h>
+#include <kstandarddirs.h>
 #include <kstatusbar.h>
 #include <kstdgameaction.h>
 
@@ -59,7 +62,6 @@ KBattleshipApp::~KBattleshipApp()
 	delete m_aiPlayer;
 	delete m_ownshiplist;
 	delete m_enemyshiplist;
-	delete m_sound;
 }
 
 void KBattleshipApp::init()
@@ -74,7 +76,6 @@ void KBattleshipApp::init()
 	readOptions();
 	initView();
 	initChat();
-	initSound();
 	initShipPlacing();
 }
 
@@ -82,6 +83,11 @@ void KBattleshipApp::init()
 void KBattleshipApp::slotConfigureKeys()
 {
   KKeyDialog::configure( actionCollection(), this );
+}
+
+void KBattleshipApp::slotConfigureNotifications()
+{
+  KNotifyDialog::configure(this);
 }
 
 void KBattleshipApp::initStatusBar()
@@ -96,7 +102,8 @@ void KBattleshipApp::initStatusBar()
 
 void KBattleshipApp::initActions()
 {
-	KStdAction::keyBindings( this, SLOT( slotConfigureKeys() ), actionCollection() );
+	KStdAction::keyBindings(this, SLOT( slotConfigureKeys() ), actionCollection() );
+	KStdAction::configureNotifications(this, SLOT(slotConfigureNotifications()), actionCollection());
 	m_gameServerConnect = new KAction(i18n("&Connect to Server..."), "connect_no", Key_F2, this, SLOT(slotServerConnect()), actionCollection(), "game_serverconnect");
 	m_gameNewServer = new KAction(i18n("&Start Server..."), "network", Key_F3, this, SLOT(slotNewServer()), actionCollection(), "game_newserver");
 	m_gameSingle = new KAction(i18n("S&ingle Player..."), "gear", Key_F4, this, SLOT(slotSinglePlayer()), actionCollection(), "game_singleplayer");
@@ -106,22 +113,11 @@ void KBattleshipApp::initActions()
 
 	createStandardStatusBarAction();
 	setAutoSaveSettings("General");
-	m_configSound = new KToggleAction(i18n("&Play Sounds"), 0, this, SLOT(slotConfigSound()), actionCollection(), "options_configure_sound");
+	m_configSound = new KToggleAction(i18n("&Play Sounds"), 0, actionCollection(), "options_configure_sound");
 	m_configGrid = new KToggleAction(i18n("&Show Grid"), 0, this, SLOT(slotShowGrid()), actionCollection(), "options_show_grid");
 
 	m_gameEnemyInfo->setEnabled(false);
 	createGUI();
-}
-
-void KBattleshipApp::initSound()
-{
-	new Arts::Dispatcher;
-	m_sound = new KBattleshipSound();
-
-	if(!m_sound->initSoundServer())
-		m_configSound->setChecked(false);
-	else
-		slotConfigSound();
 }
 
 void KBattleshipApp::initChat()
@@ -642,8 +638,7 @@ void KBattleshipApp::slotUpdateHighscore()
 void KBattleshipApp::saveOptions()
 {
 	m_config->setGroup("General");
-	if(!m_sound->serverError())
-		m_config->writeEntry("PlaySounds", m_configSound->isChecked());
+	m_config->writeEntry("PlaySounds", m_configSound->isChecked());
 	m_config->writeEntry("ShowGrid", m_configGrid->isChecked());
 	m_config->sync();
 }
@@ -998,22 +993,25 @@ void KBattleshipApp::slotChangeOwnFieldData(int fieldx, int fieldy, int type)
 
 void KBattleshipApp::playSound(bool enemy, int fieldstate)
 {
-	switch(fieldstate)
+	if (m_configSound->isChecked())
 	{
-		case KBattleField::WATER:
-			m_sound->playSound(KBattleshipSound::PLAYER_SHOOT_WATER);
-			break;
+		switch(fieldstate)
+		{
+			case KBattleField::WATER:
+				KNotifyClient::event(winId(), "shoot_water");
+				break;
 
-		case KBattleField::HIT:
-			if(enemy)
-				m_sound->playSound(KBattleshipSound::PLAYER1_SHOOT_HIT);
-			else
-				m_sound->playSound(KBattleshipSound::PLAYER2_SHOOT_HIT);
-			break;
+			case KBattleField::HIT:
+				if(enemy)
+					KNotifyClient::event(winId(), "shoot_hit_1");
+				else
+					KNotifyClient::event(winId(), "shoot_hit_2");
+				break;
 
-		case KBattleField::DEATH:
-			m_sound->playSound(KBattleshipSound::SHIP_SINK);
-			break;
+			case KBattleField::DEATH:
+				KNotifyClient::event(winId(), "shoot_sink");
+				break;
+		}
 	}
 }
 
@@ -1111,14 +1109,6 @@ void KBattleshipApp::slotShowGrid()
 		m_view->field()->disableGrid();
 	else
 		m_view->field()->enableGrid();
-}
-
-void KBattleshipApp::slotConfigSound()
-{
-	if(!m_configSound->isChecked())
-		m_sound->turnOff();
-	else
-		m_sound->turnOn();
 }
 
 void KBattleshipApp::slotStatusMsg(const QString &text)
