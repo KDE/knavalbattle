@@ -35,6 +35,7 @@ KGridWidget::KGridWidget(QWidget *parent, const char *name, bool draw) : QObject
 
 KGridWidget::~KGridWidget()
 {
+  delete m_doubleBuffer;
 }
 
 void KGridWidget::cacheImages()
