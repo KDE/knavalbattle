@@ -43,13 +43,13 @@ int main( int argc, char *argv[] )
     KCmdLineArgs::init( argc, argv, &aboutData );
     KApplication app;
  
+	new Dispatcher;
     if( app.isRestored() )
     {
         RESTORE( KBattleshipApp );
     }
     else
     {
-	Dispatcher dispatcher;
         KBattleshipApp *kbattleship = new KBattleshipApp();
         kbattleship->show();
     }
