@@ -22,7 +22,8 @@
 #include "kbattleship.h"
 #include "kbattleshipview.moc"
 
-KBattleshipView::KBattleshipView(QWidget *parent, const char *name, bool draw) : QWidget(parent, name, WResizeNoErase), m_drawGrid(draw)
+KBattleshipView::KBattleshipView(QWidget *parent, const char *name, bool draw) 
+	: QWidget(parent, name, WResizeNoErase), m_drawGrid(draw)
 {
 	setFixedSize(20 * 32 + 30, 10 * 32 + 20);
 	setBackgroundMode(NoBackground);
@@ -42,8 +43,6 @@ KBattleshipView::~KBattleshipView()
 
 void KBattleshipView::startDrawing()
 {
-	QHBoxLayout *layout = new QHBoxLayout(this, 0, 0, "m_battlefieldLayout");
-	layout->setAutoAdd(true);
 	m_battlefield = new KBattleField(this, m_drawGrid);
 }
 
