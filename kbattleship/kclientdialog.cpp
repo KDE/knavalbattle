@@ -32,6 +32,8 @@ KClientDialog::KClientDialog(QWidget *parent, const char *name) : clientConnectD
     
     serverEdit->setMaxCount(5);
     serverEdit->setHistoryItems(config->readListEntry("HistoryList"));
+
+    serverEdit->setCurrentItem(config->readNumEntry("Index", -1));
 }
 
 KClientDialog::~KClientDialog()
@@ -39,6 +41,7 @@ KClientDialog::~KClientDialog()
     config->setGroup("History");
     config->writeEntry("CompletionList", serverEdit->completionObject()->items());
     config->writeEntry("HistoryList", serverEdit->historyItems());
+    config->writeEntry("Index", serverEdit->currentItem());
     config->sync();
 }
 

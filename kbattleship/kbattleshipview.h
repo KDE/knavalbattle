@@ -30,7 +30,7 @@ class KBattleshipView : public QWidget
 {
     Q_OBJECT
     public:
-        KBattleshipView(QWidget *parent = 0, const char *name = 0);
+        KBattleshipView(QWidget *parent = 0, const char *name = 0, bool draw = false);
         ~KBattleshipView();
 
 	KBattleField *field() { return battlefield; }
@@ -55,6 +55,7 @@ class KBattleshipView : public QWidget
 
     private:
         KBattleField *battlefield;
+	bool m_drawGrid;
 };
 
 #endif

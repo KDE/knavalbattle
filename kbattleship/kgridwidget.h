@@ -30,8 +30,11 @@ class KGridWidget : public QWidget
 {
     Q_OBJECT
     public:
-        KGridWidget(QWidget *parent, const char *name);
+        KGridWidget(QWidget *parent, const char *name, bool draw);
         ~KGridWidget();
+
+	void enableGrid() { m_drawGrid = true; }
+	void disableGrid() { m_drawGrid = false; }
 
     protected:    
 	void finished();
@@ -48,7 +51,8 @@ class KGridWidget : public QWidget
         void drawIcon(QPixmap icon, bool hitBlend = false);
 	QString findIcon(const QString &name);
 
-        int internalx, internaly, internalSize;
+	bool m_drawGrid;
+        int m_x, m_y, m_size;
 	QPixmap *doubleBuffer;
 	QPixmap seaPng, waterPng, hitPng, deathPng;
 	QPixmap ship1p1Png, ship1p1rPng;

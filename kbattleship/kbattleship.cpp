@@ -60,6 +60,7 @@ void KBattleshipApp::initActions()
 
     viewStatusBar = KStdAction::showStatusbar(this, SLOT(slotViewStatusBar()), actionCollection());
     configSound = new KToggleAction(i18n("&Play sounds"), 0, this, SLOT(slotConfigSound()), actionCollection(), "configsound");
+    configGrid = new KToggleAction(i18n("&Show grid"), 0, this, SLOT(slotShowGrid()), actionCollection(), "showgrid");
 
     createGUI();
 }
@@ -102,7 +103,7 @@ void KBattleshipApp::initView()
     splitV = new QSplitter(QSplitter::Vertical, this);
     splitH = new QSplitter(QSplitter::Horizontal, splitV);
 
-    view = new KBattleshipView(splitH);
+    view = new KBattleshipView(splitH, "", configGrid->isChecked());
     chat = new KChatWidget(splitV);
     stat = new KStatDialog(splitH);
 
@@ -346,6 +347,7 @@ void KBattleshipApp::saveOptions()
     config->writeEntry("ShowStatusbar", viewStatusBar->isChecked());
     if(!sound->serverError())
 	config->writeEntry("PlaySounds", configSound->isChecked());
+    config->writeEntry("ShowGrid", configGrid->isChecked());
     config->sync();
 }
 
@@ -357,6 +359,7 @@ void KBattleshipApp::readOptions()
     slotViewStatusBar();
 
     configSound->setChecked(config->readBoolEntry("PlaySounds", true));
+    configGrid->setChecked(config->readBoolEntry("ShowGrid", false));
 }
 
 void KBattleshipApp::slotGameQuit()
@@ -841,6 +844,14 @@ void KBattleshipApp::gotEnemyShipList(QString fieldX1S1, QString fieldY1S1, QStr
     enemyshiplist->addShip2(fieldX1S2.toInt(), fieldX2S2.toInt(), fieldY1S2.toInt(), fieldY2S2.toInt());
     enemyshiplist->addShip3(fieldX1S3.toInt(), fieldX2S3.toInt(), fieldY1S3.toInt(), fieldY2S3.toInt());
     enemyshiplist->addShip4(fieldX1S4.toInt(), fieldX2S4.toInt(), fieldY1S4.toInt(), fieldY2S4.toInt());
+}
+
+void KBattleshipApp::slotShowGrid()
+{
+    if(!configGrid->isChecked())
+        view->field()->disableGrid();
+    else
+        view->field()->enableGrid();
 }
 
 void KBattleshipApp::slotConfigSound()

@@ -19,7 +19,7 @@
 #include <kship.h>
 #include "kbattlefield.moc"
 
-KBattleField::KBattleField(QWidget *parentw, const char *name) : KGridWidget(parentw, name)
+KBattleField::KBattleField(QWidget *parentw, const char *name, bool grid) : KGridWidget(parentw, name, grid)
 {
     m_parent_widget = static_cast<QWidget *>(parent());
     m_width = m_parent_widget->width();

@@ -16,7 +16,7 @@
  ***************************************************************************/
 
 // used for i18n debugging issues
-//#define DUMPXML 1 
+#define DUMPXML 1
 
 #include "kmessage.moc"
 

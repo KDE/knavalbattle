@@ -1,5 +1,5 @@
 <!DOCTYPE kpartgui SYSTEM "kpartgui.dtd">
-<kpartgui name="kbattleship" version="0.6">
+<kpartgui name="kbattleship" version="0.7">
 <MenuBar>
   <Menu name="game"><text>&amp;Game</text>
     <Action name="serverconnect"/>
@@ -11,6 +11,7 @@
   </Menu>
   <Menu name="settings"><text>&amp;Settings</text>
     <Action name="configsound"/>
+    <Action name="showgrid"/>
   </Menu>
 </MenuBar>
 </kpartgui>

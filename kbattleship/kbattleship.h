@@ -85,6 +85,7 @@ class KBattleshipApp : public KMainWindow
         void slotGameQuit();
 	void slotHighscore();
         void slotConfigSound();
+	void slotShowGrid();
         void slotViewStatusBar();
         void slotStatusMsg(const QString &text);
         void slotChangeOwnPlayer(const QString &text);    
@@ -122,6 +123,7 @@ class KBattleshipApp : public KMainWindow
         KAction *gameQuit;
         KToggleAction *viewStatusBar;
         KToggleAction *configSound;
+	KToggleAction *configGrid;
         KBattleshipSound *sound;
         KClientDialog *client;
         KServerDialog *server;

@@ -1,5 +1,5 @@
 /***************************************************************************
-                               kgridwidget.cpp
+                              kgridwidget.cpp
                              -------------------
     Developers: (c) 2000-2001 Nikolas Zimmermann <wildfox@kde.org>
                 (c) 2000-2001 Daniel Molkentin <molkentin@kde.org>
@@ -20,7 +20,7 @@
 #include "kbattlefield.h"
 #include "kgridwidget.moc"
 
-KGridWidget::KGridWidget(QWidget *parent, const char *name) : QWidget(parent, name)
+KGridWidget::KGridWidget(QWidget *parent, const char *name, bool draw) : QWidget(parent, name), m_drawGrid(draw)
 {
     doubleBuffer = new QPixmap(parent->width(), parent->height());
     doubleBuffer->fill(QApplication::palette().color(QPalette::Normal, QColorGroup::Background));
@@ -61,9 +61,9 @@ void KGridWidget::cacheImages()
 
 void KGridWidget::setValues(int x, int y, int size)
 {
-    internalx = x;
-    internaly = y;
-    internalSize = size;
+    m_x = x;
+    m_y = y;
+    m_size = size;
 }
 
 void KGridWidget::drawSquare()
@@ -354,22 +354,19 @@ void KGridWidget::drawShipIcon(int ship, int part, bool rotate, bool hit)
 
 void KGridWidget::drawIcon(QPixmap icon, bool hitBlend)
 {
-    if(!hitBlend)
-    {
-	QPainter painter;
-	painter.begin(doubleBuffer);
-	painter.drawPixmap(internalx, internaly, icon);
+    QPainter painter;
+    painter.begin(doubleBuffer);
+    painter.drawPixmap(m_x, m_y, icon);
+    if(hitBlend)
+	painter.drawPixmap(m_x, m_y, hitPng);
+
+    if(!m_drawGrid)
 	painter.end();
-    }
     else
     {
-	// Niko Z:
-	// make this work!
-	QPainter painter;
-	painter.begin(doubleBuffer);
-	painter.drawPixmap(internalx, internaly, icon);
-	painter.drawPixmap(internalx, internaly, hitPng);
-//	KAlphaPainter::draw(&painter, hitPng, icon, internaly, internaly);
+	painter.setBrush(NoBrush);
+	painter.setPen(black);
+	painter.drawRect(m_x, m_y, m_size, m_size);
 	painter.end();
     }
 }

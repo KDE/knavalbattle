@@ -18,7 +18,7 @@
 #include <klocale.h>
 #include "kbattleshipview.moc"
 
-KBattleshipView::KBattleshipView(QWidget *parent, const char *name) : QWidget(parent, name)
+KBattleshipView::KBattleshipView(QWidget *parent, const char *name, bool draw) : QWidget(parent, name), m_drawGrid(draw)
 {
     setMinimumSize(600, 300);
 }
@@ -29,7 +29,7 @@ KBattleshipView::~KBattleshipView()
 
 void KBattleshipView::startDrawing()
 {
-    battlefield = new KBattleField(this, "battlefield");
+    battlefield = new KBattleField(this, "battlefield", m_drawGrid);
 }
 
 void KBattleshipView::clearField()
