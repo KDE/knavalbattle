@@ -17,6 +17,9 @@
 
 #include "kbattleship.moc"
 
+using namespace Arts;
+using namespace std;
+
 #define ID_STATUS_MSG 1
 
 KBattleshipApp::KBattleshipApp( QWidget *, const char *name ) : KMainWindow( 0, name )
@@ -56,6 +59,7 @@ void KBattleshipApp::initActions()
 
 void KBattleshipApp::initSound()
 {
+    new Dispatcher;
     sound = new KBattleshipSound();
 }
 

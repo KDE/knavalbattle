@@ -31,6 +31,7 @@ KBattleshipSound::~KBattleshipSound()
 void KBattleshipSound::initSoundServer()
 {
     soundserver = Arts::Reference( "global:Arts_SimpleSoundServer" );
+    playObjectFactory = Arts::Reference( "global:Arts_PlayObjectFactory" );
     if( soundserver.isNull() )
     {
 	KMessageBox::error( 0L, i18n( "Couldn't connect to Arts Soundserver. Sound deactivated" ) );
@@ -40,7 +41,6 @@ void KBattleshipSound::initSoundServer()
     {
 	serverRunning = true;
     }
-	
 }
 
 void KBattleshipSound::playSound( int file )
@@ -48,7 +48,6 @@ void KBattleshipSound::playSound( int file )
     kdDebug() << "PLAY!" << endl;
     if( isRunning() )
     {
-	kdDebug() << "NOT HERE! :(" << endl;
 	KStandardDirs *stdDirs = KGlobal::dirs();
 	QString picDir;
 	QStringList picDirl = stdDirs->findDirs( "data", "kbattleship" );
@@ -59,29 +58,33 @@ void KBattleshipSound::playSound( int file )
 	}
 
 	picDir = picDir + "sounds/";
-    
-	switch( file )
+
+    	switch( file )
 	{
 	    case SHIP_EXPLODE:
-		soundserver.play( QString( picDir + QString( "ship-explode.mp3" ) ).latin1() );
+	        playObject = playObjectFactory.createPlayObject( QString( picDir + QString( "ship-explode.mp3" ) ).latin1() );
+		playObject.play();
 		break;
 		
 	    case PLAYER1_SHOOT_HIT:
-		soundserver.play( QString( picDir + QString( "ship-player1-shoot.mp3" ) ).latin1() );
+		playObject = playObjectFactory.createPlayObject( QString( picDir + QString( "ship-player1-shoot.mp3" ) ).latin1() );
+		playObject.play();
 		break;
 		
 	    case PLAYER2_SHOOT_HIT:
-		soundserver.play( QString( picDir + QString( "ship-player2-shoot.mp3" ) ).latin1() );
+		playObject = playObjectFactory.createPlayObject( QString( picDir + QString( "ship-player2-shoot.mp3" ) ).latin1() );
+		playObject.play();
 		break;
 
 	    case PLAYER_SHOOT_WATER:
-		kdDebug() << "I'll play this NOW" << endl;
 		kdDebug() << "File: " <<  QString( picDir + QString( "ship-player-shoot-water.mp3" ) ) << endl;
-		soundserver.play( QString( picDir + QString( "ship-player-shoot-water.mp3" ) ).latin1() );
+		playObject = playObjectFactory.createPlayObject( QString( picDir + QString( "ship-player-shoot-water.mp3" ) ).latin1() );
+		playObject.play();
 		break;
     
 	    case SHIP_SINK:
-		soundserver.play( QString( picDir + QString( "ship-sink.mp3" ) ).latin1() );
+		playObject = playObjectFactory.createPlayObject( QString( picDir + QString( "ship-sink.mp3" ) ).latin1() );
+		playObject.play();
 		break;
 	}
     }
@@ -89,6 +92,5 @@ void KBattleshipSound::playSound( int file )
 
 bool KBattleshipSound::isRunning()
 {
-    kdDebug() << "It'll crash here!" << endl;
     return serverRunning;
 }
