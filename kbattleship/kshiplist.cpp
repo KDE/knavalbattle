@@ -40,11 +40,11 @@ int KShipList::getXYShipType(int x, int y)
     {
 	for(tempy = shipiterator->shipystart(); tempy <= shipiterator->shipystop(); tempy++)
 	{
-   	    if(tempy == y)	
+   	    if(tempy == y)
 	    {
  		for(tempx = shipiterator->shipxstart(); tempx <= shipiterator->shipxstop(); tempx++)
 		{
-		    if(tempx == x)	
+		    if(tempx == x)
 		        return shipiterator->shiptype();
                     else
                         continue;
@@ -63,11 +63,11 @@ KShip *KShipList::getXYShip(int x, int y)
     {
 	for(tempy = shipiterator->shipystart(); tempy <= shipiterator->shipystop(); tempy++)
 	{
-	    if(tempy == y)	
+	    if(tempy == y)
 	    {
 	        for(tempx = shipiterator->shipxstart(); tempx <= shipiterator->shipxstop(); tempx++)
 		{
-		    if(tempx == x)	
+		    if(tempx == x)
 		        return shipiterator;
 	        }
 	    }
@@ -151,23 +151,29 @@ void KShipList::addNewShip(int button, int fieldx, int fieldy)
 
     if(shipCount() != 4)
     {
+
         for(shipiterator = shiplist.first(); shipiterator != 0; shipiterator = shiplist.next())
         {
-	    if(shipiterator->shipystart() == shipiterator->shipystop() && shipiterator->shipxstart() == shipiterator->shipxstop())
+            // Check for X and Y for 1 quare ship
+	    if( (shipiterator->shipystart() == shipiterator->shipystop() ) &&
+                (shipiterator->shipxstart() == shipiterator->shipxstop() ) )
 	    {
 	        for(tempx = shipiterator->shipxstart(); tempx <= shipiterator->shipxstop(); tempx++)
 	        {
 	            if(tempx == fieldx)
 		        xokay = false;
 		}
-		
+
 		for(tempy = shipiterator->shipystart(); tempy <= shipiterator->shipystop(); tempy++)
 		{
 		    if(tempy == fieldy)
 		        yokay = false;
 		}
-	    }	
-	    else if(shipiterator->shipystart() == shipiterator->shipystop() && shipiterator->shipxstart() != shipiterator->shipxstop())
+
+	    }
+            // Check for X for ships > 1 square
+	    else if( (shipiterator->shipystart() == shipiterator->shipystop() ) &&
+                     (shipiterator->shipxstart() != shipiterator->shipxstop() ) )
 	    {
 	        for(tempx = shipiterator->shipxstart(); tempx <= shipiterator->shipxstop(); tempx++)
 	        {
@@ -178,7 +184,9 @@ void KShipList::addNewShip(int button, int fieldx, int fieldy)
 	            }
 	        }
 	    }
-	    else if(shipiterator->shipxstart() == shipiterator->shipxstop() && shipiterator->shipystart() != shipiterator->shipystop())
+            // Check for Y for ships > 1 square
+	    else if( (shipiterator->shipxstart() == shipiterator->shipxstop() ) &&
+                     (shipiterator->shipystart() != shipiterator->shipystop() ) )
 	    {
 	        for(tempy = shipiterator->shipystart(); tempy <= shipiterator->shipystop(); tempy++)
 	        {
@@ -260,7 +268,7 @@ void KShipList::addNewShip(int button, int fieldx, int fieldy)
 		        yokay = false;
 	    kdDebug() << "*** Step 2 *r1**" << endl;
 	    kdDebug() << "XOKAY: " << xokay << " YOKAY: " << yokay << endl;
-    
+
 			    break;
 			}
 		    }
@@ -277,7 +285,7 @@ void KShipList::addNewShip(int button, int fieldx, int fieldy)
 	        }
 
 	    }
-	    
+
 	    kdDebug() << "*** Step 2 *r3**" << endl;
 	    kdDebug() << "XOKAY: " << xokay << " YOKAY: " << yokay << endl;
 	}
@@ -287,13 +295,13 @@ void KShipList::addNewShip(int button, int fieldx, int fieldy)
 	    xokay = true;
 	    yokay = true;
 	}
-	    
+
 	if(yokay && !xokay)
 	{
 	    xokay = true;
 	    yokay = true;
 	}
-	
+
 	kdDebug() << "*** Step 3 ***" << endl;
 	kdDebug() << "XOKAY: " << xokay << " YOKAY: " << yokay << endl;
     }
@@ -316,7 +324,7 @@ void KShipList::addNewShip(int button, int fieldx, int fieldy)
 	shipsadded--;
     	if(button == LeftButton)
     	    shiplist.append(new KShip(fieldx, fieldx + shipCount(), fieldy, fieldy, shipCount()));
-	else if(button == RightButton) 
+	else if(button == RightButton)
             shiplist.append(new KShip(fieldx, fieldx, fieldy, fieldy + shipCount(), shipCount()));
 
      	decideShipPlacing(button, fieldx, fieldy);
@@ -364,59 +372,27 @@ void KShipList::decideShipPlacing(int button, int fieldx, int fieldy)
 }
 
 void KShipList::placeShipLMB(int fieldx, int fieldy)
-{ 	
-    switch(shipCount())
-    {
-	case 3:
-	    controlOwnFieldData(fieldx, fieldy, KBattleField::SHIP);
-	    controlOwnFieldData(fieldx + 1, fieldy, KBattleField::SHIP);
-	    controlOwnFieldData(fieldx + 2, fieldy, KBattleField::SHIP);
-	    controlOwnFieldData(fieldx + 3, fieldy, KBattleField::SHIP);
-	    break;
-			
-	case 2:
-	    controlOwnFieldData(fieldx, fieldy, KBattleField::SHIP);
-	    controlOwnFieldData(fieldx + 1, fieldy, KBattleField::SHIP);
-	    controlOwnFieldData(fieldx + 2, fieldy, KBattleField::SHIP);
-	    break;
+{
 
-	case 1:
-	    controlOwnFieldData(fieldx, fieldy, KBattleField::SHIP);
-	    controlOwnFieldData(fieldx + 1, fieldy, KBattleField::SHIP);
-	    break;
-	    
-	case 0:
-	    controlOwnFieldData(fieldx, fieldy, KBattleField::SHIP);
-	    break;
-    }	
+    kdDebug() << "ShipCount: " << shipCount()+1 << endl;
+
+    for (int i=0; i < shipCount()+1; i++)
+    {
+        controlOwnFieldData(fieldx + i, fieldy, KBattleField::SHIP);
+    }
+
 }
 
 void KShipList::placeShipRMB(int fieldx, int fieldy)
-{ 	
-    switch(shipCount())
+{
+
+    kdDebug() << "ShipCount: " << shipCount()+1 << endl;
+
+    for (int i=0; i < shipCount()+1; i++)
     {
-        case 3:
-            controlOwnFieldData(fieldx, fieldy, KBattleField::SHIP);
-	    controlOwnFieldData(fieldx, fieldy + 1, KBattleField::SHIP);
-    	    controlOwnFieldData(fieldx, fieldy + 2, KBattleField::SHIP);
-	    controlOwnFieldData(fieldx, fieldy + 3, KBattleField::SHIP);
-	    break;
-			
-	case 2:
-	    controlOwnFieldData(fieldx, fieldy, KBattleField::SHIP);
-	    controlOwnFieldData(fieldx, fieldy + 1, KBattleField::SHIP);
-	    controlOwnFieldData(fieldx, fieldy + 2, KBattleField::SHIP);
-	    break;
-
-        case 1:
-            controlOwnFieldData(fieldx, fieldy, KBattleField::SHIP);
-	    controlOwnFieldData(fieldx, fieldy + 1, KBattleField::SHIP);
-    	    break;
-
-	case 0:
-	    controlOwnFieldData(fieldx, fieldy, KBattleField::SHIP);
-	    break;
+        controlOwnFieldData(fieldx, fieldy + i, KBattleField::SHIP);
     }
+
 }
 
 void KShipList::controlOwnFieldData(int fieldx, int fieldy, int type)
