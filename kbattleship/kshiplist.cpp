@@ -237,11 +237,11 @@ void KShipList::addNewShip(int button, int fieldx, int fieldy)
 	    {
 		int neighbourp, neighbourm, neighbourt, neighbourb;
 	    	tempx = 0;
-		if( fieldx > 0 )
+		if(fieldx > 0)
 		    neighbourm = getXYShipType(fieldx - 1, fieldy);
 		else
 		    neighbourm = 99;
-		    neighbourp = getXYShipType(fieldx + shipCount(), fieldy);
+		neighbourp = getXYShipType(fieldx + shipCount(), fieldy);
                 if(neighbourm == 99 && neighbourp == 99)
 		{
 		    for(tempx = fieldx; tempx <= (fieldx + shipCount()); tempx++)
@@ -251,7 +251,7 @@ void KShipList::addNewShip(int button, int fieldx, int fieldy)
 		        else
 		            neighbourt = 99;
 		        neighbourb = getXYShipType(tempx, fieldy + 1);
-		        if( neighbourt != 99 || neighbourb != 99 )
+		        if(neighbourt != 99 || neighbourb != 99)
 		        {
     	                    xokay = false;
 		            yokay = false;
@@ -296,8 +296,8 @@ void KShipList::addNewShip(int button, int fieldx, int fieldy)
 			neighbourb = getXYShipType(fieldx + 1, tempy);
 			if(neighbourt != 99 || neighbourb != 99)
 			{
-			xokay = false;
-		        yokay = false;
+			    xokay = false;
+		    	    yokay = false;
 //	    kdDebug() << "*** Step 2 *r1**" << endl;
 //	    kdDebug() << "XOKAY: " << xokay << " YOKAY: " << yokay << endl;
 
@@ -338,7 +338,7 @@ void KShipList::addNewShip(int button, int fieldx, int fieldy)
 //	kdDebug() << "XOKAY: " << xokay << " YOKAY: " << yokay << endl;
     }
 
-    if(xokay && yokay)
+    if((xokay && yokay) || (xokay && !yokay) || (!xokay && yokay))
     {
 	shipsadded--;
 	if(button == LeftButton)
@@ -346,33 +346,23 @@ void KShipList::addNewShip(int button, int fieldx, int fieldy)
 	else if(button == RightButton)
             shiplist.append(new KShip(fieldx, fieldx, fieldy, fieldy + shipCount(), shipCount()));
 
-     	decideShipPlacing(button, fieldx, fieldy);
-	if(shipsadded == 0)
-	    emit lastShipAdded();
-	return;
-    }
-    else if(xokay && !yokay)
-    {
-	shipsadded--;
-    	if(button == LeftButton)
-    	    shiplist.append(new KShip(fieldx, fieldx + shipCount(), fieldy, fieldy, shipCount()));
-	else if(button == RightButton)
-            shiplist.append(new KShip(fieldx, fieldx, fieldy, fieldy + shipCount(), shipCount()));
-
-     	decideShipPlacing(button, fieldx, fieldy);
-	if(shipsadded == 0)
-	    emit lastShipAdded();
-	return;
-    }
-    else if(!xokay && yokay)
-    {
-    	shipsadded--;
 	if(button == LeftButton)
-	    shiplist.append(new KShip(fieldx, fieldx + shipCount(), fieldy, fieldy, shipCount()));
+	{
+    	    if(fieldx + shipCount() <= 8)
+	    {
+		for(int i = 0; i < shipCount() + 1; i++)
+		    emit ownFieldDataChanged(fieldx + i, fieldy, KBattleField::SHIP);
+	    }
+	}
 	else if(button == RightButton)
-    	    shiplist.append(new KShip(fieldx, fieldx, fieldy, fieldy + shipCount(), shipCount()));
+	{
+	    if(fieldy + shipCount() <= 8)
+	    {
+	        for(int i = 0; i < shipCount() + 1; i++)
+		    emit ownFieldDataChanged(fieldx, fieldy + i, KBattleField::SHIP);
+	    }
+	}
 
-        decideShipPlacing(button, fieldx, fieldy);
 	if(shipsadded == 0)
 	    emit lastShipAdded();
 	return;
@@ -382,35 +372,4 @@ void KShipList::addNewShip(int button, int fieldx, int fieldy)
         KMessageBox::information(0L, i18n( "You can't place the ship here." ));
 	return;
     }
-}
-
-void KShipList::decideShipPlacing(int button, int fieldx, int fieldy)
-{
-    if(button == LeftButton)
-    {
-        if(fieldx + shipCount() <= 8)
-            placeShipLMB(fieldx, fieldy);
-    }
-    else if(button == RightButton)
-    {
-	if(fieldy + shipCount() <= 8)
-	    placeShipRMB(fieldx, fieldy);
-    }
-}
-
-void KShipList::placeShipLMB(int fieldx, int fieldy)
-{
-    for(int i = 0; i < shipCount() + 1; i++)
-        controlOwnFieldData(fieldx + i, fieldy, KBattleField::SHIP);
-}
-
-void KShipList::placeShipRMB(int fieldx, int fieldy)
-{
-    for(int i = 0; i < shipCount() + 1; i++)
-        controlOwnFieldData(fieldx, fieldy + i, KBattleField::SHIP);
-}
-
-void KShipList::controlOwnFieldData(int fieldx, int fieldy, int type)
-{
-    emit ownFieldDataChanged(fieldx, fieldy, type);
 }

@@ -73,8 +73,8 @@ class KBattleshipView : public QWidget
         void clearField();
         void changeOwnFieldData(int fieldx, int fieldy, int type);
         void changeEnemyFieldData(int fieldx, int fieldy, int type);
-        int getOwnFieldState(int &fieldx, int &fieldy);
-        int getEnemyFieldState(int &fieldx, int &fieldy);
+
+	int getEnemyFieldState(int &fieldx, int &fieldy);
 
     private slots:
 	void toolTipTimeout();

@@ -63,10 +63,6 @@ class KShipList : public QObject
     private:
         QList<KShip> shiplist;
         int shipsadded;
-        void controlOwnFieldData(int fieldx, int fieldy, int type);
-        void placeShipLMB(int fieldx, int fieldy);
-        void placeShipRMB(int fieldx, int fieldy);
-        void decideShipPlacing(int button, int fieldx, int fieldy);
 };
 
 #endif
