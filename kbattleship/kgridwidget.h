@@ -26,7 +26,7 @@
 #include <qpixmap.h>
 #include <qwidget.h>
 
-class KGridWidget : public QWidget
+class KGridWidget : public QObject
 {
     Q_OBJECT
     public:

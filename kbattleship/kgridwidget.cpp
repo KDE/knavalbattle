@@ -19,7 +19,7 @@
 #include "kbattlefield.h"
 #include "kgridwidget.moc"
 
-KGridWidget::KGridWidget(QWidget *parent, const char *name, bool draw) : QWidget(parent, name), m_drawGrid(draw)
+KGridWidget::KGridWidget(QWidget *parent, const char *name, bool draw) : QObject(parent, name), m_drawGrid(draw)
 {
     m_doubleBuffer = new QPixmap(parent->width(), parent->height());
 
