@@ -362,8 +362,8 @@
         <class>KHistoryCombo</class>
         <header location="global">kcombobox.h</header>
         <sizehint>
-            <width>20</width>
-            <height>50</height>
+            <width>-1</width>
+            <height>-1</height>
         </sizehint>
         <container>0</container>
         <sizepolicy>

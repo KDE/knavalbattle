@@ -151,7 +151,7 @@
                     </property>
                     <property stdset="1">
                         <name>maxLength</name>
-                        <number>10</number>
+                        <number>100</number>
                     </property>
                     <property>
                         <name>whatsThis</name>
