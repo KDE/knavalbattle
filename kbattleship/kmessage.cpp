@@ -50,12 +50,11 @@ void KMessage::parseMessage()
         {
             if( *it != "end" )
             {
-                QString teststring;
                 QChar testchar;
                 int testint;
-                testint=teststring.toInt();
+                testint=it.toInt();
                 testchar=testint;
-                if( *it != testchar.isDigit() )
+                if( !testchar.isDigit() )
                 {
                     key=*it;
                     kd=true;
