@@ -109,7 +109,7 @@ void KBattleshipApp::initActions()
 	m_gameSingle = new KAction(i18n("S&ingle Player..."), "gear", Key_F4, this, SLOT(slotSinglePlayer()), actionCollection(), "game_singleplayer");
 	m_gameQuit = KStdGameAction::quit(this, SLOT(close()), actionCollection());
 	KStdGameAction::highscores(this, SLOT(slotHighscore()), actionCollection());
-	m_gameEnemyInfo = new KAction(i18n("&Enemy Info..."), "view_text", Key_F11, this, SLOT(slotEnemyClientInfo()), actionCollection(), "game_enemyinfo");
+	m_gameEnemyInfo = new KAction(i18n("&Enemy Info"), "view_text", Key_F11, this, SLOT(slotEnemyClientInfo()), actionCollection(), "game_enemyinfo");
 
 	createStandardStatusBarAction();
 	setAutoSaveSettings("General");
@@ -1153,7 +1153,7 @@ void KBattleshipApp::slotSinglePlayer()
 	bool ok;
 	if(!m_aiPlaying)
 	{
-		m_ownNickname = KInputDialog::getText(i18n("Start Game"), i18n("Nick name"),
+		m_ownNickname = KInputDialog::getText(i18n("Start Game"), i18n("Nick name:"),
 			QString::fromLocal8Bit(getenv("LOGNAME")), &ok, this);
 		if (ok)
 		{
