@@ -325,9 +325,12 @@ void KBattleshipApp::slotNewServer()
 
 void KBattleshipApp::startBattleshipServer()
 {
+    gameNewServer->setText( "&Stop server" );
     kbserver = new KBattleshipServer( ( server->getPort() ).toInt() );
     delete server;
-    gameNewServer->setText( "&Stop server" );
+    connect( kbserver, SIGNAL( serverFailure() ), this, SLOT( changeStartText() ) );
+    kbserver->start();
+
     connection = new KonnectionHandling( this, kbserver );    
 
     connect( connection, SIGNAL( ownFieldDataChanged( int, int, int ) ), this, SLOT( changeOwnFieldData( int, int, int ) ) );
@@ -342,13 +345,13 @@ void KBattleshipApp::changeOwnFieldData( int fieldx, int fieldy, int type )
     view->changeOwnFieldData( fieldx, fieldy, 1 ); //type );
 }
 
-int KBattleshipApp::requestedOwnBattleFieldState( int fieldx, int fieldy )
+void KBattleshipApp::requestedOwnBattleFieldState( int fieldx, int fieldy )
 {
     int state = view->getOwnFieldState( fieldx, fieldy );
     emit battleFieldState( fieldx, fieldy, state );
 }
 
-int KBattleshipApp::requestedEnemyBattleFieldState( int fieldx, int fieldy )
+void KBattleshipApp::requestedEnemyBattleFieldState( int fieldx, int fieldy )
 {
     int state = view->getEnemyFieldState( fieldx, fieldy );
     emit battleFieldState( fieldx, fieldy, state );
@@ -369,7 +372,12 @@ void KBattleshipApp::changeConnectText()
 {
     gameServerConnect->setText( "&Connect to server" );
     haveCS = false;
-    kdDebug() << "settext!" << endl;
+}
+
+void KBattleshipApp::changeStartText()
+{
+    gameNewServer->setText( "&Start server" );
+    haveCS = false;
 }
 
 void KBattleshipApp::connectToBattleshipServer()

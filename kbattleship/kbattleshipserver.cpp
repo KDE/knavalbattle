@@ -19,22 +19,29 @@
 
 KBattleshipServer::KBattleshipServer( int port ) : QServerSocket( port )
 {
-    if( !ok() )
-    {
-     QString err;
-     err.sprintf(i18n( "Failed to bind to local port \"%d!\"\n\nPlease check if another KBattelship server instance\nis running or another application uses this port." ), port );
-     QMessageBox *msgErr = new QMessageBox(
-        i18n( "Could not connect to port" ),
-        err,
-        QMessageBox::Critical,
-        QMessageBox::Ok | QMessageBox::Default,
-        0, 0 );
-     msgErr->exec();
-    }
+    internalPort = port;
 }
 
 KBattleshipServer::~KBattleshipServer()
 {
+}
+
+void KBattleshipServer::start()
+{
+    if( !ok() )
+    {
+	QString err;
+        err.sprintf( i18n( "Failed to bind to local port \"%d\"\n\nPlease check if another KBattelship server instance\nis running or another application uses this port." ), internalPort );
+	emit serverFailure();
+	QMessageBox *msgErr = new QMessageBox(
+    	    i18n( "Could not connect to port" ),
+    	    err,
+    	    QMessageBox::Critical,
+    	    QMessageBox::Ok | QMessageBox::Default,
+    	    0, 0 );
+	
+        msgErr->exec();
+    }
 }
 
 void KBattleshipServer::newConnection( int socket )
@@ -49,16 +56,12 @@ void KBattleshipServer::newConnection( int socket )
 void KBattleshipServer::readClient()
 {
     QSocket *socket = ( QSocket * )sender();
-    kdDebug() << "READLINE!" << endl;
-    // QTextStream strips the ! from <!DOCTYPE ... >
-    // so don't use it here (malte)
     int len = socket->bytesAvailable();
     char *buf = new char[ len + 1 ];
     socket->readBlock( buf, len );
     buf[ len ] = 0;
     KMessage *msg = new KMessage();
     msg->setDataStream( buf );
-    kdDebug() << "Type of message: " << msg->getType() << endl;
     emit newMessage( msg );
     delete msg;
     delete[] buf;

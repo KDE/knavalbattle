@@ -70,28 +70,23 @@ void KonnectionHandling::gotBattleFieldState( int fieldx, int fieldy, int state 
     msg->addField( QString( "fieldx" ), qfieldx );
     msg->addField( QString( "fieldy" ), qfieldy );
     msg->addField( QString( "fieldstate" ), qstate );
-    kdDebug() << "EMIT!" << endl;
     emit sendMessage( msg );
     emit ownFieldDataChanged( fieldx, fieldy, state );
-    kdDebug() << "FIELDCHANGED!" << endl;
 }
 
 void KonnectionHandling::gotNewMessage( KMessage *msg )
 {
-    kdDebug() << "GOTNEWMESSAGE!" << endl;
     switch( getType() )
     {
 	case KonnectionHandling::CLIENT:
 	    switch( msg->getType() )
 	    {
 		case KMessage::ENEMY_SHOOT:
-		    kdDebug() << "CLIENT E-SHOOT!" << endl;
 		    emit requestBattleFieldState( msg->getField( "fieldx" ).toInt(), msg->getField( "fieldy" ).toInt() );
 		    break;
 		
 		case KMessage::ANSWER_SHOOT:
 		    kdDebug() << "CLIENT A-SHOOT!" << endl;
-
 		    break;
 	    }
 	    break;
@@ -100,7 +95,6 @@ void KonnectionHandling::gotNewMessage( KMessage *msg )
 	    switch( msg->getType() )
 	    {
 		case KMessage::ANSWER_SHOOT:
-		    kdDebug() << "SERVER A-SHOOT! heh WE Got the AnSwEr to our shoot" << endl;
 		    emit enemyFieldDataChanged( msg->getField( "fieldx" ).toInt(), msg->getField( "fieldy" ).toInt(), msg->getField( "fieldstate" ).toInt() );
 		    break;
 	    }
@@ -115,7 +109,6 @@ void KonnectionHandling::clientLostServer()
 
 void KonnectionHandling::clientSocketError( int error )
 {
-    kdDebug() << "CLIENT-ERROR!" << endl;
     switch( error )
     {
 	case QSocket::HostLookup:
@@ -128,4 +121,3 @@ void KonnectionHandling::clientSocketError( int error )
 	    break;
     }
 }
-

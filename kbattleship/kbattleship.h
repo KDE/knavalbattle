@@ -80,10 +80,11 @@ class KBattleshipApp : public KMainWindow
 	void changeOwnFieldData( int fieldx, int fieldy, int type );
 	void changeEnemyFieldData( int fieldx, int fieldy, int type );
 	void changeConnectText();
+	void changeStartText();
 	void stoppedServerDialog();
 	void stoppedConnectDialog();
-	int requestedOwnBattleFieldState( int fieldx, int fieldy );	
-	int requestedEnemyBattleFieldState( int fieldx, int fieldy );	
+	void requestedOwnBattleFieldState( int fieldx, int fieldy );	
+	void requestedEnemyBattleFieldState( int fieldx, int fieldy );	
 
     private:
         KConfig *config;

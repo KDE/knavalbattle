@@ -38,8 +38,9 @@ KMessage::~KMessage()
 
 void KMessage::addField( QString name, QString content )
 {
-    QDomElement xmlElement = xmlDocument->createElement( "message" );
-    xmlElement.setAttribute( name, content );
+    QDomElement xmlElement = xmlDocument->createElement( name );
+    QDomText xmlText = xmlDocument->createTextNode( content );
+    xmlElement.appendChild( xmlText );
     xmlDocument->documentElement().appendChild( xmlElement );
 }
 
@@ -77,12 +78,12 @@ QString KMessage::getField( QString name )
     QDomNode xmlNode = xmlDocument->documentElement().firstChild();
     while( !xmlNode.isNull() )
     {
-	QDomElement xmlElement = xmlNode.toElement();
+        QDomElement xmlElement = xmlNode.toElement();
 	if( !xmlElement.isNull() )
 	{
-	    if( xmlElement.hasAttribute( name ) )
+	    if( xmlElement.tagName() == name )
 	    {
-		return xmlElement.attribute( name );
+		return xmlElement.text();
 	    }
 	}
 	xmlNode = xmlNode.nextSibling();

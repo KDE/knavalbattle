@@ -72,6 +72,8 @@ void KBattleshipView::changeEnemyFieldData( int fieldx, int fieldy, int type )
 void KBattleshipView::mouseReleaseEvent( QMouseEvent *event )
 {
     int fieldX, fieldY, fieldTopPos, fieldBottomPos, fieldLeftPos, fieldRightPos, i, j;
+    fieldX = 0;
+    fieldY = 0;
     if( event->x() <= ( width() / 2 ) - 15 && event->x() >= 46 ) 
     {
 	if( event->y() >= 35 && event->y() <= ( height() / 2 ) + 75 )

@@ -34,6 +34,7 @@ class KBattleshipServer : public QServerSocket
         KBattleshipServer( int port = 54321 );
         ~KBattleshipServer();
 
+	void start();
         void sendMessage( KMessage *msg );
 
     private slots:
@@ -41,12 +42,14 @@ class KBattleshipServer : public QServerSocket
         void discardClient();
 
     signals:
+	void serverFailure();
         void newConnect();
         void endConnect();
         void wroteToClient();
 	void newMessage( KMessage * );
 	
     private:
+	int internalPort;
 	QSocket *serverSocket;
         void newConnection( int socket );
 
