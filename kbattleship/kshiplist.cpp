@@ -180,6 +180,63 @@ void KShipList::addNewShip( int button, int fieldx, int fieldy )
 		    }
 		}
 	    }
+
+	    int neighbourp, neighbourm;
+	    if( shipCount() != 1 )
+		neighbourp = getXYShipType( fieldx, fieldy + shipCount() + 1 );
+	    else
+		neighbourp = getXYShipType( fieldx, fieldy + shipCount() );
+		
+	    neighbourm = getXYShipType( fieldx, fieldy - 1 );
+		
+	    if( neighbourp != 99 && neighbourm != 99 )
+	    {
+	        xokay = false;
+		yokay = false;
+	        break;
+	    }
+
+	    if( neighbourp != 99 && neighbourm == 99 )
+	    {
+	        xokay = false;
+		yokay = false;
+	        break;
+	    }
+		
+	    if( neighbourp == 99 && neighbourm != 99 )
+	    {
+		xokay = false;
+		yokay = false;
+	        break;
+	    }
+	    
+	    if( shipCount() != 1 )
+		neighbourp = getXYShipType( fieldx + shipCount() + 1, fieldy );
+	    else
+		neighbourp = getXYShipType( fieldx + shipCount(), fieldy );
+		
+	    neighbourm = getXYShipType( fieldx - 1, fieldy );
+
+	    if( neighbourp != 99 && neighbourm != 99 )
+	    {
+	        xokay = false;
+		yokay = false;
+	        break;
+	    }
+
+	    if( neighbourp != 99 && neighbourm == 99 )
+	    {
+	        xokay = false;
+		yokay = false;
+	        break;
+	    }
+		
+	    if( neighbourp == 99 && neighbourm != 99 )
+	    {
+		xokay = false;
+		yokay = false;
+	        break;
+	    }
 	    
 	    if( xokay && !yokay )
 	    {
@@ -192,20 +249,6 @@ void KShipList::addNewShip( int button, int fieldx, int fieldy )
 		xokay = true;
 		yokay = true;
 	    }
-
-	    /*
-	    for( tempy = shipiterator->shipystart(); tempy <= shipiterator->shipystop(); tempy++ )
-	    {
-		if( tempy == fieldy )	
-		    yokay = false;
-	    }
-		
-	    for( tempx = shipiterator->shipxstart(); tempx <= shipiterator->shipxstop(); tempx++ )
-    	    {
-		if( tempx == fieldx )	
-		    xokay = false;
-	    }
-	    */
 	}
     }
     

@@ -2,7 +2,6 @@ KBattleship ( beta -> final ) TODO List:
     p = partially
     x = ready
 
-    o Game Rules			[ ]
     o Tooltips				[p]
     o Better Error Processing		[p]
     o Translation			[ ]

@@ -76,7 +76,7 @@ bool KonnectionHandling::sendEnemyList()
 void KonnectionHandling::serverGotNewClient()
 {
     enemy = true;
-    KMessageBox::error( 0L, i18n( "We got a player. Let's start..." ) );
+    KMessageBox::information( 0L, i18n( "We got a player. Let's start..." ) );
     emit statusBarMessage( i18n( "Please place your ships" ) );
 }
 

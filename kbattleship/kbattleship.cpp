@@ -89,8 +89,8 @@ void KBattleshipApp::initView()
     splitV = new QSplitter( QSplitter::Vertical, this );
     splitH = new QSplitter( QSplitter::Horizontal, splitV );
     view = new KBattleshipView( splitH );
+
     chat = new KChatWidget( splitV );
-    
     stat = new KStatDialog( splitH );
     
     chat->acceptMsg( false );
@@ -108,7 +108,7 @@ void KBattleshipApp::initView()
     connect( view, SIGNAL( requestedOwnFieldShipListJob( int, int, QPainter *, bool, bool ) ), this, SLOT( requestedOwnFieldShipListJob( int, int, QPainter *, bool, bool ) ) );
     connect( view, SIGNAL( requestedEnemyFieldShipListJob( int, int, QPainter * ) ), this, SLOT( requestedEnemyFieldShipListJob( int, int, QPainter * ) ) );
     
-    setCaption( i18n( "KBattleship (beta)" ), false );
+    setCaption( i18n( "KBattleship (beta2)" ), false );
 }
 
 void KBattleshipApp::enemyClick( int fieldx, int fieldy )
