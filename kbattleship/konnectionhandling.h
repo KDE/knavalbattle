@@ -1,6 +1,6 @@
 /***************************************************************************
-                              kserverdialog.cpp
-                             -------------------
+                                 konnectionhandling.h
+                                  -----------------
     Developers: (c) 2000 Nikolas Zimmermann <wildfox@kde.org>
                 (c) 2000 Daniel Molkentin <molkentin@kde.org>
 
@@ -14,25 +14,30 @@
  *   (at your option) any later version.                                   *
  *                                                                         *
  ***************************************************************************/
+ 
+#ifndef KONNECTIONHANDLING_H
+#define KONNECTIONHANDLING_H
 
-#include "kserverdialog.moc"
+#include <kdebug.h>
+#include <qobject.h>
+#include "kbattleshipserver.h"
+#include "kbattleshipclient.h"
 
-KServerDialog::KServerDialog( QWidget *parent, const char *name ) : serverStartDlg( parent, name )
+class KonnectionHandling : public QObject
 {
-    connect( startBtn, SIGNAL( clicked() ), this, SLOT( slotStartClicked() ) );
-}
+    Q_OBJECT
+    public:
+        KonnectionHandling( KBattleshipServer *server );
+        KonnectionHandling( KBattleshipClient *client );
+        ~KonnectionHandling();
+	
+    public slots:
+        void serverGotNewClient();
+	void serverWroteToClient();
+	void serverLostClient();	
+	void clientLostServer();
+	void clientSocketError( int error );
+};
 
-KServerDialog::~KServerDialog()
-{
-}
+#endif
 
-void KServerDialog::slotStartClicked()
-{
-    this->hide();
-    emit startServer();
-}
-
-QString KServerDialog::getPort()
-{
-    return portEdit->text();
-}

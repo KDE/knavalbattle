@@ -47,8 +47,12 @@ void KBattleshipClient::connectionControl()
 
 void KBattleshipClient::lostServer()
 {
+    kdDebug() << "LOST SERVER!" << endl;
+    emit endConnect();
 }
 
 void KBattleshipClient::socketError( int error )
 {
+    kdDebug() << "Socket-Error: " << error << endl;
+    emit socketFailure( error );
 }

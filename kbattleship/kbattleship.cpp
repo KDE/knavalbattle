@@ -114,6 +114,7 @@ void KBattleshipApp::slotServerConnect()
     // TODO: use KDialogBase
 
     client = new KClientDialog();
+    connect( client, SIGNAL( connectServer() ), this, SLOT( connectToBattleshipServer() ) );
     client->show();
 
     slotStatusMsg( i18n( "Ready." ) );
@@ -128,13 +129,22 @@ void KBattleshipApp::slotNewServer()
     server = new KServerDialog();
     connect( server, SIGNAL( startServer() ), this, SLOT( startBattleshipServer() ) );
     server->show();
-    
+        
     slotStatusMsg( i18n( "Ready." ) );
 }
 
 void KBattleshipApp::startBattleshipServer()
 {
-    kdDebug() << "MOO" << endl;
+    KBattleshipServer *kbserver = new KBattleshipServer( ( server->getPort() ).toInt() );
+    delete server;
+    connection = new KonnectionHandling( kbserver );    
+}
+
+void KBattleshipApp::connectToBattleshipServer()
+{
+    KBattleshipClient *kbclient = new KBattleshipClient( client->getHost(), ( client->getPort() ).toInt() );
+    delete client;
+    connection = new KonnectionHandling( kbclient );
 }
 
 void KBattleshipApp::slotViewToolBar()

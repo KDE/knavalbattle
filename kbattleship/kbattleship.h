@@ -33,12 +33,13 @@
 #include <kconfig.h>
 
 #include "kbattleship.h"
+#include "konnectionhandling.h"
 #include "kbattleshipview.h"
+#include "kbattleshipserver.h"
 #include "kserverdialog.h"
 #include "kclientdialog.h"
 
 class KBattleshipView;
-class KServerDialog;
 
 class KBattleshipApp : public KMainWindow
 {
@@ -64,6 +65,7 @@ class KBattleshipApp : public KMainWindow
         void slotViewStatusBar();
         void slotStatusMsg( const QString &text );
 	void startBattleshipServer();
+	void connectToBattleshipServer();
 
     private:
         KConfig *config;
@@ -75,6 +77,7 @@ class KBattleshipApp : public KMainWindow
         KToggleAction *viewStatusBar;
         KClientDialog *client;
 	KServerDialog *server;
+	KonnectionHandling *connection;
 };
 
 #endif

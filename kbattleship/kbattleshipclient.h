@@ -25,7 +25,7 @@
 #include "kmessage.h"
 #include "kmessagetype.h"
 
-class KBattleshipClient : QSocket
+class KBattleshipClient : public QSocket
 {
     Q_OBJECT
     public:
@@ -37,6 +37,10 @@ class KBattleshipClient : QSocket
         void lostServer();
         void socketError( int error );
 
+    signals:
+	void endConnect();
+	void socketFailure( int error );
+	 
     private:
         void connectToServer();
         int internalPort;

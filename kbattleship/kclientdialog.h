@@ -19,8 +19,9 @@
 #define KCLIENTDIALOG_H
 
 #include <kdebug.h>
-#include <qwidget.h>
+#include <qstring.h>
 #include <qpushbutton.h>
+#include <qlineedit.h>
 #include "dialogs/connectDlg.h"
 
 class KClientDialog : public clientConnectDlg
@@ -29,9 +30,15 @@ class KClientDialog : public clientConnectDlg
     public:
         KClientDialog( QWidget *parent = 0, const char *name = 0 );
         ~KClientDialog();
-	
+
+	QString getPort();
+	QString getHost();
+		
     public slots:
         void slotConnectClicked();
+	
+    signals:
+	void connectServer();
 };
 
 #endif

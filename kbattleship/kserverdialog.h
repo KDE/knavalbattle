@@ -19,9 +19,9 @@
 #define KSERVERDIALOG_H
 
 #include <kdebug.h>
-#include <qwidget.h>
-#include <qobject.h>
+#include <qstring.h>
 #include <qpushbutton.h>
+#include <qlineedit.h>
 #include "dialogs/serverDlg.h"
 
 class KServerDialog : public serverStartDlg
@@ -30,6 +30,8 @@ class KServerDialog : public serverStartDlg
     public:
         KServerDialog( QWidget *parent = 0, const char *name = 0 );
         ~KServerDialog();
+	
+	QString getPort();
 	
     public slots:
         void slotStartClicked();

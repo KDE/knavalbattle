@@ -28,5 +28,16 @@ KClientDialog::~KClientDialog()
 
 void KClientDialog::slotConnectClicked()
 {
-    kdDebug() << "CONNECT!" << endl;
+    this->hide();
+    emit connectServer();
+}
+
+QString KClientDialog::getPort()
+{
+    return portEdit->text();
+}
+
+QString KClientDialog::getHost()
+{
+    return serverEdit->text();
 }

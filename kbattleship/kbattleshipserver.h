@@ -26,14 +26,13 @@
 #include "kmessage.h"
 #include "kmessagetype.h"
 
-class KBattleshipServer : QServerSocket
+class KBattleshipServer : public QServerSocket
 {
     Q_OBJECT
     public:
         KBattleshipServer( int port = 54321 );
         ~KBattleshipServer();
 
-        void newConnection( int socket );
         void sendMessage( KMessage *msg );
 
     private slots:
@@ -44,6 +43,10 @@ class KBattleshipServer : QServerSocket
         void newConnect();
         void endConnect();
         void wroteToClient();
+	
+    private:
+        void newConnection( int socket );
+
 };
 
 #endif
