@@ -63,7 +63,7 @@ void KGridWidget::drawDeathIcon( QPainter *painter )
 void KGridWidget::drawShipIcon( QPainter *painter, int &ship )
 {
     QString qship;
-    qship.setNum( ( ship + 1 ) );
+    qship.setNum( ship );
     drawIcon( painter, "ship-" + qship + ".png" );
 }
 
