@@ -61,7 +61,6 @@ void KBattleshipApp::initSound()
 void KBattleshipApp::initChat()
 {
     connect(chat, SIGNAL(sendMessage(QString)), this, SLOT(sendChatMessage(QString)));
-    chat->disableButton();
 }
 
 void KBattleshipApp::initShipPlacing()

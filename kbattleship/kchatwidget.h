@@ -32,8 +32,6 @@ class KChatWidget : public chatWidget
         ~KChatWidget();
 
 	void clear();
-	void disableButton();
-	void enableButton();
 	
         void setNickname(QString nickname);
 

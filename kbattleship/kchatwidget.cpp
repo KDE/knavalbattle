@@ -29,16 +29,6 @@ KChatWidget::~KChatWidget()
 {
 }
 
-void KChatWidget::enableButton()
-{
-    sendBtn->setOn(true);
-}
-
-void KChatWidget::disableButton()
-{
-    sendBtn->setOn(false);
-}
-
 void KChatWidget::clear()
 {
     currentNickname = "";
@@ -47,10 +37,6 @@ void KChatWidget::clear()
 
 void KChatWidget::acceptMsg(bool value)
 {
-    if(!value)
-	disableButton();
-    else
-	enableButton();
     acceptMsgs = value;
 }
 
