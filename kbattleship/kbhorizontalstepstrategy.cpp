@@ -42,8 +42,8 @@ void KBHorizontalStepStrategy::init(KBattleField *field, const QRect &field_rect
 {
 	KBStrategy::init(field, field_rect);
 	KRandomSequence rand;
-	m_column = (int) rand.getLong(m_fieldRect.width() - 1);
-	m_row = (int) rand.getLong(m_fieldRect.height() - 1);
+	m_column = (int) rand.getLong(m_fieldRect.width());
+	m_row = (int) rand.getLong(m_fieldRect.height());
 	m_start = QPoint(m_column, m_row);
 	m_passes = 0;
 

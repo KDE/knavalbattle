@@ -47,7 +47,7 @@ void KBAIPlayer::init(KBattleField *battle_field, KShipList *ai_shiplist)
 	{
 		QRect rect = m_battleField->enemyRect();
 		int grid = m_battleField->gridSize();
-		m_fieldRect = QRect(0, 0, (rect.width() / grid) + 1, (rect.height() / grid) + 1);
+		m_fieldRect = QRect(0, 0, (rect.width() / grid), (rect.height() / grid));
 	}
 }
 
@@ -72,8 +72,8 @@ void KBAIPlayer::addShips()
 
 		do
 		{
-			x = (int) m_randomSeq->getLong(m_fieldRect.width() - 1);
-			y = (int) m_randomSeq->getLong(m_fieldRect.height() - 1);
+			x = (int) m_randomSeq->getLong(m_fieldRect.width());
+			y = (int) m_randomSeq->getLong(m_fieldRect.height());
 			vertical = m_randomSeq->getBool();
 		}
 		while(!shipPlaced(shiplen, x, y, vertical));

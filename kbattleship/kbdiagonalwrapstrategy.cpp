@@ -44,8 +44,8 @@ void KBDiagonalWrapStrategy::init(KBattleField *field, const QRect &field_rect)
 	KBStrategy::init(field, field_rect);
 	KRandomSequence rand;
 
-	m_column = (int) rand.getLong(m_fieldRect.width() - 1);
-	m_row = (int) rand.getLong(m_fieldRect.height() - 1);
+	m_column = (int) rand.getLong(m_fieldRect.width());
+	m_row = (int) rand.getLong(m_fieldRect.height());
 
 	switch(rand.getLong(4))
 	{

@@ -31,8 +31,8 @@ void KBRandomShotStrategy::init(KBattleField *field, const QRect &field_rect)
 {
 	KBStrategy::init(field, field_rect);
 	KRandomSequence rand;
-	m_column = (int) rand.getLong(m_fieldRect.width() - 1);
-	m_row = (int) rand.getLong(m_fieldRect.height() - 1);
+	m_column = (int) rand.getLong(m_fieldRect.width());
+	m_row = (int) rand.getLong(m_fieldRect.height());
 
 	if(m_destroyer != 0)
 		m_destroyer->init(field, field_rect);
@@ -55,8 +55,8 @@ bool KBRandomShotStrategy::advance()
 {
 	while(enemyFieldStateAt(m_column, m_row) == SHOT)
 	{
-		m_column = m_randomSeq.getLong(m_fieldRect.width() - 1);
-		m_row = m_randomSeq.getLong(m_fieldRect.height() - 1);
+		m_column = m_randomSeq.getLong(m_fieldRect.width());
+		m_row = m_randomSeq.getLong(m_fieldRect.height());
 	}
 	return true;
 }
