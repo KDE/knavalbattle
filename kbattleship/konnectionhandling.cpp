@@ -16,6 +16,7 @@
  ***************************************************************************/
 
 #include "main.h"
+#include "konnectionhandling.h"
 #include "konnectionhandling.moc"
 
 KonnectionHandling::KonnectionHandling(QWidget *parent, KBattleshipServer *server) : QObject(parent)

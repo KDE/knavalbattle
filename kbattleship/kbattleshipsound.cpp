@@ -16,6 +16,7 @@
  ***************************************************************************/
 
 #include <qfile.h>
+#include "kbattleshipsound.h"
 #include "kbattleshipsound.moc"
 
 KBattleshipSound::KBattleshipSound() : QObject()
