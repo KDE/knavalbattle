@@ -50,27 +50,27 @@ void KGridWidget::drawSquare(QPainter *painter)
     bitBlt(this, internalx, internaly, internalPixmap);
 }
 
-void KGridWidget::drawHitIcon(QPainter *painter)
+void KGridWidget::drawHitIcon()
 {
-    drawIcon(painter, "hit.png");
+    drawIcon("hit.png");
 }
 
-void KGridWidget::drawWaterIcon(QPainter *painter)
+void KGridWidget::drawWaterIcon()
 {
-    drawIcon(painter, "water.png");
+    drawIcon("water.png");
 }
 
-void KGridWidget::drawDeathIcon(QPainter *painter)
+void KGridWidget::drawDeathIcon()
 {
-    drawIcon(painter, "death.png");
+    drawIcon("death.png");
 }
 
-void KGridWidget::drawShipIcon(QPainter *painter, int &ship)
+void KGridWidget::drawShipIcon(int &ship)
 {
-    drawIcon(painter, "ship-" + QString::number(ship + 1) + ".png");
+    drawIcon("ship-" + QString::number(ship + 1) + ".png");
 }
 
-void KGridWidget::drawIcon(QPainter *painter, QString iconName)
+void KGridWidget::drawIcon(const QString &iconName)
 {
     KStandardDirs *stdDirs = KGlobal::dirs();
     KImageIO::registerFormats();
@@ -84,9 +84,5 @@ void KGridWidget::drawIcon(QPainter *painter, QString iconName)
 
     picDir = picDir + "pictures/";
 
-    QPixmap *icon;
-    icon = new QPixmap(picDir + iconName);
-    painter->drawPixmap(internalx, internaly, *icon);
-        
-    bitBlt(this, internalx, internaly, icon);
+    bitBlt(this, internalx, internaly, new QPixmap(picDir + iconName));
 }

@@ -36,16 +36,14 @@ class KGridWidget : public QWidget
     
         void setValues(int x, int y, int size);
         void drawSquare(QPainter *painter);
-        void drawHitIcon(QPainter *painter);
-        void drawWaterIcon(QPainter *painter);
-        void drawDeathIcon(QPainter *painter);
-        void drawShipIcon(QPainter *painter, int &ship);
-        void drawIcon(QPainter *painter, QString iconName);
+        void drawHitIcon();
+        void drawWaterIcon();
+        void drawDeathIcon();
+        void drawShipIcon(int &ship);
+        void drawIcon(const QString &iconName);
 
     private:
-        int internalx;
-        int internaly;
-        int internalSize;
+        int internalx, internaly, internalSize;
         QPixmap *internalPixmap;
 };
 

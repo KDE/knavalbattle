@@ -59,7 +59,7 @@ void KBattleField::drawField()
 		
 		case KBattleField::WATER:
 		    drawSquare(&painter);	
-		    drawWaterIcon(&painter);
+		    drawWaterIcon();
 		    break;
 		
 		case KBattleField::HIT:
@@ -67,12 +67,12 @@ void KBattleField::drawField()
 		    if(internalType == KBattleField::OWNFIELD)
 		        emit doOwnFieldShipListJob(i, j, true, false); 	
                     else if(internalType == KBattleField::ENEMYFIELD)
-			drawHitIcon(&painter);
+			drawHitIcon();
 		    break;
 		    
 		case KBattleField::DEATH:
 		    drawSquare(&painter);	
-		    drawDeathIcon(&painter);
+		    drawDeathIcon();
 		    break;	
 
 		case KBattleField::SHIP:
@@ -90,14 +90,11 @@ void KBattleField::drawField()
 
 void KBattleField::requestedShipIconDraw(int type, bool hit, bool death)
 {
-    QPainter painter(static_cast<QWidget*>(parent()));
-    drawShipIcon(&painter, type);
+    drawShipIcon(type);
     if(hit)
-	drawHitIcon(&painter);
+	drawHitIcon();
     else if(death)
-	drawDeathIcon(&painter);
-
-    painter.end();
+	drawDeathIcon();
 }
 
 void KBattleField::setDrawValues()

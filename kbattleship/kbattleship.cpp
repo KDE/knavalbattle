@@ -366,7 +366,7 @@ void KBattleshipApp::resetClient(bool status)
 		view->clearField();
 		stat->clear();
     		delete connection;
-			delete kbclient;
+		delete kbclient;
     		connection = 0;
 		break;
         }
@@ -381,7 +381,7 @@ void KBattleshipApp::resetClient(bool status)
 	stat->clear();
 	resetConnection();
 	delete connection;
-	//delete kbclient;
+	delete kbclient;
 	connection = 0;
 	slotStatusMsg(i18n("Ready"));
     }
@@ -464,11 +464,8 @@ void KBattleshipApp::resetServer(bool status)
 
 void KBattleshipApp::deleteLists()
 {
-    kdDebug() << "LISTS DELETED!" << endl;
-    delete ownshiplist;
-    delete enemyshiplist;
-    ownshiplist = new KShipList();
-    enemyshiplist = new KShipList();
+    ownshiplist->clear();
+    enemyshiplist->clear();
 }
 
 void KBattleshipApp::slotNewServer()

@@ -19,7 +19,6 @@
 
 KShipList::KShipList() : QObject()
 {
-    shipsadded = 4;
     shiplist.setAutoDelete(true);
 }
 
@@ -29,6 +28,7 @@ KShipList::~KShipList()
 
 void KShipList::clear()
 {
+    shipsadded = 4;
     shiplist.clear();
 }
 
