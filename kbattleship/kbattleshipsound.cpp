@@ -20,7 +20,6 @@
 
 KBattleshipSound::KBattleshipSound() : QObject()
 {
-    initSoundServer();
 }
 
 KBattleshipSound::~KBattleshipSound()
@@ -43,7 +42,7 @@ void KBattleshipSound::turnOn()
 	initSoundServer();
 }
 
-void KBattleshipSound::initSoundServer()
+bool KBattleshipSound::initSoundServer()
 {
     soundserver = Arts::Reference("global:Arts_SimpleSoundServer");
     playObjectFactory = Arts::Reference("global:Arts_PlayObjectFactory");
@@ -58,6 +57,8 @@ void KBattleshipSound::initSoundServer()
 	serverRunning = true;
 	soundError = false;
     }
+    
+    return soundError;
 }
 
 void KBattleshipSound::playSound(int file)
