@@ -64,8 +64,21 @@ bool KBattleshipSound::initSoundServer()
     }
     else
     {
-	serverRunning = true;
-	soundError = false;
+	QString soundDirCheck = locate("data", "kbattleship/sounds/");
+	QString oneSoundCheck = locate("data", "kbattleship/sounds/ship-sink.mp3");
+	if(!soundDirCheck.isEmpty() && !oneSoundCheck.isEmpty())
+	{
+	    serverRunning = true;
+	    soundError = false;
+	}
+	else
+	{
+	    KMessageBox::error(0L, i18n("You don't have KBattleship Sounds installed. Sound deactivated"));
+	    playObjectFactory = Arts::PlayObjectFactory::null();
+	    soundserver = Arts::SimpleSoundServer::null();
+	    serverRunning = false;
+	    soundError = true;
+	}
     }
     
     return !soundError;

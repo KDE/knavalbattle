@@ -21,6 +21,14 @@ KBattleshipApp::KBattleshipApp(QWidget *, const char *name) : KMainWindow(0, nam
 {
     setMinimumSize(680, 480);
     connection = 0;
+
+    QString picDirCheck = locate("data", "kbattleship/pictures/");
+    QString onePicCheck = locate("data", "kbattleship/pictures/hit.png");
+    if(picDirCheck.isEmpty() || onePicCheck.isEmpty())
+    {
+	KMessageBox::error(0L, i18n("You don't have KBattleship Pictures installed. The game cannot run without them!"));
+	slotGameQuit();
+    }
 }
 
 KBattleshipApp::~KBattleshipApp()
@@ -59,6 +67,7 @@ void KBattleshipApp::initSound()
 {
     new Arts::Dispatcher;
     sound = new KBattleshipSound();
+
     if(!sound->initSoundServer())
 	configSound->setChecked(false);
     else   
