@@ -19,6 +19,9 @@
 
 KBattleshipSound::KBattleshipSound() : QObject()
 {
+    playObject = Arts::PlayObject::null();
+    playObjectFactory = Arts::PlayObjectFactory::null();
+    soundserver = Arts::SimpleSoundServer::null();
 }
 
 KBattleshipSound::~KBattleshipSound()
@@ -29,6 +32,7 @@ void KBattleshipSound::turnOff()
 {
     if(serverRunning && !soundError)
     {
+	playObject = Arts::PlayObject::null();
 	playObjectFactory = Arts::PlayObjectFactory::null();
 	soundserver = Arts::SimpleSoundServer::null();
 	serverRunning = false;
