@@ -153,7 +153,6 @@ void KBattleshipWindow::initView()
 	connect(m_view, SIGNAL(sigOwnFieldClicked(int, int)), this, SLOT(slotPlaceShip(int, int)));
 	connect(m_view, SIGNAL(sigMouseOverField(int, int)), this, SLOT(slotPlaceShipPreview(int, int)));
 	connect(m_view, SIGNAL(changeShipPlacementDirection()), this, SLOT(changeShipPlacementDirection()));
-	setCaption(i18n("KBattleship %1").arg(clientVersion), false);
 }
 
 void KBattleshipWindow::slotDeleteAI()
