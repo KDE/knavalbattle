@@ -42,7 +42,7 @@ class KBattleshipSound : public QObject
     private:
 	Arts::SimpleSoundServer soundserver;
 	bool isRunning();
-        bool m_running;
+        bool serverRunning;
 };
 
 #endif

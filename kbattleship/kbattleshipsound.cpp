@@ -17,6 +17,9 @@
 
 #include "kbattleshipsound.moc"
 
+using namespace Arts;
+SimpleSoundServer *soundserver = 0;
+
 KBattleshipSound::KBattleshipSound()
 {
     initSoundServer();
@@ -32,11 +35,11 @@ void KBattleshipSound::initSoundServer()
     if( soundserver.isNull() )
     {
 	KMessageBox::error( 0L, i18n( "Couldn't connect to Arts Soundserver. Sound deactivated" ) );
-	m_running = false;
+	serverRunning = false;
     }
     else
     {
-	m_running = true;
+	serverRunning = true;
     }
 	
 }
@@ -49,9 +52,9 @@ void KBattleshipSound::playSound( int file )
 	KStandardDirs *stdDirs = KGlobal::dirs();
 	QString picDir;
 	QStringList picDirl = stdDirs->findDirs( "data", "kbattleship" );
-	for( QStringList::Iterator it=picDirl.begin(); it!=picDirl.end(); ++it )
+	for( QStringList::Iterator it = picDirl.begin(); it != picDirl.end(); ++it )
 	{
-	    picDir=*it;
+	    picDir = *it;
 	    break;
 	}
 
@@ -86,7 +89,5 @@ void KBattleshipSound::playSound( int file )
 
 bool KBattleshipSound::isRunning()
 {
-    kdDebug() << "RUNCHECK!" << endl;
-    kdDebug() << "isRunning: " << m_running << endl;
-    return m_running;
+    return serverRunning;
 }
