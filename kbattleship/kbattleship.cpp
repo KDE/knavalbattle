@@ -287,8 +287,7 @@ void KBattleshipApp::clientRestart()
     place = false;
     view->clearField();
     stat->clear();
-    ownshiplist->clear();
-    enemyshiplist->clear();
+    deleteLists();
     connection->clear();
 }
 
@@ -669,6 +668,7 @@ void KBattleshipApp::connectToBattleshipServer()
         gameServerConnect->setText("Dis&connect from server");
         gameNewServer->setEnabled(false);
         connection = new KonnectionHandling(this, kbclient);
+	connect(kbclient, SIGNAL(connected()), this, SLOT(sendGreet()));
 	kbclient->init();
         connect(connection, SIGNAL(newPlayer(bool)), chat, SLOT(acceptMsg(bool)));
 	connect(connection, SIGNAL(clientRestart()), this, SLOT(clientRestart()));
@@ -681,11 +681,6 @@ void KBattleshipApp::connectToBattleshipServer()
         connect(connection, SIGNAL(changeConnectText()), this, SLOT(changeConnectText()));
 	connect(connection, SIGNAL(gotChatMessage(QString, QString)), chat, SLOT( receivedMessage(QString, QString)));
 	connect(connection, SIGNAL(gotEnemyShipList(QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString)), this, SLOT(gotEnemyShipList(QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString)));
-
-	KMessage *msg = new KMessage(KMessage::GREET);
-	msg->addField(QString("nickname"), ownNickname);
-	sendMessage(msg);
-	
 	slotStatusMsg(i18n("Waiting for other player to place the ships..."));
     }
     else

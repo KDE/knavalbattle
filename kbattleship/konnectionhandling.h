@@ -71,6 +71,7 @@ class KonnectionHandling : public QObject
         void changeConnectText();
         void giveEnemyName();
         void serverFailure(bool);
+	void connected();
 
     private:
         KBattleshipServer *internalServer;

@@ -23,7 +23,6 @@ KBattleshipClient::KBattleshipClient(QString host, int port) : QSocket()
     internalPort = port;
     connect(this, SIGNAL(error(int)), this, SLOT(socketError(int)));
     connect(this, SIGNAL(hostFound()), this, SLOT(connectionControl()));
-    connect(this, SIGNAL(connected()), this, SLOT(connectionControl()));
     connect(this, SIGNAL(connectionClosed()), this, SLOT(lostServer()));
     connect(this, SIGNAL(readyRead()), this, SLOT(readData()));
 

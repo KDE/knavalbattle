@@ -35,7 +35,7 @@ class KBattleshipClient : public QSocket
 
         void kill();
 
-        void sendMessage( KMessage *msg );
+        void sendMessage(KMessage *msg);
         void allowWrite() { writeable = true; }
         void forbidWrite() { writeable = false; }
         bool write() { return writeable; }
@@ -59,4 +59,3 @@ class KBattleshipClient : public QSocket
 };
 
 #endif
-
