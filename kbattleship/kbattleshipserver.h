@@ -14,6 +14,8 @@
  *   (at your option) any later version.                                   *
  *                                                                         *
  ***************************************************************************/
+#ifndef KBATTLESHIPSERVER_H
+#define KBATTLESHIPTSERVER_H
 
 #include <kdebug.h>
 #include <qsocket.h>
@@ -37,3 +39,6 @@ class KBattleshipServer : QServerSocket
         void endConnect();
         void wroteToClient();
 };
+
+#endif
+
