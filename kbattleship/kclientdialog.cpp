@@ -25,13 +25,13 @@ KClientDialog::KClientDialog(QWidget *parent, const char *name) : clientConnectD
 
     connect(connectBtn, SIGNAL(clicked()), this, SLOT(slotConnectClicked()));
     connect(cancelBtn, SIGNAL(clicked()), this, SLOT(slotCancelClicked()));
-    connect(serverEdit, SIGNAL(activated(const QString &)), serverEdit, SLOT(addToHistory(const QString &)));
+    connect(serverEdit, SIGNAL(returnPressed(const QString &)), serverEdit, SLOT(addToHistory(const QString &)));
 
     config->setGroup("History");
     serverEdit->completionObject()->setItems(config->readListEntry("CompletionList")); 
-    serverEdit->setHistoryItems(config->readListEntry("HistoryList"));
     
     serverEdit->setMaxCount(5);
+    serverEdit->setHistoryItems(config->readListEntry("HistoryList"));
 }
 
 KClientDialog::~KClientDialog()
