@@ -34,6 +34,7 @@ void KChatWidget::clear()
     currentNickname = "";
     acceptMsg(false);
     chatView->clear();
+    commentEdit->clear();
 }
 
 void KChatWidget::acceptMsg(bool value)
