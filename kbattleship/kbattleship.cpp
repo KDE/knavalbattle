@@ -366,7 +366,7 @@ void KBattleshipApp::resetClient(bool status)
 		view->clearField();
 		stat->clear();
     		delete connection;
-		    // delete kbclient;
+			delete kbclient;
     		connection = 0;
 		break;
         }
@@ -381,7 +381,7 @@ void KBattleshipApp::resetClient(bool status)
 	stat->clear();
 	resetConnection();
 	delete connection;
-   //delete kbclient;
+	//delete kbclient;
 	connection = 0;
 	slotStatusMsg(i18n("Ready"));
     }
