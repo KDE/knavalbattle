@@ -108,79 +108,6 @@
         </property>
     </widget>
     <widget>
-        <class>QLineEdit</class>
-        <property stdset="1">
-            <name>name</name>
-            <cstring>serverEdit</cstring>
-        </property>
-        <property stdset="1">
-            <name>geometry</name>
-            <rect>
-                <x>80</x>
-                <y>40</y>
-                <width>161</width>
-                <height>22</height>
-            </rect>
-        </property>
-    </widget>
-    <widget>
-        <class>QLabel</class>
-        <property stdset="1">
-            <name>name</name>
-            <cstring>portLabel</cstring>
-        </property>
-        <property stdset="1">
-            <name>geometry</name>
-            <rect>
-                <x>256</x>
-                <y>41</y>
-                <width>30</width>
-                <height>20</height>
-            </rect>
-        </property>
-        <property stdset="1">
-            <name>text</name>
-            <string>Port:</string>
-        </property>
-        <property stdset="1">
-            <name>alignment</name>
-            <set>AlignVCenter|AlignLeft</set>
-        </property>
-        <property stdset="1">
-            <name>sizePolicy</name>
-            <sizepolicy>
-                <hsizetype>0</hsizetype>
-                <vsizetype>0</vsizetype>
-            </sizepolicy>
-        </property>
-        <property>
-            <name>hAlign</name>
-        </property>
-        <property>
-            <name>vAlign</name>
-        </property>
-    </widget>
-    <widget>
-        <class>QLineEdit</class>
-        <property stdset="1">
-            <name>name</name>
-            <cstring>portEdit</cstring>
-        </property>
-        <property stdset="1">
-            <name>geometry</name>
-            <rect>
-                <x>290</x>
-                <y>40</y>
-                <width>50</width>
-                <height>22</height>
-            </rect>
-        </property>
-        <property stdset="1">
-            <name>text</name>
-            <string>54321</string>
-        </property>
-    </widget>
-    <widget>
         <class>QLayoutWidget</class>
         <property stdset="1">
             <name>name</name>
@@ -249,6 +176,43 @@
         </hbox>
     </widget>
     <widget>
+        <class>QLabel</class>
+        <property stdset="1">
+            <name>name</name>
+            <cstring>portLabel</cstring>
+        </property>
+        <property stdset="1">
+            <name>geometry</name>
+            <rect>
+                <x>246</x>
+                <y>41</y>
+                <width>30</width>
+                <height>20</height>
+            </rect>
+        </property>
+        <property stdset="1">
+            <name>text</name>
+            <string>Port:</string>
+        </property>
+        <property stdset="1">
+            <name>alignment</name>
+            <set>AlignVCenter|AlignLeft</set>
+        </property>
+        <property stdset="1">
+            <name>sizePolicy</name>
+            <sizepolicy>
+                <hsizetype>0</hsizetype>
+                <vsizetype>0</vsizetype>
+            </sizepolicy>
+        </property>
+        <property>
+            <name>hAlign</name>
+        </property>
+        <property>
+            <name>vAlign</name>
+        </property>
+    </widget>
+    <widget>
         <class>QLineEdit</class>
         <property stdset="1">
             <name>name</name>
@@ -259,9 +223,57 @@
             <rect>
                 <x>80</x>
                 <y>10</y>
-                <width>161</width>
+                <width>250</width>
                 <height>22</height>
             </rect>
+        </property>
+        <property>
+            <name>whatsThis</name>
+            <string>Enter a name that identifys you in the game</string>
+        </property>
+    </widget>
+    <widget>
+        <class>QLineEdit</class>
+        <property stdset="1">
+            <name>name</name>
+            <cstring>serverEdit</cstring>
+        </property>
+        <property stdset="1">
+            <name>geometry</name>
+            <rect>
+                <x>80</x>
+                <y>40</y>
+                <width>150</width>
+                <height>22</height>
+            </rect>
+        </property>
+        <property>
+            <name>whatsThis</name>
+            <string>Enter a Server to connect to. This can either be a hostname like &lt;b&gt;daniel.molkentin.de&lt;/b&gt; or an IP Adress like &lt;b&gt;192.168.0.2&lt;/b&gt;</string>
+        </property>
+    </widget>
+    <widget>
+        <class>QLineEdit</class>
+        <property stdset="1">
+            <name>name</name>
+            <cstring>portEdit</cstring>
+        </property>
+        <property stdset="1">
+            <name>geometry</name>
+            <rect>
+                <x>280</x>
+                <y>40</y>
+                <width>50</width>
+                <height>22</height>
+            </rect>
+        </property>
+        <property stdset="1">
+            <name>text</name>
+            <string>54321</string>
+        </property>
+        <property>
+            <name>whatsThis</name>
+            <string>Enter a different port if you can't you the default for some reason.&lt;br&gt;&lt;br&gt;&lt;b&gt;Also tell you partner to use that port then!&lt;/b&gt;</string>
         </property>
     </widget>
 </widget>
