@@ -32,7 +32,7 @@ dummy.cpp:
 rcdir                       =   $(kde_datadir)/kbattleship
 rc_DATA                     =   kbattleshipui.rc
 
-kdelnkdir                   =   $(kde_appsdir)/Games
+kdelnkdir                   =   $(kde_appsdir)/Games/Board
 kdelnk_DATA                 =   kbattleship.desktop
 
 messages: rc.cpp
