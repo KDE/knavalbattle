@@ -16,3 +16,4 @@ KBattleship ( alpha -> beta ) TODO List:
     o Ship Placing			[x]
     o Tooltips				[p]
     o Dialogs (.ui based)		[x]
+    o Better Error Processing		[ ]
