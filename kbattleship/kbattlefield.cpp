@@ -226,10 +226,10 @@ int KBattleField::rectX()
 
 QRect KBattleField::ownRect()
 {
-	return QRect(ownXPosition(), ownYPosition(), ownXPosition() + ((m_ownfieldx - 1) * gridSize()), ownYPosition() + ((m_ownfieldy - 1) * gridSize()));
+	return QRect(ownXPosition(), ownYPosition(), m_ownfieldx * gridSize(), m_ownfieldy * gridSize());
 }
 
 QRect KBattleField::enemyRect()
 {
-	return QRect(enemyXPosition(), enemyYPosition(), rectX() + ((m_enemyfieldx - 1) * gridSize()), enemyYPosition() + ((m_enemyfieldy - 1) * gridSize()));
+	return QRect(enemyXPosition(), enemyYPosition(), m_enemyfieldx * gridSize(), m_enemyfieldy * gridSize());
 }
