@@ -29,7 +29,13 @@ class KBattleshipView : public QWidget
     Q_OBJECT
     public:
         KBattleshipView( QWidget *parent = 0, const char *name = 0 );
-        ~KBattleshipView();   
+        ~KBattleshipView();
+
+    protected:
+	void paintEvent( QPaintEvent * );
+
+    private:
+        KBattleField *ownfield;
 };
 
 #endif

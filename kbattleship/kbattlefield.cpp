@@ -17,12 +17,11 @@
 
 #include "kbattlefield.moc"
 
-KBattleField::KBattleField( QWidget *parent, const KBattleFieldType &type ) : KGridWidget( parent )
+KBattleField::KBattleField( QWidget *parent, const KBattleFieldType &type ) : KGridWidget( this )
 {
 
     internalType = type.getType();
-    kdDebug() << "Type: " << internalType;
-    int i, j, it, jt;
+    int i, j;
 
     // Hehe this is quite unusual now
     // I don't have any Battleship rulesets
@@ -37,27 +36,33 @@ KBattleField::KBattleField( QWidget *parent, const KBattleFieldType &type ) : KG
     }
     
     // Drawing
-    setDrawValues( parent );
+    setDrawValues( this );
     
     kdDebug() << "LeftV: " << LeftV << endl;
     kdDebug() << "RightV: " << RightV << endl;
     kdDebug() << "TopV: " << TopV << endl;
     kdDebug() << "BottomV: " << BottomV << endl;
     
-    for( it = TopV; it <= BottomV; it +=40 )
-    {
-	for( jt = LeftV; jt <= RightV; jt +=40 )
-	{
-	    kdDebug() << "it: " << it << " jt: " << jt << endl;
-	    setValues( it, jt, 40 );	    
-	    drawSquare( parent );
-	}
-    }
-    
+    drawField();    
 }
 
 KBattleField::~KBattleField()
 {
+}
+
+void KBattleField::drawField()
+{
+    int it, jt;
+    
+    for( it = TopV; it <= BottomV; it +=40 )
+    {
+	for( jt = LeftV; jt <= RightV; jt +=40 )
+	{
+	    setValues( it, jt, 40 );	    
+	    drawSquare( this );
+	}
+    }
+
 }
 
 void KBattleField::setDrawValues( QWidget *parent )
@@ -88,7 +93,4 @@ void KBattleField::setDrawValues( QWidget *parent )
     TopV = 40;
 }
 
-void KBattleField::fieldResized()
-{
-    // TODO: add this later
-}
+

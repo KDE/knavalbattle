@@ -58,7 +58,6 @@ void KBattleshipApp::initActions()
 void KBattleshipApp::initStatusBar()
 {
     statusBar()->insertItem( i18n("Ready."), ID_STATUS_MSG );
-
 }
 
 void KBattleshipApp::initView()
@@ -101,10 +100,11 @@ void KBattleshipApp::slotGameQuit()
 
     saveOptions();
 
-    KMainWindow *window;
-    window->close();
-
     slotStatusMsg( i18n( "Ready." ) );
+    
+    this->hide();
+    
+    exit( 0 );
 }
 
 void KBattleshipApp::slotServerConnect()
@@ -158,6 +158,7 @@ void KBattleshipApp::slotViewStatusBar()
 
 void KBattleshipApp::slotStatusMsg( const QString &text )
 {
-    statusBar()->message( text );
+    statusBar()->clear();
+    statusBar()->changeItem( text, ID_STATUS_MSG );
 }
 

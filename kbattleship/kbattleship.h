@@ -18,6 +18,7 @@
 #ifndef KBATTLESHIP_H
 #define KBATTLESHIP_H
 
+#include <stdlib.h>
 #include <kapp.h>
 #include <kmainwindow.h>
 #include <kaccel.h>

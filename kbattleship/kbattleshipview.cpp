@@ -23,10 +23,16 @@ KBattleshipView::KBattleshipView( QWidget *parent, const char *name ) : QWidget(
     setBackgroundMode( PaletteBase );
     KBattleFieldType type;
     type.setType( KBattleFieldType::OWNFIELD );
-    KBattleField *ownfield = new KBattleField( this, type );
+    ownfield = new KBattleField( this, type );
 }
 
 KBattleshipView::~KBattleshipView()
 {
+}
+
+void KBattleshipView::paintEvent( QPaintEvent * )
+{
+    kdDebug() << "Repaint!" << endl;
+    ownfield->drawField();
 }
 

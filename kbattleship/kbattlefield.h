@@ -33,13 +33,11 @@ class KBattleField : public KGridWidget
         ~KBattleField();
 	
 	void setDrawValues( QWidget *parent );
+	void drawField();
 	int LeftV;
 	int RightV;    
 	int TopV;
 	int BottomV;
-	
-    public slots:
-	void fieldResized();
 
     private:
 	int FieldData[ 8 ][ 8 ];
