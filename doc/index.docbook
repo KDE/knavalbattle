@@ -1,5 +1,5 @@
 <?xml version="1.0" ?><!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.1-Based Variant V1.0//EN" "dtd/kdex.dtd" [
- <!ENTITY % English "INCLUDE" > <!-- change language only here -->                 
+ <!ENTITY % English "INCLUDE" > <!-- change language only here -->
  <!ENTITY % addindex "IGNORE">
 ]>
 <!-- Important note: please use template.docbook instead of this file.
@@ -61,7 +61,7 @@
       <title>Features</title>
      <itemizedlist>
        <listitem><para>Network Gaming</para></listitem>
-       <listitem><para>Artificial Intelligence</para></listitem>
+       <listitem><para>Computer Player</para></listitem>
        <listitem><para>Sounds</para></listitem>
        <listitem><para>Chat</para></listitem>
        <listitem><para>Statistics</para></listitem>
@@ -107,6 +107,10 @@
         you want to connect to.
     </para>
     <para>
+        Another possibility is to play KBattleship with your computer. Select <guimenuitem>"Single Player"</guimenuitem>
+        (F4) from the <guimenuitem>"Game"</guimenuitem> Menu.
+    </para>
+    <para>
         When you are done, you can start the game. Simply follow the instructions in the statusbar. It will issue hints
         and suggest what to do next. When you now look at the screen, you will find two grid fields, the so-called
         "battle areas". The left area belongs to you. This is where you place your ships and where you can follow
@@ -118,8 +122,9 @@
         First, you need to place your ships. The game iniciator starts. When he/she is done,
         player 2 sets his/her ships. Ship placement is very easy: Simply click on the field where you want to place
         your ship. The first one will have a lenght of 4, the next will be 3 fields long etc. Click on the field where you
-        want to start the placement. If you click with the <mousebutton>left</mousebutton> mousebutton only, the field
-        will be placed horizotally, and if you also hold the "Shift" key pressed while clicking, the ship will be placed vertically.
+        want to start the placement. If you click with the <mousebutton>left</mousebutton> mousebutton, the field
+        will be placed horizotally, a <mousebutton>left+shift</mousebutton> click will cause it to be placed vertically.
+        <mousebutton>Shift</mousebutton> itself will flip the ship placement preview.
     </para>
     <para>
         Now you can blindly fire on the enemy battle area :). The statusbar indicates who is about to shoot. A player
