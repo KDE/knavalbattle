@@ -1061,7 +1061,7 @@ void KBattleshipApp::slotStartBattleshipGame()
 	m_connection = 0;
     }
     m_aiPlaying = true;
-    m_shootable = true;
+    m_shootable = false;
     m_stat->clear();
 
     if(m_aiPlayer == 0)
@@ -1082,6 +1082,9 @@ void KBattleshipApp::slotAIReady()
 
 void KBattleshipApp::slotAIShootsAt(const QPoint pos)
 {
+    if(!m_shootable)
+	m_shootable = true;
+
     int showstate = m_view->getOwnFieldState(pos.x(), pos.y());
 
     if(showstate == KBattleField::HIT)
