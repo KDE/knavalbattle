@@ -1,11 +1,11 @@
 INCLUDES = $(all_includes)
+LDFLAGS = $(all_libraries) $(KDE_RPATH)
+LIBADD = $(LIB_KDEUI)
+METASOURCES = AUTO
 
 noinst_LTLIBRARIES = libkbattleshipdialogs.la
-
-libkbattleshipdialogs_la_SOURCES = dummy.cpp connectDlg.ui serverDlg.ui chatDlg.ui statDlg.ui singleDlg.ui infoDlg.ui highscoreDlg.ui
-libkbattleshipdialogs_la_LIBADD = $(LIB_KDEUI)
-libkbattleshipdialogs_la_LDFLAGS = $(all_libraries)
-libkbattleshipdialogs_la_METASOURCES = AUTO
+libkbattleshipdialogs_la_SOURCES = dummy.cpp connectDlg.ui serverDlg.ui \
+	chatDlg.ui statDlg.ui singleDlg.ui infoDlg.ui highscoreDlg.ui
 
 dummy.cpp:
 	echo > dummy.cpp

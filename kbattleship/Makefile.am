@@ -1,43 +1,33 @@
-INCLUDES                    = -I$(top_srcdir)/libkdegames $(all_includes)
-SUBDIRS	                    =   dialogs . pictures sounds
+SUBDIRS	= dialogs . pictures sounds
 
-noinst_LTLIBRARIES  	    =	kbattleship.la
+INCLUDES = -I$(top_srcdir)/libkdegames -I$(top_srcdir)/libkdegames/highscore $(all_includes)
+LDFLAGS = $(all_libraries) $(KDE_RPATH)
+LDADD = $(LIB_KDEGAMES) ./dialogs/libkbattleshipdialogs.la $(LIB_KFILE) -lsoundserver_idl
+METASOURCES = AUTO
 
-kbattleship_la_SOURCES      =   kbaiplayer.cpp kbstrategy.cpp kbverticalstepstrategy.cpp \
+bin_PROGRAMS = kbattleship
+kbattleship_SOURCES = kbaiplayer.cpp kbstrategy.cpp kbverticalstepstrategy.cpp\
 				kbdestroyshipstrategy.cpp kbhorizontalstepstrategy.cpp \
 				kbrandomshotstrategy.cpp kbdiagonalwrapstrategy.cpp \
 				kmessage.cpp kbattleshipserver.cpp kbattleshipclient.cpp \
 				kbattleshipview.cpp kgridwidget.cpp kbattlefield.cpp \
-		                kchatwidget.cpp kserverdialog.cpp kclientdialog.cpp \
+	            kchatwidget.cpp kserverdialog.cpp kclientdialog.cpp \
 				kstatdialog.cpp ksingledialog.cpp khighscoredialog.cpp \
 				kbattleshipsound.cpp kbdiagonalshotstrategy.cpp \
-		                konnectionhandling.cpp kship.cpp kshiplist.cpp \
-		                kbchooserstrategy.cpp kbattleship.cpp main.cpp
+	            konnectionhandling.cpp kship.cpp kshiplist.cpp \
+	            kbchooserstrategy.cpp kbattleship.cpp main.cpp
 
-kbattleship_la_LIBADD       =   $(LIB_KDEGAMES) \
-				dialogs/libkbattleshipdialogs.la $(LIB_KFILE) -lsoundserver_idl
-kbattleship_la_LDFLAGS      =   -avoid-version -module $(all_libraries)
+appsdir = $(kde_appsdir)/Games/Board
+apps_DATA = kbattleship.desktop
 
-bin_PROGRAMS                =   kbattleship
-kbattleship_LDFLAGS	    =	$(KDE_RPATH) $(all_libraries)
-kbattleship_LDADD	    =	kbattleship.la
-kbattleship_SOURCES	    =	dummy.cpp
+EXTRA_DIST = $(apps_DATA)
 
-METASOURCES                 =   AUTO
-CLEANFILES		    =	dummy.cpp
-
-dummy.cpp:
-	echo > dummy.cpp
-
-rcdir                       =   $(kde_datadir)/kbattleship
-rc_DATA                     =   kbattleshipui.rc
-
-kdelnkdir                   =   $(kde_appsdir)/Games/Board
-kdelnk_DATA                 =   kbattleship.desktop
+rcdir = $(kde_datadir)/kbattleship
+rc_DATA = kbattleshipui.rc
 
 messages: rc.cpp
 	$(EXTRACTRC) */*.ui >> rc.cpp
-	$(XGETTEXT) rc.cpp *.cpp main.h -o $(podir)/kbattleship.pot
+	$(XGETTEXT) *.cpp main.h -o $(podir)/kbattleship.pot
 
 install-data-local:
 	rm -rf $(DESTDIR)$(kde_appsdir)/Games/kbattleship.desktop
