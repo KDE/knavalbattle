@@ -44,6 +44,7 @@ class KBattleshipClient : public KExtendedSocket
      
     private:
         QSocketNotifier *m_readNotifier;
+        QString m_readBuffer;
 };
 
 #endif

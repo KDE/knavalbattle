@@ -63,9 +63,15 @@ void KBattleshipClient::slotReadData()
     char *buf = new char[len + 1];
     readBlock(buf, len);
     buf[len] = 0;
-    KMessage *msg = new KMessage();
-    QString buffer = QString::fromUtf8(buf);
-    msg->setDataStream(buffer);
-    emit sigNewMessage(msg);
+    m_readBuffer += QString::fromUtf8(buf);
     delete []buf;
+    int pos = m_readBuffer.find("</kmessage>");
+    if (pos >= 0)
+    {
+        pos += 11; // strlen("</kmessage>")
+        KMessage *msg = new KMessage();
+        msg->setDataStream(m_readBuffer.left(pos));
+        emit sigNewMessage(msg);
+        m_readBuffer.remove(0, pos);
+    }
 }
