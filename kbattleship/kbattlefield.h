@@ -20,30 +20,37 @@
 
 #include <kdebug.h>
 #include <qpainter.h>
+#include <qlist.h>
 #include <qwidget.h>
-#include <qwhatsthis.h>
 #include "kbattlefieldtype.h"
-#include "kshiptype.h"
 #include "kgridwidget.h"
 
 class KBattleField : public KGridWidget
 {
     Q_OBJECT
     public:
-	enum{ WATER = 90, HIT = 91, DEATH = 92 };
+		enum{ WATER = 90, HIT = 91, DEATH = 92, SHIP = 93 };
+		KBattleField();
         KBattleField( QWidget *parent, const KBattleFieldType &type, QPainter *painter );
         ~KBattleField();
 	
-	void setDrawValues( QWidget *parent );
-	void drawField( QPainter *painter );
-	void clearField();
-	void changeData( int &fieldx, int &fieldy, int type );
-	int getState( int fieldx, int fieldy );
+		void requestedShipIconDraw( QPainter *painter, int type );
+		void setDrawValues( QWidget *parent );
+		void drawField( QPainter *painter );
+		void clearField();
+		void changeData( int &fieldx, int &fieldy, int type );
+		int findOwnFieldShipType( int x, int y, QPainter *painter );
+		int findEnemyFieldShipType( int x, int y, QPainter *painter );
+		int getState( int fieldx, int fieldy );
 
     private:
-	int FieldData[ 8 ][ 8 ];
-	int internalType;
-	int FromLeft;
+		int FieldData[ 8 ][ 8 ];
+		int internalType;
+		int FromLeft;
+
+	signals:
+		void doOwnFieldShipListJob( int fieldx, int fieldy, QPainter *painter );
+		void doEnemyFieldShipListJob( int fieldx, int fieldy, QPainter *painter );
 
 };
 

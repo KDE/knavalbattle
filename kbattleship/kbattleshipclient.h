@@ -31,18 +31,18 @@ class KBattleshipClient : public QSocket
         KBattleshipClient( QString host = "", int port = 54321 );
         ~KBattleshipClient();
 
-	void sendMessage( KMessage *msg );
+		void sendMessage( KMessage *msg );
 	
     private slots:
         void connectionControl();
-	void readData();
+		void readData();
         void lostServer();
         void socketError( int error );
 
     signals:
-	void newMessage( KMessage *msg );
-	void endConnect();
-	void socketFailure( int error );
+		void newMessage( KMessage *msg );
+		void endConnect();
+		void socketFailure( int error );
 	 
     private:
         void connectToServer();

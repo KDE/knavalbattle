@@ -18,7 +18,7 @@
 
 #include "kbattleshipclient.moc"
 
-KBattleshipClient::KBattleshipClient( QString host, int port ) : QSocket()
+KBattleshipClient::KBattleshipClient( QString host, int port )
 {
     internalHost = host;
     internalPort = port;
@@ -56,9 +56,9 @@ void KBattleshipClient::readData()
 {
     if( canReadLine() )
     {	
-	KMessage *msg = new KMessage();
-	msg->setDataStream( readLine() );
-	emit newMessage( msg );
+		KMessage *msg = new KMessage();
+		msg->setDataStream( readLine() );
+		emit newMessage( msg );
         delete msg;
     }
 }

@@ -23,7 +23,7 @@
 #include <qsocket.h>
 #include <qserversocket.h>
 #include <qtextstream.h>
-#include <qmessagebox.h>
+#include <kmessagebox.h>
 #include <klocale.h>
 #include "kmessage.h"
 
@@ -34,7 +34,7 @@ class KBattleshipServer : public QServerSocket
         KBattleshipServer( int port = 54321 );
         ~KBattleshipServer();
 
-	void start();
+		void start();
         void sendMessage( KMessage *msg );
 
     private slots:
@@ -42,15 +42,15 @@ class KBattleshipServer : public QServerSocket
         void discardClient();
 
     signals:
-	void serverFailure();
+		void serverFailure();
         void newConnect();
         void endConnect();
         void wroteToClient();
-	void newMessage( KMessage * );
+		void newMessage( KMessage * );
 	
     private:
-	int internalPort;
-	QSocket *serverSocket;
+		int internalPort;
+		QSocket *serverSocket;
         void newConnection( int socket );
 
 };

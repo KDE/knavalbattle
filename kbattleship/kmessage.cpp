@@ -47,7 +47,8 @@ void KMessage::addField( QString name, QString content )
 void KMessage::chatMessage( QString message )
 {
     QDomElement xmlElement = xmlDocument->createElement( "chat" );
-    xmlElement.setAttribute( "data", message );
+    QDomText xmlText = xmlDocument->createTextNode( message );
+    xmlElement.appendChild( xmlText );
     xmlDocument->documentElement().appendChild( xmlElement );
 }
 
@@ -62,15 +63,15 @@ QString KMessage::returnSendStream()
     QDomNode xmlNode = xmlDocument->documentElement().firstChild();
     while( !xmlNode.isNull() )
     {
-	QDomElement xmlElement = xmlNode.toElement(); 
-	if( !xmlElement.isNull() )
-	{
-	    sendStream = xmlDocument->toString();
+		QDomElement xmlElement = xmlNode.toElement();
+		if( !xmlElement.isNull() )
+		{
+	    	sendStream = xmlDocument->toString();
+		}
+		xmlNode = xmlNode.nextSibling();
 	}
-	xmlNode = xmlNode.nextSibling();
-     }
 
-    return sendStream.simplifyWhiteSpace();
+	return sendStream.simplifyWhiteSpace();
 }
 
 QString KMessage::getField( QString name )
@@ -79,16 +80,16 @@ QString KMessage::getField( QString name )
     while( !xmlNode.isNull() )
     {
         QDomElement xmlElement = xmlNode.toElement();
-	if( !xmlElement.isNull() )
-	{
-	    if( xmlElement.tagName() == name )
-	    {
-		return xmlElement.text();
-	    }
-	}
-	xmlNode = xmlNode.nextSibling();
+		if( !xmlElement.isNull() )
+		{
+	    	if( xmlElement.tagName() == name )
+	    	{
+				return xmlElement.text();
+	   		}
+		}
+		xmlNode = xmlNode.nextSibling();
      }
-     return QString::null;
+	return QString::null;
 }
 
 int KMessage::getType()

@@ -17,13 +17,13 @@
 
 #include "kship.moc"
 
-KShip::KShip( int shipxstart, int shipxstop, int shipystart, int shipystop, const KShipType &shiptype )
+KShip::KShip( int shipxstart, int shipxstop, int shipystart, int shipystop, int shiplength )
 {
     internalshipxstart = shipxstart;
     internalshipxstop = shipxstop;
     internalshipystart = shipystart;
     internalshipystop = shipystop;
-    internalshiptype = shiptype.getType();
+    internalshiptype = shiplength;
 }
 
 KShip::~KShip()

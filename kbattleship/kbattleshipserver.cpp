@@ -30,17 +30,8 @@ void KBattleshipServer::start()
 {
     if( !ok() )
     {
-	QString err;
-        err.sprintf( i18n( "Failed to bind to local port \"%d\"\n\nPlease check if another KBattelship server instance\nis running or another application uses this port." ), internalPort );
-	emit serverFailure();
-	QMessageBox *msgErr = new QMessageBox(
-    	    i18n( "Could not connect to port" ),
-    	    err,
-    	    QMessageBox::Critical,
-    	    QMessageBox::Ok | QMessageBox::Default,
-    	    0, 0 );
-	
-        msgErr->exec();
+    	KMessageBox::error( 0L, i18n( "Failed to bind to local port \"%1\"\n\nPlease check if another KBattelship server instance\nis running or another application uses this port." ).arg( internalPort ) ) ;
+		emit serverFailure();
     }
 }
 

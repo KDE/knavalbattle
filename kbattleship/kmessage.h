@@ -29,20 +29,20 @@ class KMessage : QObject
 {
     Q_OBJECT
     public:
-	enum{ ENEMY_SHOOT, ANSWER_SHOOT };
+		enum{ ENEMY_SHOOT, ANSWER_SHOOT };
         KMessage( int type );
-	KMessage();
+		KMessage();
         ~KMessage();
 
         void addField( QString name, QString value );
-	void chatMessage( QString message );
+		void chatMessage( QString message );
         QString getField( QString name );
         void setDataStream( QString stream );
         int getType();
         QString returnSendStream();
-    
-	QDomDocument *xmlDocument;
 
+	protected:
+		QDomDocument *xmlDocument;
         int messageType;
 
 };

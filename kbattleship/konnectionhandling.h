@@ -31,32 +31,32 @@ class KonnectionHandling : public QObject
 {
     Q_OBJECT
     public:
-	enum{ SERVER, CLIENT };
+		enum{ SERVER, CLIENT };
         KonnectionHandling( QWidget *parent, KBattleshipServer *server );
         KonnectionHandling( QWidget *parent, KBattleshipClient *client );
         ~KonnectionHandling();
 	
-	int getType();
-	int getFieldState();
+		int getType();
+		int getFieldState();
 	
     public slots:
-	void gotBattleFieldState( int fieldx, int fieldy, int state );
-	void gotNewMessage( KMessage *msg );
+		void gotBattleFieldState( int fieldx, int fieldy, int state );
+		void gotNewMessage( KMessage *msg );
         void serverGotNewClient();
-	void serverWroteToClient();
-	void serverLostClient();	
-	void clientLostServer();
-	void clientSocketError( int error );
+		void serverWroteToClient();
+		void serverLostClient();	
+		void clientLostServer();
+		void clientSocketError( int error );
 	
     private:
-	int internalType;
+		int internalType;
 
     signals:	
-	void requestBattleFieldState( int fieldx, int fieldy );
-	void ownFieldDataChanged( int fieldx, int fieldy, int type );
-	void enemyFieldDataChanged( int fieldx, int fieldy, int type );
-	void changeConnectText();
-	void sendMessage( KMessage *msg );
+		void requestBattleFieldState( int fieldx, int fieldy );
+		void ownFieldDataChanged( int fieldx, int fieldy, int type );
+		void enemyFieldDataChanged( int fieldx, int fieldy, int type );
+		void changeConnectText();
+		void sendMessage( KMessage *msg );
 };
 
 #endif

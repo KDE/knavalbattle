@@ -20,27 +20,26 @@
 
 #include <kdebug.h>
 #include <qobject.h>
-#include "kshiptype.h"
 
 class KShip : public QObject
 {
     Q_OBJECT
     public:
-        KShip( int shipxstart, int shipxstop, int shipystart, int shipxstart, const KShipType &shiptype );
+        KShip( int shipxstart, int shipxstop, int shipystart, int shipxstart, int shiplength );
         ~KShip();
     
-	int shipxstart();
-	int shipxstop();
-	int shipystart();
-	int shipystop();
-	int shiptype();
+		int shipxstart();
+		int shipxstop();
+		int shipystart();
+		int shipystop();
+		int shiptype();
 	
     private:
-	int internalshipxstart; 
-	int internalshipxstop;
-	int internalshipystart;
-	int internalshipystop;
-	int internalshiptype;
+		int internalshipxstart;
+		int internalshipxstop;
+		int internalshipystart;
+		int internalshipystop;
+		int internalshiptype;
 };
 
 #endif

@@ -43,7 +43,6 @@
 #include "kbattleshipserver.h"
 #include "konnectionhandling.h"
 #include "kshiplist.h"
-#include "kshiptype.h"
 #include "kserverdialog.h"
 #include "kclientdialog.h"
 #include "kchatwidget.h"
@@ -57,20 +56,22 @@ class KBattleshipApp : public KMainWindow
     public:
         KBattleshipApp( QWidget *parent = 0, const char *name = 0 );
         ~KBattleshipApp();
-	
+
+		void init();
+
     protected:
         void saveOptions();
         void readOptions();
         void initActions();
         void initStatusBar();
-        void initDocument();
         void initView();
-	void initSound();
+		void initSound();
+		void initShipPlacing();
 
     public slots:
-	void slotServerConnect();
-	void slotNewServer();
-        void slotGameQuit();
+		void slotServerConnect();
+		void slotNewServer();
+	    void slotGameQuit();
         void slotViewToolBar();
         void slotViewStatusBar();
         void slotStatusMsg( const QString &text );
@@ -87,28 +88,30 @@ class KBattleshipApp : public KMainWindow
 	void stoppedConnectDialog();
 	void requestedOwnBattleFieldState( int fieldx, int fieldy );
 	void requestedEnemyBattleFieldState( int fieldx, int fieldy );	
+	void requestedOwnFieldShipListJob( int fieldx, int fieldy, QPainter *painter );
+	void requestedEnemyFieldShipListJob( int fieldx, int fieldy, QPainter *painter);
 
     private:
         KConfig *config;
         QSplitter *split;
         KChatWidget *chat;
         KBattleshipView *view;
-	KBattleshipServer *kbserver;
-	KBattleshipClient *kbclient;
-	KAction *gameServerConnect;
-	KAction *gameNewServer;
+		KBattleshipServer *kbserver;
+		KBattleshipClient *kbclient;
+		KAction *gameServerConnect;
+		KAction *gameNewServer;
         KAction *gameQuit;
         KToggleAction *viewToolBar;
         KToggleAction *viewStatusBar;
-	KBattleshipSound *sound;
+		KBattleshipSound *sound;
         KClientDialog *client;
-	KServerDialog *server;
-	KonnectionHandling *connection;
-	KShipList *shiplist;
-	bool haveCS;
+		KServerDialog *server;
+		KonnectionHandling *connection;
+		KShipList *shiplist;
+		bool haveCS;
 	
     signals:
-	void battleFieldState( int fieldx, int fieldy, int state );
+		void battleFieldState( int fieldx, int fieldy, int state );
 };
 
 #endif

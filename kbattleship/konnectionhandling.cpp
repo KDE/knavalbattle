@@ -78,27 +78,27 @@ void KonnectionHandling::gotNewMessage( KMessage *msg )
 {
     switch( getType() )
     {
-	case KonnectionHandling::CLIENT:
-	    switch( msg->getType() )
-	    {
-		case KMessage::ENEMY_SHOOT:
-		    emit requestBattleFieldState( msg->getField( "fieldx" ).toInt(), msg->getField( "fieldy" ).toInt() );
-		    break;
+		case KonnectionHandling::CLIENT:
+	    	switch( msg->getType() )
+	    	{
+				case KMessage::ENEMY_SHOOT:
+		    		emit requestBattleFieldState( msg->getField( "fieldx" ).toInt(), msg->getField( "fieldy" ).toInt() );
+		    		break;
 		
-		case KMessage::ANSWER_SHOOT:
-		    kdDebug() << "CLIENT A-SHOOT!" << endl;
-		    break;
-	    }
-	    break;
+				case KMessage::ANSWER_SHOOT:
+		    		kdDebug() << "CLIENT A-SHOOT!" << endl;
+		    		break;
+	    	}
+	    	break;
 	    
-	case KonnectionHandling::SERVER:
-	    switch( msg->getType() )
-	    {
-		case KMessage::ANSWER_SHOOT:
-		    emit enemyFieldDataChanged( msg->getField( "fieldx" ).toInt(), msg->getField( "fieldy" ).toInt(), msg->getField( "fieldstate" ).toInt() );
-		    break;
-	    }
-	    break;
+		case KonnectionHandling::SERVER:
+	    	switch( msg->getType() )
+	    	{
+				case KMessage::ANSWER_SHOOT:
+		    		emit enemyFieldDataChanged( msg->getField( "fieldx" ).toInt(), msg->getField( "fieldy" ).toInt(), msg->getField( "fieldstate" ).toInt() );
+		    		break;
+	    	}
+	    	break;
     }
 }
     
@@ -111,13 +111,13 @@ void KonnectionHandling::clientSocketError( int error )
 {
     switch( error )
     {
-	case QSocket::HostLookup:
-	    KMessageBox::error( 0L, i18n( "Couldn't lookup host!" ) );
-	    emit changeConnectText();
-	    break;
+		case QSocket::HostLookup:
+	   	 	KMessageBox::error( 0L, i18n( "Couldn't lookup host!" ) );
+	    	emit changeConnectText();
+	    	break;
 	
-	default:
-	    KMessageBox::error( 0L, i18n( "Unknown Error; No: %1" ).arg( error ) ) ;
-	    break;
-    }
+		default:
+	    	KMessageBox::error( 0L, i18n( "Unknown Error; No: %1" ).arg( error ) ) ;
+	    	break;
+    	}
 }

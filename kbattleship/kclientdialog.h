@@ -33,19 +33,19 @@ class KClientDialog : public clientConnectDlg
         KClientDialog( QWidget *parent = 0, const char *name = 0 );
         ~KClientDialog();
 
-	QString getPort();
-	QString getHost();
+		QString getPort();
+		QString getHost();
 		
     public slots:
         void slotConnectClicked();
-	void slotCancelClicked();
+		void slotCancelClicked();
 	
     signals:
-	void connectServer();
-	void cancelConnect();
+		void connectServer();
+		void cancelConnect();
 	
     private:
-	KConfig *config;
+		KConfig *config;
 };
 
 #endif

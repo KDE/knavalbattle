@@ -17,9 +17,12 @@
 
 #include "kbattlefield.moc"
 
-KBattleField::KBattleField( QWidget *parent, const KBattleFieldType &type, QPainter *painter ) : KGridWidget()
+KBattleField::KBattleField()
 {
+}
 
+KBattleField::KBattleField( QWidget *parent, const KBattleFieldType &type, QPainter *painter )
+{
     internalType = type.getType();
     int i, j;
 
@@ -29,10 +32,10 @@ KBattleField::KBattleField( QWidget *parent, const KBattleFieldType &type, QPain
     
     for( i = 0; i != 8; i++ ) // A to I
     {
-	for( j = 0; j != 8; j++ ) // 1 to 9
-	{
-	    FieldData[ i ][ j ] = KBattleField::WATER;     
-	}
+		for( j = 0; j != 8; j++ ) // 1 to 9
+		{
+	    	FieldData[ i ][ j ] = KBattleField::WATER;
+		}
     }
 
     setDrawValues( this );
@@ -48,10 +51,10 @@ void KBattleField::clearField()
     int i, j;
     for( i = 0; i != 8; i++ ) // A to I
     {
-	for( j = 0; j != 8; j++ ) // 1 to 9
-	{
-	    FieldData[ i ][ j ] = KBattleField::WATER;     
-	}
+		for( j = 0; j != 8; j++ ) // 1 to 9
+		{
+	    	FieldData[ i ][ j ] = KBattleField::WATER;
+		}
     }
 }
 
@@ -62,7 +65,7 @@ void KBattleField::changeData( int &fieldx, int &fieldy, int type )
 
 int KBattleField::getState( int fieldx, int fieldy )
 {
-    return FieldData[ fieldx][ fieldy ];
+    return FieldData[ fieldx ][ fieldy ];
 }
 
 void KBattleField::drawField( QPainter *painter )
@@ -71,84 +74,67 @@ void KBattleField::drawField( QPainter *painter )
 
     for( i = 0; i != 8; i++ ) // A to I
     {
-	for( j = 0; j != 8; j++ ) // 1 to 9
-	{
-	    setValues( ( ( ( i + 1 ) * 30 ) + FromLeft ), ( ( ( j + 1 ) * 30 ) + 5 ) , 30 );
-	    drawSquare( painter );	    
-	    switch( FieldData[ i ][ j ] )
-	    {
-		case KBattleField::WATER:
-		    break;
+		for( j = 0; j != 8; j++ ) // 1 to 9
+		{
+	    	setValues( ( ( ( i + 1 ) * 30 ) + FromLeft ), ( ( ( j + 1 ) * 30 ) + 5 ) , 30 );
+	    	drawSquare( painter );	
+	    	switch( FieldData[ i ][ j ] )
+	    	{
+				case KBattleField::WATER:
+		    		break;
 		
-		case KBattleField::HIT:
-		    drawHitIcon( painter );
-		    break;
+				case KBattleField::HIT:
+		    		drawHitIcon( painter );
+		    		break;
 		    
-		case KBattleField::DEATH:
-		    drawDeathIcon( painter );
-		    break;	
+				case KBattleField::DEATH:
+		    		drawDeathIcon( painter );
+		    		break;	
 
-		case KShipType::SHIP1P0:
-		    drawShipIcon( painter, 1, 0 );
-		    break;	    
-
-		case KShipType::SHIP2P0:
-		    drawShipIcon( painter, 2, 0 );
-		    break;	    
-		    
-		case KShipType::SHIP2P1:
-		    drawShipIcon( painter, 2, 1 );
-		    break;	    
-		    
-		case KShipType::SHIP3P0:
-		    drawShipIcon( painter, 3, 0 );
-		    break;	    
-		    
-		case KShipType::SHIP3P1:
-		    drawShipIcon( painter, 3, 1 );
-		    break;	    
-
-		case KShipType::SHIP3P2:
-		    drawShipIcon( painter, 3, 2 );
-		    break;	    
-
-		case KShipType::SHIP4P0:
-		    drawShipIcon( painter, 4, 0 );
-		    break;	    
-		    
-		case KShipType::SHIP4P1:
-		    drawShipIcon( painter, 4, 1 );
-		    break;	    
-		    
-		case KShipType::SHIP4P2:
-		    drawShipIcon( painter, 4, 2 );
-		    break;	    
-
-		case KShipType::SHIP4P3:
-		    drawShipIcon( painter, 4, 3 );
-		    break;	    
-	    }		    
-	}
+				case KBattleField::SHIP:
+					switch( internalType )
+    				{
+						case KBattleFieldType::OWNFIELD:
+							findOwnFieldShipType( i, j, painter );
+		    				break;
+						
+						case KBattleFieldType::ENEMYFIELD:
+							findEnemyFieldShipType( i, j, painter );
+		    				break;
+					}
+					break;
+ 	    	}		
+		}
     }
 
     painter->end();    
+}
+
+void KBattleField::requestedShipIconDraw( QPainter *painter, int type )
+{
+	drawShipIcon( painter, type );
+}
+
+int KBattleField::findOwnFieldShipType( int x, int y, QPainter *painter )
+{
+	emit doOwnFieldShipListJob( x, y, painter ); 	
+}
+
+int KBattleField::findEnemyFieldShipType( int x, int y, QPainter *painter )
+{
+	emit doEnemyFieldShipListJob( x, y, painter ); 	
 }
 
 void KBattleField::setDrawValues( QWidget *parent )
 {
     switch( internalType )
     {
-	case KBattleFieldType::OWNFIELD:
-	{
-	    FromLeft = 15;
-	    break;
-	}
-	
-	case KBattleFieldType::ENEMYFIELD:
-	{
-	    FromLeft = ( parent->width() / 2 ) + 30;
-	    break;
-	}
+		case KBattleFieldType::OWNFIELD:
+			FromLeft = 15;
+	    	break;
+
+		case KBattleFieldType::ENEMYFIELD:
+	    	FromLeft = ( parent->width() / 2 ) + 30;
+	   	 	break;
     }
-    
 }

@@ -1,4 +1,4 @@
-KBattleship ( alpha -> beta) TODO List:
+KBattleship ( alpha -> beta ) TODO List:
     p = partially
     x = ready
 
@@ -6,12 +6,12 @@ KBattleship ( alpha -> beta) TODO List:
     o Communication Client <-> Server 	[p]
     o Communication Server <-> Client 	[x]
     o Sound Support		      	[x]
-    o Simple QString based Messaging	[x]
-    o QDom XML Based Messaging		[ ]
+    o QDom XML Based Messaging		[x]
     o Icon				[x]
     o Sounds				[x]
     o Ship-GFX				[ ]
     o Look'n'Feel			[p]
     o Mouse Handling			[p]
+    o Ship Placing			[ ]
     o Tooltips				[p]
     o Dialogs (.ui based)		[x]

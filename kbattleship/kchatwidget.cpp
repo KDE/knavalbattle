@@ -15,17 +15,12 @@
  *                                                                         *
  ***************************************************************************/
 
-#include "kchatwidget.h"
-
 #include "kchatwidget.moc"
-
-#include <qmultilineedit.h>
 
 KChatWidget::KChatWidget( QWidget *parent, const char *name ) : chatWidget( parent, name )
 {
-   connect( sendBtn, SIGNAL( clicked() ), SLOT( slotComputeMessage() ) );
+    connect( sendBtn, SIGNAL( clicked() ), SLOT( slotComputeMessage() ) );
     connect( commentEdit, SIGNAL( returnPressed() ), SLOT( slotComputeMessage() ) );
-
 }
 
 KChatWidget::~KChatWidget()
@@ -34,7 +29,7 @@ KChatWidget::~KChatWidget()
 
 void KChatWidget::slotComputeMessage()
 {
-    chatView->setText(commentEdit->text());
-    commentEdit->setText("");
+    chatView->setText( commentEdit->text() );
+    commentEdit->setText( "" );
 }
 

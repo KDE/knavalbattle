@@ -36,14 +36,15 @@ void KGridWidget::setValues( int x, int y, int size )
 void KGridWidget::drawSquare( QPainter *painter )
 {
     if( internalPixmap )
-	delete internalPixmap;
+		delete internalPixmap;
 
     internalPixmap = new QPixmap( internalSize, internalSize );
     
     QBrush blackBrush( green );
     
     if( !painter->isActive() )
-	painter->begin( internalPixmap );
+		painter->begin( internalPixmap );
+
     painter->setBrush( blackBrush );
     painter->drawRect( internalX, internalY, internalSize, internalSize );
     bitBlt( this, 0, 0, internalPixmap );
@@ -51,22 +52,19 @@ void KGridWidget::drawSquare( QPainter *painter )
 
 void KGridWidget::drawHitIcon( QPainter *painter )
 {
-    drawIcon( painter, "water.png" ); // "hit.png" );
+    drawIcon( painter, "hit.png" );
 }
 
 void KGridWidget::drawDeathIcon( QPainter *painter )
 {
-    drawIcon( painter, "water.png" ); // "death.png" );
+    drawIcon( painter, "death.png" );
 }
 
-void KGridWidget::drawShipIcon( QPainter *painter, int ship, int part )
+void KGridWidget::drawShipIcon( QPainter *painter, int &ship )
 {
-/*
-    QString qship, qpart;
-    qship.setNum( ship );
-    qpart.setNum( part );
-*/
-    drawIcon( painter, "water.png" ); //"ship" + qship + "-p" + qpart );
+    QString qship;
+    qship.setNum( ( ship + 1 ) );
+    drawIcon( painter, "ship-" + qship + ".png" );
 }
 
 void KGridWidget::drawIcon( QPainter *painter, QString iconName )
@@ -75,17 +73,16 @@ void KGridWidget::drawIcon( QPainter *painter, QString iconName )
     KImageIO::registerFormats();
     QString picDir;
     QStringList picDirl = stdDirs->findDirs( "data", "kbattleship" );
-    for( QStringList::Iterator it=picDirl.begin(); it!=picDirl.end(); ++it )
+    for( QStringList::Iterator it = picDirl.begin(); it != picDirl.end(); it++ )
     {
-	picDir=*it;
-	break;
+		picDir=*it;
+		break;
     }
 
     picDir = picDir + "pictures/";
     
     QPixmap *icon;
     icon = new QPixmap( picDir + iconName );
-    
     painter->drawPixmap( internalX, internalY, *icon );
         
     bitBlt( this, 0, 0, icon );

@@ -18,9 +18,10 @@
 #ifndef KCHATWIDGET_H
 #define KCHATWIDGET_H
 
-#include <chatwidget.h>
 #include <qpushbutton.h>
+#include <qmultilineedit.h>
 #include <qlineedit.h>
+#include <dialogs/chatwidget.h>
 
 class KChatWidget : public chatWidget
 {
@@ -31,7 +32,7 @@ class KChatWidget : public chatWidget
         ~KChatWidget();
 
     public slots:
-    void slotComputeMessage();
+    	void slotComputeMessage();
 
 };
 
