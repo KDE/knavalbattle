@@ -36,7 +36,6 @@ void KChatWidget::acceptMsg( bool value )
 
 void KChatWidget::receivedMessage( QString *nickname, QString *msg )
 {
-    kdDebug() << "nick: " << *nickname << endl;
     chatView->append( QString( "<" ) + *nickname + QString( "> " ) + *msg );
 }
 

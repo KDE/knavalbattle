@@ -124,6 +124,15 @@ void KonnectionHandling::clientSocketError( int error )
 	    emit changeConnectText();
 	    break;
 	
+	case QSocket::Connecting:
+/*	    if( !timer->isActive() )
+	    {
+		timer = new QTimer( myObject );
+	        connect( timer, SIGNAL( timeout() ), myObject, SLOT( timerDone() ) );
+		timer->start( 10000, true );
+	    }
+*/	    break;
+	
 	default:
 	    KMessageBox::error( 0L, i18n( "Unknown Error; No: %1" ).arg( error ) ) ;
 	    break;
