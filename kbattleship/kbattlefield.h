@@ -31,7 +31,6 @@ class KBattleField : public KGridWidget
         KBattleField(QWidget *parentw, const char *name, int type);
         ~KBattleField();
     
-        void setDrawValues();
         void drawField();
         void clearField();
         void changeData(int &fieldx, int &fieldy, int type) { FieldData[fieldx][fieldy] = type; }
@@ -42,10 +41,9 @@ class KBattleField : public KGridWidget
 	QRect getRect();
 
     private:
+	int xPosition();
         int FieldData[8][8];
-        int internalType;
-        int FromLeft;
-        QString nickName;
+        int m_type;
 	QWidget *m_parent_widget;
 };
 

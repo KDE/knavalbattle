@@ -21,10 +21,8 @@
 KBattleField::KBattleField(QWidget *parentw, const char *name, int type) : KGridWidget(parentw, name)
 {
     m_parent_widget = static_cast<QWidget *>(parent());
-    FromLeft = 0;
-    internalType = type;
+    m_type = type;
     clearField();
-    setDrawValues();
     drawField();
 }
 
@@ -54,7 +52,7 @@ void KBattleField::drawField()
     {
         for(j = 0; j != 8; j++)
         {
-            setValues((((i + 1) * 30) + FromLeft), (((j + 1) * 30) + 5), 30);
+            setValues((((i + 1) * 30) + xPosition()), (((j + 1) * 30) + 5), 30);
             switch(FieldData[i][j])
 	    {
 		case KBattleField::FREE:
@@ -68,12 +66,12 @@ void KBattleField::drawField()
 		
 		case KBattleField::HIT:
 		    drawSquare();	
-		    if(internalType == KBattleField::OWNFIELD)
+		    if(m_type == KBattleField::OWNFIELD)
 		    {
 		        drawShipIcon(app->getOwnFieldType(i, j));
 			drawHitIcon();
 		    }
-                    else if(internalType == KBattleField::ENEMYFIELD)
+                    else if(m_type == KBattleField::ENEMYFIELD)
 			drawHitIcon();
 		    break;
 		    
@@ -84,9 +82,9 @@ void KBattleField::drawField()
 
 		case KBattleField::SHIP:
 		    drawSquare();	
-		    if(internalType == KBattleField::OWNFIELD)
+		    if(m_type == KBattleField::OWNFIELD)
 			drawShipIcon(app->getOwnFieldType(i, j));
-                    else if(internalType == KBattleField::ENEMYFIELD)
+                    else if(m_type == KBattleField::ENEMYFIELD)
 		    	drawShipIcon(app->getEnemyFieldType(i, j));
                     break;
             }
@@ -94,15 +92,15 @@ void KBattleField::drawField()
     }
 }
 
-void KBattleField::setDrawValues()
+int KBattleField::xPosition()
 {
-    if(internalType == KBattleField::OWNFIELD)
-        FromLeft = 15;
-    else if(internalType == KBattleField::ENEMYFIELD)
-        FromLeft = (static_cast<QWidget *>(parent())->width() / 2);
+    if(m_type == KBattleField::OWNFIELD)
+        return 15;
+    else if(m_type == KBattleField::ENEMYFIELD)
+        return (static_cast<QWidget *>(parent())->width() / 2);
 }
 
 QRect KBattleField::getRect()
 {
-    return QRect(30 + FromLeft, 30 + 5, (7 * 30) + FromLeft, (7 * 30) + 5);
+    return QRect(30 + xPosition(), 30 + 5, (7 * 30) + xPosition(), (7 * 30) + 5);
 }

@@ -8,7 +8,7 @@ kbattleship_la_SOURCES      =   kmessage.cpp kbattleshipserver.cpp kbattleshipcl
 		                kchatwidget.cpp kserverdialog.cpp kclientdialog.cpp \
 				kstatdialog.cpp kbattleshipsound.cpp \
 		                konnectionhandling.cpp kship.cpp kshiplist.cpp \
-		                kbattleship.cpp main.cpp
+		                kbattleship.cpp 
 
 kbattleship_la_LIBADD       =   dialogs/libkbattleshipdialogs.la $(LIB_KFILE) -lsoundserver_idl
 kbattleship_la_LDFLAGS      =   -module $(KDE_PLUGIN) $(all_libraries)
@@ -16,7 +16,7 @@ kbattleship_la_LDFLAGS      =   -module $(KDE_PLUGIN) $(all_libraries)
 bin_PROGRAMS                =   kbattleship
 kbattleship_LDFLAGS	    =	$(KDE_RPATH) $(all_libraries)
 kbattleship_LDADD	    =	kbattleship.la
-kbattleship_SOURCES	    =	dummy.cpp
+kbattleship_SOURCES	    =	main.cpp dummy.cpp
 
 METASOURCES                 =   AUTO
 
