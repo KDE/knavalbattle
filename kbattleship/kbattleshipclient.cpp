@@ -40,7 +40,7 @@ void KBattleshipClient::init()
 
 void KBattleshipClient::kill()
 {
-    close();
+//    close();
 }
 
 void KBattleshipClient::sendMessage(KMessage *msg)

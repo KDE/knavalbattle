@@ -19,6 +19,7 @@
 
 KonnectionHandling::KonnectionHandling(QWidget *parent, KBattleshipServer *server) : QObject(parent)
 {
+    m_showed = false;
     enemy = false;
     setEnemyList(false);
     enemylist = false;
@@ -34,6 +35,7 @@ KonnectionHandling::KonnectionHandling(QWidget *parent, KBattleshipServer *serve
 
 KonnectionHandling::KonnectionHandling(QWidget *parent, KBattleshipClient *client) : QObject(parent)
 {
+    m_showed = false;
     enemy = true;
     setEnemyList(false);
     enemylist = false;
@@ -201,29 +203,28 @@ void KonnectionHandling::clientLostServer()
 
 void KonnectionHandling::clientSocketError(int error)
 {
-    switch(error)
+    kdDebug() << "Error!" << endl;
+    if(!m_showed)
     {
-        case QSocket::ErrConnectionRefused:
-    	    internalClient->kill();
- 	    KMessageBox::error(0L, i18n("Connection refused by other host!"));
-	    emit changeConnectText();
-            break;
+	m_showed = true;
+	switch(error)
+	{
+    	    case QSocket::ErrConnectionRefused:
+ 		KMessageBox::error(0L, i18n("Connection refused by other host!"));
+        	break;
 
-	case QSocket::ErrHostNotFound:
-    	    internalClient->kill();
-	    KMessageBox::error(0L, i18n("Couldn't lookup host!"));
-	    emit changeConnectText();
-	    break;
+	    case QSocket::ErrHostNotFound:
+		KMessageBox::error(0L, i18n("Couldn't lookup host!"));
+		break;
 	
-        case QSocket::ErrSocketRead:	
-            internalClient->kill();
- 	    KMessageBox::error(0L, i18n("Couldn't connect to server!"));
-	    emit changeConnectText();
-	    break;
-
-	default:
-    	    internalClient->kill();
-	    KMessageBox::error(0L, i18n("Unknown Error; No: %1").arg(error));
-	    break;
+	    case QSocket::ErrSocketRead:	
+ 	        KMessageBox::error(0L, i18n("Couldn't connect to server!"));
+    	        break;
+	
+    	    default:
+		KMessageBox::error(0L, i18n("Unknown Error; No: %1").arg(error));
+		break;
+	}
+	emit changeConnectText();
     }
 }

@@ -79,6 +79,7 @@ class KonnectionHandling : public QObject
         bool enemylist;
         bool senemylist;
         bool enemy;
+	bool m_showed;
         int internalType;
 };
 

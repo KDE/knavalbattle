@@ -384,8 +384,9 @@ void KBattleshipApp::resetClient(bool status)
 	stat->clear();
 	resetConnection();
 	delete connection;
-	delete kbclient;
 	connection = 0;
+//	delete kbclient;
+//	kbclient = 0;
 	slotStatusMsg(i18n("Ready"));
     }
     deleteLists();
@@ -496,6 +497,7 @@ void KBattleshipApp::slotNewServer()
 
 void KBattleshipApp::sendGreet()
 {
+    kdDebug() << "GREET!" << endl;
     KMessage *msg = new KMessage(KMessage::GREET);
     msg->addField(QString("nickname"), ownNickname);
     sendMessage(msg);
@@ -695,7 +697,6 @@ void KBattleshipApp::setPlaceable()
     place = true;
 }
 
-// TODO: use QStringList
 void KBattleshipApp::gotEnemyShipList(QString fieldX1S1, QString fieldY1S1, QString fieldX2S1, QString fieldY2S1, QString fieldX1S2, QString fieldY1S2, QString fieldX2S2, QString fieldY2S2, QString fieldX1S3, QString fieldY1S3, QString fieldX2S3, QString fieldY2S3, QString fieldX1S4, QString fieldY1S4, QString fieldX2S4, QString fieldY2S4)
 {
     enemyshiplist->addShip1(fieldX1S1.toInt(), fieldX2S1.toInt(), fieldY1S1.toInt(), fieldY2S1.toInt());
