@@ -22,13 +22,21 @@ KChatWidget::KChatWidget(QWidget *parent, const char *name) : chatWidget(parent,
     setMinimumSize(600, 180);
     connect(sendBtn, SIGNAL(clicked()), this, SLOT(slotComputeMessage()));
     connect(commentEdit, SIGNAL(returnPressed()), this, SLOT(slotComputeMessage()));
-    connect(chatView, SIGNAL(clicked()), this, SLOT(changeFocus()));
-    chatView->setReadOnly(true);
     currentNickname = "";
 }
 
 KChatWidget::~KChatWidget()
 {
+}
+
+void KChatWidget::enableButton()
+{
+    sendBtn->setOn(true);
+}
+
+void KChatWidget::disableButton()
+{
+    sendBtn->setOn(false);
 }
 
 void KChatWidget::clear()
@@ -37,19 +45,18 @@ void KChatWidget::clear()
     chatView->clear();
 }
 
-void KChatWidget::changeFocus()
-{
-    commentEdit->setFocus();
-}
-
 void KChatWidget::acceptMsg(bool value)
 {
+    if(!value)
+	disableButton();
+    else
+	enableButton();
     acceptMsgs = value;
 }
 
 void KChatWidget::receivedMessage(QString nickname, QString msg)
 {
-    chatView->append(QString("<") + nickname + QString("> ") + msg);
+    chatView->append(nickname + QString(": ") + msg);
     chatView->setCursorPosition(chatView->numLines(), 0);
 }
 
