@@ -20,6 +20,7 @@
 KShipList::KShipList() : QObject()
 {
     shiplist.setAutoDelete(true);
+    shipsadded = 4;
 }
 
 KShipList::~KShipList()
@@ -352,11 +353,6 @@ void KShipList::addNewShip(int button, int fieldx, int fieldy)
     }
 }
 
-int KShipList::shipCount()
-{
-    return shipsadded;
-}
-
 void KShipList::decideShipPlacing(int button, int fieldx, int fieldy)
 {
     if(button == LeftButton)
@@ -373,26 +369,18 @@ void KShipList::decideShipPlacing(int button, int fieldx, int fieldy)
 
 void KShipList::placeShipLMB(int fieldx, int fieldy)
 {
+    kdDebug() << "ShipCount: " << shipCount() + 1 << endl;
 
-    kdDebug() << "ShipCount: " << shipCount()+1 << endl;
-
-    for (int i=0; i < shipCount()+1; i++)
-    {
+    for(int i = 0; i < shipCount() + 1; i++)
         controlOwnFieldData(fieldx + i, fieldy, KBattleField::SHIP);
-    }
-
 }
 
 void KShipList::placeShipRMB(int fieldx, int fieldy)
 {
+    kdDebug() << "ShipCount: " << shipCount() + 1 << endl;
 
-    kdDebug() << "ShipCount: " << shipCount()+1 << endl;
-
-    for (int i=0; i < shipCount()+1; i++)
-    {
+    for(int i = 0; i < shipCount() + 1; i++)
         controlOwnFieldData(fieldx, fieldy + i, KBattleField::SHIP);
-    }
-
 }
 
 void KShipList::controlOwnFieldData(int fieldx, int fieldy, int type)

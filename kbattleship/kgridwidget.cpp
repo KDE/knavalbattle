@@ -72,17 +72,9 @@ void KGridWidget::drawShipIcon(int &ship)
 
 void KGridWidget::drawIcon(const QString &iconName)
 {
-    KStandardDirs *stdDirs = KGlobal::dirs();
     KImageIO::registerFormats();
-    QString picDir;
-    QStringList picDirl = stdDirs->findDirs("data", "kbattleship");
-    for(QStringList::Iterator it = picDirl.begin(); it != picDirl.end(); it++)
-    {
-	picDir = *it;
-	break;
-    }
-
-    picDir = picDir + "pictures/";
-
-    bitBlt(this, internalx, internaly, new QPixmap(picDir + iconName));
+    QString picture = locate("data", "kbattleship/pictures/" + iconName);
+    if(picture.isEmpty())
+	return;
+    bitBlt(this, internalx, internaly, new QPixmap(picture));
 }

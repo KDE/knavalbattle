@@ -47,7 +47,7 @@ class KShipList : public QObject
 
         bool canAddShips();
 
-        int shipCount();
+        int shipCount() { return shipsadded; }
 
         KShip *returnIterator(int ship);
 
