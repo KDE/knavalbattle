@@ -61,9 +61,9 @@
 </abstract>
 
 <keywordset>
-<keyword>&kde;</keyword>
-<keyword>&package;</keyword>
-<keyword>&kappname;</keyword>
+<keyword>KDE</keyword>
+<keyword>kdegames</keyword>
+<keyword>kbattleship</keyword>
 <keyword>game</keyword>
 <keyword>battleship</keyword>
 <keyword>battle</keyword>
@@ -314,7 +314,7 @@ The default is on.
 <term>
 <menuchoice>
 <guimenu>Settings</guimenu>
-<guimenuitem>Show grid</guimenuitem>
+<guimenuitem>Show Grid</guimenuitem>
 </menuchoice>
 </term>
 <listitem>
