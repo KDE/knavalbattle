@@ -39,8 +39,8 @@
 <holder>Nikolas Zimmermann</holder>
 </copyright>
 
-<date>2001/04/30</date> <!-- PLEASE RESPECT THIS DATE FORMAT!!!!! -->
-<releaseinfo>Version 0.9</releaseinfo>
+<date>30/04/2001</date> <!-- DATES WILL BE CONVERTED TO ISO *AUTOMATICALLY*. PLEASE JUST WAIT -->
+<releaseinfo>Version 0.09.00</releaseinfo> <!-- PLEASE RESPECT V.MM.LL -->
 
 <abstract>
 <para>
