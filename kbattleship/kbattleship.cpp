@@ -172,8 +172,11 @@ void KBattleshipApp::enemyClick(int fieldx, int fieldy)
 		if(!playing)
 		    sendMessage(fieldx, fieldy, showstate);
 		else
-		    aiPlayer->slotRequestShot();
-		    
+		{
+		    if(aiPlayer != 0)
+			aiPlayer->slotRequestShot();
+		}
+		
 		slotStatusMsg(i18n("Waiting for enemy to shoot.."));
 	    }
 	    else
@@ -1140,8 +1143,6 @@ void KBattleshipApp::slotAIShootsAt(const QPoint pos)
 
     slotStatusMsg(i18n("Enemy has shot. Shoot now"));
     changeOwnFieldData(pos.x(), pos.y(), showstate);
-
-    kdDebug() << "hits: " << hits << endl;
 
     if(hits == 10)
     {
