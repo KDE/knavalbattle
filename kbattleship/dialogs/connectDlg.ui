@@ -99,7 +99,7 @@
                         <cstring>lanLabel</cstring>
                     </property>
                     <property name="text">
-                        <string>LAN games</string>
+                        <string>LAN games:</string>
                     </property>
                 </widget>
                 <widget class="QLineEdit" row="1" column="1">

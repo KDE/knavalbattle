@@ -51,7 +51,7 @@
                         <cstring>gamenameLabel</cstring>
                     </property>
                     <property name="text">
-                        <string>Game name</string>
+                        <string>Game name:</string>
                     </property>
                 </widget>
                 <widget class="QSpinBox" row="2" column="1">
