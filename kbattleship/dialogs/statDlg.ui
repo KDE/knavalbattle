@@ -11,15 +11,15 @@
         <rect>
             <x>0</x>
             <y>0</y>
-            <width>257</width>
-            <height>438</height>
+            <width>269</width>
+            <height>340</height>
         </rect>
     </property>
     <property stdset="1">
         <name>caption</name>
         <string>Form1</string>
     </property>
-    <vbox>
+    <hbox>
         <property stdset="1">
             <name>margin</name>
             <number>11</number>
@@ -28,449 +28,391 @@
             <name>spacing</name>
             <number>6</number>
         </property>
-        <spacer>
-            <property>
-                <name>name</name>
-                <cstring>Spacer20_2</cstring>
-            </property>
-            <property stdset="1">
-                <name>orientation</name>
-                <enum>Vertical</enum>
-            </property>
-            <property stdset="1">
-                <name>sizeType</name>
-                <enum>Expanding</enum>
-            </property>
-            <property>
-                <name>sizeHint</name>
-                <size>
-                    <width>20</width>
-                    <height>20</height>
-                </size>
-            </property>
-        </spacer>
         <widget>
-            <class>QGroupBox</class>
+            <class>QLayoutWidget</class>
             <property stdset="1">
                 <name>name</name>
-                <cstring>gbShots</cstring>
-            </property>
-            <property stdset="1">
-                <name>frameShape</name>
-                <enum>Box</enum>
-            </property>
-            <property stdset="1">
-                <name>frameShadow</name>
-                <enum>Sunken</enum>
-            </property>
-            <property stdset="1">
-                <name>title</name>
-                <string>Shots</string>
+                <cstring>Layout20</cstring>
             </property>
             <vbox>
                 <property stdset="1">
                     <name>margin</name>
-                    <number>11</number>
+                    <number>0</number>
                 </property>
                 <property stdset="1">
                     <name>spacing</name>
                     <number>6</number>
                 </property>
+                <spacer>
+                    <property>
+                        <name>name</name>
+                        <cstring>Spacer20</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>orientation</name>
+                        <enum>Vertical</enum>
+                    </property>
+                    <property stdset="1">
+                        <name>sizeType</name>
+                        <enum>Expanding</enum>
+                    </property>
+                    <property>
+                        <name>sizeHint</name>
+                        <size>
+                            <width>20</width>
+                            <height>20</height>
+                        </size>
+                    </property>
+                </spacer>
                 <widget>
-                    <class>QLayoutWidget</class>
+                    <class>QGroupBox</class>
                     <property stdset="1">
                         <name>name</name>
-                        <cstring>Layout17</cstring>
+                        <cstring>gbShots</cstring>
                     </property>
-                    <hbox>
+                    <property stdset="1">
+                        <name>frameShape</name>
+                        <enum>Box</enum>
+                    </property>
+                    <property stdset="1">
+                        <name>frameShadow</name>
+                        <enum>Sunken</enum>
+                    </property>
+                    <property stdset="1">
+                        <name>title</name>
+                        <string>Shots</string>
+                    </property>
+                    <vbox>
                         <property stdset="1">
                             <name>margin</name>
-                            <number>0</number>
+                            <number>11</number>
                         </property>
                         <property stdset="1">
                             <name>spacing</name>
                             <number>6</number>
                         </property>
                         <widget>
-                            <class>QLabel</class>
+                            <class>QLayoutWidget</class>
                             <property stdset="1">
                                 <name>name</name>
-                                <cstring>pShots_2</cstring>
+                                <cstring>Layout17</cstring>
                             </property>
-                            <property stdset="1">
-                                <name>sizePolicy</name>
-                                <sizepolicy>
-                                    <hsizetype>0</hsizetype>
-                                    <vsizetype>0</vsizetype>
-                                </sizepolicy>
-                            </property>
-                            <property stdset="1">
-                                <name>pixmap</name>
-                                <pixmap>image0</pixmap>
-                            </property>
-                            <property stdset="1">
-                                <name>scaledContents</name>
-                                <bool>true</bool>
-                            </property>
+                            <hbox>
+                                <property stdset="1">
+                                    <name>margin</name>
+                                    <number>0</number>
+                                </property>
+                                <property stdset="1">
+                                    <name>spacing</name>
+                                    <number>6</number>
+                                </property>
+                                <widget>
+                                    <class>QLabel</class>
+                                    <property stdset="1">
+                                        <name>name</name>
+                                        <cstring>pShots_2</cstring>
+                                    </property>
+                                    <property stdset="1">
+                                        <name>sizePolicy</name>
+                                        <sizepolicy>
+                                            <hsizetype>0</hsizetype>
+                                            <vsizetype>0</vsizetype>
+                                        </sizepolicy>
+                                    </property>
+                                    <property stdset="1">
+                                        <name>pixmap</name>
+                                        <pixmap>image0</pixmap>
+                                    </property>
+                                    <property stdset="1">
+                                        <name>scaledContents</name>
+                                        <bool>true</bool>
+                                    </property>
+                                </widget>
+                                <spacer>
+                                    <property>
+                                        <name>name</name>
+                                        <cstring>Spacer9_3</cstring>
+                                    </property>
+                                    <property stdset="1">
+                                        <name>orientation</name>
+                                        <enum>Horizontal</enum>
+                                    </property>
+                                    <property stdset="1">
+                                        <name>sizeType</name>
+                                        <enum>Expanding</enum>
+                                    </property>
+                                    <property>
+                                        <name>sizeHint</name>
+                                        <size>
+                                            <width>20</width>
+                                            <height>20</height>
+                                        </size>
+                                    </property>
+                                </spacer>
+                                <widget>
+                                    <class>QLCDNumber</class>
+                                    <property stdset="1">
+                                        <name>name</name>
+                                        <cstring>ShotLCD</cstring>
+                                    </property>
+                                    <property stdset="1">
+                                        <name>frameShape</name>
+                                        <enum>NoFrame</enum>
+                                    </property>
+                                    <property stdset="1">
+                                        <name>smallDecimalPoint</name>
+                                        <bool>false</bool>
+                                    </property>
+                                    <property stdset="1">
+                                        <name>numDigits</name>
+                                        <number>4</number>
+                                    </property>
+                                    <property stdset="1">
+                                        <name>segmentStyle</name>
+                                        <enum>Flat</enum>
+                                    </property>
+                                    <property>
+                                        <name>toolTip</name>
+                                        <string>Shows all shots</string>
+                                    </property>
+                                </widget>
+                            </hbox>
                         </widget>
-                        <spacer>
-                            <property>
-                                <name>name</name>
-                                <cstring>Spacer9_3</cstring>
-                            </property>
-                            <property stdset="1">
-                                <name>orientation</name>
-                                <enum>Horizontal</enum>
-                            </property>
-                            <property stdset="1">
-                                <name>sizeType</name>
-                                <enum>Expanding</enum>
-                            </property>
-                            <property>
-                                <name>sizeHint</name>
-                                <size>
-                                    <width>20</width>
-                                    <height>20</height>
-                                </size>
-                            </property>
-                        </spacer>
-                        <widget>
-                            <class>QLCDNumber</class>
-                            <property stdset="1">
-                                <name>name</name>
-                                <cstring>ShotLCD</cstring>
-                            </property>
-                            <property stdset="1">
-                                <name>frameShape</name>
-                                <enum>NoFrame</enum>
-                            </property>
-                            <property stdset="1">
-                                <name>smallDecimalPoint</name>
-                                <bool>false</bool>
-                            </property>
-                            <property stdset="1">
-                                <name>numDigits</name>
-                                <number>4</number>
-                            </property>
-                            <property stdset="1">
-                                <name>segmentStyle</name>
-                                <enum>Flat</enum>
-                            </property>
-                            <property>
-                                <name>toolTip</name>
-                                <string>Shows all shots</string>
-                            </property>
-                        </widget>
-                    </hbox>
+                    </vbox>
                 </widget>
-            </vbox>
-        </widget>
-        <widget>
-            <class>QGroupBox</class>
-            <property stdset="1">
-                <name>name</name>
-                <cstring>gbHits</cstring>
-            </property>
-            <property stdset="1">
-                <name>title</name>
-                <string>Hits</string>
-            </property>
-            <vbox>
-                <property stdset="1">
-                    <name>margin</name>
-                    <number>11</number>
-                </property>
-                <property stdset="1">
-                    <name>spacing</name>
-                    <number>6</number>
-                </property>
                 <widget>
-                    <class>QLayoutWidget</class>
+                    <class>QGroupBox</class>
                     <property stdset="1">
                         <name>name</name>
-                        <cstring>Layout15</cstring>
+                        <cstring>gbHits</cstring>
                     </property>
-                    <hbox>
+                    <property stdset="1">
+                        <name>title</name>
+                        <string>Hits</string>
+                    </property>
+                    <vbox>
                         <property stdset="1">
                             <name>margin</name>
-                            <number>0</number>
+                            <number>11</number>
                         </property>
                         <property stdset="1">
                             <name>spacing</name>
                             <number>6</number>
                         </property>
                         <widget>
-                            <class>QLabel</class>
+                            <class>QLayoutWidget</class>
                             <property stdset="1">
                                 <name>name</name>
-                                <cstring>pHits_2</cstring>
+                                <cstring>Layout15</cstring>
                             </property>
-                            <property stdset="1">
-                                <name>sizePolicy</name>
-                                <sizepolicy>
-                                    <hsizetype>0</hsizetype>
-                                    <vsizetype>0</vsizetype>
-                                </sizepolicy>
-                            </property>
-                            <property stdset="1">
-                                <name>pixmap</name>
-                                <pixmap>image1</pixmap>
-                            </property>
-                            <property stdset="1">
-                                <name>scaledContents</name>
-                                <bool>true</bool>
-                            </property>
+                            <hbox>
+                                <property stdset="1">
+                                    <name>margin</name>
+                                    <number>0</number>
+                                </property>
+                                <property stdset="1">
+                                    <name>spacing</name>
+                                    <number>6</number>
+                                </property>
+                                <widget>
+                                    <class>QLabel</class>
+                                    <property stdset="1">
+                                        <name>name</name>
+                                        <cstring>pHits_2</cstring>
+                                    </property>
+                                    <property stdset="1">
+                                        <name>sizePolicy</name>
+                                        <sizepolicy>
+                                            <hsizetype>0</hsizetype>
+                                            <vsizetype>0</vsizetype>
+                                        </sizepolicy>
+                                    </property>
+                                    <property stdset="1">
+                                        <name>pixmap</name>
+                                        <pixmap>image1</pixmap>
+                                    </property>
+                                    <property stdset="1">
+                                        <name>scaledContents</name>
+                                        <bool>true</bool>
+                                    </property>
+                                </widget>
+                                <spacer>
+                                    <property>
+                                        <name>name</name>
+                                        <cstring>Spacer9_2</cstring>
+                                    </property>
+                                    <property stdset="1">
+                                        <name>orientation</name>
+                                        <enum>Horizontal</enum>
+                                    </property>
+                                    <property stdset="1">
+                                        <name>sizeType</name>
+                                        <enum>Expanding</enum>
+                                    </property>
+                                    <property>
+                                        <name>sizeHint</name>
+                                        <size>
+                                            <width>20</width>
+                                            <height>20</height>
+                                        </size>
+                                    </property>
+                                </spacer>
+                                <widget>
+                                    <class>QLCDNumber</class>
+                                    <property stdset="1">
+                                        <name>name</name>
+                                        <cstring>HitLCD</cstring>
+                                    </property>
+                                    <property stdset="1">
+                                        <name>frameShape</name>
+                                        <enum>NoFrame</enum>
+                                    </property>
+                                    <property stdset="1">
+                                        <name>numDigits</name>
+                                        <number>4</number>
+                                    </property>
+                                    <property stdset="1">
+                                        <name>segmentStyle</name>
+                                        <enum>Flat</enum>
+                                    </property>
+                                    <property>
+                                        <name>toolTip</name>
+                                        <string>Shows all hit ships</string>
+                                    </property>
+                                </widget>
+                            </hbox>
                         </widget>
-                        <spacer>
-                            <property>
-                                <name>name</name>
-                                <cstring>Spacer9_2</cstring>
-                            </property>
-                            <property stdset="1">
-                                <name>orientation</name>
-                                <enum>Horizontal</enum>
-                            </property>
-                            <property stdset="1">
-                                <name>sizeType</name>
-                                <enum>Expanding</enum>
-                            </property>
-                            <property>
-                                <name>sizeHint</name>
-                                <size>
-                                    <width>20</width>
-                                    <height>20</height>
-                                </size>
-                            </property>
-                        </spacer>
-                        <widget>
-                            <class>QLCDNumber</class>
-                            <property stdset="1">
-                                <name>name</name>
-                                <cstring>HitLCD</cstring>
-                            </property>
-                            <property stdset="1">
-                                <name>frameShape</name>
-                                <enum>NoFrame</enum>
-                            </property>
-                            <property stdset="1">
-                                <name>numDigits</name>
-                                <number>4</number>
-                            </property>
-                            <property stdset="1">
-                                <name>segmentStyle</name>
-                                <enum>Flat</enum>
-                            </property>
-                            <property>
-                                <name>toolTip</name>
-                                <string>Shows all hit ships</string>
-                            </property>
-                        </widget>
-                    </hbox>
+                    </vbox>
                 </widget>
-            </vbox>
-        </widget>
-        <widget>
-            <class>QGroupBox</class>
-            <property stdset="1">
-                <name>name</name>
-                <cstring>gbWater</cstring>
-            </property>
-            <property stdset="1">
-                <name>title</name>
-                <string>Water</string>
-            </property>
-            <vbox>
-                <property stdset="1">
-                    <name>margin</name>
-                    <number>11</number>
-                </property>
-                <property stdset="1">
-                    <name>spacing</name>
-                    <number>6</number>
-                </property>
                 <widget>
-                    <class>QLayoutWidget</class>
+                    <class>QGroupBox</class>
                     <property stdset="1">
                         <name>name</name>
-                        <cstring>Layout18</cstring>
+                        <cstring>gbWater</cstring>
                     </property>
-                    <hbox>
+                    <property stdset="1">
+                        <name>title</name>
+                        <string>Water</string>
+                    </property>
+                    <vbox>
                         <property stdset="1">
                             <name>margin</name>
-                            <number>0</number>
+                            <number>11</number>
                         </property>
                         <property stdset="1">
                             <name>spacing</name>
                             <number>6</number>
                         </property>
                         <widget>
-                            <class>QLabel</class>
+                            <class>QLayoutWidget</class>
                             <property stdset="1">
                                 <name>name</name>
-                                <cstring>pWater_2</cstring>
+                                <cstring>Layout18</cstring>
                             </property>
-                            <property stdset="1">
-                                <name>sizePolicy</name>
-                                <sizepolicy>
-                                    <hsizetype>0</hsizetype>
-                                    <vsizetype>0</vsizetype>
-                                </sizepolicy>
-                            </property>
-                            <property stdset="1">
-                                <name>pixmap</name>
-                                <pixmap>image2</pixmap>
-                            </property>
-                            <property stdset="1">
-                                <name>scaledContents</name>
-                                <bool>true</bool>
-                            </property>
+                            <hbox>
+                                <property stdset="1">
+                                    <name>margin</name>
+                                    <number>0</number>
+                                </property>
+                                <property stdset="1">
+                                    <name>spacing</name>
+                                    <number>6</number>
+                                </property>
+                                <widget>
+                                    <class>QLabel</class>
+                                    <property stdset="1">
+                                        <name>name</name>
+                                        <cstring>pWater_2</cstring>
+                                    </property>
+                                    <property stdset="1">
+                                        <name>sizePolicy</name>
+                                        <sizepolicy>
+                                            <hsizetype>0</hsizetype>
+                                            <vsizetype>0</vsizetype>
+                                        </sizepolicy>
+                                    </property>
+                                    <property stdset="1">
+                                        <name>pixmap</name>
+                                        <pixmap>image2</pixmap>
+                                    </property>
+                                    <property stdset="1">
+                                        <name>scaledContents</name>
+                                        <bool>true</bool>
+                                    </property>
+                                </widget>
+                                <spacer>
+                                    <property>
+                                        <name>name</name>
+                                        <cstring>Spacer9</cstring>
+                                    </property>
+                                    <property stdset="1">
+                                        <name>orientation</name>
+                                        <enum>Horizontal</enum>
+                                    </property>
+                                    <property stdset="1">
+                                        <name>sizeType</name>
+                                        <enum>Expanding</enum>
+                                    </property>
+                                    <property>
+                                        <name>sizeHint</name>
+                                        <size>
+                                            <width>20</width>
+                                            <height>20</height>
+                                        </size>
+                                    </property>
+                                </spacer>
+                                <widget>
+                                    <class>QLCDNumber</class>
+                                    <property stdset="1">
+                                        <name>name</name>
+                                        <cstring>WaterLCD</cstring>
+                                    </property>
+                                    <property stdset="1">
+                                        <name>frameShape</name>
+                                        <enum>NoFrame</enum>
+                                    </property>
+                                    <property stdset="1">
+                                        <name>numDigits</name>
+                                        <number>4</number>
+                                    </property>
+                                    <property stdset="1">
+                                        <name>segmentStyle</name>
+                                        <enum>Flat</enum>
+                                    </property>
+                                    <property>
+                                        <name>toolTip</name>
+                                        <string>Shows all water shots</string>
+                                    </property>
+                                </widget>
+                            </hbox>
                         </widget>
-                        <spacer>
-                            <property>
-                                <name>name</name>
-                                <cstring>Spacer9</cstring>
-                            </property>
-                            <property stdset="1">
-                                <name>orientation</name>
-                                <enum>Horizontal</enum>
-                            </property>
-                            <property stdset="1">
-                                <name>sizeType</name>
-                                <enum>Expanding</enum>
-                            </property>
-                            <property>
-                                <name>sizeHint</name>
-                                <size>
-                                    <width>20</width>
-                                    <height>20</height>
-                                </size>
-                            </property>
-                        </spacer>
-                        <widget>
-                            <class>QLCDNumber</class>
-                            <property stdset="1">
-                                <name>name</name>
-                                <cstring>WaterLCD</cstring>
-                            </property>
-                            <property stdset="1">
-                                <name>frameShape</name>
-                                <enum>NoFrame</enum>
-                            </property>
-                            <property stdset="1">
-                                <name>numDigits</name>
-                                <number>4</number>
-                            </property>
-                            <property stdset="1">
-                                <name>segmentStyle</name>
-                                <enum>Flat</enum>
-                            </property>
-                            <property>
-                                <name>toolTip</name>
-                                <string>Shows all water shots</string>
-                            </property>
-                        </widget>
-                    </hbox>
+                    </vbox>
                 </widget>
-            </vbox>
-        </widget>
-        <widget>
-            <class>QGroupBox</class>
-            <property stdset="1">
-                <name>name</name>
-                <cstring>gbOwn</cstring>
-            </property>
-            <property stdset="1">
-                <name>title</name>
-                <string>Own forces</string>
-            </property>
-            <vbox>
-                <property stdset="1">
-                    <name>margin</name>
-                    <number>11</number>
-                </property>
-                <property stdset="1">
-                    <name>spacing</name>
-                    <number>6</number>
-                </property>
-                <widget>
-                    <class>KProgress</class>
-                    <property stdset="1">
+                <spacer>
+                    <property>
                         <name>name</name>
-                        <cstring>ownForce</cstring>
+                        <cstring>Spacer20_2</cstring>
                     </property>
-                </widget>
-            </vbox>
-        </widget>
-        <widget>
-            <class>QGroupBox</class>
-            <property stdset="1">
-                <name>name</name>
-                <cstring>gbEnemy</cstring>
-            </property>
-            <property stdset="1">
-                <name>title</name>
-                <string>Enemy's forces</string>
-            </property>
-            <vbox>
-                <property stdset="1">
-                    <name>margin</name>
-                    <number>11</number>
-                </property>
-                <property stdset="1">
-                    <name>spacing</name>
-                    <number>6</number>
-                </property>
-                <widget>
-                    <class>KProgress</class>
                     <property stdset="1">
-                        <name>name</name>
-                        <cstring>enemyForce</cstring>
+                        <name>orientation</name>
+                        <enum>Vertical</enum>
                     </property>
-                </widget>
+                    <property stdset="1">
+                        <name>sizeType</name>
+                        <enum>Expanding</enum>
+                    </property>
+                    <property>
+                        <name>sizeHint</name>
+                        <size>
+                            <width>20</width>
+                            <height>20</height>
+                        </size>
+                    </property>
+                </spacer>
             </vbox>
         </widget>
-        <spacer>
-            <property>
-                <name>name</name>
-                <cstring>Spacer20</cstring>
-            </property>
-            <property stdset="1">
-                <name>orientation</name>
-                <enum>Vertical</enum>
-            </property>
-            <property stdset="1">
-                <name>sizeType</name>
-                <enum>Expanding</enum>
-            </property>
-            <property>
-                <name>sizeHint</name>
-                <size>
-                    <width>20</width>
-                    <height>20</height>
-                </size>
-            </property>
-        </spacer>
-    </vbox>
+    </hbox>
 </widget>
-<customwidgets>
-    <customwidget>
-        <class>KProgress</class>
-        <header location="global">kprogress.h</header>
-        <sizehint>
-            <width>-1</width>
-            <height>-1</height>
-        </sizehint>
-        <container>0</container>
-        <sizepolicy>
-            <hordata>7</hordata>
-            <verdata>5</verdata>
-        </sizepolicy>
-        <pixmap>image3</pixmap>
-        <signal>percentageChanged(int)</signal>
-        <slot access="public">setValue(int)</slot>
-        <slot access="public">advance(int)</slot>
-    </customwidget>
-</customwidgets>
 <images>
     <image>
         <name>image0</name>
@@ -478,15 +420,11 @@
     </image>
     <image>
         <name>image1</name>
-        <data format="XPM.GZ" length="10577">789c4dd9577332bb9606e0fbfd2bbedaba3b35a5436ce89a9a0b8213c9c6018ca7e6425a92b04d70001c989aff3e42eb5d3aa7becdc68f5ba99752abfdcf7ffc79bc19fff9c73fffdaedcdfe85fed0b3f9fcf30f77d86c7efffb7ffeeb7ffffabb5efb13ff6bd66a7f6a7fffc75f7f87a73ff447d5ab756ad59307c965a3021fb26df2add834922bd994dc871bc8dfc9e6fc4331d2dfc16d5cef9ddca8e6fcdd6cbede12a3feaf6c2eaf80db9cdff7b239ff4ecce9cd354c4d73b2ab8839bdcbd7dba93c7b64372b458adfd2271b297f19c45cbefb81519ebf1773796e22b6e97edc96dd44bc692846fa1b31a73753b8c9eda19698d3878f6cbe9f8d98f387f76c97daafe092d3077372b326fde1155bdae367b0d4f799cdf9dfc45c3e6de112f15c64f3fd8ec4dc3edfcf4ef9cd0dec8ad45ff6498cfacec49cdea7f1d53cc59febfb654b7acbf7638a2af26fc488c7524ccd54ff1c6e72fd612b46fe5f71c9fdf30ae37ebd3eb9c8f7474db6d46fbb30fad35e65737d5e8cf4468cf65dc2258f6723e5957cff6e2de6fc6622e6f6aa05ecd09f293e8591f16e1cbb28e16636d7f70d3baecfccb2b9bd5a8cfa3762c4eb458cfe2676abcaf9555dcced33a36c2ebf23e6f8aa463697b71553b26dc34d943f15a3fc75365faf88d1de9598e31f72798e7d0f97f0f8e4563daf577b18ebc5d288313f576c99efae849b886f9f2de3c33fc125e23d80d11ff682ddaa36aa29ff39dce4f1a2e662ce6f0a18e3d7b4c4656aafaa89793d26b4af85fe3646ccf9d5319bafe7f41c4f3ab0dbe85ffacce6f985f6b69b885f1a2f2d2bf10bcf62ac1f1b9878bc869118ebf3af18f391efd74abcad65cbf8f40f62f44f939dc7570d96f1f403a33fd4af18f15cc2aec1f17f10235e3d31c7dba27d121fa3b2b9bfbfc598cfefd9293f4d608c6fda67737fdc89915fca6f72ffaa2d2cebc78398d3878518fd81fa4aec372e5d6fd7637ff07af62a463c976c89bfafc0586fc2373bc77f9dcdfbcb869dfbe30946fc4d1596f568c89678aa7d365f6fc0129f67b8e4fed22b31ae1fc5581feec5bc3e2823763ec5a30b633ed0bb98f3eb7c9df37b6297e8df7001973e95e7f9feac3c0f84c09678f82d8cf5caf561c487be6089cf588cfd9ac43c9ec28f98cb23cd9678299427f1501f625e7fd5272ce5bf66a7fcfa458c7834c43c1e75919ddaa33bec1c1f9bcdeb5536a7571b31dab3869b9cdebf89f9ba47fb4bac7f24d7713f01ed8bdd9bfa233cb08dc43bc5b36c349bcdd43fbe0e3b5e7fed0fbb25fb1fd2b7f1fcb1b4d9dcde6b18e3cfae60895f9b5dcafcd5d91cafb118eb9d83f1bca05662c42f5f47fc8762ceaf6bd9a97d7a0663bca89198f3fb39db54d92ecdd7385970bef0255c72bcec1bbbc07e45b7b03c0fb6d8323ecd153baf971d18f76f2b62dcff038c78aa4731ce0b6f623c5fa0bd6df457388a79bf27d45fcaf34280cb7a99aebf8ab9bdba22e6f1a3af6194afd11e89971a6673fe252cf737870dd6e34b76dcc0783d49cf3be6341ef9f9a1c52e106fb563b7509e5f8811af4b18cf7fdec3e88f70c56e5779bdb31f30f61fdd8425be3d18f3393831d6cf6e363fbf6dd832df6d15c6f80b62e78b94bf604bfc6805637ed8001bb48fc4886f4f8ce78506ec71dd8b313e70ffb686f39a860bf692c421a4f6d660c3a6b4df19cacfdb962dfde1de615cb777629ebfc4fd17c73ff6df4e36af2f6d31c793c438af995b31d6f70b589edfced825ca3703318f2f7b80d15e7523467caa621e1f3485e57c7493cded7b8631bf692cc6fec6e325ce078c97168cfa0dda23fda32fb3793ca17c5be3fd4fefc548bf1373f9fa072e38bf0ab081cf611fd2f85b72ff13d530ffd278b68d461bfbb566cbfeed9beca2caf39114ecf8bafa664b7fd2078cfe536f62c4a32346ffec60399f7e8ad1ff0d31f6af2a8cf9e87ad929bd437dd21f74cd36689f6d8a715e1d8ad19e1296f68fc548ff9ecdd72f61999f67ecdc3f688f2d38bdbe12737dea0e36bc1eab6731d6db0f31ea7b813dda83f8510de9bfc48877339bdf273818f3dda5f1695ddedf385eae85fe371531d6f32d5b9ee74d1d96e7438e8f2b25be8f30e2e58eb03c7fddc298cf6a26c67a3165e7fefa81d11ffe1c46bcec9718eb33da97e7574dccd7cdaf18fddf675b5f4bfde1d2f8a6661eff812deb9dabb3db553c3f8d608c5f7560cb7aa408c67aa38fb0c4e315c6fe6d2ed806e76d752fe6fdc27c89110f03e3fef4488cfd1ce55b8c073511737d7a91cde9f375debff4209bafcf618c6fd517e37d036573fa3b36a17fc20ddb798cc7b4fe9393f3968765bdf1b76c79dfe2348cf70f96dbebe4f9df217d89fdd69ec34d9e6fc6c3384fd947b6ac076691cded2f61192f2f6c5bc3fcaf8a119fba98d75f5ac3888f6e8911dfa76c3e4f59d820fdbfccd7cf600fa7f5d235653efb6b7651e5fbf37b18f7eb6aec16c697dfc178fea13376bb8af8dec3d81fed275bf64bd5661b8c6f8bfae27ce47879b695e7956731daffc8268c3f3510e3f9c967737c038cf891a437ec308531bec29cedf17ce3d3f398f3395e1dd8f1f8b09cdf174dc4eb15c6fb12ba64cbfe6567ec529e57ea6c996f760de37eed924d059e0ff6628c0707e37ef46f36c7a7643b8caf700dcbfda5fef54581f39e1bb25b309db3e5fc402fecbc3e9cb149d68f4f31d7a7fbd9a93e75c176e81fb51423fd7b764aaf0f7081ebdfb0c17ce1f6fb16c69f53b0f40f97e7e57c4f5c9fcfe795299ba47c939deab77c7f317ef5f43e529f8bd1be0b58d2f760c3fb835e8b91fe06463c96cfec80eb36ad47a190f7e36ec596f5cbdfc0f2fef2832df1359f6c295fa33c8ff686193b884b589ee7d3fa11421ecf23b8e4f7b1ee0cc6f8b6dc9ed0c2fee7d762fc3de908233ffd8831de5e6087f176c76e233f1931febe24d7b13ed12f2cf3cd89f1f7262fc6fbc43ebb94f1f22846f97358ce9b1762de2f7c80e57e2a62b4b72ac6fb81158cfb73cf62ec5713b6c1fb58ba873de2d1cbe6f69eb36d0dfe12637c2ce102fd31860dde473c89393d9118f737803de2331363bd477f12ea73056cf0f748f41779dcdf6536bf8f7c60cbfc719f7081fd6524c6fedc800de2f721c679e0578c781f60d4e7afc4188f3f628c870edbd7709ede8ad1be265ce0feac18e3e5418cf74d4a8cf984f879c3eb8fbbcfe6f3f18518e7fd6e365f1f88b15e6dc458bfd1ff7185e3f1f328c6fb1aa90feb81c77c0b35d4f790cdef4f5ec578bedec3781fe09662fc3de9518c7821de41da1fc4382f2fc4389f1dc4d89fead9dcde211c50bfcbe6f3f4b318e5edb2f93c4162bcef9a67f3f3c4b798f74fe7b3f9fdf7a598db37dd6707b656f8186d3569a7bd0e7aa99ff58b7ed52bbdd69b7f4bf3ef9fede93bf5d19b7ed71ffa53efe267af0ffa4b7feb1ffd1b4b39ea8eeeea9eeeebb378ed439fc7b417fa32faf4f355f2792a63a0877aa4c77aa2aff58d9eea5b7da7eff543fc79a6e7fa512fe2f5275dd1555dd375ddd04d5d440f754bb775a974da8b9532ca2a524e7915d4523deb837a89edf951af6aa58f6aad366aabded4bbfa509f6aa7f6eaa0bed4b7fa51bfeaa83aa98caeeaa9be2675a6ced585ba8c255ca9811a6aab466aac576aa2aed58d9aaa5b75a7eed5839aa9b97a540bf5a42aaaaaf89d415d35e2bd7faba65eab22b6a3a5dab194d2e818dd9551f12c1d8fbbaa6ee253b60966699ecd8b79352bb38edf1bb34dfbe09b9a9a77f3613ecdceeccdc17c996ff3a397e6d71c4dc7744dcff4cd99daeba6393717e6d25cc5dc03f56e866664c66692cab83637666a6ecd9db9370ff1be8f6666e6e6518dccc23c998aa99a9a9a9b7aece96e2cf5f48eae302dd336a58db76b797fb46a61e9745eb4c12eedb37db1afe6ccaeecda6eecd6bed977fb613fedceee63845fd5c81ef48b9ae88efdb2dff6c7fea6328eb663bbb667fbf62c7eceed85bdb4577660877664c77662afed8d9dda5b7b67efed839dd9798cd7ca3eea9969d8857d4a6554d4d15663b9b5f8a9db868d272edbb26d5b92563352f1bc6589c891a7404b7aa6177a55135ad13a2e541b4a31556b7aa377fa88390bfaa45dfcece34f3b3ad0177dd30ffdd2913ad4a51ef5e98ccee9822ee98a062af60c0d6994e6df9826f1b3a7ebf87d63148dd5034d632937744b77744f0f34a3393dd2829ea812cbac528dead4a0753c1316d44afd62629d13f5aa67d48e43a1a09276a7f79d7470da2967e2a31d39179f71835bba67f7e25edd4a3f9a7bb7761bb7a5616ac7944af716e35d4b751fa227b14def3476efeec37dba9ddb4ff7ee904ad9b92fba73df7109fe71bff14e0a2e23c561e28e31578c83ebd044af5cd7f55cdf9db973b77717b1043a7ddca5bb7203377423377613774d43b77537a98c669c51e3d85bb53837c66a6b9bb18c69fcdcba3b771fefc44ff7fffae71edccccddda35bb827f74385aba4b9df7155dac77562651a3449ad6ad397abb9ba6bc493cddceda67b9ae3b388ad896771d7726d577aed15c7d49b382e9a6a150f1ee4de62ff8ce309d3c587fae097319697ff6a837f7697fec5bffa955ffb0d1576e1b73cc674c7bfe9957ff71f3e96e03fd536c6a5e1777eef0ffe2bc6c0f96f174ebdeb76fec7ffc6128ebee3bbbe1763daf2fd148fafd3d857237f16579bb1ebd2752cf1dcdef90b7fe92efc55cc35f0c358dec88ffdc45ffb1b3ff5b7fe2e9e87eefd839ff13855af7eee1fe3aa77f414e7a6f10bffe42bbeea6bbeee1bbee90bdff26d5f061d94bf0b26f6498586fededdc4ffcfb85f820d71258ceb45195c88bb27b54efd1e96ae129ee3eef4e27ec2abbb8ebe0e2b77ed1fe2b5754cb3f133dad845da3bb66eeb676113b67641adf046f13b46ab1f530d63eaf7f8f9b08b106797fd4dbf1f86cf98eefd942bd6b24bfbe13e1cc257fcec7d2fec7c4fc65ff8c6671d6bf8b64fa7391a7ec26f389e72864eccd73da54f65c49f422fe63f7df7e3b54e2cb1ef4fbf49bf4fdffd78b51fcec279b80897e12ade5d2f0cc2f0f4fb54c6574c358a9faf980e6d09e358d2e97b7ffa8ea94f759ed21dc3245c879b30b54fe1f6d4f67097ca18a43abed2f780db70726a413f95d065876e8cc37d7808b3300f8f6111cb7f0a69acc73a631da7fb43abf97b80b645a756e3fe634caaf1a4530ff5e93e3442330c5219456a4327a66ec5cf21b76590ee8ebf0b6e5bfcf9f4af1de20c08e574bfd4cbb467a7bac72945d7fd22b2e353ce531fc53286a92da7b6759626d6510983a55d12cfa1a5433c3a5cf7d2fbde32a43e487d13bac912af4e90b6c4b62d97a7b62c9fa7fbbfffef3ffffa7fb85958cf</data>
+        <data format="XPM.GZ" length="10641">789c3d99597332b99286effb577cd1baeb98d061ab828a137361b0b1cd66f0c23631175acb18f002d88027e6bf1fa17c53f17575f9b1a4546e4a49e57ffdf3673e1efef9e75f7fed0feab0327fccabdafdf9c77e6fb7e7fff9dffffebfbffeaed7fe84ffb25afea7f6f77ffdf5b7affc317f44bd5a37cd7ae47ee4a25101ff24d6919f985bc455e6a211f906dcc0f87662ea3f6046ff67700bedd7176e54d3f84e626a2f9831ff9119f25ae0168d77ddc4d4ffc04cfdd5046c3275615b67a6fe36b5b7a23cdd26ce2a79f45fb98aac587ef9c64cf2ed090c796ec64cf2ec98b93091d7c419fc6d7acce8ffc84cfdd51338237d4cc64cfdfd2e31d9f3c64ce3fd17b38afa96065cc0bffac2598de3e13c31ebe316609e6f9f98c67f32937cb30517f0e73231d9db6726fddc2d338d578f609bc778e90a33e6eb32537f3f8aac527e7c83119fd226a6f9a6605e0f1b62f6b7be02633e4dfe517915f3bf33c39febc414af053823fdfd0733c6ff32233f317f0e7ff918bfbcc6fafb55628ae7106c907fe7c4b1dd3488d91ee7c0f0b7b6c47915f9576726fddc9c19fdafc1c83fdd4f4cf67966d8d76426ff689398fcd30317b41e15cb2f281e76c54cf2d49899ec1515b085bfa2fff3b4bebc22e6f5eb5f99d17e2266fbfc9619f9bb01437fe5c105c953cdc4a4ff196c497f354f4cf9a39861cf0733e2bf66c67c142fd5447c44c64cf6aa516292df61267b44ce0c799fcc9ae201fd9b19e43f3143fe7b626aaf3143df2d33c5b394ccda467fbe800b6217f3ad59cf32f8a74b9cf2a764267d5d0d5ca09eee99693e3d00c3dffa9eb8596d54233b66e4c79919f97707ce28ffc48299e6532d30d6a32a98e1df0633f2a50946bc9561a6f1a29d98e22598c99fe640dc82bee62b31ada75b30fced62bd6fea86c17afc254ef16e80d99e0766c4cb31533e081e0f7f8b2b66d8bf02db06f96bc60cfb6e98512f3262b647e9c464ff9919eb799798ead7108c7c34fbc464cf0b33c6b37ce48ff80473fd9831a39e2e99c91f1efe29e00f1bcf3bad7af02f9d176ac419ce43ae0e463dd039715a9f7d30f25b411efb577598491f9ddab1df433ee793583263fd7d25267f0f89d9dfe227318daf3263bfbc62a6f5a9315ff2ef1bb8a078cb3533dadbccd067ca4cfe1486d964d17fdc1ff96f3e9869bcbc66467eaf880be487bf031736ca7331bf5b9acf43e29b98eb93ab2626fff4c0a8d7f69a19fb1f8fe77afdc04cfe944d66d87b43ccf9eb1d33ecbf66a67cf23d66f2872ec05c5f4f60dedff6cc589f0730f4d19bc471bc5c31c39f3933c55bb61247fd24e59f4efe3589497fcb0c7b3e98614f8dd9c4fc11ef60f8db1d98a9bffb0123bf0df7877d1efa1696e2eb299fb4ca903f311e4523cbb2186f97832dcef347623e1f284bccf96076c45c5fec1533ce279299f451b760d8637266d4d7e7c4b45e07ccb49ec4048cf5a28fcc88ef6362f26f9d19f9b105f37a1933439f0766ec3f98bf803d02f6145c0f55628aff0333ce031e8cf397d83243bfd48e7c1a32d378d9481ced977330f4152366ecef4b62057d5d5c4f8569b4705e13c4bcbebd0417147ffd459c63ff361330ee0be24cccf1359f60f6c75762d2afc38c7a3803237eeec88cf8e789299f1a60ac2fcbf22cf6930d31c7c7dc81393f47ccc8c74662caaf2133e9a75ec145bd88e357cca8772d66d8fb9098e4ed9811bf1a33ad3f097f1616f1a478198e971826a67c2ac1d0572fc00afbeb3db1ce51bfe3fa5197f51ce3e50ae29ce3fb499ccea33566d4f73730df0ff7c47c5e501918f11098afa8e2bcf8c18cf5384f4cf5eb9b19f17c02733c96cca817bf60ce87c4a87f7760e4bf3e31a3beb788d9bfbac60cf95789633c0cec579c2faf6085fdca30233e37cc24cfb07c8776c70c7dfac4ba86f91538272e3db37331be75b02236b1de2bc3f725bb256ef279e98519f11811f3fa325d30ea9f381217b05f3830f607750fc67d524c99715e3931c3de3633fc5182b95e6d98717f413bc7438e98299f4501e6fafac60c7f8e13d37aaa3093fe32b5d37e2a07cc588f0b30e227ba89e9be6599e10ff88be3297b89a9be413f5da3f38efc6146ff6f66e8f70bcee1ff5730e61777606763fc4b4d6c6a58ef311f7583cfcbae499c57b19fbf80713f34126cf1bdab45cce7693d26e6f393fe06f3f7a63be222a3faa84a30ceb34210f37a521566ecbf6b30ea8dac33231e59e268afe881b1de0c8f877f64c18cf85699e19f5730e2233533fc7f4b9ce2f105ce21afcf8c7c843fb522fbc51b33e4ef99717e83be1af329f8d3d4d0ffc44ceda29938b697d0dfe4de477b487f9bf6eb097113fbb9cd98f1bdf104c6f9554f89f97ca40f60beeffc1017a8ef8af2c5f27ad2146fab6b88df2b33b5bb0a38873d83c4e40f1e0f7f4a0f86bf7417ec6ab4ffde3353bb7f243635aa872ee66f38cec01ff68798f3df3862ae8f36276e5571beb905737ecf89793f325562ae37fa9d98edd52bb0c2f9f88719f963c1d05f5e3193fd4a10870356b447be8031de8fc1cee79127c4d6211f62bc8dcd717e3737c4e9fcfa4a9cea25d96bb97ec843629abfcbece27ce21eccf9bf4a4cfd77ccd45f1ec10aed6730ea978bf1b3213e542fdc198cfa612ac4cd2aead10e8cfba3b9266ea1dd78623effe95b6293d7e3f72af9c40c7d1433f4bd4b4cedf760ecb7fa068c7c941b668c873d16fef27362a7101fd2d76596ea85267d5c9e91bdfa198cfdd596607c0f72e81ffc41f9fb0ae6ef1f7be2a04fd4571d88591f09f916f6fa19b1e37a12eb9dcbf9fbb3bd01637e3b246e727e0966f87f499ceecb33628bf529a7c4ae86fc5d80e11fdf00239f4df4a7735ccf4c0186ff6c85b885f9cb0db1873c1bcf0f3e0ff944df2b1f899bbc1fde13b7703e929fc441bf385e0a30fc53823db30263beb2047be84fed9ee36bbf89d91ed701433f736446fdf2600b7f5b62ce77fb0cc67a716bb085bc53628a8f61863f317fc1f29660be2f4cc07c9ef804431feb9821ef895839e8db4e4cf36b66fcfda14bac6bc8f70333f45930e33eb201e7907f66a6fe6e0c56988fc72bb40fc00ef225b1a9c1be07b0c27ea912d3dffb9a60d867df9921bfcd8cfbec2fb1657b3ec039e48fc03cbecf8cf95e98f1f7c15e62aa7f57ccf8fbd48019f51ef3bb1afeded902e7902f98f1fdf79919fefe484cf7ad3933be4fa476e43bf475d8ffec6d621a7fc74ce3ad4d4ce7f92d33ea11ec736cef8c19df67581fdcaf1ce2e16bf8de2198e97c353930433ee6f3b0c77e31e37ccef2b83e0ec16c4f9f19f751c38cfba864c6f7b53d33ed3f3e6346bdc2fa0a194afaa8c4741f9d32435e9138b65bcd4cfbb3ed258ef3d91d33d57f3b4b4cedf7cc549f6d9a8ff49b1ca4c0a3a496465ae9a497a57c952bf926d77223b79776f92e3fc2fb23bc05f8f3f28e3efd923bb99707f91d9e1f7994277996bff22a4869cb8ebc9637b22b6f43db5ede85bef7b217781fe6eb47a6efe403399423f920c772221fe5937c962f722a67e1e7b95cc8a5ac84f6aaacc9ba6cc84ce6b2295b8187b21052084177132d8cb0c2092f4af12a56e24d1ec53ae8f32b36622bdbe25d7c884ff12576622f0ee25bfc88a33889b3f81557a22d3a51c6b5b8115d69c4adb813f7a21724f4c5400ca51623f120d7622c26e2513c8967f122a66226e6622196a222aaa226ea82ce6099c883ed67d1941bd10a7a144a8abe124a05efae55383a2aab9cc89457a57a552bf5a6d66aa3b6ea3dbc3fd467dce7bfc493daa9bd3aa86ff5a38eeaa4ceea5796ea4ab555475dab1bd555b7e24736d59dba573dd50fa30762a7866aa41ed438ca98a847f5a49ed58b9aaa59b0bbade66aa19662a42aaaaa6aaaae1a62a1b210e9eb2035574dd552850ea686db8ed6f87bb7a868a7bd2ef5ab5ee937bdd61b75abb7fa5d7fe84ffda5777aaf0ffa5bff040fbf89913eca9518cb8e3ee9b3fed55751465b77f4b5bed15d7d1b9e3b7daf7bbaaf077aa847fa418ff5443fea27fdac5ff454cff45c2f82bfb642c8b9caf55257a28caa6887a877744d76444bd7c38d2b0b77eaa66ee942cc4d085838516b632e2751e34d695e4dd0c3bc9975488a8dd9c6b8bc9b77f3613ec3c8cc7c995d78f6e1a79d39986ff3638ee664cee6d75c99b6e9986b7363bae6d6dc997b1122637aa61fd7ebc00cc3b337a3f07e50da0cc4cc8c83940733318fe6c93c9b1733353333378ba0cdd12c4dc554c36d6f6deaa6813ba209730ec546ce4d1e94ce4cd3ecc2bb1ef46899c24a2b6c48101b2e41d686939db7a57d954b35b52bfb66d7a617f5189ba6dd047fd7e2dc87c0c3a0d38719d8ad7db71ff6d37ed99ddd4729c61eecb7fdb1477bb2e760498364443f0ced6f1815fc60afcc50ae6ddb76ecb5bdb15d7b6bef82046defc3d3b37d3bb0433bb20f766c27a667d7f631ca688415f520b6212eebf0fed48d20e349aef5d83edb9760c965fc34fcbbb7b3206d6e1776692bb66a6bf6641a96ce681ddb30fb5027d62a37c3a8556ebec3993b0fd7da969986cbea34687079664e3a11b606e3c2852b5c39c2c110f7d232e446436cddab5bd94d88cf406742b937b7761bb70d23efa306e109f27aeedd7db84ff7e576a6a1976e4f39263bee20d7eedbfdb883d9bba3f80c7ea9bb933bbb5f771564a8a089b9443778f7c5b583848ebb7637ae1b7c9ab9dbe88fd325f7c548de866af360db661424dee917776fdf5dcff5c3a8811bba917b706337718feec93dbb1737350d377373b7a03c151bb7749550f5daeeb2368dabba9aabbb86cbc2495abba66b85ed3294692fc2c16b1ab692b1ad9b9e9bd9c7f0ff05c5c51b6f43f395163e9cbd7d19ee9821eefed5d6fdca6bff664f7e6d2781277e63276e1edab6a1cfc62dcc462fe35eb1b66bb7f0effe432f4de63fcd36acc6a5bb0dbd7aa1f75778767ae9dfc3efafe2ef7b7e1ffa7d5d4685590e713ffcf63ffe189e6fd7f507d7e5fcf3273cdb30c349572e6bd49ffdafbfba8cf4ed30ae73e91f65849ffc75187f79df84b6769018bc7e9178f97d7cdf84d61bdff5b7fecedffb5eb0eedaf7fde0f2fb28e3187a0dc3730cfda08b1f054997f7f7e51d7a5fe6bcf4bbf20f7eec27fe5157fcd34577ff1c65f4e31cc7f8ee930e178e1adc44091d62df097e78f1533ff373bff0cb20bfe2e3f93dcc19e6b8d807ade9dd876e81a3d6b03ff8a4e6ebbee1333b0d2796a68f35c8b7a20eedd0bb08cf4fd2a51fadbb8eef16e9167e0eff4ae9ef4b512a3b2d75497f57b8cc3d8a3d3af60ccf8e2e232f310a32065197eb4b2c4a1be6a80629aef4657959cde52bfcd1a6b9cb95eb966f31063136be1399fdd50e724897a05bb90ebaa87263a77fffffbffffa0f9164497a</data>
     </image>
     <image>
         <name>image2</name>
         <data format="XPM.GZ" length="6001">789c3d98d9522b460e86efcf53504777a7a614e3dd959a0bc060035e31669b9a0bb51730c678df989a77cfef96d421247ca8b5fc92ba7d92bffe9cbd749a677ffefab5dec86632381b7cc8eaeccf703b9b1dfff3df7fffefd7ef5ce60c7f670bd9b3ecef7ffdfa1d32678333cae0af522ef29d71def8d2b86cfc9038447e331e987d9d58ed7de7b2dadbcae719b5d3dcd9ecf7c679655a189795799f38faf393f140996e94b319b31f8df3957c8cff9c7810b96a3c50e60be55cc6ec1abfec7ab8a79cea6767ab6f636cf5f3dad8ea0fb789355e30b6fef020b1da0fcaae275c39ab1e1e1bbbbe4262d533342eab9dae13abfdc3d8f487aeb2ebe76767d1f87963ef5fd6d9ece7c665657e3cf1799a273f18fb3cb789a3beeec6d8f5af945dbf8871deec7d67ebc7c2d8f4f22cb1eaf9311e987d9258ed2367ab7fa99cfaf1eeac7609c6a69fbb89b53f7563ef4727b1da73c69eef32b1da5f94f31965a6c8691f588c4dbfd48c7dbf76ce66a7c4311e358dad1f524dacf637e59ced1bb5136b3d5367ad9f5ac6b61f5475b6fd38248e76c9185b7fe822b1eaef197b7f3e136b7cd3effd09afce41cf5f19fb3c5ace6aa7983f9bf6452ac6de8f5162cdf7a29cde8799b3d5ff6cecf7efdbd9ec2563dfc7b9b3f587126bbeacb1e9a75e62ed9fc71fa81ea92be7bd9e65628d977336fd0563eb0f579dad7f2de3b29d7f30f67c711fb215d7136ace763fae8cbd7f4767d37b9358ed3fca5e3f7f2556bd0767cb3f36f67d1a385bfd569fd72f6f8987d1ee6c7ac23e71b493cea352f07d7a491ced12fb933bcff9fbfa6a6c7a65e66cf36828bbbeb04dacfd5b199b1eba74b6fedf1bfb7e1c9cadfea5b1f7b3e36cfef9c4aaef56b9e0f98fcea6b796389e0f4de382d96f126b3fe27ee5d2fce4d6d8eb3d37f6fdbd76b6fa878935de93b2d7270fcea6a79858cf4f8dbdbe4662d53b741e14e2f90be38a9dbf4eacfb5171b6f31de3a1e5ff4eacf9e3e7511ef3b2f96f8c5d6f4139f5bbe16cfbb932b6fa696fecf5349db59e3032f67a2689f57cddd9ce4f958be776be9658ebbf71b6f38fc6de2fcd2f5e5fb830b6fae4ced8ea916c62dd9f0f678b1f94bd1ef94aacf3da3a5bfefbc46a777fab8fc689d5de35f6f9c5fd2f640b05dbcf86b2e70b3fce16af6c6c7ae53db19eff74363d8bc4da0f67eb0fad9cf53ce7126bbcb9b1efd3d1d9cebf26567b4fb9e4fd89f32a88d71b06ce66ff34f6793d3b5bfdef89d5be36f67a76ce564f39b1da4bce43eddf9d72c9f76be26cfeb789d53e7436ff91b1f733be87c5acdbb9686c76ce38ab5d96c6a68f7689751e5fce966f6d6c7ac2d859ed21def762aa3fec8cbdbfe7c63edfbbc45affd6d9f23d195b3fe923b19eef3adbf94fe5b2efffccd9f4c679947229de5439d98bc6deaf92b3d95f138fa2ffc0d8ea0df1fd2b8574fec7d8f55c258efef2616c7ae8d1d9e2c5fee38f7b43cbf7ae5cf1f91612477bb8761e15238bb1d5132689357ffcefb372a8b8de7b67b3bf386b3cda185bfdd47756bbec8dadde10cf57f26ea78ab1e9e37367b57336b1fab3b2b8def83e550662fa649e58eba91b8bdabb1b26160e3ce0218f78cceffcc113fee429fef9c5337c7ff39c17bc846582af39af78cd1bde763731df8677bce7031ff9872ff892afb8cad77cc335aef32dbeeef89e1bdce4167ed386adc35d9c7ee01e3f44ff47eec3ff899f91b3c52ffcca6f9ce173ce728ef35ce02297f05319bf7be50ae2bee0dc1bef88cd7f83cafba8eb8a88845b14b844031ad288c6f44e1f34e137fa44ee6b6ed094be6846df88d2e715cdd59f167ca4254edcd08ad6b4a12ded28d09e0e74a41fe86dd305f7e91267eafc4a57885425a12a8fa3ff135dd30db886c8759aa1ca3addd21ddd53951ad4a4166a5b529bdac8dfa13d7297a94b0fd4e369f43ff57dc22fa8f791fa34e25b7aa2677aa1577aa30c9df39cb298d152274039cad3150dd1c9776a47ff211f68498553975073910aa0364fa94465aa0843fb2b1d857823c27d0950b34505797451f52ff92003be95217ed7a4aa8c507755c6f22e1ff42113f99429ede44b66f48c492fe59b6b72ea89f02afaa343b482e62f78f7a014ded496057dd2a32c29c80adf4b59d34a3694e505f5309b2ff4d0f2a3331df438275bc4cc4125b64b76b2e73b643dc8024adb3493a3fcc8858ce15fe51bb9c446d4e839eef79554e51a14d09b3636b3cf5f31f717a69fc50cdb98213443c10dcfa52675e8bcc5e97b5e46ff5bb9433fa6728fcaaad8a6be4c658f0dda4a439ad2a21769c3a3814daed1443ab8050dd94a97afa51af52fe8809343587bf07d40b706d2931d8d642d8fd297963c207f40bc23b7e409353c23ff0a3bacf39fa3b217799537c9a0febe9c43f71e9dcf626a39c11f74a881c91631a1a21cb14fd82129a19b2b91e83f96326ac3ecf95b3252917a60da7109678b98c4919e0261b773320912023ab20c03dc8a3cf2af63ff73d4912e5d85217fa303cf61848c35dc8470ea12badf44e426faf1888a3e70977a50b285da0bf5c75635b077537c8454b14b1bec721ffbbfc2366fd1f11aedc3587ab486f7845af09a8577dcc9a2d47911ebefe35e35691d3ee880fdeaf3166fd14c1ec204a74af0df05fc1bb3dc63b3dbb8b53dd83ee50691ecff4fe1a56ae34e8c30a34fd4b0a6676cef17b47e4a8f9bf2c1af612a0ff406db842e90ad717a63907f1ffd2788dae67af8a229269b0933d480b72f7ccb2eccd1c53db41c51f951821cb81d16e8de90af4fbb12fd0f889943059f88104e5b80aeb730d53195b16b3dec47239ceeffe95435ac30bd4beae2055986b5ea87822a5ebe06ee652e6c4eb700b358e06b0eef1dfcaaa77b2b6fd4099f611b7698247a110eda7fbc9c630c768f19d730f52ee2bf862366dec6bd20285923f712513be107fe1738d5c01b7d7a95a27fb80c57f0afe2b737785f6fa1af18f05606dc16fe0eb530c44f5fb0e28e40770df716d5867ab8d5fe87bb704f0bbc8105bc22d7786df0e663f7bba7379f0ea181cc43dc864e68483634d1834bbe0c2da87e228efeb7618daf76b8c21b56c31d29a136dde82ddefc1c174307113ba78d42f62a7ad8c50eddd33ce8fbbf0e0fb408f7bc878a1eb6fa0dd3bcc6e7c07778c4cf3778d1d7127f4fe8c9e9f303afd03ef4a13bfa87a7987f8d78cfdcc1fb38c73754e27daba2ceabd00a2fd0fb125e4f1cead073dddd40f53af463fe157e7a0b99b0c64b7efaf43cbde647be4435e7211bb2e8d765c885163e217a218fd8b81fe13eb45173e1f7fffffef50feb776dab</data>
-    </image>
-    <image>
-        <name>image3</name>
-        <data format="XPM.GZ" length="646">789c6dd2c10ac2300c00d07bbf2234b7229d1be245fc04c5a3201e4615f430059d0711ff5ddb2e6bb236ec90eed134cb5a19d8ef36602af5ecdbfeeac05dda0798d3abebde87e3faa374d3807fa0d633a52d38d8de6f679fe33fc776e196f53cd010188256a3600a292882096246517815ca99884606e18044a3a40d91824820924265a7923a2e8bcd05f33db1173e002913175f2a6be6d3294871a2d95fa00e8a94ee017b69d339d90df1e77c57ea072ede6758</data>
     </image>
 </images>
 </UI>
