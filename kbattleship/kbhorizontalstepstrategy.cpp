@@ -85,7 +85,7 @@ bool KBHorizontalStepStrategy::advance()
 		}
 
 		if(col == m_start.x() && row == m_start.y())
-			break;
+			row = (row + 1) % m_fieldRect.height();
 	}
 
 	if(enemyFieldStateAt(col, row) != SHOT)
@@ -166,7 +166,7 @@ bool KBHorizontalStepStrategy::hasMoreShots()
 			if(m_child->hasMoreShots())
 				return true;
 
-			m_passes++;					
+			m_passes++;
 			delete m_child;
 
 			m_child = new KBHorizontalStepStrategy(this);
@@ -180,7 +180,7 @@ bool KBHorizontalStepStrategy::hasMoreShots()
 			if(m_child->hasMoreShots())
 				return true;
 
-			m_passes++;					
+			m_passes++;
 			delete m_child;
 
 			m_child = new KBHorizontalStepStrategy(this);

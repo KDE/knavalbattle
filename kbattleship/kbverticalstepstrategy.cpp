@@ -87,7 +87,7 @@ bool KBVerticalStepStrategy::advance()
 		}
 
 		if(col == m_start.x() && row == m_start.y())
-			break;
+			col = (col + 1) % m_fieldRect.width();
 	}
 
 	if(enemyFieldStateAt(col, row) != SHOT)
@@ -169,7 +169,7 @@ bool KBVerticalStepStrategy::hasMoreShots()
 				if(m_child->hasMoreShots())
 					return true;
 
-				m_passes++;					
+				m_passes++;
 				delete m_child;
 
 				m_child = new KBVerticalStepStrategy(this);
@@ -183,7 +183,7 @@ bool KBVerticalStepStrategy::hasMoreShots()
 				if(m_child->hasMoreShots())
 					return true;
 
-				m_passes++;					
+				m_passes++;
 				delete m_child;
 
 				m_child = new KBVerticalStepStrategy(this);

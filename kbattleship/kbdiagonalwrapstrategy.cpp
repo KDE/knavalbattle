@@ -63,7 +63,7 @@ void KBDiagonalWrapStrategy::init(KBattleField *field, const QRect &field_rect)
 
 		case 2:
 			m_direction = KBDiagonalShotStrategy::LEFTDOWN;
-			m_column = m_fieldRect.width() - 1; 
+			m_column = m_fieldRect.width() - 1;
 			break;
 
 		default:

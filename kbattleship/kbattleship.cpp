@@ -194,9 +194,6 @@ void KBattleshipApp::slotEnemyFieldClick(int fieldx, int fieldy)
 			{
 				m_stat->setShot();
 
-				if(m_aiPlayer != 0)
-					m_aiPlayer->slotRequestShot();
-
 				int showstate;
 
 				if(m_enemyshiplist->shipTypeAt(fieldx, fieldy) == 99)
@@ -341,6 +338,8 @@ void KBattleshipApp::slotEnemyFieldClick(int fieldx, int fieldy)
 				}
 				return;
 			}
+			else if(m_aiPlaying && m_aiPlayer != 0)
+				m_aiPlayer->slotRequestShot();
 		}
 	}
 }
