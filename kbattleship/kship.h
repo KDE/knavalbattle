@@ -24,7 +24,7 @@ class KShip : public QObject
 {
     Q_OBJECT
     public:
-        KShip(int shipxstart, int shipxstop, int shipystart, int shipxstart, int shiplength);
+        KShip(int, int, int, int, int);
         ~KShip();
     
         int shipxstart();
