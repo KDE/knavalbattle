@@ -35,6 +35,7 @@ class KBattleField : public KGridWidget
         void drawEnemyField();
         void clearOwnField();
 	void clearEnemyField();
+	void clearPreviewField();
 
 	void setDrawField(bool draw) { m_canDraw = draw; }
 	
@@ -44,20 +45,29 @@ class KBattleField : public KGridWidget
         void changeEnemyData(int &fieldx, int &fieldy, int type) { m_enemyfield[fieldx][fieldy] = type; }
         int getEnemyState(int fieldx, int fieldy) { return m_enemyfield[fieldx][fieldy]; }
 
+        void changePreviewData(int fieldx, int &fieldy, int type, bool rotate);
+
 	QWidget *drawParent() { return m_parent_widget; }
 
 	QRect getOwnRect();
 	QRect getEnemyRect();
 	
-	int gridSize() { return 30; }
+	int gridSize() { return 32; }
 
     private:
-    	int ownXPosition();
+	int ownXPosition();
+	int ownYPosition();
 	int enemyXPosition();
+	int enemyYPosition();
+
 	int rectX();
 	
         int m_ownfield[15][15];
         int m_enemyfield[15][15];
+
+	int m_newfield[15][15];
+	bool m_newdata[15][15];
+	bool m_rotatedata[15][15];
 
 	int m_ownfieldx;
 	int m_ownfieldy;

@@ -35,13 +35,12 @@ class KBattleshipView : public QWidget
 
 	KBattleField *field() { return battlefield; }
 	
-	void paintEnemyField();
-        void paintOwnField();
-	
         void startDrawing();
         void clearField();
         void changeOwnFieldData(int fieldx, int fieldy, int type);
         void changeEnemyFieldData(int fieldx, int fieldy, int type);
+
+	void previewShip(int fieldx, int fieldy, int type, bool rotate);
 
 	int getEnemyFieldState(int &fieldx, int &fieldy);
 
@@ -49,11 +48,10 @@ class KBattleshipView : public QWidget
         void enemyFieldClicked(int, int);
         void ownFieldClicked(int, int, int);
 
-    protected:
-        void paintEvent(QPaintEvent *);
-        void mouseReleaseEvent(QMouseEvent *event);
+	void mouseOverField(int, int, bool);
 
     private:
+	bool eventFilter(QObject *object, QEvent *event);
         KBattleField *battlefield;
 	bool m_drawGrid;
 };

@@ -16,11 +16,15 @@
  ***************************************************************************/
 
 #include <klocale.h>
+#include <kdebug.h>
+#include "kbattleship.h"
 #include "kbattleshipview.moc"
 
 KBattleshipView::KBattleshipView(QWidget *parent, const char *name, bool draw) : QWidget(parent, name), m_drawGrid(draw)
 {
     setMinimumSize(600, 300);
+    setMouseTracking(true);
+    installEventFilter(this);
 }
 
 KBattleshipView::~KBattleshipView()
@@ -43,38 +47,54 @@ int KBattleshipView::getEnemyFieldState(int &fieldx, int &fieldy)
     return battlefield->getEnemyState(fieldx, fieldy);
 }
 
+void KBattleshipView::previewShip(int fieldx, int fieldy, int type, bool rotate)
+{
+    battlefield->changePreviewData(fieldx, fieldy, type, rotate);
+}
+
 void KBattleshipView::changeOwnFieldData(int fieldx, int fieldy, int type)
 {
     battlefield->changeOwnData(fieldx, fieldy, type);
-    paintOwnField();
+    battlefield->drawOwnField();
 }
 
 void KBattleshipView::changeEnemyFieldData(int fieldx, int fieldy, int type)
 {
     battlefield->changeEnemyData(fieldx, fieldy, type);
-    paintEnemyField();
+    battlefield->drawEnemyField();
 }
 
-void KBattleshipView::mouseReleaseEvent(QMouseEvent *event)
+bool KBattleshipView::eventFilter(QObject *object, QEvent *event)
 {
-    if(event->button() != LeftButton && event->button() != RightButton)
-	return;
-
-    QPoint point(event->x(), event->y());
-    QRect ownRect = battlefield->getOwnRect();
-    QRect enemyRect = battlefield->getEnemyRect();
-    
-    int fieldx = 0;
-    int fieldy = 0;
-    
-    if(ownRect.contains(point))
+    if(event->type() == QEvent::MouseButtonRelease)
     {
+	QMouseEvent *mouseEvent = static_cast<QMouseEvent *>(event);
+	
+	if(mouseEvent->button() != LeftButton && mouseEvent->button() != RightButton)
+	    return false;
+
+	QPoint point(mouseEvent->x(), mouseEvent->y());
+	QRect ownRect = battlefield->getOwnRect();
+	QRect enemyRect = battlefield->getEnemyRect();
+    
+	QRect newRect;
+    
+	int fieldx = 0;
+	int fieldy = 0;
+    
+    	if(ownRect.contains(point))
+	    newRect = ownRect;
+	else if(enemyRect.contains(point))
+	    newRect = enemyRect;
+	else
+	    return false;
+	
 	int j = -1;
 	
-	for(int i = ownRect.left(); i <= ownRect.right(); i += battlefield->gridSize())
+	for(int i = newRect.left(); i <= newRect.right(); i += battlefield->gridSize())
 	{
 	    j++;
-	    QRect tempRect(i, ownRect.top(), battlefield->gridSize(), ownRect.bottom() - ownRect.top());
+	    QRect tempRect(i, newRect.top(), battlefield->gridSize(), newRect.bottom() - newRect.top());
 
 	    if(tempRect.contains(point))
 	    {
@@ -85,10 +105,10 @@ void KBattleshipView::mouseReleaseEvent(QMouseEvent *event)
 
 	j = -1;
 	
-	for(int i = ownRect.top(); i <= ownRect.bottom(); i += battlefield->gridSize())
+	for(int i = newRect.top(); i <= newRect.bottom(); i += battlefield->gridSize())
 	{
 	    j++;
-	    QRect tempRect(ownRect.left(), i, ownRect.right() - ownRect.left(), battlefield->gridSize());
+	    QRect tempRect(newRect.left(), i, newRect.right() - newRect.left(), battlefield->gridSize());
 
 	    if(tempRect.contains(point))
 	    {
@@ -97,54 +117,66 @@ void KBattleshipView::mouseReleaseEvent(QMouseEvent *event)
 	    }	        
 	}
 	
-	emit ownFieldClicked(fieldx, fieldy, event->button());
+	if(newRect == ownRect)
+	    emit ownFieldClicked(fieldx, fieldy, mouseEvent->button());
+	else if(newRect == enemyRect)
+	    emit enemyFieldClicked(fieldx, fieldy);
+
+	return true;
     }
-    else if(enemyRect.contains(point))
+    else if(event->type() == QEvent::MouseMove)
     {
-	int j = -1;
+	QMouseEvent *mouseEvent = static_cast<QMouseEvent *>(event);
 	
-	for(int i = enemyRect.left(); i <= enemyRect.right(); i += battlefield->gridSize())
+	QPoint point(mouseEvent->x(), mouseEvent->y());
+	QRect ownRect = battlefield->getOwnRect();
+
+	int fieldx = 0;
+	int fieldy = 0;
+
+	if(ownRect.contains(point))
 	{
-	    j++;
-	    QRect tempRect(i, enemyRect.top(), battlefield->gridSize(), enemyRect.bottom() - enemyRect.top());
-
-	    if(tempRect.contains(point))
-	    {
-		fieldx = j;
-		break;
-	    }	        
-	}
-
-	j = -1;
+	    int j = -1;
 	
-	for(int i = enemyRect.top(); i <= enemyRect.bottom(); i += battlefield->gridSize())
-	{
-	    j++;
-	    QRect tempRect(enemyRect.left(), i, enemyRect.right() - enemyRect.left(), battlefield->gridSize());
-
-	    if(tempRect.contains(point))
+	    for(int i = ownRect.left(); i <= ownRect.right(); i += battlefield->gridSize())
 	    {
-		fieldy = j;
-		break;
-	    }	        
-	}
+		j++;
+		QRect tempRect(i, ownRect.top(), battlefield->gridSize(), ownRect.bottom() - ownRect.top());
+
+		if(tempRect.contains(point))
+		{
+		    fieldx = j;
+		    break;
+		}	        
+	    }
+
+	    j = -1;
 	
-	emit enemyFieldClicked(fieldx, fieldy);
+	    for(int i = ownRect.top(); i <= ownRect.bottom(); i += battlefield->gridSize())
+	    {
+		j++;
+		QRect tempRect(ownRect.left(), i, ownRect.right() - ownRect.left(), battlefield->gridSize());
+
+		if(tempRect.contains(point))
+		{
+		    fieldy = j;
+		    break;
+		}	        
+	    }
+	
+	    emit mouseOverField(fieldx, fieldy, mouseEvent->state() & ShiftButton);
+	}
+	else
+	    battlefield->drawOwnField();
+	
+	return true;
     }
-}
+    else if(event->type() == QEvent::Paint)
+    { 
+	battlefield->drawOwnField();
+	battlefield->drawEnemyField();
+	return true;
+    }
 
-void KBattleshipView::paintOwnField()
-{
-    battlefield->drawOwnField();
-}
-
-void KBattleshipView::paintEnemyField()
-{
-    battlefield->drawEnemyField();
-}
-
-void KBattleshipView::paintEvent(QPaintEvent *)
-{
-    battlefield->drawOwnField();
-    battlefield->drawEnemyField();
+    return QWidget::eventFilter(object, event);
 }

@@ -36,7 +36,8 @@ class KGridWidget : public QWidget
 	void enableGrid() { m_drawGrid = true; }
 	void disableGrid() { m_drawGrid = false; }
 
-    protected:    
+    protected:
+	void cleanBuffer();
 	void finished();
         void setValues(int x, int y, int size);
         void drawSquare();

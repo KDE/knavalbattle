@@ -23,7 +23,8 @@
 KGridWidget::KGridWidget(QWidget *parent, const char *name, bool draw) : QWidget(parent, name), m_drawGrid(draw)
 {
     doubleBuffer = new QPixmap(parent->width(), parent->height());
-    doubleBuffer->fill(QApplication::palette().color(QPalette::Normal, QColorGroup::Background));
+
+    cleanBuffer();
     cacheImages();
 }
 
@@ -382,4 +383,9 @@ void KGridWidget::finished()
     painter.begin(static_cast<QWidget *>(parent()->parent()));
     painter.drawPixmap(0, 0, *doubleBuffer);
     painter.end();
+}
+
+void KGridWidget::cleanBuffer()
+{
+    doubleBuffer->fill(QApplication::palette().color(QPalette::Normal, QColorGroup::Background));
 }

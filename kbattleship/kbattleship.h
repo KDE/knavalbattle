@@ -57,7 +57,8 @@ class KBattleshipApp : public KMainWindow
         ~KBattleshipApp();
 
         void init();
-	
+
+	KShipList *shipList() { return ownshiplist; }	
 	KShip *getXYShip(int fieldx, int fieldy);
 
     protected:
@@ -92,6 +93,7 @@ class KBattleshipApp : public KMainWindow
         void slotChangeEnemyPlayer(const QString &text);
         void startBattleshipServer();
         void connectToBattleshipServer();
+        void placeShipPreview(int fieldx, int fieldy, bool shift);
         void placeShip(int fieldx, int fieldy, int button);
         void enemyClick(int fieldx, int fieldy);
         void sendMessage(int fieldx, int fieldy, int state, bool won = false);

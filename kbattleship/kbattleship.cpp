@@ -119,6 +119,7 @@ void KBattleshipApp::initView()
     connect(ownshiplist, SIGNAL(lastShipAdded()), this, SLOT(sendShipList()));
     connect(view, SIGNAL(enemyFieldClicked(int, int)), this, SLOT(enemyClick(int, int)));
     connect(view, SIGNAL(ownFieldClicked(int, int, int)), this, SLOT(placeShip(int, int, int)));
+    connect(view, SIGNAL(mouseOverField(int, int, bool)), this, SLOT(placeShipPreview(int, int, bool)));
 
     setCaption(i18n("KBattleship 0.5"), false);
 }
@@ -169,22 +170,70 @@ void KBattleshipApp::enemyClick(int fieldx, int fieldy)
     }
 }
 
+void KBattleshipApp::placeShipPreview(int fieldx, int fieldy, bool shift)
+{
+    int xadd = 0, yadd = 0;
+    
+    if(haveCS && connection != 0)
+    {
+        if(connection->haveEnemy())
+	{
+	    if(place && ownshiplist->canAddShips())
+	    {
+		switch(ownshiplist->shipCount())
+		{
+		    case 4:
+			for(int i = 0; i <= 3; i++)
+			{
+			    if(!shift)
+				xadd = i;
+			    else
+				yadd = i;
+			    view->previewShip(fieldx + xadd, fieldy + yadd, KBattleField::SHIP4P1 + i, shift);
+			}
+			break;
+		
+		    case 3:
+			for(int i = 0; i <= 2; i++)
+			{
+			    if(!shift)
+				xadd = i;
+			    else
+				yadd = i;
+		    	    view->previewShip(fieldx + xadd, fieldy + yadd, KBattleField::SHIP3P1 + i, shift);
+			}
+			break;
+		
+		    case 2:
+			for(int i = 0; i <= 1; i++)
+			{
+			    if(!shift)
+				xadd = i;
+			    else
+				yadd = i;
+			    view->previewShip(fieldx + xadd, fieldy + yadd, KBattleField::SHIP2P1 + i, shift);
+			}
+			break;
+			
+		    case 1:
+			view->previewShip(fieldx, fieldy, KBattleField::SHIP1P1, shift);
+			break;
+		}
+		
+		view->field()->drawOwnField();
+	    }
+	}
+    }
+}
+
 void KBattleshipApp::placeShip(int fieldx, int fieldy, int button)
 {
     if(haveCS && connection != 0)
     {
         if(connection->haveEnemy())
 	{
-	    if(connection->getType() == KonnectionHandling::CLIENT)
-	    {
-		if(place && ownshiplist->canAddShips())
-		    ownshiplist->addNewShip(button, fieldx, fieldy);
-	    }
-	    else
-	    {
-		if(place && ownshiplist->canAddShips())
-		    ownshiplist->addNewShip(button, fieldx, fieldy);
-	    }
+	    if(place && ownshiplist->canAddShips())
+		ownshiplist->addNewShip(button, fieldx, fieldy);
         }
     }
 }
@@ -461,7 +510,7 @@ void KBattleshipApp::askReplay()
     switch(KMessageBox::questionYesNo(this, i18n("The client asks for restarting the game. Do you accept?")))
     {
 	case KMessageBox::Yes:
-	    slotStatusMsg(i18n("Please place your ships"));
+	    slotStatusMsg(i18n("Please place your ships. Use the \"Shift\" to preview the ships vertically."));
 	    place = true;
     	    stat->clear();
             break;
@@ -489,7 +538,7 @@ void KBattleshipApp::resetServer(bool status)
 	{
 	    case KMessageBox::Yes:
     		stat->clear();
-		slotStatusMsg(i18n("Please place your ships"));
+		slotStatusMsg(i18n("Please place your ships. Use the \"Shift\" to preview the ships vertically."));
 		place = true;
 		msg->addReplayRequest();
 		if(!connection->writeable())
@@ -543,8 +592,8 @@ void KBattleshipApp::deleteLists(bool placechange)
     enemyshiplist->clear();
     view->clearField();
     view->field()->setDrawField(true);
-    view->paintOwnField();
-    view->paintEnemyField();
+    view->field()->drawOwnField();
+    view->field()->drawEnemyField();
     connection->clear();
 }
 
