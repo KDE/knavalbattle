@@ -82,7 +82,6 @@ void KonnectionHandling::serverGotNewClient()
 
 void KonnectionHandling::serverWroteToClient()
 {
-    kdDebug() << "Sent something!" << endl;
 }
 
 void KonnectionHandling::serverLostClient()

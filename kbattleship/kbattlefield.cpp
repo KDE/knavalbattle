@@ -34,16 +34,7 @@ KBattleField::KBattleField( QWidget *, const KBattleFieldType &type, QPainter *p
     {
     	for( j = 0; j != 8; j++ ) // 1 to 9
 	{
-	    switch( internalType )
-    	    {
-		case KBattleFieldType::OWNFIELD:
-		    FieldData[ i ][ j ] = KBattleField::WATER;
-		    break;
-		    
-		case KBattleFieldType::ENEMYFIELD:
-		    FieldData[ i ][ j ] = KBattleField::FREE;
-		    break;
-	    }
+	    FieldData[ i ][ j ] = KBattleField::FREE;
     	}
     }
 
@@ -62,16 +53,7 @@ void KBattleField::clearField()
     {
 	for( j = 0; j != 8; j++ ) // 1 to 9
     	{
-	    switch( internalType )
-    	    {
-		case KBattleFieldType::OWNFIELD:
-		    FieldData[ i ][ j ] = KBattleField::WATER;
-		    break;
-		    
-		case KBattleFieldType::ENEMYFIELD:
-		    FieldData[ i ][ j ] = KBattleField::FREE;
-		    break;
-	    }
+	    FieldData[ i ][ j ] = KBattleField::FREE;
 	}
     }
 }

@@ -122,6 +122,7 @@ void KBattleshipApp::enemyClick( int fieldx, int fieldy )
 	    
 		changeEnemyFieldData( fieldx, fieldy, showstate );
 		sendMessage( fieldx, fieldy, showstate );
+		slotStatusMsg( i18n( "Waiting for enemy to shoot.." ) );
 	    }
 	}
     }

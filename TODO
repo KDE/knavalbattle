@@ -1,19 +1,12 @@
-KBattleship ( alpha -> beta ) TODO List:
+KBattleship ( beta -> final ) TODO List:
     p = partially
     x = ready
 
-    o API and initial Framework       	[x]
-    o Communication Client <-> Server 	[p]
-    o Communication Server <-> Client 	[x]
-    o Sound Support		      	[x]
-    o QDom XML Based Messaging		[x]
-    o Chat				[x]
-    o Icon				[x]
-    o Sounds				[p]
-    o Ship-GFX				[x]
-    o Look'n'Feel			[p]
+    o Game Rules			[ ]
     o Mouse Handling			[p]
-    o Ship Placing			[x]
     o Tooltips				[p]
-    o Dialogs (.ui based)		[x]
     o Better Error Processing		[ ]
+    o Fast Drawing			[ ]
+    o Rework Ship Placing		[ ]
+    o Translation			[ ]
+    o Documentation			[ ]
