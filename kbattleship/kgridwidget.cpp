@@ -18,7 +18,7 @@
 #include <qpainter.h>
 #include <qimage.h>
 
-#include <kstddirs.h>
+#include <kstandarddirs.h>
 #include <kimageeffect.h>
 #include <kdebug.h>
 

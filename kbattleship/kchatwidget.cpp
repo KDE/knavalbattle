@@ -15,7 +15,7 @@
  *                                                                         *
  ***************************************************************************/
 
-#include <kapp.h>
+#include <kapplication.h>
 #include "kchatwidget.moc"
 
 KChatWidget::KChatWidget(QWidget *parent, const char *name) : chatDlg(parent, name)
