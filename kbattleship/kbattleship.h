@@ -70,6 +70,7 @@ class KBattleshipApp : public KMainWindow
 	void initShipPlacing();
 
     public slots:
+	void sendGreet();
 	void resetClient();
 	void resetServer();
 	void setPlaceable();
@@ -119,10 +120,10 @@ class KBattleshipApp : public KMainWindow
 	KShipList *enemyshiplist;
 	bool haveCS;
 	bool place;
-	QString currentNickname;
+	QString ownNickname;
     	
     signals:
-	void battleFieldState( int fieldx, int fieldy, int state );
+	void battleFieldState( int, int, int );
 };
 
 #endif

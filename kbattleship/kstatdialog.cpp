@@ -40,3 +40,10 @@ void KStatDialog::setWater()
 {
     WaterLCD->display( WaterLCD->intValue() + 1 );
 }
+
+void KStatDialog::clear()
+{
+    ShotLCD->display( 0 );
+    HitLCD->display( 0 );
+    WaterLCD->display( 0 );
+}

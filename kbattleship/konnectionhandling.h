@@ -67,10 +67,11 @@ class KonnectionHandling : public QObject
 	void setPlaceable();
 	void gotEnemyShipList( QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString );
 	void gotChatMessage( QString, QString );
+	void enemyNickname( QString );
 	void ownFieldDataChanged( int, int, int );
-	void enemyFieldDataChanged( int, int, int );
 	void changeConnectText();
-	void sendMessage( KMessage * );
+	void giveEnemyName();
+	void serverFailure();
 };
 
 #endif

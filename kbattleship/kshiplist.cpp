@@ -135,12 +135,7 @@ void KShipList::addNewShip( int button, int fieldx, int fieldy )
     bool xokay = true;
     bool yokay = true;
 
-    if( shipCount() == 4 )
-    {
-    	xokay = true;
-	yokay = true;
-    }
-    else
+    if( shipCount() != 4 )
     {
 	for( shipiterator = shiplist.first(); shipiterator != 0; shipiterator = shiplist.next() )
 	{
@@ -181,74 +176,56 @@ void KShipList::addNewShip( int button, int fieldx, int fieldy )
 		}
 	    }
 
-	    int neighbourp, neighbourm;
-	    if( shipCount() != 1 )
-		neighbourp = getXYShipType( fieldx, fieldy + shipCount() + 1 );
-	    else
-		neighbourp = getXYShipType( fieldx, fieldy + shipCount() );
-		
-	    neighbourm = getXYShipType( fieldx, fieldy - 1 );
-		
-	    if( neighbourp != 99 && neighbourm != 99 )
+	    // CHECK METHODS
+	    // wir nehmen an ystart == ystop
+	    if( button == LeftButton )
 	    {
-	        xokay = false;
-		yokay = false;
-	        break;
-	    }
-
-	    if( neighbourp != 99 && neighbourm == 99 )
-	    {
-	        xokay = false;
-		yokay = false;
-	        break;
-	    }
-		
-	    if( neighbourp == 99 && neighbourm != 99 )
-	    {
-		xokay = false;
-		yokay = false;
-	        break;
-	    }
-	    
-	    if( shipCount() != 1 )
-		neighbourp = getXYShipType( fieldx + shipCount() + 1, fieldy );
-	    else
+		int neighbourp, neighbourm, neighbourt, neighbourb;
+	    	tempx = 0;
+		if( fieldx > 0 )
+		    neighbourm = getXYShipType( fieldx - 1, fieldy );
+		else
+		    neighbourm = 99;
+			
 		neighbourp = getXYShipType( fieldx + shipCount(), fieldy );
-		
-	    neighbourm = getXYShipType( fieldx - 1, fieldy );
 
-	    if( neighbourp != 99 && neighbourm != 99 )
-	    {
-	        xokay = false;
-		yokay = false;
-	        break;
+		if( neighbourm == 99 && neighbourp == 99 )
+		{
+		    for( tempx = fieldx; tempx <= ( fieldx + shipCount() ); tempx++ )
+		    {
+			if( fieldy > 0 )
+			    neighbourt = getXYShipType( tempx, fieldy - 1 );
+			else
+			    neighbourt = 99;
+			neighbourb = getXYShipType( tempx, fieldy + 1 );
+			if( neighbourt != 99 || neighbourb != 99 )
+			{
+			    xokay = false;
+			    yokay = false;
+			    break;
+			}
+		    }
+		    break;
+		}
+		else
+		{
+		    xokay = false;
+		    yokay = false;
+		    break;
+		}
 	    }
+	}
 
-	    if( neighbourp != 99 && neighbourm == 99 )
-	    {
-	        xokay = false;
-		yokay = false;
-	        break;
-	    }
-		
-	    if( neighbourp == 99 && neighbourm != 99 )
-	    {
-		xokay = false;
-		yokay = false;
-	        break;
-	    }
+	if( xokay && !yokay )
+	{
+	    xokay = true;
+	    yokay = true;
+	}
 	    
-	    if( xokay && !yokay )
-	    {
-		xokay = true;
-		yokay = true;
-	    }
-	    
-	    if( yokay && !xokay )
-	    {
-		xokay = true;
-		yokay = true;
-	    }
+	if( yokay && !xokay )
+	{
+	    xokay = true;
+	    yokay = true;
 	}
     }
     

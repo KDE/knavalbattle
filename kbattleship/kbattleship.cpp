@@ -298,7 +298,7 @@ void KBattleshipApp::sendChatMessage( QString text )
 	if( clientallow )
 	    kbclient->allowWrite();
 	KMessage *msg = new KMessage( KMessage::CHAT );
-    	msg->chatMessage( currentNickname, text );
+    	msg->chatMessage( ownNickname, text );
 	if( isserver )
 	    kbserver->sendMessage( msg );
 	if( isclient )
@@ -388,7 +388,10 @@ void KBattleshipApp::slotServerConnect()
 void KBattleshipApp::resetClient()
 {
     gameServerConnect->setText( "&Connect to server" );
+    slotStatusMsg( i18n( "Ready" ) );
     view->clearField();
+    stat->clear();
+    haveCS = false;
     delete connection;
     delete kbclient;
     connection = 0;
@@ -398,10 +401,13 @@ void KBattleshipApp::resetClient()
     ownshiplist = new KShipList();
     enemyshiplist = new KShipList();
 }
+
 void KBattleshipApp::resetServer()
 {
     gameNewServer->setText( "&Start server" );
+    slotStatusMsg( i18n( "Ready" ) );
     view->clearField();
+    stat->clear();
     haveCS = false;
     delete connection;
     delete kbserver;
@@ -443,24 +449,32 @@ void KBattleshipApp::slotNewServer()
     }
 }
 
+void KBattleshipApp::sendGreet()
+{
+    KMessage *msg = new KMessage( KMessage::GREET );
+    msg->addField( QString( "nickname" ), ownNickname );
+    sendMessage( msg );
+}
+
 void KBattleshipApp::startBattleshipServer()
 {
     gameNewServer->setText( "&Stop server" );
     kbserver = new KBattleshipServer( ( server->getPort() ).toInt() );
-    currentNickname = server->getNickname();
-    chat->setNickname( currentNickname );
+    ownNickname = server->getNickname();
+    chat->setNickname( ownNickname );
+    view->giveOwnFieldNickName( ownNickname );
     delete server;
     connect( kbserver, SIGNAL( serverFailure() ), this, SLOT( changeStartText() ) );
-    kbserver->start();
     chat->acceptMsg( true );
     connection = new KonnectionHandling( this, kbserver );    
+    connect( connection, SIGNAL( serverFailure() ), this, SLOT( resetServer() ) );
+    connect( connection, SIGNAL( giveEnemyName() ), this, SLOT( sendGreet() ) ); 
+    connect( connection, SIGNAL( enemyNickname( QString ) ), view, SLOT( giveEnemyFieldNickName( QString ) ) );
     connect( connection, SIGNAL( statusBarMessage( const QString & ) ), this, SLOT( slotStatusMsg( const QString & ) ) );
     connect( connection, SIGNAL( ownFieldDataChanged( int, int, int ) ), this, SLOT( changeOwnFieldData( int, int, int ) ) );
-    connect( connection, SIGNAL( enemyFieldDataChanged( int, int, int ) ), this, SLOT( changeEnemyFieldData( int, int, int ) ) );
-    connect( connection, SIGNAL( sendMessage( KMessage * ) ), this, SLOT( sendMessage( KMessage * ) ) );
     connect( connection, SIGNAL( gotChatMessage( QString, QString ) ), chat, SLOT( receivedMessage( QString, QString ) ) );
     connect( connection, SIGNAL( gotEnemyShipList( QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString ) ), this, SLOT( gotEnemyShipList( QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString ) ) );
-    
+    kbserver->start();    
     slotStatusMsg( i18n( "Waiting for a player..." ) );
 }
 
@@ -538,21 +552,25 @@ void KBattleshipApp::connectToBattleshipServer()
     if( client->getHost() != "" )
     {
 	kbclient = new KBattleshipClient( client->getHost(), ( client->getPort() ).toInt() );
-	currentNickname = client->getNickname();
-	chat->setNickname( currentNickname );
+	ownNickname = client->getNickname();
+	chat->setNickname( ownNickname );
+	view->giveOwnFieldNickName( ownNickname );
 	delete client;
         gameServerConnect->setText( "Dis&connect from server" );
 	chat->acceptMsg( true );
         connection = new KonnectionHandling( this, kbclient );
+	connect( connection, SIGNAL( enemyNickname( QString ) ), view, SLOT( giveEnemyFieldNickName( QString ) ) );
 	connect( connection, SIGNAL( statusBarMessage( const QString & ) ), this, SLOT( slotStatusMsg( const QString & ) ) );
 	connect( connection, SIGNAL( ownFieldDataChanged( int, int, int ) ), this, SLOT( changeOwnFieldData( int, int, int ) ) );
 	connect( connection, SIGNAL( setPlaceable() ), this, SLOT( setPlaceable() ) );
 	connect( connection, SIGNAL( abortGame() ), this, SLOT( resetClient() ) );
-	connect( connection, SIGNAL( enemyFieldDataChanged( int, int, int ) ), this, SLOT( changeEnemyFieldData( int, int, int ) ) );
         connect( connection, SIGNAL( changeConnectText() ), this, SLOT( changeConnectText() ) );
-        connect( connection, SIGNAL( sendMessage( KMessage * ) ), this, SLOT( sendMessage( KMessage * ) ) );
 	connect( connection, SIGNAL( gotChatMessage( QString, QString ) ), chat, SLOT( receivedMessage( QString, QString ) ) );
 	connect( connection, SIGNAL( gotEnemyShipList( QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString ) ), this, SLOT( gotEnemyShipList( QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString ) ) );
+
+	KMessage *msg = new KMessage( KMessage::GREET );
+	msg->addField( QString( "nickname" ), ownNickname );
+	sendMessage( msg );
 	
 	slotStatusMsg( i18n( "Waiting for other player to place the ships..." ) );
     }

@@ -40,7 +40,7 @@ class KChatWidget : public chatWidget
 	void receivedMessage( QString nickname, QString msg );
 	
     signals:
-	void sendMessage( QString msg );
+	void sendMessage( QString );
 	
     private:
 	QString currentNickname;

@@ -24,6 +24,7 @@ KonnectionHandling::KonnectionHandling( QWidget *parent, KBattleshipServer *serv
     enemylist = false;
     internalServer = server;
     internalType = KonnectionHandling::SERVER;
+    connect( server, SIGNAL( serverFailure() ), this, SIGNAL( serverFailure() ) );
     connect( server, SIGNAL( senemylist( bool ) ), this, SLOT( setEnemyList( bool ) ) );
     connect( server, SIGNAL( newConnect() ), this, SLOT( serverGotNewClient() ) );
     connect( server, SIGNAL( endConnect() ), this, SLOT( serverLostClient() ) );
@@ -114,6 +115,10 @@ void KonnectionHandling::gotNewMessage( KMessage *msg )
 	case KonnectionHandling::CLIENT:
 	    switch( msg->getType() )
 	    {
+		case KMessage::GREET:
+		    emit enemyNickname( msg->getField( "nickname" ) );
+		    break;
+		    
 		case KMessage::SHIPLIST:
 		    enemylist = true;
 		    emit gotEnemyShipList( msg->getField( "fieldx1s1" ), msg->getField( "fieldy1s1" ), msg->getField( "fieldx2s1" ), msg->getField( "fieldy2s1" ), msg->getField( "fieldx1s2" ), msg->getField( "fieldy2s2" ), msg->getField( "fieldx2s2" ), msg->getField( "fieldy2s2" ), msg->getField( "fieldx1s3" ), msg->getField( "fieldy1s3" ), msg->getField( "fieldx2s3" ), msg->getField( "fieldy2s3" ), msg->getField( "fieldx1s4" ), msg->getField( "fieldy2s4" ), msg->getField( "fieldx2s4" ), msg->getField( "fieldy2s4" ) );
@@ -137,6 +142,11 @@ void KonnectionHandling::gotNewMessage( KMessage *msg )
 	case KonnectionHandling::SERVER:
 	    switch( msg->getType() )
 	    {
+		case KMessage::GREET:
+		    emit enemyNickname( msg->getField( "nickname" ) );
+		    emit giveEnemyName();
+		    break;
+		    
 		case KMessage::SHIPLIST:
 		    enemylist = true;
 		    emit gotEnemyShipList( msg->getField( "fieldx1s1" ), msg->getField( "fieldy1s1" ), msg->getField( "fieldx2s1" ), msg->getField( "fieldy2s1" ), msg->getField( "fieldx1s2" ), msg->getField( "fieldy2s2" ), msg->getField( "fieldx2s2" ), msg->getField( "fieldy2s2" ), msg->getField( "fieldx1s3" ), msg->getField( "fieldy1s3" ), msg->getField( "fieldx2s3" ), msg->getField( "fieldy2s3" ), msg->getField( "fieldx1s4" ), msg->getField( "fieldy2s4" ), msg->getField( "fieldx2s4" ), msg->getField( "fieldy2s4" ) );

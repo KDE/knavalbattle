@@ -34,6 +34,7 @@ class KBattleField : public KGridWidget
         KBattleField( QWidget *, const KBattleFieldType &type, QPainter *painter );
         ~KBattleField();
 	
+	void setNickName( QString nick );
 	void requestedShipIconDraw( QPainter *painter, int type, bool hit = false, bool death = false );
 	void setDrawValues( QWidget *parent );
 	void drawField( QPainter *painter );
@@ -47,10 +48,11 @@ class KBattleField : public KGridWidget
 	int FieldData[ 8 ][ 8 ];
 	int internalType;
 	int FromLeft;
+	QString nickName;
 
     signals:
-	void doOwnFieldShipListJob( int fieldx, int fieldy, QPainter *painter, bool hit, bool death );
-	void doEnemyFieldShipListJob( int fieldx, int fieldy, QPainter *painter );
+	void doOwnFieldShipListJob( int, int, QPainter *, bool, bool );
+	void doEnemyFieldShipListJob( int, int, QPainter * );
 
 };
 

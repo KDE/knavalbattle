@@ -19,7 +19,7 @@
 
 KBattleshipClient::KBattleshipClient( QString host, int port )
 {
-    forbidWrite();
+    allowWrite();
     internalHost = host;
     internalPort = port;
     connect( this, SIGNAL( error( int ) ), SLOT( socketError( int ) ) );

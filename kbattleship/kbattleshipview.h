@@ -21,6 +21,7 @@
 #include <kmainwindow.h>
 #include <qpainter.h>
 #include <qwidget.h>
+#include <qstring.h>
 #include <qlist.h>
 #include "kship.h"
 #include "kbattlefieldtype.h"
@@ -39,8 +40,12 @@ class KBattleshipView : public QWidget
 	void changeEnemyFieldData( int fieldx, int fieldy, int type );
 	void giveOwnFieldShipListType( QPainter *painter, int type, bool hit, bool death );
 	void giveEnemyFieldShipListType( QPainter *painter, int type );
+	void giveOwnFieldNickName( QString nick );
 	int getOwnFieldState( int &fieldx, int &fieldy );
 	int getEnemyFieldState( int &fieldx, int &fieldy );
+
+    public slots:
+	void giveEnemyFieldNickName( QString nick );
 	
     protected:
     	void paintEnemyField();
@@ -53,10 +58,10 @@ class KBattleshipView : public QWidget
         KBattleField *enemyfield;
 	
     signals:
-	void enemyFieldClicked( int fieldx, int fieldy );
-	void ownFieldClicked( int fieldx, int fieldy, int button );
-	void requestedOwnFieldShipListJob( int fieldx, int fieldy, QPainter *painter, bool hit, bool death );
-        void requestedEnemyFieldShipListJob( int fieldx, int fieldy, QPainter *painter );
+	void enemyFieldClicked( int, int );
+	void ownFieldClicked( int, int, int );
+	void requestedOwnFieldShipListJob( int, int, QPainter *, bool, bool );
+        void requestedEnemyFieldShipListJob( int, int, QPainter * );
 };
 
 #endif

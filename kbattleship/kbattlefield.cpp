@@ -26,13 +26,9 @@ KBattleField::KBattleField( QWidget *, const KBattleFieldType &type, QPainter *p
     internalType = type.getType();
     int i, j;
 
-    // Hehe this is quite unusual now
-    // I don't have any Battleship rulesets
-    // here...so this is wrong, i think (WildFox)
-    
-    for( i = 0; i != 8; i++ ) // A to I
+    for( i = 0; i != 8; i++ )
     {
-    	for( j = 0; j != 8; j++ ) // 1 to 9
+    	for( j = 0; j != 8; j++ )
 	{
 	    FieldData[ i ][ j ] = KBattleField::FREE;
     	}
@@ -49,13 +45,18 @@ KBattleField::~KBattleField()
 void KBattleField::clearField()
 {
     int i, j;
-    for( i = 0; i != 8; i++ ) // A to I
+    for( i = 0; i != 8; i++ )
     {
-	for( j = 0; j != 8; j++ ) // 1 to 9
+	for( j = 0; j != 8; j++ )
     	{
 	    FieldData[ i ][ j ] = KBattleField::FREE;
 	}
     }
+}
+
+void KBattleField::setNickName( QString nick )
+{
+    nickName = nick;    
 }
 
 void KBattleField::changeData( int &fieldx, int &fieldy, int type )
@@ -71,10 +72,21 @@ int KBattleField::getState( int fieldx, int fieldy )
 void KBattleField::drawField( QPainter *painter )
 {
     int i, j;
-
-    for( i = 0; i != 8; i++ ) // A to I
+    switch( internalType )
     {
-	for( j = 0; j != 8; j++ ) // 1 to 9
+	case KBattleFieldType::OWNFIELD:
+	    painter->drawText( 10, 10, nickName );
+	    break;
+	
+	case KBattleFieldType::ENEMYFIELD:
+	    painter->drawText( 80, 10, nickName );
+	    break;
+    }	
+    
+
+    for( i = 0; i != 8; i++ )
+    {
+	for( j = 0; j != 8; j++ )
 	{
 	    setValues( ( ( ( i + 1 ) * 30 ) + FromLeft ), ( ( ( j + 1 ) * 30 ) + 5 ) , 30 );
 	    switch( FieldData[ i ][ j ] )

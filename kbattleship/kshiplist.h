@@ -53,7 +53,7 @@ class KShipList : public QObject
 
     signals:
 	void lastShipAdded();
-	void ownFieldDataChanged( int fieldx, int fieldy, int type );
+	void ownFieldDataChanged( int, int, int );
 };
 
 #endif
