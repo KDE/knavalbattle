@@ -1,14 +1,15 @@
-KBattleship ( beta -> final ) TODO List:
+KBattleship (beta -> final) TODO List:
 KB Team:
     p = partially
     x = ready
 
-    o Tooltips				[p]
+    o Tooltips					[p]
     o Better Error Processing		[p]
     o Fix Ship-Placing Bug		[ ]
     o Add "Status per ship"		[ ]
-    o Translation			[ ]
-    o Documentation			[ ]
+    o Translation				[ ]
+    o Documentation				[ ]
     
 User ideas:
     o AI				[ ] (Triskelios)
+
