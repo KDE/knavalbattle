@@ -35,7 +35,8 @@ class KBattleshipView : public QWidget
 
     protected:
 	void paintEvent( QPaintEvent * );
-
+	void mouseReleaseEvent( QMouseEvent *event );
+	
     private:
         KBattleField *ownfield;
         KBattleField *enemyfield;

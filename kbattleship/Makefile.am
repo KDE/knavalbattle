@@ -11,7 +11,12 @@ noinst_HEADERS   = kmessagetype.h kmessage.h kbattleshipserver.h kbattleshipclie
 METASOURCES = AUTO
 DISTCLEANFILES = $(METASOURCES)
 KDE_ICON = kbattleship
+
 rcdir = $(kde_datadir)/kbattleship
 rc_DATA = kbattleshipui.rc
+
+datadir = $(kde_datadir)/kbattleship
+data_DATA = pictures/water.png
+
 kdelnkdir   = $(kde_appsdir)/Games
 kdelnk_DATA = KBattleship.desktop

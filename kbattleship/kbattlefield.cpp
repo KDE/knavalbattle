@@ -44,6 +44,11 @@ KBattleField::~KBattleField()
 {
 }
 
+void KBattleField::changeData( int &fieldX, int &fieldY, int type )
+{
+    FieldData[ fieldX ][ fieldY ] = type;
+}
+
 void KBattleField::drawField( QPainter *painter )
 {
     int i, j;
@@ -61,6 +66,7 @@ void KBattleField::drawField( QPainter *painter )
 		
 		case KBattleField::WATER:
 		    setValues( ( ( ( i + 1 ) * 30 ) + FromLeft ), ( ( ( j + 1 ) * 30 ) + 5 ) , 30 );
+		    drawSquare( painter );
 		    drawWaterIcon( painter );
 		    break;
 	    }		    
