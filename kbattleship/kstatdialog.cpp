@@ -15,21 +15,11 @@
  *                                                                         *
  ***************************************************************************/
 
-#include <qlcdnumber.h>
-
-#include <kprogress.h>
-
 #include "kstatdialog.moc"
 
 KStatDialog::KStatDialog(QWidget *parent, const char *name) : statDlg(parent, name)
 {
     setMinimumSize(150, 300);
-    ownForce->setBarStyle(KProgress::Blocked);
-    ownForce->setTextEnabled(false);
-    ownForce->setRange(0, 10);
-    enemyForce->setBarStyle(KProgress::Blocked);
-    enemyForce->setTextEnabled(false);
-    enemyForce->setRange(0, 10);
 }
 
 KStatDialog::~KStatDialog()
@@ -66,23 +56,11 @@ void KStatDialog::setWater(int water)
     WaterLCD->display(water);
 }
 
-void KStatDialog::setOwnForce(int force)
-{
-    setForce(ownForce, force);
-}
-
-void KStatDialog::setEnemyForce(int force)
-{
-    setForce(enemyForce, force);
-}
-
 void KStatDialog::clear()
 {
     ShotLCD->display(0);
     HitLCD->display(0);
     WaterLCD->display(0);
-    setOwnForce(10);
-    setEnemyForce(10);
 }
 
 int KStatDialog::getShot()
@@ -99,12 +77,3 @@ int KStatDialog::getWater()
 {
     return WaterLCD->intValue();
 }
-#include <kdebug.h>
-void KStatDialog::setForce(KProgress *bar, int value)
-{
-    kdDebug() << "value: " << value << ", r: " << ((10 - value) * 255 / 10)
-              << ", g: " << (value * 255 / 10) << endl;
-    bar->setBarColor(QColor((10 - value) * 255 / 10, value * 255 / 10, 0));
-    bar->setValue(value);
-}
-
