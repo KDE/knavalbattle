@@ -15,6 +15,9 @@
  *                                                                         *
  ***************************************************************************/
 
+#ifndef KMESSAGE_H
+#define KMESSAGE_H
+
 #include <kdebug.h>
 #include <qmap.h>
 #include <qobject.h>
@@ -43,3 +46,5 @@ class KMessage : QObject
     private:
         void parseMessage();
 };
+
+#endif

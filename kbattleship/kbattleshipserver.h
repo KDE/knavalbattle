@@ -14,6 +14,7 @@
  *   (at your option) any later version.                                   *
  *                                                                         *
  ***************************************************************************/
+
 #ifndef KBATTLESHIPSERVER_H
 #define KBATTLESHIPTSERVER_H
 
