@@ -28,27 +28,27 @@ class KBattleshipClient : public QSocket
 {
     Q_OBJECT
     public:
-        KBattleshipClient( QString host = "", int port = 54321 );
+        KBattleshipClient(QString host = "", int port = 54321);
         ~KBattleshipClient();
 
         void kill();
 
         void sendMessage( KMessage *msg );
-        void allowWrite();
-        void forbidWrite();
-        bool write();
+        void allowWrite() { writeable = true; }
+        void forbidWrite() { writeable = false; }
+        bool write() { return writeable; }
     
     private slots:
         void connectionControl();
         void readData();
         void lostServer();
-        void socketError( int error );
+        void socketError(int error);
 
     signals:
-        void senemylist( bool );
-        void newMessage( KMessage * );
+        void senemylist(bool);
+        void newMessage(KMessage *);
         void endConnect();
-        void socketFailure( int );
+        void socketFailure(int);
      
     private:
         void connectToServer();

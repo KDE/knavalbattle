@@ -28,23 +28,22 @@ class KChatWidget : public chatWidget
 {
     Q_OBJECT
     public:
-        KChatWidget( QWidget *parent = 0, const char *name = 0 );
+        KChatWidget(QWidget *parent = 0, const char *name = 0);
         ~KChatWidget();
 
-        void setNickname( QString nickname );
+        void setNickname(QString nickname);
 
     public slots:
-        void acceptMsg( bool value );
+        void acceptMsg(bool value);
         void slotComputeMessage();
-        void receivedMessage( QString nickname, QString msg );
+        void receivedMessage(QString nickname, QString msg);
     
     signals:
-        void sendMessage( QString );
+        void sendMessage(QString);
     
     private:
         QString currentNickname;
         bool acceptMsgs;
-
 };
 
 #endif

@@ -17,11 +17,11 @@
 
 #include "kserverdialog.moc"
 
-KServerDialog::KServerDialog( QWidget *parent, const char *name ) : serverStartDlg( parent, name )
+KServerDialog::KServerDialog(QWidget *parent, const char *name) : serverStartDlg(parent, name)
 {
-    connect( startBtn, SIGNAL( clicked() ), this, SLOT( slotStartClicked() ) );
-    connect( cancelBtn, SIGNAL( clicked() ), this, SLOT( slotCancelClicked() ) );
-    nicknameEdit->setText( getenv( "LOGNAME" ) );  
+    connect(startBtn, SIGNAL(clicked()), this, SLOT(slotStartClicked()));
+    connect(cancelBtn, SIGNAL(clicked()), this, SLOT(slotCancelClicked()));
+    nicknameEdit->setText(getenv("LOGNAME"));  
 }
 
 KServerDialog::~KServerDialog()
@@ -30,21 +30,19 @@ KServerDialog::~KServerDialog()
 
 void KServerDialog::slotStartClicked()
 {
-    this->hide();
+    hide();
     emit startServer();
 }
 
 void KServerDialog::slotCancelClicked()
 {
-    this->hide();
+    hide();
     emit cancelServer();
 }
 
 QString KServerDialog::getPort()
 {
-    QString qport;
-    qport.setNum( portEdit->value() );
-    return qport;
+    return QString::number(portEdit->value());
 }
 
 QString KServerDialog::getNickname()

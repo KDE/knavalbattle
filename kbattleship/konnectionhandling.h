@@ -32,9 +32,9 @@ class KonnectionHandling : public QObject
 {
     Q_OBJECT
     public:
-        enum{ SERVER, CLIENT };
-        KonnectionHandling( QWidget *parent, KBattleshipServer *server );
-        KonnectionHandling( QWidget *parent, KBattleshipClient *client );
+        enum{SERVER, CLIENT};
+        KonnectionHandling(QWidget *parent, KBattleshipServer *server);
+        KonnectionHandling(QWidget *parent, KBattleshipClient *client);
         ~KonnectionHandling();
     
         int getType();
@@ -45,15 +45,31 @@ class KonnectionHandling : public QObject
         bool haveEnemy();
     
     public slots:
-        void setEnemyList( bool set );
-        void gotNewMessage( KMessage *msg );
+        void setEnemyList(bool set);
+        void gotNewMessage(KMessage *msg);
         void serverError();
         void serverGotNewClient();
         void serverWroteToClient();
         void serverLostClient();	
         void clientLostServer();
-        void clientSocketError( int error );
+        void clientSocketError(int error);
     
+    signals:
+        void newPlayer(bool);
+        void clientRestart();
+        void askReplay();
+        void statusBarMessage(const QString &);
+        void abortGame();
+        void abortGameStrict(bool );
+        void setPlaceable();
+        void gotEnemyShipList(QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString);
+        void gotChatMessage(QString, QString);
+        void enemyNickname(const QString &);
+        void ownFieldDataChanged(int, int, int);
+        void changeConnectText();
+        void giveEnemyName();
+        void serverFailure(bool);
+
     private:
         KBattleshipServer *internalServer;
         KBattleshipClient *internalClient;
@@ -61,23 +77,6 @@ class KonnectionHandling : public QObject
         bool senemylist;
         bool enemy;
         int internalType;
-
-    signals:
-        void newPlayer( bool );
-        void clientRestart();
-        void askReplay();
-        void statusBarMessage( const QString & );
-        void abortGame();
-        void abortGameStrict( bool );
-        void setPlaceable();
-        void gotEnemyShipList( QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString );
-        void gotChatMessage( QString, QString );
-        void enemyNickname( const QString & );
-        void ownFieldDataChanged( int, int, int );
-        void changeConnectText();
-        void giveEnemyName();
-        void serverFailure( bool );
 };
 
 #endif
-

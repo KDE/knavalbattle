@@ -17,7 +17,7 @@
 
 #include "kgridwidget.moc"
 
-KGridWidget::KGridWidget( QWidget *parent, const char *name ) : QWidget( parent, name )
+KGridWidget::KGridWidget(QWidget *parent, const char *name) : QWidget(parent, name)
 {
     internalPixmap = 0;
 }
@@ -26,69 +26,67 @@ KGridWidget::~KGridWidget()
 {
 }
 
-void KGridWidget::setValues( int x, int y, int size )
+void KGridWidget::setValues(int x, int y, int size)
 {
     internalx = x;
     internaly = y;
     internalSize = size;
 }
 
-void KGridWidget::drawSquare( QPainter *painter )
+void KGridWidget::drawSquare(QPainter *painter)
 {
-    if( internalPixmap )
-	    delete internalPixmap;
+    if(internalPixmap)
+	delete internalPixmap;
 
-    internalPixmap = new QPixmap( internalSize, internalSize );
+    internalPixmap = new QPixmap(internalSize, internalSize);
 
-    QBrush blackBrush( green );
+    QBrush blackBrush(green);
 
-    if( !painter->isActive() )
-	painter->begin( internalPixmap );
+    if(!painter->isActive())
+	painter->begin(internalPixmap);
 
-    painter->setBrush( blackBrush );
-    painter->drawRect( internalx, internaly, internalSize, internalSize );
-    bitBlt( this, internalx, internaly, internalPixmap );
+    painter->setBrush(blackBrush);
+    painter->drawRect(internalx, internaly, internalSize, internalSize);
+    bitBlt(this, internalx, internaly, internalPixmap);
 }
 
-void KGridWidget::drawHitIcon( QPainter *painter )
+void KGridWidget::drawHitIcon(QPainter *painter)
 {
-    drawIcon( painter, "hit.png" );
+    drawIcon(painter, "hit.png");
 }
 
-void KGridWidget::drawWaterIcon( QPainter *painter )
+void KGridWidget::drawWaterIcon(QPainter *painter)
 {
-    drawIcon( painter, "water.png" );
+    drawIcon(painter, "water.png");
 }
 
-void KGridWidget::drawDeathIcon( QPainter *painter )
+void KGridWidget::drawDeathIcon(QPainter *painter)
 {
-    drawIcon( painter, "death.png" );
+    drawIcon(painter, "death.png");
 }
 
-void KGridWidget::drawShipIcon( QPainter *painter, int &ship )
+void KGridWidget::drawShipIcon(QPainter *painter, int &ship)
 {
-    QString qship;
-    qship.setNum( ship + 1 );
-    drawIcon( painter, "ship-" + qship + ".png" );
+    drawIcon(painter, "ship-" + QString::number(ship + 1) + ".png");
 }
 
-void KGridWidget::drawIcon( QPainter *painter, QString iconName )
+void KGridWidget::drawIcon(QPainter *painter, QString iconName)
 {
     KStandardDirs *stdDirs = KGlobal::dirs();
     KImageIO::registerFormats();
     QString picDir;
-    QStringList picDirl = stdDirs->findDirs( "data", "kbattleship" );
-    for( QStringList::Iterator it = picDirl.begin(); it != picDirl.end(); it++ )
+    QStringList picDirl = stdDirs->findDirs("data", "kbattleship");
+    for(QStringList::Iterator it = picDirl.begin(); it != picDirl.end(); it++)
     {
-	    picDir = *it;
-	    break;
+	picDir = *it;
+	break;
     }
 
     picDir = picDir + "pictures/";
 
     QPixmap *icon;
-    icon = new QPixmap( picDir + iconName );
-    painter->drawPixmap( internalx, internaly, *icon );
+    icon = new QPixmap(picDir + iconName);
+    painter->drawPixmap(internalx, internaly, *icon);
         
-    bitBlt( this, internalx, internaly, icon );
+    bitBlt(this, internalx, internaly, icon);
 }

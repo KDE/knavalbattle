@@ -17,40 +17,40 @@
 
 #include "kchatwidget.moc"
 
-KChatWidget::KChatWidget( QWidget *parent, const char *name ) : chatWidget( parent, name )
+KChatWidget::KChatWidget(QWidget *parent, const char *name) : chatWidget(parent, name)
 {
-    setMinimumSize( 600, 180 );
-    connect( sendBtn, SIGNAL( clicked() ), SLOT( slotComputeMessage() ) );
-    connect( commentEdit, SIGNAL( returnPressed() ), SLOT( slotComputeMessage() ) );
-    chatView->setReadOnly( true );
+    setMinimumSize(600, 180);
+    connect(sendBtn, SIGNAL(clicked()), SLOT(slotComputeMessage()));
+    connect(commentEdit, SIGNAL(returnPressed()), SLOT(slotComputeMessage()));
+    chatView->setReadOnly(true);
 }
 
 KChatWidget::~KChatWidget()
 {
 }
 
-void KChatWidget::acceptMsg( bool value )
+void KChatWidget::acceptMsg(bool value)
 {
     acceptMsgs = value;
 }
 
-void KChatWidget::receivedMessage( QString nickname, QString msg )
+void KChatWidget::receivedMessage(QString nickname, QString msg)
 {
-    chatView->append( QString( "<" ) + nickname + QString( "> " ) + msg );
-    chatView->setCursorPosition( chatView->numLines(), 0 );
+    chatView->append(QString( "<" ) + nickname + QString( "> " ) + msg);
+    chatView->setCursorPosition(chatView->numLines(), 0);
 }
 
-void KChatWidget::setNickname( QString nickname )
+void KChatWidget::setNickname(QString nickname)
 {
     currentNickname = nickname;
 }
 
 void KChatWidget::slotComputeMessage()
 {
-    if( acceptMsgs )
+    if(acceptMsgs)
     {
-	    receivedMessage( currentNickname, commentEdit->text() );
-	    emit sendMessage( commentEdit->text() );
-	    commentEdit->setText( "" );
+	receivedMessage(currentNickname, commentEdit->text());
+	emit sendMessage(commentEdit->text());
+	commentEdit->setText("");
     }
 }

@@ -31,31 +31,31 @@ class KBattleshipServer : public QServerSocket
 {
     Q_OBJECT
     public:
-        KBattleshipServer( int port = 54321 );
+        KBattleshipServer(int port = 54321);
         ~KBattleshipServer();
 
         void start();
         void sendMessage( KMessage *msg );
-        void allowWrite();
-        void forbidWrite();
-        bool write();
+        void allowWrite() { writeable = true; }
+        void forbidWrite() { writeable = false; }
+        bool write() { return writeable; }
 
     private slots:
         void readClient();
         void discardClient();
 
     signals:
-        void senemylist( bool );
+        void senemylist(bool);
         void serverFailure();
         void newConnect();
         void endConnect();
         void wroteToClient();
-        void newMessage( KMessage * );
+        void newMessage(KMessage *);
     
     private:
-        int internalPort;
+        void newConnection(int socket);
         QSocket *serverSocket;
-        void newConnection( int socket );
+        int internalPort;
         bool writeable;
 };
 

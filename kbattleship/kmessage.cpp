@@ -17,73 +17,95 @@
 
 #include "kmessage.moc"
 
-KMessage::KMessage( int type ) : QObject()
+KMessage::KMessage(int type) : QObject()
 {
-    xmlDocument = new QDomDocument( "kmessage" );
-    xmlDocument->appendChild( xmlDocument->createElement( "kmessage" ) );
+    xmlDocument = new QDomDocument("kmessage");
+    xmlDocument->appendChild(xmlDocument->createElement("kmessage"));
     messageType = type;
-    QString qtype;
-    qtype.setNum( type );
-    addField( QString( "msgtype" ), qtype );
+    addField(QString("msgtype"), QString::number(type));
 }
 
 KMessage::KMessage() : QObject()
 {
-    xmlDocument = new QDomDocument( "kmessage" );
+    xmlDocument = new QDomDocument("kmessage");
 }
 
 KMessage::~KMessage()
 {
 }
 
-void KMessage::addField( QString name, QString content )
+void KMessage::addField(QString name, QString content)
 {
-    QDomElement xmlElement = xmlDocument->createElement( name );
-    QDomText xmlText = xmlDocument->createTextNode( content );
-    xmlElement.appendChild( xmlText );
-    xmlDocument->documentElement().appendChild( xmlElement );
+    QDomElement xmlElement = xmlDocument->createElement(name);
+    QDomText xmlText = xmlDocument->createTextNode(content);
+    xmlElement.appendChild(xmlText);
+    xmlDocument->documentElement().appendChild(xmlElement);
 }
 
-void KMessage::chatMessage( QString nickname, QString message )
+void KMessage::setDataStream(QString stream)
 {
-    addField( "nickname", nickname );
-    addField( "chat", message );
-}
-
-void KMessage::setDataStream( QString stream )
-{
-    xmlDocument->setContent( stream );
+    xmlDocument->setContent(stream);
 }
 
 QString KMessage::returnSendStream()
 {
     QString sendStream;
     QDomNode xmlNode = xmlDocument->documentElement().firstChild();
-    while( !xmlNode.isNull() )
+    while(!xmlNode.isNull())
     {
-	    QDomElement xmlElement = xmlNode.toElement();
-	    if( !xmlElement.isNull() )
-	        sendStream = xmlDocument->toString();
-	    xmlNode = xmlNode.nextSibling();
+	QDomElement xmlElement = xmlNode.toElement();
+	if(!xmlElement.isNull())
+	    sendStream = xmlDocument->toString();
+	xmlNode = xmlNode.nextSibling();
     }
     return sendStream.simplifyWhiteSpace();
 }
 
-QString KMessage::getField( QString name )
+QString KMessage::getField(QString name)
 {
     QDomNode xmlNode = xmlDocument->documentElement().firstChild();
-    while( !xmlNode.isNull() )
+    while(!xmlNode.isNull())
     {
-	    QDomElement xmlElement = xmlNode.toElement();
-	    if( !xmlElement.isNull() )
-	        if( xmlElement.tagName() == name )
-		        return xmlElement.text();
-	    xmlNode = xmlNode.nextSibling();
+	QDomElement xmlElement = xmlNode.toElement();
+	if(!xmlElement.isNull())
+	    if(xmlElement.tagName() == name)
+		return xmlElement.text();
+	xmlNode = xmlNode.nextSibling();
     }
     return QString::null;
 }
 
 int KMessage::getType()
 {
-    return getField( "msgtype" ).toInt();
+    return getField("msgtype").toInt();
+}
+
+void KMessage::chatMessage(QString nickname, QString message)
+{
+    addField("nickname", nickname);
+    addField("chat", message);
+}
+
+void KMessage::addReady()
+{
+    addField("enemy", "ready");
+}
+
+void KMessage::addWinner()
+{
+    addField("enemyM", "won");
+}
+
+bool KMessage::enemyReady()
+{
+    if(getField("enemy") == QString("ready"))
+	return true;
+    return false;
+}
+
+bool KMessage::enemyWon()
+{
+    if(getField("enemyM") == QString("won"))
+	return true;
+    return false;
 }

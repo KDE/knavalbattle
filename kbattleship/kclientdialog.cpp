@@ -17,39 +17,37 @@
 
 #include "kclientdialog.moc"
 
-KClientDialog::KClientDialog( QWidget *parent, const char *name ) : clientConnectDlg( parent, name )
+KClientDialog::KClientDialog(QWidget *parent, const char *name) : clientConnectDlg(parent, name)
 {
     config = kapp->config();
-    config->setGroup( "General" );
-    connect( connectBtn, SIGNAL( clicked() ), this, SLOT( slotConnectClicked() ) );
-    connect( cancelBtn, SIGNAL( clicked() ), this, SLOT( slotCancelClicked() ) );
-    nicknameEdit->setText( getenv( "LOGNAME" ) );
-    serverEdit->setText( config->readEntry( "lastServer" ) );
+    config->setGroup("General");
+    connect(connectBtn, SIGNAL(clicked()), this, SLOT(slotConnectClicked()));
+    connect(cancelBtn, SIGNAL(clicked()), this, SLOT(slotCancelClicked()));
+    nicknameEdit->setText(getenv("LOGNAME"));
+    serverEdit->setText(config->readEntry("lastServer"));
 }
 
 KClientDialog::~KClientDialog()
 {
-    config->writeEntry( "lastServer", serverEdit->text() );
+    config->writeEntry("lastServer", serverEdit->text());
     config->sync();
 }
 
 void KClientDialog::slotConnectClicked()
 {
-    this->hide();
+    hide();
     emit connectServer();
 }
 
 void KClientDialog::slotCancelClicked()
 {
-    this->hide();
+    hide();
     emit cancelConnect();
 }
 
 QString KClientDialog::getPort()
 {
-    QString qport;
-    qport.setNum( portEdit->value() );
-    return qport;
+    return QString::number(portEdit->value());
 }
 
 QString KClientDialog::getHost()

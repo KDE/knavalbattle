@@ -31,7 +31,7 @@ class KClientDialog : public clientConnectDlg
 {
     Q_OBJECT
     public:
-        KClientDialog( QWidget *parent = 0, const char *name = 0 );
+        KClientDialog(QWidget *parent = 0, const char *name = 0);
         ~KClientDialog();
 
         QString getPort();
@@ -51,4 +51,3 @@ class KClientDialog : public clientConnectDlg
 };
 
 #endif
-

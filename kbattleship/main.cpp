@@ -21,26 +21,26 @@
 
 #include "kbattleship.h"
 
-static const char *description = I18N_NOOP( "KBattleship" );
+static const char *description = I18N_NOOP("KBattleship");
 
-static const char *VERSION = I18N_NOOP( "0.2 (beta)" );
+static const char *VERSION = I18N_NOOP("0.3 (beta2)");
 
-int main( int argc, char *argv[] )
+int main(int argc, char *argv[])
 {
-    KAboutData aboutData( "kbattleship", I18N_NOOP( "KBattleship" ), VERSION, description, KAboutData::License_GPL, "(c) 2000  Nikolas Zimmermann, Daniel Molkentin" );
+    KAboutData aboutData("kbattleship", I18N_NOOP("KBattleship"), VERSION, description, KAboutData::License_GPL, "(c) 2000  Nikolas Zimmermann, Daniel Molkentin");
 
-    aboutData.addAuthor( "Nikolas Zimmermann", "Project Founder, GUI Handling, Client/Server", "wildfox@kde.org" );
-    aboutData.addAuthor( "Daniel Molkentin", "Dialog Stuff, Client/Server", "molkentin@kde.org" );
-    aboutData.addCredit( "Benjamin Adler", "Icon", "benadler@bigfoot.de" );
-    aboutData.addCredit( "Nils Trzebin", "Sounds", "nils.trzebin@stud.uni-hannover.de" );
-    aboutData.addCredit( "Agnieszka Czajkowska", "GFX", "agnieszka@imagegalaxy.de" );
+    aboutData.addAuthor("Nikolas Zimmermann", "Project Founder, GUI Handling, Client/Server", "wildfox@kde.org");
+    aboutData.addAuthor("Daniel Molkentin", "Dialog Stuff, Client/Server", "molkentin@kde.org");
+    aboutData.addCredit("Benjamin Adler", "Icon", "benadler@bigfoot.de");
+    aboutData.addCredit("Nils Trzebin", "Sounds", "nils.trzebin@stud.uni-hannover.de");
+    aboutData.addCredit("Agnieszka Czajkowska", "GFX", "agnieszka@imagegalaxy.de");
     
-    KCmdLineArgs::init( argc, argv, &aboutData );
+    KCmdLineArgs::init(argc, argv, &aboutData);
     KApplication app;
  
-    if( app.isRestored() )
+    if(app.isRestored())
     {
-        RESTORE( KBattleshipApp );
+        RESTORE(KBattleshipApp);
     }
     else
     {

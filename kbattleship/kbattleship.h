@@ -52,8 +52,8 @@ class KBattleshipApp : public KMainWindow
 {
     Q_OBJECT
     public:
-        enum{ ID_STATUS_MSG, ID_PLAYER_OWN, ID_PLAYER_ENEMY };
-        KBattleshipApp( QWidget *parent = 0, const char *name = 0 );
+        enum{ID_STATUS_MSG, ID_PLAYER_OWN, ID_PLAYER_ENEMY};
+        KBattleshipApp(QWidget *parent = 0, const char *name = 0);
         ~KBattleshipApp();
 
         void init();
@@ -73,35 +73,36 @@ class KBattleshipApp : public KMainWindow
         void askReplay();
         void sendGreet();
         void clientRestart();
-        void resetClient( bool status = true );
-        void resetServer( bool status = true );
+        void resetClient(bool status = true);
+        void resetServer(bool status = true);
         void setPlaceable();
         void slotServerConnect();
         void slotNewServer();
         void slotGameQuit();
         void slotConfigSound();
-        void slotViewToolBar();
         void slotViewStatusBar();
-        void slotStatusMsg( const QString &text );
-        void slotChangeOwnPlayer( const QString &text );    
-        void slotChangeEnemyPlayer( const QString &text );
+        void slotStatusMsg(const QString &text);
+        void slotChangeOwnPlayer(const QString &text);    
+        void slotChangeEnemyPlayer(const QString &text);
         void startBattleshipServer();
         void connectToBattleshipServer();
-        void placeShip( int fieldx, int fieldy, int button );
-        void enemyClick( int fieldx, int fieldy );
-        void sendMessage( int fieldx, int fieldy, int state, bool won = false );
-        void sendMessage( KMessage *msg );
+        void placeShip(int fieldx, int fieldy, int button);
+        void enemyClick(int fieldx, int fieldy);
+        void sendMessage(int fieldx, int fieldy, int state, bool won = false);
+        void sendMessage(KMessage *msg);
         void sendShipList();
-        void sendChatMessage( QString text );
-        void changeOwnFieldData( int fieldx, int fieldy, int type );
-        void changeEnemyFieldData( int fieldx, int fieldy, int type );
+        void sendChatMessage(QString text);
+        void changeOwnFieldData(int fieldx, int fieldy, int type);
+        void changeEnemyFieldData(int fieldx, int fieldy, int type);
         void changeConnectText();
         void changeStartText();
-        void stoppedServerDialog();
-        void stoppedConnectDialog();
-        void requestedOwnFieldShipListJob( int fieldx, int fieldy, bool hit, bool death );
-        void requestedEnemyFieldShipListJob( int fieldx, int fieldy );
-        void gotEnemyShipList( QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString );
+	void resetConnection() { haveCS = false; }
+        void requestedOwnFieldShipListJob(int fieldx, int fieldy, bool hit, bool death);
+        void requestedEnemyFieldShipListJob(int fieldx, int fieldy);
+        void gotEnemyShipList(QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString);
+
+    signals:
+        void battleFieldState(int, int, int);
 
     private:
         KConfig *config;
@@ -115,7 +116,6 @@ class KBattleshipApp : public KMainWindow
         KAction *gameServerConnect;
         KAction *gameNewServer;
         KAction *gameQuit;
-        KToggleAction *viewToolBar;
         KToggleAction *viewStatusBar;
         KToggleAction *configSound;
         KBattleshipSound *sound;
@@ -128,9 +128,6 @@ class KBattleshipApp : public KMainWindow
         bool place;
         QString ownNickname;
         QString enemyNickname;
-        
-    signals:
-        void battleFieldState( int, int, int );
 };
 
 #endif

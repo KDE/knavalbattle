@@ -17,17 +17,16 @@
 
 #include "kbattleshipclient.moc"
 
-KBattleshipClient::KBattleshipClient( QString host, int port ) : QSocket()
+KBattleshipClient::KBattleshipClient(QString host, int port) : QSocket()
 {
     allowWrite();
     internalHost = host;
     internalPort = port;
-    connect( this, SIGNAL( error( int ) ), SLOT( socketError( int ) ) );
-
-    connect( this, SIGNAL( hostFound() ), SLOT( connectionControl() ) );
-    connect( this, SIGNAL( connected() ), SLOT( connectionControl() ) );
-    connect( this, SIGNAL( connectionClosed() ), SLOT( lostServer() ) );
-    connect( this, SIGNAL( readyRead() ), SLOT( readData() ) );
+    connect(this, SIGNAL(error(int)), SLOT(socketError(int)));
+    connect(this, SIGNAL(hostFound()), SLOT(connectionControl()));
+    connect(this, SIGNAL(connected()), SLOT(connectionControl()));
+    connect(this, SIGNAL(connectionClosed()), SLOT(lostServer()));
+    connect(this, SIGNAL(readyRead()), SLOT(readData()));
 
     connectToServer();
 }
@@ -38,7 +37,7 @@ KBattleshipClient::~KBattleshipClient()
 
 void KBattleshipClient::connectToServer()
 {
-    connectToHost( internalHost, internalPort );
+    connectToHost(internalHost, internalPort);
 }
 
 void KBattleshipClient::kill()
@@ -46,17 +45,18 @@ void KBattleshipClient::kill()
     close();
 }
 
-void KBattleshipClient::sendMessage( KMessage *msg )
+void KBattleshipClient::sendMessage(KMessage *msg)
 {
-    if( writeable )
+    if(writeable)
     {
-	    QTextStream post( this );
-	    post << msg->returnSendStream();
-	    if( msg->getField( "enemy" ) == QString( "ready" ) )
-	    {
-	        forbidWrite();
-	        emit senemylist( true );
-	    }
+	QTextStream post(this);
+	post << msg->returnSendStream();
+	if(msg->enemyReady())
+	{
+	    forbidWrite();
+	    emit senemylist( true );
+	}
+	delete msg;
     }
 }
 
@@ -67,12 +67,12 @@ void KBattleshipClient::connectionControl()
 
 void KBattleshipClient::readData()
 {
-    if( canReadLine() )
+    if(canReadLine())
     {
-	    KMessage *msg = new KMessage();
-	    msg->setDataStream( readLine() );
-	    emit newMessage( msg );
-	    delete msg;
+	KMessage *msg = new KMessage();
+	msg->setDataStream(readLine());
+	emit newMessage(msg);
+	delete msg;
     }
 }
 
@@ -81,22 +81,7 @@ void KBattleshipClient::lostServer()
     emit endConnect();
 }
 
-void KBattleshipClient::socketError( int error )
+void KBattleshipClient::socketError(int error)
 {
-    emit socketFailure( error );
-}
-
-void KBattleshipClient::allowWrite()
-{
-    writeable = true;
-}
-
-void KBattleshipClient::forbidWrite()
-{
-    writeable = false;
-}
-
-bool KBattleshipClient::write()
-{
-    return writeable;
+    emit socketFailure(error);
 }

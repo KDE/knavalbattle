@@ -31,16 +31,16 @@ class KGridWidget : public QWidget
 {
     Q_OBJECT
     public:
-        KGridWidget( QWidget *parent, const char *name );
+        KGridWidget(QWidget *parent, const char *name);
         ~KGridWidget();
     
-        void setValues( int x, int y, int size );
-        void drawSquare( QPainter *painter );
-        void drawHitIcon( QPainter *painter );
-        void drawWaterIcon( QPainter *painter );
-        void drawDeathIcon( QPainter *painter );
-        void drawShipIcon( QPainter *painter, int &ship );
-        void drawIcon( QPainter *painter, QString iconName );
+        void setValues(int x, int y, int size);
+        void drawSquare(QPainter *painter);
+        void drawHitIcon(QPainter *painter);
+        void drawWaterIcon(QPainter *painter);
+        void drawDeathIcon(QPainter *painter);
+        void drawShipIcon(QPainter *painter, int &ship);
+        void drawIcon(QPainter *painter, QString iconName);
 
     private:
         int internalx;

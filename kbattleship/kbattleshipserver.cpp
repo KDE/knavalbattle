@@ -17,7 +17,7 @@
 
 #include "kbattleshipserver.moc"
 
-KBattleshipServer::KBattleshipServer( int port ) : QServerSocket( port )
+KBattleshipServer::KBattleshipServer(int port) : QServerSocket(port)
 {
     allowWrite();
     internalPort = port;
@@ -29,69 +29,53 @@ KBattleshipServer::~KBattleshipServer()
 
 void KBattleshipServer::start()
 {
-    if( !ok() )
+    if(!ok())
     {
-    	KMessageBox::error( 0L, i18n( "Failed to bind to local port \"%1\"\n\nPlease check if another KBattelship server instance\nis running or another application uses this port." ).arg( internalPort ) ) ;
-	    emit serverFailure();
+	KMessageBox::error(0L, i18n("Failed to bind to local port \"%1\"\n\nPlease check if another KBattelship server instance\nis running or another application uses this port.").arg(internalPort));
+	emit serverFailure();
     }
 }
 
-void KBattleshipServer::newConnection( int socket )
+void KBattleshipServer::newConnection(int socket)
 {
-    serverSocket = new QSocket( this );
-    connect( serverSocket, SIGNAL( readyRead() ), this, SLOT( readClient() ) );
-    connect( serverSocket, SIGNAL( delayedCloseFinished() ), this, SLOT( discardClient() ) );
-    serverSocket->setSocket( socket );
+    serverSocket = new QSocket(this);
+    connect(serverSocket, SIGNAL(readyRead()), this, SLOT(readClient()));
+    connect(serverSocket, SIGNAL(delayedCloseFinished()), this, SLOT(discardClient()));
+    serverSocket->setSocket(socket);
     emit newConnect();
 }
 
 void KBattleshipServer::readClient()
 {
-    QSocket *socket = ( QSocket * )sender();
-    int len = socket->bytesAvailable();
-    char *buf = new char[ len + 1 ];
-    socket->readBlock( buf, len );
-    buf[ len ] = 0;
+    int len = serverSocket->bytesAvailable();
+    char *buf = new char[len + 1];
+    serverSocket->readBlock(buf, len);
+    buf[len] = 0;
     KMessage *msg = new KMessage();
-    msg->setDataStream( buf );
-    emit newMessage( msg );
+    msg->setDataStream(buf);
+    emit newMessage(msg);
     delete msg;
-    delete[] buf;
+    delete []buf;
 }
 
-void KBattleshipServer::sendMessage( KMessage *msg )
+void KBattleshipServer::sendMessage(KMessage *msg)
 {
-    if( writeable )
+    if(writeable)
     {
-	    QTextStream *post = new QTextStream( serverSocket );
-	    *post << msg->returnSendStream() << endl;
-	    emit wroteToClient();
-	    if( msg->getField( "enemy" ) == QString( "ready" ) )
-	    {
-	        forbidWrite();
-	        emit senemylist( true );
-	    }
+	QTextStream *post = new QTextStream(serverSocket);
+	*post << msg->returnSendStream() << endl;
+	emit wroteToClient();
+	if(msg->enemyReady())
+	{
+	    forbidWrite();
+	    emit senemylist(true);
+	}
+	delete msg;
     }
 }
 
 void KBattleshipServer::discardClient()
 {
-    QSocket *socket = ( QSocket * )sender();
-    delete socket;
+    delete serverSocket;
     emit endConnect();
-}
-
-void KBattleshipServer::allowWrite()
-{
-    writeable = true;
-}
-
-void KBattleshipServer::forbidWrite()
-{
-    writeable = false;
-}
-
-bool KBattleshipServer::write()
-{
-    return writeable;
 }

@@ -29,7 +29,7 @@ class KServerDialog : public serverStartDlg
 {
     Q_OBJECT
     public:
-        KServerDialog( QWidget *parent = 0, const char *name = 0 );
+        KServerDialog(QWidget *parent = 0, const char *name = 0);
         ~KServerDialog();
     
         QString getPort();
@@ -45,4 +45,3 @@ class KServerDialog : public serverStartDlg
 };
 
 #endif
-

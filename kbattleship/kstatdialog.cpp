@@ -17,9 +17,9 @@
 
 #include "kstatdialog.moc"
 
-KStatDialog::KStatDialog( QWidget *parent, const char *name ) : statDlg( parent, name )
+KStatDialog::KStatDialog(QWidget *parent, const char *name) : statDlg(parent, name)
 {
-    setMinimumSize( 80, 300 );
+    setMinimumSize(80, 300);
 }
 
 KStatDialog::~KStatDialog()
@@ -28,24 +28,24 @@ KStatDialog::~KStatDialog()
 
 void KStatDialog::setShot()
 {
-    ShotLCD->display( ShotLCD->intValue() + 1 );
+    ShotLCD->display(ShotLCD->intValue() + 1);
 }
 
 void KStatDialog::setHit()
 {
-    HitLCD->display( HitLCD->intValue() + 1 );
+    HitLCD->display(HitLCD->intValue() + 1);
 }
 
 void KStatDialog::setWater()
 {
-    WaterLCD->display( WaterLCD->intValue() + 1 );
+    WaterLCD->display(WaterLCD->intValue() + 1);
 }
 
 void KStatDialog::clear()
 {
-    ShotLCD->display( 0 );
-    HitLCD->display( 0 );
-    WaterLCD->display( 0 );
+    ShotLCD->display(0);
+    HitLCD->display(0);
+    WaterLCD->display(0);
 }
 
 int KStatDialog::getHit()

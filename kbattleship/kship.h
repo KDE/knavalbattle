@@ -18,14 +18,13 @@
 #ifndef KSHIP_H
 #define KSHIP_H
 
-#include <kdebug.h>
 #include <qobject.h>
 
 class KShip : public QObject
 {
     Q_OBJECT
     public:
-        KShip( int shipxstart, int shipxstop, int shipystart, int shipxstart, int shiplength );
+        KShip(int shipxstart, int shipxstop, int shipystart, int shipxstart, int shiplength);
         ~KShip();
     
         int shipxstart();
@@ -43,4 +42,3 @@ class KShip : public QObject
 };
 
 #endif
-

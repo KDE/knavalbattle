@@ -26,29 +26,26 @@ class KBattleField : public KGridWidget
 {
     Q_OBJECT
     public:
-        enum{ OWNFIELD, ENEMYFIELD, FREE, WATER, HIT, DEATH, SHIP };
-        KBattleField( QWidget *parent, const char *name, int type );
+        enum{OWNFIELD, ENEMYFIELD, FREE, WATER, HIT, DEATH, SHIP};
+        KBattleField(QWidget *parent, const char *name, int type);
         ~KBattleField();
     
-        void requestedShipIconDraw( int type, bool hit = false, bool death = false );
         void setDrawValues();
         void drawField();
         void clearField();
-        void changeData( int &fieldx, int &fieldy, int type );
-        void findOwnFieldShipType( int x, int y, bool hit = false, bool death = false );
-        void findEnemyFieldShipType( int x, int y );
-        int getState( int fieldx, int fieldy );
+        void changeData( int &fieldx, int &fieldy, int type ) { FieldData[fieldx][fieldy] = type; }
+        void requestedShipIconDraw(int type, bool hit = false, bool death = false);
+        int getState( int fieldx, int fieldy ) { return FieldData[fieldx][fieldy]; }
 
     private:
-        int FieldData[ 8 ][ 8 ];
+        int FieldData[8][8];
         int internalType;
         int FromLeft;
         QString nickName;
 
     signals:
-        void doOwnFieldShipListJob( int, int, bool, bool );
-        void doEnemyFieldShipListJob( int, int );
-
+        void doOwnFieldShipListJob(int, int, bool, bool);
+        void doEnemyFieldShipListJob(int, int);
 };
 
 #endif
