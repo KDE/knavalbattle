@@ -100,7 +100,8 @@ void KBattleshipApp::initActions()
 	KStdGameAction::highscores(this, SLOT(slotHighscore()), actionCollection());
 	m_gameEnemyInfo = new KAction(i18n("&Enemy Info..."), "view_text", Key_F11, this, SLOT(slotEnemyClientInfo()), actionCollection(), "game_enemyinfo");
 
-	m_configStatusbar = KStdAction::showStatusbar(this, SLOT(slotShowStatusbar()), actionCollection(), "options_show_statusbar");
+	createStandardStatusBarAction();
+	setAutoSaveSettings("General");
 	m_configSound = new KToggleAction(i18n("&Play Sounds"), 0, this, SLOT(slotConfigSound()), actionCollection(), "options_configure_sound");
 	m_configGrid = new KToggleAction(i18n("&Show Grid"), 0, this, SLOT(slotShowGrid()), actionCollection(), "options_show_grid");
 
@@ -621,7 +622,6 @@ void KBattleshipApp::saveOptions()
 	if(!m_sound->serverError())
 		m_config->writeEntry("PlaySounds", m_configSound->isChecked());
 	m_config->writeEntry("ShowGrid", m_configGrid->isChecked());
-	m_config->writeEntry("ShowStatusbar", m_configStatusbar->isChecked());
 	m_config->sync();
 }
 
@@ -630,8 +630,6 @@ void KBattleshipApp::readOptions()
 	m_config->setGroup("General");
 	m_configSound->setChecked(m_config->readBoolEntry("PlaySounds", true));
 	m_configGrid->setChecked(m_config->readBoolEntry("ShowGrid", false));
-	if (m_config->readBoolEntry("ShowStatusbar", true) != m_configStatusbar->isChecked())
-		m_configStatusbar -> activate();
 }
 
 void KBattleshipApp::slotHighscore()
@@ -1089,14 +1087,6 @@ void KBattleshipApp::slotShowGrid()
 		m_view->field()->disableGrid();
 	else
 		m_view->field()->enableGrid();
-}
-
-void KBattleshipApp::slotShowStatusbar()
-{
-	if(!m_configStatusbar->isChecked())
-		statusBar()->hide();
-	else
-		statusBar()->show();
 }
 
 void KBattleshipApp::slotConfigSound()
