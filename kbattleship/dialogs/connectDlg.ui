@@ -289,12 +289,6 @@
         <receiver>clientConnectDlg</receiver>
         <slot>reject()</slot>
     </connection>
-    <connection>
-        <sender>cancelBtn</sender>
-        <signal>clicked()</signal>
-        <receiver>clientConnectDlg</receiver>
-        <slot>reject()</slot>
-    </connection>
 </connections>
 <tabstops>
     <tabstop>nicknameEdit</tabstop>
