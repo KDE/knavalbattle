@@ -466,6 +466,7 @@ void KBattleshipApp::resetServer(bool status)
 
 void KBattleshipApp::deleteLists()
 {
+    kdDebug() << "LISTS DELETED!" << endl;
     delete ownshiplist;
     delete enemyshiplist;
     ownshiplist = new KShipList();

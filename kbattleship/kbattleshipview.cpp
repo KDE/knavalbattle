@@ -20,7 +20,6 @@
 KBattleshipView::KBattleshipView(QWidget *parent, const char *name) : QWidget(parent, name)
 {
     setMinimumSize(600, 300);
-    setBackgroundMode(PaletteBase);
 }
 
 KBattleshipView::~KBattleshipView()
