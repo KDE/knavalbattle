@@ -61,6 +61,8 @@ class KBattleField : public KGridWidget
 	int m_ownfieldy;
 	int m_enemyfieldx;
 	int m_enemyfieldy;
+		
+	int m_width;
 
 	QWidget *m_parent_widget;
 };

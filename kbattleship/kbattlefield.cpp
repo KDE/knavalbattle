@@ -23,6 +23,7 @@
 KBattleField::KBattleField(QWidget *parentw, const char *name) : KGridWidget(parentw, name)
 {
     m_parent_widget = static_cast<QWidget *>(parent());
+    m_width = m_parent_widget->width();
     
     m_ownfieldx = 8;
     m_ownfieldy = 8;
@@ -171,7 +172,7 @@ int KBattleField::ownXPosition()
 
 int KBattleField::enemyXPosition()
 {
-    return m_parent_widget->width() / 2;
+    return m_width / 2;
 }
 
 int KBattleField::rectX()
