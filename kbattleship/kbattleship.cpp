@@ -29,6 +29,8 @@
 #include <kstatusbar.h>
 #include <kstdgameaction.h>
 
+#include <kscoredialog.h>
+
 #include "kbattleship.moc"
 
 extern const char *clientVersion;
@@ -151,7 +153,6 @@ void KBattleshipApp::initView()
 
 	m_ownshiplist = new KShipList();
 	m_enemyshiplist = new KShipList();
-	m_score = new KHighscoreDialog(this);
 
 	m_view->startDrawing();
 	setFocusProxy(m_view);
@@ -636,8 +637,26 @@ KShip *KBattleshipApp::enemyShipAt(int fieldx, int fieldy)
 
 void KBattleshipApp::slotUpdateHighscore()
 {
-	m_score->save(m_ownNickname, m_stat->shot(), m_stat->hit(), m_stat->water());
-	m_score->load();
+	// Balancing factors
+	// a = shot-balance
+	// b = water-balance
+	double a = 3;
+	double b = 0.5;
+	double score = (a * m_stat->hit() - b * m_stat->water()) / (m_stat->shot() + m_stat->water()) * 1000;
+	if(score == 0) score = 1;
+	
+	KScoreDialog *scoreDialog = new KScoreDialog(KScoreDialog::Name | KScoreDialog::Score | KScoreDialog::Custom1 | KScoreDialog::Custom2 | KScoreDialog::Custom3, this);
+	scoreDialog->addField(KScoreDialog::Custom1, i18n("Shots"), "shots");
+	scoreDialog->addField(KScoreDialog::Custom2, i18n("Hits"), "hits");
+	scoreDialog->addField(KScoreDialog::Custom3, i18n("Water"), "water");
+
+	KScoreDialog::FieldInfo info;
+	info[KScoreDialog::Name] = m_ownNickname;
+	info[KScoreDialog::Custom1] = QString::number(m_stat->shot());
+	info[KScoreDialog::Custom2] = QString::number(m_stat->hit());
+	info[KScoreDialog::Custom3] = QString::number(m_stat->water());
+
+	scoreDialog->addScore((int)score, info, false, false);
 }
 
 void KBattleshipApp::saveOptions()
@@ -657,9 +676,11 @@ void KBattleshipApp::readOptions()
 
 void KBattleshipApp::slotHighscore()
 {
-	m_score->setCaption(i18n("Highscore"));
-	m_score->load();
-	m_score->show();
+	KScoreDialog *scoreDialog = new KScoreDialog(KScoreDialog::Name | KScoreDialog::Score | KScoreDialog::Custom1 | KScoreDialog::Custom2 | KScoreDialog::Custom3, this);
+	scoreDialog->addField(KScoreDialog::Custom1, i18n("Shots"), "shots");
+	scoreDialog->addField(KScoreDialog::Custom2, i18n("Hits"), "hits");
+	scoreDialog->addField(KScoreDialog::Custom3, i18n("Water"), "water");
+	scoreDialog->show();
 }
 
 void KBattleshipApp::slotEnemyClientInfo()

@@ -39,7 +39,6 @@
 #include "kbattleshipview.h"
 #include "kchatwidget.h"
 #include "kclientdialog.h"
-#include "khighscoredialog.h"
 #include "konnectionhandling.h"
 #include "kserverdialog.h"
 #include "kship.h"
@@ -149,7 +148,6 @@ private:
 	KToggleAction *m_configGrid;
 	KClientDialog *m_client;
 	KServerDialog *m_server;
-	KHighscoreDialog *m_score;
 	KShipList *m_ownshiplist;
 	KShipList *m_enemyshiplist;
 	QString m_ownNickname;

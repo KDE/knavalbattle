@@ -10,8 +10,7 @@ kbattleship_SOURCES = kbaiplayer.cpp kbstrategy.cpp kbverticalstepstrategy.cpp\
 				kmessage.cpp kbattleshipserver.cpp kbattleshipclient.cpp \
 				kbattleshipview.cpp kgridwidget.cpp kbattlefield.cpp \
 	            kchatwidget.cpp kserverdialog.cpp kclientdialog.cpp \
-				kstatdialog.cpp khighscoredialog.cpp \
-				kbdiagonalshotstrategy.cpp \
+				kstatdialog.cpp	kbdiagonalshotstrategy.cpp \
 	            konnectionhandling.cpp kship.cpp kshiplist.cpp \
 	            kbchooserstrategy.cpp kbattleship.cpp main.cpp
 kbattleship_LDADD = $(LIB_KDEGAMES) ./dialogs/libkbattleshipdialogs.la $(LIB_KFILE)
