@@ -39,12 +39,9 @@ public:
 	QString gamename() const;
 
 public slots:
-	void slotOk();
-	void slotCancel();
+	virtual void slotOk();
+	virtual void slotCancel();
 
-signals:
-	void sigStartServer();
-	void sigCancelServer();
 private:
 	serverStartDlg *m_mainWidget;
 };

@@ -31,18 +31,22 @@ KServerDialog::KServerDialog(QWidget *parent, const char *name) :
 	
 	KUser u;
 	m_mainWidget->nicknameEdit->setText(u.loginName());
+
+	QString gamename = u.fullName();
+	if(gamename.isEmpty()) gamename = u.loginName();
+	m_mainWidget->gamenameEdit->setText(gamename);
 }
 
 void KServerDialog::slotOk()
 {
 	hide();
-	emit sigStartServer();
+	emit okClicked();
 }
 
 void KServerDialog::slotCancel()
 {
 	hide();
-	emit sigCancelServer();
+	emit cancelClicked();
 }
 
 QString KServerDialog::port() const

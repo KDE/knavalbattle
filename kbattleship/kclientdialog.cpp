@@ -39,7 +39,7 @@ KClientDialog::KClientDialog(QWidget *parent, const char *name)
 	m_mainWidget->nicknameEdit->setText(u.loginName());
 
 	connect(m_mainWidget->serverEdit, SIGNAL(returnPressed(const QString &)), this, SLOT(slotReturnPressed(const QString &)));
-	connect(m_mainWidget->serverEdit, SIGNAL(textChanged()), this, SLOT(slotCheckEnableOk()));
+	connect(m_mainWidget->serverEdit, SIGNAL(textChanged(const QString &)), this, SLOT(slotCheckEnableOk()));
 	
 	m_config->setGroup("History");
 	m_browser = new DNSSD::ServiceBrowser(BATTLESHIP_SERVICE);
