@@ -17,7 +17,7 @@
 
 #include "kbattleshipserver.moc"
 
-KBattleshipServer::KBattleshipServer( int port ) : QServerSocket( int port = 54321 )
+KBattleshipServer::KBattleshipServer( int port ) : QServerSocket( port )
 {
     if( !ok )
     {

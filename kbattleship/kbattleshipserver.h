@@ -28,7 +28,7 @@ class KBattleshipServer : QServerSocket
 {
     Q_OBJECT
     public:
-        KBattleshipServer( int port );
+        KBattleshipServer( int port = 54321);
         ~KBattleshipServer();
 
     protected:
