@@ -12,24 +12,17 @@
 
 <authorgroup>
 <author>
-<firstname>Daniel</firstname>
-<surname>Molkentin</surname>
-<affiliation>
-<address><email>molkentin@kde.org</email></address></affiliation>
+&Daniel.Molkentin; &Daniel.Molkentin.mail;
 </author>
 
 <author>
-<firstname>Nikolas</firstname>
-<surname>Zimmermann</surname>
-<affiliation>
-<address><email>wildfox@kde.org</email></address>
-</affiliation>
+&Nikolas.Zimmermann; &Nikolas.Zimmermann.mail;
 </author>
 
 <othercredit role="reviewer">
-<firstname>Frerich</firstname><surname>Raabe</surname>
-<contrib>Reviewer</contrib>
-<affiliation><address><email>raabe@kde.org</email></address></affiliation>
+&Frerich.Raabe;
+<!-- <contrib>Reviewer</contrib> -->
+&Frerich.Raabe.mail;
 </othercredit>
 
 <!-- TRANS:ROLES_OF_TRANSLATORS -->
@@ -52,7 +45,7 @@
 </copyright>
 
 
-<date>2002-02-08</date>
+<date>2003-09-18</date>
 <releaseinfo>1.00.00</releaseinfo>
 
 <abstract>
@@ -87,7 +80,7 @@
 
 <tip>
 <para>
-&kbattleship; uses an &XML; based communcation protocol so you can write
+&kbattleship; uses an &XML; based communication protocol so you can write
 clients for every platform and in any language.  If you want to write
 one in your favorite programming language or/and environment, contact
 us. We would really like to hear of it.
@@ -111,7 +104,7 @@ Server</guimenuitem></menuchoice> or by pressing <keycap>F3</keycap>.
 A dialog box opens which will ask you for for a
 <guilabel>Nickname</guilabel> and <guilabel>Port</guilabel>. Normally,
 &kbattleship; will suggest your login name but you can enter any string
-you want. The predefined port should be ok. However, if you encounter
+you want. The predefined port should be OK. However, if you encounter
 problems, you can choose any other free ports above 1024.
 </para>
 
@@ -162,7 +155,7 @@ Ship placement is very easy: Simply click on the field where you want to
 place your ship. The first one will have a length of four squares, the next
 will be three squares long &etc;. Click on the field where you want to start
 the placement. If you click with the &LMB; the ship will be placed horizontally,
-a &Shift;&LMB; click will cause it to be placed
+a <keycombo action="simul">&Shift;&LMB;</keycombo> click will cause it to be placed
 vertically. &Shift; itself will flip the ship placement preview.
 </para>
 
@@ -232,9 +225,9 @@ The first player destroying all their opponents ships wins the game!
 <varlistentry>
 <term>
 <menuchoice>
-<shortcut><keycap>F10</keycap></shortcut>
+<shortcut action="simul">&Ctrl;<keycap>H</keycap></shortcut>
 <guimenu>Game</guimenu>
-<guimenuitem>Highscore</guimenuitem>
+<guimenuitem>Show Highscores</guimenuitem>
 </menuchoice>
 </term>
 <listitem>
@@ -295,20 +288,6 @@ default is on.
 </listitem>
 </varlistentry>
 
-<varlistentry>
-<term>
-<menuchoice>
-<guimenu>Settings</guimenu>
-<guimenuitem>Play Sounds</guimenuitem>
-</menuchoice>
-</term>
-<listitem>
-<para>
-<action>Toggle whether sounds (played when shooting) should be played.</action>
-The default is on.
-</para>
-</listitem>
-</varlistentry>
 
 <varlistentry>
 <term>
@@ -321,6 +300,49 @@ The default is on.
 <para>
 <action>Toggle on and off the display of a grid on the playing
 field.</action> The default is off.
+</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term>
+<menuchoice>
+<guimenu>Settings</guimenu>
+<guimenuitem>Configure Shortcuts...</guimenuitem>
+</menuchoice>
+</term>
+<listitem>
+<para>
+<action>Configure the keyboard shortcuts used by &kbattleship;.</action>
+</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term>
+<menuchoice>
+<guimenu>Settings</guimenu>
+<guimenuitem>Configure Notifications...</guimenuitem>
+</menuchoice>
+</term>
+<listitem>
+<para>
+<action>Configure</action> the audio and visual notifications used by &kbattleship;.
+</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term>
+<menuchoice>
+<guimenu>Settings</guimenu>
+<guimenuitem>Play Sounds</guimenuitem>
+</menuchoice>
+</term>
+<listitem>
+<para>
+<action>Toggle whether sounds (played when shooting) should be played.</action>
+The default is on.
 </para>
 </listitem>
 </varlistentry>
@@ -378,12 +400,12 @@ contact?</para>
 <title>Authors</title>
 <listitem>
 <para>
-Nikolas Zimmermann <email>wildfox@kde.org</email>
+&Nikolas.Zimmermann; &Nikolas.Zimmermann.mail;
 </para>
 </listitem>
 <listitem>
 <para>
-Daniel Molkentin <email>molkentin@kde.org</email>
+&Daniel.Molkentin; &Daniel.Molkentin.mail;
 </para>
 </listitem>
 <listitem>
