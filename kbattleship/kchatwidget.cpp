@@ -63,4 +63,6 @@ void KChatWidget::slotComputeMessage()
 	emit sendMessage(commentEdit->text());
 	commentEdit->setText("");
     }
+    else if(commentEdit->text().stripWhiteSpace().isEmpty() && acceptMsgs)
+	commentEdit->setText("");
 }
