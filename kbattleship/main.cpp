@@ -44,7 +44,9 @@ int main(int argc, char *argv[])
     (kapp->dcopClient())->registerAs("kbattleship");
  
     if(app.isRestored())
+    {
         RESTORE(KBattleshipApp);
+    }
     else
     {
         KBattleshipApp *kbattleship = new KBattleshipApp();
