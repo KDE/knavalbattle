@@ -21,52 +21,30 @@
 
 #include "kbattleship.h"
 
-static const char *description =
-	I18N_NOOP("KBattleship");
-// INSERT A DESCRIPTION FOR YOUR APPLICATION HERE
-	
-	
-static KCmdLineOptions options[] =
+static const char *description = I18N_NOOP( "KBattleship" );
+
+static const char *version = I18N_NOOP( "0.1 (pre-alpha)" );
+
+int main( int argc, char *argv[] )
 {
-  { "+[File]", I18N_NOOP("file to open"), 0 },
-  { 0, 0, 0 }
-  // INSERT YOUR COMMANDLINE OPTIONS HERE
-};
+    KAboutData aboutData( "kbattleship", I18N_NOOP( "KBattleship" ),
+        VERSION, description, KAboutData::License_GPL,
+        "(c) 2000  Nikolas Zimmermann, Daniel Molkentin" );
 
-int main(int argc, char *argv[])
-{
-
-	KAboutData aboutData( "kbattleship", I18N_NOOP("KBattleship"),
-		VERSION, description, KAboutData::License_GPL,
-		"(c) 2000, Daniel Molkentin, Nikolas Zimmermann");
-	aboutData.addAuthor("Daniel Molkentin",0, "molkentin@kde.org");
-	aboutData.addAuthor("Nikolas Zimmermann",0, "nikoz@gymnasium-kerpen.de");
-	KCmdLineArgs::init( argc, argv, &aboutData );
-	KCmdLineArgs::addCmdLineOptions( options ); // Add our own options.
-
-  KApplication app;
+    aboutData.addAuthor( "Nikolas Zimmermann", "Project Founder, Coder", "nikoz@gymnasium-kerpen.de" );
+    aboutData.addAuthor( "Daniel Molkentin", "Coder", "molkentin@kde.org" );
+    KCmdLineArgs::init( argc, argv, &aboutData );
+    KApplication app;
  
-  if (app.isRestored())
-  {
-    RESTORE(KBattleshipApp);
-  }
-  else 
-  {
-    KBattleshipApp *kbattleship = new KBattleshipApp();
-    kbattleship->show();
+    if( app.isRestored() )
+    {
+        RESTORE( KBattleshipApp );
+    }
+    else
+    {
+        KBattleshipApp *kbattleship = new KBattleshipApp();
+        kbattleship->show();
+    }
 
-    KCmdLineArgs *args = KCmdLineArgs::parsedArgs();
-		
-		if (args->count())
-		{
-                        // do something
-		}
-		else
-		{
-                       // do something else
-                }
-		args->clear();
-  }
-
-  return app.exec();
+    return app.exec();
 }  

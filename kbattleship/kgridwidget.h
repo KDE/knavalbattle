@@ -1,5 +1,5 @@
 /***************************************************************************
-                              kbattleshipview.h
+                                 kmessage.h
                              -------------------
     Developers: (c) 2000 Nikolas Zimmermann <nikoz@gymnasium-kerpen.de>
                 (c) 2000 Daniel Molkentin <molkentin@kde.org>
@@ -15,20 +15,25 @@
  *                                                                         *
  ***************************************************************************/
 
-#ifndef KBATTLESHIPVIEW_H
-#define KBATTLESHIPVIEW_H
+#ifndef KGRIDWIDGET_H
+#define KGRIDWIDGET_H
 
+#include <kdebug.h>
 #include <qpainter.h>
 #include <qwidget.h>
-#include "kbattleship.h"
-#include "kbattleshipdoc.h"
 
-class KBattleshipView : public QWidget
+class KGridWidget : QWidget()
 {
     Q_OBJECT
     public:
-        KBattleshipView( QWidget *parent = 0, const char *name = 0 );
-        ~KBattleshipView();   
+        KGridWidget( int x, int y, int size, QPainter *painter );
+        ~KGridWidget();
+
+    private:
+        int internalX;
+        int internalY;
+        int internalSize;
+        QPainter internalPainter;
 };
 
 #endif

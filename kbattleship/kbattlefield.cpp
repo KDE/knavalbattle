@@ -1,5 +1,5 @@
 /***************************************************************************
-                              kbattleshipview.h
+                               kbattlefield.cpp
                              -------------------
     Developers: (c) 2000 Nikolas Zimmermann <nikoz@gymnasium-kerpen.de>
                 (c) 2000 Daniel Molkentin <molkentin@kde.org>
@@ -15,20 +15,12 @@
  *                                                                         *
  ***************************************************************************/
 
-#ifndef KBATTLESHIPVIEW_H
-#define KBATTLESHIPVIEW_H
+#include "kbattlefield.moc"
 
-#include <qpainter.h>
-#include <qwidget.h>
-#include "kbattleship.h"
-#include "kbattleshipdoc.h"
-
-class KBattleshipView : public QWidget
+KBattleField::KBattleField() : QObject()
 {
-    Q_OBJECT
-    public:
-        KBattleshipView( QWidget *parent = 0, const char *name = 0 );
-        ~KBattleshipView();   
-};
+}
 
-#endif
+KBattleField::~KBattleField()
+{
+}

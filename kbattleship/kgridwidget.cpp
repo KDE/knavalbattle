@@ -1,5 +1,5 @@
 /***************************************************************************
-                            kbattleshipclient.cpp
+                               kgridwidget.cpp
                              -------------------
     Developers: (c) 2000 Nikolas Zimmermann <nikoz@gymnasium-kerpen.de>
                 (c) 2000 Daniel Molkentin <molkentin@kde.org>
@@ -15,40 +15,21 @@
  *                                                                         *
  ***************************************************************************/
 
-#include "kbattleshipclient.moc"
+#include "kgridwidget.moc"
 
-KBattleshipClient::KBattleshipClient( QString host, int port ) : QSocket()
+KGridWidget::KGridWidget( int x, int y, int size, QPainter *painter ) : QWidget()
 {
-        internalHost = host;
-        internalPort = port;
-        connect( this, SIGNAL( error( int ) ), SLOT( socketError( int ) ) );
-
-        connect( this, SIGNAL( hostFound() ), SLOT( connectionControl() ) );
-        connect( this, SIGNAL( connected() ), SLOT( connectionControl() ) );
-        connect( this, SIGNAL( connectionClosed() ), SLOT( connectionControl() ) );
-        connect( this, SIGNAL( readyRead() ), SLOT( connectionControl() ) );
-
-        connectToServer();
+    internalX = x;
+    internalY = y;
+    internalSize = size;
+    internalPainter = painter;
 }
 
-KBattleshipClient::~KBattleshipClient()
+KGridWidget::~KGridWidget()
 {
 }
 
-void KBattleshipClient::connectToServer()
+void KGridWidget::drawSquare()
 {
-    connectToHost( internalHost, internalPort);
-}
-
-void KBattleshipClient::connectionControl()
-{
-    kdDebug() << "Client-State: " << state() << endl;
-}
-
-void KBattleshipClient::lostServer()
-{
-}
-
-void KBattleshipClient::socketError( int error )
-{
+    internalPainter.drawRect( internalX, internalY, internalSize, internalSize );
 }

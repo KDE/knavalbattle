@@ -15,19 +15,11 @@
  *                                                                         *
  ***************************************************************************/
 
-// include files for Qt
-#include <qprinter.h>
-#include <qpainter.h>
-
-// application specific includes
-#include "kbattleshipview.h"
-#include "kbattleship.h"
-
 #include "kbattleshipview.moc"
 
-KBattleshipView::KBattleshipView(QWidget *parent, const char *name) : QWidget(parent, name)
+KBattleshipView::KBattleshipView( QWidget *parent, const char *name ) : QWidget( parent, name )
 {
-  setBackgroundMode(PaletteBase);
+    setBackgroundMode( PaletteBase );
 }
 
 KBattleshipView::~KBattleshipView()
