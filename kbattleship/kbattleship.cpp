@@ -17,11 +17,12 @@
 
 #include <qtimer.h>
 #include <stdlib.h>
+#include <qlayout.h>
 #include "kbattleship.moc"
 
 KBattleshipApp::KBattleshipApp(QWidget *, const char *name) : KMainWindow(0, name)
 {
-    setMinimumSize(680, 480);
+    setMinimumSize(680, 500);
     m_connection = 0;
     m_config = 0;
     m_client = 0;
@@ -114,19 +115,23 @@ void KBattleshipApp::initShipPlacing()
 
 void KBattleshipApp::initView()
 {
-    QSplitter *splitV = new QSplitter(QSplitter::Vertical, this);
-    QSplitter *splitH = new QSplitter(QSplitter::Horizontal, splitV);
+    QWidget * dummy = new QWidget(this,"dummy");
+    setCentralWidget(dummy);
 
-    m_view = new KBattleshipView(splitH, "", m_configGrid->isChecked());
-    m_chat = new KChatWidget(splitV);
-    m_stat = new KStatDialog(splitH);
+    QBoxLayout *topLayout = new QVBoxLayout(dummy,0,-1,"topLayout");
+    QBoxLayout *childLayout = new QHBoxLayout(topLayout,-1,"childLayout");
+
+    m_chat = new KChatWidget(dummy);
+    m_view = new KBattleshipView(dummy, "", m_configGrid->isChecked());
+    m_stat = new KStatDialog(dummy);
+    childLayout->addWidget(m_view);
+    childLayout->addWidget(m_stat);
+    topLayout->addWidget(m_chat);
 
     m_ownshiplist = new KShipList();
     m_enemyshiplist = new KShipList();
 
     m_view->startDrawing();
-
-    setCentralWidget(splitV);
 
     connect(m_view, SIGNAL(sigEnemyFieldClicked(int, int)), this, SLOT(slotEnemyFieldClick(int, int)));
     connect(m_view, SIGNAL(sigOwnFieldClicked(int, int, int)), this, SLOT(slotPlaceShip(int, int, int)));
