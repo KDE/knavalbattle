@@ -112,6 +112,7 @@ void KBattleshipSound::playSound(int file)
 	}
 	
 	playObject = playObjectFactory.createPlayObject(playFile.local8Bit().data());
-	playObject.play();
+	if(!playObject.isNull())
+	    playObject.play();
     }
 }
