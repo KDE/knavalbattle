@@ -65,6 +65,5 @@ int KBStrategy::enemyFieldStateAt(int x, int y)
 
 	default:
 	    return SHIP;		
-	    break; // needed?
     }	
 }

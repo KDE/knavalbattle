@@ -82,6 +82,7 @@ class KBattleshipApp : public KMainWindow
 	void resetControl(bool status);
         void resetClient(bool status = true);
         void resetServer(bool status = true);
+	void deleteAI();
         void setPlaceable();
         void slotServerConnect();
 	void deleteConnectDialog();

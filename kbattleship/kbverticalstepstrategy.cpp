@@ -20,7 +20,7 @@
 
 KBVerticalStepStrategy::KBVerticalStepStrategy(KBStrategy *parent) : KBStrategy(parent)
 {
-    m_child = 0L;
+    m_child = 0;
     kdDebug() << "KBVerticalStepStrategy(" << (int) parent << ")" << endl;
 }
 

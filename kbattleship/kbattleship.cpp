@@ -95,6 +95,12 @@ void KBattleshipApp::initShipPlacing()
     connect(ownshiplist, SIGNAL(ownFieldDataChanged(int, int, int)), this, SLOT(changeOwnFieldData(int, int, int)));
 }
 
+void KBattleshipApp::deleteAI()
+{
+    delete aiPlayer;
+    aiPlayer = 0;
+}
+
 void KBattleshipApp::initStatusBar()
 {
     ownNickname = "-";
@@ -170,14 +176,15 @@ void KBattleshipApp::enemyClick(int fieldx, int fieldy)
 	    if(stat->getHit() != 10)
 	    {
 		if(!playing)
+		{
 		    sendMessage(fieldx, fieldy, showstate);
+		    slotStatusMsg(i18n("Waiting for enemy to shoot.."));
+		}
 		else
 		{
 		    if(aiPlayer != 0)
 			aiPlayer->slotRequestShot();
 		}
-		
-		slotStatusMsg(i18n("Waiting for enemy to shoot.."));
 	    }
 	    else
 	    {
@@ -192,8 +199,7 @@ void KBattleshipApp::enemyClick(int fieldx, int fieldy)
     		    gameNewServer->setEnabled(true);
 		    gameServerConnect->setEnabled(true);
     		    stat->clear();
-		    delete aiPlayer;
-		    aiPlayer = 0;
+		    QTimer::singleShot(0, this, SLOT(deleteAI()));
 		    deleteLists(false);
 		    slotStatusMsg(i18n("You won the game :)"));
 		    updateHighscore();
@@ -1032,6 +1038,7 @@ void KBattleshipApp::slotViewStatusBar()
 
 void KBattleshipApp::slotStatusMsg(const QString &text)
 {
+    kdDebug() << "STATUS: " << text << endl;
     statusBar()->clear();
     statusBar()->changeItem(text, ID_STATUS_MSG);
 }
@@ -1077,8 +1084,7 @@ void KBattleshipApp::slotSinglePlayer()
 	    slotStatusMsg(i18n("Ready"));
 	    stat->clear();
 	    chat->clear();
-	    delete aiPlayer;
-	    aiPlayer = 0;
+	    QTimer::singleShot(0, this, SLOT(deleteAI()));
 	    deleteLists(false);
 	}
     }
@@ -1097,7 +1103,6 @@ void KBattleshipApp::startBattleshipGame()
     gameServerConnect->setEnabled(false);
     slotStatusMsg(i18n("Waiting for the AI player to place the ships..."));
     ownNickname = single->getNickname();
-//    chat->deactivate();
     slotChangeOwnPlayer(ownNickname);
     slotChangeEnemyPlayer(i18n("Computer"));
     delete single;
@@ -1154,8 +1159,7 @@ void KBattleshipApp::slotAIShootsAt(const QPoint pos)
         gameNewServer->setEnabled(true);
 	gameServerConnect->setEnabled(true);
         stat->clear();
-	delete aiPlayer;
-	aiPlayer = 0;
+	QTimer::singleShot(0, this, SLOT(deleteAI()));
 	deleteLists(false);
 	slotStatusMsg(i18n("You lost the game :("));
 	updateHighscore();

@@ -35,7 +35,7 @@ class KBAIPlayer : public QObject
 	KBAIPlayer();
 	~KBAIPlayer();
 	
-	void init(KBattleField* battle_field, KShipList* ai_shiplist);
+	void init(KBattleField *battle_field, KShipList *ai_shiplist);
 
     public slots:
 	void slotRestart();

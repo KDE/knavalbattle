@@ -36,7 +36,7 @@ KBAIPlayer::~KBAIPlayer()
     kdDebug() << "~KBAIPlayer" << endl;
     if(m_masterStrategy != 0)
 	delete m_masterStrategy;
-
+    
     if(m_randomSeq != 0)
 	delete m_randomSeq;
 }
@@ -50,7 +50,7 @@ void KBAIPlayer::init(KBattleField *battle_field, KShipList *ai_shiplist)
     {
 	QRect rect = m_battleField->getEnemyRect();
 	int grid = m_battleField->gridSize();
-	m_fieldRect = QRect(0, 0, rect.width() / grid, rect.height() / grid);
+	m_fieldRect = QRect(0, 0, (rect.width() / grid) + 1, (rect.height() / grid) + 1);
     }
 
     m_ownShipList = ai_shiplist;
@@ -106,7 +106,7 @@ bool KBAIPlayer::slotRequestShot()
     {
 	QPoint pos = m_masterStrategy->getNextShot();
 	emit shootAt(pos);
-	m_masterStrategy->shotAt(pos);
+        m_masterStrategy->shotAt(pos);
 
 	return true;
     }
