@@ -98,7 +98,7 @@ void KBattleField::drawOwnField()
 		    else
 		    {
 			int shiptype = ship->shiptype() + 1;
-			int part = ship->shipystop() - i + 1;
+			int part = ship->shipystop() - j + 1;
 		        drawShipIcon(shiptype, part, false, true);	
 		    }
 		    break;
