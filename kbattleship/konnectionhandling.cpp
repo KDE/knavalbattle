@@ -197,19 +197,19 @@ void KonnectionHandling::clientSocketError(int error)
         case QSocket::ErrConnectionRefused:
     	    internalClient->kill();
  	    KMessageBox::error(0L, i18n("Connection refused by other host!"));
- 	    emit changeConnectText();
+	// emit changeConnectText();      // FIXME: Don't die
             break;
 
 	case QSocket::ErrHostNotFound:
     	    internalClient->kill();
 	    KMessageBox::error(0L, i18n("Couldn't lookup host!"));
-	    emit changeConnectText();
+	// emit changeConnectText();      // FIXME: Don't die
 	    break;
 	
         case QSocket::ErrSocketRead:	
             internalClient->kill();
  	    KMessageBox::error(0L, i18n("Couldn't connect to server!"));
-	    emit changeConnectText();
+	// emit changeConnectText();      // FIXME: Don't die
 	    break;
 
 	default:
