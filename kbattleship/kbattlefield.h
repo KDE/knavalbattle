@@ -29,17 +29,17 @@ class KBattleField : public KGridWidget
 {
     Q_OBJECT
     public:
-	enum{ WATER = 90, HIT = 91, DEATH = 92, SHIP = 93 };
+	enum{ FREE = 90, WATER = 91, HIT = 92, DEATH = 93, SHIP = 94 };
 	KBattleField();
         KBattleField( QWidget *parent, const KBattleFieldType &type, QPainter *painter );
         ~KBattleField();
 	
-	void requestedShipIconDraw( QPainter *painter, int type );
+	void requestedShipIconDraw( QPainter *painter, int type, bool hit = false, bool death = false );
 	void setDrawValues( QWidget *parent );
 	void drawField( QPainter *painter );
 	void clearField();
 	void changeData( int &fieldx, int &fieldy, int type );
-	int findOwnFieldShipType( int x, int y, QPainter *painter );
+	int findOwnFieldShipType( int x, int y, QPainter *painter, bool hit = false, bool death = false );
 	int findEnemyFieldShipType( int x, int y, QPainter *painter );
 	int getState( int fieldx, int fieldy );
 
@@ -49,7 +49,7 @@ class KBattleField : public KGridWidget
 	int FromLeft;
 
     signals:
-	void doOwnFieldShipListJob( int fieldx, int fieldy, QPainter *painter );
+	void doOwnFieldShipListJob( int fieldx, int fieldy, QPainter *painter, bool hit, bool death );
 	void doEnemyFieldShipListJob( int fieldx, int fieldy, QPainter *painter );
 
 };

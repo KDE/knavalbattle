@@ -38,7 +38,7 @@ void KBattleshipView::startDrawing()
     ownfield = new KBattleField( this, owntype, &ownpainter );
     enemyfield = new KBattleField( this, enemytype, &enemypainter );
 
-    connect( ownfield, SIGNAL( doOwnFieldShipListJob( int, int, QPainter * ) ), this, SIGNAL( requestedOwnFieldShipListJob( int, int, QPainter * ) ) );
+    connect( ownfield, SIGNAL( doOwnFieldShipListJob( int, int, QPainter *, bool, bool ) ), this, SIGNAL( requestedOwnFieldShipListJob( int, int, QPainter *, bool, bool ) ) );
     connect( enemyfield, SIGNAL( doEnemyFieldShipListJob( int, int, QPainter * ) ), this, SIGNAL( requestedEnemyFieldShipListJob( int, int, QPainter * ) ) );
 }
 
@@ -50,9 +50,9 @@ void KBattleshipView::clearField()
     paintEnemyField();
 }
 
-void KBattleshipView::giveOwnFieldShipListType( QPainter *painter, int type )
+void KBattleshipView::giveOwnFieldShipListType( QPainter *painter, int type, bool hit, bool death )
 {
-    ownfield->requestedShipIconDraw( painter, type  );
+    ownfield->requestedShipIconDraw( painter, type, hit, death );
 }
 
 void KBattleshipView::giveEnemyFieldShipListType( QPainter *painter, int type )
@@ -67,7 +67,6 @@ int KBattleshipView::getOwnFieldState( int &fieldx, int &fieldy )
 
 int KBattleshipView::getEnemyFieldState( int &fieldx, int &fieldy )
 {
-    kdDebug() << "STATE: " << enemyfield->getState( fieldx, fieldy ) << endl;
     return enemyfield->getState( fieldx, fieldy );
 }
 
@@ -165,7 +164,6 @@ void KBattleshipView::mouseReleaseEvent( QMouseEvent *event )
 	    }
 	    
 	    emit enemyFieldClicked( fieldX, fieldY );
-
 	}
     }
 }

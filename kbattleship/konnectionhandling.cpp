@@ -71,7 +71,8 @@ void KonnectionHandling::gotBattleFieldState( int fieldx, int fieldy, int state 
     msg->addField( QString( "fieldy" ), qfieldy );
     msg->addField( QString( "fieldstate" ), qstate );
     emit sendMessage( msg );
-    emit ownFieldDataChanged( fieldx, fieldy, state );
+    if( state == KBattleField::SHIP )
+	emit ownFieldDataChanged( fieldx, fieldy, KBattleField::HIT );
 }
 
 void KonnectionHandling::gotNewMessage( KMessage *msg )
@@ -86,7 +87,13 @@ void KonnectionHandling::gotNewMessage( KMessage *msg )
     		    break;
 			
 	        case KMessage::ANSWER_SHOOT:
-	    	    kdDebug() << "CLIENT A-SHOOT!" << endl;
+		    int state;
+		    if( msg->getField( "fieldstate" ).toInt() == KBattleField::SHIP )
+			state = KBattleField::HIT;
+		    else
+			state = KBattleField::WATER;
+					    
+		    emit enemyFieldDataChanged( msg->getField( "fieldx" ).toInt(), msg->getField( "fieldy" ).toInt(), state );
 		    break;
 		    
 		case KMessage::CHAT:
@@ -98,8 +105,18 @@ void KonnectionHandling::gotNewMessage( KMessage *msg )
 	case KonnectionHandling::SERVER:
 	    switch( msg->getType() )
 	    {
+		case KMessage::ENEMY_SHOOT:
+		    emit requestBattleFieldState( msg->getField( "fieldx" ).toInt(), msg->getField( "fieldy" ).toInt() );
+		    break;
+		    
 		case KMessage::ANSWER_SHOOT:
-		    emit enemyFieldDataChanged( msg->getField( "fieldx" ).toInt(), msg->getField( "fieldy" ).toInt(), msg->getField( "fieldstate" ).toInt() );
+		    int state;
+		    if( msg->getField( "fieldstate" ).toInt() == KBattleField::SHIP )
+			state = KBattleField::HIT;
+		    else
+			state = KBattleField::WATER;
+					    
+		    emit enemyFieldDataChanged( msg->getField( "fieldx" ).toInt(), msg->getField( "fieldy" ).toInt(), state );
 		    break;
 		    
 		case KMessage::CHAT:

@@ -78,6 +78,7 @@ class KBattleshipApp : public KMainWindow
 	void startBattleshipServer();
 	void connectToBattleshipServer();
 	void placeShip( int fieldx, int fieldy, int button );
+	void enemyClick( int fieldx, int fieldy );
 	void sendMessage( int fieldx, int fieldy );
 	void sendMessage( KMessage *msg );
 	void sendChatMessage( QString text );
@@ -89,7 +90,7 @@ class KBattleshipApp : public KMainWindow
 	void stoppedConnectDialog();
 	void requestedOwnBattleFieldState( int fieldx, int fieldy );
 	void requestedEnemyBattleFieldState( int fieldx, int fieldy );	
-	void requestedOwnFieldShipListJob( int fieldx, int fieldy, QPainter *painter );
+	void requestedOwnFieldShipListJob( int fieldx, int fieldy, QPainter *painter, bool hit, bool death );
 	void requestedEnemyFieldShipListJob( int fieldx, int fieldy, QPainter *painter);
 
     private:

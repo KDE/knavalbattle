@@ -17,7 +17,7 @@
 
 #include "kgridwidget.moc"
 
-KGridWidget::KGridWidget() : QWidget()
+KGridWidget::KGridWidget()
 {
     internalPixmap = 0;
 }
@@ -53,6 +53,11 @@ void KGridWidget::drawSquare( QPainter *painter )
 void KGridWidget::drawHitIcon( QPainter *painter )
 {
     drawIcon( painter, "hit.png" );
+}
+
+void KGridWidget::drawWaterIcon( QPainter *painter )
+{
+    drawIcon( painter, "water.png" );
 }
 
 void KGridWidget::drawDeathIcon( QPainter *painter )

@@ -37,8 +37,8 @@ class KBattleshipView : public QWidget
 	void clearField();
 	void changeOwnFieldData( int fieldx, int fieldy, int type );
 	void changeEnemyFieldData( int fieldx, int fieldy, int type );
+	void giveOwnFieldShipListType( QPainter *painter, int type, bool hit, bool death );
 	void giveEnemyFieldShipListType( QPainter *painter, int type );
-	void giveOwnFieldShipListType( QPainter *painter, int type );
 	int getOwnFieldState( int &fieldx, int &fieldy );
 	int getEnemyFieldState( int &fieldx, int &fieldy );
 	
@@ -55,8 +55,8 @@ class KBattleshipView : public QWidget
     signals:
 	void enemyFieldClicked( int fieldx, int fieldy );
 	void ownFieldClicked( int fieldx, int fieldy, int button );
+	void requestedOwnFieldShipListJob( int fieldx, int fieldy, QPainter *painter, bool hit, bool death );
         void requestedEnemyFieldShipListJob( int fieldx, int fieldy, QPainter *painter );
-	void requestedOwnFieldShipListJob( int fieldx, int fieldy, QPainter *painter );
 };
 
 #endif

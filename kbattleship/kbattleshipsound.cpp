@@ -80,6 +80,7 @@ void KBattleshipSound::playSound( int file )
 		break;
 	}
 	
+	kdDebug() << "aRts crashes us...no ?" << endl;
 	playObject = playObjectFactory.createPlayObject( playFile.latin1() );
 	playObject.play();
     }

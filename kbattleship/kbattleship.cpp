@@ -95,23 +95,26 @@ void KBattleshipApp::initView()
     setCentralWidget( split );
     view->startDrawing();
     
-    connect( view, SIGNAL( enemyFieldClicked( int, int ) ), this, SLOT( sendMessage( int, int ) ) );
+    connect( view, SIGNAL( enemyFieldClicked( int, int ) ), this, SLOT( enemyClick( int, int ) ) );
     connect( view, SIGNAL( ownFieldClicked( int, int, int ) ), this, SLOT( placeShip( int, int, int ) ) );
-    connect( view, SIGNAL( requestedOwnFieldShipListJob( int, int, QPainter * ) ), this, SLOT( requestedOwnFieldShipListJob( int, int, QPainter * ) ) );
+    connect( view, SIGNAL( requestedOwnFieldShipListJob( int, int, QPainter *, bool, bool ) ), this, SLOT( requestedOwnFieldShipListJob( int, int, QPainter *, bool, bool ) ) );
     connect( view, SIGNAL( requestedEnemyFieldShipListJob( int, int, QPainter * ) ), this, SLOT( requestedEnemyFieldShipListJob( int, int, QPainter * ) ) );
     
     setCaption( i18n( "KBattleship (alpha)" ), false );
 }
 
+void KBattleshipApp::enemyClick( int fieldx, int fieldy )
+{
+    int state = view->getEnemyFieldState( fieldx, fieldy );
+    if( state == KBattleField::FREE )
+	sendMessage( fieldx, fieldy );
+}
+
 void KBattleshipApp::placeShip( int fieldx, int fieldy, int button )
 {
     if( haveCS )
-    {
-        if( shiplist->canAddShips() )
-        {
+	if( shiplist->canAddShips() )
 	    shiplist->addNewShip( button, fieldx, fieldy );
-	}
-    }	
 }
 
 void KBattleshipApp::sendMessage( int fieldx, int fieldy )
@@ -333,20 +336,20 @@ void KBattleshipApp::requestedEnemyBattleFieldState( int fieldx, int fieldy )
     emit battleFieldState( fieldx, fieldy, state );
 }
 
-void KBattleshipApp::requestedOwnFieldShipListJob( int fieldx, int fieldy, QPainter *painter )
+void KBattleshipApp::requestedOwnFieldShipListJob( int fieldx, int fieldy, QPainter *painter, bool hit, bool death )
 {
-    view->giveOwnFieldShipListType( painter, shiplist->getXYShipType( fieldx, fieldy ) );
+    view->giveOwnFieldShipListType( painter, shiplist->getXYShipType( fieldx, fieldy ), hit, death );
 }
 
 void KBattleshipApp::requestedEnemyFieldShipListJob( int fieldx, int fieldy, QPainter *painter )
 {
-    view->giveOwnFieldShipListType( painter, shiplist->getXYShipType( fieldx, fieldy ) );
+    view->giveEnemyFieldShipListType( painter, shiplist->getXYShipType( fieldx, fieldy ) );
 }
 
 void KBattleshipApp::changeEnemyFieldData( int fieldx, int fieldy, int type )
 {
     kdDebug() << "Changing enemyfielddata! ( " << fieldx << " | " << fieldy << " | "<< type << " )" << endl;
-    sound->playSound( type );
+//    sound->playSound( type );
     view->changeEnemyFieldData( fieldx, fieldy, type );
 }
 
@@ -375,7 +378,7 @@ void KBattleshipApp::connectToBattleshipServer()
         connection = new KonnectionHandling( this, kbclient );
 	connect( connection, SIGNAL( ownFieldDataChanged( int, int, int ) ), this, SLOT( changeOwnFieldData( int, int, int ) ) );
 	connect( connection, SIGNAL( enemyFieldDataChanged( int, int, int ) ), this, SLOT( changeEnemyFieldData( int, int, int ) ) );
-	connect( connection, SIGNAL( requestBattleFieldState( int, int ) ), this, SLOT( requestedEnemyBattleFieldState( int, int ) ) );
+	connect( connection, SIGNAL( requestBattleFieldState( int, int ) ), this, SLOT( requestedOwnBattleFieldState( int, int ) ) );
         connect( connection, SIGNAL( changeConnectText() ), this, SLOT( changeConnectText() ) );
         connect( connection, SIGNAL( sendMessage( KMessage * ) ), this, SLOT( sendMessage( KMessage * ) ) );
 	connect( connection, SIGNAL( gotChatMessage( QString *, QString * ) ), chat, SLOT( receivedMessage( QString *, QString * ) ) );
