@@ -28,10 +28,26 @@ KBattleshipSound::~KBattleshipSound()
 {
 }
 
+void KBattleshipSound::turnOff()
+{
+    if( isRunning() )
+    {
+	playObjectFactory = PlayObjectFactory::null();
+	soundserver = SimpleSoundServer::null();
+	serverRunning = false;
+    }	
+}
+
+void KBattleshipSound::turnOn()
+{
+    if( !isRunning() )
+	initSoundServer();
+}
+
 void KBattleshipSound::initSoundServer()
 {
-    soundserver = Arts::Reference( "global:Arts_SimpleSoundServer" );
-    playObjectFactory = Arts::Reference( "global:Arts_PlayObjectFactory" );
+    soundserver = Reference( "global:Arts_SimpleSoundServer" );
+    playObjectFactory = Reference( "global:Arts_PlayObjectFactory" );
     if( soundserver.isNull() )
     {
 	KMessageBox::error( 0L, i18n( "Couldn't connect to Arts Soundserver. Sound deactivated" ) );

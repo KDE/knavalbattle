@@ -214,6 +214,42 @@ void KShipList::addNewShip( int button, int fieldx, int fieldy )
 		    break;
 		}
 	    }
+	    else if( button == RightButton )
+	    {
+		int neighbourp, neighbourm, neighbourt, neighbourb;
+	    	tempy = 0;
+		if( fieldy > 0 )
+		    neighbourm = getXYShipType( fieldx, fieldy - 1 );
+		else
+		    neighbourm = 99;
+			
+		neighbourp = getXYShipType( fieldx, fieldy + shipCount() );
+
+		if( neighbourm == 99 && neighbourp == 99 )
+		{
+		    for( tempy = fieldy; tempy <= ( fieldy + shipCount() ); tempy++ )
+		    {
+			if( fieldx > 0 )
+			    neighbourt = getXYShipType( fieldx - 1, tempy );
+			else
+			    neighbourt = 99;
+			neighbourb = getXYShipType( fieldx + 1, tempy );
+			if( neighbourt != 99 || neighbourb != 99 )
+			{
+			    xokay = false;
+			    yokay = false;
+			    break;
+			}
+		    }
+		    break;
+		}
+		else
+		{
+		    xokay = false;
+		    yokay = false;
+		    break;
+		}
+	    }
 	}
 
 	if( xokay && !yokay )

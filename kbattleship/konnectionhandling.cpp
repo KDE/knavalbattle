@@ -116,7 +116,7 @@ void KonnectionHandling::gotNewMessage( KMessage *msg )
 	    switch( msg->getType() )
 	    {
 		case KMessage::GREET:
-		    emit enemyNickname( msg->getField( "nickname" ) );
+		    emit enemyNickname( msg->getField( "nickname" ).latin1() );
 		    break;
 		    
 		case KMessage::SHIPLIST:
@@ -143,7 +143,7 @@ void KonnectionHandling::gotNewMessage( KMessage *msg )
 	    switch( msg->getType() )
 	    {
 		case KMessage::GREET:
-		    emit enemyNickname( msg->getField( "nickname" ) );
+		    emit enemyNickname( msg->getField( "nickname" ).latin1() );
 		    emit giveEnemyName();
 		    break;
 		    

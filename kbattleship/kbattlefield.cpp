@@ -54,11 +54,6 @@ void KBattleField::clearField()
     }
 }
 
-void KBattleField::setNickName( QString nick )
-{
-    nickName = nick;    
-}
-
 void KBattleField::changeData( int &fieldx, int &fieldy, int type )
 {
     FieldData[ fieldx ][ fieldy ] = type;
@@ -72,17 +67,6 @@ int KBattleField::getState( int fieldx, int fieldy )
 void KBattleField::drawField( QPainter *painter )
 {
     int i, j;
-    switch( internalType )
-    {
-	case KBattleFieldType::OWNFIELD:
-	    painter->drawText( 10, 10, nickName );
-	    break;
-	
-	case KBattleFieldType::ENEMYFIELD:
-	    painter->drawText( 80, 10, nickName );
-	    break;
-    }	
-    
 
     for( i = 0; i != 8; i++ )
     {

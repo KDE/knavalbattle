@@ -40,13 +40,9 @@ class KBattleshipView : public QWidget
 	void changeEnemyFieldData( int fieldx, int fieldy, int type );
 	void giveOwnFieldShipListType( QPainter *painter, int type, bool hit, bool death );
 	void giveEnemyFieldShipListType( QPainter *painter, int type );
-	void giveOwnFieldNickName( QString nick );
 	int getOwnFieldState( int &fieldx, int &fieldy );
 	int getEnemyFieldState( int &fieldx, int &fieldy );
 
-    public slots:
-	void giveEnemyFieldNickName( QString nick );
-	
     protected:
     	void paintEnemyField();
 	void paintOwnField();

@@ -46,8 +46,6 @@ void KBattleshipView::clearField()
 {
     ownfield->clearField();
     enemyfield->clearField();
-    ownfield->setNickName( "                          " );
-    enemyfield->setNickName( "                          " );
     paintOwnField();
     paintEnemyField();
 }
@@ -60,18 +58,6 @@ void KBattleshipView::giveOwnFieldShipListType( QPainter *painter, int type, boo
 void KBattleshipView::giveEnemyFieldShipListType( QPainter *painter, int type )
 {
     enemyfield->requestedShipIconDraw( painter, type );
-}
-
-void KBattleshipView::giveOwnFieldNickName( QString nick )
-{
-    ownfield->setNickName( nick );
-    paintOwnField();    
-}
-
-void KBattleshipView::giveEnemyFieldNickName( QString nick )
-{
-    enemyfield->setNickName( nick );
-    paintEnemyField();
 }
 
 int KBattleshipView::getOwnFieldState( int &fieldx, int &fieldy )

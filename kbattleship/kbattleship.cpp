@@ -21,6 +21,8 @@ using namespace Arts;
 using namespace std;
 
 #define ID_STATUS_MSG 1
+#define ID_PLAYER_OWN 2
+#define ID_PLAYER_ENEMY 3
 
 KBattleshipApp::KBattleshipApp( QWidget *, const char *name ) : KMainWindow( 0, name )
 {
@@ -49,6 +51,7 @@ void KBattleshipApp::initActions()
 {
     gameServerConnect = new KAction( i18n( "&Connect to server" ), "connect_no", Key_F2, this, SLOT( slotServerConnect() ), actionCollection(), "serverconnect" );
     gameNewServer = new KAction( i18n( "&Start server" ), "network", Key_F3, this, SLOT( slotNewServer() ), actionCollection(), "newserver" );
+    configSound = new KToggleAction( i18n( "&Play sounds" ), 0, this, SLOT( slotConfigSound() ), actionCollection(), "configsound" );
     gameQuit = KStdAction::quit( this, SLOT( slotGameQuit() ), actionCollection() );
     viewToolBar = KStdAction::showToolbar( this, SLOT( slotViewToolBar() ), actionCollection() );
     viewStatusBar = KStdAction::showStatusbar( this, SLOT( slotViewStatusBar() ), actionCollection() );
@@ -56,10 +59,10 @@ void KBattleshipApp::initActions()
     gameServerConnect->setStatusText( i18n( "Connects to a server for a new game" ) );
     gameNewServer->setStatusText( i18n( "Opens a server game" ) );
     gameQuit->setStatusText( i18n( "Quits the application" ) );
-    gameQuit->setStatusText( i18n( "Quits the application" ) );
     viewToolBar->setStatusText( i18n( "Enables/disables the toolbar" ) );
     viewStatusBar->setStatusText( i18n( "Enables/disables the statusbar" ) );
-
+    configSound->setStatusText( i18n( "Enables/disables sound" ) );
+    
     createGUI();
 }
 
@@ -81,7 +84,12 @@ void KBattleshipApp::initShipPlacing()
 
 void KBattleshipApp::initStatusBar()
 {
-    statusBar()->insertItem( i18n( "Ready" ), ID_STATUS_MSG );
+    ownNickname = "-";
+    enemyNickname = "-";
+    statusBar()->insertItem( i18n( "     Player 1: %1     " ).arg( ownNickname ), ID_PLAYER_OWN, 0, true );
+    statusBar()->insertItem( i18n( "     Player 2: %1     " ).arg( enemyNickname ), ID_PLAYER_ENEMY, 0, true );
+    statusBar()->insertItem( i18n( "Ready" ), ID_STATUS_MSG, 1 );
+    statusBar()->setItemAlignment( ID_STATUS_MSG, AlignLeft );
 }
 
 void KBattleshipApp::initView()
@@ -209,7 +217,6 @@ void KBattleshipApp::sendShipList()
 
     if( connection->getType() == KonnectionHandling::CLIENT )
 	slotStatusMsg( i18n( "Waiting for other player to start the match..." ) );
-
 }
 
 void KBattleshipApp::sendMessage( int fieldx, int fieldy, int state )
@@ -316,7 +323,9 @@ void KBattleshipApp::saveOptions()
     config->setGroup( "General" );
     config->writeEntry( "ShowToolbar", viewToolBar->isChecked() );
     config->writeEntry( "ShowStatusbar", viewStatusBar->isChecked() );
+    config->writeEntry( "PlaySounds", configSound->isChecked() );
     config->writeEntry( "ToolBarPos", (int) toolBar()->barPos() );
+    config->sync();
 }
 
 void KBattleshipApp::readOptions()
@@ -330,6 +339,10 @@ void KBattleshipApp::readOptions()
     bool bViewStatusbar = config->readBoolEntry( "ShowStatusbar", true );
     viewStatusBar->setChecked( bViewStatusbar );
     slotViewStatusBar();
+    
+    bool bConfigSound = config->readBoolEntry( "PlaySounds", true );
+    configSound->setChecked( bConfigSound );
+    slotConfigSound();
 
     KToolBar::BarPosition toolBarPos;
     toolBarPos = ( KToolBar::BarPosition ) config->readNumEntry( "ToolBarPos", KToolBar::Top );
@@ -338,11 +351,9 @@ void KBattleshipApp::readOptions()
 
 void KBattleshipApp::slotGameQuit()
 {
-    slotStatusMsg( i18n( "Exiting..." ) );
     saveOptions();
-    slotStatusMsg( i18n( "Ready" ) );
     this->hide();
-    exit( 0 );
+    kapp->quit();
 }
 
 void KBattleshipApp::stoppedServerDialog()
@@ -462,14 +473,14 @@ void KBattleshipApp::startBattleshipServer()
     kbserver = new KBattleshipServer( ( server->getPort() ).toInt() );
     ownNickname = server->getNickname();
     chat->setNickname( ownNickname );
-    view->giveOwnFieldNickName( ownNickname );
+    slotChangeOwnPlayer( ownNickname );
     delete server;
     connect( kbserver, SIGNAL( serverFailure() ), this, SLOT( changeStartText() ) );
     chat->acceptMsg( true );
     connection = new KonnectionHandling( this, kbserver );    
     connect( connection, SIGNAL( serverFailure() ), this, SLOT( resetServer() ) );
     connect( connection, SIGNAL( giveEnemyName() ), this, SLOT( sendGreet() ) ); 
-    connect( connection, SIGNAL( enemyNickname( QString ) ), view, SLOT( giveEnemyFieldNickName( QString ) ) );
+    connect( connection, SIGNAL( enemyNickname( const QString & ) ), this, SLOT( slotChangeEnemyPlayer( const QString & ) ) );
     connect( connection, SIGNAL( statusBarMessage( const QString & ) ), this, SLOT( slotStatusMsg( const QString & ) ) );
     connect( connection, SIGNAL( ownFieldDataChanged( int, int, int ) ), this, SLOT( changeOwnFieldData( int, int, int ) ) );
     connect( connection, SIGNAL( gotChatMessage( QString, QString ) ), chat, SLOT( receivedMessage( QString, QString ) ) );
@@ -479,21 +490,6 @@ void KBattleshipApp::startBattleshipServer()
 }
 
 void KBattleshipApp::changeOwnFieldData( int fieldx, int fieldy, int type )
-{
-    view->changeOwnFieldData( fieldx, fieldy, type );
-}
-
-void KBattleshipApp::requestedOwnFieldShipListJob( int fieldx, int fieldy, QPainter *painter, bool hit, bool death )
-{
-    view->giveOwnFieldShipListType( painter, ownshiplist->getXYShipType( fieldx, fieldy ), hit, death );
-}
-
-void KBattleshipApp::requestedEnemyFieldShipListJob( int fieldx, int fieldy, QPainter *painter )
-{
-    view->giveEnemyFieldShipListType( painter, enemyshiplist->getXYShipType( fieldx, fieldy ) );
-}
-
-void KBattleshipApp::changeEnemyFieldData( int fieldx, int fieldy, int type )
 {
     switch( connection->getType() )
     {
@@ -532,6 +528,22 @@ void KBattleshipApp::changeEnemyFieldData( int fieldx, int fieldy, int type )
 	    break;
 
     }
+
+    view->changeOwnFieldData( fieldx, fieldy, type );
+}
+
+void KBattleshipApp::requestedOwnFieldShipListJob( int fieldx, int fieldy, QPainter *painter, bool hit, bool death )
+{
+    view->giveOwnFieldShipListType( painter, ownshiplist->getXYShipType( fieldx, fieldy ), hit, death );
+}
+
+void KBattleshipApp::requestedEnemyFieldShipListJob( int fieldx, int fieldy, QPainter *painter )
+{
+    view->giveEnemyFieldShipListType( painter, enemyshiplist->getXYShipType( fieldx, fieldy ) );
+}
+
+void KBattleshipApp::changeEnemyFieldData( int fieldx, int fieldy, int type )
+{
     view->changeEnemyFieldData( fieldx, fieldy, type );
 }
 
@@ -554,12 +566,12 @@ void KBattleshipApp::connectToBattleshipServer()
 	kbclient = new KBattleshipClient( client->getHost(), ( client->getPort() ).toInt() );
 	ownNickname = client->getNickname();
 	chat->setNickname( ownNickname );
-	view->giveOwnFieldNickName( ownNickname );
+	slotChangeOwnPlayer( ownNickname );
 	delete client;
         gameServerConnect->setText( "Dis&connect from server" );
 	chat->acceptMsg( true );
         connection = new KonnectionHandling( this, kbclient );
-	connect( connection, SIGNAL( enemyNickname( QString ) ), view, SLOT( giveEnemyFieldNickName( QString ) ) );
+	connect( connection, SIGNAL( enemyNickname( const QString & ) ), this, SLOT( slotChangeEnemyPlayer( const QString & ) ) );
 	connect( connection, SIGNAL( statusBarMessage( const QString & ) ), this, SLOT( slotStatusMsg( const QString & ) ) );
 	connect( connection, SIGNAL( ownFieldDataChanged( int, int, int ) ), this, SLOT( changeOwnFieldData( int, int, int ) ) );
 	connect( connection, SIGNAL( setPlaceable() ), this, SLOT( setPlaceable() ) );
@@ -594,30 +606,44 @@ void KBattleshipApp::gotEnemyShipList( QString fieldX1S1, QString fieldY1S1, QSt
     enemyshiplist->addShip4( fieldX1S4.toInt(), fieldX2S4.toInt(), fieldY1S4.toInt(), fieldY2S4.toInt() );
 }
 
+void KBattleshipApp::slotConfigSound()
+{
+    if( !configSound->isChecked() )
+        sound->turnOff();
+    else
+        sound->turnOn();
+}
+
 void KBattleshipApp::slotViewToolBar()
 {
-    slotStatusMsg( i18n( "Toggling the toolbar..." ) );
     if( !viewToolBar->isChecked() )
         toolBar()->hide();
     else
         toolBar()->show();
-
-    slotStatusMsg( i18n( "Ready" ) );
 }
 
 void KBattleshipApp::slotViewStatusBar()
 {
-    slotStatusMsg( i18n( "Toggling the statusbar..." ) );
     if( !viewStatusBar->isChecked() )
         statusBar()->hide();
     else
         statusBar()->show();
-
-    slotStatusMsg( i18n( "Ready" ) );
 }
 
 void KBattleshipApp::slotStatusMsg( const QString &text )
 {
     statusBar()->clear();
     statusBar()->changeItem( text, ID_STATUS_MSG );
+}
+
+void KBattleshipApp::slotChangeOwnPlayer( const QString &text )
+{
+    statusBar()->clear();
+    statusBar()->changeItem( i18n( "     Player 1: %1     " ).arg( text ), ID_PLAYER_OWN );
+}
+
+void KBattleshipApp::slotChangeEnemyPlayer( const QString &text )
+{
+    statusBar()->clear();
+    statusBar()->changeItem( i18n( "     Player 2: %1     " ).arg( text ), ID_PLAYER_ENEMY );
 }

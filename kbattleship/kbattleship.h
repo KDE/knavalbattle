@@ -18,7 +18,6 @@
 #ifndef KBATTLESHIP_H
 #define KBATTLESHIP_H
 
-#include <stdlib.h>
 #include <kapp.h>
 #include <kmainwindow.h>
 #include <kaccel.h>
@@ -77,9 +76,12 @@ class KBattleshipApp : public KMainWindow
 	void slotServerConnect();
 	void slotNewServer();
         void slotGameQuit();
+	void slotConfigSound();
         void slotViewToolBar();
         void slotViewStatusBar();
         void slotStatusMsg( const QString &text );
+        void slotChangeOwnPlayer( const QString &text );	
+        void slotChangeEnemyPlayer( const QString &text );
 	void startBattleshipServer();
 	void connectToBattleshipServer();
 	void placeShip( int fieldx, int fieldy, int button );
@@ -112,6 +114,7 @@ class KBattleshipApp : public KMainWindow
         KAction *gameQuit;
         KToggleAction *viewToolBar;
         KToggleAction *viewStatusBar;
+	KToggleAction *configSound;
 	KBattleshipSound *sound;
         KClientDialog *client;
 	KServerDialog *server;
@@ -121,6 +124,7 @@ class KBattleshipApp : public KMainWindow
 	bool haveCS;
 	bool place;
 	QString ownNickname;
+	QString enemyNickname;
     	
     signals:
 	void battleFieldState( int, int, int );

@@ -34,7 +34,6 @@ class KBattleField : public KGridWidget
         KBattleField( QWidget *, const KBattleFieldType &type, QPainter *painter );
         ~KBattleField();
 	
-	void setNickName( QString nick );
 	void requestedShipIconDraw( QPainter *painter, int type, bool hit = false, bool death = false );
 	void setDrawValues( QWidget *parent );
 	void drawField( QPainter *painter );

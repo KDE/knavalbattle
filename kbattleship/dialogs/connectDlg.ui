@@ -216,26 +216,6 @@
         <class>QLineEdit</class>
         <property stdset="1">
             <name>name</name>
-            <cstring>nicknameEdit</cstring>
-        </property>
-        <property stdset="1">
-            <name>geometry</name>
-            <rect>
-                <x>80</x>
-                <y>10</y>
-                <width>250</width>
-                <height>22</height>
-            </rect>
-        </property>
-        <property>
-            <name>whatsThis</name>
-            <string>Enter a name that identifys you in the game</string>
-        </property>
-    </widget>
-    <widget>
-        <class>QLineEdit</class>
-        <property stdset="1">
-            <name>name</name>
             <cstring>serverEdit</cstring>
         </property>
         <property stdset="1">
@@ -274,6 +254,30 @@
         <property>
             <name>whatsThis</name>
             <string>Enter a different port if you can't you the default for some reason.&lt;br&gt;&lt;br&gt;&lt;b&gt;Also tell you partner to use that port then!&lt;/b&gt;</string>
+        </property>
+    </widget>
+    <widget>
+        <class>QLineEdit</class>
+        <property stdset="1">
+            <name>name</name>
+            <cstring>nicknameEdit</cstring>
+        </property>
+        <property stdset="1">
+            <name>geometry</name>
+            <rect>
+                <x>80</x>
+                <y>10</y>
+                <width>250</width>
+                <height>22</height>
+            </rect>
+        </property>
+        <property stdset="1">
+            <name>maxLength</name>
+            <number>10</number>
+        </property>
+        <property>
+            <name>whatsThis</name>
+            <string>Enter a name that identifys you in the game</string>
         </property>
     </widget>
 </widget>
