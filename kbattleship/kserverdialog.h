@@ -32,6 +32,7 @@ public:
 
 	QString port() const;
 	QString nickname() const;
+	QString gamename() const;
 
 public slots:
 	void slotStartClicked();

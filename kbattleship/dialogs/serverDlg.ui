@@ -1,4 +1,4 @@
-<!DOCTYPE UI><UI version="3.0" stdsetdef="1">
+<!DOCTYPE UI><UI version="3.3" stdsetdef="1">
 <class>serverStartDlg</class>
 <widget class="QDialog">
     <property name="name">
@@ -9,19 +9,19 @@
             <x>0</x>
             <y>0</y>
             <width>350</width>
-            <height>120</height>
+            <height>140</height>
         </rect>
     </property>
     <property name="minimumSize">
         <size>
             <width>350</width>
-            <height>120</height>
+            <height>140</height>
         </size>
     </property>
     <property name="maximumSize">
         <size>
             <width>350</width>
-            <height>120</height>
+            <height>140</height>
         </size>
     </property>
     <property name="caption">
@@ -31,183 +31,213 @@
     </property>
     <property name="layoutSpacing" stdset="0">
     </property>
-    <vbox>
+    <widget class="QLayoutWidget">
         <property name="name">
-            <cstring>unnamed</cstring>
+            <cstring>Layout4</cstring>
         </property>
-        <property name="margin">
-            <number>11</number>
+        <property name="geometry">
+            <rect>
+                <x>0</x>
+                <y>100</y>
+                <width>328</width>
+                <height>31</height>
+            </rect>
         </property>
-        <property name="spacing">
-            <number>6</number>
-        </property>
-        <widget class="QLayoutWidget">
+        <hbox>
             <property name="name">
-                <cstring>Layout18</cstring>
+                <cstring>unnamed</cstring>
             </property>
-            <grid>
+            <property name="margin">
+                <number>0</number>
+            </property>
+            <property name="spacing">
+                <number>6</number>
+            </property>
+            <spacer>
                 <property name="name">
-                    <cstring>unnamed</cstring>
+                    <cstring>Spacer2</cstring>
                 </property>
-                <property name="margin">
-                    <number>0</number>
+                <property name="orientation">
+                    <enum>Horizontal</enum>
                 </property>
-                <property name="spacing">
-                    <number>6</number>
+                <property name="sizeType">
+                    <enum>Expanding</enum>
                 </property>
-                <widget class="QLabel" row="1" column="0">
-                    <property name="name">
-                        <cstring>portLabel_2</cstring>
-                    </property>
-                    <property name="sizePolicy">
-                        <sizepolicy>
-                            <hsizetype>5</hsizetype>
-                            <vsizetype>0</vsizetype>
-                            <horstretch>0</horstretch>
-                            <verstretch>0</verstretch>
-                        </sizepolicy>
-                    </property>
-                    <property name="text">
-                        <string>Port:</string>
-                    </property>
-                    <property name="alignment">
-                        <set>AlignVCenter|AlignLeft</set>
-                    </property>
-                    <property name="hAlign" stdset="0">
-                    </property>
-                    <property name="vAlign" stdset="0">
-                    </property>
-                </widget>
-                <widget class="QSpinBox" row="1" column="1">
-                    <property name="name">
-                        <cstring>portEdit</cstring>
-                    </property>
-                    <property name="maxValue">
-                        <number>65000</number>
-                    </property>
-                    <property name="value">
-                        <number>54321</number>
-                    </property>
-                    <property name="whatsThis" stdset="0">
-                        <string>Choose a port where the server listens on</string>
-                    </property>
-                </widget>
-                <widget class="QLabel" row="0" column="0">
-                    <property name="name">
-                        <cstring>nicknameLabel</cstring>
-                    </property>
-                    <property name="sizePolicy">
-                        <sizepolicy>
-                            <hsizetype>5</hsizetype>
-                            <vsizetype>0</vsizetype>
-                            <horstretch>0</horstretch>
-                            <verstretch>0</verstretch>
-                        </sizepolicy>
-                    </property>
-                    <property name="frameShape">
-                        <enum>MShape</enum>
-                    </property>
-                    <property name="frameShadow">
-                        <enum>MShadow</enum>
-                    </property>
-                    <property name="text">
-                        <string>Nick name:</string>
-                    </property>
-                    <property name="alignment">
-                        <set>AlignVCenter|AlignLeft</set>
-                    </property>
-                    <property name="hAlign" stdset="0">
-                    </property>
-                </widget>
-                <widget class="QLineEdit" row="0" column="1">
-                    <property name="name">
-                        <cstring>nicknameEdit</cstring>
-                    </property>
-                    <property name="maxLength">
-                        <number>100</number>
-                    </property>
-                    <property name="whatsThis" stdset="0">
-                        <string>Enter a name that identifies you in the game</string>
-                    </property>
-                </widget>
-            </grid>
-        </widget>
-        <widget class="QLayoutWidget">
+                <property name="sizeHint">
+                    <size>
+                        <width>20</width>
+                        <height>20</height>
+                    </size>
+                </property>
+            </spacer>
+            <widget class="QPushButton">
+                <property name="name">
+                    <cstring>startBtn</cstring>
+                </property>
+                <property name="text">
+                    <string>&amp;Start</string>
+                </property>
+                <property name="toggleButton">
+                    <bool>false</bool>
+                </property>
+                <property name="on">
+                    <bool>false</bool>
+                </property>
+                <property name="default">
+                    <bool>true</bool>
+                </property>
+                <property name="flat">
+                    <bool>false</bool>
+                </property>
+                <property name="whatsThis" stdset="0">
+                    <string>Press here to start the server</string>
+                </property>
+            </widget>
+            <widget class="QPushButton">
+                <property name="name">
+                    <cstring>cancelBtn</cstring>
+                </property>
+                <property name="text">
+                    <string>C&amp;ancel</string>
+                </property>
+                <property name="toolTip" stdset="0">
+                    <string></string>
+                </property>
+                <property name="whatsThis" stdset="0">
+                    <string>Press here to return to the game</string>
+                </property>
+            </widget>
+            <spacer>
+                <property name="name">
+                    <cstring>Spacer1</cstring>
+                </property>
+                <property name="orientation">
+                    <enum>Horizontal</enum>
+                </property>
+                <property name="sizeType">
+                    <enum>Expanding</enum>
+                </property>
+                <property name="sizeHint">
+                    <size>
+                        <width>20</width>
+                        <height>20</height>
+                    </size>
+                </property>
+            </spacer>
+        </hbox>
+    </widget>
+    <widget class="QLayoutWidget">
+        <property name="name">
+            <cstring>layout3</cstring>
+        </property>
+        <property name="geometry">
+            <rect>
+                <x>0</x>
+                <y>0</y>
+                <width>330</width>
+                <height>90</height>
+            </rect>
+        </property>
+        <grid>
             <property name="name">
-                <cstring>Layout4</cstring>
+                <cstring>unnamed</cstring>
             </property>
-            <hbox>
+            <widget class="QLabel" row="2" column="0">
                 <property name="name">
-                    <cstring>unnamed</cstring>
+                    <cstring>portLabel_2</cstring>
                 </property>
-                <property name="margin">
-                    <number>0</number>
+                <property name="sizePolicy">
+                    <sizepolicy>
+                        <hsizetype>5</hsizetype>
+                        <vsizetype>0</vsizetype>
+                        <horstretch>0</horstretch>
+                        <verstretch>0</verstretch>
+                    </sizepolicy>
                 </property>
-                <property name="spacing">
-                    <number>6</number>
+                <property name="text">
+                    <string>Port:</string>
                 </property>
-                <spacer>
-                    <property name="name">
-                        <cstring>Spacer2</cstring>
-                    </property>
-                    <property name="orientation">
-                        <enum>Horizontal</enum>
-                    </property>
-                    <property name="sizeType">
-                        <enum>Expanding</enum>
-                    </property>
-                </spacer>
-                <widget class="QPushButton">
-                    <property name="name">
-                        <cstring>startBtn</cstring>
-                    </property>
-                    <property name="text">
-                        <string>&amp;Start</string>
-                    </property>
-                    <property name="toggleButton">
-                        <bool>false</bool>
-                    </property>
-                    <property name="on">
-                        <bool>false</bool>
-                    </property>
-                    <property name="default">
-                        <bool>true</bool>
-                    </property>
-                    <property name="flat">
-                        <bool>false</bool>
-                    </property>
-                    <property name="whatsThis" stdset="0">
-                        <string>Press here to start the server</string>
-                    </property>
-                </widget>
-                <widget class="QPushButton">
-                    <property name="name">
-                        <cstring>cancelBtn</cstring>
-                    </property>
-                    <property name="text">
-                        <string>C&amp;ancel</string>
-                    </property>
-                    <property name="toolTip" stdset="0">
-                        <string></string>
-                    </property>
-                    <property name="whatsThis" stdset="0">
-                        <string>Press here to return to the game</string>
-                    </property>
-                </widget>
-                <spacer>
-                    <property name="name">
-                        <cstring>Spacer1</cstring>
-                    </property>
-                    <property name="orientation">
-                        <enum>Horizontal</enum>
-                    </property>
-                    <property name="sizeType">
-                        <enum>Expanding</enum>
-                    </property>
-                </spacer>
-            </hbox>
-        </widget>
-    </vbox>
+                <property name="alignment">
+                    <set>AlignVCenter|AlignLeft</set>
+                </property>
+                <property name="hAlign" stdset="0">
+                </property>
+                <property name="vAlign" stdset="0">
+                </property>
+            </widget>
+            <widget class="QLabel" row="0" column="0">
+                <property name="name">
+                    <cstring>gamenameLabel</cstring>
+                </property>
+                <property name="text">
+                    <string>Game name</string>
+                </property>
+            </widget>
+            <widget class="QSpinBox" row="2" column="1">
+                <property name="name">
+                    <cstring>portEdit</cstring>
+                </property>
+                <property name="maxValue">
+                    <number>65000</number>
+                </property>
+                <property name="value">
+                    <number>54321</number>
+                </property>
+                <property name="whatsThis" stdset="0">
+                    <string>Choose a port where the server listens on</string>
+                </property>
+            </widget>
+            <widget class="QLineEdit" row="0" column="1">
+                <property name="name">
+                    <cstring>gamenameEdit</cstring>
+                </property>
+                <property name="maxLength">
+                    <number>100</number>
+                </property>
+                <property name="whatsThis" stdset="0">
+                    <string>Enter a name that identifies you in the game</string>
+                </property>
+            </widget>
+            <widget class="QLineEdit" row="1" column="1">
+                <property name="name">
+                    <cstring>nicknameEdit</cstring>
+                </property>
+                <property name="maxLength">
+                    <number>100</number>
+                </property>
+                <property name="whatsThis" stdset="0">
+                    <string>Enter a name that identifies you in the game</string>
+                </property>
+            </widget>
+            <widget class="QLabel" row="1" column="0">
+                <property name="name">
+                    <cstring>nicknameLabel</cstring>
+                </property>
+                <property name="sizePolicy">
+                    <sizepolicy>
+                        <hsizetype>5</hsizetype>
+                        <vsizetype>0</vsizetype>
+                        <horstretch>0</horstretch>
+                        <verstretch>0</verstretch>
+                    </sizepolicy>
+                </property>
+                <property name="frameShape">
+                    <enum>MShape</enum>
+                </property>
+                <property name="frameShadow">
+                    <enum>MShadow</enum>
+                </property>
+                <property name="text">
+                    <string>Nick name:</string>
+                </property>
+                <property name="alignment">
+                    <set>AlignVCenter|AlignLeft</set>
+                </property>
+                <property name="hAlign" stdset="0">
+                </property>
+            </widget>
+        </grid>
+    </widget>
 </widget>
 <connections>
     <connection>

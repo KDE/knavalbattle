@@ -20,6 +20,8 @@
 
 #include <kapplication.h>
 #include <kconfig.h>
+#include <dnssd/servicebrowser.h>
+#include <dnssd/remoteservice.h>
 #include <qstring.h>
 #include <qpushbutton.h>
 #include <qlineedit.h>
@@ -42,13 +44,16 @@ public slots:
 	void slotConnectClicked();
 	void slotCancelClicked();
 	void slotReturnPressed(const QString &hostname);
-
+	void nextBatch();
+	void gameSelected(int);
+	
 signals:
 	void sigConnectServer();
 	void sigCancelConnect();
 
 private:
 	KConfig *m_config;
+	DNSSD::ServiceBrowser *m_browser;
 };
 
 #endif

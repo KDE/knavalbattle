@@ -19,6 +19,8 @@
 #include <kcombobox.h>
 #include "kclientdialog.moc"
 
+static const char* BATTLESHIP_SERVICE = "_kbattleship._tcp";
+
 KClientDialog::KClientDialog(QWidget *parent, const char *name) : clientConnectDlg(parent, name)
 {
 	m_config = kapp->config();
@@ -28,6 +30,10 @@ KClientDialog::KClientDialog(QWidget *parent, const char *name) : clientConnectD
 	connect(cancelBtn, SIGNAL(clicked()), this, SLOT(slotCancelClicked()));
 	connect(serverEdit, SIGNAL(returnPressed(const QString &)), this, SLOT(slotReturnPressed(const QString &)));
 	m_config->setGroup("History");
+	m_browser = new DNSSD::ServiceBrowser(BATTLESHIP_SERVICE);
+	connect(m_browser,SIGNAL(finished()),SLOT(nextBatch()));
+	m_browser->startBrowse();
+	connect(lanBox,SIGNAL(activated(int)),SLOT(gameSelected(int)));
 	serverEdit->completionObject()->setItems(m_config->readListEntry("CompletionList")); 
 
 	serverEdit->setMaxCount(5);
@@ -84,4 +90,25 @@ QString KClientDialog::host() const
 QString KClientDialog::nickname() const
 {
 	return nicknameEdit->text();
+}
+
+void KClientDialog::nextBatch() 
+{
+	bool autoselect=false;
+	if (!lanBox->count()) autoselect=true;
+	lanBox->clear();
+	QStringList names;
+	QValueList<DNSSD::RemoteService::Ptr>::ConstIterator itEnd = m_browser->services().end();
+	for (QValueList<DNSSD::RemoteService::Ptr>::ConstIterator it = m_browser->services().begin();
+		it!=itEnd; ++it) names << (*it)->serviceName();
+	lanBox->insertStringList(names);
+	if (autoselect && lanBox->count()) gameSelected(0);
+}
+
+void KClientDialog::gameSelected(int i) 
+{
+	DNSSD::RemoteService::Ptr srv = m_browser->services()[i];
+	if (!srv->isResolved() && !srv->resolve()) return;
+	serverEdit->setCurrentItem(srv->hostName(),true);
+	portEdit->setValue(srv->port());
 }

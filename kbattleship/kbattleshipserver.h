@@ -20,14 +20,14 @@
 
 #include <kextsock.h>
 #include <qsocketnotifier.h>
+#include <dnssd/publicservice.h>
 #include "kmessage.h"
 
 class KBattleshipServer : public KExtendedSocket
 {
 	Q_OBJECT
 public:
-	KBattleshipServer(int port);
-
+	KBattleshipServer(int port, const QString& name);
 	void init();
 	void sendMessage(KMessage *msg);
 
@@ -50,7 +50,9 @@ private:
 	QSocketNotifier *m_readNotifier;
 	KExtendedSocket *m_serverSocket;
 	QString m_readBuffer;
+	DNSSD::PublicService m_service;
 	int m_port;
+	QString m_name;
 };
 
 #endif

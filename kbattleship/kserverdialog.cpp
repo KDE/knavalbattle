@@ -46,3 +46,8 @@ QString KServerDialog::nickname() const
 {
 	return nicknameEdit->text();
 }
+
+QString KServerDialog::gamename() const
+{
+	return gamenameEdit->text();
+}

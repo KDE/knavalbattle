@@ -32,7 +32,10 @@
 #include <klocale.h>
 #include "kbattleshipserver.moc"
 
-KBattleshipServer::KBattleshipServer(int port) : KExtendedSocket(QString::null, port, inetSocket | passiveSocket)
+const char* BATTLESHIP_SERVICE;
+
+KBattleshipServer::KBattleshipServer(int port, const QString& name) 
+	: KExtendedSocket(QString::null, port, inetSocket | passiveSocket), m_name(name)
 {
 	m_port = port;
 	m_serverSocket = 0;
@@ -46,7 +49,10 @@ void KBattleshipServer::init()
 		emit sigServerFailure();
 		return;
 	}
-
+	m_service.setServiceName(m_name);
+	m_service.setType(BATTLESHIP_SERVICE);
+	m_service.setPort(m_port);
+	m_service.publishAsync();
 	m_connectNotifier = new QSocketNotifier(fd(), QSocketNotifier::Read, this);
 	QObject::connect(m_connectNotifier, SIGNAL(activated(int)), SLOT(slotNewConnection()));
 }

@@ -846,7 +846,7 @@ void KBattleshipApp::slotStartBattleshipServer()
 	m_gameServerConnect->setEnabled(false);
 	m_gameSingle->setEnabled(false);
 	slotStatusMsg(i18n("Waiting for a player..."));
-	m_kbserver = new KBattleshipServer((m_server->port()).toInt());
+	m_kbserver = new KBattleshipServer((m_server->port()).toInt(),m_server->gamename());
 	m_ownNickname = m_server->nickname();
 	m_chat->setNickname(m_ownNickname);
 	slotChangeOwnPlayer(m_ownNickname);
