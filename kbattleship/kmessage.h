@@ -30,7 +30,7 @@ class KMessage : public QObject
     Q_OBJECT
     public:
         enum{GREET, SHIPLIST, ANSWER_SHOOT, CHAT, REPLAY};
-	
+
         KMessage(int type);
         KMessage();
         ~KMessage();
@@ -52,7 +52,7 @@ class KMessage : public QObject
 	bool enemyWon();
 
     private:
-        QDomDocument *xmlDocument;
+        QDomDocument xmlDocument;
         int messageType;
 };
 

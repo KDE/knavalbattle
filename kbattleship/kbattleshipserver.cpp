@@ -55,10 +55,10 @@ void KBattleshipServer::readClient()
     int len = serverSocket->bytesAvailable();
     char *buf = new char[len + 1];
     serverSocket->readBlock(buf, len);
-    buf[len] = 0; 
+    buf[len] = 0;
     KMessage *msg = new KMessage();
-//    QString buffer = QString::fromUtf8(buf);
-    msg->setDataStream(buf); //fer);  doesn't work :(
+    QString buffer = QString::fromUtf8(buf);
+    msg->setDataStream(buffer);
     emit newMessage(msg);
     delete msg;
     delete []buf;
@@ -68,9 +68,9 @@ void KBattleshipServer::sendMessage(KMessage *msg)
 {
     if(writeable)
     {
-	QTextStream *post = new QTextStream(serverSocket);
-    post->setEncoding(QTextStream::UnicodeUTF8);
-	*post << msg->returnSendStream() << endl;
+	QTextStream post(serverSocket);
+        post.setEncoding(QTextStream::UnicodeUTF8);
+	post << msg->returnSendStream();
 	emit wroteToClient();
 	if(msg->enemyReady())
 	{

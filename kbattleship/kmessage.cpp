@@ -19,15 +19,15 @@
 
 KMessage::KMessage(int type) : QObject()
 {
-    xmlDocument = new QDomDocument("kmessage");
-    xmlDocument->appendChild(xmlDocument->createElement("kmessage"));
+    xmlDocument = QDomDocument("kmessage");
+    xmlDocument.appendChild(xmlDocument.createElement("kmessage"));
     messageType = type;
     addField(QString("msgtype"), QString::number(type));
 }
 
 KMessage::KMessage() : QObject()
 {
-    xmlDocument = new QDomDocument("kmessage");
+    xmlDocument = QDomDocument("kmessage");
 }
 
 KMessage::~KMessage()
@@ -36,26 +36,25 @@ KMessage::~KMessage()
 
 void KMessage::addField(const QString &name, const QString &content)
 {
-    QDomElement xmlElement = xmlDocument->createElement(name);
-    QDomText xmlText = xmlDocument->createTextNode(content);
+    QDomElement xmlElement = xmlDocument.createElement(name);
+    QDomText xmlText = xmlDocument.createTextNode(content);
     xmlElement.appendChild(xmlText);
-    xmlDocument->documentElement().appendChild(xmlElement);
+    xmlDocument.documentElement().appendChild(xmlElement);
 }
 
 void KMessage::setDataStream(const QString &stream)
 {
-    xmlDocument->setContent(stream);
+    xmlDocument.setContent(stream);
 }
 
 QString KMessage::returnSendStream()
 {
-    QString sendStream = xmlDocument->toString();
-    return sendStream.simplifyWhiteSpace();
+    return xmlDocument.toString();
 }
 
 QString KMessage::getField(const QString &name)
 {
-    QDomNode xmlNode = xmlDocument->documentElement().firstChild();
+    QDomNode xmlNode = xmlDocument.documentElement().firstChild();
     while(!xmlNode.isNull())
     {
 	QDomElement xmlElement = xmlNode.toElement();

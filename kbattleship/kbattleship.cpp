@@ -54,7 +54,7 @@ void KBattleshipApp::initActions()
 {
     gameServerConnect = new KAction(i18n("&Connect to server"), "connect_no", Key_F2, this, SLOT(slotServerConnect()), actionCollection(), "serverconnect");
     gameNewServer = new KAction(i18n("&Start server"), "network", Key_F3, this, SLOT(slotNewServer()), actionCollection(), "newserver");
-    gameQuit = new KAction(i18n("&Quit"), "exit", Key_F9, this, SLOT(slotGameQuit()), actionCollection(), "gamequit");
+    gameQuit = KStdAction::quit( this, SLOT(slotGameQuit()), actionCollection(), "gamequit" );
     (void) new KAction(i18n("&Highscore"), "view_text", Key_F10, this, SLOT(slotHighscore()), actionCollection(), "highscore");
 
     viewStatusBar = KStdAction::showStatusbar(this, SLOT(slotViewStatusBar()), actionCollection());
@@ -70,7 +70,7 @@ void KBattleshipApp::initSound()
 
     if(!sound->initSoundServer())
 	configSound->setChecked(false);
-    else   
+    else
 	slotConfigSound();
 }
 
@@ -103,7 +103,7 @@ void KBattleshipApp::initView()
     view = new KBattleshipView(splitH);
     chat = new KChatWidget(splitV);
     stat = new KStatDialog(splitH);
-    
+
     chat->acceptMsg(false);
 
     ownshiplist = new KShipList();
@@ -116,7 +116,7 @@ void KBattleshipApp::initView()
     connect(ownshiplist, SIGNAL(lastShipAdded()), this, SLOT(sendShipList()));
     connect(view, SIGNAL(enemyFieldClicked(int, int)), this, SLOT(enemyClick(int, int)));
     connect(view, SIGNAL(ownFieldClicked(int, int, int)), this, SLOT(placeShip(int, int, int)));
-    
+
     setCaption(i18n("KBattleship 0.5"), false);
 }
 
@@ -130,9 +130,9 @@ void KBattleshipApp::enemyClick(int fieldx, int fieldy)
 	    {
 		int showstate;
 		int enemystate = enemyshiplist->getXYShipType(fieldx, fieldy);
-	    
+
 	        stat->setShot();
-	    
+
 	        if(enemystate == 99)
 	        {
 	            stat->setWater();
@@ -143,7 +143,7 @@ void KBattleshipApp::enemyClick(int fieldx, int fieldy)
 	            stat->setHit();
 	            showstate = KBattleField::HIT;
 	        }
-		
+
 	        changeEnemyFieldData(fieldx, fieldy, showstate);
 
 	        if(stat->getHit() != 10)
@@ -232,10 +232,10 @@ void KBattleshipApp::sendMessage(int fieldx, int fieldy, int state, bool won)
 	msg->addField(QString("fieldy"), QString::number(fieldy));
 	msg->addField(QString("fieldstate"), QString::number(state));
 	msg->addReady();
-	
+
 	if(won)
 	    msg->addWinner();
-	
+
         if(connection->getType() == KonnectionHandling::SERVER)
 	    kbserver->sendMessage(msg);
         else
@@ -263,7 +263,7 @@ void KBattleshipApp::sendChatMessage(const QString &text)
 	    bool currentstate = connection->writeable();
 	    bool serverallow = false, clientallow = false, isserver = false, isclient = false;
 	    if(!currentstate)
-    	    {	
+    	    {
 		if(connection->getType() == KonnectionHandling::SERVER)
                 {
 	    	    serverallow = true;
@@ -300,7 +300,7 @@ void KBattleshipApp::sendChatMessage(const QString &text)
 	        kbserver->forbidWrite();
 	    else if(clientallow)
     	        kbclient->forbidWrite();
-	
+
 	    if(text.startsWith("/nick "))
 	    {
 		ownNickname = text.mid(6);
@@ -327,14 +327,14 @@ KShip *KBattleshipApp::getXYShip(int fieldx, int fieldy)
 void KBattleshipApp::updateHighscore()
 {
     config->setGroup("Highscore");
-    
+
     int oldshot = config->readNumEntry("Shot", 0);
     int oldhit = config->readNumEntry("Hit", 0);
     int oldwater = config->readNumEntry("Water", 0);
     config->writeEntry("Shot", oldshot + stat->getShot());
     config->writeEntry("Hit", oldhit + stat->getHit());
     config->writeEntry("Water", oldwater + stat->getWater());
-    
+
     config->sync();
 }
 
@@ -354,9 +354,9 @@ void KBattleshipApp::readOptions()
     bool bViewStatusbar = config->readBoolEntry("ShowStatusbar", true);
     viewStatusBar->setChecked(bViewStatusbar);
     slotViewStatusBar();
-    
+
     bool bConfigSound = config->readBoolEntry("PlaySounds", true);
-    configSound->setChecked(bConfigSound);    
+    configSound->setChecked(bConfigSound);
 }
 
 void KBattleshipApp::slotGameQuit()
@@ -368,7 +368,7 @@ void KBattleshipApp::slotGameQuit()
 void KBattleshipApp::slotHighscore()
 {
     config->setGroup("Highscore");
-    
+
     KStatDialog *stats = new KStatDialog(0L);
     stats->setShot(config->readNumEntry("Shot", 0));
     stats->setHit(config->readNumEntry("Hit", 0));
@@ -383,7 +383,7 @@ void KBattleshipApp::slotServerConnect()
     if(!haveCS)
     {
         slotStatusMsg(i18n("Loading Connect-Server dialog..."));
-	
+
 	client = new KClientDialog();
 	haveCS = true;
         connect(client, SIGNAL(connectServer()), this, SLOT(connectToBattleshipServer()));
@@ -417,7 +417,7 @@ void KBattleshipApp::resetClient(bool status)
 		    sendMessage(msg);
 		place = false;
 		break;
-	
+
 	    case KMessageBox::No:
 		delete msg;
     	        resetConnection();
@@ -449,7 +449,7 @@ void KBattleshipApp::resetClient(bool status)
 
 void KBattleshipApp::deleteClient()
 {
-    delete kbclient;    
+    delete kbclient;
     kbclient = 0;
 }
 
@@ -462,7 +462,7 @@ void KBattleshipApp::askReplay()
 	    place = true;
     	    stat->clear();
             break;
-	    
+
 	case KMessageBox::No:
     	    slotStatusMsg(i18n("Ready"));
 	    gameNewServer->setText(i18n("&Start server"));
@@ -498,7 +498,7 @@ void KBattleshipApp::resetServer(bool status)
 		else
 		    sendMessage(msg);
 		break;
-	
+
 	    case KMessageBox::No:
 		delete msg;
 	        resetConnection();
@@ -556,7 +556,7 @@ void KBattleshipApp::slotNewServer()
         connect(server, SIGNAL(startServer()), this, SLOT(startBattleshipServer()));
         connect(server, SIGNAL(cancelServer()), this, SLOT(resetConnection()));
         server->show();
-            
+
         slotStatusMsg(i18n("Ready"));
     }
     else
@@ -590,7 +590,7 @@ void KBattleshipApp::startBattleshipServer()
 	connect(connection, SIGNAL(abortGame(bool)), this, SLOT(deleteLists(bool)));
 	connect(connection, SIGNAL(abortGameStrict(bool)), this, SLOT(resetServer(bool)));
 	connect(connection, SIGNAL(serverFailure(bool)), this, SLOT(resetServer(bool)));
-	connect(connection, SIGNAL(giveEnemyName()), this, SLOT(sendGreet())); 
+	connect(connection, SIGNAL(giveEnemyName()), this, SLOT(sendGreet()));
 	connect(connection, SIGNAL(enemyNickname(const QString &)), this, SLOT(slotChangeEnemyPlayer(const QString &)));
 	connect(connection, SIGNAL(statusBarMessage(const QString &)), this, SLOT(slotStatusMsg(const QString &)));
 	connect(connection, SIGNAL(ownFieldDataChanged(int, int, int)), this, SLOT(changeOwnFieldData(int, int, int)));
@@ -620,7 +620,7 @@ void KBattleshipApp::startBattleshipServer()
 	    connect(connection, SIGNAL(abortGame(bool)), this, SLOT(deleteLists(bool)));
 	    connect(connection, SIGNAL(abortGameStrict(bool)), this, SLOT(resetServer(bool)));
 	    connect(connection, SIGNAL(serverFailure(bool)), this, SLOT(resetServer(bool)));
-	    connect(connection, SIGNAL(giveEnemyName()), this, SLOT(sendGreet())); 
+	    connect(connection, SIGNAL(giveEnemyName()), this, SLOT(sendGreet()));
 	    connect(connection, SIGNAL(enemyNickname(const QString &)), this, SLOT(slotChangeEnemyPlayer(const QString &)));
 	    connect(connection, SIGNAL(statusBarMessage(const QString &)), this, SLOT(slotStatusMsg(const QString &)));
 	    connect(connection, SIGNAL(ownFieldDataChanged(int, int, int)), this, SLOT(changeOwnFieldData(int, int, int)));
@@ -636,7 +636,7 @@ void KBattleshipApp::startBattleshipServer()
 void KBattleshipApp::changeOwnFieldData(int fieldx, int fieldy, int type)
 {
     view->changeOwnFieldData(fieldx, fieldy, type);
-    
+
     switch(connection->getType())
     {
 	case KonnectionHandling::SERVER:
@@ -645,28 +645,28 @@ void KBattleshipApp::changeOwnFieldData(int fieldx, int fieldy, int type)
 		case KBattleField::WATER:
 	    	    sound->playSound(KBattleshipSound::PLAYER_SHOOT_WATER);
 		    break;
-		    
+
 		case KBattleField::HIT:
 		    sound->playSound(KBattleshipSound::PLAYER1_SHOOT_HIT);
 		    break;
-		
+
 		case KBattleField::DEATH:
 		    sound->playSound(KBattleshipSound::SHIP_SINK);
 		    break;
 	    }
 	    break;
-	    
+
 	case KonnectionHandling::CLIENT:
 	    switch(type)
 	    {
 		case KBattleField::WATER:
 		    sound->playSound(KBattleshipSound::PLAYER_SHOOT_WATER);
 		    break;
-		    
+
 		case KBattleField::HIT:
 		    sound->playSound(KBattleshipSound::PLAYER2_SHOOT_HIT);
 		    break;
-		
+
 		case KBattleField::DEATH:
 		    sound->playSound(KBattleshipSound::SHIP_SINK);
 		    break;
@@ -676,9 +676,9 @@ void KBattleshipApp::changeOwnFieldData(int fieldx, int fieldy, int type)
 }
 
 void KBattleshipApp::changeEnemyFieldData(int fieldx, int fieldy, int type)
-{    
+{
     view->changeEnemyFieldData(fieldx, fieldy, type);
-    
+
     if(type == KBattleField::HIT)
     {
 	if(enemyshiplist->getXYShipType(fieldx, fieldy) != 0 && enemyshiplist->getXYShipType(fieldx, fieldy) != 99)
@@ -794,7 +794,7 @@ void KBattleshipApp::connectToBattleshipServer()
 	        disconnect(connection, SIGNAL(abortGame(bool)), this, SLOT(deleteLists(bool)));
 		disconnect(connection, SIGNAL(abortGameStrict(bool)), this, SLOT(resetServer(bool)));
 	        disconnect(connection, SIGNAL(serverFailure(bool)), this, SLOT(resetServer(bool)));
-    		disconnect(connection, SIGNAL(giveEnemyName()), this, SLOT(sendGreet())); 
+    		disconnect(connection, SIGNAL(giveEnemyName()), this, SLOT(sendGreet()));
 	        disconnect(connection, SIGNAL(enemyNickname(const QString &)), this, SLOT(slotChangeEnemyPlayer(const QString &)));
 		disconnect(connection, SIGNAL(statusBarMessage(const QString &)), this, SLOT(slotStatusMsg(const QString &)));
 		disconnect(connection, SIGNAL(ownFieldDataChanged(int, int, int)), this, SLOT(changeOwnFieldData(int, int, int)));
@@ -826,7 +826,7 @@ void KBattleshipApp::connectToBattleshipServer()
     else
     {
 	KMessageBox::error(this, i18n("You forgot to enter a host!"));
-	resetConnection();	
+	resetConnection();
     }
 }
 
