@@ -190,6 +190,11 @@ void KonnectionHandling::slotNewMessage(KMessage *msg)
 	    case KMessage::REPLAY:
 		emit sigReplay();
 		break;
+    
+	    // We lost the game
+	    case KMessage::WON:
+		emit sigStatusBar(i18n("You lost the game :("));
+		break;
 	    
 	    // We got a chat message
 	    case KMessage::CHAT:
