@@ -9,7 +9,7 @@ KBattleship ( alpha -> beta ) TODO List:
     o QDom XML Based Messaging		[x]
     o Chat				[x]
     o Icon				[x]
-    o Sounds				[x]
+    o Sounds				[p]
     o Ship-GFX				[x]
     o Look'n'Feel			[p]
     o Mouse Handling			[p]
