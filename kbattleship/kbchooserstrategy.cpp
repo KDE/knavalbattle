@@ -71,7 +71,7 @@ const QPoint KBChooserStrategy::nextShot()
 
 bool KBChooserStrategy::advance()
 {
-    if(!m_destroying && m_prevShots->count() % 3 == 0)
+    if(!m_destroying && m_prevShots->count() % 5 == 0)
     {
 	delete m_child;
 
