@@ -1,0 +1,158 @@
+<!DOCTYPE book PUBLIC "-//KDE//DTD DocBook V3.1-Based Variant V1.0//EN" [
+ <!ENTITY KBattleship "<application>KBattleship</application>">
+ <!ENTITY % addindex "IGNORE">
+ <![ %addindex; [ <!ENTITY docindex SYSTEM "docindex.docbook"> ]]>
+]>
+<!-- Important note: please use template.docbook instead of this file.
+     This is only the conversion of app.sgml into DocBook SGML.
+     template.docbook gives you more information on what you can and
+     should do.  Thanks. -->
+<book lang="en">
+  <bookinfo>
+    <title>The KBattleship Handbook</title>
+    <authorgroup>
+      <author>
+	<firstname>Daniel</firstname>
+	<surname>Molkentin</surname>
+	<affiliation>
+	  <address><email><ulink url="mailto:molkentin@kde.org">molkentin@kde.org</ulink></email></address>
+	</affiliation>
+      </author>
+    </authorgroup>
+    <date>2001-03-21</date>
+    <releaseinfo>Version 0.4</releaseinfo>
+    <abstract>
+      <para>KBattleship is a network-enabled implementation of the famous "Battle Ship"&reg; game for KDE.</para>
+    </abstract>
+    <keywordset>
+      <keyword>KBattleship</keyword>
+    </keywordset>
+  </bookinfo>
+
+  <chapter id="introduction">
+    <title>Introduction</title>
+
+    <sect1 id="authors">
+      <title>Authors</title>
+      <para>
+        <address>Nikolas Zimmermann <email><ulink url="mailto:wildfox@kde.org">wildfox@kde.org</ulink></email></address>
+        <address>Daniel Molkentin <email><ulink url="mailto:molkentin@kde.org">molkentin@kde.org</ulink></email></address>
+      </para>
+    </sect1>
+
+    <sect1 id="contributors">
+      <title>Contributors</title>
+      <para>
+        <address>Benjamin Adler <email><ulink url="mailto:benadler@bigfoot.de">benadler@bigfoot.de</ulink></email> (KBattleship Icon)</address>
+        <address>Nils Trzebin <email><ulink url="mailto:nils.trzebin@stud.uni-hannover.de">nils.trzebin@stud.uni-hannover.de</ulink></email> (Sounds)</address>
+        <address>Elmar Hoefner <email><ulink url="mailto:elmar.hoefner@uibk.ac.at">elmar.hoefner@uibk.ac.at</ulink></email> (GFX)</address>
+        <address>Kevin Krammer <email><ulink url="mailto:kevin.krammer@gmx.at">kevin.krammer@gmx.at</ulink></email> (Extensive Beta-Testing)</address>
+      </para>
+    </sect1>
+
+    <sect1 id="features">
+      <title>Features</title>
+     <itemizedlist>
+       <listitem><para>Network Gaming</para></listitem>
+       <listitem><para>Sounds</para></listitem>
+       <listitem><para>Chat</para></listitem>
+       <listitem><para>Statistics</para></listitem>
+       <listitem><para>Highscore List</para></listitem>
+     </itemizedlist>
+     <tip>
+       <para>
+          KBatteship uses an XML-derived communcation protocol so you can write clients for every platform and in any language.
+          If you wan't to write one in your favourite programming language or/and environment, contact us. We would really like to hear of it.
+       </para>
+     </tip>
+    </sect1>
+  </chapter>
+
+  <chapter id="installation">
+    <title>Installation</title>
+
+    <sect1 id="requirements">
+      <title>Requirements</title>
+      <para>
+      You should have a network connection and a competitor, of course :).
+      At the time of writing, KBattleship requires KDE 2.0 or greater and Qt 2.2.3 or greater.
+      </para>
+    </sect1>
+
+  </chapter>
+
+    <chapter id="using-kbattleship">
+    <title>Using KBattleship</title>
+    <para>
+        If you want to play KBattleship, you will need two players as it is a network game only. One Player has to
+        open the game via <guimenuitem>"Start Server"</guimenuitem> (F3). A dialogbox opens which will ask
+        you for for a nickname and a port. Normally, KBattleship will suggest your login name but you can enter any
+        string you want. The predefined port should be ok. However, if you encounter problems, you can choose any
+        other free ports above 1024. Note that you need to inform the other player when you use a different port then
+        the default as he/she needs to set it, too.
+    </para>
+    <para>
+        The other player has to choose <guimenuitem>"Connect to Server"</guimenuitem> (F2). Again, a nickname
+        is suggested, but you can choose any name you like. An important point is the field "Host". Here, you have to
+        enter the host name of the server (the machine of the player that inicitated the game). This can either be a name
+        from your hosts file ("foobar"), a internet host name ("foo.bar.org") or an IP-Address ("192.168.0.10") of the host
+        you want to connect to.
+    </para>
+    <para>
+        When you are done, you can start the game. Simply follow the instructions in the statusbar. It will issue hints
+        and suggest what to do next. When you now look at the screen, you will find two grid fields, the so-called
+        "battle areas". The left area belongs to you. This is where you place your ships and where you can follow
+        the military actions of your enemy. The right area is where your enemys fleet is located. When it's your turn
+        to fire, you need to click on a certain sector (a field if the battle area) where you suppose the ships to be
+        located.
+    </para>
+    <para>
+        First, you need to place your ships. The game iniciator starts. When he/she is done,
+        player 2 sets his/her ships. Ship placement is very easy: Simply click on the field where you want to place
+        your ship. The first one will have a lenght of 4, the next will be 3 fields long etc. Click on the field where you
+        want to start the placement. If you click with the <mousebutton>left</mousebutton> mousebutton, the field
+        will be placed horizotally, a <mousebutton>right</mousebutton> clickwill cause it to be placed vertically.
+    </para>
+    <para>
+        Now you can blindly fire on the enemy battle area :). The statusbar indicates who is about to shoot. A player
+        may shoot until he hits the water. Then, the other player is on the turn.
+    </para>
+  </chapter>
+
+  <chapter id="questionsanswersandtips">
+    <title>Questions, Answers, and Tips</title>
+
+    <qandaset id="faq">
+      <title>Frequently asked questions</title>
+      <qandaentry>
+	<question>
+	  <para>I get the error: "Couldn't connect to aRts Soundserver. Sound deactivated."</para>
+	</question>
+	<answer>
+	  <para>
+               In this release (0.4), KBattleship relies on aRts, KDE's soundserver, to emit its sounds.
+               Enable aRts in kcontrol -> Sound -> Soundserver will solve the problem.
+              </para>
+	</answer>
+      </qandaentry>
+      <qandaentry>
+	<question>
+	  <para>I have a question that is likely to become a FAQ. Who should I contact?</para>
+	</question>
+	<answer>
+	  <para>Contact the authors. They will most likely add it here.</para>
+	</answer>
+      </qandaentry>
+    </qandaset>
+
+  </chapter>
+  <![ %addindex; [ &docindex; ]]>
+</book>
+<!--
+Local Variables:
+mode: sgml
+sgml-omittag: nil
+sgml-shorttag: t
+sgml-general-insert-case: lower
+End:
+-->
