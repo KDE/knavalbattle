@@ -16,10 +16,6 @@
         </rect>
     </property>
     <property stdset="1">
-        <name>caption</name>
-        <string>Connect to server</string>
-    </property>
-    <property stdset="1">
         <name>minimumSize</name>
         <size>
             <width>350</width>
@@ -32,6 +28,10 @@
             <width>350</width>
             <height>120</height>
         </size>
+    </property>
+    <property stdset="1">
+        <name>caption</name>
+        <string>Connect to server</string>
     </property>
     <property>
         <name>layoutMargin</name>
@@ -55,19 +55,19 @@
             </rect>
         </property>
         <property stdset="1">
+            <name>sizePolicy</name>
+            <sizepolicy>
+                <hsizetype>0</hsizetype>
+                <vsizetype>0</vsizetype>
+            </sizepolicy>
+        </property>
+        <property stdset="1">
             <name>text</name>
             <string>Nickname:</string>
         </property>
         <property stdset="1">
             <name>alignment</name>
             <set>AlignVCenter|AlignLeft</set>
-        </property>
-        <property stdset="1">
-            <name>sizePolicy</name>
-            <sizepolicy>
-                <hsizetype>0</hsizetype>
-                <vsizetype>0</vsizetype>
-            </sizepolicy>
         </property>
         <property>
             <name>hAlign</name>
@@ -89,19 +89,19 @@
             </rect>
         </property>
         <property stdset="1">
+            <name>sizePolicy</name>
+            <sizepolicy>
+                <hsizetype>0</hsizetype>
+                <vsizetype>0</vsizetype>
+            </sizepolicy>
+        </property>
+        <property stdset="1">
             <name>text</name>
             <string>Server:    </string>
         </property>
         <property stdset="1">
             <name>alignment</name>
             <set>AlignVCenter|AlignLeft</set>
-        </property>
-        <property stdset="1">
-            <name>sizePolicy</name>
-            <sizepolicy>
-                <hsizetype>0</hsizetype>
-                <vsizetype>0</vsizetype>
-            </sizepolicy>
         </property>
         <property>
             <name>hAlign</name>
@@ -142,12 +142,16 @@
                     <string>&amp;Connect</string>
                 </property>
                 <property stdset="1">
-                    <name>default</name>
-                    <bool>true</bool>
+                    <name>toggleButton</name>
+                    <bool>false</bool>
                 </property>
                 <property stdset="1">
-                    <name>flat</name>
+                    <name>on</name>
                     <bool>false</bool>
+                </property>
+                <property stdset="1">
+                    <name>default</name>
+                    <bool>true</bool>
                 </property>
                 <property stdset="1">
                     <name>toggleButton</name>
@@ -155,6 +159,10 @@
                 </property>
                 <property stdset="1">
                     <name>on</name>
+                    <bool>false</bool>
+                </property>
+                <property stdset="1">
+                    <name>flat</name>
                     <bool>false</bool>
                 </property>
                 <property>
@@ -172,52 +180,12 @@
                     <name>text</name>
                     <string>C&amp;ancel</string>
                 </property>
+                <property>
+                    <name>whatsThis</name>
+                    <string>Press here to return to the game</string>
+                </property>
             </widget>
         </hbox>
-    </widget>
-    <widget>
-        <class>QLineEdit</class>
-        <property stdset="1">
-            <name>name</name>
-            <cstring>nicknameEdit</cstring>
-        </property>
-        <property stdset="1">
-            <name>geometry</name>
-            <rect>
-                <x>80</x>
-                <y>10</y>
-                <width>250</width>
-                <height>22</height>
-            </rect>
-        </property>
-        <property stdset="1">
-            <name>maxLength</name>
-            <number>10</number>
-        </property>
-        <property>
-            <name>whatsThis</name>
-            <string>Enter a name that identifys you in the game</string>
-        </property>
-    </widget>
-    <widget>
-        <class>QLineEdit</class>
-        <property stdset="1">
-            <name>name</name>
-            <cstring>serverEdit</cstring>
-        </property>
-        <property stdset="1">
-            <name>geometry</name>
-            <rect>
-                <x>80</x>
-                <y>40</y>
-                <width>150</width>
-                <height>22</height>
-            </rect>
-        </property>
-        <property>
-            <name>whatsThis</name>
-            <string>Enter a Server to connect to. This can either be a hostname like &lt;b&gt;daniel.molkentin.de&lt;/b&gt; or an IP Adress like &lt;b&gt;192.168.0.2&lt;/b&gt;</string>
-        </property>
     </widget>
     <widget>
         <class>QLabel</class>
@@ -235,19 +203,19 @@
             </rect>
         </property>
         <property stdset="1">
+            <name>sizePolicy</name>
+            <sizepolicy>
+                <hsizetype>0</hsizetype>
+                <vsizetype>0</vsizetype>
+            </sizepolicy>
+        </property>
+        <property stdset="1">
             <name>text</name>
             <string>Port:</string>
         </property>
         <property stdset="1">
             <name>alignment</name>
             <set>AlignVCenter|AlignLeft</set>
-        </property>
-        <property stdset="1">
-            <name>sizePolicy</name>
-            <sizepolicy>
-                <hsizetype>0</hsizetype>
-                <vsizetype>0</vsizetype>
-            </sizepolicy>
         </property>
         <property>
             <name>hAlign</name>
@@ -278,6 +246,54 @@
         <property stdset="1">
             <name>value</name>
             <number>54321</number>
+        </property>
+        <property>
+            <name>whatsThis</name>
+            <string>Choose a port to connect to</string>
+        </property>
+    </widget>
+    <widget>
+        <class>QLineEdit</class>
+        <property stdset="1">
+            <name>name</name>
+            <cstring>serverEdit</cstring>
+        </property>
+        <property stdset="1">
+            <name>geometry</name>
+            <rect>
+                <x>80</x>
+                <y>40</y>
+                <width>150</width>
+                <height>22</height>
+            </rect>
+        </property>
+        <property>
+            <name>whatsThis</name>
+            <string>Enter a Server to connect to. This can either be a hostname like &lt;b&gt;daniel.molkentin.de&lt;/b&gt; or an IP Adress like &lt;b&gt;192.168.0.2&lt;/b&gt;</string>
+        </property>
+    </widget>
+    <widget>
+        <class>QLineEdit</class>
+        <property stdset="1">
+            <name>name</name>
+            <cstring>nicknameEdit</cstring>
+        </property>
+        <property stdset="1">
+            <name>geometry</name>
+            <rect>
+                <x>80</x>
+                <y>10</y>
+                <width>250</width>
+                <height>22</height>
+            </rect>
+        </property>
+        <property stdset="1">
+            <name>maxLength</name>
+            <number>10</number>
+        </property>
+        <property>
+            <name>whatsThis</name>
+            <string>Enter a name that identifys you in the game</string>
         </property>
     </widget>
 </widget>

@@ -60,6 +60,10 @@
                         <name>name</name>
                         <cstring>ShotLCD</cstring>
                     </property>
+                    <property>
+                        <name>toolTip</name>
+                        <string>Shows all shots</string>
+                    </property>
                 </widget>
                 <widget>
                     <class>QLabel</class>
@@ -78,6 +82,10 @@
                         <name>name</name>
                         <cstring>HitLCD</cstring>
                     </property>
+                    <property>
+                        <name>toolTip</name>
+                        <string>Shows all hit ships</string>
+                    </property>
                 </widget>
                 <widget>
                     <class>QLabel</class>
@@ -95,6 +103,10 @@
                     <property stdset="1">
                         <name>name</name>
                         <cstring>WaterLCD</cstring>
+                    </property>
+                    <property>
+                        <name>toolTip</name>
+                        <string>Shows all water shots</string>
                     </property>
                 </widget>
             </vbox>
