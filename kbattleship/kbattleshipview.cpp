@@ -26,7 +26,12 @@ KBattleshipView::KBattleshipView(QWidget *parent, const char *name, bool draw) :
 {
     setMinimumSize(600, 300);
     setMouseTracking(true);
+    setFocusPolicy(QWidget::StrongFocus);
     installEventFilter(this);
+
+    m_decide = false;
+    m_lastX = 0;
+    m_lastY = 0;
 }
 
 KBattleshipView::~KBattleshipView()
@@ -73,10 +78,18 @@ void KBattleshipView::changeEnemyFieldData(int fieldx, int fieldy, int type)
     battlefield->drawEnemyField();
 }
 
+void KBattleshipView::keyPressEvent(QKeyEvent *e) 
+{
+    if(e->key() == Key_Shift && m_decide)
+	emit sigMouseOverField(m_lastX, m_lastY, true);
+}
+
 bool KBattleshipView::eventFilter(QObject *object, QEvent *event)
 {
     if(event->type() == QEvent::MouseButtonRelease)
     {
+	m_decide = false;
+	
 	QMouseEvent *mouseEvent = static_cast<QMouseEvent *>(event);
 	
 	if(mouseEvent->button() != LeftButton)
@@ -137,6 +150,8 @@ bool KBattleshipView::eventFilter(QObject *object, QEvent *event)
     }
     else if(event->type() == QEvent::MouseMove)
     {
+	m_decide = true;
+	
 	QMouseEvent *mouseEvent = static_cast<QMouseEvent *>(event);
 	
 	QPoint point(mouseEvent->x(), mouseEvent->y());
@@ -174,6 +189,9 @@ bool KBattleshipView::eventFilter(QObject *object, QEvent *event)
 		    break;
 		}	        
 	    }
+	
+	    m_lastX = fieldx;
+	    m_lastY = fieldy;
 	
 	    emit sigMouseOverField(fieldx, fieldy, mouseEvent->state() & ShiftButton);
 	}

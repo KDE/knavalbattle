@@ -53,8 +53,13 @@ class KBattleshipView : public QWidget
 
     private:
 	bool eventFilter(QObject *object, QEvent *event);
+	virtual void keyPressEvent(QKeyEvent *e);
+	
         KBattleField *battlefield;
 	bool m_drawGrid;
+	bool m_decide;
+	int m_lastX;
+	int m_lastY;
 };
 
 #endif
