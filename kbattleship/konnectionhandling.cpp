@@ -162,7 +162,8 @@ void KonnectionHandling::slotNewMessage(KMessage *msg)
 		    m_kbserver->slotDiscardClient(protocolVersion, true, false);
 		    KMessageBox::error(0L, i18n("Connection to client dropped. The client's protocol implementation (%1) is not compatible with our (%2) version!").arg(msg->getField("protocolVersion")).arg(protocolVersion));
 		}
-		emit sigClientInformation(msg->getField("clientName"), msg->getField("clientVersion"), msg->getField("clientDescription"), msg->getField("protocolVersion"));
+		else
+		    emit sigClientInformation(msg->getField("clientName"), msg->getField("clientVersion"), msg->getField("clientDescription"), msg->getField("protocolVersion"));
 		break;
 		
 	    // Got the enemy's nickname
