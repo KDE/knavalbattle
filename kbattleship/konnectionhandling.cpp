@@ -251,15 +251,15 @@ void KonnectionHandling::clientSocketError(int error)
 	m_showed = true;
 	switch(error)
 	{
-    	    case QSocket::ErrConnectionRefused:
+    	    case IO_ConnectError:
  		KMessageBox::error(0L, i18n("Connection refused by other host!"));
         	break;
 
-	    case QSocket::ErrHostNotFound:
+	    case IO_LookupError:
 		KMessageBox::error(0L, i18n("Couldn't lookup host!"));
 		break;
 	
-	    case QSocket::ErrSocketRead:	
+	    case IO_ReadError:
  	        KMessageBox::error(0L, i18n("Couldn't connect to server!"));
     	        break;
 	

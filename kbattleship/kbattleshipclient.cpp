@@ -15,17 +15,16 @@
  *                                                                         *
  ***************************************************************************/
 
+#include <sys/ioctl.h>
+
+#include <qsocketnotifier.h>
+
+#include "kmessage.h"
 #include "kbattleshipclient.moc"
 
-KBattleshipClient::KBattleshipClient(QString host, int port) : QSocket()
+KBattleshipClient::KBattleshipClient(const QString &host, int port)
+    : KExtendedSocket(host, port, inetSocket)
 {
-    internalHost = host;
-    internalPort = port;
-    connect(this, SIGNAL(error(int)), this, SLOT(socketError(int)));
-    connect(this, SIGNAL(hostFound()), this, SLOT(connectionControl()));
-    connect(this, SIGNAL(connectionClosed()), this, SLOT(lostServer()));
-    connect(this, SIGNAL(readyRead()), this, SLOT(readData()));
-
     allowWrite();
 }
 
@@ -35,16 +34,22 @@ KBattleshipClient::~KBattleshipClient()
 
 void KBattleshipClient::init()
 {
-    connectToHost(internalHost, internalPort);
+    if (connect())
+    {
+        emit socketFailure(status());
+        return;
+    }
+    readNotifier = new QSocketNotifier(fd(), QSocketNotifier::Read, this);
+    QObject::connect(readNotifier, SIGNAL(activated(int)), SLOT(readData()));
+    emit connected();
 }
 
 void KBattleshipClient::sendMessage(KMessage *msg)
 {
     if(writeable)
     {
-	QTextStream post(this);
-	post.setEncoding(QTextStream::UnicodeUTF8);
-	post << msg->returnSendStream();
+	QCString post = msg->returnSendStream().utf8();
+        writeBlock(post.data(), post.length());
 	if(msg->enemyReady())
 	{
 	    forbidWrite();
@@ -54,14 +59,17 @@ void KBattleshipClient::sendMessage(KMessage *msg)
     }
 }
 
-void KBattleshipClient::connectionControl()
-{
-    kdDebug() << "Client-State: " << state() << endl;
-}
-
 void KBattleshipClient::readData()
 {
-    int len = bytesAvailable();
+    int len;
+    ioctl(fd(), FIONREAD, &len);
+    if (!len)
+    {
+        delete readNotifier;
+        readNotifier = 0;
+        emit endConnect();
+        return;
+    }
     char *buf = new char[len + 1];
     readBlock(buf, len);
     buf[len] = 0;
@@ -73,12 +81,3 @@ void KBattleshipClient::readData()
     delete []buf;
 }
 
-void KBattleshipClient::lostServer()
-{
-    emit endConnect();
-}
-
-void KBattleshipClient::socketError(int error)
-{
-    emit socketFailure(error);
-}

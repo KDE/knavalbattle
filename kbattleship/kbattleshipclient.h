@@ -18,17 +18,16 @@
 #ifndef KBATTLESHIPCLIENT_H
 #define KBATTLESHIPCLIENT_H
 
-#include <stdlib.h>
-#include <kdebug.h>
-#include <qsocket.h>
-#include <qtextstream.h>
-#include "kmessage.h"
+#include <kextsock.h>
 
-class KBattleshipClient : public QSocket
+class QSocketNotifier;
+class KMessage;
+
+class KBattleshipClient : public KExtendedSocket
 {
     Q_OBJECT
     public:
-        KBattleshipClient(QString host = "", int port = 54321);
+        KBattleshipClient(const QString &host, int port);
         ~KBattleshipClient();
 
 	void init();
@@ -39,21 +38,18 @@ class KBattleshipClient : public QSocket
         bool write() { return writeable; }
     
     private slots:
-        void connectionControl();
         void readData();
-        void lostServer();
-        void socketError(int error);
 
     signals:
+        void connected();
         void senemylist(bool);
         void newMessage(KMessage *);
         void endConnect();
         void socketFailure(int);
      
     private:
-        int internalPort;
-        QString internalHost;
         bool writeable;
+        QSocketNotifier *readNotifier;
 };
 
 #endif

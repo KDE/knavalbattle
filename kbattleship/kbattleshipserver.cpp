@@ -15,12 +15,23 @@
  *                                                                         *
  ***************************************************************************/
 
+#include <sys/ioctl.h>
+
+#include <qsocketnotifier.h>
+#include <qtimer.h>
+
+#include <klocale.h>
+#include <kmessagebox.h>
+
+#include "kmessage.h"
 #include "kbattleshipserver.moc"
 
-KBattleshipServer::KBattleshipServer(int port) : QServerSocket(port)
+KBattleshipServer::KBattleshipServer(int port)
+    : KExtendedSocket(QString::null, port, inetSocket | passiveSocket)
 {
     internalPort = port;
     serverSocket = 0;
+
     allowWrite();
 }
 
@@ -30,28 +41,41 @@ KBattleshipServer::~KBattleshipServer()
 
 void KBattleshipServer::start()
 {
-    if(!ok())
+    if(listen())
     {
 	KMessageBox::error(0L, i18n("Failed to bind to local port \"%1\"\n\nPlease check if another KBattleship server instance\nis running or another application uses this port.").arg(internalPort));
 	emit serverFailure();
+        return;
     }
+    int reuse = 1;
+    connectNotifier = new QSocketNotifier(fd(), QSocketNotifier::Read, this);
+    QObject::connect(connectNotifier, SIGNAL(activated(int)), SLOT(newConnection()));
 }
 
-void KBattleshipServer::newConnection(int socket)
+void KBattleshipServer::newConnection()
 {
-    if(serverSocket == 0)
+    KExtendedSocket *sock;
+    accept(sock);
+    if(sock && serverSocket == 0)
     {
-	serverSocket = new QSocket(this);
-	connect(serverSocket, SIGNAL(readyRead()), this, SLOT(readClient()));
-	connect(serverSocket, SIGNAL(connectionClosed()), this, SLOT(discardClient()));
-	serverSocket->setSocket(socket);
+	serverSocket = sock;
+        readNotifier = new QSocketNotifier(sock->fd(), QSocketNotifier::Read, this);
+	QObject::connect(readNotifier, SIGNAL(activated(int)), this, SLOT(readClient()));
 	emit newConnect();
     }
+    else
+        delete sock; // Got a connection already
 }
 
 void KBattleshipServer::readClient()
 {
-    int len = serverSocket->bytesAvailable();
+    int len;
+    ioctl(serverSocket->fd(), FIONREAD, &len);
+    if (!len)
+    {
+        QTimer::singleShot(0, this, SLOT(discardClient()));
+        return;
+    }
     char *buf = new char[len + 1];
     serverSocket->readBlock(buf, len);
     buf[len] = 0;
@@ -67,9 +91,8 @@ void KBattleshipServer::sendMessage(KMessage *msg)
 {
     if(writeable)
     {
-	QTextStream post(serverSocket);
-        post.setEncoding(QTextStream::UnicodeUTF8);
-	post << msg->returnSendStream();
+	QCString post = msg->returnSendStream().utf8();
+        serverSocket->writeBlock(post.data(), post.length());
 	emit wroteToClient();
 	if(msg->enemyReady())
 	{
@@ -82,6 +105,8 @@ void KBattleshipServer::sendMessage(KMessage *msg)
 
 void KBattleshipServer::discardClient()
 {
+    delete readNotifier;
+    readNotifier = 0;
     delete serverSocket;
     serverSocket = 0;
     emit endConnect();

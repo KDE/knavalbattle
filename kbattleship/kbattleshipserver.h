@@ -18,20 +18,16 @@
 #ifndef KBATTLESHIPSERVER_H
 #define KBATTLESHIPSERVER_H
 
-#include <kdebug.h>
-#include <stdlib.h>
-#include <qsocket.h>
-#include <qserversocket.h>
-#include <qtextstream.h>
-#include <kmessagebox.h>
-#include <klocale.h>
-#include "kmessage.h"
+#include <kextsock.h>
 
-class KBattleshipServer : public QServerSocket
+class QSocketNotifier;
+class KMessage;
+
+class KBattleshipServer : public KExtendedSocket
 {
     Q_OBJECT
     public:
-        KBattleshipServer(int port = 54321);
+        KBattleshipServer(int port);
         ~KBattleshipServer();
 
         void start();
@@ -41,6 +37,7 @@ class KBattleshipServer : public QServerSocket
         bool write() { return writeable; }
 
     private slots:
+        void newConnection();
         void readClient();
         void discardClient();
 
@@ -53,8 +50,9 @@ class KBattleshipServer : public QServerSocket
         void newMessage(KMessage *);
     
     private:
-        void newConnection(int socket);
-        QSocket *serverSocket;
+        QSocketNotifier *connectNotifier;
+        QSocketNotifier *readNotifier;
+        KExtendedSocket *serverSocket;
         int internalPort;
         bool writeable;
 };
