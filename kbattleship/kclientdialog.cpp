@@ -15,21 +15,30 @@
  *                                                                         *
  ***************************************************************************/
 
+#include <kcombobox.h>
 #include "kclientdialog.moc"
 
 KClientDialog::KClientDialog(QWidget *parent, const char *name) : clientConnectDlg(parent, name)
 {
     config = kapp->config();
-    config->setGroup("General");
+    nicknameEdit->setText(getenv("LOGNAME"));
+
     connect(connectBtn, SIGNAL(clicked()), this, SLOT(slotConnectClicked()));
     connect(cancelBtn, SIGNAL(clicked()), this, SLOT(slotCancelClicked()));
-    nicknameEdit->setText(getenv("LOGNAME"));
-    serverEdit->setText(config->readEntry("lastServer"));
+    connect(serverEdit, SIGNAL(activated(const QString &)), serverEdit, SLOT(addToHistory(const QString &)));
+
+    config->setGroup("History");
+    serverEdit->completionObject()->setItems(config->readListEntry("CompletionList")); 
+    serverEdit->setHistoryItems(config->readListEntry("HistoryList"));
+    
+    serverEdit->setMaxCount(5);
 }
 
 KClientDialog::~KClientDialog()
 {
-    config->writeEntry("lastServer", serverEdit->text());
+    config->setGroup("History");
+    config->writeEntry("CompletionList", serverEdit->completionObject()->items());
+    config->writeEntry("HistoryList", serverEdit->historyItems());
     config->sync();
 }
 
@@ -52,7 +61,7 @@ QString KClientDialog::getPort()
 
 QString KClientDialog::getHost()
 {
-    return serverEdit->text();
+    return serverEdit->text(serverEdit->currentItem());
 }
 
 QString KClientDialog::getNickname()
