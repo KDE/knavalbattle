@@ -19,6 +19,10 @@
 
 KGridWidget::KGridWidget() : QWidget()
 {
+    if( !internalPixmap )
+    {
+	internalPixmap = new QPixmap( 1, 1 );
+    }
 }
 
 KGridWidget::~KGridWidget()
