@@ -17,21 +17,29 @@
 
 #include "konnectionhandling.moc"
 
-KonnectionHandling::KonnectionHandling( KBattleshipServer *server ) : QObject()
+KonnectionHandling::KonnectionHandling( QWidget *parent, KBattleshipServer *server ) : QObject( parent )
 {
+    internalType = KonnectionHandling::SERVER;
     connect( server, SIGNAL( newConnect() ), this, SLOT( serverGotNewClient() ) );
     connect( server, SIGNAL( endConnect() ), this, SLOT( serverLostClient() ) );
     connect( server, SIGNAL( wroteToClient() ), this, SLOT( serverWroteToClient() ) );
+    connect( server, SIGNAL( newMessage( KMessage * ) ), this, SLOT( serverGotNewMessage( KMessage * ) ) );
 }
 
-KonnectionHandling::KonnectionHandling( KBattleshipClient *client ) : QObject()
+KonnectionHandling::KonnectionHandling( QWidget *parent, KBattleshipClient *client ) : QObject( parent )
 {
+    internalType = KonnectionHandling::CLIENT;
     connect( client, SIGNAL( endConnect() ), this, SLOT( clientLostServer() ) );
     connect( client, SIGNAL( socketFailure( int ) ), this, SLOT( clientSocketError( int ) ) );
 }
 
 KonnectionHandling::~KonnectionHandling()
 {
+}
+
+int KonnectionHandling::getType()
+{
+    return internalType;
 }
 
 void KonnectionHandling::serverGotNewClient()
@@ -49,6 +57,17 @@ void KonnectionHandling::serverLostClient()
     kdDebug() << "ENDCLIENT!" << endl;
 }
 
+void KonnectionHandling::serverGotNewMessage( KMessage *msg )
+{
+    kdDebug() << "GOTNEWMESSAGE!" << endl;
+    switch( msg->getType() )
+    {
+	case KMessageType::ENEMY_SHOOT:
+	    emit ownFieldDataChanged( ( msg->getField( "fieldx" ) ).toInt(), ( msg->getField( "fieldy" ) ).toInt(),  ( msg->getField( "type" ) ).toInt() );
+	    break;
+    }
+}
+    
 void KonnectionHandling::clientLostServer()
 {
     kdDebug() << "ENDSERVER!" << endl;
@@ -57,5 +76,15 @@ void KonnectionHandling::clientLostServer()
 void KonnectionHandling::clientSocketError( int error )
 {
     kdDebug() << "CLIENT-ERROR!" << endl;
+    switch( error )
+    {
+	case QSocket::HostLookup:
+	    KMessageBox::error( 0L, i18n( "Couldn't lookup host!" ) );
+	    break;
+	
+	default:
+	    KMessageBox::error( 0L, i18n( "Unknown Error; No: %1" ).arg( error ) ) ;
+	    break;
+    }
 }
 

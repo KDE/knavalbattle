@@ -21,7 +21,6 @@ KBattleshipView::KBattleshipView( QWidget *parent, const char *name ) : QWidget(
 {
     setFixedSize( 600, 400 );
     setBackgroundMode( PaletteBase );
-
 }
 
 KBattleshipView::~KBattleshipView()
@@ -38,6 +37,11 @@ void KBattleshipView::startDrawing()
     enemytype.setType( KBattleFieldType::ENEMYFIELD );
     ownfield = new KBattleField( this, owntype, &ownpainter );
     enemyfield = new KBattleField( this, enemytype, &enemypainter );
+}
+
+void KBattleshipView::changeOwnFieldData( int fieldx, int fieldy, int type )
+{
+    ownfield->changeData( fieldx, fieldy, type );
 }
 
 void KBattleshipView::mouseReleaseEvent( QMouseEvent *event )

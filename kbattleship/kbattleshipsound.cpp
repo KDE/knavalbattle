@@ -1,5 +1,5 @@
 /***************************************************************************
-                              kbattleshipview.h
+                             kbattleshipsound.cpp
                              -------------------
     Developers: (c) 2000 Nikolas Zimmermann <wildfox@kde.org>
                 (c) 2000 Daniel Molkentin <molkentin@kde.org>
@@ -15,32 +15,41 @@
  *                                                                         *
  ***************************************************************************/
 
-#ifndef KBATTLESHIPVIEW_H
-#define KBATTLESHIPVIEW_H
+#include "kbattleshipsound.moc"
 
-#include <qpainter.h>
-#include <qwidget.h>
-#include "kbattlefieldtype.h"
-#include "kbattlefield.h"
-#include "kbattleship.h"
-
-class KBattleshipView : public QWidget
+KBattleshipSound::KBattleshipSound() : QObject()
 {
-    Q_OBJECT
-    public:
-        KBattleshipView( QWidget *parent = 0, const char *name = 0 );
-        ~KBattleshipView();
+    Dispatcher dispatcher;
+    initSoundServer();
+}
 
-	void startDrawing();
-	void changeOwnFieldData( int fieldx, int fieldy, int type );
+KBattleshipSound::~KBattleshipSound()
+{
+}
 
-    protected:
-	void paintEvent( QPaintEvent * );
-	void mouseReleaseEvent( QMouseEvent *event );
+void KBattleshipSound::initSoundServer()
+{
+    soundserver = new SimpleSoundServer;
+    *soundserver = Arts::Reference( "global:Arts_SimpleSoundServer" );
+    if( soundserver->isNull() )
+    {
+	KMessageBox::error( 0L, i18n( "Couldn't connect to Arts Soundserver. Sound deactivated" ) );
+	soundRunning = false;
+    }
+    else
+    {
+	soundRunning = true;
+    }
 	
-    private:
-        KBattleField *ownfield;
-        KBattleField *enemyfield;
-};
+}
 
-#endif
+void KBattleshipSound::playSound( QString file )
+{
+    if( isRunning() )
+	soundserver->play( file.latin1() );
+}
+
+bool KBattleshipSound::isRunning()
+{
+    return soundRunning;
+}

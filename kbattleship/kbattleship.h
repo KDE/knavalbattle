@@ -24,20 +24,28 @@
 #include <kaccel.h>
 #include <kstdaction.h>
 #include <kaction.h>
-#include <qpainter.h>
-#include <qobject.h>
 #include <kiconloader.h>
 #include <kmessagebox.h>
 #include <kmenubar.h>
 #include <klocale.h>
 #include <kconfig.h>
+#include <qpainter.h>
+#include <qobject.h>
+#include <qstring.h>
+#include <arts/dispatcher.h>
+#include <arts/soundserver.h>
 
 #include "kbattleship.h"
-#include "konnectionhandling.h"
 #include "kbattleshipview.h"
+#include "kbattleshipsound.h"
+#include "kbattleshipclient.h"
 #include "kbattleshipserver.h"
+#include "konnectionhandling.h"
 #include "kserverdialog.h"
 #include "kclientdialog.h"
+
+using namespace std;
+using namespace Arts;
 
 class KBattleshipView;
 
@@ -56,6 +64,7 @@ class KBattleshipApp : public KMainWindow
         void initStatusBar();
         void initDocument();
         void initView();
+	void initSound();
 
     public slots:
 	void slotServerConnect();
@@ -70,11 +79,14 @@ class KBattleshipApp : public KMainWindow
     private:
         KConfig *config;
         KBattleshipView *view;
+	KBattleshipServer *kbserver;
+	KBattleshipClient *kbclient;
 	KAction *gameServerConnect;
 	KAction *gameNewServer;
         KAction *gameQuit;
         KToggleAction *viewToolBar;
         KToggleAction *viewStatusBar;
+	KBattleshipSound *sound;
         KClientDialog *client;
 	KServerDialog *server;
 	KonnectionHandling *connection;

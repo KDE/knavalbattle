@@ -46,8 +46,9 @@ void KBattleshipServer::readClient()
     if( socket->canReadLine() )
     {
         KMessageType msgtype;
-        KMessage *msg=new KMessage( msgtype );
+        KMessage *msg = new KMessage( msgtype );
         msg->setDataStream( socket->readLine() );
+	emit newMessage( msg );
         kdDebug() << "Type of message: " << msg->getType() << endl;
     }
 }

@@ -42,8 +42,8 @@ void KMessage::parseMessage()
 {
     QStringList list;
     QString key, data;
-    bool kd=false;
-    list=QStringList::split( QString( "|" ), messageStream );
+    bool kd = false;
+    list = QStringList::split( QString( "|" ), messageStream );
     for( QStringList::Iterator it = list.begin(); it != list.end(); ++it )
     {
         if( !kd )
@@ -52,18 +52,18 @@ void KMessage::parseMessage()
             {
                 QChar testchar;
                 int testint;
-                testint=(*it).toInt();
-                testchar=testint;
+                testint = ( *it ).toInt();
+                testchar = testint;
                 if( !testchar.isDigit() )
                 {
-                    key=*it;
-                    kd=true;
+                    key = *it;
+                    kd = true;
                 }
                 else
                 {
                     KMessageType msgtype;
-                    msgtype.setType( (*it).toInt() );
-                    messageType=msgtype.getType();
+                    msgtype.setType( ( *it ).toInt() );
+                    messageType = msgtype.getType();
                 }
             }
             else
@@ -71,11 +71,11 @@ void KMessage::parseMessage()
         }
         else
         {
-            data=*it;
+            data = *it;
             messageMap.insert( key, data );
-            key="";
-            data="";
-            kd=false;
+            key = "";
+            data = "";
+            kd = false;
         }
 
     }
@@ -86,14 +86,14 @@ QString KMessage::returnSendStream()
     QString sendStream;
     QMapIterator<QString,QString> it;
 
-    sendStream=messageType + "|";
+    sendStream = messageType + "|";
 
     for( it = messageMap.begin(); it != messageMap.end(); ++it )
     {
-        sendStream=sendStream + it.key() + "|" + it.data() + "|";
+        sendStream = sendStream + it.key() + "|" + it.data() + "|";
     }
 
-    sendStream=sendStream + "end";
+    sendStream = sendStream + "end";
 
     return sendStream;
 }

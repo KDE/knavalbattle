@@ -25,6 +25,7 @@ KBattleshipApp::KBattleshipApp( QWidget *, const char *name ) : KMainWindow( 0, 
     initStatusBar();
     initActions();
     initView();
+    initSound();
     readOptions();
 }
 
@@ -34,7 +35,6 @@ KBattleshipApp::~KBattleshipApp()
 
 void KBattleshipApp::initActions()
 {
-
     gameServerConnect = new KAction( i18n( "&Connect to server" ), "connect_no", Key_F2, this,
                                SLOT(slotServerConnect()), actionCollection(), "serverconnect" );
     gameNewServer = new KAction( i18n( "&Start server" ), "network", Key_F3, this,
@@ -53,10 +53,14 @@ void KBattleshipApp::initActions()
     createGUI();
 }
 
+void KBattleshipApp::initSound()
+{
+    KBattleshipSound *soundserver = new KBattleshipSound();
+}
 
 void KBattleshipApp::initStatusBar()
 {
-    statusBar()->insertItem( i18n("Ready."), ID_STATUS_MSG );
+    statusBar()->insertItem( i18n( "Ready." ), ID_STATUS_MSG );
 }
 
 void KBattleshipApp::initView()
@@ -75,7 +79,6 @@ void KBattleshipApp::saveOptions()
     config->writeEntry( "ToolBarPos", (int) toolBar()->barPos() );
 }
 
-
 void KBattleshipApp::readOptions()
 {
     config->setGroup( "General" );
@@ -91,7 +94,6 @@ void KBattleshipApp::readOptions()
     KToolBar::BarPosition toolBarPos;
     toolBarPos = (KToolBar::BarPosition) config->readNumEntry( "ToolBarPos", KToolBar::Top );
     toolBar()->setBarPos( toolBarPos );
-
 }
 
 void KBattleshipApp::slotGameQuit()
@@ -109,47 +111,96 @@ void KBattleshipApp::slotGameQuit()
 
 void KBattleshipApp::slotServerConnect()
 {
-    slotStatusMsg( i18n( "Loading Connect-Server dialog..." ) );
+    if( !connection)
+    {
+        slotStatusMsg( i18n( "Loading Connect-Server dialog..." ) );
 
-    // TODO: use KDialogBase
+	// TODO: use KDialogBase
 
-    client = new KClientDialog();
-    connect( client, SIGNAL( connectServer() ), this, SLOT( connectToBattleshipServer() ) );
-    client->show();
+        client = new KClientDialog();
+        connect( client, SIGNAL( connectServer() ), this, SLOT( connectToBattleshipServer() ) );
+        client->show();
 
-    slotStatusMsg( i18n( "Ready." ) );
+        slotStatusMsg( i18n( "Ready." ) );
+    }
+    else
+    {
+	switch( connection->getType() )
+	{
+	    case KonnectionHandling::SERVER:
+		KMessageBox::error( this, i18n( "You can't connect to a server while you running your own!" ) );
+		break;
+		
+	    case KonnectionHandling::CLIENT:
+	        gameServerConnect->setText( "&Connect to server" );
+		delete connection;
+		delete kbclient;
+		connection = 0;
+		break;
+	}
+	    
+    }
 }
 
 void KBattleshipApp::slotNewServer()
 {
-    slotStatusMsg( i18n( "Loading Start-Server dialog..." ) );
+    if( !connection )
+    {
+        slotStatusMsg( i18n( "Loading Start-Server dialog..." ) );
     
-    // TODO: use KDialogBase
+	// TODO: use KDialogBase
     
-    server = new KServerDialog();
-    connect( server, SIGNAL( startServer() ), this, SLOT( startBattleshipServer() ) );
-    server->show();
-        
-    slotStatusMsg( i18n( "Ready." ) );
+        server = new KServerDialog();
+	connect( server, SIGNAL( startServer() ), this, SLOT( startBattleshipServer() ) );
+        server->show();
+            
+	slotStatusMsg( i18n( "Ready." ) );
+    }
+    else
+    {
+	switch( connection->getType() )
+	{
+	    case KonnectionHandling::SERVER:
+	        gameNewServer->setText( "&Start server" );
+		delete connection;
+		delete kbserver;
+		connection = 0;
+		break;
+	
+	    case KonnectionHandling::CLIENT:
+		KMessageBox::error( this, i18n( "You can't start a server while you are connected!" ) );
+		break;
+	}
+    }
 }
 
 void KBattleshipApp::startBattleshipServer()
 {
-    KBattleshipServer *kbserver = new KBattleshipServer( ( server->getPort() ).toInt() );
+    kbserver = new KBattleshipServer( ( server->getPort() ).toInt() );
     delete server;
-    connection = new KonnectionHandling( kbserver );    
+    gameNewServer->setText( "&Stop server" );
+    connection = new KonnectionHandling( this, kbserver );    
+    connect( connection, SIGNAL( ownFieldDataChanged( int, int, int ) ), view, SLOT( changeOwnFieldData( int, int, int ) ) );
 }
 
 void KBattleshipApp::connectToBattleshipServer()
 {
-    KBattleshipClient *kbclient = new KBattleshipClient( client->getHost(), ( client->getPort() ).toInt() );
-    delete client;
-    connection = new KonnectionHandling( kbclient );
+    if( client->getHost() != "" )
+    {
+	kbclient = new KBattleshipClient( client->getHost(), ( client->getPort() ).toInt() );
+        delete client;
+        gameServerConnect->setText( "Dis&connect from server" );
+        connection = new KonnectionHandling( this, kbclient );
+    }
+    else
+    {
+	KMessageBox::error( this, i18n( "You forgot to enter a host!" ) );
+    }
 }
 
 void KBattleshipApp::slotViewToolBar()
 {
-    slotStatusMsg(i18n("Toggling toolbar..."));
+    slotStatusMsg( i18n( "Toggling the toolbar..." ) );
     if( !viewToolBar->isChecked() )
     {
         toolBar()->hide();
@@ -164,7 +215,7 @@ void KBattleshipApp::slotViewToolBar()
 
 void KBattleshipApp::slotViewStatusBar()
 {
-    slotStatusMsg( i18n( "Toggle the statusbar..." ) );
+    slotStatusMsg( i18n( "Toggling the statusbar..." ) );
     if( !viewStatusBar->isChecked() )
     {
         statusBar()->hide();
