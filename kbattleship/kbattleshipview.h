@@ -31,6 +31,8 @@ class KBattleshipView : public QWidget
         KBattleshipView( QWidget *parent = 0, const char *name = 0 );
         ~KBattleshipView();
 
+	void startDrawing();
+
     protected:
 	void paintEvent( QPaintEvent * );
 

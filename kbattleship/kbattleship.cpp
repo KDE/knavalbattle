@@ -63,6 +63,7 @@ void KBattleshipApp::initView()
 {
     view = new KBattleshipView( this );
     setCentralWidget( view );
+    view->startDrawing();
     setCaption( i18n( "KBattleship (pre-alpha)" ), false );
 }
 
