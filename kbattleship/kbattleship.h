@@ -66,6 +66,7 @@ class KBattleshipApp : public KMainWindow
 	KShip *getXYShip(int fieldx, int fieldy);
 
     private slots:
+	void slotLost();
         void slotStatusMsg(const QString &text);
         void slotReceivedEnemyFieldData(int fieldx, int fieldx1, int enemystate, int xstart, int xstop, int ystart, int ystop, bool death);
         void slotSendEnemyFieldState(int, int);
@@ -134,6 +135,7 @@ class KBattleshipApp : public KMainWindow
         bool m_shootable;
         bool m_aiPlaying;
         bool m_serverHasClient;
+	bool m_lost;
         int m_aiHits;
 
         QString m_enemyClient;

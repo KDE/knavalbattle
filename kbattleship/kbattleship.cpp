@@ -174,7 +174,7 @@ void KBattleshipApp::slotEnemyFieldClick(int fieldx, int fieldy)
 
 	if(m_view->getEnemyFieldState(fieldx, fieldy) == KBattleField::FREE)
 	{
-	    if(!m_aiPlaying)
+	    if(!m_aiPlaying && !m_lost)
 	    {
 	        slotStatusMsg(i18n("Sending Message..."));
 		KMessage *msg = new KMessage(KMessage::SHOOT);
@@ -397,6 +397,7 @@ void KBattleshipApp::slotReplay()
     cleanup(true);
     m_aiPlaying = false;
     m_shootable = false;
+    m_lost = false;
     if(m_connection->getType() == KonnectionHandling::SERVER)
 	m_placeable = true;
     else
@@ -773,7 +774,7 @@ void KBattleshipApp::slotStartBattleshipServer()
 	connect(m_connection, SIGNAL(sigReplay()), this, SLOT(slotReplayRequest()));
 	connect(m_connection, SIGNAL(sigChatMessage(const QString &, const QString &, bool)), m_chat, SLOT(slotReceivedMessage(const QString &, const QString &, bool)));
 	connect(m_connection, SIGNAL(sigClientInformation(const QString &, const QString &, const QString &, const QString &)), this, SLOT(slotReceivedClientInformation(const QString &, const QString &, const QString &, const QString &)));
-	connect(m_connection, SIGNAL(sigLost()), m_stat, SLOT(slotAddEnemyWon()));
+	connect(m_connection, SIGNAL(sigLost()), this, SLOT(slotLost()));
     }
     else
     {
@@ -790,7 +791,7 @@ void KBattleshipApp::slotStartBattleshipServer()
 	    disconnect(m_connection, SIGNAL(sigServerLost()), this, SLOT(slotServerLost()));
 	    disconnect(m_connection, SIGNAL(sigReplay()), this, SLOT(slotReplay()));
 	    disconnect(m_connection, SIGNAL(sigChatMessage(const QString &, const QString &, bool)), m_chat, SLOT(slotReceivedMessage(const QString &, const QString &, bool)));
-	    disconnect(m_connection, SIGNAL(sigLost()), m_stat, SLOT(slotAddEnemyWon()));
+	    disconnect(m_connection, SIGNAL(sigLost()), this, SLOT(slotLost()));
 	    m_connection->updateInternal(m_kbserver);
 	    connect(m_connection, SIGNAL(sigStatusBar(const QString &)), this, SLOT(slotStatusMsg(const QString &)));
 	    connect(m_connection, SIGNAL(sigEnemyNickname(const QString &)), this, SLOT(slotChangeEnemyPlayer(const QString &)));
@@ -803,12 +804,18 @@ void KBattleshipApp::slotStartBattleshipServer()
 	    connect(m_connection, SIGNAL(sigAbortNetworkGame()), this, SLOT(slotAbortNetworkGame()));
 	    connect(m_connection, SIGNAL(sigReplay()), this, SLOT(slotReplayRequest()));
 	    connect(m_connection, SIGNAL(sigChatMessage(const QString &, const QString &, bool)), m_chat, SLOT(slotReceivedMessage(const QString &, const QString &, bool)));
-	    disconnect(m_connection, SIGNAL(sigLost()), m_stat, SLOT(slotAddEnemyWon()));
+	    connect(m_connection, SIGNAL(sigLost()), this, SLOT(slotLost()));
 	}
 	else
 	    m_connection->updateInternal(m_kbserver);
     }
     m_kbserver->init();
+}
+
+void KBattleshipApp::slotLost()
+{
+    m_stat->slotAddEnemyWon();
+    m_lost = true;
 }
 
 void KBattleshipApp::slotSendEnemyFieldState(int fieldx, int fieldy)
@@ -974,7 +981,7 @@ void KBattleshipApp::slotConnectToBattleshipServer()
 	connect(m_connection, SIGNAL(sigReplay()), this, SLOT(slotReplay()));
 	connect(m_connection, SIGNAL(sigChatMessage(const QString &, const QString &, bool)), m_chat, SLOT(slotReceivedMessage(const QString &, const QString &, bool)));
 	connect(m_connection, SIGNAL(sigClientInformation(const QString &, const QString &, const QString &, const QString &)), this, SLOT(slotReceivedClientInformation(const QString &, const QString &, const QString &, const QString &)));
-	connect(m_connection, SIGNAL(sigLost()), m_stat, SLOT(slotAddEnemyWon()));
+	connect(m_connection, SIGNAL(sigLost()), this, SLOT(slotLost()));
     }
     else
     {
@@ -991,7 +998,7 @@ void KBattleshipApp::slotConnectToBattleshipServer()
 	    disconnect(m_connection, SIGNAL(sigAbortNetworkGame()), this, SLOT(slotAbortNetworkGame()));
 	    disconnect(m_connection, SIGNAL(sigReplay()), this, SLOT(slotReplayRequest()));
 	    disconnect(m_connection, SIGNAL(sigChatMessage(const QString &, const QString &, bool)), m_chat, SLOT(slotReceivedMessage(const QString &, const QString &, bool)));
-	    disconnect(m_connection, SIGNAL(sigLost()), m_stat, SLOT(slotAddEnemyWon()));
+	    disconnect(m_connection, SIGNAL(sigLost()), this, SLOT(slotLost()));
 	    m_connection->updateInternal(m_kbclient);
 	    connect(m_kbclient, SIGNAL(sigConnected()), this, SLOT(slotSendVersion()));
 	    connect(m_connection, SIGNAL(sigAbortNetworkGame()), this, SLOT(slotAbortNetworkGame()));
@@ -1006,7 +1013,7 @@ void KBattleshipApp::slotConnectToBattleshipServer()
 	    connect(m_connection, SIGNAL(sigChatMessage(const QString &, const QString &, bool)), m_chat, SLOT(slotReceivedMessage(const QString &, const QString &, bool)));
 	    m_kbclient->init();
     	    connect(m_connection, SIGNAL(sigClientInformation(const QString &, const QString &, const QString &, const QString &)), this, SLOT(slotReceivedClientInformation(const QString &, const QString &, const QString &, const QString &)));
-	    connect(m_connection, SIGNAL(sigLost()), m_stat, SLOT(slotAddEnemyWon()));
+	    connect(m_connection, SIGNAL(sigLost()), this, SLOT(slotLost()));
 	}
     	else
 	    m_connection->updateInternal(m_kbclient);
