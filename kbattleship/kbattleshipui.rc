@@ -1,19 +1,17 @@
 <!DOCTYPE kpartgui SYSTEM "kpartgui.dtd">
-<kpartgui name="kbattleship" version="0.8">
+<kpartgui name="kbattleship" version="1">
+
 <MenuBar>
   <Menu name="game"><text>&amp;Game</text>
-    <Action name="serverconnect"/>
-    <Action name="newserver"/>
-    <Action name="singleplayer"/>
-    <Separator/>
-    <Action name="highscore"/>
-    <Action name="enemyinfo"/>
-    <Separator/>
-    <Action name="gamequit"/>
+    <Action name="game_serverconnect" append="new_merge"/>
+    <Action name="game_newserver" append="new_merge"/>
+    <Action name="game_singleplayer" append="new_merge"/>
+    <Action name="game_enemyinfo" append="misc_merge"/>
   </Menu>
   <Menu name="settings"><text>&amp;Settings</text>
-    <Action name="showgrid" append="show_merge"/>
-    <Action name="configsound"/>
+    <Action name="options_show_grid" append="show_merge"/>
+    <Action name="options_configure_sound"/>
   </Menu>
 </MenuBar>
+
 </kpartgui>

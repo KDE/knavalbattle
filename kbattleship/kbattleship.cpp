@@ -19,6 +19,7 @@
 #include <stdlib.h>
 #include <qlayout.h>
 #include <kgamemisc.h>
+#include <kstdgameaction.h>
 #include "main.h"
 #include <kstatusbar.h>
 #include "kbattleship.moc"
@@ -84,16 +85,16 @@ void KBattleshipApp::initStatusBar()
 
 void KBattleshipApp::initActions()
 {
-	m_gameServerConnect = new KAction(i18n("&Connect to Server..."), "connect_no", Key_F2, this, SLOT(slotServerConnect()), actionCollection(), "serverconnect");
-	m_gameNewServer = new KAction(i18n("&Start Server..."), "network", Key_F3, this, SLOT(slotNewServer()), actionCollection(), "newserver");
-	m_gameSingle = new KAction(i18n("S&ingle Player..."), "gear", Key_F4, this, SLOT(slotSinglePlayer()), actionCollection(), "singleplayer");
-	m_gameQuit = KStdAction::quit( this, SLOT(slotGameQuit()), actionCollection(), "gamequit");
-	(void) new KAction(i18n("&Highscore"), "view_text", Key_F10, this, SLOT(slotHighscore()), actionCollection(), "highscore");
-	m_gameEnemyInfo = new KAction(i18n("&Enemy Info..."), "view_text", Key_F11, this, SLOT(slotEnemyClientInfo()), actionCollection(), "enemyinfo");
+	m_gameServerConnect = new KAction(i18n("&Connect to Server..."), "connect_no", Key_F2, this, SLOT(slotServerConnect()), actionCollection(), "game_serverconnect");
+	m_gameNewServer = new KAction(i18n("&Start Server..."), "network", Key_F3, this, SLOT(slotNewServer()), actionCollection(), "game_newserver");
+	m_gameSingle = new KAction(i18n("S&ingle Player..."), "gear", Key_F4, this, SLOT(slotSinglePlayer()), actionCollection(), "game_singleplayer");
+	m_gameQuit = KStdGameAction::quit( this, SLOT(slotGameQuit()), actionCollection());
+	KStdGameAction::highscores(this, SLOT(slotHighscore()), actionCollection());
+	m_gameEnemyInfo = new KAction(i18n("&Enemy Info..."), "view_text", Key_F11, this, SLOT(slotEnemyClientInfo()), actionCollection(), "game_enemyinfo");
 
 	m_viewStatusBar = KStdAction::showStatusbar(this, SLOT(slotViewStatusBar()), actionCollection());
-	m_configSound = new KToggleAction(i18n("&Play Sounds"), 0, this, SLOT(slotConfigSound()), actionCollection(), "configsound");
-	m_configGrid = new KToggleAction(i18n("&Show Grid"), 0, this, SLOT(slotShowGrid()), actionCollection(), "showgrid");
+	m_configSound = new KToggleAction(i18n("&Play Sounds"), 0, this, SLOT(slotConfigSound()), actionCollection(), "options_configure_sound");
+	m_configGrid = new KToggleAction(i18n("&Show Grid"), 0, this, SLOT(slotShowGrid()), actionCollection(), "options_show_grid");
 
 	m_gameEnemyInfo->setEnabled(false);
 	createGUI();
