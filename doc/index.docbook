@@ -20,7 +20,7 @@
       </author>
     </authorgroup>
     <date>2001-03-21</date>
-    <releaseinfo>Version 0.4</releaseinfo>
+    <releaseinfo>Version 0.5</releaseinfo>
     <abstract>
       <para>KBattleship is a network-enabled implementation of the famous "Battle Ship"&reg; game for KDE.</para>
     </abstract>
@@ -130,7 +130,7 @@
 	</question>
 	<answer>
 	  <para>
-               In this release (0.4), KBattleship relies on aRts, KDE's soundserver, to emit its sounds.
+               In this release (0.5), KBattleship relies on aRts, KDE's soundserver, to emit its sounds.
                Enable aRts in kcontrol -> Sound -> Soundserver will solve the problem.
               </para>
 	</answer>
