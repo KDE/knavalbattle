@@ -146,7 +146,7 @@ Ship placement is very easy: Simply click on the field where you want to
 place your ship. The first one will have a length of 4 squares, the next
 will be 3 fields long &etc;. Click on the field where you want to start
 the placement. If you click with the <mousebutton>left</mousebutton>
-mousebutton, the field will be placed horizotally, a
+mousebutton, the ship will be placed horizotally, a
 <keycombo><keycap>Shift</keycap><mousebutton>left</mousebutton></keycombo>
 click will cause it to be placed vertically.  <keycap>Shift</keycap>
 itself will flip the ship placement preview.
@@ -154,13 +154,11 @@ itself will flip the ship placement preview.
 
 <para>
 Now you can blindly fire on the enemy battle area :). The statusbar
-indicates who is about to shoot. A player may shoot until he hits the
-water. Then, the other player is on the turn.
+indicates who is about to shoot. 
 </para>
 
 <para>
-The first player to have destroyed all their opponents ships wins the
-game!
+The first player destroying all their opponents ships wins the game!
 </para>
 
 </chapter>
