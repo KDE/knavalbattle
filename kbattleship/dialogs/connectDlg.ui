@@ -103,7 +103,7 @@
                                 </sizepolicy>
                             </property>
                             <property name="text">
-                                <string>Server:    </string>
+                                <string>Server:</string>
                             </property>
                             <property name="alignment">
                                 <set>AlignVCenter|AlignLeft</set>

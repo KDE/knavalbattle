@@ -85,8 +85,8 @@ void KBattleshipApp::initStatusBar()
 void KBattleshipApp::initActions()
 {
 	m_gameServerConnect = new KAction(i18n("&Connect to Server..."), "connect_no", Key_F2, this, SLOT(slotServerConnect()), actionCollection(), "serverconnect");
-	m_gameNewServer = new KAction(i18n("&Start Server"), "network", Key_F3, this, SLOT(slotNewServer()), actionCollection(), "newserver");
-	m_gameSingle = new KAction(i18n("S&ingle Player"), "gear", Key_F4, this, SLOT(slotSinglePlayer()), actionCollection(), "singleplayer");
+	m_gameNewServer = new KAction(i18n("&Start Server..."), "network", Key_F3, this, SLOT(slotNewServer()), actionCollection(), "newserver");
+	m_gameSingle = new KAction(i18n("S&ingle Player..."), "gear", Key_F4, this, SLOT(slotSinglePlayer()), actionCollection(), "singleplayer");
 	m_gameQuit = KStdAction::quit( this, SLOT(slotGameQuit()), actionCollection(), "gamequit");
 	(void) new KAction(i18n("&Highscore"), "view_text", Key_F10, this, SLOT(slotHighscore()), actionCollection(), "highscore");
 	m_gameEnemyInfo = new KAction(i18n("&Enemy Info..."), "view_text", Key_F11, this, SLOT(slotEnemyClientInfo()), actionCollection(), "enemyinfo");
