@@ -17,9 +17,8 @@
 
 #include <qstring.h>
 #include <kcombobox.h>
+#include "kbattleshipserver.h" // for BATTLESHIP_SERVICE
 #include "kclientdialog.moc"
-
-static const char* BATTLESHIP_SERVICE = "_kbattleship._tcp";
 
 KClientDialog::KClientDialog(QWidget *parent, const char *name) : clientConnectDlg(parent, name)
 {

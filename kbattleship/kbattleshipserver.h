@@ -55,4 +55,6 @@ private:
 	QString m_name;
 };
 
+#define BATTLESHIP_SERVICE "_kbattleship._tcp"
+
 #endif

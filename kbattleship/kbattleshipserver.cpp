@@ -15,9 +15,7 @@
  *                                                                         *
  ***************************************************************************/
 
-#ifdef HAVE_CONFIG_H
 #include <config.h>
-#endif
 
 #include <unistd.h>
 #ifdef HAVE_STROPTS_H
@@ -31,8 +29,6 @@
 #include <kmessagebox.h>
 #include <klocale.h>
 #include "kbattleshipserver.moc"
-
-const char* BATTLESHIP_SERVICE;
 
 KBattleshipServer::KBattleshipServer(int port, const QString& name) 
 	: KExtendedSocket(QString::null, port, inetSocket | passiveSocket), m_name(name)
