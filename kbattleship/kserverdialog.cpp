@@ -15,6 +15,8 @@
  *                                                                         *
  ***************************************************************************/
 
+#include <qpushbutton.h>
+
 #include "kserverdialog.moc"
 
 KServerDialog::KServerDialog( QWidget *parent, const char *name ) : serverStartDlg( parent, name )
