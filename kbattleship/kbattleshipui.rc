@@ -1,9 +1,11 @@
 <!DOCTYPE kpartgui SYSTEM "kpartgui.dtd">
 <kpartgui name="kbattleship" version="0.3">
 <MenuBar>
-  <Menu name="file"><text>&amp;File</text>
+  <Menu name="game"><text>&amp;Game</text>
     <Action name="serverconnect"/>
     <Action name="newserver"/>
+    <Separator/>
+    <Action name="gamequit"/>
   </Menu>
   <Menu name="settings"><text>&amp;Settings</text>
     <Action name="configsound"/>
