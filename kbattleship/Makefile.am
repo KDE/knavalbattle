@@ -17,6 +17,9 @@ kbattleship_LDADD = $(LIB_KDEGAMES) ./dialogs/libkbattleshipdialogs.la $(LIB_KFI
 kbattleship_LDFLAGS = $(all_libraries) $(KDE_RPATH)
 kbattleship_DEPENDENCIES = $(LIB_KDEGAMES_DEP)
 
+services_DATA = _kbattleship._tcp
+servicesdir = $(kde_datadir)/zeroconf
+
 xdg_apps_DATA = kbattleship.desktop
 
 rcdir = $(kde_datadir)/kbattleship

@@ -59,6 +59,7 @@ void KBattleshipServer::slotNewConnection()
 	accept(sock);
 	if(sock && m_serverSocket == 0)
 	{
+		m_service.stop();
 		m_serverSocket = sock;
 		m_readNotifier = new QSocketNotifier(sock->fd(), QSocketNotifier::Read, this);
 		QObject::connect(m_readNotifier, SIGNAL(activated(int)), this, SLOT(slotReadClient()));
