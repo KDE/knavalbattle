@@ -104,7 +104,7 @@ void KonnectionHandling::slotNewMessage(KMessage *msg)
 				break;
 
 				// Got some informations
-			case KMessage::VERSION:
+			case KMessage::GETVERSION:
 				emit sigClientInformation(msg->field("clientName"), msg->field("clientVersion"), msg->field("clientDescription"), msg->field("protocolVersion"));
 				break;
 
@@ -156,7 +156,7 @@ void KonnectionHandling::slotNewMessage(KMessage *msg)
 		switch(msg->type())
 		{
 			// First message....got client information
-			case KMessage::VERSION:
+			case KMessage::GETVERSION:
 				if(msg->field("protocolVersion") != QString::fromLatin1(protocolVersion))
 				{
 					m_kbserver->slotDiscardClient(protocolVersion, true, false);

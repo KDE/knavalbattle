@@ -28,7 +28,7 @@ class KMessage : public QObject
 {
 	Q_OBJECT
 public:
-	enum{VERSION, DISCARD, GREET, SHIPSREADY, SHOOT, ANSWER_SHOOT, WON, REPLAY, CHAT};
+	enum{GETVERSION, DISCARD, GREET, SHIPSREADY, SHOOT, ANSWER_SHOOT, WON, REPLAY, CHAT};
 
 	KMessage(int type);
 	KMessage();

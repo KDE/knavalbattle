@@ -202,7 +202,7 @@ void KBattleshipApp::slotEnemyFieldClick(int fieldx, int fieldy)
 				{
 					m_stat->setHit();
 					showstate = KBattleField::HIT;
-				}	
+				}
 
 				slotChangeEnemyFieldData(fieldx, fieldy, showstate);
 
@@ -424,7 +424,7 @@ void KBattleshipApp::slotPlaceShipPreview(int fieldx, int fieldy, bool shift)
 			{
 				case 4:
 					for(int i = 0; i <= 3; i++)
-					{	
+					{
 						if(!shift)
 							xadd = i;
 						else
@@ -725,7 +725,7 @@ void KBattleshipApp::slotDeleteServerDialog()
 
 void KBattleshipApp::slotSendVersion()
 {
-	KMessage *msg = new KMessage(KMessage::VERSION);
+	KMessage *msg = new KMessage(KMessage::GETVERSION);
 	msg->versionMessage();
 	slotSendMessage(msg);
 
@@ -1226,7 +1226,7 @@ void KBattleshipApp::slotReceivedClientInformation(const QString &clientName, co
 
 	if(m_connection->type() == KonnectionHandling::SERVER)
 	{
-		KMessage *msg = new KMessage(KMessage::VERSION);
+		KMessage *msg = new KMessage(KMessage::GETVERSION);
 		msg->versionMessage();
 		slotSendMessage(msg);
 	}
