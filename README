@@ -1,9 +1,25 @@
 KBattleship beta
 -----------------------------------
 
-KBattleship is a multiplayer game :)
+KBatteship is a KDE implentation of the
+popular game "Battleship". 
 
-Just try it and be happy ;)
+In the current version, you can play it
+with two computers in a TCP/IP based
+network. 
 
-WildFox
--- Project Founder
+Artificial Intelligence is not implemented
+yet and will probably be delayed. 
+
+KBattleship uses an XML based protocol
+meaning you can write a compatible application
+in almost every programming or scripting
+language (Would be nice to hear of a
+GTK port ;) 
+
+If you have ideas or want to get involved,
+simple contanct the authors (see AUTHORS).
+
+Have a lot of fun!
+
+The KBattleship Team
