@@ -192,7 +192,7 @@ void KBattleshipApp::enemyClick(int fieldx, int fieldy)
 		    delete aiPlayer;
 		    aiPlayer = 0;
 		    deleteLists(false);
-		    slotStatusMsg(i18n("You lost the game :("));
+		    slotStatusMsg(i18n("You won the game :)"));
 		    updateHighscore();
 		    return;
 		}
@@ -1140,6 +1140,8 @@ void KBattleshipApp::slotAIShootsAt(const QPoint pos)
 
     slotStatusMsg(i18n("Enemy has shot. Shoot now"));
     changeOwnFieldData(pos.x(), pos.y(), showstate);
+
+    kdDebug() << "hits: " << hits << endl;
 
     if(hits == 10)
     {
