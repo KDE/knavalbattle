@@ -15,8 +15,7 @@ KDE_ICON = kbattleship
 rcdir = $(kde_datadir)/kbattleship
 rc_DATA = kbattleshipui.rc
 
-datadir = $(kde_datadir)/kbattleship
-data_DATA = pictures/water.png
+SUBDIRS	= pictures
 
 kdelnkdir   = $(kde_appsdir)/Games
 kdelnk_DATA = KBattleship.desktop
