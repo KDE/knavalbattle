@@ -11,7 +11,7 @@ kbattleship_SOURCES = kmessage.cpp kbattleshipserver.cpp kbattleshipclient.cpp \
 		      kbattleship.cpp main.cpp
 noinst_HEADERS   = kmessage.h kbattleshipserver.h kbattleshipclient.h \
                    kbattleshipview.h kgridwidget.h kbattlefieldtype.h \
-		   kbattlefield.h chatwidget.h kchatwidget.h \
+		   kbattlefield.h kchatwidget.h \
 		   kserverdialog.h kclientdialog.h kbattleshipsound.h \
 		   konnectionhandling.h kship.h kshiplist.h kbattleship.h
 METASOURCES = AUTO
