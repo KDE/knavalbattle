@@ -30,7 +30,6 @@ class KShipList : public QObject
 	Q_OBJECT
 public:
 	KShipList();
-	~KShipList();
 
 	KShip *shipAt(int x, int y);
 	int shipTypeAt(int x, int y);

@@ -19,20 +19,22 @@
 #define KBATTLESHIPVIEW_H
 
 #include <kmainwindow.h>
+
 #include <qpainter.h>
-#include <qwidget.h>
-#include <qstring.h>
 #include <qptrlist.h>
+#include <qstring.h>
+#include <qwidget.h>
+
+#include "kbattlefield.h"
+#include "kmessage.h"
 #include "kship.h"
 #include "kshiplist.h"
-#include "kbattlefield.h"
 
 class KBattleshipView : public QWidget
 {
 	Q_OBJECT
 public:
 	KBattleshipView(QWidget *parent = 0, const char *name = 0, bool draw = false);
-	~KBattleshipView();
 
 	KBattleField *field() { return m_battlefield; }
 
@@ -47,6 +49,8 @@ public:
 	int enemyFieldState(int &fieldx, int &fieldy);
 
 	void drawEnemyShipsAI(KShipList *list);
+	void drawEnemyShipsHuman(KMessage *msg, KShipList *list);
+	KMessage *getAliveShips(KShipList *list);
 
 signals:
 	void sigEnemyFieldClicked(int, int);

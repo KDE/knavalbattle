@@ -17,10 +17,12 @@
 
 #include "kbattleship.h"
 #include "kship.h"
+
 #include "kbattlefield.moc"
 
-KBattleField::KBattleField(QWidget *parent, const char *name, bool grid) : KGridWidget(parent, name, grid)
+KBattleField::KBattleField(QWidget *parent, bool grid) : KGridWidget(parent, grid)
 {
+	m_parent = parent;
 	m_width = parent->width();
 	m_canDraw = true;
 
@@ -33,10 +35,6 @@ KBattleField::KBattleField(QWidget *parent, const char *name, bool grid) : KGrid
 	clearEnemyField();
 	clearPreviewField();
 	drawField();
-}
-
-KBattleField::~KBattleField()
-{
 }
 
 void KBattleField::clearOwnField()
@@ -93,7 +91,7 @@ void KBattleField::drawOwnField()
 	if(!m_canDraw)
 		return;
 
-	KBattleshipApp *app = static_cast<KBattleshipApp *>(parent()->parent()->parent());
+	KBattleshipApp *app = static_cast<KBattleshipApp *>(m_parent->parent()->parent());
 	KShip *ship = 0;
 	int data;
 
@@ -153,7 +151,7 @@ void KBattleField::drawEnemyField()
 	if(!m_canDraw)
 		return;
 
-	KBattleshipApp *app = static_cast<KBattleshipApp *>(parent()->parent()->parent());
+	KBattleshipApp *app = static_cast<KBattleshipApp *>(m_parent->parent()->parent());
 
 	for(int i = 0; i != m_enemyfieldx; i++)
 	{

@@ -19,15 +19,10 @@
 #ifndef KSHIP_H
 #define KSHIP_H
 
-#include <qobject.h>
-#include "kbattlefield.h"
-
-class KShip : public QObject
+class KShip
 {
-	Q_OBJECT
 public:
 	KShip(int, int, int, int, int, bool = false);
-	~KShip();
 
 	int shipxstart();
 	int shipxstop();

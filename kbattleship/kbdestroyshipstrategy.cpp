@@ -22,10 +22,6 @@ KBDestroyShipStrategy::KBDestroyShipStrategy(KBStrategy *parent) : KBStrategy(pa
 	m_working = false;
 }
 
-KBDestroyShipStrategy::~KBDestroyShipStrategy()
-{
-}
-
 void KBDestroyShipStrategy::init(KBattleField *field, const QRect &field_rect)
 {
 	KBStrategy::init(field, field_rect);

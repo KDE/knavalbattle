@@ -15,9 +15,9 @@
  *                                                                         *
  ***************************************************************************/
 
-#include "main.h"
-#include "konnectionhandling.h"
 #include "konnectionhandling.moc"
+
+extern char *protocolVersion;
 
 KonnectionHandling::KonnectionHandling(QWidget *parent, KBattleshipServer *server) : QObject(parent)
 {
@@ -40,10 +40,6 @@ KonnectionHandling::KonnectionHandling(QWidget *parent, KBattleshipClient *clien
 	connect(client, SIGNAL(sigSocketFailure(int)), this, SLOT(slotSocketError(int)));
 	connect(client, SIGNAL(sigNewMessage(KMessage *)), this, SLOT(slotNewMessage(KMessage *)));
 	connect(client, SIGNAL(sigMessageSent(KMessage *)), this, SLOT(slotMessageSent(KMessage *)));
-}
-
-KonnectionHandling::~KonnectionHandling()
-{
 }
 
 void KonnectionHandling::updateInternal(KBattleshipServer *server)
@@ -89,6 +85,7 @@ void KonnectionHandling::slotMessageSent(KMessage *msg)
 
 void KonnectionHandling::slotNewMessage(KMessage *msg)
 {
+	KMessage *copy;
 	if(type() == KonnectionHandling::CLIENT)
 	{
 		switch(msg->type())
@@ -143,7 +140,8 @@ void KonnectionHandling::slotNewMessage(KMessage *msg)
 				// We lost the game
 			case KMessage::WON:
 				emit sigStatusBar(i18n("You lost the game :("));
-				emit sigLost();
+				copy = new KMessage(msg);
+				emit sigLost(copy);
 				break;
 
 				// We got a chat message
@@ -203,7 +201,8 @@ void KonnectionHandling::slotNewMessage(KMessage *msg)
 				// We lost the game
 			case KMessage::WON:
 				emit sigStatusBar(i18n("You lost the game :("));
-				emit sigLost();
+				copy = new KMessage(msg);
+				emit sigLost(copy);
 				break;
 
 				// We got a chat message

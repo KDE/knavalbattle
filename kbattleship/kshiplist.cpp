@@ -28,10 +28,6 @@ KShipList::KShipList() : QObject()
 	m_fieldy = 10;
 }
 
-KShipList::~KShipList()
-{
-}
-
 void KShipList::clear()
 {
 	m_shipsadded = 4;
@@ -152,7 +148,7 @@ bool KShipList::addNewShip(bool vertical, int fieldx, int fieldy)
 
 	if(!vertical)
 		m_shiplist.append(new KShip(fieldx, fieldx + shipCount(), fieldy, fieldy, shipCount(), true));
-	else    
+	else
 		m_shiplist.append(new KShip(fieldx, fieldx, fieldy, fieldy + shipCount(), shipCount(), false));
 
 	for(int i = 0; i < shipCount() + 1; i++)
@@ -167,7 +163,7 @@ bool KShipList::addNewShip(bool vertical, int fieldx, int fieldy)
 		else if(shipCount() == 0)
 			start = KBattleField::SHIP1P1;
 
-		if(!vertical)	
+		if(!vertical)
 			emit sigOwnFieldDataChanged(fieldx + i, fieldy, start + i);
 		else
 			emit sigOwnFieldDataChanged(fieldx, fieldy + i, start + i);

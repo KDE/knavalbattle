@@ -18,15 +18,14 @@
 #ifndef KONNECTIONHANDLING_H
 #define KONNECTIONHANDLING_H
 
-#include <kdebug.h>
 #include <klocale.h>
 #include <kmessagebox.h>
+
 #include <qobject.h>
-#include <qwidget.h>
-#include "kmessage.h"
-#include "kbattlefield.h"
-#include "kbattleshipserver.h"
+
 #include "kbattleshipclient.h"
+#include "kbattleshipserver.h"
+#include "kmessage.h"
 
 class KonnectionHandling : public QObject
 {
@@ -35,7 +34,6 @@ public:
 	enum{SERVER, CLIENT};
 	KonnectionHandling(QWidget *parent, KBattleshipServer *server);
 	KonnectionHandling(QWidget *parent, KBattleshipClient *client);
-	~KonnectionHandling();
 
 	int type() { return m_type; }
 
@@ -46,7 +44,7 @@ public slots:
 	void slotNewMessage(KMessage *msg);
 	void slotMessageSent(KMessage *msg);
 	void slotNewClient();
-	void slotLostClient();	
+	void slotLostClient();
 	void slotLostServer();
 	void slotSocketError(int error);
 
@@ -62,7 +60,7 @@ signals:
 	void sigClientLost();
 	void sigServerLost();
 	void sigReplay();
-	void sigLost();
+	void sigLost(KMessage *);
 	void sigAbortNetworkGame();
 	void sigChatMessage(const QString &, const QString &, bool);
 

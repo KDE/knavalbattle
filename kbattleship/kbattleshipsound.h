@@ -18,23 +18,20 @@
 #ifndef KBATTLESHIPSOUND_H
 #define KBATTLESHIPSOUND_H
 
-#include <kdebug.h>
+#include <arts/soundserver.h>
+
+#include <kglobal.h>
 #include <klocale.h>
 #include <kmessagebox.h>
 #include <kstandarddirs.h>
-#include <kglobal.h>
-#include <qstring.h>
-#include <qstringlist.h>
-#include <qobject.h>
-#include <arts/soundserver.h>
 
-class KBattleshipSound : public QObject
+#include <qstring.h>
+
+class KBattleshipSound
 {
-	Q_OBJECT
 public:
 	enum{SHIP_SINK, PLAYER1_SHOOT_HIT, PLAYER2_SHOOT_HIT, PLAYER_SHOOT_WATER};
 	KBattleshipSound();
-	~KBattleshipSound();
 
 	bool initSoundServer();
 	bool serverError();

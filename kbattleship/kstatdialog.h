@@ -25,7 +25,6 @@ class KStatDialog : public statDlg
 	Q_OBJECT
 public:
 	KStatDialog(QWidget *parent = 0, const char *name = 0);
-	~KStatDialog();
 
 	void setShot();
 	void setShot(int shot);

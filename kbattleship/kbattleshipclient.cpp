@@ -35,10 +35,6 @@ KBattleshipClient::KBattleshipClient(const QString &host, int port) : KExtendedS
 {
 }
 
-KBattleshipClient::~KBattleshipClient()
-{
-}
-
 void KBattleshipClient::init()
 {
 	if(connect())

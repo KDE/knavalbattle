@@ -18,21 +18,17 @@
 #ifndef KMESSAGE_H
 #define KMESSAGE_H
 
-#include <qmap.h>
-#include <qobject.h>
 #include <qdom.h>
 #include <qstring.h>
-#include <qstringlist.h>
 
-class KMessage : public QObject
+class KMessage
 {
-	Q_OBJECT
 public:
 	enum{GETVERSION, DISCARD, GREET, SHIPSREADY, SHOOT, ANSWER_SHOOT, WON, REPLAY, CHAT};
 
 	KMessage(int type);
+	KMessage(KMessage *msg);
 	KMessage();
-	~KMessage();
 
 	int type();
 

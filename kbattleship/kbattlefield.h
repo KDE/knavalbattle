@@ -25,11 +25,9 @@
 
 class KBattleField : public KGridWidget
 {
-	Q_OBJECT
 public:
 	enum{FREE, WATER, HIT, DEATH, BORDER, SHIP1P1, SHIP2P1, SHIP2P2, SHIP3P1, SHIP3P2, SHIP3P3, SHIP4P1, SHIP4P2, SHIP4P3, SHIP4P4};
-	KBattleField(QWidget *parentw, const char *name, bool grid);
-	~KBattleField();
+	KBattleField(QWidget *parent, bool grid);
 
 	void clearOwnField();
 	void clearEnemyField();
@@ -77,6 +75,8 @@ private:
 	int m_width;
 
 	bool m_canDraw;
+
+	QWidget *m_parent;
 };
 
 #endif

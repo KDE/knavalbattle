@@ -18,38 +18,36 @@
 #ifndef KBATTLESHIP_H
 #define KBATTLESHIP_H
 
-#include <kapplication.h>
-#include <kmainwindow.h>
-#include <kstdaction.h>
-#include <kaction.h>
-#include <kiconloader.h>
-#include <kmessagebox.h>
-#include <kmenubar.h>
-#include <klocale.h>
-#include <kconfig.h>
-#include <qobject.h>
-#include <qstring.h>
-#include <qsplitter.h>
 #include <arts/dispatcher.h>
 
+#include <kaction.h>
+#include <kapplication.h>
+#include <kconfig.h>
+#include <kiconloader.h>
+#include <klocale.h>
+#include <kmainwindow.h>
+#include <kmenubar.h>
+#include <kmessagebox.h>
+#include <kstdaction.h>
+
+#include <qstring.h>
+
+#include "dialogs/infoDlg.h"
+
+#include "kbaiplayer.h"
 #include "kbattleship.h"
-#include "kbattleshipview.h"
-#include "kbattleshipsound.h"
 #include "kbattleshipclient.h"
 #include "kbattleshipserver.h"
-#include "konnectionhandling.h"
-#include "kshiplist.h"
-#include "kserverdialog.h"
-#include "kclientdialog.h"
-#include "ksingledialog.h"
-#include "kstatdialog.h"
-#include "khighscoredialog.h"
-#include "dialogs/infoDlg.h"
+#include "kbattleshipsound.h"
+#include "kbattleshipview.h"
 #include "kchatwidget.h"
+#include "kclientdialog.h"
+#include "khighscoredialog.h"
+#include "konnectionhandling.h"
+#include "kserverdialog.h"
 #include "kship.h"
-#include "kbaiplayer.h"
-
-class KBattleshipView;
+#include "kshiplist.h"
+#include "kstatdialog.h"
 
 class KBattleshipApp : public KMainWindow
 {
@@ -65,8 +63,8 @@ public:
 	KShip *enemyShipAt(int fieldx, int fieldy);
 
 private slots:
-    void slotConfigureKeys();
-    void slotLost();
+	void slotConfigureKeys();
+	void slotLost(KMessage *msg);
 	void slotStatusMsg(const QString &text);
 	void slotReceivedEnemyFieldData(int fieldx, int fieldx1, int enemystate, int xstart, int xstop, int ystart, int ystop, bool death);
 	void slotSendEnemyFieldState(int, int);
@@ -90,7 +88,6 @@ private slots:
 	void slotRestartAI();
 	void slotDeleteClient();
 	void slotSinglePlayer();
-	void slotDeleteSingleDialog();
 	void slotServerConnect();
 	void slotDeleteConnectDialog();
 	void slotNewServer();
@@ -156,7 +153,6 @@ private:
 	KToggleAction *m_configSound;
 	KToggleAction *m_configGrid;
 	KBattleshipSound *m_sound;
-	KSingleDialog *m_single;
 	KClientDialog *m_client;
 	KServerDialog *m_server;
 	KHighscoreDialog *m_score;

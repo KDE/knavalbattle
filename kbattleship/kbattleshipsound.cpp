@@ -16,17 +16,12 @@
  ***************************************************************************/
 
 #include "kbattleshipsound.h"
-#include "kbattleshipsound.moc"
 
-KBattleshipSound::KBattleshipSound() : QObject()
+KBattleshipSound::KBattleshipSound()
 {
 	playObject = Arts::PlayObject::null();
 	playObjectFactory = Arts::PlayObjectFactory::null();
 	soundserver = Arts::SimpleSoundServer::null();
-}
-
-KBattleshipSound::~KBattleshipSound()
-{
 }
 
 void KBattleshipSound::turnOff()
@@ -37,7 +32,7 @@ void KBattleshipSound::turnOff()
 		playObjectFactory = Arts::PlayObjectFactory::null();
 		soundserver = Arts::SimpleSoundServer::null();
 		m_serverRunning = false;
-	}	
+	}
 }
 
 void KBattleshipSound::turnOn()

@@ -38,10 +38,6 @@ KBattleshipServer::KBattleshipServer(int port) : KExtendedSocket(QString::null, 
 	m_serverSocket = 0;
 }
 
-KBattleshipServer::~KBattleshipServer()
-{
-}
-
 void KBattleshipServer::init()
 {
 	if(listen())

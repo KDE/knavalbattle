@@ -26,10 +26,6 @@ KHighscoreDialog::KHighscoreDialog(QWidget *parent, const char *name) : highscor
 	m_score = new KHighscore(this);
 }
 
-KHighscoreDialog::~KHighscoreDialog()
-{
-}
-
 void KHighscoreDialog::load()
 {
 	Name1->setText(m_score->readEntry(0, "Name", "-"));

@@ -27,7 +27,6 @@ class KBattleshipClient : public KExtendedSocket
 	Q_OBJECT
 public:
 	KBattleshipClient(const QString &host, int port);
-	~KBattleshipClient();
 
 	void init();
 	void sendMessage(KMessage *msg);

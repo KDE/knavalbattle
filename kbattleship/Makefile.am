@@ -10,7 +10,7 @@ kbattleship_SOURCES = kbaiplayer.cpp kbstrategy.cpp kbverticalstepstrategy.cpp\
 				kmessage.cpp kbattleshipserver.cpp kbattleshipclient.cpp \
 				kbattleshipview.cpp kgridwidget.cpp kbattlefield.cpp \
 	            kchatwidget.cpp kserverdialog.cpp kclientdialog.cpp \
-				kstatdialog.cpp ksingledialog.cpp khighscoredialog.cpp \
+				kstatdialog.cpp khighscoredialog.cpp \
 				kbattleshipsound.cpp kbdiagonalshotstrategy.cpp \
 	            konnectionhandling.cpp kship.cpp kshiplist.cpp \
 	            kbchooserstrategy.cpp kbattleship.cpp main.cpp
@@ -26,4 +26,4 @@ rc_DATA = kbattleshipui.rc
 
 messages: rc.cpp
 	$(EXTRACTRC) */*.ui >> rc.cpp
-	$(XGETTEXT) *.cpp main.h -o $(podir)/kbattleship.pot
+	$(XGETTEXT) *.cpp -o $(podir)/kbattleship.pot

@@ -24,10 +24,6 @@ KBDiagonalShotStrategy::KBDiagonalShotStrategy(KBStrategy *parent) : KBStrategy(
 	m_horizontal = 0;
 }
 
-KBDiagonalShotStrategy::~KBDiagonalShotStrategy()
-{
-}
-
 const QPoint KBDiagonalShotStrategy::nextShot()
 {
 	if(hasMoreShots())

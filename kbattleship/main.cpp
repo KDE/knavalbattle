@@ -18,10 +18,10 @@
 #include <kcmdlineargs.h>
 #include <kaboutdata.h>
 #include <klocale.h>
-//#include <dcopclient.h>
 
 #include "kbattleship.h"
-#include "main.h"
+
+extern char *clientName, *clientVersion, *clientDescription;
 
 int main(int argc, char *argv[])
 {
@@ -35,17 +35,15 @@ int main(int argc, char *argv[])
 	aboutData.addCredit("Elmar Hoefner", I18N_NOOP("GFX"), "elmar.hoefner@uibk.ac.at");
 	aboutData.addCredit("Lukas Tinkl", I18N_NOOP("Non-Latin1 Support"), "lukas@kde.org");
 	aboutData.addCredit("Malte Starostik", I18N_NOOP("Various improvements"), "malte.starostik@t-online.de");
+	aboutData.addCredit("Albert Astals Cid", I18N_NOOP("Various improvements and bugfixes"), "tsdgeos@terra.es");
 
 	KCmdLineArgs::init(argc, argv, &aboutData);
 	KApplication app;
-    KGlobal::locale()->insertCatalogue("libkdegames");
-
-	//(kapp->dcopClient())->attach();
-	//(kapp->dcopClient())->registerAs("kbattleship");
+	KGlobal::locale()->insertCatalogue("libkdegames");
 
 	if( app.isRestored() )
 		RESTORE(KBattleshipApp)
-    else {
+	else {
 		KBattleshipApp *kbattleship = new KBattleshipApp;
 		kbattleship->show();
 	}

@@ -18,14 +18,12 @@
 #ifndef KGRIDWIDGET_H
 #define KGRIDWIDGET_H
 
-#include <qobject.h>
 #include <qpixmap.h>
 
-class KGridWidget : public QObject
+class KGridWidget
 {
-	Q_OBJECT
 public:
-	KGridWidget(QWidget *parent, const char *name, bool draw);
+	KGridWidget(QWidget *parent, bool draw);
 	~KGridWidget();
 
 	void enableGrid() { m_drawGrid = true; }
@@ -62,6 +60,7 @@ private:
 	QPixmap ship4p2Png, ship4p2rPng;
 	QPixmap ship4p3Png, ship4p3rPng;
 	QPixmap ship4p4Png, ship4p4rPng;
+	QWidget *m_parent;
 };
 
 #endif

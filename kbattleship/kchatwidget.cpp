@@ -30,10 +30,6 @@ KChatWidget::KChatWidget(QWidget *parent, const char *name) : chatDlg(parent, na
 	slotAcceptMsg(false);
 }
 
-KChatWidget::~KChatWidget()
-{
-}
-
 void KChatWidget::clear()
 {
 	m_currentNickname = QString::null;
@@ -51,7 +47,7 @@ void KChatWidget::slotReceivedMessage(const QString &nickname, const QString &ms
 {
 	// Niko Z:
 	// IRC roxxx :)
-	if(msg.startsWith("/me ")) 
+	if(msg.startsWith("/me "))
 		chatView->append(QString(" * ") + nickname + QString(" ") + msg.mid(4));
 	else if(msg.startsWith("/nick "))
 		if(fromenemy)

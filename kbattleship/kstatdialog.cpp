@@ -24,10 +24,6 @@ KStatDialog::KStatDialog(QWidget *parent, const char *name) : statDlg(parent, na
 	setMinimumSize(150, 300);
 }
 
-KStatDialog::~KStatDialog()
-{
-}
-
 void KStatDialog::slotAddOwnWon()
 {
 	OwnLabel->setText(QString::number(OwnLabel->text().toInt() + 1));
@@ -88,7 +84,7 @@ int KStatDialog::shot()
 
 int KStatDialog::hit()
 {
-	return HitLCD->intValue();    
+	return HitLCD->intValue();
 }
 
 int KStatDialog::water()

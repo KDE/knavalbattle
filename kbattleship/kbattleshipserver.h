@@ -27,7 +27,6 @@ class KBattleshipServer : public KExtendedSocket
 	Q_OBJECT
 public:
 	KBattleshipServer(int port);
-	~KBattleshipServer();
 
 	void init();
 	void sendMessage(KMessage *msg);

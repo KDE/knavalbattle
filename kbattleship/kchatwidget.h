@@ -29,7 +29,6 @@ class KChatWidget : public chatDlg
 	Q_OBJECT
 public:
 	KChatWidget(QWidget *parent = 0, const char *name = 0);
-	~KChatWidget();
 
 	void clear();
 	void setNickname(const QString &nickname) { m_currentNickname = nickname; }

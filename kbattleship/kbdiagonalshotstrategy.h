@@ -21,10 +21,9 @@
 
 class KBDiagonalShotStrategy : public KBStrategy
 {
-public: 
-	enum Direction {LEFTUP, LEFTDOWN, RIGHTUP, RIGHTDOWN}; 
+public:
+	enum Direction {LEFTUP, LEFTDOWN, RIGHTUP, RIGHTDOWN};
 	KBDiagonalShotStrategy(KBStrategy *parent = 0);
-	virtual ~KBDiagonalShotStrategy();
 
 	virtual const QPoint nextShot();
 	virtual bool hasMoreShots();

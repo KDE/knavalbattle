@@ -15,8 +15,9 @@
  *                                                                         *
  ***************************************************************************/
 
-#include <qpainter.h>
+#include <qapplication.h>
 #include <qimage.h>
+#include <qpainter.h>
 
 #include <kstandarddirs.h>
 #include <kimageeffect.h>
@@ -25,9 +26,10 @@
 #include "kbattlefield.h"
 #include "kgridwidget.moc"
 
-KGridWidget::KGridWidget(QWidget *parent, const char *name, bool draw) : QObject(parent, name), m_drawGrid(draw)
+KGridWidget::KGridWidget(QWidget *parent, bool draw) : m_drawGrid(draw)
 {
 	m_doubleBuffer = new QPixmap(parent->width(), parent->height());
+	m_parent = parent;
 
 	cleanBuffer();
 	cacheImages();
@@ -390,8 +392,8 @@ void KGridWidget::drawIcon(QPixmap icon, bool hitBlend, bool waterBlend, bool ro
 		painter.end();
 	else
 	{
-		painter.setBrush(NoBrush);
-		painter.setPen(black);
+		painter.setBrush(Qt::NoBrush);
+		painter.setPen(Qt::black);
 		painter.drawRect(m_x, m_y, m_size, m_size);
 		painter.end();
 	}
@@ -404,7 +406,7 @@ QString KGridWidget::findIcon(const QString &name) const
 
 void KGridWidget::finished()
 {
-	bitBlt(static_cast<QWidget *>(parent()), 0, 0, m_doubleBuffer);
+	bitBlt(m_parent, 0, 0, m_doubleBuffer);
 	cleanBuffer();
 }
 

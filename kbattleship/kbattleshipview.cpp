@@ -34,15 +34,11 @@ KBattleshipView::KBattleshipView(QWidget *parent, const char *name, bool draw) :
 	m_lastY = 0;
 }
 
-KBattleshipView::~KBattleshipView()
-{
-}
-
 void KBattleshipView::startDrawing()
 {
 	QHBoxLayout *layout = new QHBoxLayout(this, 0, 0, "m_battlefieldLayout");
 	layout->setAutoAdd(true);
-	m_battlefield = new KBattleField(this, "m_battlefield", m_drawGrid);
+	m_battlefield = new KBattleField(this, m_drawGrid);
 }
 
 void KBattleshipView::clearField()
@@ -98,7 +94,53 @@ void KBattleshipView::drawEnemyShipsAI(KShipList *list)
 			}
 		}
 	}
-	m_battlefield->drawField();
+}
+
+void KBattleshipView::drawEnemyShipsHuman(KMessage *msg, KShipList *list)
+{
+	int posx, posy, placedLeft;
+	bool left;
+	int i = 3;
+	while (msg->field(QString("ship%1").arg(i)) != QString::null)
+	{
+		posx = msg->field(QString("ship%1").arg(i)).section(" ", 0, 0).toInt();
+		posy = msg->field(QString("ship%1").arg(i)).section(" ", 1, 1).toInt();
+		placedLeft = msg->field(QString("ship%1").arg(i)).section(" ", 2, 2).toInt();
+		if (placedLeft == 0) left = false;
+		else left = true;
+		list->addNewShip(!left, posx, posy);
+		i--;
+	}
+	drawEnemyShipsAI(list);
+}
+
+KMessage *KBattleshipView::getAliveShips(KShipList *list)
+{
+	KShip *ship;
+	QString shipPos, shipNum;
+	int shipType;
+	int grid = m_battlefield->gridSize();
+	int width = m_battlefield->enemyRect().width() / grid;
+	int height = m_battlefield->enemyRect().height() / grid;
+	KMessage *msg = new KMessage(KMessage::WON);
+	bool shipsFound[4] = {false, false, false, false};
+
+	for(int i = 0; i < width; i++)
+	{
+		for(int j = 0; j < height; j++)
+		{
+			ship = list->shipAt(i, j);
+			shipType = list->shipTypeAt(i, j);
+			if (ship && !shipsFound[shipType])
+			{
+				shipPos.sprintf("%d %d %d", i, j, ship->placedLeft());
+				shipsFound[shipType] = true;
+				shipNum.sprintf("ship%d",shipType);
+				msg->addField(shipNum, shipPos);
+			}
+		}
+	}
+	return msg;
 }
 
 bool KBattleshipView::eventFilter(QObject *object, QEvent *event)

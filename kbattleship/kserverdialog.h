@@ -29,7 +29,6 @@ class KServerDialog : public serverStartDlg
 	Q_OBJECT
 public:
 	KServerDialog(QWidget *parent = 0, const char *name = 0);
-	~KServerDialog();
 
 	QString port() const;
 	QString nickname() const;
@@ -39,7 +38,7 @@ public slots:
 	void slotCancelClicked();
 
 signals:
-	void sigStartServer();	
+	void sigStartServer();
 	void sigCancelServer();
 };
 

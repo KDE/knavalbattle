@@ -17,14 +17,20 @@
 
 //#define XMLDUMP
 
-#include "main.h"
-#include "kmessage.h"
+#include <klocale.h>
+
 #ifdef XMLDUMP
 #include <kdebug.h>
 #endif
-#include "kmessage.moc"
 
-KMessage::KMessage(int type) : QObject()
+#include "kmessage.h"
+
+const char *clientName = I18N_NOOP("KBattleship");
+const char *clientVersion = "1.0";
+const char *clientDescription = I18N_NOOP("The KDE Battleship clone");
+const char *protocolVersion = "0.1.0";
+
+KMessage::KMessage(int type)
 {
 	m_xmlDocument = QDomDocument("kmessage");
 	m_xmlDocument.appendChild(m_xmlDocument.createElement("kmessage"));
@@ -32,13 +38,15 @@ KMessage::KMessage(int type) : QObject()
 	addField("msgtype", QString::number(type));
 }
 
-KMessage::KMessage() : QObject()
+KMessage::KMessage(KMessage *msg)
 {
-	m_xmlDocument = QDomDocument("kmessage");
+	m_xmlDocument.setContent(msg->m_xmlDocument.toString(), false);
+	m_messageType = msg->type();
 }
 
-KMessage::~KMessage()
+KMessage::KMessage()
 {
+	m_xmlDocument = QDomDocument("kmessage");
 }
 
 void KMessage::addField(const QString &name, const QString &content)
