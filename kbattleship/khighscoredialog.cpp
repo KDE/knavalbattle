@@ -18,7 +18,6 @@
 #include <qlcdnumber.h>
 #include <qlabel.h>
 #include <kdebug.h>
-#include <qpushbutton.h>
 #include "khighscoredialog.moc"
 
 KHighscoreDialog::KHighscoreDialog(QWidget *parent, const char *name) : highscoreDlg(parent, name)

@@ -15,7 +15,6 @@
  *                                                                         *
  ***************************************************************************/
 
-#include <qfile.h>
 #include "kbattleshipsound.h"
 #include "kbattleshipsound.moc"
 

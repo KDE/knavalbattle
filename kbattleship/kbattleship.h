@@ -20,7 +20,6 @@
 
 #include <kapplication.h>
 #include <kmainwindow.h>
-#include <kaccel.h>
 #include <kstdaction.h>
 #include <kaction.h>
 #include <kiconloader.h>
