@@ -27,6 +27,11 @@ KShipList::~KShipList()
 {
 }
 
+void KShipList::clear()
+{
+    shiplist.clear();
+}
+
 int KShipList::getXYShipType(int x, int y)
 {
     int tempx, tempy;
@@ -185,6 +190,9 @@ void KShipList::addNewShip(int button, int fieldx, int fieldy)
 	        }
 	    }
 
+	    kdDebug() << "*** Step 1 ***" << endl;
+	    kdDebug() << "XOKAY: " << xokay << " YOKAY: " << yokay << endl;
+
 	    if(button == LeftButton)
 	    {
 		int neighbourp, neighbourm, neighbourt, neighbourb;
@@ -196,7 +204,7 @@ void KShipList::addNewShip(int button, int fieldx, int fieldy)
 		    neighbourp = getXYShipType(fieldx + shipCount(), fieldy);
                 if(neighbourm == 99 && neighbourp == 99)
 		{
-		    for(tempx = fieldx; tempx <= ( fieldx + shipCount() ); tempx++)
+		    for(tempx = fieldx; tempx <= (fieldx + shipCount()); tempx++)
 		    {
 		        if(fieldy > 0)
 		            neighbourt = getXYShipType(tempx, fieldy - 1);
@@ -207,6 +215,9 @@ void KShipList::addNewShip(int button, int fieldx, int fieldy)
 		        {
     	                    xokay = false;
 		            yokay = false;
+	    kdDebug() << "*** Step 2 *r1**" << endl;
+	    kdDebug() << "XOKAY: " << xokay << " YOKAY: " << yokay << endl;
+
 		            break;
 		        }
 		    }
@@ -216,8 +227,14 @@ void KShipList::addNewShip(int button, int fieldx, int fieldy)
 		{
 		    xokay = false;
 		    yokay = false;
+	    kdDebug() << "*** Step 2 *r2**" << endl;
+	    kdDebug() << "XOKAY: " << xokay << " YOKAY: " << yokay << endl;
+
 		    break;
 		}
+	    kdDebug() << "*** Step 2 *r3**" << endl;
+	    kdDebug() << "XOKAY: " << xokay << " YOKAY: " << yokay << endl;
+
 	    }
 	    else if(button == RightButton)
 	    {
@@ -239,8 +256,11 @@ void KShipList::addNewShip(int button, int fieldx, int fieldy)
 			neighbourb = getXYShipType(fieldx + 1, tempy);
 			if(neighbourt != 99 || neighbourb != 99)
 			{
-			    xokay = false;
-			    yokay = false;
+			xokay = false;
+		        yokay = false;
+	    kdDebug() << "*** Step 2 *r1**" << endl;
+	    kdDebug() << "XOKAY: " << xokay << " YOKAY: " << yokay << endl;
+    
 			    break;
 			}
 		    }
@@ -248,11 +268,18 @@ void KShipList::addNewShip(int button, int fieldx, int fieldy)
 		}
 		else
 		{
-		    xokay = false;
+	    	    xokay = false;
 		    yokay = false;
+	    kdDebug() << "*** Step 2 *r2**" << endl;
+	    kdDebug() << "XOKAY: " << xokay << " YOKAY: " << yokay << endl;
+
 		    break;
 	        }
+
 	    }
+	    
+	    kdDebug() << "*** Step 2 *r3**" << endl;
+	    kdDebug() << "XOKAY: " << xokay << " YOKAY: " << yokay << endl;
 	}
 
 	if(xokay && !yokay)
@@ -266,6 +293,9 @@ void KShipList::addNewShip(int button, int fieldx, int fieldy)
 	    xokay = true;
 	    yokay = true;
 	}
+	
+	kdDebug() << "*** Step 3 ***" << endl;
+	kdDebug() << "XOKAY: " << xokay << " YOKAY: " << yokay << endl;
     }
 
     if(xokay && yokay)

@@ -49,15 +49,7 @@ void KMessage::setDataStream(QString stream)
 
 QString KMessage::returnSendStream()
 {
-    QString sendStream;
-    QDomNode xmlNode = xmlDocument->documentElement().firstChild();
-    while(!xmlNode.isNull())
-    {
-	QDomElement xmlElement = xmlNode.toElement();
-	if(!xmlElement.isNull())
-	    sendStream = xmlDocument->toString();
-	xmlNode = xmlNode.nextSibling();
-    }
+    QString sendStream = xmlDocument->toString();
     return sendStream.simplifyWhiteSpace();
 }
 

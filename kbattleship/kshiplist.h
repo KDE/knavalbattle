@@ -34,6 +34,8 @@ class KShipList : public QObject
         int getXYShipType(int x, int y);
         KShip *getXYShip(int x, int y);
 
+	void clear();
+
         void addNewShip(int button, int fieldx, int fieldy);
 
         void addShip(int fieldx1, int fieldx2, int fieldy1, int fieldy2, int ship);

@@ -286,10 +286,8 @@ void KBattleshipApp::sendChatMessage( QString text )
 void KBattleshipApp::clientRestart()
 {
     slotStatusMsg(i18n( "Waiting for other player to place the ships..."));
-    delete ownshiplist;
-    delete enemyshiplist;
-    ownshiplist = new KShipList();
-    enemyshiplist = new KShipList();
+    ownshiplist->clear();
+    enemyshiplist->clear();
 }
 
 void KBattleshipApp::saveOptions()
