@@ -45,8 +45,8 @@
 </copyright>
 
 
-<date>2003-09-18</date>
-<releaseinfo>1.00.00</releaseinfo>
+<date>2005-02-20</date>
+<releaseinfo>1.1</releaseinfo>
 
 <abstract>
 <para>
@@ -102,7 +102,7 @@ Server</guimenuitem></menuchoice> or by pressing <keycap>F3</keycap>.
 
 <para>
 A dialog box opens which will ask you for for a
-<guilabel>Nickname</guilabel> and <guilabel>Port</guilabel>. Normally,
+<guilabel>Nick name</guilabel> and <guilabel>Port</guilabel>. Normally,
 &kbattleship; will suggest your login name but you can enter any string
 you want. The predefined port should be OK. However, if you encounter
 problems, you can choose any other free ports above 1024.
@@ -117,7 +117,7 @@ to establish a connection.</para>
 <para>
 The other player has to choose <menuchoice><guimenu>Game</guimenu>
 <guimenuitem>Connect to Server</guimenuitem></menuchoice>, or press
-<keycap>F2</keycap>. Again, a <guilabel>Nickname</guilabel> is
+<keycap>F2</keycap>. Again, a <guilabel>Nick name</guilabel> is
 suggested, but you can choose any name you like.
 </para>
 
@@ -308,6 +308,21 @@ field.</action> The default is off.
 <term>
 <menuchoice>
 <guimenu>Settings</guimenu>
+<guimenuitem>Play Sounds</guimenuitem>
+</menuchoice>
+</term>
+<listitem>
+<para>
+<action>Toggle whether sounds (played when shooting) should be played.</action>
+The default is on.
+</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term>
+<menuchoice>
+<guimenu>Settings</guimenu>
 <guimenuitem>Configure Shortcuts...</guimenuitem>
 </menuchoice>
 </term>
@@ -332,20 +347,6 @@ field.</action> The default is off.
 </listitem>
 </varlistentry>
 
-<varlistentry>
-<term>
-<menuchoice>
-<guimenu>Settings</guimenu>
-<guimenuitem>Play Sounds</guimenuitem>
-</menuchoice>
-</term>
-<listitem>
-<para>
-<action>Toggle whether sounds (played when shooting) should be played.</action>
-The default is on.
-</para>
-</listitem>
-</varlistentry>
 
 </variablelist>
 </sect1>
@@ -433,6 +434,10 @@ Nils Trzebin <email>nils.trzebin@stud.uni-hannover.de</email>
 </listitem>
 
 </itemizedlist>
+
+<para>Documentation updated for &kde; 3.4 by
+<personname><firstname>Brian</firstname><surname>Beck</surname></personname>
+<email>brian.beck@mchsi.com</email></para>
 
 <!-- TRANS:CREDIT_FOR_TRANSLATORS -->
 
