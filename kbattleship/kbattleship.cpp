@@ -56,7 +56,7 @@ void KBattleshipApp::initActions()
 
 void KBattleshipApp::initSound()
 {
-    KBattleshipSound *soundserver = new KBattleshipSound();
+    sound = new KBattleshipSound();
 }
 
 void KBattleshipApp::initStatusBar()
