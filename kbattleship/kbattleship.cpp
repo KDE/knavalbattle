@@ -540,7 +540,7 @@ void KBattleshipApp::slotShipsReady()
 	slotSendMessage(msg);
 
 	if(m_connection->type() == KonnectionHandling::SERVER)
-		slotStatusMsg(i18n("Waiting for other player to place the ships..."));
+		slotStatusMsg(i18n("Waiting for other player to place their ships..."));
 	else
 		slotStatusMsg(i18n("Waiting for other player to start the match..."));
 
@@ -682,7 +682,7 @@ void KBattleshipApp::slotDeleteClient()
 
 void KBattleshipApp::slotReplayRequest()
 {
-	switch(KMessageBox::questionYesNo(this, i18n("The client asks for restarting the game. Do you accept?")))
+	switch(KMessageBox::questionYesNo(this, i18n("The client asks to restart the game. Do you accept?")))
 	{
 		case KMessageBox::Yes:
 			slotReplay();
@@ -1229,7 +1229,7 @@ void KBattleshipApp::slotAIShootsAt(const QPoint pos)
 		m_aiHits++;
 	}
 
-	slotStatusMsg(i18n("Enemy has shot. Shoot now"));
+	slotStatusMsg(i18n("Enemy has shot. Shoot now."));
 	slotChangeOwnFieldData(pos.x(), pos.y(), showstate);
 
 	if(m_aiHits == 10 && m_stat->hit() != 10)

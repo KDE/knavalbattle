@@ -75,7 +75,7 @@ void KonnectionHandling::slotNewClient()
 
 void KonnectionHandling::slotLostClient()
 {
-	KMessageBox::error(0L, i18n("Connection to client lost. Aborting the game!"));
+	KMessageBox::error(0L, i18n("Connection to client lost. Aborting the game."));
 	emit sigClientLost();
 }
 
@@ -97,7 +97,7 @@ void KonnectionHandling::slotNewMessage(KMessage *msg)
 			case KMessage::DISCARD:
 				if(msg->field("kmversion") == QString("true"))
 				{
-					KMessageBox::error(0L, i18n("Connection dropped by enemy. The client's protocol implementation (%1) is not compatible with our (%2) version!").arg(msg->field("reason")).arg(protocolVersion));
+					KMessageBox::error(0L, i18n("Connection dropped by enemy. The client's protocol implementation (%1) is not compatible with our (%2) version.").arg(msg->field("reason")).arg(protocolVersion));
 					emit sigAbortNetworkGame();
 				}
 				else
@@ -112,7 +112,7 @@ void KonnectionHandling::slotNewMessage(KMessage *msg)
 				// Got the enemy's nickname
 			case KMessage::GREET:
 				emit sigEnemyNickname(msg->field("nickname"));
-				emit sigStatusBar(i18n("Waiting for other player to place the ships..."));
+				emit sigStatusBar(i18n("Waiting for other player to place their ships..."));
 				break;
 
 				// The server wants ous to place the ships
@@ -124,7 +124,7 @@ void KonnectionHandling::slotNewMessage(KMessage *msg)
 				// The server shot and wants the field state
 			case KMessage::SHOOT:
 				emit sigSendFieldState(msg->field("fieldx").toInt(), msg->field("fieldy").toInt());
-				emit sigStatusBar(i18n("Enemy has shot. Shoot now"));
+				emit sigStatusBar(i18n("Enemy has shot. Shoot now."));
 				emit sigShootable(true);
 				break;
 
@@ -136,7 +136,7 @@ void KonnectionHandling::slotNewMessage(KMessage *msg)
 
 				// The server starts a new game
 			case KMessage::REPLAY:
-				emit sigStatusBar(i18n("Waiting for other player to place the ships..."));
+				emit sigStatusBar(i18n("Waiting for other player to place their ships..."));
 				emit sigReplay();
 				break;
 
@@ -161,7 +161,7 @@ void KonnectionHandling::slotNewMessage(KMessage *msg)
 				if(msg->field("protocolVersion") != QString::fromLatin1(protocolVersion))
 				{
 					m_kbserver->slotDiscardClient(protocolVersion, true, false);
-					KMessageBox::error(0L, i18n("Connection to client dropped. The client's protocol implementation (%1) is not compatible with our (%2) version!").arg(msg->field("protocolVersion")).arg(protocolVersion));
+					KMessageBox::error(0L, i18n("Connection to client dropped. The client's protocol implementation (%1) is not compatible with our (%2) version.").arg(msg->field("protocolVersion")).arg(protocolVersion));
 				}
 				else
 					emit sigClientInformation(msg->field("clientName"), msg->field("clientVersion"), msg->field("clientDescription"), msg->field("protocolVersion"));
@@ -179,7 +179,7 @@ void KonnectionHandling::slotNewMessage(KMessage *msg)
 				// The client placed his ships...we can shoot now
 			case KMessage::SHIPSREADY:
 				emit sigShootable(true);
-				emit sigStatusBar(i18n("You can shoot now"));
+				emit sigStatusBar(i18n("You can shoot now."));
 				break;
 
 				// The client gave us the field data of our last shot
@@ -191,7 +191,7 @@ void KonnectionHandling::slotNewMessage(KMessage *msg)
 				// The client shot and wants the field state
 			case KMessage::SHOOT:
 				emit sigSendFieldState(msg->field("fieldx").toInt(), msg->field("fieldy").toInt());
-				emit sigStatusBar(i18n("Enemy has shot. Shoot now"));
+				emit sigStatusBar(i18n("Enemy has shot. Shoot now."));
 				emit sigShootable(true);
 				break;
 
@@ -221,15 +221,15 @@ void KonnectionHandling::slotSocketError(int error)
 	switch(error)
 	{
 		case IO_ConnectError:
-			KMessageBox::error(0L, i18n("Connection refused by other host!"));
+			KMessageBox::error(0L, i18n("Connection refused by other host."));
 			break;
 
 		case IO_LookupError:
-			KMessageBox::error(0L, i18n("Couldn't lookup host!"));
+			KMessageBox::error(0L, i18n("Couldn't lookup host."));
 			break;
 
 		case IO_ReadError:
-			KMessageBox::error(0L, i18n("Couldn't connect to server!"));
+			KMessageBox::error(0L, i18n("Couldn't connect to server."));
 			break;
 
 		default:
@@ -242,6 +242,6 @@ void KonnectionHandling::slotSocketError(int error)
 
 void KonnectionHandling::slotLostServer()
 {
-	KMessageBox::error(0L, i18n("Connection to server lost. Aborting the game!"));
+	KMessageBox::error(0L, i18n("Connection to server lost. Aborting the game."));
 	emit sigServerLost();
 }

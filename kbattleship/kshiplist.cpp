@@ -123,7 +123,7 @@ bool KShipList::canAddShips()
 void KShipList::addNewShip(int button, int fieldx, int fieldy)
 {
 	if(!addNewShip(!(button == LeftButton), fieldx, fieldy))
-		KMessageBox::information(0L, i18n("You can't place the ship here."));
+		KMessageBox::information(0L, i18n("You cannot place the ship here."));
 }
 
 bool KShipList::addNewShip(bool vertical, int fieldx, int fieldy)

@@ -57,7 +57,7 @@ bool KBattleshipSound::initSoundServer()
 	playObjectFactory = Arts::Reference("global:Arts_PlayObjectFactory");
 	if(soundserver.isNull())
 	{
-		KMessageBox::error(0L, i18n("Couldn't connect to aRts Soundserver. Sound deactivated"));
+		KMessageBox::error(0L, i18n("Could not connect to aRts Soundserver. Sound deactivated."));
 		playObjectFactory = Arts::PlayObjectFactory::null();
 		soundserver = Arts::SimpleSoundServer::null();
 		m_serverRunning = false;
@@ -74,7 +74,7 @@ bool KBattleshipSound::initSoundServer()
 		}
 		else
 		{
-			KMessageBox::error(0L, i18n("You don't have KBattleship Sounds installed. Sound deactivated"));
+			KMessageBox::error(0L, i18n("You don't have KBattleship Sounds installed. Sound deactivated."));
 			playObjectFactory = Arts::PlayObjectFactory::null();
 			soundserver = Arts::SimpleSoundServer::null();
 			m_serverRunning = false;
