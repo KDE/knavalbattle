@@ -31,7 +31,7 @@
     </property>
     <property stdset="1">
         <name>caption</name>
-        <string>Start server</string>
+        <string>Start Server</string>
     </property>
     <property>
         <name>layoutMargin</name>
