@@ -31,7 +31,7 @@ static KCmdLineOptions options[] =
 
 int main(int argc, char *argv[])
 {
-	KAboutData aboutData("kbattleship", clientName, clientVersion, clientDescription, KAboutData::License_GPL, "(c) 2000-2001  Nikolas Zimmermann, Daniel Molkentin");
+	KAboutData aboutData("kbattleship", clientName, clientVersion, clientDescription, KAboutData::License_GPL, "(c) 2000-2005  Nikolas Zimmermann, Daniel Molkentin");
 
 	aboutData.addAuthor("Nikolas Zimmermann", I18N_NOOP("Project Founder, GUI Handling, Client/Server"), "wildfox@kde.org");
 	aboutData.addAuthor("Daniel Molkentin", I18N_NOOP("Dialog Stuff, Client/Server"), "molkentin@kde.org");
