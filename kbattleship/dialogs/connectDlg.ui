@@ -74,72 +74,70 @@
         </property>
     </widget>
     <widget>
-        <class>QLayoutWidget</class>
+        <class>QLabel</class>
         <property stdset="1">
             <name>name</name>
-            <cstring>Layout5</cstring>
+            <cstring>serverLabel</cstring>
         </property>
         <property stdset="1">
             <name>geometry</name>
             <rect>
-                <x>105</x>
-                <y>79</y>
-                <width>168</width>
-                <height>28</height>
+                <x>17</x>
+                <y>41</y>
+                <width>56</width>
+                <height>16</height>
             </rect>
         </property>
-        <hbox>
-            <property stdset="1">
-                <name>margin</name>
-                <number>0</number>
-            </property>
-            <property stdset="1">
-                <name>spacing</name>
-                <number>6</number>
-            </property>
-            <widget>
-                <class>QPushButton</class>
-                <property stdset="1">
-                    <name>name</name>
-                    <cstring>startBtn</cstring>
-                </property>
-                <property stdset="1">
-                    <name>text</name>
-                    <string>&amp;Start</string>
-                </property>
-                <property stdset="1">
-                    <name>default</name>
-                    <bool>true</bool>
-                </property>
-                <property stdset="1">
-                    <name>flat</name>
-                    <bool>false</bool>
-                </property>
-                <property stdset="1">
-                    <name>toggleButton</name>
-                    <bool>false</bool>
-                </property>
-                <property stdset="1">
-                    <name>on</name>
-                    <bool>false</bool>
-                </property>
-                <property>
-                    <name>whatsThis</name>
-                    <string>Press here to start the server</string>
-                </property>
-            </widget>
-            <widget>
-                <class>QPushButton</class>
-                <property stdset="1">
-                    <name>name</name>
-                    <cstring>cancelBtn</cstring>
-                </property>
-                <property stdset="1">
-                    <name>text</name>
-                    <string>C&amp;ancel</string>
-                </property>
-            </widget>
-        </hbox>
+        <property stdset="1">
+            <name>text</name>
+            <string>Server:    </string>
+        </property>
+        <property stdset="1">
+            <name>alignment</name>
+            <set>AlignVCenter|AlignLeft</set>
+        </property>
+        <property stdset="1">
+            <name>sizePolicy</name>
+            <sizepolicy>
+                <hsizetype>0</hsizetype>
+                <vsizetype>0</vsizetype>
+            </sizepolicy>
+        </property>
+        <property>
+            <name>hAlign</name>
+        </property>
+    </widget>
+    <widget>
+        <class>QLineEdit</class>
+        <property stdset="1">
+            <name>name</name>
+            <cstring>serverEdit</cstring>
+        </property>
+        <property stdset="1">
+            <name>geometry</name>
+            <rect>
+                <x>80</x>
+                <y>40</y>
+                <width>161</width>
+                <height>22</height>
+            </rect>
+        </property>
+    </widget>
+    <widget>
+        <class>QLineEdit</class>
+        <property stdset="1">
+            <name>name</name>
+            <cstring>nicknameEdit</cstring>
+        </property>
+        <property stdset="1">
+            <name>geometry</name>
+            <rect>
+                <x>80</x>
+                <y>10</y>
+                <width>161</width>
+                <height>22</height>
+            </rect>
+        </property>
     </widget>
     <widget>
         <class>QLabel</class>
@@ -179,94 +177,16 @@
         </property>
     </widget>
     <widget>
-        <class>QLabel</class>
+        <class>QLineEdit</class>
         <property stdset="1">
             <name>name</name>
-            <cstring>nicknameLabel_2</cstring>
+            <cstring>portEdit</cstring>
         </property>
         <property stdset="1">
             <name>geometry</name>
             <rect>
-                <x>17</x>
-                <y>41</y>
-                <width>56</width>
-                <height>16</height>
-            </rect>
-        </property>
-        <property stdset="1">
-            <name>text</name>
-            <string>Server:    </string>
-        </property>
-        <property stdset="1">
-            <name>alignment</name>
-            <set>AlignVCenter|AlignLeft</set>
-        </property>
-        <property stdset="1">
-            <name>sizePolicy</name>
-            <sizepolicy>
-                <hsizetype>0</hsizetype>
-                <vsizetype>0</vsizetype>
-            </sizepolicy>
-        </property>
-        <property>
-            <name>hAlign</name>
-        </property>
-    </widget>
-    <widget>
-        <class>KLineEdit</class>
-        <property stdset="1">
-            <name>name</name>
-            <cstring>KLineEdit1</cstring>
-        </property>
-        <property stdset="1">
-            <name>geometry</name>
-            <rect>
-                <x>80</x>
-                <y>10</y>
-                <width>257</width>
-                <height>22</height>
-            </rect>
-        </property>
-        <property>
-            <name>whatsThis</name>
-            <string>The name you enter here will appear as your name in the game</string>
-        </property>
-    </widget>
-    <widget>
-        <class>KLineEdit</class>
-        <property stdset="1">
-            <name>name</name>
-            <cstring>KLineEdit1_3</cstring>
-        </property>
-        <property stdset="1">
-            <name>geometry</name>
-            <rect>
-                <x>80</x>
-                <y>38</y>
-                <width>160</width>
-                <height>22</height>
-            </rect>
-        </property>
-        <property>
-            <name>toolTip</name>
-            <string></string>
-        </property>
-        <property>
-            <name>whatsThis</name>
-            <string>Enter a server to connect to</string>
-        </property>
-    </widget>
-    <widget>
-        <class>KLineEdit</class>
-        <property stdset="1">
-            <name>name</name>
-            <cstring>KLineEdit1_2</cstring>
-        </property>
-        <property stdset="1">
-            <name>geometry</name>
-            <rect>
-                <x>287</x>
-                <y>38</y>
+                <x>290</x>
+                <y>40</y>
                 <width>50</width>
                 <height>22</height>
             </rect>
@@ -275,18 +195,74 @@
             <name>text</name>
             <string>54321</string>
         </property>
+    </widget>
+    <widget>
+        <class>QLayoutWidget</class>
         <property stdset="1">
-            <name>maxLength</name>
-            <number>5</number>
+            <name>name</name>
+            <cstring>Layout3</cstring>
         </property>
-        <property>
-            <name>toolTip</name>
-            <string></string>
+        <property stdset="1">
+            <name>geometry</name>
+            <rect>
+                <x>106</x>
+                <y>80</y>
+                <width>173</width>
+                <height>34</height>
+            </rect>
         </property>
-        <property>
-            <name>whatsThis</name>
-            <string>Enter a port if the server uses a port different from the default</string>
-        </property>
+        <hbox>
+            <property stdset="1">
+                <name>margin</name>
+                <number>0</number>
+            </property>
+            <property stdset="1">
+                <name>spacing</name>
+                <number>6</number>
+            </property>
+            <widget>
+                <class>QPushButton</class>
+                <property stdset="1">
+                    <name>name</name>
+                    <cstring>startBtn</cstring>
+                </property>
+                <property stdset="1">
+                    <name>text</name>
+                    <string>&amp;Connect</string>
+                </property>
+                <property stdset="1">
+                    <name>default</name>
+                    <bool>true</bool>
+                </property>
+                <property stdset="1">
+                    <name>flat</name>
+                    <bool>false</bool>
+                </property>
+                <property stdset="1">
+                    <name>toggleButton</name>
+                    <bool>false</bool>
+                </property>
+                <property stdset="1">
+                    <name>on</name>
+                    <bool>false</bool>
+                </property>
+                <property>
+                    <name>whatsThis</name>
+                    <string>Press here to connect to a server</string>
+                </property>
+            </widget>
+            <widget>
+                <class>QPushButton</class>
+                <property stdset="1">
+                    <name>name</name>
+                    <cstring>cancelBtn</cstring>
+                </property>
+                <property stdset="1">
+                    <name>text</name>
+                    <string>C&amp;ancel</string>
+                </property>
+            </widget>
+        </hbox>
     </widget>
 </widget>
 <connections>

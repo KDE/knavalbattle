@@ -74,23 +74,72 @@
         </property>
     </widget>
     <widget>
-        <class>KLineEdit</class>
+        <class>QLineEdit</class>
         <property stdset="1">
             <name>name</name>
-            <cstring>KLineEdit1_2</cstring>
+            <cstring>nicknameEdit</cstring>
         </property>
         <property stdset="1">
             <name>geometry</name>
             <rect>
-                <x>83</x>
-                <y>49</y>
-                <width>50</width>
+                <x>80</x>
+                <y>20</y>
+                <width>161</width>
                 <height>22</height>
             </rect>
         </property>
+    </widget>
+    <widget>
+        <class>QLabel</class>
         <property stdset="1">
-            <name>maxLength</name>
-            <number>5</number>
+            <name>name</name>
+            <cstring>portLabel_2</cstring>
+        </property>
+        <property stdset="1">
+            <name>geometry</name>
+            <rect>
+                <x>20</x>
+                <y>50</y>
+                <width>30</width>
+                <height>20</height>
+            </rect>
+        </property>
+        <property stdset="1">
+            <name>text</name>
+            <string>Port:</string>
+        </property>
+        <property stdset="1">
+            <name>alignment</name>
+            <set>AlignVCenter|AlignLeft</set>
+        </property>
+        <property stdset="1">
+            <name>sizePolicy</name>
+            <sizepolicy>
+                <hsizetype>0</hsizetype>
+                <vsizetype>0</vsizetype>
+            </sizepolicy>
+        </property>
+        <property>
+            <name>hAlign</name>
+        </property>
+        <property>
+            <name>vAlign</name>
+        </property>
+    </widget>
+    <widget>
+        <class>QLineEdit</class>
+        <property stdset="1">
+            <name>name</name>
+            <cstring>portEdit</cstring>
+        </property>
+        <property stdset="1">
+            <name>geometry</name>
+            <rect>
+                <x>80</x>
+                <y>50</y>
+                <width>50</width>
+                <height>22</height>
+            </rect>
         </property>
         <property stdset="1">
             <name>text</name>
@@ -101,15 +150,15 @@
         <class>QLayoutWidget</class>
         <property stdset="1">
             <name>name</name>
-            <cstring>Layout2</cstring>
+            <cstring>Layout4</cstring>
         </property>
         <property stdset="1">
             <name>geometry</name>
             <rect>
-                <x>90</x>
-                <y>80</y>
+                <x>91</x>
+                <y>81</y>
                 <width>168</width>
-                <height>28</height>
+                <height>34</height>
             </rect>
         </property>
         <hbox>
@@ -164,63 +213,6 @@
                 </property>
             </widget>
         </hbox>
-    </widget>
-    <widget>
-        <class>KLineEdit</class>
-        <property stdset="1">
-            <name>name</name>
-            <cstring>KLineEdit1</cstring>
-        </property>
-        <property stdset="1">
-            <name>geometry</name>
-            <rect>
-                <x>83</x>
-                <y>21</y>
-                <width>236</width>
-                <height>22</height>
-            </rect>
-        </property>
-        <property stdset="1">
-            <name>maxLength</name>
-            <number>25</number>
-        </property>
-    </widget>
-    <widget>
-        <class>QLabel</class>
-        <property stdset="1">
-            <name>name</name>
-            <cstring>portLabel</cstring>
-        </property>
-        <property stdset="1">
-            <name>geometry</name>
-            <rect>
-                <x>11</x>
-                <y>52</y>
-                <width>66</width>
-                <height>16</height>
-            </rect>
-        </property>
-        <property stdset="1">
-            <name>text</name>
-            <string>Server Port:</string>
-        </property>
-        <property stdset="1">
-            <name>sizePolicy</name>
-            <sizepolicy>
-                <hsizetype>0</hsizetype>
-                <vsizetype>0</vsizetype>
-            </sizepolicy>
-        </property>
-        <property stdset="1">
-            <name>alignment</name>
-            <set>AlignVCenter|AlignLeft</set>
-        </property>
-        <property>
-            <name>hAlign</name>
-        </property>
-        <property>
-            <name>vAlign</name>
-        </property>
     </widget>
 </widget>
 <connections>
