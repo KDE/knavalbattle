@@ -23,6 +23,12 @@
 
 extern const char *clientName, *clientVersion, *clientDescription;
 
+static KCmdLineOptions options[] =
+{
+	{"!+[URL]",                 I18N_NOOP("URL of server to attach to.  In the form kbattleship://host:port/ or host:port"), 0},
+	KCmdLineLastOption
+};
+
 int main(int argc, char *argv[])
 {
 	KAboutData aboutData("kbattleship", clientName, clientVersion, clientDescription, KAboutData::License_GPL, "(c) 2000-2001  Nikolas Zimmermann, Daniel Molkentin");
@@ -36,8 +42,10 @@ int main(int argc, char *argv[])
 	aboutData.addCredit("Lukas Tinkl", I18N_NOOP("Non-Latin1 Support"), "lukas@kde.org");
 	aboutData.addCredit("Malte Starostik", I18N_NOOP("Various improvements"), "malte.starostik@t-online.de");
 	aboutData.addCredit("Albert Astals Cid", I18N_NOOP("Various improvements and bugfixes"), "tsdgeos@terra.es");
+	aboutData.addCredit("John Tapsell", I18N_NOOP("Accept url on command line"), "john@geola.co.uk");
 
 	KCmdLineArgs::init(argc, argv, &aboutData);
+	KCmdLineArgs::addCmdLineOptions( options ); // Add our own options.
 	KApplication app;
 	KGlobal::locale()->insertCatalogue("libkdegames");
 
@@ -57,3 +65,4 @@ int main(int argc, char *argv[])
 	}
 	return app.exec();
 }
+

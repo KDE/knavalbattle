@@ -16,6 +16,7 @@
  ***************************************************************************/
 
 #include <qstring.h>
+#include <qglobal.h>
 #include <kcombobox.h>
 #include "kbattleshipserver.h" // for BATTLESHIP_SERVICE
 #include "kclientdialog.moc"
@@ -106,8 +107,12 @@ void KClientDialog::nextBatch()
 
 void KClientDialog::gameSelected(int i) 
 {
+	Q_ASSERT(i < m_browser->services().count()); if( i >= m_browser->services().count()) return;
 	DNSSD::RemoteService::Ptr srv = m_browser->services()[i];
+	Q_ASSERT(srv); if(!srv) return;
 	if (!srv->isResolved() && !srv->resolve()) return;
 	serverEdit->setCurrentItem(srv->hostName(),true);
 	portEdit->setValue(srv->port());
 }
+
+
