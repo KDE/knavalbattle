@@ -10,5 +10,8 @@ METASOURCES = AUTO
 DISTCLEANFILES = $(METASOURCES)
 KDE_ICON = kbattleship
 
+rcdir = $(kde_datadir)/kbattleship
+rc_DATA = kbattleshipui.rc
+
 kdelnkdir   = $(kde_appsdir)/Games
 kdelnk_DATA = KBattleship.desktop
