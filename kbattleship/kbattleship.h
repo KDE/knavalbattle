@@ -73,7 +73,7 @@ class KBattleshipApp : public KMainWindow
         KAction *gameQuit;
         KToggleAction *viewToolBar;
         KToggleAction *viewStatusBar;
-        KClientDialog *connect;
+        KClientDialog *client;
 	KServerDialog *server;
 };
 

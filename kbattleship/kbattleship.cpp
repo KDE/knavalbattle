@@ -113,8 +113,8 @@ void KBattleshipApp::slotServerConnect()
 
     // TODO: use KDialogBase
 
-    connect = new KClientDialog();
-    connect->show();
+    client = new KClientDialog();
+    client->show();
 
     slotStatusMsg( i18n( "Ready." ) );
 }
