@@ -32,6 +32,12 @@ KBattleshipView::KBattleshipView(QWidget *parent, const char *name, bool draw) :
 	m_decide = false;
 	m_lastX = 0;
 	m_lastY = 0;
+	m_battlefield = 0;
+}
+
+KBattleshipView::~KBattleshipView()
+{
+	delete m_battlefield;
 }
 
 void KBattleshipView::startDrawing()

@@ -35,6 +35,7 @@ class KBattleshipView : public QWidget
 	Q_OBJECT
 public:
 	KBattleshipView(QWidget *parent = 0, const char *name = 0, bool draw = false);
+	~KBattleshipView();
 
 	KBattleField *field() { return m_battlefield; }
 
