@@ -21,7 +21,7 @@
 
 #include <kmessagebox.h>
 #include <klocale.h>
-#include <qlist.h>
+#include <qptrlist.h>
 #include "kbattlefield.h"
 #include "kship.h"
 

@@ -18,7 +18,7 @@
 #ifndef KCLIENTDIALOG_H
 #define KCLIENTDIALOG_H
 
-#include <kapp.h>
+#include <kapplication.h>
 #include <kconfig.h>
 #include <qstring.h>
 #include <qpushbutton.h>

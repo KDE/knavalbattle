@@ -22,7 +22,7 @@
 #include <qpainter.h>
 #include <qwidget.h>
 #include <qstring.h>
-#include <qlist.h>
+#include <qptrlist.h>
 #include "kship.h"
 #include "kbattlefield.h"
 
