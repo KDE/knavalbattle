@@ -23,7 +23,7 @@
 
 static const char *description = I18N_NOOP( "KBattleship" );
 
-static const char *VERSION = I18N_NOOP( "0.1 (pre-alpha)" );
+static const char *VERSION = I18N_NOOP( "0.2 (beta)" );
 
 int main( int argc, char *argv[] )
 {

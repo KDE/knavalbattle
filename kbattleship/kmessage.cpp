@@ -87,4 +87,3 @@ int KMessage::getType()
 {
     return getField( "msgtype" ).toInt();
 }
-

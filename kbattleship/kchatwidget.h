@@ -37,7 +37,7 @@ class KChatWidget : public chatWidget
 	
     public slots:
     	void slotComputeMessage();
-	void receivedMessage( QString *nickname, QString *msg );
+	void receivedMessage( QString nickname, QString msg );
 	
     signals:
 	void sendMessage( QString msg );

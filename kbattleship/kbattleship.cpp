@@ -33,6 +33,7 @@ KBattleshipApp::~KBattleshipApp()
 void KBattleshipApp::init()
 {
     haveCS = false;
+    place = false;
     config = kapp->config();
     initStatusBar();
     initActions();
@@ -74,12 +75,12 @@ void KBattleshipApp::initChat()
 
 void KBattleshipApp::initShipPlacing()
 {
-    connect( shiplist, SIGNAL( ownFieldDataChanged( int, int, int ) ), this, SLOT( changeOwnFieldData( int, int, int ) ) );
+    connect( ownshiplist, SIGNAL( ownFieldDataChanged( int, int, int ) ), this, SLOT( changeOwnFieldData( int, int, int ) ) );
 }
 
 void KBattleshipApp::initStatusBar()
 {
-    statusBar()->insertItem( i18n( "Ready." ), ID_STATUS_MSG );
+    statusBar()->insertItem( i18n( "Ready" ), ID_STATUS_MSG );
 }
 
 void KBattleshipApp::initView()
@@ -87,48 +88,129 @@ void KBattleshipApp::initView()
     split = new QSplitter( this );
     split->setOrientation( Vertical );
     view = new KBattleshipView( split );
-    chat = new KChatWidget ( split );
+    chat = new KChatWidget( split );
     chat->acceptMsg( false );
     chat->raise();
-    shiplist = new KShipList();
-
+    ownshiplist = new KShipList();
+    enemyshiplist = new KShipList();
     setCentralWidget( split );
     view->startDrawing();
-    
+
+    connect( ownshiplist, SIGNAL( lastShipAdded() ), this, SLOT( sendShipList() ) );    
     connect( view, SIGNAL( enemyFieldClicked( int, int ) ), this, SLOT( enemyClick( int, int ) ) );
     connect( view, SIGNAL( ownFieldClicked( int, int, int ) ), this, SLOT( placeShip( int, int, int ) ) );
     connect( view, SIGNAL( requestedOwnFieldShipListJob( int, int, QPainter *, bool, bool ) ), this, SLOT( requestedOwnFieldShipListJob( int, int, QPainter *, bool, bool ) ) );
     connect( view, SIGNAL( requestedEnemyFieldShipListJob( int, int, QPainter * ) ), this, SLOT( requestedEnemyFieldShipListJob( int, int, QPainter * ) ) );
     
-    setCaption( i18n( "KBattleship (alpha)" ), false );
+    setCaption( i18n( "KBattleship (beta)" ), false );
 }
 
 void KBattleshipApp::enemyClick( int fieldx, int fieldy )
 {
-    int state = view->getEnemyFieldState( fieldx, fieldy );
-    if( state == KBattleField::FREE )
-	sendMessage( fieldx, fieldy );
+    if( haveCS )
+    {
+	if( connection->writeable() && connection->gotEnemyList() && connection->sendEnemyList() )
+	{
+    	    if( view->getEnemyFieldState( fieldx, fieldy ) == KBattleField::FREE )
+	    {
+		int showstate;
+		int enemystate = enemyshiplist->getXYShipType( fieldx, fieldy );
+		if( enemystate == 99 )
+		    showstate = KBattleField::WATER;
+		else
+		    showstate = KBattleField::HIT;
+	    
+		changeEnemyFieldData( fieldx, fieldy, showstate );
+		sendMessage( fieldx, fieldy, showstate );
+	    }
+	}
+    }
 }
 
 void KBattleshipApp::placeShip( int fieldx, int fieldy, int button )
 {
-    if( haveCS )
-	if( shiplist->canAddShips() )
-	    shiplist->addNewShip( button, fieldx, fieldy );
+    if( haveCS && connection->haveEnemy() )
+	if( connection->getType() == KonnectionHandling::CLIENT )
+	{
+	    if( place )
+	    {
+		if( ownshiplist->canAddShips() )
+		    ownshiplist->addNewShip( button, fieldx, fieldy );
+	    }
+	}
+	else
+	{
+	    if( ownshiplist->canAddShips() )
+		ownshiplist->addNewShip( button, fieldx, fieldy );
+	}
 }
 
-void KBattleshipApp::sendMessage( int fieldx, int fieldy )
+void KBattleshipApp::sendShipList()
+{
+    KMessage *msg = new KMessage( KMessage::SHIPLIST );
+    QString fieldX1S1Data, fieldX2S1Data, fieldX1S2Data, fieldX2S2Data;
+    QString fieldX1S3Data, fieldX2S3Data, fieldX1S4Data, fieldX2S4Data;
+    QString fieldY1S1Data, fieldY2S1Data, fieldY1S2Data, fieldY2S2Data;
+    QString fieldY1S3Data, fieldY2S3Data, fieldY1S4Data, fieldY2S4Data;
+    fieldX1S1Data.setNum( ownshiplist->returnX1ship( 1 ) );
+    fieldX2S1Data.setNum( ownshiplist->returnX2ship( 1 ) );
+    fieldX1S2Data.setNum( ownshiplist->returnX1ship( 2 ) );
+    fieldX2S2Data.setNum( ownshiplist->returnX2ship( 2 ) );
+    fieldX1S3Data.setNum( ownshiplist->returnX1ship( 3 ) );
+    fieldX2S3Data.setNum( ownshiplist->returnX2ship( 3 ) );
+    fieldX1S4Data.setNum( ownshiplist->returnX1ship( 4 ) );
+    fieldX2S4Data.setNum( ownshiplist->returnX2ship( 4 ) );
+    fieldY1S1Data.setNum( ownshiplist->returnY1ship( 1 ) );
+    fieldY2S1Data.setNum( ownshiplist->returnY2ship( 1 ) );
+    fieldY1S2Data.setNum( ownshiplist->returnY1ship( 2 ) );
+    fieldY2S2Data.setNum( ownshiplist->returnY2ship( 2 ) );
+    fieldY1S3Data.setNum( ownshiplist->returnY1ship( 3 ) );
+    fieldY2S3Data.setNum( ownshiplist->returnY2ship( 3 ) );
+    fieldY1S4Data.setNum( ownshiplist->returnY1ship( 4 ) );
+    fieldY2S4Data.setNum( ownshiplist->returnY2ship( 4 ) );
+
+    msg->addField( QString( "fieldx1s1" ), fieldX1S1Data );
+    msg->addField( QString( "fieldx2s1" ), fieldX2S1Data );
+    msg->addField( QString( "fieldx1s2" ), fieldX1S2Data );
+    msg->addField( QString( "fieldx2s2" ), fieldX2S2Data );
+    msg->addField( QString( "fieldx1s3" ), fieldX1S3Data );
+    msg->addField( QString( "fieldx2s3" ), fieldX2S3Data );
+    msg->addField( QString( "fieldx1s4" ), fieldX1S4Data );
+    msg->addField( QString( "fieldx2s4" ), fieldX2S4Data );
+    msg->addField( QString( "fieldy1s1" ), fieldY1S1Data );
+    msg->addField( QString( "fieldy2s1" ), fieldY2S1Data );
+    msg->addField( QString( "fieldy1s2" ), fieldY1S2Data );
+    msg->addField( QString( "fieldy2s2" ), fieldY2S2Data );
+    msg->addField( QString( "fieldy1s3" ), fieldY1S3Data );
+    msg->addField( QString( "fieldy2s3" ), fieldY2S3Data );
+    msg->addField( QString( "fieldy1s4" ), fieldY1S4Data );
+    msg->addField( QString( "fieldy2s4" ), fieldY2S4Data );
+
+    msg->addField( QString( "enemy" ), QString( "ready" ) );
+
+    sendMessage( msg );
+
+    if( connection->getType() == KonnectionHandling::SERVER )
+	slotStatusMsg( i18n( "Waiting for other player to place the ships..." ) );
+
+    if( connection->getType() == KonnectionHandling::CLIENT )
+	slotStatusMsg( i18n( "Waiting for other player to start the match..." ) );
+
+}
+
+void KBattleshipApp::sendMessage( int fieldx, int fieldy, int state )
 {
     if( haveCS )
     {
-	KMessage *msg = new KMessage( KMessage::ENEMY_SHOOT );
-	QString field1Data;
-	QString field2Data;
+	KMessage *msg = new KMessage( KMessage::ANSWER_SHOOT );
+	QString field1Data, field2Data, field3Data;
 	field1Data.setNum( fieldx );
 	field2Data.setNum( fieldy );
+	field3Data.setNum( state );
 	msg->addField( QString( "fieldx" ), field1Data );
 	msg->addField( QString( "fieldy" ), field2Data );
-
+	msg->addField( QString( "fieldstate" ), field3Data );
+	msg->addField( QString( "enemy" ), QString( "ready" ) );
 	switch( connection->getType() )
 	{
 	    case KonnectionHandling::SERVER:
@@ -167,24 +249,53 @@ void KBattleshipApp::sendChatMessage( QString text )
 {
     if( haveCS )
     {
-        KMessage *msg = new KMessage( KMessage::CHAT );
-        msg->chatMessage( currentNickname, text );
-
-	switch( connection->getType() )
-	{
-	    case KonnectionHandling::SERVER:
-		kbserver->sendMessage( msg );
-		delete msg;
-		break;
+	bool currentstate = connection->writeable();
+	bool serverallow = false, clientallow = false, isserver = false, isclient = false;
+	if( !currentstate )
+	{	
+	    switch( connection->getType() )
+	    {
+		case KonnectionHandling::SERVER:
+		    serverallow = true;
+		    isserver = true;
+		    break;
 		
-	    case KonnectionHandling::CLIENT:
-	    	kbclient->sendMessage( msg );
-		delete msg;
-		break;	
+		case KonnectionHandling::CLIENT:
+		    clientallow = true;
+		    isclient = true;
+		    break;
+	    }
 	}
+	else
+	{
+	    switch( connection->getType() )
+	    {
+		case KonnectionHandling::SERVER:
+		    isserver = true;
+		    break;
+		
+		case KonnectionHandling::CLIENT:
+		    isclient = true;
+		    break;
+	    }
+	}
+	if( serverallow )
+	    kbserver->allowWrite();
+	if( clientallow )
+	    kbclient->allowWrite();
+	KMessage *msg = new KMessage( KMessage::CHAT );
+    	msg->chatMessage( currentNickname, text );
+	if( isserver )
+	    kbserver->sendMessage( msg );
+	if( isclient )
+	    kbclient->sendMessage( msg );
+	delete msg;
+	if( serverallow )
+	    kbserver->forbidWrite();
+	if( clientallow )
+	    kbclient->forbidWrite();
     }
 }
-
 
 void KBattleshipApp::saveOptions()
 {
@@ -215,7 +326,7 @@ void KBattleshipApp::slotGameQuit()
 {
     slotStatusMsg( i18n( "Exiting..." ) );
     saveOptions();
-    slotStatusMsg( i18n( "Ready." ) );
+    slotStatusMsg( i18n( "Ready" ) );
     this->hide();
     exit( 0 );
 }
@@ -243,7 +354,7 @@ void KBattleshipApp::slotServerConnect()
 	connect( client, SIGNAL( cancelConnect() ), this, SLOT( stoppedConnectDialog() ) );
         client->show();
 
-        slotStatusMsg( i18n( "Ready." ) );
+        slotStatusMsg( i18n( "Ready" ) );
     }
     else
     {
@@ -254,14 +365,38 @@ void KBattleshipApp::slotServerConnect()
 		break;
 		
 	    case KonnectionHandling::CLIENT:
-	    	gameServerConnect->setText( "&Connect to server" );
-		view->clearField();
-		delete connection;
-		delete kbclient;
-		connection = 0;
+		resetClient();
 		break;
 	}    
     }
+}
+
+void KBattleshipApp::resetClient()
+{
+    gameServerConnect->setText( "&Connect to server" );
+    view->clearField();
+    delete connection;
+    delete kbclient;
+    connection = 0;
+    stoppedConnectDialog();
+    delete ownshiplist;
+    delete enemyshiplist;
+    ownshiplist = new KShipList();
+    enemyshiplist = new KShipList();
+}
+void KBattleshipApp::resetServer()
+{
+    gameNewServer->setText( "&Start server" );
+    view->clearField();
+    haveCS = false;
+    delete connection;
+    delete kbserver;
+    connection = 0;
+    stoppedServerDialog();
+    delete ownshiplist;
+    delete enemyshiplist;
+    ownshiplist = new KShipList();
+    enemyshiplist = new KShipList();
 }
 
 void KBattleshipApp::slotNewServer()
@@ -277,19 +412,14 @@ void KBattleshipApp::slotNewServer()
 	connect( server, SIGNAL( cancelServer() ), this, SLOT( stoppedServerDialog() ) );
         server->show();
             
-	slotStatusMsg( i18n( "Ready." ) );
+	slotStatusMsg( i18n( "Ready" ) );
     }
     else
     {
 	switch( connection->getType() )
 	{
 	    case KonnectionHandling::SERVER:
-		gameNewServer->setText( "&Start server" );
-		view->clearField();
-		haveCS = false;
-		delete connection;
-		delete kbserver;
-		connection = 0;
+		resetServer();
 		break;
 	
 	    case KonnectionHandling::CLIENT:
@@ -310,13 +440,14 @@ void KBattleshipApp::startBattleshipServer()
     kbserver->start();
     chat->acceptMsg( true );
     connection = new KonnectionHandling( this, kbserver );    
-
+    connect( connection, SIGNAL( statusBarMessage( const QString & ) ), this, SLOT( slotStatusMsg( const QString & ) ) );
     connect( connection, SIGNAL( ownFieldDataChanged( int, int, int ) ), this, SLOT( changeOwnFieldData( int, int, int ) ) );
     connect( connection, SIGNAL( enemyFieldDataChanged( int, int, int ) ), this, SLOT( changeEnemyFieldData( int, int, int ) ) );
-    connect( connection, SIGNAL( requestBattleFieldState( int, int ) ), this, SLOT( requestedOwnBattleFieldState( int, int ) ) );
     connect( connection, SIGNAL( sendMessage( KMessage * ) ), this, SLOT( sendMessage( KMessage * ) ) );
-    connect( connection, SIGNAL( gotChatMessage( QString *, QString * ) ), chat, SLOT( receivedMessage( QString *, QString * ) ) );
-    connect( this, SIGNAL( battleFieldState( int, int, int ) ), connection, SLOT( gotBattleFieldState( int, int, int ) ) );
+    connect( connection, SIGNAL( gotChatMessage( QString, QString ) ), chat, SLOT( receivedMessage( QString, QString ) ) );
+    connect( connection, SIGNAL( gotEnemyShipList( QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString ) ), this, SLOT( gotEnemyShipList( QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString ) ) );
+    
+    slotStatusMsg( i18n( "Waiting for a player..." ) );
 }
 
 void KBattleshipApp::changeOwnFieldData( int fieldx, int fieldy, int type )
@@ -324,32 +455,57 @@ void KBattleshipApp::changeOwnFieldData( int fieldx, int fieldy, int type )
     view->changeOwnFieldData( fieldx, fieldy, type );
 }
 
-void KBattleshipApp::requestedOwnBattleFieldState( int fieldx, int fieldy )
-{
-    int state = view->getOwnFieldState( fieldx, fieldy );
-    emit battleFieldState( fieldx, fieldy, state );
-}
-
-void KBattleshipApp::requestedEnemyBattleFieldState( int fieldx, int fieldy )
-{
-    int state = view->getEnemyFieldState( fieldx, fieldy );
-    emit battleFieldState( fieldx, fieldy, state );
-}
-
 void KBattleshipApp::requestedOwnFieldShipListJob( int fieldx, int fieldy, QPainter *painter, bool hit, bool death )
 {
-    view->giveOwnFieldShipListType( painter, shiplist->getXYShipType( fieldx, fieldy ), hit, death );
+    view->giveOwnFieldShipListType( painter, ownshiplist->getXYShipType( fieldx, fieldy ), hit, death );
 }
 
 void KBattleshipApp::requestedEnemyFieldShipListJob( int fieldx, int fieldy, QPainter *painter )
 {
-    view->giveEnemyFieldShipListType( painter, shiplist->getXYShipType( fieldx, fieldy ) );
+    view->giveEnemyFieldShipListType( painter, enemyshiplist->getXYShipType( fieldx, fieldy ) );
 }
 
 void KBattleshipApp::changeEnemyFieldData( int fieldx, int fieldy, int type )
 {
-    kdDebug() << "Changing enemyfielddata! ( " << fieldx << " | " << fieldy << " | "<< type << " )" << endl;
-//    sound->playSound( type );
+    switch( connection->getType() )
+    {
+	case KonnectionHandling::SERVER:
+	    switch( type )
+	    {
+		case KBattleField::WATER:
+		    sound->playSound( KBattleshipSound::PLAYER_SHOOT_WATER );
+		    break;
+		    
+		case KBattleField::HIT:
+		    sound->playSound( KBattleshipSound::PLAYER1_SHOOT_HIT );
+		    sound->playSound( KBattleshipSound::SHIP_EXPLODE );
+		    break;
+		
+		case KBattleField::DEATH:
+		    sound->playSound( KBattleshipSound::SHIP_SINK );
+		    break;
+	    }
+	    break;
+	    
+	case KonnectionHandling::CLIENT:
+	    switch( type )
+	    {
+		case KBattleField::WATER:
+		    sound->playSound( KBattleshipSound::PLAYER_SHOOT_WATER );
+		    break;
+		    
+		case KBattleField::HIT:
+		    sound->playSound( KBattleshipSound::PLAYER2_SHOOT_HIT );
+		    sound->playSound( KBattleshipSound::SHIP_EXPLODE );
+		    break;
+		
+		case KBattleField::DEATH:
+		    sound->playSound( KBattleshipSound::SHIP_SINK );
+		    break;
+	    }
+	    break;
+
+    }
     view->changeEnemyFieldData( fieldx, fieldy, type );
 }
 
@@ -376,13 +532,17 @@ void KBattleshipApp::connectToBattleshipServer()
         gameServerConnect->setText( "Dis&connect from server" );
 	chat->acceptMsg( true );
         connection = new KonnectionHandling( this, kbclient );
+	connect( connection, SIGNAL( statusBarMessage( const QString & ) ), this, SLOT( slotStatusMsg( const QString & ) ) );
 	connect( connection, SIGNAL( ownFieldDataChanged( int, int, int ) ), this, SLOT( changeOwnFieldData( int, int, int ) ) );
+	connect( connection, SIGNAL( setPlaceable() ), this, SLOT( setPlaceable() ) );
+	connect( connection, SIGNAL( abortGame() ), this, SLOT( resetClient() ) );
 	connect( connection, SIGNAL( enemyFieldDataChanged( int, int, int ) ), this, SLOT( changeEnemyFieldData( int, int, int ) ) );
-	connect( connection, SIGNAL( requestBattleFieldState( int, int ) ), this, SLOT( requestedOwnBattleFieldState( int, int ) ) );
         connect( connection, SIGNAL( changeConnectText() ), this, SLOT( changeConnectText() ) );
         connect( connection, SIGNAL( sendMessage( KMessage * ) ), this, SLOT( sendMessage( KMessage * ) ) );
-	connect( connection, SIGNAL( gotChatMessage( QString *, QString * ) ), chat, SLOT( receivedMessage( QString *, QString * ) ) );
-	connect( this, SIGNAL( battleFieldState( int, int, int ) ), connection, SLOT( gotBattleFieldState( int, int, int ) ) );
+	connect( connection, SIGNAL( gotChatMessage( QString, QString ) ), chat, SLOT( receivedMessage( QString, QString ) ) );
+	connect( connection, SIGNAL( gotEnemyShipList( QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString ) ), this, SLOT( gotEnemyShipList( QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString ) ) );
+	
+	slotStatusMsg( i18n( "Waiting for other player to place the ships..." ) );
     }
     else
     {
@@ -391,40 +551,43 @@ void KBattleshipApp::connectToBattleshipServer()
     }
 }
 
+void KBattleshipApp::setPlaceable()
+{
+    place = true;
+}
+
+void KBattleshipApp::gotEnemyShipList( QString fieldX1S1, QString fieldY1S1, QString fieldX2S1, QString fieldY2S1, QString fieldX1S2, QString fieldY1S2, QString fieldX2S2, QString fieldY2S2, QString fieldX1S3, QString fieldY1S3, QString fieldX2S3, QString fieldY2S3, QString fieldX1S4, QString fieldY1S4, QString fieldX2S4, QString fieldY2S4 )
+{
+    enemyshiplist->addShip1( fieldX1S1.toInt(), fieldX2S1.toInt(), fieldY1S1.toInt(), fieldY2S1.toInt() );
+    enemyshiplist->addShip2( fieldX1S2.toInt(), fieldX2S2.toInt(), fieldY1S2.toInt(), fieldY2S2.toInt() );
+    enemyshiplist->addShip3( fieldX1S3.toInt(), fieldX2S3.toInt(), fieldY1S3.toInt(), fieldY2S3.toInt() );
+    enemyshiplist->addShip4( fieldX1S4.toInt(), fieldX2S4.toInt(), fieldY1S4.toInt(), fieldY2S4.toInt() );
+}
+
 void KBattleshipApp::slotViewToolBar()
 {
     slotStatusMsg( i18n( "Toggling the toolbar..." ) );
     if( !viewToolBar->isChecked() )
-    {
         toolBar()->hide();
-    }
     else
-    {
         toolBar()->show();
-    }
 
-    slotStatusMsg( i18n( "Ready." ) );
+    slotStatusMsg( i18n( "Ready" ) );
 }
 
 void KBattleshipApp::slotViewStatusBar()
 {
     slotStatusMsg( i18n( "Toggling the statusbar..." ) );
     if( !viewStatusBar->isChecked() )
-    {
         statusBar()->hide();
-    }
     else
-    {
         statusBar()->show();
-    }
 
-    slotStatusMsg( i18n( "Ready." ) );
+    slotStatusMsg( i18n( "Ready" ) );
 }
-
 
 void KBattleshipApp::slotStatusMsg( const QString &text )
 {
     statusBar()->clear();
     statusBar()->changeItem( text, ID_STATUS_MSG );
 }
-

@@ -32,8 +32,16 @@ class KShipList : public QObject
 
 	int getXYShipType( int x, int y );
 	void addNewShip( int button, int fieldx, int fieldy );
+	void addShip1( int fieldx1, int fieldx2, int fieldy1, int fieldy2 );
+	void addShip2( int fieldx1, int fieldx2, int fieldy1, int fieldy2 );
+	void addShip3( int fieldx1, int fieldx2, int fieldy1, int fieldy2 );
+	void addShip4( int fieldx1, int fieldx2, int fieldy1, int fieldy2 );
 	bool canAddShips();
 	int shipCount();
+	int returnX1ship( int ship );
+	int returnX2ship( int ship );
+	int returnY1ship( int ship );
+	int returnY2ship( int ship );
 	    
     private:
 	int shipsadded;
@@ -44,6 +52,7 @@ class KShipList : public QObject
 	void decideShipPlacing( int button, int fieldx, int fieldy );
 
     signals:
+	void lastShipAdded();
 	void ownFieldDataChanged( int fieldx, int fieldy, int type );
 };
 

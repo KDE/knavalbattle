@@ -43,8 +43,9 @@ int KShipList::getXYShipType( int x, int y )
 			return shipiterator->shiptype();
 		}
 	    }
-	}
+        }
     }
+    return 99;
 }
 
 bool KShipList::canAddShips()
@@ -53,6 +54,78 @@ bool KShipList::canAddShips()
 	return true;
     else
 	return false;
+}
+
+int KShipList::returnX1ship( int ship )
+{
+    KShip *shipiterator;
+    int i = 0;
+    for( shipiterator = shiplist.first(); shipiterator != 0; shipiterator = shiplist.next() )
+    {
+	i++;
+	if( i == ship )
+	    return shipiterator->shipxstart();
+    }
+    return 0;
+}
+
+int KShipList::returnX2ship( int ship )
+{
+    KShip *shipiterator;
+    int i = 0;
+    for( shipiterator = shiplist.first(); shipiterator != 0; shipiterator = shiplist.next() )
+    {
+	i++;
+	if( i == ship )
+	    return shipiterator->shipxstop();
+    }
+    return 0;
+}
+
+int KShipList::returnY1ship( int ship )
+{
+    KShip *shipiterator;
+    int i = 0;
+    for( shipiterator = shiplist.first(); shipiterator != 0; shipiterator = shiplist.next() )
+    {
+	i++;
+	if( i == ship )
+	    return shipiterator->shipystart();
+    }
+    return 0;
+}
+
+int KShipList::returnY2ship( int ship )
+{
+    KShip *shipiterator;
+    int i = 0;
+    for( shipiterator = shiplist.first(); shipiterator != 0; shipiterator = shiplist.next() )
+    {
+	i++;
+	if( i == ship )
+	    return shipiterator->shipystop();
+    }
+    return 0;
+}
+
+void KShipList::addShip1( int fieldx1, int fieldx2, int fieldy1, int fieldy2 )
+{
+    shiplist.append( new KShip( fieldx1, fieldx2, fieldy1, fieldy2, 3 ) );
+}
+
+void KShipList::addShip2( int fieldx1, int fieldx2, int fieldy1, int fieldy2 )
+{
+    shiplist.append( new KShip( fieldx1, fieldx2, fieldy1, fieldy2, 2 ) );
+}
+
+void KShipList::addShip3( int fieldx1, int fieldx2, int fieldy1, int fieldy2 )
+{
+    shiplist.append( new KShip( fieldx1, fieldx2, fieldy1, fieldy2, 1 ) );
+}
+
+void KShipList::addShip4( int fieldx1, int fieldx2, int fieldy1, int fieldy2 )
+{
+    shiplist.append( new KShip( fieldx1, fieldx2, fieldy1, fieldy2, 0 ) );
 }
 
 void KShipList::addNewShip( int button, int fieldx, int fieldy )
@@ -79,11 +152,10 @@ void KShipList::addNewShip( int button, int fieldx, int fieldy )
 		
 	    for( tempx = shipiterator->shipxstart(); tempx <= shipiterator->shipxstop(); tempx++ )
     	    {
-		    if( tempx == fieldx )	
-			xokay = false;
+		if( tempx == fieldx )	
+		    xokay = false;
 	    }
 	}
-
     }
     
     if( xokay && yokay )
@@ -100,6 +172,8 @@ void KShipList::addNewShip( int button, int fieldx, int fieldy )
 		break;
 	}
      	decideShipPlacing( button, fieldx, fieldy );
+	if( shipsadded == 0 )
+	    emit lastShipAdded();
 	return;
     }
 	
@@ -117,6 +191,8 @@ void KShipList::addNewShip( int button, int fieldx, int fieldy )
 		break;
 	}
      	decideShipPlacing( button, fieldx, fieldy );
+	if( shipsadded == 0 )
+	    emit lastShipAdded();
 	return;
     }
 
@@ -134,6 +210,8 @@ void KShipList::addNewShip( int button, int fieldx, int fieldy )
 		    break;
 	}
      	decideShipPlacing( button, fieldx, fieldy );
+	if( shipsadded == 0 )
+	    emit lastShipAdded();
 	return;
     }
 

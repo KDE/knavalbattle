@@ -31,7 +31,7 @@ class KBattleField : public KGridWidget
     public:
 	enum{ FREE = 90, WATER = 91, HIT = 92, DEATH = 93, SHIP = 94 };
 	KBattleField();
-        KBattleField( QWidget *parent, const KBattleFieldType &type, QPainter *painter );
+        KBattleField( QWidget *, const KBattleFieldType &type, QPainter *painter );
         ~KBattleField();
 	
 	void requestedShipIconDraw( QPainter *painter, int type, bool hit = false, bool death = false );
@@ -39,8 +39,8 @@ class KBattleField : public KGridWidget
 	void drawField( QPainter *painter );
 	void clearField();
 	void changeData( int &fieldx, int &fieldy, int type );
-	int findOwnFieldShipType( int x, int y, QPainter *painter, bool hit = false, bool death = false );
-	int findEnemyFieldShipType( int x, int y, QPainter *painter );
+	void findOwnFieldShipType( int x, int y, QPainter *painter, bool hit = false, bool death = false );
+	void findEnemyFieldShipType( int x, int y, QPainter *painter );
 	int getState( int fieldx, int fieldy );
 
     private:

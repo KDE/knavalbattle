@@ -32,7 +32,7 @@ class KBattleshipSound : public QObject
 {
     Q_OBJECT
     public:
-	enum{ SHIP_SINK, SHIP_EXPLODE, PLAYER1_SHOOT_HIT, PLAYER2_SHOOT_HIT, PLAYER_SHOOT_WATER };
+	enum{ SHIP_SINK, PLAYER1_SHOOT_HIT, PLAYER2_SHOOT_HIT, PLAYER_SHOOT_WATER };
         KBattleshipSound();
         ~KBattleshipSound();	
 

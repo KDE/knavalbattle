@@ -34,10 +34,11 @@ void KChatWidget::acceptMsg( bool value )
     acceptMsgs = value;
 }
 
-void KChatWidget::receivedMessage( QString *nickname, QString *msg )
+void KChatWidget::receivedMessage( QString nickname, QString msg )
 {
-    chatView->append( QString( "<" ) + *nickname + QString( "> " ) + *msg );
-//    chatView->cursorDown();
+    kdDebug() << "Nickname: " << nickname << " Message: " << msg << endl;
+    chatView->append( QString( "<" ) + nickname + QString( "> " ) + msg );
+    chatView->setCursorPosition( chatView->numLines(), 0 );
 }
 
 void KChatWidget::setNickname( QString nickname )
@@ -49,7 +50,7 @@ void KChatWidget::slotComputeMessage()
 {
     if( acceptMsgs )
     {
-	receivedMessage( &currentNickname, (QString *) &commentEdit->text() );
+	receivedMessage( currentNickname, commentEdit->text() );
 	emit sendMessage( commentEdit->text() );
 	commentEdit->setText( "" );
     }

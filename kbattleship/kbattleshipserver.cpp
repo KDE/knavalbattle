@@ -19,6 +19,7 @@
 
 KBattleshipServer::KBattleshipServer( int port ) : QServerSocket( port )
 {
+    allowWrite();
     internalPort = port;
 }
 
@@ -60,9 +61,17 @@ void KBattleshipServer::readClient()
 
 void KBattleshipServer::sendMessage( KMessage *msg )
 {
-    QTextStream *post = new QTextStream( serverSocket );
-    *post << msg->returnSendStream() << endl;
-    emit wroteToClient();
+    if( writeable )
+    {
+	QTextStream *post = new QTextStream( serverSocket );
+	*post << msg->returnSendStream() << endl;
+	emit wroteToClient();
+	if( msg->getField( "enemy" ) == QString( "ready" ) )
+	{
+	    forbidWrite();
+	    emit senemylist( true );
+	}
+    }
 }
 
 void KBattleshipServer::discardClient()
@@ -72,4 +81,17 @@ void KBattleshipServer::discardClient()
     emit endConnect();
 }
 
+void KBattleshipServer::allowWrite()
+{
+    writeable = true;
+}
 
+void KBattleshipServer::forbidWrite()
+{
+    writeable = false;
+}
+
+bool KBattleshipServer::write()
+{
+    return writeable;
+}

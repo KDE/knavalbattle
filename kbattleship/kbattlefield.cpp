@@ -21,7 +21,7 @@ KBattleField::KBattleField()
 {
 }
 
-KBattleField::KBattleField( QWidget *parent, const KBattleFieldType &type, QPainter *painter )
+KBattleField::KBattleField( QWidget *, const KBattleFieldType &type, QPainter *painter )
 {
     internalType = type.getType();
     int i, j;
@@ -148,12 +148,12 @@ void KBattleField::requestedShipIconDraw( QPainter *painter, int type, bool hit,
 	drawDeathIcon( painter );
 }
 
-int KBattleField::findOwnFieldShipType( int x, int y, QPainter *painter, bool hit, bool death )
+void KBattleField::findOwnFieldShipType( int x, int y, QPainter *painter, bool hit, bool death )
 {
     emit doOwnFieldShipListJob( x, y, painter, hit, death ); 	
 }
 
-int KBattleField::findEnemyFieldShipType( int x, int y, QPainter *painter )
+void KBattleField::findEnemyFieldShipType( int x, int y, QPainter *painter )
 {
     emit doEnemyFieldShipListJob( x, y, painter ); 	
 }

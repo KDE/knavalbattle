@@ -32,6 +32,9 @@ class KBattleshipClient : public QSocket
         ~KBattleshipClient();
 
 	void sendMessage( KMessage *msg );
+	void allowWrite();
+	void forbidWrite();
+	bool write();
 	
     private slots:
         void connectionControl();
@@ -40,14 +43,16 @@ class KBattleshipClient : public QSocket
         void socketError( int error );
 
     signals:
-	void newMessage( KMessage *msg );
+	void senemylist( bool );
+	void newMessage( KMessage * );
 	void endConnect();
-	void socketFailure( int error );
+	void socketFailure( int );
 	 
     private:
         void connectToServer();
         int internalPort;
         QString internalHost;
+	bool writeable;
 };
 
 #endif

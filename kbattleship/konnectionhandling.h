@@ -39,9 +39,13 @@ class KonnectionHandling : public QObject
 	
 	int getType();
 	int getFieldState();
+	bool writeable();
+	bool sendEnemyList();
+	bool gotEnemyList();
+	bool haveEnemy();
 	
     public slots:
-	void gotBattleFieldState( int fieldx, int fieldy, int state );
+	void setEnemyList( bool set );
 	void gotNewMessage( KMessage *msg );
         void serverGotNewClient();
 	void serverWroteToClient();
@@ -50,15 +54,23 @@ class KonnectionHandling : public QObject
 	void clientSocketError( int error );
 	
     private:
+	KBattleshipServer *internalServer;
+	KBattleshipClient *internalClient;
+	bool enemylist;
+	bool senemylist;
+	bool enemy;
 	int internalType;
 
     signals:	
-	void gotChatMessage( QString *nickname, QString *msg );
-	void requestBattleFieldState( int fieldx, int fieldy );
-	void ownFieldDataChanged( int fieldx, int fieldy, int type );
-	void enemyFieldDataChanged( int fieldx, int fieldy, int type );
+	void statusBarMessage( const QString & );
+	void abortGame();
+	void setPlaceable();
+	void gotEnemyShipList( QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString );
+	void gotChatMessage( QString, QString );
+	void ownFieldDataChanged( int, int, int );
+	void enemyFieldDataChanged( int, int, int );
 	void changeConnectText();
-	void sendMessage( KMessage *msg );
+	void sendMessage( KMessage * );
 };
 
 #endif

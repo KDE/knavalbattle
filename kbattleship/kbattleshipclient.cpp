@@ -20,13 +20,14 @@
 
 KBattleshipClient::KBattleshipClient( QString host, int port )
 {
+    forbidWrite();
     internalHost = host;
     internalPort = port;
     connect( this, SIGNAL( error( int ) ), SLOT( socketError( int ) ) );
 
     connect( this, SIGNAL( hostFound() ), SLOT( connectionControl() ) );
     connect( this, SIGNAL( connected() ), SLOT( connectionControl() ) );
-    connect( this, SIGNAL( connectionClosed() ), SLOT( connectionControl() ) );
+    connect( this, SIGNAL( connectionClosed() ), SLOT( lostServer() ) );
     connect( this, SIGNAL( readyRead() ), SLOT( readData() ) );
 
     connectToServer();
@@ -43,8 +44,16 @@ void KBattleshipClient::connectToServer()
 
 void KBattleshipClient::sendMessage( KMessage *msg )
 {
-    QTextStream post( this );        
-    post << msg->returnSendStream();
+    if( writeable )
+    {
+	QTextStream post( this );        
+	post << msg->returnSendStream();
+	if( msg->getField( "enemy" ) == QString( "ready" ) )
+	{
+	    forbidWrite();
+	    emit senemylist( true );
+	}
+    }
 }
 
 void KBattleshipClient::connectionControl()
@@ -55,17 +64,16 @@ void KBattleshipClient::connectionControl()
 void KBattleshipClient::readData()
 {
     if( canReadLine() )
-    {	
+    {
 	KMessage *msg = new KMessage();
 	msg->setDataStream( readLine() );
 	emit newMessage( msg );
-        delete msg;
+	delete msg;
     }
 }
 
 void KBattleshipClient::lostServer()
 {
-    kdDebug() << "LOST SERVER!" << endl;
     emit endConnect();
 }
 
@@ -74,3 +82,19 @@ void KBattleshipClient::socketError( int error )
     kdDebug() << "Socket-Error: " << error << endl;
     emit socketFailure( error );
 }
+
+void KBattleshipClient::allowWrite()
+{
+    writeable = true;
+}
+
+void KBattleshipClient::forbidWrite()
+{
+    writeable = false;
+}
+
+bool KBattleshipClient::write()
+{
+    return writeable;
+}
+

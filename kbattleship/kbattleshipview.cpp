@@ -145,7 +145,7 @@ void KBattleshipView::mouseReleaseEvent( QMouseEvent *event )
 		j++;
 		if( event->x() >= i + ( height() / 2 ) - 30 && event->x() <= i + ( height() / 2 ) + 30 )
 		{
-		    fieldX = j - 4;
+		    fieldX = j - 5;
 		    break;
 		}
 	    }
@@ -187,4 +187,3 @@ void KBattleshipView::paintEvent( QPaintEvent * )
     ownfield->drawField( &ownpainter );
     enemyfield->drawField( &enemypainter );
 }
-

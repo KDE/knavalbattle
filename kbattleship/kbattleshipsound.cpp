@@ -59,10 +59,6 @@ void KBattleshipSound::playSound( int file )
 	QString playFile;
     	switch( file )
 	{
-	    case SHIP_EXPLODE:
-		playFile = soundDir + QString( "ship-explode.mp3" );
-		break;
-		
 	    case PLAYER1_SHOOT_HIT:
 		playFile = soundDir + QString( "ship-player1-shoot.mp3" );
 		break;
@@ -80,7 +76,6 @@ void KBattleshipSound::playSound( int file )
 		break;
 	}
 	
-	kdDebug() << "aRts crashes us...no ?" << endl;
 	playObject = playObjectFactory.createPlayObject( playFile.latin1() );
 	playObject.play();
     }

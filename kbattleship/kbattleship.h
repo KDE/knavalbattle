@@ -69,6 +69,9 @@ class KBattleshipApp : public KMainWindow
 	void initShipPlacing();
 
     public slots:
+	void resetClient();
+	void resetServer();
+	void setPlaceable();
 	void slotServerConnect();
 	void slotNewServer();
         void slotGameQuit();
@@ -79,8 +82,9 @@ class KBattleshipApp : public KMainWindow
 	void connectToBattleshipServer();
 	void placeShip( int fieldx, int fieldy, int button );
 	void enemyClick( int fieldx, int fieldy );
-	void sendMessage( int fieldx, int fieldy );
+	void sendMessage( int fieldx, int fieldy, int state );
 	void sendMessage( KMessage *msg );
+	void sendShipList();
 	void sendChatMessage( QString text );
 	void changeOwnFieldData( int fieldx, int fieldy, int type );
 	void changeEnemyFieldData( int fieldx, int fieldy, int type );
@@ -88,10 +92,9 @@ class KBattleshipApp : public KMainWindow
 	void changeStartText();
 	void stoppedServerDialog();
 	void stoppedConnectDialog();
-	void requestedOwnBattleFieldState( int fieldx, int fieldy );
-	void requestedEnemyBattleFieldState( int fieldx, int fieldy );	
 	void requestedOwnFieldShipListJob( int fieldx, int fieldy, QPainter *painter, bool hit, bool death );
-	void requestedEnemyFieldShipListJob( int fieldx, int fieldy, QPainter *painter);
+	void requestedEnemyFieldShipListJob( int fieldx, int fieldy, QPainter *painter );
+	void gotEnemyShipList( QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString );
 
     private:
         KConfig *config;
@@ -109,8 +112,10 @@ class KBattleshipApp : public KMainWindow
         KClientDialog *client;
 	KServerDialog *server;
 	KonnectionHandling *connection;
-	KShipList *shiplist;
+	KShipList *ownshiplist;
+	KShipList *enemyshiplist;
 	bool haveCS;
+	bool place;
 	QString currentNickname;
     	
     signals:
