@@ -312,6 +312,9 @@
     </connection>
 </connections>
 <tabstops>
+    <tabstop>nicknameEdit</tabstop>
+    <tabstop>serverEdit</tabstop>
+    <tabstop>portEdit</tabstop>
     <tabstop>connectBtn</tabstop>
     <tabstop>cancelBtn</tabstop>
 </tabstops>

@@ -256,6 +256,8 @@
     </connection>
 </connections>
 <tabstops>
+    <tabstop>nicknameEdit</tabstop>
+    <tabstop>portEdit</tabstop>
     <tabstop>startBtn</tabstop>
     <tabstop>cancelBtn</tabstop>
 </tabstops>
