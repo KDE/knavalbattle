@@ -15,16 +15,46 @@
  *                                                                         *
  ***************************************************************************/
 
-#include "kgridwidget.moc"
+#include <kalphapainter.h>
+#include <qpixmap.h>
 #include "kbattlefield.h"
+#include "kgridwidget.moc"
 
 KGridWidget::KGridWidget(QWidget *parent, const char *name) : QWidget(parent, name)
 {
-    internalPixmap = 0;
+    cacheImages();
 }
 
 KGridWidget::~KGridWidget()
 {
+}
+
+void KGridWidget::cacheImages()
+{
+    seaPng = QImage(findIcon("sea.png"));
+    waterPng = QImage(findIcon("water.png"));
+    hitPng = QImage(findIcon("hit.png"));
+    deathPng = QImage(findIcon("death.png"));
+    ship1p1Png = QImage(findIcon("ship1-1.png"));
+    ship1p1rPng = QImage(findIcon("ship1-1-r.png"));
+    ship2p1Png = QImage(findIcon("ship2-1.png"));
+    ship2p1rPng = QImage(findIcon("ship2-1-r.png"));
+    ship2p2Png = QImage(findIcon("ship2-2.png"));
+    ship2p2rPng = QImage(findIcon("ship2-2-r.png"));
+    ship3p1Png = QImage(findIcon("ship3-1.png"));
+    ship3p1rPng = QImage(findIcon("ship3-1-r.png"));
+    ship3p2Png = QImage(findIcon("ship3-2.png"));
+    ship3p2rPng = QImage(findIcon("ship3-2-r.png"));
+    ship3p3Png = QImage(findIcon("ship3-3.png"));
+    ship3p3rPng = QImage(findIcon("ship3-3-r.png"));
+    ship4p1Png = QImage(findIcon("ship4-1.png"));
+    ship4p1rPng = QImage(findIcon("ship4-1-r.png"));
+    ship4p2Png = QImage(findIcon("ship4-2.png"));
+    ship4p2rPng = QImage(findIcon("ship4-2-r.png"));
+    ship4p3Png = QImage(findIcon("ship4-3.png"));
+    ship4p3rPng = QImage(findIcon("ship4-3-r.png"));
+    ship4p4Png = QImage(findIcon("ship4-4.png"));
+    ship4p4rPng = QImage(findIcon("ship4-4-r.png"));
 }
 
 void KGridWidget::setValues(int x, int y, int size)
@@ -36,42 +66,28 @@ void KGridWidget::setValues(int x, int y, int size)
 
 void KGridWidget::drawSquare()
 {
-    QPainter *painter = new QPainter(static_cast<QWidget *>(parent()->parent()));
-    
-    if(internalPixmap)
-	delete internalPixmap;
-
-    internalPixmap = new QPixmap(internalSize, internalSize);
-
-    QBrush blackBrush(blue);
-
-    if(!painter->isActive())
-	painter->begin(internalPixmap);
-
-    painter->setBrush(blackBrush);
-    painter->drawRect(internalx, internaly, internalSize, internalSize);
-    painter->end();
-}
-
-void KGridWidget::drawHitIcon()
-{
-    drawIcon("hit.png");
+    drawIcon(seaPng);
 }
 
 void KGridWidget::drawWaterIcon()
 {
-    drawIcon("water.png");
+    drawIcon(waterPng);
+}
+
+void KGridWidget::drawHitIcon()
+{
+    drawIcon(hitPng);
 }
 
 void KGridWidget::drawDeathIcon()
 {
-    drawIcon("death.png");
+    drawIcon(deathPng);
 }
 
-void KGridWidget::drawShipIcon(int type, bool rotate)
+void KGridWidget::drawShipIcon(int type, bool rotate, bool hit)
 {
-    int ship;
-    int part;
+    int ship = 0;
+    int part = 0;
 
     switch(type)
     {
@@ -151,26 +167,105 @@ void KGridWidget::drawShipIcon(int type, bool rotate)
 	    else
 		part = 1;
 	    break;
-	    
     }
 
-    if(!rotate)
-	drawIcon("ship" + QString::number(ship) + "-" + QString::number(part) + ".png");
-    else
-	drawIcon("ship" + QString::number(ship) + "-" + QString::number(part) + "-r.png");
+    switch(ship)
+    {
+	case 1:
+	    if(!rotate)
+		drawIcon(ship1p1Png);
+	    else
+		drawIcon(ship1p1rPng);
+	    break;
+		
+	case 2:
+	    switch(part)
+	    {
+		case 1:
+		    if(!rotate)
+			drawIcon(ship2p1Png);
+		    else
+			drawIcon(ship2p1rPng);
+		    break;
+		
+		case 2:
+		    if(!rotate)
+			drawIcon(ship2p2Png);
+		    else
+			drawIcon(ship2p2rPng);
+		    break;
+	    }
+	    break;
+	
+	case 3:
+	    switch(part)
+	    {
+		case 1:
+		    if(!rotate)
+			drawIcon(ship3p1Png);
+		    else
+			drawIcon(ship3p1rPng);
+		    break;
+		
+		case 2:
+		    if(!rotate)
+			drawIcon(ship3p2Png);
+		    else
+			drawIcon(ship3p2rPng);
+		    break;
+		    
+		case 3:
+		    if(!rotate)
+			drawIcon(ship3p3Png);
+		    else
+			drawIcon(ship3p3rPng);
+		    break;
+	    }		    
+	    break;
+	    
+	case 4:
+	    switch(part)
+	    {
+		case 1:
+		    if(!rotate)
+			drawIcon(ship4p1Png);
+		    else
+			drawIcon(ship4p1rPng);
+		    break;
+		
+		case 2:
+		    if(!rotate)
+			drawIcon(ship4p2Png);
+		    else
+			drawIcon(ship4p2rPng);
+		    break;
+		    
+		case 3:
+		    if(!rotate)
+			drawIcon(ship4p3Png);
+		    else
+			drawIcon(ship4p3rPng);
+		    break;
+		    
+		case 4:
+		    if(!rotate)
+			drawIcon(ship4p4Png);
+		    else
+			drawIcon(ship4p4rPng);
+		    break;
+	    }
+	    break;	    
+    }
 }
 
-void KGridWidget::drawIcon(const QString &iconName)
+void KGridWidget::drawIcon(const QImage &icon, bool hitBlend)
 {
-    QString picture = locate("data", "kbattleship/pictures/" + iconName);
-    if(picture.isEmpty())
-	return;
+    QPixmap *internalPixmap = new QPixmap(internalSize, internalSize);
+    internalPixmap->convertFromImage(icon);
+    bitBlt(static_cast<QWidget *>(parent()->parent()), QPoint(internalx, internaly), internalPixmap);
+}
 
-    QPainter *painter = new QPainter(static_cast<QWidget *>(parent()->parent()));
-    
-    if(!painter->isActive())
-	painter->begin(internalPixmap);
-
-    painter->drawPixmap(internalx, internaly, *(new QPixmap(picture)));
-    painter->end();
+QString KGridWidget::findIcon(const QString &name)
+{
+    return locate("data", "kbattleship/pictures/" + name);
 }

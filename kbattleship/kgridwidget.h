@@ -23,7 +23,7 @@
 #include <kstddirs.h>
 #include <kimageio.h>
 #include <qpainter.h>
-#include <qpixmap.h>
+#include <qimage.h>
 #include <qbrush.h>
 #include <qwidget.h>
 
@@ -37,16 +37,28 @@ class KGridWidget : public QWidget
     protected:    
         void setValues(int x, int y, int size);
         void drawSquare();
-        void drawHitIcon();
         void drawWaterIcon();
-        void drawDeathIcon();
-        void drawShipIcon(int type, bool rotate = false);
+	void drawDeathIcon();
+	void drawHitIcon();
+        void drawShipIcon(int type, bool rotate = false, bool hitBlend = false);
 
     private:
-        void drawIcon(const QString &iconName);
+	void cacheImages();
+        void drawIcon(const QImage &icon, bool hitBlend = false);
+	QString findIcon(const QString &name);
 
         int internalx, internaly, internalSize;
-        QPixmap *internalPixmap;
+	QImage seaPng, waterPng, hitPng, deathPng;
+	QImage ship1p1Png, ship1p1rPng;
+	QImage ship2p1Png, ship2p1rPng;
+	QImage ship2p2Png, ship2p2rPng;
+	QImage ship3p1Png, ship3p1rPng;
+	QImage ship3p2Png, ship3p2rPng;
+	QImage ship3p3Png, ship3p3rPng;
+	QImage ship4p1Png, ship4p1rPng;
+	QImage ship4p2Png, ship4p2rPng;
+	QImage ship4p3Png, ship4p3rPng;
+	QImage ship4p4Png, ship4p4rPng;
 };
 
 #endif

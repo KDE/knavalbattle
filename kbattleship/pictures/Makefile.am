@@ -1,5 +1,6 @@
 datadir = $(kde_datadir)/kbattleship/pictures
-data_DATA = water.png \
+data_DATA = sea.png \
+	    water.png \
 	    hit.png \
 	    death.png \
 	    ship1-1.png \

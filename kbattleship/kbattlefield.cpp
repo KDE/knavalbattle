@@ -71,10 +71,9 @@ void KBattleField::drawField()
 		    {
 			KShip *ship = app->getXYShip(i, j);
 			if(ship->placedLeft())
-			    drawShipIcon(m_field[i][j], true);
+			    drawShipIcon(m_field[i][j], true, true);
 			else
-			    drawShipIcon(m_field[i][j]);	
-			drawHitIcon();
+			    drawShipIcon(m_field[i][j], false, true);	
 		    }
                     else
 			drawHitIcon();
