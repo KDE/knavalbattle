@@ -74,6 +74,8 @@ void KBattleshipApp::init()
 	m_serverHasClient = false;
 	m_config = kapp->config();
 	initStatusBar();
+	// TODO fix screen in 800x600!!!
+	resize(850, 600);
 	initActions();
 	readOptions();
 	initView();
