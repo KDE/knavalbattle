@@ -85,16 +85,20 @@ void KBattleshipApp::initStatusBar()
 
 void KBattleshipApp::initView()
 {
-    split = new QSplitter( this );
-    split->setOrientation( Vertical );
-    view = new KBattleshipView( split );
-    chat = new KChatWidget( split );
+    splitV = new QSplitter( QSplitter::Vertical, this );
+    splitH = new QSplitter( QSplitter::Horizontal, splitV );
+    stat = new KStatDialog( splitV );
+    view = new KBattleshipView( splitH );
+    chat = new KChatWidget( splitH );
+
     chat->acceptMsg( false );
-    chat->raise();
+
     ownshiplist = new KShipList();
     enemyshiplist = new KShipList();
-    setCentralWidget( split );
+
     view->startDrawing();
+
+    setCentralWidget( splitV );
 
     connect( ownshiplist, SIGNAL( lastShipAdded() ), this, SLOT( sendShipList() ) );    
     connect( view, SIGNAL( enemyFieldClicked( int, int ) ), this, SLOT( enemyClick( int, int ) ) );

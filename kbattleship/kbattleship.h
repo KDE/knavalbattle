@@ -45,6 +45,7 @@
 #include "kshiplist.h"
 #include "kserverdialog.h"
 #include "kclientdialog.h"
+#include "kstatdialog.h"
 #include "kchatwidget.h"
 
 class KBattleshipView;
@@ -98,8 +99,10 @@ class KBattleshipApp : public KMainWindow
 
     private:
         KConfig *config;
-        QSplitter *split;
+        QSplitter *splitH;
+        QSplitter *splitV;
         KChatWidget *chat;
+	KStatDialog *stat;
         KBattleshipView *view;
 	KBattleshipServer *kbserver;
 	KBattleshipClient *kbclient;

@@ -1,0 +1,121 @@
+<!DOCTYPE UI><UI>
+<class>statDlg</class>
+<widget>
+    <class>QDialog</class>
+    <property stdset="1">
+        <name>name</name>
+        <cstring>statDlg</cstring>
+    </property>
+    <property stdset="1">
+        <name>geometry</name>
+        <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>124</width>
+            <height>369</height>
+        </rect>
+    </property>
+    <property stdset="1">
+        <name>caption</name>
+        <string>Form1</string>
+    </property>
+    <widget>
+        <class>QLayoutWidget</class>
+        <property stdset="1">
+            <name>name</name>
+            <cstring>Layout2</cstring>
+        </property>
+        <property stdset="1">
+            <name>geometry</name>
+            <rect>
+                <x>11</x>
+                <y>11</y>
+                <width>100</width>
+                <height>340</height>
+            </rect>
+        </property>
+        <vbox>
+            <property stdset="1">
+                <name>margin</name>
+                <number>0</number>
+            </property>
+            <property stdset="1">
+                <name>spacing</name>
+                <number>6</number>
+            </property>
+            <widget>
+                <class>QLabel</class>
+                <property stdset="1">
+                    <name>name</name>
+                    <cstring>ShotLabel</cstring>
+                </property>
+                <property stdset="1">
+                    <name>text</name>
+                    <string>Shots:</string>
+                </property>
+            </widget>
+            <widget>
+                <class>QLCDNumber</class>
+                <property stdset="1">
+                    <name>name</name>
+                    <cstring>ShotLCD</cstring>
+                </property>
+            </widget>
+            <widget>
+                <class>QLabel</class>
+                <property stdset="1">
+                    <name>name</name>
+                    <cstring>HitLabel</cstring>
+                </property>
+                <property stdset="1">
+                    <name>text</name>
+                    <string>Hit:</string>
+                </property>
+            </widget>
+            <widget>
+                <class>QLCDNumber</class>
+                <property stdset="1">
+                    <name>name</name>
+                    <cstring>HitLCD</cstring>
+                </property>
+            </widget>
+            <widget>
+                <class>QLabel</class>
+                <property stdset="1">
+                    <name>name</name>
+                    <cstring>WaterLabel</cstring>
+                </property>
+                <property stdset="1">
+                    <name>text</name>
+                    <string>Water:</string>
+                </property>
+            </widget>
+            <widget>
+                <class>QLCDNumber</class>
+                <property stdset="1">
+                    <name>name</name>
+                    <cstring>WaterLCD</cstring>
+                </property>
+            </widget>
+            <widget>
+                <class>QLabel</class>
+                <property stdset="1">
+                    <name>name</name>
+                    <cstring>ScoreLabel</cstring>
+                </property>
+                <property stdset="1">
+                    <name>text</name>
+                    <string>Score:</string>
+                </property>
+            </widget>
+            <widget>
+                <class>QLCDNumber</class>
+                <property stdset="1">
+                    <name>name</name>
+                    <cstring>ScoreLCD</cstring>
+                </property>
+            </widget>
+        </vbox>
+    </widget>
+</widget>
+</UI>
