@@ -60,6 +60,7 @@ class KonnectionHandling : public QObject
         void clientSocketError(int error);
     
     signals:
+	void updateHighscore();
         void newPlayer(bool);
         void clientRestart();
         void askReplay();

@@ -29,12 +29,17 @@ class KStatDialog : public statDlg
         ~KStatDialog();
     
         void setShot();
+        void setShot(int shot);
         void setHit();
+        void setHit(int hit);
         void setWater();
+        void setWater(int water);
     
         void clear();
 	
+        int getShot();
         int getHit();
+        int getWater();
 };
 
 #endif

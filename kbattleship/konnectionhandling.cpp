@@ -180,6 +180,7 @@ void KonnectionHandling::gotNewMessage(KMessage *msg)
 	        if(msg->enemyWon())
 	        {
 		    emit statusBarMessage(i18n("You lost the game :("));
+		    emit updateHighscore();
 		    emit abortGame();
 		}
 		else
@@ -217,6 +218,7 @@ void KonnectionHandling::gotNewMessage(KMessage *msg)
 	        if(msg->enemyWon())
 	        {
 	            emit statusBarMessage(i18n( "You lost the game :("));
+		    emit updateHighscore();
 	            emit abortGame();
 	        }
 	        else

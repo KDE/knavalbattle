@@ -28,17 +28,32 @@ KStatDialog::~KStatDialog()
 
 void KStatDialog::setShot()
 {
-    ShotLCD->display(ShotLCD->intValue() + 1);
+    setShot(getShot() + 1);
+}
+
+void KStatDialog::setShot(int shot)
+{
+    ShotLCD->display(shot);
 }
 
 void KStatDialog::setHit()
 {
-    HitLCD->display(HitLCD->intValue() + 1);
+    setHit(getHit() + 1);
+}
+
+void KStatDialog::setHit(int hit)
+{
+    HitLCD->display(hit);
 }
 
 void KStatDialog::setWater()
 {
-    WaterLCD->display(WaterLCD->intValue() + 1);
+    setWater(getWater() + 1);
+}
+
+void KStatDialog::setWater(int water)
+{
+    WaterLCD->display(water);
 }
 
 void KStatDialog::clear()
@@ -48,7 +63,17 @@ void KStatDialog::clear()
     WaterLCD->display(0);
 }
 
+int KStatDialog::getShot()
+{
+    return ShotLCD->intValue();
+}
+
 int KStatDialog::getHit()
 {
     return HitLCD->intValue();    
+}
+
+int KStatDialog::getWater()
+{
+    return WaterLCD->intValue();
 }

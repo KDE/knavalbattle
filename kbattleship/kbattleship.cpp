@@ -44,11 +44,13 @@ void KBattleshipApp::init()
 
 void KBattleshipApp::initActions()
 {
-    gameQuit = new KAction(i18n("&Quit"), "exit", Key_F9, this, SLOT(slotGameQuit()), actionCollection(), "gamequit");
     gameServerConnect = new KAction(i18n("&Connect to server"), "connect_no", Key_F2, this, SLOT(slotServerConnect()), actionCollection(), "serverconnect");
     gameNewServer = new KAction(i18n("&Start server"), "network", Key_F3, this, SLOT(slotNewServer()), actionCollection(), "newserver");
-    configSound = new KToggleAction(i18n("&Play sounds"), 0, this, SLOT(slotConfigSound()), actionCollection(), "configsound");
+    gameQuit = new KAction(i18n("&Quit"), "exit", Key_F9, this, SLOT(slotGameQuit()), actionCollection(), "gamequit");
+    (void) new KAction(i18n("&Highscore"), "view_text", Key_F10, this, SLOT(slotHighscore()), actionCollection(), "highscore");
+
     viewStatusBar = KStdAction::showStatusbar(this, SLOT(slotViewStatusBar()), actionCollection());
+    configSound = new KToggleAction(i18n("&Play sounds"), 0, this, SLOT(slotConfigSound()), actionCollection(), "configsound");
 
     createGUI();
 }
@@ -143,6 +145,7 @@ void KBattleshipApp::enemyClick(int fieldx, int fieldy)
 	        {
 	            sendMessage(fieldx, fieldy, showstate, true);
 	            slotStatusMsg(i18n("You won the game :)"));
+		    updateHighscore();
 	            if(connection->getType() == KonnectionHandling::SERVER)
 		        resetServer(false);
 	            else if(connection->getType() == KonnectionHandling::CLIENT)
@@ -296,6 +299,20 @@ void KBattleshipApp::clientRestart()
     connection->clear();
 }
 
+void KBattleshipApp::updateHighscore()
+{
+    config->setGroup("Highscore");
+    
+    int oldshot = config->readNumEntry("Shot", 0);
+    int oldhit = config->readNumEntry("Hit", 0);
+    int oldwater = config->readNumEntry("Water", 0);
+    config->writeEntry("Shot", oldshot + stat->getShot());
+    config->writeEntry("Hit", oldhit + stat->getHit());
+    config->writeEntry("Water", oldwater + stat->getWater());
+    
+    config->sync();
+}
+
 void KBattleshipApp::saveOptions()
 {
     config->setGroup("General");
@@ -319,7 +336,21 @@ void KBattleshipApp::readOptions()
 
 void KBattleshipApp::slotGameQuit()
 {
+    delete this;
     kapp->quit();
+}
+
+void KBattleshipApp::slotHighscore()
+{
+    config->setGroup("Highscore");
+    
+    KStatDialog *stats = new KStatDialog(0L);
+    stats->setShot(config->readNumEntry("Shot", 0));
+    stats->setHit(config->readNumEntry("Hit", 0));
+    stats->setWater(config->readNumEntry("Water", 0));
+
+    stats->setCaption("Highscore");
+    stats->show();
 }
 
 void KBattleshipApp::slotServerConnect()
@@ -392,9 +423,6 @@ void KBattleshipApp::resetClient(bool status)
 	chat->clear();
 	resetConnection();
 	connection->clear();
-	// Niko Z:
-	// avoid crashes when deleting ### TODO
-	// correct deleting! (we don't wanna leak)
 	delete kbclient;
 	kbclient = 0;
 	slotStatusMsg(i18n("Ready"));
@@ -532,6 +560,7 @@ void KBattleshipApp::startBattleshipServer()
     if(connection == 0)
     {
 	connection = new KonnectionHandling(this, kbserver);
+	connect(connection, SIGNAL(updateHighscore()), this, SLOT(updateHighscore()));
 	connect(connection, SIGNAL(newPlayer(bool)), chat, SLOT(acceptMsg(bool)));
 	connect(connection, SIGNAL(askReplay()), this, SLOT(askReplay()));
 	connect(connection, SIGNAL(abortGame()), this, SLOT(deleteLists()));
@@ -698,6 +727,7 @@ void KBattleshipApp::connectToBattleshipServer()
 	    connect(kbclient, SIGNAL(connected()), this, SLOT(sendGreet()));
 	    connect(connection, SIGNAL(changeConnectText()), this, SLOT(changeConnectText()));
 	    kbclient->init();
+	    connect(connection, SIGNAL(updateHighscore()), this, SLOT(updateHighscore()));
 	    connect(connection, SIGNAL(newPlayer(bool)), chat, SLOT(acceptMsg(bool)));
 	    connect(connection, SIGNAL(clientRestart()), this, SLOT(clientRestart()));
 	    connect(connection, SIGNAL(enemyNickname(const QString &)), this, SLOT(slotChangeEnemyPlayer(const QString &)));

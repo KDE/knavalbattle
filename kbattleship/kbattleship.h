@@ -79,6 +79,7 @@ class KBattleshipApp : public KMainWindow
         void slotServerConnect();
         void slotNewServer();
         void slotGameQuit();
+	void slotHighscore();
         void slotConfigSound();
         void slotViewStatusBar();
         void slotStatusMsg(const QString &text);
@@ -101,8 +102,8 @@ class KBattleshipApp : public KMainWindow
 	int getOwnFieldType(int fieldx, int fieldy);
         int getEnemyFieldType(int fieldx, int fieldy);
 
-    signals:
-        void battleFieldState(int, int, int);
+    private slots:
+	void updateHighscore();    
 
     private:
         KConfig *config;

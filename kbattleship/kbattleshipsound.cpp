@@ -71,17 +71,7 @@ void KBattleshipSound::playSound(int file)
 {
     if(serverRunning && !soundError)
     {
-	KStandardDirs *stdDirs = KGlobal::dirs();
-	QString soundDir;
-	QStringList soundDirl = stdDirs->findDirs("data", "kbattleship");
-	for(QStringList::Iterator it = soundDirl.begin(); it != soundDirl.end(); it++)
-	{
-	    soundDir = *it;
-	    break;
-	}
-
-	soundDir = soundDir + "sounds/";
-
+	QString soundDir = locate("data", "kbattleship/sounds/");
     	QString playFile;
     	
 	switch(file)
