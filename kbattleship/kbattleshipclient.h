@@ -31,28 +31,30 @@ class KBattleshipClient : public QSocket
         KBattleshipClient( QString host = "", int port = 54321 );
         ~KBattleshipClient();
 
-	void sendMessage( KMessage *msg );
-	void allowWrite();
-	void forbidWrite();
-	bool write();
+        void kill();
+
+        void sendMessage( KMessage *msg );
+        void allowWrite();
+        void forbidWrite();
+        bool write();
     
     private slots:
         void connectionControl();
-	void readData();
+        void readData();
         void lostServer();
         void socketError( int error );
 
     signals:
-	void senemylist( bool );
-	void newMessage( KMessage * );
-	void endConnect();
-	void socketFailure( int );
+        void senemylist( bool );
+        void newMessage( KMessage * );
+        void endConnect();
+        void socketFailure( int );
      
     private:
         void connectToServer();
         int internalPort;
         QString internalHost;
-	bool writeable;
+        bool writeable;
 };
 
 #endif

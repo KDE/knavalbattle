@@ -17,7 +17,7 @@
 
 #include "kbattleshipclient.moc"
 
-KBattleshipClient::KBattleshipClient( QString host, int port )
+KBattleshipClient::KBattleshipClient( QString host, int port ) : QSocket()
 {
     allowWrite();
     internalHost = host;
@@ -41,17 +41,22 @@ void KBattleshipClient::connectToServer()
     connectToHost( internalHost, internalPort );
 }
 
+void KBattleshipClient::kill()
+{
+    close();
+}
+
 void KBattleshipClient::sendMessage( KMessage *msg )
 {
     if( writeable )
     {
-	QTextStream post( this );        
-	post << msg->returnSendStream();
-	if( msg->getField( "enemy" ) == QString( "ready" ) )
-	{
-	    forbidWrite();
-	    emit senemylist( true );
-	}
+	    QTextStream post( this );
+	    post << msg->returnSendStream();
+	    if( msg->getField( "enemy" ) == QString( "ready" ) )
+	    {
+	        forbidWrite();
+	        emit senemylist( true );
+	    }
     }
 }
 
@@ -64,10 +69,10 @@ void KBattleshipClient::readData()
 {
     if( canReadLine() )
     {
-	KMessage *msg = new KMessage();
-	msg->setDataStream( readLine() );
-	emit newMessage( msg );
-	delete msg;
+	    KMessage *msg = new KMessage();
+	    msg->setDataStream( readLine() );
+	    emit newMessage( msg );
+	    delete msg;
     }
 }
 

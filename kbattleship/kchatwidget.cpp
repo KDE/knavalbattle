@@ -49,8 +49,8 @@ void KChatWidget::slotComputeMessage()
 {
     if( acceptMsgs )
     {
-	receivedMessage( currentNickname, commentEdit->text() );
-	emit sendMessage( commentEdit->text() );
-	commentEdit->setText( "" );
+	    receivedMessage( currentNickname, commentEdit->text() );
+	    emit sendMessage( commentEdit->text() );
+	    commentEdit->setText( "" );
     }
 }

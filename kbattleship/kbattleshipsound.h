@@ -32,21 +32,21 @@ class KBattleshipSound : public QObject
 {
     Q_OBJECT
     public:
-	enum{ SHIP_SINK, PLAYER1_SHOOT_HIT, PLAYER2_SHOOT_HIT, PLAYER_SHOOT_WATER };
+        enum{ SHIP_SINK, PLAYER1_SHOOT_HIT, PLAYER2_SHOOT_HIT, PLAYER_SHOOT_WATER };
         KBattleshipSound();
-        ~KBattleshipSound();    
+        ~KBattleshipSound();
 
-	void turnOn();
-	void turnOff();
+        void turnOn();
+        void turnOff();
     
-	void playSound( int file );
+        void playSound( int file );
         void initSoundServer();
     
     private:
         Arts::SimpleSoundServer soundserver;
-	Arts::PlayObjectFactory playObjectFactory;
-	Arts::PlayObject playObject;
-	bool isRunning();
+        Arts::PlayObjectFactory playObjectFactory;
+        Arts::PlayObject playObject;
+        bool isRunning();
         bool serverRunning;
 };
 

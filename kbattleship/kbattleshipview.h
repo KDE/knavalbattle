@@ -24,7 +24,6 @@
 #include <qstring.h>
 #include <qlist.h>
 #include "kship.h"
-#include "kbattlefieldtype.h"
 #include "kbattlefield.h"
 
 class KBattleshipView : public QWidget
@@ -34,30 +33,30 @@ class KBattleshipView : public QWidget
         KBattleshipView( QWidget *parent = 0, const char *name = 0 );
         ~KBattleshipView();
 
-	void startDrawing();
-	void clearField();
-	void changeOwnFieldData( int fieldx, int fieldy, int type );
-	void changeEnemyFieldData( int fieldx, int fieldy, int type );
-	void giveOwnFieldShipListType( QPainter *painter, int type, bool hit, bool death );
-	void giveEnemyFieldShipListType( QPainter *painter, int type );
-	int getOwnFieldState( int &fieldx, int &fieldy );
+        void startDrawing();
+        void clearField();
+        void changeOwnFieldData( int fieldx, int fieldy, int type );
+        void changeEnemyFieldData( int fieldx, int fieldy, int type );
+        void giveOwnFieldShipListType( int type, bool hit, bool death );
+        void giveEnemyFieldShipListType( int type );
+        int getOwnFieldState( int &fieldx, int &fieldy );
         int getEnemyFieldState( int &fieldx, int &fieldy );
 
     protected:
         void paintEnemyField();
-	void paintOwnField();
-	void paintEvent( QPaintEvent * );
-	void mouseReleaseEvent( QMouseEvent *event );
+        void paintOwnField();
+        void paintEvent( QPaintEvent * );
+        void mouseReleaseEvent( QMouseEvent *event );
     
     private:
         KBattleField *ownfield;
         KBattleField *enemyfield;
-    
+
     signals:
-	void enemyFieldClicked( int, int );
-	void ownFieldClicked( int, int, int );
-	void requestedOwnFieldShipListJob( int, int, QPainter *, bool, bool );
-        void requestedEnemyFieldShipListJob( int, int, QPainter * );
+        void enemyFieldClicked( int, int );
+        void ownFieldClicked( int, int, int );
+        void requestedOwnFieldShipListJob( int, int, bool, bool );
+        void requestedEnemyFieldShipListJob( int, int );
 };
 
 #endif

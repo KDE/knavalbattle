@@ -19,6 +19,8 @@
 
 KBattleshipView::KBattleshipView( QWidget *parent, const char *name ) : QWidget( parent, name )
 {
+    setMinimumSize( 600, 300 );
+    setBackgroundMode( PaletteBase );
 }
 
 KBattleshipView::~KBattleshipView()
@@ -27,19 +29,11 @@ KBattleshipView::~KBattleshipView()
 
 void KBattleshipView::startDrawing()
 {
-    setMinimumSize( 600, 300 );
-    setBackgroundMode( PaletteBase );
-    QPainter ownpainter( this );
-    QPainter enemypainter( this );
-    KBattleFieldType owntype;
-    KBattleFieldType enemytype;
-    owntype.setType( KBattleFieldType::OWNFIELD );
-    enemytype.setType( KBattleFieldType::ENEMYFIELD );
-    ownfield = new KBattleField( this, owntype, &ownpainter );
-    enemyfield = new KBattleField( this, enemytype, &enemypainter );
+    ownfield = new KBattleField( this, "ownfield", KBattleField::OWNFIELD );
+    enemyfield = new KBattleField( this, "enemyfield", KBattleField::ENEMYFIELD );;
 
-    connect( ownfield, SIGNAL( doOwnFieldShipListJob( int, int, QPainter *, bool, bool ) ), this, SIGNAL( requestedOwnFieldShipListJob( int, int, QPainter *, bool, bool ) ) );
-    connect( enemyfield, SIGNAL( doEnemyFieldShipListJob( int, int, QPainter * ) ), this, SIGNAL( requestedEnemyFieldShipListJob( int, int, QPainter * ) ) );
+    connect( ownfield, SIGNAL( doOwnFieldShipListJob( int, int, bool, bool ) ), this, SIGNAL( requestedOwnFieldShipListJob( int, int, bool, bool ) ) );
+    connect( enemyfield, SIGNAL( doEnemyFieldShipListJob( int, int ) ), this, SIGNAL( requestedEnemyFieldShipListJob( int, int ) ) );
 }
 
 void KBattleshipView::clearField()
@@ -50,14 +44,14 @@ void KBattleshipView::clearField()
     paintEnemyField();
 }
 
-void KBattleshipView::giveOwnFieldShipListType( QPainter *painter, int type, bool hit, bool death )
+void KBattleshipView::giveOwnFieldShipListType( int type, bool hit, bool death )
 {
-    ownfield->requestedShipIconDraw( painter, type, hit, death );
+    ownfield->requestedShipIconDraw( type, hit, death );
 }
 
-void KBattleshipView::giveEnemyFieldShipListType( QPainter *painter, int type )
+void KBattleshipView::giveEnemyFieldShipListType( int type )
 {
-    enemyfield->requestedShipIconDraw( painter, type );
+    enemyfield->requestedShipIconDraw( type );
 }
 
 int KBattleshipView::getOwnFieldState( int &fieldx, int &fieldy )
@@ -89,99 +83,94 @@ void KBattleshipView::mouseReleaseEvent( QMouseEvent *event )
     fieldY = 0;
     if( event->x() <= ( width() / 2 ) - 15 && event->x() >= 46 ) 
     {
-	if( event->y() >= 35 && event->y() <= ( height() / 2 ) + 120 )
-	{
-	    fieldTopPos = 35;
-	    fieldBottomPos = ( height() / 2 ) + 120;
-	    
-	    fieldLeftPos = 45;
-	    fieldRightPos = ( width() / 2 ) + 120;
-	    
-	    i = 0;
-	    j = 0;
-	    
-	    for( i = fieldLeftPos; i <= fieldRightPos; i += 30 )
+	    if( event->y() >= 35 && event->y() <= ( height() / 2 ) + 120 )
 	    {
-		j++;
-		if( event->x() >= i - 30 && event->x() <= i + 30 )
-		{
-		    fieldX = j - 1;
-		    break;
-		}
-	    }
+	        fieldTopPos = 35;
+	        fieldBottomPos = ( height() / 2 ) + 120;
+	    
+	        fieldLeftPos = 45;
+	        fieldRightPos = ( width() / 2 ) + 120;
+	    
+	        i = 0;
+	        j = 0;
+	    
+	        for( i = fieldLeftPos; i <= fieldRightPos; i += 30 )
+	        {
+		        j++;
+		        if( event->x() >= i - 30 && event->x() <= i + 30 )
+		        {
+		            fieldX = j - 1;
+		            break;
+		        }
+	        }
 
-	    i = 0;
-	    j = 0;
+	        i = 0;
+	        j = 0;
 	
-	    for( i = fieldTopPos; i <= fieldBottomPos; i += 30 )
-	    {
-		j++;
-		if( event->y() >= i - 30 && event->y() <= i + 30 )
-		{
-		    fieldY = j - 1;
-		    break;
-		}
+	        for( i = fieldTopPos; i <= fieldBottomPos; i += 30 )
+	        {
+		        j++;
+		        if( event->y() >= i - 30 && event->y() <= i + 30 )
+		        {
+		            fieldY = j - 1;
+		            break;
+		        }
+	        }
+	        emit ownFieldClicked( fieldX, fieldY, event->button() );
 	    }
-	    emit ownFieldClicked( fieldX, fieldY, event->button() );
-	}
     }
-
-    if( event->x() >= ( width() / 2 ) + 15 && event->x() <= width() - 46 )
+    else if( event->x() >= ( width() / 2 ) + 15 && event->x() <= width() - 46 )
     {
     	if( event->y() >= 35 && event->y() <= ( height() / 2 ) + 120 )
-	{
-	    fieldTopPos = 35;
-	    fieldBottomPos = ( height() / 2 ) + 120;
+	    {
+	        fieldTopPos = 35;
+	        fieldBottomPos = ( height() / 2 ) + 120;
 	    
-	    fieldLeftPos = 45;
-	    fieldRightPos = ( width() / 2 ) + 120;
+	        fieldLeftPos = 45;
+	        fieldRightPos = ( width() / 2 ) + 120;
 
-	    i = 0;
-	    j = 0;
+	        i = 0;
+	        j = 0;
 	    
-	    for( i = fieldLeftPos; i <= fieldRightPos; i += 30 )
-	    {
-		j++;
-		if( event->x() >= i + ( height() / 2 ) - 30 && event->x() <= i + ( height() / 2 ) + 30 )
-		{
-		    fieldX = j - 5;
-		    break;
-		}
-	    }
+	        for( i = fieldLeftPos; i <= fieldRightPos; i += 30 )
+	        {
+		        j++;
+		        if( event->x() >= i + ( height() / 2 ) - 30 && event->x() <= i + ( height() / 2 ) + 30 )
+		        {
+		            fieldX = j - 5;
+		            break;
+		        }
+	        }
         	
-	    i = 0;
-	    j = 0;
+	        i = 0;
+	        j = 0;
 	
-	    for( i = fieldTopPos; i <= fieldBottomPos; i += 30 )
-	    {
-		j++;
-		if( event->y() >= i - 30 && event->y() <= i + 30 )
-		{
-		    fieldY = j - 1;
-		    break;
-		}		
+	        for( i = fieldTopPos; i <= fieldBottomPos; i += 30 )
+	        {
+		        j++;
+		        if( event->y() >= i - 30 && event->y() <= i + 30 )
+		        {
+		            fieldY = j - 1;
+		            break;
+		        }		
+	        }
+	        emit enemyFieldClicked( fieldX, fieldY );
 	    }
-	    emit enemyFieldClicked( fieldX, fieldY );
-	}
     }
 }
 
 void KBattleshipView::paintEnemyField()
 {
-    QPainter enemypainter( this );
-    enemyfield->drawField( &enemypainter );
+    enemyfield->drawField();
 }
 
 void KBattleshipView::paintOwnField()
 {
-    QPainter ownpainter( this );
-    ownfield->drawField( &ownpainter );
+    ownfield->drawField();
 }
 
 void KBattleshipView::paintEvent( QPaintEvent * )
 {
-    QPainter ownpainter( this );
-    QPainter enemypainter( this );
-    ownfield->drawField( &ownpainter );
-    enemyfield->drawField( &enemypainter );
+    ownfield->drawField();
+    enemyfield->drawField();
 }

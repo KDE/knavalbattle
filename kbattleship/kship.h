@@ -1,5 +1,5 @@
 /***************************************************************************
-                                       kship.h
+                                      kship.h
                                   -----------------
     Developers: (c) 2000 Nikolas Zimmermann <wildfox@kde.org>
                 (c) 2000 Daniel Molkentin <molkentin@kde.org>

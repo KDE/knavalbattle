@@ -17,9 +17,8 @@
 
 #include "kbattleshipsound.moc"
 
-using namespace Arts;
 
-KBattleshipSound::KBattleshipSound()
+KBattleshipSound::KBattleshipSound() : QObject()
 {
     initSoundServer();
 }
@@ -32,68 +31,68 @@ void KBattleshipSound::turnOff()
 {
     if( isRunning() )
     {
-	playObjectFactory = PlayObjectFactory::null();
-	soundserver = SimpleSoundServer::null();
-	serverRunning = false;
+	    playObjectFactory = Arts::PlayObjectFactory::null();
+	    soundserver = Arts::SimpleSoundServer::null();
+	    serverRunning = false;
     }	
 }
 
 void KBattleshipSound::turnOn()
 {
     if( !isRunning() )
-	initSoundServer();
+	    initSoundServer();
 }
 
 void KBattleshipSound::initSoundServer()
 {
-    soundserver = Reference( "global:Arts_SimpleSoundServer" );
-    playObjectFactory = Reference( "global:Arts_PlayObjectFactory" );
+    soundserver = Arts::Reference( "global:Arts_SimpleSoundServer" );
+    playObjectFactory = Arts::Reference( "global:Arts_PlayObjectFactory" );
     if( soundserver.isNull() )
     {
-	KMessageBox::error( 0L, i18n( "Couldn't connect to Arts Soundserver. Sound deactivated" ) );
-	serverRunning = false;
+	    KMessageBox::error( 0L, i18n( "Couldn't connect to Arts Soundserver. Sound deactivated" ) );
+	    serverRunning = false;
     }
     else
-	serverRunning = true;
+	    serverRunning = true;
 }
 
 void KBattleshipSound::playSound( int file )
 {
     if( isRunning() )
     {
-	KStandardDirs *stdDirs = KGlobal::dirs();
-	QString soundDir;
-	QStringList soundDirl = stdDirs->findDirs( "data", "kbattleship" );
-	for( QStringList::Iterator it = soundDirl.begin(); it != soundDirl.end(); it++ )
-	{
-	    soundDir = *it;
-	    break;
-	}
+	    KStandardDirs *stdDirs = KGlobal::dirs();
+	    QString soundDir;
+	    QStringList soundDirl = stdDirs->findDirs( "data", "kbattleship" );
+	    for( QStringList::Iterator it = soundDirl.begin(); it != soundDirl.end(); it++ )
+	    {
+	        soundDir = *it;
+	        break;
+	    }
 
-	soundDir = soundDir + "sounds/";
+	    soundDir = soundDir + "sounds/";
 
-	QString playFile;
+	    QString playFile;
     	switch( file )
-	{
-	    case PLAYER1_SHOOT_HIT:
-		playFile = soundDir + QString( "ship-player1-shoot.mp3" );
-		break;
+	    {
+	        case PLAYER1_SHOOT_HIT:
+		        playFile = soundDir + QString( "ship-player1-shoot.mp3" );
+		        break;
 		
-	    case PLAYER2_SHOOT_HIT:
-		playFile = soundDir + QString( "ship-player2-shoot.mp3" );
-		break;
+	        case PLAYER2_SHOOT_HIT:
+		        playFile = soundDir + QString( "ship-player2-shoot.mp3" );
+		        break;
 
-	    case PLAYER_SHOOT_WATER:
-		playFile = soundDir + QString( "ship-player-shoot-water.mp3" );
-		break;
+	        case PLAYER_SHOOT_WATER:
+		        playFile = soundDir + QString( "ship-player-shoot-water.mp3" );
+		        break;
     
-	    case SHIP_SINK:
-		playFile = soundDir + QString( "ship-sink.mp3" );
-		break;
-	}
+	        case SHIP_SINK:
+		        playFile = soundDir + QString( "ship-sink.mp3" );
+		        break;
+	    }
 	
-	playObject = playObjectFactory.createPlayObject( playFile.latin1() );
-	playObject.play();
+	    playObject = playObjectFactory.createPlayObject( playFile.latin1() );
+	    playObject.play();
     }
 }
 

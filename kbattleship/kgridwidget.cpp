@@ -17,7 +17,7 @@
 
 #include "kgridwidget.moc"
 
-KGridWidget::KGridWidget()
+KGridWidget::KGridWidget( QWidget *parent, const char *name ) : QWidget( parent, name )
 {
     internalPixmap = 0;
 }
@@ -28,26 +28,26 @@ KGridWidget::~KGridWidget()
 
 void KGridWidget::setValues( int x, int y, int size )
 {
-    internalX = x;
-    internalY = y;
+    internalx = x;
+    internaly = y;
     internalSize = size;
 }
 
 void KGridWidget::drawSquare( QPainter *painter )
 {
     if( internalPixmap )
-	delete internalPixmap;
+	    delete internalPixmap;
 
     internalPixmap = new QPixmap( internalSize, internalSize );
-    
+
     QBrush blackBrush( green );
-    
+
     if( !painter->isActive() )
 	painter->begin( internalPixmap );
 
     painter->setBrush( blackBrush );
-    painter->drawRect( internalX, internalY, internalSize, internalSize );
-    bitBlt( this, 0, 0, internalPixmap );
+    painter->drawRect( internalx, internaly, internalSize, internalSize );
+    bitBlt( this, internalx, internaly, internalPixmap );
 }
 
 void KGridWidget::drawHitIcon( QPainter *painter )
@@ -80,15 +80,15 @@ void KGridWidget::drawIcon( QPainter *painter, QString iconName )
     QStringList picDirl = stdDirs->findDirs( "data", "kbattleship" );
     for( QStringList::Iterator it = picDirl.begin(); it != picDirl.end(); it++ )
     {
-	picDir=*it;
-	break;
+	    picDir = *it;
+	    break;
     }
 
     picDir = picDir + "pictures/";
-    
+
     QPixmap *icon;
     icon = new QPixmap( picDir + iconName );
-    painter->drawPixmap( internalX, internalY, *icon );
+    painter->drawPixmap( internalx, internaly, *icon );
         
-    bitBlt( this, 0, 0, icon );
+    bitBlt( this, internalx, internaly, icon );
 }

@@ -18,11 +18,11 @@
 #ifndef KSERVERDIALOG_H
 #define KSERVERDIALOG_H
 
-#include <stdlib.h>
-#include <kdebug.h>
 #include <qstring.h>
 #include <qpushbutton.h>
 #include <qlineedit.h>
+#include <qspinbox.h>
+#include <stdlib.h>
 #include "dialogs/serverDlg.h"
 
 class KServerDialog : public serverStartDlg
@@ -32,7 +32,7 @@ class KServerDialog : public serverStartDlg
         KServerDialog( QWidget *parent = 0, const char *name = 0 );
         ~KServerDialog();
     
-	QString getPort();
+        QString getPort();
         QString getNickname();
     
     public slots:
@@ -40,7 +40,7 @@ class KServerDialog : public serverStartDlg
         void slotCancelClicked();
 
     signals:
-	void startServer();	
+        void startServer();	
         void cancelServer();
 };
 

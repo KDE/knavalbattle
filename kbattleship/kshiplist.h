@@ -18,7 +18,8 @@
 #ifndef KSHIPLIST_H
 #define KSHIPLIST_H
 
-#include <kdebug.h>
+#include <kmessagebox.h>
+#include <klocale.h>
 #include <qlist.h>
 #include "kbattlefield.h"
 #include "kship.h"
@@ -32,21 +33,30 @@ class KShipList : public QObject
 
         int getXYShipType( int x, int y );
         KShip *getXYShip( int x, int y );
+
         void addNewShip( int button, int fieldx, int fieldy );
+
+        void addShip( int fieldx1, int fieldx2, int fieldy1, int fieldy2, int ship );
+
         void addShip1( int fieldx1, int fieldx2, int fieldy1, int fieldy2 );
         void addShip2( int fieldx1, int fieldx2, int fieldy1, int fieldy2 );
         void addShip3( int fieldx1, int fieldx2, int fieldy1, int fieldy2 );
         void addShip4( int fieldx1, int fieldx2, int fieldy1, int fieldy2 );
+
         bool canAddShips();
+
         int shipCount();
+
+        KShip *returnIterator( int ship );
+
         int returnX1ship( int ship );
         int returnX2ship( int ship );
         int returnY1ship( int ship );
         int returnY2ship( int ship );
         
     private:
-        int shipsadded;
         QList<KShip> shiplist;
+        int shipsadded;
         void controlOwnFieldData( int fieldx, int fieldy, int type );
         void placeShipLMB( int fieldx, int fieldy );
         void placeShipRMB( int fieldx, int fieldy );
@@ -54,7 +64,7 @@ class KShipList : public QObject
 
     signals:
         void lastShipAdded();
-	void ownFieldDataChanged( int, int, int );
+        void ownFieldDataChanged( int, int, int );
 };
 
 #endif

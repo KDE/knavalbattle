@@ -17,7 +17,7 @@
 
 #include "kmessage.moc"
 
-KMessage::KMessage( int type )
+KMessage::KMessage( int type ) : QObject()
 {
     xmlDocument = new QDomDocument( "kmessage" );
     xmlDocument->appendChild( xmlDocument->createElement( "kmessage" ) );
@@ -27,7 +27,7 @@ KMessage::KMessage( int type )
     addField( QString( "msgtype" ), qtype );
 }
 
-KMessage::KMessage()
+KMessage::KMessage() : QObject()
 {
     xmlDocument = new QDomDocument( "kmessage" );
 }
@@ -61,10 +61,10 @@ QString KMessage::returnSendStream()
     QDomNode xmlNode = xmlDocument->documentElement().firstChild();
     while( !xmlNode.isNull() )
     {
-	QDomElement xmlElement = xmlNode.toElement();
-	if( !xmlElement.isNull() )
-	    sendStream = xmlDocument->toString();
-	xmlNode = xmlNode.nextSibling();
+	    QDomElement xmlElement = xmlNode.toElement();
+	    if( !xmlElement.isNull() )
+	        sendStream = xmlDocument->toString();
+	    xmlNode = xmlNode.nextSibling();
     }
     return sendStream.simplifyWhiteSpace();
 }
@@ -74,11 +74,11 @@ QString KMessage::getField( QString name )
     QDomNode xmlNode = xmlDocument->documentElement().firstChild();
     while( !xmlNode.isNull() )
     {
-	QDomElement xmlElement = xmlNode.toElement();
-	if( !xmlElement.isNull() )
-	    if( xmlElement.tagName() == name )
-		return xmlElement.text();
-	xmlNode = xmlNode.nextSibling();
+	    QDomElement xmlElement = xmlNode.toElement();
+	    if( !xmlElement.isNull() )
+	        if( xmlElement.tagName() == name )
+		        return xmlElement.text();
+	    xmlNode = xmlNode.nextSibling();
     }
     return QString::null;
 }

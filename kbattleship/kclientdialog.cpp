@@ -16,7 +16,6 @@
  ***************************************************************************/
 
 #include "kclientdialog.moc"
-#include <stdlib.h>
 
 KClientDialog::KClientDialog( QWidget *parent, const char *name ) : clientConnectDlg( parent, name )
 {
@@ -31,6 +30,7 @@ KClientDialog::KClientDialog( QWidget *parent, const char *name ) : clientConnec
 KClientDialog::~KClientDialog()
 {
     config->writeEntry( "lastServer", serverEdit->text() );
+    config->sync();
 }
 
 void KClientDialog::slotConnectClicked()
@@ -47,7 +47,9 @@ void KClientDialog::slotCancelClicked()
 
 QString KClientDialog::getPort()
 {
-    return portEdit->text();
+    QString qport;
+    qport.setNum( portEdit->value() );
+    return qport;
 }
 
 QString KClientDialog::getHost()

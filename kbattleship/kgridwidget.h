@@ -31,22 +31,22 @@ class KGridWidget : public QWidget
 {
     Q_OBJECT
     public:
-        KGridWidget();
+        KGridWidget( QWidget *parent, const char *name );
         ~KGridWidget();
     
-	void setValues( int x, int y, int size );
-	void drawSquare( QPainter *painter );
-	void drawHitIcon( QPainter *painter );
-	void drawWaterIcon( QPainter *painter );
-	void drawDeathIcon( QPainter *painter );
-	void drawShipIcon( QPainter *painter, int &ship );
-	void drawIcon( QPainter *painter, QString iconName );
+        void setValues( int x, int y, int size );
+        void drawSquare( QPainter *painter );
+        void drawHitIcon( QPainter *painter );
+        void drawWaterIcon( QPainter *painter );
+        void drawDeathIcon( QPainter *painter );
+        void drawShipIcon( QPainter *painter, int &ship );
+        void drawIcon( QPainter *painter, QString iconName );
 
     private:
-        int internalX;
-        int internalY;
+        int internalx;
+        int internaly;
         int internalSize;
-	QPixmap *internalPixmap;
+        QPixmap *internalPixmap;
 };
 
 #endif

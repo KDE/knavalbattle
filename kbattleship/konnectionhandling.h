@@ -32,24 +32,24 @@ class KonnectionHandling : public QObject
 {
     Q_OBJECT
     public:
-	enum{ SERVER, CLIENT };
+        enum{ SERVER, CLIENT };
         KonnectionHandling( QWidget *parent, KBattleshipServer *server );
         KonnectionHandling( QWidget *parent, KBattleshipClient *client );
         ~KonnectionHandling();
     
-	int getType();
-	int getFieldState();
-	bool writeable();
+        int getType();
+        int getFieldState();
+        bool writeable();
         bool sendEnemyList();
-	bool gotEnemyList();
-	bool haveEnemy();
+        bool gotEnemyList();
+        bool haveEnemy();
     
     public slots:
-	void setEnemyList( bool set );
-	void gotNewMessage( KMessage *msg );
-	void serverError();
+        void setEnemyList( bool set );
+        void gotNewMessage( KMessage *msg );
+        void serverError();
         void serverGotNewClient();
-	void serverWroteToClient();
+        void serverWroteToClient();
         void serverLostClient();	
         void clientLostServer();
         void clientSocketError( int error );
@@ -62,12 +62,13 @@ class KonnectionHandling : public QObject
         bool enemy;
         int internalType;
 
-    signals:    
-	void clientRestart();
-	void askReplay();
+    signals:
+        void newPlayer( bool );
+        void clientRestart();
+        void askReplay();
         void statusBarMessage( const QString & );
         void abortGame();
-	void abortGameStrict( bool );
+        void abortGameStrict( bool );
         void setPlaceable();
         void gotEnemyShipList( QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString );
         void gotChatMessage( QString, QString );

@@ -9,9 +9,10 @@ with two computers in a TCP/IP based
 network. 
 
 Artificial Intelligence is not implemented
-yet and will probably be delayed. 
+yet and will probably be delayed
+(or never implemented....What do you think?).
 
-KBattleship uses an XML based protocol
+KBattleship uses an XML based protocol,
 meaning you can write a compatible application
 in almost every programming or scripting
 language (Would be nice to hear of a

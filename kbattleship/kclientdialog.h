@@ -20,10 +20,11 @@
 
 #include <kapp.h>
 #include <kconfig.h>
-#include <kdebug.h>
 #include <qstring.h>
 #include <qpushbutton.h>
 #include <qlineedit.h>
+#include <qspinbox.h>
+#include <stdlib.h>
 #include "dialogs/connectDlg.h"
 
 class KClientDialog : public clientConnectDlg
@@ -33,20 +34,20 @@ class KClientDialog : public clientConnectDlg
         KClientDialog( QWidget *parent = 0, const char *name = 0 );
         ~KClientDialog();
 
-	QString getPort();
-	QString getHost();
-	QString getNickname();
+        QString getPort();
+        QString getHost();
+        QString getNickname();
     	
     public slots:
         void slotConnectClicked();
-	void slotCancelClicked();
+        void slotCancelClicked();
     
     signals:
-	void connectServer();
-	void cancelConnect();
+        void connectServer();
+        void cancelConnect();
     
     private:
-	KConfig *config;
+        KConfig *config;
 };
 
 #endif

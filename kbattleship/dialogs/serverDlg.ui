@@ -74,43 +74,6 @@
         </property>
     </widget>
     <widget>
-        <class>QLabel</class>
-        <property stdset="1">
-            <name>name</name>
-            <cstring>portLabel_2</cstring>
-        </property>
-        <property stdset="1">
-            <name>geometry</name>
-            <rect>
-                <x>20</x>
-                <y>50</y>
-                <width>30</width>
-                <height>20</height>
-            </rect>
-        </property>
-        <property stdset="1">
-            <name>text</name>
-            <string>Port:</string>
-        </property>
-        <property stdset="1">
-            <name>alignment</name>
-            <set>AlignVCenter|AlignLeft</set>
-        </property>
-        <property stdset="1">
-            <name>sizePolicy</name>
-            <sizepolicy>
-                <hsizetype>0</hsizetype>
-                <vsizetype>0</vsizetype>
-            </sizepolicy>
-        </property>
-        <property>
-            <name>hAlign</name>
-        </property>
-        <property>
-            <name>vAlign</name>
-        </property>
-    </widget>
-    <widget>
         <class>QLayoutWidget</class>
         <property stdset="1">
             <name>name</name>
@@ -179,27 +142,40 @@
         </hbox>
     </widget>
     <widget>
-        <class>QLineEdit</class>
+        <class>QLabel</class>
         <property stdset="1">
             <name>name</name>
-            <cstring>portEdit</cstring>
+            <cstring>portLabel_2</cstring>
         </property>
         <property stdset="1">
             <name>geometry</name>
             <rect>
-                <x>80</x>
+                <x>20</x>
                 <y>50</y>
-                <width>50</width>
-                <height>22</height>
+                <width>30</width>
+                <height>20</height>
             </rect>
         </property>
         <property stdset="1">
             <name>text</name>
-            <string>54321</string>
+            <string>Port:</string>
+        </property>
+        <property stdset="1">
+            <name>alignment</name>
+            <set>AlignVCenter|AlignLeft</set>
+        </property>
+        <property stdset="1">
+            <name>sizePolicy</name>
+            <sizepolicy>
+                <hsizetype>0</hsizetype>
+                <vsizetype>0</vsizetype>
+            </sizepolicy>
         </property>
         <property>
-            <name>whatsThis</name>
-            <string>Enter a port different from the default. You will only need that if you have been told so by the player that operates the server</string>
+            <name>hAlign</name>
+        </property>
+        <property>
+            <name>vAlign</name>
         </property>
     </widget>
     <widget>
@@ -224,6 +200,30 @@
         <property>
             <name>whatsThis</name>
             <string>Enter a name that identifys you in the game</string>
+        </property>
+    </widget>
+    <widget>
+        <class>QSpinBox</class>
+        <property stdset="1">
+            <name>name</name>
+            <cstring>portEdit</cstring>
+        </property>
+        <property stdset="1">
+            <name>geometry</name>
+            <rect>
+                <x>80</x>
+                <y>50</y>
+                <width>60</width>
+                <height>20</height>
+            </rect>
+        </property>
+        <property stdset="1">
+            <name>maxValue</name>
+            <number>65000</number>
+        </property>
+        <property stdset="1">
+            <name>value</name>
+            <number>54321</number>
         </property>
     </widget>
 </widget>

@@ -42,7 +42,9 @@ void KServerDialog::slotCancelClicked()
 
 QString KServerDialog::getPort()
 {
-    return portEdit->text();
+    QString qport;
+    qport.setNum( portEdit->value() );
+    return qport;
 }
 
 QString KServerDialog::getNickname()

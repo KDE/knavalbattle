@@ -34,29 +34,29 @@ class KBattleshipServer : public QServerSocket
         KBattleshipServer( int port = 54321 );
         ~KBattleshipServer();
 
-	void start();
+        void start();
         void sendMessage( KMessage *msg );
-	void allowWrite();
-	void forbidWrite();
-	bool write();
+        void allowWrite();
+        void forbidWrite();
+        bool write();
 
     private slots:
         void readClient();
         void discardClient();
 
     signals:
-	void senemylist( bool );
-	void serverFailure();
+        void senemylist( bool );
+        void serverFailure();
         void newConnect();
         void endConnect();
         void wroteToClient();
-	void newMessage( KMessage * );
+        void newMessage( KMessage * );
     
     private:
-	int internalPort;
-	QSocket *serverSocket;
+        int internalPort;
+        QSocket *serverSocket;
         void newConnection( int socket );
-	bool writeable;
+        bool writeable;
 };
 
 #endif
