@@ -27,8 +27,11 @@
 #include <kstandarddirs.h>
 #include <kstatusbar.h>
 #include <kstdgameaction.h>
+#include <kcmdlineargs.h>
+#include <kmessagebox.h>
 
 #include <kscoredialog.h>
+
 
 #include "kbattleship.moc"
 
@@ -70,6 +73,7 @@ void KBattleshipApp::init()
 	initView();
 	initChat();
 	initShipPlacing();
+	parseCommandLine();
 }
 
 void KBattleshipApp::slotConfigureNotifications()
@@ -687,8 +691,10 @@ void KBattleshipApp::slotServerConnect()
 {
 	if(m_connection == 0)
 	{
-		if(m_client != 0)
+		if(m_client != 0) {
+			m_client->show();
 			return;
+		}
 
 		slotStatusMsg(i18n("Loading Connect-Server dialog..."));
 
@@ -1049,14 +1055,51 @@ void KBattleshipApp::slotChangeEnemyFieldData(int fieldx, int fieldy, int type)
 	playSound(false, type);
 }
 
+void KBattleshipApp::parseCommandLine() {
+	KCmdLineArgs *args = KCmdLineArgs::parsedArgs();
+        if ( args->count() > 0 )
+	{
+		KURL u( args->url(0));
+		if(u.protocol().isEmpty())
+			u.setProtocol("kbattleship");
+		if( !u.isValid()) {
+			KMessageBox::sorry(this, 
+			     i18n("The URL passed to KDE Battleship '%1' is not a valid url")
+			         .arg(args->arg(0)));
+			return;
+		}
+		if( u.protocol() != "kbattleship" ) {
+			KMessageBox::sorry(this, 
+			      i18n("The URL passed to KDE Battleship '%1' is not recognised "
+			           "as a Battleship game.")
+			          .arg(args->arg(0)));
+			return;
+		}
+
+		slotConnectToBattleshipServer(u.host(), u.port(), u.user());
+		
+	}
+		    
+}
+
 void KBattleshipApp::slotConnectToBattleshipServer()
 {
-	m_kbclient = new KBattleshipClient(m_client->host(), (m_client->port()).toInt());
-	m_ownNickname = m_client->nickname();
-	m_chat->setNickname(m_ownNickname);
-	slotChangeOwnPlayer(m_ownNickname);
+	QString host = m_client->host();
+	int port = m_client->port().toInt();
+	QString nickname = m_client->nickname();
 	delete m_client;
 	m_client = 0;
+	slotConnectToBattleshipServer(host, port, nickname);
+}
+void KBattleshipApp::slotConnectToBattleshipServer(QString host, int port, QString nickname)
+{
+	if(nickname.isEmpty())
+		nickname = "TestUser";
+	
+	m_kbclient = new KBattleshipClient(host, port);
+	m_ownNickname = nickname;
+	m_chat->setNickname(m_ownNickname);
+	slotChangeOwnPlayer(m_ownNickname);
 	cleanup(true);
 	m_aiPlaying = false;
 	m_shootable = false;

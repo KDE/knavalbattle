@@ -1,8 +1,16 @@
 <!DOCTYPE UI><UI version="3.3" stdsetdef="1">
 <class>clientConnectDlg</class>
-<widget class="QDialog">
+<widget class="QWidget">
     <property name="name">
         <cstring>clientConnectDlg</cstring>
+    </property>
+    <property name="geometry">
+        <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>332</width>
+            <height>148</height>
+        </rect>
     </property>
     <property name="caption">
         <string>Connect to Server</string>
@@ -11,155 +19,74 @@
     </property>
     <property name="layoutSpacing" stdset="0">
     </property>
-    <vbox>
+    <grid>
         <property name="name">
             <cstring>unnamed</cstring>
         </property>
-        <widget class="QLayoutWidget">
+        <widget class="QLabel" row="1" column="0">
             <property name="name">
-                <cstring>layout9</cstring>
+                <cstring>nicknameLabel</cstring>
             </property>
-            <grid>
-                <property name="name">
-                    <cstring>unnamed</cstring>
-                </property>
-                <widget class="KComboBox" row="0" column="1">
-                    <property name="name">
-                        <cstring>lanBox</cstring>
-                    </property>
-                </widget>
-                <widget class="QLayoutWidget" row="2" column="1">
-                    <property name="name">
-                        <cstring>Layout4</cstring>
-                    </property>
-                    <hbox>
-                        <property name="name">
-                            <cstring>unnamed</cstring>
-                        </property>
-                        <property name="margin">
-                            <number>0</number>
-                        </property>
-                        <property name="spacing">
-                            <number>6</number>
-                        </property>
-                        <widget class="KHistoryCombo">
-                            <property name="name">
-                                <cstring>serverEdit</cstring>
-                            </property>
-                            <property name="sizePolicy">
-                                <sizepolicy>
-                                    <hsizetype>3</hsizetype>
-                                    <vsizetype>5</vsizetype>
-                                    <horstretch>0</horstretch>
-                                    <verstretch>0</verstretch>
-                                </sizepolicy>
-                            </property>
-                        </widget>
-                        <widget class="QLabel">
-                            <property name="name">
-                                <cstring>portLabel</cstring>
-                            </property>
-                            <property name="sizePolicy">
-                                <sizepolicy>
-                                    <hsizetype>0</hsizetype>
-                                    <vsizetype>0</vsizetype>
-                                    <horstretch>0</horstretch>
-                                    <verstretch>0</verstretch>
-                                </sizepolicy>
-                            </property>
-                            <property name="text">
-                                <string>Port:</string>
-                            </property>
-                            <property name="alignment">
-                                <set>AlignVCenter|AlignLeft</set>
-                            </property>
-                            <property name="hAlign" stdset="0">
-                            </property>
-                            <property name="vAlign" stdset="0">
-                            </property>
-                        </widget>
-                        <widget class="QSpinBox">
-                            <property name="name">
-                                <cstring>portEdit</cstring>
-                            </property>
-                            <property name="maxValue">
-                                <number>65000</number>
-                            </property>
-                            <property name="value">
-                                <number>54321</number>
-                            </property>
-                            <property name="whatsThis" stdset="0">
-                                <string>Choose a port to connect to</string>
-                            </property>
-                        </widget>
-                    </hbox>
-                </widget>
-                <widget class="QLabel" row="0" column="0">
-                    <property name="name">
-                        <cstring>lanLabel</cstring>
-                    </property>
-                    <property name="text">
-                        <string>LAN games:</string>
-                    </property>
-                </widget>
-                <widget class="QLineEdit" row="1" column="1">
-                    <property name="name">
-                        <cstring>nicknameEdit</cstring>
-                    </property>
-                    <property name="maxLength">
-                        <number>10</number>
-                    </property>
-                    <property name="whatsThis" stdset="0">
-                        <string>Enter a name that identifies you in the game</string>
-                    </property>
-                </widget>
-                <widget class="QLabel" row="1" column="0">
-                    <property name="name">
-                        <cstring>nicknameLabel</cstring>
-                    </property>
-                    <property name="sizePolicy">
-                        <sizepolicy>
-                            <hsizetype>5</hsizetype>
-                            <vsizetype>0</vsizetype>
-                            <horstretch>0</horstretch>
-                            <verstretch>0</verstretch>
-                        </sizepolicy>
-                    </property>
-                    <property name="text">
-                        <string>Nick name:</string>
-                    </property>
-                    <property name="alignment">
-                        <set>AlignVCenter|AlignLeft</set>
-                    </property>
-                    <property name="hAlign" stdset="0">
-                    </property>
-                </widget>
-                <widget class="QLabel" row="2" column="0">
-                    <property name="name">
-                        <cstring>serverLabel</cstring>
-                    </property>
-                    <property name="sizePolicy">
-                        <sizepolicy>
-                            <hsizetype>5</hsizetype>
-                            <vsizetype>0</vsizetype>
-                            <horstretch>0</horstretch>
-                            <verstretch>0</verstretch>
-                        </sizepolicy>
-                    </property>
-                    <property name="text">
-                        <string>Server:</string>
-                    </property>
-                    <property name="alignment">
-                        <set>AlignVCenter|AlignLeft</set>
-                    </property>
-                    <property name="hAlign" stdset="0">
-                    </property>
-                </widget>
-            </grid>
+            <property name="sizePolicy">
+                <sizepolicy>
+                    <hsizetype>5</hsizetype>
+                    <vsizetype>0</vsizetype>
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                </sizepolicy>
+            </property>
+            <property name="text">
+                <string>Nick name:</string>
+            </property>
+            <property name="alignment">
+                <set>AlignVCenter|AlignLeft</set>
+            </property>
+            <property name="hAlign" stdset="0">
+            </property>
         </widget>
-        <widget class="QLayoutWidget">
+        <widget class="QLineEdit" row="1" column="1">
             <property name="name">
-                <cstring>Layout2</cstring>
+                <cstring>nicknameEdit</cstring>
+            </property>
+            <property name="maxLength">
+                <number>10</number>
+            </property>
+            <property name="whatsThis" stdset="0">
+                <string>Enter a name that identifies you in the game</string>
+            </property>
+        </widget>
+        <widget class="QLabel" row="2" column="0">
+            <property name="name">
+                <cstring>serverLabel</cstring>
+            </property>
+            <property name="sizePolicy">
+                <sizepolicy>
+                    <hsizetype>5</hsizetype>
+                    <vsizetype>0</vsizetype>
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                </sizepolicy>
+            </property>
+            <property name="text">
+                <string>Server:</string>
+            </property>
+            <property name="alignment">
+                <set>AlignVCenter|AlignLeft</set>
+            </property>
+            <property name="hAlign" stdset="0">
+            </property>
+        </widget>
+        <widget class="QLabel" row="0" column="0">
+            <property name="name">
+                <cstring>lanLabel</cstring>
+            </property>
+            <property name="text">
+                <string>LAN games:</string>
+            </property>
+        </widget>
+        <widget class="QLayoutWidget" row="2" column="1">
+            <property name="name">
+                <cstring>Layout4</cstring>
             </property>
             <hbox>
                 <property name="name">
@@ -171,92 +98,68 @@
                 <property name="spacing">
                     <number>6</number>
                 </property>
-                <spacer>
+                <widget class="KHistoryCombo">
                     <property name="name">
-                        <cstring>Spacer2</cstring>
+                        <cstring>serverEdit</cstring>
                     </property>
-                    <property name="orientation">
-                        <enum>Horizontal</enum>
-                    </property>
-                    <property name="sizeType">
-                        <enum>Expanding</enum>
-                    </property>
-                </spacer>
-                <widget class="QPushButton">
-                    <property name="name">
-                        <cstring>connectBtn</cstring>
-                    </property>
-                    <property name="text">
-                        <string>&amp;Connect</string>
-                    </property>
-                    <property name="toggleButton">
-                        <bool>false</bool>
-                    </property>
-                    <property name="on">
-                        <bool>false</bool>
-                    </property>
-                    <property name="default">
-                        <bool>true</bool>
-                    </property>
-                    <property name="flat">
-                        <bool>false</bool>
-                    </property>
-                    <property name="whatsThis" stdset="0">
-                        <string>Press here to connect to a server</string>
+                    <property name="sizePolicy">
+                        <sizepolicy>
+                            <hsizetype>3</hsizetype>
+                            <vsizetype>5</vsizetype>
+                            <horstretch>0</horstretch>
+                            <verstretch>0</verstretch>
+                        </sizepolicy>
                     </property>
                 </widget>
-                <widget class="QPushButton">
+                <widget class="QLabel">
                     <property name="name">
-                        <cstring>cancelBtn</cstring>
+                        <cstring>portLabel</cstring>
+                    </property>
+                    <property name="sizePolicy">
+                        <sizepolicy>
+                            <hsizetype>0</hsizetype>
+                            <vsizetype>0</vsizetype>
+                            <horstretch>0</horstretch>
+                            <verstretch>0</verstretch>
+                        </sizepolicy>
                     </property>
                     <property name="text">
-                        <string>C&amp;ancel</string>
+                        <string>Port:</string>
                     </property>
-                    <property name="whatsThis" stdset="0">
-                        <string>Press here to return to the game</string>
+                    <property name="alignment">
+                        <set>AlignVCenter|AlignLeft</set>
+                    </property>
+                    <property name="hAlign" stdset="0">
+                    </property>
+                    <property name="vAlign" stdset="0">
                     </property>
                 </widget>
-                <spacer>
+                <widget class="QSpinBox">
                     <property name="name">
-                        <cstring>Spacer1</cstring>
+                        <cstring>portEdit</cstring>
                     </property>
-                    <property name="orientation">
-                        <enum>Horizontal</enum>
+                    <property name="maxValue">
+                        <number>65000</number>
                     </property>
-                    <property name="sizeType">
-                        <enum>Expanding</enum>
+                    <property name="value">
+                        <number>54321</number>
                     </property>
-                </spacer>
+                    <property name="whatsThis" stdset="0">
+                        <string>Choose a port to connect to</string>
+                    </property>
+                </widget>
             </hbox>
         </widget>
-        <spacer>
+        <widget class="KComboBox" row="0" column="1">
             <property name="name">
-                <cstring>spacer3</cstring>
+                <cstring>lanBox</cstring>
             </property>
-            <property name="orientation">
-                <enum>Vertical</enum>
-            </property>
-            <property name="sizeType">
-                <enum>Expanding</enum>
-            </property>
-        </spacer>
-    </vbox>
+        </widget>
+    </grid>
 </widget>
 <customwidgets>
 </customwidgets>
-<connections>
-    <connection>
-        <sender>cancelBtn</sender>
-        <signal>clicked()</signal>
-        <receiver>clientConnectDlg</receiver>
-        <slot>reject()</slot>
-    </connection>
-</connections>
 <tabstops>
-    <tabstop>nicknameEdit</tabstop>
-    <tabstop>portEdit</tabstop>
-    <tabstop>connectBtn</tabstop>
-    <tabstop>cancelBtn</tabstop>
 </tabstops>
 <includes>
     <include location="global" impldecl="in implementation">kcombobox.h</include>
@@ -264,7 +167,7 @@
 <layoutdefaults spacing="6" margin="11"/>
 <includehints>
     <includehint>kcombobox.h</includehint>
-    <includehint>kcombobox.h</includehint>
     <includehint>klineedit.h</includehint>
+    <includehint>kcombobox.h</includehint>
 </includehints>
 </UI>

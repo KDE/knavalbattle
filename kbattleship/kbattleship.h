@@ -92,7 +92,11 @@ private slots:
 	void slotStartBattleshipGame();
 	void slotStartBattleshipGame(bool clearstat);
 	void slotStartBattleshipServer();
+	/**
+	 * Get server to connect to from "Connect to server" dialog.
+	 */
 	void slotConnectToBattleshipServer();
+        void slotConnectToBattleshipServer(QString host, int port, QString nickname);
 	void slotPlaceShipPreview(int fieldx, int fieldy);
 	void slotPlaceShip(int fieldx, int fieldy);
 	void slotChangeOwnFieldData(int fieldx, int fieldy, int type);
@@ -118,7 +122,8 @@ private:
 
 	void cleanup(bool placechange = true);
 	void playSound(bool enemy, int fieldstate);
-
+	void parseCommandLine();
+		
 	bool m_placeable;
 	bool m_shootable;
 	bool m_aiPlaying;

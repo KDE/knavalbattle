@@ -27,9 +27,10 @@
 #include <qlineedit.h>
 #include <qspinbox.h>
 #include <stdlib.h>
+#include <kdialogbase.h>
 #include "dialogs/connectDlg.h"
 
-class KClientDialog : public clientConnectDlg
+class KClientDialog : public KDialogBase
 {
 	Q_OBJECT
 public:
@@ -41,12 +42,13 @@ public:
 	QString nickname() const;
 
 public slots:
-	void slotConnectClicked();
-	void slotCancelClicked();
+        virtual void slotOk();
+        virtual void slotCancel();
 	void slotReturnPressed(const QString &hostname);
 	void nextBatch();
-	void gameSelected(int);
-	
+	void gameSelected(int);	
+        void slotCheckEnableOk();
+
 signals:
 	void sigConnectServer();
 	void sigCancelConnect();
@@ -54,6 +56,7 @@ signals:
 private:
 	KConfig *m_config;
 	DNSSD::ServiceBrowser *m_browser;
+	clientConnectDlg *m_mainWidget;
 };
 
 #endif

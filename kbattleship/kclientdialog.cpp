@@ -17,61 +17,77 @@
 
 #include <qstring.h>
 #include <qglobal.h>
+#include <kdebug.h>
+#include <klocale.h>
 #include <kcombobox.h>
+#include <qlayout.h>
 #include "kbattleshipserver.h" // for BATTLESHIP_SERVICE
 #include "kclientdialog.moc"
 
-KClientDialog::KClientDialog(QWidget *parent, const char *name) : clientConnectDlg(parent, name)
+KClientDialog::KClientDialog(QWidget *parent, const char *name) 
+ : KDialogBase(Plain, i18n("Connect to Server"), Ok|Cancel, Ok, parent, name, true, false, KGuiItem(i18n("&Connect")))
 {
-	m_config = kapp->config();
-	nicknameEdit->setText(QString::fromLocal8Bit(getenv("LOGNAME")));
+	QFrame* page = plainPage();
+	QGridLayout* pageLayout = new QGridLayout(page, 1, 1, 0, 0);
+	m_mainWidget = new clientConnectDlg(page);
+	pageLayout->addWidget(m_mainWidget, 0, 0);
 
-	connect(connectBtn, SIGNAL(clicked()), this, SLOT(slotConnectClicked()));
-	connect(cancelBtn, SIGNAL(clicked()), this, SLOT(slotCancelClicked()));
-	connect(serverEdit, SIGNAL(returnPressed(const QString &)), this, SLOT(slotReturnPressed(const QString &)));
+	enableButtonOK(false);
+	m_config = kapp->config();
+	m_mainWidget->nicknameEdit->setText(QString::fromLocal8Bit(getenv("LOGNAME")));
+
+	connect(m_mainWidget->serverEdit, SIGNAL(returnPressed(const QString &)), this, SLOT(slotReturnPressed(const QString &)));
+	connect(m_mainWidget->serverEdit, SIGNAL(textChanged()), this, SLOT(slotCheckEnableOk()));
+	
 	m_config->setGroup("History");
 	m_browser = new DNSSD::ServiceBrowser(BATTLESHIP_SERVICE);
 	connect(m_browser,SIGNAL(finished()),SLOT(nextBatch()));
 	m_browser->startBrowse();
-	connect(lanBox,SIGNAL(activated(int)),SLOT(gameSelected(int)));
-	serverEdit->completionObject()->setItems(m_config->readListEntry("CompletionList")); 
+	connect(m_mainWidget->lanBox,SIGNAL(activated(int)),SLOT(gameSelected(int)));
+	m_mainWidget->serverEdit->completionObject()->setItems(m_config->readListEntry("CompletionList")); 
 
-	serverEdit->setMaxCount(5);
-	serverEdit->setHistoryItems(m_config->readListEntry("HistoryList"));
+	m_mainWidget->serverEdit->setMaxCount(5);
+	m_mainWidget->serverEdit->setHistoryItems(m_config->readListEntry("HistoryList"));
 
-	serverEdit->setCurrentItem(m_config->readNumEntry("Index", -1));
+	m_mainWidget->serverEdit->setCurrentItem(m_config->readNumEntry("Index", -1));
 }
 
 KClientDialog::~KClientDialog()
 {
 	m_config->setGroup("History");
-	m_config->writeEntry("CompletionList", serverEdit->completionObject()->items());
-	m_config->writeEntry("HistoryList", serverEdit->historyItems());
-	m_config->writeEntry("Index", serverEdit->currentItem());
+	m_config->writeEntry("CompletionList", m_mainWidget->serverEdit->completionObject()->items());
+	m_config->writeEntry("HistoryList", m_mainWidget->serverEdit->historyItems());
+	m_config->writeEntry("Index", m_mainWidget->serverEdit->currentItem());
 	m_config->sync();
 }
 
-void KClientDialog::slotConnectClicked()
+void KClientDialog::slotCheckEnableOk()
 {
-	if(!serverEdit->currentText().stripWhiteSpace().isEmpty())
+	enableButtonOK(!m_mainWidget->serverEdit->currentText().stripWhiteSpace().isEmpty());
+}
+
+void KClientDialog::slotOk()
+{
+	QString server = m_mainWidget->serverEdit->currentText().stripWhiteSpace();
+	if(!server.isEmpty())
 	{
 		hide();
-		serverEdit->addToHistory(serverEdit->currentText());
+		m_mainWidget->serverEdit->addToHistory(server);
 		emit sigConnectServer();
 	}
 	else
-		serverEdit->clearEdit();
+		m_mainWidget->serverEdit->clearEdit();
 }
 
 void KClientDialog::slotReturnPressed(const QString &hostname)
 {
 	if(!hostname.stripWhiteSpace().isEmpty())
-		serverEdit->addToHistory(hostname);
+		m_mainWidget->serverEdit->addToHistory(hostname);
 	else
-		serverEdit->clearEdit();
+		m_mainWidget->serverEdit->clearEdit();
 }
 
-void KClientDialog::slotCancelClicked()
+void KClientDialog::slotCancel()
 {
 	hide();
 	emit sigCancelConnect();
@@ -79,40 +95,44 @@ void KClientDialog::slotCancelClicked()
 
 QString KClientDialog::port() const
 {
-	return QString::number(portEdit->value());
+	return QString::number(m_mainWidget->portEdit->value());
 }
 
 QString KClientDialog::host() const
 {
-	return serverEdit->currentText();
+	return m_mainWidget->serverEdit->currentText();
 }
 
 QString KClientDialog::nickname() const
 {
-	return nicknameEdit->text();
+	return m_mainWidget->nicknameEdit->text();
 }
 
 void KClientDialog::nextBatch() 
 {
 	bool autoselect=false;
-	if (!lanBox->count()) autoselect=true;
-	lanBox->clear();
+	if (!m_mainWidget->lanBox->count()) autoselect=true;
+	m_mainWidget->lanBox->clear();
 	QStringList names;
 	QValueList<DNSSD::RemoteService::Ptr>::ConstIterator itEnd = m_browser->services().end();
 	for (QValueList<DNSSD::RemoteService::Ptr>::ConstIterator it = m_browser->services().begin();
 		it!=itEnd; ++it) names << (*it)->serviceName();
-	lanBox->insertStringList(names);
-	if (autoselect && lanBox->count()) gameSelected(0);
+	m_mainWidget->lanBox->insertStringList(names);
+	if (autoselect && m_mainWidget->lanBox->count()) gameSelected(0);
 }
 
 void KClientDialog::gameSelected(int i) 
 {
-	Q_ASSERT(i < m_browser->services().count()); if( i >= m_browser->services().count()) return;
+	Q_ASSERT(i < m_browser->services().count()); if( i >= m_browser->services().count()) { slotCheckEnableOk(); return; }
+	
 	DNSSD::RemoteService::Ptr srv = m_browser->services()[i];
-	Q_ASSERT(srv); if(!srv) return;
+	
+	Q_ASSERT(srv); if(!srv) { slotCheckEnableOk(); return; }
+	
 	if (!srv->isResolved() && !srv->resolve()) return;
-	serverEdit->setCurrentItem(srv->hostName(),true);
-	portEdit->setValue(srv->port());
+	m_mainWidget->serverEdit->setCurrentItem(srv->hostName(),true);
+	m_mainWidget->portEdit->setValue(srv->port());
+	slotCheckEnableOk();
 }
 
 
