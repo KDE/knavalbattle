@@ -48,7 +48,6 @@ int main(int argc, char *argv[])
     else
     {
         KBattleshipApp *kbattleship = new KBattleshipApp();
-    	kbattleship->init();
         kbattleship->show();
     }
 

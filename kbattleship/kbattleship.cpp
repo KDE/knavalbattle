@@ -16,12 +16,14 @@
  ***************************************************************************/
 
 #include <qtimer.h>
+#include <stdlib.h>
 #include "kbattleship.moc"
 
 KBattleshipApp::KBattleshipApp(QWidget *, const char *name) : KMainWindow(0, name)
 {
     setMinimumSize(680, 480);
     m_connection = 0;
+    m_config = 0;
     m_client = 0;
     m_server = 0;
     m_single = 0;
@@ -33,13 +35,16 @@ KBattleshipApp::KBattleshipApp(QWidget *, const char *name) : KMainWindow(0, nam
     if(picDirCheck.isEmpty() || onePicCheck.isEmpty())
     {
 	KMessageBox::error(0L, i18n("You don't have KBattleship Pictures installed. The game cannot run without them!"));
-	slotGameQuit();
+	exit(0);
     }
+    else
+	init();
 }
 
 KBattleshipApp::~KBattleshipApp()
 {
-    saveOptions();
+    if(m_config != 0)
+	saveOptions();
 }
 
 void KBattleshipApp::init()
@@ -77,7 +82,7 @@ void KBattleshipApp::initActions()
     (void) new KAction(i18n("&Highscore"), "view_text", Key_F10, this, SLOT(slotHighscore()), actionCollection(), "highscore");
 
     m_viewStatusBar = KStdAction::showStatusbar(this, SLOT(slotViewStatusBar()), actionCollection());
-    m_configSound = new KToggleAction(i18n("&Play sounds"), 0, this, SLOT(slotConfigSound()), actionCollection(), "m_configsound");
+    m_configSound = new KToggleAction(i18n("&Play sounds"), 0, this, SLOT(slotConfigSound()), actionCollection(), "configsound");
     m_configGrid = new KToggleAction(i18n("&Show grid"), 0, this, SLOT(slotShowGrid()), actionCollection(), "showgrid");
 
     createGUI();
