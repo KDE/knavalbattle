@@ -39,6 +39,8 @@ class KBattleField : public KGridWidget
 
 	QWidget *drawParent() { return m_parent_widget; }
 
+	QRect getRect();
+
     private:
         int FieldData[8][8];
         int internalType;

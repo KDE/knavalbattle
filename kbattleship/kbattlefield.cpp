@@ -21,6 +21,7 @@
 KBattleField::KBattleField(QWidget *parentw, const char *name, int type) : KGridWidget(parentw, name)
 {
     m_parent_widget = static_cast<QWidget *>(parent());
+    FromLeft = 0;
     internalType = type;
     clearField();
     setDrawValues();
@@ -98,5 +99,10 @@ void KBattleField::setDrawValues()
     if(internalType == KBattleField::OWNFIELD)
         FromLeft = 15;
     else if(internalType == KBattleField::ENEMYFIELD)
-        FromLeft = (static_cast<QWidget*>(parent())->width() / 2);
+        FromLeft = (static_cast<QWidget *>(parent())->width() / 2);
+}
+
+QRect KBattleField::getRect()
+{
+    return QRect(30 + FromLeft, 30 + 5, (7 * 30) + FromLeft, (7 * 30) + 5);
 }

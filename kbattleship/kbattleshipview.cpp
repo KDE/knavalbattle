@@ -18,29 +18,9 @@
 #include <klocale.h>
 #include "kbattleshipview.moc"
 
-class KBattleshipViewToolTip : public QToolTip
-{
-    Q_OBJECT
-    public:
-	KBattleshipViewToolTip(QWidget *parent, int width, int height) : QToolTip(parent), m_width(width), m_height(height) { }
-	virtual ~KBattleshipViewToolTip() { }
-
-    protected:
-	virtual void maybeTip(const QPoint &)
-	{
-	    kdDebug() << "PONG!" << endl;
-	    tip(QRect((m_width / 2 - 15), 35, 46, ((m_height / 2) + 120)), i18n("Your Battlefield"));
-	}
-	
-    private:
-	int m_width, m_height;
-};
-
 KBattleshipView::KBattleshipView(QWidget *parent, const char *name) : QWidget(parent, name)
 {
     setMinimumSize(600, 300);
-    
-    new KBattleshipViewToolTip(this, width(), height());
 }
 
 KBattleshipView::~KBattleshipView()
@@ -51,6 +31,14 @@ void KBattleshipView::startDrawing()
 {
     ownfield = new KBattleField(this, "ownfield", KBattleField::OWNFIELD);
     enemyfield = new KBattleField(this, "enemyfield", KBattleField::ENEMYFIELD);
+
+    toolTip = new KBattleshipViewToolTip(this, ownfield->getRect(), enemyfield->getRect());
+    connect(toolTip, SIGNAL(activateTimer()), this, SLOT(toolTipTimeout()));
+}
+
+void KBattleshipView::toolTipTimeout()
+{
+    QTimer::singleShot(3000, toolTip, SLOT(slotTipTimeout()));
 }
 
 void KBattleshipView::clearField()

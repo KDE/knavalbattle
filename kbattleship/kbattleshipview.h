@@ -27,6 +27,41 @@
 #include "kship.h"
 #include "kbattlefield.h"
 
+class KBattleshipViewToolTip : public QObject, public QToolTip
+{
+    Q_OBJECT
+    public:
+	KBattleshipViewToolTip(QWidget *parent, QRect own, QRect enemy) : QObject(parent), QToolTip(parent), ownRect(own), enemyRect(enemy) { set = true; }
+	virtual ~KBattleshipViewToolTip() { }
+
+    protected:
+	virtual void maybeTip(const QPoint &point)
+	{
+	    if(ownRect.contains(point) && set)
+		tip(QRect(point.x() - 5, point.y() - 5, point.x() + 5, point.y() + 5), i18n("Your Battlefield"));
+	    else if(enemyRect.contains(point) && set)
+		tip(QRect(point.x() - 5, point.y() - 5, point.x() + 5, point.y() + 5), i18n("Enemy's Battlefield"));
+	    
+	    if(set)
+	    {
+		set = false;
+		emit activateTimer();
+	    }
+	}
+	
+    public slots:
+	void slotTipTimeout() { set = true; }
+
+    signals:
+	void activateTimer();	
+    
+    private:    
+	QRect ownRect;
+	QRect enemyRect;
+	
+	bool set;
+};
+
 class KBattleshipView : public QWidget
 {
     Q_OBJECT
@@ -40,6 +75,9 @@ class KBattleshipView : public QWidget
         void changeEnemyFieldData(int fieldx, int fieldy, int type);
         int getOwnFieldState(int &fieldx, int &fieldy);
         int getEnemyFieldState(int &fieldx, int &fieldy);
+
+    private slots:
+	void toolTipTimeout();
     
     signals:
         void enemyFieldClicked(int, int);
@@ -54,6 +92,7 @@ class KBattleshipView : public QWidget
     private:
         KBattleField *ownfield;
         KBattleField *enemyfield;
+	KBattleshipViewToolTip *toolTip;
 };
 
 #endif
