@@ -7,6 +7,7 @@
     <Action name="singleplayer"/>
     <Separator/>
     <Action name="highscore"/>
+    <Action name="enemyinfo"/>
     <Separator/>
     <Action name="gamequit"/>
   </Menu>

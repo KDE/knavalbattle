@@ -44,6 +44,7 @@
 #include "kclientdialog.h"
 #include "ksingledialog.h"
 #include "kstatdialog.h"
+#include "dialogs/infoDlg.h"
 #include "kchatwidget.h"
 #include "kship.h"
 #include "kbaiplayer.h"
@@ -65,51 +66,54 @@ class KBattleshipApp : public KMainWindow
 
     private slots:
         void slotStatusMsg(const QString &text);
-	void slotReceivedEnemyFieldData(int fieldx, int fieldx, int enemystate, int xstart, int xstop, int ystart, int ystop, bool death);
-	void slotSendEnemyFieldState(int, int);
-	void slotChangeOwnPlayer(const QString &text);    
+        void slotReceivedEnemyFieldData(int fieldx, int fieldx, int enemystate, int xstart, int xstop, int ystart, int ystop, bool death);
+        void slotSendEnemyFieldState(int, int);
+        void slotChangeOwnPlayer(const QString &text);
         void slotChangeEnemyPlayer(const QString &text);
-	void slotSendVersion();
+        void slotSendVersion();
         void slotSendGreet();
         void slotShipsReady();
         void slotSetPlaceable(bool place);
-	void slotSetShootable(bool shoot);
+        void slotSetShootable(bool shoot);
         void slotEnemyFieldClick(int fieldx, int fieldy);
-	void slotSendMessage(int fieldx, int fieldy, int state);
+        void slotSendMessage(int fieldx, int fieldy, int state);
         void slotSendMessage(KMessage *msg);
-	void slotClientLost();    
-	void slotServerLost();
+        void slotClientLost();
+        void slotServerLost();
         void slotServerReplay();
-	void slotClientReplay();
-	void slotAIReady();
-	void slotAIShootsAt(const QPoint pos);
-	void slotDeleteAI();
-	void slotDeleteAIAndRestart();
-	void slotDeleteClient();
-    	void slotSinglePlayer();
-	void slotDeleteSingleDialog();
+        void slotClientReplay();
+        void slotAIReady();
+        void slotAIShootsAt(const QPoint pos);
+        void slotDeleteAI();
+        void slotDeleteAIAndRestart();
+        void slotDeleteClient();
+        void slotSinglePlayer();
+        void slotDeleteSingleDialog();
         void slotServerConnect();
-	void slotDeleteConnectDialog();
+        void slotDeleteConnectDialog();
         void slotNewServer();
-	void slotDeleteServerDialog();
+        void slotDeleteServerDialog();
         void slotGameQuit();
-	void slotHighscore();
+        void slotHighscore();
         void slotConfigSound();
-	void slotShowGrid();
+        void slotShowGrid();
         void slotViewStatusBar();
         void slotStartBattleshipGame();
-	void slotStartBattleshipServer();
+        void slotStartBattleshipServer();
         void slotConnectToBattleshipServer();
         void slotPlaceShipPreview(int fieldx, int fieldy, bool shift);
         void slotPlaceShip(int fieldx, int fieldy, int button);
-	void slotChangeOwnFieldData(int fieldx, int fieldy, int type);
+        void slotChangeOwnFieldData(int fieldx, int fieldy, int type);
         void slotChangeEnemyFieldData(int fieldx, int fieldy, int type);
-	void slotUpdateHighscore();    
-	void slotAbortNetworkGame();    
-	void slotReplay();
-	void slotReplayRequest();
-	void slotChangedNickCommand(const QString &text);
+        void slotUpdateHighscore();
+        void slotAbortNetworkGame();
+        void slotReplay();
+        void slotReplayRequest();
+        void slotChangedNickCommand(const QString &text);
         void slotSendChatMessage(const QString &text);
+        void slotEnemyClientInfo();
+        void slotReceivedClientInformation(const QString &client, const QString &clientVersion,
+	       const QString &clientInformation, const QString &protocolVersion);
 
     private:
         void initActions();
@@ -122,17 +126,22 @@ class KBattleshipApp : public KMainWindow
         void saveOptions();
         void readOptions();
 
-	void cleanup(bool placechange = true);
-	void playSound(bool enemy, int fieldstate);
+        void cleanup(bool placechange = true);
+        void playSound(bool enemy, int fieldstate);
 
-	bool m_placeable;
-	bool m_shootable;
-	bool m_aiPlaying;
-	bool m_serverHasClient;
-	int m_aiHits;
+        bool m_placeable;
+        bool m_shootable;
+        bool m_aiPlaying;
+        bool m_serverHasClient;
+        int m_aiHits;
+
+        QString m_enemyClient;
+        QString m_enemyClientVersion;
+        QString m_enemyClientDescription;
+        QString m_enemyProtocolVersion;
 
         KConfig *m_config;
-	KBAIPlayer *m_aiPlayer;
+        KBAIPlayer *m_aiPlayer;
         KonnectionHandling *m_connection;
         KBattleshipServer *m_kbserver;
         KBattleshipClient *m_kbclient;
@@ -142,13 +151,14 @@ class KBattleshipApp : public KMainWindow
         KAction *m_gameServerConnect;
         KAction *m_gameNewServer;
         KAction *m_gameQuit;
-	KAction *m_gameSingle;
+        KAction *m_gameEnemyInfo;
+        KAction *m_gameSingle;
         KToggleAction *m_viewStatusBar;
         KToggleAction *m_configSound;
-	KToggleAction *m_configGrid;
+        KToggleAction *m_configGrid;
         KBattleshipSound *m_sound;
         KSingleDialog *m_single;
-	KClientDialog *m_client;
+        KClientDialog *m_client;
         KServerDialog *m_server;
         KShipList *m_ownshiplist;
         KShipList *m_enemyshiplist;

@@ -54,14 +54,15 @@ class KonnectionHandling : public QObject
 	void sigStatusBar(const QString &);
 	void sigEnemyNickname(const QString &);
 	void sigEnemyFieldData(int, int, int, int, int, int, int, bool);
+	void sigClientInformation(const QString &, const QString &, const QString &, const QString &);
 	void sigSendNickname();
 	void sigSendFieldState(int, int);
 	void sigPlaceShips(bool);
 	void sigShootable(bool);
-	void sigClientLost();	
-	void sigServerLost();    
+	void sigClientLost();
+	void sigServerLost();
 	void sigReplay();
-	void sigAbortNetworkGame();    
+	void sigAbortNetworkGame();
 	void sigChatMessage(const QString &, const QString &, bool);
 
     private:
