@@ -16,10 +16,12 @@
  ***************************************************************************/
 
 #include "kclientdialog.moc"
+#include <stdlib.h>
 
 KClientDialog::KClientDialog( QWidget *parent, const char *name ) : clientConnectDlg( parent, name )
 {
     connect( connectBtn, SIGNAL( clicked() ), this, SLOT( slotConnectClicked() ) );
+    nicknameEdit->setText( getenv( "LOGNAME" ) );
 }
 
 KClientDialog::~KClientDialog()

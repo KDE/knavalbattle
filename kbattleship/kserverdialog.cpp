@@ -16,10 +16,12 @@
  ***************************************************************************/
 
 #include "kserverdialog.moc"
+#include <stdlib.h>
 
 KServerDialog::KServerDialog( QWidget *parent, const char *name ) : serverStartDlg( parent, name )
 {
     connect( startBtn, SIGNAL( clicked() ), this, SLOT( slotStartClicked() ) );
+    nicknameEdit->setText( getenv( "LOGNAME" ) );  
 }
 
 KServerDialog::~KServerDialog()
