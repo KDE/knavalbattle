@@ -26,7 +26,7 @@ KBattleshipClient::KBattleshipClient( QString host, int port ) : QSocket()
     connect( this, SIGNAL( hostFound() ), SLOT( connectionControl() ) );
     connect( this, SIGNAL( connected() ), SLOT( connectionControl() ) );
     connect( this, SIGNAL( connectionClosed() ), SLOT( connectionControl() ) );
-    connect( this, SIGNAL( readyRead() ), SLOT( connectionControl() ) );
+    connect( this, SIGNAL( readyRead() ), SLOT( readData() ) );
 
     connectToServer();
 }
@@ -37,12 +37,29 @@ KBattleshipClient::~KBattleshipClient()
 
 void KBattleshipClient::connectToServer()
 {
-    connectToHost( internalHost, internalPort);
+    connectToHost( internalHost, internalPort );
+}
+
+void KBattleshipClient::sendMessage( KMessage *msg )
+{
+    QTextStream post( this );        
+    post << msg->returnSendStream();
 }
 
 void KBattleshipClient::connectionControl()
 {
     kdDebug() << "Client-State: " << state() << endl;
+}
+
+void KBattleshipClient::readData()
+{
+    if( canReadLine() )
+    {	
+	kdDebug() << "READ: " << readLine() << endl;
+	//KMessage *msg;
+	kdDebug() << "NOTHING HAPPENING YET... IT'LL CRASH... ERROR IN KMESSAGE" << endl;
+	//msg->setDataStream( readLine() );
+    }
 }
 
 void KBattleshipClient::lostServer()

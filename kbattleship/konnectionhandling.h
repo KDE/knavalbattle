@@ -52,6 +52,7 @@ class KonnectionHandling : public QObject
 
     signals:	
 	void ownFieldDataChanged( int fieldx, int fieldy, int type );
+	void changeConnectText( QString text );
 };
 
 #endif

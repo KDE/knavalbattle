@@ -21,6 +21,7 @@
 
 KBattleshipApp::KBattleshipApp( QWidget *, const char *name ) : KMainWindow( 0, name )
 {
+    haveCS = false;
     config = kapp->config();
     initStatusBar();
     initActions();
@@ -69,6 +70,41 @@ void KBattleshipApp::initView()
     setCentralWidget( view );
     view->startDrawing();
     setCaption( i18n( "KBattleship (pre-alpha)" ), false );
+    
+    connect( view, SIGNAL( enemyFieldClicked( int, int ) ), this, SLOT( sendMessage( int, int ) ) );
+}
+
+void KBattleshipApp::sendMessage( int fieldX, int fieldY )
+{
+    if( haveCS )
+    {
+	kdDebug() << "You've clicked on the enemyField!" << endl;
+	KMessageType msgtype;
+	msgtype.setType( KMessageType::MSG_PLAYING );
+	KMessage *msg = new KMessage( msgtype );
+	QString field1Data; 
+	QString field2Data;
+	QString field3Data;
+	field1Data.setNum( fieldX );
+	field2Data.setNum( fieldY );
+	field3Data.setNum( KMessageType::ENEMY_SHOOT );
+	msg->addField( QString( "fieldx" ), field1Data );
+	msg->addField( QString( "fieldy" ), field2Data );
+	msg->addField( QString( "type" ), field3Data );
+
+	switch( connection->getType() )
+	{
+	    case KonnectionHandling::SERVER:
+	    	kdDebug() << "I'm sending via the server!" << endl;
+		kbserver->sendMessage( msg );
+		break;
+		
+	    case KonnectionHandling::CLIENT:
+	    	kdDebug() << "I'm sending via the client!" << endl;
+		kbclient->sendMessage( msg );
+		break;	
+	}
+    }
 }
 
 void KBattleshipApp::saveOptions()
@@ -92,7 +128,7 @@ void KBattleshipApp::readOptions()
     slotViewStatusBar();
 
     KToolBar::BarPosition toolBarPos;
-    toolBarPos = (KToolBar::BarPosition) config->readNumEntry( "ToolBarPos", KToolBar::Top );
+    toolBarPos = ( KToolBar::BarPosition ) config->readNumEntry( "ToolBarPos", KToolBar::Top );
     toolBar()->setBarPos( toolBarPos );
 }
 
@@ -111,13 +147,14 @@ void KBattleshipApp::slotGameQuit()
 
 void KBattleshipApp::slotServerConnect()
 {
-    if( !connection)
+    if( !haveCS )
     {
         slotStatusMsg( i18n( "Loading Connect-Server dialog..." ) );
 
 	// TODO: use KDialogBase
 
         client = new KClientDialog();
+	haveCS = true;
         connect( client, SIGNAL( connectServer() ), this, SLOT( connectToBattleshipServer() ) );
         client->show();
 
@@ -144,13 +181,14 @@ void KBattleshipApp::slotServerConnect()
 
 void KBattleshipApp::slotNewServer()
 {
-    if( !connection )
+    if( !haveCS )
     {
         slotStatusMsg( i18n( "Loading Start-Server dialog..." ) );
     
 	// TODO: use KDialogBase
     
         server = new KServerDialog();
+	haveCS = true;
 	connect( server, SIGNAL( startServer() ), this, SLOT( startBattleshipServer() ) );
         server->show();
             
@@ -180,7 +218,20 @@ void KBattleshipApp::startBattleshipServer()
     delete server;
     gameNewServer->setText( "&Stop server" );
     connection = new KonnectionHandling( this, kbserver );    
-    connect( connection, SIGNAL( ownFieldDataChanged( int, int, int ) ), view, SLOT( changeOwnFieldData( int, int, int ) ) );
+
+    connect( connection, SIGNAL( ownFieldDataChanged( int, int, int ) ), this, SLOT( changeOwnFieldData( int, int, int ) ) );
+    connect( connection, SIGNAL( changeConnectText( QString ) ), this, SLOT( changeConnectText( QString ) ) );
+}
+
+void KBattleshipApp::changeOwnFieldData( int fieldX, int fieldY, int type )
+{
+    view->changeOwnFieldData( fieldX, fieldY, type );
+}
+
+void KBattleshipApp::changeConnectText( QString text )
+{
+    gameServerConnect->setText( "&Connect to server" );
+    kdDebug() << "settext!" << endl;
 }
 
 void KBattleshipApp::connectToBattleshipServer()

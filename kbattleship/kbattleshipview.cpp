@@ -44,6 +44,11 @@ void KBattleshipView::changeOwnFieldData( int fieldx, int fieldy, int type )
     ownfield->changeData( fieldx, fieldy, type );
 }
 
+void KBattleshipView::changeEnemyFieldData( int fieldx, int fieldy, int type )
+{
+    enemyfield->changeData( fieldx, fieldy, type );
+}
+
 void KBattleshipView::mouseReleaseEvent( QMouseEvent *event )
 {
     if( event->x() <= ( width() / 2 ) - 15 && event->x() >= 46 ) 
@@ -126,12 +131,11 @@ void KBattleshipView::mouseReleaseEvent( QMouseEvent *event )
 		{
 		    fieldY = j - 1;
 		    break;
-		}
+		}		
 	    }
+	    
+	    emit enemyFieldClicked( fieldX, fieldY );
 
-	    QPainter enemypainter( this );
-	    enemyfield->changeData( fieldX, fieldY, KBattleField::WATER );
-	    enemyfield->drawField( &enemypainter );
 	}
     }
     	
@@ -144,6 +148,12 @@ void KBattleshipView::mouseReleaseEvent( QMouseEvent *event )
 //    {
 //	kdDebug() << "NOFIELD!" << endl;
 //    }
+}
+
+void KBattleshipView::paintEnemyField( int fieldx, int fieldy )
+{
+    QPainter enemypainter( this );
+    enemyfield->drawField( &enemypainter );
 }
 
 void KBattleshipView::paintEvent( QPaintEvent * )

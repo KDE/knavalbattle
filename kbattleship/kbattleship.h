@@ -75,6 +75,9 @@ class KBattleshipApp : public KMainWindow
         void slotStatusMsg( const QString &text );
 	void startBattleshipServer();
 	void connectToBattleshipServer();
+	void sendMessage( int fieldX, int fieldY );
+	void changeOwnFieldData( int fieldX, int fieldY, int type );
+	void changeConnectText( QString text );
 
     private:
         KConfig *config;
@@ -90,6 +93,7 @@ class KBattleshipApp : public KMainWindow
         KClientDialog *client;
 	KServerDialog *server;
 	KonnectionHandling *connection;
+	bool haveCS;
 };
 
 #endif

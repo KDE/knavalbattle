@@ -32,7 +32,7 @@ KBattleshipServer::~KBattleshipServer()
 
 void KBattleshipServer::newConnection( int socket )
 {
-    QSocket *serverSocket = new QSocket( this );
+    serverSocket = new QSocket( this );
     connect( serverSocket, SIGNAL( readyRead() ), this, SLOT( readClient() ) );
     connect( serverSocket, SIGNAL( delayedCloseFinished() ), this, SLOT( discardClient() ) );
     serverSocket->setSocket( socket );
@@ -42,22 +42,25 @@ void KBattleshipServer::newConnection( int socket )
 void KBattleshipServer::readClient()
 {
     kdDebug() << "I'm in readClient()" << endl;
-    QSocket* socket = (QSocket*)sender();
+    QSocket *socket = ( QSocket * )sender();
     if( socket->canReadLine() )
     {
         KMessageType msgtype;
         KMessage *msg = new KMessage( msgtype );
         msg->setDataStream( socket->readLine() );
+	kdDebug() << "Type of message: " << msg->getType() << endl;
 	emit newMessage( msg );
-        kdDebug() << "Type of message: " << msg->getType() << endl;
     }
 }
 
 void KBattleshipServer::sendMessage( KMessage *msg )
 {
-    QSocket* socket = (QSocket*)sender();
-    QTextStream post( socket );
-    post << msg->returnSendStream();
+    kdDebug() << "Okay i'll send then!" << endl;
+    QTextStream *post = new QTextStream( serverSocket );
+    kdDebug() << "Inited PostStreamer!" << endl;
+    kdDebug() << "Message: " << msg->returnSendStream() << endl;
+    *post << msg->returnSendStream() << endl;
+    kdDebug() << "Posted to the Socket!" << endl;
     emit wroteToClient();
 }
 

@@ -46,6 +46,7 @@ class KBattleshipServer : public QServerSocket
 	void newMessage( KMessage * );
 	
     private:
+	QSocket *serverSocket;
         void newConnection( int socket );
 
 };

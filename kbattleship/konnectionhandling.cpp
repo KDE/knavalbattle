@@ -80,6 +80,7 @@ void KonnectionHandling::clientSocketError( int error )
     {
 	case QSocket::HostLookup:
 	    KMessageBox::error( 0L, i18n( "Couldn't lookup host!" ) );
+	    emit changeConnectText( QString( "&Connect to server" ) );
 	    break;
 	
 	default:

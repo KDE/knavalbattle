@@ -32,8 +32,11 @@ class KBattleshipClient : public QSocket
         KBattleshipClient( QString host = "", int port = 54321 );
         ~KBattleshipClient();
 
+	void sendMessage( KMessage *msg );
+	
     private slots:
         void connectionControl();
+	void readData();
         void lostServer();
         void socketError( int error );
 

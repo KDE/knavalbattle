@@ -41,14 +41,17 @@ void KMessage::setDataStream( QString stream )
 void KMessage::parseMessage()
 {
     QStringList list;
-    QString key, data;
+    QString key;
+    QString data;
+    QString seperator = "|";
+    QString endseperator = "end";
     bool kd = false;
-    list = QStringList::split( QString( "|" ), messageStream );
+    list = QStringList::split( seperator, messageStream );
     for( QStringList::Iterator it = list.begin(); it != list.end(); ++it )
     {
         if( !kd )
         {
-            if( *it != "end" )
+            if( *it != endseperator )
             {
                 QChar testchar;
                 int testint;
@@ -67,7 +70,9 @@ void KMessage::parseMessage()
                 }
             }
             else
+	    {
                 break;
+	    }
         }
         else
         {
@@ -84,16 +89,20 @@ void KMessage::parseMessage()
 QString KMessage::returnSendStream()
 {
     QString sendStream;
+    QString typeData;
+    QString seperator = "|";
+    QString endseperator = "end";
     QMapIterator<QString,QString> it;
 
-    sendStream = messageType + "|";
+    typeData.setNum( messageType );
+    sendStream = typeData + seperator;
 
     for( it = messageMap.begin(); it != messageMap.end(); ++it )
     {
-        sendStream = sendStream + it.key() + "|" + it.data() + "|";
+        sendStream = sendStream + it.key() + seperator + it.data() + seperator;
     }
-
-    sendStream = sendStream + "end";
+    
+    sendStream = sendStream + endseperator;
 
     return sendStream;
 }
