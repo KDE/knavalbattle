@@ -34,6 +34,7 @@ class KChatWidget : public chatDlg
 	void clear();
 	
         void setNickname(const QString &nickname);
+        virtual bool eventFilter(QObject *, QEvent *);
 
     public slots:
         void acceptMsg(bool value);
@@ -44,7 +45,7 @@ class KChatWidget : public chatDlg
         void sendMessage(const QString &);
 	void changeEnemyNickname(const QString &);
 	void changeOwnNickname(const QString &);
-    
+   
     private:
         QString currentNickname;
         bool acceptMsgs;

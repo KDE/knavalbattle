@@ -15,6 +15,8 @@
  *                                                                         *
  ***************************************************************************/
 
+#include <kapp.h>
+
 #include "kchatwidget.moc"
 
 KChatWidget::KChatWidget(QWidget *parent, const char *name) : chatDlg(parent, name)
@@ -23,6 +25,8 @@ KChatWidget::KChatWidget(QWidget *parent, const char *name) : chatDlg(parent, na
     connect(sendBtn, SIGNAL(clicked()), this, SLOT(slotComputeMessage()));
     connect(commentEdit, SIGNAL(returnPressed()), this, SLOT(slotComputeMessage()));
     currentNickname = "";
+    chatView->setFocusProxy(commentEdit);
+    commentEdit->installEventFilter(this);
 }
 
 KChatWidget::~KChatWidget()
@@ -61,6 +65,16 @@ void KChatWidget::receivedMessage(const QString &nickname, const QString &msg, b
 void KChatWidget::setNickname(const QString &nickname)
 {
     currentNickname = nickname;
+}
+
+bool KChatWidget::eventFilter(QObject *obj, QEvent *e)
+{
+    if (obj == commentEdit && e->type() == QEvent::Wheel)
+    {
+        kapp->notify(chatView, e);
+        return true;
+    }
+    return chatDlg::eventFilter(obj, e);
 }
 
 void KChatWidget::slotComputeMessage()
