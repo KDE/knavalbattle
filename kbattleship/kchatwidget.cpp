@@ -32,6 +32,7 @@ KChatWidget::~KChatWidget()
 void KChatWidget::clear()
 {
     currentNickname = "";
+    acceptMsg(false);
     chatView->clear();
 }
 
