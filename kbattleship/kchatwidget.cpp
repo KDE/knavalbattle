@@ -42,16 +42,20 @@ void KChatWidget::acceptMsg(bool value)
     acceptMsgs = value;
 }
 
-void KChatWidget::receivedMessage(QString nickname, QString msg)
+void KChatWidget::receivedMessage(const QString &nickname, const QString &msg)
 {
+    // Niko Z:
+    // IRC roxxx :)
     if(msg.startsWith("/me ")) 
 	chatView->append(QString(" * ") + nickname + QString(" ") + msg.mid(4));
-    else 
+    else if(msg.startsWith("/nick "))
+	emit changeEnemyNickname(msg.mid(6));
+    else
 	chatView->append(nickname + QString(": ") + msg);
     chatView->setCursorPosition(chatView->numLines(), 0);
 }
 
-void KChatWidget::setNickname(QString nickname)
+void KChatWidget::setNickname(const QString &nickname)
 {
     currentNickname = nickname;
 }

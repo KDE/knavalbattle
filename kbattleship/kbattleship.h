@@ -95,7 +95,7 @@ class KBattleshipApp : public KMainWindow
         void sendMessage(int fieldx, int fieldy, int state, bool won = false);
         void sendMessage(KMessage *msg);
         void sendShipList();
-        void sendChatMessage(QString text);
+        void sendChatMessage(const QString &text);
         void changeOwnFieldData(int fieldx, int fieldy, int type);
         void changeEnemyFieldData(int fieldx, int fieldy, int type);
         void changeConnectText();

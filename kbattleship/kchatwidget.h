@@ -33,15 +33,16 @@ class KChatWidget : public chatDlg
 
 	void clear();
 	
-        void setNickname(QString nickname);
+        void setNickname(const QString &nickname);
 
     public slots:
         void acceptMsg(bool value);
         void slotComputeMessage();
-        void receivedMessage(QString nickname, QString msg);
+        void receivedMessage(const QString &nickname, const QString &msg);
     
     signals:
-        void sendMessage(QString);
+        void sendMessage(const QString &);
+	void changeEnemyNickname(const QString &);
     
     private:
         QString currentNickname;

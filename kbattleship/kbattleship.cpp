@@ -76,7 +76,8 @@ void KBattleshipApp::initSound()
 
 void KBattleshipApp::initChat()
 {
-    connect(chat, SIGNAL(sendMessage(QString)), this, SLOT(sendChatMessage(QString)));
+    connect(chat, SIGNAL(sendMessage(const QString &)), this, SLOT(sendChatMessage(const QString &)));
+    connect(chat, SIGNAL(changeEnemyNickname(const QString &)), this, SLOT(slotChangeEnemyPlayer(const QString &)));
 }
 
 void KBattleshipApp::initShipPlacing()
@@ -89,7 +90,7 @@ void KBattleshipApp::initStatusBar()
     ownNickname = "-";
     enemyNickname = "-";
     statusBar()->insertItem(i18n("     Player 1: %1     ").arg(ownNickname), ID_PLAYER_OWN, 0, true);
-    statusBar()->insertItem(i18n("     Player 2: %1     ").arg(enemyNickname), ID_PLAYER_ENEMY, 0, true);
+    statusBar()->insertItem(i18n("     Player 2: %2     ").arg(enemyNickname), ID_PLAYER_ENEMY, 0, true);
     statusBar()->insertItem(i18n("Ready"), ID_STATUS_MSG, 1);
     statusBar()->setItemAlignment(ID_STATUS_MSG, AlignLeft);
 }
@@ -253,7 +254,7 @@ void KBattleshipApp::sendMessage(KMessage *msg)
     }
 }
 
-void KBattleshipApp::sendChatMessage(QString text)
+void KBattleshipApp::sendChatMessage(const QString &text)
 {
     if(haveCS && connection != 0)
     {
@@ -299,6 +300,13 @@ void KBattleshipApp::sendChatMessage(QString text)
 	        kbserver->forbidWrite();
 	    else if(clientallow)
     	        kbclient->forbidWrite();
+	
+	    if(text.startsWith("/nick "))
+	    {
+		ownNickname = text.mid(6);
+		slotChangeOwnPlayer(ownNickname);
+		chat->setNickname(ownNickname);
+	    }
         }
     }
 }
@@ -586,7 +594,7 @@ void KBattleshipApp::startBattleshipServer()
 	connect(connection, SIGNAL(enemyNickname(const QString &)), this, SLOT(slotChangeEnemyPlayer(const QString &)));
 	connect(connection, SIGNAL(statusBarMessage(const QString &)), this, SLOT(slotStatusMsg(const QString &)));
 	connect(connection, SIGNAL(ownFieldDataChanged(int, int, int)), this, SLOT(changeOwnFieldData(int, int, int)));
-	connect(connection, SIGNAL(gotChatMessage(QString, QString)), chat, SLOT(receivedMessage(QString, QString)));
+	connect(connection, SIGNAL(gotChatMessage(const QString &, const QString &)), chat, SLOT(receivedMessage(const QString &, const QString &)));
 	connect(connection, SIGNAL(gotEnemyShipList(QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString)), this, SLOT(gotEnemyShipList(QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString)));
     }
     else
