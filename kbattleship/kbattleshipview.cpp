@@ -27,7 +27,7 @@ KBattleshipView::~KBattleshipView()
 
 void KBattleshipView::startDrawing()
 {
-	setFixedSize( 600, 400 );
+    setFixedSize( 600, 400 );
     setBackgroundMode( PaletteBase );
     QPainter ownpainter( this );
     QPainter enemypainter( this );
@@ -38,8 +38,8 @@ void KBattleshipView::startDrawing()
     ownfield = new KBattleField( this, owntype, &ownpainter );
     enemyfield = new KBattleField( this, enemytype, &enemypainter );
 
-	connect( ownfield, SIGNAL( doOwnFieldShipListJob( int, int, QPainter * ) ), this, SIGNAL( requestedOwnFieldShipListJob( int, int, QPainter * ) ) );
-	connect( enemyfield, SIGNAL( doEnemyFieldShipListJob( int, int, QPainter * ) ), this, SIGNAL( requestedEnemyFieldShipListJob( int, int, QPainter * ) ) );
+    connect( ownfield, SIGNAL( doOwnFieldShipListJob( int, int, QPainter * ) ), this, SIGNAL( requestedOwnFieldShipListJob( int, int, QPainter * ) ) );
+    connect( enemyfield, SIGNAL( doEnemyFieldShipListJob( int, int, QPainter * ) ), this, SIGNAL( requestedEnemyFieldShipListJob( int, int, QPainter * ) ) );
 }
 
 void KBattleshipView::clearField()
@@ -52,12 +52,12 @@ void KBattleshipView::clearField()
 
 void KBattleshipView::giveOwnFieldShipListType( QPainter *painter, int type )
 {
-	ownfield->requestedShipIconDraw( painter, type  );
+    ownfield->requestedShipIconDraw( painter, type  );
 }
 
 void KBattleshipView::giveEnemyFieldShipListType( QPainter *painter, int type )
 {
-	enemyfield->requestedShipIconDraw( painter, type );
+    enemyfield->requestedShipIconDraw( painter, type );
 }
 
 int KBattleshipView::getOwnFieldState( int &fieldx, int &fieldy )
@@ -67,7 +67,7 @@ int KBattleshipView::getOwnFieldState( int &fieldx, int &fieldy )
 
 int KBattleshipView::getEnemyFieldState( int &fieldx, int &fieldy )
 {
-	kdDebug() << "STATE: " << enemyfield->getState( fieldx, fieldy ) << endl;
+    kdDebug() << "STATE: " << enemyfield->getState( fieldx, fieldy ) << endl;
     return enemyfield->getState( fieldx, fieldy );
 }
 
@@ -90,83 +90,83 @@ void KBattleshipView::mouseReleaseEvent( QMouseEvent *event )
     fieldY = 0;
     if( event->x() <= ( width() / 2 ) - 15 && event->x() >= 46 ) 
     {
-		if( event->y() >= 35 && event->y() <= ( height() / 2 ) + 75 )
+	if( event->y() >= 35 && event->y() <= ( height() / 2 ) + 75 )
+	{
+	    fieldTopPos = 25;
+	    fieldBottomPos = ( height() / 2 ) + 75;
+	    
+	    fieldLeftPos = 25;
+	    fieldRightPos = ( width() / 2 ) + 75;
+	    
+	    i = 0;
+	    j = 0;
+	    
+	    for( i = fieldLeftPos; i <= fieldRightPos; i += 30 )
+	    {
+		j++;
+		if( event->x() >= i - 50 && event->x() <= i + 50 )
 		{
-	    	fieldTopPos = 25;
-	    	fieldBottomPos = ( height() / 2 ) + 75;
-	    
-	    	fieldLeftPos = 25;
-	    	fieldRightPos = ( width() / 2 ) + 75;
-	    
-	    	i = 0;
-	    	j = 0;
-	    
-	    	for( i = fieldLeftPos; i <= fieldRightPos; i += 30 )
-	   		{
-				j++;
-				if( event->x() >= i - 50 && event->x() <= i + 50 )
-				{
-		    		fieldX = j - 1;
-		    		break;
-				}
-	    	}
-
-	    	i = 0;
-	    	j = 0;
-	
-	    	for( i = fieldTopPos; i <= fieldBottomPos; i += 30 )
-	    	{
-				j++;
-				if( event->y() >= i - 30 && event->y() <= i + 30 )
-				{
-		    		fieldY = j - 1;
-		    		break;
-				}
-	    	}
-	    	    
-	    	emit ownFieldClicked( fieldX, fieldY, event->button() );
+		    fieldX = j - 1;
+		    break;
 		}
+	    }
+
+	    i = 0;
+	    j = 0;
+	
+	    for( i = fieldTopPos; i <= fieldBottomPos; i += 30 )
+	    {
+		j++;
+		if( event->y() >= i - 30 && event->y() <= i + 30 )
+		{
+		    fieldY = j - 1;
+		    break;
+		}
+	    }
+	    	    
+	    emit ownFieldClicked( fieldX, fieldY, event->button() );
+	}
     }
 
     if( event->x() >= ( width() / 2 ) + 16 && event->x() <= width() - 46 )
     {
     	if( event->y() >= 35 && event->y() <= ( height() / 2 ) + 75 )
+	{
+	    fieldTopPos = 25;
+	    fieldBottomPos = ( height() / 2 ) + 75;
+	    
+	    fieldLeftPos = 25;
+	    fieldRightPos = ( width() / 2 ) + 75;
+
+	    i = 0;
+	    j = 0;
+	    
+	    for( i = fieldLeftPos; i <= fieldRightPos; i += 30 )
+	    {
+		j++;
+		if( event->x() >= i + ( height() / 2 ) - 30 && event->x() <= i + ( height() / 2 ) + 30 )
 		{
-	    	fieldTopPos = 25;
-	    	fieldBottomPos = ( height() / 2 ) + 75;
-	    
-	    	fieldLeftPos = 25;
-	    	fieldRightPos = ( width() / 2 ) + 75;
-
-	    	i = 0;
-	    	j = 0;
-	    
-	    	for( i = fieldLeftPos; i <= fieldRightPos; i += 30 )
-	    	{
-				j++;
-				if( event->x() >= i + ( height() / 2 ) - 30 && event->x() <= i + ( height() / 2 ) + 30 )
-				{
-		    		fieldX = j - 4;
-		   		 	break;
-				}
-	    	}
-        	
-	    	i = 0;
-	    	j = 0;
-	
-	    	for( i = fieldTopPos; i <= fieldBottomPos; i += 30 )
-	    	{
-				j++;
-				if( event->y() >= i - 30 && event->y() <= i + 30 )
-				{
-		    		fieldY = j - 1;
-		    		break;
-				}		
-	    	}
-	    
-	    	emit enemyFieldClicked( fieldX, fieldY );
-
+		    fieldX = j - 4;
+		    break;
 		}
+	    }
+        	
+	    i = 0;
+	    j = 0;
+	
+	    for( i = fieldTopPos; i <= fieldBottomPos; i += 30 )
+	    {
+		j++;
+		if( event->y() >= i - 30 && event->y() <= i + 30 )
+		{
+		    fieldY = j - 1;
+		    break;
+		}		
+	    }
+	    
+	    emit enemyFieldClicked( fieldX, fieldY );
+
+	}
     }
 }
 

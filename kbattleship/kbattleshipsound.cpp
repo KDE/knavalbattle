@@ -34,57 +34,51 @@ void KBattleshipSound::initSoundServer()
     playObjectFactory = Arts::Reference( "global:Arts_PlayObjectFactory" );
     if( soundserver.isNull() )
     {
-		KMessageBox::error( 0L, i18n( "Couldn't connect to Arts Soundserver. Sound deactivated" ) );
-		serverRunning = false;
+	KMessageBox::error( 0L, i18n( "Couldn't connect to Arts Soundserver. Sound deactivated" ) );
+	serverRunning = false;
     }
     else
-    {
-		serverRunning = true;
-    }
+	serverRunning = true;
 }
 
 void KBattleshipSound::playSound( int file )
 {
     if( isRunning() )
     {
-		KStandardDirs *stdDirs = KGlobal::dirs();
-		QString picDir;
-		QStringList picDirl = stdDirs->findDirs( "data", "kbattleship" );
-		for( QStringList::Iterator it = picDirl.begin(); it != picDirl.end(); it++ )
-		{
-	    	picDir = *it;
-	    	break;
-		}
+	KStandardDirs *stdDirs = KGlobal::dirs();
+	QString picDir;
+	QStringList picDirl = stdDirs->findDirs( "data", "kbattleship" );
+	for( QStringList::Iterator it = picDirl.begin(); it != picDirl.end(); it++ )
+	{
+	    picDir = *it;
+	    break;
+	}
 
-		picDir = picDir + "sounds/";
+	picDir = picDir + "sounds/";
 
     	switch( file )
-		{
-	    	case SHIP_EXPLODE:
-	        	playObject = playObjectFactory.createPlayObject( QString( picDir + QString( "ship-explode.mp3" ) ).latin1() );
-				playObject.play();
-				break;
+	{
+	    case SHIP_EXPLODE:
+		playObject = playObjectFactory.createPlayObject( QString( picDir + QString( "ship-explode.mp3" ) ).latin1() );
+		break;
 		
-	    	case PLAYER1_SHOOT_HIT:
-				playObject = playObjectFactory.createPlayObject( QString( picDir + QString( "ship-player1-shoot.mp3" ) ).latin1() );
-				playObject.play();
-				break;
+	    case PLAYER1_SHOOT_HIT:
+		playObject = playObjectFactory.createPlayObject( QString( picDir + QString( "ship-player1-shoot.mp3" ) ).latin1() );
+		break;
 		
-	    	case PLAYER2_SHOOT_HIT:
-				playObject = playObjectFactory.createPlayObject( QString( picDir + QString( "ship-player2-shoot.mp3" ) ).latin1() );
-				playObject.play();
-				break;
+	    case PLAYER2_SHOOT_HIT:
+		playObject = playObjectFactory.createPlayObject( QString( picDir + QString( "ship-player2-shoot.mp3" ) ).latin1() );
+		break;
 
-	    	case PLAYER_SHOOT_WATER:
-				playObject = playObjectFactory.createPlayObject( QString( picDir + QString( "ship-player-shoot-water.mp3" ) ).latin1() );
-				playObject.play();
-				break;
+	    case PLAYER_SHOOT_WATER:
+		playObject = playObjectFactory.createPlayObject( QString( picDir + QString( "ship-player-shoot-water.mp3" ) ).latin1() );
+		break;
     
-	   		case SHIP_SINK:
-				playObject = playObjectFactory.createPlayObject( QString( picDir + QString( "ship-sink.mp3" ) ).latin1() );
-				playObject.play();
-				break;
-		}
+	    case SHIP_SINK:
+		playObject = playObjectFactory.createPlayObject( QString( picDir + QString( "ship-sink.mp3" ) ).latin1() );
+		break;
+	}
+	playObject.play();
     }
 }
 

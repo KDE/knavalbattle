@@ -30,21 +30,21 @@ class KShipList : public QObject
         KShipList();
         ~KShipList();
 
-		int getXYShipType( int x, int y );
-		void addNewShip( int button, int fieldx, int fieldy );
-		bool canAddShips();
-		int shipCount();
+	int getXYShipType( int x, int y );
+	void addNewShip( int button, int fieldx, int fieldy );
+	bool canAddShips();
+	int shipCount();
 	    
     private:
-		int shipsadded;
-		QList<KShip> shiplist;
-		void controlOwnFieldData( int fieldx, int fieldy, int type );
-		void placeShipLMB( int fieldx, int fieldy );
-		void placeShipRMB( int fieldx, int fieldy );
-		void decideShipPlacing( int button, int fieldx, int fieldy );
+	int shipsadded;
+	QList<KShip> shiplist;
+	void controlOwnFieldData( int fieldx, int fieldy, int type );
+	void placeShipLMB( int fieldx, int fieldy );
+	void placeShipRMB( int fieldx, int fieldy );
+	void decideShipPlacing( int button, int fieldx, int fieldy );
 
-	signals:
-		void ownFieldDataChanged( int fieldx, int fieldy, int type );
+    signals:
+	void ownFieldDataChanged( int fieldx, int fieldy, int type );
 };
 
 #endif

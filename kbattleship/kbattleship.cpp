@@ -38,7 +38,7 @@ void KBattleshipApp::init()
     initActions();
     initView();
     initSound();
-	initShipPlacing();
+    initShipPlacing();
     readOptions();
 }
 
@@ -68,7 +68,7 @@ void KBattleshipApp::initSound()
 
 void KBattleshipApp::initShipPlacing()
 {
-	connect( shiplist, SIGNAL( ownFieldDataChanged( int, int, int ) ), this, SLOT( changeOwnFieldData( int, int, int ) ) );
+    connect( shiplist, SIGNAL( ownFieldDataChanged( int, int, int ) ), this, SLOT( changeOwnFieldData( int, int, int ) ) );
 }
 
 void KBattleshipApp::initStatusBar()
@@ -85,13 +85,13 @@ void KBattleshipApp::initView()
     chat->raise();
     shiplist = new KShipList();
 
-    setCentralWidget( view );
+    setCentralWidget( split );
     view->startDrawing();
     
     connect( view, SIGNAL( enemyFieldClicked( int, int ) ), this, SLOT( sendMessage( int, int ) ) );
     connect( view, SIGNAL( ownFieldClicked( int, int, int ) ), this, SLOT( placeShip( int, int, int ) ) );
-	connect( view, SIGNAL( requestedOwnFieldShipListJob( int, int, QPainter * ) ), this, SLOT( requestedOwnFieldShipListJob( int, int, QPainter * ) ) );
-	connect( view, SIGNAL( requestedEnemyFieldShipListJob( int, int, QPainter * ) ), this, SLOT( requestedEnemyFieldShipListJob( int, int, QPainter * ) ) );
+    connect( view, SIGNAL( requestedOwnFieldShipListJob( int, int, QPainter * ) ), this, SLOT( requestedOwnFieldShipListJob( int, int, QPainter * ) ) );
+    connect( view, SIGNAL( requestedEnemyFieldShipListJob( int, int, QPainter * ) ), this, SLOT( requestedEnemyFieldShipListJob( int, int, QPainter * ) ) );
     
     setCaption( i18n( "KBattleship (alpha)" ), false );
 }
@@ -102,35 +102,35 @@ void KBattleshipApp::placeShip( int fieldx, int fieldy, int button )
     {
         if( shiplist->canAddShips() )
         {
-			shiplist->addNewShip( button, fieldx, fieldy );
-		}
-	}	
+	    shiplist->addNewShip( button, fieldx, fieldy );
+	}
+    }	
 }
 
 void KBattleshipApp::sendMessage( int fieldx, int fieldy )
 {
     if( haveCS )
     {
-		KMessage *msg = new KMessage( KMessage::ENEMY_SHOOT );
-		QString field1Data;
-		QString field2Data;
-		field1Data.setNum( fieldx );
-		field2Data.setNum( fieldy );
-		msg->addField( QString( "fieldx" ), field1Data );
-		msg->addField( QString( "fieldy" ), field2Data );
+	KMessage *msg = new KMessage( KMessage::ENEMY_SHOOT );
+	QString field1Data;
+	QString field2Data;
+	field1Data.setNum( fieldx );
+	field2Data.setNum( fieldy );
+	msg->addField( QString( "fieldx" ), field1Data );
+	msg->addField( QString( "fieldy" ), field2Data );
 
-		switch( connection->getType() )
-		{
-	    	case KonnectionHandling::SERVER:
-				kbserver->sendMessage( msg );
-				delete msg;
-				break;
-		
-	    	case KonnectionHandling::CLIENT:
-				kbclient->sendMessage( msg );
-				delete msg;
-				break;	
-		}
+	switch( connection->getType() )
+	{
+	    case KonnectionHandling::SERVER:
+		kbserver->sendMessage( msg );
+		delete msg;
+		break;
+	    
+	    case KonnectionHandling::CLIENT:
+		kbclient->sendMessage( msg );
+		delete msg;
+		break;	
+	}
     }
 }
 
@@ -138,18 +138,18 @@ void KBattleshipApp::sendMessage( KMessage *msg )
 {
     if( haveCS )
     {
-		switch( connection->getType() )
-		{
-	    	case KonnectionHandling::SERVER:
-				kbserver->sendMessage( msg );
-				delete msg;
-				break;
+	switch( connection->getType() )
+	{
+	    case KonnectionHandling::SERVER:
+		kbserver->sendMessage( msg );
+		delete msg;
+		break;
 		
-	    	case KonnectionHandling::CLIENT:
-				kbclient->sendMessage( msg );
-				delete msg;
-				break;	
-		}
+	    case KonnectionHandling::CLIENT:
+	    	kbclient->sendMessage( msg );
+		delete msg;
+		break;	
+	}
     }
 }
 
@@ -204,31 +204,30 @@ void KBattleshipApp::slotServerConnect()
 		// TODO: use KDialogBase
         slotStatusMsg( i18n( "Loading Connect-Server dialog..." ) );
 
-	    client = new KClientDialog();
-		haveCS = true;
+	client = new KClientDialog();
+	haveCS = true;
         connect( client, SIGNAL( connectServer() ), this, SLOT( connectToBattleshipServer() ) );
-		connect( client, SIGNAL( cancelConnect() ), this, SLOT( stoppedConnectDialog() ) );
+	connect( client, SIGNAL( cancelConnect() ), this, SLOT( stoppedConnectDialog() ) );
         client->show();
 
         slotStatusMsg( i18n( "Ready." ) );
     }
     else
     {
-		switch( connection->getType() )
-		{
-	    	case KonnectionHandling::SERVER:
-				KMessageBox::error( this, i18n( "You can't connect to a server while you running your own!" ) );
-				break;
+	switch( connection->getType() )
+	{
+	    case KonnectionHandling::SERVER:
+		KMessageBox::error( this, i18n( "You can't connect to a server while you running your own!" ) );
+		break;
 		
-	    	case KonnectionHandling::CLIENT:
-	        	gameServerConnect->setText( "&Connect to server" );
-				view->clearField();
-				delete connection;
-				delete kbclient;
-				connection = 0;
-				break;
-		}
-	    
+	    case KonnectionHandling::CLIENT:
+	    	gameServerConnect->setText( "&Connect to server" );
+		view->clearField();
+		delete connection;
+		delete kbclient;
+		connection = 0;
+		break;
+	}    
     }
 }
 
@@ -236,34 +235,34 @@ void KBattleshipApp::slotNewServer()
 {
     if( !haveCS )
     {
-		// TODO: use KDialogBase
+	// TODO: use KDialogBase
         slotStatusMsg( i18n( "Loading Start-Server dialog..." ) );
     
-		server = new KServerDialog();
-		haveCS = true;
-		connect( server, SIGNAL( startServer() ), this, SLOT( startBattleshipServer() ) );
-		connect( server, SIGNAL( cancelServer() ), this, SLOT( stoppedServerDialog() ) );
+	server = new KServerDialog();
+	haveCS = true;
+	connect( server, SIGNAL( startServer() ), this, SLOT( startBattleshipServer() ) );
+	connect( server, SIGNAL( cancelServer() ), this, SLOT( stoppedServerDialog() ) );
         server->show();
             
-		slotStatusMsg( i18n( "Ready." ) );
+	slotStatusMsg( i18n( "Ready." ) );
     }
     else
     {
-		switch( connection->getType() )
-		{
-	    	case KonnectionHandling::SERVER:
-	    	   	gameNewServer->setText( "&Start server" );
-				view->clearField();
-				haveCS = false;
-				delete connection;
-				delete kbserver;
-				connection = 0;
-				break;
+	switch( connection->getType() )
+	{
+	    case KonnectionHandling::SERVER:
+		gameNewServer->setText( "&Start server" );
+		view->clearField();
+		haveCS = false;
+		delete connection;
+		delete kbserver;
+		connection = 0;
+		break;
 	
-	 	   case KonnectionHandling::CLIENT:
-				KMessageBox::error( this, i18n( "You can't start a server while you are connected!" ) );
-				break;
-		}
+	    case KonnectionHandling::CLIENT:
+		KMessageBox::error( this, i18n( "You can't start a server while you are connected!" ) );
+		break;
+	}
     }
 }
 
@@ -303,12 +302,12 @@ void KBattleshipApp::requestedEnemyBattleFieldState( int fieldx, int fieldy )
 
 void KBattleshipApp::requestedOwnFieldShipListJob( int fieldx, int fieldy, QPainter *painter )
 {
-	view->giveOwnFieldShipListType( painter, shiplist->getXYShipType( fieldx, fieldy ) );
+    view->giveOwnFieldShipListType( painter, shiplist->getXYShipType( fieldx, fieldy ) );
 }
 
 void KBattleshipApp::requestedEnemyFieldShipListJob( int fieldx, int fieldy, QPainter *painter )
 {
-	view->giveOwnFieldShipListType( painter, shiplist->getXYShipType( fieldx, fieldy ) );
+    view->giveOwnFieldShipListType( painter, shiplist->getXYShipType( fieldx, fieldy ) );
 }
 
 void KBattleshipApp::changeEnemyFieldData( int fieldx, int fieldy, int type )
@@ -334,21 +333,21 @@ void KBattleshipApp::connectToBattleshipServer()
 {
     if( client->getHost() != "" )
     {
-		kbclient = new KBattleshipClient( client->getHost(), ( client->getPort() ).toInt() );
-        delete client;
+	kbclient = new KBattleshipClient( client->getHost(), ( client->getPort() ).toInt() );
+	delete client;
         gameServerConnect->setText( "Dis&connect from server" );
         connection = new KonnectionHandling( this, kbclient );
-		connect( connection, SIGNAL( ownFieldDataChanged( int, int, int ) ), this, SLOT( changeOwnFieldData( int, int, int ) ) );
-		connect( connection, SIGNAL( enemyFieldDataChanged( int, int, int ) ), this, SLOT( changeEnemyFieldData( int, int, int ) ) );
-		connect( connection, SIGNAL( requestBattleFieldState( int, int ) ), this, SLOT( requestedEnemyBattleFieldState( int, int ) ) );
+	connect( connection, SIGNAL( ownFieldDataChanged( int, int, int ) ), this, SLOT( changeOwnFieldData( int, int, int ) ) );
+	connect( connection, SIGNAL( enemyFieldDataChanged( int, int, int ) ), this, SLOT( changeEnemyFieldData( int, int, int ) ) );
+	connect( connection, SIGNAL( requestBattleFieldState( int, int ) ), this, SLOT( requestedEnemyBattleFieldState( int, int ) ) );
         connect( connection, SIGNAL( changeConnectText() ), this, SLOT( changeConnectText() ) );
         connect( connection, SIGNAL( sendMessage( KMessage * ) ), this, SLOT( sendMessage( KMessage * ) ) );
-		connect( this, SIGNAL( battleFieldState( int, int, int ) ), connection, SLOT( gotBattleFieldState( int, int, int ) ) );
+	connect( this, SIGNAL( battleFieldState( int, int, int ) ), connection, SLOT( gotBattleFieldState( int, int, int ) ) );
     }
     else
     {
-		KMessageBox::error( this, i18n( "You forgot to enter a host!" ) );
-		haveCS = false;
+	KMessageBox::error( this, i18n( "You forgot to enter a host!" ) );
+	haveCS = false;
     }
 }
 

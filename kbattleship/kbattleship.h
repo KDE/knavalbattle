@@ -52,12 +52,11 @@ class KBattleshipView;
 class KBattleshipApp : public KMainWindow
 {
     Q_OBJECT
-
     public:
         KBattleshipApp( QWidget *parent = 0, const char *name = 0 );
         ~KBattleshipApp();
 
-		void init();
+	void init();
 
     protected:
         void saveOptions();
@@ -65,53 +64,53 @@ class KBattleshipApp : public KMainWindow
         void initActions();
         void initStatusBar();
         void initView();
-		void initSound();
-		void initShipPlacing();
+	void initSound();
+	void initShipPlacing();
 
     public slots:
-		void slotServerConnect();
-		void slotNewServer();
-	    void slotGameQuit();
+	void slotServerConnect();
+	void slotNewServer();
+        void slotGameQuit();
         void slotViewToolBar();
         void slotViewStatusBar();
         void slotStatusMsg( const QString &text );
-		void startBattleshipServer();
-		void connectToBattleshipServer();
-		void placeShip( int fieldx, int fieldy, int button );
-		void sendMessage( int fieldx, int fieldy );
-		void sendMessage( KMessage *msg );
-		void changeOwnFieldData( int fieldx, int fieldy, int type );
-		void changeEnemyFieldData( int fieldx, int fieldy, int type );
-		void changeConnectText();
-		void changeStartText();
-		void stoppedServerDialog();
-		void stoppedConnectDialog();
-		void requestedOwnBattleFieldState( int fieldx, int fieldy );
-		void requestedEnemyBattleFieldState( int fieldx, int fieldy );	
-		void requestedOwnFieldShipListJob( int fieldx, int fieldy, QPainter *painter );
-		void requestedEnemyFieldShipListJob( int fieldx, int fieldy, QPainter *painter);
+	void startBattleshipServer();
+	void connectToBattleshipServer();
+	void placeShip( int fieldx, int fieldy, int button );
+	void sendMessage( int fieldx, int fieldy );
+	void sendMessage( KMessage *msg );
+	void changeOwnFieldData( int fieldx, int fieldy, int type );
+	void changeEnemyFieldData( int fieldx, int fieldy, int type );
+	void changeConnectText();
+	void changeStartText();
+	void stoppedServerDialog();
+	void stoppedConnectDialog();
+	void requestedOwnBattleFieldState( int fieldx, int fieldy );
+	void requestedEnemyBattleFieldState( int fieldx, int fieldy );	
+	void requestedOwnFieldShipListJob( int fieldx, int fieldy, QPainter *painter );
+	void requestedEnemyFieldShipListJob( int fieldx, int fieldy, QPainter *painter);
 
     private:
         KConfig *config;
         QSplitter *split;
         KChatWidget *chat;
         KBattleshipView *view;
-		KBattleshipServer *kbserver;
-		KBattleshipClient *kbclient;
-		KAction *gameServerConnect;
-		KAction *gameNewServer;
+	KBattleshipServer *kbserver;
+	KBattleshipClient *kbclient;
+	KAction *gameServerConnect;
+	KAction *gameNewServer;
         KAction *gameQuit;
         KToggleAction *viewToolBar;
         KToggleAction *viewStatusBar;
-		KBattleshipSound *sound;
+	KBattleshipSound *sound;
         KClientDialog *client;
-		KServerDialog *server;
-		KonnectionHandling *connection;
-		KShipList *shiplist;
-		bool haveCS;
+	KServerDialog *server;
+	KonnectionHandling *connection;
+	KShipList *shiplist;
+	bool haveCS;
 	
     signals:
-		void battleFieldState( int fieldx, int fieldy, int state );
+	void battleFieldState( int fieldx, int fieldy, int state );
 };
 
 #endif

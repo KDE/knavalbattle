@@ -32,15 +32,15 @@ class KServerDialog : public serverStartDlg
         KServerDialog( QWidget *parent = 0, const char *name = 0 );
         ~KServerDialog();
 	
-		QString getPort();
+	QString getPort();
 	
     public slots:
         void slotStartClicked();
-		void slotCancelClicked();
+	void slotCancelClicked();
 
     signals:
-		void startServer();	
-		void cancelServer();
+	void startServer();	
+	void cancelServer();
 };
 
 #endif

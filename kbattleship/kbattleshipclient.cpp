@@ -56,9 +56,9 @@ void KBattleshipClient::readData()
 {
     if( canReadLine() )
     {	
-		KMessage *msg = new KMessage();
-		msg->setDataStream( readLine() );
-		emit newMessage( msg );
+	KMessage *msg = new KMessage();
+	msg->setDataStream( readLine() );
+	emit newMessage( msg );
         delete msg;
     }
 }

@@ -33,30 +33,30 @@ class KBattleshipView : public QWidget
         KBattleshipView( QWidget *parent = 0, const char *name = 0 );
         ~KBattleshipView();
 
-		void startDrawing();
-		void clearField();
-		void changeOwnFieldData( int fieldx, int fieldy, int type );
-		void changeEnemyFieldData( int fieldx, int fieldy, int type );
-        void giveEnemyFieldShipListType( QPainter *painter, int type );
-		void giveOwnFieldShipListType( QPainter *painter, int type );
-		int getOwnFieldState( int &fieldx, int &fieldy );
-		int getEnemyFieldState( int &fieldx, int &fieldy );
+	void startDrawing();
+	void clearField();
+	void changeOwnFieldData( int fieldx, int fieldy, int type );
+	void changeEnemyFieldData( int fieldx, int fieldy, int type );
+	void giveEnemyFieldShipListType( QPainter *painter, int type );
+	void giveOwnFieldShipListType( QPainter *painter, int type );
+	int getOwnFieldState( int &fieldx, int &fieldy );
+	int getEnemyFieldState( int &fieldx, int &fieldy );
 	
     protected:
     	void paintEnemyField();
-		void paintOwnField();
-		void paintEvent( QPaintEvent * );
-		void mouseReleaseEvent( QMouseEvent *event );
+	void paintOwnField();
+	void paintEvent( QPaintEvent * );
+	void mouseReleaseEvent( QMouseEvent *event );
 	
     private:
         KBattleField *ownfield;
         KBattleField *enemyfield;
 	
     signals:
-		void enemyFieldClicked( int fieldx, int fieldy );
-		void ownFieldClicked( int fieldx, int fieldy, int button );
+	void enemyFieldClicked( int fieldx, int fieldy );
+	void ownFieldClicked( int fieldx, int fieldy, int button );
         void requestedEnemyFieldShipListJob( int fieldx, int fieldy, QPainter *painter );
-		void requestedOwnFieldShipListJob( int fieldx, int fieldy, QPainter *painter );
+	void requestedOwnFieldShipListJob( int fieldx, int fieldy, QPainter *painter );
 };
 
 #endif

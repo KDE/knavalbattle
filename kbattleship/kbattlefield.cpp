@@ -32,10 +32,10 @@ KBattleField::KBattleField( QWidget *parent, const KBattleFieldType &type, QPain
     
     for( i = 0; i != 8; i++ ) // A to I
     {
-		for( j = 0; j != 8; j++ ) // 1 to 9
-		{
-	    	FieldData[ i ][ j ] = KBattleField::WATER;
-		}
+    	for( j = 0; j != 8; j++ ) // 1 to 9
+	{
+		FieldData[ i ][ j ] = KBattleField::WATER;
+    	}
     }
 
     setDrawValues( this );
@@ -51,10 +51,10 @@ void KBattleField::clearField()
     int i, j;
     for( i = 0; i != 8; i++ ) // A to I
     {
-		for( j = 0; j != 8; j++ ) // 1 to 9
-		{
-	    	FieldData[ i ][ j ] = KBattleField::WATER;
-		}
+	for( j = 0; j != 8; j++ ) // 1 to 9
+    	{
+	    FieldData[ i ][ j ] = KBattleField::WATER;
+	}
     }
 }
 
@@ -74,37 +74,37 @@ void KBattleField::drawField( QPainter *painter )
 
     for( i = 0; i != 8; i++ ) // A to I
     {
-		for( j = 0; j != 8; j++ ) // 1 to 9
-		{
-	    	setValues( ( ( ( i + 1 ) * 30 ) + FromLeft ), ( ( ( j + 1 ) * 30 ) + 5 ) , 30 );
-	    	drawSquare( painter );	
-	    	switch( FieldData[ i ][ j ] )
-	    	{
-				case KBattleField::WATER:
-		    		break;
+	for( j = 0; j != 8; j++ ) // 1 to 9
+	{
+	    setValues( ( ( ( i + 1 ) * 30 ) + FromLeft ), ( ( ( j + 1 ) * 30 ) + 5 ) , 30 );
+	    drawSquare( painter );	
+	    switch( FieldData[ i ][ j ] )
+	    {
+		case KBattleField::WATER:
+		    break;
 		
-				case KBattleField::HIT:
-		    		drawHitIcon( painter );
-		    		break;
+		case KBattleField::HIT:
+		    drawHitIcon( painter );
+		    break;
 		    
-				case KBattleField::DEATH:
-		    		drawDeathIcon( painter );
-		    		break;	
+		case KBattleField::DEATH:
+		    drawDeathIcon( painter );
+		    break;	
 
-				case KBattleField::SHIP:
-					switch( internalType )
-    				{
-						case KBattleFieldType::OWNFIELD:
-							findOwnFieldShipType( i, j, painter );
-		    				break;
+		case KBattleField::SHIP:
+		    switch( internalType )
+    		    {
+			case KBattleFieldType::OWNFIELD:
+			    findOwnFieldShipType( i, j, painter );
+		    	    break;
 						
-						case KBattleFieldType::ENEMYFIELD:
-							findEnemyFieldShipType( i, j, painter );
-		    				break;
-					}
-					break;
- 	    	}		
-		}
+			case KBattleFieldType::ENEMYFIELD:
+			    findEnemyFieldShipType( i, j, painter );
+		    	    break;
+		    }
+		    break;
+	    }		
+	}
     }
 
     painter->end();    
@@ -112,29 +112,29 @@ void KBattleField::drawField( QPainter *painter )
 
 void KBattleField::requestedShipIconDraw( QPainter *painter, int type )
 {
-	drawShipIcon( painter, type );
+    drawShipIcon( painter, type );
 }
 
 int KBattleField::findOwnFieldShipType( int x, int y, QPainter *painter )
 {
-	emit doOwnFieldShipListJob( x, y, painter ); 	
+    emit doOwnFieldShipListJob( x, y, painter ); 	
 }
 
 int KBattleField::findEnemyFieldShipType( int x, int y, QPainter *painter )
 {
-	emit doEnemyFieldShipListJob( x, y, painter ); 	
+    emit doEnemyFieldShipListJob( x, y, painter ); 	
 }
 
 void KBattleField::setDrawValues( QWidget *parent )
 {
     switch( internalType )
     {
-		case KBattleFieldType::OWNFIELD:
-			FromLeft = 15;
-	    	break;
+	case KBattleFieldType::OWNFIELD:
+	    FromLeft = 15;
+	    break;
 
-		case KBattleFieldType::ENEMYFIELD:
-	    	FromLeft = ( parent->width() / 2 ) + 30;
-	   	 	break;
+	case KBattleFieldType::ENEMYFIELD:
+	    FromLeft = ( parent->width() / 2 ) + 30;
+	    break;
     }
 }

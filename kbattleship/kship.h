@@ -28,18 +28,18 @@ class KShip : public QObject
         KShip( int shipxstart, int shipxstop, int shipystart, int shipxstart, int shiplength );
         ~KShip();
     
-		int shipxstart();
-		int shipxstop();
-		int shipystart();
-		int shipystop();
-		int shiptype();
+	int shipxstart();
+	int shipxstop();
+	int shipystart();
+	int shipystop();
+	int shiptype();
 	
     private:
-		int internalshipxstart;
-		int internalshipxstop;
-		int internalshipystart;
-		int internalshipystop;
-		int internalshiptype;
+	int internalshipxstart;
+	int internalshipxstop;
+	int internalshipystart;
+	int internalshipystop;
+	int internalshiptype;
 };
 
 #endif

@@ -36,14 +36,14 @@ void KGridWidget::setValues( int x, int y, int size )
 void KGridWidget::drawSquare( QPainter *painter )
 {
     if( internalPixmap )
-		delete internalPixmap;
+	delete internalPixmap;
 
     internalPixmap = new QPixmap( internalSize, internalSize );
     
     QBrush blackBrush( green );
     
     if( !painter->isActive() )
-		painter->begin( internalPixmap );
+	painter->begin( internalPixmap );
 
     painter->setBrush( blackBrush );
     painter->drawRect( internalX, internalY, internalSize, internalSize );
@@ -75,8 +75,8 @@ void KGridWidget::drawIcon( QPainter *painter, QString iconName )
     QStringList picDirl = stdDirs->findDirs( "data", "kbattleship" );
     for( QStringList::Iterator it = picDirl.begin(); it != picDirl.end(); it++ )
     {
-		picDir=*it;
-		break;
+	picDir=*it;
+	break;
     }
 
     picDir = picDir + "pictures/";
