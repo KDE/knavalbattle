@@ -10,10 +10,9 @@ noinst_HEADERS   = kmessagetype.h kmessage.h kbattleshipserver.h kbattleshipclie
                    kbattleshipview.h kgridwidget.h kbattlefieldtype.h kbattlefield.h \
 		   konnectionhandling.h kserverdialog.h kclientdialog.h kbattleship.h
 METASOURCES = AUTO
-KDE_ICON = kbattleship
 
 rcdir = $(kde_datadir)/kbattleship
 rc_DATA = kbattleshipui.rc
 
 kdelnkdir   = $(kde_appsdir)/Games
-kdelnk_DATA = KBattleship.desktop
+kdelnk_DATA = kbattleship.desktop

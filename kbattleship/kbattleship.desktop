@@ -1,0 +1,12 @@
+[Desktop Entry]
+Name=KBattleship
+Name[cs]=Lodě
+Name[eo]=Batalŝipo
+Name[hu]=Tengeri ütközet
+Name[ro]=Bătălie navală
+Exec=kbattleship %i %m -caption "%c"
+Icon=kbattleship
+Type=Application
+DocPath=docs/en/index.html
+Comment=Battle the other's fleet
+Terminal=0
