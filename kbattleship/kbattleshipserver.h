@@ -23,6 +23,8 @@
 #include <qsocket.h>
 #include <qserversocket.h>
 #include <qtextstream.h>
+#include <qmessagebox.h>
+#include <klocale.h>
 #include "kmessage.h"
 
 class KBattleshipServer : public QServerSocket

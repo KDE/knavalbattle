@@ -21,8 +21,15 @@ KBattleshipServer::KBattleshipServer( int port ) : QServerSocket( port )
 {
     if( !ok() )
     {
-     kdDebug() << "Failed to bind on Port " << port << " !" << endl;
-     exit(1);
+     QString err;
+     err.sprintf(i18n( "Failed to bind to local port \"%d!\"\n\nPlease check if another KBattelship server instance\nis running or another application uses this port." ), port );
+     QMessageBox *msgErr = new QMessageBox(
+        i18n( "Could not connect to port" ),
+        err,
+        QMessageBox::Critical,
+        QMessageBox::Ok | QMessageBox::Default,
+        0, 0 );
+     msgErr->exec();
     }
 }
 
