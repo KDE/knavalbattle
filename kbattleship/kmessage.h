@@ -21,6 +21,7 @@
 #include <kdebug.h>
 #include <qmap.h>
 #include <qobject.h>
+#include <qdom.h>
 #include <qstring.h>
 #include <qstringlist.h>
 
@@ -38,12 +39,14 @@ class KMessage : QObject
         void setDataStream( QString stream );
         int getType();
         QString returnSendStream();
+    
+	QDomDocument *xmlDocument;
+	QDomElement *xmlDocElement;
 
-        QMap<QString,QString> messageMap;
         int messageType;
 
     private:
-        void parseMessage( QString messageStream );
+        void parseMessage();
 };
 
 #endif
