@@ -37,6 +37,7 @@ void KBattleshipApp::init()
     initStatusBar();
     initActions();
     initView();
+    initChat();
     initSound();
     initShipPlacing();
     readOptions();
@@ -66,6 +67,11 @@ void KBattleshipApp::initSound()
     sound = new KBattleshipSound();
 }
 
+void KBattleshipApp::initChat()
+{
+    connect( chat, SIGNAL( sendMessage( QString ) ), this, SLOT( sendChatMessage( QString ) ) );
+}
+
 void KBattleshipApp::initShipPlacing()
 {
     connect( shiplist, SIGNAL( ownFieldDataChanged( int, int, int ) ), this, SLOT( changeOwnFieldData( int, int, int ) ) );
@@ -82,6 +88,7 @@ void KBattleshipApp::initView()
     split->setOrientation( Vertical );
     view = new KBattleshipView( split );
     chat = new KChatWidget ( split );
+    chat->acceptMsg( false );
     chat->raise();
     shiplist = new KShipList();
 
@@ -153,6 +160,29 @@ void KBattleshipApp::sendMessage( KMessage *msg )
     }
 }
 
+void KBattleshipApp::sendChatMessage( QString text )
+{
+    if( haveCS )
+    {
+        KMessage *msg = new KMessage( KMessage::CHAT );
+        msg->chatMessage( currentNickname, text );
+
+	switch( connection->getType() )
+	{
+	    case KonnectionHandling::SERVER:
+		kbserver->sendMessage( msg );
+		delete msg;
+		break;
+		
+	    case KonnectionHandling::CLIENT:
+	    	kbclient->sendMessage( msg );
+		delete msg;
+		break;	
+	}
+    }
+}
+
+
 void KBattleshipApp::saveOptions()
 {
     config->setGroup( "General" );
@@ -201,7 +231,7 @@ void KBattleshipApp::slotServerConnect()
 {
     if( !haveCS )
     {
-		// TODO: use KDialogBase
+	// TODO: use KDialogBase
         slotStatusMsg( i18n( "Loading Connect-Server dialog..." ) );
 
 	client = new KClientDialog();
@@ -270,16 +300,19 @@ void KBattleshipApp::startBattleshipServer()
 {
     gameNewServer->setText( "&Stop server" );
     kbserver = new KBattleshipServer( ( server->getPort() ).toInt() );
+    currentNickname = server->getNickname();
+    chat->setNickname( currentNickname );
     delete server;
     connect( kbserver, SIGNAL( serverFailure() ), this, SLOT( changeStartText() ) );
     kbserver->start();
-
+    chat->acceptMsg( true );
     connection = new KonnectionHandling( this, kbserver );    
 
     connect( connection, SIGNAL( ownFieldDataChanged( int, int, int ) ), this, SLOT( changeOwnFieldData( int, int, int ) ) );
     connect( connection, SIGNAL( enemyFieldDataChanged( int, int, int ) ), this, SLOT( changeEnemyFieldData( int, int, int ) ) );
     connect( connection, SIGNAL( requestBattleFieldState( int, int ) ), this, SLOT( requestedOwnBattleFieldState( int, int ) ) );
     connect( connection, SIGNAL( sendMessage( KMessage * ) ), this, SLOT( sendMessage( KMessage * ) ) );
+    connect( connection, SIGNAL( gotChatMessage( QString *, QString * ) ), chat, SLOT( receivedMessage( QString *, QString * ) ) );
     connect( this, SIGNAL( battleFieldState( int, int, int ) ), connection, SLOT( gotBattleFieldState( int, int, int ) ) );
 }
 
@@ -334,14 +367,18 @@ void KBattleshipApp::connectToBattleshipServer()
     if( client->getHost() != "" )
     {
 	kbclient = new KBattleshipClient( client->getHost(), ( client->getPort() ).toInt() );
+	currentNickname = client->getNickname();
+	chat->setNickname( currentNickname );
 	delete client;
         gameServerConnect->setText( "Dis&connect from server" );
+	chat->acceptMsg( true );
         connection = new KonnectionHandling( this, kbclient );
 	connect( connection, SIGNAL( ownFieldDataChanged( int, int, int ) ), this, SLOT( changeOwnFieldData( int, int, int ) ) );
 	connect( connection, SIGNAL( enemyFieldDataChanged( int, int, int ) ), this, SLOT( changeEnemyFieldData( int, int, int ) ) );
 	connect( connection, SIGNAL( requestBattleFieldState( int, int ) ), this, SLOT( requestedEnemyBattleFieldState( int, int ) ) );
         connect( connection, SIGNAL( changeConnectText() ), this, SLOT( changeConnectText() ) );
         connect( connection, SIGNAL( sendMessage( KMessage * ) ), this, SLOT( sendMessage( KMessage * ) ) );
+	connect( connection, SIGNAL( gotChatMessage( QString *, QString * ) ), chat, SLOT( receivedMessage( QString *, QString * ) ) );
 	connect( this, SIGNAL( battleFieldState( int, int, int ) ), connection, SLOT( gotBattleFieldState( int, int, int ) ) );
     }
     else

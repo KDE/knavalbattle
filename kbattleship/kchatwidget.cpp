@@ -19,17 +19,39 @@
 
 KChatWidget::KChatWidget( QWidget *parent, const char *name ) : chatWidget( parent, name )
 {
+    setMinimumSize( 600, 180 );
     connect( sendBtn, SIGNAL( clicked() ), SLOT( slotComputeMessage() ) );
     connect( commentEdit, SIGNAL( returnPressed() ), SLOT( slotComputeMessage() ) );
+    chatView->setAutoUpdate( true );
 }
 
 KChatWidget::~KChatWidget()
 {
 }
 
+void KChatWidget::acceptMsg( bool value )
+{
+    acceptMsgs = value;
+}
+
+void KChatWidget::receivedMessage( QString *nickname, QString *msg )
+{
+    kdDebug() << "nick: " << *nickname << endl;
+    chatView->append( QString( "<" ) + *nickname + QString( "> " ) + *msg );
+}
+
+void KChatWidget::setNickname( QString nickname )
+{
+    currentNickname = nickname;
+}
+
 void KChatWidget::slotComputeMessage()
 {
-    chatView->setText( commentEdit->text() );
-    commentEdit->setText( "" );
+    if( acceptMsgs )
+    {
+	chatView->append( QString( "<" ) + currentNickname + QString( "> " ) + commentEdit->text() );
+	emit sendMessage( commentEdit->text() );
+	commentEdit->setText( "" );
+    }
 }
 

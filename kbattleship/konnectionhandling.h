@@ -52,6 +52,7 @@ class KonnectionHandling : public QObject
 	int internalType;
 
     signals:	
+	void gotChatMessage( QString *nickname, QString *msg );
 	void requestBattleFieldState( int fieldx, int fieldy );
 	void ownFieldDataChanged( int fieldx, int fieldy, int type );
 	void enemyFieldDataChanged( int fieldx, int fieldy, int type );

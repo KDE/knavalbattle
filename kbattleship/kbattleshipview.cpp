@@ -27,7 +27,7 @@ KBattleshipView::~KBattleshipView()
 
 void KBattleshipView::startDrawing()
 {
-    setFixedSize( 600, 400 );
+    setMinimumSize( 600, 300 );
     setBackgroundMode( PaletteBase );
     QPainter ownpainter( this );
     QPainter enemypainter( this );

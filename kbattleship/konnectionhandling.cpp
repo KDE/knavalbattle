@@ -88,6 +88,10 @@ void KonnectionHandling::gotNewMessage( KMessage *msg )
 	        case KMessage::ANSWER_SHOOT:
 	    	    kdDebug() << "CLIENT A-SHOOT!" << endl;
 		    break;
+		    
+		case KMessage::CHAT:
+		    emit gotChatMessage( &(msg->getField( "nickname" )), &(msg->getField( "chat" )) );
+		    break;
     	    }
 	    break;
 	    
@@ -96,6 +100,10 @@ void KonnectionHandling::gotNewMessage( KMessage *msg )
 	    {
 		case KMessage::ANSWER_SHOOT:
 		    emit enemyFieldDataChanged( msg->getField( "fieldx" ).toInt(), msg->getField( "fieldy" ).toInt(), msg->getField( "fieldstate" ).toInt() );
+		    break;
+		    
+		case KMessage::CHAT:
+		    emit gotChatMessage( &(msg->getField( "nickname" )), &(msg->getField( "chat" )) );
 		    break;
 	    }
 	    break;

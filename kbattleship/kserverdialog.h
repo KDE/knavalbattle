@@ -33,6 +33,7 @@ class KServerDialog : public serverStartDlg
         ~KServerDialog();
 	
 	QString getPort();
+	QString getNickname();
 	
     public slots:
         void slotStartClicked();

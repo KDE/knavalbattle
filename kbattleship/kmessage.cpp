@@ -44,12 +44,10 @@ void KMessage::addField( QString name, QString content )
     xmlDocument->documentElement().appendChild( xmlElement );
 }
 
-void KMessage::chatMessage( QString message )
+void KMessage::chatMessage( QString nickname, QString message )
 {
-    QDomElement xmlElement = xmlDocument->createElement( "chat" );
-    QDomText xmlText = xmlDocument->createTextNode( message );
-    xmlElement.appendChild( xmlText );
-    xmlDocument->documentElement().appendChild( xmlElement );
+    addField( "nickname", nickname );
+    addField( "chat", message );
 }
 
 void KMessage::setDataStream( QString stream )
@@ -81,7 +79,7 @@ QString KMessage::getField( QString name )
 	    if( xmlElement.tagName() == name )
 		return xmlElement.text();
 	xmlNode = xmlNode.nextSibling();
-     }
+    }
     return QString::null;
 }
 

@@ -64,6 +64,7 @@ class KBattleshipApp : public KMainWindow
         void initActions();
         void initStatusBar();
         void initView();
+	void initChat();
 	void initSound();
 	void initShipPlacing();
 
@@ -79,6 +80,7 @@ class KBattleshipApp : public KMainWindow
 	void placeShip( int fieldx, int fieldy, int button );
 	void sendMessage( int fieldx, int fieldy );
 	void sendMessage( KMessage *msg );
+	void sendChatMessage( QString text );
 	void changeOwnFieldData( int fieldx, int fieldy, int type );
 	void changeEnemyFieldData( int fieldx, int fieldy, int type );
 	void changeConnectText();
@@ -108,7 +110,8 @@ class KBattleshipApp : public KMainWindow
 	KonnectionHandling *connection;
 	KShipList *shiplist;
 	bool haveCS;
-	
+	QString currentNickname;
+    	
     signals:
 	void battleFieldState( int fieldx, int fieldy, int state );
 };

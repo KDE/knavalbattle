@@ -54,3 +54,8 @@ QString KClientDialog::getHost()
 {
     return serverEdit->text();
 }
+
+QString KClientDialog::getNickname()
+{
+    return nicknameEdit->text();
+}

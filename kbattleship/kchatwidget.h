@@ -21,7 +21,8 @@
 #include <qpushbutton.h>
 #include <qmultilineedit.h>
 #include <qlineedit.h>
-#include <dialogs/chatwidget.h>
+#include "dialogs/chatwidget.h"
+#include "kmessage.h"
 
 class KChatWidget : public chatWidget
 {
@@ -31,8 +32,19 @@ class KChatWidget : public chatWidget
         KChatWidget( QWidget *parent = 0, const char *name = 0 );
         ~KChatWidget();
 
+	void setNickname( QString nickname );
+	void acceptMsg( bool value );
+	
     public slots:
     	void slotComputeMessage();
+	void receivedMessage( QString *nickname, QString *msg );
+	
+    signals:
+	void sendMessage( QString msg );
+	
+    private:
+	QString currentNickname;
+	bool acceptMsgs;
 
 };
 

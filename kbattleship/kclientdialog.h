@@ -35,6 +35,7 @@ class KClientDialog : public clientConnectDlg
 
 	QString getPort();
 	QString getHost();
+	QString getNickname();
 		
     public slots:
         void slotConnectClicked();
