@@ -51,7 +51,7 @@ KBattleshipApp::KBattleshipApp() : KMainWindow()
 	if(picDirCheck.isEmpty() || onePicCheck.isEmpty())
 	{
 		KMessageBox::error(this, i18n("You don't have KBattleship pictures installed. The game cannot run without them!"));
-		exit(0);
+		qApp->exit(1);
 	}
 	else
 		init();
