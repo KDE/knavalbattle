@@ -1,6 +1,4 @@
 <!DOCTYPE kpartgui>
-<kpartgui name="kbattleshipui" version="1">
-<MenuBar>
-</MenuBar>
+<kpartgui name="kbattleship" version="1">
 <ToolBar name="mainToolBar" noMerge="1"/>
 </kpartgui>
