@@ -1,7 +1,15 @@
-INCLUDES         = $(all_includes)
-kbattleship_LDFLAGS = $(KDE_RPATH) $(all_libraries)
-kbattleship_LDADD   = -lkdecore -lkdeui -lqt -lkfile
-kbattleship_SOURCES = connectDlg.ui serverDlg.ui
-noinst_HEADERS   = connectDlg.h serverDlg.h
-METASOURCES = AUTO
-DISTCLEANFILES = $(METASOURCES)
+
+INCLUDES = $(all_includes)
+
+noinst_LTLIBRARIES = libkbattleshipdialogs.la
+
+libkbattleshipdialogs_la_SOURCES = dummy.cc connectDlg.ui serverDlg.ui
+libkbattleshipdialogs_la_LIBADD = $(LIB_KDEUI)
+libkbattleshipdialogs_la_LDFLAGS = $(all_libraries)
+libkbattleshipdialogs_la_METASOURCES = AUTO
+
+dummy.cc:
+	echo > dummy.cc
+
+DISTCLEANFILES = dummy.cc
+
