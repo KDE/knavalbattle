@@ -18,7 +18,7 @@
 #ifndef KBDESTROYSHIPSTRATEGY_H
 #define KBDESTROYSHIPSTRATEGY_H
 
-#include <kbstrategy.h>
+#include "kbstrategy.h"
 
 class KBDestroyShipStrategy : public KBStrategy
 {
