@@ -93,7 +93,7 @@ void KBattleshipApp::readOptions()
     toolBarPos = (KToolBar::BarPosition) config->readNumEntry( "ToolBarPos", KToolBar::Top );
     toolBar()->setBarPos( toolBarPos );
 
-    QSize size = config->readSizeEntry( "Geometry" );
+    QSize size = config->readSizeEntry( "AppGeometry" );
     if( !size.isEmpty() )
     {
         resize( size );
