@@ -15,7 +15,7 @@
  *   (at your option) any later version.                                   *
  *                                                                         *
  ***************************************************************************/
- 
+
 #ifndef KSHIP_H
 #define KSHIP_H
 
@@ -23,26 +23,26 @@
 
 class KShip : public QObject
 {
-    Q_OBJECT
-    public:
-        KShip(int, int, int, int, int, bool = false);
-        ~KShip();
-    
-        int shipxstart();
-        int shipxstop();
-        int shipystart();
-        int shipystop();
-        int shiptype();
+	Q_OBJECT
+public:
+	KShip(int, int, int, int, int, bool = false);
+	~KShip();
+
+	int shipxstart();
+	int shipxstop();
+	int shipystart();
+	int shipystop();
+	int shiptype();
 
 	bool placedLeft();
 	bool contains(int x, int y);
-    
-    private:
-        int m_shipxstart;
-        int m_shipxstop;
-        int m_shipystart;
-        int m_shipystop;
-        int m_shiptype;
+
+private:
+	int m_shipxstart;
+	int m_shipxstop;
+	int m_shipystart;
+	int m_shipystop;
+	int m_shiptype;
 	bool m_placedLeft;
 };
 

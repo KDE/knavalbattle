@@ -21,67 +21,67 @@
 
 KClientDialog::KClientDialog(QWidget *parent, const char *name) : clientConnectDlg(parent, name)
 {
-    m_config = kapp->config();
-    nicknameEdit->setText(QString::fromLocal8Bit(getenv("LOGNAME")));
+	m_config = kapp->config();
+	nicknameEdit->setText(QString::fromLocal8Bit(getenv("LOGNAME")));
 
-    connect(connectBtn, SIGNAL(clicked()), this, SLOT(slotConnectClicked()));
-    connect(cancelBtn, SIGNAL(clicked()), this, SLOT(slotCancelClicked()));
-    connect(serverEdit, SIGNAL(returnPressed(const QString &)), this, SLOT(slotReturnPressed(const QString &)));
-    m_config->setGroup("History");
-    serverEdit->completionObject()->setItems(m_config->readListEntry("CompletionList")); 
-    
-    serverEdit->setMaxCount(5);
-    serverEdit->setHistoryItems(m_config->readListEntry("HistoryList"));
+	connect(connectBtn, SIGNAL(clicked()), this, SLOT(slotConnectClicked()));
+	connect(cancelBtn, SIGNAL(clicked()), this, SLOT(slotCancelClicked()));
+	connect(serverEdit, SIGNAL(returnPressed(const QString &)), this, SLOT(slotReturnPressed(const QString &)));
+	m_config->setGroup("History");
+	serverEdit->completionObject()->setItems(m_config->readListEntry("CompletionList")); 
 
-    serverEdit->setCurrentItem(m_config->readNumEntry("Index", -1));
+	serverEdit->setMaxCount(5);
+	serverEdit->setHistoryItems(m_config->readListEntry("HistoryList"));
+
+	serverEdit->setCurrentItem(m_config->readNumEntry("Index", -1));
 }
 
 KClientDialog::~KClientDialog()
 {
-    m_config->setGroup("History");
-    m_config->writeEntry("CompletionList", serverEdit->completionObject()->items());
-    m_config->writeEntry("HistoryList", serverEdit->historyItems());
-    m_config->writeEntry("Index", serverEdit->currentItem());
-    m_config->sync();
+	m_config->setGroup("History");
+	m_config->writeEntry("CompletionList", serverEdit->completionObject()->items());
+	m_config->writeEntry("HistoryList", serverEdit->historyItems());
+	m_config->writeEntry("Index", serverEdit->currentItem());
+	m_config->sync();
 }
 
 void KClientDialog::slotConnectClicked()
 {
-    if(!serverEdit->currentText().stripWhiteSpace().isEmpty())
-    {
-	hide();
-	serverEdit->addToHistory(serverEdit->currentText());
-	emit sigConnectServer();
-    }
-    else
-	serverEdit->clearEdit();
+	if(!serverEdit->currentText().stripWhiteSpace().isEmpty())
+	{
+		hide();
+		serverEdit->addToHistory(serverEdit->currentText());
+		emit sigConnectServer();
+	}
+	else
+		serverEdit->clearEdit();
 }
 
 void KClientDialog::slotReturnPressed(const QString &hostname)
 {
-    if(!hostname.stripWhiteSpace().isEmpty())
-	serverEdit->addToHistory(hostname);
-    else
-	serverEdit->clearEdit();
+	if(!hostname.stripWhiteSpace().isEmpty())
+		serverEdit->addToHistory(hostname);
+	else
+		serverEdit->clearEdit();
 }
 
 void KClientDialog::slotCancelClicked()
 {
-    hide();
-    emit sigCancelConnect();
+	hide();
+	emit sigCancelConnect();
 }
 
 QString KClientDialog::port() const
 {
-    return QString::number(portEdit->value());
+	return QString::number(portEdit->value());
 }
 
 QString KClientDialog::host() const
 {
-    return serverEdit->currentText();
+	return serverEdit->currentText();
 }
 
 QString KClientDialog::nickname() const
 {
-    return nicknameEdit->text();
+	return nicknameEdit->text();
 }

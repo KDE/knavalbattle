@@ -20,9 +20,9 @@
 
 KServerDialog::KServerDialog(QWidget *parent, const char *name) : serverStartDlg(parent, name)
 {
-    connect(startBtn, SIGNAL(clicked()), this, SLOT(slotStartClicked()));
-    connect(cancelBtn, SIGNAL(clicked()), this, SLOT(slotCancelClicked()));
-    nicknameEdit->setText(QString::fromLocal8Bit(getenv("LOGNAME")));  
+	connect(startBtn, SIGNAL(clicked()), this, SLOT(slotStartClicked()));
+	connect(cancelBtn, SIGNAL(clicked()), this, SLOT(slotCancelClicked()));
+	nicknameEdit->setText(QString::fromLocal8Bit(getenv("LOGNAME")));  
 }
 
 KServerDialog::~KServerDialog()
@@ -31,22 +31,22 @@ KServerDialog::~KServerDialog()
 
 void KServerDialog::slotStartClicked()
 {
-    hide();
-    emit sigStartServer();
+	hide();
+	emit sigStartServer();
 }
 
 void KServerDialog::slotCancelClicked()
 {
-    hide();
-    emit sigCancelServer();
+	hide();
+	emit sigCancelServer();
 }
 
 QString KServerDialog::port() const
 {
-    return QString::number(portEdit->value());
+	return QString::number(portEdit->value());
 }
 
 QString KServerDialog::nickname() const
 {
-    return nicknameEdit->text();
+	return nicknameEdit->text();
 }

@@ -24,7 +24,7 @@
 
 class KBRandomShotStrategy : public KBStrategy
 {
-    public: 
+public: 
 	KBRandomShotStrategy(KBStrategy *parent = 0);
 	virtual ~KBRandomShotStrategy();
 
@@ -33,7 +33,7 @@ class KBRandomShotStrategy : public KBStrategy
 	virtual bool hasMoreShots();
 	virtual void shotAt(const QPoint &pos);
 
-    private:
+private:
 	bool advance();
 
 	int m_row;

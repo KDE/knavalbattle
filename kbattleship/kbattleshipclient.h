@@ -24,27 +24,27 @@
 
 class KBattleshipClient : public KExtendedSocket
 {
-    Q_OBJECT
-    public:
-        KBattleshipClient(const QString &host, int port);
-        ~KBattleshipClient();
+	Q_OBJECT
+public:
+	KBattleshipClient(const QString &host, int port);
+	~KBattleshipClient();
 
 	void init();
-        void sendMessage(KMessage *msg);
-    
-    private slots:
-        void slotReadData();
+	void sendMessage(KMessage *msg);
 
-    signals:
-        void sigConnected();
-        void sigEndConnect();
-        void sigSocketFailure(int);
-        void sigNewMessage(KMessage *);
+private slots:
+	void slotReadData();
+
+signals:
+	void sigConnected();
+	void sigEndConnect();
+	void sigSocketFailure(int);
+	void sigNewMessage(KMessage *);
 	void sigMessageSent(KMessage *);
-     
-    private:
-        QSocketNotifier *m_readNotifier;
-        QString m_readBuffer;
+
+private:
+	QSocketNotifier *m_readNotifier;
+	QString m_readBuffer;
 };
 
 #endif

@@ -28,23 +28,23 @@
 
 class KBAIPlayer : public QObject
 {
-    Q_OBJECT
-    public: 
+	Q_OBJECT
+public: 
 	KBAIPlayer();
 	~KBAIPlayer();
 	
 	void init(KBattleField *battle_field, KShipList *ai_shiplist);
 
-    public slots:
+public slots:
 	void slotRestart();
 	bool slotRequestShot();
 	bool shipPlaced(int shiplen, int x, int y, bool vertical); 
 
-    signals:
+signals:
 	void sigShootAt(const QPoint pos);
 	void sigReady();
 
-    private:
+private:
 	void chooseStrategy();
 	void addShips();
 

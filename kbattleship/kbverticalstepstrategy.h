@@ -2,7 +2,7 @@
                             kbverticalstepstrategy.h
                                   ----------
     Developers: (c) 2001 Kevin Krammer <kevin.krammer@gmx.at>
-		(c) 2001 Nikolas Zimmermann <wildfox@kde.org>
+				(c) 2001 Nikolas Zimmermann <wildfox@kde.org>
 
  ***************************************************************************/
 
@@ -23,7 +23,7 @@
 
 class KBVerticalStepStrategy : public KBStrategy
 {
-    public: 
+public: 
 	KBVerticalStepStrategy(KBStrategy *parent = 0);
 	virtual ~KBVerticalStepStrategy();
 
@@ -32,7 +32,7 @@ class KBVerticalStepStrategy : public KBStrategy
 	virtual bool hasMoreShots();
 	virtual void shotAt(const QPoint &pos);
 
-    private:
+private:
 	bool advance();
 	void setStart(int col, int row);
 

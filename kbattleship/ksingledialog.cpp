@@ -20,9 +20,9 @@
 
 KSingleDialog::KSingleDialog(QWidget *parent, const char *name) : singleStartDlg(parent, name)
 {
-    connect(startBtn, SIGNAL(clicked()), this, SLOT(slotStartClicked()));
-    connect(cancelBtn, SIGNAL(clicked()), this, SLOT(slotCancelClicked()));
-    nicknameEdit->setText(QString::fromLocal8Bit(getenv("LOGNAME")));  
+	connect(startBtn, SIGNAL(clicked()), this, SLOT(slotStartClicked()));
+	connect(cancelBtn, SIGNAL(clicked()), this, SLOT(slotCancelClicked()));
+	nicknameEdit->setText(QString::fromLocal8Bit(getenv("LOGNAME")));  
 }
 
 KSingleDialog::~KSingleDialog()
@@ -31,17 +31,17 @@ KSingleDialog::~KSingleDialog()
 
 void KSingleDialog::slotStartClicked()
 {
-    hide();
-    emit sigStartGame();
+	hide();
+	emit sigStartGame();
 }
 
 void KSingleDialog::slotCancelClicked()
 {
-    hide();
-    emit sigCancelGame();
+	hide();
+	emit sigCancelGame();
 }
 
 QString KSingleDialog::nickname() const
 {
-    return nicknameEdit->text();
+	return nicknameEdit->text();
 }

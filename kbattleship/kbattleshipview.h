@@ -28,32 +28,32 @@
 
 class KBattleshipView : public QWidget
 {
-    Q_OBJECT
-    public:
-        KBattleshipView(QWidget *parent = 0, const char *name = 0, bool draw = false);
-        ~KBattleshipView();
+	Q_OBJECT
+public:
+	KBattleshipView(QWidget *parent = 0, const char *name = 0, bool draw = false);
+	~KBattleshipView();
 
 	KBattleField *field() { return m_battlefield; }
-	
-        void startDrawing();
-        void clearField();
-        void changeOwnFieldData(int fieldx, int fieldy, int type);
-        void changeEnemyFieldData(int fieldx, int fieldy, int type);
+
+	void startDrawing();
+	void clearField();
+	void changeOwnFieldData(int fieldx, int fieldy, int type);
+	void changeEnemyFieldData(int fieldx, int fieldy, int type);
 
 	void previewShip(int fieldx, int fieldy, int type, bool rotate);
 
 	int ownFieldState(int fieldx, int fieldy);
 	int enemyFieldState(int &fieldx, int &fieldy);
 
-    signals:
-        void sigEnemyFieldClicked(int, int);
-        void sigOwnFieldClicked(int, int, int);
+signals:
+	void sigEnemyFieldClicked(int, int);
+	void sigOwnFieldClicked(int, int, int);
 	void sigMouseOverField(int, int, bool);
 
-    private:
+private:
 	bool eventFilter(QObject *object, QEvent *event);
-	
-        KBattleField *m_battlefield;
+
+	KBattleField *m_battlefield;
 	bool m_drawGrid;
 	bool m_decide;
 	int m_lastX;

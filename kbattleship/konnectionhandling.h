@@ -14,7 +14,7 @@
  *   (at your option) any later version.                                   *
  *                                                                         *
  ***************************************************************************/
- 
+
 #ifndef KONNECTIONHANDLING_H
 #define KONNECTIONHANDLING_H
 
@@ -30,27 +30,27 @@
 
 class KonnectionHandling : public QObject
 {
-    Q_OBJECT
-    public:
-        enum{SERVER, CLIENT};
-        KonnectionHandling(QWidget *parent, KBattleshipServer *server);
-        KonnectionHandling(QWidget *parent, KBattleshipClient *client);
-        ~KonnectionHandling();
+	Q_OBJECT
+public:
+	enum{SERVER, CLIENT};
+	KonnectionHandling(QWidget *parent, KBattleshipServer *server);
+	KonnectionHandling(QWidget *parent, KBattleshipClient *client);
+	~KonnectionHandling();
 
-        int type() { return m_type; }
+	int type() { return m_type; }
 
 	void updateInternal(KBattleshipServer *server);
 	void updateInternal(KBattleshipClient *client);
-    
-    public slots:
-        void slotNewMessage(KMessage *msg);
+
+public slots:
+	void slotNewMessage(KMessage *msg);
 	void slotMessageSent(KMessage *msg);
-        void slotNewClient();
-        void slotLostClient();	
-        void slotLostServer();
-        void slotSocketError(int error);
-    
-    signals:
+	void slotNewClient();
+	void slotLostClient();	
+	void slotLostServer();
+	void slotSocketError(int error);
+
+signals:
 	void sigStatusBar(const QString &);
 	void sigEnemyNickname(const QString &);
 	void sigEnemyFieldData(int, int, int, int, int, int, int, bool);
@@ -66,10 +66,10 @@ class KonnectionHandling : public QObject
 	void sigAbortNetworkGame();
 	void sigChatMessage(const QString &, const QString &, bool);
 
-    private:
-        KBattleshipServer *m_kbserver;
-        KBattleshipClient *m_kbclient;
-        int m_type;
+private:
+	KBattleshipServer *m_kbserver;
+	KBattleshipClient *m_kbclient;
+	int m_type;
 };
 
 #endif

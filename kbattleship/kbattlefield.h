@@ -25,37 +25,35 @@
 
 class KBattleField : public KGridWidget
 {
-    Q_OBJECT
-    public:
-        enum{FREE, WATER, HIT, DEATH, SHIP1P1, SHIP2P1, SHIP2P2, SHIP3P1, SHIP3P2, SHIP3P3, SHIP4P1, SHIP4P2, SHIP4P3, SHIP4P4};
-        KBattleField(QWidget *parentw, const char *name, bool grid);
-        ~KBattleField();
+	Q_OBJECT
+public:
+	enum{FREE, WATER, HIT, DEATH, SHIP1P1, SHIP2P1, SHIP2P2, SHIP3P1, SHIP3P2, SHIP3P3, SHIP4P1, SHIP4P2, SHIP4P3, SHIP4P4};
+	KBattleField(QWidget *parentw, const char *name, bool grid);
+	~KBattleField();
     
-        void clearOwnField();
+	void clearOwnField();
 	void clearEnemyField();
 	void clearPreviewField();
 
 	void drawField();
 	void setDrawField(bool draw) { m_canDraw = draw; }
 	
-        void setOwnState(int &fieldx, int &fieldy, int type) { m_ownfield[fieldx][fieldy] = type; }
-        int ownState(int fieldx, int fieldy) { return m_ownfield[fieldx][fieldy]; }
+ 	void setOwnState(int &fieldx, int &fieldy, int type) { m_ownfield[fieldx][fieldy] = type; }
+	int ownState(int fieldx, int fieldy) { return m_ownfield[fieldx][fieldy]; }
 
-        void setEnemyState(int &fieldx, int &fieldy, int type) { m_enemyfield[fieldx][fieldy] = type; }
-        int enemyState(int fieldx, int fieldy) { return m_enemyfield[fieldx][fieldy]; }
+	void setEnemyState(int &fieldx, int &fieldy, int type) { m_enemyfield[fieldx][fieldy] = type; }
+	int enemyState(int fieldx, int fieldy) { return m_enemyfield[fieldx][fieldy]; }
 
-        void setPreviewState(int fieldx, int &fieldy, int type, bool rotate);
-
-	QWidget *drawParent() { return m_parentWidget; }
+	void setPreviewState(int fieldx, int &fieldy, int type, bool rotate);
 
 	QRect ownRect();
 	QRect enemyRect();
 	
 	int gridSize() { return 32; }
 
-    private:
-        void drawOwnField();
-        void drawEnemyField();
+private:
+	void drawOwnField();
+	void drawEnemyField();
 
 	int ownXPosition();
 	int ownYPosition();
@@ -64,8 +62,8 @@ class KBattleField : public KGridWidget
 
 	int rectX();
 	
-        int m_ownfield[15][15];
-        int m_enemyfield[15][15];
+	int m_ownfield[15][15];
+	int m_enemyfield[15][15];
 
 	int m_newfield[15][15];
 	bool m_newdata[15][15];
@@ -79,8 +77,6 @@ class KBattleField : public KGridWidget
 	int m_width;
 	
 	bool m_canDraw;
-
-	QWidget *m_parentWidget;
 };
 
 #endif

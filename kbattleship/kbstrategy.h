@@ -24,17 +24,17 @@
 
 class KBStrategy
 {
-    public:
+public:
 	enum{FREE, SHOT, SHIP};
 	KBStrategy(KBStrategy *parent = 0);
 	virtual ~KBStrategy();
 
 	virtual const QPoint nextShot() = 0;
-        virtual void shotAt(const QPoint &pos);
+	virtual void shotAt(const QPoint &pos);
 	virtual void init(KBattleField *field, const QRect &field_rect);
 	virtual bool hasMoreShots() = 0;
 
-    protected:
+protected:
 	virtual QList<QPoint> *masterShotList();
 	virtual int enemyFieldStateAt(int x, int y);
 

@@ -1,8 +1,8 @@
 /***************************************************************************
-                                   ksingledialog.h
-                                  -----------------
-    Developers: (c) 2000-2001 Nikolas Zimmermann <wildfox@kde.org>
-                (c) 2000-2001 Daniel Molkentin <molkentin@kde.org>
+  ksingledialog.h
+  -----------------
+Developers: (c) 2000-2001 Nikolas Zimmermann <wildfox@kde.org>
+(c) 2000-2001 Daniel Molkentin <molkentin@kde.org>
 
  ***************************************************************************/
 
@@ -14,7 +14,7 @@
  *   (at your option) any later version.                                   *
  *                                                                         *
  ***************************************************************************/
- 
+
 #ifndef KSINGLEDIALOG_H
 #define KSINGLEDIALOG_H
 
@@ -25,20 +25,20 @@
 
 class KSingleDialog : public singleStartDlg
 {
-    Q_OBJECT
-    public:
-        KSingleDialog(QWidget *parent = 0, const char *name = 0);
-        ~KSingleDialog();
-    
-        QString nickname() const;
-    
-    public slots:
-        void slotStartClicked();
+	Q_OBJECT
+public:
+	KSingleDialog(QWidget *parent = 0, const char *name = 0);
+	~KSingleDialog();
+
+	QString nickname() const;
+
+public slots:
+	void slotStartClicked();
 	void slotCancelClicked();
 
-    signals:
-        void sigStartGame();	
-        void sigCancelGame();
+signals:
+	void sigStartGame();	
+	void sigCancelGame();
 };
 
 #endif

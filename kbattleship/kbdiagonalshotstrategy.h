@@ -21,7 +21,7 @@
 
 class KBDiagonalShotStrategy : public KBStrategy
 {
-    public: 
+public: 
 	enum Direction {LEFTUP, LEFTDOWN, RIGHTUP, RIGHTDOWN}; 
 	KBDiagonalShotStrategy(KBStrategy *parent = 0);
 	virtual ~KBDiagonalShotStrategy();
@@ -32,7 +32,7 @@ class KBDiagonalShotStrategy : public KBStrategy
 	virtual void startAt(int col, int row, Direction dir);
 	virtual QPoint endPoint();
 
-    private:
+private:
 	bool advance();
 
 	int m_row;

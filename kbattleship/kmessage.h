@@ -26,28 +26,28 @@
 
 class KMessage : public QObject
 {
-    Q_OBJECT
-    public:
-        enum{VERSION, DISCARD, GREET, SHIPSREADY, SHOOT, ANSWER_SHOOT, WON, REPLAY, CHAT};
+	Q_OBJECT
+public:
+	enum{VERSION, DISCARD, GREET, SHIPSREADY, SHOOT, ANSWER_SHOOT, WON, REPLAY, CHAT};
 
-        KMessage(int type);
-        KMessage();
-        ~KMessage();
+	KMessage(int type);
+	KMessage();
+	~KMessage();
 
-        int type();
+	int type();
 
 	void addField(const QString &name, const QString &content);
-        QString field(const QString &name) const;
+	QString field(const QString &name) const;
 
-        void setDataStream(const QString &stream);
-        QString sendStream() const;
+	void setDataStream(const QString &stream);
+	QString sendStream() const;
 
-        void chatMessage(const QString &nickname, const QString &message);
+	void chatMessage(const QString &nickname, const QString &message);
 	void versionMessage();
 
-    private:
-        QDomDocument m_xmlDocument;
-        int m_messageType;
+private:
+	QDomDocument m_xmlDocument;
+	int m_messageType;
 };
 
 #endif

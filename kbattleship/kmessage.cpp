@@ -25,15 +25,15 @@
 
 KMessage::KMessage(int type) : QObject()
 {
-    m_xmlDocument = QDomDocument("kmessage");
-    m_xmlDocument.appendChild(m_xmlDocument.createElement("kmessage"));
-    m_messageType = type;
-    addField("msgtype", QString::number(type));
+	m_xmlDocument = QDomDocument("kmessage");
+	m_xmlDocument.appendChild(m_xmlDocument.createElement("kmessage"));
+	m_messageType = type;
+	addField("msgtype", QString::number(type));
 }
 
 KMessage::KMessage() : QObject()
 {
-    m_xmlDocument = QDomDocument("kmessage");
+	m_xmlDocument = QDomDocument("kmessage");
 }
 
 KMessage::~KMessage()
@@ -42,51 +42,51 @@ KMessage::~KMessage()
 
 void KMessage::addField(const QString &name, const QString &content)
 {
-    QDomElement xmlElement = m_xmlDocument.createElement(name);
-    QDomText xmlText = m_xmlDocument.createTextNode(content);
-    xmlElement.appendChild(xmlText);
-    m_xmlDocument.documentElement().appendChild(xmlElement);
+	QDomElement xmlElement = m_xmlDocument.createElement(name);
+	QDomText xmlText = m_xmlDocument.createTextNode(content);
+	xmlElement.appendChild(xmlText);
+	m_xmlDocument.documentElement().appendChild(xmlElement);
 }
 
 void KMessage::setDataStream(const QString &stream)
 {
-    m_xmlDocument.setContent(stream);
+	m_xmlDocument.setContent(stream);
 #ifdef XMLDUMP
-    kdDebug() << "*** XML-IN ***" << endl << stream << endl << "***  END  ***" << endl;
+	kdDebug() << "*** XML-IN ***" << endl << stream << endl << "***  END  ***" << endl;
 #endif
 }
 
 QString KMessage::sendStream() const
 {
 #ifdef XMLDUMP
-    kdDebug() << "*** XML OUT ***" << endl << m_xmlDocument.toString() << endl << "***  END  ***" << endl;
+	kdDebug() << "*** XML OUT ***" << endl << m_xmlDocument.toString() << endl << "***  END  ***" << endl;
 #endif
-    return m_xmlDocument.toString();
+	return m_xmlDocument.toString();
 }
 
 QString KMessage::field(const QString &name) const
 {
-    QDomNode xmlNode = m_xmlDocument.documentElement().namedItem(name);
-    if(!xmlNode.isNull())
-	return (xmlNode.toElement()).text();
-    return QString::null;
+	QDomNode xmlNode = m_xmlDocument.documentElement().namedItem(name);
+	if(!xmlNode.isNull())
+		return (xmlNode.toElement()).text();
+	return QString::null;
 }
 
 int KMessage::type()
 {
-    return field("msgtype").toInt();
+	return field("msgtype").toInt();
 }
 
 void KMessage::chatMessage(const QString &nickname, const QString &message)
 {
-    addField("nickname", nickname);
-    addField("chat", message);
+	addField("nickname", nickname);
+	addField("chat", message);
 }
 
 void KMessage::versionMessage()
 {
-    addField("protocolVersion", protocolVersion);
-    addField("clientName", clientName);
-    addField("clientVersion", clientVersion);
-    addField("clientDescription", clientDescription);
+	addField("protocolVersion", protocolVersion);
+	addField("clientName", clientName);
+	addField("clientVersion", clientVersion);
+	addField("clientDescription", clientDescription);
 }

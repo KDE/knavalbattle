@@ -24,7 +24,7 @@
 
 class KBChooserStrategy : public KBStrategy
 {
-    public: 
+public: 
 	KBChooserStrategy(KBStrategy *parent = 0);
 	virtual ~KBChooserStrategy();
 
@@ -33,7 +33,7 @@ class KBChooserStrategy : public KBStrategy
 	virtual bool hasMoreShots();
 	virtual void shotAt(const QPoint &pos);
 
-    private:
+private:
 	bool advance();
 
 	KBStrategy *m_child;

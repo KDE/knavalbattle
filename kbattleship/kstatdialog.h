@@ -14,7 +14,7 @@
  *   (at your option) any later version.                                   *
  *                                                                         *
  ***************************************************************************/
- 
+
 #ifndef KSTATDIALOG_H
 #define KSTATDIALOG_H
 
@@ -22,27 +22,27 @@
 
 class KStatDialog : public statDlg
 {
-    Q_OBJECT
-    public:
-        KStatDialog(QWidget *parent = 0, const char *name = 0);
-        ~KStatDialog();
-    
-        void setShot();
-        void setShot(int shot);
-        void setHit();
-        void setHit(int hit);
-        void setWater();
-        void setWater(int water);
+	Q_OBJECT
+public:
+	KStatDialog(QWidget *parent = 0, const char *name = 0);
+	~KStatDialog();
 
-        void clear();
+	void setShot();
+	void setShot(int shot);
+	void setHit();
+	void setHit(int hit);
+	void setWater();
+	void setWater(int water);
+
+	void clear();
 	void clearWon();
-	
-        int shot();
-        int hit();
-        int water();
-    
-    public slots:
-    	void slotAddOwnWon();
+
+	int shot();
+	int hit();
+	int water();
+
+public slots:
+	void slotAddOwnWon();
 	void slotAddEnemyWon();
 };
 

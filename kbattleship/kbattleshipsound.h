@@ -14,7 +14,7 @@
  *   (at your option) any later version.                                   *
  *                                                                         *
  ***************************************************************************/
- 
+
 #ifndef KBATTLESHIPSOUND_H
 #define KBATTLESHIPSOUND_H
 
@@ -30,26 +30,26 @@
 
 class KBattleshipSound : public QObject
 {
-    Q_OBJECT
-    public:
-        enum{SHIP_SINK, PLAYER1_SHOOT_HIT, PLAYER2_SHOOT_HIT, PLAYER_SHOOT_WATER};
-        KBattleshipSound();
-        ~KBattleshipSound();
+	Q_OBJECT
+public:
+	enum{SHIP_SINK, PLAYER1_SHOOT_HIT, PLAYER2_SHOOT_HIT, PLAYER_SHOOT_WATER};
+	KBattleshipSound();
+	~KBattleshipSound();
 
-        bool initSoundServer();
+	bool initSoundServer();
 	bool serverError();
 
-        void turnOn();
-        void turnOff();
-    
-        void playSound(int file);
-    
-    private:
-        Arts::SimpleSoundServer soundserver;
-        Arts::PlayObjectFactory playObjectFactory;
-        Arts::PlayObject playObject;
+	void turnOn();
+	void turnOff();
 
-        bool m_serverRunning;
+	void playSound(int file);
+
+private:
+	Arts::SimpleSoundServer soundserver;
+	Arts::PlayObjectFactory playObjectFactory;
+	Arts::PlayObject playObject;
+
+	bool m_serverRunning;
 	bool m_soundError;
 };
 

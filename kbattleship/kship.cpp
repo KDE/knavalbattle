@@ -20,12 +20,12 @@
 
 KShip::KShip(int _shipxstart, int _shipxstop, int _shipystart, int _shipystop, int _shiplength, bool _placedLeft) : QObject()
 {
-    m_shipxstart = _shipxstart;
-    m_shipxstop = _shipxstop;
-    m_shipystart = _shipystart;
-    m_shipystop = _shipystop;
-    m_shiptype = _shiplength;
-    m_placedLeft = _placedLeft;
+	m_shipxstart = _shipxstart;
+	m_shipxstop = _shipxstop;
+	m_shipystart = _shipystart;
+	m_shipystop = _shipystop;
+	m_shiptype = _shiplength;
+	m_placedLeft = _placedLeft;
 }
 
 KShip::~KShip()
@@ -34,35 +34,35 @@ KShip::~KShip()
 
 int KShip::shipxstart()
 {
-    return m_shipxstart;
+	return m_shipxstart;
 }
 
 int KShip::shipxstop()
 {
-    return m_shipxstop;
+	return m_shipxstop;
 }
 
 int KShip::shipystart()
 {
-    return m_shipystart;
+	return m_shipystart;
 }
 
 int KShip::shipystop()
 {
-    return m_shipystop;
+	return m_shipystop;
 }
 
 int KShip::shiptype()
 {	
-    return m_shiptype;
+	return m_shiptype;
 }
 
 bool KShip::placedLeft()
 {
-    return m_placedLeft;
+	return m_placedLeft;
 }
 
 bool KShip::contains(int x, int y)
 {
-    return (x >= m_shipxstart && x <= m_shipxstop) && (y >= m_shipystart && y <= m_shipystop);
+	return (x >= m_shipxstart && x <= m_shipxstop) && (y >= m_shipystart && y <= m_shipystop);
 }

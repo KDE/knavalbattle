@@ -22,7 +22,7 @@
 
 class KBHorizontalStepStrategy : public KBStrategy
 {
-    public: 
+public: 
 	KBHorizontalStepStrategy(KBStrategy *parent = 0);
 	virtual ~KBHorizontalStepStrategy();
 
@@ -31,7 +31,7 @@ class KBHorizontalStepStrategy : public KBStrategy
 	virtual bool hasMoreShots();
 	virtual void shotAt(const QPoint &pos);
 
-    private:
+private:
 	bool advance();
 	void setStart(int col, int row);
 

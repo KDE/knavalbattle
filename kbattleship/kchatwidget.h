@@ -26,29 +26,29 @@
 
 class KChatWidget : public chatDlg
 {
-    Q_OBJECT
-    public:
-        KChatWidget(QWidget *parent = 0, const char *name = 0);
-        ~KChatWidget();
+	Q_OBJECT
+public:
+	KChatWidget(QWidget *parent = 0, const char *name = 0);
+	~KChatWidget();
 
 	void clear();
-        void setNickname(const QString &nickname) { m_currentNickname = nickname; }
+	void setNickname(const QString &nickname) { m_currentNickname = nickname; }
 
-    public slots:
-        void slotAcceptMsg(bool value);
-        void slotComputeMessage();
-        void slotReceivedMessage(const QString &nickname, const QString &msg, bool fromenemy = true);
-    
-    signals:
+public slots:
+	void slotAcceptMsg(bool value);
+	void slotComputeMessage();
+	void slotReceivedMessage(const QString &nickname, const QString &msg, bool fromenemy = true);
+
+signals:
 	void sigSendMessage(const QString &);
 	void sigChangeEnemyNickname(const QString &);
 	void sigChangeOwnNickname(const QString &);
-   
-    private:
-        virtual bool eventFilter(QObject *, QEvent *);
 
-        QString m_currentNickname;
-        bool m_acceptMsgs;
+private:
+	virtual bool eventFilter(QObject *, QEvent *);
+
+	QString m_currentNickname;
+	bool m_acceptMsgs;
 };
 
 #endif

@@ -23,7 +23,7 @@
 
 class KBDiagonalWrapStrategy : public KBStrategy
 {
-    public: 
+public: 
 	KBDiagonalWrapStrategy(KBStrategy *parent = 0);
 	virtual ~KBDiagonalWrapStrategy();
 
@@ -32,7 +32,7 @@ class KBDiagonalWrapStrategy : public KBStrategy
 	virtual bool hasMoreShots();
 	virtual void shotAt(const QPoint &pos);
 
-    private:
+private:
 	bool advance();
 	bool advanceRightDown();
 	bool advanceRightUp();

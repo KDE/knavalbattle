@@ -15,7 +15,7 @@
  *   (at your option) any later version.                                   *
  *                                                                         *
  ***************************************************************************/
- 
+
 #ifndef KSHIPLIST_H
 #define KSHIPLIST_H
 
@@ -27,33 +27,33 @@
 
 class KShipList : public QObject
 {
-    Q_OBJECT
-    public:
-        KShipList();
-        ~KShipList();
+	Q_OBJECT
+public:
+	KShipList();
+	~KShipList();
 
 	KShip *shipAt(int x, int y);
-        int shipTypeAt(int x, int y);
+	int shipTypeAt(int x, int y);
 
 	void clear();
 
-        void addNewShip(int button, int fieldx, int fieldy);
-        bool addNewShip(bool vertical, int fieldx, int fieldy);
+	void addNewShip(int button, int fieldx, int fieldy);
+	bool addNewShip(bool vertical, int fieldx, int fieldy);
 
-        bool canAddShips();
+	bool canAddShips();
 
-        int shipCount() { return m_shipsadded; }
+	int shipCount() { return m_shipsadded; }
 
 	int m_fieldx;
 	int m_fieldy;
 
-    signals:
-        void sigLastShipAdded();
-        void sigOwnFieldDataChanged(int, int, int);
+signals:
+	void sigLastShipAdded();
+	void sigOwnFieldDataChanged(int, int, int);
 
-    private:
-        QList<KShip> m_shiplist;
-        int m_shipsadded;
+private:
+	QList<KShip> m_shiplist;
+	int m_shipsadded;
 };
 
 #endif

@@ -14,7 +14,7 @@
  *   (at your option) any later version.                                   *
  *                                                                         *
  ***************************************************************************/
- 
+
 #ifndef KCLIENTDIALOG_H
 #define KCLIENTDIALOG_H
 
@@ -29,26 +29,26 @@
 
 class KClientDialog : public clientConnectDlg
 {
-    Q_OBJECT
-    public:
-        KClientDialog(QWidget *parent = 0, const char *name = 0);
-        ~KClientDialog();
+	Q_OBJECT
+public:
+	KClientDialog(QWidget *parent = 0, const char *name = 0);
+	~KClientDialog();
 
-        QString port() const;
-        QString host() const;
-        QString nickname() const;
-    	
-    public slots:
-        void slotConnectClicked();
-        void slotCancelClicked();
+	QString port() const;
+	QString host() const;
+	QString nickname() const;
+
+public slots:
+	void slotConnectClicked();
+	void slotCancelClicked();
 	void slotReturnPressed(const QString &hostname);
-    
-    signals:
-        void sigConnectServer();
-        void sigCancelConnect();
-    
-    private:
-        KConfig *m_config;
+
+signals:
+	void sigConnectServer();
+	void sigCancelConnect();
+
+private:
+	KConfig *m_config;
 };
 
 #endif

@@ -14,7 +14,7 @@
  *   (at your option) any later version.                                   *
  *                                                                         *
  ***************************************************************************/
- 
+
 #ifndef KSERVERDIALOG_H
 #define KSERVERDIALOG_H
 
@@ -26,21 +26,21 @@
 
 class KServerDialog : public serverStartDlg
 {
-    Q_OBJECT
-    public:
-        KServerDialog(QWidget *parent = 0, const char *name = 0);
-        ~KServerDialog();
-    
-        QString port() const;
-        QString nickname() const;
-    
-    public slots:
-        void slotStartClicked();
-        void slotCancelClicked();
+	Q_OBJECT
+public:
+	KServerDialog(QWidget *parent = 0, const char *name = 0);
+	~KServerDialog();
 
-    signals:
-        void sigStartServer();	
-        void sigCancelServer();
+	QString port() const;
+	QString nickname() const;
+
+public slots:
+	void slotStartClicked();
+	void slotCancelClicked();
+
+signals:
+	void sigStartServer();	
+	void sigCancelServer();
 };
 
 #endif

@@ -14,7 +14,7 @@
  *   (at your option) any later version.                                   *
  *                                                                         *
  ***************************************************************************/
- 
+
 #ifndef KHIGHSCOREDIALOG_H
 #define KHIGHSCOREDIALOG_H
 
@@ -23,15 +23,15 @@
 
 class KHighscoreDialog : public highscoreDlg
 {
-    Q_OBJECT
-    public:
-        KHighscoreDialog(QWidget *parent = 0, const char *name = 0);
-        ~KHighscoreDialog();
-    
+	Q_OBJECT
+public:
+	KHighscoreDialog(QWidget *parent = 0, const char *name = 0);
+	~KHighscoreDialog();
+
 	void load();
 	void save(const QString &name, int shots, int hits, int water);
-	
-    private:
+
+private:
 	KHighscore *m_score;
 };
 

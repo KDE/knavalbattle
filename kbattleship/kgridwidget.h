@@ -23,15 +23,15 @@
 
 class KGridWidget : public QObject
 {
-    Q_OBJECT
-    public:
-        KGridWidget(QWidget *parent, const char *name, bool draw);
-        ~KGridWidget();
+	Q_OBJECT
+public:
+	KGridWidget(QWidget *parent, const char *name, bool draw);
+	~KGridWidget();
 
 	void enableGrid() { m_drawGrid = true; }
 	void disableGrid() { m_drawGrid = false; }
 
-    protected:
+protected:
 	void cleanBuffer();
 	void finished();
 	void setValues(int x, int y, int size);
@@ -42,7 +42,7 @@ class KGridWidget : public QObject
 	void drawShipIcon(int type, bool rotate = false, bool hit = false, bool water = false);
 	void drawShipIcon(int ship, int part, bool rotate = false, bool hit = false);
 
-    private:
+private:
 	void cacheImages();
 	void drawIcon(QPixmap icon, bool hitBlend = false, bool waterBlend = false, bool rotate = false);
 	QString findIcon(const QString &name) const;

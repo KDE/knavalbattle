@@ -20,14 +20,14 @@
 
 KChatWidget::KChatWidget(QWidget *parent, const char *name) : chatDlg(parent, name)
 {
-    setMinimumSize(600, 180);
-    connect(sendBtn, SIGNAL(clicked()), this, SLOT(slotComputeMessage()));
-    connect(commentEdit, SIGNAL(returnPressed()), this, SLOT(slotComputeMessage()));
-    chatView->setFocusProxy(commentEdit);
-    commentEdit->installEventFilter(this);
+	setMinimumSize(600, 180);
+	connect(sendBtn, SIGNAL(clicked()), this, SLOT(slotComputeMessage()));
+	connect(commentEdit, SIGNAL(returnPressed()), this, SLOT(slotComputeMessage()));
+	chatView->setFocusProxy(commentEdit);
+	commentEdit->installEventFilter(this);
 
-    m_currentNickname = QString::null;
-    slotAcceptMsg(false);
+	m_currentNickname = QString::null;
+	slotAcceptMsg(false);
 }
 
 KChatWidget::~KChatWidget()
@@ -36,52 +36,52 @@ KChatWidget::~KChatWidget()
 
 void KChatWidget::clear()
 {
-    m_currentNickname = QString::null;
-    slotAcceptMsg(false);
-    chatView->clear();
-    commentEdit->clear();
+	m_currentNickname = QString::null;
+	slotAcceptMsg(false);
+	chatView->clear();
+	commentEdit->clear();
 }
 
 void KChatWidget::slotAcceptMsg(bool value)
 {
-    m_acceptMsgs = value;
+	m_acceptMsgs = value;
 }
 
 void KChatWidget::slotReceivedMessage(const QString &nickname, const QString &msg, bool fromenemy)
 {
-    // Niko Z:
-    // IRC roxxx :)
-    if(msg.startsWith("/me ")) 
-	chatView->append(QString(" * ") + nickname + QString(" ") + msg.mid(4));
-    else if(msg.startsWith("/nick "))
-	if(fromenemy)
-	    emit sigChangeEnemyNickname(msg.mid(6));
+	// Niko Z:
+	// IRC roxxx :)
+	if(msg.startsWith("/me ")) 
+		chatView->append(QString(" * ") + nickname + QString(" ") + msg.mid(4));
+	else if(msg.startsWith("/nick "))
+		if(fromenemy)
+			emit sigChangeEnemyNickname(msg.mid(6));
+		else
+			emit sigChangeOwnNickname(msg.mid(6));
 	else
-	    emit sigChangeOwnNickname(msg.mid(6));
-    else
-	chatView->append(nickname + QString(": ") + msg);
-    chatView->setCursorPosition(chatView->numLines(), 0);
+		chatView->append(nickname + QString(": ") + msg);
+	chatView->setCursorPosition(chatView->numLines(), 0);
 }
 
 bool KChatWidget::eventFilter(QObject *obj, QEvent *e)
 {
-    if(obj == commentEdit && e->type() == QEvent::Wheel)
-    {
-        kapp->notify(chatView, e);
-        return true;
-    }
-    return chatDlg::eventFilter(obj, e);
+	if(obj == commentEdit && e->type() == QEvent::Wheel)
+	{
+		kapp->notify(chatView, e);
+		return true;
+	}
+	return chatDlg::eventFilter(obj, e);
 }
 
 void KChatWidget::slotComputeMessage()
 {
-    if(!commentEdit->text().stripWhiteSpace().isEmpty() && m_acceptMsgs)
-    {
-	slotReceivedMessage(m_currentNickname, commentEdit->text(), false);
-	emit sigSendMessage(commentEdit->text());
-	commentEdit->setText("");
-    }
-    else if(commentEdit->text().stripWhiteSpace().isEmpty() && m_acceptMsgs)
-	commentEdit->setText("");
-    commentEdit->setFocus();
+	if(!commentEdit->text().stripWhiteSpace().isEmpty() && m_acceptMsgs)
+	{
+		slotReceivedMessage(m_currentNickname, commentEdit->text(), false);
+		emit sigSendMessage(commentEdit->text());
+		commentEdit->setText("");
+	}
+	else if(commentEdit->text().stripWhiteSpace().isEmpty() && m_acceptMsgs)
+		commentEdit->setText("");
+	commentEdit->setFocus();
 }

@@ -2,7 +2,7 @@
                             kbdestroyshipstratgey.h
                                   ----------
     Developers: (c) 2001 Kevin Krammer <kevin.krammer@gmx.at>
-		(c) 2001 Nikolas Zimmermann <wildfox@kde.org>
+				(c) 2001 Nikolas Zimmermann <wildfox@kde.org>
 
  ***************************************************************************/
 
@@ -22,7 +22,7 @@
 
 class KBDestroyShipStrategy : public KBStrategy
 {
-    public: 
+public: 
 	KBDestroyShipStrategy(KBStrategy *parent = 0);
 	virtual ~KBDestroyShipStrategy();
 
@@ -33,7 +33,7 @@ class KBDestroyShipStrategy : public KBStrategy
 
 	virtual void destroyShipAt(const QPoint pos);
 
-    private:
+private:
 	enum {NODIR, VERTICAL, HORIZONTAL};
 
 	bool m_working;
