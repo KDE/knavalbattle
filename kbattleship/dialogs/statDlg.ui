@@ -19,85 +19,86 @@
         <name>caption</name>
         <string>Form1</string>
     </property>
-    <widget>
-        <class>QLayoutWidget</class>
+    <grid>
         <property stdset="1">
-            <name>name</name>
-            <cstring>Layout2</cstring>
+            <name>margin</name>
+            <number>11</number>
         </property>
         <property stdset="1">
-            <name>geometry</name>
-            <rect>
-                <x>10</x>
-                <y>10</y>
-                <width>66</width>
-                <height>250</height>
-            </rect>
+            <name>spacing</name>
+            <number>6</number>
         </property>
-        <vbox>
+        <widget row="0"  column="0" >
+            <class>QLayoutWidget</class>
             <property stdset="1">
-                <name>margin</name>
-                <number>0</number>
+                <name>name</name>
+                <cstring>Layout2</cstring>
             </property>
-            <property stdset="1">
-                <name>spacing</name>
-                <number>6</number>
-            </property>
-            <widget>
-                <class>QLabel</class>
+            <vbox>
                 <property stdset="1">
-                    <name>name</name>
-                    <cstring>ShotLabel</cstring>
+                    <name>margin</name>
+                    <number>0</number>
                 </property>
                 <property stdset="1">
-                    <name>text</name>
-                    <string>Shots:</string>
+                    <name>spacing</name>
+                    <number>6</number>
                 </property>
-            </widget>
-            <widget>
-                <class>QLCDNumber</class>
-                <property stdset="1">
-                    <name>name</name>
-                    <cstring>ShotLCD</cstring>
-                </property>
-            </widget>
-            <widget>
-                <class>QLabel</class>
-                <property stdset="1">
-                    <name>name</name>
-                    <cstring>HitLabel</cstring>
-                </property>
-                <property stdset="1">
-                    <name>text</name>
-                    <string>Hit:</string>
-                </property>
-            </widget>
-            <widget>
-                <class>QLCDNumber</class>
-                <property stdset="1">
-                    <name>name</name>
-                    <cstring>HitLCD</cstring>
-                </property>
-            </widget>
-            <widget>
-                <class>QLabel</class>
-                <property stdset="1">
-                    <name>name</name>
-                    <cstring>WaterLabel</cstring>
-                </property>
-                <property stdset="1">
-                    <name>text</name>
-                    <string>Water:</string>
-                </property>
-            </widget>
-            <widget>
-                <class>QLCDNumber</class>
-                <property stdset="1">
-                    <name>name</name>
-                    <cstring>WaterLCD</cstring>
-                </property>
-            </widget>
-        </vbox>
-    </widget>
+                <widget>
+                    <class>QLabel</class>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>ShotLabel</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>text</name>
+                        <string>Shots:</string>
+                    </property>
+                </widget>
+                <widget>
+                    <class>QLCDNumber</class>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>ShotLCD</cstring>
+                    </property>
+                </widget>
+                <widget>
+                    <class>QLabel</class>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>HitLabel</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>text</name>
+                        <string>Hit:</string>
+                    </property>
+                </widget>
+                <widget>
+                    <class>QLCDNumber</class>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>HitLCD</cstring>
+                    </property>
+                </widget>
+                <widget>
+                    <class>QLabel</class>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>WaterLabel</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>text</name>
+                        <string>Water:</string>
+                    </property>
+                </widget>
+                <widget>
+                    <class>QLCDNumber</class>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>WaterLCD</cstring>
+                    </property>
+                </widget>
+            </vbox>
+        </widget>
+    </grid>
 </widget>
 </UI>
