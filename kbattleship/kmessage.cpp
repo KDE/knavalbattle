@@ -52,7 +52,7 @@ void KMessage::parseMessage()
             {
                 QChar testchar;
                 int testint;
-                testint=it.toInt();
+                testint=*it.toInt();
                 testchar=testint;
                 if( !testchar.isDigit() )
                 {
