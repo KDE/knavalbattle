@@ -382,6 +382,7 @@ void KBattleshipApp::resetClient(bool status)
         gameNewServer->setEnabled(true);
 	view->clearField();
 	stat->clear();
+	chat->clear();
 	resetConnection();
 	delete connection;
 	connection = 0;
@@ -462,6 +463,7 @@ void KBattleshipApp::resetServer(bool status)
         gameServerConnect->setEnabled(true);
 	view->clearField();
 	stat->clear();
+	chat->clear();
 	resetConnection();
         delete connection;
 	delete kbserver;
@@ -497,7 +499,6 @@ void KBattleshipApp::slotNewServer()
 
 void KBattleshipApp::sendGreet()
 {
-    kdDebug() << "GREET!" << endl;
     KMessage *msg = new KMessage(KMessage::GREET);
     msg->addField(QString("nickname"), ownNickname);
     sendMessage(msg);

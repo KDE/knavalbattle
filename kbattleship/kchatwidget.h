@@ -31,6 +31,8 @@ class KChatWidget : public chatWidget
         KChatWidget(QWidget *parent = 0, const char *name = 0);
         ~KChatWidget();
 
+	void clear();
+
         void setNickname(QString nickname);
 
     public slots:
@@ -38,6 +40,9 @@ class KChatWidget : public chatWidget
         void slotComputeMessage();
         void receivedMessage(QString nickname, QString msg);
     
+    private slots:
+	void changeFocus();
+
     signals:
         void sendMessage(QString);
     
