@@ -54,13 +54,13 @@ bool KBattleshipSound::initSoundServer()
     if(soundserver.isNull())
     {
 	KMessageBox::error(0L, i18n("Couldn't connect to aRts Soundserver. Sound deactivated"));
+	playObjectFactory = Arts::PlayObjectFactory::null();
+	soundserver = Arts::SimpleSoundServer::null();
 	serverRunning = false;
 	soundError = true;
     }
     else
     {
-	playObjectFactory = Arts::PlayObjectFactory::null();
-	soundserver = Arts::SimpleSoundServer::null();
 	serverRunning = true;
 	soundError = false;
     }
