@@ -22,7 +22,7 @@
 
 #include "kbaiplayer.moc"
 
-#define MAX_SHIP_LEN 5
+#define MAX_SHIP_LEN 4
 
 KBAIPlayer::KBAIPlayer()
 {
@@ -36,7 +36,7 @@ KBAIPlayer::~KBAIPlayer()
 {
 	if(m_masterStrategy != 0)
 		delete m_masterStrategy;
-    
+
 	if(m_randomSeq != 0)
 		delete m_randomSeq;
 }
@@ -58,7 +58,7 @@ void KBAIPlayer::slotRestart()
 {
 	if(m_randomSeq == 0 || m_ownShipList == 0 || m_battleField == 0)
 		return;
-  
+
 	addShips();
 	chooseStrategy();
 	emit sigReady();
@@ -72,7 +72,7 @@ void KBAIPlayer::addShips()
 	{
 		int x, y;
 		bool vertical;
-	
+
 		do
 		{
 			x = (int) m_randomSeq->getLong(m_fieldRect.width() - 1);
@@ -80,7 +80,7 @@ void KBAIPlayer::addShips()
 			vertical = m_randomSeq->getBool();
 		}
 		while(!shipPlaced(shiplen, x, y, vertical));
-	}	
+	}
 }
 
 void KBAIPlayer::chooseStrategy()
@@ -88,7 +88,7 @@ void KBAIPlayer::chooseStrategy()
 	if(m_masterStrategy != 0)
 		delete m_masterStrategy;
 
-	m_masterStrategy = new KBChooserStrategy();    
+	m_masterStrategy = new KBChooserStrategy();
 	m_masterStrategy->init(m_battleField, m_fieldRect);
 }
 
@@ -107,7 +107,5 @@ bool KBAIPlayer::slotRequestShot()
 bool KBAIPlayer::shipPlaced(int shiplen, int x, int y, bool vertical)
 {
 	QRect ship = vertical ? QRect(x, y, 1, shiplen) : QRect(x, y, shiplen, 1);
-	if(m_ownShipList->addNewShip(vertical, ship.x(), ship.y()))
-		return true;
-	return false;
+	return m_ownShipList->addNewShip(vertical, ship.x(), ship.y());
 }

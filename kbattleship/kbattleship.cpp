@@ -19,6 +19,7 @@
 #include <stdlib.h>
 #include <qlayout.h>
 #include <kgamemisc.h>
+#include "main.h"
 #include "kbattleship.moc"
 
 KBattleshipApp::KBattleshipApp(QWidget *, const char *name) : KMainWindow(0, name)
@@ -144,7 +145,7 @@ void KBattleshipApp::initView()
 	connect(m_view, SIGNAL(sigOwnFieldClicked(int, int, int)), this, SLOT(slotPlaceShip(int, int, int)));
 	connect(m_view, SIGNAL(sigMouseOverField(int, int, bool)), this, SLOT(slotPlaceShipPreview(int, int, bool)));
 
-	setCaption(i18n("KBattleship %1").arg(0.9), false);
+	setCaption(i18n("KBattleship %1").arg(clientVersion), false);
 }
 
 void KBattleshipApp::slotDeleteAI()

@@ -48,6 +48,7 @@ bool KBDestroyShipStrategy::hasMoreShots()
 	if(shipDestroyed())
 	{
 		m_working = false;
+		markBorderingFields();
 		return false;
 	}
 
@@ -313,4 +314,81 @@ bool KBDestroyShipStrategy::shipDestroyed()
 	}
 
 	return true;
+}
+
+void KBDestroyShipStrategy::markBorderingFields()
+{
+	int col = m_start.x();
+	int row = m_start.y();
+	int i,j;
+
+	if (m_direction == VERTICAL)
+	{
+		while (m_fieldRect.contains(col, row) &&
+		       m_battleField->ownState(col, row) == KBattleField::HIT)
+		{
+			row--;
+		}
+		if (row >= 0)
+		{ // above the ship
+			setViablePos(col, row, false);
+		}
+		row++;
+		i = col+1;  // right of the ship
+		j = col-1;  // left of the ship
+		while (m_fieldRect.contains(col, row) &&
+		       m_battleField->ownState(col, row) == KBattleField::HIT)
+		{
+			if (m_fieldRect.contains(i, row))
+				setViablePos(i, row, false);
+			if (m_fieldRect.contains(j, row))
+				setViablePos(j, row, false);
+			setViablePos(col, row, false);
+    	row++;
+		}
+		if (m_fieldRect.contains(col, row))
+		{ // below the ship
+			setViablePos(col, row, false);
+		}
+	}
+	else if (m_direction == HORIZONTAL)
+	{
+		while (m_fieldRect.contains(col, row) &&
+		       m_battleField->ownState(col, row) == KBattleField::HIT)
+		{
+			col--;
+		}
+		if (col >= 0)
+		{ // left of the ship
+			setViablePos(col, row, false);
+		}
+		col++;
+		i = row+1;  // below the ship
+		j = row-1;  // above the ship
+		while (m_fieldRect.contains(col, row) &&
+		       m_battleField->ownState(col, row) == KBattleField::HIT)
+		{
+			if (m_fieldRect.contains(col, i))
+				setViablePos(col, i, false);
+			if (m_fieldRect.contains(col, j))
+				setViablePos(col, j, false);
+			setViablePos(col, row, false);
+    	col++;
+		}
+		if (m_fieldRect.contains(col, row))
+		{ // right of the ship
+			setViablePos(col, row, false);
+		}
+	}
+	else
+	{
+		if (row > 0)
+			setViablePos(col, (row-1), false);
+		if (row < (m_fieldRect.height()-1))
+			setViablePos(col, (row+1), false);
+		if (col > 0)
+			setViablePos((col-1), row, false);
+		if (col < (m_fieldRect.width()-1))
+			setViablePos((col+1), row, false);
+	}
 }

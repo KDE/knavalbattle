@@ -35,10 +35,14 @@ public:
 	virtual bool hasMoreShots() = 0;
 
 protected:
-	virtual QList<QPoint> *masterShotList();
-	virtual int enemyFieldStateAt(int x, int y);
+	QList<QPoint> *masterShotList();
+	int enemyFieldStateAt(int x, int y);
+	bool* getViableShots();
 
 	QRect m_fieldRect;
+	bool* m_viableShots;
+	bool isViablePos(int x, int y);
+	void setViablePos(int x, int y, bool viable);
 	QList<QPoint> *m_prevShots;
 
 	KBattleField *m_battleField;

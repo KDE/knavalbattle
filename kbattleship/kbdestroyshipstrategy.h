@@ -50,6 +50,7 @@ private:
 	virtual bool searchRight();
 
 	virtual bool shipDestroyed();
+	virtual void markBorderingFields();
 };
 
 #endif
