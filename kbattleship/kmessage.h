@@ -25,7 +25,7 @@
 #include <qstring.h>
 #include <qstringlist.h>
 
-class KMessage : QObject
+class KMessage : public QObject
 {
     Q_OBJECT
     public:

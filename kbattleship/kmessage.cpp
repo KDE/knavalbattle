@@ -15,7 +15,6 @@
  *                                                                         *
  ***************************************************************************/
 
-#include "kmessage.h"
 #include "kmessage.moc"
 
 KMessage::KMessage( int type )
