@@ -41,8 +41,9 @@ void KGridWidget::drawSquare( QPainter *painter )
     internalPixmap = new QPixmap( internalSize, internalSize );
     
     QBrush blackBrush( green );
-        
-    painter->begin( internalPixmap );
+    
+    if( !painter->isActive() )
+	painter->begin( internalPixmap );
     painter->setBrush( blackBrush );
     painter->drawRect( internalX, internalY, internalSize, internalSize );
     bitBlt( this, 0, 0, internalPixmap );
