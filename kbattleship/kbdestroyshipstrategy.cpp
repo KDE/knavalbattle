@@ -112,7 +112,7 @@ bool KBDestroyShipStrategy::hasMoreShots()
 
 void KBDestroyShipStrategy::shotAt(const QPoint &pos)
 {
-	m_prevShots->append(new QPoint(pos));
+	m_prevShots.append(pos);
 }
 
 void KBDestroyShipStrategy::destroyShipAt(const QPoint pos)

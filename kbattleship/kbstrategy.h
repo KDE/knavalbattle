@@ -18,7 +18,7 @@
 #ifndef KBSTRATEGY_H
 #define KBSTRATEGY_H
 
-#include <qptrlist.h>
+#include <qvaluelist.h>
 #include <qpoint.h>
 #include "kbattlefield.h"
 
@@ -35,7 +35,7 @@ public:
 	virtual bool hasMoreShots() = 0;
 
 protected:
-	QPtrList<QPoint> *masterShotList();
+	QValueList<QPoint> masterShotList();
 	int enemyFieldStateAt(int x, int y);
 	bool* getViableShots();
 
@@ -43,7 +43,7 @@ protected:
 	bool* m_viableShots;
 	bool isViablePos(int x, int y);
 	void setViablePos(int x, int y, bool viable);
-	QPtrList<QPoint> *m_prevShots;
+	QValueList<QPoint> m_prevShots;
 
 	KBattleField *m_battleField;
 	KBStrategy *m_parent;

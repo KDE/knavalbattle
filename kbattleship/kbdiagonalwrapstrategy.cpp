@@ -125,14 +125,14 @@ bool KBDiagonalWrapStrategy::advance()
 
 bool KBDiagonalWrapStrategy::hasMoreShots()
 {
-	if(m_parent == 0 && !m_destroying && m_prevShots->count() > 0)
+	if(m_parent == 0 && !m_destroying && m_prevShots.count() > 0)
 	{
-		QPoint *pos = m_prevShots->last();
-		int state = m_battleField->ownState(pos->x(), pos->y());
+		QPoint pos = m_prevShots.last();
+		int state = m_battleField->ownState(pos.x(), pos.y());
 		if(state == KBattleField::HIT)
 		{
 			m_destroying = true;
-			m_destroyer->destroyShipAt(*pos);
+			m_destroyer->destroyShipAt(pos);
 		}
 	}
 
@@ -152,7 +152,7 @@ bool KBDiagonalWrapStrategy::hasMoreShots()
 
 void KBDiagonalWrapStrategy::shotAt(const QPoint &pos)
 {
-	m_prevShots->append(new QPoint(pos));
+	m_prevShots.append(pos);
 
 	if(m_child != 0)
 		m_child->shotAt(pos);

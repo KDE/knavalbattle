@@ -67,7 +67,7 @@ const QPoint KBChooserStrategy::nextShot()
 
 bool KBChooserStrategy::advance()
 {
-	if(!m_destroying && m_prevShots->count() % 5 == 0)
+	if(!m_destroying && m_prevShots.count() % 5 == 0)
 	{
 		delete m_child;
 
@@ -100,14 +100,14 @@ bool KBChooserStrategy::hasMoreShots()
 {
 	if(m_parent == 0)
 	{
-		if((!m_destroying) && m_prevShots->count() > 0)
+		if((!m_destroying) && m_prevShots.count() > 0)
 		{
-			QPoint *pos = m_prevShots->last();
-			int state = m_battleField->ownState(pos->x(), pos->y());
+			QPoint pos = m_prevShots.last();
+			int state = m_battleField->ownState(pos.x(), pos.y());
 			if(state == KBattleField::HIT)
 			{
 				m_destroying = true;
-				m_destroyer->destroyShipAt(*pos);
+				m_destroyer->destroyShipAt(pos);
 			}
 		}
 
@@ -134,6 +134,6 @@ bool KBChooserStrategy::hasMoreShots()
 
 void KBChooserStrategy::shotAt(const QPoint &pos)
 {
-	m_prevShots->append(new QPoint(pos));
+	m_prevShots.append(pos);
 	m_child->shotAt(pos);
 }

@@ -52,7 +52,7 @@ bool KBDiagonalShotStrategy::hasMoreShots()
 
 void KBDiagonalShotStrategy::shotAt(const QPoint &pos)
 {
-	m_prevShots->append(new QPoint(pos));
+	m_prevShots.append(pos);
 }
 
 void KBDiagonalShotStrategy::startAt(int col, int row, Direction dir)

@@ -20,15 +20,15 @@
 KBStrategy::KBStrategy(KBStrategy *parent)
 {
 	m_parent = parent;
-	m_prevShots = new QPtrList<QPoint>;
 	m_viableShots = 0;
 }
 
 KBStrategy::~KBStrategy()
 {
-	m_prevShots->setAutoDelete(true);
-	m_prevShots->clear();
-	delete m_prevShots;
+  while ( !m_prevShots.empty() ) 
+  {
+    m_prevShots.remove( m_prevShots.last() );
+  }
 	if (m_parent == 0 && m_viableShots != 0)
 	{
 		delete[] m_viableShots;
@@ -36,22 +36,22 @@ KBStrategy::~KBStrategy()
 }
 
 /* Returns the master strategy's shot list. */
-QPtrList<QPoint> *KBStrategy::masterShotList()
+QValueList<QPoint> KBStrategy::masterShotList()
 {
-	return (m_parent == 0) ? m_prevShots : m_parent->masterShotList();
+	return (!m_parent) ? m_prevShots : m_parent->masterShotList();
 }
 
 /* the AI player decided to shoot at pos */
 void KBStrategy::shotAt(const QPoint &pos)
 {
-	m_prevShots->append(new QPoint(pos));
+	m_prevShots.append(pos);
 }
 
 void KBStrategy::init(KBattleField *field, const QRect &field_rect)
 {
 	m_battleField = field;
 	m_fieldRect = field_rect;
-	if (m_parent == 0)
+	if (!m_parent)
 	{
 		if (m_viableShots == 0)
 		{
