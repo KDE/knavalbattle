@@ -19,7 +19,7 @@
 
 KBattleshipServer::KBattleshipServer( int port ) : QServerSocket( port )
 {
-    if( !ok )
+    if( !ok() )
     {
      kdDebug() << "Failed to bind on Port " << port << " !" << endl;
      exit(1);
@@ -45,29 +45,29 @@ void KBattleshipServer::readClient()
     if( socket->canReadLine() )
     {
         KMessageType msgtype;
-        KMessage( msgtype ) message;
-        message.setDataStream( socket->readLine() );
-        kdDebug() << "Type of message: " << message.getType() << endl;
+        KMessage *msg=new KMessage( msgtype );
+        msg->setDataStream( socket->readLine() );
+        kdDebug() << "Type of message: " << msg->getType() << endl;
     }
 }
 
-void KBattleshipServer::sendMessage( KMessage &msg )
+void KBattleshipServer::sendMessage( KMessage *msg )
 {
     QSocket* socket = (QSocket*)sender();
     QTextStream post( socket );
-    socket << msg.returnSendStream;
+    post << msg->returnSendStream();
     emit wroteToClient();
 }
 
-void discardClient()
+void KBattleshipServer::discardClient()
 {
     QSocket* socket = (QSocket*)sender();
     QTextStream post( socket );
-    KMessage msg;
     KMessageType msgtype;
     msgtype.setType( KMessageType::MSG_FORBIDDEN );
-    msgtype.addField( QString( "forbidden" ), QString( "add a reason here!" ) );
-    socket << msg.returnSendStream();
+    KMessage *msg=new KMessage( msgtype );
+    msg->addField( QString( "forbidden" ), QString( "didnotaccept" ) );
+    post << msg->returnSendStream();
     emit wroteToClient();
     delete socket;
     emit endConnect();

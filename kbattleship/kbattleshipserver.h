@@ -19,8 +19,10 @@
 #define KBATTLESHIPTSERVER_H
 
 #include <kdebug.h>
+#include <stdlib.h>
 #include <qsocket.h>
 #include <qserversocket.h>
+#include <qtextstream.h>
 #include "kmessage.h"
 #include "kmessagetype.h"
 
@@ -28,12 +30,13 @@ class KBattleshipServer : QServerSocket
 {
     Q_OBJECT
     public:
-        KBattleshipServer( int port = 54321);
+        KBattleshipServer( int port = 54321 );
         ~KBattleshipServer();
 
-    protected:
-        void newConnection();
+        void newConnection( int socket );
+        void readClient();
         void discardClient();
+        void sendMessage( KMessage *msg );
 
     signals:
         void newConnect();
