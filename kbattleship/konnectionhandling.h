@@ -44,7 +44,6 @@ class KonnectionHandling : public QObject
         void serverGotNewClient();
 	void serverWroteToClient();
 	void serverLostClient();	
-	void serverGotNewMessage();
 	void clientLostServer();
 	void clientSocketError( int error );
 	

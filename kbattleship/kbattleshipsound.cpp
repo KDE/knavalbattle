@@ -19,7 +19,6 @@
 
 KBattleshipSound::KBattleshipSound() : QObject()
 {
-    Dispatcher dispatcher;
     initSoundServer();
 }
 

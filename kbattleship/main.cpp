@@ -19,7 +19,11 @@
 #include <kaboutdata.h>
 #include <klocale.h>
 
+#include "arts/dispatcher.h"
 #include "kbattleship.h"
+
+using namespace std;
+using namespace Arts;
 
 static const char *description = I18N_NOOP( "KBattleship" );
 
@@ -45,6 +49,7 @@ int main( int argc, char *argv[] )
     }
     else
     {
+	Dispatcher dispatcher;
         KBattleshipApp *kbattleship = new KBattleshipApp();
         kbattleship->show();
     }

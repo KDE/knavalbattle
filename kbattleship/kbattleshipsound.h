@@ -23,7 +23,6 @@
 #include <kmessagebox.h>
 #include <qstring.h>
 #include <qobject.h>
-#include <arts/dispatcher.h>
 #include <arts/soundserver.h>
 
 using namespace std;
