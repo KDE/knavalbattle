@@ -1,4 +1,5 @@
 KBattleship ( beta -> final ) TODO List:
+KB Team:
     p = partially
     x = ready
 
@@ -8,3 +9,5 @@ KBattleship ( beta -> final ) TODO List:
     o Translation			[ ]
     o Documentation			[ ]
     
+User ideas:
+    o AI				[ ] (Triskelios)
