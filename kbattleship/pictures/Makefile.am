@@ -1,9 +1,9 @@
-datadir = $(kde_datadir)/kbattleship/pictures
-data_DATA = sea.png \
+picsdir = $(kde_datadir)/kbattleship/pictures
+pics_DATA = sea.png \
 	    water.png \
 	    hit.png \
 	    death.png \
-		border.png \
+	    border.png \
 	    ship1-1.png \
 	    ship2-1.png \
 	    ship2-2.png \
@@ -27,4 +27,4 @@ data_DATA = sea.png \
 
 KDE_ICON = kbattleship
 
-EXTRA_DIST = $(data_DATA)
+EXTRA_DIST = $(pics_DATA)
