@@ -144,7 +144,6 @@ void KBattleshipView::mouseReleaseEvent( QMouseEvent *event )
 
 void KBattleshipView::paintEvent( QPaintEvent * )
 {
-    kdDebug() << "Repaint!" << endl;
     QPainter ownpainter( this );
     QPainter enemypainter( this );
     ownfield->drawField( &ownpainter );
