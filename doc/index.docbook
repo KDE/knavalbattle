@@ -1,5 +1,6 @@
 <!DOCTYPE book PUBLIC "-//KDE//DTD DocBook V3.1-Based Variant V1.0//EN" [
  <!ENTITY KBattleship "<application>KBattleship</application>">
+ <!ENTITY % English "INCLUDE" -- change language only here -->                 
  <!ENTITY % addindex "IGNORE">
  <![ %addindex; [ <!ENTITY docindex SYSTEM "docindex.docbook"> ]]>
 ]>
@@ -7,7 +8,7 @@
      This is only the conversion of app.sgml into DocBook SGML.
      template.docbook gives you more information on what you can and
      should do.  Thanks. -->
-<book lang="en">
+<book lang="&language;">
   <bookinfo>
     <title>The KBattleship Handbook</title>
     <authorgroup>
