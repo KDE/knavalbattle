@@ -1271,7 +1271,7 @@ void KBattleshipApp::slotAIShootsAt(const QPoint pos)
 		m_gameSingle->setText(i18n("S&ingle Player"));
 		m_gameNewServer->setEnabled(true);
 		m_gameServerConnect->setEnabled(true);
-		slotStatusMsg(i18n("You lost the game :("));
+		slotStatusMsg(i18n("You lost the game. :("));
 		m_stat->slotAddEnemyWon();
 		slotUpdateHighscore();
 		m_view->drawEnemyShipsAI(m_enemyshiplist); // let's show ai player ships

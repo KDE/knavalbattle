@@ -232,7 +232,7 @@ void KonnectionHandling::slotSocketError(int error)
 			break;
 
 		default:
-			KMessageBox::error(0L, i18n("Unknown Error; No: %1").arg(error));
+			KMessageBox::error(0L, i18n("Unknown error; No: %1").arg(error));
 			break;
 	}
 
