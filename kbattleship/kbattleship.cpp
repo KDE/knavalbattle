@@ -37,7 +37,7 @@
 
 extern const char *clientVersion;
 
-KBattleshipApp::KBattleshipApp() : KMainWindow()
+KBattleshipWindow::KBattleshipWindow() : KMainWindow()
 {
 	shift = false;
 	m_connection = 0;
@@ -51,7 +51,7 @@ KBattleshipApp::KBattleshipApp() : KMainWindow()
 	init();
 }
 
-KBattleshipApp::~KBattleshipApp()
+KBattleshipWindow::~KBattleshipWindow()
 {
 	if(m_config != 0)
 		saveOptions();
@@ -60,7 +60,7 @@ KBattleshipApp::~KBattleshipApp()
 	delete m_enemyshiplist;
 }
 
-void KBattleshipApp::init()
+void KBattleshipWindow::init()
 {
 	m_aiPlaying = false;
 	m_placeable = false;
@@ -76,12 +76,12 @@ void KBattleshipApp::init()
 	parseCommandLine();
 }
 
-void KBattleshipApp::slotConfigureNotifications()
+void KBattleshipWindow::slotConfigureNotifications()
 {
   KNotifyDialog::configure(this);
 }
 
-void KBattleshipApp::initStatusBar()
+void KBattleshipWindow::initStatusBar()
 {
 	m_ownNickname = "-";
 	m_enemyNickname = "-";
@@ -91,7 +91,7 @@ void KBattleshipApp::initStatusBar()
 	statusBar()->setItemAlignment(ID_STATUS_MSG, AlignLeft);
 }
 
-void KBattleshipApp::initActions()
+void KBattleshipWindow::initActions()
 {
 	KStdAction::configureNotifications(this, SLOT(slotConfigureNotifications()), actionCollection());
 	m_gameServerConnect = new KAction(i18n("&Connect to Server..."), "connect_no", Key_F2, this, SLOT(slotServerConnect()), actionCollection(), "game_serverconnect");
@@ -110,24 +110,24 @@ void KBattleshipApp::initActions()
 	setupGUI( KMainWindow::Save | StatusBar | Keys | Create );
 }
 
-void KBattleshipApp::initChat()
+void KBattleshipWindow::initChat()
 {
 	connect(m_chat, SIGNAL(sigSendMessage(const QString &)), this, SLOT(slotSendChatMessage(const QString &)));
 	connect(m_chat, SIGNAL(sigChangeEnemyNickname(const QString &)), this, SLOT(slotChangeEnemyPlayer(const QString &)));
 	connect(m_chat, SIGNAL(sigChangeOwnNickname(const QString &)), this, SLOT(slotChangedNickCommand(const QString &)));
 }
 
-void KBattleshipApp::changeShipPlacementDirection(){
+void KBattleshipWindow::changeShipPlacementDirection(){
   shift = !shift;
 }
 
-void KBattleshipApp::initShipPlacing()
+void KBattleshipWindow::initShipPlacing()
 {
 	connect(m_ownshiplist, SIGNAL(sigOwnFieldDataChanged(int, int, int)), this, SLOT(slotChangeOwnFieldData(int, int, int)));
 	connect(m_ownshiplist, SIGNAL(sigLastShipAdded()), this, SLOT(slotShipsReady()));
 }
 
-void KBattleshipApp::initView()
+void KBattleshipWindow::initView()
 {
 	QWidget *dummy = new QWidget(this, "dummy");
 	setCentralWidget(dummy);
@@ -156,20 +156,20 @@ void KBattleshipApp::initView()
 	setCaption(i18n("KBattleship %1").arg(clientVersion), false);
 }
 
-void KBattleshipApp::slotDeleteAI()
+void KBattleshipWindow::slotDeleteAI()
 {
 	m_aiHits = 0;
 	delete m_aiPlayer;
 	m_aiPlayer = 0;
 }
 
-void KBattleshipApp::slotRestartAI()
+void KBattleshipWindow::slotRestartAI()
 {
 	m_aiHits = 0;
 	slotStartBattleshipGame(false);
 }
 
-void KBattleshipApp::slotEnemyFieldClick(int fieldx, int fieldy)
+void KBattleshipWindow::slotEnemyFieldClick(int fieldx, int fieldy)
 {
 	if(m_connection != 0 || m_aiPlaying)
 	{
@@ -334,7 +334,7 @@ void KBattleshipApp::slotEnemyFieldClick(int fieldx, int fieldy)
 	}
 }
 
-void KBattleshipApp::slotReceivedEnemyFieldData(int fieldx, int fieldy, int enemystate, int xstart, int xstop, int ystart, int ystop, bool death)
+void KBattleshipWindow::slotReceivedEnemyFieldData(int fieldx, int fieldy, int enemystate, int xstart, int xstop, int ystart, int ystop, bool death)
 {
 	m_stat->setShot();
 
@@ -415,19 +415,19 @@ void KBattleshipApp::slotReceivedEnemyFieldData(int fieldx, int fieldy, int enem
 	}
 }
 
-void KBattleshipApp::slotClientLost()
+void KBattleshipWindow::slotClientLost()
 {
 	slotAbortNetworkGame();
 	slotStatusMsg(i18n("Enemy disconnected."));
 }
 
-void KBattleshipApp::slotServerLost()
+void KBattleshipWindow::slotServerLost()
 {
 	slotAbortNetworkGame();
 	slotStatusMsg(i18n("Enemy disconnected."));
 }
 
-void KBattleshipApp::slotAbortNetworkGame()
+void KBattleshipWindow::slotAbortNetworkGame()
 {
 	slotStatusMsg(i18n("Ready"));
 	slotChangeOwnPlayer("-");
@@ -465,7 +465,7 @@ void KBattleshipApp::slotAbortNetworkGame()
 	}
 }
 
-void KBattleshipApp::slotReplay()
+void KBattleshipWindow::slotReplay()
 {
 	cleanup(true);
 	m_aiPlaying = false;
@@ -478,7 +478,7 @@ void KBattleshipApp::slotReplay()
 	m_stat->clear();
 }
 
-void KBattleshipApp::slotPlaceShipPreview(int fieldx, int fieldy)
+void KBattleshipWindow::slotPlaceShipPreview(int fieldx, int fieldy)
 {
 	int xadd = 0, yadd = 0;
 
@@ -537,7 +537,7 @@ void KBattleshipApp::slotPlaceShipPreview(int fieldx, int fieldy)
 	}
 }
 
-void KBattleshipApp::slotPlaceShip(int fieldx, int fieldy)
+void KBattleshipWindow::slotPlaceShip(int fieldx, int fieldy)
 {
 	if(m_connection != 0 || m_aiPlaying)
 	{
@@ -552,7 +552,7 @@ void KBattleshipApp::slotPlaceShip(int fieldx, int fieldy)
 	}
 }
 
-void KBattleshipApp::slotShipsReady()
+void KBattleshipWindow::slotShipsReady()
 {
 	if(m_aiPlaying)
 	{
@@ -573,7 +573,7 @@ void KBattleshipApp::slotShipsReady()
 	m_placeable = false;
 }
 
-void KBattleshipApp::slotSendMessage(int fieldx, int fieldy, int state)
+void KBattleshipWindow::slotSendMessage(int fieldx, int fieldy, int state)
 {
 	if(m_connection != 0)
 	{
@@ -589,7 +589,7 @@ void KBattleshipApp::slotSendMessage(int fieldx, int fieldy, int state)
 	}
 }
 
-void KBattleshipApp::slotSendMessage(KMessage *msg)
+void KBattleshipWindow::slotSendMessage(KMessage *msg)
 {
 	if(m_connection != 0)
 	{
@@ -600,7 +600,7 @@ void KBattleshipApp::slotSendMessage(KMessage *msg)
 	}
 }
 
-void KBattleshipApp::slotSendChatMessage(const QString &text)
+void KBattleshipWindow::slotSendChatMessage(const QString &text)
 {
 	if(m_connection != 0 && m_serverHasClient)
 	{
@@ -610,24 +610,24 @@ void KBattleshipApp::slotSendChatMessage(const QString &text)
 	}
 }
 
-void KBattleshipApp::slotChangedNickCommand(const QString &text)
+void KBattleshipWindow::slotChangedNickCommand(const QString &text)
 {
 	m_ownNickname = text;
 	slotChangeOwnPlayer(m_ownNickname);
 	m_chat->setNickname(m_ownNickname);
 }
 
-KShip *KBattleshipApp::shipAt(int fieldx, int fieldy)
+KShip *KBattleshipWindow::shipAt(int fieldx, int fieldy)
 {
 	return m_ownshiplist->shipAt(fieldx, fieldy);
 }
 
-KShip *KBattleshipApp::enemyShipAt(int fieldx, int fieldy)
+KShip *KBattleshipWindow::enemyShipAt(int fieldx, int fieldy)
 {
 	return m_enemyshiplist->shipAt(fieldx, fieldy);
 }
 
-void KBattleshipApp::slotUpdateHighscore()
+void KBattleshipWindow::slotUpdateHighscore()
 {
 	// Balancing factors
 	// a = shot-balance
@@ -651,7 +651,7 @@ void KBattleshipApp::slotUpdateHighscore()
 	scoreDialog->addScore((int)score, info, false, false);
 }
 
-void KBattleshipApp::saveOptions()
+void KBattleshipWindow::saveOptions()
 {
 	m_config->setGroup("General");
 	m_config->writeEntry("PlaySounds", m_configSound->isChecked());
@@ -659,14 +659,14 @@ void KBattleshipApp::saveOptions()
 	m_config->sync();
 }
 
-void KBattleshipApp::readOptions()
+void KBattleshipWindow::readOptions()
 {
 	m_config->setGroup("General");
 	m_configSound->setChecked(m_config->readBoolEntry("PlaySounds", true));
 	m_configGrid->setChecked(m_config->readBoolEntry("ShowGrid", false));
 }
 
-void KBattleshipApp::slotHighscore()
+void KBattleshipWindow::slotHighscore()
 {
 	KScoreDialog *scoreDialog = new KScoreDialog(KScoreDialog::Name | KScoreDialog::Score | KScoreDialog::Custom1 | KScoreDialog::Custom2 | KScoreDialog::Custom3, this);
 	scoreDialog->addField(KScoreDialog::Custom1, i18n("Shots"), "shots");
@@ -675,7 +675,7 @@ void KBattleshipApp::slotHighscore()
 	scoreDialog->show();
 }
 
-void KBattleshipApp::slotEnemyClientInfo()
+void KBattleshipWindow::slotEnemyClientInfo()
 {
 	KInfoDialog *m_info = new KInfoDialog(this);
 
@@ -687,7 +687,7 @@ void KBattleshipApp::slotEnemyClientInfo()
 	m_info->show();
 }
 
-void KBattleshipApp::slotServerConnect()
+void KBattleshipWindow::slotServerConnect()
 {
 	if(m_connection == 0)
 	{
@@ -709,13 +709,13 @@ void KBattleshipApp::slotServerConnect()
 		slotAbortNetworkGame();
 }
 
-void KBattleshipApp::slotDeleteConnectDialog()
+void KBattleshipWindow::slotDeleteConnectDialog()
 {
 	delete m_client;
 	m_client = 0;
 }
 
-void KBattleshipApp::slotReplayRequest()
+void KBattleshipWindow::slotReplayRequest()
 {
 	switch(KMessageBox::questionYesNo(this, i18n("The client is asking to restart the game. Do you accept?")))
 	{
@@ -734,7 +734,7 @@ void KBattleshipApp::slotReplayRequest()
 	}
 }
 
-void KBattleshipApp::slotServerReplay()
+void KBattleshipWindow::slotServerReplay()
 {
 	KMessage *msg = new KMessage(KMessage::REPLAY);
 	switch(KMessageBox::questionYesNo(this, i18n("Do you want to restart the game?")))
@@ -760,7 +760,7 @@ void KBattleshipApp::slotServerReplay()
 	}
 }
 
-void KBattleshipApp::slotClientReplay()
+void KBattleshipWindow::slotClientReplay()
 {
 	KMessage *msg = new KMessage(KMessage::REPLAY);
 	switch(KMessageBox::questionYesNo(this, i18n("Do you want to ask the server restarting the game?")))
@@ -786,7 +786,7 @@ void KBattleshipApp::slotClientReplay()
 	}
 }
 
-void KBattleshipApp::cleanup(bool placechange)
+void KBattleshipWindow::cleanup(bool placechange)
 {
 	if(placechange)
 		m_placeable = false;
@@ -798,7 +798,7 @@ void KBattleshipApp::cleanup(bool placechange)
 	m_view->field()->drawField();
 }
 
-void KBattleshipApp::slotNewServer()
+void KBattleshipWindow::slotNewServer()
 {
 	if(m_connection == 0)
 	{
@@ -818,13 +818,13 @@ void KBattleshipApp::slotNewServer()
 		slotAbortNetworkGame();
 }
 
-void KBattleshipApp::slotDeleteServerDialog()
+void KBattleshipWindow::slotDeleteServerDialog()
 {
 	delete m_server;
 	m_server = 0;
 }
 
-void KBattleshipApp::slotSendVersion()
+void KBattleshipWindow::slotSendVersion()
 {
 	KMessage *msg = new KMessage(KMessage::GETVERSION);
 	msg->versionMessage();
@@ -833,7 +833,7 @@ void KBattleshipApp::slotSendVersion()
 	QTimer::singleShot(150, this, SLOT(slotSendGreet()));
 }
 
-void KBattleshipApp::slotSendGreet()
+void KBattleshipWindow::slotSendGreet()
 {
 	m_serverHasClient = true;
 	m_chat->slotAcceptMsg(true);
@@ -843,7 +843,7 @@ void KBattleshipApp::slotSendGreet()
 	slotSendMessage(msg);
 }
 
-void KBattleshipApp::slotStartBattleshipServer()
+void KBattleshipWindow::slotStartBattleshipServer()
 {
 	m_gameNewServer->setText(i18n("&Stop server"));
 	m_gameServerConnect->setEnabled(false);
@@ -914,14 +914,14 @@ void KBattleshipApp::slotStartBattleshipServer()
 	m_kbserver->init();
 }
 
-void KBattleshipApp::slotLost(KMessage *msg)
+void KBattleshipWindow::slotLost(KMessage *msg)
 {
 	m_stat->slotAddEnemyWon();
 	if (!msg->field("ship0").isNull()) m_view->drawEnemyShipsHuman(msg, m_enemyshiplist);
 	m_lost = true;
 }
 
-void KBattleshipApp::slotSendEnemyFieldState(int fieldx, int fieldy)
+void KBattleshipWindow::slotSendEnemyFieldState(int fieldx, int fieldy)
 {
 	int data, showstate;
 	bool xokay = false, yokay = false;
@@ -1019,13 +1019,13 @@ void KBattleshipApp::slotSendEnemyFieldState(int fieldx, int fieldy)
 		m_kbclient->sendMessage(msg);
 }
 
-void KBattleshipApp::slotChangeOwnFieldData(int fieldx, int fieldy, int type)
+void KBattleshipWindow::slotChangeOwnFieldData(int fieldx, int fieldy, int type)
 {
 	m_view->changeOwnFieldData(fieldx, fieldy, type);
 	playSound(true, type);
 }
 
-void KBattleshipApp::playSound(bool enemy, int fieldstate)
+void KBattleshipWindow::playSound(bool enemy, int fieldstate)
 {
 	if (m_configSound->isChecked())
 	{
@@ -1049,13 +1049,13 @@ void KBattleshipApp::playSound(bool enemy, int fieldstate)
 	}
 }
 
-void KBattleshipApp::slotChangeEnemyFieldData(int fieldx, int fieldy, int type)
+void KBattleshipWindow::slotChangeEnemyFieldData(int fieldx, int fieldy, int type)
 {
 	m_view->changeEnemyFieldData(fieldx, fieldy, type);
 	playSound(false, type);
 }
 
-void KBattleshipApp::parseCommandLine() {
+void KBattleshipWindow::parseCommandLine() {
 	KCmdLineArgs *args = KCmdLineArgs::parsedArgs();
         if ( args->count() > 0 )
 	{
@@ -1082,7 +1082,7 @@ void KBattleshipApp::parseCommandLine() {
 		    
 }
 
-void KBattleshipApp::slotConnectToBattleshipServer()
+void KBattleshipWindow::slotConnectToBattleshipServer()
 {
 	QString host = m_client->host();
 	int port = m_client->port().toInt();
@@ -1091,13 +1091,10 @@ void KBattleshipApp::slotConnectToBattleshipServer()
 	m_client = 0;
 	slotConnectToBattleshipServer(host, port, nickname);
 }
-void KBattleshipApp::slotConnectToBattleshipServer(QString host, int port, QString nickname)
+void KBattleshipWindow::slotConnectToBattleshipServer(const QString &host, int port, const QString &nickname)
 {
-	if(nickname.isEmpty())
-		nickname = "TestUser";
-	
 	m_kbclient = new KBattleshipClient(host, port);
-	m_ownNickname = nickname;
+	nickname.isEmpty() ? m_ownNickname = "TestUser" : m_ownNickname = nickname;
 	m_chat->setNickname(m_ownNickname);
 	slotChangeOwnPlayer(m_ownNickname);
 	cleanup(true);
@@ -1164,17 +1161,17 @@ void KBattleshipApp::slotConnectToBattleshipServer(QString host, int port, QStri
 	m_kbclient->init();
 }
 
-void KBattleshipApp::slotSetPlaceable(bool place)
+void KBattleshipWindow::slotSetPlaceable(bool place)
 {
 	m_placeable = place;
 }
 
-void KBattleshipApp::slotSetShootable(bool shoot)
+void KBattleshipWindow::slotSetShootable(bool shoot)
 {
 	m_shootable = shoot;
 }
 
-void KBattleshipApp::slotShowGrid()
+void KBattleshipWindow::slotShowGrid()
 {
 	if(!m_configGrid->isChecked())
 		m_view->field()->disableGrid();
@@ -1182,25 +1179,25 @@ void KBattleshipApp::slotShowGrid()
 		m_view->field()->enableGrid();
 }
 
-void KBattleshipApp::slotStatusMsg(const QString &text)
+void KBattleshipWindow::slotStatusMsg(const QString &text)
 {
 	statusBar()->clear();
 	statusBar()->changeItem(text, ID_STATUS_MSG);
 }
 
-void KBattleshipApp::slotChangeOwnPlayer(const QString &text)
+void KBattleshipWindow::slotChangeOwnPlayer(const QString &text)
 {
 	statusBar()->clear();
 	statusBar()->changeItem(i18n("     Player 1: %1     ").arg(text), ID_PLAYER_OWN);
 }
 
-void KBattleshipApp::slotChangeEnemyPlayer(const QString &text)
+void KBattleshipWindow::slotChangeEnemyPlayer(const QString &text)
 {
 	statusBar()->clear();
 	statusBar()->changeItem(i18n("     Player 2: %1     ").arg(text), ID_PLAYER_ENEMY);
 }
 
-void KBattleshipApp::slotSinglePlayer()
+void KBattleshipWindow::slotSinglePlayer()
 {
 	bool ok;
 	if(!m_aiPlaying)
@@ -1232,12 +1229,12 @@ void KBattleshipApp::slotSinglePlayer()
 	}
 }
 
-void KBattleshipApp::slotStartBattleshipGame()
+void KBattleshipWindow::slotStartBattleshipGame()
 {
 	slotStartBattleshipGame(true);
 }
 
-void KBattleshipApp::slotStartBattleshipGame(bool clearstat)
+void KBattleshipWindow::slotStartBattleshipGame(bool clearstat)
 {
 	m_gameSingle->setText(i18n("&Stop game"));
 	m_gameNewServer->setEnabled(false);
@@ -1267,13 +1264,13 @@ void KBattleshipApp::slotStartBattleshipGame(bool clearstat)
 	m_aiPlayer->slotRestart();
 }
 
-void KBattleshipApp::slotAIReady()
+void KBattleshipWindow::slotAIReady()
 {
 	slotStatusMsg(i18n("Please place your ships. Use the \"Shift\" key to place the ships vertically."));
 	m_placeable = true;
 }
 
-void KBattleshipApp::slotAIShootsAt(const QPoint pos)
+void KBattleshipWindow::slotAIShootsAt(const QPoint pos)
 {
 	if(!m_shootable)
 		m_shootable = true;
@@ -1327,7 +1324,7 @@ void KBattleshipApp::slotAIShootsAt(const QPoint pos)
 	}
 }
 
-void KBattleshipApp::slotReceivedClientInformation(const QString &clientName, const QString &clientVersion, const QString &clientDescription, const QString &protocolVersion)
+void KBattleshipWindow::slotReceivedClientInformation(const QString &clientName, const QString &clientVersion, const QString &clientDescription, const QString &protocolVersion)
 {
 	m_enemyClient = clientName;
 	m_enemyClientVersion = clientVersion;

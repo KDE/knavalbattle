@@ -42,7 +42,9 @@ int main(int argc, char *argv[])
 	aboutData.addCredit("Lukas Tinkl", I18N_NOOP("Non-Latin1 Support"), "lukas@kde.org");
 	aboutData.addCredit("Malte Starostik", I18N_NOOP("Various improvements"), "malte.starostik@t-online.de");
 	aboutData.addCredit("Albert Astals Cid", I18N_NOOP("Various improvements and bugfixes"), "tsdgeos@terra.es");
-	aboutData.addCredit("John Tapsell", I18N_NOOP("Accept url on command line"), "john@geola.co.uk");
+	aboutData.addCredit("John Tapsell", I18N_NOOP("Various improvements and bugfixes"), "john@geola.co.uk");
+	aboutData.addCredit("Inge Wallin", I18N_NOOP("Bugfixes and refactoring"), "inge@lysator.liu.se");
+	aboutData.addCredit("Jakub Stachowski", I18N_NOOP("DNS-SD discovery"), "qbast@go2.pl");
 
 	KCmdLineArgs::init(argc, argv, &aboutData);
 	KCmdLineArgs::addCmdLineOptions( options ); // Add our own options.
@@ -58,10 +60,10 @@ int main(int argc, char *argv[])
 	}
 	
 	if( app.isRestored() )
-		RESTORE(KBattleshipApp)
+		RESTORE(KBattleshipWindow)
 	else {
-		KBattleshipApp *kbattleship = new KBattleshipApp;
-		kbattleship->show();
+		KBattleshipWindow *mainwin = new KBattleshipWindow;
+		mainwin->show();
 	}
 	return app.exec();
 }

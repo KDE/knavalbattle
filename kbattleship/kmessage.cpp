@@ -26,7 +26,7 @@
 #include "kmessage.h"
 
 const char *clientName = I18N_NOOP("KBattleship");
-const char *clientVersion = "1.0";
+const char *clientVersion = "1.1";
 const char *clientDescription = I18N_NOOP("The KDE Battleship clone");
 const char *protocolVersion = "0.1.0";
 

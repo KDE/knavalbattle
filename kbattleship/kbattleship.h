@@ -44,13 +44,13 @@
 #include "kshiplist.h"
 #include "kstatdialog.h"
 
-class KBattleshipApp : public KMainWindow
+class KBattleshipWindow : public KMainWindow
 {
 	Q_OBJECT
 public:
 	enum{ID_STATUS_MSG, ID_PLAYER_OWN, ID_PLAYER_ENEMY};
-	KBattleshipApp();
-	~KBattleshipApp();
+	KBattleshipWindow();
+	~KBattleshipWindow();
 
 	void init();
 
@@ -96,7 +96,7 @@ private slots:
 	 * Get server to connect to from "Connect to server" dialog.
 	 */
 	void slotConnectToBattleshipServer();
-        void slotConnectToBattleshipServer(QString host, int port, QString nickname);
+ 	void slotConnectToBattleshipServer(const QString &host, int port, const QString &nickname);
 	void slotPlaceShipPreview(int fieldx, int fieldy);
 	void slotPlaceShip(int fieldx, int fieldy);
 	void slotChangeOwnFieldData(int fieldx, int fieldy, int type);

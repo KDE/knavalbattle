@@ -91,7 +91,7 @@ void KBattleField::drawOwnField()
 	if(!m_canDraw)
 		return;
 
-	KBattleshipApp *app = static_cast<KBattleshipApp *>(m_parent->parent()->parent());
+	KBattleshipWindow *window = static_cast<KBattleshipWindow *>(m_parent->parent()->parent());
 	KShip *ship = 0;
 	int data;
 
@@ -117,7 +117,7 @@ void KBattleField::drawOwnField()
 
 				case KBattleField::HIT:
 					drawSquare();
-					ship = app->shipAt(i, j);
+					ship = window->shipAt(i, j);
 					if(ship->placedLeft())
 						drawShipIcon((ship->shiptype() + 1), (ship->shipxstop() - i + 1), true, true);
 					else
@@ -130,7 +130,7 @@ void KBattleField::drawOwnField()
 					break;
 
 				default:
-					ship = app->shipAt(i, j);
+					ship = window->shipAt(i, j);
 					if(ship)
 					{
 						drawSquare();
@@ -151,7 +151,7 @@ void KBattleField::drawEnemyField()
 	if(!m_canDraw)
 		return;
 
-	KBattleshipApp *app = static_cast<KBattleshipApp *>(m_parent->parent()->parent());
+	KBattleshipWindow *window = static_cast<KBattleshipWindow *>(m_parent->parent()->parent());
 
 	for(int i = 0; i != m_enemyfieldx; i++)
 	{
@@ -186,7 +186,7 @@ void KBattleField::drawEnemyField()
 
 				default:
 					drawSquare();
-					KShip *ship = app->enemyShipAt(i, j);
+					KShip *ship = window->enemyShipAt(i, j);
 					if(ship->placedLeft())
 						drawShipIcon(m_enemyfield[i][j], true);
 					else
