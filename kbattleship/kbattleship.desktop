@@ -1,7 +1,7 @@
 [Desktop Entry]
 Encoding=UTF-8
 Name=KBattleship
-Name[af]=kbattleship
+Name[af]=Kbattleship
 Name[cs]=Lodě
 Name[de]=Schiffe versenken
 Name[eo]=Batalŝipo
@@ -24,7 +24,7 @@ Icon=kbattleship
 Type=Application
 DocPath=kbattleship/index.html
 GenericName=Strategy Game
-GenericName[af]=strategie speletjie
+GenericName[af]=Strategie Speletjie
 GenericName[ar]=لعبة اسراتيجية
 GenericName[be]=Стратэгічная гульня
 GenericName[bg]=Стратегическа Игра
