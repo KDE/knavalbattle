@@ -15,6 +15,17 @@
  *                                                                         *
  ***************************************************************************/
 
+#ifdef HAVE_CONFIG_H
+#include <config.h>
+#endif
+
+#include <unistd.h>
+#ifdef HAVE_STROPTS_H
+#include <stropts.h>
+#endif
+#ifdef HAVE_SYS_FILIO_H
+#include <sys/filio.h>
+#endif
 #include <sys/ioctl.h>
 #include <qsocketnotifier.h>
 #include "kmessage.h"
