@@ -25,6 +25,7 @@
 #include <kstdaction.h>
 #include <kaction.h>
 #include <qpainter.h>
+#include <qobject.h>
 #include <kiconloader.h>
 #include <kmessagebox.h>
 #include <kmenubar.h>
@@ -37,6 +38,7 @@
 #include "kclientdialog.h"
 
 class KBattleshipView;
+class KServerDialog;
 
 class KBattleshipApp : public KMainWindow
 {
@@ -45,6 +47,7 @@ class KBattleshipApp : public KMainWindow
     public:
         KBattleshipApp( QWidget *parent = 0, const char *name = 0 );
         ~KBattleshipApp();
+	
     protected:
         void saveOptions();
         void readOptions();
@@ -60,6 +63,7 @@ class KBattleshipApp : public KMainWindow
         void slotViewToolBar();
         void slotViewStatusBar();
         void slotStatusMsg( const QString &text );
+	void startBattleshipServer();
 
     private:
         KConfig *config;

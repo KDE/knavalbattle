@@ -29,4 +29,6 @@ KServerDialog::~KServerDialog()
 void KServerDialog::slotStartClicked()
 {
     kdDebug() << "START!" << endl;
+    this->hide();
+    emit startServer();
 }

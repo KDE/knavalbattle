@@ -20,6 +20,7 @@
 
 #include <kdebug.h>
 #include <qwidget.h>
+#include <qobject.h>
 #include <qpushbutton.h>
 #include "dialogs/serverDlg.h"
 
@@ -32,6 +33,9 @@ class KServerDialog : public serverStartDlg
 	
     public slots:
         void slotStartClicked();
+
+    signals:
+	void startServer();	
 };
 
 #endif
