@@ -117,6 +117,7 @@ void KBattleshipApp::initActions()
 	setAutoSaveSettings("General");
 	m_configSound = new KToggleAction(i18n("&Play Sounds"), 0, actionCollection(), "options_configure_sound");
 	m_configGrid = new KToggleAction(i18n("&Show Grid"), 0, this, SLOT(slotShowGrid()), actionCollection(), "options_show_grid");
+	m_configGrid->setCheckedState(i18n("Hide Grid"));
 
 	m_gameEnemyInfo->setEnabled(false);
 	createGUI();
