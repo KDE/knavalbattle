@@ -6,10 +6,8 @@ popular game "Battleship".
 
 In the current version, you can play it
 with two computers in a TCP/IP based
-network. 
-
-Artificial Intelligence is not implemented
-yet, but someone is working on it. 
+network and (as of version 0.7) with the
+computer. 
 
 KBattleship uses an XML based protocol,
 meaning you can write a compatible application
