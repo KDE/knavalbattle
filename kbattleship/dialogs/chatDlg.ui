@@ -100,7 +100,7 @@
                     </property>
                     <property stdset="1">
                         <name>text</name>
-                        <string>Chat Dialog:</string>
+                        <string>Chat dialog:</string>
                     </property>
                 </widget>
             </grid>
