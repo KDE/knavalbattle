@@ -21,10 +21,10 @@
 #include <qpushbutton.h>
 #include <qmultilineedit.h>
 #include <qlineedit.h>
-#include "dialogs/chatwidget.h"
+#include "dialogs/chatDlg.h"
 #include "kmessage.h"
 
-class KChatWidget : public chatWidget
+class KChatWidget : public chatDlg
 {
     Q_OBJECT
     public:

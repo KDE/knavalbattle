@@ -17,7 +17,7 @@
 
 #include "kchatwidget.moc"
 
-KChatWidget::KChatWidget(QWidget *parent, const char *name) : chatWidget(parent, name)
+KChatWidget::KChatWidget(QWidget *parent, const char *name) : chatDlg(parent, name)
 {
     setMinimumSize(600, 180);
     connect(sendBtn, SIGNAL(clicked()), this, SLOT(slotComputeMessage()));

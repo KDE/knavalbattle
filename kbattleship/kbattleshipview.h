@@ -19,6 +19,7 @@
 #define KBATTLESHIPVIEW_H
 
 #include <kmainwindow.h>
+#include <qtooltip.h>
 #include <qpainter.h>
 #include <qwidget.h>
 #include <qstring.h>
