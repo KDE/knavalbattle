@@ -39,14 +39,26 @@ void KBattleshipView::startDrawing()
     enemyfield = new KBattleField( this, enemytype, &enemypainter );
 }
 
+int KBattleshipView::getOwnFieldState( int &fieldx, int &fieldy )
+{
+    return ownfield->getState( fieldx, fieldy );
+}
+
+int KBattleshipView::getEnemyFieldState( int &fieldx, int &fieldy )
+{
+    return enemyfield->getState( fieldx, fieldy );
+}
+
 void KBattleshipView::changeOwnFieldData( int fieldx, int fieldy, int type )
 {
     ownfield->changeData( fieldx, fieldy, type );
+    paintOwnField();
 }
 
 void KBattleshipView::changeEnemyFieldData( int fieldx, int fieldy, int type )
 {
     enemyfield->changeData( fieldx, fieldy, type );
+    paintEnemyField();
 }
 
 void KBattleshipView::mouseReleaseEvent( QMouseEvent *event )
@@ -89,9 +101,7 @@ void KBattleshipView::mouseReleaseEvent( QMouseEvent *event )
 		}
 	    }
 	    	    
-	    QPainter ownpainter( this );
-	    ownfield->changeData( fieldX, fieldY, KBattleField::WATER );
-	    ownfield->drawField( &ownpainter );
+	    emit ownFieldClicked( fieldX, fieldY );
 	}
     }
 
@@ -150,10 +160,16 @@ void KBattleshipView::mouseReleaseEvent( QMouseEvent *event )
 //    }
 }
 
-void KBattleshipView::paintEnemyField( int fieldx, int fieldy )
+void KBattleshipView::paintEnemyField()
 {
     QPainter enemypainter( this );
     enemyfield->drawField( &enemypainter );
+}
+
+void KBattleshipView::paintOwnField()
+{
+    QPainter ownpainter( this );
+    ownfield->drawField( &ownpainter );
 }
 
 void KBattleshipView::paintEvent( QPaintEvent * )

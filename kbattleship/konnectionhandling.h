@@ -38,9 +38,11 @@ class KonnectionHandling : public QObject
         ~KonnectionHandling();
 	
 	int getType();
+	int getFieldState();
 	
     public slots:
-	void serverGotNewMessage( KMessage *msg );
+	void gotBattleFieldState( int fieldx, int fieldy, int state );
+	void gotNewMessage( KMessage *msg );
         void serverGotNewClient();
 	void serverWroteToClient();
 	void serverLostClient();	
@@ -51,8 +53,11 @@ class KonnectionHandling : public QObject
 	int internalType;
 
     signals:	
+	void requestBattleFieldState( int fieldx, int fieldy );
 	void ownFieldDataChanged( int fieldx, int fieldy, int type );
-	void changeConnectText( QString text );
+	void enemyFieldDataChanged( int fieldx, int fieldy, int type );
+	void changeConnectText();
+	void sendMessage( KMessage *msg );
 };
 
 #endif

@@ -1,3 +1,4 @@
+
 /***************************************************************************
                             kbattleshipclient.cpp
                              -------------------
@@ -42,8 +43,8 @@ void KBattleshipClient::connectToServer()
 
 void KBattleshipClient::sendMessage( KMessage *msg )
 {
-    QTextStream post( this );        
-    post << msg->returnSendStream();
+    QTextStream *post = new QTextStream( this );        
+    *post << msg->returnSendStream();
 }
 
 void KBattleshipClient::connectionControl()
@@ -55,10 +56,10 @@ void KBattleshipClient::readData()
 {
     if( canReadLine() )
     {	
-	kdDebug() << "READ: " << readLine() << endl;
-	//KMessage *msg;
-	kdDebug() << "NOTHING HAPPENING YET... IT'LL CRASH... ERROR IN KMESSAGE" << endl;
-	//msg->setDataStream( readLine() );
+	KMessageType type;
+	KMessage *msg = new KMessage( type );
+	msg->setDataStream( readLine() );
+	emit newMessage( msg );
     }
 }
 

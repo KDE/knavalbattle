@@ -21,6 +21,7 @@
 KClientDialog::KClientDialog( QWidget *parent, const char *name ) : clientConnectDlg( parent, name )
 {
     connect( connectBtn, SIGNAL( clicked() ), this, SLOT( slotConnectClicked() ) );
+    connect( cancelBtn, SIGNAL( clicked() ), this, SLOT( slotCancelClicked() ) );
     nicknameEdit->setText( getenv( "LOGNAME" ) );
 }
 
@@ -32,6 +33,12 @@ void KClientDialog::slotConnectClicked()
 {
     this->hide();
     emit connectServer();
+}
+
+void KClientDialog::slotCancelClicked()
+{
+    this->hide();
+    emit cancelConnect();
 }
 
 QString KClientDialog::getPort()

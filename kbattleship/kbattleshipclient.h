@@ -41,6 +41,7 @@ class KBattleshipClient : public QSocket
         void socketError( int error );
 
     signals:
+	void newMessage( KMessage *msg );
 	void endConnect();
 	void socketFailure( int error );
 	 

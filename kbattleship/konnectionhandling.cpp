@@ -23,7 +23,7 @@ KonnectionHandling::KonnectionHandling( QWidget *parent, KBattleshipServer *serv
     connect( server, SIGNAL( newConnect() ), this, SLOT( serverGotNewClient() ) );
     connect( server, SIGNAL( endConnect() ), this, SLOT( serverLostClient() ) );
     connect( server, SIGNAL( wroteToClient() ), this, SLOT( serverWroteToClient() ) );
-    connect( server, SIGNAL( newMessage( KMessage * ) ), this, SLOT( serverGotNewMessage( KMessage * ) ) );
+    connect( server, SIGNAL( newMessage( KMessage * ) ), this, SLOT( gotNewMessage( KMessage * ) ) );
 }
 
 KonnectionHandling::KonnectionHandling( QWidget *parent, KBattleshipClient *client ) : QObject( parent )
@@ -31,6 +31,7 @@ KonnectionHandling::KonnectionHandling( QWidget *parent, KBattleshipClient *clie
     internalType = KonnectionHandling::CLIENT;
     connect( client, SIGNAL( endConnect() ), this, SLOT( clientLostServer() ) );
     connect( client, SIGNAL( socketFailure( int ) ), this, SLOT( clientSocketError( int ) ) );
+    connect( client, SIGNAL( newMessage( KMessage * ) ), this, SLOT( gotNewMessage( KMessage * ) ) );
 }
 
 KonnectionHandling::~KonnectionHandling()
@@ -57,13 +58,37 @@ void KonnectionHandling::serverLostClient()
     kdDebug() << "ENDCLIENT!" << endl;
 }
 
-void KonnectionHandling::serverGotNewMessage( KMessage *msg )
+void KonnectionHandling::gotBattleFieldState( int fieldx, int fieldy, int state )
+{
+    KMessageType msgtype;
+    msgtype.setType( KMessageType::ANSWER_SHOOT );
+    KMessage *msg = new KMessage( msgtype );
+    QString qstate;
+    qstate.setNum( state );
+    msg->addField( QString( "fieldstate" ), qstate );
+    msg->addField( QString( "foobar" ), QString( "foostate" ) );
+    msg->addField( QString( "foobar1" ), QString( "foostate1" ) );
+    kdDebug() << "EMIT!" << endl;
+    emit sendMessage( msg );
+    emit ownFieldDataChanged( fieldx, fieldy, state );
+}
+
+void KonnectionHandling::gotNewMessage( KMessage *msg )
 {
     kdDebug() << "GOTNEWMESSAGE!" << endl;
-    switch( msg->getType() )
+    switch( getType() )
     {
-	case KMessageType::ENEMY_SHOOT:
-	    emit ownFieldDataChanged( ( msg->getField( "fieldx" ) ).toInt(), ( msg->getField( "fieldy" ) ).toInt(),  ( msg->getField( "type" ) ).toInt() );
+	case KonnectionHandling::CLIENT:
+	    switch( msg->getType() )
+	    {
+		case KMessageType::ENEMY_SHOOT:
+		    emit requestBattleFieldState( msg->getField( "fieldx" ).toInt(), msg->getField( "fieldy" ).toInt() );
+		    break;
+		
+		case KMessageType::ANSWER_SHOOT:
+		    emit enemyFieldDataChanged( msg->getField( "fieldx" ).toInt(), msg->getField( "fieldy" ).toInt(), msg->getField( "fieldstate" ).toInt() );
+		    break;
+	    }
 	    break;
     }
 }
@@ -80,7 +105,7 @@ void KonnectionHandling::clientSocketError( int error )
     {
 	case QSocket::HostLookup:
 	    KMessageBox::error( 0L, i18n( "Couldn't lookup host!" ) );
-	    emit changeConnectText( QString( "&Connect to server" ) );
+	    emit changeConnectText();
 	    break;
 	
 	default:

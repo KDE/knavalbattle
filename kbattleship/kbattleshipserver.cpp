@@ -41,13 +41,15 @@ void KBattleshipServer::newConnection( int socket )
 
 void KBattleshipServer::readClient()
 {
-    kdDebug() << "I'm in readClient()" << endl;
     QSocket *socket = ( QSocket * )sender();
+    kdDebug() << "READLINE!" << endl;
     if( socket->canReadLine() )
     {
+	kdDebug() << "CAN READ!" << endl;
         KMessageType msgtype;
         KMessage *msg = new KMessage( msgtype );
         msg->setDataStream( socket->readLine() );
+//	kdDebug() << "msg: " << serverSocket->readLine() << endl;
 	kdDebug() << "Type of message: " << msg->getType() << endl;
 	emit newMessage( msg );
     }
@@ -55,18 +57,14 @@ void KBattleshipServer::readClient()
 
 void KBattleshipServer::sendMessage( KMessage *msg )
 {
-    kdDebug() << "Okay i'll send then!" << endl;
     QTextStream *post = new QTextStream( serverSocket );
-    kdDebug() << "Inited PostStreamer!" << endl;
-    kdDebug() << "Message: " << msg->returnSendStream() << endl;
     *post << msg->returnSendStream() << endl;
-    kdDebug() << "Posted to the Socket!" << endl;
     emit wroteToClient();
 }
 
 void KBattleshipServer::discardClient()
 {
-    QSocket* socket = (QSocket*)sender();
+    QSocket *socket = ( QSocket * )sender();
     //QTextStream post( socket );
     //KMessageType msgtype;
     //msgtype.setType( KMessageType::MSG_FORBIDDEN );

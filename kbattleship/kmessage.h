@@ -41,10 +41,9 @@ class KMessage : QObject
 
         QMap<QString,QString> messageMap;
         int messageType;
-        QString messageStream;
 
     private:
-        void parseMessage();
+        void parseMessage( QString messageStream );
 };
 
 #endif

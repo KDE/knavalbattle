@@ -74,19 +74,18 @@ void KBattleshipApp::initView()
     connect( view, SIGNAL( enemyFieldClicked( int, int ) ), this, SLOT( sendMessage( int, int ) ) );
 }
 
-void KBattleshipApp::sendMessage( int fieldX, int fieldY )
+void KBattleshipApp::sendMessage( int fieldx, int fieldy )
 {
     if( haveCS )
     {
-	kdDebug() << "You've clicked on the enemyField!" << endl;
 	KMessageType msgtype;
 	msgtype.setType( KMessageType::MSG_PLAYING );
 	KMessage *msg = new KMessage( msgtype );
 	QString field1Data; 
 	QString field2Data;
 	QString field3Data;
-	field1Data.setNum( fieldX );
-	field2Data.setNum( fieldY );
+	field1Data.setNum( fieldx );
+	field2Data.setNum( fieldy );
 	field3Data.setNum( KMessageType::ENEMY_SHOOT );
 	msg->addField( QString( "fieldx" ), field1Data );
 	msg->addField( QString( "fieldy" ), field2Data );
@@ -95,12 +94,27 @@ void KBattleshipApp::sendMessage( int fieldX, int fieldY )
 	switch( connection->getType() )
 	{
 	    case KonnectionHandling::SERVER:
-	    	kdDebug() << "I'm sending via the server!" << endl;
 		kbserver->sendMessage( msg );
 		break;
 		
 	    case KonnectionHandling::CLIENT:
-	    	kdDebug() << "I'm sending via the client!" << endl;
+		kbclient->sendMessage( msg );
+		break;	
+	}
+    }
+}
+
+void KBattleshipApp::sendMessage( KMessage *msg )
+{
+    if( haveCS )
+    {
+	switch( connection->getType() )
+	{
+	    case KonnectionHandling::SERVER:
+		kbserver->sendMessage( msg );
+		break;
+		
+	    case KonnectionHandling::CLIENT:
 		kbclient->sendMessage( msg );
 		break;	
 	}
@@ -145,6 +159,16 @@ void KBattleshipApp::slotGameQuit()
     exit( 0 );
 }
 
+void KBattleshipApp::stoppedServerDialog()
+{
+    haveCS = false;
+}
+
+void KBattleshipApp::stoppedConnectDialog()
+{
+    haveCS = false;
+}
+
 void KBattleshipApp::slotServerConnect()
 {
     if( !haveCS )
@@ -156,6 +180,7 @@ void KBattleshipApp::slotServerConnect()
         client = new KClientDialog();
 	haveCS = true;
         connect( client, SIGNAL( connectServer() ), this, SLOT( connectToBattleshipServer() ) );
+	connect( client, SIGNAL( cancelConnect() ), this, SLOT( stoppedConnectDialog() ) );
         client->show();
 
         slotStatusMsg( i18n( "Ready." ) );
@@ -190,6 +215,7 @@ void KBattleshipApp::slotNewServer()
         server = new KServerDialog();
 	haveCS = true;
 	connect( server, SIGNAL( startServer() ), this, SLOT( startBattleshipServer() ) );
+	connect( server, SIGNAL( cancelServer() ), this, SLOT( stoppedServerDialog() ) );
         server->show();
             
 	slotStatusMsg( i18n( "Ready." ) );
@@ -200,6 +226,7 @@ void KBattleshipApp::slotNewServer()
 	{
 	    case KonnectionHandling::SERVER:
 	        gameNewServer->setText( "&Start server" );
+		haveCS = false;
 		delete connection;
 		delete kbserver;
 		connection = 0;
@@ -220,17 +247,38 @@ void KBattleshipApp::startBattleshipServer()
     connection = new KonnectionHandling( this, kbserver );    
 
     connect( connection, SIGNAL( ownFieldDataChanged( int, int, int ) ), this, SLOT( changeOwnFieldData( int, int, int ) ) );
-    connect( connection, SIGNAL( changeConnectText( QString ) ), this, SLOT( changeConnectText( QString ) ) );
+    connect( connection, SIGNAL( enemyFieldDataChanged( int, int, int ) ), this, SLOT( changeEnemyFieldData( int, int, int ) ) );
+    connect( connection, SIGNAL( requestBattleFieldState( int, int ) ), this, SLOT( requestedOwnBattleFieldState( int, int ) ) );
+    connect( connection, SIGNAL( sendMessage( KMessage * ) ), this, SLOT( sendMessage( KMessage * ) ) );
+    connect( this, SIGNAL( battleFieldState( int, int, int ) ), connection, SLOT( gotBattleFieldState( int, int, int ) ) );
 }
 
-void KBattleshipApp::changeOwnFieldData( int fieldX, int fieldY, int type )
+void KBattleshipApp::changeOwnFieldData( int fieldx, int fieldy, int type )
 {
-    view->changeOwnFieldData( fieldX, fieldY, type );
+    view->changeOwnFieldData( fieldx, fieldy, type );
 }
 
-void KBattleshipApp::changeConnectText( QString text )
+int KBattleshipApp::requestedOwnBattleFieldState( int fieldx, int fieldy )
+{
+    int state = view->getOwnFieldState( fieldx, fieldy );
+    emit battleFieldState( fieldx, fieldy, state );
+}
+
+int KBattleshipApp::requestedEnemyBattleFieldState( int fieldx, int fieldy )
+{
+    int state = view->getEnemyFieldState( fieldx, fieldy );
+    emit battleFieldState( fieldx, fieldy, state );
+}
+
+void KBattleshipApp::changeEnemyFieldData( int fieldx, int fieldy, int type )
+{
+    view->changeEnemyFieldData( fieldx, fieldy, type );
+}
+
+void KBattleshipApp::changeConnectText()
 {
     gameServerConnect->setText( "&Connect to server" );
+    haveCS = false;
     kdDebug() << "settext!" << endl;
 }
 
@@ -242,10 +290,17 @@ void KBattleshipApp::connectToBattleshipServer()
         delete client;
         gameServerConnect->setText( "Dis&connect from server" );
         connection = new KonnectionHandling( this, kbclient );
+	connect( connection, SIGNAL( ownFieldDataChanged( int, int, int ) ), this, SLOT( changeOwnFieldData( int, int, int ) ) );
+	connect( connection, SIGNAL( enemyFieldDataChanged( int, int, int ) ), this, SLOT( changeEnemyFieldData( int, int, int ) ) );
+	connect( connection, SIGNAL( requestBattleFieldState( int, int ) ), this, SLOT( requestedEnemyBattleFieldState( int, int ) ) );
+        connect( connection, SIGNAL( changeConnectText() ), this, SLOT( changeConnectText() ) );
+        connect( connection, SIGNAL( sendMessage( KMessage * ) ), this, SLOT( sendMessage( KMessage * ) ) );
+	connect( this, SIGNAL( battleFieldState( int, int, int ) ), connection, SLOT( gotBattleFieldState( int, int, int ) ) );
     }
     else
     {
 	KMessageBox::error( this, i18n( "You forgot to enter a host!" ) );
+	haveCS = false;
     }
 }
 

@@ -34,9 +34,12 @@ class KBattleshipView : public QWidget
 	void startDrawing();
 	void changeOwnFieldData( int fieldx, int fieldy, int type );
 	void changeEnemyFieldData( int fieldx, int fieldy, int type );
-	void paintEnemyField( int fieldx, int fieldy );
+	int getOwnFieldState( int &fieldx, int &fieldy );
+	int getEnemyFieldState( int &fieldx, int &fieldy );
 	
     protected:
+    	void paintEnemyField();
+	void paintOwnField();
 	void paintEvent( QPaintEvent * );
 	void mouseReleaseEvent( QMouseEvent *event );
 	
@@ -46,6 +49,7 @@ class KBattleshipView : public QWidget
 	
     signals:
 	void enemyFieldClicked( int fieldX, int fieldY );
+	void ownFieldClicked( int fieldX, int fieldY );
 };
 
 #endif

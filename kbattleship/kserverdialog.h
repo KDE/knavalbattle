@@ -35,9 +35,11 @@ class KServerDialog : public serverStartDlg
 	
     public slots:
         void slotStartClicked();
+	void slotCancelClicked();
 
     signals:
 	void startServer();	
+	void cancelServer();
 };
 
 #endif

@@ -34,7 +34,8 @@ class KBattleField : public KGridWidget
 	
 	void setDrawValues( QWidget *parent );
 	void drawField( QPainter *painter );
-	void changeData( int &fieldX, int &fieldY, int type );
+	void changeData( int &fieldx, int &fieldy, int type );
+	int getState( int fieldx, int fieldy );
 
     private:
 	int FieldData[ 8 ][ 8 ];

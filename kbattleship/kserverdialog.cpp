@@ -21,6 +21,7 @@
 KServerDialog::KServerDialog( QWidget *parent, const char *name ) : serverStartDlg( parent, name )
 {
     connect( startBtn, SIGNAL( clicked() ), this, SLOT( slotStartClicked() ) );
+    connect( cancelBtn, SIGNAL( clicked() ), this, SLOT( slotCancelClicked() ) );
     nicknameEdit->setText( getenv( "LOGNAME" ) );  
 }
 
@@ -32,6 +33,12 @@ void KServerDialog::slotStartClicked()
 {
     this->hide();
     emit startServer();
+}
+
+void KServerDialog::slotCancelClicked()
+{
+    this->hide();
+    emit cancelServer();
 }
 
 QString KServerDialog::getPort()

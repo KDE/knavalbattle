@@ -36,9 +36,11 @@ class KClientDialog : public clientConnectDlg
 		
     public slots:
         void slotConnectClicked();
+	void slotCancelClicked();
 	
     signals:
 	void connectServer();
+	void cancelConnect();
 };
 
 #endif

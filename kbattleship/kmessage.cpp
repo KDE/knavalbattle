@@ -34,53 +34,44 @@ void KMessage::addField( QString name, QString content )
 
 void KMessage::setDataStream( QString stream )
 {
-    messageStream = stream;
-    parseMessage();
+    parseMessage( stream );
 }
 
-void KMessage::parseMessage()
+void KMessage::parseMessage( QString messageStream )
 {
     QStringList list;
     QString key;
     QString data;
     QString seperator = "|";
     QString endseperator = "end";
-    bool kd = false;
+    bool kd = true;
     list = QStringList::split( seperator, messageStream );
+	
     for( QStringList::Iterator it = list.begin(); it != list.end(); ++it )
     {
         if( !kd )
         {
-            if( *it != endseperator )
-            {
-                QChar testchar;
-                int testint;
-                testint = ( *it ).toInt();
-                testchar = testint;
-                if( !testchar.isDigit() )
-                {
-                    key = *it;
-                    kd = true;
-                }
-                else
-                {
-                    KMessageType msgtype;
-                    msgtype.setType( ( *it ).toInt() );
-                    messageType = msgtype.getType();
-                }
-            }
-            else
-	    {
-                break;
-	    }
+	    key = *it;
+            kd = true;
         }
         else
         {
-            data = *it;
-            messageMap.insert( key, data );
-            key = "";
-            data = "";
-            kd = false;
+	    data = *it;
+	    
+	    if( key != "type" )
+	    {
+    		addField( key, data );
+	    }
+	    else
+	    {
+		KMessageType msgtype;
+                msgtype.setType( data.toInt() );
+                messageType = msgtype.getType();
+	    }
+		
+    	    key = "";
+    	    data = "";
+    	    kd = false;
         }
 
     }
@@ -104,6 +95,7 @@ QString KMessage::returnSendStream()
     
     sendStream = sendStream + endseperator;
 
+    kdDebug() << "foo: " << sendStream << endl;
     return sendStream;
 }
 

@@ -44,9 +44,14 @@ KBattleField::~KBattleField()
 {
 }
 
-void KBattleField::changeData( int &fieldX, int &fieldY, int type )
+void KBattleField::changeData( int &fieldx, int &fieldy, int type )
 {
-    FieldData[ fieldX ][ fieldY ] = type;
+    FieldData[ fieldx ][ fieldy ] = type;
+}
+
+int KBattleField::getState( int fieldx, int fieldy )
+{
+    return FieldData[ fieldx][ fieldy ];
 }
 
 void KBattleField::drawField( QPainter *painter )
