@@ -1,0 +1,14 @@
+This is going to become a rewrite of the KDE 1
+Game "KBattelShip". After porting the original
+code to KDE2, we were not satisfied so we will
+do a complete rewrite. Any help is highly
+appriciated. Don't hesitate to contact us.
+
+The original port can be found in "old/".
+It compiles but works not completely and
+is inefficent in concerns of drawing and network
+communication, thus coming without any
+guaraty to work (tm).
+
+Nikolas Zimmermann <nikoz@gymnasium-kerpen.de>
+Daniel Molkentin <molkentin@kde.org>
