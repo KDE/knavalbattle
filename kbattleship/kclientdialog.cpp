@@ -22,7 +22,7 @@
 KClientDialog::KClientDialog(QWidget *parent, const char *name) : clientConnectDlg(parent, name)
 {
     m_config = kapp->config();
-    nicknameEdit->setText(QString::fromLatin1(getenv("LOGNAME")));
+    nicknameEdit->setText(QString::fromLocal8Bit(getenv("LOGNAME")));
 
     connect(connectBtn, SIGNAL(clicked()), this, SLOT(slotConnectClicked()));
     connect(cancelBtn, SIGNAL(clicked()), this, SLOT(slotCancelClicked()));
