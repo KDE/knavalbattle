@@ -194,6 +194,7 @@ void KBattleshipApp::enemyClick(int fieldx, int fieldy)
 		    deleteLists(false);
 		    slotStatusMsg(i18n("You lost the game :("));
 		    updateHighscore();
+		    return;
 		}
 		
 		slotStatusMsg(i18n("You won the game :)"));
