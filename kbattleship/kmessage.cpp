@@ -18,6 +18,7 @@
 //#define XMLDUMP
 
 #include "main.h"
+#include "kmessage.h"
 #ifdef XMLDUMP
 #include <kdebug.h>
 #endif

@@ -18,7 +18,7 @@
 #ifndef KBSTRATEGY_H
 #define KBSTRATEGY_H
 
-#include <qlist.h>
+#include <qptrlist.h>
 #include <qpoint.h>
 #include "kbattlefield.h"
 
