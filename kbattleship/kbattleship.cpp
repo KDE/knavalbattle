@@ -267,7 +267,7 @@ void KBattleshipApp::slotEnemyFieldClick(int fieldx, int fieldy)
 					if(xokay)
 					{
 						DeathValueList::Iterator it;
-						for(it = deathList.begin(); it != deathList.end(); it++)
+						for(it = deathList.begin(); it != deathList.end(); ++it)
 						{
 							if(fieldy+1 < m_enemyshiplist->m_fieldy) m_view->changeEnemyFieldData(*it, fieldy+1, KBattleField::BORDER);
 							m_view->changeEnemyFieldData(*it, fieldy, KBattleField::DEATH);
@@ -289,7 +289,7 @@ void KBattleshipApp::slotEnemyFieldClick(int fieldx, int fieldy)
 					else if(yokay)
 					{
 						DeathValueList::Iterator it;
-						for(it = deathList.begin(); it != deathList.end(); it++)
+						for(it = deathList.begin(); it != deathList.end(); ++it)
 						{
 							if (fieldx>0) m_view->changeEnemyFieldData(fieldx-1, *it, KBattleField::BORDER);
 							m_view->changeEnemyFieldData(fieldx, *it, KBattleField::DEATH);
