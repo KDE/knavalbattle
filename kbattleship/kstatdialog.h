@@ -31,7 +31,6 @@ class KStatDialog : public statDlg
 	void setShot();
 	void setHit();
 	void setWater();
-	void setScore( int score );
 };
 
 #endif

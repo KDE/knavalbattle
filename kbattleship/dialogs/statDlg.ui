@@ -1,7 +1,7 @@
 <!DOCTYPE UI><UI>
 <class>statDlg</class>
 <widget>
-    <class>QDialog</class>
+    <class>QWidget</class>
     <property stdset="1">
         <name>name</name>
         <cstring>statDlg</cstring>
@@ -12,7 +12,7 @@
             <x>0</x>
             <y>0</y>
             <width>124</width>
-            <height>369</height>
+            <height>266</height>
         </rect>
     </property>
     <property stdset="1">
@@ -28,10 +28,10 @@
         <property stdset="1">
             <name>geometry</name>
             <rect>
-                <x>11</x>
-                <y>11</y>
-                <width>100</width>
-                <height>340</height>
+                <x>10</x>
+                <y>10</y>
+                <width>66</width>
+                <height>250</height>
             </rect>
         </property>
         <vbox>
@@ -95,24 +95,6 @@
                 <property stdset="1">
                     <name>name</name>
                     <cstring>WaterLCD</cstring>
-                </property>
-            </widget>
-            <widget>
-                <class>QLabel</class>
-                <property stdset="1">
-                    <name>name</name>
-                    <cstring>ScoreLabel</cstring>
-                </property>
-                <property stdset="1">
-                    <name>text</name>
-                    <string>Score:</string>
-                </property>
-            </widget>
-            <widget>
-                <class>QLCDNumber</class>
-                <property stdset="1">
-                    <name>name</name>
-                    <cstring>ScoreLCD</cstring>
                 </property>
             </widget>
         </vbox>

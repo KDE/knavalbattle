@@ -24,6 +24,7 @@ using namespace std;
 
 KBattleshipApp::KBattleshipApp( QWidget *, const char *name ) : KMainWindow( 0, name )
 {
+    setMinimumSize( 680, 480 );
 }
 
 KBattleshipApp::~KBattleshipApp()
@@ -87,10 +88,11 @@ void KBattleshipApp::initView()
 {
     splitV = new QSplitter( QSplitter::Vertical, this );
     splitH = new QSplitter( QSplitter::Horizontal, splitV );
-    stat = new KStatDialog( splitV );
     view = new KBattleshipView( splitH );
-    chat = new KChatWidget( splitH );
-
+    chat = new KChatWidget( splitV );
+    
+    stat = new KStatDialog( splitH );
+    
     chat->acceptMsg( false );
 
     ownshiplist = new KShipList();
@@ -119,10 +121,17 @@ void KBattleshipApp::enemyClick( int fieldx, int fieldy )
 	    {
 		int showstate;
 		int enemystate = enemyshiplist->getXYShipType( fieldx, fieldy );
+		stat->setShot();
 		if( enemystate == 99 )
+		{
+		    stat->setWater();
 		    showstate = KBattleField::WATER;
+		}
 		else
+		{
+		    stat->setHit();
 		    showstate = KBattleField::HIT;
+		}
 	    
 		changeEnemyFieldData( fieldx, fieldy, showstate );
 		sendMessage( fieldx, fieldy, showstate );

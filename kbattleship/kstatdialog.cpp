@@ -19,7 +19,7 @@
 
 KStatDialog::KStatDialog( QWidget *parent, const char *name ) : statDlg( parent, name )
 {
-    setMinimumSize( 110, 200 );
+    setMinimumSize( 80, 300 );
 }
 
 KStatDialog::~KStatDialog()
@@ -39,9 +39,4 @@ void KStatDialog::setHit()
 void KStatDialog::setWater()
 {
     WaterLCD->display( WaterLCD->intValue() + 1 );
-}
-
-void KStatDialog::setScore( int score )
-{
-    ScoreLCD->display( ScoreLCD->intValue() + score );
 }
