@@ -31,8 +31,8 @@
 #include <klocale.h>
 #include <kconfig.h>
 
-#include "connectDlg.h"
-#include "serverDlg.h"
+#include "dialogs/connectDlg.h"
+#include "dialogs/serverDlg.h"
 #include "kbattleship.h"
 #include "kbattleshipview.h"
 
