@@ -22,6 +22,8 @@
 
 KGridWidget::KGridWidget(QWidget *parent, const char *name) : QWidget(parent, name)
 {
+    doubleBuffer = new QPixmap(parent->width(), parent->height());
+    doubleBuffer->fill(QApplication::palette().color(QPalette::Normal, QColorGroup::Background));
     cacheImages();
 }
 
@@ -173,9 +175,9 @@ void KGridWidget::drawShipIcon(int type, bool rotate, bool hit)
     {
 	case 1:
 	    if(!rotate)
-		drawIcon(ship1p1Png);
+		drawIcon(ship1p1Png, hit);
 	    else
-		drawIcon(ship1p1rPng);
+		drawIcon(ship1p1rPng, hit);
 	    break;
 		
 	case 2:
@@ -183,16 +185,16 @@ void KGridWidget::drawShipIcon(int type, bool rotate, bool hit)
 	    {
 		case 1:
 		    if(!rotate)
-			drawIcon(ship2p1Png);
+			drawIcon(ship2p1Png, hit);
 		    else
-			drawIcon(ship2p1rPng);
+			drawIcon(ship2p1rPng, hit);
 		    break;
 		
 		case 2:
 		    if(!rotate)
-			drawIcon(ship2p2Png);
+			drawIcon(ship2p2Png, hit);
 		    else
-			drawIcon(ship2p2rPng);
+			drawIcon(ship2p2rPng, hit);
 		    break;
 	    }
 	    break;
@@ -202,23 +204,23 @@ void KGridWidget::drawShipIcon(int type, bool rotate, bool hit)
 	    {
 		case 1:
 		    if(!rotate)
-			drawIcon(ship3p1Png);
+			drawIcon(ship3p1Png, hit);
 		    else
-			drawIcon(ship3p1rPng);
+			drawIcon(ship3p1rPng, hit);
 		    break;
 		
 		case 2:
 		    if(!rotate)
-			drawIcon(ship3p2Png);
+			drawIcon(ship3p2Png, hit);
 		    else
-			drawIcon(ship3p2rPng);
+			drawIcon(ship3p2rPng, hit);
 		    break;
 		    
 		case 3:
 		    if(!rotate)
-			drawIcon(ship3p3Png);
+			drawIcon(ship3p3Png, hit);
 		    else
-			drawIcon(ship3p3rPng);
+			drawIcon(ship3p3rPng, hit);
 		    break;
 	    }		    
 	    break;
@@ -228,44 +230,68 @@ void KGridWidget::drawShipIcon(int type, bool rotate, bool hit)
 	    {
 		case 1:
 		    if(!rotate)
-			drawIcon(ship4p1Png);
+			drawIcon(ship4p1Png, hit);
 		    else
-			drawIcon(ship4p1rPng);
+			drawIcon(ship4p1rPng, hit);
 		    break;
 		
 		case 2:
 		    if(!rotate)
-			drawIcon(ship4p2Png);
+			drawIcon(ship4p2Png, hit);
 		    else
-			drawIcon(ship4p2rPng);
+			drawIcon(ship4p2rPng, hit);
 		    break;
 		    
 		case 3:
 		    if(!rotate)
-			drawIcon(ship4p3Png);
+			drawIcon(ship4p3Png, hit);
 		    else
-			drawIcon(ship4p3rPng);
+			drawIcon(ship4p3rPng, hit);
 		    break;
 		    
 		case 4:
 		    if(!rotate)
-			drawIcon(ship4p4Png);
+			drawIcon(ship4p4Png, hit);
 		    else
-			drawIcon(ship4p4rPng);
+			drawIcon(ship4p4rPng, hit);
 		    break;
 	    }
 	    break;	    
     }
 }
 
-void KGridWidget::drawIcon(const QImage &icon, bool hitBlend)
+void KGridWidget::drawIcon(QImage icon, bool hitBlend)
 {
-    QPixmap *internalPixmap = new QPixmap(internalSize, internalSize);
-    internalPixmap->convertFromImage(icon);
-    bitBlt(static_cast<QWidget *>(parent()->parent()), QPoint(internalx, internaly), internalPixmap);
+    if(!hitBlend)
+    {
+	QPainter painter;
+	painter.begin(doubleBuffer);
+	QPixmap *internalPixmap = new QPixmap(internalSize, internalSize);
+	internalPixmap->convertFromImage(icon);
+	painter.drawPixmap(internalx, internaly, *internalPixmap);
+	painter.end();
+    }
+    else
+    {
+	// Niko Z:
+	// make this work!
+	QImage internalBlend = icon;
+	QPainter painter;
+	painter.begin(doubleBuffer);
+	KAlphaPainter::draw(&painter, hitPng, internalBlend, internaly, internaly);
+	painter.end();
+    }
 }
 
 QString KGridWidget::findIcon(const QString &name)
 {
     return locate("data", "kbattleship/pictures/" + name);
+}
+
+void KGridWidget::finished()
+{
+    QPainter painter;
+    painter.begin(static_cast<QWidget *>(parent()->parent()));
+    painter.drawPixmap(0, 0, *doubleBuffer);
+    painter.end();
 }

@@ -29,10 +29,9 @@ KBattleshipView::~KBattleshipView()
 
 void KBattleshipView::startDrawing()
 {
-    ownfield = new KBattleField(this, "ownfield", KBattleField::OWNFIELD);
-    enemyfield = new KBattleField(this, "enemyfield", KBattleField::ENEMYFIELD);
+    battlefield = new KBattleField(this, "battlefield");
 
-    toolTip = new KBattleshipViewToolTip(this, ownfield->getRect(), enemyfield->getRect());
+    toolTip = new KBattleshipViewToolTip(this, battlefield->getOwnRect(), battlefield->getEnemyRect());
     connect(toolTip, SIGNAL(activateTimer()), this, SLOT(toolTipTimeout()));
 }
 
@@ -43,26 +42,26 @@ void KBattleshipView::toolTipTimeout()
 
 void KBattleshipView::clearField()
 {
-    ownfield->clearField();
-    enemyfield->clearField();
+    battlefield->clearOwnField();
+    battlefield->clearEnemyField();
     paintOwnField();
     paintEnemyField();
 }
 
 int KBattleshipView::getEnemyFieldState(int &fieldx, int &fieldy)
 {
-    return enemyfield->getState(fieldx, fieldy);
+    return battlefield->getEnemyState(fieldx, fieldy);
 }
 
 void KBattleshipView::changeOwnFieldData(int fieldx, int fieldy, int type)
 {
-    ownfield->changeData(fieldx, fieldy, type);
+    battlefield->changeOwnData(fieldx, fieldy, type);
     paintOwnField();
 }
 
 void KBattleshipView::changeEnemyFieldData(int fieldx, int fieldy, int type)
 {
-    enemyfield->changeData(fieldx, fieldy, type);
+    battlefield->changeEnemyData(fieldx, fieldy, type);
     paintEnemyField();
 }
 
@@ -72,8 +71,8 @@ void KBattleshipView::mouseReleaseEvent(QMouseEvent *event)
 	return;
 
     QPoint point(event->x(), event->y());
-    QRect ownRect = ownfield->getRect();
-    QRect enemyRect = enemyfield->getRect();
+    QRect ownRect = battlefield->getOwnRect();
+    QRect enemyRect = battlefield->getEnemyRect();
     
     int fieldx = 0;
     int fieldy = 0;
@@ -82,10 +81,10 @@ void KBattleshipView::mouseReleaseEvent(QMouseEvent *event)
     {
 	int j = -1;
 	
-	for(int i = ownRect.left(); i <= ownRect.right(); i += ownfield->gridSize())
+	for(int i = ownRect.left(); i <= ownRect.right(); i += battlefield->gridSize())
 	{
 	    j++;
-	    QRect tempRect(i, ownRect.top(), ownfield->gridSize(), ownRect.bottom() - ownRect.top());
+	    QRect tempRect(i, ownRect.top(), battlefield->gridSize(), ownRect.bottom() - ownRect.top());
 
 	    if(tempRect.contains(point))
 	    {
@@ -96,10 +95,10 @@ void KBattleshipView::mouseReleaseEvent(QMouseEvent *event)
 
 	j = -1;
 	
-	for(int i = ownRect.top(); i <= ownRect.bottom(); i += ownfield->gridSize())
+	for(int i = ownRect.top(); i <= ownRect.bottom(); i += battlefield->gridSize())
 	{
 	    j++;
-	    QRect tempRect(ownRect.left(), i, ownRect.right() - ownRect.left(), ownfield->gridSize());
+	    QRect tempRect(ownRect.left(), i, ownRect.right() - ownRect.left(), battlefield->gridSize());
 
 	    if(tempRect.contains(point))
 	    {
@@ -114,10 +113,10 @@ void KBattleshipView::mouseReleaseEvent(QMouseEvent *event)
     {
 	int j = -1;
 	
-	for(int i = enemyRect.left(); i <= enemyRect.right(); i += ownfield->gridSize())
+	for(int i = enemyRect.left(); i <= enemyRect.right(); i += battlefield->gridSize())
 	{
 	    j++;
-	    QRect tempRect(i, enemyRect.top(), ownfield->gridSize(), enemyRect.bottom() - enemyRect.top());
+	    QRect tempRect(i, enemyRect.top(), battlefield->gridSize(), enemyRect.bottom() - enemyRect.top());
 
 	    if(tempRect.contains(point))
 	    {
@@ -128,10 +127,10 @@ void KBattleshipView::mouseReleaseEvent(QMouseEvent *event)
 
 	j = -1;
 	
-	for(int i = enemyRect.top(); i <= enemyRect.bottom(); i += ownfield->gridSize())
+	for(int i = enemyRect.top(); i <= enemyRect.bottom(); i += battlefield->gridSize())
 	{
 	    j++;
-	    QRect tempRect(enemyRect.left(), i, enemyRect.right() - enemyRect.left(), ownfield->gridSize());
+	    QRect tempRect(enemyRect.left(), i, enemyRect.right() - enemyRect.left(), battlefield->gridSize());
 
 	    if(tempRect.contains(point))
 	    {
@@ -144,18 +143,20 @@ void KBattleshipView::mouseReleaseEvent(QMouseEvent *event)
     }
 }
 
-void KBattleshipView::paintEnemyField()
-{
-    enemyfield->drawField();
-}
-
 void KBattleshipView::paintOwnField()
 {
-    ownfield->drawField();
+    battlefield->drawOwnField();
 }
 
-void KBattleshipView::paintEvent(QPaintEvent *)
+void KBattleshipView::paintEnemyField()
 {
-    ownfield->drawField();
-    enemyfield->drawField();
+    battlefield->drawEnemyField();
+}
+
+void KBattleshipView::paintEvent(QPaintEvent *event)
+{
+    battlefield->drawOwnField();
+    battlefield->drawEnemyField();
+    
+    QRect redrawRect(event->rect());
 }

@@ -24,7 +24,7 @@
 #include <kimageio.h>
 #include <qpainter.h>
 #include <qimage.h>
-#include <qbrush.h>
+#include <qpixmap.h>
 #include <qwidget.h>
 
 class KGridWidget : public QWidget
@@ -35,6 +35,7 @@ class KGridWidget : public QWidget
         ~KGridWidget();
 
     protected:    
+	void finished();
         void setValues(int x, int y, int size);
         void drawSquare();
         void drawWaterIcon();
@@ -44,10 +45,11 @@ class KGridWidget : public QWidget
 
     private:
 	void cacheImages();
-        void drawIcon(const QImage &icon, bool hitBlend = false);
+        void drawIcon(QImage icon, bool hitBlend = false);
 	QString findIcon(const QString &name);
 
         int internalx, internaly, internalSize;
+	QPixmap *doubleBuffer;
 	QImage seaPng, waterPng, hitPng, deathPng;
 	QImage ship1p1Png, ship1p1rPng;
 	QImage ship2p1Png, ship2p1rPng;

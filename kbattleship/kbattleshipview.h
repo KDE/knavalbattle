@@ -84,14 +84,14 @@ class KBattleshipView : public QWidget
         void ownFieldClicked(int, int, int);
 
     protected:
-        void paintEnemyField();
-        void paintOwnField();
-        void paintEvent(QPaintEvent *);
+        void paintEvent(QPaintEvent *event);
         void mouseReleaseEvent(QMouseEvent *event);
 
     private:
-        KBattleField *ownfield;
-        KBattleField *enemyfield;
+        inline void paintEnemyField();
+        inline void paintOwnField();
+	
+        KBattleField *battlefield;
 	KBattleshipViewToolTip *toolTip;
 };
 
