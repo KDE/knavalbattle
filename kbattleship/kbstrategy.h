@@ -35,7 +35,7 @@ public:
 	virtual bool hasMoreShots() = 0;
 
 protected:
-	QList<QPoint> *masterShotList();
+	QPtrList<QPoint> *masterShotList();
 	int enemyFieldStateAt(int x, int y);
 	bool* getViableShots();
 
@@ -43,7 +43,7 @@ protected:
 	bool* m_viableShots;
 	bool isViablePos(int x, int y);
 	void setViablePos(int x, int y, bool viable);
-	QList<QPoint> *m_prevShots;
+	QPtrList<QPoint> *m_prevShots;
 
 	KBattleField *m_battleField;
 	KBStrategy *m_parent;

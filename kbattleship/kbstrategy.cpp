@@ -20,7 +20,7 @@
 KBStrategy::KBStrategy(KBStrategy *parent)
 {
 	m_parent = parent;
-	m_prevShots = new QList<QPoint>;
+	m_prevShots = new QPtrList<QPoint>;
 	m_viableShots = 0;
 }
 
@@ -36,7 +36,7 @@ KBStrategy::~KBStrategy()
 }
 
 /* Returns the master strategy's shot list. */
-QList<QPoint> *KBStrategy::masterShotList()
+QPtrList<QPoint> *KBStrategy::masterShotList()
 {
 	return (m_parent == 0) ? m_prevShots : m_parent->masterShotList();
 }

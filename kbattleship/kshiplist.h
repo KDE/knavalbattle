@@ -52,7 +52,7 @@ signals:
 	void sigOwnFieldDataChanged(int, int, int);
 
 private:
-	QList<KShip> m_shiplist;
+	QPtrList<KShip> m_shiplist;
 	int m_shipsadded;
 };
 
