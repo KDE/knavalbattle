@@ -88,5 +88,7 @@ void KBattleshipSound::playSound( int file )
 
 bool KBattleshipSound::isRunning()
 {
+    kdDebug() << "It'll crash here!" << endl;
     return serverRunning;
+    kdDebug() << "You won't see this!" << endl;
 }
