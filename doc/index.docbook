@@ -1,13 +1,14 @@
 <?xml version="1.0" ?>
 <!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.1-Based Variant V1.0//EN" "dtd/kdex.dtd" [
   <!ENTITY kappname "&kbattleship;">
+  <!ENTITY package "kdegames">
   <!ENTITY % addindex "IGNORE">
   <!ENTITY % English "INCLUDE" > <!-- change language only here -->
 ]>
 
 <book lang="&language;">
 <bookinfo>
-<title>The KBattleship Handbook</title>
+<title>The &kbattleship; Handbook</title>
 
 <authorgroup>
 <author>
@@ -179,8 +180,8 @@ The first player destroying all their opponents ships wins the game!
 <term>
 <menuchoice>
 <shortcut><keycap>F2</keycap></shortcut>
-<guimenu><accel>G</accel>ame</guimenu>
-<guimenuitem><accel>C</accel>onnect to server</guimenuitem>
+<guimenu>Game</guimenu>
+<guimenuitem>Connect to server</guimenuitem>
 </menuchoice>
 </term>
 <listitem>
@@ -194,8 +195,8 @@ The first player destroying all their opponents ships wins the game!
 <term>
 <menuchoice>
 <shortcut><keycap>F3</keycap></shortcut>
-<guimenu><accel>G</accel>ame</guimenu>
-<guimenuitem><accel>S</accel>tart server</guimenuitem>
+<guimenu>Game</guimenu>
+<guimenuitem>Start server</guimenuitem>
 </menuchoice>
 </term>
 <listitem>
@@ -209,8 +210,8 @@ The first player destroying all their opponents ships wins the game!
 <term>
 <menuchoice>
 <shortcut><keycap>F4</keycap></shortcut>
-<guimenu><accel>G</accel>ame</guimenu>
-<guimenuitem>S<accel>i</accel>ngle player</guimenuitem>
+<guimenu>Game</guimenu>
+<guimenuitem>Single player</guimenuitem>
 </menuchoice>
 </term>
 <listitem>
@@ -224,8 +225,8 @@ The first player destroying all their opponents ships wins the game!
 <term>
 <menuchoice>
 <shortcut><keycap>F10</keycap></shortcut>
-<guimenu><accel>G</accel>ame</guimenu>
-<guimenuitem><accel>H</accel>ighscore</guimenuitem>
+<guimenu>Game</guimenu>
+<guimenuitem>Highscore</guimenuitem>
 </menuchoice>
 </term>
 <listitem>
@@ -241,8 +242,8 @@ The first player destroying all their opponents ships wins the game!
 <shortcut>
 <keycombo action="simul">&Ctrl;<keycap>Q</keycap></keycombo>
 </shortcut>
-<guimenu><accel>G</accel>ame</guimenu>
-<guimenuitem><accel>Q</accel>uit</guimenuitem>
+<guimenu>Game</guimenu>
+<guimenuitem>Quit</guimenuitem>
 </menuchoice>
 </term>
 <listitem>
@@ -261,8 +262,8 @@ The first player destroying all their opponents ships wins the game!
 <varlistentry>
 <term>
 <menuchoice>
-<guimenu><accel>S</accel>ettings</guimenu>
-<guimenuitem>Show st<accel>a</accel>tusbar</guimenuitem>
+<guimenu>Settings</guimenu>
+<guimenuitem>Show statusbar</guimenuitem>
 </menuchoice>
 </term>
 <listitem>
@@ -276,8 +277,8 @@ default is on.
 <varlistentry>
 <term>
 <menuchoice>
-<guimenu><accel>S</accel>ettings</guimenu>
-<guimenuitem><accel>S</accel>how grid</guimenuitem>
+<guimenu>Settings</guimenu>
+<guimenuitem>Show grid</guimenuitem>
 </menuchoice>
 </term>
 <listitem>
@@ -294,69 +295,7 @@ field.</action>  The default is off.
 <sect1 id="help-menu">
 <title>The <guimenu>Help</guimenu> menu</title>
 
-<variablelist>  
-<varlistentry>  
-<term>
-<menuchoice>  
-<shortcut><keycap>F1</keycap></shortcut>  
-<guimenu><accel>H</accel>elp</guimenu>
-<guimenuitem><accel>C</accel>ontents</guimenuitem>
-</menuchoice>
-</term>  
-<listitem>  
-<para>This invokes the &kde; help system starting at the &kbattleship;
-help pages (this document).</para>  
-</listitem>  
-</varlistentry>  
-  
-<varlistentry>
-<term><menuchoice>  
-<shortcut><keycombo
-action="simul"><keycap>Shift</keycap><keycap>F1</keycap></keycombo>
-</shortcut>
-<guimenu><accel>H</accel>elp</guimenu>
-<guimenuitem>What's <accel>T</accel>his?</guimenuitem>
-</menuchoice>
-</term> <listitem> 
-<para>This changes the mouse cursor to a combination
-arrow and question mark.  Clicking on items within &kbattleship; with
-this arrow will open a help window (if one exists for the particular
-item) explaining the item's function.</para>
-
-</listitem>  
-</varlistentry>  
-  
-<varlistentry>
-<term>
-<menuchoice>
-<guimenu><accel>H</accel>elp</guimenu>
-<guimenuitem><accel>R</accel>eport Bug</guimenuitem>
-</menuchoice>
-</term>
-<listitem><para>This calls a dialog box to help
-the user help the KDE team to track down and solve any
-problems(bugs) in the program.  The dialog attempts to do this by
-means of filling in a web form using the information given by the user.
-</para>
-</listitem>
-</varlistentry>
-
-<varlistentry>
-<term><menuchoice>  
-<guimenu><accel>H</accel>elp</guimenu><guimenuitem><accel>A</accel>bout KBattleship</guimenuitem></menuchoice></term>
-<listitem>  
-<para>This will display version and author information</para>
-</listitem>  
-</varlistentry>  
-  
-<varlistentry>  
-<term><menuchoice>  
-<guimenu><accel>H</accel>elp</guimenu><guimenuitem>About <accel>K</accel>DE</guimenuitem></menuchoice></term>  
-<listitem>  
-<para>This displays the &kde; version and other basic information.</para>  
-</listitem>  
-</varlistentry>  
-</variablelist>  
+&help.menu.documentation;
 
 </sect1>
 </chapter>
@@ -439,19 +378,29 @@ Nils Trzebin <email>nils.trzebin@stud.uni-hannover.de</email>
 <!-- TRANS:CREDIT_FOR_TRANSLATORS -->
 
 &underFDL;
+&underGPL;
 
 </chapter>
 
 <appendix id="installation">
 <title>Installation</title>
 
+&install.intro.documentation;
+
 <sect1 id="requirements">
 <title>Requirements</title>
 
-<para>
-At the time of writing, &kbattleship; requires &kde; 2.2 or greater and
+<para><!-- This needs updating -->
+At the time of writing, &kbattleship; requires &kde; 2.x or greater and
 &Qt; 2.2.3 or greater.
 </para>
+
+</sect1>
+
+<sect1 id="compiling">
+<title>Compiling</title>
+
+&install.compile.documentation;
 
 </sect1>
 
