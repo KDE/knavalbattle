@@ -18,11 +18,11 @@
 #include <kcmdlineargs.h>
 #include <kaboutdata.h>
 #include <klocale.h>
+#include <dcopclient.h>
 
 #include "kbattleship.h"
 
 static const char *description = I18N_NOOP("KBattleship");
-
 static const char *VERSION = I18N_NOOP("0.5");
 
 int main(int argc, char *argv[])
@@ -38,6 +38,9 @@ int main(int argc, char *argv[])
     
     KCmdLineArgs::init(argc, argv, &aboutData);
     KApplication app;
+    
+    (kapp->dcopClient())->attach();
+    (kapp->dcopClient())->registerAs("kbattleship");
  
     if(app.isRestored())
     {
