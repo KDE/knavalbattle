@@ -692,7 +692,7 @@ void KBattleshipApp::slotServerConnect()
 
 		slotStatusMsg(i18n("Loading Connect-Server dialog..."));
 
-		m_client = new KClientDialog();
+		m_client = new KClientDialog(this);
 		connect(m_client, SIGNAL(sigConnectServer()), this, SLOT(slotConnectToBattleshipServer()));
 		connect(m_client, SIGNAL(sigCancelConnect()), this, SLOT(slotDeleteConnectDialog()));
 		m_client->show();
