@@ -28,14 +28,13 @@ KBattleshipClient::KBattleshipClient(QString host, int port) : QSocket()
     connect(this, SIGNAL(readyRead()), this, SLOT(readData()));
 
     allowWrite();
-    connectToServer();
 }
 
 KBattleshipClient::~KBattleshipClient()
 {
 }
 
-void KBattleshipClient::connectToServer()
+void KBattleshipClient::init()
 {
     connectToHost(internalHost, internalPort);
 }

@@ -31,6 +31,8 @@ class KBattleshipClient : public QSocket
         KBattleshipClient(QString host = "", int port = 54321);
         ~KBattleshipClient();
 
+	void init();
+
         void kill();
 
         void sendMessage( KMessage *msg );
@@ -51,7 +53,6 @@ class KBattleshipClient : public QSocket
         void socketFailure(int);
      
     private:
-        void connectToServer();
         int internalPort;
         QString internalHost;
         bool writeable;

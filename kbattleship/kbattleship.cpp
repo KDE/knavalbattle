@@ -669,6 +669,7 @@ void KBattleshipApp::connectToBattleshipServer()
         gameServerConnect->setText("Dis&connect from server");
         gameNewServer->setEnabled(false);
         connection = new KonnectionHandling(this, kbclient);
+	kbclient->init();
         connect(connection, SIGNAL(newPlayer(bool)), chat, SLOT(acceptMsg(bool)));
 	connect(connection, SIGNAL(clientRestart()), this, SLOT(clientRestart()));
 	connect(connection, SIGNAL(enemyNickname(const QString &)), this, SLOT(slotChangeEnemyPlayer(const QString &)));
