@@ -29,7 +29,7 @@ class KMessage : QObject
 {
     Q_OBJECT
     public:
-        KMessage( KMessageType type );
+        KMessage( const KMessageType &type );
         ~KMessage();
 
         void addField( QString name, QString value );

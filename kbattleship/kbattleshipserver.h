@@ -16,7 +16,7 @@
  ***************************************************************************/
 
 #ifndef KBATTLESHIPSERVER_H
-#define KBATTLESHIPTSERVER_H
+#define KBATTLESHIPSERVER_H
 
 #include <kdebug.h>
 #include <stdlib.h>
