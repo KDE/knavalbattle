@@ -3,7 +3,7 @@
 
 #include "dialogs/serverDlg.h"
 
-class KServerDialog : public QWidget
+class KServerDialog : public serverStartDlg
 {
     Q_OBJECT
     public:
