@@ -55,8 +55,8 @@ bool KBRandomShotStrategy::advance()
 {
 	while(enemyFieldStateAt(m_column, m_row) == SHOT)
 	{
-		m_column = m_randomSeq.getLong(m_fieldRect.width());
-		m_row = m_randomSeq.getLong(m_fieldRect.height());
+		m_column = m_randomSeq.getLong(m_fieldRect.width() - 1);
+		m_row = m_randomSeq.getLong(m_fieldRect.height() - 1);
 	}
 	return true;
 }
