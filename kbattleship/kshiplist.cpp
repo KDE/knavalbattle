@@ -131,7 +131,7 @@ void KShipList::addShip4( int fieldx1, int fieldx2, int fieldy1, int fieldy2 )
 void KShipList::addNewShip( int button, int fieldx, int fieldy )
 {
     KShip *shipiterator;
-    int tempx, tempy;
+    int tempx, tempy, tempx2, tempy2;
     bool xokay = true;
     bool yokay = true;
 
@@ -144,6 +144,56 @@ void KShipList::addNewShip( int button, int fieldx, int fieldy )
     {
 	for( shipiterator = shiplist.first(); shipiterator != 0; shipiterator = shiplist.next() )
 	{
+	    if( shipiterator->shipystart() == shipiterator->shipystop() && shipiterator->shipxstart() == shipiterator->shipxstop() )
+	    {
+		for( tempx = shipiterator->shipxstart(); tempx <= shipiterator->shipxstop(); tempx++ )
+		{
+		    if( tempx == fieldx )
+			xokay = false;
+		}
+		
+		for( tempy = shipiterator->shipystart(); tempy <= shipiterator->shipystop(); tempy++ )
+		{
+		    if( tempy == fieldy )
+			yokay = false;
+		}
+	    }	
+	    else if( shipiterator->shipystart() == shipiterator->shipystop() && shipiterator->shipxstart() != shipiterator->shipxstop() )
+	    {
+		for( tempx = shipiterator->shipxstart(); tempx <= shipiterator->shipxstop(); tempx++ )
+		{
+		    for( tempx2 = fieldx; tempx2 <= ( fieldx + shipCount() ); tempx2++ )
+		    {
+			if( tempx == tempx2 )
+			    xokay = false;    
+		    }
+		}
+	    }
+	    else if( shipiterator->shipxstart() == shipiterator->shipxstop() && shipiterator->shipystart() != shipiterator->shipystop() )
+	    {
+		for( tempy = shipiterator->shipystart(); tempy <= shipiterator->shipystop(); tempy++ )
+		{
+		    for( tempy2 = fieldy; tempy2 <= ( fieldy + shipCount() ); tempy2++ )
+		    {
+			if( tempy == tempy2 )
+			    yokay = false;    
+		    }
+		}
+	    }
+	    
+	    if( xokay && !yokay )
+	    {
+		xokay = true;
+		yokay = true;
+	    }
+	    
+	    if( yokay && !xokay )
+	    {
+		xokay = true;
+		yokay = true;
+	    }
+
+	    /*
 	    for( tempy = shipiterator->shipystart(); tempy <= shipiterator->shipystop(); tempy++ )
 	    {
 		if( tempy == fieldy )	
@@ -155,6 +205,7 @@ void KShipList::addNewShip( int button, int fieldx, int fieldy )
 		if( tempx == fieldx )	
 		    xokay = false;
 	    }
+	    */
 	}
     }
     
