@@ -1,4 +1,4 @@
-INCLUDES                    =   $(all_includes)
+INCLUDES                    =   $(all_includes) -I$(top_builddir)/libkdegames
 SUBDIRS	                    =   dialogs . pictures sounds
 
 lib_LTLIBRARIES  	    =	kbattleship.la
