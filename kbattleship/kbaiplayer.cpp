@@ -18,12 +18,11 @@
 #include <kapp.h>
 #include <kdebug.h>
 
-#include "kbverticalstepstrategy.h"
-#include "kbhorizontalstepstrategy.h"
-#include "kbrandomshotstrategy.h"
-#include "kbdiagonalwrapstrategy.h"
+#include "kbchooserstrategy.h"
 
 #include "kbaiplayer.moc"
+
+#define MAX_SHIP_LEN 5
 
 KBAIPlayer::KBAIPlayer()
 {
@@ -88,29 +87,7 @@ void KBAIPlayer::chooseStrategy()
     if(m_masterStrategy != 0)
 	delete m_masterStrategy;
 
-    switch(m_randomSeq->getLong(MAX_STRAT_NUM))
-    {
-	case 0:
-	    m_masterStrategy = new KBHorizontalStepStrategy();
-	    kdDebug() << "New Strategy: KBHorizontalStep" << endl;
-	    break;
-	
-	case 1:
-	    m_masterStrategy = new KBVerticalStepStrategy();
-	    kdDebug() << "New Strategy: KBVerticalStep" << endl;
-	    break;
-	
-	case 2:
-	    m_masterStrategy = new KBDiagonalWrapStrategy();
-	    kdDebug() << "New Strategy: KBDiagonalWrap" << endl;
-	    break;
-	
-	default:
-	    m_masterStrategy = new KBRandomShotStrategy();
-	    kdDebug() << "New Strategy: KBRandomShot" << endl;
-	    break;
-    }
-    
+    m_masterStrategy = new KBChooserStrategy();    
     m_masterStrategy->init(m_battleField, m_fieldRect);
 }
 

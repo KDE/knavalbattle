@@ -274,7 +274,7 @@ void KGridWidget::drawShipIcon(int ship, int part, bool rotate, bool hit)
 	    if(!rotate)
 		drawIcon(ship1p1Png, hit);
 	    else
-		drawIcon(ship1p1rPng, hit, rotate);
+		drawIcon(ship1p1rPng, hit, false, rotate);
 	    break;
 
 	case 2:
@@ -284,14 +284,14 @@ void KGridWidget::drawShipIcon(int ship, int part, bool rotate, bool hit)
 		    if(!rotate)
 			drawIcon(ship2p1Png, hit);
 		    else
-			drawIcon(ship2p1rPng, hit, rotate);
+			drawIcon(ship2p1rPng, hit, false, rotate);
 		    break;
 
 		case 2:
 		    if(!rotate)
 			drawIcon(ship2p2Png, hit);
 		    else
-			drawIcon(ship2p2rPng, hit, rotate);
+			drawIcon(ship2p2rPng, hit, false, rotate);
 		    break;
 	    }
 	    break;
@@ -303,21 +303,21 @@ void KGridWidget::drawShipIcon(int ship, int part, bool rotate, bool hit)
 		    if(!rotate)
 			drawIcon(ship3p1Png, hit);
 		    else
-			drawIcon(ship3p1rPng, hit, rotate);
+			drawIcon(ship3p1rPng, hit, false, rotate);
 		    break;
 
 		case 2:
 		    if(!rotate)
 			drawIcon(ship3p2Png, hit);
 		    else
-			drawIcon(ship3p2rPng, hit, rotate);
+			drawIcon(ship3p2rPng, hit, false, rotate);
 		    break;
 
 		case 3:
 		    if(!rotate)
 			drawIcon(ship3p3Png, hit);
 		    else
-			drawIcon(ship3p3rPng, hit, rotate);
+			drawIcon(ship3p3rPng, hit, false, rotate);
 		    break;
 	    }
 	    break;
@@ -329,28 +329,28 @@ void KGridWidget::drawShipIcon(int ship, int part, bool rotate, bool hit)
 		    if(!rotate)
 			drawIcon(ship4p1Png, hit);
 		    else
-			drawIcon(ship4p1rPng, hit, rotate);
+			drawIcon(ship4p1rPng, hit, false, rotate);
 		    break;
 
 		case 2:
 		    if(!rotate)
 			drawIcon(ship4p2Png, hit);
 		    else
-			drawIcon(ship4p2rPng, hit, rotate);
+			drawIcon(ship4p2rPng, hit, false, rotate);
 		    break;
 
 		case 3:
 		    if(!rotate)
 			drawIcon(ship4p3Png, hit);
 		    else
-			drawIcon(ship4p3rPng, hit, rotate);
+			drawIcon(ship4p3rPng, hit, false, rotate);
 		    break;
 
 		case 4:
 		    if(!rotate)
 			drawIcon(ship4p4Png, hit);
 		    else
-			drawIcon(ship4p4rPng, hit, rotate);
+			drawIcon(ship4p4rPng, hit, false, rotate);
 		    break;
 	    }
 	    break;

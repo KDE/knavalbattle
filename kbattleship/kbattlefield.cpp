@@ -114,7 +114,6 @@ void KBattleField::drawOwnField()
             	    break;
 		
 		case KBattleField::WATER:
-		
 		    drawSquare();	
 		    drawWaterIcon();
 		    break;

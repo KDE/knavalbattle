@@ -12,7 +12,7 @@ kbattleship_la_SOURCES      =   kbaiplayer.cpp kbstrategy.cpp kbverticalstepstra
 				kstatdialog.cpp ksingledialog.cpp khighscoredialog.cpp \
 				kbattleshipsound.cpp kbdiagonalshotstrategy.cpp \
 		                konnectionhandling.cpp kship.cpp kshiplist.cpp \
-		                kbattleship.cpp main.cpp
+		                kbchooserstrategy.cpp kbattleship.cpp main.cpp
 
 kbattleship_la_LIBADD       =   $(top_builddir)/libkdegames/libkdegames.la \
 				dialogs/libkbattleshipdialogs.la $(LIB_KFILE) -lsoundserver_idl

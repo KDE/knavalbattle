@@ -1113,11 +1113,13 @@ void KBattleshipApp::slotStartBattleshipGame()
     m_gameServerConnect->setEnabled(false);
     slotStatusMsg(i18n("Waiting for the AI player to place the ships..."));
     if(m_single != 0)
+    {
 	m_ownNickname = m_single->getNickname();
+        delete m_single;
+	m_single = 0;
+    }
     slotChangeOwnPlayer(m_ownNickname);
     slotChangeEnemyPlayer(KGameMisc::randomName());
-    delete m_single;
-    m_single = 0;
     cleanup(true);
     if(m_connection != 0)
     {
@@ -1148,6 +1150,8 @@ void KBattleshipApp::slotAIShootsAt(const QPoint pos)
 {
     if(!m_shootable)
 	m_shootable = true;
+
+
 
     int showstate = m_view->getOwnFieldState(pos.x(), pos.y());
 
