@@ -107,7 +107,7 @@ void KBattleshipView::drawEnemyShipsHuman(KMessage *msg, KShipList *list)
 	int posx, posy, placedLeft;
 	bool left;
 	int i = 3;
-	while (msg->field(QString("ship%1").arg(i)) != QString::null)
+	while (!msg->field(QString("ship%1").arg(i)).isNull())
 	{
 		posx = msg->field(QString("ship%1").arg(i)).section(" ", 0, 0).toInt();
 		posy = msg->field(QString("ship%1").arg(i)).section(" ", 1, 1).toInt();

@@ -365,7 +365,7 @@ void KGridWidget::drawShipIcon(int ship, int part, bool rotate, bool hit)
 	}
 }
 
-void KGridWidget::drawIcon(QPixmap icon, bool hitBlend, bool waterBlend, bool rotate)
+void KGridWidget::drawIcon(const QPixmap &icon, bool hitBlend, bool waterBlend, bool rotate)
 {
 	QPainter painter;
 	painter.begin(m_doubleBuffer);

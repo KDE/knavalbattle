@@ -914,7 +914,7 @@ void KBattleshipApp::slotStartBattleshipServer()
 void KBattleshipApp::slotLost(KMessage *msg)
 {
 	m_stat->slotAddEnemyWon();
-	if (msg->field("ship0") != QString::null) m_view->drawEnemyShipsHuman(msg, m_enemyshiplist);
+	if (!msg->field("ship0").isNull()) m_view->drawEnemyShipsHuman(msg, m_enemyshiplist);
 	m_lost = true;
 }
 

@@ -43,7 +43,7 @@ protected:
 
 private:
 	void cacheImages();
-	void drawIcon(QPixmap icon, bool hitBlend = false, bool waterBlend = false, bool rotate = false);
+	void drawIcon(const QPixmap &icon, bool hitBlend = false, bool waterBlend = false, bool rotate = false);
 	QString findIcon(const QString &name) const;
 
 	bool m_drawGrid;
