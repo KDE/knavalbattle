@@ -18,7 +18,7 @@
 #include <kcmdlineargs.h>
 #include <kaboutdata.h>
 #include <klocale.h>
-#include <dcopclient.h>
+//#include <dcopclient.h>
 
 #include "kbattleship.h"
 #include "main.h"
@@ -39,8 +39,8 @@ int main(int argc, char *argv[])
 	KCmdLineArgs::init(argc, argv, &aboutData);
 	KApplication app;
 
-	(kapp->dcopClient())->attach();
-	(kapp->dcopClient())->registerAs("kbattleship");
+	//(kapp->dcopClient())->attach();
+	//(kapp->dcopClient())->registerAs("kbattleship");
 
 	if(app.isRestored())
 	{
