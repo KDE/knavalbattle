@@ -15,6 +15,8 @@
  *                                                                         *
  ***************************************************************************/
 
+#include <qlcdnumber.h>
+#include <qlabel.h>
 #include "kstatdialog.moc"
 
 KStatDialog::KStatDialog(QWidget *parent, const char *name) : statDlg(parent, name)
@@ -24,6 +26,16 @@ KStatDialog::KStatDialog(QWidget *parent, const char *name) : statDlg(parent, na
 
 KStatDialog::~KStatDialog()
 {
+}
+
+void KStatDialog::slotAddOwnWon()
+{
+    OwnLabel->setText(QString::number(OwnLabel->text().toInt() + 1));
+}
+
+void KStatDialog::slotAddEnemyWon()
+{
+    EnemyLabel->setText(QString::number(EnemyLabel->text().toInt() + 1));
 }
 
 void KStatDialog::setShot()
@@ -61,6 +73,12 @@ void KStatDialog::clear()
     ShotLCD->display(0);
     HitLCD->display(0);
     WaterLCD->display(0);
+}
+
+void KStatDialog::clearWon()
+{
+    OwnLabel->setText(QString::number(0));
+    EnemyLabel->setText(QString::number(0));
 }
 
 int KStatDialog::getShot()

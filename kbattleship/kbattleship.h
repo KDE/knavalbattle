@@ -100,6 +100,7 @@ class KBattleshipApp : public KMainWindow
         void slotShowGrid();
         void slotViewStatusBar();
         void slotStartBattleshipGame();
+        void slotStartBattleshipGame(bool clearstat = true);
         void slotStartBattleshipServer();
         void slotConnectToBattleshipServer();
         void slotPlaceShipPreview(int fieldx, int fieldy, bool shift);

@@ -142,6 +142,7 @@ void KonnectionHandling::slotNewMessage(KMessage *msg)
 	    // We lost the game
 	    case KMessage::WON:
 		emit sigStatusBar(i18n("You lost the game :("));
+		emit sigLost();
 		break;
 	
 	    // We got a chat message
@@ -200,6 +201,7 @@ void KonnectionHandling::slotNewMessage(KMessage *msg)
 	    // We lost the game
 	    case KMessage::WON:
 		emit sigStatusBar(i18n("You lost the game :("));
+		emit sigLost();
 		break;
 	    
 	    // We got a chat message

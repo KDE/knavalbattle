@@ -62,6 +62,7 @@ class KonnectionHandling : public QObject
 	void sigClientLost();
 	void sigServerLost();
 	void sigReplay();
+	void sigLost();
 	void sigAbortNetworkGame();
 	void sigChatMessage(const QString &, const QString &, bool);
 
