@@ -395,8 +395,8 @@ void KBattleshipApp::resetClient(bool status)
 	// Niko Z:
 	// avoid crashes when deleting ### TODO
 	// correct deleting! (we don't wanna leak)
-	//delete kbclient;
-	//kbclient = 0;
+	delete kbclient;
+	kbclient = 0;
 	slotStatusMsg(i18n("Ready"));
     }
     deleteLists();
@@ -535,6 +535,7 @@ void KBattleshipApp::startBattleshipServer()
 	connect(connection, SIGNAL(newPlayer(bool)), chat, SLOT(acceptMsg(bool)));
 	connect(connection, SIGNAL(askReplay()), this, SLOT(askReplay()));
 	connect(connection, SIGNAL(abortGame()), this, SLOT(deleteLists()));
+	connect(connection, SIGNAL(abortGameStrict(bool)), this, SLOT(resetServer(bool)));
 	connect(connection, SIGNAL(serverFailure(bool)), this, SLOT(resetServer(bool)));
 	connect(connection, SIGNAL(giveEnemyName()), this, SLOT(sendGreet())); 
 	connect(connection, SIGNAL(enemyNickname(const QString &)), this, SLOT(slotChangeEnemyPlayer(const QString &)));

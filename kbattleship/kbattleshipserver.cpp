@@ -40,7 +40,7 @@ void KBattleshipServer::newConnection(int socket)
 {
     serverSocket = new QSocket(this);
     connect(serverSocket, SIGNAL(readyRead()), this, SLOT(readClient()));
-    connect(serverSocket, SIGNAL(delayedCloseFinished()), this, SLOT(discardClient()));
+    connect(serverSocket, SIGNAL(connectionClosed()), this, SLOT(discardClient()));
     serverSocket->setSocket(socket);
     emit newConnect();
 }

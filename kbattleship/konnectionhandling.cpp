@@ -140,7 +140,8 @@ void KonnectionHandling::serverWroteToClient()
 
 void KonnectionHandling::serverLostClient()
 {
-    kdDebug() << "ENDCLIENT!" << endl;
+    KMessageBox::error(0L, i18n("Connection to client lost. Aborting the game!"));
+    emit abortGameStrict(true);
 }
 
 bool KonnectionHandling::writeable()
@@ -233,8 +234,6 @@ void KonnectionHandling::gotNewMessage(KMessage *msg)
     
 void KonnectionHandling::clientLostServer()
 {
-    KMessageBox::error(0L, i18n("Connection to server lost. Aborting the game!"));
-    emit abortGameStrict(true);
 }
 
 void KonnectionHandling::clientSocketError(int error)
