@@ -682,7 +682,7 @@ void KBattleshipApp::slotDeleteClient()
 
 void KBattleshipApp::slotReplayRequest()
 {
-	switch(KMessageBox::questionYesNo(this, i18n("The client asks to restart the game. Do you accept?")))
+	switch(KMessageBox::questionYesNo(this, i18n("The client is asking to restart the game. Do you accept?")))
 	{
 		case KMessageBox::Yes:
 			slotReplay();
