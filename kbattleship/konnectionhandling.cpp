@@ -102,7 +102,12 @@ void KonnectionHandling::slotNewMessage(KMessage *msg)
 		else
 		    KMessageBox::error(0L, i18n(msg->getField("reason").latin1()));
 		break;
-	
+
+	    // Got some informations
+	    case KMessage::VERSION:
+		emit sigClientInformation(msg->getField("clientName"), msg->getField("clientVersion"), msg->getField("clientDescription"), msg->getField("protocolVersion"));
+		break;
+
 	    // Got the enemy's nickname
 	    case KMessage::GREET:
 		emit sigEnemyNickname(msg->getField("nickname"));
@@ -156,8 +161,7 @@ void KonnectionHandling::slotNewMessage(KMessage *msg)
 		    m_kbserver->slotDiscardClient(protocolVersion, true, false);
 		    KMessageBox::error(0L, i18n("Connection to client dropped. The client's protocol implementation (%1) is not compatible with our (%2) version!").arg(msg->getField("protocolVersion")).arg(protocolVersion));
 		}
-		emit sigClientInformation(msg->getField("clientName"), msg->getField("clientVersion"),
-				         msg->getField("clientDescription"), msg->getField("protocolVersion"));
+		emit sigClientInformation(msg->getField("clientName"), msg->getField("clientVersion"), msg->getField("clientDescription"), msg->getField("protocolVersion"));
 		break;
 		
 	    // Got the enemy's nickname

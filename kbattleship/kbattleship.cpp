@@ -81,7 +81,7 @@ void KBattleshipApp::initActions()
     m_gameSingle = new KAction(i18n("S&ingle player"), "gear", Key_F4, this, SLOT(slotSinglePlayer()), actionCollection(), "singleplayer");
     m_gameQuit = KStdAction::quit( this, SLOT(slotGameQuit()), actionCollection(), "gamequit");
     (void) new KAction(i18n("&Highscore"), "view_text", Key_F10, this, SLOT(slotHighscore()), actionCollection(), "highscore");
-    m_gameEnemyInfo = new KAction(i18n("&Enemy Client Info..."), "view_text", Key_F11, this, SLOT(slotEnemyClientInfo()), actionCollection(), "enemyinfo");
+    m_gameEnemyInfo = new KAction(i18n("&Enemy Info..."), "view_text", Key_F11, this, SLOT(slotEnemyClientInfo()), actionCollection(), "enemyinfo");
 
     m_viewStatusBar = KStdAction::showStatusbar(this, SLOT(slotViewStatusBar()), actionCollection());
     m_configSound = new KToggleAction(i18n("&Play sounds"), 0, this, SLOT(slotConfigSound()), actionCollection(), "configsound");
@@ -782,9 +782,7 @@ void KBattleshipApp::slotStartBattleshipServer()
 	connect(m_connection, SIGNAL(sigAbortNetworkGame()), this, SLOT(slotAbortNetworkGame()));
 	connect(m_connection, SIGNAL(sigReplay()), this, SLOT(slotReplayRequest()));
 	connect(m_connection, SIGNAL(sigChatMessage(const QString &, const QString &, bool)), m_chat, SLOT(slotReceivedMessage(const QString &, const QString &, bool)));
-	connect(m_connection, SIGNAL(sigClientInformation(const QString &, const QString &, const QString &, const QString &))
-	                , this, SLOT(slotReceivedClientInformation(const QString &, const QString &, const QString &, const QString &)));
-
+	connect(m_connection, SIGNAL(sigClientInformation(const QString &, const QString &, const QString &, const QString &)), this, SLOT(slotReceivedClientInformation(const QString &, const QString &, const QString &, const QString &)));
     }
     else
     {
@@ -984,8 +982,7 @@ void KBattleshipApp::slotConnectToBattleshipServer()
 	    connect(m_connection, SIGNAL(sigServerLost()), this, SLOT(slotServerLost()));
 	    connect(m_connection, SIGNAL(sigReplay()), this, SLOT(slotReplay()));
 	    connect(m_connection, SIGNAL(sigChatMessage(const QString &, const QString &, bool)), m_chat, SLOT(slotReceivedMessage(const QString &, const QString &, bool)));
-	    connect(m_connection, SIGNAL(sigClientInformation(const QString &, const QString &, const QString &, const QString &)),
-		this, SLOT(slotReceivedClientInformation(const QString &, const QString &, const QString &, const QString &)));
+	    connect(m_connection, SIGNAL(sigClientInformation(const QString &, const QString &, const QString &, const QString &)), this, SLOT(slotReceivedClientInformation(const QString &, const QString &, const QString &, const QString &)));
 	}
 	else
 	{
@@ -1015,9 +1012,7 @@ void KBattleshipApp::slotConnectToBattleshipServer()
 	        connect(m_connection, SIGNAL(sigReplay()), this, SLOT(slotReplay()));
 	        connect(m_connection, SIGNAL(sigChatMessage(const QString &, const QString &, bool)), m_chat, SLOT(slotReceivedMessage(const QString &, const QString &, bool)));
 		m_kbclient->init();
-                     connect(m_connection, SIGNAL(sigClientInformation(const QString &, const QString &, const QString &, const QString &)),
-		this, SLOT(slotReceivedClientInformation(const QString &, const QString &, const QString &, const QString &)));
-
+    		connect(m_connection, SIGNAL(sigClientInformation(const QString &, const QString &, const QString &, const QString &)), this, SLOT(slotReceivedClientInformation(const QString &, const QString &, const QString &, const QString &)));
 	    }
     	    else
 		m_connection->updateInternal(m_kbclient);
@@ -1214,12 +1209,18 @@ void KBattleshipApp::slotAIShootsAt(const QPoint pos)
     }
 }
 
-void KBattleshipApp::slotReceivedClientInformation(const QString &clientName, const QString &clientVersion,
-        const QString &clientDescription, const QString &protocolVersion)
+void KBattleshipApp::slotReceivedClientInformation(const QString &clientName, const QString &clientVersion, const QString &clientDescription, const QString &protocolVersion)
 {
-        m_enemyClient = clientName;
-        m_enemyClientVersion = clientVersion;
-        m_enemyClientDescription = clientDescription;
-        m_enemyProtocolVersion = protocolVersion;
-        m_gameEnemyInfo->setEnabled(true);
+    m_enemyClient = clientName;
+    m_enemyClientVersion = clientVersion;
+    m_enemyClientDescription = clientDescription;
+    m_enemyProtocolVersion = protocolVersion;
+    m_gameEnemyInfo->setEnabled(true);
+
+    if(m_connection->getType() == KonnectionHandling::SERVER)
+    {
+	KMessage *msg = new KMessage(KMessage::VERSION);
+	msg->versionMessage();
+	slotSendMessage(msg);
+    }
 }
