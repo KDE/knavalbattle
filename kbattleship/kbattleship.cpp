@@ -99,8 +99,6 @@ void KBattleshipApp::initView()
     connect(ownshiplist, SIGNAL(lastShipAdded()), this, SLOT(sendShipList()));    
     connect(view, SIGNAL(enemyFieldClicked(int, int)), this, SLOT(enemyClick(int, int)));
     connect(view, SIGNAL(ownFieldClicked(int, int, int)), this, SLOT(placeShip(int, int, int)));
-    connect(view, SIGNAL(requestedOwnFieldShipListJob(int, int, bool, bool)), this, SLOT(requestedOwnFieldShipListJob(int, int, bool, bool)));
-    connect(view, SIGNAL(requestedEnemyFieldShipListJob(int, int)), this, SLOT(requestedEnemyFieldShipListJob(int, int)));
     
     setCaption(i18n("KBattleship (beta2)"), false);
 }
@@ -521,6 +519,7 @@ void KBattleshipApp::startBattleshipServer()
 void KBattleshipApp::changeOwnFieldData(int fieldx, int fieldy, int type)
 {
     view->changeOwnFieldData(fieldx, fieldy, type);
+    
     switch(connection->getType())
     {
 	case KonnectionHandling::SERVER:
@@ -559,14 +558,14 @@ void KBattleshipApp::changeOwnFieldData(int fieldx, int fieldy, int type)
     }
 }
 
-void KBattleshipApp::requestedOwnFieldShipListJob(int fieldx, int fieldy, bool hit, bool death)
+int KBattleshipApp::getOwnFieldType(int fieldx, int fieldy)
 {
-    view->giveOwnFieldShipListType(ownshiplist->getXYShipType(fieldx, fieldy), hit, death);
+    return ownshiplist->getXYShipType(fieldx, fieldy);
 }
 
-void KBattleshipApp::requestedEnemyFieldShipListJob(int fieldx, int fieldy)
+int KBattleshipApp::getEnemyFieldType(int fieldx, int fieldy)
 {
-    view->giveEnemyFieldShipListType(enemyshiplist->getXYShipType(fieldx, fieldy));
+    return enemyshiplist->getXYShipType(fieldx, fieldy);
 }
 
 void KBattleshipApp::changeEnemyFieldData(int fieldx, int fieldy, int type)
@@ -587,7 +586,7 @@ void KBattleshipApp::changeEnemyFieldData(int fieldx, int fieldy, int type)
     	    {
 		for(tempx = ship->shipxstart(); tempx <= ship->shipxstop(); tempx++)
 		{
-		    if( view->getEnemyFieldState(tempx, fieldy) == KBattleField::HIT)
+		    if(view->getEnemyFieldState(tempx, fieldy) == KBattleField::HIT)
                     {
 			deathList.append(tempx);
                         xokay = true;

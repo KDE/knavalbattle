@@ -19,8 +19,8 @@
 
 KBattleshipServer::KBattleshipServer(int port) : QServerSocket(port)
 {
-    allowWrite();
     internalPort = port;
+    allowWrite();
 }
 
 KBattleshipServer::~KBattleshipServer()

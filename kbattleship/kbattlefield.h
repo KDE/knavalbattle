@@ -35,7 +35,6 @@ class KBattleField : public KGridWidget
         void drawField();
         void clearField();
         void changeData(int &fieldx, int &fieldy, int type) { FieldData[fieldx][fieldy] = type; }
-        void requestedShipIconDraw(int type, bool hit = false, bool death = false);
         int getState(int fieldx, int fieldy) { return FieldData[fieldx][fieldy]; }
 
 	QWidget *drawParent() { return m_parent_widget; }
@@ -46,10 +45,6 @@ class KBattleField : public KGridWidget
         int FromLeft;
         QString nickName;
 	QWidget *m_parent_widget;
-
-    signals:
-        void doOwnFieldShipListJob(int, int, bool, bool);
-        void doEnemyFieldShipListJob(int, int);
 };
 
 #endif

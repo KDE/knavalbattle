@@ -68,7 +68,7 @@ void KGridWidget::drawDeathIcon()
     drawIcon("death.png");
 }
 
-void KGridWidget::drawShipIcon(int &ship)
+void KGridWidget::drawShipIcon(int ship)
 {
     drawIcon("ship-" + QString::number(ship + 1) + ".png");
 }
@@ -79,5 +79,11 @@ void KGridWidget::drawIcon(const QString &iconName)
     QString picture = locate("data", "kbattleship/pictures/" + iconName);
     if(picture.isEmpty())
 	return;
-    bitBlt(static_cast<QWidget*>(parent()->parent()), internalx, internaly, new QPixmap(picture));
+
+    QPainter *painter = new QPainter(static_cast<QWidget*>(parent()->parent()));
+    
+    if(!painter->isActive())
+	painter->begin(internalPixmap);
+
+    painter->drawPixmap(internalx, internaly, *(new QPixmap(picture)));
 }

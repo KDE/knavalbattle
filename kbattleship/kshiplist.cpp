@@ -35,23 +35,55 @@ void KShipList::clear()
 
 int KShipList::getXYShipType(int x, int y)
 {
+    kdDebug() << "CHECKING SHIP TYPE FOR X: " << x << " Y: " << y << " ...." << endl;
     int tempx, tempy;
     KShip *shipiterator;
     for(shipiterator = shiplist.first(); shipiterator != 0; shipiterator = shiplist.next())
     {
-	for(tempy = shipiterator->shipystart(); tempy <= shipiterator->shipystop(); tempy++)
+	if(shipiterator->shipystart() != shipiterator->shipystop())
 	{
-   	    if(tempy == y)
+	    for(tempy = shipiterator->shipystart(); tempy <= shipiterator->shipystop(); tempy++)
 	    {
- 		for(tempx = shipiterator->shipxstart(); tempx <= shipiterator->shipxstop(); tempx++)
+   		if(tempy == y)
 		{
-		    if(tempx == x)
-		        return shipiterator->shiptype();
-                    else
-                        continue;
+		    if(shipiterator->shipxstart() != shipiterator->shipxstop())
+		    {
+ 			for(tempx = shipiterator->shipxstart(); tempx <= shipiterator->shipxstop(); tempx++)
+			{
+			    if(tempx == x)
+		    		return shipiterator->shiptype();
+			}
+		    }
+		    else
+		    {
+		        tempx = shipiterator->shipxstart();
+			if(tempx == x)
+		    	    return shipiterator->shiptype();
+		    }
 		}
 	    }
-        }
+	}
+	else
+	{
+	    tempy = shipiterator->shipystart();
+	    if(tempy == y)
+	    {
+	        if(shipiterator->shipxstart() != shipiterator->shipxstop())
+		{
+ 		    for(tempx = shipiterator->shipxstart(); tempx <= shipiterator->shipxstop(); tempx++)
+		    {
+			if(tempx == x)
+			    return shipiterator->shiptype();
+		    }
+		}
+		else
+		{
+		    tempx = shipiterator->shipxstart();
+		    if(tempx == x)
+		        return shipiterator->shiptype();
+		}
+	    }
+	}
     }
     return 99;
 }
@@ -152,7 +184,6 @@ void KShipList::addNewShip(int button, int fieldx, int fieldy)
 
     if(shipCount() != 4)
     {
-
         for(shipiterator = shiplist.first(); shipiterator != 0; shipiterator = shiplist.next())
         {
             // Check for X and Y for 1 quare ship
@@ -369,16 +400,12 @@ void KShipList::decideShipPlacing(int button, int fieldx, int fieldy)
 
 void KShipList::placeShipLMB(int fieldx, int fieldy)
 {
-    kdDebug() << "ShipCount: " << shipCount() + 1 << endl;
-
     for(int i = 0; i < shipCount() + 1; i++)
         controlOwnFieldData(fieldx + i, fieldy, KBattleField::SHIP);
 }
 
 void KShipList::placeShipRMB(int fieldx, int fieldy)
 {
-    kdDebug() << "ShipCount: " << shipCount() + 1 << endl;
-
     for(int i = 0; i < shipCount() + 1; i++)
         controlOwnFieldData(fieldx, fieldy + i, KBattleField::SHIP);
 }

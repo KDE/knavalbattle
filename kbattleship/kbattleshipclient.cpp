@@ -19,15 +19,15 @@
 
 KBattleshipClient::KBattleshipClient(QString host, int port) : QSocket()
 {
-    allowWrite();
     internalHost = host;
     internalPort = port;
-    connect(this, SIGNAL(error(int)), SLOT(socketError(int)));
-    connect(this, SIGNAL(hostFound()), SLOT(connectionControl()));
-    connect(this, SIGNAL(connected()), SLOT(connectionControl()));
-    connect(this, SIGNAL(connectionClosed()), SLOT(lostServer()));
-    connect(this, SIGNAL(readyRead()), SLOT(readData()));
+    connect(this, SIGNAL(error(int)), this, SLOT(socketError(int)));
+    connect(this, SIGNAL(hostFound()), this, SLOT(connectionControl()));
+    connect(this, SIGNAL(connected()), this, SLOT(connectionControl()));
+    connect(this, SIGNAL(connectionClosed()), this, SLOT(lostServer()));
+    connect(this, SIGNAL(readyRead()), this, SLOT(readData()));
 
+    allowWrite();
     connectToServer();
 }
 
@@ -54,7 +54,7 @@ void KBattleshipClient::sendMessage(KMessage *msg)
 	if(msg->enemyReady())
 	{
 	    forbidWrite();
-	    emit senemylist( true );
+	    emit senemylist(true);
 	}
 	delete msg;
     }

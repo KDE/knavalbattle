@@ -147,7 +147,7 @@ void KonnectionHandling::gotNewMessage(KMessage *msg)
     }
     else if(getType() == KonnectionHandling::SERVER)
     {
-        switch( msg->getType() )
+        switch(msg->getType())
         {
 	    case KMessage::REPLAY:
 	        emit askReplay();

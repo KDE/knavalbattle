@@ -97,9 +97,9 @@ class KBattleshipApp : public KMainWindow
         void changeConnectText();
         void changeStartText();
 	void resetConnection() { haveCS = false; }
-        void requestedOwnFieldShipListJob(int fieldx, int fieldy, bool hit, bool death);
-        void requestedEnemyFieldShipListJob(int fieldx, int fieldy);
         void gotEnemyShipList(QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString);
+	int getOwnFieldType(int fieldx, int fieldy);
+        int getEnemyFieldType(int fieldx, int fieldy);
 
     signals:
         void battleFieldState(int, int, int);

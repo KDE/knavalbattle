@@ -30,9 +30,6 @@ void KBattleshipView::startDrawing()
 {
     ownfield = new KBattleField(this, "ownfield", KBattleField::OWNFIELD);
     enemyfield = new KBattleField(this, "enemyfield", KBattleField::ENEMYFIELD);
-
-    connect(ownfield, SIGNAL(doOwnFieldShipListJob(int, int, bool, bool)), this, SIGNAL(requestedOwnFieldShipListJob(int, int, bool, bool)));
-    connect(enemyfield, SIGNAL(doEnemyFieldShipListJob(int, int)), this, SIGNAL(requestedEnemyFieldShipListJob(int, int)));
 }
 
 void KBattleshipView::clearField()
@@ -41,16 +38,6 @@ void KBattleshipView::clearField()
     enemyfield->clearField();
     paintOwnField();
     paintEnemyField();
-}
-
-void KBattleshipView::giveOwnFieldShipListType(int type, bool hit, bool death)
-{
-    ownfield->requestedShipIconDraw(type, hit, death);
-}
-
-void KBattleshipView::giveEnemyFieldShipListType(int type)
-{
-    enemyfield->requestedShipIconDraw(type);
 }
 
 int KBattleshipView::getOwnFieldState(int &fieldx, int &fieldy)
