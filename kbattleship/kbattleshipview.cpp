@@ -46,18 +46,21 @@ void KBattleshipView::mouseReleaseEvent( QMouseEvent *event )
     {
 	if( event->y() >= 35 && event->y() <= ( height() / 2 ) + 75 )
 	{
-	    int fieldX, fieldY, fieldTopPos, fieldBottomPos, i, j;
+	    int fieldX, fieldY, fieldTopPos, fieldBottomPos, fieldLeftPos, fieldRightPos, i, j;
 	    
 	    fieldTopPos = 25;
 	    fieldBottomPos = ( height() / 2 ) + 75;
 	    
+	    fieldLeftPos = 25;
+	    fieldRightPos = ( width() / 2 ) + 75;
+	    
 	    i = 0;
 	    j = 0;
 	    
-	    for( i = fieldTopPos; i <= fieldBottomPos; i += 30 )
+	    for( i = fieldLeftPos; i <= fieldRightPos; i += 30 )
 	    {
 		j++;
-		if( event->x() >= i - 30 && event->x() <= i + 30 )
+		if( event->x() >= i - 50 && event->x() <= i + 50 )
 		{
 		    fieldX = j - 1;
 		    break;
@@ -87,20 +90,24 @@ void KBattleshipView::mouseReleaseEvent( QMouseEvent *event )
     {
     	if( event->y() >= 35 && event->y() <= ( height() / 2 ) + 75 )
 	{
-	    int fieldX, fieldY, fieldTopPos, fieldBottomPos, i, j;
+	    int fieldX, fieldY, fieldTopPos, fieldBottomPos, fieldLeftPos, fieldRightPos, i, j;
 	    
 	    fieldTopPos = 25;
 	    fieldBottomPos = ( height() / 2 ) + 75;
+	    
+	    fieldLeftPos = 25;
+	    fieldRightPos = ( width() / 2 ) + 75;
 
 	    i = 0;
 	    j = 0;
 	    
-	    for( i = fieldTopPos; i <= fieldBottomPos; i += 30 )
+	    for( i = fieldLeftPos; i <= fieldRightPos; i += 30 )
 	    {
 		j++;
-		if( event->x() >= i - 30 && event->x() <= i + 30 )
+		
+		if( event->x() >= i + ( height() / 2 ) - 30 && event->x() <= i + ( height() / 2 ) + 30 )
 		{
-		    fieldX = j - 1;
+		    fieldX = j - 4;
 		    break;
 		}
 	    }
@@ -119,10 +126,8 @@ void KBattleshipView::mouseReleaseEvent( QMouseEvent *event )
 	    }
 
 	    QPainter enemypainter( this );
-	    kdDebug() << "fieldX: " << fieldX << endl;
-	    kdDebug() << "fieldY: " << fieldY << endl;
-//	    enemyfield->changeData( fieldX, fieldY, KBattleField::WATER );
-//	    enemyfield->drawField( &enemypainter );
+	    enemyfield->changeData( fieldX, fieldY, KBattleField::WATER );
+	    enemyfield->drawField( &enemypainter );
 	}
     }
     	
