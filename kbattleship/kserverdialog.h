@@ -22,7 +22,6 @@
 #include <qpushbutton.h>
 #include <qlineedit.h>
 #include <qspinbox.h>
-#include <stdlib.h>
 #include "dialogs/serverDlg.h"
 
 class KServerDialog : public serverStartDlg

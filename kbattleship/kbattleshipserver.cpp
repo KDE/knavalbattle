@@ -16,18 +16,14 @@
  ***************************************************************************/
 
 #include <sys/ioctl.h>
-
 #include <qsocketnotifier.h>
 #include <qtimer.h>
-
 #include <klocale.h>
 #include <kmessagebox.h>
-
 #include "kmessage.h"
 #include "kbattleshipserver.moc"
 
-KBattleshipServer::KBattleshipServer(int port)
-    : KExtendedSocket(QString::null, port, inetSocket | passiveSocket)
+KBattleshipServer::KBattleshipServer(int port) : KExtendedSocket(QString::null, port, inetSocket | passiveSocket)
 {
     internalPort = port;
     serverSocket = 0;
@@ -47,6 +43,7 @@ void KBattleshipServer::start()
 	emit serverFailure();
         return;
     }
+    
     int reuse = 1;
     connectNotifier = new QSocketNotifier(fd(), QSocketNotifier::Read, this);
     QObject::connect(connectNotifier, SIGNAL(activated(int)), SLOT(newConnection()));
@@ -64,7 +61,7 @@ void KBattleshipServer::newConnection()
 	emit newConnect();
     }
     else
-        delete sock; // Got a connection already
+        delete sock;
 }
 
 void KBattleshipServer::readClient()

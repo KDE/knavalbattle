@@ -1,6 +1,6 @@
 /***************************************************************************
-                              kserverdialog.cpp
-                             -------------------
+                                   ksingledialog.h
+                                  -----------------
     Developers: (c) 2000-2001 Nikolas Zimmermann <wildfox@kde.org>
                 (c) 2000-2001 Daniel Molkentin <molkentin@kde.org>
 
@@ -14,39 +14,31 @@
  *   (at your option) any later version.                                   *
  *                                                                         *
  ***************************************************************************/
+ 
+#ifndef KSINGLEDIALOG_H
+#define KSINGLEDIALOG_H
 
-#include <stdlib.h>
-#include "kserverdialog.moc"
+#include <qstring.h>
+#include <qpushbutton.h>
+#include <qlineedit.h>
+#include "dialogs/singleDlg.h"
 
-KServerDialog::KServerDialog(QWidget *parent, const char *name) : serverStartDlg(parent, name)
+class KSingleDialog : public singleStartDlg
 {
-    connect(startBtn, SIGNAL(clicked()), this, SLOT(slotStartClicked()));
-    connect(cancelBtn, SIGNAL(clicked()), this, SLOT(slotCancelClicked()));
-    nicknameEdit->setText(QString::fromLocal8Bit(getenv("LOGNAME")));  
-}
+    Q_OBJECT
+    public:
+        KSingleDialog(QWidget *parent = 0, const char *name = 0);
+        ~KSingleDialog();
+    
+        QString getNickname();
+    
+    public slots:
+        void slotStartClicked();
+	void slotCancelClicked();
 
-KServerDialog::~KServerDialog()
-{
-}
+    signals:
+        void startGame();	
+        void cancelGame();
+};
 
-void KServerDialog::slotStartClicked()
-{
-    hide();
-    emit startServer();
-}
-
-void KServerDialog::slotCancelClicked()
-{
-    hide();
-    emit cancelServer();
-}
-
-QString KServerDialog::getPort()
-{
-    return QString::number(portEdit->value());
-}
-
-QString KServerDialog::getNickname()
-{
-    return nicknameEdit->text();
-}
+#endif

@@ -1,5 +1,5 @@
 /***************************************************************************
-                              kserverdialog.cpp
+                              ksingledialog.cpp
                              -------------------
     Developers: (c) 2000-2001 Nikolas Zimmermann <wildfox@kde.org>
                 (c) 2000-2001 Daniel Molkentin <molkentin@kde.org>
@@ -16,37 +16,32 @@
  ***************************************************************************/
 
 #include <stdlib.h>
-#include "kserverdialog.moc"
+#include "ksingledialog.moc"
 
-KServerDialog::KServerDialog(QWidget *parent, const char *name) : serverStartDlg(parent, name)
+KSingleDialog::KSingleDialog(QWidget *parent, const char *name) : singleStartDlg(parent, name)
 {
     connect(startBtn, SIGNAL(clicked()), this, SLOT(slotStartClicked()));
     connect(cancelBtn, SIGNAL(clicked()), this, SLOT(slotCancelClicked()));
     nicknameEdit->setText(QString::fromLocal8Bit(getenv("LOGNAME")));  
 }
 
-KServerDialog::~KServerDialog()
+KSingleDialog::~KSingleDialog()
 {
 }
 
-void KServerDialog::slotStartClicked()
-{
-    hide();
-    emit startServer();
-}
-
-void KServerDialog::slotCancelClicked()
+void KSingleDialog::slotStartClicked()
 {
     hide();
-    emit cancelServer();
+    emit startGame();
 }
 
-QString KServerDialog::getPort()
+void KSingleDialog::slotCancelClicked()
 {
-    return QString::number(portEdit->value());
+    hide();
+    emit cancelGame();
 }
 
-QString KServerDialog::getNickname()
+QString KSingleDialog::getNickname()
 {
     return nicknameEdit->text();
 }

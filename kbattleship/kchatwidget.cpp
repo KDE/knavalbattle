@@ -16,7 +16,6 @@
  ***************************************************************************/
 
 #include <kapp.h>
-
 #include "kchatwidget.moc"
 
 KChatWidget::KChatWidget(QWidget *parent, const char *name) : chatDlg(parent, name)
@@ -69,7 +68,7 @@ void KChatWidget::setNickname(const QString &nickname)
 
 bool KChatWidget::eventFilter(QObject *obj, QEvent *e)
 {
-    if (obj == commentEdit && e->type() == QEvent::Wheel)
+    if(obj == commentEdit && e->type() == QEvent::Wheel)
     {
         kapp->notify(chatView, e);
         return true;

@@ -42,6 +42,7 @@ class KBattleshipView : public QWidget
 
 	void previewShip(int fieldx, int fieldy, int type, bool rotate);
 
+	int getOwnFieldState(int fieldx, int fieldy);
 	int getEnemyFieldState(int &fieldx, int &fieldy);
 
     signals:

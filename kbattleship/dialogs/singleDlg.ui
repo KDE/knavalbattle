@@ -1,10 +1,10 @@
 <!DOCTYPE UI><UI>
-<class>serverStartDlg</class>
+<class>singleStartDlg</class>
 <widget>
     <class>QDialog</class>
     <property stdset="1">
         <name>name</name>
-        <cstring>serverStartDlg</cstring>
+        <cstring>singleStartDlg</cstring>
     </property>
     <property stdset="1">
         <name>geometry</name>
@@ -31,7 +31,7 @@
     </property>
     <property stdset="1">
         <name>caption</name>
-        <string>Start Server</string>
+        <string>Start Game</string>
     </property>
     <property>
         <name>layoutMargin</name>
@@ -39,6 +39,30 @@
     <property>
         <name>layoutSpacing</name>
     </property>
+    <widget>
+        <class>QLineEdit</class>
+        <property stdset="1">
+            <name>name</name>
+            <cstring>nicknameEdit</cstring>
+        </property>
+        <property stdset="1">
+            <name>geometry</name>
+            <rect>
+                <x>80</x>
+                <y>30</y>
+                <width>250</width>
+                <height>22</height>
+            </rect>
+        </property>
+        <property stdset="1">
+            <name>maxLength</name>
+            <number>10</number>
+        </property>
+        <property>
+            <name>whatsThis</name>
+            <string>Enter a name that identifys you in the game</string>
+        </property>
+    </widget>
     <widget>
         <class>QLayoutWidget</class>
         <property stdset="1">
@@ -48,8 +72,8 @@
         <property stdset="1">
             <name>geometry</name>
             <rect>
-                <x>91</x>
-                <y>81</y>
+                <x>90</x>
+                <y>80</y>
                 <width>168</width>
                 <height>34</height>
             </rect>
@@ -127,104 +151,15 @@
         <class>QLabel</class>
         <property stdset="1">
             <name>name</name>
-            <cstring>portLabel_2</cstring>
-        </property>
-        <property stdset="1">
-            <name>geometry</name>
-            <rect>
-                <x>20</x>
-                <y>50</y>
-                <width>30</width>
-                <height>20</height>
-            </rect>
-        </property>
-        <property stdset="1">
-            <name>sizePolicy</name>
-            <sizepolicy>
-                <hsizetype>0</hsizetype>
-                <vsizetype>0</vsizetype>
-            </sizepolicy>
-        </property>
-        <property stdset="1">
-            <name>text</name>
-            <string>Port:</string>
-        </property>
-        <property stdset="1">
-            <name>alignment</name>
-            <set>AlignVCenter|AlignLeft</set>
-        </property>
-        <property>
-            <name>hAlign</name>
-        </property>
-        <property>
-            <name>vAlign</name>
-        </property>
-    </widget>
-    <widget>
-        <class>QLineEdit</class>
-        <property stdset="1">
-            <name>name</name>
-            <cstring>nicknameEdit</cstring>
-        </property>
-        <property stdset="1">
-            <name>geometry</name>
-            <rect>
-                <x>80</x>
-                <y>20</y>
-                <width>250</width>
-                <height>22</height>
-            </rect>
-        </property>
-        <property stdset="1">
-            <name>maxLength</name>
-            <number>10</number>
-        </property>
-        <property>
-            <name>whatsThis</name>
-            <string>Enter a name that identifys you in the game</string>
-        </property>
-    </widget>
-    <widget>
-        <class>QSpinBox</class>
-        <property stdset="1">
-            <name>name</name>
-            <cstring>portEdit</cstring>
-        </property>
-        <property stdset="1">
-            <name>geometry</name>
-            <rect>
-                <x>80</x>
-                <y>50</y>
-                <width>60</width>
-                <height>20</height>
-            </rect>
-        </property>
-        <property stdset="1">
-            <name>maxValue</name>
-            <number>65000</number>
-        </property>
-        <property stdset="1">
-            <name>value</name>
-            <number>54321</number>
-        </property>
-        <property>
-            <name>whatsThis</name>
-            <string>Choose a port where to server listens on</string>
-        </property>
-    </widget>
-    <widget>
-        <class>QLabel</class>
-        <property stdset="1">
-            <name>name</name>
             <cstring>nicknameLabel</cstring>
         </property>
         <property stdset="1">
             <name>geometry</name>
             <rect>
                 <x>15</x>
-                <y>19</y>
+                <y>32</y>
                 <width>58</width>
-                <height>21</height>
+                <height>18</height>
             </rect>
         </property>
         <property stdset="1">
@@ -233,14 +168,6 @@
                 <hsizetype>0</hsizetype>
                 <vsizetype>0</vsizetype>
             </sizepolicy>
-        </property>
-        <property stdset="1">
-            <name>frameShape</name>
-            <enum>MShape</enum>
-        </property>
-        <property stdset="1">
-            <name>frameShadow</name>
-            <enum>MShadow</enum>
         </property>
         <property stdset="1">
             <name>text</name>
@@ -259,13 +186,12 @@
     <connection>
         <sender>cancelBtn</sender>
         <signal>clicked()</signal>
-        <receiver>serverStartDlg</receiver>
+        <receiver>singleStartDlg</receiver>
         <slot>reject()</slot>
     </connection>
 </connections>
 <tabstops>
     <tabstop>nicknameEdit</tabstop>
-    <tabstop>portEdit</tabstop>
     <tabstop>startBtn</tabstop>
     <tabstop>cancelBtn</tabstop>
 </tabstops>

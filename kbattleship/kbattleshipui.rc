@@ -1,9 +1,10 @@
 <!DOCTYPE kpartgui SYSTEM "kpartgui.dtd">
-<kpartgui name="kbattleship" version="0.7">
+<kpartgui name="kbattleship" version="0.8">
 <MenuBar>
   <Menu name="game"><text>&amp;Game</text>
     <Action name="serverconnect"/>
     <Action name="newserver"/>
+    <Action name="singleplayer"/>
     <Separator/>
     <Action name="highscore"/>
     <Separator/>

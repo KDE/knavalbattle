@@ -14,8 +14,8 @@
  *   (at your option) any later version.                                   *
  *                                                                         *
  ***************************************************************************/
-#include <qstring.h>
 
+#include <qstring.h>
 #include <kcombobox.h>
 #include "kclientdialog.moc"
 

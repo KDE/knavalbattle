@@ -16,14 +16,11 @@
  ***************************************************************************/
 
 #include <sys/ioctl.h>
-
 #include <qsocketnotifier.h>
-
 #include "kmessage.h"
 #include "kbattleshipclient.moc"
 
-KBattleshipClient::KBattleshipClient(const QString &host, int port)
-    : KExtendedSocket(host, port, inetSocket)
+KBattleshipClient::KBattleshipClient(const QString &host, int port) : KExtendedSocket(host, port, inetSocket)
 {
     allowWrite();
 }
@@ -34,11 +31,12 @@ KBattleshipClient::~KBattleshipClient()
 
 void KBattleshipClient::init()
 {
-    if (connect())
+    if(connect())
     {
-        emit socketFailure(status());
+	emit socketFailure(status());
         return;
     }
+    
     readNotifier = new QSocketNotifier(fd(), QSocketNotifier::Read, this);
     QObject::connect(readNotifier, SIGNAL(activated(int)), SLOT(readData()));
     emit connected();
@@ -63,7 +61,7 @@ void KBattleshipClient::readData()
 {
     int len;
     ioctl(fd(), FIONREAD, &len);
-    if (!len)
+    if(!len)
     {
         delete readNotifier;
         readNotifier = 0;
@@ -80,4 +78,3 @@ void KBattleshipClient::readData()
     delete msg;
     delete []buf;
 }
-

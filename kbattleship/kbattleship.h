@@ -42,9 +42,11 @@
 #include "kshiplist.h"
 #include "kserverdialog.h"
 #include "kclientdialog.h"
+#include "ksingledialog.h"
 #include "kstatdialog.h"
 #include "kchatwidget.h"
 #include "kship.h"
+#include "kbaiplayer.h"
 
 class KBattleshipView;
 
@@ -82,7 +84,9 @@ class KBattleshipApp : public KMainWindow
         void resetServer(bool status = true);
         void setPlaceable();
         void slotServerConnect();
+	void deleteConnectDialog();
         void slotNewServer();
+	void deleteServerDialog();
         void slotGameQuit();
 	void slotHighscore();
         void slotConfigSound();
@@ -91,7 +95,8 @@ class KBattleshipApp : public KMainWindow
         void slotStatusMsg(const QString &text);
         void slotChangeOwnPlayer(const QString &text);    
         void slotChangeEnemyPlayer(const QString &text);
-        void startBattleshipServer();
+        void startBattleshipGame();
+	void startBattleshipServer();
         void connectToBattleshipServer();
         void placeShipPreview(int fieldx, int fieldy, bool shift);
         void placeShip(int fieldx, int fieldy, int button);
@@ -106,10 +111,14 @@ class KBattleshipApp : public KMainWindow
         void changeStartText();
 	void resetConnection() { haveCS = false; }
         void gotEnemyShipList(QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString);
+	void slotSinglePlayer();
+	void deleteSingleDialog();
 
     private slots:
 	void updateHighscore();    
 	void deleteClient();
+	void slotAIReady();
+	void slotAIShootsAt(const QPoint pos);
 
     private:
         KConfig *config;
@@ -123,19 +132,25 @@ class KBattleshipApp : public KMainWindow
         KAction *gameServerConnect;
         KAction *gameNewServer;
         KAction *gameQuit;
+	KAction *gameSingle;
         KToggleAction *viewStatusBar;
         KToggleAction *configSound;
 	KToggleAction *configGrid;
         KBattleshipSound *sound;
-        KClientDialog *client;
+        KSingleDialog *single;
+	KClientDialog *client;
         KServerDialog *server;
         KonnectionHandling *connection;
         KShipList *ownshiplist;
         KShipList *enemyshiplist;
-        bool haveCS;
-        bool place;
         QString ownNickname;
         QString enemyNickname;
+	KBAIPlayer *aiPlayer;
+
+        bool haveCS;
+        bool place;
+	bool playing;
+	int hits;
 };
 
 #endif
