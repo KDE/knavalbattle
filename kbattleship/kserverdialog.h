@@ -22,9 +22,13 @@
 #include <qpushbutton.h>
 #include <qlineedit.h>
 #include <qspinbox.h>
+
+#include <kdialogbase.h>
+
 #include "dialogs/serverDlg.h"
 
-class KServerDialog : public serverStartDlg
+
+class KServerDialog : public KDialogBase
 {
 	Q_OBJECT
 public:
@@ -35,12 +39,14 @@ public:
 	QString gamename() const;
 
 public slots:
-	void slotStartClicked();
-	void slotCancelClicked();
+	void slotOk();
+	void slotCancel();
 
 signals:
 	void sigStartServer();
 	void sigCancelServer();
+private:
+	serverStartDlg *m_mainWidget;
 };
 
 #endif

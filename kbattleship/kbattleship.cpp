@@ -15,8 +15,6 @@
  *                                                                         *
  ***************************************************************************/
 
-#include <stdlib.h>
-
 #include <qlayout.h>
 #include <qtimer.h>
 
@@ -29,6 +27,7 @@
 #include <kstdgameaction.h>
 #include <kcmdlineargs.h>
 #include <kmessagebox.h>
+#include <kuser.h>
 
 #include <kscoredialog.h>
 
@@ -1201,8 +1200,9 @@ void KBattleshipWindow::slotSinglePlayer()
 	bool ok;
 	if(!m_aiPlaying)
 	{
+		KUser u;
 		m_ownNickname = KInputDialog::getText(i18n("Start Game"), i18n("Nick name:"),
-			QString::fromLocal8Bit(getenv("LOGNAME")), &ok, this);
+			u.loginName(), &ok, this);
 		if (ok)
 		{
 			slotStatusMsg(i18n("Ready"));

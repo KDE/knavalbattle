@@ -20,6 +20,7 @@
 #include <kdebug.h>
 #include <klocale.h>
 #include <kcombobox.h>
+#include <kuser.h>
 #include <qlayout.h>
 #include "kbattleshipserver.h" // for BATTLESHIP_SERVICE
 #include "kclientdialog.moc"
@@ -34,7 +35,8 @@ KClientDialog::KClientDialog(QWidget *parent, const char *name)
 
 	enableButtonOK(false);
 	m_config = kapp->config();
-	m_mainWidget->nicknameEdit->setText(QString::fromLocal8Bit(getenv("LOGNAME")));
+	KUser u;
+	m_mainWidget->nicknameEdit->setText(u.loginName());
 
 	connect(m_mainWidget->serverEdit, SIGNAL(returnPressed(const QString &)), this, SLOT(slotReturnPressed(const QString &)));
 	connect(m_mainWidget->serverEdit, SIGNAL(textChanged()), this, SLOT(slotCheckEnableOk()));

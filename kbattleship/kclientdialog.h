@@ -26,7 +26,6 @@
 #include <qpushbutton.h>
 #include <qlineedit.h>
 #include <qspinbox.h>
-#include <stdlib.h>
 #include <kdialogbase.h>
 #include "dialogs/connectDlg.h"
 

@@ -15,23 +15,31 @@
  *                                                                         *
  ***************************************************************************/
 
-#include <stdlib.h>
-#include "kserverdialog.moc"
+#include <klocale.h>
+#include <kuser.h>
+#include <qlayout.h>
 
-KServerDialog::KServerDialog(QWidget *parent, const char *name) : serverStartDlg(parent, name)
+#include "kserverdialog.h"
+
+KServerDialog::KServerDialog(QWidget *parent, const char *name) : 
+	KDialogBase(Plain, i18n("Start Server"), Ok|Cancel, Ok, parent, name, true, false, KGuiItem(i18n("&Start")))
 {
-	connect(startBtn, SIGNAL(clicked()), this, SLOT(slotStartClicked()));
-	connect(cancelBtn, SIGNAL(clicked()), this, SLOT(slotCancelClicked()));
-	nicknameEdit->setText(QString::fromLocal8Bit(getenv("LOGNAME")));
+	QFrame* page = plainPage();
+	QGridLayout* pageLayout = new QGridLayout(page, 1, 1, 0, 0);
+	m_mainWidget = new serverStartDlg(page);
+	pageLayout->addWidget(m_mainWidget, 0, 0);
+	
+	KUser u;
+	m_mainWidget->nicknameEdit->setText(u.loginName());
 }
 
-void KServerDialog::slotStartClicked()
+void KServerDialog::slotOk()
 {
 	hide();
 	emit sigStartServer();
 }
 
-void KServerDialog::slotCancelClicked()
+void KServerDialog::slotCancel()
 {
 	hide();
 	emit sigCancelServer();
@@ -39,15 +47,17 @@ void KServerDialog::slotCancelClicked()
 
 QString KServerDialog::port() const
 {
-	return QString::number(portEdit->value());
+	return QString::number(m_mainWidget->portEdit->value());
 }
 
 QString KServerDialog::nickname() const
 {
-	return nicknameEdit->text();
+	return m_mainWidget->nicknameEdit->text();
 }
 
 QString KServerDialog::gamename() const
 {
-	return gamenameEdit->text();
+	return m_mainWidget->gamenameEdit->text();
 }
+
+#include "kserverdialog.moc"
