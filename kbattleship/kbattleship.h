@@ -32,9 +32,9 @@
 #include <kconfig.h>
 
 #include "dialogs/connectDlg.h"
-#include "dialogs/serverDlg.h"
 #include "kbattleship.h"
 #include "kbattleshipview.h"
+#include "kserverdialog.h"
 
 class KBattleshipView;
 
@@ -70,7 +70,7 @@ class KBattleshipApp : public KMainWindow
         KToggleAction *viewToolBar;
         KToggleAction *viewStatusBar;
         clientConnectDlg *connect;
-	serverStartDlg *server;
+	KServerDialog *server;
 };
 
 #endif

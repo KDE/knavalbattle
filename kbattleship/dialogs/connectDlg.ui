@@ -124,22 +124,6 @@
         </property>
     </widget>
     <widget>
-        <class>QLineEdit</class>
-        <property stdset="1">
-            <name>name</name>
-            <cstring>nicknameEdit</cstring>
-        </property>
-        <property stdset="1">
-            <name>geometry</name>
-            <rect>
-                <x>80</x>
-                <y>10</y>
-                <width>161</width>
-                <height>22</height>
-            </rect>
-        </property>
-    </widget>
-    <widget>
         <class>QLabel</class>
         <property stdset="1">
             <name>name</name>
@@ -224,7 +208,7 @@
                 <class>QPushButton</class>
                 <property stdset="1">
                     <name>name</name>
-                    <cstring>startBtn</cstring>
+                    <cstring>connectBtn</cstring>
                 </property>
                 <property stdset="1">
                     <name>text</name>
@@ -264,6 +248,22 @@
             </widget>
         </hbox>
     </widget>
+    <widget>
+        <class>QLineEdit</class>
+        <property stdset="1">
+            <name>name</name>
+            <cstring>nicknameEdit</cstring>
+        </property>
+        <property stdset="1">
+            <name>geometry</name>
+            <rect>
+                <x>80</x>
+                <y>10</y>
+                <width>161</width>
+                <height>22</height>
+            </rect>
+        </property>
+    </widget>
 </widget>
 <connections>
     <connection>
@@ -280,7 +280,7 @@
     </connection>
 </connections>
 <tabstops>
-    <tabstop>startBtn</tabstop>
+    <tabstop>connectBtn</tabstop>
     <tabstop>cancelBtn</tabstop>
 </tabstops>
 </UI>
