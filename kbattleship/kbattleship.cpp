@@ -50,6 +50,10 @@ KBattleshipApp::~KBattleshipApp()
 {
 	if(m_config != 0)
 		saveOptions();
+	delete m_aiPlayer;
+	delete m_ownshiplist;
+	delete m_enemyshiplist;
+	delete m_sound;
 }
 
 void KBattleshipApp::init()
