@@ -47,8 +47,7 @@ void KBattleshipServer::readClient()
     kdDebug() << "READLINE!" << endl;
 	kdDebug() << "CAN READ!" << endl;
     QTextStream str(socket);
-    KMessageType msgtype;
-    KMessage *msg = new KMessage( msgtype );
+    KMessage *msg = new KMessage();
     msg->setDataStream( str.readLine() );
 	kdDebug() << "Type of message: " << msg->getType() << endl;
 	emit newMessage( msg );

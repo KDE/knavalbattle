@@ -60,17 +60,20 @@ void KonnectionHandling::serverLostClient()
 
 void KonnectionHandling::gotBattleFieldState( int fieldx, int fieldy, int state )
 {
-    KMessageType msgtype;
-    msgtype.setType( KMessageType::ANSWER_SHOOT );
-    KMessage *msg = new KMessage( msgtype );
+    KMessage *msg = new KMessage( KMessage::ANSWER_SHOOT );
     QString qstate;
-    qstate.setNum( state );
+    QString qfieldx;
+    QString qfieldy;
+    qstate.setNum( state );    
+    qfieldx.setNum( fieldx );
+    qfieldy.setNum( fieldy );
+    msg->addField( QString( "fieldx" ), qfieldx );
+    msg->addField( QString( "fieldy" ), qfieldy );
     msg->addField( QString( "fieldstate" ), qstate );
-    msg->addField( QString( "foobar" ), QString( "foostate" ) );
-    msg->addField( QString( "foobar1" ), QString( "foostate1" ) );
     kdDebug() << "EMIT!" << endl;
     emit sendMessage( msg );
     emit ownFieldDataChanged( fieldx, fieldy, state );
+    kdDebug() << "FIELDCHANGED!" << endl;
 }
 
 void KonnectionHandling::gotNewMessage( KMessage *msg )
@@ -81,11 +84,23 @@ void KonnectionHandling::gotNewMessage( KMessage *msg )
 	case KonnectionHandling::CLIENT:
 	    switch( msg->getType() )
 	    {
-		case KMessageType::ENEMY_SHOOT:
+		case KMessage::ENEMY_SHOOT:
+		    kdDebug() << "CLIENT E-SHOOT!" << endl;
 		    emit requestBattleFieldState( msg->getField( "fieldx" ).toInt(), msg->getField( "fieldy" ).toInt() );
 		    break;
 		
-		case KMessageType::ANSWER_SHOOT:
+		case KMessage::ANSWER_SHOOT:
+		    kdDebug() << "CLIENT A-SHOOT!" << endl;
+
+		    break;
+	    }
+	    break;
+	    
+	case KonnectionHandling::SERVER:
+	    switch( msg->getType() )
+	    {
+		case KMessage::ANSWER_SHOOT:
+		    kdDebug() << "SERVER A-SHOOT! heh WE Got the AnSwEr to our shoot" << endl;
 		    emit enemyFieldDataChanged( msg->getField( "fieldx" ).toInt(), msg->getField( "fieldy" ).toInt(), msg->getField( "fieldstate" ).toInt() );
 		    break;
 	    }

@@ -23,13 +23,14 @@
 #include <qobject.h>
 #include <qstring.h>
 #include <qstringlist.h>
-#include "kmessagetype.h"
 
 class KMessage : QObject
 {
     Q_OBJECT
     public:
-        KMessage( const KMessageType &type );
+	enum{ ENEMY_SHOOT, ANSWER_SHOOT };
+        KMessage( int type );
+	KMessage();
         ~KMessage();
 
         void addField( QString name, QString value );
@@ -37,7 +38,6 @@ class KMessage : QObject
         void setDataStream( QString stream );
         int getType();
         QString returnSendStream();
-
 
         QMap<QString,QString> messageMap;
         int messageType;

@@ -24,7 +24,6 @@
 #include <qobject.h>
 #include <qwidget.h>
 #include "kmessage.h"
-#include "kmessagetype.h"
 #include "kbattleshipserver.h"
 #include "kbattleshipclient.h"
 

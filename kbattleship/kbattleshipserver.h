@@ -24,7 +24,6 @@
 #include <qserversocket.h>
 #include <qtextstream.h>
 #include "kmessage.h"
-#include "kmessagetype.h"
 
 class KBattleshipServer : public QServerSocket
 {

@@ -23,7 +23,6 @@
 #include <qsocket.h>
 #include <qtextstream.h>
 #include "kmessage.h"
-#include "kmessagetype.h"
 
 class KBattleshipClient : public QSocket
 {

@@ -17,10 +17,16 @@
 
 #include "kmessage.moc"
 
-KMessage::KMessage( const KMessageType &type ) : QObject()
+KMessage::KMessage( int type ) : QObject()
 {
-    if( type.hasType() )
-        messageType = type.getType();
+    messageType = type;
+    QString qtype;
+    qtype.setNum( type );
+    addField( QString( "msgtype" ), qtype );
+}
+
+KMessage::KMessage() : QObject()
+{
 }
 
 KMessage::~KMessage()
@@ -44,7 +50,8 @@ void KMessage::parseMessage( QString messageStream )
     QString data;
     QString seperator = "|";
     QString endseperator = "end";
-    bool kd = true;
+    bool kd = false;
+    kdDebug() << "Parsing messageStream: " << messageStream << endl;
     list = QStringList::split( seperator, messageStream );
 	
     for( QStringList::Iterator it = list.begin(); it != list.end(); ++it )
@@ -52,21 +59,18 @@ void KMessage::parseMessage( QString messageStream )
         if( !kd )
         {
 	    key = *it;
-            kd = true;
+    	    kd = true;
         }
         else
         {
 	    data = *it;
-	    
-	    if( key != "type" )
+	    if( key != "msgtype" )
 	    {
     		addField( key, data );
 	    }
 	    else
 	    {
-		KMessageType msgtype;
-                msgtype.setType( data.toInt() );
-                messageType = msgtype.getType();
+                messageType = data.toInt();
 	    }
 		
     	    key = "";
@@ -80,13 +84,9 @@ void KMessage::parseMessage( QString messageStream )
 QString KMessage::returnSendStream()
 {
     QString sendStream;
-    QString typeData;
     QString seperator = "|";
     QString endseperator = "end";
     QMapIterator<QString,QString> it;
-
-    typeData.setNum( messageType );
-    sendStream = typeData + seperator;
 
     for( it = messageMap.begin(); it != messageMap.end(); ++it )
     {
@@ -95,7 +95,6 @@ QString KMessage::returnSendStream()
     
     sendStream = sendStream + endseperator;
 
-    kdDebug() << "foo: " << sendStream << endl;
     return sendStream;
 }
 

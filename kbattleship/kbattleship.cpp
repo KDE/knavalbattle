@@ -78,18 +78,13 @@ void KBattleshipApp::sendMessage( int fieldx, int fieldy )
 {
     if( haveCS )
     {
-	KMessageType msgtype;
-	msgtype.setType( KMessageType::MSG_PLAYING );
-	KMessage *msg = new KMessage( msgtype );
+	KMessage *msg = new KMessage( KMessage::ENEMY_SHOOT );
 	QString field1Data; 
 	QString field2Data;
-	QString field3Data;
 	field1Data.setNum( fieldx );
 	field2Data.setNum( fieldy );
-	field3Data.setNum( KMessageType::ENEMY_SHOOT );
 	msg->addField( QString( "fieldx" ), field1Data );
 	msg->addField( QString( "fieldy" ), field2Data );
-	msg->addField( QString( "type" ), field3Data );
 
 	switch( connection->getType() )
 	{
@@ -255,7 +250,7 @@ void KBattleshipApp::startBattleshipServer()
 
 void KBattleshipApp::changeOwnFieldData( int fieldx, int fieldy, int type )
 {
-    view->changeOwnFieldData( fieldx, fieldy, type );
+    view->changeOwnFieldData( fieldx, fieldy, 1 ); //type );
 }
 
 int KBattleshipApp::requestedOwnBattleFieldState( int fieldx, int fieldy )
@@ -272,7 +267,8 @@ int KBattleshipApp::requestedEnemyBattleFieldState( int fieldx, int fieldy )
 
 void KBattleshipApp::changeEnemyFieldData( int fieldx, int fieldy, int type )
 {
-    view->changeEnemyFieldData( fieldx, fieldy, type );
+    kdDebug() << "Changing enemyfielddata! ( " << fieldx << " | " << fieldy << " )" << endl;
+    view->changeEnemyFieldData( fieldx, fieldy, 1 ); //type );
 }
 
 void KBattleshipApp::changeConnectText()
