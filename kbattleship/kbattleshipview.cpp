@@ -123,11 +123,11 @@ bool KBattleshipView::eventFilter(QObject *object, QEvent *event)
 	}
 	
 	if((mouseEvent->state() & ShiftButton) == 0 && newRect == ownRect)
-	    emit ownFieldClicked(fieldx, fieldy, true);
+	    emit sigOwnFieldClicked(fieldx, fieldy, true);
 	else if((mouseEvent->state() & ShiftButton) != 0 && newRect == ownRect)
-	    emit ownFieldClicked(fieldx, fieldy, false);
+	    emit sigOwnFieldClicked(fieldx, fieldy, false);
 	else if(newRect == enemyRect)
-	    emit enemyFieldClicked(fieldx, fieldy);
+	    emit sigEnemyFieldClicked(fieldx, fieldy);
 	    
 	return true;
     }
@@ -171,7 +171,7 @@ bool KBattleshipView::eventFilter(QObject *object, QEvent *event)
 		}	        
 	    }
 	
-	    emit mouseOverField(fieldx, fieldy, mouseEvent->state() & ShiftButton);
+	    emit sigMouseOverField(fieldx, fieldy, mouseEvent->state() & ShiftButton);
 	}
 	else
 	    battlefield->drawOwnField();

@@ -39,8 +39,8 @@ class KServerDialog : public serverStartDlg
         void slotCancelClicked();
 
     signals:
-        void startServer();	
-        void cancelServer();
+        void sigStartServer();	
+        void sigCancelServer();
 };
 
 #endif

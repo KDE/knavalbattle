@@ -1,5 +1,5 @@
 /***************************************************************************
-                                kshiplist.cpp
+                                km_shiplist.cpp
                              -------------------
     Developers: (c) 2000-2001 Nikolas Zimmermann <wildfox@kde.org>
                 (c) 2000-2001 Daniel Molkentin <molkentin@kde.org>
@@ -19,8 +19,8 @@
 
 KShipList::KShipList() : QObject()
 {
-    shiplist.setAutoDelete(true);
-    shipsadded = 4;
+    m_shiplist.setAutoDelete(true);
+    m_shipsadded = 4;
     
     m_fieldx = 8;
     m_fieldy = 8;
@@ -32,15 +32,15 @@ KShipList::~KShipList()
 
 void KShipList::clear()
 {
-    shipsadded = 4;
-    shiplist.clear();
+    m_shipsadded = 4;
+    m_shiplist.clear();
 }
 
 int KShipList::getXYShipType(int x, int y)
 {
     int tempx, tempy;
     KShip *shipiterator;
-    for(shipiterator = shiplist.first(); shipiterator != 0; shipiterator = shiplist.next())
+    for(shipiterator = m_shiplist.first(); shipiterator != 0; shipiterator = m_shiplist.next())
     {
 	if(shipiterator->shipystart() != shipiterator->shipystop())
 	{
@@ -94,7 +94,7 @@ KShip *KShipList::getXYShip(int x, int y)
 {
     int tempx, tempy;
     KShip *shipiterator;
-    for(shipiterator = shiplist.first(); shipiterator != 0; shipiterator = shiplist.next())
+    for(shipiterator = m_shiplist.first(); shipiterator != 0; shipiterator = m_shiplist.next())
     {
 	for(tempy = shipiterator->shipystart(); tempy <= shipiterator->shipystop(); tempy++)
 	{
@@ -113,7 +113,7 @@ KShip *KShipList::getXYShip(int x, int y)
 
 bool KShipList::canAddShips()
 {
-    if(shipsadded >= 1)
+    if(m_shipsadded >= 1)
 	return true;
     else
         return false;
@@ -123,7 +123,7 @@ KShip *KShipList::returnIterator(int ship)
 {
     KShip *shipiterator;
     int i = 0;
-    for(shipiterator = shiplist.first(); shipiterator != 0; shipiterator = shiplist.next())
+    for(shipiterator = m_shiplist.first(); shipiterator != 0; shipiterator = m_shiplist.next())
     {
         i++;
         if(i == ship)
@@ -154,7 +154,7 @@ int KShipList::returnY2Ship(int ship)
 
 void KShipList::addShip(int fieldx1, int fieldx2, int fieldy1, int fieldy2, int ship)
 {
-    shiplist.append(new KShip(fieldx1, fieldx2, fieldy1, fieldy2, ship));
+    m_shiplist.append(new KShip(fieldx1, fieldx2, fieldy1, fieldy2, ship));
 }
 
 void KShipList::addShip1(int fieldx1, int fieldx2, int fieldy1, int fieldy2)
@@ -186,7 +186,7 @@ void KShipList::addNewShip(int button, int fieldx, int fieldy)
 
     if(shipCount() != 4)
     {
-        for(shipiterator = shiplist.first(); shipiterator != 0; shipiterator = shiplist.next())
+        for(shipiterator = m_shiplist.first(); shipiterator != 0; shipiterator = m_shiplist.next())
         {
             // Check for X and Y for 1 quare ship
 	    if( (shipiterator->shipystart() == shipiterator->shipystop() ) &&
@@ -327,30 +327,30 @@ void KShipList::addNewShip(int button, int fieldx, int fieldy)
 	{
     	    if(fieldx + shipCount() <= m_fieldx)
 	    {
-		shipsadded--;
+		m_shipsadded--;
 		if(button == LeftButton)
-		    shiplist.append(new KShip(fieldx, fieldx + shipCount(), fieldy, fieldy, shipCount(), true));
+		    m_shiplist.append(new KShip(fieldx, fieldx + shipCount(), fieldy, fieldy, shipCount(), true));
 		else
-        	    shiplist.append(new KShip(fieldx, fieldx, fieldy, fieldy + shipCount(), shipCount(), true));
+        	    m_shiplist.append(new KShip(fieldx, fieldx, fieldy, fieldy + shipCount(), shipCount(), true));
 
 		for(int i = 0; i < shipCount() + 1; i++)
 		{
 		    switch(shipCount())
 		    {
 			case 3:
-			    emit ownFieldDataChanged(fieldx + i, fieldy, KBattleField::SHIP4P1 + i);
+			    emit sigOwnFieldDataChanged(fieldx + i, fieldy, KBattleField::SHIP4P1 + i);
 			    break;
 
 			case 2:
-			    emit ownFieldDataChanged(fieldx + i, fieldy, KBattleField::SHIP3P1 + i);
+			    emit sigOwnFieldDataChanged(fieldx + i, fieldy, KBattleField::SHIP3P1 + i);
 			    break;
 
 			case 1:
-			    emit ownFieldDataChanged(fieldx + i, fieldy, KBattleField::SHIP2P1 + i);
+			    emit sigOwnFieldDataChanged(fieldx + i, fieldy, KBattleField::SHIP2P1 + i);
 			    break;
 
 			case 0:
-			    emit ownFieldDataChanged(fieldx + i, fieldy, KBattleField::SHIP1P1 + i);
+			    emit sigOwnFieldDataChanged(fieldx + i, fieldy, KBattleField::SHIP1P1 + i);
 			    break;
 		    }
 		}
@@ -365,30 +365,30 @@ void KShipList::addNewShip(int button, int fieldx, int fieldy)
 	{
 	    if(fieldy + shipCount() <= m_fieldy)
 	    {
-	    	shipsadded--;
+	    	m_shipsadded--;
 		if(button == LeftButton)
-		    shiplist.append(new KShip(fieldx, fieldx + shipCount(), fieldy, fieldy, shipCount()));
+		    m_shiplist.append(new KShip(fieldx, fieldx + shipCount(), fieldy, fieldy, shipCount()));
 	        else
-        	    shiplist.append(new KShip(fieldx, fieldx, fieldy, fieldy + shipCount(), shipCount()));
+        	    m_shiplist.append(new KShip(fieldx, fieldx, fieldy, fieldy + shipCount(), shipCount()));
 
 	        for(int i = 0; i < shipCount() + 1; i++)
 		{
 		    switch(shipCount())
 		    {
 			case 3:
-			    emit ownFieldDataChanged(fieldx, fieldy + i, KBattleField::SHIP4P1 + i);
+			    emit sigOwnFieldDataChanged(fieldx, fieldy + i, KBattleField::SHIP4P1 + i);
 			    break;
 
 			case 2:
-			    emit ownFieldDataChanged(fieldx, fieldy + i, KBattleField::SHIP3P1 + i);
+			    emit sigOwnFieldDataChanged(fieldx, fieldy + i, KBattleField::SHIP3P1 + i);
 			    break;
 
 			case 1:
-			    emit ownFieldDataChanged(fieldx, fieldy + i, KBattleField::SHIP2P1 + i);
+			    emit sigOwnFieldDataChanged(fieldx, fieldy + i, KBattleField::SHIP2P1 + i);
 			    break;
 
 			case 0:
-			    emit ownFieldDataChanged(fieldx, fieldy + i, KBattleField::SHIP1P1 + i);
+			    emit sigOwnFieldDataChanged(fieldx, fieldy + i, KBattleField::SHIP1P1 + i);
 			    break;
 		    }
 		}
@@ -400,8 +400,8 @@ void KShipList::addNewShip(int button, int fieldx, int fieldy)
 	    }
 	}
 
-	if(shipsadded == 0)
-	    emit lastShipAdded();
+	if(m_shipsadded == 0)
+	    emit sigLastShipAdded();
 	return;
     }
 }

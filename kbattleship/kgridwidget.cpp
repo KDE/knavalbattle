@@ -22,7 +22,7 @@
 
 KGridWidget::KGridWidget(QWidget *parent, const char *name, bool draw) : QWidget(parent, name), m_drawGrid(draw)
 {
-    doubleBuffer = new QPixmap(parent->width(), parent->height());
+    m_doubleBuffer = new QPixmap(parent->width(), parent->height());
 
     cleanBuffer();
     cacheImages();
@@ -356,7 +356,7 @@ void KGridWidget::drawShipIcon(int ship, int part, bool rotate, bool hit)
 void KGridWidget::drawIcon(QPixmap icon, bool hitBlend)
 {
     QPainter painter;
-    painter.begin(doubleBuffer);
+    painter.begin(m_doubleBuffer);
     painter.drawPixmap(m_x, m_y, icon);
     if(hitBlend)
 	painter.drawPixmap(m_x, m_y, hitPng);
@@ -381,11 +381,11 @@ void KGridWidget::finished()
 {
     QPainter painter;
     painter.begin(static_cast<QWidget *>(parent()->parent()));
-    painter.drawPixmap(0, 0, *doubleBuffer);
+    painter.drawPixmap(0, 0, *m_doubleBuffer);
     painter.end();
 }
 
 void KGridWidget::cleanBuffer()
 {
-    doubleBuffer->fill(QApplication::palette().color(QPalette::Normal, QColorGroup::Background));
+    m_doubleBuffer->fill(QApplication::palette().color(QPalette::Normal, QColorGroup::Background));
 }

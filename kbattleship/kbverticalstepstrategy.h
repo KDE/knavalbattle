@@ -32,15 +32,15 @@ class KBVerticalStepStrategy : public KBStrategy
 	virtual void shotAt(const QPoint &pos);
 
     protected:
+	bool advance();
+	void setStart(int col, int row);
+
 	int m_row;
 	int m_column;
 	int m_passes;
 
 	QPoint m_start;
 	KBVerticalStepStrategy *m_child;
-
-	bool advance();
-	void setStart(int col, int row);
 };
 
 #endif

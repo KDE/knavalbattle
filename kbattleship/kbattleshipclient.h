@@ -19,9 +19,8 @@
 #define KBATTLESHIPCLIENT_H
 
 #include <kextsock.h>
-
-class QSocketNotifier;
-class KMessage;
+#include <qsocketnotifier.h>
+#include "kmessage.h"
 
 class KBattleshipClient : public KExtendedSocket
 {
@@ -31,25 +30,20 @@ class KBattleshipClient : public KExtendedSocket
         ~KBattleshipClient();
 
 	void init();
-
         void sendMessage(KMessage *msg);
-        void allowWrite() { writeable = true; }
-        void forbidWrite() { writeable = false; }
-        bool write() { return writeable; }
     
     private slots:
-        void readData();
+        void slotReadData();
 
     signals:
-        void connected();
-        void senemylist(bool);
-        void newMessage(KMessage *);
-        void endConnect();
-        void socketFailure(int);
+        void sigConnected();
+        void sigEndConnect();
+        void sigSocketFailure(int);
+        void sigNewMessage(KMessage *);
+	void sigMessageSent(KMessage *);
      
     private:
-        bool writeable;
-        QSocketNotifier *readNotifier;
+        QSocketNotifier *m_readNotifier;
 };
 
 #endif

@@ -27,13 +27,10 @@ KBAIPlayer::KBAIPlayer()
     m_battleField = 0;
     m_masterStrategy = 0;
     m_randomSeq = 0;
-    
-//    kdDebug() << "KBAIPlayer" << endl;
 }
 
 KBAIPlayer::~KBAIPlayer()
 {
-//    kdDebug() << "~KBAIPlayer" << endl;
     if(m_masterStrategy != 0)
 	delete m_masterStrategy;
     
@@ -66,7 +63,7 @@ void KBAIPlayer::slotRestart()
   
     addShips();
     chooseStrategy();
-    emit ready();
+    emit sigReady();
 }
 
 /* Adds the ships to the shiplist */
@@ -105,7 +102,7 @@ bool KBAIPlayer::slotRequestShot()
     if(m_masterStrategy != 0 && m_masterStrategy->hasMoreShots())
     {
 	QPoint pos = m_masterStrategy->getNextShot();
-	emit shootAt(pos);
+	emit sigShootAt(pos);
         m_masterStrategy->shotAt(pos);
 
 	return true;

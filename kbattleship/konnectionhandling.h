@@ -37,55 +37,37 @@ class KonnectionHandling : public QObject
         KonnectionHandling(QWidget *parent, KBattleshipClient *client);
         ~KonnectionHandling();
 
-        int getType();
-        int getFieldState();
-        bool writeable();
-        bool sendEnemyList();
-        bool gotEnemyList();
-        bool haveEnemy();
-	void setEnemy() { enemy = true; }
-	
-	void clear();
+        int getType() { return m_type; }
 
 	void updateInternal(KBattleshipServer *server);
 	void updateInternal(KBattleshipClient *client);
     
     public slots:
-        void setEnemyList(bool set);
-        void gotNewMessage(KMessage *msg);
-        void serverError();
-        void serverGotNewClient();
-        void serverWroteToClient();
-        void serverLostClient();	
-        void clientLostServer();
-        void clientSocketError(int error);
+        void slotNewMessage(KMessage *msg);
+	void slotMessageSent(KMessage *msg);
+        void slotNewClient();
+        void slotLostClient();	
+        void slotLostServer();
+        void slotSocketError(int error);
     
     signals:
-	void updateHighscore();
-        void newPlayer(bool);
-        void clientRestart();
-        void askReplay();
-        void statusBarMessage(const QString &);
-        void abortGame(bool);
-        void abortGameStrict(bool);
-        void setPlaceable();
-        void gotEnemyShipList(QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString);
-        void gotChatMessage(const QString &, const QString &, bool);
-        void enemyNickname(const QString &);
-        void ownFieldDataChanged(int, int, int);
-        void changeConnectText();
-        void giveEnemyName();
-        void serverFailure(bool);
-	void connected();
+	void sigStatusBar(const QString &);
+	void sigEnemyNickname(const QString &);
+	void sigEnemyFieldData(int, int, int, int, int, int, int, bool);
+	void sigSendNickname();
+	void sigSendFieldState(int, int);
+	void sigPlaceShips(bool);
+	void sigShootable(bool);
+	void sigClientLost();	
+	void sigServerLost();    
+	void sigReplay();
+	void sigAbortNetworkGame();    
+	void sigChatMessage(const QString &, const QString &, bool);
 
     private:
-        KBattleshipServer *internalServer;
-        KBattleshipClient *internalClient;
-        bool enemylist;
-        bool senemylist;
-        bool enemy;
-	bool m_showed;
-        int internalType;
+        KBattleshipServer *m_kbserver;
+        KBattleshipClient *m_kbclient;
+        int m_type;
 };
 
 #endif

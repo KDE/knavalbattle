@@ -15,19 +15,20 @@
  *                                                                         *
  ***************************************************************************/
 
+#include "main.h"
 #include "kmessage.moc"
 
 KMessage::KMessage(int type) : QObject()
 {
-    xmlDocument = QDomDocument("kmessage");
-    xmlDocument.appendChild(xmlDocument.createElement("kmessage"));
-    messageType = type;
+    m_xmlDocument = QDomDocument("kmessage");
+    m_xmlDocument.appendChild(m_xmlDocument.createElement("kmessage"));
+    m_messageType = type;
     addField(QString("msgtype"), QString::number(type));
 }
 
 KMessage::KMessage() : QObject()
 {
-    xmlDocument = QDomDocument("kmessage");
+    m_xmlDocument = QDomDocument("kmessage");
 }
 
 KMessage::~KMessage()
@@ -36,25 +37,25 @@ KMessage::~KMessage()
 
 void KMessage::addField(const QString &name, const QString &content)
 {
-    QDomElement xmlElement = xmlDocument.createElement(name);
-    QDomText xmlText = xmlDocument.createTextNode(content);
+    QDomElement xmlElement = m_xmlDocument.createElement(name);
+    QDomText xmlText = m_xmlDocument.createTextNode(content);
     xmlElement.appendChild(xmlText);
-    xmlDocument.documentElement().appendChild(xmlElement);
+    m_xmlDocument.documentElement().appendChild(xmlElement);
 }
 
 void KMessage::setDataStream(const QString &stream)
 {
-    xmlDocument.setContent(stream);
+    m_xmlDocument.setContent(stream);
 }
 
 QString KMessage::returnSendStream()
 {
-    return xmlDocument.toString();
+    return m_xmlDocument.toString();
 }
 
 QString KMessage::getField(const QString &name)
 {
-    QDomNode xmlNode = xmlDocument.documentElement().firstChild();
+    QDomNode xmlNode = m_xmlDocument.documentElement().firstChild();
     while(!xmlNode.isNull())
     {
 	QDomElement xmlElement = xmlNode.toElement();
@@ -77,38 +78,10 @@ void KMessage::chatMessage(const QString &nickname, const QString &message)
     addField("chat", message);
 }
 
-void KMessage::addReplayRequest()
+void KMessage::versionMessage()
 {
-    addField("enemyW", "replay");
-}
-
-void KMessage::addReady()
-{
-    addField("enemy", "ready");
-}
-
-void KMessage::addWinner()
-{
-    addField("enemyM", "won");
-}
-
-bool KMessage::replayRequest()
-{
-    if(getField("enemyW") == QString("replay"))
-	return true;
-    return false;
-}
-
-bool KMessage::enemyReady()
-{
-    if(getField("enemy") == QString("ready"))
-	return true;
-    return false;
-}
-
-bool KMessage::enemyWon()
-{
-    if(getField("enemyM") == QString("won"))
-	return true;
-    return false;
+    addField("protocolVersion", protocolVersion);
+    addField("clientName", clientName);
+    addField("clientVersion", clientVersion);
+    addField("clientDescription", clientDescription);
 }

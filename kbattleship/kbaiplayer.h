@@ -55,8 +55,8 @@ class KBAIPlayer : public QObject
 	bool shipPlaced(int shiplen, int x, int y, bool vertical);
 
     signals:
-	void shootAt(const QPoint pos);
-	void ready();
+	void sigShootAt(const QPoint pos);
+	void sigReady();
 };
 
 #endif

@@ -16,95 +16,98 @@
  ***************************************************************************/
 
 #include <sys/ioctl.h>
-#include <qsocketnotifier.h>
 #include <qtimer.h>
-#include <klocale.h>
 #include <kmessagebox.h>
-#include "kmessage.h"
+#include <klocale.h>
 #include "kbattleshipserver.moc"
 
 KBattleshipServer::KBattleshipServer(int port) : KExtendedSocket(QString::null, port, inetSocket | passiveSocket)
 {
-    internalPort = port;
-    serverSocket = 0;
-
-    allowWrite();
+    m_port = port;
+    m_serverSocket = 0;
 }
 
 KBattleshipServer::~KBattleshipServer()
 {
 }
 
-void KBattleshipServer::start()
+void KBattleshipServer::init()
 {
     if(listen())
     {
-	KMessageBox::error(0L, i18n("Failed to bind to local port \"%1\"\n\nPlease check if another KBattleship server instance\nis running or another application uses this port.").arg(internalPort));
-	emit serverFailure();
+	KMessageBox::error(0L, i18n("Failed to bind to local port \"%1\"\n\nPlease check if another KBattleship server instance\nis running or another application uses this port.").arg(m_port));
+	emit sigServerFailure();
         return;
     }
     
-    int reuse = 1;
-    connectNotifier = new QSocketNotifier(fd(), QSocketNotifier::Read, this);
-    QObject::connect(connectNotifier, SIGNAL(activated(int)), SLOT(newConnection()));
+    m_connectNotifier = new QSocketNotifier(fd(), QSocketNotifier::Read, this);
+    QObject::connect(m_connectNotifier, SIGNAL(activated(int)), SLOT(slotNewConnection()));
 }
 
-void KBattleshipServer::newConnection()
+void KBattleshipServer::slotNewConnection()
 {
     KExtendedSocket *sock;
     accept(sock);
-    if(sock && serverSocket == 0)
+    if(sock && m_serverSocket == 0)
     {
-	serverSocket = sock;
-        readNotifier = new QSocketNotifier(sock->fd(), QSocketNotifier::Read, this);
-	QObject::connect(readNotifier, SIGNAL(activated(int)), this, SLOT(readClient()));
-	emit newConnect();
+	m_serverSocket = sock;
+        m_readNotifier = new QSocketNotifier(sock->fd(), QSocketNotifier::Read, this);
+	QObject::connect(m_readNotifier, SIGNAL(activated(int)), this, SLOT(slotReadClient()));
+	emit sigNewConnect();
     }
     else
         delete sock;
 }
 
-void KBattleshipServer::readClient()
+void KBattleshipServer::slotDeleteClient()
+{
+    slotDiscardClient(i18n("The connection broke down!"), false, true);
+}
+
+void KBattleshipServer::slotReadClient()
 {
     int len;
-    ioctl(serverSocket->fd(), FIONREAD, &len);
-    if (!len)
+    ioctl(m_serverSocket->fd(), FIONREAD, &len);
+    if(!len)
     {
-        QTimer::singleShot(0, this, SLOT(discardClient()));
+        QTimer::singleShot(0, this, SLOT(slotDeleteClient()));
         return;
     }
+
     char *buf = new char[len + 1];
-    serverSocket->readBlock(buf, len);
+    m_serverSocket->readBlock(buf, len);
     buf[len] = 0;
     KMessage *msg = new KMessage();
     QString buffer = QString::fromUtf8(buf);
     msg->setDataStream(buffer);
-    emit newMessage(msg);
-    delete msg;
+    emit sigNewMessage(msg);
     delete []buf;
 }
 
 void KBattleshipServer::sendMessage(KMessage *msg)
 {
-    if(writeable)
-    {
-	QCString post = msg->returnSendStream().utf8();
-        serverSocket->writeBlock(post.data(), post.length());
-	emit wroteToClient();
-	if(msg->enemyReady())
-	{
-	    forbidWrite();
-	    emit senemylist(true);
-	}
-	delete msg;
-    }
+    QCString post = msg->returnSendStream().utf8();
+    m_serverSocket->writeBlock(post.data(), post.length());
+    emit sigMessageSent(msg);
 }
 
-void KBattleshipServer::discardClient()
+void KBattleshipServer::slotDiscardClient(const QString &reason, bool kmversion, bool bemit)
 {
-    delete readNotifier;
-    readNotifier = 0;
-    delete serverSocket;
-    serverSocket = 0;
-    emit endConnect();
+    KMessage *msg = new KMessage(KMessage::DISCARD);
+    msg->addField("reason", reason);
+    if(kmversion)
+	msg->addField("kmversion", "true");
+    else
+	msg->addField("kmversion", "false");
+    QCString post = msg->returnSendStream().utf8();
+    m_serverSocket->writeBlock(post.data(), post.length());
+    delete msg;
+    
+    delete m_readNotifier;
+    m_readNotifier = 0;
+    delete m_serverSocket;
+    m_serverSocket = 0;
+
+    if(bemit)
+	emit sigEndConnect();
 }

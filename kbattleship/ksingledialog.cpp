@@ -32,13 +32,13 @@ KSingleDialog::~KSingleDialog()
 void KSingleDialog::slotStartClicked()
 {
     hide();
-    emit startGame();
+    emit sigStartGame();
 }
 
 void KSingleDialog::slotCancelClicked()
 {
     hide();
-    emit cancelGame();
+    emit sigCancelGame();
 }
 
 QString KSingleDialog::getNickname()

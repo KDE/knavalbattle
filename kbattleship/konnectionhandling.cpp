@@ -1,4 +1,4 @@
-/***************************************************************************
+/**************************************MM*************************************
                             konnectionhandling.cpp
                              -------------------
     Developers: (c) 2000-2001 Nikolas Zimmermann <wildfox@kde.org>
@@ -15,38 +15,30 @@
  *                                                                         *
  ***************************************************************************/
 
+#include "main.h"
 #include "konnectionhandling.moc"
 
 KonnectionHandling::KonnectionHandling(QWidget *parent, KBattleshipServer *server) : QObject(parent)
 {
-    m_showed = false;
-    enemy = false;
-    setEnemyList(false);
-    enemylist = false;
-    internalServer = server;
-    internalClient = 0;
-    internalType = KonnectionHandling::SERVER;
-    connect(server, SIGNAL(serverFailure()), this, SLOT(serverError()));
-    connect(server, SIGNAL(senemylist(bool)), this, SLOT(setEnemyList(bool)));
-    connect(server, SIGNAL(newConnect()), this, SLOT(serverGotNewClient()));
-    connect(server, SIGNAL(endConnect()), this, SLOT(serverLostClient()));
-    connect(server, SIGNAL(wroteToClient()), this, SLOT(serverWroteToClient()));
-    connect(server, SIGNAL(newMessage(KMessage *)), this, SLOT(gotNewMessage(KMessage *)));
+    m_kbserver = server;
+    m_kbclient = 0;
+    m_type = KonnectionHandling::SERVER;
+    connect(server, SIGNAL(sigServerFailure()), this, SIGNAL(sigAbortNetworkGame()));
+    connect(server, SIGNAL(sigNewConnect()), this, SLOT(slotNewClient()));
+    connect(server, SIGNAL(sigEndConnect()), this, SLOT(slotLostClient()));
+    connect(server, SIGNAL(sigNewMessage(KMessage *)), this, SLOT(slotNewMessage(KMessage *)));
+    connect(server, SIGNAL(sigMessageSent(KMessage *)), this, SLOT(slotMessageSent(KMessage *)));
 }
 
 KonnectionHandling::KonnectionHandling(QWidget *parent, KBattleshipClient *client) : QObject(parent)
 {
-    m_showed = false;
-    enemy = false;
-    setEnemyList(false);
-    enemylist = false;
-    internalClient = client;
-    internalServer = 0;
-    internalType = KonnectionHandling::CLIENT;
-    connect(client, SIGNAL(senemylist(bool)), this, SLOT(setEnemyList(bool)));
-    connect(client, SIGNAL(endConnect()), this, SLOT(clientLostServer()));
-    connect(client, SIGNAL(socketFailure(int)), this, SLOT(clientSocketError(int)));
-    connect(client, SIGNAL(newMessage(KMessage *)), this, SLOT(gotNewMessage(KMessage *)));
+    m_kbclient = client;
+    m_kbserver = 0;
+    m_type = KonnectionHandling::CLIENT;
+    connect(client, SIGNAL(sigEndConnect()), this, SLOT(slotLostServer()));
+    connect(client, SIGNAL(sigSocketFailure(int)), this, SLOT(slotSocketError(int)));
+    connect(client, SIGNAL(sigNewMessage(KMessage *)), this, SLOT(slotNewMessage(KMessage *)));
+    connect(client, SIGNAL(sigMessageSent(KMessage *)), this, SLOT(slotMessageSent(KMessage *)));
 }
 
 KonnectionHandling::~KonnectionHandling()
@@ -55,218 +47,186 @@ KonnectionHandling::~KonnectionHandling()
 
 void KonnectionHandling::updateInternal(KBattleshipServer *server)
 {
-    m_showed = false;
-    enemy = false;
-    setEnemyList(false);
-    enemylist = false;
-    internalServer = server;
-    internalClient = 0;
-    internalType = KonnectionHandling::SERVER;
-    connect(server, SIGNAL(serverFailure()), this, SLOT(serverError()));
-    connect(server, SIGNAL(senemylist(bool)), this, SLOT(setEnemyList(bool)));
-    connect(server, SIGNAL(newConnect()), this, SLOT(serverGotNewClient()));
-    connect(server, SIGNAL(endConnect()), this, SLOT(serverLostClient()));
-    connect(server, SIGNAL(wroteToClient()), this, SLOT(serverWroteToClient()));
-    connect(server, SIGNAL(newMessage(KMessage *)), this, SLOT(gotNewMessage(KMessage *)));
+    m_kbserver = server;
+    m_kbclient = 0;
+    m_type = KonnectionHandling::SERVER;
+    connect(server, SIGNAL(sigServerFailure()), this, SIGNAL(sigAbortNetworkGame()));
+    connect(server, SIGNAL(sigNewConnect()), this, SLOT(slotNewClient()));
+    connect(server, SIGNAL(sigEndConnect()), this, SLOT(slotLostClient()));
+    connect(server, SIGNAL(sigNewMessage(KMessage *)), this, SLOT(slotNewMessage(KMessage *)));
+    connect(server, SIGNAL(sigMessageSent(KMessage *)), this, SLOT(slotMessageSent(KMessage *)));
 }
 
 void KonnectionHandling::updateInternal(KBattleshipClient *client)
 {
-    m_showed = false;
-    enemy = false;
-    setEnemyList(false);
-    enemylist = false;
-    internalClient = client;
-    internalServer = 0;
-    internalType = KonnectionHandling::CLIENT;
-    connect(client, SIGNAL(senemylist(bool)), this, SLOT(setEnemyList(bool)));
-    connect(client, SIGNAL(endConnect()), this, SLOT(clientLostServer()));
-    connect(client, SIGNAL(socketFailure(int)), this, SLOT(clientSocketError(int)));
-    connect(client, SIGNAL(newMessage(KMessage *)), this, SLOT(gotNewMessage(KMessage *)));
+    m_kbclient = client;
+    m_kbserver = 0;
+    m_type = KonnectionHandling::CLIENT;
+    connect(client, SIGNAL(sigEndConnect()), this, SLOT(slotLostServer()));
+    connect(client, SIGNAL(sigSocketFailure(int)), this, SLOT(slotSocketError(int)));
+    connect(client, SIGNAL(sigNewMessage(KMessage *)), this, SLOT(slotNewMessage(KMessage *)));
+    connect(client, SIGNAL(sigMessageSent(KMessage *)), this, SLOT(slotMessageSent(KMessage *)));
 }
 
-void KonnectionHandling::clear()
-{
-    enemy = false;
-    setEnemyList(false);
-    enemylist = false;
-    if(internalClient != 0)
-	internalClient->allowWrite();
-    if(internalServer != 0)
-	internalServer->allowWrite();
-}
-
-int KonnectionHandling::getType()
-{
-    return internalType;
-}
-
-void KonnectionHandling::serverError()
-{
-    emit serverFailure(true);
-}
-
-bool KonnectionHandling::haveEnemy()
-{
-    return enemy;
-}
-
-bool KonnectionHandling::gotEnemyList()
-{
-    return enemylist;
-}
-
-void KonnectionHandling::setEnemyList(bool set)
-{
-    senemylist = set;
-}
-
-bool KonnectionHandling::sendEnemyList()
-{
-    return senemylist;
-}
-
-void KonnectionHandling::serverGotNewClient()
-{
-    enemy = true;
-    KMessageBox::information(0L, i18n("We got a player. Let's start..."));
-    emit newPlayer(true);
-    emit statusBarMessage(i18n("Please place your ships. Use the \"Shift\" key to place the ships vertically."));
-}
-
-void KonnectionHandling::serverWroteToClient()
+void KonnectionHandling::slotNewClient()
 {
 }
 
-void KonnectionHandling::serverLostClient()
+void KonnectionHandling::slotLostClient()
 {
     KMessageBox::error(0L, i18n("Connection to client lost. Aborting the game!"));
-    emit abortGameStrict(true);
+    emit sigClientLost();
 }
 
-bool KonnectionHandling::writeable()
+void KonnectionHandling::slotMessageSent(KMessage *msg)
 {
-    if(getType() == KonnectionHandling::CLIENT)
-        return internalClient->write();
-    else if(getType() == KonnectionHandling::SERVER)
-        return internalServer->write();
-    return false;
+    if(msg->getType() == KMessage::SHOOT)
+	emit sigShootable(false);
+    
+    delete msg;
 }
 
-void KonnectionHandling::gotNewMessage(KMessage *msg)
+void KonnectionHandling::slotNewMessage(KMessage *msg)
 {
     if(getType() == KonnectionHandling::CLIENT)
     {
 	switch(msg->getType())
 	{
-	    case KMessage::REPLAY:
-		emit clientRestart();
-		break;
-		    
-	    case KMessage::GREET:
-	        emit enemyNickname(msg->getField("nickname"));
-    	        emit newPlayer(true);
-	        break;
-		    
-	    case KMessage::SHIPLIST:
-	        enemylist = true;
-		if(!haveEnemy())
-		    setEnemy();
-	        emit gotEnemyShipList(msg->getField("fieldx1s1"), msg->getField("fieldy1s1"), msg->getField("fieldx2s1"), msg->getField("fieldy2s1"), msg->getField("fieldx1s2"), msg->getField("fieldy1s2"), msg->getField("fieldx2s2"), msg->getField("fieldy2s2"), msg->getField("fieldx1s3"), msg->getField("fieldy1s3"), msg->getField("fieldx2s3"), msg->getField("fieldy2s3"), msg->getField("fieldx1s4"), msg->getField("fieldy2s4"), msg->getField("fieldx2s4"), msg->getField("fieldy2s4"));
-		emit setPlaceable();
-		emit statusBarMessage(i18n("Please place your ships. Use the \"Shift\" key to place the ships vertically."));
-		break;
-			
-	    case KMessage::ANSWER_SHOOT:
-	        emit ownFieldDataChanged(msg->getField("fieldx").toInt(), msg->getField("fieldy").toInt(), msg->getField("fieldstate").toInt());
-	        if(msg->enemyWon())
-	        {
-		    emit statusBarMessage(i18n("You lost the game :("));
-		    emit updateHighscore();
-		    emit abortGame(true);
+	    // First possible message
+	    case KMessage::DISCARD:
+		if(msg->getField("kmversion") == QString("true"))
+		{
+		    KMessageBox::error(0L, i18n("Connection dropped by enemy. The client's protocol implementation (%1) is not compatible with our (%2) version!").arg(msg->getField("reason")).arg(protocolVersion));
+		    emit sigAbortNetworkGame();
 		}
 		else
-		    emit statusBarMessage(i18n("Enemy has shot. Shoot now"));
-	        break;
-		    
+		    KMessageBox::error(0L, i18n(msg->getField("reason").latin1()));
+		break;
+	
+	    // Got the enemy's nickname
+	    case KMessage::GREET:
+		emit sigEnemyNickname(msg->getField("nickname"));
+		emit sigStatusBar(i18n("Waiting for other player to place the ships..."));
+		break;
+		
+	    // The server wants ous to place the ships
+	    case KMessage::SHIPSREADY:
+		emit sigPlaceShips(true);
+		emit sigStatusBar(i18n("Please place your ships. Use the \"Shift\" key to place the ships vertically."));
+		break;
+	
+	    // The server shot and wants the field state
+	    case KMessage::SHOOT:
+		emit sigSendFieldState(msg->getField("fieldx").toInt(), msg->getField("fieldy").toInt());
+		emit sigStatusBar(i18n("Enemy has shot. Shoot now"));
+		emit sigShootable(true);
+		break;
+
+	    // The server gave us the field data of our last shot
+	    case KMessage::ANSWER_SHOOT:
+		emit sigShootable(false);
+		emit sigEnemyFieldData(msg->getField("fieldx").toInt(), msg->getField("fieldy").toInt(), msg->getField("fieldstate").toInt(), msg->getField("xstart").toInt(), msg->getField("xstop").toInt(), msg->getField("ystart").toInt(), msg->getField("ystop").toInt(), (msg->getField("death") == QString("true")));
+		break;
+
+	    // The server starts a new game
+	    case KMessage::REPLAY:
+		emit sigStatusBar(i18n("Waiting for other player to place the ships..."));
+		emit sigReplay();
+		break;
+
+	    // We lost the game
+	    case KMessage::WON:
+		emit sigStatusBar(i18n("You lost the game :("));
+		break;
+	
+	    // We got a chat message
 	    case KMessage::CHAT:
-	        emit gotChatMessage(msg->getField("nickname"), msg->getField("chat"), true);
-	        break;
-        }
-        if(msg->enemyReady())
-	    internalClient->allowWrite();
+	        emit sigChatMessage(msg->getField("nickname"), msg->getField("chat"), true);
+		break;
+	}
     }
     else
     {
         switch(msg->getType())
         {
-	    case KMessage::REPLAY:
-	        emit askReplay();
-	        break;
-		    
-	    case KMessage::GREET:
-	        emit enemyNickname(msg->getField("nickname"));
-	        emit giveEnemyName();
-	        break;
-		    
-	    case KMessage::SHIPLIST:
-	        enemylist = true;
-                if (!haveEnemy())
-                    setEnemy();
-	        emit gotEnemyShipList(msg->getField("fieldx1s1"), msg->getField("fieldy1s1"), msg->getField("fieldx2s1"), msg->getField("fieldy2s1"), msg->getField("fieldx1s2"), msg->getField("fieldy1s2"), msg->getField("fieldx2s2"), msg->getField("fieldy2s2"), msg->getField("fieldx1s3"), msg->getField("fieldy1s3"), msg->getField("fieldx2s3"), msg->getField("fieldy2s3"), msg->getField("fieldx1s4"), msg->getField("fieldy2s4"), msg->getField("fieldx2s4"), msg->getField("fieldy2s4"));
-	        emit statusBarMessage(i18n("You can shoot now"));
-	        break;
-		    
-	    case KMessage::ANSWER_SHOOT:
-	        emit ownFieldDataChanged(msg->getField("fieldx").toInt(), msg->getField("fieldy").toInt(), msg->getField("fieldstate").toInt());
-	        if(msg->enemyWon())
-	        {
-	            emit statusBarMessage(i18n("You lost the game :("));
-		    emit updateHighscore();
-	            emit abortGame(true);
-	        }
-	        else
-	            emit statusBarMessage(i18n("Enemy has shot. Shoot now"));
-	            break;
-		    
-	    case KMessage::CHAT:
-	        emit gotChatMessage(msg->getField("nickname"), msg->getField("chat"), true);
-	        break;
-        }
-        if(msg->enemyReady())
-	    internalServer->allowWrite();
-    }
-}
-    
-void KonnectionHandling::clientLostServer()
-{
-    KMessageBox::error(0L, i18n("Connection to server lost. Aborting the game!"));
-    emit abortGameStrict(true);
-}
-
-void KonnectionHandling::clientSocketError(int error)
-{
-    if(!m_showed)
-    {
-	m_showed = true;
-	switch(error)
-	{
-    	    case IO_ConnectError:
- 		KMessageBox::error(0L, i18n("Connection refused by other host!"));
-        	break;
-
-	    case IO_LookupError:
-		KMessageBox::error(0L, i18n("Couldn't lookup host!"));
+	    // First message....got client information
+	    case KMessage::VERSION:
+		if(msg->getField("protocolVersion") != QString::fromLatin1(protocolVersion))
+		{
+		    m_kbserver->slotDiscardClient(protocolVersion, true, false);
+		    KMessageBox::error(0L, i18n("Connection to client dropped. The client's protocol implementation (%1) is not compatible with our (%2) version!").arg(msg->getField("protocolVersion")).arg(protocolVersion));
+		}
 		break;
-	
-	    case IO_ReadError:
- 	        KMessageBox::error(0L, i18n("Couldn't connect to server!"));
-    	        break;
-	
-    	    default:
-		KMessageBox::error(0L, i18n("Unknown Error; No: %1").arg(error));
+		
+	    // Got the enemy's nickname
+	    case KMessage::GREET:
+	        KMessageBox::information(0L, i18n("We got a player. Let's start..."));
+		emit sigStatusBar(i18n("Please place your ships. Use the \"Shift\" key to place the ships vertically."));
+		emit sigEnemyNickname(msg->getField("nickname"));
+		emit sigSendNickname();
+		emit sigPlaceShips(true);
+		break;
+
+	    // The client placed his ships...we can shoot now
+	    case KMessage::SHIPSREADY:
+		emit sigShootable(true);
+		emit sigStatusBar(i18n("You can shoot now"));
+		break;
+		
+	    // The client gave us the field data of our last shot
+	    case KMessage::ANSWER_SHOOT:
+		emit sigShootable(false);
+		emit sigEnemyFieldData(msg->getField("fieldx").toInt(), msg->getField("fieldy").toInt(), msg->getField("fieldstate").toInt(), msg->getField("xstart").toInt(), msg->getField("xstop").toInt(), msg->getField("ystart").toInt(), msg->getField("ystop").toInt(), (msg->getField("death") == QString("true")));
+		break;
+		
+	    // The client shot and wants the field state
+	    case KMessage::SHOOT:
+		emit sigSendFieldState(msg->getField("fieldx").toInt(), msg->getField("fieldy").toInt());
+		emit sigStatusBar(i18n("Enemy has shot. Shoot now"));
+		emit sigShootable(true);
+		break;
+	    
+	    // The client asks for a replay
+	    case KMessage::REPLAY:
+		emit sigReplay();
+		break;
+	    
+	    // We got a chat message
+	    case KMessage::CHAT:
+	        emit sigChatMessage(msg->getField("nickname"), msg->getField("chat"), true);
 		break;
 	}
     }
-    emit changeConnectText();
+
+    delete msg;
+}
+    
+void KonnectionHandling::slotSocketError(int error)
+{
+    switch(error)
+    {
+	case IO_ConnectError:
+ 	    KMessageBox::error(0L, i18n("Connection refused by other host!"));
+    	    break;
+
+	case IO_LookupError:
+	    KMessageBox::error(0L, i18n("Couldn't lookup host!"));
+	    break;
+	
+	case IO_ReadError:
+ 	    KMessageBox::error(0L, i18n("Couldn't connect to server!"));
+    	    break;
+	
+    	default:
+	    KMessageBox::error(0L, i18n("Unknown Error; No: %1").arg(error));
+	    break;
+    }
+
+    emit sigAbortNetworkGame();
+}
+
+void KonnectionHandling::slotLostServer()
+{
+    KMessageBox::error(0L, i18n("Connection to server lost. Aborting the game!"));
+    emit sigServerLost();
 }

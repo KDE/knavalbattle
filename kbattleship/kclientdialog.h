@@ -44,8 +44,8 @@ class KClientDialog : public clientConnectDlg
 	void slotReturnPressed(const QString &hostname);
     
     signals:
-        void connectServer();
-        void cancelConnect();
+        void sigConnectServer();
+        void sigCancelConnect();
     
     private:
         KConfig *config;

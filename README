@@ -1,4 +1,4 @@
-KBattleship 0.7
+KBattleship 0.8
 -----------------------------------
 
 KBatteship is a KDE implentation of the
@@ -7,7 +7,7 @@ popular game "Battleship".
 In the current version, you can play it
 with two computers in a TCP/IP based
 network and (as of version 0.7) with the
-computer. 
+computer.
 
 KBattleship uses an XML based protocol,
 meaning you can write a compatible application

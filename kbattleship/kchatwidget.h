@@ -32,23 +32,23 @@ class KChatWidget : public chatDlg
         ~KChatWidget();
 
 	void clear();
-	
-        void setNickname(const QString &nickname);
-        virtual bool eventFilter(QObject *, QEvent *);
+        void setNickname(const QString &nickname) { m_currentNickname = nickname; }
 
     public slots:
-        void acceptMsg(bool value);
+        void slotAcceptMsg(bool value);
         void slotComputeMessage();
-        void receivedMessage(const QString &nickname, const QString &msg, bool fromenemy = true);
+        void slotReceivedMessage(const QString &nickname, const QString &msg, bool fromenemy = true);
     
     signals:
-        void sendMessage(const QString &);
-	void changeEnemyNickname(const QString &);
-	void changeOwnNickname(const QString &);
+        void sigSendMessage(const QString &);
+	void sigChangeEnemyNickname(const QString &);
+	void sigChangeOwnNickname(const QString &);
    
     private:
-        QString currentNickname;
-        bool acceptMsgs;
+        virtual bool eventFilter(QObject *, QEvent *);
+
+        QString m_currentNickname;
+        bool m_acceptMsgs;
 };
 
 #endif

@@ -1,5 +1,5 @@
 /***************************************************************************
-                                    kshiplist.h
+                                    km_shiplist.h
                                   -----------------
     Developers: (c) 2000-2001 Nikolas Zimmermann <wildfox@kde.org>
                 (c) 2000-2001 Daniel Molkentin <molkentin@kde.org>
@@ -47,7 +47,7 @@ class KShipList : public QObject
 
         bool canAddShips();
 
-        int shipCount() { return shipsadded; }
+        int shipCount() { return m_shipsadded; }
 
         KShip *returnIterator(int ship);
 
@@ -60,12 +60,12 @@ class KShipList : public QObject
 	int m_fieldy;
 
     signals:
-        void lastShipAdded();
-        void ownFieldDataChanged(int, int, int);
+        void sigLastShipAdded();
+        void sigOwnFieldDataChanged(int, int, int);
 
     private:
-        QList<KShip> shiplist;
-        int shipsadded;
+        QList<KShip> m_shiplist;
+        int m_shipsadded;
 };
 
 #endif

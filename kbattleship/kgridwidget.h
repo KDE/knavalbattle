@@ -54,7 +54,7 @@ class KGridWidget : public QWidget
 
 	bool m_drawGrid;
         int m_x, m_y, m_size;
-	QPixmap *doubleBuffer;
+	QPixmap *m_doubleBuffer;
 	QPixmap seaPng, waterPng, hitPng, deathPng;
 	QPixmap ship1p1Png, ship1p1rPng;
 	QPixmap ship2p1Png, ship2p1rPng;

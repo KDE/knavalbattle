@@ -192,7 +192,6 @@ void KBattleField::drawEnemyField()
     }
     
     finished();
-//    cleanBuffer();
 }
 
 int KBattleField::ownXPosition()

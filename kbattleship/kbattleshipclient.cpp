@@ -22,7 +22,6 @@
 
 KBattleshipClient::KBattleshipClient(const QString &host, int port) : KExtendedSocket(host, port, inetSocket)
 {
-    allowWrite();
 }
 
 KBattleshipClient::~KBattleshipClient()
@@ -33,48 +32,40 @@ void KBattleshipClient::init()
 {
     if(connect())
     {
-	emit socketFailure(status());
+	emit sigSocketFailure(status());
         return;
     }
     
-    readNotifier = new QSocketNotifier(fd(), QSocketNotifier::Read, this);
-    QObject::connect(readNotifier, SIGNAL(activated(int)), SLOT(readData()));
-    emit connected();
+    m_readNotifier = new QSocketNotifier(fd(), QSocketNotifier::Read, this);
+    QObject::connect(m_readNotifier, SIGNAL(activated(int)), SLOT(slotReadData()));
+    emit sigConnected();
 }
 
 void KBattleshipClient::sendMessage(KMessage *msg)
 {
-    if(writeable)
-    {
-	QCString post = msg->returnSendStream().utf8();
-        writeBlock(post.data(), post.length());
-	if(msg->enemyReady())
-	{
-	    forbidWrite();
-	    emit senemylist(true);
-	}
-	delete msg;
-    }
+    QCString post = msg->returnSendStream().utf8();
+    writeBlock(post.data(), post.length());
+    emit sigMessageSent(msg);
 }
 
-void KBattleshipClient::readData()
+void KBattleshipClient::slotReadData()
 {
     int len;
     ioctl(fd(), FIONREAD, &len);
     if(!len)
     {
-        delete readNotifier;
-        readNotifier = 0;
-        emit endConnect();
+        delete m_readNotifier;
+        m_readNotifier = 0;
+        emit sigEndConnect();
         return;
     }
+
     char *buf = new char[len + 1];
     readBlock(buf, len);
     buf[len] = 0;
     KMessage *msg = new KMessage();
     QString buffer = QString::fromUtf8(buf);
     msg->setDataStream(buffer);
-    emit newMessage(msg);
-    delete msg;
+    emit sigNewMessage(msg);
     delete []buf;
 }

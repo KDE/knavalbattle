@@ -12,6 +12,7 @@
   </Menu>
   <Menu name="settings"><text>&amp;Settings</text>
     <Action name="configsound"/>
+    <Separator/>
     <Action name="showgrid"/>
   </Menu>
 </MenuBar>

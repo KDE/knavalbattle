@@ -60,12 +60,57 @@ class KBattleshipApp : public KMainWindow
 
         void init();
 
-	KShipList *shipList() { return ownshiplist; }	
+	KShipList *shipList() { return m_ownshiplist; }	
 	KShip *getXYShip(int fieldx, int fieldy);
 
-    protected:
-        void saveOptions();
-        void readOptions();
+    private slots:
+        void slotStatusMsg(const QString &text);
+	void slotReceivedEnemyFieldData(int fieldx, int fieldx, int enemystate, int xstart, int xstop, int ystart, int ystop, bool death);
+	void slotSendEnemyFieldState(int, int);
+	void slotChangeOwnPlayer(const QString &text);    
+        void slotChangeEnemyPlayer(const QString &text);
+	void slotSendVersion();
+        void slotSendGreet();
+        void slotShipsReady();
+        void slotSetPlaceable(bool place);
+	void slotSetShootable(bool shoot);
+        void slotEnemyFieldClick(int fieldx, int fieldy);
+	void slotSendMessage(int fieldx, int fieldy, int state);
+        void slotSendMessage(KMessage *msg);
+	void slotClientLost();    
+	void slotServerLost();
+        void slotServerReplay();
+	void slotClientReplay();
+	void slotAIReady();
+	void slotAIShootsAt(const QPoint pos);
+	void slotDeleteAI();
+	void slotDeleteClient();
+    	void slotSinglePlayer();
+	void slotDeleteSingleDialog();
+        void slotServerConnect();
+	void slotDeleteConnectDialog();
+        void slotNewServer();
+	void slotDeleteServerDialog();
+        void slotGameQuit();
+	void slotHighscore();
+        void slotConfigSound();
+	void slotShowGrid();
+        void slotViewStatusBar();
+        void slotStartBattleshipGame();
+	void slotStartBattleshipServer();
+        void slotConnectToBattleshipServer();
+        void slotPlaceShipPreview(int fieldx, int fieldy, bool shift);
+        void slotPlaceShip(int fieldx, int fieldy, int button);
+	void slotChangeOwnFieldData(int fieldx, int fieldy, int type);
+        void slotChangeEnemyFieldData(int fieldx, int fieldy, int type);
+	void slotUpdateHighscore();    
+	void slotAbortNetworkGame();    
+	void slotReplay();
+	void slotReplayRequest();
+	void slotChangedNickCommand(const QString &text);
+        void slotSendChatMessage(const QString &text);
+
+    private:
         void initActions();
         void initStatusBar();
         void initView();
@@ -73,85 +118,39 @@ class KBattleshipApp : public KMainWindow
         void initSound();
         void initShipPlacing();
 
-    public slots:
-	void slotChangedNickCommand(const QString &text);
-        void deleteLists(bool placechange = true);
-        void askReplay();
-        void sendGreet();
-        void clientRestart();
-	void resetControl(bool status);
-        void resetClient(bool status = true);
-        void resetServer(bool status = true);
-	void deleteAI();
-        void setPlaceable();
-        void slotServerConnect();
-	void deleteConnectDialog();
-        void slotNewServer();
-	void deleteServerDialog();
-        void slotGameQuit();
-	void slotHighscore();
-        void slotConfigSound();
-	void slotShowGrid();
-        void slotViewStatusBar();
-        void slotStatusMsg(const QString &text);
-        void slotChangeOwnPlayer(const QString &text);    
-        void slotChangeEnemyPlayer(const QString &text);
-        void startBattleshipGame();
-	void startBattleshipServer();
-        void connectToBattleshipServer();
-        void placeShipPreview(int fieldx, int fieldy, bool shift);
-        void placeShip(int fieldx, int fieldy, int button);
-        void enemyClick(int fieldx, int fieldy);
-        void sendMessage(int fieldx, int fieldy, int state, bool won = false);
-        void sendMessage(KMessage *msg);
-        void sendShipList();
-        void sendChatMessage(const QString &text);
-        void changeOwnFieldData(int fieldx, int fieldy, int type);
-        void changeEnemyFieldData(int fieldx, int fieldy, int type);
-        void changeConnectText();
-        void changeStartText();
-	void resetConnection() { haveCS = false; }
-        void gotEnemyShipList(QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString);
-	void slotSinglePlayer();
-	void deleteSingleDialog();
+        void saveOptions();
+        void readOptions();
 
-    private slots:
-	void updateHighscore();    
-	void deleteClient();
-	void slotAIReady();
-	void slotAIShootsAt(const QPoint pos);
+	void cleanup(bool placechange = true);
 
-    private:
-        KConfig *config;
-        QSplitter *splitH;
-        QSplitter *splitV;
-        KChatWidget *chat;
-        KStatDialog *stat;
-        KBattleshipView *view;
-        KBattleshipServer *kbserver;
-        KBattleshipClient *kbclient;
-        KAction *gameServerConnect;
-        KAction *gameNewServer;
-        KAction *gameQuit;
-	KAction *gameSingle;
-        KToggleAction *viewStatusBar;
-        KToggleAction *configSound;
-	KToggleAction *configGrid;
-        KBattleshipSound *sound;
-        KSingleDialog *single;
-	KClientDialog *client;
-        KServerDialog *server;
-        KonnectionHandling *connection;
-        KShipList *ownshiplist;
-        KShipList *enemyshiplist;
-        QString ownNickname;
-        QString enemyNickname;
-	KBAIPlayer *aiPlayer;
+	bool m_placeable;
+	bool m_shootable;
+	bool m_aiPlaying;
+	bool m_serverHasClient;
+	int m_aiHits;
 
-        bool haveCS;
-        bool place;
-	bool playing;
-	int hits;
+        KConfig *m_config;
+	KBAIPlayer *m_aiPlayer;
+        KonnectionHandling *m_connection;
+        KBattleshipServer *m_kbserver;
+        KBattleshipClient *m_kbclient;
+        KChatWidget *m_chat;
+        KStatDialog *m_stat;
+        KBattleshipView *m_view;
+        KAction *m_gameServerConnect;
+        KAction *m_gameNewServer;
+        KAction *m_gameQuit;
+	KAction *m_gameSingle;
+        KToggleAction *m_viewStatusBar;
+        KToggleAction *m_configSound;
+	KToggleAction *m_configGrid;
+        KBattleshipSound *m_sound;
+        KSingleDialog *m_single;
+	KClientDialog *m_client;
+        KServerDialog *m_server;
+        KShipList *m_ownshiplist;
+        KShipList *m_enemyshiplist;
+        QString m_ownNickname;
+        QString m_enemyNickname;
 };
-
 #endif

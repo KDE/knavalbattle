@@ -51,7 +51,7 @@ void KClientDialog::slotConnectClicked()
     {
 	hide();
 	serverEdit->addToHistory(serverEdit->currentText());
-	emit connectServer();
+	emit sigConnectServer();
     }
     else
 	serverEdit->clearEdit();
@@ -68,7 +68,7 @@ void KClientDialog::slotReturnPressed(const QString &hostname)
 void KClientDialog::slotCancelClicked()
 {
     hide();
-    emit cancelConnect();
+    emit sigCancelConnect();
 }
 
 QString KClientDialog::getPort()

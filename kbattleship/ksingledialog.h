@@ -37,8 +37,8 @@ class KSingleDialog : public singleStartDlg
 	void slotCancelClicked();
 
     signals:
-        void startGame();	
-        void cancelGame();
+        void sigStartGame();	
+        void sigCancelGame();
 };
 
 #endif

@@ -32,13 +32,13 @@ KServerDialog::~KServerDialog()
 void KServerDialog::slotStartClicked()
 {
     hide();
-    emit startServer();
+    emit sigStartServer();
 }
 
 void KServerDialog::slotCancelClicked()
 {
     hide();
-    emit cancelServer();
+    emit sigCancelServer();
 }
 
 QString KServerDialog::getPort()

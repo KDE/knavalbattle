@@ -46,10 +46,10 @@ class KBattleshipView : public QWidget
 	int getEnemyFieldState(int &fieldx, int &fieldy);
 
     signals:
-        void enemyFieldClicked(int, int);
-        void ownFieldClicked(int, int, int);
+        void sigEnemyFieldClicked(int, int);
+        void sigOwnFieldClicked(int, int, int);
 
-	void mouseOverField(int, int, bool);
+	void sigMouseOverField(int, int, bool);
 
     private:
 	bool eventFilter(QObject *object, QEvent *event);

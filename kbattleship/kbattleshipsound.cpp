@@ -14,8 +14,8 @@
  *   (at your option) any later version.                                   *
  *                                                                         *
  ***************************************************************************/
-#include <qfile.h>
 
+#include <qfile.h>
 #include "kbattleshipsound.moc"
 
 KBattleshipSound::KBattleshipSound() : QObject()
@@ -31,24 +31,24 @@ KBattleshipSound::~KBattleshipSound()
 
 void KBattleshipSound::turnOff()
 {
-    if(serverRunning && !soundError)
+    if(m_serverRunning && !m_soundError)
     {
 	playObject = Arts::PlayObject::null();
 	playObjectFactory = Arts::PlayObjectFactory::null();
 	soundserver = Arts::SimpleSoundServer::null();
-	serverRunning = false;
+	m_serverRunning = false;
     }	
 }
 
 void KBattleshipSound::turnOn()
 {
-    if(!serverRunning && !soundError)
+    if(!m_serverRunning && !m_soundError)
 	initSoundServer();
 }
 
 bool KBattleshipSound::serverError()
 {
-    return soundError;
+    return m_soundError;
 }
 
 bool KBattleshipSound::initSoundServer()
@@ -60,8 +60,8 @@ bool KBattleshipSound::initSoundServer()
 	KMessageBox::error(0L, i18n("Couldn't connect to aRts Soundserver. Sound deactivated"));
 	playObjectFactory = Arts::PlayObjectFactory::null();
 	soundserver = Arts::SimpleSoundServer::null();
-	serverRunning = false;
-	soundError = true;
+	m_serverRunning = false;
+	m_soundError = true;
     }
     else
     {
@@ -69,25 +69,25 @@ bool KBattleshipSound::initSoundServer()
 	QString oneSoundCheck = locate("data", "kbattleship/sounds/ship-sink.mp3");
 	if(!soundDirCheck.isEmpty() && !oneSoundCheck.isEmpty())
 	{
-	    serverRunning = true;
-	    soundError = false;
+	    m_serverRunning = true;
+	    m_soundError = false;
 	}
 	else
 	{
 	    KMessageBox::error(0L, i18n("You don't have KBattleship Sounds installed. Sound deactivated"));
 	    playObjectFactory = Arts::PlayObjectFactory::null();
 	    soundserver = Arts::SimpleSoundServer::null();
-	    serverRunning = false;
-	    soundError = true;
+	    m_serverRunning = false;
+	    m_soundError = true;
 	}
     }
     
-    return !soundError;
+    return !m_soundError;
 }
 
 void KBattleshipSound::playSound(int file)
 {
-    if(serverRunning && !soundError)
+    if(m_serverRunning && !m_soundError)
     {
 	QString soundDir = locate("data", "kbattleship/sounds/");
     	QString playFile;

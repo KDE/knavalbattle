@@ -23,9 +23,11 @@ KChatWidget::KChatWidget(QWidget *parent, const char *name) : chatDlg(parent, na
     setMinimumSize(600, 180);
     connect(sendBtn, SIGNAL(clicked()), this, SLOT(slotComputeMessage()));
     connect(commentEdit, SIGNAL(returnPressed()), this, SLOT(slotComputeMessage()));
-    currentNickname = "";
     chatView->setFocusProxy(commentEdit);
     commentEdit->installEventFilter(this);
+
+    m_currentNickname = QString::null;
+    slotAcceptMsg(false);
 }
 
 KChatWidget::~KChatWidget()
@@ -34,18 +36,18 @@ KChatWidget::~KChatWidget()
 
 void KChatWidget::clear()
 {
-    currentNickname = "";
-    acceptMsg(false);
+    m_currentNickname = QString::null;
+    slotAcceptMsg(false);
     chatView->clear();
     commentEdit->clear();
 }
 
-void KChatWidget::acceptMsg(bool value)
+void KChatWidget::slotAcceptMsg(bool value)
 {
-    acceptMsgs = value;
+    m_acceptMsgs = value;
 }
 
-void KChatWidget::receivedMessage(const QString &nickname, const QString &msg, bool fromenemy)
+void KChatWidget::slotReceivedMessage(const QString &nickname, const QString &msg, bool fromenemy)
 {
     // Niko Z:
     // IRC roxxx :)
@@ -53,17 +55,12 @@ void KChatWidget::receivedMessage(const QString &nickname, const QString &msg, b
 	chatView->append(QString(" * ") + nickname + QString(" ") + msg.mid(4));
     else if(msg.startsWith("/nick "))
 	if(fromenemy)
-	    emit changeEnemyNickname(msg.mid(6));
+	    emit sigChangeEnemyNickname(msg.mid(6));
 	else
-	    emit changeOwnNickname(msg.mid(6));
+	    emit sigChangeOwnNickname(msg.mid(6));
     else
 	chatView->append(nickname + QString(": ") + msg);
     chatView->setCursorPosition(chatView->numLines(), 0);
-}
-
-void KChatWidget::setNickname(const QString &nickname)
-{
-    currentNickname = nickname;
 }
 
 bool KChatWidget::eventFilter(QObject *obj, QEvent *e)
@@ -78,13 +75,13 @@ bool KChatWidget::eventFilter(QObject *obj, QEvent *e)
 
 void KChatWidget::slotComputeMessage()
 {
-    if(!commentEdit->text().stripWhiteSpace().isEmpty() && acceptMsgs)
+    if(!commentEdit->text().stripWhiteSpace().isEmpty() && m_acceptMsgs)
     {
-	receivedMessage(currentNickname, commentEdit->text(), false);
-	emit sendMessage(commentEdit->text());
+	slotReceivedMessage(m_currentNickname, commentEdit->text(), false);
+	emit sigSendMessage(commentEdit->text());
 	commentEdit->setText("");
     }
-    else if(commentEdit->text().stripWhiteSpace().isEmpty() && acceptMsgs)
+    else if(commentEdit->text().stripWhiteSpace().isEmpty() && m_acceptMsgs)
 	commentEdit->setText("");
     commentEdit->setFocus();
 }

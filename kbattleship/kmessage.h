@@ -18,7 +18,6 @@
 #ifndef KMESSAGE_H
 #define KMESSAGE_H
 
-#include <kdebug.h>
 #include <qmap.h>
 #include <qobject.h>
 #include <qdom.h>
@@ -29,7 +28,7 @@ class KMessage : public QObject
 {
     Q_OBJECT
     public:
-        enum{GREET, SHIPLIST, ANSWER_SHOOT, CHAT, REPLAY};
+        enum{VERSION, DISCARD, GREET, SHIPSREADY, SHOOT, ANSWER_SHOOT, WON, REPLAY, CHAT};
 
         KMessage(int type);
         KMessage();
@@ -44,16 +43,11 @@ class KMessage : public QObject
         QString returnSendStream();
 
         void chatMessage(const QString &nickname, const QString &message);
-	void addReplayRequest();
-	void addReady();
-	void addWinner();
-	bool replayRequest();
-	bool enemyReady();
-	bool enemyWon();
+	void versionMessage();
 
     private:
-        QDomDocument xmlDocument;
-        int messageType;
+        QDomDocument m_xmlDocument;
+        int m_messageType;
 };
 
 #endif
