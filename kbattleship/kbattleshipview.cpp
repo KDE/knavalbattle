@@ -90,13 +90,13 @@ void KBattleshipView::mouseReleaseEvent(QMouseEvent *event)
     fieldy = 0;
     if(event->x() <= (width() / 2) - 15 && event->x() >= 46)
     {
-	if(event->y() >= 35 && event->y() <= (height() / 2) + 120)
+	if(event->y() >= 35 && event->y() <= (height() / 2) + 125)
 	{
 	    fieldTopPos = 35;
-	    fieldBottomPos = (height() / 2) + 120;
+	    fieldBottomPos = (height() / 2) + 125;
 	    
 	    fieldLeftPos = 45;
-	    fieldRightPos = (width() / 2) + 120;
+	    fieldRightPos = (width() / 2) + 125;
 	    
 	    i = 0;
 	    j = 0;
@@ -128,13 +128,13 @@ void KBattleshipView::mouseReleaseEvent(QMouseEvent *event)
     }
     else if(event->x() >= (width() / 2) + 15 && event->x() <= width() - 46)
     {
-    	if(event->y() >= 35 && event->y() <= (height() / 2) + 120)
+    	if(event->y() >= 35 && event->y() <= (height() / 2) + 125)
 	{
 	    fieldTopPos = 35;
-	    fieldBottomPos = (height() / 2) + 120;
+	    fieldBottomPos = (height() / 2) + 125;
 	    
 	    fieldLeftPos = 45;
-	    fieldRightPos = (width() / 2) + 120;
+	    fieldRightPos = (width() / 2) + 125;
 
 	    i = 0;
 	    j = 0;
@@ -142,7 +142,7 @@ void KBattleshipView::mouseReleaseEvent(QMouseEvent *event)
 	    for(i = fieldLeftPos; i <= fieldRightPos; i += 30)
 	    {
 		j++;
-		if(event->x() >= i + (height() / 2) - 30 && event->x() <= i + (height() / 2) + 30)
+		if(event->x() >= i + (height() / 2) - 30 && event->x() <= i + (height() / 2) + 45)
 		{
 		    fieldx = j - 5;
 		    break;

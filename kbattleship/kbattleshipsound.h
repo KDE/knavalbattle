@@ -46,8 +46,9 @@ class KBattleshipSound : public QObject
         Arts::SimpleSoundServer soundserver;
         Arts::PlayObjectFactory playObjectFactory;
         Arts::PlayObject playObject;
-        bool isRunning();
+
         bool serverRunning;
+	bool soundError;
 };
 
 #endif

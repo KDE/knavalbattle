@@ -29,7 +29,7 @@ KBattleshipSound::~KBattleshipSound()
 
 void KBattleshipSound::turnOff()
 {
-    if(isRunning())
+    if(serverRunning && !soundError)
     {
 	playObjectFactory = Arts::PlayObjectFactory::null();
 	soundserver = Arts::SimpleSoundServer::null();
@@ -39,7 +39,7 @@ void KBattleshipSound::turnOff()
 
 void KBattleshipSound::turnOn()
 {
-    if(!isRunning())
+    if(!serverRunning && !soundError)
 	initSoundServer();
 }
 
@@ -51,14 +51,18 @@ void KBattleshipSound::initSoundServer()
     {
 	KMessageBox::error(0L, i18n("Couldn't connect to aRts Soundserver. Sound deactivated"));
 	serverRunning = false;
+	soundError = true;
     }
     else
+    {
 	serverRunning = true;
+	soundError = false;
+    }
 }
 
 void KBattleshipSound::playSound(int file)
 {
-    if(isRunning())
+    if(serverRunning)
     {
 	KStandardDirs *stdDirs = KGlobal::dirs();
 	QString soundDir;
@@ -95,9 +99,4 @@ void KBattleshipSound::playSound(int file)
 	playObject = playObjectFactory.createPlayObject(playFile.latin1());
 	playObject.play();
     }
-}
-
-bool KBattleshipSound::isRunning()
-{
-    return serverRunning;
 }
