@@ -17,20 +17,24 @@
 
 #include "kgridwidget.moc"
 
-KGridWidget::KGridWidget( QWidget *parent, int x, int y, int size ) : QWidget()
+KGridWidget::KGridWidget( QWidget *parent ) : QWidget()
 {
-    internalX = x;
-    internalY = y;
-    internalSize = size;
-    drawSquare( parent );
+    internalParent = parent;
 }
 
 KGridWidget::~KGridWidget()
 {
 }
 
+void KGridWidget::setValues( int &x, int &y, int size )
+{
+    internalX = x;
+    internalY = y;
+    internalSize = size;
+}
+
 void KGridWidget::drawSquare( QWidget *parent )
 {
-    QPainter painter( parent );
+    QPainter painter( internalParent );
     painter.drawRect( internalX, internalY, internalSize, internalSize );
 }

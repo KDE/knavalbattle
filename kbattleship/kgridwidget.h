@@ -26,14 +26,17 @@ class KGridWidget : QWidget
 {
     Q_OBJECT
     public:
-        KGridWidget( QWidget *parent, int x, int y, int size );
+        KGridWidget( QWidget *parent );
         ~KGridWidget();
+	
+	void setValues( int &x, int &y, int size );
+	void drawSquare( QWidget *parent );
 
     private:
-    	void drawSquare( QWidget *parent );
         int internalX;
         int internalY;
         int internalSize;
+	QWidget *internalParent;
 };
 
 #endif

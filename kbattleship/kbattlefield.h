@@ -1,5 +1,5 @@
 /***************************************************************************
-                                 kmessage.h
+                                kbattlefield.h
                              -------------------
     Developers: (c) 2000 Nikolas Zimmermann <nikoz@gymnasium-kerpen.de>
                 (c) 2000 Daniel Molkentin <molkentin@kde.org>
@@ -20,14 +20,31 @@
 
 #include <kdebug.h>
 #include <qpainter.h>
-#include <qobject.h>
+#include <qwidget.h>
+#include "kbattlefieldtype.h"
+#include "kgridwidget.h"
 
-class KBattleField : QObject
+class KBattleField : KGridWidget, QWidget
 {
     Q_OBJECT
     public:
-        KBattleField();
+	enum { FREE, RESERVED, FIRE, DEATH };
+        KBattleField( QWidget *parent, const KBattleFieldType &type );
         ~KBattleField();
+	
+	void setDrawValues( QWidget *parent );
+	int LeftV;
+	int RightV;    
+	int TopV;
+	int BottomV;
+
+	
+    public slots:
+	void fieldResized();
+
+    private:
+	int FieldData[ 8 ][ 8 ];
+	int internalType;
 
 };
 
