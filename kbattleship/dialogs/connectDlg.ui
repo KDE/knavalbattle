@@ -1,13 +1,10 @@
-<!DOCTYPE UI><UI>
+<!DOCTYPE UI><UI version="3.0" stdsetdef="1">
 <class>clientConnectDlg</class>
-<widget>
-    <class>QDialog</class>
-    <property stdset="1">
-        <name>name</name>
+<widget class="QDialog">
+    <property name="name">
         <cstring>clientConnectDlg</cstring>
     </property>
-    <property stdset="1">
-        <name>geometry</name>
+    <property name="geometry">
         <rect>
             <x>0</x>
             <y>0</y>
@@ -15,224 +12,193 @@
             <height>120</height>
         </rect>
     </property>
-    <property stdset="1">
-        <name>minimumSize</name>
+    <property name="minimumSize">
         <size>
             <width>350</width>
             <height>120</height>
         </size>
     </property>
-    <property stdset="1">
-        <name>maximumSize</name>
+    <property name="maximumSize">
         <size>
             <width>350</width>
             <height>120</height>
         </size>
     </property>
-    <property stdset="1">
-        <name>caption</name>
+    <property name="caption">
         <string>Connect to Server</string>
     </property>
-    <property>
-        <name>layoutMargin</name>
+    <property name="layoutMargin" stdset="0">
     </property>
-    <property>
-        <name>layoutSpacing</name>
+    <property name="layoutSpacing" stdset="0">
     </property>
     <vbox>
-        <property stdset="1">
-            <name>margin</name>
+        <property name="name">
+            <cstring>unnamed</cstring>
+        </property>
+        <property name="margin">
             <number>11</number>
         </property>
-        <property stdset="1">
-            <name>spacing</name>
+        <property name="spacing">
             <number>6</number>
         </property>
-        <widget>
-            <class>QLayoutWidget</class>
-            <property stdset="1">
-                <name>name</name>
+        <widget class="QLayoutWidget">
+            <property name="name">
                 <cstring>Layout6</cstring>
             </property>
             <hbox>
-                <property stdset="1">
-                    <name>margin</name>
+                <property name="name">
+                    <cstring>unnamed</cstring>
+                </property>
+                <property name="margin">
                     <number>0</number>
                 </property>
-                <property stdset="1">
-                    <name>spacing</name>
+                <property name="spacing">
                     <number>6</number>
                 </property>
-                <widget>
-                    <class>QLayoutWidget</class>
-                    <property stdset="1">
-                        <name>name</name>
+                <widget class="QLayoutWidget">
+                    <property name="name">
                         <cstring>Layout3</cstring>
                     </property>
                     <vbox>
-                        <property stdset="1">
-                            <name>margin</name>
+                        <property name="name">
+                            <cstring>unnamed</cstring>
+                        </property>
+                        <property name="margin">
                             <number>0</number>
                         </property>
-                        <property stdset="1">
-                            <name>spacing</name>
+                        <property name="spacing">
                             <number>6</number>
                         </property>
-                        <widget>
-                            <class>QLabel</class>
-                            <property stdset="1">
-                                <name>name</name>
+                        <widget class="QLabel">
+                            <property name="name">
                                 <cstring>nicknameLabel</cstring>
                             </property>
-                            <property stdset="1">
-                                <name>sizePolicy</name>
+                            <property name="sizePolicy">
                                 <sizepolicy>
                                     <hsizetype>5</hsizetype>
                                     <vsizetype>0</vsizetype>
+                                    <horstretch>0</horstretch>
+                                    <verstretch>0</verstretch>
                                 </sizepolicy>
                             </property>
-                            <property stdset="1">
-                                <name>text</name>
-                                <string>Nickname:</string>
+                            <property name="text">
+                                <string>Nick name:</string>
                             </property>
-                            <property stdset="1">
-                                <name>alignment</name>
+                            <property name="alignment">
                                 <set>AlignVCenter|AlignLeft</set>
                             </property>
-                            <property>
-                                <name>hAlign</name>
+                            <property name="hAlign" stdset="0">
                             </property>
                         </widget>
-                        <widget>
-                            <class>QLabel</class>
-                            <property stdset="1">
-                                <name>name</name>
+                        <widget class="QLabel">
+                            <property name="name">
                                 <cstring>serverLabel</cstring>
                             </property>
-                            <property stdset="1">
-                                <name>sizePolicy</name>
+                            <property name="sizePolicy">
                                 <sizepolicy>
                                     <hsizetype>5</hsizetype>
                                     <vsizetype>0</vsizetype>
+                                    <horstretch>0</horstretch>
+                                    <verstretch>0</verstretch>
                                 </sizepolicy>
                             </property>
-                            <property stdset="1">
-                                <name>text</name>
+                            <property name="text">
                                 <string>Server:    </string>
                             </property>
-                            <property stdset="1">
-                                <name>alignment</name>
+                            <property name="alignment">
                                 <set>AlignVCenter|AlignLeft</set>
                             </property>
-                            <property>
-                                <name>hAlign</name>
+                            <property name="hAlign" stdset="0">
                             </property>
                         </widget>
                     </vbox>
                 </widget>
-                <widget>
-                    <class>QLayoutWidget</class>
-                    <property stdset="1">
-                        <name>name</name>
+                <widget class="QLayoutWidget">
+                    <property name="name">
                         <cstring>Layout5</cstring>
                     </property>
                     <vbox>
-                        <property stdset="1">
-                            <name>margin</name>
+                        <property name="name">
+                            <cstring>unnamed</cstring>
+                        </property>
+                        <property name="margin">
                             <number>0</number>
                         </property>
-                        <property stdset="1">
-                            <name>spacing</name>
+                        <property name="spacing">
                             <number>6</number>
                         </property>
-                        <widget>
-                            <class>QLineEdit</class>
-                            <property stdset="1">
-                                <name>name</name>
+                        <widget class="QLineEdit">
+                            <property name="name">
                                 <cstring>nicknameEdit</cstring>
                             </property>
-                            <property stdset="1">
-                                <name>maxLength</name>
+                            <property name="maxLength">
                                 <number>10</number>
                             </property>
-                            <property>
-                                <name>whatsThis</name>
+                            <property name="whatsThis" stdset="0">
                                 <string>Enter a name that identifies you in the game</string>
                             </property>
                         </widget>
-                        <widget>
-                            <class>QLayoutWidget</class>
-                            <property stdset="1">
-                                <name>name</name>
+                        <widget class="QLayoutWidget">
+                            <property name="name">
                                 <cstring>Layout4</cstring>
                             </property>
                             <hbox>
-                                <property stdset="1">
-                                    <name>margin</name>
+                                <property name="name">
+                                    <cstring>unnamed</cstring>
+                                </property>
+                                <property name="margin">
                                     <number>0</number>
                                 </property>
-                                <property stdset="1">
-                                    <name>spacing</name>
+                                <property name="spacing">
                                     <number>6</number>
                                 </property>
-                                <widget>
-                                    <class>KHistoryCombo</class>
-                                    <property stdset="1">
-                                        <name>name</name>
+                                <widget class="KHistoryCombo">
+                                    <property name="name">
                                         <cstring>serverEdit</cstring>
                                     </property>
-                                    <property stdset="1">
-                                        <name>sizePolicy</name>
+                                    <property name="sizePolicy">
                                         <sizepolicy>
                                             <hsizetype>3</hsizetype>
                                             <vsizetype>5</vsizetype>
+                                            <horstretch>0</horstretch>
+                                            <verstretch>0</verstretch>
                                         </sizepolicy>
                                     </property>
                                 </widget>
-                                <widget>
-                                    <class>QLabel</class>
-                                    <property stdset="1">
-                                        <name>name</name>
+                                <widget class="QLabel">
+                                    <property name="name">
                                         <cstring>portLabel</cstring>
                                     </property>
-                                    <property stdset="1">
-                                        <name>sizePolicy</name>
+                                    <property name="sizePolicy">
                                         <sizepolicy>
                                             <hsizetype>0</hsizetype>
                                             <vsizetype>0</vsizetype>
+                                            <horstretch>0</horstretch>
+                                            <verstretch>0</verstretch>
                                         </sizepolicy>
                                     </property>
-                                    <property stdset="1">
-                                        <name>text</name>
+                                    <property name="text">
                                         <string>Port:</string>
                                     </property>
-                                    <property stdset="1">
-                                        <name>alignment</name>
+                                    <property name="alignment">
                                         <set>AlignVCenter|AlignLeft</set>
                                     </property>
-                                    <property>
-                                        <name>hAlign</name>
+                                    <property name="hAlign" stdset="0">
                                     </property>
-                                    <property>
-                                        <name>vAlign</name>
+                                    <property name="vAlign" stdset="0">
                                     </property>
                                 </widget>
-                                <widget>
-                                    <class>QSpinBox</class>
-                                    <property stdset="1">
-                                        <name>name</name>
+                                <widget class="QSpinBox">
+                                    <property name="name">
                                         <cstring>portEdit</cstring>
                                     </property>
-                                    <property stdset="1">
-                                        <name>maxValue</name>
+                                    <property name="maxValue">
                                         <number>65000</number>
                                     </property>
-                                    <property stdset="1">
-                                        <name>value</name>
+                                    <property name="value">
                                         <number>54321</number>
                                     </property>
-                                    <property>
-                                        <name>whatsThis</name>
+                                    <property name="whatsThis" stdset="0">
                                         <string>Choose a port to connect to</string>
                                     </property>
                                 </widget>
@@ -242,143 +208,80 @@
                 </widget>
             </hbox>
         </widget>
-        <widget>
-            <class>QLayoutWidget</class>
-            <property stdset="1">
-                <name>name</name>
+        <widget class="QLayoutWidget">
+            <property name="name">
                 <cstring>Layout2</cstring>
             </property>
             <hbox>
-                <property stdset="1">
-                    <name>margin</name>
+                <property name="name">
+                    <cstring>unnamed</cstring>
+                </property>
+                <property name="margin">
                     <number>0</number>
                 </property>
-                <property stdset="1">
-                    <name>spacing</name>
+                <property name="spacing">
                     <number>6</number>
                 </property>
                 <spacer>
-                    <property>
-                        <name>name</name>
+                    <property name="name">
                         <cstring>Spacer2</cstring>
                     </property>
-                    <property stdset="1">
-                        <name>orientation</name>
+                    <property name="orientation">
                         <enum>Horizontal</enum>
                     </property>
-                    <property stdset="1">
-                        <name>sizeType</name>
+                    <property name="sizeType">
                         <enum>Expanding</enum>
                     </property>
-                    <property>
-                        <name>sizeHint</name>
-                        <size>
-                            <width>20</width>
-                            <height>20</height>
-                        </size>
-                    </property>
                 </spacer>
-                <widget>
-                    <class>QPushButton</class>
-                    <property stdset="1">
-                        <name>name</name>
+                <widget class="QPushButton">
+                    <property name="name">
                         <cstring>connectBtn</cstring>
                     </property>
-                    <property stdset="1">
-                        <name>text</name>
+                    <property name="text">
                         <string>&amp;Connect</string>
                     </property>
-                    <property stdset="1">
-                        <name>toggleButton</name>
+                    <property name="toggleButton">
                         <bool>false</bool>
                     </property>
-                    <property stdset="1">
-                        <name>on</name>
+                    <property name="on">
                         <bool>false</bool>
                     </property>
-                    <property stdset="1">
-                        <name>default</name>
+                    <property name="default">
                         <bool>true</bool>
                     </property>
-                    <property stdset="1">
-                        <name>toggleButton</name>
+                    <property name="flat">
                         <bool>false</bool>
                     </property>
-                    <property stdset="1">
-                        <name>on</name>
-                        <bool>false</bool>
-                    </property>
-                    <property stdset="1">
-                        <name>flat</name>
-                        <bool>false</bool>
-                    </property>
-                    <property>
-                        <name>whatsThis</name>
+                    <property name="whatsThis" stdset="0">
                         <string>Press here to connect to a server</string>
                     </property>
                 </widget>
-                <widget>
-                    <class>QPushButton</class>
-                    <property stdset="1">
-                        <name>name</name>
+                <widget class="QPushButton">
+                    <property name="name">
                         <cstring>cancelBtn</cstring>
                     </property>
-                    <property stdset="1">
-                        <name>text</name>
+                    <property name="text">
                         <string>C&amp;ancel</string>
                     </property>
-                    <property>
-                        <name>whatsThis</name>
+                    <property name="whatsThis" stdset="0">
                         <string>Press here to return to the game</string>
                     </property>
                 </widget>
                 <spacer>
-                    <property>
-                        <name>name</name>
+                    <property name="name">
                         <cstring>Spacer1</cstring>
                     </property>
-                    <property stdset="1">
-                        <name>orientation</name>
+                    <property name="orientation">
                         <enum>Horizontal</enum>
                     </property>
-                    <property stdset="1">
-                        <name>sizeType</name>
+                    <property name="sizeType">
                         <enum>Expanding</enum>
-                    </property>
-                    <property>
-                        <name>sizeHint</name>
-                        <size>
-                            <width>20</width>
-                            <height>20</height>
-                        </size>
                     </property>
                 </spacer>
             </hbox>
         </widget>
     </vbox>
 </widget>
-<customwidgets>
-    <customwidget>
-        <class>KHistoryCombo</class>
-        <header location="global">kcombobox.h</header>
-        <sizehint>
-            <width>-1</width>
-            <height>-1</height>
-        </sizehint>
-        <container>0</container>
-        <sizepolicy>
-            <hordata>5</hordata>
-            <verdata>5</verdata>
-        </sizepolicy>
-        <pixmap>image0</pixmap>
-    </customwidget>
-</customwidgets>
-<images>
-    <image>
-        <name>image0</name>
-        <data format="XPM.GZ" length="646">789c6dd2c10ac2300c00d07bbf2234b7229d1be245fc04c5a3201e4615f430059d0711ff5ddb2e6bb236ec90eed134cb5a19d8ef36602af5ecdbfeeac05dda0798d3abebde87e3faa374d3807fa0d633a52d38d8de6f679fe33fc776e196f53cd010188256a3600a292882096246517815ca99884606e18044a3a40d91824820924265a7923a2e8bcd05f33db1173e002913175f2a6be6d3294871a2d95fa00e8a94ee017b69d339d90df1e77c57ea072ede6758</data>
-    </image>
-</images>
 <connections>
     <connection>
         <sender>cancelBtn</sender>
@@ -399,4 +302,5 @@
     <tabstop>connectBtn</tabstop>
     <tabstop>cancelBtn</tabstop>
 </tabstops>
+<layoutdefaults spacing="6" margin="11"/>
 </UI>
