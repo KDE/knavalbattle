@@ -17,7 +17,6 @@
 
 #include <sys/ioctl.h>
 #include <qsocketnotifier.h>
-#include <qobject.h>
 #include "kmessage.h"
 #include "kbattleshipclient.moc"
 
@@ -38,7 +37,7 @@ void KBattleshipClient::init()
     }
     
     m_readNotifier = new QSocketNotifier(fd(), QSocketNotifier::Read, this);
-    connect(m_readNotifier, SIGNAL(activated(int)), SLOT(slotReadData()));
+    QObject::connect(m_readNotifier, SIGNAL(activated(int)), SLOT(slotReadData()));
     emit sigConnected();
 }
 
