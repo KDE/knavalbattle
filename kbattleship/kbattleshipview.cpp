@@ -24,7 +24,7 @@
 
 KBattleshipView::KBattleshipView(QWidget *parent, const char *name, bool draw) : QWidget(parent, name), m_drawGrid(draw)
 {
-    setMinimumSize(600, 300);
+    setMinimumSize(700, 350);
     setMouseTracking(true);
     setFocusPolicy(QWidget::StrongFocus);
     installEventFilter(this);

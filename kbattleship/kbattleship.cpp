@@ -23,7 +23,7 @@
 
 KBattleshipApp::KBattleshipApp(QWidget *, const char *name) : KMainWindow(0, name)
 {
-    setMinimumSize(680, 500);
+    setMinimumSize(750, 500);
     m_connection = 0;
     m_config = 0;
     m_client = 0;
@@ -142,7 +142,7 @@ void KBattleshipApp::initView()
     connect(m_view, SIGNAL(sigOwnFieldClicked(int, int, int)), this, SLOT(slotPlaceShip(int, int, int)));
     connect(m_view, SIGNAL(sigMouseOverField(int, int, bool)), this, SLOT(slotPlaceShipPreview(int, int, bool)));
 
-    setCaption(i18n("KBattleship %1").arg(0.8), false);
+    setCaption(i18n("KBattleship %1").arg(0.9), false);
 }
 
 void KBattleshipApp::slotDeleteAI()

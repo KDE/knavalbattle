@@ -25,10 +25,10 @@ KBattleField::KBattleField(QWidget *parentw, const char *name, bool grid) : KGri
     m_width = m_parent_widget->width();
     m_canDraw = true;
     
-    m_ownfieldx = 8;
-    m_ownfieldy = 8;
-    m_enemyfieldx = 8;
-    m_enemyfieldy = 8;
+    m_ownfieldx = 10;
+    m_ownfieldy = 10;
+    m_enemyfieldx = 10;
+    m_enemyfieldy = 10;
     
     clearOwnField();
     clearEnemyField();

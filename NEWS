@@ -1,6 +1,10 @@
+Mon Apr 30 10:09:31 CEST 2001
+    o 0.8 -> 0.9 version (WildFox)
+      (AlphaBlending added + bigger battlefield)
+
 Tue Apr 17 23:34:45 CEST 2001
-    o 0.8 -> 0.8 version (WildFox)
-     (Rewrote network handling :)
+    o 0.7 -> 0.8 version (WildFox)
+      (Rewrote network handling :)
 
 Sat Apr 14 20:41:42 CEST 2001
     o 0.6 -> 0.7 version (WildFox)
@@ -26,8 +30,8 @@ Wed Dec 27 00:22:55 CET 2000
     o Beta -> Beta2 version (WildFox)
       (only 2 really important TODO things left)    
     
-Sun Dec 24 01:50:47 CET 2000 (WildFox)
-    o Alpha -> Beta version 
+Sun Dec 24 01:50:47 CET 2000 
+    o Alpha -> Beta version (WildFox)
 
-Fri Nov 01 16:06:52 CET 2000 (WildFox)
-    o Initial creation
+Fri Nov 01 16:06:52 CET 2000
+    o Initial creation (WildFox)

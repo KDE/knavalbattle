@@ -22,8 +22,8 @@ KShipList::KShipList() : QObject()
     m_shiplist.setAutoDelete(true);
     m_shipsadded = 4;
     
-    m_fieldx = 8;
-    m_fieldy = 8;
+    m_fieldx = 10;
+    m_fieldy = 10;
 }
 
 KShipList::~KShipList()
