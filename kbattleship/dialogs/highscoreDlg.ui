@@ -11,7 +11,7 @@
         <rect>
             <x>0</x>
             <y>0</y>
-            <width>555</width>
+            <width>551</width>
             <height>425</height>
         </rect>
     </property>
@@ -1667,7 +1667,7 @@
             </property>
             <property stdset="1">
                 <name>sizeType</name>
-                <enum>Fixed</enum>
+                <enum>Minimum</enum>
             </property>
             <property>
                 <name>sizeHint</name>
