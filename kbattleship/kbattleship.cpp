@@ -173,7 +173,7 @@ void KBattleshipApp::enemyClick(int fieldx, int fieldy)
 void KBattleshipApp::placeShipPreview(int fieldx, int fieldy, bool shift)
 {
     int xadd = 0, yadd = 0;
-    
+
     if(haveCS && connection != 0)
     {
         if(connection->haveEnemy())
@@ -273,6 +273,8 @@ void KBattleshipApp::sendShipList()
 	slotStatusMsg(i18n("Waiting for other player to place the ships..."));
     else
 	slotStatusMsg(i18n("Waiting for other player to start the match..."));
+
+    place = false;
 }
 
 void KBattleshipApp::sendMessage(int fieldx, int fieldy, int state, bool won)
@@ -437,7 +439,6 @@ void KBattleshipApp::slotServerConnect()
         slotStatusMsg(i18n("Loading Connect-Server dialog..."));
 
 	client = new KClientDialog();
-	haveCS = true;
         connect(client, SIGNAL(connectServer()), this, SLOT(connectToBattleshipServer()));
 	connect(client, SIGNAL(cancelConnect()), this, SLOT(resetConnection()));
 	client->show();
@@ -467,13 +468,11 @@ void KBattleshipApp::resetClient(bool status)
 		}
 		else
 		    sendMessage(msg);
-		place = false;
 		break;
 
 	    case KMessageBox::No:
 		delete msg;
     	        resetConnection();
-    		place = false;
 		slotStatusMsg(i18n("Ready"));
     		slotChangeOwnPlayer("-");
     		slotChangeEnemyPlayer("-");
@@ -496,7 +495,7 @@ void KBattleshipApp::resetClient(bool status)
 	QTimer::singleShot(0, this, SLOT(deleteClient()));
 	slotStatusMsg(i18n("Ready"));
     }
-    deleteLists(false);
+    deleteLists(true);
 }
 
 void KBattleshipApp::deleteClient()
@@ -512,7 +511,9 @@ void KBattleshipApp::askReplay()
 	case KMessageBox::Yes:
 	    slotStatusMsg(i18n("Please place your ships. Use the \"Shift\" key to place the ships vertically."));
 	    place = true;
+	    connection->setEnemy();
     	    stat->clear();
+	    deleteLists(false);
             break;
 
 	case KMessageBox::No:
@@ -524,9 +525,9 @@ void KBattleshipApp::askReplay()
     	    resetConnection();
 	    delete kbserver;
 	    kbserver = 0;
+	    deleteLists(true);
             break;
     }
-    deleteLists(false);
 }
 
 void KBattleshipApp::resetServer(bool status)
@@ -549,12 +550,12 @@ void KBattleshipApp::resetServer(bool status)
 		}
 		else
 		    sendMessage(msg);
+		deleteLists(false);
 		break;
 
 	    case KMessageBox::No:
 		delete msg;
 	        resetConnection();
-            	place = false;
 	    	slotStatusMsg(i18n("Ready"));
     	        slotChangeOwnPlayer("-");
 		slotChangeEnemyPlayer("-");
@@ -564,6 +565,7 @@ void KBattleshipApp::resetServer(bool status)
 		chat->clear();
 		delete kbserver;
 		kbserver = 0;
+		deleteLists(true);
 		break;
         }
     }
@@ -578,9 +580,9 @@ void KBattleshipApp::resetServer(bool status)
 	resetConnection();
 	delete kbserver;
 	kbserver = 0;
+	deleteLists(true);
         slotStatusMsg(i18n("Ready"));
     }
-    deleteLists(false);
 }
 
 void KBattleshipApp::deleteLists(bool placechange)
@@ -604,7 +606,6 @@ void KBattleshipApp::slotNewServer()
         slotStatusMsg(i18n("Loading Start-Server dialog..."));
 
         server = new KServerDialog();
-        haveCS = true;
         connect(server, SIGNAL(startServer()), this, SLOT(startBattleshipServer()));
         connect(server, SIGNAL(cancelServer()), this, SLOT(resetConnection()));
         server->show();
@@ -633,6 +634,7 @@ void KBattleshipApp::startBattleshipServer()
     slotChangeOwnPlayer(ownNickname);
     delete server;
     place = true;
+    haveCS = true;
     if(connection == 0)
     {
 	connection = new KonnectionHandling(this, kbserver);
@@ -818,9 +820,11 @@ void KBattleshipApp::connectToBattleshipServer()
         gameServerConnect->setText(i18n("Dis&connect from server"));
         gameNewServer->setEnabled(false);
 	slotStatusMsg(i18n("Waiting for other player to place the ships..."));
+	haveCS = true;
 	if(connection == 0)
 	{
 	    connection = new KonnectionHandling(this, kbclient);
+	    connection->setEnemy();
 	    connect(kbclient, SIGNAL(connected()), this, SLOT(sendGreet()));
 	    connect(connection, SIGNAL(changeConnectText()), this, SLOT(changeConnectText()));
 	    kbclient->init();
@@ -871,6 +875,7 @@ void KBattleshipApp::connectToBattleshipServer()
     	    else
 	    {
 		connection->updateInternal(kbclient);
+		connection->setEnemy();
 		kbclient->init();
 	    }
 	}

@@ -37,7 +37,7 @@ KonnectionHandling::KonnectionHandling(QWidget *parent, KBattleshipServer *serve
 KonnectionHandling::KonnectionHandling(QWidget *parent, KBattleshipClient *client) : QObject(parent)
 {
     m_showed = false;
-    enemy = true;
+    enemy = false;
     setEnemyList(false);
     enemylist = false;
     internalClient = client;
@@ -73,7 +73,7 @@ void KonnectionHandling::updateInternal(KBattleshipServer *server)
 void KonnectionHandling::updateInternal(KBattleshipClient *client)
 {
     m_showed = false;
-    enemy = true;
+    enemy = false;
     setEnemyList(false);
     enemylist = false;
     internalClient = client;
@@ -87,7 +87,7 @@ void KonnectionHandling::updateInternal(KBattleshipClient *client)
 
 void KonnectionHandling::clear()
 {
-    enemy = true;
+    enemy = false;
     setEnemyList(false);
     enemylist = false;
     if(internalClient != 0)
