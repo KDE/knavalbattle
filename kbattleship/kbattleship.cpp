@@ -25,7 +25,8 @@ KBattleshipApp::KBattleshipApp(QWidget *, const char *name) : KMainWindow(0, nam
 {
     setMinimumSize(750, 500);
     m_connection = 0;
-    m_config = 0;
+    m_lost = 0;
+	m_config = 0;
     m_client = 0;
     m_server = 0;
     m_single = 0;
