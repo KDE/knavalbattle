@@ -31,12 +31,11 @@ class KBattleField : public KGridWidget
         KBattleField(QWidget *parentw, const char *name, bool grid);
         ~KBattleField();
     
-        void drawOwnField();
-        void drawEnemyField();
         void clearOwnField();
 	void clearEnemyField();
 	void clearPreviewField();
 
+	void drawField();
 	void setDrawField(bool draw) { m_canDraw = draw; }
 	
         void changeOwnData(int &fieldx, int &fieldy, int type) { m_ownfield[fieldx][fieldy] = type; }
@@ -55,6 +54,9 @@ class KBattleField : public KGridWidget
 	int gridSize() { return 32; }
 
     private:
+        void drawOwnField();
+        void drawEnemyField();
+
 	int ownXPosition();
 	int ownYPosition();
 	int enemyXPosition();

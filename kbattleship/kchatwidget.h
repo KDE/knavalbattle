@@ -40,7 +40,7 @@ class KChatWidget : public chatDlg
         void slotReceivedMessage(const QString &nickname, const QString &msg, bool fromenemy = true);
     
     signals:
-        void sigSendMessage(const QString &);
+	void sigSendMessage(const QString &);
 	void sigChangeEnemyNickname(const QString &);
 	void sigChangeOwnNickname(const QString &);
    

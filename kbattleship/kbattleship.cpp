@@ -137,6 +137,7 @@ void KBattleshipApp::initView()
     m_score = new KHighscoreDialog(0L);
 
     m_view->startDrawing();
+    setFocusProxy(m_view);
 
     connect(m_view, SIGNAL(sigEnemyFieldClicked(int, int)), this, SLOT(slotEnemyFieldClick(int, int)));
     connect(m_view, SIGNAL(sigOwnFieldClicked(int, int, int)), this, SLOT(slotPlaceShip(int, int, int)));
@@ -456,7 +457,7 @@ void KBattleshipApp::slotPlaceShipPreview(int fieldx, int fieldy, bool shift)
 		    break;
 	    }
 	    
-	    m_view->field()->drawOwnField();
+	    m_view->field()->drawField();
 	}
     }
 }
@@ -690,8 +691,7 @@ void KBattleshipApp::cleanup(bool placechange)
     m_enemyshiplist->clear();
     m_view->clearField();
     m_view->field()->setDrawField(true);
-    m_view->field()->drawOwnField();
-    m_view->field()->drawEnemyField();
+    m_view->field()->drawField();
 }
 
 void KBattleshipApp::slotNewServer()

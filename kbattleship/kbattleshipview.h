@@ -48,12 +48,10 @@ class KBattleshipView : public QWidget
     signals:
         void sigEnemyFieldClicked(int, int);
         void sigOwnFieldClicked(int, int, int);
-
 	void sigMouseOverField(int, int, bool);
 
     private:
 	bool eventFilter(QObject *object, QEvent *event);
-	virtual void keyPressEvent(QKeyEvent *e);
 	
         KBattleField *battlefield;
 	bool m_drawGrid;

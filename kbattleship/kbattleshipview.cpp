@@ -26,7 +26,6 @@ KBattleshipView::KBattleshipView(QWidget *parent, const char *name, bool draw) :
 {
     setMinimumSize(700, 350);
     setMouseTracking(true);
-    setFocusPolicy(QWidget::StrongFocus);
     installEventFilter(this);
 
     m_decide = false;
@@ -69,24 +68,30 @@ void KBattleshipView::previewShip(int fieldx, int fieldy, int type, bool rotate)
 void KBattleshipView::changeOwnFieldData(int fieldx, int fieldy, int type)
 {
     battlefield->changeOwnData(fieldx, fieldy, type);
-    battlefield->drawOwnField();
+    battlefield->drawField();
 }
 
 void KBattleshipView::changeEnemyFieldData(int fieldx, int fieldy, int type)
 {
     battlefield->changeEnemyData(fieldx, fieldy, type);
-    battlefield->drawEnemyField();
-}
-
-void KBattleshipView::keyPressEvent(QKeyEvent *e) 
-{
-    if(e->key() == Key_Shift && m_decide)
-	emit sigMouseOverField(m_lastX, m_lastY, true);
+    battlefield->drawField();
 }
 
 bool KBattleshipView::eventFilter(QObject *object, QEvent *event)
 {
-    if(event->type() == QEvent::MouseButtonRelease)
+    if(event->type() == QEvent::KeyPress && m_decide)
+    {
+	QKeyEvent *keyEvent = static_cast<QKeyEvent *>(event);
+	if(keyEvent->key() == Key_Shift)
+	    emit sigMouseOverField(m_lastX, m_lastY, true);
+    }
+    else if(event->type() == QEvent::KeyRelease && m_decide)
+    {
+	QKeyEvent *keyEvent = static_cast<QKeyEvent *>(event);
+	if(keyEvent->key() == Key_Shift)
+	    emit sigMouseOverField(m_lastX, m_lastY, false);
+    }
+    else if(event->type() == QEvent::MouseButtonRelease)
     {
 	m_decide = false;
 	
@@ -150,6 +155,7 @@ bool KBattleshipView::eventFilter(QObject *object, QEvent *event)
     }
     else if(event->type() == QEvent::MouseMove)
     {
+	setFocus();
 	m_decide = true;
 	
 	QMouseEvent *mouseEvent = static_cast<QMouseEvent *>(event);
@@ -196,14 +202,13 @@ bool KBattleshipView::eventFilter(QObject *object, QEvent *event)
 	    emit sigMouseOverField(fieldx, fieldy, mouseEvent->state() & ShiftButton);
 	}
 	else
-	    battlefield->drawOwnField();
+	    battlefield->drawField();
 	
 	return true;
     }
     else if(event->type() == QEvent::Paint)
     { 
-	battlefield->drawOwnField();
-	battlefield->drawEnemyField();
+	battlefield->drawField();
 	return true;
     }
 

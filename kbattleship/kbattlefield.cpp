@@ -33,8 +33,7 @@ KBattleField::KBattleField(QWidget *parentw, const char *name, bool grid) : KGri
     clearOwnField();
     clearEnemyField();
     clearPreviewField();
-    drawOwnField();
-    drawEnemyField();
+    drawField();
 }
 
 KBattleField::~KBattleField()
@@ -82,6 +81,14 @@ void KBattleField::changePreviewData(int fieldx, int &fieldy, int type, bool rot
     m_rotatedata[fieldx][fieldy] = rotate;
 }
 
+void KBattleField::drawField()
+{
+    drawOwnField();
+    drawEnemyField();
+    clearPreviewField();
+    finished();
+}
+
 void KBattleField::drawOwnField()
 {
     if(!m_canDraw)
@@ -107,6 +114,7 @@ void KBattleField::drawOwnField()
             	    break;
 		
 		case KBattleField::WATER:
+		
 		    drawSquare();	
 		    drawWaterIcon();
 		    break;
@@ -141,9 +149,6 @@ void KBattleField::drawOwnField()
 	    }
         }		
     }
-
-    clearPreviewField();    
-    finished();
 }
 
 void KBattleField::drawEnemyField()
@@ -190,8 +195,6 @@ void KBattleField::drawEnemyField()
 	    }
         }		
     }
-    
-    finished();
 }
 
 int KBattleField::ownXPosition()

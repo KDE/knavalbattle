@@ -398,6 +398,8 @@ void KGridWidget::finished()
     painter.begin(static_cast<QWidget *>(parent()));
     painter.drawPixmap(0, 0, *m_doubleBuffer);
     painter.end();
+    
+    cleanBuffer();
 }
 
 void KGridWidget::cleanBuffer()
