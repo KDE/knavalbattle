@@ -117,10 +117,13 @@ bool KBattleshipView::eventFilter(QObject *object, QEvent *event)
 	    }	        
 	}
 	
-	if((mouseEvent->state() & ShiftButton) == 0)
+	if((mouseEvent->state() & ShiftButton) == 0 && newRect == ownRect)
 	    emit ownFieldClicked(fieldx, fieldy, true);
-	else
+	else if((mouseEvent->state() & ShiftButton) != 0 && newRect == ownRect)
 	    emit ownFieldClicked(fieldx, fieldy, false);
+	else if(newRect == enemyRect)
+	    emit enemyFieldClicked(fieldx, fieldy);
+	    
 	return true;
     }
     else if(event->type() == QEvent::MouseMove)
