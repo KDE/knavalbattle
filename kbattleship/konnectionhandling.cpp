@@ -225,6 +225,6 @@ void KonnectionHandling::clientSocketError(int error)
 		KMessageBox::error(0L, i18n("Unknown Error; No: %1").arg(error));
 		break;
 	}
-	emit changeConnectText();
     }
+    emit changeConnectText();
 }

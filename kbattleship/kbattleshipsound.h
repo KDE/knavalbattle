@@ -36,13 +36,15 @@ class KBattleshipSound : public QObject
         KBattleshipSound();
         ~KBattleshipSound();
 
+	void init();
+
         void turnOn();
         void turnOff();
     
         void playSound(int file);
-        void initSoundServer();
     
     private:
+        void initSoundServer();
         Arts::SimpleSoundServer soundserver;
         Arts::PlayObjectFactory playObjectFactory;
         Arts::PlayObject playObject;

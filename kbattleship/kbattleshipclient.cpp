@@ -38,11 +38,6 @@ void KBattleshipClient::init()
     connectToHost(internalHost, internalPort);
 }
 
-void KBattleshipClient::kill()
-{
-//    close();
-}
-
 void KBattleshipClient::sendMessage(KMessage *msg)
 {
     if(writeable)

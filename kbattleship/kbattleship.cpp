@@ -56,6 +56,8 @@ void KBattleshipApp::initSound()
 {
     new Arts::Dispatcher;
     sound = new KBattleshipSound();
+    if(!sound->init())
+	configSound->setChecked(false);
 }
 
 void KBattleshipApp::initChat()
