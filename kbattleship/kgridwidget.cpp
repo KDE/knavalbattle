@@ -367,9 +367,9 @@ void KGridWidget::drawIcon(QPixmap icon, bool hitBlend, bool waterBlend, bool ro
 	QImage second = seaPng.convertToImage();
 	painter.drawPixmap(m_x, m_y, seaPng);
 	if(rotate)
-		painter.drawImage(m_x, m_y, KImageEffect::blend(first, second, KImageEffect::VerticalGradient, 80, 80));
+	    painter.drawImage(m_x, m_y, KImageEffect::blend(first, second, KImageEffect::VerticalGradient, 80, 80));
 	else
-		painter.drawImage(m_x, m_y, KImageEffect::blend(first, second, KImageEffect::HorizontalGradient, 80, 80));
+	    painter.drawImage(m_x, m_y, KImageEffect::blend(first, second, KImageEffect::HorizontalGradient, 80, 80));
 
     }
     else if(hitBlend && !waterBlend)

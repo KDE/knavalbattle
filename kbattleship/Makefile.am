@@ -5,12 +5,12 @@ lib_LTLIBRARIES  	    =	kbattleship.la
 
 kbattleship_la_SOURCES      =   kbaiplayer.cpp kbstrategy.cpp kbverticalstepstrategy.cpp \
 				kbdestroyshipstrategy.cpp kbhorizontalstepstrategy.cpp \
-				kbrandomshotstrategy.cpp \
+				kbrandomshotstrategy.cpp kbdiagonalwrapstrategy.cpp \
 				kmessage.cpp kbattleshipserver.cpp kbattleshipclient.cpp \
 				kbattleshipview.cpp kgridwidget.cpp kbattlefield.cpp \
 		                kchatwidget.cpp kserverdialog.cpp kclientdialog.cpp \
 				kstatdialog.cpp ksingledialog.cpp khighscoredialog.cpp \
-				kbattleshipsound.cpp \
+				kbattleshipsound.cpp kbdiagonalshotstrategy.cpp \
 		                konnectionhandling.cpp kship.cpp kshiplist.cpp \
 		                kbattleship.cpp main.cpp
 

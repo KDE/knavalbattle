@@ -21,6 +21,8 @@
 #include "kbverticalstepstrategy.h"
 #include "kbhorizontalstepstrategy.h"
 #include "kbrandomshotstrategy.h"
+#include "kbdiagonalwrapstrategy.h"
+
 #include "kbaiplayer.moc"
 
 KBAIPlayer::KBAIPlayer()
@@ -28,7 +30,7 @@ KBAIPlayer::KBAIPlayer()
     m_ownShipList = 0;
     m_battleField = 0;
     m_masterStrategy = 0;
-    m_randomSeq = 0;
+    m_randomSeq = new KRandomSequence(KApplication::random());
 }
 
 KBAIPlayer::~KBAIPlayer()
@@ -40,7 +42,6 @@ KBAIPlayer::~KBAIPlayer()
 	delete m_randomSeq;
 }
 
-/* Initializes the AI Player */
 void KBAIPlayer::init(KBattleField *battle_field, KShipList *ai_shiplist)
 {
     m_battleField = battle_field;
@@ -53,11 +54,8 @@ void KBAIPlayer::init(KBattleField *battle_field, KShipList *ai_shiplist)
     }
 
     m_ownShipList = ai_shiplist;
-    m_randomSeq = new KRandomSequence(KApplication::random());
 }
 
-/* Restarts the AI player, i.e. a new startegy is chosen
-   and the ships are added to the shiplist. */
 void KBAIPlayer::slotRestart()
 {
     if(m_randomSeq == 0 || m_ownShipList == 0 || m_battleField == 0)
@@ -68,7 +66,6 @@ void KBAIPlayer::slotRestart()
     emit sigReady();
 }
 
-/* Adds the ships to the shiplist */
 void KBAIPlayer::addShips()
 {
     m_ownShipList->clear();
@@ -82,7 +79,6 @@ void KBAIPlayer::addShips()
     	    x = (int) m_randomSeq->getLong(m_fieldRect.width() - 1);
     	    y = (int) m_randomSeq->getLong(m_fieldRect.height() - 1);
     	    vertical = m_randomSeq->getBool();
-    	//    kdDebug() << "addShips: trying ship " << shiplen << " at (" << x << "/" << y << ") vertical=" << vertical << "-> " << endl;
 	}
 	while(!shipPlaced(shiplen, x, y, vertical));
     }	
@@ -94,28 +90,29 @@ void KBAIPlayer::chooseStrategy()
     if(m_masterStrategy != 0)
 	delete m_masterStrategy;
 
-    // probablility ajusted to 4:4:(MAX_STRAT_NUM+10-8)
-    switch (m_randomSeq->getLong(MAX_STRAT_NUM+10))
+    switch(m_randomSeq->getLong(MAX_STRAT_NUM))
     {
 	case 0:
-	case 1:
-	case 2:
-	case 3:
 	    m_masterStrategy = new KBHorizontalStepStrategy();
 	    //kdDebug() << "KBAIPlayer::chooseStrategy: HorizontalStep" << endl;
 	    break;
-	case 4:
-	case 5:
-	case 6:
-	case 7:
+	
+	case 1:
 	    m_masterStrategy = new KBVerticalStepStrategy();
 	    //kdDebug() << "KBAIPlayer::chooseStrategy: VerticalStep" << endl;
 	    break;
+	
+	case 2:
+	    m_masterStrategy = new KBDiagonalWrapStrategy();
+	    //kdDebug() << "KBAIPlayer::chooseStrategy: DiagonalWrap" << endl;
+	    break;
+	
 	default:
 	    m_masterStrategy = new KBRandomShotStrategy();
 	    //kdDebug() << "KBAIPlayer::choosingStrategy: RandomShot(default)" << endl;
 	    break;
     }
+    
     m_masterStrategy->init(m_battleField, m_fieldRect);
 }
 
@@ -169,20 +166,11 @@ bool KBAIPlayer::shipPlaced(int shiplen, int x, int y, bool vertical)
 	}
     }
 
-    if(m_ownShipList->addNewShip(vertical, ship.x(), ship.y()))
-    {
-	m_ships[shiplen - 1] = ship;
-
-			/*
-			int x1 = ship.x();
-			int x2 = ship.x() + ship.width() - 1;
-			int y1 = ship.y();
-			int y2 = ship.y() + ship.height() - 1;
-			m_ownShipList->addShip(x1, x2, y1, y2, shiplen - 1);
-			*/
-
-	return true;
-    }
+		if (m_ownShipList->addNewShip(vertical, ship.x(), ship.y()))
+		{
+			m_ships[shiplen - 1] = ship;
+			return true;
+		}
 
 //    kdDebug() << "     is ok, addShip(" << x1 << ", " << x2 << ", " << y1 << ", " << y2 << ", " << shiplen - 1 << ")" << endl;
     return false;
