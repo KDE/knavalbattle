@@ -41,7 +41,6 @@ class KMessage : QObject
         QString returnSendStream();
     
 	QDomDocument *xmlDocument;
-	QDomElement *xmlDocElement;
 
         int messageType;
 

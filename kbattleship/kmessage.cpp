@@ -20,7 +20,7 @@
 KMessage::KMessage( int type ) : QObject()
 {
     xmlDocument = new QDomDocument( "kmessage" );
-    xmlDocElement = new QDomElement( xmlDocument->documentElement() );
+    xmlDocument->appendChild(xmlDocument->createElement("kmessage"));
     messageType = type;
     QString qtype;
     qtype.setNum( type );
@@ -42,7 +42,8 @@ void KMessage::addField( QString name, QString content )
     kdDebug() << "setting Attribute" << endl;
     xmlElement.setAttribute( name, content );
     kdDebug() << "appending to xmlDocElement" << endl;
-    xmlDocElement->appendChild( xmlElement );
+    xmlDocument->documentElement().appendChild( xmlElement );
+    kdDebug() << xmlDocument->toString() << endl;
     parseMessage();
 }
 
@@ -55,7 +56,7 @@ void KMessage::setDataStream( QString stream )
 void KMessage::parseMessage()
 {
     kdDebug() << "will parse message!" << endl;
-    QDomNode xmlNode = xmlDocElement->firstChild();
+    QDomNode xmlNode = xmlDocument->documentElement().firstChild();
     kdDebug() << "1" << endl;
     while( !xmlNode.isNull() )
     {
@@ -111,7 +112,7 @@ void KMessage::parseMessage()
 
 QString KMessage::returnSendStream()
 {
-    QDomNode xmlNode = xmlDocElement->firstChild();
+    QDomNode xmlNode = xmlDocument->documentElement().firstChild();
     
     while( !xmlNode.isNull() )
     {
