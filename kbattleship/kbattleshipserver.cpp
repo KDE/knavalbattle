@@ -15,7 +15,7 @@
  *                                                                         *
  ***************************************************************************/
 
-#include "kbattleshipserver.h"
+#include "kbattleshipserver.moc"
 
 KBattleshipServer::KBattleshipServer( int port ) : QServerSocket( int port = 54321 )
 {
@@ -44,8 +44,8 @@ void KBattleshipServer::readClient()
     QSocket* socket = (QSocket*)sender();
     if( socket->canReadLine() )
     {
-        KMessageType &msgtype;
-        KMessage( msgtype ) &message;
+        KMessageType msgtype;
+        KMessage( msgtype ) message;
         message.setDataStream( socket->readLine() );
         kdDebug() << "Type of message: " << message.getType() << endl;
     }
@@ -63,15 +63,12 @@ void discardClient()
 {
     QSocket* socket = (QSocket*)sender();
     QTextStream post( socket );
-    KMessage &msg;
-    KMessageType &msgtype;
+    KMessage msg;
+    KMessageType msgtype;
     msgtype.setType( KMessageType::MSG_FORBIDDEN );
-    msg
-    socket << msg.returnSendStream;
+    msgtype.addField( QString( "forbidden" ), QString( "add a reason here!" ) );
+    socket << msg.returnSendStream();
     emit wroteToClient();
-    //QTextStream os(socket);
-    //os << "Connection Forbidden\n";
-    //socket->close();
     delete socket;
     emit endConnect();
 }

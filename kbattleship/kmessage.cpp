@@ -17,7 +17,7 @@
 
 #include "kmessage.moc"
 
-KMessage::KMessage( KMessageType &type ) : QObject()
+KMessage::KMessage( KMessageType type ) : QObject()
 {
     if( type.hasType() )
         messageType = type.getType();
