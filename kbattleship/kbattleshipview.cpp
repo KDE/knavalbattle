@@ -21,40 +21,15 @@
 KBattleshipView::KBattleshipView(QWidget *parent, const char *name) : QWidget(parent, name)
 {
     setMinimumSize(600, 300);
-    toolTip = 0;
 }
 
 KBattleshipView::~KBattleshipView()
 {
 }
 
-void KBattleshipView::disableTips()
-{
-    if(toolTip != 0)
-    {
-	disconnect(toolTip, SIGNAL(activateTimer()), this, SLOT(toolTipTimeout()));
-	delete toolTip;
-	toolTip = 0;
-    }
-}
-
-void KBattleshipView::enableTips()
-{
-    if(toolTip == 0)
-    {
-	toolTip = new KBattleshipViewToolTip(this, battlefield->getOwnRect(), battlefield->getEnemyRect());
-	connect(toolTip, SIGNAL(activateTimer()), this, SLOT(toolTipTimeout()));
-    }
-}
-
 void KBattleshipView::startDrawing()
 {
     battlefield = new KBattleField(this, "battlefield");
-}
-
-void KBattleshipView::toolTipTimeout()
-{
-    QTimer::singleShot(3000, toolTip, SLOT(slotTipTimeout()));
 }
 
 void KBattleshipView::clearField()
@@ -168,10 +143,8 @@ void KBattleshipView::paintEnemyField()
     battlefield->drawEnemyField();
 }
 
-void KBattleshipView::paintEvent(QPaintEvent *event)
+void KBattleshipView::paintEvent(QPaintEvent *)
 {
     battlefield->drawOwnField();
     battlefield->drawEnemyField();
-    
-    QRect redrawRect(event->rect());
 }
