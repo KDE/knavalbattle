@@ -199,12 +199,12 @@ void KBattleField::drawEnemyField()
 
 int KBattleField::ownXPosition()
 {
-	return 22;
+	return 10;
 }
 
 int KBattleField::ownYPosition()
 {
-	return 22;
+	return 10;
 }
 
 int KBattleField::enemyXPosition()
@@ -214,12 +214,12 @@ int KBattleField::enemyXPosition()
 
 int KBattleField::enemyYPosition()
 {
-	return 22;
+	return 10;
 }
 
 int KBattleField::rectX()
 {
-	return 22;
+	return 10;
 }
 
 QRect KBattleField::ownRect()

@@ -24,7 +24,7 @@
 
 KBattleshipView::KBattleshipView(QWidget *parent, const char *name, bool draw) : QWidget(parent, name, WResizeNoErase), m_drawGrid(draw)
 {
-	setMinimumSize(700, 350);
+	setFixedSize(20 * 32 + 30, 10 * 32 + 20);
 	setBackgroundMode(NoBackground);
 	setMouseTracking(true);
 	installEventFilter(this);

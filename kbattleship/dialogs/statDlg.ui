@@ -6,23 +6,14 @@
         <name>name</name>
         <cstring>statDlg</cstring>
     </property>
-    <property stdset="1">
-        <name>geometry</name>
-        <rect>
-            <x>0</x>
-            <y>0</y>
-            <width>261</width>
-            <height>340</height>
-        </rect>
-    </property>
     <vbox>
         <property stdset="1">
             <name>margin</name>
-            <number>11</number>
+            <number>5</number>
         </property>
         <property stdset="1">
             <name>spacing</name>
-            <number>6</number>
+            <number>3</number>
         </property>
         <spacer>
             <property>
@@ -36,13 +27,6 @@
             <property stdset="1">
                 <name>sizeType</name>
                 <enum>Expanding</enum>
-            </property>
-            <property>
-                <name>sizeHint</name>
-                <size>
-                    <width>20</width>
-                    <height>20</height>
-                </size>
             </property>
         </spacer>
         <widget>
@@ -72,13 +56,6 @@
                     <property stdset="1">
                         <name>sizeType</name>
                         <enum>Expanding</enum>
-                    </property>
-                    <property>
-                        <name>sizeHint</name>
-                        <size>
-                            <width>20</width>
-                            <height>20</height>
-                        </size>
                     </property>
                 </spacer>
                 <widget>
@@ -162,13 +139,6 @@
                         <name>sizeType</name>
                         <enum>Expanding</enum>
                     </property>
-                    <property>
-                        <name>sizeHint</name>
-                        <size>
-                            <width>20</width>
-                            <height>20</height>
-                        </size>
-                    </property>
                 </spacer>
             </hbox>
         </widget>
@@ -184,13 +154,6 @@
             <property stdset="1">
                 <name>sizeType</name>
                 <enum>Expanding</enum>
-            </property>
-            <property>
-                <name>sizeHint</name>
-                <size>
-                    <width>20</width>
-                    <height>20</height>
-                </size>
             </property>
         </spacer>
         <widget>
@@ -270,13 +233,6 @@
                                 <name>sizeType</name>
                                 <enum>Expanding</enum>
                             </property>
-                            <property>
-                                <name>sizeHint</name>
-                                <size>
-                                    <width>20</width>
-                                    <height>20</height>
-                                </size>
-                            </property>
                         </spacer>
                         <widget>
                             <class>QLCDNumber</class>
@@ -294,7 +250,7 @@
                             </property>
                             <property stdset="1">
                                 <name>numDigits</name>
-                                <number>4</number>
+                                <number>3</number>
                             </property>
                             <property stdset="1">
                                 <name>segmentStyle</name>
@@ -378,13 +334,6 @@
                                 <name>sizeType</name>
                                 <enum>Expanding</enum>
                             </property>
-                            <property>
-                                <name>sizeHint</name>
-                                <size>
-                                    <width>20</width>
-                                    <height>20</height>
-                                </size>
-                            </property>
                         </spacer>
                         <widget>
                             <class>QLCDNumber</class>
@@ -398,7 +347,7 @@
                             </property>
                             <property stdset="1">
                                 <name>numDigits</name>
-                                <number>4</number>
+                                <number>3</number>
                             </property>
                             <property stdset="1">
                                 <name>segmentStyle</name>
@@ -482,13 +431,6 @@
                                 <name>sizeType</name>
                                 <enum>Expanding</enum>
                             </property>
-                            <property>
-                                <name>sizeHint</name>
-                                <size>
-                                    <width>20</width>
-                                    <height>20</height>
-                                </size>
-                            </property>
                         </spacer>
                         <widget>
                             <class>QLCDNumber</class>
@@ -502,7 +444,7 @@
                             </property>
                             <property stdset="1">
                                 <name>numDigits</name>
-                                <number>4</number>
+                                <number>3</number>
                             </property>
                             <property stdset="1">
                                 <name>segmentStyle</name>
@@ -529,13 +471,6 @@
             <property stdset="1">
                 <name>sizeType</name>
                 <enum>Expanding</enum>
-            </property>
-            <property>
-                <name>sizeHint</name>
-                <size>
-                    <width>20</width>
-                    <height>20</height>
-                </size>
             </property>
         </spacer>
     </vbox>

@@ -37,7 +37,6 @@ extern const char *clientVersion;
 KBattleshipApp::KBattleshipApp() : KMainWindow()
 {
 	shift = false;
-	setMinimumSize(750, 500);
 	m_connection = 0;
 	m_lost = 0;
 	m_config = 0;
@@ -66,8 +65,6 @@ void KBattleshipApp::init()
 	m_serverHasClient = false;
 	m_config = kapp->config();
 	initStatusBar();
-	// TODO fix screen in 800x600!!!
-	resize(850, 600);
 	initActions();
 	readOptions();
 	initView();

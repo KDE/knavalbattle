@@ -21,7 +21,6 @@
 
 KStatDialog::KStatDialog(QWidget *parent, const char *name) : statDlg(parent, name)
 {
-	setMinimumSize(150, 300);
 }
 
 void KStatDialog::slotAddOwnWon()

@@ -20,10 +20,10 @@
 
 KChatWidget::KChatWidget(QWidget *parent, const char *name) : chatDlg(parent, name)
 {
-	setMinimumSize(600, 180);
 	connect(sendBtn, SIGNAL(clicked()), this, SLOT(slotComputeMessage()));
 	connect(commentEdit, SIGNAL(returnPressed()), this, SLOT(slotComputeMessage()));
 	chatView->setFocusProxy(commentEdit);
+	chatView->setMinimumSize(0, 50);
 	commentEdit->installEventFilter(this);
 
 	m_currentNickname = QString::null;
