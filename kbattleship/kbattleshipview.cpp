@@ -19,7 +19,11 @@
 
 KBattleshipView::KBattleshipView( QWidget *parent, const char *name ) : QWidget( parent, name )
 {
+    setFixedSize( 500, 300 );
     setBackgroundMode( PaletteBase );
+    KBattleFieldType type;
+    type.setType( KBattleFieldType::OWNFIELD );
+    KBattleField *ownfield = new KBattleField( this, type );
 }
 
 KBattleshipView::~KBattleshipView()

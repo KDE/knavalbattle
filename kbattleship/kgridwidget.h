@@ -22,7 +22,7 @@
 #include <qpainter.h>
 #include <qwidget.h>
 
-class KGridWidget : QWidget
+class KGridWidget : public QWidget
 {
     Q_OBJECT
     public:

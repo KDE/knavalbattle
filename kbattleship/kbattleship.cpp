@@ -21,6 +21,7 @@
 
 KBattleshipApp::KBattleshipApp( QWidget *, const char *name ) : KMainWindow( 0, name )
 {
+    setFixedSize( 500, 300 );
     config = kapp->config();
     initStatusBar();
     initActions();
@@ -70,7 +71,6 @@ void KBattleshipApp::initView()
 void KBattleshipApp::saveOptions()
 {
     config->setGroup( "General" );
-    config->writeEntry( "AppGeometry", size() );
     config->writeEntry( "ShowToolbar", viewToolBar->isChecked() );
     config->writeEntry( "ShowStatusbar", viewStatusBar->isChecked() );
     config->writeEntry( "ToolBarPos", (int) toolBar()->barPos() );
@@ -93,11 +93,6 @@ void KBattleshipApp::readOptions()
     toolBarPos = (KToolBar::BarPosition) config->readNumEntry( "ToolBarPos", KToolBar::Top );
     toolBar()->setBarPos( toolBarPos );
 
-    QSize size = config->readSizeEntry( "AppGeometry" );
-    if( !size.isEmpty() )
-    {
-        resize( size );
-    }
 }
 
 void KBattleshipApp::slotGameQuit()

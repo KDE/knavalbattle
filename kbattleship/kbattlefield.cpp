@@ -21,6 +21,7 @@ KBattleField::KBattleField( QWidget *parent, const KBattleFieldType &type ) : KG
 {
 
     internalType = type.getType();
+    kdDebug() << "Type: " << internalType;
     int i, j, it, jt;
 
     // Hehe this is quite unusual now
@@ -38,10 +39,16 @@ KBattleField::KBattleField( QWidget *parent, const KBattleFieldType &type ) : KG
     // Drawing
     setDrawValues( parent );
     
-    for( it = TopV; it != BottomV; it +=40 )
+    kdDebug() << "LeftV: " << LeftV << endl;
+    kdDebug() << "RightV: " << RightV << endl;
+    kdDebug() << "TopV: " << TopV << endl;
+    kdDebug() << "BottomV: " << BottomV << endl;
+    
+    for( it = TopV; it <= BottomV; it +=40 )
     {
-	for( jt = LeftV; jt !=RightV; jt +=40 )
+	for( jt = LeftV; jt <= RightV; jt +=40 )
 	{
+	    kdDebug() << "it: " << it << " jt: " << jt << endl;
 	    setValues( it, jt, 40 );	    
 	    drawSquare( parent );
 	}
@@ -62,14 +69,18 @@ void KBattleField::setDrawValues( QWidget *parent )
     {
 	case KBattleFieldType::OWNFIELD:
 	{
+	    kdDebug() << "OWNFIELD" << endl;
 	    LeftV = 40;
 	    RightV = ( parent->width() / 2 ) - 20;
+	    break;
 	}
 	
 	case KBattleFieldType::ENEMYFIELD:
 	{
+	    kdDebug() << "ENEMYFIELD" << endl;
 	    LeftV = ( parent->width() / 2 ) + 20;
 	    RightV = parent->width() - 40;
+	    break;
 	}
     }
     
@@ -79,4 +90,5 @@ void KBattleField::setDrawValues( QWidget *parent )
 
 void KBattleField::fieldResized()
 {
+    // TODO: add this later
 }

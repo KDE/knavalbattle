@@ -21,6 +21,8 @@
 #include <qpainter.h>
 #include <qwidget.h>
 #include "kbattleship.h"
+#include "kbattlefieldtype.h"
+#include "kbattlefield.h"
 
 class KBattleshipView : public QWidget
 {

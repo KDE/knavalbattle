@@ -24,7 +24,7 @@
 #include "kbattlefieldtype.h"
 #include "kgridwidget.h"
 
-class KBattleField : KGridWidget, QWidget
+class KBattleField : public KGridWidget
 {
     Q_OBJECT
     public:
@@ -37,7 +37,6 @@ class KBattleField : KGridWidget, QWidget
 	int RightV;    
 	int TopV;
 	int BottomV;
-
 	
     public slots:
 	void fieldResized();
