@@ -68,7 +68,7 @@ class KBattleshipApp : public KMainWindow
 
     private slots:
         void slotStatusMsg(const QString &text);
-        void slotReceivedEnemyFieldData(int fieldx, int fieldx, int enemystate, int xstart, int xstop, int ystart, int ystop, bool death);
+        void slotReceivedEnemyFieldData(int fieldx, int fieldx1, int enemystate, int xstart, int xstop, int ystart, int ystop, bool death);
         void slotSendEnemyFieldState(int, int);
         void slotChangeOwnPlayer(const QString &text);
         void slotChangeEnemyPlayer(const QString &text);
