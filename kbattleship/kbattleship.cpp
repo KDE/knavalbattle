@@ -368,9 +368,9 @@ void KBattleshipApp::slotChangedNickCommand(const QString &text)
 void KBattleshipApp::clientRestart()
 {
     slotStatusMsg(i18n("Waiting for other player to place the ships..."));
-    place = false;
     stat->clear();
-    deleteLists(false);
+    deleteLists(true);
+    connection->setEnemy();
 }
 
 KShip *KBattleshipApp::getXYShip(int fieldx, int fieldy)
@@ -510,10 +510,10 @@ void KBattleshipApp::askReplay()
     {
 	case KMessageBox::Yes:
 	    slotStatusMsg(i18n("Please place your ships. Use the \"Shift\" key to place the ships vertically."));
+	    deleteLists(false);
 	    place = true;
 	    connection->setEnemy();
     	    stat->clear();
-	    deleteLists(false);
             break;
 
 	case KMessageBox::No:
@@ -540,7 +540,9 @@ void KBattleshipApp::resetServer(bool status)
 	    case KMessageBox::Yes:
     		stat->clear();
 		slotStatusMsg(i18n("Please place your ships. Use the \"Shift\" key to place the ships vertically."));
+		deleteLists(false);
 		place = true;
+                connection->setEnemy();
 		msg->addReplayRequest();
 		if(!connection->writeable())
 		{
@@ -550,7 +552,6 @@ void KBattleshipApp::resetServer(bool status)
 		}
 		else
 		    sendMessage(msg);
-		deleteLists(false);
 		break;
 
 	    case KMessageBox::No:
