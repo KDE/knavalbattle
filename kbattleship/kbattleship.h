@@ -45,7 +45,6 @@
 #include "ksingledialog.h"
 #include "kstatdialog.h"
 #include "khighscoredialog.h"
-#include "khighscoredialog.h"
 #include "dialogs/infoDlg.h"
 #include "kchatwidget.h"
 #include "kship.h"

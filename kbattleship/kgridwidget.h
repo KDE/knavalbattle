@@ -34,21 +34,21 @@ class KGridWidget : public QObject
     protected:
 	void cleanBuffer();
 	void finished();
-        void setValues(int x, int y, int size);
-        void drawSquare();
-        void drawWaterIcon();
+	void setValues(int x, int y, int size);
+	void drawSquare();
+	void drawWaterIcon();
 	void drawDeathIcon();
 	void drawHitIcon();
-        void drawShipIcon(int type, bool rotate = false, bool hit = false, bool water = false);
+	void drawShipIcon(int type, bool rotate = false, bool hit = false, bool water = false);
 	void drawShipIcon(int ship, int part, bool rotate = false, bool hit = false);
 
     private:
 	void cacheImages();
-        void drawIcon(QPixmap icon, bool hitBlend = false, bool waterBlend = false);
+	void drawIcon(QPixmap icon, bool hitBlend = false, bool waterBlend = false, bool rotate = false);
 	QString findIcon(const QString &name);
 
 	bool m_drawGrid;
-        int m_x, m_y, m_size;
+	int m_x, m_y, m_size;
 	QPixmap *m_doubleBuffer;
 	QPixmap seaPng, waterPng, hitPng, deathPng;
 	QPixmap ship1p1Png, ship1p1rPng;

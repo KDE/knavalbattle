@@ -127,7 +127,7 @@ void KGridWidget::drawShipIcon(int type, bool rotate, bool hit, bool water)
 	    else
 		part = 3;
 	    break;
-	    
+
 	case KBattleField::SHIP3P2:
 	    ship = 3;
 	    if(!rotate)
@@ -159,7 +159,7 @@ void KGridWidget::drawShipIcon(int type, bool rotate, bool hit, bool water)
 	    else
 		part = 3;
 	    break;
-	    
+
 	case KBattleField::SHIP4P3:
 	    ship = 4;
 	    if(!rotate)
@@ -183,9 +183,9 @@ void KGridWidget::drawShipIcon(int type, bool rotate, bool hit, bool water)
 	    if(!rotate)
 		drawIcon(ship1p1Png, hit, water);
 	    else
-		drawIcon(ship1p1rPng, hit, water);
+		drawIcon(ship1p1rPng, hit, water, rotate);
 	    break;
-		
+
 	case 2:
 	    switch(part)
 	    {
@@ -193,18 +193,18 @@ void KGridWidget::drawShipIcon(int type, bool rotate, bool hit, bool water)
 		    if(!rotate)
 			drawIcon(ship2p1Png, hit, water);
 		    else
-			drawIcon(ship2p1rPng, hit, water);
+			drawIcon(ship2p1rPng, hit, water, rotate);
 		    break;
-		
+
 		case 2:
 		    if(!rotate)
 			drawIcon(ship2p2Png, hit, water);
 		    else
-			drawIcon(ship2p2rPng, hit, water);
+			drawIcon(ship2p2rPng, hit, water, rotate);
 		    break;
 	    }
 	    break;
-	
+
 	case 3:
 	    switch(part)
 	    {
@@ -212,25 +212,25 @@ void KGridWidget::drawShipIcon(int type, bool rotate, bool hit, bool water)
 		    if(!rotate)
 			drawIcon(ship3p1Png, hit, water);
 		    else
-			drawIcon(ship3p1rPng, hit, water);
+			drawIcon(ship3p1rPng, hit, water, rotate);
 		    break;
-		
+
 		case 2:
 		    if(!rotate)
 			drawIcon(ship3p2Png, hit, water);
 		    else
-			drawIcon(ship3p2rPng, hit, water);
+			drawIcon(ship3p2rPng, hit, water, rotate);
 		    break;
-		    
+
 		case 3:
 		    if(!rotate)
 			drawIcon(ship3p3Png, hit, water);
 		    else
-			drawIcon(ship3p3rPng, hit, water);
+			drawIcon(ship3p3rPng, hit, water, rotate);
 		    break;
-	    }		    
+	    }
 	    break;
-	    
+
 	case 4:
 	    switch(part)
 	    {
@@ -238,31 +238,31 @@ void KGridWidget::drawShipIcon(int type, bool rotate, bool hit, bool water)
 		    if(!rotate)
 			drawIcon(ship4p1Png, hit, water);
 		    else
-			drawIcon(ship4p1rPng, hit, water);
+			drawIcon(ship4p1rPng, hit, water, rotate);
 		    break;
-		
+
 		case 2:
 		    if(!rotate)
 			drawIcon(ship4p2Png, hit, water);
 		    else
-			drawIcon(ship4p2rPng, hit, water);
+			drawIcon(ship4p2rPng, hit, water, rotate);
 		    break;
-		    
+
 		case 3:
 		    if(!rotate)
 			drawIcon(ship4p3Png, hit, water);
 		    else
-			drawIcon(ship4p3rPng, hit, water);
+			drawIcon(ship4p3rPng, hit, water, rotate);
 		    break;
-		    
+
 		case 4:
 		    if(!rotate)
 			drawIcon(ship4p4Png, hit, water);
 		    else
-			drawIcon(ship4p4rPng, hit, water);
+			drawIcon(ship4p4rPng, hit, water, rotate);
 		    break;
 	    }
-	    break;	    
+	    break;
     }
 }
 
@@ -274,9 +274,9 @@ void KGridWidget::drawShipIcon(int ship, int part, bool rotate, bool hit)
 	    if(!rotate)
 		drawIcon(ship1p1Png, hit);
 	    else
-		drawIcon(ship1p1rPng, hit);
+		drawIcon(ship1p1rPng, hit, rotate);
 	    break;
-		
+
 	case 2:
 	    switch(part)
 	    {
@@ -284,18 +284,18 @@ void KGridWidget::drawShipIcon(int ship, int part, bool rotate, bool hit)
 		    if(!rotate)
 			drawIcon(ship2p1Png, hit);
 		    else
-			drawIcon(ship2p1rPng, hit);
+			drawIcon(ship2p1rPng, hit, rotate);
 		    break;
-		
+
 		case 2:
 		    if(!rotate)
 			drawIcon(ship2p2Png, hit);
 		    else
-			drawIcon(ship2p2rPng, hit);
+			drawIcon(ship2p2rPng, hit, rotate);
 		    break;
 	    }
 	    break;
-	
+
 	case 3:
 	    switch(part)
 	    {
@@ -303,25 +303,25 @@ void KGridWidget::drawShipIcon(int ship, int part, bool rotate, bool hit)
 		    if(!rotate)
 			drawIcon(ship3p1Png, hit);
 		    else
-			drawIcon(ship3p1rPng, hit);
+			drawIcon(ship3p1rPng, hit, rotate);
 		    break;
-		
+
 		case 2:
 		    if(!rotate)
 			drawIcon(ship3p2Png, hit);
 		    else
-			drawIcon(ship3p2rPng, hit);
+			drawIcon(ship3p2rPng, hit, rotate);
 		    break;
-		    
+
 		case 3:
 		    if(!rotate)
 			drawIcon(ship3p3Png, hit);
 		    else
-			drawIcon(ship3p3rPng, hit);
+			drawIcon(ship3p3rPng, hit, rotate);
 		    break;
-	    }		    
+	    }
 	    break;
-	    
+
 	case 4:
 	    switch(part)
 	    {
@@ -329,35 +329,35 @@ void KGridWidget::drawShipIcon(int ship, int part, bool rotate, bool hit)
 		    if(!rotate)
 			drawIcon(ship4p1Png, hit);
 		    else
-			drawIcon(ship4p1rPng, hit);
+			drawIcon(ship4p1rPng, hit, rotate);
 		    break;
-		
+
 		case 2:
 		    if(!rotate)
 			drawIcon(ship4p2Png, hit);
 		    else
-			drawIcon(ship4p2rPng, hit);
+			drawIcon(ship4p2rPng, hit, rotate);
 		    break;
-		    
+
 		case 3:
 		    if(!rotate)
 			drawIcon(ship4p3Png, hit);
 		    else
-			drawIcon(ship4p3rPng, hit);
+			drawIcon(ship4p3rPng, hit, rotate);
 		    break;
-		    
+
 		case 4:
 		    if(!rotate)
 			drawIcon(ship4p4Png, hit);
 		    else
-			drawIcon(ship4p4rPng, hit);
+			drawIcon(ship4p4rPng, hit, rotate);
 		    break;
 	    }
-	    break;	    
+	    break;
     }
 }
 
-void KGridWidget::drawIcon(QPixmap icon, bool hitBlend, bool waterBlend)
+void KGridWidget::drawIcon(QPixmap icon, bool hitBlend, bool waterBlend, bool rotate)
 {
     QPainter painter;
     painter.begin(m_doubleBuffer);
@@ -366,7 +366,11 @@ void KGridWidget::drawIcon(QPixmap icon, bool hitBlend, bool waterBlend)
 	QImage first = icon.convertToImage();
 	QImage second = seaPng.convertToImage();
 	painter.drawPixmap(m_x, m_y, seaPng);
-        painter.drawImage(m_x, m_y, KImageEffect::blend(first, second, KImageEffect::PyramidGradient, 80, 80));
+	if(rotate)
+		painter.drawImage(m_x, m_y, KImageEffect::blend(first, second, KImageEffect::VerticalGradient, 80, 80));
+	else
+		painter.drawImage(m_x, m_y, KImageEffect::blend(first, second, KImageEffect::HorizontalGradient, 80, 80));
+
     }
     else if(hitBlend && !waterBlend)
     {
