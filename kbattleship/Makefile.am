@@ -1,6 +1,6 @@
 bin_PROGRAMS = kbattleship
 INCLUDES         = $(all_includes)
-SUBDIRS	= dialogs . pictures sounds
+SUBDIRS	= dialogs . pictures
 kbattleship_LDFLAGS = $(all_libraries)
 kbattleship_LDADD   = dialogs/libkbattleshipdialogs.la $(LIB_KFILE)
 kbattleship_SOURCES = kmessagetype.cpp kmessage.cpp kbattleshipserver.cpp kbattleshipclient.cpp \
