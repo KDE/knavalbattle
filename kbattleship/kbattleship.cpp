@@ -1,8 +1,8 @@
 /***************************************************************************
                                   kbattleship.cpp
                                   -----------------
-    Developers: (c) 2000 Nikolas Zimmermann <wildfox@kde.org>
-                (c) 2000 Daniel Molkentin <molkentin@kde.org>
+    Developers: (c) 2000-2001 Nikolas Zimmermann <wildfox@kde.org>
+                (c) 2000-2001 Daniel Molkentin <molkentin@kde.org>
 
  ***************************************************************************/
 
@@ -107,7 +107,7 @@ void KBattleshipApp::initView()
     connect(view, SIGNAL(enemyFieldClicked(int, int)), this, SLOT(enemyClick(int, int)));
     connect(view, SIGNAL(ownFieldClicked(int, int, int)), this, SLOT(placeShip(int, int, int)));
     
-    setCaption(i18n("KBattleship (beta2)"), false);
+    setCaption(i18n("KBattleship 0.4"), false);
 }
 
 void KBattleshipApp::enemyClick(int fieldx, int fieldy)

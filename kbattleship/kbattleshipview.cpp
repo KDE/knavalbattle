@@ -1,8 +1,8 @@
 /***************************************************************************
                              kbattleshipview.cpp
                              -------------------
-    Developers: (c) 2000 Nikolas Zimmermann <wildfox@kde.org>
-                (c) 2000 Daniel Molkentin <molkentin@kde.org>
+    Developers: (c) 2000-2001 Nikolas Zimmermann <wildfox@kde.org>
+                (c) 2000-2001 Daniel Molkentin <molkentin@kde.org>
 
  ***************************************************************************/
 
