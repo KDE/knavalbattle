@@ -32,6 +32,7 @@
 #include <qpainter.h>
 #include <qobject.h>
 #include <qstring.h>
+#include <qsplitter.h>
 #include <arts/dispatcher.h>
 #include <arts/soundserver.h>
 
@@ -45,6 +46,7 @@
 #include "kshiptype.h"
 #include "kserverdialog.h"
 #include "kclientdialog.h"
+#include "kchatwidget.h"
 
 class KBattleshipView;
 
@@ -83,11 +85,13 @@ class KBattleshipApp : public KMainWindow
 	void changeStartText();
 	void stoppedServerDialog();
 	void stoppedConnectDialog();
-	void requestedOwnBattleFieldState( int fieldx, int fieldy );	
+	void requestedOwnBattleFieldState( int fieldx, int fieldy );
 	void requestedEnemyBattleFieldState( int fieldx, int fieldy );	
 
     private:
         KConfig *config;
+        QSplitter *split;
+        KChatWidget *chat;
         KBattleshipView *view;
 	KBattleshipServer *kbserver;
 	KBattleshipClient *kbclient;

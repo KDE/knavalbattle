@@ -70,9 +70,13 @@ void KBattleshipApp::initStatusBar()
 
 void KBattleshipApp::initView()
 {
-    view = new KBattleshipView( this );
-    shiplist = new KShipList();    
-    
+    split = new QSplitter( this );
+    split->setOrientation( Vertical );
+    view = new KBattleshipView( split );
+    chat = new KChatWidget ( split );
+    chat->raise();
+    shiplist = new KShipList();
+
     setCentralWidget( view );
     view->startDrawing();
     
