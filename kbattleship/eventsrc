@@ -6,6 +6,7 @@ Comment[tr]=Amiral Battı
 
 [shoot_water]
 Name=Shoot at water
+Name[bg]=Стрелба по водата
 Name[ca]=Tir a l'aigua
 Name[da]=Skyd på vand
 Name[es]=Disparo al agua
@@ -14,6 +15,7 @@ Name[pt_BR]=Tiro na água
 Name[sr]=Пуцајте у воду
 Name[sv]=Skott i vattnet
 Comment=Someone has shoot at water
+Comment[bg]=Някой улучи водата
 Comment[ca]=Algú dispara a l'aigua
 Comment[da]=Nogen har skudt på vandet
 Comment[es]=Alguien ha disparado al agua
@@ -26,6 +28,7 @@ default_presentation=1
 
 [shoot_hit_1]
 Name=Player 1 shot
+Name[bg]=Изстрел на играч 1
 Name[ca]=Tir del jugador 1
 Name[da]=1. spillers skud
 Name[es]=Disparo del jugador 1
@@ -34,6 +37,7 @@ Name[pt_BR]=Jogador 1 atira
 Name[sr]=Пуца играч 1
 Name[sv]=Skott från spelare 1
 Comment=Player 1 makes a shoot
+Comment[bg]=Играч 1 стреля
 Comment[ca]=El jugador 1 dispara
 Comment[da]=Spiller 1 skyder
 Comment[es]=El jugador 1 hace un disparo
@@ -46,6 +50,7 @@ default_presentation=1
 
 [shoot_hit_2]
 Name=Player 2 shot
+Name[bg]=Изстрел на играч 2
 Name[ca]=Tir del jugador 2
 Name[da]=2. spillers skud
 Name[es]=Disparo del jugador 2
@@ -54,6 +59,7 @@ Name[pt_BR]=Jogador 2 atira
 Name[sr]=Пуца играч 1
 Name[sv]=Skott från spelare 2
 Comment=Player 2 makes a shoot
+Comment[bg]=Играч 2 стреля
 Comment[ca]=El jugador 2 dispara
 Comment[da]=Spiller 2 skyder
 Comment[es]=El jugador 2 hace un disparo
@@ -66,6 +72,7 @@ default_presentation=1
 
 [shoot_sink]
 Name=Sunk ship
+Name[bg]=Потопен кораб
 Name[ca]=Vaixell enfonsat
 Name[da]=Sunket skib
 Name[es]=Barco hundido
@@ -74,6 +81,7 @@ Name[pt_BR]=Navio afundado
 Name[sr]=Брод је потопљен
 Name[sv]=Sänkt skepp
 Comment=A ship has been sunk
+Comment[bg]=Един кораб бе потопен
 Comment[ca]=S'ha enfonsat un vaixell
 Comment[da]=Et skib er blevet sænket
 Comment[es]=Se ha hundido un barco
