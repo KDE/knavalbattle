@@ -142,6 +142,14 @@ void KBattleshipApp::slotDeleteAI()
     m_aiPlayer = 0;
 }
 
+void KBattleshipApp::slotDeleteAIAndRestart()
+{
+    m_aiHits = 0;
+    delete m_aiPlayer;
+    m_aiPlayer = 0;
+    slotStartBattleshipGame();
+}
+
 void KBattleshipApp::slotEnemyFieldClick(int fieldx, int fieldy)
 {
     if(m_connection != 0 || m_aiPlaying)
@@ -261,16 +269,16 @@ void KBattleshipApp::slotEnemyFieldClick(int fieldx, int fieldy)
     	        m_gameSingle->setText(i18n("S&ingle Player"));
     	        m_gameNewServer->setEnabled(true);
 	        m_gameServerConnect->setEnabled(true);
-	        QTimer::singleShot(0, this, SLOT(slotDeleteAI()));
 	        slotStatusMsg(i18n("You won the game :)"));
 	        slotUpdateHighscore();
 		switch(KMessageBox::questionYesNo(this, i18n("Do you want to restart the game?")))
     		{
     		    case KMessageBox::Yes:
-		    	QTimer::singleShot(0, this, SLOT(slotStartBattleshipGame()));
+			QTimer::singleShot(0, this, SLOT(slotDeleteAIAndRestart()));
 			break;
 
 		    case KMessageBox::No:
+			QTimer::singleShot(0, this, SLOT(slotDeleteAI()));
 			break;
 		}
 	        return;
@@ -1191,16 +1199,16 @@ void KBattleshipApp::slotAIShootsAt(const QPoint pos)
         m_gameSingle->setText(i18n("S&ingle Player"));
         m_gameNewServer->setEnabled(true);
 	m_gameServerConnect->setEnabled(true);
-	QTimer::singleShot(0, this, SLOT(slotDeleteAI()));
 	slotStatusMsg(i18n("You lost the game :("));
 	slotUpdateHighscore();
 	switch(KMessageBox::questionYesNo(this, i18n("Do you want to restart the game?")))
         {
     	    case KMessageBox::Yes:
-		QTimer::singleShot(0, this, SLOT(slotStartBattleshipGame()));
+		QTimer::singleShot(0, this, SLOT(slotDeleteAIAndRestart()));
 		break;
 
 	    case KMessageBox::No:
+		QTimer::singleShot(0, this, SLOT(slotDeleteAI()));
 		break;
 	}
     }

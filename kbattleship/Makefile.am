@@ -4,6 +4,7 @@ SUBDIRS	                    =   dialogs . pictures sounds
 lib_LTLIBRARIES  	    =	kbattleship.la
 
 kbattleship_la_SOURCES      =   kbaiplayer.cpp kbstrategy.cpp kbverticalstepstrategy.cpp \
+				kbdestroyshipstrategy.cpp \
 				kmessage.cpp kbattleshipserver.cpp kbattleshipclient.cpp \
 				kbattleshipview.cpp kgridwidget.cpp kbattlefield.cpp \
 		                kchatwidget.cpp kserverdialog.cpp kclientdialog.cpp \

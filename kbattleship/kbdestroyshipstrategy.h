@@ -1,5 +1,5 @@
 /***************************************************************************
-                            kbverticalstepstrategy.h
+                            kbdestroyshipstratgey.h
                                   ----------
     Developers: (c) 2001 Kevin Krammer <kevin.krammer@gmx.at>
 		(c) 2001 Nikolas Zimmermann <wildfox@kde.org>
@@ -15,35 +15,41 @@
  *                                                                         *
  ***************************************************************************/
 
-#ifndef KBVERTICALSTEPSTRATEGY_H
-#define KBVERTICALSTEPSTRATEGY_H
+#ifndef KBDESTROYSHIPSTRATEGY_H
+#define KBDESTROYSHIPSTRATEGY_H
 
-#include "kbstrategy.h"
-#include "kbdestroyshipstrategy.h"
+#include <kbstrategy.h>
 
-class KBVerticalStepStrategy : public KBStrategy
+class KBDestroyShipStrategy : public KBStrategy
 {
     public: 
-	KBVerticalStepStrategy(KBStrategy *parent = 0);
-	virtual ~KBVerticalStepStrategy();
+	KBDestroyShipStrategy(KBStrategy *parent = 0);
+	virtual ~KBDestroyShipStrategy();
 
 	virtual void init(KBattleField *field, const QRect &field_rect);
 	virtual const QPoint getNextShot();
 	virtual bool hasMoreShots();
 	virtual void shotAt(const QPoint &pos);
 
+	virtual void destroyShipAt(const QPoint pos);
+
     protected:
-	bool advance();
-	void setStart(int col, int row);
+	enum {NODIR, VERTICAL, HORIZONTAL};
 
-	int m_row;
-	int m_column;
-	int m_passes;
-
+	bool m_working;
 	QPoint m_start;
-	KBVerticalStepStrategy *m_child;
-	KBDestroyShipStrategy* m_destroyer;
-	bool m_destroying;
+
+	int m_column;
+	int m_row;
+
+	int m_direction;
+
+	virtual bool searchUp();
+	virtual bool searchDown();
+	virtual bool searchLeft();
+	virtual bool searchRight();
+
+	virtual bool shipDestroyed();
 };
 
 #endif

@@ -55,14 +55,10 @@ int KBStrategy::enemyFieldStateAt(int x, int y)
     {
 	case KBattleField::FREE:
 	    return FREE;
-	    break; // needed?
-	
 	case KBattleField::WATER:
 	case KBattleField::HIT:
 	case KBattleField::DEATH:
 	    return SHOT;
-	    break; // needed?
-
 	default:
 	    return SHIP;		
     }	

@@ -21,14 +21,25 @@
 KBVerticalStepStrategy::KBVerticalStepStrategy(KBStrategy *parent) : KBStrategy(parent)
 {
     m_child = 0;
-//    kdDebug() << "KBVerticalStepStrategy(" << (int) parent << ")" << endl;
+    
+    if(parent == 0) // only the master destroys ships
+    {
+	m_destroyer = new KBDestroyShipStrategy(this);
+	m_destroying = false;
+    }
+    else
+    {
+	m_destroyer = 0;
+	m_destroying = false;
+    }
 }
 
 KBVerticalStepStrategy::~KBVerticalStepStrategy()
 {
-//    kdDebug() << "~KBVerticalStepStrategy" << endl;
     if(m_child != 0)
 	delete m_child;
+    if (m_destroyer != 0)
+	delete m_destroyer;
 }
 
 void KBVerticalStepStrategy::init(KBattleField *field, const QRect &field_rect)
@@ -39,13 +50,18 @@ void KBVerticalStepStrategy::init(KBattleField *field, const QRect &field_rect)
     m_row = (int) rand.getLong(m_fieldRect.height() - 1);
     m_start = QPoint(m_column, m_row);
     m_passes = 0;
+
+    if(m_destroyer != 0)
+	m_destroyer->init(field, field_rect);
 }
 
 const QPoint KBVerticalStepStrategy::getNextShot()
 {
     if(hasMoreShots())
     {
-	if(m_passes == 0)
+	if(m_destroying)
+	    return m_destroyer->getNextShot();
+	else if(m_passes == 0)
 	    return QPoint(m_column, m_row);
 	else if(m_parent == 0)
     	    return m_child->getNextShot();
@@ -114,6 +130,24 @@ bool KBVerticalStepStrategy::hasMoreShots()
     else
     {
 	// Parent Strategy
+	if((!m_destroying) && m_prevShots->count() > 0)
+	{
+	    QPoint* pos = m_prevShots->last();
+	    int state = m_battleField->getOwnState(pos->x(), pos->y());
+	    if(state == KBattleField::HIT)
+	    {
+		m_destroying = true;
+		m_destroyer->destroyShipAt(*pos);
+	    }
+	}
+	if(m_destroying)
+	{
+	    if(m_destroyer->hasMoreShots())
+		return true;
+	    else
+		m_destroying = false;
+	}
+
 	int x, y;
 	switch(m_passes)
 	{
