@@ -65,8 +65,8 @@ class KonnectionHandling : public QObject
         void clientRestart();
         void askReplay();
         void statusBarMessage(const QString &);
-        void abortGame();
-        void abortGameStrict(bool );
+        void abortGame(bool);
+        void abortGameStrict(bool);
         void setPlaceable();
         void gotEnemyShipList(QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString);
         void gotChatMessage(QString, QString);

@@ -71,7 +71,7 @@ class KBattleshipApp : public KMainWindow
         void initShipPlacing();
 
     public slots:
-        void deleteLists();
+        void deleteLists(bool placechange = true);
         void askReplay();
         void sendGreet();
         void clientRestart();
@@ -105,6 +105,7 @@ class KBattleshipApp : public KMainWindow
 
     private slots:
 	void updateHighscore();    
+	void deleteClient();
 
     private:
         KConfig *config;

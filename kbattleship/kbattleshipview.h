@@ -69,6 +69,11 @@ class KBattleshipView : public QWidget
         KBattleshipView(QWidget *parent = 0, const char *name = 0);
         ~KBattleshipView();
 
+	KBattleField *field() { return battlefield; }
+	
+	void paintEnemyField();
+        void paintOwnField();
+	
         void startDrawing();
         void clearField();
         void changeOwnFieldData(int fieldx, int fieldy, int type);
@@ -88,9 +93,6 @@ class KBattleshipView : public QWidget
         void mouseReleaseEvent(QMouseEvent *event);
 
     private:
-        inline void paintEnemyField();
-        inline void paintOwnField();
-	
         KBattleField *battlefield;
 	KBattleshipViewToolTip *toolTip;
 };

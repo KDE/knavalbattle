@@ -1,4 +1,3 @@
-
 /***************************************************************************
                                kbattlefield.cpp
                              -------------------
@@ -24,6 +23,7 @@ KBattleField::KBattleField(QWidget *parentw, const char *name) : KGridWidget(par
 {
     m_parent_widget = static_cast<QWidget *>(parent());
     m_width = m_parent_widget->width();
+    m_canDraw = true;
     
     m_ownfieldx = 8;
     m_ownfieldy = 8;
@@ -64,6 +64,9 @@ void KBattleField::clearEnemyField()
 
 void KBattleField::drawOwnField()
 {
+    if(!m_canDraw)
+	return;
+	
     KBattleshipApp *app = static_cast<KBattleshipApp *>(parent()->parent()->parent()->parent());
     KShip *ship = 0;
 
@@ -122,6 +125,9 @@ void KBattleField::drawOwnField()
 
 void KBattleField::drawEnemyField()
 {
+    if(!m_canDraw)
+	return;
+
     KBattleshipApp *app = static_cast<KBattleshipApp *>(parent()->parent()->parent()->parent());
 
     for(int i = 0; i != m_enemyfieldx; i++)

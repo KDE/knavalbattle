@@ -181,7 +181,7 @@ void KonnectionHandling::gotNewMessage(KMessage *msg)
 	        {
 		    emit statusBarMessage(i18n("You lost the game :("));
 		    emit updateHighscore();
-		    emit abortGame();
+		    emit abortGame(true);
 		}
 		else
 		    emit statusBarMessage(i18n("Enemy has shot. Shoot now"));
@@ -194,7 +194,7 @@ void KonnectionHandling::gotNewMessage(KMessage *msg)
         if(msg->enemyReady())
 	    internalClient->allowWrite();
     }
-    else if(getType() == KonnectionHandling::SERVER)
+    else
     {
         switch(msg->getType())
         {
@@ -217,9 +217,9 @@ void KonnectionHandling::gotNewMessage(KMessage *msg)
 	        emit ownFieldDataChanged(msg->getField("fieldx").toInt(), msg->getField("fieldy").toInt(), msg->getField("fieldstate").toInt());
 	        if(msg->enemyWon())
 	        {
-	            emit statusBarMessage(i18n( "You lost the game :("));
+	            emit statusBarMessage(i18n("You lost the game :("));
 		    emit updateHighscore();
-	            emit abortGame();
+	            emit abortGame(true);
 	        }
 	        else
 	            emit statusBarMessage(i18n("Enemy has shot. Shoot now"));

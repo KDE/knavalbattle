@@ -35,6 +35,8 @@ class KBattleField : public KGridWidget
         void drawEnemyField();
         void clearOwnField();
 	void clearEnemyField();
+
+	void setDrawField(bool draw) { m_canDraw = draw; }
 	
         void changeOwnData(int &fieldx, int &fieldy, int type) { m_ownfield[fieldx][fieldy] = type; }
         int getOwnState(int fieldx, int fieldy) { return m_ownfield[fieldx][fieldy]; }
@@ -63,6 +65,8 @@ class KBattleField : public KGridWidget
 	int m_enemyfieldy;
 		
 	int m_width;
+	
+	bool m_canDraw;
 
 	QWidget *m_parent_widget;
 };

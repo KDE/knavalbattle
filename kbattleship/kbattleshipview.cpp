@@ -44,8 +44,6 @@ void KBattleshipView::clearField()
 {
     battlefield->clearOwnField();
     battlefield->clearEnemyField();
-    paintOwnField();
-    paintEnemyField();
 }
 
 int KBattleshipView::getEnemyFieldState(int &fieldx, int &fieldy)

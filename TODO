@@ -3,10 +3,7 @@ KB Team:
     p = partially
     x = ready
 
-    o Fix all network issues (1?)	[p]
-    o Add clever redrawing 		[ ]
-      (using the rect from
-       the QPaintEvent)
+    READY :)
  
 User ideas:
     o AI						[ ] (Triskelios)
