@@ -53,7 +53,7 @@ void KChatWidget::setNickname(QString nickname)
 
 void KChatWidget::slotComputeMessage()
 {
-    if(acceptMsgs)
+    if(!commentEdit->text().stripWhiteSpace().isEmpty() && acceptMsgs)
     {
 	receivedMessage(currentNickname, commentEdit->text());
 	emit sendMessage(commentEdit->text());

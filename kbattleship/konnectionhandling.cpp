@@ -24,6 +24,7 @@ KonnectionHandling::KonnectionHandling(QWidget *parent, KBattleshipServer *serve
     setEnemyList(false);
     enemylist = false;
     internalServer = server;
+    internalClient = 0;
     internalType = KonnectionHandling::SERVER;
     connect(server, SIGNAL(serverFailure()), this, SLOT(serverError()));
     connect(server, SIGNAL(senemylist(bool)), this, SLOT(setEnemyList(bool)));
@@ -40,6 +41,7 @@ KonnectionHandling::KonnectionHandling(QWidget *parent, KBattleshipClient *clien
     setEnemyList(false);
     enemylist = false;
     internalClient = client;
+    internalServer = 0;
     internalType = KonnectionHandling::CLIENT;
     connect(client, SIGNAL(senemylist(bool)), this, SLOT(setEnemyList(bool)));
     connect(client, SIGNAL(endConnect()), this, SLOT(clientLostServer()));
@@ -51,13 +53,47 @@ KonnectionHandling::~KonnectionHandling()
 {
 }
 
+void KonnectionHandling::updateInternal(KBattleshipServer *server)
+{
+    m_showed = false;
+    enemy = false;
+    setEnemyList(false);
+    enemylist = false;
+    internalServer = server;
+    internalClient = 0;
+    internalType = KonnectionHandling::SERVER;
+    connect(server, SIGNAL(serverFailure()), this, SLOT(serverError()));
+    connect(server, SIGNAL(senemylist(bool)), this, SLOT(setEnemyList(bool)));
+    connect(server, SIGNAL(newConnect()), this, SLOT(serverGotNewClient()));
+    connect(server, SIGNAL(endConnect()), this, SLOT(serverLostClient()));
+    connect(server, SIGNAL(wroteToClient()), this, SLOT(serverWroteToClient()));
+    connect(server, SIGNAL(newMessage(KMessage *)), this, SLOT(gotNewMessage(KMessage *)));
+}
+
+void KonnectionHandling::updateInternal(KBattleshipClient *client)
+{
+    m_showed = false;
+    enemy = true;
+    setEnemyList(false);
+    enemylist = false;
+    internalClient = client;
+    internalServer = 0;
+    internalType = KonnectionHandling::CLIENT;
+    connect(client, SIGNAL(senemylist(bool)), this, SLOT(setEnemyList(bool)));
+    connect(client, SIGNAL(endConnect()), this, SLOT(clientLostServer()));
+    connect(client, SIGNAL(socketFailure(int)), this, SLOT(clientSocketError(int)));
+    connect(client, SIGNAL(newMessage(KMessage *)), this, SLOT(gotNewMessage(KMessage *)));
+}
+
 void KonnectionHandling::clear()
 {
     enemy = true;
     setEnemyList(false);
     enemylist = false;
-    internalClient->allowWrite();
-    internalServer->allowWrite();
+    if(internalClient != 0)
+	internalClient->allowWrite();
+    if(internalServer != 0)
+	internalServer->allowWrite();
 }
 
 int KonnectionHandling::getType()
@@ -203,7 +239,6 @@ void KonnectionHandling::clientLostServer()
 
 void KonnectionHandling::clientSocketError(int error)
 {
-    kdDebug() << "Error!" << endl;
     if(!m_showed)
     {
 	m_showed = true;

@@ -17,7 +17,6 @@
 
 #include "kbattleshipsound.moc"
 
-
 KBattleshipSound::KBattleshipSound() : QObject()
 {
 }
@@ -70,7 +69,7 @@ bool KBattleshipSound::initSoundServer()
 
 void KBattleshipSound::playSound(int file)
 {
-    if(serverRunning)
+    if(serverRunning && !soundError)
     {
 	KStandardDirs *stdDirs = KGlobal::dirs();
 	QString soundDir;

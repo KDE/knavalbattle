@@ -36,7 +36,7 @@ class KonnectionHandling : public QObject
         KonnectionHandling(QWidget *parent, KBattleshipServer *server);
         KonnectionHandling(QWidget *parent, KBattleshipClient *client);
         ~KonnectionHandling();
-    
+
         int getType();
         int getFieldState();
         bool writeable();
@@ -45,6 +45,9 @@ class KonnectionHandling : public QObject
         bool haveEnemy();
 	
 	void clear();
+
+	void updateInternal(KBattleshipServer *server);
+	void updateInternal(KBattleshipClient *client);
     
     public slots:
         void setEnemyList(bool set);
