@@ -107,7 +107,7 @@
                     </property>
                     <property>
                         <name>whatsThis</name>
-                        <string>Choose a port where to server listens on</string>
+                        <string>Choose a port where the server listens on</string>
                     </property>
                 </widget>
                 <widget row="0"  column="0" >
