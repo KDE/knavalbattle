@@ -17,8 +17,9 @@
 
 #include "kbattlefield.moc"
 
-KBattleField::KBattleField(QWidget *parent, const char *name, int type) : KGridWidget(parent, name)
+KBattleField::KBattleField(QWidget *parentw, const char *name, int type) : KGridWidget(parentw, name)
 {
+    m_parent_widget = static_cast<QWidget *>(parent());
     internalType = type;
     clearField();
     setDrawValues();
@@ -45,7 +46,6 @@ void KBattleField::drawField()
 {
     int i, j;
 
-    QPainter painter(static_cast<QWidget*>(parent()));
     for(i = 0; i != 8; i++)
     {
         for(j = 0; j != 8; j++)
@@ -54,16 +54,16 @@ void KBattleField::drawField()
             switch( FieldData[ i ][ j ] )
 	    {
 		case KBattleField::FREE:
-		    drawSquare(&painter);	
+		    drawSquare();	
                     break;
 		
 		case KBattleField::WATER:
-		    drawSquare(&painter);	
+		    drawSquare();	
 		    drawWaterIcon();
 		    break;
 		
 		case KBattleField::HIT:
-		    drawSquare(&painter);	
+		    drawSquare();	
 		    if(internalType == KBattleField::OWNFIELD)
 		        emit doOwnFieldShipListJob(i, j, true, false); 	
                     else if(internalType == KBattleField::ENEMYFIELD)
@@ -71,12 +71,12 @@ void KBattleField::drawField()
 		    break;
 		    
 		case KBattleField::DEATH:
-		    drawSquare(&painter);	
+		    drawSquare();	
 		    drawDeathIcon();
 		    break;	
 
 		case KBattleField::SHIP:
-		    drawSquare(&painter);	
+		    drawSquare();	
 		    if(internalType == KBattleField::OWNFIELD)
 		        emit doOwnFieldShipListJob(i, j, false, false); 	
                     else if(internalType == KBattleField::ENEMYFIELD)
@@ -85,7 +85,6 @@ void KBattleField::drawField()
             }
         }		
     }
-    painter.end();
 }
 
 void KBattleField::requestedShipIconDraw(int type, bool hit, bool death)

@@ -35,7 +35,7 @@ class KGridWidget : public QWidget
         ~KGridWidget();
     
         void setValues(int x, int y, int size);
-        void drawSquare(QPainter *painter);
+        void drawSquare();
         void drawHitIcon();
         void drawWaterIcon();
         void drawDeathIcon();

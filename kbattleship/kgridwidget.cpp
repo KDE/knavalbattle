@@ -16,6 +16,7 @@
  ***************************************************************************/
 
 #include "kgridwidget.moc"
+#include "kbattlefield.h"
 
 KGridWidget::KGridWidget(QWidget *parent, const char *name) : QWidget(parent, name)
 {
@@ -33,8 +34,10 @@ void KGridWidget::setValues(int x, int y, int size)
     internalSize = size;
 }
 
-void KGridWidget::drawSquare(QPainter *painter)
+void KGridWidget::drawSquare()
 {
+    QPainter *painter = new QPainter(static_cast<QWidget*>(parent()->parent()));
+    
     if(internalPixmap)
 	delete internalPixmap;
 
@@ -47,7 +50,7 @@ void KGridWidget::drawSquare(QPainter *painter)
 
     painter->setBrush(blackBrush);
     painter->drawRect(internalx, internaly, internalSize, internalSize);
-    bitBlt(this, internalx, internaly, internalPixmap);
+//    bitBlt(static_cast<QWidget*>(parent()->parent()), internalx, internaly, internalPixmap);
 }
 
 void KGridWidget::drawHitIcon()
@@ -76,5 +79,5 @@ void KGridWidget::drawIcon(const QString &iconName)
     QString picture = locate("data", "kbattleship/pictures/" + iconName);
     if(picture.isEmpty())
 	return;
-    bitBlt(this, internalx, internaly, new QPixmap(picture));
+    bitBlt(static_cast<QWidget*>(parent()->parent()), internalx, internaly, new QPixmap(picture));
 }
