@@ -5,10 +5,10 @@ kbattleship_LDFLAGS = $(all_libraries)
 kbattleship_LDADD   = dialogs/libkbattleshipdialogs.la $(LIB_KFILE)
 kbattleship_SOURCES = kmessagetype.cpp kmessage.cpp kbattleshipserver.cpp kbattleshipclient.cpp \
                       kbattleshipview.cpp kgridwidget.cpp kbattlefieldtype.cpp \
-		      kbattlefield.cpp kserverdialog.cpp kbattleship.cpp main.cpp
+		      kbattlefield.cpp kserverdialog.cpp kclientdialog.cpp kbattleship.cpp main.cpp
 noinst_HEADERS   = kmessagetype.h kmessage.h kbattleshipserver.h kbattleshipclient.h \
                    kbattleshipview.h kgridwidget.h kbattlefieldtype.h \
-		   kbattlefield.h kserverdialog.h kbattleship.h
+		   kbattlefield.h kserverdialog.h kclientdialog.h kbattleship.h
 METASOURCES = AUTO
 KDE_ICON = kbattleship
 

@@ -1,5 +1,5 @@
 /***************************************************************************
-                              kserverdialog.cpp
+                              kclientdialog.cpp
                              -------------------
     Developers: (c) 2000 Nikolas Zimmermann <nikoz@gymnasium-kerpen.de>
                 (c) 2000 Daniel Molkentin <molkentin@kde.org>
@@ -15,18 +15,18 @@
  *                                                                         *
  ***************************************************************************/
 
-#include "kserverdialog.moc"
+#include "kclientdialog.moc"
 
-KServerDialog::KServerDialog( QWidget *parent, const char *name ) : serverStartDlg( parent, name )
+KClientDialog::KClientDialog( QWidget *parent, const char *name ) : clientConnectDlg( parent, name )
 {
-    connect( startBtn, SIGNAL( clicked() ), this, SLOT( slotStartClicked() ) );
+    connect( connectBtn, SIGNAL( clicked() ), this, SLOT( slotConnectClicked() ) );
 }
 
-KServerDialog::~KServerDialog()
+KClientDialog::~KClientDialog()
 {
 }
 
-void KServerDialog::slotStartClicked()
+void KClientDialog::slotConnectClicked()
 {
-    kdDebug() << "START!" << endl;
+    kdDebug() << "CONNECT!" << endl;
 }

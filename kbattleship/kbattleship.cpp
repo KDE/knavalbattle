@@ -109,11 +109,11 @@ void KBattleshipApp::slotGameQuit()
 
 void KBattleshipApp::slotServerConnect()
 {
-    slotStatusMsg( i18n( "" ) );
+    slotStatusMsg( i18n( "Loading Connect-Server dialog..." ) );
 
-    // TODO: Subclass and use KDialogBase
+    // TODO: use KDialogBase
 
-    connect = new clientConnectDlg();
+    connect = new KClientDialog();
     connect->show();
 
     slotStatusMsg( i18n( "Ready." ) );
@@ -121,7 +121,7 @@ void KBattleshipApp::slotServerConnect()
 
 void KBattleshipApp::slotNewServer()
 {
-    slotStatusMsg( i18n( " Loading Start-Server dialog... " ) );
+    slotStatusMsg( i18n( "Loading Start-Server dialog..." ) );
     
     // TODO: use KDialogBase
     

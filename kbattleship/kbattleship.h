@@ -31,10 +31,10 @@
 #include <klocale.h>
 #include <kconfig.h>
 
-#include "dialogs/connectDlg.h"
 #include "kbattleship.h"
 #include "kbattleshipview.h"
 #include "kserverdialog.h"
+#include "kclientdialog.h"
 
 class KBattleshipView;
 
@@ -69,7 +69,7 @@ class KBattleshipApp : public KMainWindow
         KAction *gameQuit;
         KToggleAction *viewToolBar;
         KToggleAction *viewStatusBar;
-        clientConnectDlg *connect;
+        KClientDialog *connect;
 	KServerDialog *server;
 };
 

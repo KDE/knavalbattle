@@ -1,6 +1,6 @@
 /***************************************************************************
-                              kserverdialog.cpp
-                             -------------------
+                                   kclientdialog.h
+                                  -----------------
     Developers: (c) 2000 Nikolas Zimmermann <nikoz@gymnasium-kerpen.de>
                 (c) 2000 Daniel Molkentin <molkentin@kde.org>
 
@@ -14,19 +14,25 @@
  *   (at your option) any later version.                                   *
  *                                                                         *
  ***************************************************************************/
+ 
+#ifndef KCLIENTDIALOG_H
+#define KCLIENTDIALOG_H
 
-#include "kserverdialog.moc"
+#include <kdebug.h>
+#include <qwidget.h>
+#include <qpushbutton.h>
+#include "dialogs/connectDlg.h"
 
-KServerDialog::KServerDialog( QWidget *parent, const char *name ) : serverStartDlg( parent, name )
+class KClientDialog : public clientConnectDlg
 {
-    connect( startBtn, SIGNAL( clicked() ), this, SLOT( slotStartClicked() ) );
-}
+    Q_OBJECT
+    public:
+        KClientDialog( QWidget *parent = 0, const char *name = 0 );
+        ~KClientDialog();
+	
+    public slots:
+        void slotConnectClicked();
+};
 
-KServerDialog::~KServerDialog()
-{
-}
+#endif
 
-void KServerDialog::slotStartClicked()
-{
-    kdDebug() << "START!" << endl;
-}
