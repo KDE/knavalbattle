@@ -39,12 +39,12 @@ class KGridWidget : public QObject
         void drawWaterIcon();
 	void drawDeathIcon();
 	void drawHitIcon();
-        void drawShipIcon(int type, bool rotate = false, bool hitBlend = false);
-	void drawShipIcon(int ship, int part, bool rotate = false, bool hitBlend = false);
+        void drawShipIcon(int type, bool rotate = false, bool hit = false, bool water = false);
+	void drawShipIcon(int ship, int part, bool rotate = false, bool hit = false);
 
     private:
 	void cacheImages();
-        void drawIcon(QPixmap icon, bool hitBlend = false);
+        void drawIcon(QPixmap icon, bool hitBlend = false, bool waterBlend = false);
 	QString findIcon(const QString &name);
 
 	bool m_drawGrid;

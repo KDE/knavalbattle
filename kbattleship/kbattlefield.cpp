@@ -126,17 +126,17 @@ void KBattleField::drawOwnField()
 		    break;	
 		    
 		default:
-		    drawSquare();
 		    ship = app->getXYShip(i, j);
 		    
 		    if(ship)
 		    {
+		        drawSquare();
 			if(m_newdata[i][j])
 		    	    data = m_ownfield[i][j];
 			drawShipIcon(data, ship->placedLeft());
 		    }
 		    else if(!ship)
-			drawShipIcon(data, !m_rotatedata[i][j]);
+			drawShipIcon(data, !m_rotatedata[i][j], false, true);
 		    break;
 	    }
         }		
