@@ -110,7 +110,7 @@ The other player has to choose <menuchoice><guimenu>Game</guimenu>
 <guimenuitem>Connect to Server</guimenuitem></menuchoice>, or press
 <keycap>F2</keycap>. Again, a <guilabel>Nickname</guilabel> is
 suggested, but you can choose any name you like.
-</para> 
+</para>
 
 <para>
 An important point is the field <guilabel>Server</guilabel>. Here, you
@@ -138,7 +138,7 @@ military actions of your enemy. The right area is where your enemys
 fleet is located. When it's your turn to fire, you need to click on a
 certain sector (a field of the battle area) where you suppose the ships
 to be located.
-    </para>
+</para>
 
 <para>
 First, you need to place your ships. The game initiator starts. When
@@ -310,7 +310,7 @@ help pages (this document).</para>
 </listitem>  
 </varlistentry>  
   
-<varlistentry>  
+<varlistentry>
 <term><menuchoice>  
 <shortcut><keycombo
 action="simul"><keycap>Shift</keycap><keycap>F1</keycap></keycombo>
@@ -344,7 +344,7 @@ means of filling in a web form using the information given by the user.
 
 <varlistentry>
 <term><menuchoice>  
-<guimenu><accel>H</accel>elp</guimenu><guimenuitem><accel>A</accel>bout KBattleship</guimenuitem></menuchoice></term>  
+<guimenu><accel>H</accel>elp</guimenu><guimenuitem><accel>A</accel>bout KBattleship</guimenuitem></menuchoice></term>
 <listitem>  
 <para>This will display version and author information</para>
 </listitem>  
@@ -446,8 +446,7 @@ Kevin Krammer <email>kevin.krammer@gmx.at</email>
 <title>Requirements</title>
 
 <para>
-You should have a network connection and a competitor, of course :).  At
-the time of writing, &kbattleship; requires &kde; 2.2 or greater and
+At the time of writing, &kbattleship; requires &kde; 2.2 or greater and
 &Qt; 2.2.3 or greater.
 </para>
 
