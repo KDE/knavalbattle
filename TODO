@@ -3,11 +3,16 @@ KB Team:
     p = partially
     x = ready
 
+
     READY :)
  
 User ideas:
-    o AI						[ ] (Triskelios)
+    a = assigned task
+    ? = really necessary
+    
+    o AI						[a] (Triskelios)
     o Place Ships synchronous, not turn based		[ ] (stilborne) (?)
-    o Ship-Placing preview				[ ] (stilborne)
-    o User-Defined Grid Sizes				[p] (stilborne)
+    o Ship-Placing preview				[ ] (stilborne) (?)
+    o User-Defined Grid Sizes				[p] (stilborne) (?)
+    o Allow to disable Tooltips				[a] (Njaard)
     
