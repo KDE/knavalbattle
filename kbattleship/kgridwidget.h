@@ -1,5 +1,5 @@
 /***************************************************************************
-                                 kmessage.h
+                                kgridwidget.h
                              -------------------
     Developers: (c) 2000 Nikolas Zimmermann <nikoz@gymnasium-kerpen.de>
                 (c) 2000 Daniel Molkentin <molkentin@kde.org>

@@ -31,7 +31,7 @@ int main( int argc, char *argv[] )
         VERSION, description, KAboutData::License_GPL,
         "(c) 2000  Nikolas Zimmermann, Daniel Molkentin" );
 
-    aboutData.addAuthor( "Nikolas Zimmermann", "Project Founder, Coder", "nikoz@gymnasium-kerpen.de" );
+    aboutData.addAuthor( "Nikolas Zimmermann", "Project Founder, Coder", "wildfox@kde.org" );
     aboutData.addAuthor( "Daniel Molkentin", "Coder", "molkentin@kde.org" );
     KCmdLineArgs::init( argc, argv, &aboutData );
     KApplication app;
