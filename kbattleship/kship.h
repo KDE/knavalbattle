@@ -3,6 +3,7 @@
                                   -----------------
     Developers: (c) 2000-2001 Nikolas Zimmermann <wildfox@kde.org>
                 (c) 2000-2001 Daniel Molkentin <molkentin@kde.org>
+                (c) 2001 Kevin Krammer <kevin.krammer@gmx.at>
 
  ***************************************************************************/
 
@@ -34,6 +35,7 @@ class KShip : public QObject
         int shiptype();
 
 	bool placedLeft();
+	bool contains(int x, int y);
     
     private:
         int m_shipxstart;

@@ -3,6 +3,7 @@
                              -------------------
     Developers: (c) 2000-2001 Nikolas Zimmermann <wildfox@kde.org>
                 (c) 2000-2001 Daniel Molkentin <molkentin@kde.org>
+                (c) 2001 Kevin Krammer <kevin.krammer@gmx.at>
 
  ***************************************************************************/
 
@@ -59,4 +60,9 @@ int KShip::shiptype()
 bool KShip::placedLeft()
 {
     return m_placedLeft;
+}
+
+bool KShip::contains(int x, int y)
+{
+    return (x >= m_shipxstart && x <= m_shipxstop) && (y >= m_shipystart && y <= m_shipystop);
 }

@@ -1,8 +1,9 @@
 /***************************************************************************
-                                    km_shiplist.h
+                                    kshiplist.h
                                   -----------------
     Developers: (c) 2000-2001 Nikolas Zimmermann <wildfox@kde.org>
                 (c) 2000-2001 Daniel Molkentin <molkentin@kde.org>
+                (c) 2001 Kevin Krammer <kevin.krammer@gmx.at>
 
  ***************************************************************************/
 
@@ -39,23 +40,9 @@ class KShipList : public QObject
         void addNewShip(int button, int fieldx, int fieldy);
         bool addNewShip(bool vertical, int fieldx, int fieldy);
 
-        void addShip(int fieldx1, int fieldx2, int fieldy1, int fieldy2, int ship);
-
-        void addShip1(int fieldx1, int fieldx2, int fieldy1, int fieldy2);
-        void addShip2(int fieldx1, int fieldx2, int fieldy1, int fieldy2);
-        void addShip3(int fieldx1, int fieldx2, int fieldy1, int fieldy2);
-        void addShip4(int fieldx1, int fieldx2, int fieldy1, int fieldy2);
-
         bool canAddShips();
 
         int shipCount() { return m_shipsadded; }
-
-        KShip *returnIterator(int ship);
-
-        int returnX1Ship(int ship);
-        int returnX2Ship(int ship);
-        int returnY1Ship(int ship);
-        int returnY2Ship(int ship);
 
 	int m_fieldx;
 	int m_fieldy;
