@@ -15,8 +15,6 @@
  *                                                                         *
  ***************************************************************************/
 
-#include <qtextstream.h>
-
 #include "kbattleshipserver.moc"
 
 KBattleshipServer::KBattleshipServer( int port ) : QServerSocket( port )
@@ -48,13 +46,13 @@ void KBattleshipServer::readClient()
     // QTextStream strips the ! from <!DOCTYPE ... >
     // so don't use it here (malte)
     int len = socket->bytesAvailable();
-    char *buf = new char[len + 1];
-    socket->readBlock(buf, len);
-    buf[len] = 0;
+    char *buf = new char[ len + 1 ];
+    socket->readBlock( buf, len );
+    buf[ len ] = 0;
     KMessage *msg = new KMessage();
     msg->setDataStream( buf );
-	kdDebug() << "Type of message: " << msg->getType() << endl;
-	emit newMessage( msg );
+    kdDebug() << "Type of message: " << msg->getType() << endl;
+    emit newMessage( msg );
     delete msg;
     delete[] buf;
 }
@@ -69,13 +67,6 @@ void KBattleshipServer::sendMessage( KMessage *msg )
 void KBattleshipServer::discardClient()
 {
     QSocket *socket = ( QSocket * )sender();
-    //QTextStream post( socket );
-    //KMessageType msgtype;
-    //msgtype.setType( KMessageType::MSG_FORBIDDEN );
-    //KMessage *msg=new KMessage( msgtype );
-    //msg->addField( QString( "forbidden" ), QString( "didnotaccept" ) );
-    ////post << msg->returnSendStream();
-    //emit wroteToClient();
     delete socket;
     emit endConnect();
 }

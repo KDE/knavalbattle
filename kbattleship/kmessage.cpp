@@ -45,9 +45,7 @@ void KMessage::addField( QString name, QString content )
 
 void KMessage::setDataStream( QString stream )
 {
-    kdDebug() << "Received Stream: " << stream << endl;
     xmlDocument->setContent( stream );
-    kdDebug() << "DOC: " << xmlDocument->toString() << endl;
 }
 
 QString KMessage::returnSendStream()
@@ -64,13 +62,11 @@ QString KMessage::returnSendStream()
 	xmlNode = xmlNode.nextSibling();
      }
 
-    kdDebug() << "Send Stream: " << sendStream.simplifyWhiteSpace() << endl;
     return sendStream.simplifyWhiteSpace();
 }
 
 QString KMessage::getField( QString name )
 {
-    kdDebug() << "DOC: " << xmlDocument->toString() << endl;
     QDomNode xmlNode = xmlDocument->documentElement().firstChild();
     while( !xmlNode.isNull() )
     {
@@ -81,8 +77,6 @@ QString KMessage::getField( QString name )
 	    {
 		return xmlElement.attribute( name );
 	    }
-	    kdDebug() << "1: " << xmlElement.attribute( name ) << endl;
-	    kdDebug() << "2: " << xmlElement.text() << endl;
 	}
 	xmlNode = xmlNode.nextSibling();
      }
@@ -91,6 +85,6 @@ QString KMessage::getField( QString name )
 
 int KMessage::getType()
 {
-    return getField("msgtype").toInt();
+    return getField( "msgtype" ).toInt();
 }
 
