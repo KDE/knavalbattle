@@ -26,7 +26,7 @@ class KBDiagonalShotStrategy : public KBStrategy
 	KBDiagonalShotStrategy(KBStrategy *parent = 0);
 	virtual ~KBDiagonalShotStrategy();
 
-	virtual const QPoint getNextShot();
+	virtual const QPoint nextShot();
 	virtual bool hasMoreShots();
 	virtual void shotAt(const QPoint &pos);
 	virtual void startAt(int col, int row, Direction dir);

@@ -43,7 +43,7 @@ void KBattleshipClient::init()
 
 void KBattleshipClient::sendMessage(KMessage *msg)
 {
-    QCString post = msg->returnSendStream().utf8();
+    QCString post = msg->sendStream().utf8();
     writeBlock(post.data(), post.length());
     emit sigMessageSent(msg);
 }

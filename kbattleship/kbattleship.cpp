@@ -172,7 +172,7 @@ void KBattleshipApp::slotEnemyFieldClick(int fieldx, int fieldy)
 	if(!m_shootable)
 	    return;
 
-	if(m_view->getEnemyFieldState(fieldx, fieldy) == KBattleField::FREE)
+	if(m_view->enemyFieldState(fieldx, fieldy) == KBattleField::FREE)
 	{
 	    if(!m_aiPlaying && !m_lost)
 	    {
@@ -183,7 +183,7 @@ void KBattleshipApp::slotEnemyFieldClick(int fieldx, int fieldy)
 		slotSendMessage(msg);
 	    }
 	    
-	    if(m_stat->getHit() != 10 && m_aiPlaying)
+	    if(m_stat->hit() != 10 && m_aiPlaying)
 	    {
 		m_stat->setShot();
 		
@@ -192,7 +192,7 @@ void KBattleshipApp::slotEnemyFieldClick(int fieldx, int fieldy)
 	
 		int showstate;
 	
-		if(m_enemyshiplist->getXYShipType(fieldx, fieldy) == 99)
+		if(m_enemyshiplist->shipTypeAt(fieldx, fieldy) == 99)
 		{
 		    m_stat->setWater();
 		    showstate = KBattleField::WATER;
@@ -207,9 +207,9 @@ void KBattleshipApp::slotEnemyFieldClick(int fieldx, int fieldy)
 	
 		if(showstate == KBattleField::HIT)
 		{
-	    	    if(m_enemyshiplist->getXYShipType(fieldx, fieldy) != 0 && m_enemyshiplist->getXYShipType(fieldx, fieldy) != 99)
+	    	    if(m_enemyshiplist->shipTypeAt(fieldx, fieldy) != 0 && m_enemyshiplist->shipTypeAt(fieldx, fieldy) != 99)
 		    {
-			KShip *ship = m_enemyshiplist->getXYShip(fieldx, fieldy);
+			KShip *ship = m_enemyshiplist->shipAt(fieldx, fieldy);
 			typedef QValueList<int> DeathValueList;
 			DeathValueList deathList;
 			bool xokay = true, yokay = true;
@@ -219,7 +219,7 @@ void KBattleshipApp::slotEnemyFieldClick(int fieldx, int fieldy)
 			{
 			    for(tempx = ship->shipxstart(); tempx <= ship->shipxstop(); tempx++)
 			    {
-				if(m_view->getEnemyFieldState(tempx, fieldy) == KBattleField::HIT)
+				if(m_view->enemyFieldState(tempx, fieldy) == KBattleField::HIT)
 				{
 				    deathList.append(tempx);
 				    xokay = true;
@@ -237,7 +237,7 @@ void KBattleshipApp::slotEnemyFieldClick(int fieldx, int fieldy)
 			{
 			    for(tempy = ship->shipystart(); tempy <= ship->shipystop(); tempy++)
 			    {
-				if(m_view->getEnemyFieldState(fieldx, tempy) == KBattleField::HIT)
+				if(m_view->enemyFieldState(fieldx, tempy) == KBattleField::HIT)
 				{
 				    deathList.append(tempy);
 				    xokay = false;
@@ -265,12 +265,12 @@ void KBattleshipApp::slotEnemyFieldClick(int fieldx, int fieldy)
 				m_view->changeEnemyFieldData(fieldx, *it, KBattleField::DEATH);
 			}
 		    }
-		    else if(m_enemyshiplist->getXYShipType(fieldx, fieldy) == 0)
+		    else if(m_enemyshiplist->shipTypeAt(fieldx, fieldy) == 0)
 			m_view->changeEnemyFieldData(fieldx, fieldy, KBattleField::DEATH);
 		}
 	    }
 	    
-	    if(m_stat->getHit() == 10 && m_aiPlaying)
+	    if(m_stat->hit() == 10 && m_aiPlaying)
 	    {
 	        m_aiPlaying = false;
 		m_shootable = false;
@@ -331,7 +331,7 @@ void KBattleshipApp::slotReceivedEnemyFieldData(int fieldx, int fieldy, int enem
 	}
     }
 
-    if(m_stat->getHit() != 10)
+    if(m_stat->hit() != 10)
 	slotStatusMsg(i18n("Waiting for enemy to shoot.."));
     else
     {
@@ -340,7 +340,7 @@ void KBattleshipApp::slotReceivedEnemyFieldData(int fieldx, int fieldy, int enem
 	slotStatusMsg(i18n("You won the game :)"));
 	m_stat->slotAddOwnWon();
 	slotUpdateHighscore();
-	if(m_connection->getType() == KonnectionHandling::SERVER)
+	if(m_connection->type() == KonnectionHandling::SERVER)
 	    slotServerReplay();
 	else
 	    slotClientReplay();
@@ -380,7 +380,7 @@ void KBattleshipApp::slotAbortNetworkGame()
     m_placeable = false;
     m_serverHasClient = false;
 
-    if(m_connection->getType() == KonnectionHandling::SERVER)
+    if(m_connection->type() == KonnectionHandling::SERVER)
     {
 	delete m_kbserver;
 	m_kbserver = 0;
@@ -398,7 +398,7 @@ void KBattleshipApp::slotReplay()
     m_aiPlaying = false;
     m_shootable = false;
     m_lost = false;
-    if(m_connection->getType() == KonnectionHandling::SERVER)
+    if(m_connection->type() == KonnectionHandling::SERVER)
 	m_placeable = true;
     else
 	m_placeable = false;
@@ -492,7 +492,7 @@ void KBattleshipApp::slotShipsReady()
     KMessage *msg = new KMessage(KMessage::SHIPSREADY);
     slotSendMessage(msg);
 
-    if(m_connection->getType() == KonnectionHandling::SERVER)
+    if(m_connection->type() == KonnectionHandling::SERVER)
 	slotStatusMsg(i18n("Waiting for other player to place the ships..."));
     else
 	slotStatusMsg(i18n("Waiting for other player to start the match..."));
@@ -509,7 +509,7 @@ void KBattleshipApp::slotSendMessage(int fieldx, int fieldy, int state)
 	msg->addField(QString("fieldy"), QString::number(fieldy));
 	msg->addField(QString("fieldstate"), QString::number(state));
 
-        if(m_connection->getType() == KonnectionHandling::SERVER)
+        if(m_connection->type() == KonnectionHandling::SERVER)
 	    m_kbserver->sendMessage(msg);
         else
             m_kbclient->sendMessage(msg);
@@ -520,7 +520,7 @@ void KBattleshipApp::slotSendMessage(KMessage *msg)
 {
     if(m_connection != 0)
     {
-	if(m_connection->getType() == KonnectionHandling::SERVER)
+	if(m_connection->type() == KonnectionHandling::SERVER)
     	    m_kbserver->sendMessage(msg);
         else
             m_kbclient->sendMessage(msg);
@@ -544,14 +544,14 @@ void KBattleshipApp::slotChangedNickCommand(const QString &text)
     m_chat->setNickname(m_ownNickname);
 }
 
-KShip *KBattleshipApp::getXYShip(int fieldx, int fieldy)
+KShip *KBattleshipApp::shipAt(int fieldx, int fieldy)
 {
-    return m_ownshiplist->getXYShip(fieldx, fieldy);
+    return m_ownshiplist->shipAt(fieldx, fieldy);
 }
 
 void KBattleshipApp::slotUpdateHighscore()
 {
-    m_score->save(m_ownNickname, m_stat->getShot(), m_stat->getHit(), m_stat->getWater());
+    m_score->save(m_ownNickname, m_stat->shot(), m_stat->hit(), m_stat->water());
     m_score->load();
 }
 
@@ -747,8 +747,8 @@ void KBattleshipApp::slotStartBattleshipServer()
     m_gameServerConnect->setEnabled(false);
     m_gameSingle->setEnabled(false);
     slotStatusMsg(i18n("Waiting for a player..."));
-    m_kbserver = new KBattleshipServer((m_server->getPort()).toInt());
-    m_ownNickname = m_server->getNickname();
+    m_kbserver = new KBattleshipServer((m_server->port()).toInt());
+    m_ownNickname = m_server->nickname();
     m_chat->setNickname(m_ownNickname);
     slotChangeOwnPlayer(m_ownNickname);
     delete m_server;
@@ -778,7 +778,7 @@ void KBattleshipApp::slotStartBattleshipServer()
     }
     else
     {
-	if(m_connection->getType() == KonnectionHandling::CLIENT)
+	if(m_connection->type() == KonnectionHandling::CLIENT)
 	{
 	    disconnect(m_kbclient, SIGNAL(sigConnected()), this, SLOT(slotSendVersion()));
 	    disconnect(m_connection, SIGNAL(sigAbortNetworkGame()), this, SLOT(slotAbortNetworkGame()));
@@ -825,7 +825,7 @@ void KBattleshipApp::slotSendEnemyFieldState(int fieldx, int fieldy)
     typedef QValueList<int> DeathValueList;
     DeathValueList deathList;
 
-    data = m_ownshiplist->getXYShipType(fieldx, fieldy);
+    data = m_ownshiplist->shipTypeAt(fieldx, fieldy);
     if(data == 99)
 	showstate = KBattleField::WATER;
     else
@@ -837,16 +837,16 @@ void KBattleshipApp::slotSendEnemyFieldState(int fieldx, int fieldy)
 
     if(showstate == KBattleField::HIT)
     {
-	if(m_ownshiplist->getXYShipType(fieldx, fieldy) != 0 && m_ownshiplist->getXYShipType(fieldx, fieldy) != 99)
+	if(m_ownshiplist->shipTypeAt(fieldx, fieldy) != 0 && m_ownshiplist->shipTypeAt(fieldx, fieldy) != 99)
 	{
-	    KShip *ship = m_ownshiplist->getXYShip(fieldx, fieldy);
+	    KShip *ship = m_ownshiplist->shipAt(fieldx, fieldy);
 	    int tempy = 0, tempx = 0;
 
 	    if(ship->shipystart() == ship->shipystop() && ship->shipxstart() != ship->shipxstop())
     	    {
 		for(tempx = ship->shipxstart(); tempx <= ship->shipxstop(); tempx++)
 		{
-		    if(m_view->getOwnFieldState(tempx, fieldy) == KBattleField::HIT)
+		    if(m_view->ownFieldState(tempx, fieldy) == KBattleField::HIT)
                     {
 			deathList.append(tempx);
                         xokay = true;
@@ -864,7 +864,7 @@ void KBattleshipApp::slotSendEnemyFieldState(int fieldx, int fieldy)
 	    {
 		for(tempy = ship->shipystart(); tempy <= ship->shipystop(); tempy++)
 		{
-		    if(m_view->getOwnFieldState(fieldx, tempy) == KBattleField::HIT)
+		    if(m_view->ownFieldState(fieldx, tempy) == KBattleField::HIT)
                     {
 		        deathList.append(tempy);
                         xokay = false;
@@ -879,7 +879,7 @@ void KBattleshipApp::slotSendEnemyFieldState(int fieldx, int fieldy)
 		}
 	    }
         }
-        else if(m_ownshiplist->getXYShipType(fieldx, fieldy) == 0)
+        else if(m_ownshiplist->shipTypeAt(fieldx, fieldy) == 0)
 	{
 	    msg->addField(QString("xstart"), QString::number(fieldx));
 	    msg->addField(QString("xstop"), QString::number(fieldx));
@@ -910,7 +910,7 @@ void KBattleshipApp::slotSendEnemyFieldState(int fieldx, int fieldy)
     	msg->addField(QString("death"), QString("true"));
     }
 
-    if(m_connection->getType() == KonnectionHandling::SERVER)
+    if(m_connection->type() == KonnectionHandling::SERVER)
 	m_kbserver->sendMessage(msg);
     else
         m_kbclient->sendMessage(msg);
@@ -951,8 +951,8 @@ void KBattleshipApp::slotChangeEnemyFieldData(int fieldx, int fieldy, int type)
 
 void KBattleshipApp::slotConnectToBattleshipServer()
 {
-    m_kbclient = new KBattleshipClient(m_client->getHost(), (m_client->getPort()).toInt());
-    m_ownNickname = m_client->getNickname();
+    m_kbclient = new KBattleshipClient(m_client->host(), (m_client->port()).toInt());
+    m_ownNickname = m_client->nickname();
     m_chat->setNickname(m_ownNickname);
     slotChangeOwnPlayer(m_ownNickname);
     delete m_client;
@@ -985,7 +985,7 @@ void KBattleshipApp::slotConnectToBattleshipServer()
     }
     else
     {
-	if(m_connection->getType() == KonnectionHandling::SERVER)
+	if(m_connection->type() == KonnectionHandling::SERVER)
 	{
 	    disconnect(m_connection, SIGNAL(sigStatusBar(const QString &)), this, SLOT(slotStatusMsg(const QString &)));
 	    disconnect(m_connection, SIGNAL(sigEnemyNickname(const QString &)), this, SLOT(slotChangeEnemyPlayer(const QString &)));
@@ -1128,7 +1128,7 @@ void KBattleshipApp::slotStartBattleshipGame(bool clearstat)
     slotStatusMsg(i18n("Waiting for the AI player to place the ships..."));
     if(m_single != 0)
     {
-	m_ownNickname = m_single->getNickname();
+	m_ownNickname = m_single->nickname();
         delete m_single;
 	m_single = 0;
     }
@@ -1167,7 +1167,7 @@ void KBattleshipApp::slotAIShootsAt(const QPoint pos)
     if(!m_shootable)
 	m_shootable = true;
 
-    int showstate = m_view->getOwnFieldState(pos.x(), pos.y());
+    int showstate = m_view->ownFieldState(pos.x(), pos.y());
 
     if(showstate == KBattleField::HIT)
     {
@@ -1185,7 +1185,7 @@ void KBattleshipApp::slotAIShootsAt(const QPoint pos)
     slotStatusMsg(i18n("Enemy has shot. Shoot now"));
     slotChangeOwnFieldData(pos.x(), pos.y(), showstate);
 
-    if(m_aiHits == 10 && m_stat->getHit() != 10)
+    if(m_aiHits == 10 && m_stat->hit() != 10)
     {
         m_aiPlaying = false;
         m_shootable = false;
@@ -1223,7 +1223,7 @@ void KBattleshipApp::slotReceivedClientInformation(const QString &clientName, co
     m_enemyProtocolVersion = protocolVersion;
     m_gameEnemyInfo->setEnabled(true);
 
-    if(m_connection->getType() == KonnectionHandling::SERVER)
+    if(m_connection->type() == KonnectionHandling::SERVER)
     {
 	KMessage *msg = new KMessage(KMessage::VERSION);
 	msg->versionMessage();

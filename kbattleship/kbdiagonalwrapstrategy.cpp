@@ -28,7 +28,7 @@ KBDiagonalWrapStrategy::KBDiagonalWrapStrategy(KBStrategy *parent) : KBStrategy(
     }
     else
     {
-	m_destroyer = 0L;
+	m_destroyer = 0;
 	m_destroying = false;
     }
 }
@@ -81,14 +81,14 @@ void KBDiagonalWrapStrategy::init(KBattleField *field, const QRect &field_rect)
 	m_destroyer->init(field, field_rect);
 }
 
-const QPoint KBDiagonalWrapStrategy::getNextShot()
+const QPoint KBDiagonalWrapStrategy::nextShot()
 {
     if(hasMoreShots())
     {
 	if(m_destroying)
-	    return m_destroyer->getNextShot();
+	    return m_destroyer->nextShot();
 	else if(m_child != 0)
-	    return m_child->getNextShot();
+	    return m_child->nextShot();
     }
 
     return m_start;
@@ -130,7 +130,7 @@ bool KBDiagonalWrapStrategy::hasMoreShots()
     if(m_parent == 0 && !m_destroying && m_prevShots->count() > 0)
     {
 	QPoint *pos = m_prevShots->last();
-	int state = m_battleField->getOwnState(pos->x(), pos->y());
+	int state = m_battleField->ownState(pos->x(), pos->y());
 	if(state == KBattleField::HIT)
 	{
 	    m_destroying = true;

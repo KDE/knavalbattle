@@ -92,7 +92,7 @@ void KBattleshipServer::slotReadClient()
 
 void KBattleshipServer::sendMessage(KMessage *msg)
 {
-    QCString post = msg->returnSendStream().utf8();
+    QCString post = msg->sendStream().utf8();
     m_serverSocket->writeBlock(post.data(), post.length());
     emit sigMessageSent(msg);
 }
@@ -105,7 +105,7 @@ void KBattleshipServer::slotDiscardClient(const QString &reason, bool kmversion,
 	msg->addField("kmversion", "true");
     else
 	msg->addField("kmversion", "false");
-    QCString post = msg->returnSendStream().utf8();
+    QCString post = msg->sendStream().utf8();
     m_serverSocket->writeBlock(post.data(), post.length());
     delete msg;
     

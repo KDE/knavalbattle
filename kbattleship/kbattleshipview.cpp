@@ -40,42 +40,42 @@ KBattleshipView::~KBattleshipView()
 
 void KBattleshipView::startDrawing()
 {
-    QHBoxLayout *layout = new QHBoxLayout(this, 0, 0, "battlefieldLayout");
+    QHBoxLayout *layout = new QHBoxLayout(this, 0, 0, "m_battlefieldLayout");
     layout->setAutoAdd(true);
-    battlefield = new KBattleField(this, "battlefield", m_drawGrid);
+    m_battlefield = new KBattleField(this, "m_battlefield", m_drawGrid);
 }
 
 void KBattleshipView::clearField()
 {
-    battlefield->clearOwnField();
-    battlefield->clearEnemyField();
+    m_battlefield->clearOwnField();
+    m_battlefield->clearEnemyField();
 }
 
-int KBattleshipView::getOwnFieldState(int fieldx, int fieldy)
+int KBattleshipView::ownFieldState(int fieldx, int fieldy)
 {
-    return battlefield->getOwnState(fieldx, fieldy);
+    return m_battlefield->ownState(fieldx, fieldy);
 }
 
-int KBattleshipView::getEnemyFieldState(int &fieldx, int &fieldy)
+int KBattleshipView::enemyFieldState(int &fieldx, int &fieldy)
 {
-    return battlefield->getEnemyState(fieldx, fieldy);
+    return m_battlefield->enemyState(fieldx, fieldy);
 }
 
 void KBattleshipView::previewShip(int fieldx, int fieldy, int type, bool rotate)
 {
-    battlefield->changePreviewData(fieldx, fieldy, type, rotate);
+    m_battlefield->setPreviewState(fieldx, fieldy, type, rotate);
 }
 
 void KBattleshipView::changeOwnFieldData(int fieldx, int fieldy, int type)
 {
-    battlefield->changeOwnData(fieldx, fieldy, type);
-    battlefield->drawField();
+    m_battlefield->setOwnState(fieldx, fieldy, type);
+    m_battlefield->drawField();
 }
 
 void KBattleshipView::changeEnemyFieldData(int fieldx, int fieldy, int type)
 {
-    battlefield->changeEnemyData(fieldx, fieldy, type);
-    battlefield->drawField();
+    m_battlefield->setEnemyState(fieldx, fieldy, type);
+    m_battlefield->drawField();
 }
 
 bool KBattleshipView::eventFilter(QObject *object, QEvent *event)
@@ -102,8 +102,8 @@ bool KBattleshipView::eventFilter(QObject *object, QEvent *event)
 	    return false;
 
 	QPoint point(mouseEvent->x(), mouseEvent->y());
-	QRect ownRect = battlefield->getOwnRect();
-	QRect enemyRect = battlefield->getEnemyRect();
+	QRect ownRect = m_battlefield->ownRect();
+	QRect enemyRect = m_battlefield->enemyRect();
     
 	QRect newRect;
     
@@ -119,10 +119,10 @@ bool KBattleshipView::eventFilter(QObject *object, QEvent *event)
 	
 	int j = -1;
 	
-	for(int i = newRect.left(); i <= newRect.right(); i += battlefield->gridSize())
+	for(int i = newRect.left(); i <= newRect.right(); i += m_battlefield->gridSize())
 	{
 	    j++;
-	    QRect tempRect(i, newRect.top(), battlefield->gridSize(), newRect.bottom() - newRect.top());
+	    QRect tempRect(i, newRect.top(), m_battlefield->gridSize(), newRect.bottom() - newRect.top());
 
 	    if(tempRect.contains(point))
 	    {
@@ -133,10 +133,10 @@ bool KBattleshipView::eventFilter(QObject *object, QEvent *event)
 
 	j = -1;
 	
-	for(int i = newRect.top(); i <= newRect.bottom(); i += battlefield->gridSize())
+	for(int i = newRect.top(); i <= newRect.bottom(); i += m_battlefield->gridSize())
 	{
 	    j++;
-	    QRect tempRect(newRect.left(), i, newRect.right() - newRect.left(), battlefield->gridSize());
+	    QRect tempRect(newRect.left(), i, newRect.right() - newRect.left(), m_battlefield->gridSize());
 
 	    if(tempRect.contains(point))
 	    {
@@ -162,7 +162,7 @@ bool KBattleshipView::eventFilter(QObject *object, QEvent *event)
 	QMouseEvent *mouseEvent = static_cast<QMouseEvent *>(event);
 	
 	QPoint point(mouseEvent->x(), mouseEvent->y());
-	QRect ownRect = battlefield->getOwnRect();
+	QRect ownRect = m_battlefield->ownRect();
 
 	int fieldx = 0;
 	int fieldy = 0;
@@ -171,10 +171,10 @@ bool KBattleshipView::eventFilter(QObject *object, QEvent *event)
 	{
 	    int j = -1;
 	
-	    for(int i = ownRect.left(); i <= ownRect.right(); i += battlefield->gridSize())
+	    for(int i = ownRect.left(); i <= ownRect.right(); i += m_battlefield->gridSize())
 	    {
 		j++;
-		QRect tempRect(i, ownRect.top(), battlefield->gridSize(), ownRect.bottom() - ownRect.top());
+		QRect tempRect(i, ownRect.top(), m_battlefield->gridSize(), ownRect.bottom() - ownRect.top());
 
 		if(tempRect.contains(point))
 		{
@@ -185,10 +185,10 @@ bool KBattleshipView::eventFilter(QObject *object, QEvent *event)
 
 	    j = -1;
 	
-	    for(int i = ownRect.top(); i <= ownRect.bottom(); i += battlefield->gridSize())
+	    for(int i = ownRect.top(); i <= ownRect.bottom(); i += m_battlefield->gridSize())
 	    {
 		j++;
-		QRect tempRect(ownRect.left(), i, ownRect.right() - ownRect.left(), battlefield->gridSize());
+		QRect tempRect(ownRect.left(), i, ownRect.right() - ownRect.left(), m_battlefield->gridSize());
 
 		if(tempRect.contains(point))
 		{
@@ -203,13 +203,13 @@ bool KBattleshipView::eventFilter(QObject *object, QEvent *event)
 	    emit sigMouseOverField(fieldx, fieldy, mouseEvent->state() & ShiftButton);
 	}
 	else
-	    battlefield->drawField();
+	    m_battlefield->drawField();
 	
 	return true;
     }
     else if(event->type() == QEvent::Paint)
     { 
-	battlefield->drawField();
+	m_battlefield->drawField();
 	return true;
     }
 

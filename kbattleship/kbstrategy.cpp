@@ -31,9 +31,9 @@ KBStrategy::~KBStrategy()
 }
 
 /* Returns the master strategy's shot list. */
-QList<QPoint> *KBStrategy::getMasterShotList()
+QList<QPoint> *KBStrategy::masterShotList()
 {
-    return (m_parent == 0) ? m_prevShots : m_parent->getMasterShotList();
+    return (m_parent == 0) ? m_prevShots : m_parent->masterShotList();
 }
 
 /* the AI player decided to shoot at pos */
@@ -51,7 +51,7 @@ void KBStrategy::init(KBattleField *field, const QRect &field_rect)
 /* Returns the field type of position (x, y) on the user player's field */
 int KBStrategy::enemyFieldStateAt(int x, int y)
 {
-    switch(m_battleField->getOwnState(x, y))
+    switch(m_battleField->ownState(x, y))
     {
 	case KBattleField::FREE:
 	    return FREE;

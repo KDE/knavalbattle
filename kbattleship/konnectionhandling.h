@@ -37,7 +37,7 @@ class KonnectionHandling : public QObject
         KonnectionHandling(QWidget *parent, KBattleshipClient *client);
         ~KonnectionHandling();
 
-        int getType() { return m_type; }
+        int type() { return m_type; }
 
 	void updateInternal(KBattleshipServer *server);
 	void updateInternal(KBattleshipClient *client);

@@ -48,7 +48,7 @@ void KBAIPlayer::init(KBattleField *battle_field, KShipList *ai_shiplist)
 
     if(m_battleField != 0)
     {
-	QRect rect = m_battleField->getEnemyRect();
+	QRect rect = m_battleField->enemyRect();
 	int grid = m_battleField->gridSize();
 	m_fieldRect = QRect(0, 0, (rect.width() / grid) + 1, (rect.height() / grid) + 1);
     }
@@ -95,7 +95,7 @@ bool KBAIPlayer::slotRequestShot()
 {
     if(m_masterStrategy != 0 && m_masterStrategy->hasMoreShots())
     {
-	QPoint pos = m_masterStrategy->getNextShot();
+	QPoint pos = m_masterStrategy->nextShot();
 	emit sigShootAt(pos);
         m_masterStrategy->shotAt(pos);
 

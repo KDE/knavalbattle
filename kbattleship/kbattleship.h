@@ -62,8 +62,7 @@ class KBattleshipApp : public KMainWindow
 
         void init();
 
-	KShipList *shipList() { return m_ownshiplist; }	
-	KShip *getXYShip(int fieldx, int fieldy);
+	KShip *shipAt(int fieldx, int fieldy);
 
     private slots:
 	void slotLost();

@@ -30,7 +30,7 @@ class KSingleDialog : public singleStartDlg
         KSingleDialog(QWidget *parent = 0, const char *name = 0);
         ~KSingleDialog();
     
-        QString getNickname();
+        QString nickname() const;
     
     public slots:
         void slotStartClicked();

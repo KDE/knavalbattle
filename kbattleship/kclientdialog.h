@@ -34,9 +34,9 @@ class KClientDialog : public clientConnectDlg
         KClientDialog(QWidget *parent = 0, const char *name = 0);
         ~KClientDialog();
 
-        QString getPort();
-        QString getHost();
-        QString getNickname();
+        QString port() const;
+        QString host() const;
+        QString nickname() const;
     	
     public slots:
         void slotConnectClicked();
@@ -48,7 +48,7 @@ class KClientDialog : public clientConnectDlg
         void sigCancelConnect();
     
     private:
-        KConfig *config;
+        KConfig *m_config;
 };
 
 #endif

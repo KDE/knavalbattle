@@ -21,8 +21,8 @@
 
 KBattleField::KBattleField(QWidget *parentw, const char *name, bool grid) : KGridWidget(parentw, name, grid)
 {
-    m_parent_widget = static_cast<QWidget *>(parent());
-    m_width = m_parent_widget->width();
+    m_parentWidget = static_cast<QWidget *>(parent());
+    m_width = m_parentWidget->width();
     m_canDraw = true;
     
     m_ownfieldx = 10;
@@ -74,7 +74,7 @@ void KBattleField::clearPreviewField()
     }
 }
 
-void KBattleField::changePreviewData(int fieldx, int &fieldy, int type, bool rotate)
+void KBattleField::setPreviewState(int fieldx, int &fieldy, int type, bool rotate)
 {
     m_newfield[fieldx][fieldy] = type;
     m_newdata[fieldx][fieldy] = true;
@@ -120,7 +120,7 @@ void KBattleField::drawOwnField()
 		
 		case KBattleField::HIT:
 		    drawSquare();	
-		    ship = app->getXYShip(i, j);
+		    ship = app->shipAt(i, j);
 		    if(ship->placedLeft())
 			drawShipIcon((ship->shiptype() + 1), (ship->shipxstop() - i + 1), true, true);
 		    else
@@ -133,7 +133,7 @@ void KBattleField::drawOwnField()
 		    break;	
 		    
 		default:
-		    ship = app->getXYShip(i, j);
+		    ship = app->shipAt(i, j);
 		    
 		    if(ship)
 		    {
@@ -185,7 +185,7 @@ void KBattleField::drawEnemyField()
 		    
 		default:
 		    drawSquare();	
-		    KShip *ship = app->getXYShip(i, j);
+		    KShip *ship = app->shipAt(i, j);
 		    if(ship->placedLeft())
 		        drawShipIcon(m_enemyfield[i][j], true);
 		    else
@@ -221,12 +221,12 @@ int KBattleField::rectX()
     return 22;
 }
 
-QRect KBattleField::getOwnRect()
+QRect KBattleField::ownRect()
 {
     return QRect(ownXPosition(), ownYPosition(), ownXPosition() + ((m_ownfieldx - 1) * gridSize()), ownYPosition() + ((m_ownfieldy - 1) * gridSize()));
 }
 
-QRect KBattleField::getEnemyRect()
+QRect KBattleField::enemyRect()
 {
     return QRect(enemyXPosition(), enemyYPosition(), rectX() + ((m_enemyfieldx - 1) * gridSize()), enemyYPosition() + ((m_enemyfieldy - 1) * gridSize()));
 }

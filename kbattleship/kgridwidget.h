@@ -45,7 +45,7 @@ class KGridWidget : public QObject
     private:
 	void cacheImages();
 	void drawIcon(QPixmap icon, bool hitBlend = false, bool waterBlend = false, bool rotate = false);
-	QString findIcon(const QString &name);
+	QString findIcon(const QString &name) const;
 
 	bool m_drawGrid;
 	int m_x, m_y, m_size;

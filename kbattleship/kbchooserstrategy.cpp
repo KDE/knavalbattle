@@ -56,14 +56,14 @@ void KBChooserStrategy::init(KBattleField *field, const QRect &field_rect)
     advance();
 }
 
-const QPoint KBChooserStrategy::getNextShot()
+const QPoint KBChooserStrategy::nextShot()
 {
     if(hasMoreShots())
     {
 	if(m_destroying)
-	    return m_destroyer->getNextShot();
+	    return m_destroyer->nextShot();
 	else if(advance())
-	    return m_child->getNextShot();
+	    return m_child->nextShot();
     }
 
     return QPoint(0, 0);
@@ -107,7 +107,7 @@ bool KBChooserStrategy::hasMoreShots()
 	if((!m_destroying) && m_prevShots->count() > 0)
 	{
 	    QPoint *pos = m_prevShots->last();
-	    int state = m_battleField->getOwnState(pos->x(), pos->y());
+	    int state = m_battleField->ownState(pos->x(), pos->y());
 	    if(state == KBattleField::HIT)
 	    {
 		m_destroying = true;

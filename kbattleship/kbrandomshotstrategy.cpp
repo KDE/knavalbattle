@@ -39,12 +39,12 @@ void KBRandomShotStrategy::init(KBattleField *field, const QRect &field_rect)
 	m_destroyer->init(field, field_rect);
 }
 
-const QPoint KBRandomShotStrategy::getNextShot()
+const QPoint KBRandomShotStrategy::nextShot()
 {
     if(hasMoreShots())
     {
 	if(m_destroying)
-	    return m_destroyer->getNextShot();
+	    return m_destroyer->nextShot();
 	else if(advance())
 	    return QPoint(m_column, m_row);
     }
@@ -69,7 +69,7 @@ bool KBRandomShotStrategy::hasMoreShots()
 	if((!m_destroying) && m_prevShots->count() > 0)
 	{
 	    QPoint *pos = m_prevShots->last();
-	    int state = m_battleField->getOwnState(pos->x(), pos->y());
+	    int state = m_battleField->ownState(pos->x(), pos->y());
 	    if(state == KBattleField::HIT)
 	    {
 		m_destroying = true;

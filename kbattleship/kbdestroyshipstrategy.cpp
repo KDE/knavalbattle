@@ -32,7 +32,7 @@ void KBDestroyShipStrategy::init(KBattleField *field, const QRect &field_rect)
     m_working = false;
 }
 
-const QPoint KBDestroyShipStrategy::getNextShot()
+const QPoint KBDestroyShipStrategy::nextShot()
 {
     if(hasMoreShots())
 	return QPoint(m_column, m_row);
@@ -55,7 +55,7 @@ bool KBDestroyShipStrategy::hasMoreShots()
 	return true;
 
     // last shot was no success :(
-    if(m_battleField->getOwnState(m_column, m_row) == KBattleField::WATER)
+    if(m_battleField->ownState(m_column, m_row) == KBattleField::WATER)
     {
 	m_column = m_start.x();
 	m_row = m_start.y();
@@ -84,10 +84,10 @@ bool KBDestroyShipStrategy::hasMoreShots()
 	    break;
 
 	default:
-	    int up = m_row > 0 ? m_battleField->getOwnState(m_column, m_row - 1) : -1;
-	    int down = m_row < (m_fieldRect.height() - 1) ? m_battleField->getOwnState(m_column, m_row + 1) : -1;
-	    int left = m_column > 0 ? m_battleField->getOwnState(m_column - 1, m_row) : -1;
-	    int right = m_column < (m_fieldRect.width() - 1) ? m_battleField->getOwnState(m_column + 1, m_row) : -1;
+	    int up = m_row > 0 ? m_battleField->ownState(m_column, m_row - 1) : -1;
+	    int down = m_row < (m_fieldRect.height() - 1) ? m_battleField->ownState(m_column, m_row + 1) : -1;
+	    int left = m_column > 0 ? m_battleField->ownState(m_column - 1, m_row) : -1;
+	    int right = m_column < (m_fieldRect.width() - 1) ? m_battleField->ownState(m_column + 1, m_row) : -1;
 
 	    if((up != -1 && up == KBattleField::HIT) || (down != -1 && down == KBattleField::HIT))
 	    {
@@ -120,7 +120,7 @@ void KBDestroyShipStrategy::shotAt(const QPoint &pos)
 
 void KBDestroyShipStrategy::destroyShipAt(const QPoint pos)
 {
-    if(enemyFieldStateAt(pos.x(), pos.y()) == FREE || m_battleField->getOwnState(pos.x(), pos.y()) == KBattleField::DEATH || m_battleField->getOwnState(pos.x(), pos.y()) == KBattleField::WATER)
+    if(enemyFieldStateAt(pos.x(), pos.y()) == FREE || m_battleField->ownState(pos.x(), pos.y()) == KBattleField::DEATH || m_battleField->ownState(pos.x(), pos.y()) == KBattleField::WATER)
 	m_working = false;
     else
     {
@@ -140,7 +140,7 @@ bool KBDestroyShipStrategy::searchUp()
 
     while(row >= 0 && (m_row - row) < 4 && enemyFieldStateAt(m_column, row) == SHOT)
     {
-	if(m_battleField->getOwnState(m_column, row) == KBattleField::WATER)
+	if(m_battleField->ownState(m_column, row) == KBattleField::WATER)
 	    return false;
 	
 	row--;
@@ -148,10 +148,10 @@ bool KBDestroyShipStrategy::searchUp()
 	bool leftOK = true;
 	bool rightOK = true;
 	if(prevCol >= 0)
-	    leftOK = (enemyFieldStateAt(prevCol, row) == FREE) || (m_battleField->getOwnState(prevCol, row) == KBattleField::WATER);
+	    leftOK = (enemyFieldStateAt(prevCol, row) == FREE) || (m_battleField->ownState(prevCol, row) == KBattleField::WATER);
 	
 	if(nextCol < m_fieldRect.width())
-	    rightOK = (enemyFieldStateAt(nextCol, row) == FREE) || (m_battleField->getOwnState(nextCol, row) == KBattleField::WATER);
+	    rightOK = (enemyFieldStateAt(nextCol, row) == FREE) || (m_battleField->ownState(nextCol, row) == KBattleField::WATER);
 
 	if(!(rightOK && leftOK))
 	    return false;
@@ -172,7 +172,7 @@ bool KBDestroyShipStrategy::searchDown()
 
     while(row < m_fieldRect.height() && (row - m_row) < 4 && enemyFieldStateAt(m_column, row) == SHOT)
     {
-	if(m_battleField->getOwnState(m_column, row) == KBattleField::WATER)
+	if(m_battleField->ownState(m_column, row) == KBattleField::WATER)
 	    return false;
 
 	row++;
@@ -180,10 +180,10 @@ bool KBDestroyShipStrategy::searchDown()
 	bool leftOK = true;
 	bool rightOK = true;
 	if(prevCol >= 0)
-	    leftOK = (enemyFieldStateAt(prevCol, row) == FREE) || (m_battleField->getOwnState(prevCol, row) == KBattleField::WATER);
+	    leftOK = (enemyFieldStateAt(prevCol, row) == FREE) || (m_battleField->ownState(prevCol, row) == KBattleField::WATER);
 	
 	if(nextCol < m_fieldRect.width())
-    	    rightOK = (enemyFieldStateAt(nextCol, row) == FREE) || (m_battleField->getOwnState(nextCol, row) == KBattleField::WATER);
+    	    rightOK = (enemyFieldStateAt(nextCol, row) == FREE) || (m_battleField->ownState(nextCol, row) == KBattleField::WATER);
 
 	if(!(rightOK && leftOK))
 	    return false;
@@ -204,7 +204,7 @@ bool KBDestroyShipStrategy::searchLeft()
 
     while(col >= 0 && (m_column - col) < 4 && enemyFieldStateAt(col, m_row) == SHOT)
     {
-	if(m_battleField->getOwnState(col, m_row) == KBattleField::WATER)
+	if(m_battleField->ownState(col, m_row) == KBattleField::WATER)
 	    return false;
 
     	col--;
@@ -212,10 +212,10 @@ bool KBDestroyShipStrategy::searchLeft()
 	bool upOK = true;
 	bool downOK = true;
 	if(prevRow >= 0)
-	    upOK = (enemyFieldStateAt(col, prevRow) == FREE) || (m_battleField->getOwnState(col, prevRow) == KBattleField::WATER);
+	    upOK = (enemyFieldStateAt(col, prevRow) == FREE) || (m_battleField->ownState(col, prevRow) == KBattleField::WATER);
 
 	if(nextRow < m_fieldRect.height())
-	    downOK = (enemyFieldStateAt(col, nextRow) == FREE) || (m_battleField->getOwnState(col, nextRow) == KBattleField::WATER);
+	    downOK = (enemyFieldStateAt(col, nextRow) == FREE) || (m_battleField->ownState(col, nextRow) == KBattleField::WATER);
 
 	if(!(upOK && downOK))
 	    return false;
@@ -236,7 +236,7 @@ bool KBDestroyShipStrategy::searchRight()
 
     while(col < m_fieldRect.width() && (col - m_column) < 4 && enemyFieldStateAt(col, m_row) == SHOT)
     {
-	if(m_battleField->getOwnState(col, m_row) == KBattleField::WATER)
+	if(m_battleField->ownState(col, m_row) == KBattleField::WATER)
 	    return false;
 
 	col++;
@@ -244,10 +244,10 @@ bool KBDestroyShipStrategy::searchRight()
 	bool upOK = true;
 	bool downOK = true;
 	if(prevRow >= 0)
-	    upOK = (enemyFieldStateAt(col, prevRow) == FREE) || (m_battleField->getOwnState(col, prevRow) == KBattleField::WATER);
+	    upOK = (enemyFieldStateAt(col, prevRow) == FREE) || (m_battleField->ownState(col, prevRow) == KBattleField::WATER);
 	
 	if(nextRow < m_fieldRect.height())
-	    downOK = (enemyFieldStateAt(col, nextRow) == FREE) || (m_battleField->getOwnState(col, nextRow) == KBattleField::WATER);
+	    downOK = (enemyFieldStateAt(col, nextRow) == FREE) || (m_battleField->ownState(col, nextRow) == KBattleField::WATER);
 
 	if(!(upOK && downOK))
 	    return false;
@@ -264,7 +264,7 @@ bool KBDestroyShipStrategy::shipDestroyed()
 {
     int col = m_start.x();
     int row = m_start.y();
-    int state = m_battleField->getOwnState(col, row);
+    int state = m_battleField->ownState(col, row);
 
     while(m_direction != HORIZONTAL && row >= 0 && state != KBattleField::FREE && state != KBattleField::WATER)
     {
@@ -273,11 +273,11 @@ bool KBDestroyShipStrategy::shipDestroyed()
 
 	row--;
 	if(row >= 0)
-	    state = m_battleField->getOwnState(col, row);
+	    state = m_battleField->ownState(col, row);
     }
     
     row = m_start.y();
-    state = m_battleField->getOwnState(col, row);
+    state = m_battleField->ownState(col, row);
     while(m_direction != HORIZONTAL && row < m_fieldRect.height() && state != KBattleField::FREE && state != KBattleField::WATER)
     {
 	if(enemyFieldStateAt(col, row) == SHIP)
@@ -285,11 +285,11 @@ bool KBDestroyShipStrategy::shipDestroyed()
 
 	row++;
 	if(row < m_fieldRect.height())
-	    state = m_battleField->getOwnState(col, row);
+	    state = m_battleField->ownState(col, row);
     }
 
     row = m_start.y();
-    state = m_battleField->getOwnState(col, row);
+    state = m_battleField->ownState(col, row);
     while(m_direction != VERTICAL && col >= 0 && state != KBattleField::FREE && state != KBattleField::WATER)
     {
 	if(enemyFieldStateAt(col, row) == SHIP)
@@ -297,11 +297,11 @@ bool KBDestroyShipStrategy::shipDestroyed()
 
 	col--;
 	if(col >= 0)
-	    state = m_battleField->getOwnState(col, row);
+	    state = m_battleField->ownState(col, row);
     }
 
     col = m_start.x();
-    state = m_battleField->getOwnState(col, row);
+    state = m_battleField->ownState(col, row);
     while(m_direction != VERTICAL && col < m_fieldRect.width() && state != KBattleField::FREE && state != KBattleField::WATER)
     {
 	if(enemyFieldStateAt(col, row) == SHIP)
@@ -309,7 +309,7 @@ bool KBDestroyShipStrategy::shipDestroyed()
 
 	col++;
 	if(col < m_fieldRect.width())
-	    state = m_battleField->getOwnState(col, row);
+	    state = m_battleField->ownState(col, row);
     }
 
     return true;

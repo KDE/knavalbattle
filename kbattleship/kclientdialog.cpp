@@ -21,28 +21,28 @@
 
 KClientDialog::KClientDialog(QWidget *parent, const char *name) : clientConnectDlg(parent, name)
 {
-    config = kapp->config();
-    nicknameEdit->setText(QString::fromLocal8Bit(getenv("LOGNAME")));
+    m_config = kapp->config();
+    nicknameEdit->setText(QString::fromLatin1(getenv("LOGNAME")));
 
     connect(connectBtn, SIGNAL(clicked()), this, SLOT(slotConnectClicked()));
     connect(cancelBtn, SIGNAL(clicked()), this, SLOT(slotCancelClicked()));
     connect(serverEdit, SIGNAL(returnPressed(const QString &)), this, SLOT(slotReturnPressed(const QString &)));
-    config->setGroup("History");
-    serverEdit->completionObject()->setItems(config->readListEntry("CompletionList")); 
+    m_config->setGroup("History");
+    serverEdit->completionObject()->setItems(m_config->readListEntry("CompletionList")); 
     
     serverEdit->setMaxCount(5);
-    serverEdit->setHistoryItems(config->readListEntry("HistoryList"));
+    serverEdit->setHistoryItems(m_config->readListEntry("HistoryList"));
 
-    serverEdit->setCurrentItem(config->readNumEntry("Index", -1));
+    serverEdit->setCurrentItem(m_config->readNumEntry("Index", -1));
 }
 
 KClientDialog::~KClientDialog()
 {
-    config->setGroup("History");
-    config->writeEntry("CompletionList", serverEdit->completionObject()->items());
-    config->writeEntry("HistoryList", serverEdit->historyItems());
-    config->writeEntry("Index", serverEdit->currentItem());
-    config->sync();
+    m_config->setGroup("History");
+    m_config->writeEntry("CompletionList", serverEdit->completionObject()->items());
+    m_config->writeEntry("HistoryList", serverEdit->historyItems());
+    m_config->writeEntry("Index", serverEdit->currentItem());
+    m_config->sync();
 }
 
 void KClientDialog::slotConnectClicked()
@@ -71,17 +71,17 @@ void KClientDialog::slotCancelClicked()
     emit sigCancelConnect();
 }
 
-QString KClientDialog::getPort()
+QString KClientDialog::port() const
 {
     return QString::number(portEdit->value());
 }
 
-QString KClientDialog::getHost()
+QString KClientDialog::host() const
 {
     return serverEdit->currentText();
 }
 
-QString KClientDialog::getNickname()
+QString KClientDialog::nickname() const
 {
     return nicknameEdit->text();
 }

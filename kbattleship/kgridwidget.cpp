@@ -367,9 +367,9 @@ void KGridWidget::drawIcon(QPixmap icon, bool hitBlend, bool waterBlend, bool ro
 	QImage second = seaPng.convertToImage();
 	painter.drawPixmap(m_x, m_y, seaPng);
 	if(rotate)
-	    painter.drawImage(m_x, m_y, KImageEffect::blend(first, second, KImageEffect::VerticalGradient, 80, 80));
+	    painter.drawImage(m_x, m_y, KImageEffect::blend(first, second, KImageEffect::VerticalGradient, 30, 30));
 	else
-	    painter.drawImage(m_x, m_y, KImageEffect::blend(first, second, KImageEffect::HorizontalGradient, 80, 80));
+	    painter.drawImage(m_x, m_y, KImageEffect::blend(first, second, KImageEffect::HorizontalGradient, 30, 30));
 
     }
     else if(hitBlend && !waterBlend)
@@ -391,7 +391,7 @@ void KGridWidget::drawIcon(QPixmap icon, bool hitBlend, bool waterBlend, bool ro
     }
 }
 
-QString KGridWidget::findIcon(const QString &name)
+QString KGridWidget::findIcon(const QString &name) const
 {
     return locate("data", "kbattleship/pictures/" + name);
 }

@@ -80,7 +80,7 @@ void KonnectionHandling::slotLostClient()
 
 void KonnectionHandling::slotMessageSent(KMessage *msg)
 {
-    if(msg->getType() == KMessage::SHOOT)
+    if(msg->type() == KMessage::SHOOT)
 	emit sigShootable(false);
     
     delete msg;
@@ -88,29 +88,29 @@ void KonnectionHandling::slotMessageSent(KMessage *msg)
 
 void KonnectionHandling::slotNewMessage(KMessage *msg)
 {
-    if(getType() == KonnectionHandling::CLIENT)
+    if(type() == KonnectionHandling::CLIENT)
     {
-	switch(msg->getType())
+	switch(msg->type())
 	{
 	    // First possible message
 	    case KMessage::DISCARD:
-		if(msg->getField("kmversion") == QString("true"))
+		if(msg->field("kmversion") == QString("true"))
 		{
-		    KMessageBox::error(0L, i18n("Connection dropped by enemy. The client's protocol implementation (%1) is not compatible with our (%2) version!").arg(msg->getField("reason")).arg(protocolVersion));
+		    KMessageBox::error(0L, i18n("Connection dropped by enemy. The client's protocol implementation (%1) is not compatible with our (%2) version!").arg(msg->field("reason")).arg(protocolVersion));
 		    emit sigAbortNetworkGame();
 		}
 		else
-		    KMessageBox::error(0L, i18n(msg->getField("reason").latin1()));
+		    KMessageBox::error(0L, i18n(msg->field("reason").latin1()));
 		break;
 
 	    // Got some informations
 	    case KMessage::VERSION:
-		emit sigClientInformation(msg->getField("clientName"), msg->getField("clientVersion"), msg->getField("clientDescription"), msg->getField("protocolVersion"));
+		emit sigClientInformation(msg->field("clientName"), msg->field("clientVersion"), msg->field("clientDescription"), msg->field("protocolVersion"));
 		break;
 
 	    // Got the enemy's nickname
 	    case KMessage::GREET:
-		emit sigEnemyNickname(msg->getField("nickname"));
+		emit sigEnemyNickname(msg->field("nickname"));
 		emit sigStatusBar(i18n("Waiting for other player to place the ships..."));
 		break;
 		
@@ -122,7 +122,7 @@ void KonnectionHandling::slotNewMessage(KMessage *msg)
 	
 	    // The server shot and wants the field state
 	    case KMessage::SHOOT:
-		emit sigSendFieldState(msg->getField("fieldx").toInt(), msg->getField("fieldy").toInt());
+		emit sigSendFieldState(msg->field("fieldx").toInt(), msg->field("fieldy").toInt());
 		emit sigStatusBar(i18n("Enemy has shot. Shoot now"));
 		emit sigShootable(true);
 		break;
@@ -130,7 +130,7 @@ void KonnectionHandling::slotNewMessage(KMessage *msg)
 	    // The server gave us the field data of our last shot
 	    case KMessage::ANSWER_SHOOT:
 		emit sigShootable(false);
-		emit sigEnemyFieldData(msg->getField("fieldx").toInt(), msg->getField("fieldy").toInt(), msg->getField("fieldstate").toInt(), msg->getField("xstart").toInt(), msg->getField("xstop").toInt(), msg->getField("ystart").toInt(), msg->getField("ystop").toInt(), (msg->getField("death") == QString("true")));
+		emit sigEnemyFieldData(msg->field("fieldx").toInt(), msg->field("fieldy").toInt(), msg->field("fieldstate").toInt(), msg->field("xstart").toInt(), msg->field("xstop").toInt(), msg->field("ystart").toInt(), msg->field("ystop").toInt(), (msg->field("death") == QString("true")));
 		break;
 
 	    // The server starts a new game
@@ -147,30 +147,30 @@ void KonnectionHandling::slotNewMessage(KMessage *msg)
 	
 	    // We got a chat message
 	    case KMessage::CHAT:
-	        emit sigChatMessage(msg->getField("nickname"), msg->getField("chat"), true);
+	        emit sigChatMessage(msg->field("nickname"), msg->field("chat"), true);
 		break;
 	}
     }
     else
     {
-        switch(msg->getType())
+        switch(msg->type())
         {
 	    // First message....got client information
 	    case KMessage::VERSION:
-		if(msg->getField("protocolVersion") != QString::fromLatin1(protocolVersion))
+		if(msg->field("protocolVersion") != QString::fromLatin1(protocolVersion))
 		{
 		    m_kbserver->slotDiscardClient(protocolVersion, true, false);
-		    KMessageBox::error(0L, i18n("Connection to client dropped. The client's protocol implementation (%1) is not compatible with our (%2) version!").arg(msg->getField("protocolVersion")).arg(protocolVersion));
+		    KMessageBox::error(0L, i18n("Connection to client dropped. The client's protocol implementation (%1) is not compatible with our (%2) version!").arg(msg->field("protocolVersion")).arg(protocolVersion));
 		}
 		else
-		    emit sigClientInformation(msg->getField("clientName"), msg->getField("clientVersion"), msg->getField("clientDescription"), msg->getField("protocolVersion"));
+		    emit sigClientInformation(msg->field("clientName"), msg->field("clientVersion"), msg->field("clientDescription"), msg->field("protocolVersion"));
 		break;
 		
 	    // Got the enemy's nickname
 	    case KMessage::GREET:
 	        KMessageBox::information(0L, i18n("We got a player. Let's start..."));
 		emit sigStatusBar(i18n("Please place your ships. Use the \"Shift\" key to place the ships vertically."));
-		emit sigEnemyNickname(msg->getField("nickname"));
+		emit sigEnemyNickname(msg->field("nickname"));
 		emit sigSendNickname();
 		emit sigPlaceShips(true);
 		break;
@@ -184,12 +184,12 @@ void KonnectionHandling::slotNewMessage(KMessage *msg)
 	    // The client gave us the field data of our last shot
 	    case KMessage::ANSWER_SHOOT:
 		emit sigShootable(false);
-		emit sigEnemyFieldData(msg->getField("fieldx").toInt(), msg->getField("fieldy").toInt(), msg->getField("fieldstate").toInt(), msg->getField("xstart").toInt(), msg->getField("xstop").toInt(), msg->getField("ystart").toInt(), msg->getField("ystop").toInt(), (msg->getField("death") == QString("true")));
+		emit sigEnemyFieldData(msg->field("fieldx").toInt(), msg->field("fieldy").toInt(), msg->field("fieldstate").toInt(), msg->field("xstart").toInt(), msg->field("xstop").toInt(), msg->field("ystart").toInt(), msg->field("ystop").toInt(), (msg->field("death") == QString("true")));
 		break;
 		
 	    // The client shot and wants the field state
 	    case KMessage::SHOOT:
-		emit sigSendFieldState(msg->getField("fieldx").toInt(), msg->getField("fieldy").toInt());
+		emit sigSendFieldState(msg->field("fieldx").toInt(), msg->field("fieldy").toInt());
 		emit sigStatusBar(i18n("Enemy has shot. Shoot now"));
 		emit sigShootable(true);
 		break;
@@ -207,7 +207,7 @@ void KonnectionHandling::slotNewMessage(KMessage *msg)
 	    
 	    // We got a chat message
 	    case KMessage::CHAT:
-	        emit sigChatMessage(msg->getField("nickname"), msg->getField("chat"), true);
+	        emit sigChatMessage(msg->field("nickname"), msg->field("chat"), true);
 		break;
 	}
     }

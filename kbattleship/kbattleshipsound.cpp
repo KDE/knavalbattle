@@ -95,23 +95,23 @@ void KBattleshipSound::playSound(int file)
 	switch(file)
 	{
 	    case PLAYER1_SHOOT_HIT:
-		playFile = soundDir + QString("ship-player1-shoot.mp3");
+		playFile = soundDir + QString::fromLatin1("ship-player1-shoot.mp3");
 		break;
 		
 	    case PLAYER2_SHOOT_HIT:
-	        playFile = soundDir + QString("ship-player2-shoot.mp3");
+	        playFile = soundDir + QString::fromLatin1("ship-player2-shoot.mp3");
 	        break;
 
 	    case PLAYER_SHOOT_WATER:
-	        playFile = soundDir + QString("ship-player-shoot-water.mp3");
+	        playFile = soundDir + QString::fromLatin1("ship-player-shoot-water.mp3");
 	        break;
     
 	    case SHIP_SINK:
-	        playFile = soundDir + QString("ship-sink.mp3");
+	        playFile = soundDir + QString::fromLatin1("ship-sink.mp3");
 	        break;
 	}
 	
-	playObject = playObjectFactory.createPlayObject(playFile.local8Bit().data());
+	playObject = playObjectFactory.createPlayObject(playFile.latin1());
 	if(!playObject.isNull())
 	    playObject.play();
     }

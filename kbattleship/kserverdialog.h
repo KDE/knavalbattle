@@ -31,8 +31,8 @@ class KServerDialog : public serverStartDlg
         KServerDialog(QWidget *parent = 0, const char *name = 0);
         ~KServerDialog();
     
-        QString getPort();
-        QString getNickname();
+        QString port() const;
+        QString nickname() const;
     
     public slots:
         void slotStartClicked();

@@ -37,9 +37,9 @@ class KStatDialog : public statDlg
         void clear();
 	void clearWon();
 	
-        int getShot();
-        int getHit();
-        int getWater();
+        int shot();
+        int hit();
+        int water();
     
     public slots:
     	void slotAddOwnWon();

@@ -29,7 +29,7 @@ class KBChooserStrategy : public KBStrategy
 	virtual ~KBChooserStrategy();
 
 	virtual void init(KBattleField *field, const QRect &field_rect);
-	virtual const QPoint getNextShot();
+	virtual const QPoint nextShot();
 	virtual bool hasMoreShots();
 	virtual void shotAt(const QPoint &pos);
 

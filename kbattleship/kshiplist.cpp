@@ -38,7 +38,7 @@ void KShipList::clear()
     m_shiplist.clear();
 }
 
-int KShipList::getXYShipType(int x, int y)
+int KShipList::shipTypeAt(int x, int y)
 {
     int tempx, tempy;
     KShip *shipiterator;
@@ -92,7 +92,7 @@ int KShipList::getXYShipType(int x, int y)
     return 99;
 }
 
-KShip *KShipList::getXYShip(int x, int y)
+KShip *KShipList::shipAt(int x, int y)
 {
     int tempx, tempy;
     KShip *shipiterator;

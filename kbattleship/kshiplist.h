@@ -32,8 +32,8 @@ class KShipList : public QObject
         KShipList();
         ~KShipList();
 
-        int getXYShipType(int x, int y);
-        KShip *getXYShip(int x, int y);
+	KShip *shipAt(int x, int y);
+        int shipTypeAt(int x, int y);
 
 	void clear();
 

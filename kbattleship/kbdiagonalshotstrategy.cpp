@@ -28,7 +28,7 @@ KBDiagonalShotStrategy::~KBDiagonalShotStrategy()
 {
 }
 
-const QPoint KBDiagonalShotStrategy::getNextShot()
+const QPoint KBDiagonalShotStrategy::nextShot()
 {
     if(hasMoreShots())
 	return QPoint(m_column, m_row);

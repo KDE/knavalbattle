@@ -33,7 +33,7 @@ class KBattleshipView : public QWidget
         KBattleshipView(QWidget *parent = 0, const char *name = 0, bool draw = false);
         ~KBattleshipView();
 
-	KBattleField *field() { return battlefield; }
+	KBattleField *field() { return m_battlefield; }
 	
         void startDrawing();
         void clearField();
@@ -42,8 +42,8 @@ class KBattleshipView : public QWidget
 
 	void previewShip(int fieldx, int fieldy, int type, bool rotate);
 
-	int getOwnFieldState(int fieldx, int fieldy);
-	int getEnemyFieldState(int &fieldx, int &fieldy);
+	int ownFieldState(int fieldx, int fieldy);
+	int enemyFieldState(int &fieldx, int &fieldy);
 
     signals:
         void sigEnemyFieldClicked(int, int);
@@ -53,7 +53,7 @@ class KBattleshipView : public QWidget
     private:
 	bool eventFilter(QObject *object, QEvent *event);
 	
-        KBattleField *battlefield;
+        KBattleField *m_battlefield;
 	bool m_drawGrid;
 	bool m_decide;
 	int m_lastX;

@@ -34,13 +34,13 @@ class KMessage : public QObject
         KMessage();
         ~KMessage();
 
-        int getType();
+        int type();
 
 	void addField(const QString &name, const QString &content);
-        QString getField(const QString &name);
+        QString field(const QString &name) const;
 
         void setDataStream(const QString &stream);
-        QString returnSendStream();
+        QString sendStream() const;
 
         void chatMessage(const QString &nickname, const QString &message);
 	void versionMessage();

@@ -40,7 +40,7 @@ void KStatDialog::slotAddEnemyWon()
 
 void KStatDialog::setShot()
 {
-    setShot(getShot() + 1);
+    setShot(shot() + 1);
 }
 
 void KStatDialog::setShot(int shot)
@@ -50,7 +50,7 @@ void KStatDialog::setShot(int shot)
 
 void KStatDialog::setHit()
 {
-    setHit(getHit() + 1);
+    setHit(hit() + 1);
 }
 
 void KStatDialog::setHit(int hit)
@@ -60,7 +60,7 @@ void KStatDialog::setHit(int hit)
 
 void KStatDialog::setWater()
 {
-    setWater(getWater() + 1);
+    setWater(water() + 1);
 }
 
 void KStatDialog::setWater(int water)
@@ -81,17 +81,17 @@ void KStatDialog::clearWon()
     EnemyLabel->setText(QString::number(0));
 }
 
-int KStatDialog::getShot()
+int KStatDialog::shot()
 {
     return ShotLCD->intValue();
 }
 
-int KStatDialog::getHit()
+int KStatDialog::hit()
 {
     return HitLCD->intValue();    
 }
 
-int KStatDialog::getWater()
+int KStatDialog::water()
 {
     return WaterLCD->intValue();
 }
