@@ -49,9 +49,24 @@ void KGridWidget::drawSquare( QPainter *painter )
     bitBlt( this, 0, 0, internalPixmap );
 }
 
-void KGridWidget::drawWaterIcon( QPainter *painter )
+void KGridWidget::drawHitIcon( QPainter *painter )
 {
-    drawIcon( painter, "water.png" );
+    drawIcon( painter, "water.png" ); // "hit.png" );
+}
+
+void KGridWidget::drawDeathIcon( QPainter *painter )
+{
+    drawIcon( painter, "water.png" ); // "death.png" );
+}
+
+void KGridWidget::drawShipIcon( QPainter *painter, int ship, int part )
+{
+/*
+    QString qship, qpart;
+    qship.setNum( ship );
+    qpart.setNum( part );
+*/
+    drawIcon( painter, "water.png" ); //"ship" + qship + "-p" + qpart );
 }
 
 void KGridWidget::drawIcon( QPainter *painter, QString iconName )

@@ -36,7 +36,9 @@ class KGridWidget : public QWidget
 	
 	void setValues( int x, int y, int size );
 	void drawSquare( QPainter *painter );
-	void drawWaterIcon( QPainter *painter );
+	void drawHitIcon( QPainter *painter );
+	void drawDeathIcon( QPainter *painter );
+	void drawShipIcon( QPainter *painter, int ship, int part );
 	void drawIcon( QPainter *painter, QString iconName );
 
     private:

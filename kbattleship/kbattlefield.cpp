@@ -32,7 +32,7 @@ KBattleField::KBattleField( QWidget *parent, const KBattleFieldType &type, QPain
     {
 	for( j = 0; j != 8; j++ ) // 1 to 9
 	{
-	    FieldData[ i ][ j ] = KBattleField::FREE;	     
+	    FieldData[ i ][ j ] = KBattleField::WATER;     
 	}
     }
     
@@ -63,18 +63,60 @@ void KBattleField::drawField( QPainter *painter )
     {
 	for( j = 0; j != 8; j++ ) // 1 to 9
 	{
+	    setValues( ( ( ( i + 1 ) * 30 ) + FromLeft ), ( ( ( j + 1 ) * 30 ) + 5 ) , 30 );
+	    drawSquare( painter );	    
 	    switch( FieldData[ i ][ j ] )
 	    {
-		case KBattleField::FREE:
-		    setValues( ( ( ( i + 1 ) * 30 ) + FromLeft ), ( ( ( j + 1 ) * 30 ) + 5 ) , 30 );
-		    drawSquare( painter );	    
+		case KBattleField::WATER:
 		    break;
 		
-		case KBattleField::WATER:
-		    setValues( ( ( ( i + 1 ) * 30 ) + FromLeft ), ( ( ( j + 1 ) * 30 ) + 5 ) , 30 );
-		    drawSquare( painter );
-		    drawWaterIcon( painter );
+		case KBattleField::HIT:
+		    drawHitIcon( painter );
 		    break;
+		    
+		case KBattleField::DEATH:
+		    drawDeathIcon( painter );
+		    break;	
+
+		case KBattleField::SHIP1P1:
+		    drawShipIcon( painter, 1, 1 );
+		    break;	    
+		    
+		case KBattleField::SHIP2P1:
+		    drawShipIcon( painter, 2, 1 );
+		    break;	    
+		    
+		case KBattleField::SHIP2P2:
+		    drawShipIcon( painter, 2, 2 );
+		    break;	    
+		    
+		case KBattleField::SHIP3P1:
+		    drawShipIcon( painter, 3, 1 );
+		    break;	    
+		    
+		case KBattleField::SHIP3P2:
+		    drawShipIcon( painter, 3, 2 );
+		    break;	    
+
+		case KBattleField::SHIP3P3:
+		    drawShipIcon( painter, 3, 3 );
+		    break;	    
+
+		case KBattleField::SHIP4P1:
+		    drawShipIcon( painter, 4, 1 );
+		    break;	    
+		    
+		case KBattleField::SHIP4P2:
+		    drawShipIcon( painter, 4, 2 );
+		    break;	    
+		    
+		case KBattleField::SHIP4P3:
+		    drawShipIcon( painter, 4, 3 );
+		    break;	    
+
+		case KBattleField::SHIP4P4:
+		    drawShipIcon( painter, 4, 4 );
+		    break;	    
 	    }		    
 	}
     }
@@ -100,5 +142,3 @@ void KBattleField::setDrawValues( QWidget *parent )
     }
     
 }
-
-
