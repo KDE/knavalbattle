@@ -39,8 +39,10 @@
 <holder>Nikolas Zimmermann</holder>
 </copyright>
 
-<date>30/04/2001</date> <!-- DATES WILL BE CONVERTED TO ISO *AUTOMATICALLY*. PLEASE JUST WAIT -->
-<releaseinfo>Version 0.09.00</releaseinfo> <!-- PLEASE RESPECT V.MM.LL -->
+<date>30/04/2001</date>
+<!-- Dates will be converted to ISO format YYYY-MM-DD (with dashes) *automatically*. Please just wait -->
+<releaseinfo>0.09.00</releaseinfo>
+<!-- Please respect V.MM.LL. "Version" text is added by style sheets -->
 
 <abstract>
 <para>
