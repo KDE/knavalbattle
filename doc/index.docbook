@@ -19,12 +19,19 @@
 	  <address><email><ulink url="mailto:molkentin@kde.org">molkentin@kde.org</ulink></email></address>
 	</affiliation>
       </author>
+      <author>
+	<firstname>Nikolas</firstname>
+	<surname>Zimmermann</surname>
+	<affiliation>
+	  <address><email><ulink url="mailto:wildfox@kde.org">wildfox@kde.org</ulink></email></address>
+	</affiliation>
+      </author>
      <!-- TRANS:ROLES_OF_TRANSLATORS -->
     </authorgroup>
-    <date>2001-03-21</date>
+    <date>2001-03-29</date>
     <releaseinfo>Version 0.5</releaseinfo>
     <abstract>
-      <para>KBattleship is a network-enabled implementation of the famous "Battle Ship"&reg; game for KDE.</para>
+      <para>KBattleship is a network-enabled implementation of the famous "Battle Ship" game for KDE.</para>
     </abstract>
     <keywordset>
       <keyword>KBattleship</keyword>
@@ -45,10 +52,10 @@
     <sect1 id="contributors">
       <title>Contributors</title>
       <para>
-        <address>Benjamin Adler <email><ulink url="mailto:benadler@bigfoot.de">benadler@bigfoot.de</ulink></email> (KBattleship Icon)</address>
-        <address>Nils Trzebin <email><ulink url="mailto:nils.trzebin@stud.uni-hannover.de">nils.trzebin@stud.uni-hannover.de</ulink></email> (Sounds)</address>
+        <address>Benjamin Adler <email><ulink url="mailto:benadler@bigfoot.de">benadler@bigfoot.de</ulink></email> (Icon)</address>
+        <address>Nils Trzebin <email><ulink url="mailto:nils.trzebin@stud.uni-hannover.de">nils.trzebin@stud.uni-hannover.de</ulink></email> (SFX)</address>
         <address>Elmar Hoefner <email><ulink url="mailto:elmar.hoefner@uibk.ac.at">elmar.hoefner@uibk.ac.at</ulink></email> (GFX)</address>
-        <address>Kevin Krammer <email><ulink url="mailto:kevin.krammer@gmx.at">kevin.krammer@gmx.at</ulink></email> (Extensive Beta-Testing)</address>
+        <address>Kevin Krammer <email><ulink url="mailto:kevin.krammer@gmx.at">kevin.krammer@gmx.at</ulink></email> (Patches)</address>
       </para>
     </sect1>
 
@@ -113,7 +120,7 @@
         player 2 sets his/her ships. Ship placement is very easy: Simply click on the field where you want to place
         your ship. The first one will have a lenght of 4, the next will be 3 fields long etc. Click on the field where you
         want to start the placement. If you click with the <mousebutton>left</mousebutton> mousebutton, the field
-        will be placed horizotally, a <mousebutton>right</mousebutton> clickwill cause it to be placed vertically.
+        will be placed horizotally, a <mousebutton>right</mousebutton> click will cause it to be placed vertically.
     </para>
     <para>
         Now you can blindly fire on the enemy battle area :). The statusbar indicates who is about to shoot. A player
@@ -132,8 +139,8 @@
 	</question>
 	<answer>
 	  <para>
-               In this release (0.5), KBattleship relies on aRts, KDE's soundserver, to emit its sounds.
-               Enable aRts in kcontrol -> Sound -> Soundserver will solve the problem.
+               In this release (0.5), KBattleship relies on aRts, KDE's soundserver, to play any sound.
+               Enable aRts in kcontrol -> Sound -> Soundserver to solve the problem.
               </para>
 	</answer>
       </qandaentry>
