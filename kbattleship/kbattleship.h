@@ -17,10 +17,9 @@
 
 #ifndef KBATTLESHIP_H
 #define KBATTLESHIP_H
- 
+
 #include <kapp.h>
 #include <kmainwindow.h>
-#include <kdebug.h>
 #include <kaccel.h>
 #include <kstdaction.h>
 #include <kaction.h>
@@ -30,7 +29,8 @@
 #include <kmenubar.h>
 #include <klocale.h>
 #include <kconfig.h>
-//#include <ktoolbar.h>
+
+#include <connectDlg.h>
 
 #include "kbattleship.h"
 #include "kbattleshipview.h"
@@ -40,8 +40,6 @@ class KBattleshipView;
 class KBattleshipApp : public KMainWindow
 {
     Q_OBJECT
-
-    friend class KBattleshipView;
 
     public:
         KBattleshipApp( QWidget *parent = 0, const char *name = 0 );
@@ -53,10 +51,11 @@ class KBattleshipApp : public KMainWindow
         void initStatusBar();
         void initDocument();
         void initView();
-        virtual bool queryExit();
 
     public slots:
-        void slotFileQuit();
+	void slotServerConnect();
+	void slotNewServer();
+        void slotGameQuit();
         void slotViewToolBar();
         void slotViewStatusBar();
         void slotStatusMsg( const QString &text );
@@ -64,9 +63,12 @@ class KBattleshipApp : public KMainWindow
     private:
         KConfig *config;
         KBattleshipView *view;
-        KAction *fileQuit;
+	KAction *gameServerConnect;
+	KAction *gameNewServer;
+        KAction *gameQuit;
         KToggleAction *viewToolBar;
         KToggleAction *viewStatusBar;
+        clientConnectDlg *connect;
 };
 
 #endif
