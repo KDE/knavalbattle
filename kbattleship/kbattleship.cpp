@@ -18,6 +18,7 @@
 #include <qtimer.h>
 #include <stdlib.h>
 #include <qlayout.h>
+#include <kgamemisc.h>
 #include "kbattleship.moc"
 
 KBattleshipApp::KBattleshipApp(QWidget *, const char *name) : KMainWindow(0, name)
@@ -1115,7 +1116,7 @@ void KBattleshipApp::slotStartBattleshipGame()
     if(m_single != 0)
 	m_ownNickname = m_single->getNickname();
     slotChangeOwnPlayer(m_ownNickname);
-    slotChangeEnemyPlayer(i18n("Computer"));
+    slotChangeEnemyPlayer(KGameMisc::randomName());
     delete m_single;
     m_single = 0;
     cleanup(true);
