@@ -15,6 +15,8 @@
  *                                                                         *
  ***************************************************************************/
 
+#include <qtextstream.h>
+
 #include "kbattleshipserver.moc"
 
 KBattleshipServer::KBattleshipServer( int port ) : QServerSocket( port )
@@ -43,16 +45,13 @@ void KBattleshipServer::readClient()
 {
     QSocket *socket = ( QSocket * )sender();
     kdDebug() << "READLINE!" << endl;
-    if( socket->canReadLine() )
-    {
 	kdDebug() << "CAN READ!" << endl;
-        KMessageType msgtype;
-        KMessage *msg = new KMessage( msgtype );
-        msg->setDataStream( socket->readLine() );
-//	kdDebug() << "msg: " << serverSocket->readLine() << endl;
+    QTextStream str(socket);
+    KMessageType msgtype;
+    KMessage *msg = new KMessage( msgtype );
+    msg->setDataStream( str.readLine() );
 	kdDebug() << "Type of message: " << msg->getType() << endl;
 	emit newMessage( msg );
-    }
 }
 
 void KBattleshipServer::sendMessage( KMessage *msg )
