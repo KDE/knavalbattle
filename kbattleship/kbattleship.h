@@ -20,6 +20,7 @@
  
 #include <kapp.h>
 #include <kmainwindow.h>
+#include <kdebug.h>
 #include <kaccel.h>
 #include <kstdaction.h>
 #include <kaction.h>
@@ -29,6 +30,7 @@
 #include <kmenubar.h>
 #include <klocale.h>
 #include <kconfig.h>
+//#include <ktoolbar.h>
 
 #include "kbattleship.h"
 #include "kbattleshipview.h"
@@ -38,6 +40,8 @@ class KBattleshipView;
 class KBattleshipApp : public KMainWindow
 {
     Q_OBJECT
+
+    friend class KBattleshipView;
 
     public:
         KBattleshipApp( QWidget *parent = 0, const char *name = 0 );

@@ -9,5 +9,6 @@ noinst_HEADERS   = kmessagetype.h kmessage.h kbattleshipserver.h kbattleshipclie
 METASOURCES = AUTO
 DISTCLEANFILES = $(METASOURCES)
 KDE_ICON = kbattleship
+
 kdelnkdir   = $(kde_appsdir)/Games
 kdelnk_DATA = KBattleship.desktop

@@ -34,21 +34,23 @@ KBattleshipApp::~KBattleshipApp()
 
 void KBattleshipApp::initActions()
 {
-    fileQuit = KStdAction::quit(this, SLOT(slotFileQuit()), actionCollection());
-    viewToolBar = KStdAction::showToolbar(this, SLOT(slotViewToolBar()), actionCollection());
-    viewStatusBar = KStdAction::showStatusbar(this, SLOT(slotViewStatusBar()), actionCollection());
+    fileQuit = KStdAction::quit( this, SLOT( slotFileQuit() ), actionCollection() );
+    viewToolBar = KStdAction::showToolbar( this, SLOT( slotViewToolBar() ), actionCollection() );
+    viewStatusBar = KStdAction::showStatusbar( this, SLOT( slotViewStatusBar() ), actionCollection() );
 
+    KStdAction::saveAs(this, SLOT(fileSaveAs()), actionCollection());
     fileQuit->setStatusText( i18n( "Quits the application" ) );
     viewToolBar->setStatusText( i18n( "Enables/disables the toolbar" ) );
     viewStatusBar->setStatusText( i18n( "Enables/disables the statusbar" ) );
-
+    
     createGUI();
 }
 
 
 void KBattleshipApp::initStatusBar()
 {
-    statusBar()->insertItem( i18n("Ready."), ID_STATUS_MSG );
+//    statusBar()->insertItem( i18n("Ready."), ID_STATUS_MSG );
+    statusBar()->message( i18n( "Ready." ) );
 }
 
 void KBattleshipApp::initView()
@@ -64,27 +66,27 @@ void KBattleshipApp::saveOptions()
     config->writeEntry( "AppGeometry", size() );
     config->writeEntry( "ShowToolbar", viewToolBar->isChecked() );
     config->writeEntry( "ShowStatusbar", viewStatusBar->isChecked() );
-    config->writeEntry( "ToolBarPos", (int) toolBar( "mainToolBar" )->barPos() );
+    config->writeEntry( "ToolBarPos", (int) toolBar()->barPos() );
 }
 
 
 void KBattleshipApp::readOptions()
 {
-    config->setGroup("General");
+    config->setGroup( "General" );
 
     bool bViewToolbar = config->readBoolEntry( "ShowToolbar", true );
     viewToolBar->setChecked( bViewToolbar );
     slotViewToolBar();
 
-    bool bViewStatusbar = config->readBoolEntry( "Show Statusbar", true );
+    bool bViewStatusbar = config->readBoolEntry( "ShowStatusbar", true );
     viewStatusBar->setChecked( bViewStatusbar );
     slotViewStatusBar();
 
     KToolBar::BarPosition toolBarPos;
     toolBarPos = (KToolBar::BarPosition) config->readNumEntry( "ToolBarPos", KToolBar::Top );
-    toolBar( "mainToolBar" )->setBarPos( toolBarPos );
+    toolBar()->setBarPos( KToolBar::Top ); //toolBarPos );
 
-    QSize size = config->readSizeEntry( "Geometry" );
+    QSize size = config->readSizeEntry( "AppGeometry" );
     if( !size.isEmpty() )
     {
         resize( size );
@@ -101,30 +103,20 @@ void KBattleshipApp::slotFileQuit()
 {
     slotStatusMsg( i18n( "Exiting..." ) );
     saveOptions();
-
-    KMainWindow *window;
-    if( memberList )
-    {
-        for( window = memberList->first(); window != 0; window = memberList->first() )
-        {
-            if( !window->close() )
-                break;
-        }
-    }
-
-    slotStatusMsg( i18n( "Ready." ) );
+    this->close();
 }
 
 void KBattleshipApp::slotViewToolBar()
 {
-    slotStatusMsg(i18n("Toggling toolbar..."));
+    slotStatusMsg( i18n("Toggling toolbar...") );
     if( !viewToolBar->isChecked() )
     {
-        toolBar( "mainToolBar" )->hide();
+        toolBar()->hide();
     }
     else
     {
-        toolBar( "mainToolBar" )->show();
+        toolBar()->show();
+	kdDebug() << "showed!" << endl;
     }
 
     slotStatusMsg( i18n( "Ready." ) );
@@ -148,7 +140,8 @@ void KBattleshipApp::slotViewStatusBar()
 
 void KBattleshipApp::slotStatusMsg( const QString &text )
 {
-    statusBar()->clear();
-    statusBar()->changeItem( text, ID_STATUS_MSG );
+//   statusBar()->clear();
+//   statusBar()->changeItem( text, ID_STATUS_MSG );
+    statusBar()->message( text );
 }
 
