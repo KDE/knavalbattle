@@ -1,0 +1,238 @@
+<!DOCTYPE UI><UI>
+<class>serverStartDlg</class>
+<widget>
+    <class>QDialog</class>
+    <property stdset="1">
+        <name>name</name>
+        <cstring>serverStartDlg</cstring>
+    </property>
+    <property stdset="1">
+        <name>geometry</name>
+        <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>350</width>
+            <height>121</height>
+        </rect>
+    </property>
+    <property stdset="1">
+        <name>caption</name>
+        <string>Start server</string>
+    </property>
+    <property stdset="1">
+        <name>minimumSize</name>
+        <size>
+            <width>350</width>
+            <height>120</height>
+        </size>
+    </property>
+    <property stdset="1">
+        <name>maximumSize</name>
+        <size>
+            <width>450</width>
+            <height>150</height>
+        </size>
+    </property>
+    <property>
+        <name>layoutMargin</name>
+    </property>
+    <property>
+        <name>layoutSpacing</name>
+    </property>
+    <widget>
+        <class>QLabel</class>
+        <property stdset="1">
+            <name>name</name>
+            <cstring>nicknameLabel</cstring>
+        </property>
+        <property stdset="1">
+            <name>geometry</name>
+            <rect>
+                <x>15</x>
+                <y>24</y>
+                <width>58</width>
+                <height>16</height>
+            </rect>
+        </property>
+        <property stdset="1">
+            <name>text</name>
+            <string>Nickname:</string>
+        </property>
+        <property stdset="1">
+            <name>alignment</name>
+            <set>AlignVCenter|AlignLeft</set>
+        </property>
+        <property stdset="1">
+            <name>sizePolicy</name>
+            <sizepolicy>
+                <hsizetype>0</hsizetype>
+                <vsizetype>0</vsizetype>
+            </sizepolicy>
+        </property>
+        <property>
+            <name>hAlign</name>
+        </property>
+    </widget>
+    <widget>
+        <class>KLineEdit</class>
+        <property stdset="1">
+            <name>name</name>
+            <cstring>KLineEdit1_2</cstring>
+        </property>
+        <property stdset="1">
+            <name>geometry</name>
+            <rect>
+                <x>83</x>
+                <y>49</y>
+                <width>50</width>
+                <height>22</height>
+            </rect>
+        </property>
+        <property stdset="1">
+            <name>maxLength</name>
+            <number>5</number>
+        </property>
+        <property stdset="1">
+            <name>text</name>
+            <string>54321</string>
+        </property>
+    </widget>
+    <widget>
+        <class>QLayoutWidget</class>
+        <property stdset="1">
+            <name>name</name>
+            <cstring>Layout2</cstring>
+        </property>
+        <property stdset="1">
+            <name>geometry</name>
+            <rect>
+                <x>90</x>
+                <y>80</y>
+                <width>168</width>
+                <height>28</height>
+            </rect>
+        </property>
+        <hbox>
+            <property stdset="1">
+                <name>margin</name>
+                <number>0</number>
+            </property>
+            <property stdset="1">
+                <name>spacing</name>
+                <number>6</number>
+            </property>
+            <widget>
+                <class>QPushButton</class>
+                <property stdset="1">
+                    <name>name</name>
+                    <cstring>startBtn</cstring>
+                </property>
+                <property stdset="1">
+                    <name>text</name>
+                    <string>&amp;Start</string>
+                </property>
+                <property stdset="1">
+                    <name>default</name>
+                    <bool>true</bool>
+                </property>
+                <property stdset="1">
+                    <name>flat</name>
+                    <bool>false</bool>
+                </property>
+                <property stdset="1">
+                    <name>toggleButton</name>
+                    <bool>false</bool>
+                </property>
+                <property stdset="1">
+                    <name>on</name>
+                    <bool>false</bool>
+                </property>
+                <property>
+                    <name>whatsThis</name>
+                    <string>Press here to start the server</string>
+                </property>
+            </widget>
+            <widget>
+                <class>QPushButton</class>
+                <property stdset="1">
+                    <name>name</name>
+                    <cstring>cancelBtn</cstring>
+                </property>
+                <property stdset="1">
+                    <name>text</name>
+                    <string>C&amp;ancel</string>
+                </property>
+            </widget>
+        </hbox>
+    </widget>
+    <widget>
+        <class>KLineEdit</class>
+        <property stdset="1">
+            <name>name</name>
+            <cstring>KLineEdit1</cstring>
+        </property>
+        <property stdset="1">
+            <name>geometry</name>
+            <rect>
+                <x>83</x>
+                <y>21</y>
+                <width>236</width>
+                <height>22</height>
+            </rect>
+        </property>
+        <property stdset="1">
+            <name>maxLength</name>
+            <number>25</number>
+        </property>
+    </widget>
+    <widget>
+        <class>QLabel</class>
+        <property stdset="1">
+            <name>name</name>
+            <cstring>portLabel</cstring>
+        </property>
+        <property stdset="1">
+            <name>geometry</name>
+            <rect>
+                <x>11</x>
+                <y>52</y>
+                <width>66</width>
+                <height>16</height>
+            </rect>
+        </property>
+        <property stdset="1">
+            <name>text</name>
+            <string>Server Port:</string>
+        </property>
+        <property stdset="1">
+            <name>sizePolicy</name>
+            <sizepolicy>
+                <hsizetype>0</hsizetype>
+                <vsizetype>0</vsizetype>
+            </sizepolicy>
+        </property>
+        <property stdset="1">
+            <name>alignment</name>
+            <set>AlignVCenter|AlignLeft</set>
+        </property>
+        <property>
+            <name>hAlign</name>
+        </property>
+        <property>
+            <name>vAlign</name>
+        </property>
+    </widget>
+</widget>
+<connections>
+    <connection>
+        <sender>cancelBtn</sender>
+        <signal>clicked()</signal>
+        <receiver>serverStartDlg</receiver>
+        <slot>reject()</slot>
+    </connection>
+</connections>
+<tabstops>
+    <tabstop>startBtn</tabstop>
+    <tabstop>cancelBtn</tabstop>
+</tabstops>
+</UI>
