@@ -17,10 +17,7 @@
 
 #include "kbattleshipsound.moc"
 
-SimpleSoundServer *soundserver = 0;
-static bool soundRunning;
-
-KBattleshipSound::KBattleshipSound() : QObject()
+KBattleshipSound::KBattleshipSound()
 {
     initSoundServer();
 }
@@ -31,16 +28,15 @@ KBattleshipSound::~KBattleshipSound()
 
 void KBattleshipSound::initSoundServer()
 {
-    soundserver = new SimpleSoundServer;
-    *soundserver = Arts::Reference( "global:Arts_SimpleSoundServer" );
-    if( soundserver->isNull() )
+    soundserver = Arts::Reference( "global:Arts_SimpleSoundServer" );
+    if( soundserver.isNull() )
     {
 	KMessageBox::error( 0L, i18n( "Couldn't connect to Arts Soundserver. Sound deactivated" ) );
-	soundRunning = false;
+	m_running = false;
     }
     else
     {
-	soundRunning = true;
+	m_running = true;
     }
 	
 }
@@ -64,25 +60,25 @@ void KBattleshipSound::playSound( int file )
 	switch( file )
 	{
 	    case SHIP_EXPLODE:
-		soundserver->play( QString( picDir + QString( "ship-explode.mp3" ) ).latin1() );
+		soundserver.play( QString( picDir + QString( "ship-explode.mp3" ) ).latin1() );
 		break;
 		
 	    case PLAYER1_SHOOT_HIT:
-		soundserver->play( QString( picDir + QString( "ship-player1-shoot.mp3" ) ).latin1() );
+		soundserver.play( QString( picDir + QString( "ship-player1-shoot.mp3" ) ).latin1() );
 		break;
 		
 	    case PLAYER2_SHOOT_HIT:
-		soundserver->play( QString( picDir + QString( "ship-player2-shoot.mp3" ) ).latin1() );
+		soundserver.play( QString( picDir + QString( "ship-player2-shoot.mp3" ) ).latin1() );
 		break;
 
 	    case PLAYER_SHOOT_WATER:
 		kdDebug() << "I'll play this NOW" << endl;
 		kdDebug() << "File: " <<  QString( picDir + QString( "ship-player-shoot-water.mp3" ) ) << endl;
-		soundserver->play( QString( picDir + QString( "ship-player-shoot-water.mp3" ) ).latin1() );
+		soundserver.play( QString( picDir + QString( "ship-player-shoot-water.mp3" ) ).latin1() );
 		break;
     
 	    case SHIP_SINK:
-		soundserver->play( QString( picDir + QString( "ship-sink.mp3" ) ).latin1() );
+		soundserver.play( QString( picDir + QString( "ship-sink.mp3" ) ).latin1() );
 		break;
 	}
     }
@@ -91,6 +87,6 @@ void KBattleshipSound::playSound( int file )
 bool KBattleshipSound::isRunning()
 {
     kdDebug() << "RUNCHECK!" << endl;
-    kdDebug() << "isRunning: " << soundRunning << endl;
-    return soundRunning;
+    kdDebug() << "isRunning: " << m_running << endl;
+    return m_running;
 }

@@ -28,8 +28,6 @@
 #include <qobject.h>
 #include <arts/soundserver.h>
 
-using namespace Arts;
-
 class KBattleshipSound : public QObject
 {
     Q_OBJECT
@@ -42,8 +40,9 @@ class KBattleshipSound : public QObject
         void initSoundServer();
 	
     private:
-	static SimpleSoundServer *soundserver;
+	Arts::SimpleSoundServer soundserver;
 	bool isRunning();
+        bool m_running;
 };
 
 #endif
