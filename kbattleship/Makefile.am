@@ -38,3 +38,6 @@ kdelnk_DATA                 =   kbattleship.desktop
 messages: rc.cpp
 	$(EXTRACTRC) */*.ui >> rc.cpp
 	$(XGETTEXT) rc.cpp *.cpp main.h -o $(podir)/kbattleship.pot
+
+install-data-local:
+	rm -rf $(kde_appsdir)/Games/kbattleship.desktop
