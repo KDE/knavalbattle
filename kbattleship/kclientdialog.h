@@ -36,15 +36,15 @@ class KClientDialog : public clientConnectDlg
 	QString getPort();
 	QString getHost();
 	QString getNickname();
-		
+    	
     public slots:
         void slotConnectClicked();
 	void slotCancelClicked();
-	
+    
     signals:
 	void connectServer();
 	void cancelConnect();
-	
+    
     private:
 	KConfig *config;
 };

@@ -1,4 +1,4 @@
-<!DOCTYPE kpartgui>
+<!DOCTYPE kpartgui SYSTEM "kpartgui.dtd">
 <kpartgui name="kbattleship" version="0.3">
 <MenuBar>
   <Menu name="file"><text>&amp;File</text>

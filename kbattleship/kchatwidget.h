@@ -34,14 +34,14 @@ class KChatWidget : public chatWidget
 
 	void setNickname( QString nickname );
 	void acceptMsg( bool value );
-	
+    
     public slots:
-    	void slotComputeMessage();
+        void slotComputeMessage();
 	void receivedMessage( QString nickname, QString msg );
-	
+    
     signals:
 	void sendMessage( QString );
-	
+    
     private:
 	QString currentNickname;
 	bool acceptMsgs;

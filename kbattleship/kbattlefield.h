@@ -29,29 +29,29 @@ class KBattleField : public KGridWidget
 {
     Q_OBJECT
     public:
-	enum{ FREE = 90, WATER = 91, HIT = 92, DEATH = 93, SHIP = 94 };
-	KBattleField();
+    enum{ FREE = 90, WATER = 91, HIT = 92, DEATH = 93, SHIP = 94 };
+    KBattleField();
         KBattleField( QWidget *, const KBattleFieldType &type, QPainter *painter );
         ~KBattleField();
-	
-	void requestedShipIconDraw( QPainter *painter, int type, bool hit = false, bool death = false );
-	void setDrawValues( QWidget *parent );
-	void drawField( QPainter *painter );
-	void clearField();
-	void changeData( int &fieldx, int &fieldy, int type );
-	void findOwnFieldShipType( int x, int y, QPainter *painter, bool hit = false, bool death = false );
-	void findEnemyFieldShipType( int x, int y, QPainter *painter );
-	int getState( int fieldx, int fieldy );
+    
+    void requestedShipIconDraw( QPainter *painter, int type, bool hit = false, bool death = false );
+    void setDrawValues( QWidget *parent );
+    void drawField( QPainter *painter );
+    void clearField();
+    void changeData( int &fieldx, int &fieldy, int type );
+    void findOwnFieldShipType( int x, int y, QPainter *painter, bool hit = false, bool death = false );
+    void findEnemyFieldShipType( int x, int y, QPainter *painter );
+    int getState( int fieldx, int fieldy );
 
     private:
-	int FieldData[ 8 ][ 8 ];
-	int internalType;
-	int FromLeft;
-	QString nickName;
+    int FieldData[ 8 ][ 8 ];
+    int internalType;
+    int FromLeft;
+    QString nickName;
 
     signals:
-	void doOwnFieldShipListJob( int, int, QPainter *, bool, bool );
-	void doEnemyFieldShipListJob( int, int, QPainter * );
+    void doOwnFieldShipListJob( int, int, QPainter *, bool, bool );
+    void doEnemyFieldShipListJob( int, int, QPainter * );
 
 };
 

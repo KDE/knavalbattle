@@ -24,7 +24,7 @@ KonnectionHandling::KonnectionHandling( QWidget *parent, KBattleshipServer *serv
     enemylist = false;
     internalServer = server;
     internalType = KonnectionHandling::SERVER;
-    connect( server, SIGNAL( serverFailure() ), this, SIGNAL( serverFailure() ) );
+    connect( server, SIGNAL( serverFailure() ), this, SLOT( serverError() ) );
     connect( server, SIGNAL( senemylist( bool ) ), this, SLOT( setEnemyList( bool ) ) );
     connect( server, SIGNAL( newConnect() ), this, SLOT( serverGotNewClient() ) );
     connect( server, SIGNAL( endConnect() ), this, SLOT( serverLostClient() ) );
@@ -52,6 +52,11 @@ KonnectionHandling::~KonnectionHandling()
 int KonnectionHandling::getType()
 {
     return internalType;
+}
+
+void KonnectionHandling::serverError()
+{
+    emit serverFailure( true );
 }
 
 bool KonnectionHandling::haveEnemy()
@@ -115,6 +120,10 @@ void KonnectionHandling::gotNewMessage( KMessage *msg )
 	case KonnectionHandling::CLIENT:
 	    switch( msg->getType() )
 	    {
+		case KMessage::REPLAY:
+		    emit clientRestart(); 
+		    break;
+		    
 		case KMessage::GREET:
 		    emit enemyNickname( msg->getField( "nickname" ).latin1() );
 		    break;
@@ -128,7 +137,14 @@ void KonnectionHandling::gotNewMessage( KMessage *msg )
 			
 	        case KMessage::ANSWER_SHOOT:
 		    emit ownFieldDataChanged( msg->getField( "fieldx" ).toInt(), msg->getField( "fieldy" ).toInt(), msg->getField( "fieldstate" ).toInt() );
-		    emit statusBarMessage( i18n( "Enemy has shot | Shoot now" ) );
+	            if( msg->getField( "enemyM" ) == QString( "won" ) )
+		    {
+			emit statusBarMessage( i18n( "You lost the game :(" ) );
+			emit abortGame();
+		    }
+		    else
+			emit statusBarMessage( i18n( "Enemy has shot | Shoot now" ) );
+	
 		    break;
 		    
 		case KMessage::CHAT:
@@ -142,6 +158,10 @@ void KonnectionHandling::gotNewMessage( KMessage *msg )
 	case KonnectionHandling::SERVER:
 	    switch( msg->getType() )
 	    {
+		case KMessage::REPLAY:
+		    emit askReplay();
+		    break;
+		    
 		case KMessage::GREET:
 		    emit enemyNickname( msg->getField( "nickname" ).latin1() );
 		    emit giveEnemyName();
@@ -155,7 +175,14 @@ void KonnectionHandling::gotNewMessage( KMessage *msg )
 		    
 		case KMessage::ANSWER_SHOOT:
 		    emit ownFieldDataChanged( msg->getField( "fieldx" ).toInt(), msg->getField( "fieldy" ).toInt(), msg->getField( "fieldstate" ).toInt() );
-		    emit statusBarMessage( i18n( "Enemy has shot | Shoot now" ) );
+		    if( msg->getField( "enemyM" ) == QString( "won" ) )
+		    {
+			emit statusBarMessage( i18n( "You lost the game :(" ) );
+			emit abortGame();
+		    }
+		    else
+		        emit statusBarMessage( i18n( "Enemy has shot | Shoot now" ) );
+	
 		    break;
 		    
 		case KMessage::CHAT:
@@ -171,7 +198,7 @@ void KonnectionHandling::gotNewMessage( KMessage *msg )
 void KonnectionHandling::clientLostServer()
 {
     KMessageBox::error( 0L, i18n( "Connection to server lost. Aborting the game!" ) );
-    emit abortGame();
+    emit abortGameStrict( false );
 }
 
 void KonnectionHandling::clientSocketError( int error )

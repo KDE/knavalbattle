@@ -51,7 +51,7 @@ class KBattleshipServer : public QServerSocket
         void endConnect();
         void wroteToClient();
 	void newMessage( KMessage * );
-	
+    
     private:
 	int internalPort;
 	QSocket *serverSocket;

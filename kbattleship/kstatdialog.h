@@ -27,12 +27,14 @@ class KStatDialog : public statDlg
     public:
         KStatDialog( QWidget *parent = 0, const char *name = 0 );
         ~KStatDialog();
-	
-	void setShot();
-	void setHit();
+    
+        void setShot();
+        void setHit();
 	void setWater();
+    
+        void clear();
 	
-	void clear();
+	int getHit();
 };
 
 #endif

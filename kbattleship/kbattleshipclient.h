@@ -35,7 +35,7 @@ class KBattleshipClient : public QSocket
 	void allowWrite();
 	void forbidWrite();
 	bool write();
-	
+    
     private slots:
         void connectionControl();
 	void readData();
@@ -47,7 +47,7 @@ class KBattleshipClient : public QSocket
 	void newMessage( KMessage * );
 	void endConnect();
 	void socketFailure( int );
-	 
+     
     private:
         void connectToServer();
         int internalPort;

@@ -47,3 +47,8 @@ void KStatDialog::clear()
     HitLCD->display( 0 );
     WaterLCD->display( 0 );
 }
+
+int KStatDialog::getHit()
+{
+    return HitLCD->intValue();    
+}

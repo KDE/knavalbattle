@@ -41,18 +41,18 @@ class KBattleshipView : public QWidget
 	void giveOwnFieldShipListType( QPainter *painter, int type, bool hit, bool death );
 	void giveEnemyFieldShipListType( QPainter *painter, int type );
 	int getOwnFieldState( int &fieldx, int &fieldy );
-	int getEnemyFieldState( int &fieldx, int &fieldy );
+        int getEnemyFieldState( int &fieldx, int &fieldy );
 
     protected:
-    	void paintEnemyField();
+        void paintEnemyField();
 	void paintOwnField();
 	void paintEvent( QPaintEvent * );
 	void mouseReleaseEvent( QMouseEvent *event );
-	
+    
     private:
         KBattleField *ownfield;
         KBattleField *enemyfield;
-	
+    
     signals:
 	void enemyFieldClicked( int, int );
 	void ownFieldClicked( int, int, int );

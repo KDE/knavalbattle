@@ -33,7 +33,7 @@ class KGridWidget : public QWidget
     public:
         KGridWidget();
         ~KGridWidget();
-	
+    
 	void setValues( int x, int y, int size );
 	void drawSquare( QPainter *painter );
 	void drawHitIcon( QPainter *painter );

@@ -36,42 +36,46 @@ class KonnectionHandling : public QObject
         KonnectionHandling( QWidget *parent, KBattleshipServer *server );
         KonnectionHandling( QWidget *parent, KBattleshipClient *client );
         ~KonnectionHandling();
-	
+    
 	int getType();
 	int getFieldState();
 	bool writeable();
-	bool sendEnemyList();
+        bool sendEnemyList();
 	bool gotEnemyList();
 	bool haveEnemy();
-	
+    
     public slots:
 	void setEnemyList( bool set );
 	void gotNewMessage( KMessage *msg );
+	void serverError();
         void serverGotNewClient();
 	void serverWroteToClient();
-	void serverLostClient();	
-	void clientLostServer();
-	void clientSocketError( int error );
-	
+        void serverLostClient();	
+        void clientLostServer();
+        void clientSocketError( int error );
+    
     private:
-	KBattleshipServer *internalServer;
-	KBattleshipClient *internalClient;
-	bool enemylist;
-	bool senemylist;
-	bool enemy;
-	int internalType;
+        KBattleshipServer *internalServer;
+        KBattleshipClient *internalClient;
+        bool enemylist;
+        bool senemylist;
+        bool enemy;
+        int internalType;
 
-    signals:	
-	void statusBarMessage( const QString & );
-	void abortGame();
-	void setPlaceable();
-	void gotEnemyShipList( QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString );
-	void gotChatMessage( QString, QString );
-	void enemyNickname( const QString & );
-	void ownFieldDataChanged( int, int, int );
-	void changeConnectText();
-	void giveEnemyName();
-	void serverFailure();
+    signals:    
+	void clientRestart();
+	void askReplay();
+        void statusBarMessage( const QString & );
+        void abortGame();
+	void abortGameStrict( bool );
+        void setPlaceable();
+        void gotEnemyShipList( QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString );
+        void gotChatMessage( QString, QString );
+        void enemyNickname( const QString & );
+        void ownFieldDataChanged( int, int, int );
+        void changeConnectText();
+        void giveEnemyName();
+        void serverFailure( bool );
 };
 
 #endif

@@ -29,7 +29,7 @@ class KMessage : QObject
 {
     Q_OBJECT
     public:
-	enum{ GREET, SHIPLIST, ANSWER_SHOOT, CHAT };
+	enum{ GREET, SHIPLIST, ANSWER_SHOOT, CHAT, REPLAY };
         KMessage( int type );
 	KMessage();
         ~KMessage();

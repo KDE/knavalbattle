@@ -48,6 +48,27 @@ int KShipList::getXYShipType( int x, int y )
     return 99;
 }
 
+KShip *KShipList::getXYShip( int x, int y )
+{
+    int tempx, tempy;
+    KShip *shipiterator;
+    for( shipiterator = shiplist.first(); shipiterator != 0; shipiterator = shiplist.next() )
+    {
+	for( tempy = shipiterator->shipystart(); tempy <= shipiterator->shipystop(); tempy++ )
+	{
+	    if( tempy == y )	
+	    {
+		for( tempx = shipiterator->shipxstart(); tempx <= shipiterator->shipxstop(); tempx++ )
+		{
+		    if( tempx == x )	
+			return shipiterator;
+		}
+	    }
+        }
+    }
+    return 0;
+}
+
 bool KShipList::canAddShips()
 {
     if( shipsadded >= 1)

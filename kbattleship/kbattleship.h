@@ -33,7 +33,6 @@
 #include <qstring.h>
 #include <qsplitter.h>
 #include <arts/dispatcher.h>
-#include <arts/soundserver.h>
 
 #include "kbattleship.h"
 #include "kbattleshipview.h"
@@ -46,6 +45,7 @@
 #include "kclientdialog.h"
 #include "kstatdialog.h"
 #include "kchatwidget.h"
+#include "kship.h"
 
 class KBattleshipView;
 
@@ -63,15 +63,18 @@ class KBattleshipApp : public KMainWindow
         void readOptions();
         void initActions();
         void initStatusBar();
-        void initView();
+	void initView();
 	void initChat();
 	void initSound();
 	void initShipPlacing();
 
     public slots:
+	void deleteLists();
+	void askReplay();
 	void sendGreet();
-	void resetClient();
-	void resetServer();
+	void clientRestart();
+	void resetClient( bool status = true );
+	void resetServer( bool status = true );
 	void setPlaceable();
 	void slotServerConnect();
 	void slotNewServer();
@@ -80,13 +83,13 @@ class KBattleshipApp : public KMainWindow
         void slotViewToolBar();
         void slotViewStatusBar();
         void slotStatusMsg( const QString &text );
-        void slotChangeOwnPlayer( const QString &text );	
+        void slotChangeOwnPlayer( const QString &text );    
         void slotChangeEnemyPlayer( const QString &text );
 	void startBattleshipServer();
 	void connectToBattleshipServer();
 	void placeShip( int fieldx, int fieldy, int button );
 	void enemyClick( int fieldx, int fieldy );
-	void sendMessage( int fieldx, int fieldy, int state );
+	void sendMessage( int fieldx, int fieldy, int state, bool won = false );
 	void sendMessage( KMessage *msg );
 	void sendShipList();
 	void sendChatMessage( QString text );
@@ -118,14 +121,14 @@ class KBattleshipApp : public KMainWindow
 	KBattleshipSound *sound;
         KClientDialog *client;
 	KServerDialog *server;
-	KonnectionHandling *connection;
+        KonnectionHandling *connection;
 	KShipList *ownshiplist;
 	KShipList *enemyshiplist;
 	bool haveCS;
 	bool place;
 	QString ownNickname;
 	QString enemyNickname;
-    	
+        
     signals:
 	void battleFieldState( int, int, int );
 };
