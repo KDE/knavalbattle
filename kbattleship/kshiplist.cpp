@@ -135,13 +135,13 @@ bool KShipList::addNewShip(bool vertical, int fieldx, int fieldy)
 
 	for(KShip *placedShip = m_shiplist.first(); placedShip != 0; placedShip = m_shiplist.next())
 	{
-		for(int i = fieldx; i < (fieldx + ship.width()); i++)
+		for(int i = fieldx-1; i < (fieldx + ship.width()+1); i++)
 		{
 			if(placedShip->contains(i, fieldy - 1) || placedShip->contains(i, fieldy + ship.height()))
 				return false;
 		}
 
-		for(int i = fieldy; i < (fieldy + ship.height()); i++)
+		for(int i = fieldy-1; i < (fieldy + ship.height()+1); i++)
 		{
 			if(placedShip->contains(fieldx - 1, i) || placedShip->contains(fieldx + ship.width(), i))
 				return false;

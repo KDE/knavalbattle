@@ -262,18 +262,58 @@ void KBattleshipApp::slotEnemyFieldClick(int fieldx, int fieldy)
 						if(xokay)
 						{
 							DeathValueList::Iterator it;
-							for(it = deathList.begin(); it != deathList.end(); it++)
+							for(it = deathList.begin(); it != deathList.end(); it++){
+								if(fieldy+1<m_enemyshiplist->m_fieldy) m_view->changeEnemyFieldData(*it, fieldy+1, KBattleField::BORDER);
 								m_view->changeEnemyFieldData(*it, fieldy, KBattleField::DEATH);
+								if(fieldy>0) m_view->changeEnemyFieldData(*it, fieldy-1, KBattleField::BORDER);
+								}
+							if(ship->shipxstart()>0){
+							if (fieldy>0)m_view->changeEnemyFieldData(ship->shipxstart()-1, fieldy-1, KBattleField::BORDER);
+							m_view->changeEnemyFieldData(ship->shipxstart()-1, fieldy, KBattleField::BORDER);
+							if (fieldy<m_enemyshiplist->m_fieldy)m_view->changeEnemyFieldData(ship->shipxstart()-1, fieldy+1, KBattleField::BORDER);
+							}
+							if(ship->shipxstop()<m_enemyshiplist->m_fieldx){
+							if (fieldy>0)m_view->changeEnemyFieldData(ship->shipxstop()+1, fieldy-1, KBattleField::BORDER);
+							m_view->changeEnemyFieldData(ship->shipxstop()+1, fieldy, KBattleField::BORDER);
+							if (fieldy<m_enemyshiplist->m_fieldy)m_view->changeEnemyFieldData(ship->shipxstop()+1,fieldy+1, KBattleField::BORDER);
+							}
+
 						}
 						else if(yokay)
 						{
 							DeathValueList::Iterator it;
-							for(it = deathList.begin(); it != deathList.end(); it++)
+							for(it = deathList.begin(); it != deathList.end(); it++){
+								if (fieldx>0) m_view->changeEnemyFieldData(fieldx-1, *it, KBattleField::BORDER);
 								m_view->changeEnemyFieldData(fieldx, *it, KBattleField::DEATH);
+								if(fieldx<m_enemyshiplist->m_fieldx) m_view->changeEnemyFieldData(fieldx+1, *it, KBattleField::BORDER);
+							}
+							if(ship->shipystart()>0){
+							if (fieldx>0)m_view->changeEnemyFieldData(fieldx-1, ship->shipystart()-1, KBattleField::BORDER);
+							m_view->changeEnemyFieldData(fieldx, ship->shipystart()-1, KBattleField::BORDER);
+							if (fieldx<m_enemyshiplist->m_fieldx)m_view->changeEnemyFieldData(fieldx+1, ship->shipystart()-1, KBattleField::BORDER);
+							}
+							if(ship->shipystop()<m_enemyshiplist->m_fieldy){
+							if (fieldx>0)m_view->changeEnemyFieldData(fieldx-1, ship->shipystop()+1, KBattleField::BORDER);
+							m_view->changeEnemyFieldData(fieldx, ship->shipystop()+1, KBattleField::BORDER);
+							if (fieldx<m_enemyshiplist->m_fieldx)m_view->changeEnemyFieldData(fieldx+1, ship->shipystop()+1, KBattleField::BORDER);
+							}
 						}
 					}
-					else if(m_enemyshiplist->shipTypeAt(fieldx, fieldy) == 0)
+					else if(m_enemyshiplist->shipTypeAt(fieldx, fieldy) == 0){
 						m_view->changeEnemyFieldData(fieldx, fieldy, KBattleField::DEATH);
+							if (fieldx>0) m_view->changeEnemyFieldData(fieldx-1, fieldy, KBattleField::BORDER);
+							if(fieldx<m_enemyshiplist->m_fieldx) m_view->changeEnemyFieldData(fieldx+1, fieldy, KBattleField::BORDER);
+							if(fieldy>1){
+							if (fieldx>0)m_view->changeEnemyFieldData(fieldx-1, fieldy-1, KBattleField::BORDER);
+							m_view->changeEnemyFieldData(fieldx, fieldy-1, KBattleField::BORDER);
+							if (fieldx<m_enemyshiplist->m_fieldx)m_view->changeEnemyFieldData(fieldx+1, fieldy-1, KBattleField::BORDER);
+							}
+							if(fieldy<m_enemyshiplist->m_fieldy){
+							if (fieldx>0)m_view->changeEnemyFieldData(fieldx-1, fieldy+1, KBattleField::BORDER);
+							m_view->changeEnemyFieldData(fieldx, fieldy+1, KBattleField::BORDER);
+							if (fieldx<m_enemyshiplist->m_fieldx)m_view->changeEnemyFieldData(fieldx+1, fieldy+1, KBattleField::BORDER);
+							}
+						}
 				}
 			}
 

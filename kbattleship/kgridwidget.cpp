@@ -43,6 +43,7 @@ void KGridWidget::cacheImages()
 	seaPng = QPixmap(findIcon("sea.png"));
 	waterPng = QPixmap(findIcon("water.png"));
 	hitPng = QPixmap(findIcon("hit.png"));
+	borderPng = QPixmap(findIcon("border.png"));
 	deathPng = QPixmap(findIcon("death.png"));
 	ship1p1Png = QPixmap(findIcon("ship1-1.png"));
 	ship1p1rPng = QPixmap(findIcon("ship1-1-r.png"));
@@ -88,6 +89,10 @@ void KGridWidget::drawHitIcon()
 	drawIcon(hitPng);
 }
 
+void KGridWidget::drawDeathBorder()
+{
+	drawIcon(borderPng);
+}
 void KGridWidget::drawDeathIcon()
 {
 	drawIcon(deathPng);

@@ -3,6 +3,7 @@ data_DATA = sea.png \
 	    water.png \
 	    hit.png \
 	    death.png \
+		border.png \
 	    ship1-1.png \
 	    ship2-1.png \
 	    ship2-2.png \

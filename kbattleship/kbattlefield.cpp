@@ -23,12 +23,12 @@ KBattleField::KBattleField(QWidget *parent, const char *name, bool grid) : KGrid
 {
 	m_width = parent->width();
 	m_canDraw = true;
-    
+
 	m_ownfieldx = 10;
 	m_ownfieldy = 10;
 	m_enemyfieldx = 10;
 	m_enemyfieldy = 10;
-    
+
 	clearOwnField();
 	clearEnemyField();
 	clearPreviewField();
@@ -105,32 +105,32 @@ void KBattleField::drawOwnField()
 			if(!m_newdata[i][j])
 				data = m_ownfield[i][j];
 			else
-				data = m_newfield[i][j]; 
+				data = m_newfield[i][j];
 			switch(data)
 			{
 				case KBattleField::FREE:
-					drawSquare();	
+					drawSquare();
 					break;
-				
+
 				case KBattleField::WATER:
-					drawSquare();	
+					drawSquare();
 					drawWaterIcon();
 					break;
-		
+
 				case KBattleField::HIT:
-					drawSquare();	
+					drawSquare();
 					ship = app->shipAt(i, j);
 					if(ship->placedLeft())
 						drawShipIcon((ship->shiptype() + 1), (ship->shipxstop() - i + 1), true, true);
 					else
-						drawShipIcon((ship->shiptype() + 1), (j - ship->shipystart() + 1), false, true);	
+						drawShipIcon((ship->shiptype() + 1), (j - ship->shipystart() + 1), false, true);
 					break;
-		    
+
 				case KBattleField::DEATH:
-					drawSquare();	
+					drawSquare();
 					drawDeathIcon();
-					break;	
-		    
+					break;
+
 				default:
 					ship = app->shipAt(i, j);
 					if(ship)
@@ -163,34 +163,39 @@ void KBattleField::drawEnemyField()
 			switch(m_enemyfield[i][j])
 			{
 				case KBattleField::FREE:
-					drawSquare();	
+					drawSquare();
 					break;
-	
+
 				case KBattleField::WATER:
-					drawSquare();	
+					drawSquare();
 					drawWaterIcon();
 					break;
-		
+
 				case KBattleField::HIT:
-					drawSquare();	
+					drawSquare();
 					drawHitIcon();
 					break;
-	    
+
+				case KBattleField::BORDER:
+					drawSquare();
+					drawDeathBorder();
+					break;
+					
 				case KBattleField::DEATH:
-					drawSquare();	
+					drawSquare();
 					drawDeathIcon();
-					break;	
-		    
+					break;
+
 				default:
-					drawSquare();	
+					drawSquare();
 					KShip *ship = app->shipAt(i, j);
 					if(ship->placedLeft())
 						drawShipIcon(m_enemyfield[i][j], true);
 					else
-						drawShipIcon(m_enemyfield[i][j]);	
+						drawShipIcon(m_enemyfield[i][j]);
 					break;
 			}
-		}		
+		}
 	}
 }
 

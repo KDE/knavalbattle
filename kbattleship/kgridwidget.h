@@ -37,6 +37,7 @@ protected:
 	void setValues(int x, int y, int size);
 	void drawSquare();
 	void drawWaterIcon();
+	void drawDeathBorder();
 	void drawDeathIcon();
 	void drawHitIcon();
 	void drawShipIcon(int type, bool rotate = false, bool hit = false, bool water = false);
@@ -50,7 +51,7 @@ private:
 	bool m_drawGrid;
 	int m_x, m_y, m_size;
 	QPixmap *m_doubleBuffer;
-	QPixmap seaPng, waterPng, hitPng, deathPng;
+	QPixmap seaPng, waterPng, hitPng, borderPng,deathPng;
 	QPixmap ship1p1Png, ship1p1rPng;
 	QPixmap ship2p1Png, ship2p1rPng;
 	QPixmap ship2p2Png, ship2p2rPng;
