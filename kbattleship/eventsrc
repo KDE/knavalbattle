@@ -7,7 +7,13 @@ Comment[xx]=xxKBattleshipxx
 
 [shoot_water]
 Name=Shot at water
+Name[da]=Skyd på vand
+Name[pt]=Disparo na água
+Name[pt_BR]=Disparo na água
 Comment=Someone has shot at the water
+Comment[da]=Nogen har skudt på vandet
+Comment[pt]=Alguém disparou para a água
+Comment[pt_BR]=Alguém disparou para a água
 default_sound=ship-player-shoot-water.mp3
 default_presentation=1
 
@@ -25,6 +31,9 @@ Name[sr]=Пуца играч 1
 Name[sv]=Skott från spelare 1
 Name[xx]=xxPlayer 1 shotxx
 Comment=Player 1 takes a shot
+Comment[da]=Spiller 1 skyder
+Comment[pt]=Jogador 1 dispara
+Comment[pt_BR]=Jogador 1 dispara
 default_sound=ship-player1-shoot.mp3
 default_presentation=1
 
@@ -42,6 +51,9 @@ Name[sr]=Пуца играч 1
 Name[sv]=Skott från spelare 2
 Name[xx]=xxPlayer 2 shotxx
 Comment=Player 2 takes a shot
+Comment[da]=Spiller 2 skyder
+Comment[pt]=Jogador 2 dispara
+Comment[pt_BR]=Jogador 2 dispara
 default_sound=ship-player2-shoot.mp3
 default_presentation=1
 
