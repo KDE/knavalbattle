@@ -15,7 +15,12 @@
  *                                                                         *
  ***************************************************************************/
 
+//#define XMLDUMP
+
 #include "main.h"
+#ifdef XMLDUMP
+#include <kdebug.h>
+#endif
 #include "kmessage.moc"
 
 KMessage::KMessage(int type) : QObject()
@@ -46,10 +51,16 @@ void KMessage::addField(const QString &name, const QString &content)
 void KMessage::setDataStream(const QString &stream)
 {
     m_xmlDocument.setContent(stream);
+#ifdef XMLDUMP
+    kdDebug() << "*** XML-IN ***" << endl << stream << endl << "***  END  ***" << endl;
+#endif
 }
 
 QString KMessage::returnSendStream()
 {
+#ifdef XMLDUMP
+    kdDebug() << "*** XML OUT ***" << endl << m_xmlDocument.toString() << endl << "***  END  ***" << endl;
+#endif
     return m_xmlDocument.toString();
 }
 
