@@ -55,8 +55,9 @@ public:
 
 signals:
 	void sigEnemyFieldClicked(int, int);
-	void sigOwnFieldClicked(int, int, int);
-	void sigMouseOverField(int, int, bool);
+	void sigOwnFieldClicked(int, int);
+	void sigMouseOverField(int, int);
+	void changeShipPlacementDirection();
 
 private:
 	bool eventFilter(QObject *object, QEvent *event);

@@ -154,14 +154,18 @@ bool KBattleshipView::eventFilter(QObject *object, QEvent *event)
 	if(event->type() == QEvent::KeyPress && m_decide)
 	{
 		QKeyEvent *keyEvent = static_cast<QKeyEvent *>(event);
-		if(keyEvent->key() == Key_Shift)
-			emit sigMouseOverField(m_lastX, m_lastY, true);
+		if(keyEvent->key() == Key_Shift){
+			emit sigMouseOverField(m_lastX, m_lastY);
+			emit changeShipPlacementDirection();
+		}
 	}
 	else if(event->type() == QEvent::KeyRelease && m_decide)
 	{
 		QKeyEvent *keyEvent = static_cast<QKeyEvent *>(event);
-		if(keyEvent->key() == Key_Shift)
-			emit sigMouseOverField(m_lastX, m_lastY, false);
+		if(keyEvent->key() == Key_Shift){
+			emit sigMouseOverField(m_lastX, m_lastY);
+			emit changeShipPlacementDirection();
+		}
 	}
 	else if(event->type() == QEvent::MouseButtonRelease)
 	{
@@ -169,6 +173,12 @@ bool KBattleshipView::eventFilter(QObject *object, QEvent *event)
 
 		QMouseEvent *mouseEvent = static_cast<QMouseEvent *>(event);
 
+		if(mouseEvent->button() == RightButton){
+			emit sigMouseOverField(m_lastX, m_lastY);
+			emit changeShipPlacementDirection();
+			return true;
+		}
+		
 		if(mouseEvent->button() != LeftButton)
 			return false;
 
@@ -216,13 +226,11 @@ bool KBattleshipView::eventFilter(QObject *object, QEvent *event)
 			}
 		}
 
-		if((mouseEvent->state() & ShiftButton) == 0 && newRect == ownRect)
-			emit sigOwnFieldClicked(fieldx, fieldy, true);
-		else if((mouseEvent->state() & ShiftButton) != 0 && newRect == ownRect)
-			emit sigOwnFieldClicked(fieldx, fieldy, false);
+		if( newRect == ownRect)
+			emit sigOwnFieldClicked(fieldx, fieldy);
 		else if(newRect == enemyRect)
 			emit sigEnemyFieldClicked(fieldx, fieldy);
-
+		
 		return true;
 	}
 	else if(event->type() == QEvent::MouseMove)
@@ -271,7 +279,7 @@ bool KBattleshipView::eventFilter(QObject *object, QEvent *event)
 			m_lastX = fieldx;
 			m_lastY = fieldy;
 
-			emit sigMouseOverField(fieldx, fieldy, mouseEvent->state() & ShiftButton);
+			emit sigMouseOverField(fieldx, fieldy);
 		}
 		else
 			m_battlefield->drawField();

@@ -35,8 +35,9 @@
 
 extern const char *clientVersion;
 
-KBattleshipApp::KBattleshipApp()
+KBattleshipApp::KBattleshipApp() : KMainWindow()
 {
+	shift = false;
 	setMinimumSize(750, 500);
 	m_connection = 0;
 	m_lost = 0;
@@ -130,6 +131,10 @@ void KBattleshipApp::initChat()
 	connect(m_chat, SIGNAL(sigChangeOwnNickname(const QString &)), this, SLOT(slotChangedNickCommand(const QString &)));
 }
 
+void KBattleshipApp::changeShipPlacementDirection(){
+  shift = !shift;
+}
+
 void KBattleshipApp::initShipPlacing()
 {
 	connect(m_ownshiplist, SIGNAL(sigOwnFieldDataChanged(int, int, int)), this, SLOT(slotChangeOwnFieldData(int, int, int)));
@@ -159,9 +164,9 @@ void KBattleshipApp::initView()
 	setFocusProxy(m_view);
 
 	connect(m_view, SIGNAL(sigEnemyFieldClicked(int, int)), this, SLOT(slotEnemyFieldClick(int, int)));
-	connect(m_view, SIGNAL(sigOwnFieldClicked(int, int, int)), this, SLOT(slotPlaceShip(int, int, int)));
-	connect(m_view, SIGNAL(sigMouseOverField(int, int, bool)), this, SLOT(slotPlaceShipPreview(int, int, bool)));
-
+	connect(m_view, SIGNAL(sigOwnFieldClicked(int, int)), this, SLOT(slotPlaceShip(int, int)));
+	connect(m_view, SIGNAL(sigMouseOverField(int, int)), this, SLOT(slotPlaceShipPreview(int, int)));
+	connect(m_view, SIGNAL(changeShipPlacementDirection()), this, SLOT(changeShipPlacementDirection()));
 	setCaption(i18n("KBattleship %1").arg(clientVersion), false);
 }
 
@@ -487,7 +492,7 @@ void KBattleshipApp::slotReplay()
 	m_stat->clear();
 }
 
-void KBattleshipApp::slotPlaceShipPreview(int fieldx, int fieldy, bool shift)
+void KBattleshipApp::slotPlaceShipPreview(int fieldx, int fieldy)
 {
 	int xadd = 0, yadd = 0;
 
@@ -546,7 +551,7 @@ void KBattleshipApp::slotPlaceShipPreview(int fieldx, int fieldy, bool shift)
 	}
 }
 
-void KBattleshipApp::slotPlaceShip(int fieldx, int fieldy, int button)
+void KBattleshipApp::slotPlaceShip(int fieldx, int fieldy)
 {
 	if(m_connection != 0 || m_aiPlaying)
 	{
@@ -557,7 +562,7 @@ void KBattleshipApp::slotPlaceShip(int fieldx, int fieldy, int button)
 			return;
 
 		if(m_placeable && m_ownshiplist->canAddShips())
-			m_ownshiplist->addNewShip(button, fieldx, fieldy);
+			m_ownshiplist->addNewShip(shift, fieldx, fieldy);
 	}
 }
 

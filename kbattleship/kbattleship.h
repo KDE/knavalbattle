@@ -59,6 +59,7 @@ public:
 	KShip *enemyShipAt(int fieldx, int fieldy);
 
 private slots:
+	void changeShipPlacementDirection();
 	void slotConfigureKeys();
 	void slotConfigureNotifications();
 	void slotLost(KMessage *msg);
@@ -94,8 +95,8 @@ private slots:
 	void slotStartBattleshipGame(bool clearstat);
 	void slotStartBattleshipServer();
 	void slotConnectToBattleshipServer();
-	void slotPlaceShipPreview(int fieldx, int fieldy, bool shift);
-	void slotPlaceShip(int fieldx, int fieldy, int button);
+	void slotPlaceShipPreview(int fieldx, int fieldy);
+	void slotPlaceShip(int fieldx, int fieldy);
 	void slotChangeOwnFieldData(int fieldx, int fieldy, int type);
 	void slotChangeEnemyFieldData(int fieldx, int fieldy, int type);
 	void slotUpdateHighscore();
@@ -108,6 +109,7 @@ private slots:
 	void slotReceivedClientInformation(const QString &client, const QString &clientVersion, const QString &clientInformation, const QString &protocolVersion);
 
 private:
+	bool shift;
 	void initActions();
 	void initStatusBar();
 	void initView();
