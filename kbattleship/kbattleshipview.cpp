@@ -78,7 +78,7 @@ void KBattleshipView::mouseReleaseEvent(QMouseEvent *event)
     fieldy = 0;
     if(event->x() <= (width() / 2) - 15 && event->x() >= 46)
     {
-	if(event->y() >= 35 && event->y() <= (height() / 2) + 125)
+    	if(event->y() >= 35 && event->y() <= (height() / 2) + 125)
 	{
 	    fieldTopPos = 35;
 	    fieldBottomPos = (height() / 2) + 125;
