@@ -9,11 +9,13 @@ kbattleship_la_SOURCES      =   kbaiplayer.cpp kbstrategy.cpp kbverticalstepstra
 				kmessage.cpp kbattleshipserver.cpp kbattleshipclient.cpp \
 				kbattleshipview.cpp kgridwidget.cpp kbattlefield.cpp \
 		                kchatwidget.cpp kserverdialog.cpp kclientdialog.cpp \
-				kstatdialog.cpp ksingledialog.cpp kbattleshipsound.cpp \
+				kstatdialog.cpp ksingledialog.cpp khighscoredialog.cpp \
+				kbattleshipsound.cpp \
 		                konnectionhandling.cpp kship.cpp kshiplist.cpp \
 		                kbattleship.cpp main.cpp
 
-kbattleship_la_LIBADD       =   dialogs/libkbattleshipdialogs.la $(LIB_KFILE) -lsoundserver_idl
+kbattleship_la_LIBADD       =   $(top_builddir)/libkdegames/libkdegames.la \
+				dialogs/libkbattleshipdialogs.la $(LIB_KFILE) -lsoundserver_idl
 kbattleship_la_LDFLAGS      =   -avoid-version -module $(all_libraries)
 
 bin_PROGRAMS                =   kbattleship
@@ -22,7 +24,6 @@ kbattleship_LDADD	    =	kbattleship.la
 kbattleship_SOURCES	    =	dummy.cpp
 
 METASOURCES                 =   AUTO
-
 CLEANFILES		    =	dummy.cpp
 
 dummy.cpp:

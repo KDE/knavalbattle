@@ -44,6 +44,8 @@
 #include "kclientdialog.h"
 #include "ksingledialog.h"
 #include "kstatdialog.h"
+#include "khighscoredialog.h"
+#include "khighscoredialog.h"
 #include "dialogs/infoDlg.h"
 #include "kchatwidget.h"
 #include "kship.h"
@@ -112,8 +114,7 @@ class KBattleshipApp : public KMainWindow
         void slotChangedNickCommand(const QString &text);
         void slotSendChatMessage(const QString &text);
         void slotEnemyClientInfo();
-        void slotReceivedClientInformation(const QString &client, const QString &clientVersion,
-	       const QString &clientInformation, const QString &protocolVersion);
+        void slotReceivedClientInformation(const QString &client, const QString &clientVersion, const QString &clientInformation, const QString &protocolVersion);
 
     private:
         void initActions();
@@ -160,7 +161,8 @@ class KBattleshipApp : public KMainWindow
         KSingleDialog *m_single;
         KClientDialog *m_client;
         KServerDialog *m_server;
-        KShipList *m_ownshiplist;
+	KHighscoreDialog *m_score;
+	KShipList *m_ownshiplist;
         KShipList *m_enemyshiplist;
         QString m_ownNickname;
         QString m_enemyNickname;

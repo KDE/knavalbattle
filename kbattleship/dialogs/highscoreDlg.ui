@@ -1,0 +1,2801 @@
+<!DOCTYPE UI><UI>
+<class>highscoreDlg</class>
+<widget>
+    <class>QWidget</class>
+    <property stdset="1">
+        <name>name</name>
+        <cstring>highscoreDlg</cstring>
+    </property>
+    <property stdset="1">
+        <name>geometry</name>
+        <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>433</width>
+            <height>412</height>
+        </rect>
+    </property>
+    <property stdset="1">
+        <name>caption</name>
+        <string>Highscore</string>
+    </property>
+    <vbox>
+        <property stdset="1">
+            <name>margin</name>
+            <number>11</number>
+        </property>
+        <property stdset="1">
+            <name>spacing</name>
+            <number>6</number>
+        </property>
+        <widget>
+            <class>QLayoutWidget</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>Layout13</cstring>
+            </property>
+            <hbox>
+                <property stdset="1">
+                    <name>margin</name>
+                    <number>0</number>
+                </property>
+                <property stdset="1">
+                    <name>spacing</name>
+                    <number>6</number>
+                </property>
+                <widget>
+                    <class>QLabel</class>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>TextLabel1_2_4</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>text</name>
+                        <string>Rank</string>
+                    </property>
+                    <property stdset="1">
+                        <name>alignment</name>
+                        <set>AlignTop|AlignLeft</set>
+                    </property>
+                    <property>
+                        <name>hAlign</name>
+                    </property>
+                    <property>
+                        <name>vAlign</name>
+                    </property>
+                </widget>
+                <spacer>
+                    <property>
+                        <name>name</name>
+                        <cstring>Spacer16_7_3_2_2_6_4_2_2_7</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>orientation</name>
+                        <enum>Horizontal</enum>
+                    </property>
+                    <property stdset="1">
+                        <name>sizeType</name>
+                        <enum>Fixed</enum>
+                    </property>
+                    <property>
+                        <name>sizeHint</name>
+                        <size>
+                            <width>20</width>
+                            <height>20</height>
+                        </size>
+                    </property>
+                </spacer>
+                <widget>
+                    <class>QLabel</class>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>TextLabel1_2_3</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>text</name>
+                        <string>Name</string>
+                    </property>
+                    <property stdset="1">
+                        <name>alignment</name>
+                        <set>AlignTop|AlignLeft</set>
+                    </property>
+                    <property>
+                        <name>hAlign</name>
+                    </property>
+                    <property>
+                        <name>vAlign</name>
+                    </property>
+                </widget>
+                <spacer>
+                    <property>
+                        <name>name</name>
+                        <cstring>Spacer16_7_3_2_2_6_4_2_2_8_2</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>orientation</name>
+                        <enum>Horizontal</enum>
+                    </property>
+                    <property stdset="1">
+                        <name>sizeType</name>
+                        <enum>Fixed</enum>
+                    </property>
+                    <property>
+                        <name>sizeHint</name>
+                        <size>
+                            <width>20</width>
+                            <height>20</height>
+                        </size>
+                    </property>
+                </spacer>
+                <widget>
+                    <class>QLabel</class>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>TextLabel1_2_5</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>text</name>
+                        <string>Score</string>
+                    </property>
+                    <property stdset="1">
+                        <name>alignment</name>
+                        <set>AlignTop|AlignRight</set>
+                    </property>
+                    <property>
+                        <name>hAlign</name>
+                    </property>
+                    <property>
+                        <name>vAlign</name>
+                    </property>
+                </widget>
+                <spacer>
+                    <property>
+                        <name>name</name>
+                        <cstring>Spacer16_7_3_2_2_6_4_2_2_8</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>orientation</name>
+                        <enum>Horizontal</enum>
+                    </property>
+                    <property stdset="1">
+                        <name>sizeType</name>
+                        <enum>Fixed</enum>
+                    </property>
+                    <property>
+                        <name>sizeHint</name>
+                        <size>
+                            <width>20</width>
+                            <height>20</height>
+                        </size>
+                    </property>
+                </spacer>
+                <widget>
+                    <class>QLabel</class>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>TextLabel1_2</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>text</name>
+                        <string>Shots</string>
+                    </property>
+                    <property stdset="1">
+                        <name>alignment</name>
+                        <set>AlignTop|AlignRight</set>
+                    </property>
+                    <property>
+                        <name>hAlign</name>
+                    </property>
+                    <property>
+                        <name>vAlign</name>
+                    </property>
+                </widget>
+                <spacer>
+                    <property>
+                        <name>name</name>
+                        <cstring>Spacer16_7_3_2_2_6_4_2_2_9</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>orientation</name>
+                        <enum>Horizontal</enum>
+                    </property>
+                    <property stdset="1">
+                        <name>sizeType</name>
+                        <enum>Fixed</enum>
+                    </property>
+                    <property>
+                        <name>sizeHint</name>
+                        <size>
+                            <width>20</width>
+                            <height>20</height>
+                        </size>
+                    </property>
+                </spacer>
+                <widget>
+                    <class>QLabel</class>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>TextLabel1_2_2_2</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>text</name>
+                        <string>Hits</string>
+                    </property>
+                    <property stdset="1">
+                        <name>alignment</name>
+                        <set>AlignTop|AlignRight</set>
+                    </property>
+                    <property>
+                        <name>hAlign</name>
+                    </property>
+                    <property>
+                        <name>vAlign</name>
+                    </property>
+                </widget>
+                <spacer>
+                    <property>
+                        <name>name</name>
+                        <cstring>Spacer16_7_3_2_2_6_4_2_2_10</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>orientation</name>
+                        <enum>Horizontal</enum>
+                    </property>
+                    <property stdset="1">
+                        <name>sizeType</name>
+                        <enum>Fixed</enum>
+                    </property>
+                    <property>
+                        <name>sizeHint</name>
+                        <size>
+                            <width>20</width>
+                            <height>20</height>
+                        </size>
+                    </property>
+                </spacer>
+                <widget>
+                    <class>QLabel</class>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>TextLabel1_2_2</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>text</name>
+                        <string>Water</string>
+                    </property>
+                    <property stdset="1">
+                        <name>alignment</name>
+                        <set>AlignTop|AlignRight</set>
+                    </property>
+                    <property>
+                        <name>hAlign</name>
+                    </property>
+                    <property>
+                        <name>vAlign</name>
+                    </property>
+                </widget>
+            </hbox>
+        </widget>
+        <widget>
+            <class>QLayoutWidget</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>Layout14</cstring>
+            </property>
+            <hbox>
+                <property stdset="1">
+                    <name>margin</name>
+                    <number>0</number>
+                </property>
+                <property stdset="1">
+                    <name>spacing</name>
+                    <number>6</number>
+                </property>
+                <widget>
+                    <class>QLabel</class>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>TextLabel3</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>text</name>
+                        <string>#1</string>
+                    </property>
+                </widget>
+                <spacer>
+                    <property>
+                        <name>name</name>
+                        <cstring>Spacer16_7_3_2_2_6_4_2_2</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>orientation</name>
+                        <enum>Horizontal</enum>
+                    </property>
+                    <property stdset="1">
+                        <name>sizeType</name>
+                        <enum>Fixed</enum>
+                    </property>
+                    <property>
+                        <name>sizeHint</name>
+                        <size>
+                            <width>20</width>
+                            <height>20</height>
+                        </size>
+                    </property>
+                </spacer>
+                <widget>
+                    <class>QLabel</class>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>Name1</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>text</name>
+                        <string>-</string>
+                    </property>
+                </widget>
+                <spacer>
+                    <property>
+                        <name>name</name>
+                        <cstring>Spacer16_7_3_2_2_6_4_2_2_11</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>orientation</name>
+                        <enum>Horizontal</enum>
+                    </property>
+                    <property stdset="1">
+                        <name>sizeType</name>
+                        <enum>Fixed</enum>
+                    </property>
+                    <property>
+                        <name>sizeHint</name>
+                        <size>
+                            <width>20</width>
+                            <height>20</height>
+                        </size>
+                    </property>
+                </spacer>
+                <widget>
+                    <class>QLCDNumber</class>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>ScoreLCD1</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>frameShape</name>
+                        <enum>NoFrame</enum>
+                    </property>
+                    <property stdset="1">
+                        <name>smallDecimalPoint</name>
+                        <bool>false</bool>
+                    </property>
+                    <property stdset="1">
+                        <name>numDigits</name>
+                        <number>4</number>
+                    </property>
+                    <property stdset="1">
+                        <name>segmentStyle</name>
+                        <enum>Flat</enum>
+                    </property>
+                    <property>
+                        <name>toolTip</name>
+                        <string>Shows all shots</string>
+                    </property>
+                </widget>
+                <spacer>
+                    <property>
+                        <name>name</name>
+                        <cstring>Spacer16_7_3_2_2_6_5</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>orientation</name>
+                        <enum>Horizontal</enum>
+                    </property>
+                    <property stdset="1">
+                        <name>sizeType</name>
+                        <enum>Fixed</enum>
+                    </property>
+                    <property>
+                        <name>sizeHint</name>
+                        <size>
+                            <width>20</width>
+                            <height>20</height>
+                        </size>
+                    </property>
+                </spacer>
+                <widget>
+                    <class>QLCDNumber</class>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>ShotLCD1</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>frameShape</name>
+                        <enum>NoFrame</enum>
+                    </property>
+                    <property stdset="1">
+                        <name>smallDecimalPoint</name>
+                        <bool>false</bool>
+                    </property>
+                    <property stdset="1">
+                        <name>numDigits</name>
+                        <number>4</number>
+                    </property>
+                    <property stdset="1">
+                        <name>segmentStyle</name>
+                        <enum>Flat</enum>
+                    </property>
+                    <property>
+                        <name>toolTip</name>
+                        <string>Shows all shots</string>
+                    </property>
+                </widget>
+                <spacer>
+                    <property>
+                        <name>name</name>
+                        <cstring>Spacer16_7_3_2_2</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>orientation</name>
+                        <enum>Horizontal</enum>
+                    </property>
+                    <property stdset="1">
+                        <name>sizeType</name>
+                        <enum>Fixed</enum>
+                    </property>
+                    <property>
+                        <name>sizeHint</name>
+                        <size>
+                            <width>20</width>
+                            <height>20</height>
+                        </size>
+                    </property>
+                </spacer>
+                <widget>
+                    <class>QLCDNumber</class>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>HitLCD1</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>frameShape</name>
+                        <enum>NoFrame</enum>
+                    </property>
+                    <property stdset="1">
+                        <name>smallDecimalPoint</name>
+                        <bool>false</bool>
+                    </property>
+                    <property stdset="1">
+                        <name>numDigits</name>
+                        <number>4</number>
+                    </property>
+                    <property stdset="1">
+                        <name>segmentStyle</name>
+                        <enum>Flat</enum>
+                    </property>
+                    <property>
+                        <name>toolTip</name>
+                        <string>Shows all shots</string>
+                    </property>
+                </widget>
+                <spacer>
+                    <property>
+                        <name>name</name>
+                        <cstring>Spacer16</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>orientation</name>
+                        <enum>Horizontal</enum>
+                    </property>
+                    <property stdset="1">
+                        <name>sizeType</name>
+                        <enum>Fixed</enum>
+                    </property>
+                    <property>
+                        <name>sizeHint</name>
+                        <size>
+                            <width>20</width>
+                            <height>20</height>
+                        </size>
+                    </property>
+                </spacer>
+                <widget>
+                    <class>QLCDNumber</class>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>WaterLCD1</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>frameShape</name>
+                        <enum>NoFrame</enum>
+                    </property>
+                    <property stdset="1">
+                        <name>smallDecimalPoint</name>
+                        <bool>false</bool>
+                    </property>
+                    <property stdset="1">
+                        <name>numDigits</name>
+                        <number>4</number>
+                    </property>
+                    <property stdset="1">
+                        <name>segmentStyle</name>
+                        <enum>Flat</enum>
+                    </property>
+                    <property>
+                        <name>toolTip</name>
+                        <string>Shows all shots</string>
+                    </property>
+                </widget>
+            </hbox>
+        </widget>
+        <widget>
+            <class>QLayoutWidget</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>Layout15</cstring>
+            </property>
+            <hbox>
+                <property stdset="1">
+                    <name>margin</name>
+                    <number>0</number>
+                </property>
+                <property stdset="1">
+                    <name>spacing</name>
+                    <number>6</number>
+                </property>
+                <widget>
+                    <class>QLabel</class>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>TextLabel3_3</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>text</name>
+                        <string>#2</string>
+                    </property>
+                </widget>
+                <spacer>
+                    <property>
+                        <name>name</name>
+                        <cstring>Spacer16_7_3_2_2_6_4_2_2_2</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>orientation</name>
+                        <enum>Horizontal</enum>
+                    </property>
+                    <property stdset="1">
+                        <name>sizeType</name>
+                        <enum>Fixed</enum>
+                    </property>
+                    <property>
+                        <name>sizeHint</name>
+                        <size>
+                            <width>20</width>
+                            <height>20</height>
+                        </size>
+                    </property>
+                </spacer>
+                <widget>
+                    <class>QLabel</class>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>Name2</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>text</name>
+                        <string>-</string>
+                    </property>
+                </widget>
+                <spacer>
+                    <property>
+                        <name>name</name>
+                        <cstring>Spacer16_7_3_2_2_6_4_2_2_5_4_2</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>orientation</name>
+                        <enum>Horizontal</enum>
+                    </property>
+                    <property stdset="1">
+                        <name>sizeType</name>
+                        <enum>Fixed</enum>
+                    </property>
+                    <property>
+                        <name>sizeHint</name>
+                        <size>
+                            <width>20</width>
+                            <height>20</height>
+                        </size>
+                    </property>
+                </spacer>
+                <widget>
+                    <class>QLCDNumber</class>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>ScoreLCD2</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>frameShape</name>
+                        <enum>NoFrame</enum>
+                    </property>
+                    <property stdset="1">
+                        <name>smallDecimalPoint</name>
+                        <bool>false</bool>
+                    </property>
+                    <property stdset="1">
+                        <name>numDigits</name>
+                        <number>4</number>
+                    </property>
+                    <property stdset="1">
+                        <name>segmentStyle</name>
+                        <enum>Flat</enum>
+                    </property>
+                    <property>
+                        <name>toolTip</name>
+                        <string>Shows all shots</string>
+                    </property>
+                </widget>
+                <spacer>
+                    <property>
+                        <name>name</name>
+                        <cstring>Spacer16_7_3_2_2_7</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>orientation</name>
+                        <enum>Horizontal</enum>
+                    </property>
+                    <property stdset="1">
+                        <name>sizeType</name>
+                        <enum>Fixed</enum>
+                    </property>
+                    <property>
+                        <name>sizeHint</name>
+                        <size>
+                            <width>20</width>
+                            <height>20</height>
+                        </size>
+                    </property>
+                </spacer>
+                <widget>
+                    <class>QLCDNumber</class>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>ShotLCD2</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>frameShape</name>
+                        <enum>NoFrame</enum>
+                    </property>
+                    <property stdset="1">
+                        <name>smallDecimalPoint</name>
+                        <bool>false</bool>
+                    </property>
+                    <property stdset="1">
+                        <name>numDigits</name>
+                        <number>4</number>
+                    </property>
+                    <property stdset="1">
+                        <name>segmentStyle</name>
+                        <enum>Flat</enum>
+                    </property>
+                    <property>
+                        <name>toolTip</name>
+                        <string>Shows all shots</string>
+                    </property>
+                </widget>
+                <spacer>
+                    <property>
+                        <name>name</name>
+                        <cstring>Spacer16_7_3_2_2_2</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>orientation</name>
+                        <enum>Horizontal</enum>
+                    </property>
+                    <property stdset="1">
+                        <name>sizeType</name>
+                        <enum>Fixed</enum>
+                    </property>
+                    <property>
+                        <name>sizeHint</name>
+                        <size>
+                            <width>20</width>
+                            <height>20</height>
+                        </size>
+                    </property>
+                </spacer>
+                <widget>
+                    <class>QLCDNumber</class>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>HitLCD2</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>frameShape</name>
+                        <enum>NoFrame</enum>
+                    </property>
+                    <property stdset="1">
+                        <name>smallDecimalPoint</name>
+                        <bool>false</bool>
+                    </property>
+                    <property stdset="1">
+                        <name>numDigits</name>
+                        <number>4</number>
+                    </property>
+                    <property stdset="1">
+                        <name>segmentStyle</name>
+                        <enum>Flat</enum>
+                    </property>
+                    <property>
+                        <name>toolTip</name>
+                        <string>Shows all shots</string>
+                    </property>
+                </widget>
+                <spacer>
+                    <property>
+                        <name>name</name>
+                        <cstring>Spacer16_2</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>orientation</name>
+                        <enum>Horizontal</enum>
+                    </property>
+                    <property stdset="1">
+                        <name>sizeType</name>
+                        <enum>Fixed</enum>
+                    </property>
+                    <property>
+                        <name>sizeHint</name>
+                        <size>
+                            <width>20</width>
+                            <height>20</height>
+                        </size>
+                    </property>
+                </spacer>
+                <widget>
+                    <class>QLCDNumber</class>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>WaterLCD2</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>frameShape</name>
+                        <enum>NoFrame</enum>
+                    </property>
+                    <property stdset="1">
+                        <name>smallDecimalPoint</name>
+                        <bool>false</bool>
+                    </property>
+                    <property stdset="1">
+                        <name>numDigits</name>
+                        <number>4</number>
+                    </property>
+                    <property stdset="1">
+                        <name>segmentStyle</name>
+                        <enum>Flat</enum>
+                    </property>
+                    <property>
+                        <name>toolTip</name>
+                        <string>Shows all shots</string>
+                    </property>
+                </widget>
+            </hbox>
+        </widget>
+        <widget>
+            <class>QLayoutWidget</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>Layout16</cstring>
+            </property>
+            <hbox>
+                <property stdset="1">
+                    <name>margin</name>
+                    <number>0</number>
+                </property>
+                <property stdset="1">
+                    <name>spacing</name>
+                    <number>6</number>
+                </property>
+                <widget>
+                    <class>QLabel</class>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>TextLabel3_4</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>text</name>
+                        <string>#3</string>
+                    </property>
+                </widget>
+                <spacer>
+                    <property>
+                        <name>name</name>
+                        <cstring>Spacer16_7_3_2_2_6_4_2_2_3</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>orientation</name>
+                        <enum>Horizontal</enum>
+                    </property>
+                    <property stdset="1">
+                        <name>sizeType</name>
+                        <enum>Fixed</enum>
+                    </property>
+                    <property>
+                        <name>sizeHint</name>
+                        <size>
+                            <width>20</width>
+                            <height>20</height>
+                        </size>
+                    </property>
+                </spacer>
+                <widget>
+                    <class>QLabel</class>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>Name3</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>text</name>
+                        <string>-</string>
+                    </property>
+                </widget>
+                <spacer>
+                    <property>
+                        <name>name</name>
+                        <cstring>Spacer16_7_3_2_2_6_4_2_2_5_4_3</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>orientation</name>
+                        <enum>Horizontal</enum>
+                    </property>
+                    <property stdset="1">
+                        <name>sizeType</name>
+                        <enum>Fixed</enum>
+                    </property>
+                    <property>
+                        <name>sizeHint</name>
+                        <size>
+                            <width>20</width>
+                            <height>20</height>
+                        </size>
+                    </property>
+                </spacer>
+                <widget>
+                    <class>QLCDNumber</class>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>ScoreLCD3</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>frameShape</name>
+                        <enum>NoFrame</enum>
+                    </property>
+                    <property stdset="1">
+                        <name>smallDecimalPoint</name>
+                        <bool>false</bool>
+                    </property>
+                    <property stdset="1">
+                        <name>numDigits</name>
+                        <number>4</number>
+                    </property>
+                    <property stdset="1">
+                        <name>segmentStyle</name>
+                        <enum>Flat</enum>
+                    </property>
+                    <property>
+                        <name>toolTip</name>
+                        <string>Shows all shots</string>
+                    </property>
+                </widget>
+                <spacer>
+                    <property>
+                        <name>name</name>
+                        <cstring>Spacer16_7_3_2_2_4_2</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>orientation</name>
+                        <enum>Horizontal</enum>
+                    </property>
+                    <property stdset="1">
+                        <name>sizeType</name>
+                        <enum>Fixed</enum>
+                    </property>
+                    <property>
+                        <name>sizeHint</name>
+                        <size>
+                            <width>20</width>
+                            <height>20</height>
+                        </size>
+                    </property>
+                </spacer>
+                <widget>
+                    <class>QLCDNumber</class>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>ShotLCD3</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>frameShape</name>
+                        <enum>NoFrame</enum>
+                    </property>
+                    <property stdset="1">
+                        <name>smallDecimalPoint</name>
+                        <bool>false</bool>
+                    </property>
+                    <property stdset="1">
+                        <name>numDigits</name>
+                        <number>4</number>
+                    </property>
+                    <property stdset="1">
+                        <name>segmentStyle</name>
+                        <enum>Flat</enum>
+                    </property>
+                    <property>
+                        <name>toolTip</name>
+                        <string>Shows all shots</string>
+                    </property>
+                </widget>
+                <spacer>
+                    <property>
+                        <name>name</name>
+                        <cstring>Spacer16_7_3_2_2_3</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>orientation</name>
+                        <enum>Horizontal</enum>
+                    </property>
+                    <property stdset="1">
+                        <name>sizeType</name>
+                        <enum>Fixed</enum>
+                    </property>
+                    <property>
+                        <name>sizeHint</name>
+                        <size>
+                            <width>20</width>
+                            <height>20</height>
+                        </size>
+                    </property>
+                </spacer>
+                <widget>
+                    <class>QLCDNumber</class>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>HitLCD3</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>frameShape</name>
+                        <enum>NoFrame</enum>
+                    </property>
+                    <property stdset="1">
+                        <name>smallDecimalPoint</name>
+                        <bool>false</bool>
+                    </property>
+                    <property stdset="1">
+                        <name>numDigits</name>
+                        <number>4</number>
+                    </property>
+                    <property stdset="1">
+                        <name>segmentStyle</name>
+                        <enum>Flat</enum>
+                    </property>
+                    <property>
+                        <name>toolTip</name>
+                        <string>Shows all shots</string>
+                    </property>
+                </widget>
+                <spacer>
+                    <property>
+                        <name>name</name>
+                        <cstring>Spacer16_3</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>orientation</name>
+                        <enum>Horizontal</enum>
+                    </property>
+                    <property stdset="1">
+                        <name>sizeType</name>
+                        <enum>Fixed</enum>
+                    </property>
+                    <property>
+                        <name>sizeHint</name>
+                        <size>
+                            <width>20</width>
+                            <height>20</height>
+                        </size>
+                    </property>
+                </spacer>
+                <widget>
+                    <class>QLCDNumber</class>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>WaterLCD3</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>frameShape</name>
+                        <enum>NoFrame</enum>
+                    </property>
+                    <property stdset="1">
+                        <name>smallDecimalPoint</name>
+                        <bool>false</bool>
+                    </property>
+                    <property stdset="1">
+                        <name>numDigits</name>
+                        <number>4</number>
+                    </property>
+                    <property stdset="1">
+                        <name>segmentStyle</name>
+                        <enum>Flat</enum>
+                    </property>
+                    <property>
+                        <name>toolTip</name>
+                        <string>Shows all shots</string>
+                    </property>
+                </widget>
+            </hbox>
+        </widget>
+        <widget>
+            <class>QLayoutWidget</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>Layout19</cstring>
+            </property>
+            <hbox>
+                <property stdset="1">
+                    <name>margin</name>
+                    <number>0</number>
+                </property>
+                <property stdset="1">
+                    <name>spacing</name>
+                    <number>6</number>
+                </property>
+                <widget>
+                    <class>QLabel</class>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>TextLabel3_5</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>text</name>
+                        <string>#4</string>
+                    </property>
+                </widget>
+                <spacer>
+                    <property>
+                        <name>name</name>
+                        <cstring>Spacer16_7_3_2_2_6_4_2_2_4</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>orientation</name>
+                        <enum>Horizontal</enum>
+                    </property>
+                    <property stdset="1">
+                        <name>sizeType</name>
+                        <enum>Fixed</enum>
+                    </property>
+                    <property>
+                        <name>sizeHint</name>
+                        <size>
+                            <width>20</width>
+                            <height>20</height>
+                        </size>
+                    </property>
+                </spacer>
+                <widget>
+                    <class>QLabel</class>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>Name4</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>text</name>
+                        <string>-</string>
+                    </property>
+                </widget>
+                <spacer>
+                    <property>
+                        <name>name</name>
+                        <cstring>Spacer16_7_3_2_2_6_4_2_2_5_4_4</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>orientation</name>
+                        <enum>Horizontal</enum>
+                    </property>
+                    <property stdset="1">
+                        <name>sizeType</name>
+                        <enum>Fixed</enum>
+                    </property>
+                    <property>
+                        <name>sizeHint</name>
+                        <size>
+                            <width>20</width>
+                            <height>20</height>
+                        </size>
+                    </property>
+                </spacer>
+                <widget>
+                    <class>QLCDNumber</class>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>ScoreLCD4</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>frameShape</name>
+                        <enum>NoFrame</enum>
+                    </property>
+                    <property stdset="1">
+                        <name>smallDecimalPoint</name>
+                        <bool>false</bool>
+                    </property>
+                    <property stdset="1">
+                        <name>numDigits</name>
+                        <number>4</number>
+                    </property>
+                    <property stdset="1">
+                        <name>segmentStyle</name>
+                        <enum>Flat</enum>
+                    </property>
+                    <property>
+                        <name>toolTip</name>
+                        <string>Shows all shots</string>
+                    </property>
+                </widget>
+                <spacer>
+                    <property>
+                        <name>name</name>
+                        <cstring>Spacer16_7_3_2_2_6_4_2_3</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>orientation</name>
+                        <enum>Horizontal</enum>
+                    </property>
+                    <property stdset="1">
+                        <name>sizeType</name>
+                        <enum>Fixed</enum>
+                    </property>
+                    <property>
+                        <name>sizeHint</name>
+                        <size>
+                            <width>20</width>
+                            <height>20</height>
+                        </size>
+                    </property>
+                </spacer>
+                <widget>
+                    <class>QLCDNumber</class>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>ShotLCD4</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>frameShape</name>
+                        <enum>NoFrame</enum>
+                    </property>
+                    <property stdset="1">
+                        <name>smallDecimalPoint</name>
+                        <bool>false</bool>
+                    </property>
+                    <property stdset="1">
+                        <name>numDigits</name>
+                        <number>4</number>
+                    </property>
+                    <property stdset="1">
+                        <name>segmentStyle</name>
+                        <enum>Flat</enum>
+                    </property>
+                    <property>
+                        <name>toolTip</name>
+                        <string>Shows all shots</string>
+                    </property>
+                </widget>
+                <spacer>
+                    <property>
+                        <name>name</name>
+                        <cstring>Spacer16_7_3_2_2_4</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>orientation</name>
+                        <enum>Horizontal</enum>
+                    </property>
+                    <property stdset="1">
+                        <name>sizeType</name>
+                        <enum>Fixed</enum>
+                    </property>
+                    <property>
+                        <name>sizeHint</name>
+                        <size>
+                            <width>20</width>
+                            <height>20</height>
+                        </size>
+                    </property>
+                </spacer>
+                <widget>
+                    <class>QLCDNumber</class>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>HitLCD4</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>frameShape</name>
+                        <enum>NoFrame</enum>
+                    </property>
+                    <property stdset="1">
+                        <name>smallDecimalPoint</name>
+                        <bool>false</bool>
+                    </property>
+                    <property stdset="1">
+                        <name>numDigits</name>
+                        <number>4</number>
+                    </property>
+                    <property stdset="1">
+                        <name>segmentStyle</name>
+                        <enum>Flat</enum>
+                    </property>
+                    <property>
+                        <name>toolTip</name>
+                        <string>Shows all shots</string>
+                    </property>
+                </widget>
+                <spacer>
+                    <property>
+                        <name>name</name>
+                        <cstring>Spacer16_4</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>orientation</name>
+                        <enum>Horizontal</enum>
+                    </property>
+                    <property stdset="1">
+                        <name>sizeType</name>
+                        <enum>Fixed</enum>
+                    </property>
+                    <property>
+                        <name>sizeHint</name>
+                        <size>
+                            <width>20</width>
+                            <height>20</height>
+                        </size>
+                    </property>
+                </spacer>
+                <widget>
+                    <class>QLCDNumber</class>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>WaterLCD4</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>frameShape</name>
+                        <enum>NoFrame</enum>
+                    </property>
+                    <property stdset="1">
+                        <name>smallDecimalPoint</name>
+                        <bool>false</bool>
+                    </property>
+                    <property stdset="1">
+                        <name>numDigits</name>
+                        <number>4</number>
+                    </property>
+                    <property stdset="1">
+                        <name>segmentStyle</name>
+                        <enum>Flat</enum>
+                    </property>
+                    <property>
+                        <name>toolTip</name>
+                        <string>Shows all shots</string>
+                    </property>
+                </widget>
+            </hbox>
+        </widget>
+        <widget>
+            <class>QLayoutWidget</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>Layout21</cstring>
+            </property>
+            <hbox>
+                <property stdset="1">
+                    <name>margin</name>
+                    <number>0</number>
+                </property>
+                <property stdset="1">
+                    <name>spacing</name>
+                    <number>6</number>
+                </property>
+                <widget>
+                    <class>QLabel</class>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>TextLabel3_6</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>text</name>
+                        <string>#5</string>
+                    </property>
+                </widget>
+                <spacer>
+                    <property>
+                        <name>name</name>
+                        <cstring>Spacer16_7_3_2_2_6_4_2_2_5</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>orientation</name>
+                        <enum>Horizontal</enum>
+                    </property>
+                    <property stdset="1">
+                        <name>sizeType</name>
+                        <enum>Fixed</enum>
+                    </property>
+                    <property>
+                        <name>sizeHint</name>
+                        <size>
+                            <width>20</width>
+                            <height>20</height>
+                        </size>
+                    </property>
+                </spacer>
+                <widget>
+                    <class>QLabel</class>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>Name5</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>text</name>
+                        <string>-</string>
+                    </property>
+                </widget>
+                <spacer>
+                    <property>
+                        <name>name</name>
+                        <cstring>Spacer16_7_3_2_2_6_4_2_2_5_4_5</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>orientation</name>
+                        <enum>Horizontal</enum>
+                    </property>
+                    <property stdset="1">
+                        <name>sizeType</name>
+                        <enum>Fixed</enum>
+                    </property>
+                    <property>
+                        <name>sizeHint</name>
+                        <size>
+                            <width>20</width>
+                            <height>20</height>
+                        </size>
+                    </property>
+                </spacer>
+                <widget>
+                    <class>QLCDNumber</class>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>ScoreLCD5</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>frameShape</name>
+                        <enum>NoFrame</enum>
+                    </property>
+                    <property stdset="1">
+                        <name>smallDecimalPoint</name>
+                        <bool>false</bool>
+                    </property>
+                    <property stdset="1">
+                        <name>numDigits</name>
+                        <number>4</number>
+                    </property>
+                    <property stdset="1">
+                        <name>segmentStyle</name>
+                        <enum>Flat</enum>
+                    </property>
+                    <property>
+                        <name>toolTip</name>
+                        <string>Shows all shots</string>
+                    </property>
+                </widget>
+                <spacer>
+                    <property>
+                        <name>name</name>
+                        <cstring>Spacer16_7_3_2_2_6_4_2_3_2</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>orientation</name>
+                        <enum>Horizontal</enum>
+                    </property>
+                    <property stdset="1">
+                        <name>sizeType</name>
+                        <enum>Fixed</enum>
+                    </property>
+                    <property>
+                        <name>sizeHint</name>
+                        <size>
+                            <width>20</width>
+                            <height>20</height>
+                        </size>
+                    </property>
+                </spacer>
+                <widget>
+                    <class>QLCDNumber</class>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>ShotLCD5</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>frameShape</name>
+                        <enum>NoFrame</enum>
+                    </property>
+                    <property stdset="1">
+                        <name>smallDecimalPoint</name>
+                        <bool>false</bool>
+                    </property>
+                    <property stdset="1">
+                        <name>numDigits</name>
+                        <number>4</number>
+                    </property>
+                    <property stdset="1">
+                        <name>segmentStyle</name>
+                        <enum>Flat</enum>
+                    </property>
+                    <property>
+                        <name>toolTip</name>
+                        <string>Shows all shots</string>
+                    </property>
+                </widget>
+                <spacer>
+                    <property>
+                        <name>name</name>
+                        <cstring>Spacer16_7_3_2_2_5</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>orientation</name>
+                        <enum>Horizontal</enum>
+                    </property>
+                    <property stdset="1">
+                        <name>sizeType</name>
+                        <enum>Fixed</enum>
+                    </property>
+                    <property>
+                        <name>sizeHint</name>
+                        <size>
+                            <width>20</width>
+                            <height>20</height>
+                        </size>
+                    </property>
+                </spacer>
+                <widget>
+                    <class>QLCDNumber</class>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>HitLCD5</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>frameShape</name>
+                        <enum>NoFrame</enum>
+                    </property>
+                    <property stdset="1">
+                        <name>smallDecimalPoint</name>
+                        <bool>false</bool>
+                    </property>
+                    <property stdset="1">
+                        <name>numDigits</name>
+                        <number>4</number>
+                    </property>
+                    <property stdset="1">
+                        <name>segmentStyle</name>
+                        <enum>Flat</enum>
+                    </property>
+                    <property>
+                        <name>toolTip</name>
+                        <string>Shows all shots</string>
+                    </property>
+                </widget>
+                <spacer>
+                    <property>
+                        <name>name</name>
+                        <cstring>Spacer16_5</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>orientation</name>
+                        <enum>Horizontal</enum>
+                    </property>
+                    <property stdset="1">
+                        <name>sizeType</name>
+                        <enum>Fixed</enum>
+                    </property>
+                    <property>
+                        <name>sizeHint</name>
+                        <size>
+                            <width>20</width>
+                            <height>20</height>
+                        </size>
+                    </property>
+                </spacer>
+                <widget>
+                    <class>QLCDNumber</class>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>WaterLCD5</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>frameShape</name>
+                        <enum>NoFrame</enum>
+                    </property>
+                    <property stdset="1">
+                        <name>smallDecimalPoint</name>
+                        <bool>false</bool>
+                    </property>
+                    <property stdset="1">
+                        <name>numDigits</name>
+                        <number>4</number>
+                    </property>
+                    <property stdset="1">
+                        <name>segmentStyle</name>
+                        <enum>Flat</enum>
+                    </property>
+                    <property>
+                        <name>toolTip</name>
+                        <string>Shows all shots</string>
+                    </property>
+                </widget>
+            </hbox>
+        </widget>
+        <widget>
+            <class>QLayoutWidget</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>Layout23</cstring>
+            </property>
+            <hbox>
+                <property stdset="1">
+                    <name>margin</name>
+                    <number>0</number>
+                </property>
+                <property stdset="1">
+                    <name>spacing</name>
+                    <number>6</number>
+                </property>
+                <widget>
+                    <class>QLabel</class>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>TextLabel3_7</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>text</name>
+                        <string>#6</string>
+                    </property>
+                </widget>
+                <spacer>
+                    <property>
+                        <name>name</name>
+                        <cstring>Spacer16_7_3_2_2_6_4_2_2_6</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>orientation</name>
+                        <enum>Horizontal</enum>
+                    </property>
+                    <property stdset="1">
+                        <name>sizeType</name>
+                        <enum>Fixed</enum>
+                    </property>
+                    <property>
+                        <name>sizeHint</name>
+                        <size>
+                            <width>20</width>
+                            <height>20</height>
+                        </size>
+                    </property>
+                </spacer>
+                <widget>
+                    <class>QLabel</class>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>Name6</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>text</name>
+                        <string>-</string>
+                    </property>
+                </widget>
+                <spacer>
+                    <property>
+                        <name>name</name>
+                        <cstring>Spacer16_7_3_2_2_6_4_2_2_5_4_6</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>orientation</name>
+                        <enum>Horizontal</enum>
+                    </property>
+                    <property stdset="1">
+                        <name>sizeType</name>
+                        <enum>Fixed</enum>
+                    </property>
+                    <property>
+                        <name>sizeHint</name>
+                        <size>
+                            <width>20</width>
+                            <height>20</height>
+                        </size>
+                    </property>
+                </spacer>
+                <widget>
+                    <class>QLCDNumber</class>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>ScoreLCD6</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>frameShape</name>
+                        <enum>NoFrame</enum>
+                    </property>
+                    <property stdset="1">
+                        <name>smallDecimalPoint</name>
+                        <bool>false</bool>
+                    </property>
+                    <property stdset="1">
+                        <name>numDigits</name>
+                        <number>4</number>
+                    </property>
+                    <property stdset="1">
+                        <name>segmentStyle</name>
+                        <enum>Flat</enum>
+                    </property>
+                    <property>
+                        <name>toolTip</name>
+                        <string>Shows all shots</string>
+                    </property>
+                </widget>
+                <spacer>
+                    <property>
+                        <name>name</name>
+                        <cstring>Spacer16_7_3_2_2_6_3_2_3</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>orientation</name>
+                        <enum>Horizontal</enum>
+                    </property>
+                    <property stdset="1">
+                        <name>sizeType</name>
+                        <enum>Fixed</enum>
+                    </property>
+                    <property>
+                        <name>sizeHint</name>
+                        <size>
+                            <width>20</width>
+                            <height>20</height>
+                        </size>
+                    </property>
+                </spacer>
+                <widget>
+                    <class>QLCDNumber</class>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>ShotLCD6</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>frameShape</name>
+                        <enum>NoFrame</enum>
+                    </property>
+                    <property stdset="1">
+                        <name>smallDecimalPoint</name>
+                        <bool>false</bool>
+                    </property>
+                    <property stdset="1">
+                        <name>numDigits</name>
+                        <number>4</number>
+                    </property>
+                    <property stdset="1">
+                        <name>segmentStyle</name>
+                        <enum>Flat</enum>
+                    </property>
+                    <property>
+                        <name>toolTip</name>
+                        <string>Shows all shots</string>
+                    </property>
+                </widget>
+                <spacer>
+                    <property>
+                        <name>name</name>
+                        <cstring>Spacer16_7_3_2_2_6</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>orientation</name>
+                        <enum>Horizontal</enum>
+                    </property>
+                    <property stdset="1">
+                        <name>sizeType</name>
+                        <enum>Fixed</enum>
+                    </property>
+                    <property>
+                        <name>sizeHint</name>
+                        <size>
+                            <width>20</width>
+                            <height>20</height>
+                        </size>
+                    </property>
+                </spacer>
+                <widget>
+                    <class>QLCDNumber</class>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>HitLCD6</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>frameShape</name>
+                        <enum>NoFrame</enum>
+                    </property>
+                    <property stdset="1">
+                        <name>smallDecimalPoint</name>
+                        <bool>false</bool>
+                    </property>
+                    <property stdset="1">
+                        <name>numDigits</name>
+                        <number>4</number>
+                    </property>
+                    <property stdset="1">
+                        <name>segmentStyle</name>
+                        <enum>Flat</enum>
+                    </property>
+                    <property>
+                        <name>toolTip</name>
+                        <string>Shows all shots</string>
+                    </property>
+                </widget>
+                <spacer>
+                    <property>
+                        <name>name</name>
+                        <cstring>Spacer16_6</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>orientation</name>
+                        <enum>Horizontal</enum>
+                    </property>
+                    <property stdset="1">
+                        <name>sizeType</name>
+                        <enum>Fixed</enum>
+                    </property>
+                    <property>
+                        <name>sizeHint</name>
+                        <size>
+                            <width>20</width>
+                            <height>20</height>
+                        </size>
+                    </property>
+                </spacer>
+                <widget>
+                    <class>QLCDNumber</class>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>WaterLCD6</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>frameShape</name>
+                        <enum>NoFrame</enum>
+                    </property>
+                    <property stdset="1">
+                        <name>smallDecimalPoint</name>
+                        <bool>false</bool>
+                    </property>
+                    <property stdset="1">
+                        <name>numDigits</name>
+                        <number>4</number>
+                    </property>
+                    <property stdset="1">
+                        <name>segmentStyle</name>
+                        <enum>Flat</enum>
+                    </property>
+                    <property>
+                        <name>toolTip</name>
+                        <string>Shows all shots</string>
+                    </property>
+                </widget>
+            </hbox>
+        </widget>
+        <widget>
+            <class>QLayoutWidget</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>Layout24</cstring>
+            </property>
+            <hbox>
+                <property stdset="1">
+                    <name>margin</name>
+                    <number>0</number>
+                </property>
+                <property stdset="1">
+                    <name>spacing</name>
+                    <number>6</number>
+                </property>
+                <widget>
+                    <class>QLabel</class>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>TextLabel3_8</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>text</name>
+                        <string>#7</string>
+                    </property>
+                </widget>
+                <spacer>
+                    <property>
+                        <name>name</name>
+                        <cstring>Spacer16_7_3_2_2_6_4_2_2_5_2</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>orientation</name>
+                        <enum>Horizontal</enum>
+                    </property>
+                    <property stdset="1">
+                        <name>sizeType</name>
+                        <enum>Fixed</enum>
+                    </property>
+                    <property>
+                        <name>sizeHint</name>
+                        <size>
+                            <width>20</width>
+                            <height>20</height>
+                        </size>
+                    </property>
+                </spacer>
+                <widget>
+                    <class>QLabel</class>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>Name7</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>text</name>
+                        <string>-</string>
+                    </property>
+                </widget>
+                <spacer>
+                    <property>
+                        <name>name</name>
+                        <cstring>Spacer16_7_3_2_2_6_4_2_2_5_4_7</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>orientation</name>
+                        <enum>Horizontal</enum>
+                    </property>
+                    <property stdset="1">
+                        <name>sizeType</name>
+                        <enum>Fixed</enum>
+                    </property>
+                    <property>
+                        <name>sizeHint</name>
+                        <size>
+                            <width>20</width>
+                            <height>20</height>
+                        </size>
+                    </property>
+                </spacer>
+                <widget>
+                    <class>QLCDNumber</class>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>ScoreLCD7</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>frameShape</name>
+                        <enum>NoFrame</enum>
+                    </property>
+                    <property stdset="1">
+                        <name>smallDecimalPoint</name>
+                        <bool>false</bool>
+                    </property>
+                    <property stdset="1">
+                        <name>numDigits</name>
+                        <number>4</number>
+                    </property>
+                    <property stdset="1">
+                        <name>segmentStyle</name>
+                        <enum>Flat</enum>
+                    </property>
+                    <property>
+                        <name>toolTip</name>
+                        <string>Shows all shots</string>
+                    </property>
+                </widget>
+                <spacer>
+                    <property>
+                        <name>name</name>
+                        <cstring>Spacer16_7_3_2_2_6_4_2_4_4</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>orientation</name>
+                        <enum>Horizontal</enum>
+                    </property>
+                    <property stdset="1">
+                        <name>sizeType</name>
+                        <enum>Fixed</enum>
+                    </property>
+                    <property>
+                        <name>sizeHint</name>
+                        <size>
+                            <width>20</width>
+                            <height>20</height>
+                        </size>
+                    </property>
+                </spacer>
+                <widget>
+                    <class>QLCDNumber</class>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>ShotLCD7</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>frameShape</name>
+                        <enum>NoFrame</enum>
+                    </property>
+                    <property stdset="1">
+                        <name>smallDecimalPoint</name>
+                        <bool>false</bool>
+                    </property>
+                    <property stdset="1">
+                        <name>numDigits</name>
+                        <number>4</number>
+                    </property>
+                    <property stdset="1">
+                        <name>segmentStyle</name>
+                        <enum>Flat</enum>
+                    </property>
+                    <property>
+                        <name>toolTip</name>
+                        <string>Shows all shots</string>
+                    </property>
+                </widget>
+                <spacer>
+                    <property>
+                        <name>name</name>
+                        <cstring>Spacer16_7_3_2_2_6_2</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>orientation</name>
+                        <enum>Horizontal</enum>
+                    </property>
+                    <property stdset="1">
+                        <name>sizeType</name>
+                        <enum>Fixed</enum>
+                    </property>
+                    <property>
+                        <name>sizeHint</name>
+                        <size>
+                            <width>20</width>
+                            <height>20</height>
+                        </size>
+                    </property>
+                </spacer>
+                <widget>
+                    <class>QLCDNumber</class>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>HitLCD7</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>frameShape</name>
+                        <enum>NoFrame</enum>
+                    </property>
+                    <property stdset="1">
+                        <name>smallDecimalPoint</name>
+                        <bool>false</bool>
+                    </property>
+                    <property stdset="1">
+                        <name>numDigits</name>
+                        <number>4</number>
+                    </property>
+                    <property stdset="1">
+                        <name>segmentStyle</name>
+                        <enum>Flat</enum>
+                    </property>
+                    <property>
+                        <name>toolTip</name>
+                        <string>Shows all shots</string>
+                    </property>
+                </widget>
+                <spacer>
+                    <property>
+                        <name>name</name>
+                        <cstring>Spacer16_7</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>orientation</name>
+                        <enum>Horizontal</enum>
+                    </property>
+                    <property stdset="1">
+                        <name>sizeType</name>
+                        <enum>Fixed</enum>
+                    </property>
+                    <property>
+                        <name>sizeHint</name>
+                        <size>
+                            <width>20</width>
+                            <height>20</height>
+                        </size>
+                    </property>
+                </spacer>
+                <widget>
+                    <class>QLCDNumber</class>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>WaterLCD7</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>frameShape</name>
+                        <enum>NoFrame</enum>
+                    </property>
+                    <property stdset="1">
+                        <name>smallDecimalPoint</name>
+                        <bool>false</bool>
+                    </property>
+                    <property stdset="1">
+                        <name>numDigits</name>
+                        <number>4</number>
+                    </property>
+                    <property stdset="1">
+                        <name>segmentStyle</name>
+                        <enum>Flat</enum>
+                    </property>
+                    <property>
+                        <name>toolTip</name>
+                        <string>Shows all shots</string>
+                    </property>
+                </widget>
+            </hbox>
+        </widget>
+        <widget>
+            <class>QLayoutWidget</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>Layout25</cstring>
+            </property>
+            <hbox>
+                <property stdset="1">
+                    <name>margin</name>
+                    <number>0</number>
+                </property>
+                <property stdset="1">
+                    <name>spacing</name>
+                    <number>6</number>
+                </property>
+                <widget>
+                    <class>QLabel</class>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>TextLabel3_6_2</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>text</name>
+                        <string>#8</string>
+                    </property>
+                </widget>
+                <spacer>
+                    <property>
+                        <name>name</name>
+                        <cstring>Spacer16_7_3_2_2_6_4_2_2_5_3</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>orientation</name>
+                        <enum>Horizontal</enum>
+                    </property>
+                    <property stdset="1">
+                        <name>sizeType</name>
+                        <enum>Fixed</enum>
+                    </property>
+                    <property>
+                        <name>sizeHint</name>
+                        <size>
+                            <width>20</width>
+                            <height>20</height>
+                        </size>
+                    </property>
+                </spacer>
+                <widget>
+                    <class>QLabel</class>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>Name8</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>text</name>
+                        <string>-</string>
+                    </property>
+                </widget>
+                <spacer>
+                    <property>
+                        <name>name</name>
+                        <cstring>Spacer16_7_3_2_2_6_4_2_2_5_4_8</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>orientation</name>
+                        <enum>Horizontal</enum>
+                    </property>
+                    <property stdset="1">
+                        <name>sizeType</name>
+                        <enum>Fixed</enum>
+                    </property>
+                    <property>
+                        <name>sizeHint</name>
+                        <size>
+                            <width>20</width>
+                            <height>20</height>
+                        </size>
+                    </property>
+                </spacer>
+                <widget>
+                    <class>QLCDNumber</class>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>ScoreLCD8</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>frameShape</name>
+                        <enum>NoFrame</enum>
+                    </property>
+                    <property stdset="1">
+                        <name>smallDecimalPoint</name>
+                        <bool>false</bool>
+                    </property>
+                    <property stdset="1">
+                        <name>numDigits</name>
+                        <number>4</number>
+                    </property>
+                    <property stdset="1">
+                        <name>segmentStyle</name>
+                        <enum>Flat</enum>
+                    </property>
+                    <property>
+                        <name>toolTip</name>
+                        <string>Shows all shots</string>
+                    </property>
+                </widget>
+                <spacer>
+                    <property>
+                        <name>name</name>
+                        <cstring>Spacer16_7_3_2_2_5_2_5</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>orientation</name>
+                        <enum>Horizontal</enum>
+                    </property>
+                    <property stdset="1">
+                        <name>sizeType</name>
+                        <enum>Fixed</enum>
+                    </property>
+                    <property>
+                        <name>sizeHint</name>
+                        <size>
+                            <width>20</width>
+                            <height>20</height>
+                        </size>
+                    </property>
+                </spacer>
+                <widget>
+                    <class>QLCDNumber</class>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>ShotLCD8</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>frameShape</name>
+                        <enum>NoFrame</enum>
+                    </property>
+                    <property stdset="1">
+                        <name>smallDecimalPoint</name>
+                        <bool>false</bool>
+                    </property>
+                    <property stdset="1">
+                        <name>numDigits</name>
+                        <number>4</number>
+                    </property>
+                    <property stdset="1">
+                        <name>segmentStyle</name>
+                        <enum>Flat</enum>
+                    </property>
+                    <property>
+                        <name>toolTip</name>
+                        <string>Shows all shots</string>
+                    </property>
+                </widget>
+                <spacer>
+                    <property>
+                        <name>name</name>
+                        <cstring>Spacer16_7_3_2_2_6_3</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>orientation</name>
+                        <enum>Horizontal</enum>
+                    </property>
+                    <property stdset="1">
+                        <name>sizeType</name>
+                        <enum>Fixed</enum>
+                    </property>
+                    <property>
+                        <name>sizeHint</name>
+                        <size>
+                            <width>20</width>
+                            <height>20</height>
+                        </size>
+                    </property>
+                </spacer>
+                <widget>
+                    <class>QLCDNumber</class>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>HitLCD8</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>frameShape</name>
+                        <enum>NoFrame</enum>
+                    </property>
+                    <property stdset="1">
+                        <name>smallDecimalPoint</name>
+                        <bool>false</bool>
+                    </property>
+                    <property stdset="1">
+                        <name>numDigits</name>
+                        <number>4</number>
+                    </property>
+                    <property stdset="1">
+                        <name>segmentStyle</name>
+                        <enum>Flat</enum>
+                    </property>
+                    <property>
+                        <name>toolTip</name>
+                        <string>Shows all shots</string>
+                    </property>
+                </widget>
+                <spacer>
+                    <property>
+                        <name>name</name>
+                        <cstring>Spacer16_7_2</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>orientation</name>
+                        <enum>Horizontal</enum>
+                    </property>
+                    <property stdset="1">
+                        <name>sizeType</name>
+                        <enum>Fixed</enum>
+                    </property>
+                    <property>
+                        <name>sizeHint</name>
+                        <size>
+                            <width>20</width>
+                            <height>20</height>
+                        </size>
+                    </property>
+                </spacer>
+                <widget>
+                    <class>QLCDNumber</class>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>WaterLCD8</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>frameShape</name>
+                        <enum>NoFrame</enum>
+                    </property>
+                    <property stdset="1">
+                        <name>smallDecimalPoint</name>
+                        <bool>false</bool>
+                    </property>
+                    <property stdset="1">
+                        <name>numDigits</name>
+                        <number>4</number>
+                    </property>
+                    <property stdset="1">
+                        <name>segmentStyle</name>
+                        <enum>Flat</enum>
+                    </property>
+                    <property>
+                        <name>toolTip</name>
+                        <string>Shows all shots</string>
+                    </property>
+                </widget>
+            </hbox>
+        </widget>
+        <widget>
+            <class>QLayoutWidget</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>Layout26</cstring>
+            </property>
+            <hbox>
+                <property stdset="1">
+                    <name>margin</name>
+                    <number>0</number>
+                </property>
+                <property stdset="1">
+                    <name>spacing</name>
+                    <number>6</number>
+                </property>
+                <widget>
+                    <class>QLabel</class>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>TextLabel3_7_2</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>text</name>
+                        <string>#9</string>
+                    </property>
+                </widget>
+                <spacer>
+                    <property>
+                        <name>name</name>
+                        <cstring>Spacer16_7_3_2_2_6_4_2_2_5_4</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>orientation</name>
+                        <enum>Horizontal</enum>
+                    </property>
+                    <property stdset="1">
+                        <name>sizeType</name>
+                        <enum>Fixed</enum>
+                    </property>
+                    <property>
+                        <name>sizeHint</name>
+                        <size>
+                            <width>20</width>
+                            <height>20</height>
+                        </size>
+                    </property>
+                </spacer>
+                <widget>
+                    <class>QLabel</class>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>Name9</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>text</name>
+                        <string>-</string>
+                    </property>
+                </widget>
+                <spacer>
+                    <property>
+                        <name>name</name>
+                        <cstring>Spacer16_7_3_2_2_6_4_2_2_5_4_9</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>orientation</name>
+                        <enum>Horizontal</enum>
+                    </property>
+                    <property stdset="1">
+                        <name>sizeType</name>
+                        <enum>Fixed</enum>
+                    </property>
+                    <property>
+                        <name>sizeHint</name>
+                        <size>
+                            <width>20</width>
+                            <height>20</height>
+                        </size>
+                    </property>
+                </spacer>
+                <widget>
+                    <class>QLCDNumber</class>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>ScoreLCD9</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>frameShape</name>
+                        <enum>NoFrame</enum>
+                    </property>
+                    <property stdset="1">
+                        <name>smallDecimalPoint</name>
+                        <bool>false</bool>
+                    </property>
+                    <property stdset="1">
+                        <name>numDigits</name>
+                        <number>4</number>
+                    </property>
+                    <property stdset="1">
+                        <name>segmentStyle</name>
+                        <enum>Flat</enum>
+                    </property>
+                    <property>
+                        <name>toolTip</name>
+                        <string>Shows all shots</string>
+                    </property>
+                </widget>
+                <spacer>
+                    <property>
+                        <name>name</name>
+                        <cstring>Spacer16_7_3_2_2_6_4_2_3_6</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>orientation</name>
+                        <enum>Horizontal</enum>
+                    </property>
+                    <property stdset="1">
+                        <name>sizeType</name>
+                        <enum>Fixed</enum>
+                    </property>
+                    <property>
+                        <name>sizeHint</name>
+                        <size>
+                            <width>20</width>
+                            <height>20</height>
+                        </size>
+                    </property>
+                </spacer>
+                <widget>
+                    <class>QLCDNumber</class>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>ShotLCD9</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>frameShape</name>
+                        <enum>NoFrame</enum>
+                    </property>
+                    <property stdset="1">
+                        <name>smallDecimalPoint</name>
+                        <bool>false</bool>
+                    </property>
+                    <property stdset="1">
+                        <name>numDigits</name>
+                        <number>4</number>
+                    </property>
+                    <property stdset="1">
+                        <name>segmentStyle</name>
+                        <enum>Flat</enum>
+                    </property>
+                    <property>
+                        <name>toolTip</name>
+                        <string>Shows all shots</string>
+                    </property>
+                </widget>
+                <spacer>
+                    <property>
+                        <name>name</name>
+                        <cstring>Spacer16_7_3_2_2_6_4</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>orientation</name>
+                        <enum>Horizontal</enum>
+                    </property>
+                    <property stdset="1">
+                        <name>sizeType</name>
+                        <enum>Fixed</enum>
+                    </property>
+                    <property>
+                        <name>sizeHint</name>
+                        <size>
+                            <width>20</width>
+                            <height>20</height>
+                        </size>
+                    </property>
+                </spacer>
+                <widget>
+                    <class>QLCDNumber</class>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>HitLCD9</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>frameShape</name>
+                        <enum>NoFrame</enum>
+                    </property>
+                    <property stdset="1">
+                        <name>smallDecimalPoint</name>
+                        <bool>false</bool>
+                    </property>
+                    <property stdset="1">
+                        <name>numDigits</name>
+                        <number>4</number>
+                    </property>
+                    <property stdset="1">
+                        <name>segmentStyle</name>
+                        <enum>Flat</enum>
+                    </property>
+                    <property>
+                        <name>toolTip</name>
+                        <string>Shows all shots</string>
+                    </property>
+                </widget>
+                <spacer>
+                    <property>
+                        <name>name</name>
+                        <cstring>Spacer16_7_3</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>orientation</name>
+                        <enum>Horizontal</enum>
+                    </property>
+                    <property stdset="1">
+                        <name>sizeType</name>
+                        <enum>Fixed</enum>
+                    </property>
+                    <property>
+                        <name>sizeHint</name>
+                        <size>
+                            <width>20</width>
+                            <height>20</height>
+                        </size>
+                    </property>
+                </spacer>
+                <widget>
+                    <class>QLCDNumber</class>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>WaterLCD9</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>frameShape</name>
+                        <enum>NoFrame</enum>
+                    </property>
+                    <property stdset="1">
+                        <name>smallDecimalPoint</name>
+                        <bool>false</bool>
+                    </property>
+                    <property stdset="1">
+                        <name>numDigits</name>
+                        <number>4</number>
+                    </property>
+                    <property stdset="1">
+                        <name>segmentStyle</name>
+                        <enum>Flat</enum>
+                    </property>
+                    <property>
+                        <name>toolTip</name>
+                        <string>Shows all shots</string>
+                    </property>
+                </widget>
+            </hbox>
+        </widget>
+        <widget>
+            <class>QLayoutWidget</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>Layout27</cstring>
+            </property>
+            <hbox>
+                <property stdset="1">
+                    <name>margin</name>
+                    <number>0</number>
+                </property>
+                <property stdset="1">
+                    <name>spacing</name>
+                    <number>6</number>
+                </property>
+                <widget>
+                    <class>QLabel</class>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>TextLabel3_8_2</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>text</name>
+                        <string>#10</string>
+                    </property>
+                </widget>
+                <spacer>
+                    <property>
+                        <name>name</name>
+                        <cstring>Spacer16_7_3_2_2_6_4_2_2_5_5</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>orientation</name>
+                        <enum>Horizontal</enum>
+                    </property>
+                    <property stdset="1">
+                        <name>sizeType</name>
+                        <enum>Fixed</enum>
+                    </property>
+                    <property>
+                        <name>sizeHint</name>
+                        <size>
+                            <width>20</width>
+                            <height>20</height>
+                        </size>
+                    </property>
+                </spacer>
+                <widget>
+                    <class>QLabel</class>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>Name10</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>text</name>
+                        <string>-</string>
+                    </property>
+                </widget>
+                <spacer>
+                    <property>
+                        <name>name</name>
+                        <cstring>Spacer16_7_3_2_2_6_4_2_2_5_4_10</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>orientation</name>
+                        <enum>Horizontal</enum>
+                    </property>
+                    <property stdset="1">
+                        <name>sizeType</name>
+                        <enum>Fixed</enum>
+                    </property>
+                    <property>
+                        <name>sizeHint</name>
+                        <size>
+                            <width>20</width>
+                            <height>20</height>
+                        </size>
+                    </property>
+                </spacer>
+                <widget>
+                    <class>QLCDNumber</class>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>ScoreLCD10</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>frameShape</name>
+                        <enum>NoFrame</enum>
+                    </property>
+                    <property stdset="1">
+                        <name>smallDecimalPoint</name>
+                        <bool>false</bool>
+                    </property>
+                    <property stdset="1">
+                        <name>numDigits</name>
+                        <number>4</number>
+                    </property>
+                    <property stdset="1">
+                        <name>segmentStyle</name>
+                        <enum>Flat</enum>
+                    </property>
+                    <property>
+                        <name>toolTip</name>
+                        <string>Shows all shots</string>
+                    </property>
+                </widget>
+                <spacer>
+                    <property>
+                        <name>name</name>
+                        <cstring>Spacer16_7_3_2_2_2_2_7</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>orientation</name>
+                        <enum>Horizontal</enum>
+                    </property>
+                    <property stdset="1">
+                        <name>sizeType</name>
+                        <enum>Fixed</enum>
+                    </property>
+                    <property>
+                        <name>sizeHint</name>
+                        <size>
+                            <width>20</width>
+                            <height>20</height>
+                        </size>
+                    </property>
+                </spacer>
+                <widget>
+                    <class>QLCDNumber</class>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>ShotLCD10</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>frameShape</name>
+                        <enum>NoFrame</enum>
+                    </property>
+                    <property stdset="1">
+                        <name>smallDecimalPoint</name>
+                        <bool>false</bool>
+                    </property>
+                    <property stdset="1">
+                        <name>numDigits</name>
+                        <number>4</number>
+                    </property>
+                    <property stdset="1">
+                        <name>segmentStyle</name>
+                        <enum>Flat</enum>
+                    </property>
+                    <property>
+                        <name>toolTip</name>
+                        <string>Shows all shots</string>
+                    </property>
+                </widget>
+                <spacer>
+                    <property>
+                        <name>name</name>
+                        <cstring>Spacer16_7_3_2_2_6_4_2</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>orientation</name>
+                        <enum>Horizontal</enum>
+                    </property>
+                    <property stdset="1">
+                        <name>sizeType</name>
+                        <enum>Fixed</enum>
+                    </property>
+                    <property>
+                        <name>sizeHint</name>
+                        <size>
+                            <width>20</width>
+                            <height>20</height>
+                        </size>
+                    </property>
+                </spacer>
+                <widget>
+                    <class>QLCDNumber</class>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>HitLCD10</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>frameShape</name>
+                        <enum>NoFrame</enum>
+                    </property>
+                    <property stdset="1">
+                        <name>smallDecimalPoint</name>
+                        <bool>false</bool>
+                    </property>
+                    <property stdset="1">
+                        <name>numDigits</name>
+                        <number>4</number>
+                    </property>
+                    <property stdset="1">
+                        <name>segmentStyle</name>
+                        <enum>Flat</enum>
+                    </property>
+                    <property>
+                        <name>toolTip</name>
+                        <string>Shows all shots</string>
+                    </property>
+                </widget>
+                <spacer>
+                    <property>
+                        <name>name</name>
+                        <cstring>Spacer16_7_3_2</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>orientation</name>
+                        <enum>Horizontal</enum>
+                    </property>
+                    <property stdset="1">
+                        <name>sizeType</name>
+                        <enum>Fixed</enum>
+                    </property>
+                    <property>
+                        <name>sizeHint</name>
+                        <size>
+                            <width>20</width>
+                            <height>20</height>
+                        </size>
+                    </property>
+                </spacer>
+                <widget>
+                    <class>QLCDNumber</class>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>WaterLCD10</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>frameShape</name>
+                        <enum>NoFrame</enum>
+                    </property>
+                    <property stdset="1">
+                        <name>smallDecimalPoint</name>
+                        <bool>false</bool>
+                    </property>
+                    <property stdset="1">
+                        <name>numDigits</name>
+                        <number>4</number>
+                    </property>
+                    <property stdset="1">
+                        <name>segmentStyle</name>
+                        <enum>Flat</enum>
+                    </property>
+                    <property>
+                        <name>toolTip</name>
+                        <string>Shows all shots</string>
+                    </property>
+                </widget>
+            </hbox>
+        </widget>
+    </vbox>
+</widget>
+</UI>

@@ -69,7 +69,7 @@ void KBattleshipApp::initStatusBar()
     m_ownNickname = "-";
     m_enemyNickname = "-";
     statusBar()->insertItem(i18n("     Player 1: %1     ").arg(m_ownNickname), ID_PLAYER_OWN, 0, true);
-    statusBar()->insertItem(i18n("     Player 2: %2     ").arg(m_enemyNickname), ID_PLAYER_ENEMY, 0, true);
+    statusBar()->insertItem(i18n("     Player 2: %1     ").arg(m_enemyNickname), ID_PLAYER_ENEMY, 0, true);
     statusBar()->insertItem(i18n("Ready"), ID_STATUS_MSG, 1);
     statusBar()->setItemAlignment(ID_STATUS_MSG, AlignLeft);
 }
@@ -133,6 +133,7 @@ void KBattleshipApp::initView()
 
     m_ownshiplist = new KShipList();
     m_enemyshiplist = new KShipList();
+    m_score = new KHighscoreDialog(0L);
 
     m_view->startDrawing();
 
@@ -546,16 +547,8 @@ KShip *KBattleshipApp::getXYShip(int fieldx, int fieldy)
 
 void KBattleshipApp::slotUpdateHighscore()
 {
-    m_config->setGroup("Highscore");
-
-    int oldshot = m_config->readNumEntry("Shot", 0);
-    int oldhit = m_config->readNumEntry("Hit", 0);
-    int oldwater = m_config->readNumEntry("Water", 0);
-    m_config->writeEntry("Shot", oldshot + m_stat->getShot());
-    m_config->writeEntry("Hit", oldhit + m_stat->getHit());
-    m_config->writeEntry("Water", oldwater + m_stat->getWater());
-
-    m_config->sync();
+    m_score->save(m_ownNickname, m_stat->getShot(), m_stat->getHit(), m_stat->getWater());
+    m_score->load();
 }
 
 void KBattleshipApp::saveOptions()
@@ -587,15 +580,9 @@ void KBattleshipApp::slotGameQuit()
 
 void KBattleshipApp::slotHighscore()
 {
-    m_config->setGroup("Highscore");
-
-    KStatDialog *m_stats = new KStatDialog(0L);
-    m_stats->setShot(m_config->readNumEntry("Shot", 0));
-    m_stats->setHit(m_config->readNumEntry("Hit", 0));
-    m_stats->setWater(m_config->readNumEntry("Water", 0));
-
-    m_stats->setCaption(i18n("Highscore"));
-    m_stats->show();
+    m_score->setCaption(i18n("Highscore"));
+    m_score->load();
+    m_score->show();
 }
 
 void KBattleshipApp::slotEnemyClientInfo()
