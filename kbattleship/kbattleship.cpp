@@ -23,6 +23,7 @@
 #include "main.h"
 #include <kstatusbar.h>
 #include "kbattleship.moc"
+#include <kkeydialog.h>
 
 KBattleshipApp::KBattleshipApp()
 {
@@ -73,6 +74,12 @@ void KBattleshipApp::init()
 	initShipPlacing();
 }
 
+
+void KBattleshipApp::slotConfigureKeys()
+{
+  KKeyDialog::configure( actionCollection(), this );
+}
+
 void KBattleshipApp::initStatusBar()
 {
 	m_ownNickname = "-";
@@ -85,6 +92,7 @@ void KBattleshipApp::initStatusBar()
 
 void KBattleshipApp::initActions()
 {
+    KStdAction::keyBindings( this, SLOT( slotConfigureKeys() ), actionCollection() );
 	m_gameServerConnect = new KAction(i18n("&Connect to Server..."), "connect_no", Key_F2, this, SLOT(slotServerConnect()), actionCollection(), "game_serverconnect");
 	m_gameNewServer = new KAction(i18n("&Start Server..."), "network", Key_F3, this, SLOT(slotNewServer()), actionCollection(), "game_newserver");
 	m_gameSingle = new KAction(i18n("S&ingle Player..."), "gear", Key_F4, this, SLOT(slotSinglePlayer()), actionCollection(), "game_singleplayer");

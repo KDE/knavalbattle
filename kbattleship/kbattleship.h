@@ -64,7 +64,8 @@ public:
 	KShip *shipAt(int fieldx, int fieldy);
 
 private slots:
-	void slotLost();
+    void slotConfigureKeys();
+    void slotLost();
 	void slotStatusMsg(const QString &text);
 	void slotReceivedEnemyFieldData(int fieldx, int fieldx1, int enemystate, int xstart, int xstop, int ystart, int ystop, bool death);
 	void slotSendEnemyFieldState(int, int);
