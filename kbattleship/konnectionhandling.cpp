@@ -49,6 +49,13 @@ KonnectionHandling::~KonnectionHandling()
 {
 }
 
+void KonnectionHandling::clear()
+{
+    enemy = true;
+    setEnemyList(false);
+    enemylist = false;
+}
+
 int KonnectionHandling::getType()
 {
     return internalType;
@@ -116,7 +123,7 @@ void KonnectionHandling::gotNewMessage(KMessage *msg)
 		break;
 		    
 	    case KMessage::GREET:
-	        emit enemyNickname(msg->getField("nickname").latin1());
+	        emit enemyNickname(msg->getField("nickname").local8Bit());
     	        emit newPlayer(true);
 	        break;
 		    

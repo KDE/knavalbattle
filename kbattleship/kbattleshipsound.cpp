@@ -71,7 +71,7 @@ void KBattleshipSound::playSound(int file)
 
 	soundDir = soundDir + "sounds/";
 
-	QString playFile;
+    	QString playFile;
     	
 	switch(file)
 	{

@@ -20,8 +20,8 @@
 KChatWidget::KChatWidget(QWidget *parent, const char *name) : chatWidget(parent, name)
 {
     setMinimumSize(600, 180);
-    connect(sendBtn, SIGNAL(clicked()), SLOT(slotComputeMessage()));
-    connect(commentEdit, SIGNAL(returnPressed()), SLOT(slotComputeMessage()));
+    connect(sendBtn, SIGNAL(clicked()), this, SLOT(slotComputeMessage()));
+    connect(commentEdit, SIGNAL(returnPressed()), this, SLOT(slotComputeMessage()));
     chatView->setReadOnly(true);
 }
 
@@ -36,7 +36,7 @@ void KChatWidget::acceptMsg(bool value)
 
 void KChatWidget::receivedMessage(QString nickname, QString msg)
 {
-    chatView->append(QString( "<" ) + nickname + QString( "> " ) + msg);
+    chatView->append(QString("<") + nickname + QString("> ") + msg);
     chatView->setCursorPosition(chatView->numLines(), 0);
 }
 

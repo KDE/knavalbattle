@@ -41,6 +41,8 @@ class KGridWidget : public QWidget
         void drawDeathIcon();
         void drawShipIcon(int ship);
         void drawIcon(const QString &iconName);
+	
+	void paintComplete();
 
     private:
         int internalx, internaly, internalSize;

@@ -91,6 +91,8 @@ void KBattleField::drawField()
             }
         }		
     }
+    
+    paintComplete();
 }
 
 void KBattleField::setDrawValues()

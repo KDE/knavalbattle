@@ -34,7 +34,7 @@ KMessage::~KMessage()
 {
 }
 
-void KMessage::addField(QString name, QString content)
+void KMessage::addField(const QString &name, const QString &content)
 {
     QDomElement xmlElement = xmlDocument->createElement(name);
     QDomText xmlText = xmlDocument->createTextNode(content);
@@ -42,7 +42,7 @@ void KMessage::addField(QString name, QString content)
     xmlDocument->documentElement().appendChild(xmlElement);
 }
 
-void KMessage::setDataStream(QString stream)
+void KMessage::setDataStream(const QString &stream)
 {
     xmlDocument->setContent(stream);
 }
@@ -53,7 +53,7 @@ QString KMessage::returnSendStream()
     return sendStream.simplifyWhiteSpace();
 }
 
-QString KMessage::getField(QString name)
+QString KMessage::getField(const QString &name)
 {
     QDomNode xmlNode = xmlDocument->documentElement().firstChild();
     while(!xmlNode.isNull())
@@ -72,10 +72,15 @@ int KMessage::getType()
     return getField("msgtype").toInt();
 }
 
-void KMessage::chatMessage(QString nickname, QString message)
+void KMessage::chatMessage(const QString &nickname, const QString &message)
 {
     addField("nickname", nickname);
     addField("chat", message);
+}
+
+void KMessage::addReplayRequest()
+{
+    addField("enemyW", "replay");
 }
 
 void KMessage::addReady()
@@ -86,6 +91,13 @@ void KMessage::addReady()
 void KMessage::addWinner()
 {
     addField("enemyM", "won");
+}
+
+bool KMessage::replayRequest()
+{
+    if(getField("enemyW") == QString("replay"))
+	return true;
+    return false;
 }
 
 bool KMessage::enemyReady()

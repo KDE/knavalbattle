@@ -227,7 +227,7 @@ void KBattleshipApp::sendMessage(KMessage *msg)
 	if(connection->getType() == KonnectionHandling::SERVER)
     	    kbserver->sendMessage(msg);
         else if(connection->getType() == KonnectionHandling::CLIENT)
-            kbclient->sendMessage( msg );
+            kbclient->sendMessage(msg);
     }
 }
 
@@ -283,9 +283,13 @@ void KBattleshipApp::sendChatMessage( QString text )
 
 void KBattleshipApp::clientRestart()
 {
-    slotStatusMsg(i18n( "Waiting for other player to place the ships..."));
+    slotStatusMsg(i18n("Waiting for other player to place the ships..."));
+    place = false;
+    view->clearField();
+    stat->clear();
     ownshiplist->clear();
     enemyshiplist->clear();
+    connection->clear();
 }
 
 void KBattleshipApp::saveOptions()
@@ -341,10 +345,10 @@ void KBattleshipApp::resetClient(bool status)
 	switch(KMessageBox::questionYesNo(this, "Do you want to ask to server restarting the game?"))
 	{
 	    case KMessageBox::Yes:
-		slotStatusMsg(i18n("Waiting for other player to start the match..."));
+		slotStatusMsg(i18n("Waiting for an answer..."));
     		view->clearField();
     		stat->clear();
-		msg->addField( QString( "enemyW" ), QString( "replay" ) ); // ###################
+		msg->addReplayRequest();
 		if(!connection->writeable())
 		{
 		    kbclient->allowWrite();
@@ -353,6 +357,8 @@ void KBattleshipApp::resetClient(bool status)
 		}
 		else
 		    sendMessage(msg);
+		place = false;
+		connection->clear();
 		break;
 	
 	    case KMessageBox::No:
@@ -394,6 +400,7 @@ void KBattleshipApp::askReplay()
 	    slotStatusMsg(i18n("Please place your ships"));
 	    view->clearField();
     	    stat->clear();
+	    connection->clear();
             break;
 	    
 	case KMessageBox::No:
@@ -420,13 +427,17 @@ void KBattleshipApp::resetServer(bool status)
 	    case KMessageBox::Yes:
     		view->clearField();
     		stat->clear();
-		msg->addField( QString( "enemyW" ), QString( "replay" ) ); // ######################
+		slotStatusMsg(i18n("Please place your ships"));
+		msg->addReplayRequest();
 		if(!connection->writeable())
 		{
 		    kbserver->allowWrite();
 		    sendMessage(msg);
 		    kbserver->forbidWrite();
 		}
+		else
+		    sendMessage(msg);
+		connection->clear();
 		break;
 	
 	    case KMessageBox::No:
@@ -510,7 +521,6 @@ void KBattleshipApp::startBattleshipServer()
     connect(connection, SIGNAL(statusBarMessage(const QString &)), this, SLOT(slotStatusMsg(const QString &)));
     connect(connection, SIGNAL(ownFieldDataChanged(int, int, int)), this, SLOT(changeOwnFieldData(int, int, int)));
     connect(connection, SIGNAL(gotChatMessage(QString, QString)), chat, SLOT(receivedMessage(QString, QString)));
-    // TODO: use QStringList
     connect(connection, SIGNAL(gotEnemyShipList(QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString)), this, SLOT(gotEnemyShipList(QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString)));
     slotStatusMsg(i18n("Waiting for a player..."));
     kbserver->start();
@@ -619,7 +629,7 @@ void KBattleshipApp::changeEnemyFieldData(int fieldx, int fieldy, int type)
 		}
 	    }
 
-            if( xokay )
+            if(xokay)
             {
                 DeathValueList::Iterator it;
                 for(it = deathList.begin(); it != deathList.end(); it++)
@@ -669,7 +679,6 @@ void KBattleshipApp::connectToBattleshipServer()
 	connect(connection, SIGNAL(abortGameStrict(bool)), this, SLOT(resetClient(bool)));
         connect(connection, SIGNAL(changeConnectText()), this, SLOT(changeConnectText()));
 	connect(connection, SIGNAL(gotChatMessage(QString, QString)), chat, SLOT( receivedMessage(QString, QString)));
-	// TODO: use QStringList
 	connect(connection, SIGNAL(gotEnemyShipList(QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString)), this, SLOT(gotEnemyShipList(QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString)));
 
 	KMessage *msg = new KMessage(KMessage::GREET);

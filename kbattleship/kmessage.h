@@ -30,21 +30,24 @@ class KMessage : public QObject
     Q_OBJECT
     public:
         enum{GREET, SHIPLIST, ANSWER_SHOOT, CHAT, REPLAY};
+	
         KMessage(int type);
         KMessage();
         ~KMessage();
 
         int getType();
 
-        void addField(QString name, QString value);
-        QString getField(QString name);
+	void addField(const QString &name, const QStringList &content);
+        QString getField(const QString &name);
 
-        void setDataStream(QString stream);
+        void setDataStream(const QString &stream);
         QString returnSendStream();
 
-        void chatMessage(QString nickname, QString message);
+        void chatMessage(const QString &nickname, const QString &message);
+	void addReplayRequest();
 	void addReady();
 	void addWinner();
+	bool replayRequest();
 	bool enemyReady();
 	bool enemyWon();
 

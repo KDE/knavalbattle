@@ -87,3 +87,9 @@ void KGridWidget::drawIcon(const QString &iconName)
 
     painter->drawPixmap(internalx, internaly, *(new QPixmap(picture)));
 }
+
+void KGridWidget::paintComplete()
+{
+    QPainter *painter = new QPainter(static_cast<QWidget*>(parent()->parent()));
+    painter->end();
+}

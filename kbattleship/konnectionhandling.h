@@ -43,6 +43,8 @@ class KonnectionHandling : public QObject
         bool sendEnemyList();
         bool gotEnemyList();
         bool haveEnemy();
+	
+	void clear();
     
     public slots:
         void setEnemyList(bool set);
