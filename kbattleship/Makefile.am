@@ -15,6 +15,7 @@ kbattleship_SOURCES = kbaiplayer.cpp kbstrategy.cpp kbverticalstepstrategy.cpp\
 	            kbchooserstrategy.cpp kbattleship.cpp main.cpp
 kbattleship_LDADD = $(LIB_KDEGAMES) ./dialogs/libkbattleshipdialogs.la $(LIB_KFILE)
 kbattleship_LDFLAGS = $(all_libraries) $(KDE_RPATH)
+kbattleship_DEPENDENCIES = $(LIB_KDEGAMES_DEP)
 
 xdg_apps_DATA = kbattleship.desktop
 
