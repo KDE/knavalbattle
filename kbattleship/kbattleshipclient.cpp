@@ -43,8 +43,8 @@ void KBattleshipClient::connectToServer()
 
 void KBattleshipClient::sendMessage( KMessage *msg )
 {
-    QTextStream *post = new QTextStream( this );        
-    *post << msg->returnSendStream();
+    QTextStream post( this );        
+    post << msg->returnSendStream();
 }
 
 void KBattleshipClient::connectionControl()
@@ -59,6 +59,7 @@ void KBattleshipClient::readData()
 	KMessage *msg = new KMessage();
 	msg->setDataStream( readLine() );
 	emit newMessage( msg );
+        delete msg;
     }
 }
 

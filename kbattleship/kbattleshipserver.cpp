@@ -45,12 +45,18 @@ void KBattleshipServer::readClient()
 {
     QSocket *socket = ( QSocket * )sender();
     kdDebug() << "READLINE!" << endl;
-	kdDebug() << "CAN READ!" << endl;
-    QTextStream str(socket);
+    // QTextStream strips the ! from <!DOCTYPE ... >
+    // so don't use it here (malte)
+    int len = socket->bytesAvailable();
+    char *buf = new char[len + 1];
+    socket->readBlock(buf, len);
+    buf[len] = 0;
     KMessage *msg = new KMessage();
-    msg->setDataStream( str.readLine() );
+    msg->setDataStream( buf );
 	kdDebug() << "Type of message: " << msg->getType() << endl;
 	emit newMessage( msg );
+    delete msg;
+    delete[] buf;
 }
 
 void KBattleshipServer::sendMessage( KMessage *msg )
