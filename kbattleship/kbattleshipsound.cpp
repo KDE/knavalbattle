@@ -42,6 +42,11 @@ void KBattleshipSound::turnOn()
 	initSoundServer();
 }
 
+bool KBattleshipSound::serverError()
+{
+    return soundError;
+}
+
 bool KBattleshipSound::initSoundServer()
 {
     soundserver = Arts::Reference("global:Arts_SimpleSoundServer");
@@ -54,6 +59,8 @@ bool KBattleshipSound::initSoundServer()
     }
     else
     {
+	playObjectFactory = Arts::PlayObjectFactory::null();
+	soundserver = Arts::SimpleSoundServer::null();
 	serverRunning = true;
 	soundError = false;
     }

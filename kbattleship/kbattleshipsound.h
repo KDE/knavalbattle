@@ -37,6 +37,7 @@ class KBattleshipSound : public QObject
         ~KBattleshipSound();
 
         bool initSoundServer();
+	bool serverError();
 
         void turnOn();
         void turnOff();

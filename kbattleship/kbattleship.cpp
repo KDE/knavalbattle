@@ -34,11 +34,11 @@ void KBattleshipApp::init()
     config = kapp->config();
     initStatusBar();
     initActions();
+    readOptions();
     initView();
     initChat();
     initSound();
     initShipPlacing();
-    readOptions();
 }
 
 void KBattleshipApp::initActions()
@@ -58,6 +58,8 @@ void KBattleshipApp::initSound()
     sound = new KBattleshipSound();
     if(!sound->initSoundServer())
 	configSound->setChecked(false);
+    else   
+	slotConfigSound();
 }
 
 void KBattleshipApp::initChat()
@@ -297,7 +299,8 @@ void KBattleshipApp::saveOptions()
 {
     config->setGroup("General");
     config->writeEntry("ShowStatusbar", viewStatusBar->isChecked());
-    config->writeEntry("PlaySounds", configSound->isChecked());
+    if(!sound->serverError())
+	config->writeEntry("PlaySounds", configSound->isChecked());
     config->sync();
 }
 
@@ -310,8 +313,7 @@ void KBattleshipApp::readOptions()
     slotViewStatusBar();
     
     bool bConfigSound = config->readBoolEntry("PlaySounds", true);
-    configSound->setChecked(bConfigSound);
-    slotConfigSound();
+    configSound->setChecked(bConfigSound);    
 }
 
 void KBattleshipApp::slotGameQuit()
