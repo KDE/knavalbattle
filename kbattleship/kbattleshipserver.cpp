@@ -85,8 +85,8 @@ void KBattleshipServer::slotReadClient()
         pos += 11; // Length of "</kmessage>"
         KMessage *msg = new KMessage();
         msg->setDataStream(m_readBuffer.left(pos));
-        emit sigNewMessage(msg);
         m_readBuffer.remove(0, pos);
+        emit sigNewMessage(msg);
     }
 }
 
