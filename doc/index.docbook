@@ -39,8 +39,8 @@
 <holder>Nikolas Zimmermann</holder>
 </copyright>
 
-<date>2001/04/19</date> <!-- PLEASE RESPECT THIS DATE FORMAT!!!!! -->
-<releaseinfo>Version 0.8</releaseinfo>
+<date>2001/04/30</date> <!-- PLEASE RESPECT THIS DATE FORMAT!!!!! -->
+<releaseinfo>Version 0.9</releaseinfo>
 
 <abstract>
 <para>
@@ -53,6 +53,7 @@
 <keyword>game</keyword>
 <keyword>battleship</keyword>
 <keyword>KBattleship</keyword>
+<keyword>battle</keyword>
 </keywordset>
 
 </bookinfo>
@@ -425,7 +426,7 @@ Nils Trzebin <email>nils.trzebin@stud.uni-hannover.de</email>
 </listitem>
 
 <listitem>
-<para>Elmar Hoefner <email>elmar.hoefner@uibk.ac.at</email> (GFX)</para>
+<para>Elmar Hoefner <email>elmar.hoefner@uibk.ac.at</email></para>
 </listitem>
 
 <listitem>
@@ -445,7 +446,7 @@ Kevin Krammer <email>kevin.krammer@gmx.at</email>
 
 <para>
 You should have a network connection and a competitor, of course :).  At
-the time of writing, &kbattleship; requires &kde; 2.0 or greater and
+the time of writing, &kbattleship; requires &kde; 2.2 or greater and
 &Qt; 2.2.3 or greater.
 </para>
 
