@@ -33,18 +33,18 @@ class KGridWidget : public QWidget
     public:
         KGridWidget(QWidget *parent, const char *name);
         ~KGridWidget();
-    
+
+    protected:    
         void setValues(int x, int y, int size);
         void drawSquare();
         void drawHitIcon();
         void drawWaterIcon();
         void drawDeathIcon();
         void drawShipIcon(int ship);
-        void drawIcon(const QString &iconName);
-	
-	void paintComplete();
 
     private:
+        void drawIcon(const QString &iconName);
+
         int internalx, internaly, internalSize;
         QPixmap *internalPixmap;
 };

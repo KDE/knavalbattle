@@ -50,7 +50,7 @@ void KGridWidget::drawSquare()
 
     painter->setBrush(blackBrush);
     painter->drawRect(internalx, internaly, internalSize, internalSize);
-//    bitBlt(static_cast<QWidget*>(parent()->parent()), internalx, internaly, internalPixmap);
+    painter->end();
 }
 
 void KGridWidget::drawHitIcon()
@@ -86,10 +86,5 @@ void KGridWidget::drawIcon(const QString &iconName)
 	painter->begin(internalPixmap);
 
     painter->drawPixmap(internalx, internaly, *(new QPixmap(picture)));
-}
-
-void KGridWidget::paintComplete()
-{
-    QPainter *painter = new QPainter(static_cast<QWidget*>(parent()->parent()));
     painter->end();
 }
