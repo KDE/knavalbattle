@@ -54,6 +54,8 @@ void KonnectionHandling::clear()
     enemy = true;
     setEnemyList(false);
     enemylist = false;
+    internalClient->allowWrite();
+    internalServer->allowWrite();
 }
 
 int KonnectionHandling::getType()

@@ -37,7 +37,7 @@ class KMessage : public QObject
 
         int getType();
 
-	void addField(const QString &name, const QStringList &content);
+	void addField(const QString &name, const QString &content);
         QString getField(const QString &name);
 
         void setDataStream(const QString &stream);
