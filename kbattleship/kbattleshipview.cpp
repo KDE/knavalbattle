@@ -77,9 +77,9 @@ void KBattleshipView::mouseReleaseEvent( QMouseEvent *event )
 		}
 	    }
 	    	    
-	    QPainter painter( this );
+	    QPainter ownpainter( this );
 	    ownfield->changeData( fieldX, fieldY, KBattleField::WATER );
-	    ownfield->drawField( &painter );
+	    ownfield->drawField( &ownpainter );
 	}
     }
 
@@ -87,8 +87,42 @@ void KBattleshipView::mouseReleaseEvent( QMouseEvent *event )
     {
     	if( event->y() >= 35 && event->y() <= ( height() / 2 ) + 75 )
 	{
-	    int fieldX, fieldY;
-	    enemyfield->changeData( fieldX, fieldY, KBattleField::WATER );
+	    int fieldX, fieldY, fieldTopPos, fieldBottomPos, i, j;
+	    
+	    fieldTopPos = 25;
+	    fieldBottomPos = ( height() / 2 ) + 75;
+
+	    i = 0;
+	    j = 0;
+	    
+	    for( i = fieldTopPos; i <= fieldBottomPos; i += 30 )
+	    {
+		j++;
+		if( event->x() >= i - 30 && event->x() <= i + 30 )
+		{
+		    fieldX = j - 1;
+		    break;
+		}
+	    }
+
+	    i = 0;
+	    j = 0;
+	
+	    for( i = fieldTopPos; i <= fieldBottomPos; i += 30 )
+	    {
+		j++;
+		if( event->y() >= i - 30 && event->y() <= i + 30 )
+		{
+		    fieldY = j - 1;
+		    break;
+		}
+	    }
+
+	    QPainter enemypainter( this );
+	    kdDebug() << "fieldX: " << fieldX << endl;
+	    kdDebug() << "fieldY: " << fieldY << endl;
+//	    enemyfield->changeData( fieldX, fieldY, KBattleField::WATER );
+//	    enemyfield->drawField( &enemypainter );
 	}
     }
     	
