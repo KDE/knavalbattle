@@ -29,6 +29,7 @@ Name[sl]=Ustreli proti vodi
 Name[sr]=Пуцањ у воду
 Name[sv]=Skott i vattnet
 Name[tr]=Yara aldı
+Name[xx]=xxShot at waterxx
 Comment=Someone has shot at the water
 Comment[bg]=Някой не улучи (улучи водата)
 Comment[ca]=Algú dispara a l'aigua
@@ -48,6 +49,7 @@ Comment[pt_BR]=Alguém atirou na água
 Comment[sl]=Nekdo je ustrelil v vodo
 Comment[sr]=Неко је пуцао у воду
 Comment[sv]=Någon har skjutit i vattnet
+Comment[xx]=xxSomeone has shot at the waterxx
 default_sound=ship-player-shoot-water.mp3
 default_presentation=1
 
@@ -92,6 +94,7 @@ Comment[pt_BR]=O jogador 1 atira
 Comment[sl]=Igralec 1 je dobil strel
 Comment[sr]=Играч 1 управо пуца
 Comment[sv]=Första spelaren skjuter
+Comment[xx]=xxPlayer 1 takes a shotxx
 default_sound=ship-player1-shoot.mp3
 default_presentation=1
 
@@ -136,6 +139,7 @@ Comment[pt_BR]=O jogador 2 atira
 Comment[sl]=Igralec 2 je dobil strel
 Comment[sr]=Играч 2 управо пуца
 Comment[sv]=Andra spelaren skjuter
+Comment[xx]=xxPlayer 2 takes a shotxx
 default_sound=ship-player2-shoot.mp3
 default_presentation=1
 
