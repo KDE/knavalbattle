@@ -75,7 +75,7 @@ bool KBVerticalStepStrategy::advance()
 	col = m_column;
 	row = m_row;
 
-	while(enemyFieldStateAt(col, row) == SHOT)
+	while(enemyFieldStateAt(col, row) == KBStrategy::SHOT)
 	{
 		row += 2;
 		if(row >= m_fieldRect.height())
@@ -85,10 +85,10 @@ bool KBVerticalStepStrategy::advance()
 		}
 
 		if(col == m_start.x() && row == m_start.y())
-			break;
+			col = (col + 1) % m_fieldRect.width();
 	}
 
-	if(enemyFieldStateAt(col, row) != SHOT)
+	if(enemyFieldStateAt(col, row) != KBStrategy::SHOT)
 	{
 		m_column = col;
 		m_row = row;
@@ -112,7 +112,7 @@ bool KBVerticalStepStrategy::hasMoreShots()
 		// Child Strategy
 		if(m_passes == 0)
 		{
-			if(enemyFieldStateAt(m_column, m_row) != SHOT)
+			if(enemyFieldStateAt(m_column, m_row) != KBStrategy::SHOT)
 				return true;
 			else if(advance())
 				return true;
@@ -150,7 +150,7 @@ bool KBVerticalStepStrategy::hasMoreShots()
 		switch(m_passes)
 		{
 			case 0:
-				if(enemyFieldStateAt(m_column, m_row) != SHOT)
+				if(enemyFieldStateAt(m_column, m_row) != KBStrategy::SHOT)
 					return true;
 				else if (advance())
 					return true;

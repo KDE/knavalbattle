@@ -124,7 +124,7 @@ bool KBChooserStrategy::hasMoreShots()
 	{
 		for(int col = 0; col < m_fieldRect.width(); col++)
 		{
-			if(enemyFieldStateAt(col, row) != SHOT)
+			if(enemyFieldStateAt(col, row) != KBStrategy::SHOT)
 				return true;
 		}
 	}

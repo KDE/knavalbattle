@@ -120,7 +120,7 @@ bool KBDiagonalWrapStrategy::advance()
 			break;
 	}
 
-	return m_child->hasMoreShots();
+	return true;
 }
 
 bool KBDiagonalWrapStrategy::hasMoreShots()

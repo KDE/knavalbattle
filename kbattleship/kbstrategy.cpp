@@ -81,13 +81,13 @@ int KBStrategy::enemyFieldStateAt(int x, int y)
 	switch(m_battleField->ownState(x, y))
 	{
 		case KBattleField::FREE:
-			return FREE;
+			return KBStrategy::FREE;
 		case KBattleField::WATER:
 		case KBattleField::HIT:
 		case KBattleField::DEATH:
-			return SHOT;
+			return KBStrategy::SHOT;
 		default:
-			return SHIP;
+			return KBStrategy::SHIP;
 	}
 }
 

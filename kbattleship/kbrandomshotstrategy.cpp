@@ -53,7 +53,7 @@ const QPoint KBRandomShotStrategy::nextShot()
 
 bool KBRandomShotStrategy::advance()
 {
-	while(enemyFieldStateAt(m_column, m_row) == SHOT)
+	while(enemyFieldStateAt(m_column, m_row) == KBStrategy::SHOT)
 	{
 		m_column = m_randomSeq.getLong(m_fieldRect.width());
 		m_row = m_randomSeq.getLong(m_fieldRect.height());
@@ -88,7 +88,7 @@ bool KBRandomShotStrategy::hasMoreShots()
 	{
 		for(int col = 0; col < m_fieldRect.width(); col++)
 		{
-			if(enemyFieldStateAt(col, row) != SHOT)
+			if(enemyFieldStateAt(col, row) != KBStrategy::SHOT)
 				return true;
 		}
 	}

@@ -40,7 +40,7 @@ bool KBDiagonalShotStrategy::advance()
 {
 	while (m_fieldRect.contains(m_column, m_row))
 	{
-		if(enemyFieldStateAt(m_column, m_row) != SHOT)
+		if(enemyFieldStateAt(m_column, m_row) != KBStrategy::SHOT)
 			return true;
 		m_column += m_horizontal;
 		m_row += m_vertical;

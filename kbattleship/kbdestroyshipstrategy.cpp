@@ -52,7 +52,7 @@ bool KBDestroyShipStrategy::hasMoreShots()
 		return false;
 	}
 
-	if(enemyFieldStateAt(m_column, m_row) != SHOT)
+	if(enemyFieldStateAt(m_column, m_row) != KBStrategy::SHOT)
 		return true;
 
 	// last shot was no success :(
@@ -139,7 +139,7 @@ bool KBDestroyShipStrategy::searchUp()
 	int prevCol = m_column - 1;
 	int nextCol = m_column + 1;
 
-	while(row >= 0 && (m_row - row) < 4 && enemyFieldStateAt(m_column, row) == SHOT)
+	while(row >= 0 && (m_row - row) < 4 && enemyFieldStateAt(m_column, row) == KBStrategy::SHOT)
 	{
 		if(m_battleField->ownState(m_column, row) == KBattleField::WATER)
 			return false;
@@ -171,7 +171,7 @@ bool KBDestroyShipStrategy::searchDown()
 	int prevCol = m_column - 1;
 	int nextCol = m_column + 1;
 
-	while(row < m_fieldRect.height() && (row - m_row) < 4 && enemyFieldStateAt(m_column, row) == SHOT)
+	while(row < m_fieldRect.height() && (row - m_row) < 4 && enemyFieldStateAt(m_column, row) == KBStrategy::SHOT)
 	{
 		if(m_battleField->ownState(m_column, row) == KBattleField::WATER)
 			return false;
@@ -203,7 +203,7 @@ bool KBDestroyShipStrategy::searchLeft()
 	int prevRow = m_row - 1;
 	int nextRow = m_row + 1;
 
-	while(col >= 0 && (m_column - col) < 4 && enemyFieldStateAt(col, m_row) == SHOT)
+	while(col >= 0 && (m_column - col) < 4 && enemyFieldStateAt(col, m_row) == KBStrategy::SHOT)
 	{
 		if(m_battleField->ownState(col, m_row) == KBattleField::WATER)
 			return false;
@@ -235,7 +235,7 @@ bool KBDestroyShipStrategy::searchRight()
 	int prevRow = m_row - 1;
 	int nextRow = m_row + 1;
 
-	while(col < m_fieldRect.width() && (col - m_column) < 4 && enemyFieldStateAt(col, m_row) == SHOT)
+	while(col < m_fieldRect.width() && (col - m_column) < 4 && enemyFieldStateAt(col, m_row) == KBStrategy::SHOT)
 	{
 		if(m_battleField->ownState(col, m_row) == KBattleField::WATER)
 			return false;
