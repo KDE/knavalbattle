@@ -100,7 +100,7 @@ private slots:
 	void slotShowGrid();
 	void slotViewStatusBar();
 	void slotStartBattleshipGame();
-	void slotStartBattleshipGame(bool clearstat = true);
+	void slotStartBattleshipGame(bool clearstat);
 	void slotStartBattleshipServer();
 	void slotConnectToBattleshipServer();
 	void slotPlaceShipPreview(int fieldx, int fieldy, bool shift);
