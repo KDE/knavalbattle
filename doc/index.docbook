@@ -26,8 +26,8 @@
       </author>
      <!-- TRANS:ROLES_OF_TRANSLATORS -->
     </authorgroup>
-    <date>2001-03-29</date>
-    <releaseinfo>Version 0.5</releaseinfo>
+    <date>2001-04-14</date>
+    <releaseinfo>Version 0.6</releaseinfo>
     <abstract>
       <para>KBattleship is a network-enabled implementation of the famous "Battle Ship" game for KDE.</para>
     </abstract>
@@ -68,7 +68,7 @@
      </itemizedlist>
      <tip>
        <para>
-          KBatteship uses an XML-derived communcation protocol so you can write clients for every platform and in any language.
+          KBatteship uses an XML-based communcation protocol so you can write clients for every platform and in any language.
           If you want to write one in your favourite programming language or/and environment, contact us. We would really like to hear of it.
        </para>
      </tip>
@@ -117,8 +117,8 @@
         First, you need to place your ships. The game iniciator starts. When he/she is done,
         player 2 sets his/her ships. Ship placement is very easy: Simply click on the field where you want to place
         your ship. The first one will have a lenght of 4, the next will be 3 fields long etc. Click on the field where you
-        want to start the placement. If you click with the <mousebutton>left</mousebutton> mousebutton, the field
-        will be placed horizotally, a <mousebutton>right</mousebutton> click will cause it to be placed vertically.
+        want to start the placement. If you click with the <mousebutton>left</mousebutton> mousebutton only, the field
+        will be placed horizotally, and if you also hold the "Shift" key pressed while clicking, the ship will be placed vertically.
     </para>
     <para>
         Now you can blindly fire on the enemy battle area :). The statusbar indicates who is about to shoot. A player
@@ -137,7 +137,7 @@
 	</question>
 	<answer>
 	  <para>
-               In this release (0.5), KBattleship relies on aRts, KDE's soundserver, to play any sound.
+               KBattleship relies on aRts, KDE's soundserver, to play any sound.
                Enable aRts in kcontrol -> Sound -> Soundserver to solve the problem.
               </para>
 	</answer>
