@@ -15,7 +15,6 @@
  *                                                                         *
  ***************************************************************************/
 
-#include <kalphapainter.h>
 #include <qpixmap.h>
 #include "kbattlefield.h"
 #include "kgridwidget.moc"
