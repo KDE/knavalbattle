@@ -96,7 +96,6 @@ private slots:
 	void slotHighscore();
 	void slotConfigSound();
 	void slotShowGrid();
-	void slotViewStatusBar();
 	void slotStartBattleshipGame();
 	void slotStartBattleshipGame(bool clearstat);
 	void slotStartBattleshipServer();
@@ -152,7 +151,6 @@ private:
 	KAction *m_gameQuit;
 	KAction *m_gameEnemyInfo;
 	KAction *m_gameSingle;
-	KToggleAction *m_viewStatusBar;
 	KToggleAction *m_configSound;
 	KToggleAction *m_configGrid;
 	KBattleshipSound *m_sound;
