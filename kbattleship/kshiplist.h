@@ -1,6 +1,6 @@
 /***************************************************************************
-                                 kmessage.h
-                             -------------------
+                                    kshiplist.h
+                                  -----------------
     Developers: (c) 2000 Nikolas Zimmermann <wildfox@kde.org>
                 (c) 2000 Daniel Molkentin <molkentin@kde.org>
 
@@ -14,37 +14,30 @@
  *   (at your option) any later version.                                   *
  *                                                                         *
  ***************************************************************************/
-
-#ifndef KMESSAGE_H
-#define KMESSAGE_H
+ 
+#ifndef KSHIPLIST_H
+#define KSHIPLIST_H
 
 #include <kdebug.h>
-#include <qmap.h>
-#include <qobject.h>
-#include <qdom.h>
-#include <qstring.h>
-#include <qstringlist.h>
+#include <qlist.h>
+#include "kship.h"
+#include "kshiptype.h"
 
-class KMessage : QObject
+class KShipList : public QObject
 {
     Q_OBJECT
     public:
-	enum{ ENEMY_SHOOT, ANSWER_SHOOT };
-        KMessage( int type );
-	KMessage();
-        ~KMessage();
+        KShipList();
+        ~KShipList();
 
-        void addField( QString name, QString value );
-	void chatMessage( QString message );
-        QString getField( QString name );
-        void setDataStream( QString stream );
-        int getType();
-        QString returnSendStream();
-    
-	QDomDocument *xmlDocument;
-
-        int messageType;
-
+	void addNewShip( int fieldx, int fieldy, int type );
+	bool canAddShips();
+	int shipCount();
+	    
+    private:
+	int shipsadded;
+	QList<KShip> shiplist;
 };
 
 #endif
+

@@ -6,11 +6,12 @@ kbattleship_LDADD   = dialogs/libkbattleshipdialogs.la $(LIB_KFILE) -lsoundserve
 kbattleship_SOURCES = kmessage.cpp kbattleshipserver.cpp kbattleshipclient.cpp \
                       kbattleshipview.cpp kgridwidget.cpp kbattlefieldtype.cpp kbattlefield.cpp \
 		      kserverdialog.cpp kclientdialog.cpp kbattleshipsound.cpp \
-		      konnectionhandling.cpp kbattleship.cpp main.cpp
+		      konnectionhandling.cpp kshiptype.cpp kship.cpp kshiplist.cpp \
+		      kbattleship.cpp main.cpp
 noinst_HEADERS   = kmessage.h kbattleshipserver.h kbattleshipclient.h \
                    kbattleshipview.h kgridwidget.h kbattlefieldtype.h kbattlefield.h \
-		   konnectionhandling.h kserverdialog.h kclientdialog.h kbattleshipsound.h \
-		   kbattleshipsound.h
+		   kserverdialog.h kclientdialog.h kbattleshipsound.h \
+		   konnectionhandling.h kshiptype.h kship.h kshiplist.h kbattleship.h
 METASOURCES = AUTO
 
 rcdir = $(kde_datadir)/kbattleship

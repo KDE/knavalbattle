@@ -16,7 +16,6 @@
  ***************************************************************************/
 
 #include "kserverdialog.moc"
-#include <stdlib.h>
 
 KServerDialog::KServerDialog( QWidget *parent, const char *name ) : serverStartDlg( parent, name )
 {

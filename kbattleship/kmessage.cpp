@@ -17,7 +17,7 @@
 
 #include "kmessage.moc"
 
-KMessage::KMessage( int type ) : QObject()
+KMessage::KMessage( int type )
 {
     xmlDocument = new QDomDocument( "kmessage" );
     xmlDocument->appendChild( xmlDocument->createElement( "kmessage" ) );
@@ -27,7 +27,7 @@ KMessage::KMessage( int type ) : QObject()
     addField( QString( "msgtype" ), qtype );
 }
 
-KMessage::KMessage() : QObject()
+KMessage::KMessage()
 {
     xmlDocument = new QDomDocument( "kmessage" );
 }
@@ -40,6 +40,13 @@ void KMessage::addField( QString name, QString content )
 {
     QDomElement xmlElement = xmlDocument->createElement( "message" );
     xmlElement.setAttribute( name, content );
+    xmlDocument->documentElement().appendChild( xmlElement );
+}
+
+void KMessage::chatMessage( QString message )
+{
+    QDomElement xmlElement = xmlDocument->createElement( "chat" );
+    xmlElement.setAttribute( "data", message );
     xmlDocument->documentElement().appendChild( xmlElement );
 }
 

@@ -39,6 +39,14 @@ void KBattleshipView::startDrawing()
     enemyfield = new KBattleField( this, enemytype, &enemypainter );
 }
 
+void KBattleshipView::clearField()
+{
+    ownfield->clearField();
+    enemyfield->clearField();
+    paintOwnField();
+    paintEnemyField();
+}
+
 int KBattleshipView::getOwnFieldState( int &fieldx, int &fieldy )
 {
     return ownfield->getState( fieldx, fieldy );
@@ -63,12 +71,11 @@ void KBattleshipView::changeEnemyFieldData( int fieldx, int fieldy, int type )
 
 void KBattleshipView::mouseReleaseEvent( QMouseEvent *event )
 {
+    int fieldX, fieldY, fieldTopPos, fieldBottomPos, fieldLeftPos, fieldRightPos, i, j;
     if( event->x() <= ( width() / 2 ) - 15 && event->x() >= 46 ) 
     {
 	if( event->y() >= 35 && event->y() <= ( height() / 2 ) + 75 )
 	{
-	    int fieldX, fieldY, fieldTopPos, fieldBottomPos, fieldLeftPos, fieldRightPos, i, j;
-	    
 	    fieldTopPos = 25;
 	    fieldBottomPos = ( height() / 2 ) + 75;
 	    
@@ -101,7 +108,7 @@ void KBattleshipView::mouseReleaseEvent( QMouseEvent *event )
 		}
 	    }
 	    	    
-	    emit ownFieldClicked( fieldX, fieldY );
+	    emit ownFieldClicked( fieldX, fieldY, event->button() );
 	}
     }
 
@@ -109,8 +116,6 @@ void KBattleshipView::mouseReleaseEvent( QMouseEvent *event )
     {
     	if( event->y() >= 35 && event->y() <= ( height() / 2 ) + 75 )
 	{
-	    int fieldX, fieldY, fieldTopPos, fieldBottomPos, fieldLeftPos, fieldRightPos, i, j;
-	    
 	    fieldTopPos = 25;
 	    fieldBottomPos = ( height() / 2 ) + 75;
 	    

@@ -23,18 +23,20 @@
 #include <qwidget.h>
 #include <qwhatsthis.h>
 #include "kbattlefieldtype.h"
+#include "kshiptype.h"
 #include "kgridwidget.h"
 
 class KBattleField : public KGridWidget
 {
     Q_OBJECT
     public:
-	enum{ WATER, HIT, DEATH, SHIP1P1, SHIP2P1, SHIP2P2, SHIP3P1, SHIP3P2, SHIP3P3, SHIP4P1, SHIP4P2, SHIP4P3, SHIP4P4 };
+	enum{ WATER = 90, HIT = 91, DEATH = 92 };
         KBattleField( QWidget *parent, const KBattleFieldType &type, QPainter *painter );
         ~KBattleField();
 	
 	void setDrawValues( QWidget *parent );
 	void drawField( QPainter *painter );
+	void clearField();
 	void changeData( int &fieldx, int &fieldy, int type );
 	int getState( int fieldx, int fieldy );
 

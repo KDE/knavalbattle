@@ -71,12 +71,91 @@ void KBattleshipApp::initStatusBar()
 void KBattleshipApp::initView()
 {
     view = new KBattleshipView( this );
+    shiplist = new KShipList();    
+    
     setCentralWidget( view );
     view->startDrawing();
-    setCaption( i18n( "KBattleship (pre-alpha)" ), false );
     
     connect( view, SIGNAL( enemyFieldClicked( int, int ) ), this, SLOT( sendMessage( int, int ) ) );
+    connect( view, SIGNAL( ownFieldClicked( int, int, int ) ), this, SLOT( placeShip( int, int, int ) ) );
+    
+    setCaption( i18n( "KBattleship (pre-alpha)" ), false );
 }
+
+void KBattleshipApp::placeShip( int fieldx, int fieldy, int button )
+{
+    if( haveCS )
+    {
+        if( shiplist->canAddShips() )
+        {
+	    switch( button )
+	    {
+		case LeftButton:
+		    if( fieldx + shiplist->shipCount() <= 8 )
+		    {
+			shiplist->addNewShip( fieldx, fieldy, shiplist->shipCount() );
+			switch( shiplist->shipCount() )
+			{
+			    case 3:
+				view->changeOwnFieldData( fieldx, fieldy, KShipType::SHIP4P0 );
+				view->changeOwnFieldData( fieldx + 1, fieldy, KShipType::SHIP4P1 );
+				view->changeOwnFieldData( fieldx + 2, fieldy, KShipType::SHIP4P2 );
+				view->changeOwnFieldData( fieldx + 3, fieldy, KShipType::SHIP4P3 );
+				break;
+			
+			    case 2:
+				view->changeOwnFieldData( fieldx, fieldy, KShipType::SHIP3P0 );
+				view->changeOwnFieldData( fieldx + 1, fieldy, KShipType::SHIP3P1 );
+				view->changeOwnFieldData( fieldx + 2, fieldy, KShipType::SHIP3P2 );
+				break;
+
+			    case 1:
+				view->changeOwnFieldData( fieldx, fieldy, KShipType::SHIP2P0 );
+				view->changeOwnFieldData( fieldx + 1, fieldy, KShipType::SHIP2P1 );
+				break;
+
+			    case 0:
+				view->changeOwnFieldData( fieldx, fieldy, KShipType::SHIP1P0 );
+				break;
+	    		}
+		    }
+		    break;
+			
+		case RightButton:
+		    if( fieldy + shiplist->shipCount() <= 8 )
+		    {
+			shiplist->addNewShip( fieldx, fieldy, shiplist->shipCount() );
+			switch( shiplist->shipCount() )
+			{
+			    case 3:
+				view->changeOwnFieldData( fieldx, fieldy, KShipType::SHIP4P0 );
+				view->changeOwnFieldData( fieldx, fieldy + 1, KShipType::SHIP4P1 );
+				view->changeOwnFieldData( fieldx, fieldy + 2, KShipType::SHIP4P2 );
+				view->changeOwnFieldData( fieldx, fieldy + 3, KShipType::SHIP4P3 );
+				break;
+			
+			    case 2:
+				view->changeOwnFieldData( fieldx, fieldy, KShipType::SHIP3P0 );
+				view->changeOwnFieldData( fieldx, fieldy + 1, KShipType::SHIP3P1 );
+				view->changeOwnFieldData( fieldx, fieldy + 2, KShipType::SHIP3P2 );
+				break;
+
+			    case 1:
+				view->changeOwnFieldData( fieldx, fieldy, KShipType::SHIP2P0 );
+				view->changeOwnFieldData( fieldx, fieldy + 1, KShipType::SHIP2P1 );
+				break;
+
+			    case 0:
+				view->changeOwnFieldData( fieldx, fieldy, KShipType::SHIP1P0 );
+				break;
+	    		}
+		    }
+		    break;
+	    }
+        }
+    }
+}
+
 
 void KBattleshipApp::sendMessage( int fieldx, int fieldy )
 {
@@ -94,10 +173,12 @@ void KBattleshipApp::sendMessage( int fieldx, int fieldy )
 	{
 	    case KonnectionHandling::SERVER:
 		kbserver->sendMessage( msg );
+		delete msg;
 		break;
 		
 	    case KonnectionHandling::CLIENT:
 		kbclient->sendMessage( msg );
+		delete msg;
 		break;	
 	}
     }
@@ -111,10 +192,12 @@ void KBattleshipApp::sendMessage( KMessage *msg )
 	{
 	    case KonnectionHandling::SERVER:
 		kbserver->sendMessage( msg );
+		delete msg;
 		break;
 		
 	    case KonnectionHandling::CLIENT:
 		kbclient->sendMessage( msg );
+		delete msg;
 		break;	
 	}
     }
@@ -194,6 +277,7 @@ void KBattleshipApp::slotServerConnect()
 		
 	    case KonnectionHandling::CLIENT:
 	        gameServerConnect->setText( "&Connect to server" );
+		view->clearField();
 		delete connection;
 		delete kbclient;
 		connection = 0;
@@ -225,6 +309,7 @@ void KBattleshipApp::slotNewServer()
 	{
 	    case KonnectionHandling::SERVER:
 	        gameNewServer->setText( "&Start server" );
+		view->clearField();
 		haveCS = false;
 		delete connection;
 		delete kbserver;

@@ -1,5 +1,5 @@
 /***************************************************************************
-                                 kmessage.h
+                                  kship.cpp
                              -------------------
     Developers: (c) 2000 Nikolas Zimmermann <wildfox@kde.org>
                 (c) 2000 Daniel Molkentin <molkentin@kde.org>
@@ -15,36 +15,42 @@
  *                                                                         *
  ***************************************************************************/
 
-#ifndef KMESSAGE_H
-#define KMESSAGE_H
+#include "kship.moc"
 
-#include <kdebug.h>
-#include <qmap.h>
-#include <qobject.h>
-#include <qdom.h>
-#include <qstring.h>
-#include <qstringlist.h>
-
-class KMessage : QObject
+KShip::KShip( int shipxstart, int shipxstop, int shipystart, int shipystop, const KShipType &shiptype )
 {
-    Q_OBJECT
-    public:
-	enum{ ENEMY_SHOOT, ANSWER_SHOOT };
-        KMessage( int type );
-	KMessage();
-        ~KMessage();
+    internalshipxstart = shipxstart;
+    internalshipxstop = shipxstop;
+    internalshipystart = shipystart;
+    internalshipystop = shipystop;
+    internalshiptype = shiptype.getType();
+}
 
-        void addField( QString name, QString value );
-	void chatMessage( QString message );
-        QString getField( QString name );
-        void setDataStream( QString stream );
-        int getType();
-        QString returnSendStream();
-    
-	QDomDocument *xmlDocument;
+KShip::~KShip()
+{
+}
 
-        int messageType;
+int KShip::shipxstart()
+{
+    return internalshipxstart;
+}
 
-};
+int KShip::shipxstop()
+{
+    return internalshipxstop;
+}
 
-#endif
+int KShip::shipystart()
+{
+    return internalshipystart;
+}
+
+int KShip::shipystop()
+{
+    return internalshipystop;
+}
+
+int KShip::shiptype()
+{	
+    return internalshiptype;
+}

@@ -41,11 +41,10 @@
 #include "kbattleshipclient.h"
 #include "kbattleshipserver.h"
 #include "konnectionhandling.h"
+#include "kshiplist.h"
+#include "kshiptype.h"
 #include "kserverdialog.h"
 #include "kclientdialog.h"
-
-using namespace std;
-using namespace Arts;
 
 class KBattleshipView;
 
@@ -75,6 +74,7 @@ class KBattleshipApp : public KMainWindow
         void slotStatusMsg( const QString &text );
 	void startBattleshipServer();
 	void connectToBattleshipServer();
+	void placeShip( int fieldx, int fieldy, int button );
 	void sendMessage( int fieldx, int fieldy );
 	void sendMessage( KMessage *msg );
 	void changeOwnFieldData( int fieldx, int fieldy, int type );
@@ -99,6 +99,7 @@ class KBattleshipApp : public KMainWindow
         KClientDialog *client;
 	KServerDialog *server;
 	KonnectionHandling *connection;
+	KShipList *shiplist;
 	bool haveCS;
 	
     signals:

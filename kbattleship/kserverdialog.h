@@ -18,6 +18,7 @@
 #ifndef KSERVERDIALOG_H
 #define KSERVERDIALOG_H
 
+#include <stdlib.h>
 #include <kdebug.h>
 #include <qstring.h>
 #include <qpushbutton.h>

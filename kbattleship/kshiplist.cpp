@@ -1,5 +1,5 @@
 /***************************************************************************
-                                 kmessage.h
+                                kshiplist.cpp
                              -------------------
     Developers: (c) 2000 Nikolas Zimmermann <wildfox@kde.org>
                 (c) 2000 Daniel Molkentin <molkentin@kde.org>
@@ -15,36 +15,35 @@
  *                                                                         *
  ***************************************************************************/
 
-#ifndef KMESSAGE_H
-#define KMESSAGE_H
+#include "kshiplist.moc"
 
-#include <kdebug.h>
-#include <qmap.h>
-#include <qobject.h>
-#include <qdom.h>
-#include <qstring.h>
-#include <qstringlist.h>
-
-class KMessage : QObject
+KShipList::KShipList()
 {
-    Q_OBJECT
-    public:
-	enum{ ENEMY_SHOOT, ANSWER_SHOOT };
-        KMessage( int type );
-	KMessage();
-        ~KMessage();
+    shipsadded = 4;
+    shiplist.setAutoDelete( true );
+}
 
-        void addField( QString name, QString value );
-	void chatMessage( QString message );
-        QString getField( QString name );
-        void setDataStream( QString stream );
-        int getType();
-        QString returnSendStream();
-    
-	QDomDocument *xmlDocument;
+KShipList::~KShipList()
+{
+}
 
-        int messageType;
+bool KShipList::canAddShips()
+{
+    if( shipsadded >= 0)
+	return true;
+    else
+	return false;
+}
 
-};
+void KShipList::addNewShip( int fieldx, int fieldy, int type )
+{
+    shipsadded--;
+    KShipType shiptype;
+    shiptype.setType( type );
+    shiplist.append( new KShip( fieldx, fieldx + shipCount(), fieldy, fieldy + shipCount(), shiptype ) );
+}
 
-#endif
+int KShipList::shipCount()
+{
+    return shipsadded;
+}

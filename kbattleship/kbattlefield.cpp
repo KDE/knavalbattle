@@ -21,12 +21,11 @@ KBattleField::KBattleField( QWidget *parent, const KBattleFieldType &type, QPain
 {
 
     internalType = type.getType();
-    QWhatsThis::add( this, "foo"  );
     int i, j;
 
     // Hehe this is quite unusual now
     // I don't have any Battleship rulesets
-    // here so this is wrong, i think (WildFox)
+    // here...so this is wrong, i think (WildFox)
     
     for( i = 0; i != 8; i++ ) // A to I
     {
@@ -35,7 +34,6 @@ KBattleField::KBattleField( QWidget *parent, const KBattleFieldType &type, QPain
 	    FieldData[ i ][ j ] = KBattleField::WATER;     
 	}
     }
-    
 
     setDrawValues( this );
     drawField( painter );    
@@ -43,6 +41,18 @@ KBattleField::KBattleField( QWidget *parent, const KBattleFieldType &type, QPain
 
 KBattleField::~KBattleField()
 {
+}
+
+void KBattleField::clearField()
+{
+    int i, j;
+    for( i = 0; i != 8; i++ ) // A to I
+    {
+	for( j = 0; j != 8; j++ ) // 1 to 9
+	{
+	    FieldData[ i ][ j ] = KBattleField::WATER;     
+	}
+    }
 }
 
 void KBattleField::changeData( int &fieldx, int &fieldy, int type )
@@ -78,44 +88,44 @@ void KBattleField::drawField( QPainter *painter )
 		    drawDeathIcon( painter );
 		    break;	
 
-		case KBattleField::SHIP1P1:
-		    drawShipIcon( painter, 1, 1 );
+		case KShipType::SHIP1P0:
+		    drawShipIcon( painter, 1, 0 );
+		    break;	    
+
+		case KShipType::SHIP2P0:
+		    drawShipIcon( painter, 2, 0 );
 		    break;	    
 		    
-		case KBattleField::SHIP2P1:
+		case KShipType::SHIP2P1:
 		    drawShipIcon( painter, 2, 1 );
 		    break;	    
 		    
-		case KBattleField::SHIP2P2:
-		    drawShipIcon( painter, 2, 2 );
+		case KShipType::SHIP3P0:
+		    drawShipIcon( painter, 3, 0 );
 		    break;	    
 		    
-		case KBattleField::SHIP3P1:
+		case KShipType::SHIP3P1:
 		    drawShipIcon( painter, 3, 1 );
 		    break;	    
-		    
-		case KBattleField::SHIP3P2:
+
+		case KShipType::SHIP3P2:
 		    drawShipIcon( painter, 3, 2 );
 		    break;	    
 
-		case KBattleField::SHIP3P3:
-		    drawShipIcon( painter, 3, 3 );
+		case KShipType::SHIP4P0:
+		    drawShipIcon( painter, 4, 0 );
 		    break;	    
-
-		case KBattleField::SHIP4P1:
+		    
+		case KShipType::SHIP4P1:
 		    drawShipIcon( painter, 4, 1 );
 		    break;	    
 		    
-		case KBattleField::SHIP4P2:
+		case KShipType::SHIP4P2:
 		    drawShipIcon( painter, 4, 2 );
 		    break;	    
-		    
-		case KBattleField::SHIP4P3:
-		    drawShipIcon( painter, 4, 3 );
-		    break;	    
 
-		case KBattleField::SHIP4P4:
-		    drawShipIcon( painter, 4, 4 );
+		case KShipType::SHIP4P3:
+		    drawShipIcon( painter, 4, 3 );
 		    break;	    
 	    }		    
 	}
