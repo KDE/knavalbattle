@@ -153,11 +153,9 @@ void KBattleshipApp::slotDeleteAI()
     m_aiPlayer = 0;
 }
 
-void KBattleshipApp::slotDeleteAIAndRestart()
+void KBattleshipApp::slotRestartAI()
 {
     m_aiHits = 0;
-    delete m_aiPlayer;
-    m_aiPlayer = 0;
     slotStartBattleshipGame();
 }
 
@@ -178,6 +176,7 @@ void KBattleshipApp::slotEnemyFieldClick(int fieldx, int fieldy)
 	{
 	    if(!m_aiPlaying)
 	    {
+	        slotStatusMsg(i18n("Sending Message..."));
 		KMessage *msg = new KMessage(KMessage::SHOOT);
 		msg->addField("fieldx", QString::number(fieldx));
 		msg->addField("fieldy", QString::number(fieldy));
@@ -285,7 +284,7 @@ void KBattleshipApp::slotEnemyFieldClick(int fieldx, int fieldy)
 		switch(KMessageBox::questionYesNo(this, i18n("Do you want to restart the game?")))
     		{
     		    case KMessageBox::Yes:
-			QTimer::singleShot(0, this, SLOT(slotDeleteAIAndRestart()));
+			QTimer::singleShot(0, this, SLOT(slotRestartAI()));
 			break;
 
 		    case KMessageBox::No:
@@ -1182,7 +1181,7 @@ void KBattleshipApp::slotAIShootsAt(const QPoint pos)
 	switch(KMessageBox::questionYesNo(this, i18n("Do you want to restart the game?")))
         {
     	    case KMessageBox::Yes:
-		QTimer::singleShot(0, this, SLOT(slotDeleteAIAndRestart()));
+		QTimer::singleShot(0, this, SLOT(slotRestartAI()));
 		break;
 
 	    case KMessageBox::No:

@@ -32,7 +32,7 @@ class KBDiagonalShotStrategy : public KBStrategy
 	virtual void startAt(int col, int row, Direction dir);
 	virtual QPoint endPoint();
 
-    protected:
+    private:
 	bool advance();
 
 	int m_row;

@@ -22,9 +22,10 @@
 #include "kbattleship.h"
 #include "kbattleshipview.moc"
 
-KBattleshipView::KBattleshipView(QWidget *parent, const char *name, bool draw) : QWidget(parent, name), m_drawGrid(draw)
+KBattleshipView::KBattleshipView(QWidget *parent, const char *name, bool draw) : QWidget(parent, name, WResizeNoErase), m_drawGrid(draw)
 {
     setMinimumSize(700, 350);
+    setBackgroundMode(NoBackground);
     setMouseTracking(true);
     installEventFilter(this);
 

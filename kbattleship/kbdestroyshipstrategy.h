@@ -33,7 +33,7 @@ class KBDestroyShipStrategy : public KBStrategy
 
 	virtual void destroyShipAt(const QPoint pos);
 
-    protected:
+    private:
 	enum {NODIR, VERTICAL, HORIZONTAL};
 
 	bool m_working;

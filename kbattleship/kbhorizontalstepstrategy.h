@@ -31,7 +31,7 @@ class KBHorizontalStepStrategy : public KBStrategy
 	virtual bool hasMoreShots();
 	virtual void shotAt(const QPoint &pos);
 
-    protected:
+    private:
 	bool advance();
 	void setStart(int col, int row);
 
@@ -41,7 +41,7 @@ class KBHorizontalStepStrategy : public KBStrategy
 
 	QPoint m_start;
 	KBHorizontalStepStrategy *m_child;
-	KBDestroyShipStrategy* m_destroyer;
+	KBDestroyShipStrategy *m_destroyer;
 	bool m_destroying;
 };
 

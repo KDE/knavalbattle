@@ -86,7 +86,7 @@ class KBattleshipApp : public KMainWindow
         void slotAIReady();
         void slotAIShootsAt(const QPoint pos);
         void slotDeleteAI();
-        void slotDeleteAIAndRestart();
+        void slotRestartAI();
         void slotDeleteClient();
         void slotSinglePlayer();
         void slotDeleteSingleDialog();

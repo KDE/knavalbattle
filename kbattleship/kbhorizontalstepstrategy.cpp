@@ -20,7 +20,6 @@
 KBHorizontalStepStrategy::KBHorizontalStepStrategy(KBStrategy *parent) : KBStrategy(parent)
 {
     m_child = 0;
-//    kdDebug() << "KBHorizontalStepStrategy(" << (int) parent << ")" << endl;
     if(parent == 0) // only the master destroys ships
     {
 	m_destroyer = new KBDestroyShipStrategy(this);
@@ -35,7 +34,6 @@ KBHorizontalStepStrategy::KBHorizontalStepStrategy(KBStrategy *parent) : KBStrat
 
 KBHorizontalStepStrategy::~KBHorizontalStepStrategy()
 {
-//    kdDebug() << "~KBHorizontalStepStrategy" << endl;
     if(m_child != 0)
 	delete m_child;
     if(m_destroyer != 0)

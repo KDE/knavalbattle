@@ -32,7 +32,7 @@ class KBDiagonalWrapStrategy : public KBStrategy
 	virtual bool hasMoreShots();
 	virtual void shotAt(const QPoint &pos);
 
-    protected:
+    private:
 	bool advance();
 	bool advanceRightDown();
 	bool advanceRightUp();
@@ -46,7 +46,7 @@ class KBDiagonalWrapStrategy : public KBStrategy
 	KBDiagonalShotStrategy *m_child;
 	KBDiagonalShotStrategy::Direction m_direction;
 
-	KBDestroyShipStrategy* m_destroyer;
+	KBDestroyShipStrategy *m_destroyer;
 	bool m_destroying;
 };
 

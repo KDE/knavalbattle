@@ -41,23 +41,22 @@ class KBAIPlayer : public QObject
     public slots:
 	void slotRestart();
 	bool slotRequestShot();
+	bool shipPlaced(int shiplen, int x, int y, bool vertical); 
 
-    protected:
+    signals:
+	void sigShootAt(const QPoint pos);
+	void sigReady();
+
+    private:
+	void chooseStrategy();
+	void addShips();
+
 	KBStrategy *m_masterStrategy;
 	KShipList *m_ownShipList;
 	KBattleField *m_battleField;
 	KRandomSequence *m_randomSeq;
 
 	QRect m_fieldRect;
-	QRect m_ships[MAX_SHIP_LEN];
-
-	void chooseStrategy();
-	void addShips();
-	bool shipPlaced(int shiplen, int x, int y, bool vertical);
-
-    signals:
-	void sigShootAt(const QPoint pos);
-	void sigReady();
 };
 
 #endif

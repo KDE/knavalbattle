@@ -45,6 +45,7 @@ KBAIPlayer::~KBAIPlayer()
 void KBAIPlayer::init(KBattleField *battle_field, KShipList *ai_shiplist)
 {
     m_battleField = battle_field;
+    m_ownShipList = ai_shiplist;
 
     if(m_battleField != 0)
     {
@@ -52,8 +53,6 @@ void KBAIPlayer::init(KBattleField *battle_field, KShipList *ai_shiplist)
 	int grid = m_battleField->gridSize();
 	m_fieldRect = QRect(0, 0, (rect.width() / grid) + 1, (rect.height() / grid) + 1);
     }
-
-    m_ownShipList = ai_shiplist;
 }
 
 void KBAIPlayer::slotRestart()
@@ -84,7 +83,6 @@ void KBAIPlayer::addShips()
     }	
 }
 
-/* Initializes the master startegy which can create create child strategies */
 void KBAIPlayer::chooseStrategy()
 {
     if(m_masterStrategy != 0)
@@ -94,29 +92,28 @@ void KBAIPlayer::chooseStrategy()
     {
 	case 0:
 	    m_masterStrategy = new KBHorizontalStepStrategy();
-	    //kdDebug() << "KBAIPlayer::chooseStrategy: HorizontalStep" << endl;
+	    kdDebug() << "New Strategy: KBHorizontalStep" << endl;
 	    break;
 	
 	case 1:
 	    m_masterStrategy = new KBVerticalStepStrategy();
-	    //kdDebug() << "KBAIPlayer::chooseStrategy: VerticalStep" << endl;
+	    kdDebug() << "New Strategy: KBVerticalStep" << endl;
 	    break;
 	
 	case 2:
 	    m_masterStrategy = new KBDiagonalWrapStrategy();
-	    //kdDebug() << "KBAIPlayer::chooseStrategy: DiagonalWrap" << endl;
+	    kdDebug() << "New Strategy: KBDiagonalWrap" << endl;
 	    break;
 	
 	default:
 	    m_masterStrategy = new KBRandomShotStrategy();
-	    //kdDebug() << "KBAIPlayer::choosingStrategy: RandomShot(default)" << endl;
+	    kdDebug() << "New Strategy: KBRandomShot" << endl;
 	    break;
     }
     
     m_masterStrategy->init(m_battleField, m_fieldRect);
 }
 
-/* Requests the next shot from the AI Player */
 bool KBAIPlayer::slotRequestShot()
 {
     if(m_masterStrategy != 0 && m_masterStrategy->hasMoreShots())
@@ -130,48 +127,11 @@ bool KBAIPlayer::slotRequestShot()
     return false;
 }
 
-/* Tests if the postion (x/y) is possible for a ship with length shiplen */
 bool KBAIPlayer::shipPlaced(int shiplen, int x, int y, bool vertical)
 {
     QRect ship = vertical ? QRect(x, y, 1, shiplen) : QRect(x, y, shiplen, 1);
-    if(!m_fieldRect.contains(ship))
-    {
-//	kdDebug() << "     not on field" << endl;
-	return false;
-    }
+    if(m_ownShipList->addNewShip(vertical, ship.x(), ship.y()))
+	return true;
 
-    for(int s = MAX_SHIP_LEN; s > shiplen; s--)
-    {
-	for(int i = x; i < (x + ship.width()); i++)
-	{
-    	    QPoint p1(i, y - 1);
-    	    QPoint p2(i, y + ship.height());
-	    if(m_ships[s - 1].contains(p1) || m_ships[s - 1].contains(p2))
-    	    {
-	//	kdDebug() << "     collides with ship " << s << endl;
-		return false;
-    	    }
-	}
-
-	// test the fields left and right of the ship
-	for (int i = y; i < (y + ship.height()); i++)
-	{
-    	    QPoint p1(x - 1, i);
-    	    QPoint p2(x + ship.width(), i);
-    	    if(m_ships[s - 1].contains(p1) || m_ships[s - 1].contains(p2))
-    	    {
-	//	kdDebug() << "     collides with ship " << s << endl;
-		return false;
-    	    }
-	}
-    }
-
-		if (m_ownShipList->addNewShip(vertical, ship.x(), ship.y()))
-		{
-			m_ships[shiplen - 1] = ship;
-			return true;
-		}
-
-//    kdDebug() << "     is ok, addShip(" << x1 << ", " << x2 << ", " << y1 << ", " << y2 << ", " << shiplen - 1 << ")" << endl;
     return false;
 }

@@ -398,12 +398,8 @@ QString KGridWidget::findIcon(const QString &name)
 
 void KGridWidget::finished()
 {
-    QPainter painter;
-    painter.begin(static_cast<QWidget *>(parent()));
-    painter.drawPixmap(0, 0, *m_doubleBuffer);
-    painter.end();
-    
-    cleanBuffer();
+    bitBlt(static_cast<QWidget *>(parent()), 0, 0, m_doubleBuffer);
+//    cleanBuffer();
 }
 
 void KGridWidget::cleanBuffer()
