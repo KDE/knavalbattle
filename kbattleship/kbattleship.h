@@ -55,7 +55,7 @@ class KBattleshipApp : public KMainWindow
     Q_OBJECT
     public:
         enum{ID_STATUS_MSG, ID_PLAYER_OWN, ID_PLAYER_ENEMY};
-        KBattleshipApp(QWidget *parent = 0, const char *name = 0);
+        KBattleshipApp(QWidget *parent = 0, const char *name = "Main Class");
         ~KBattleshipApp();
 
         void init();

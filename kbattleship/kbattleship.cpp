@@ -115,11 +115,11 @@ void KBattleshipApp::initShipPlacing()
 
 void KBattleshipApp::initView()
 {
-    QWidget * dummy = new QWidget(this,"dummy");
+    QWidget *dummy = new QWidget(this, "dummy");
     setCentralWidget(dummy);
 
-    QBoxLayout *topLayout = new QVBoxLayout(dummy,0,-1,"topLayout");
-    QBoxLayout *childLayout = new QHBoxLayout(topLayout,-1,"childLayout");
+    QBoxLayout *topLayout = new QVBoxLayout(dummy, 0, -1, "topLayout");
+    QBoxLayout *childLayout = new QHBoxLayout(topLayout, -1, "childLayout");
 
     m_chat = new KChatWidget(dummy);
     m_view = new KBattleshipView(dummy, "", m_configGrid->isChecked());

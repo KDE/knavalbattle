@@ -86,8 +86,8 @@ void KBattleField::drawOwnField()
 {
     if(!m_canDraw)
 	return;
-	
-    KBattleshipApp *app = static_cast<KBattleshipApp *>(parent()->parent()->parent()->parent());
+
+    KBattleshipApp *app = static_cast<KBattleshipApp *>(parent()->parent()->parent());
     KShip *ship = 0;
     int data;
 
@@ -151,7 +151,7 @@ void KBattleField::drawEnemyField()
     if(!m_canDraw)
 	return;
 
-    KBattleshipApp *app = static_cast<KBattleshipApp *>(parent()->parent()->parent()->parent());
+    KBattleshipApp *app = static_cast<KBattleshipApp *>(parent()->parent()->parent());
 
     for(int i = 0; i != m_enemyfieldx; i++)
     {
