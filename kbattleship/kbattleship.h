@@ -33,6 +33,8 @@
 #include "kbattleship.h"
 #include "kbattleshipview.h"
 
+class KBattleshipView;
+
 class KBattleshipApp : public KMainWindow
 {
     Q_OBJECT

@@ -107,7 +107,7 @@ void KBattleshipApp::slotFileQuit()
     {
         for( window = memberList->first(); window != 0; window = memberList->first() )
         {
-            if( !w->close() )
+            if( !window->close() )
                 break;
         }
     }
