@@ -40,4 +40,4 @@ messages: rc.cpp
 	$(XGETTEXT) rc.cpp *.cpp main.h -o $(podir)/kbattleship.pot
 
 install-data-local:
-	rm -rf $(kde_appsdir)/Games/kbattleship.desktop
+	rm -rf $(DESTDIR)$(kde_appsdir)/Games/kbattleship.desktop
