@@ -78,7 +78,7 @@ void KBattleshipApp::initActions()
 {
     m_gameServerConnect = new KAction(i18n("&Connect to server"), "connect_no", Key_F2, this, SLOT(slotServerConnect()), actionCollection(), "serverconnect");
     m_gameNewServer = new KAction(i18n("&Start server"), "network", Key_F3, this, SLOT(slotNewServer()), actionCollection(), "newserver");
-    m_gameSingle = new KAction(i18n("S&ingle player"), "gear", Key_F4, this, SLOT(slotSinglePlayer()), actionCollection(), "singleplayer");
+    m_gameSingle = new KAction(i18n("S&ingle Player"), "gear", Key_F4, this, SLOT(slotSinglePlayer()), actionCollection(), "singleplayer");
     m_gameQuit = KStdAction::quit( this, SLOT(slotGameQuit()), actionCollection(), "gamequit");
     (void) new KAction(i18n("&Highscore"), "view_text", Key_F10, this, SLOT(slotHighscore()), actionCollection(), "highscore");
     m_gameEnemyInfo = new KAction(i18n("&Enemy Info..."), "view_text", Key_F11, this, SLOT(slotEnemyClientInfo()), actionCollection(), "enemyinfo");
@@ -140,7 +140,7 @@ void KBattleshipApp::initView()
     connect(m_view, SIGNAL(sigOwnFieldClicked(int, int, int)), this, SLOT(slotPlaceShip(int, int, int)));
     connect(m_view, SIGNAL(sigMouseOverField(int, int, bool)), this, SLOT(slotPlaceShipPreview(int, int, bool)));
 
-    setCaption(i18n("KBattleship 0.8"), false);
+    setCaption(i18n("KBattleship %1").arg(0.8), false);
 }
 
 void KBattleshipApp::slotDeleteAI()

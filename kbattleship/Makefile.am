@@ -35,4 +35,4 @@ kdelnk_DATA                 =   kbattleship.desktop
 
 messages: rc.cpp
 	$(EXTRACTRC) */*.ui >> rc.cpp
-	$(XGETTEXT) rc.cpp *.cpp -o $(podir)/kbattleship.pot
+	$(XGETTEXT) rc.cpp *.cpp main.h -o $(podir)/kbattleship.pot
