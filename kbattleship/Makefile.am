@@ -30,3 +30,6 @@ rc_DATA                     =   kbattleshipui.rc
 
 kdelnkdir                   =   $(kde_appsdir)/Games
 kdelnk_DATA                 =   kbattleship.desktop
+
+messages: rc.cpp
+	$(XGETTEXT) rc.cpp *.cpp */*.cpp -o $(podir)/kbattleship.pot
