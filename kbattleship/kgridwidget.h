@@ -22,18 +22,18 @@
 #include <qpainter.h>
 #include <qwidget.h>
 
-class KGridWidget : QWidget()
+class KGridWidget : QWidget
 {
     Q_OBJECT
     public:
-        KGridWidget( int x, int y, int size, QPainter *painter );
+        KGridWidget( QWidget *parent, int x, int y, int size );
         ~KGridWidget();
 
     private:
+    	void drawSquare( QWidget *parent );
         int internalX;
         int internalY;
         int internalSize;
-        QPainter internalPainter;
 };
 
 #endif
