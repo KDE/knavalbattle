@@ -23,10 +23,10 @@ KBattleshipClient::KBattleshipClient( QString host, int port ) : QSocket()
         internalPort=port;
         connect( this, SIGNAL( error( int ) ), SLOT( socketError( int ) ) );
 
-        connect( this, SIGNAL( hostFound() ), SLOT( connectionControl() );
-        connect( this, SIGNAL( connected() ), SLOT( connectionControl() );
-        connect( this, SIGNAL( connectionClosed() ), SLOT( connectionControl() );
-        connect( this, SIGNAL( readyRead() ), SLOT( connectionControl() );
+        connect( this, SIGNAL( hostFound() ), SLOT( connectionControl() ) );
+        connect( this, SIGNAL( connected() ), SLOT( connectionControl() ) );
+        connect( this, SIGNAL( connectionClosed() ), SLOT( connectionControl() ) );
+        connect( this, SIGNAL( readyRead() ), SLOT( connectionControl() ) );
 
         connectToServer();
 }
@@ -37,7 +37,7 @@ KBattleshipClient::~KBattleshipClient()
 
 void KBattleshipClient::connectToServer()
 {
-        connectToHost( host, port);
+        connectToHost( internalHost, internalPort);
 }
 
 void KBattleshipClient::connectionControl()

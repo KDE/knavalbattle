@@ -41,6 +41,7 @@ void KBattleshipServer::newConnection( int socket )
 
 void KBattleshipServer::readClient()
 {
+    kdDebug() << "I'm in readClient()" << endl;
     QSocket* socket = (QSocket*)sender();
     if( socket->canReadLine() )
     {
@@ -62,13 +63,13 @@ void KBattleshipServer::sendMessage( KMessage *msg )
 void KBattleshipServer::discardClient()
 {
     QSocket* socket = (QSocket*)sender();
-    QTextStream post( socket );
-    KMessageType msgtype;
-    msgtype.setType( KMessageType::MSG_FORBIDDEN );
-    KMessage *msg=new KMessage( msgtype );
-    msg->addField( QString( "forbidden" ), QString( "didnotaccept" ) );
-    post << msg->returnSendStream();
-    emit wroteToClient();
+    //QTextStream post( socket );
+    //KMessageType msgtype;
+    //msgtype.setType( KMessageType::MSG_FORBIDDEN );
+    //KMessage *msg=new KMessage( msgtype );
+    //msg->addField( QString( "forbidden" ), QString( "didnotaccept" ) );
+    ////post << msg->returnSendStream();
+    //emit wroteToClient();
     delete socket;
     emit endConnect();
 }

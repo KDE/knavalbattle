@@ -34,9 +34,11 @@ class KBattleshipServer : QServerSocket
         ~KBattleshipServer();
 
         void newConnection( int socket );
+        void sendMessage( KMessage *msg );
+
+    private slots:
         void readClient();
         void discardClient();
-        void sendMessage( KMessage *msg );
 
     signals:
         void newConnect();
