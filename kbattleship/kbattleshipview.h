@@ -36,6 +36,7 @@ class KBattleshipView : public QWidget
 
     private:
         KBattleField *ownfield;
+        KBattleField *enemyfield;
 };
 
 #endif

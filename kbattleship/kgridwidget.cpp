@@ -25,7 +25,7 @@ KGridWidget::~KGridWidget()
 {
 }
 
-void KGridWidget::setValues( int &x, int &y, int size )
+void KGridWidget::setValues( int x, int y, int size )
 {
     internalX = x;
     internalY = y;
@@ -39,9 +39,10 @@ void KGridWidget::drawSquare( QPainter *painter )
 
     internalPixmap = new QPixmap( internalSize, internalSize );
     
-    QBrush blackBrush( black );
+    QBrush blackBrush( green );
+        
     painter->begin( internalPixmap );
     painter->setBrush( blackBrush );
     painter->drawRect( internalX, internalY, internalSize, internalSize );
-    painter->end();
+    bitBlt( this, 0, 0, internalPixmap );
 }

@@ -19,12 +19,16 @@
 
 KBattleshipView::KBattleshipView( QWidget *parent, const char *name ) : QWidget( parent, name )
 {
-    QPainter painter( this );
-    setFixedSize( 500, 300 );
+    QPainter ownpainter( this );
+    QPainter enemypainter( this );
+    setFixedSize( 600, 400 );
     setBackgroundMode( PaletteBase );
-    KBattleFieldType type;
-    type.setType( KBattleFieldType::OWNFIELD );
-    ownfield = new KBattleField( this, type, &painter );
+    KBattleFieldType owntype;
+    KBattleFieldType enemytype;
+    owntype.setType( KBattleFieldType::OWNFIELD );
+    enemytype.setType( KBattleFieldType::ENEMYFIELD );
+    ownfield = new KBattleField( this, owntype, &ownpainter );
+    enemyfield = new KBattleField( this, enemytype, &enemypainter );
 }
 
 KBattleshipView::~KBattleshipView()
@@ -34,7 +38,9 @@ KBattleshipView::~KBattleshipView()
 void KBattleshipView::paintEvent( QPaintEvent * )
 {
     kdDebug() << "Repaint!" << endl;
-    QPainter painter( this );
-    ownfield->drawField( &painter );
+    QPainter ownpainter( this );
+    QPainter enemypainter( this );
+    ownfield->drawField( &ownpainter );
+    enemyfield->drawField( &enemypainter );
 }
 

@@ -35,14 +35,8 @@ KBattleField::KBattleField( QWidget *parent, const KBattleFieldType &type, QPain
 	}
     }
     
-    // Drawing
+
     setDrawValues( this );
-    
-    kdDebug() << "LeftV: " << LeftV << endl;
-    kdDebug() << "RightV: " << RightV << endl;
-    kdDebug() << "TopV: " << TopV << endl;
-    kdDebug() << "BottomV: " << BottomV << endl;
-    
     drawField( painter );    
 }
 
@@ -52,45 +46,38 @@ KBattleField::~KBattleField()
 
 void KBattleField::drawField( QPainter *painter )
 {
-    int it, jt;
-    
-    for( it = TopV; it <= BottomV; it +=40 )
+    int i, j;
+
+    for( i = 0; i != 8; i++ ) // A to I
     {
-	for( jt = LeftV; jt <= RightV; jt +=40 )
+	for( j = 0; j != 8; j++ ) // 1 to 9
 	{
-	    setValues( it, jt, 40 );	    
-	    drawSquare( painter );
+	    setValues( ( ( ( i + 1 ) * 30 ) + FromLeft ), ( ( ( j + 1 ) * 30 ) + 5 ) , 30 );
+	    drawSquare( painter );	    
 	}
     }
-
+    
+    painter->end();
+    
 }
 
 void KBattleField::setDrawValues( QWidget *parent )
 {
-    kdDebug() << "Width: " << parent->width() << endl;
-    kdDebug() << "Height: " << parent->height() << endl;
-    
     switch( internalType )
     {
 	case KBattleFieldType::OWNFIELD:
 	{
-	    kdDebug() << "OWNFIELD" << endl;
-	    LeftV = 40;
-	    RightV = ( parent->width() / 2 ) - 20;
+	    FromLeft = 15;
 	    break;
 	}
 	
 	case KBattleFieldType::ENEMYFIELD:
 	{
-	    kdDebug() << "ENEMYFIELD" << endl;
-	    LeftV = ( parent->width() / 2 ) + 20;
-	    RightV = parent->width() - 40;
+	    FromLeft = ( parent->width() / 2 ) + 30;
 	    break;
 	}
     }
     
-    BottomV = parent->height() - 40;
-    TopV = 40;
 }
 
 

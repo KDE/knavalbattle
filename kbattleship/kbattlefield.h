@@ -34,14 +34,11 @@ class KBattleField : public KGridWidget
 	
 	void setDrawValues( QWidget *parent );
 	void drawField( QPainter *painter );
-	int LeftV;
-	int RightV;    
-	int TopV;
-	int BottomV;
 
     private:
 	int FieldData[ 8 ][ 8 ];
 	int internalType;
+	int FromLeft;
 
 };
 

@@ -31,7 +31,7 @@ class KGridWidget : public QWidget
         KGridWidget();
         ~KGridWidget();
 	
-	void setValues( int &x, int &y, int size );
+	void setValues( int x, int y, int size );
 	void drawSquare( QPainter *painter );
 
     private:
