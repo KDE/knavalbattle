@@ -1,4 +1,3 @@
-
 /***************************************************************************
                             kbattleshipclient.cpp
                              -------------------
@@ -79,7 +78,6 @@ void KBattleshipClient::lostServer()
 
 void KBattleshipClient::socketError( int error )
 {
-    kdDebug() << "Socket-Error: " << error << endl;
     emit socketFailure( error );
 }
 
@@ -97,4 +95,3 @@ bool KBattleshipClient::write()
 {
     return writeable;
 }
-
