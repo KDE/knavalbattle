@@ -17,6 +17,7 @@
 
 #include <sys/ioctl.h>
 #include <qsocketnotifier.h>
+#include <qobject.h>
 #include "kmessage.h"
 #include "kbattleshipclient.moc"
 
@@ -37,7 +38,7 @@ void KBattleshipClient::init()
     }
     
     m_readNotifier = new QSocketNotifier(fd(), QSocketNotifier::Read, this);
-    QObject::connect(m_readNotifier, SIGNAL(activated(int)), SLOT(slotReadData()));
+    connect(m_readNotifier, SIGNAL(activated(int)), SLOT(slotReadData()));
     emit sigConnected();
 }
 
@@ -66,9 +67,9 @@ void KBattleshipClient::slotReadData()
     m_readBuffer += QString::fromUtf8(buf);
     delete []buf;
     int pos = m_readBuffer.find("</kmessage>");
-    if (pos >= 0)
+    if(pos >= 0)
     {
-        pos += 11; // strlen("</kmessage>")
+        pos += 11; // Length of "</kmessage>"
         KMessage *msg = new KMessage();
         msg->setDataStream(m_readBuffer.left(pos));
         emit sigNewMessage(msg);

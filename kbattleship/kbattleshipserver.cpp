@@ -17,6 +17,7 @@
 
 #include <sys/ioctl.h>
 #include <qtimer.h>
+#include <qobject.h>
 #include <kmessagebox.h>
 #include <klocale.h>
 #include "kbattleshipserver.moc"
@@ -41,7 +42,7 @@ void KBattleshipServer::init()
     }
     
     m_connectNotifier = new QSocketNotifier(fd(), QSocketNotifier::Read, this);
-    QObject::connect(m_connectNotifier, SIGNAL(activated(int)), SLOT(slotNewConnection()));
+    connect(m_connectNotifier, SIGNAL(activated(int)), SLOT(slotNewConnection()));
 }
 
 void KBattleshipServer::slotNewConnection()
@@ -52,7 +53,7 @@ void KBattleshipServer::slotNewConnection()
     {
 	m_serverSocket = sock;
         m_readNotifier = new QSocketNotifier(sock->fd(), QSocketNotifier::Read, this);
-	QObject::connect(m_readNotifier, SIGNAL(activated(int)), this, SLOT(slotReadClient()));
+	connect(m_readNotifier, SIGNAL(activated(int)), this, SLOT(slotReadClient()));
 	emit sigNewConnect();
     }
     else
@@ -80,9 +81,9 @@ void KBattleshipServer::slotReadClient()
     m_readBuffer += QString::fromUtf8(buf);
     delete []buf;
     int pos = m_readBuffer.find("</kmessage>");
-    if (pos >= 0)
+    if(pos >= 0)
     {
-        pos += 11; // strlen("</kmessage>")
+        pos += 11; // Length of "</kmessage>"
         KMessage *msg = new KMessage();
         msg->setDataStream(m_readBuffer.left(pos));
         emit sigNewMessage(msg);

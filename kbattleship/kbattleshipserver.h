@@ -51,8 +51,8 @@ class KBattleshipServer : public KExtendedSocket
         QSocketNotifier *m_connectNotifier;
         QSocketNotifier *m_readNotifier;
         KExtendedSocket *m_serverSocket;
-        int m_port;
         QString m_readBuffer;
+        int m_port;
 };
 
 #endif
