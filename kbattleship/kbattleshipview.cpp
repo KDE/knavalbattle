@@ -89,13 +89,13 @@ void KBattleshipView::mouseReleaseEvent( QMouseEvent *event )
     fieldY = 0;
     if( event->x() <= ( width() / 2 ) - 15 && event->x() >= 46 ) 
     {
-	if( event->y() >= 35 && event->y() <= ( height() / 2 ) + 75 )
+	if( event->y() >= 35 && event->y() <= ( height() / 2 ) + 120 )
 	{
-	    fieldTopPos = 25;
-	    fieldBottomPos = ( height() / 2 ) + 75;
+	    fieldTopPos = 35;
+	    fieldBottomPos = ( height() / 2 ) + 120;
 	    
-	    fieldLeftPos = 25;
-	    fieldRightPos = ( width() / 2 ) + 75;
+	    fieldLeftPos = 45;
+	    fieldRightPos = ( width() / 2 ) + 120;
 	    
 	    i = 0;
 	    j = 0;
@@ -103,7 +103,7 @@ void KBattleshipView::mouseReleaseEvent( QMouseEvent *event )
 	    for( i = fieldLeftPos; i <= fieldRightPos; i += 30 )
 	    {
 		j++;
-		if( event->x() >= i - 50 && event->x() <= i + 50 )
+		if( event->x() >= i - 30 && event->x() <= i + 30 )
 		{
 		    fieldX = j - 1;
 		    break;
@@ -122,20 +122,19 @@ void KBattleshipView::mouseReleaseEvent( QMouseEvent *event )
 		    break;
 		}
 	    }
-	    	    
 	    emit ownFieldClicked( fieldX, fieldY, event->button() );
 	}
     }
 
-    if( event->x() >= ( width() / 2 ) + 16 && event->x() <= width() - 46 )
+    if( event->x() >= ( width() / 2 ) + 15 && event->x() <= width() - 46 )
     {
-    	if( event->y() >= 35 && event->y() <= ( height() / 2 ) + 75 )
+    	if( event->y() >= 35 && event->y() <= ( height() / 2 ) + 120 )
 	{
-	    fieldTopPos = 25;
-	    fieldBottomPos = ( height() / 2 ) + 75;
+	    fieldTopPos = 35;
+	    fieldBottomPos = ( height() / 2 ) + 120;
 	    
-	    fieldLeftPos = 25;
-	    fieldRightPos = ( width() / 2 ) + 75;
+	    fieldLeftPos = 45;
+	    fieldRightPos = ( width() / 2 ) + 120;
 
 	    i = 0;
 	    j = 0;
@@ -162,7 +161,6 @@ void KBattleshipView::mouseReleaseEvent( QMouseEvent *event )
 		    break;
 		}		
 	    }
-	    
 	    emit enemyFieldClicked( fieldX, fieldY );
 	}
     }
