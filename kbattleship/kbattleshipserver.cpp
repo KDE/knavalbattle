@@ -55,10 +55,10 @@ void KBattleshipServer::readClient()
     int len = serverSocket->bytesAvailable();
     char *buf = new char[len + 1];
     serverSocket->readBlock(buf, len);
-    //buf[len] = 0;
+    buf[len] = 0; 
     KMessage *msg = new KMessage();
-    QString buffer = QString::fromUtf8(buf);
-    msg->setDataStream(buffer);
+//    QString buffer = QString::fromUtf8(buf);
+    msg->setDataStream(buf); //fer);  doesn't work :(
     emit newMessage(msg);
     delete msg;
     delete []buf;
