@@ -18,13 +18,8 @@
 #ifndef KGRIDWIDGET_H
 #define KGRIDWIDGET_H
 
-#include <kdebug.h>
-#include <kglobal.h>
-#include <kstddirs.h>
-#include <kimageio.h>
-#include <qpainter.h>
+#include <qobject.h>
 #include <qpixmap.h>
-#include <qwidget.h>
 
 class KGridWidget : public QObject
 {

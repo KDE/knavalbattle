@@ -15,6 +15,8 @@
  *                                                                         *
  ***************************************************************************/
 
+#include <qlayout.h>
+
 #include <klocale.h>
 #include <kdebug.h>
 #include "kbattleship.h"
@@ -33,6 +35,8 @@ KBattleshipView::~KBattleshipView()
 
 void KBattleshipView::startDrawing()
 {
+    QHBoxLayout *layout = new QHBoxLayout(this, 0, 0, "battlefieldLayout");
+    layout->setAutoAdd(true);
     battlefield = new KBattleField(this, "battlefield", m_drawGrid);
 }
 

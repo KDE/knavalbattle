@@ -15,7 +15,10 @@
  *                                                                         *
  ***************************************************************************/
 
-#include <qpixmap.h>
+#include <qpainter.h>
+
+#include <kstddirs.h>
+
 #include "kbattlefield.h"
 #include "kgridwidget.moc"
 
