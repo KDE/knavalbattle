@@ -3,10 +3,7 @@ KBattleship ( beta -> final ) TODO List:
     x = ready
 
     o Game Rules			[ ]
-    o Mouse Handling			[x]
     o Tooltips				[p]
     o Better Error Processing		[p]
-    o Fast Drawing			[x]
-    o Rework Ship Placing		[x]
     o Translation			[ ]
     o Documentation			[ ]
