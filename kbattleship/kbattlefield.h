@@ -28,7 +28,7 @@ class KBattleField : public KGridWidget
 {
     Q_OBJECT
     public:
-	enum { FREE, RESERVED, FIRE, DEATH };
+	enum { FREE, WATER, HIT, DEATH };
         KBattleField( QWidget *parent, const KBattleFieldType &type, QPainter *painter );
         ~KBattleField();
 	

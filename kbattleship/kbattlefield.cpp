@@ -52,13 +52,22 @@ void KBattleField::drawField( QPainter *painter )
     {
 	for( j = 0; j != 8; j++ ) // 1 to 9
 	{
-	    setValues( ( ( ( i + 1 ) * 30 ) + FromLeft ), ( ( ( j + 1 ) * 30 ) + 5 ) , 30 );
-	    drawSquare( painter );	    
+	    switch( FieldData[ i ][ j ] )
+	    {
+		case KBattleField::FREE:
+		    setValues( ( ( ( i + 1 ) * 30 ) + FromLeft ), ( ( ( j + 1 ) * 30 ) + 5 ) , 30 );
+		    drawSquare( painter );	    
+		    break;
+		
+		case KBattleField::WATER:
+		    setValues( ( ( ( i + 1 ) * 30 ) + FromLeft ), ( ( ( j + 1 ) * 30 ) + 5 ) , 30 );
+		    drawWaterIcon( painter );
+		    break;
+	    }		    
 	}
     }
-    
-    painter->end();
-    
+
+    painter->end();    
 }
 
 void KBattleField::setDrawValues( QWidget *parent )

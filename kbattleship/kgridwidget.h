@@ -19,6 +19,9 @@
 #define KGRIDWIDGET_H
 
 #include <kdebug.h>
+#include <kglobal.h>
+#include <kstddirs.h>
+#include <kimageio.h>
 #include <qpainter.h>
 #include <qpixmap.h>
 #include <qbrush.h>
@@ -33,6 +36,8 @@ class KGridWidget : public QWidget
 	
 	void setValues( int x, int y, int size );
 	void drawSquare( QPainter *painter );
+	void drawWaterIcon( QPainter *painter );
+	void drawIcon( QPainter *painter, QString iconName );
 
     private:
         int internalX;

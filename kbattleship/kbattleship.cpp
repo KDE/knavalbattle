@@ -21,7 +21,6 @@
 
 KBattleshipApp::KBattleshipApp( QWidget *, const char *name ) : KMainWindow( 0, name )
 {
-    setFixedSize( 500, 300 );
     config = kapp->config();
     initStatusBar();
     initActions();
@@ -36,9 +35,9 @@ KBattleshipApp::~KBattleshipApp()
 void KBattleshipApp::initActions()
 {
 
-    gameServerConnect = new KAction( i18n( "&Connect to server" ), "connect_no", Key_F2, this,
+    gameServerConnect = new KAction( i18n( "&Connect to server" ), "connect_server", Key_F2, this,
                                SLOT(slotServerConnect()), actionCollection(), "serverconnect" );
-    gameNewServer = new KAction( i18n( "&Server for new game" ), "network", Key_F3, this,
+    gameNewServer = new KAction( i18n( "&Start server" ), "start_server", Key_F3, this,
                                SLOT( slotNewServer() ), actionCollection(), "newserver" );
     gameQuit = KStdAction::quit(this, SLOT(slotGameQuit()), actionCollection());
     viewToolBar = KStdAction::showToolbar(this, SLOT(slotViewToolBar()), actionCollection());
@@ -122,6 +121,12 @@ void KBattleshipApp::slotServerConnect()
 void KBattleshipApp::slotNewServer()
 {
     slotStatusMsg( i18n( "" ) );
+    
+    // TODO: Subclass and use KDialogBase
+    
+    server = new serverStartDlg();
+    server->show();
+    
     slotStatusMsg( i18n( "Ready." ) );
 }
 

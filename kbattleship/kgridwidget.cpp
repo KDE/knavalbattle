@@ -46,3 +46,30 @@ void KGridWidget::drawSquare( QPainter *painter )
     painter->drawRect( internalX, internalY, internalSize, internalSize );
     bitBlt( this, 0, 0, internalPixmap );
 }
+
+void KGridWidget::drawWaterIcon( QPainter *painter )
+{
+    drawIcon( painter, "water.png" );
+}
+
+void KGridWidget::drawIcon( QPainter *painter, QString iconName )
+{
+    KStandardDirs *stdDirs = KGlobal::dirs();
+    KImageIO::registerFormats();
+    QString picDir;
+    QStringList picDirl = stdDirs->findDirs( "data", "kbattleship" );
+    for( QStringList::Iterator it=picDirl.begin(); it!=picDirl.end(); ++it )
+    {
+	picDir=*it;
+	break;
+    }
+
+    picDir = picDir + "pictures/";
+    
+    QPixmap *icon;
+    icon = new QPixmap( picDir + iconName );
+    
+    painter->drawPixmap( internalX, internalY, *icon );
+        
+    bitBlt( this, 0, 0, icon );
+}

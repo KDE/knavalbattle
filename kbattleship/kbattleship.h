@@ -31,8 +31,8 @@
 #include <klocale.h>
 #include <kconfig.h>
 
-#include <connectDlg.h>
-
+#include "connectDlg.h"
+#include "serverDlg.h"
 #include "kbattleship.h"
 #include "kbattleshipview.h"
 
@@ -70,6 +70,7 @@ class KBattleshipApp : public KMainWindow
         KToggleAction *viewToolBar;
         KToggleAction *viewStatusBar;
         clientConnectDlg *connect;
+	serverStartDlg *server;
 };
 
 #endif
