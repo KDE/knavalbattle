@@ -24,7 +24,7 @@ class KShip : public QObject
 {
     Q_OBJECT
     public:
-        KShip(int, int, int, int, int);
+        KShip(int, int, int, int, int, bool = false);
         ~KShip();
     
         int shipxstart();
@@ -32,6 +32,8 @@ class KShip : public QObject
         int shipystart();
         int shipystop();
         int shiptype();
+
+	bool placedLeft();
     
     private:
         int m_shipxstart;
@@ -39,6 +41,7 @@ class KShip : public QObject
         int m_shipystart;
         int m_shipystop;
         int m_shiptype;
+	bool m_placedLeft;
 };
 
 #endif

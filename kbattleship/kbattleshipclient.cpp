@@ -31,6 +31,7 @@ KBattleshipClient::KBattleshipClient(QString host, int port) : QSocket()
 
 KBattleshipClient::~KBattleshipClient()
 {
+//    QSocket::close();
 }
 
 void KBattleshipClient::init()

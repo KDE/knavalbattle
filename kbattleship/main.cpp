@@ -34,6 +34,7 @@ int main(int argc, char *argv[])
     aboutData.addCredit("Benjamin Adler", "Icon", "benadler@bigfoot.de");
     aboutData.addCredit("Nils Trzebin", "Sounds", "nils.trzebin@stud.uni-hannover.de");
     aboutData.addCredit("Elmar Hoefner", "GFX", "elmar.hoefner@uibk.ac.at");
+    aboutData.addCredit("Kevin Krammer", "Testing", "kevin.krammer@gmx.at");
     
     KCmdLineArgs::init(argc, argv, &aboutData);
     KApplication app;

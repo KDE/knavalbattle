@@ -75,6 +75,7 @@ class KBattleshipApp : public KMainWindow
         void askReplay();
         void sendGreet();
         void clientRestart();
+	void resetControl(bool status);
         void resetClient(bool status = true);
         void resetServer(bool status = true);
         void setPlaceable();

@@ -70,7 +70,7 @@ void KBattleField::drawField()
 		    if(m_type == KBattleField::OWNFIELD)
 		    {
 			KShip *ship = app->getXYShip(i, j);
-			if(ship->shipxstart() != ship->shipxstop())
+			if(ship->placedLeft())
 			    drawShipIcon(m_field[i][j], true);
 			else
 			    drawShipIcon(m_field[i][j]);	
@@ -88,7 +88,7 @@ void KBattleField::drawField()
 		default:
 		    drawSquare();	
 		    KShip *ship = app->getXYShip(i, j);
-		    if(ship->shipxstart() != ship->shipxstop())
+		    if(ship->placedLeft())
 		        drawShipIcon(m_field[i][j], true);
 		    else
 		        drawShipIcon(m_field[i][j]);	

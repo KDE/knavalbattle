@@ -179,13 +179,23 @@ void KBattleshipApp::placeShip(int fieldx, int fieldy, int button)
 			ownshiplist->addNewShip(button, fieldx, fieldy);
             	}
 	    }
-	    else if(connection->getType() == KonnectionHandling::SERVER)
+	    else
 	    {
 		if(ownshiplist->canAddShips())
 		    ownshiplist->addNewShip(button, fieldx, fieldy);
 	    }
         }
     }
+}
+
+void KBattleshipApp::resetControl(bool status)
+{
+    if(connection->getType() == KonnectionHandling::CLIENT)
+    {
+	resetClient(status);
+    }
+    else
+	resetServer(false);
 }
 
 void KBattleshipApp::sendShipList()
@@ -588,7 +598,38 @@ void KBattleshipApp::startBattleshipServer()
 	connect(connection, SIGNAL(gotEnemyShipList(QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString)), this, SLOT(gotEnemyShipList(QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString)));
     }
     else
-	connection->updateInternal(kbserver);
+    {
+	if(connection->getType() == KonnectionHandling::CLIENT)
+	{
+	    disconnect(connection, SIGNAL(changeConnectText()), this, SLOT(changeConnectText()));
+	    disconnect(connection, SIGNAL(updateHighscore()), this, SLOT(updateHighscore()));
+	    disconnect(connection, SIGNAL(newPlayer(bool)), chat, SLOT(acceptMsg(bool)));
+	    disconnect(connection, SIGNAL(clientRestart()), this, SLOT(clientRestart()));
+	    disconnect(connection, SIGNAL(enemyNickname(const QString &)), this, SLOT(slotChangeEnemyPlayer(const QString &)));
+    	    disconnect(connection, SIGNAL(statusBarMessage(const QString &)), this, SLOT(slotStatusMsg(const QString &)));
+	    disconnect(connection, SIGNAL(ownFieldDataChanged(int, int, int)), this, SLOT(changeOwnFieldData(int, int, int)));
+	    disconnect(connection, SIGNAL(setPlaceable()), this, SLOT(setPlaceable()));
+	    disconnect(connection, SIGNAL(abortGame()), this, SLOT(deleteLists()));
+	    disconnect(connection, SIGNAL(abortGameStrict(bool)), this, SLOT(resetClient(bool)));
+	    disconnect(connection, SIGNAL(gotChatMessage(QString, QString)), chat, SLOT(receivedMessage(QString, QString)));
+	    disconnect(connection, SIGNAL(gotEnemyShipList(QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString)), this, SLOT(gotEnemyShipList(QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString)));
+	    connection->updateInternal(kbserver);
+	    connect(connection, SIGNAL(updateHighscore()), this, SLOT(updateHighscore()));
+	    connect(connection, SIGNAL(newPlayer(bool)), chat, SLOT(acceptMsg(bool)));
+	    connect(connection, SIGNAL(askReplay()), this, SLOT(askReplay()));
+	    connect(connection, SIGNAL(abortGame()), this, SLOT(deleteLists()));
+	    connect(connection, SIGNAL(abortGameStrict(bool)), this, SLOT(resetServer(bool)));
+	    connect(connection, SIGNAL(serverFailure(bool)), this, SLOT(resetServer(bool)));
+	    connect(connection, SIGNAL(giveEnemyName()), this, SLOT(sendGreet())); 
+	    connect(connection, SIGNAL(enemyNickname(const QString &)), this, SLOT(slotChangeEnemyPlayer(const QString &)));
+	    connect(connection, SIGNAL(statusBarMessage(const QString &)), this, SLOT(slotStatusMsg(const QString &)));
+	    connect(connection, SIGNAL(ownFieldDataChanged(int, int, int)), this, SLOT(changeOwnFieldData(int, int, int)));
+	    connect(connection, SIGNAL(gotChatMessage(QString, QString)), chat, SLOT(receivedMessage(QString, QString)));
+	    connect(connection, SIGNAL(gotEnemyShipList(QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString)), this, SLOT(gotEnemyShipList(QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString)));
+	}
+	else
+	    connection->updateInternal(kbserver);
+    }
     kbserver->start();
 }
 
