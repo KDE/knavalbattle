@@ -20,7 +20,7 @@
 KMessage::KMessage( int type ) : QObject()
 {
     xmlDocument = new QDomDocument( "kmessage" );
-    xmlDocument->appendChild(xmlDocument->createElement("kmessage"));
+    xmlDocument->appendChild( xmlDocument->createElement( "kmessage" ) );
     messageType = type;
     QString qtype;
     qtype.setNum( type );
@@ -29,6 +29,7 @@ KMessage::KMessage( int type ) : QObject()
 
 KMessage::KMessage() : QObject()
 {
+    xmlDocument = new QDomDocument( "kmessage" );
 }
 
 KMessage::~KMessage()
@@ -37,110 +38,52 @@ KMessage::~KMessage()
 
 void KMessage::addField( QString name, QString content )
 {
-    kdDebug() << "creating xmlElement" << endl;
     QDomElement xmlElement = xmlDocument->createElement( "message" );
-    kdDebug() << "setting Attribute" << endl;
     xmlElement.setAttribute( name, content );
-    kdDebug() << "appending to xmlDocElement" << endl;
     xmlDocument->documentElement().appendChild( xmlElement );
-    kdDebug() << xmlDocument->toString() << endl;
-    parseMessage();
 }
 
 void KMessage::setDataStream( QString stream )
 {
+    kdDebug() << "Received Stream: " << stream << endl;
     xmlDocument->setContent( stream );
-    parseMessage();
-}
-
-void KMessage::parseMessage()
-{
-    kdDebug() << "will parse message!" << endl;
-    QDomNode xmlNode = xmlDocument->documentElement().firstChild();
-    kdDebug() << "1" << endl;
-    while( !xmlNode.isNull() )
-    {
-    kdDebug() << "2"<< endl;
-	QDomElement xmlElement = xmlNode.toElement(); 
-    kdDebug() << "3" << endl;
-	if( !xmlElement.isNull() )
-	{
-	    kdDebug() << "------- XML Message -------" << endl;
-	    kdDebug() << "TagName: " << xmlElement.tagName() << endl;
-	    kdDebug() << "Text:    " << xmlElement.text() << endl;
-	}
-	kdDebug() << "4" << endl;
-	xmlNode = xmlNode.nextSibling();
-     }
-     
-/*  QStringList list;
-    QString key;
-    QString data;
-    QString seperator = "|";
-    QString endseperator = "end";
-    bool kd = false;
-    kdDebug() << "Parsing messageStream: " << messageStream << endl;
-    list = QStringList::split( seperator, messageStream );
-	
-    for( QStringList::Iterator it = list.begin(); it != list.end(); ++it )
-    {
-        if( !kd )
-        {
-	    key = *it;
-    	    kd = true;
-        }
-        else
-        {
-	    data = *it;
-	    if( key != "msgtype" )
-	    {
-    		addField( key, data );
-	    }
-	    else
-	    {
-                messageType = data.toInt();
-	    }
-		
-    	    key = "";
-    	    data = "";
-    	    kd = false;
-        }
-
-    }
-*/
 }
 
 QString KMessage::returnSendStream()
 {
+    QString sendStream;
     QDomNode xmlNode = xmlDocument->documentElement().firstChild();
-    
     while( !xmlNode.isNull() )
     {
 	QDomElement xmlElement = xmlNode.toElement(); 
 	if( !xmlElement.isNull() )
 	{
-	    kdDebug() << "------- XML Message -------" << endl;
-	    kdDebug() << "TagName: " << xmlElement.tagName() << endl;
-	    kdDebug() << "Text:    " << xmlElement.text() << endl;
+	    sendStream = xmlDocument->toString();
 	}
 	xmlNode = xmlNode.nextSibling();
      }
 
-    return 0;
+    kdDebug() << "Send Stream: " << sendStream.simplifyWhiteSpace() << endl;
+    return sendStream.simplifyWhiteSpace();
 }
 
 QString KMessage::getField( QString name )
 {
-/*
-    QMapIterator<QString,QString> it;
-    for( it = messageMap.begin(); it != messageMap.end(); ++it )
+    QDomNode xmlNode = xmlDocument->documentElement().firstChild();
+    while( !xmlNode.isNull() )
     {
-        if( it.key() == name )
-        {
-            return it.data();
-        }
-    }
-*/
+	QDomElement xmlElement = xmlNode.toElement();
+	if( !xmlElement.isNull() )
+	{
+//	    if( xmlElement.attribute( name ) )
+//	    {
+//		return xmlElement
+//	    }
+	    kdDebug() << "1: " << xmlElement.attribute( name ) << endl;
+	    kdDebug() << "2: " << xmlElement.text() << endl;
+	}
+	xmlNode = xmlNode.nextSibling();
+     }
 }
 
 int KMessage::getType()

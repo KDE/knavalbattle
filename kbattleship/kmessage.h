@@ -44,8 +44,6 @@ class KMessage : QObject
 
         int messageType;
 
-    private:
-        void parseMessage();
 };
 
 #endif
