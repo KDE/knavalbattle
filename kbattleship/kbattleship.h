@@ -33,7 +33,6 @@
 #include "dialogs/infoDlg.h"
 
 #include "kbaiplayer.h"
-#include "kbattleship.h"
 #include "kbattleshipclient.h"
 #include "kbattleshipserver.h"
 #include "kbattleshipview.h"
