@@ -66,18 +66,13 @@ void KBattleshipServer::slotNewConnection()
 		delete sock;
 }
 
-void KBattleshipServer::slotDeleteClient()
-{
-	slotDiscardClient(i18n("The connection broke down!"), false, true);
-}
-
 void KBattleshipServer::slotReadClient()
 {
 	int len;
 	ioctl(m_serverSocket->fd(), FIONREAD, &len);
 	if(!len)
 	{
-		QTimer::singleShot(0, this, SLOT(slotDeleteClient()));
+		slotDiscardClient(i18n("The connection broke down!"), false, true);
 		return;
 	}
 

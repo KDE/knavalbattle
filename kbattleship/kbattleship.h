@@ -84,7 +84,6 @@ private slots:
 	void slotAIShootsAt(const QPoint pos);
 	void slotDeleteAI();
 	void slotRestartAI();
-	void slotDeleteClient();
 	void slotSinglePlayer();
 	void slotServerConnect();
 	void slotDeleteConnectDialog();

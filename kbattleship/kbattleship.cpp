@@ -455,16 +455,21 @@ void KBattleshipApp::slotAbortNetworkGame()
 	m_placeable = false;
 	m_serverHasClient = false;
 
-	if(m_connection->type() == KonnectionHandling::SERVER)
+	if (m_connection)
 	{
-		delete m_kbserver;
-		m_kbserver = 0;
+		if(m_connection->type() == KonnectionHandling::SERVER)
+		{
+			delete m_kbserver;
+			m_kbserver = 0;
+		}
+		else
+		{
+			delete m_kbclient;
+			m_kbclient = 0;
+		}
+		delete m_connection;
+		m_connection = 0;
 	}
-	else
-		QTimer::singleShot(0, this, SLOT(slotDeleteClient()));
-
-	delete m_connection;
-	m_connection = 0;
 }
 
 void KBattleshipApp::slotReplay()
@@ -695,19 +700,17 @@ void KBattleshipApp::slotDeleteConnectDialog()
 	m_client = 0;
 }
 
-void KBattleshipApp::slotDeleteClient()
-{
-	delete m_kbclient;
-	m_kbclient = 0;
-}
-
 void KBattleshipApp::slotReplayRequest()
 {
 	switch(KMessageBox::questionYesNo(this, i18n("The client is asking to restart the game. Do you accept?")))
 	{
 		case KMessageBox::Yes:
-			slotReplay();
-			slotStatusMsg(i18n("Please place your ships. Use the \"Shift\" key to place the ships vertically."));
+			if (m_connection)
+			{ // the client could have closed while the user was thinking if he wanted to replay
+				slotReplay();
+				slotStatusMsg(i18n("Please place your ships. Use the \"Shift\" key to place the ships vertically."));
+			}
+			else slotAbortNetworkGame();
 			break;
 
 		case KMessageBox::No:
@@ -722,9 +725,17 @@ void KBattleshipApp::slotServerReplay()
 	switch(KMessageBox::questionYesNo(this, i18n("Do you want to restart the game?")))
 	{
 		case KMessageBox::Yes:
-			slotReplay();
-			slotStatusMsg(i18n("Please place your ships. Use the \"Shift\" key to place the ships vertically."));
-			slotSendMessage(msg);
+			if (m_connection)
+			{ // the client could have closed while the user was thinking if he wanted to replay
+				slotReplay();
+				slotStatusMsg(i18n("Please place your ships. Use the \"Shift\" key to place the ships vertically."));
+				slotSendMessage(msg);
+			}
+			else
+			{
+				delete msg;
+				slotAbortNetworkGame();
+			}
 			break;
 
 		case KMessageBox::No:
@@ -740,9 +751,17 @@ void KBattleshipApp::slotClientReplay()
 	switch(KMessageBox::questionYesNo(this, i18n("Do you want to ask the server restarting the game?")))
 	{
 		case KMessageBox::Yes:
-			slotReplay();
-			slotStatusMsg(i18n("Waiting for an answer..."));
-			slotSendMessage(msg);
+			if (m_connection)
+			{ // the server could have closed while the user was thinking if he wanted to replay
+				slotReplay();
+				slotStatusMsg(i18n("Waiting for an answer..."));
+				slotSendMessage(msg);
+			}
+			else
+			{
+				delete msg;
+				slotAbortNetworkGame();
+			}
 			break;
 
 		case KMessageBox::No:

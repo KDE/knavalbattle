@@ -37,7 +37,6 @@ public slots:
 private slots:
 	void slotNewConnection();
 	void slotReadClient();
-	void slotDeleteClient();
 
 signals:
 	void sigServerFailure();
