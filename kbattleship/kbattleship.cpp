@@ -801,7 +801,7 @@ void KBattleshipApp::slotNewServer()
 
 		slotStatusMsg(i18n("Loading Start-Server dialog..."));
 
-		m_server = new KServerDialog();
+		m_server = new KServerDialog(this);
 		connect(m_server, SIGNAL(sigStartServer()), this, SLOT(slotStartBattleshipServer()));
 		connect(m_server, SIGNAL(sigCancelServer()), this, SLOT(slotDeleteServerDialog()));
 		m_server->show();
