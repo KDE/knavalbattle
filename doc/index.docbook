@@ -26,6 +26,12 @@
 </affiliation>
 </author>
 
+<othercredit role="reviewer">
+<firstname>Frerich</firstname><surname>Raabe</surname>
+<contrib>Reviewer</contrib>
+<affiliation><address><email>raabe@kde.org</email></address></affiliation>
+</othercredit>
+
 <!-- TRANS:ROLES_OF_TRANSLATORS -->
 
 </authorgroup>
@@ -55,11 +61,11 @@
 </abstract>
 
 <keywordset>
-<keyword>KDE</keyword>
-<keyword>kdegames</keyword>
+<keyword>&kde;</keyword>
+<keyword>&package;</keyword>
+<keyword>&kappname;</keyword>
 <keyword>game</keyword>
 <keyword>battleship</keyword>
-<keyword>KBattleship</keyword>
 <keyword>battle</keyword>
 </keywordset>
 
@@ -96,7 +102,7 @@ us. We would really like to hear of it.
 
 <para>
 If you want to play &kbattleship;, you will need two players as it is a
-network game only. One Player has to open the game via
+network game only. One player has to open the game via
 <menuchoice><guimenu>Game</guimenu> <guimenuitem>Start
 Server</guimenuitem></menuchoice> or by pressing <keycap>F3</keycap>.
 </para>
@@ -106,10 +112,14 @@ A dialog box opens which will ask you for for a
 <guilabel>Nickname</guilabel> and <guilabel>Port</guilabel>. Normally,
 &kbattleship; will suggest your login name but you can enter any string
 you want. The predefined port should be ok. However, if you encounter
-problems, you can choose any other free ports above 1024. Note that you
-need to inform the other player when you use a different port then the
-default as he/she needs to set it, too.
+problems, you can choose any other free ports above 1024.
 </para>
+
+<note>
+<para>You need to tell the other player in case you use a port other than
+the default as both players need to use the same port in order to be able
+to establish a connection.</para>
+</note>
 
 <para>
 The other player has to choose <menuchoice><guimenu>Game</guimenu>
@@ -136,7 +146,7 @@ instructions in the statusbar. It will issue hints and suggest what to
 do next. When you now look at the screen, you will find two grid fields,
 the so-called <quote>battle areas</quote>. The left area belongs to
 you. This is where you place your ships and where you can follow the
-military actions of your enemy. The right area is where your enemys
+military actions of your enemy. The right area is where your enemy's
 fleet is located. When it's your turn to fire, you need to click on a
 certain sector (a field of the battle area) where you suppose the ships
 to be located.
@@ -144,23 +154,21 @@ to be located.
 
 <para>
 First, you need to place your ships. The game initiator starts. When
-he/she is done, player 2 sets his/her ships.
+he/she is done, player two sets his/her ships.
 </para>
 
 <para>
 Ship placement is very easy: Simply click on the field where you want to
-place your ship. The first one will have a length of 4 squares, the next
-will be 3 fields long &etc;. Click on the field where you want to start
-the placement. If you click with the <mousebutton>left</mousebutton>
-mousebutton, the ship will be placed horizotally, a
-<keycombo><keycap>Shift</keycap><mousebutton>left</mousebutton></keycombo>
-click will cause it to be placed vertically.  <keycap>Shift</keycap>
-itself will flip the ship placement preview.
+place your ship. The first one will have a length of four squares, the next
+will be three fields long &etc;. Click on the field where you want to start
+the placement. If you click with the &LMB; the ship will be placed horizotally,
+a <keycombo>&Shift;&LMB;</keycombo> click will cause it to be placed
+vertically. &Shift; itself will flip the ship placement preview.
 </para>
 
 <para>
-Now you can blindly fire on the enemy battle area :). The statusbar
-indicates who is about to shoot. 
+Now you can blindly fire on the enemy battle area. The statusbar indicates
+who is about to shoot. 
 </para>
 
 <para>
@@ -244,7 +252,7 @@ The first player destroying all their opponents ships wins the game!
 <guimenuitem>Enemy Info...</guimenuitem>
 </menuchoice></term>
 <listitem>
-<para> it shows the enemy's client (might also be &Mac;  ), the client
+<para>Show the enemy's client (might also be &Mac;), the client
 version, a short description and the protocol version used.</para>
 </listitem>
 </varlistentry>
@@ -276,13 +284,28 @@ version, a short description and the protocol version used.</para>
 <term>
 <menuchoice>
 <guimenu>Settings</guimenu>
-<guimenuitem>Show statusbar</guimenuitem>
+<guimenuitem>Show Statusbar</guimenuitem>
 </menuchoice>
 </term>
 <listitem>
 <para>
-<action>Toggle on or off the display of the statusbar.</action>  The
+<action>Toggle on or off the display of the statusbar.</action> The
 default is on.
+</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term>
+<menuchoice>
+<guimenu>Settings</guimenu>
+<guimenuitem>Play Sounds</guimenuitem>
+</menuchoice>
+</term>
+<listitem>
+<para>
+<action>Toggle whether sounds (played when shooting) should be played.</action>
+The default is on.
 </para>
 </listitem>
 </varlistentry>
@@ -297,7 +320,7 @@ default is on.
 <listitem>
 <para>
 <action>Toggle on and off the display of a grid on the playing
-field.</action>  The default is off.
+field.</action> The default is off.
 </para>
 </listitem>
 </varlistentry>
@@ -320,15 +343,16 @@ field.</action>  The default is off.
 <title>Frequently asked questions</title>
 <qandaentry>
 <question>
-<para>I get the error: <errorname>Couldn't connect to aRts
+<para>I get the error: <errorname>Couldn't connect to &arts;
 Soundserver. Sound deactivated.</errorname></para>
 </question>
 <answer>
 <para>&kbattleship; relies on &arts;, &kde;'s soundserver, to play any
-sound. Enable &arts; in &kcontrol;, under
+sound. Enable &arts; in the &kcontrolcenter; by browsing to
 <menuchoice><guisubmenu>Sound</guisubmenu>
-<guimenuitem>Soundserver</guimenuitem></menuchoice> to solve the
-problem.</para>
+<guimenuitem>Sound Server</guimenuitem></menuchoice> and making sure that
+the box labelled <guilabel>Starts &arts; soundserver on &kde;
+startup</guilabel> is checked.</para>
 </answer>
 </qandaentry>
 
@@ -404,8 +428,8 @@ Nils Trzebin <email>nils.trzebin@stud.uni-hannover.de</email>
 <title>Requirements</title>
 
 <para><!-- This needs updating -->
-At the time of writing, &kbattleship; requires &kde; 2.x or greater and
-&Qt; 2.2.3 or greater.
+At the time of writing, &kbattleship; requires &kde; 3.x or greater and
+&Qt; 3.x or greater.
 </para>
 
 </sect1>
