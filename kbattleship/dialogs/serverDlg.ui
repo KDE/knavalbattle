@@ -39,221 +39,245 @@
     <property>
         <name>layoutSpacing</name>
     </property>
-    <widget>
-        <class>QLayoutWidget</class>
+    <vbox>
         <property stdset="1">
-            <name>name</name>
-            <cstring>Layout4</cstring>
+            <name>margin</name>
+            <number>11</number>
         </property>
         <property stdset="1">
-            <name>geometry</name>
-            <rect>
-                <x>91</x>
-                <y>81</y>
-                <width>168</width>
-                <height>34</height>
-            </rect>
+            <name>spacing</name>
+            <number>6</number>
         </property>
-        <hbox>
+        <widget>
+            <class>QLayoutWidget</class>
             <property stdset="1">
-                <name>margin</name>
-                <number>0</number>
+                <name>name</name>
+                <cstring>Layout18</cstring>
             </property>
+            <grid>
+                <property stdset="1">
+                    <name>margin</name>
+                    <number>0</number>
+                </property>
+                <property stdset="1">
+                    <name>spacing</name>
+                    <number>6</number>
+                </property>
+                <widget row="1"  column="0" >
+                    <class>QLabel</class>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>portLabel_2</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>sizePolicy</name>
+                        <sizepolicy>
+                            <hsizetype>5</hsizetype>
+                            <vsizetype>0</vsizetype>
+                        </sizepolicy>
+                    </property>
+                    <property stdset="1">
+                        <name>text</name>
+                        <string>Port:</string>
+                    </property>
+                    <property stdset="1">
+                        <name>alignment</name>
+                        <set>AlignVCenter|AlignLeft</set>
+                    </property>
+                    <property>
+                        <name>hAlign</name>
+                    </property>
+                    <property>
+                        <name>vAlign</name>
+                    </property>
+                </widget>
+                <widget row="1"  column="1" >
+                    <class>QSpinBox</class>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>portEdit</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>maxValue</name>
+                        <number>65000</number>
+                    </property>
+                    <property stdset="1">
+                        <name>value</name>
+                        <number>54321</number>
+                    </property>
+                    <property>
+                        <name>whatsThis</name>
+                        <string>Choose a port where to server listens on</string>
+                    </property>
+                </widget>
+                <widget row="0"  column="0" >
+                    <class>QLabel</class>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>nicknameLabel</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>sizePolicy</name>
+                        <sizepolicy>
+                            <hsizetype>5</hsizetype>
+                            <vsizetype>0</vsizetype>
+                        </sizepolicy>
+                    </property>
+                    <property stdset="1">
+                        <name>frameShape</name>
+                        <enum>MShape</enum>
+                    </property>
+                    <property stdset="1">
+                        <name>frameShadow</name>
+                        <enum>MShadow</enum>
+                    </property>
+                    <property stdset="1">
+                        <name>text</name>
+                        <string>Nickname:</string>
+                    </property>
+                    <property stdset="1">
+                        <name>alignment</name>
+                        <set>AlignVCenter|AlignLeft</set>
+                    </property>
+                    <property>
+                        <name>hAlign</name>
+                    </property>
+                </widget>
+                <widget row="0"  column="1" >
+                    <class>QLineEdit</class>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>nicknameEdit</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>maxLength</name>
+                        <number>10</number>
+                    </property>
+                    <property>
+                        <name>whatsThis</name>
+                        <string>Enter a name that identifys you in the game</string>
+                    </property>
+                </widget>
+            </grid>
+        </widget>
+        <widget>
+            <class>QLayoutWidget</class>
             <property stdset="1">
-                <name>spacing</name>
-                <number>6</number>
+                <name>name</name>
+                <cstring>Layout4</cstring>
             </property>
-            <widget>
-                <class>QPushButton</class>
+            <hbox>
                 <property stdset="1">
-                    <name>name</name>
-                    <cstring>startBtn</cstring>
-                </property>
-                <property stdset="1">
-                    <name>text</name>
-                    <string>&amp;Start</string>
+                    <name>margin</name>
+                    <number>0</number>
                 </property>
                 <property stdset="1">
-                    <name>toggleButton</name>
-                    <bool>false</bool>
+                    <name>spacing</name>
+                    <number>6</number>
                 </property>
-                <property stdset="1">
-                    <name>on</name>
-                    <bool>false</bool>
-                </property>
-                <property stdset="1">
-                    <name>default</name>
-                    <bool>true</bool>
-                </property>
-                <property stdset="1">
-                    <name>toggleButton</name>
-                    <bool>false</bool>
-                </property>
-                <property stdset="1">
-                    <name>on</name>
-                    <bool>false</bool>
-                </property>
-                <property stdset="1">
-                    <name>flat</name>
-                    <bool>false</bool>
-                </property>
-                <property>
-                    <name>whatsThis</name>
-                    <string>Press here to start the server</string>
-                </property>
-            </widget>
-            <widget>
-                <class>QPushButton</class>
-                <property stdset="1">
-                    <name>name</name>
-                    <cstring>cancelBtn</cstring>
-                </property>
-                <property stdset="1">
-                    <name>text</name>
-                    <string>C&amp;ancel</string>
-                </property>
-                <property>
-                    <name>toolTip</name>
-                    <string></string>
-                </property>
-                <property>
-                    <name>whatsThis</name>
-                    <string>Press here to return to the game</string>
-                </property>
-            </widget>
-        </hbox>
-    </widget>
-    <widget>
-        <class>QLabel</class>
-        <property stdset="1">
-            <name>name</name>
-            <cstring>portLabel_2</cstring>
-        </property>
-        <property stdset="1">
-            <name>geometry</name>
-            <rect>
-                <x>20</x>
-                <y>50</y>
-                <width>30</width>
-                <height>20</height>
-            </rect>
-        </property>
-        <property stdset="1">
-            <name>sizePolicy</name>
-            <sizepolicy>
-                <hsizetype>0</hsizetype>
-                <vsizetype>0</vsizetype>
-            </sizepolicy>
-        </property>
-        <property stdset="1">
-            <name>text</name>
-            <string>Port:</string>
-        </property>
-        <property stdset="1">
-            <name>alignment</name>
-            <set>AlignVCenter|AlignLeft</set>
-        </property>
-        <property>
-            <name>hAlign</name>
-        </property>
-        <property>
-            <name>vAlign</name>
-        </property>
-    </widget>
-    <widget>
-        <class>QLineEdit</class>
-        <property stdset="1">
-            <name>name</name>
-            <cstring>nicknameEdit</cstring>
-        </property>
-        <property stdset="1">
-            <name>geometry</name>
-            <rect>
-                <x>80</x>
-                <y>20</y>
-                <width>250</width>
-                <height>22</height>
-            </rect>
-        </property>
-        <property stdset="1">
-            <name>maxLength</name>
-            <number>10</number>
-        </property>
-        <property>
-            <name>whatsThis</name>
-            <string>Enter a name that identifys you in the game</string>
-        </property>
-    </widget>
-    <widget>
-        <class>QSpinBox</class>
-        <property stdset="1">
-            <name>name</name>
-            <cstring>portEdit</cstring>
-        </property>
-        <property stdset="1">
-            <name>geometry</name>
-            <rect>
-                <x>80</x>
-                <y>50</y>
-                <width>60</width>
-                <height>20</height>
-            </rect>
-        </property>
-        <property stdset="1">
-            <name>maxValue</name>
-            <number>65000</number>
-        </property>
-        <property stdset="1">
-            <name>value</name>
-            <number>54321</number>
-        </property>
-        <property>
-            <name>whatsThis</name>
-            <string>Choose a port where to server listens on</string>
-        </property>
-    </widget>
-    <widget>
-        <class>QLabel</class>
-        <property stdset="1">
-            <name>name</name>
-            <cstring>nicknameLabel</cstring>
-        </property>
-        <property stdset="1">
-            <name>geometry</name>
-            <rect>
-                <x>15</x>
-                <y>19</y>
-                <width>58</width>
-                <height>21</height>
-            </rect>
-        </property>
-        <property stdset="1">
-            <name>sizePolicy</name>
-            <sizepolicy>
-                <hsizetype>0</hsizetype>
-                <vsizetype>0</vsizetype>
-            </sizepolicy>
-        </property>
-        <property stdset="1">
-            <name>frameShape</name>
-            <enum>MShape</enum>
-        </property>
-        <property stdset="1">
-            <name>frameShadow</name>
-            <enum>MShadow</enum>
-        </property>
-        <property stdset="1">
-            <name>text</name>
-            <string>Nickname:</string>
-        </property>
-        <property stdset="1">
-            <name>alignment</name>
-            <set>AlignVCenter|AlignLeft</set>
-        </property>
-        <property>
-            <name>hAlign</name>
-        </property>
-    </widget>
+                <spacer>
+                    <property>
+                        <name>name</name>
+                        <cstring>Spacer2</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>orientation</name>
+                        <enum>Horizontal</enum>
+                    </property>
+                    <property stdset="1">
+                        <name>sizeType</name>
+                        <enum>Expanding</enum>
+                    </property>
+                    <property>
+                        <name>sizeHint</name>
+                        <size>
+                            <width>20</width>
+                            <height>20</height>
+                        </size>
+                    </property>
+                </spacer>
+                <widget>
+                    <class>QPushButton</class>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>startBtn</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>text</name>
+                        <string>&amp;Start</string>
+                    </property>
+                    <property stdset="1">
+                        <name>toggleButton</name>
+                        <bool>false</bool>
+                    </property>
+                    <property stdset="1">
+                        <name>on</name>
+                        <bool>false</bool>
+                    </property>
+                    <property stdset="1">
+                        <name>default</name>
+                        <bool>true</bool>
+                    </property>
+                    <property stdset="1">
+                        <name>toggleButton</name>
+                        <bool>false</bool>
+                    </property>
+                    <property stdset="1">
+                        <name>on</name>
+                        <bool>false</bool>
+                    </property>
+                    <property stdset="1">
+                        <name>flat</name>
+                        <bool>false</bool>
+                    </property>
+                    <property>
+                        <name>whatsThis</name>
+                        <string>Press here to start the server</string>
+                    </property>
+                </widget>
+                <widget>
+                    <class>QPushButton</class>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>cancelBtn</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>text</name>
+                        <string>C&amp;ancel</string>
+                    </property>
+                    <property>
+                        <name>toolTip</name>
+                        <string></string>
+                    </property>
+                    <property>
+                        <name>whatsThis</name>
+                        <string>Press here to return to the game</string>
+                    </property>
+                </widget>
+                <spacer>
+                    <property>
+                        <name>name</name>
+                        <cstring>Spacer1</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>orientation</name>
+                        <enum>Horizontal</enum>
+                    </property>
+                    <property stdset="1">
+                        <name>sizeType</name>
+                        <enum>Expanding</enum>
+                    </property>
+                    <property>
+                        <name>sizeHint</name>
+                        <size>
+                            <width>20</width>
+                            <height>20</height>
+                        </size>
+                    </property>
+                </spacer>
+            </hbox>
+        </widget>
+    </vbox>
 </widget>
 <connections>
     <connection>
