@@ -1,7 +1,7 @@
 /***************************************************************************
                                    main.cpp
                                   ----------
-    Developers: (c) 2000 Nikolas Zimmermann <nikoz@gymnasium-kerpen.de>
+    Developers: (c) 2000 Nikolas Zimmermann <wildfox@kde.org>
                 (c) 2000 Daniel Molkentin <molkentin@kde.org>
 
  ***************************************************************************/
@@ -31,8 +31,8 @@ int main( int argc, char *argv[] )
         VERSION, description, KAboutData::License_GPL,
         "(c) 2000  Nikolas Zimmermann, Daniel Molkentin" );
 
-    aboutData.addAuthor( "Nikolas Zimmermann", "Project Founder, Coder", "wildfox@kde.org" );
-    aboutData.addAuthor( "Daniel Molkentin", "Coder", "molkentin@kde.org" );
+    aboutData.addAuthor( "Nikolas Zimmermann", "Project Founder, GUI Handling, Client/Server", "wildfox@kde.org" );
+    aboutData.addAuthor( "Daniel Molkentin", "Dialog Stuff, Client/Server", "molkentin@kde.org" );
     KCmdLineArgs::init( argc, argv, &aboutData );
     KApplication app;
  
