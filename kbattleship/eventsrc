@@ -2,6 +2,7 @@
 IconName=kbattleship
 Comment=KBattleship
 Comment[sv]=Sänka fartyg
+Comment[tr]=Amiral Battı
 
 [shoot_water]
 Name=Shoot at water
