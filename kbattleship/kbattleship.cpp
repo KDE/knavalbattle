@@ -31,7 +31,7 @@
 
 #include "kbattleship.moc"
 
-extern char *clientVersion;
+extern const char *clientVersion;
 
 KBattleshipApp::KBattleshipApp()
 {

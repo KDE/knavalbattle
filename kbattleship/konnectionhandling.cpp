@@ -17,7 +17,7 @@
 
 #include "konnectionhandling.moc"
 
-extern char *protocolVersion;
+extern const char *protocolVersion;
 
 KonnectionHandling::KonnectionHandling(QWidget *parent, KBattleshipServer *server) : QObject(parent)
 {

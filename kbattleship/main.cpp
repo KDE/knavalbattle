@@ -21,7 +21,7 @@
 
 #include "kbattleship.h"
 
-extern char *clientName, *clientVersion, *clientDescription;
+extern const char *clientName, *clientVersion, *clientDescription;
 
 int main(int argc, char *argv[])
 {
