@@ -87,4 +87,5 @@ void KChatWidget::slotComputeMessage()
     }
     else if(commentEdit->text().stripWhiteSpace().isEmpty() && acceptMsgs)
 	commentEdit->setText("");
+    commentEdit->setFocus();
 }
