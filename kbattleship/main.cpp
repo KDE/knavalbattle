@@ -29,7 +29,7 @@ int main(int argc, char *argv[])
 
     aboutData.addAuthor("Nikolas Zimmermann", I18N_NOOP("Project Founder, GUI Handling, Client/Server"), "wildfox@kde.org");
     aboutData.addAuthor("Daniel Molkentin", I18N_NOOP("Dialog Stuff, Client/Server"), "molkentin@kde.org");
-    aboutData.addAuthor("Kevin Krammer", I18N_NOOP("AI"), "kevin.krammer@gmx.at");
+    aboutData.addAuthor("Kevin Krammer", I18N_NOOP("Computer Player"), "kevin.krammer@gmx.at");
     aboutData.addCredit("Benjamin Adler", I18N_NOOP("Icon"), "benadler@bigfoot.de");
     aboutData.addCredit("Nils Trzebin", I18N_NOOP("Sounds"), "nils.trzebin@stud.uni-hannover.de");
     aboutData.addCredit("Elmar Hoefner", I18N_NOOP("GFX"), "elmar.hoefner@uibk.ac.at");

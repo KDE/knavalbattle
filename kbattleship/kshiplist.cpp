@@ -177,7 +177,7 @@ void KShipList::addShip4(int fieldx1, int fieldx2, int fieldy1, int fieldy2)
     addShip(fieldx1, fieldx2, fieldy1, fieldy2, 0);
 }
 
-void KShipList::addNewShip(int button, int fieldx, int fieldy)
+bool KShipList::addNewShip(bool vertical, int fieldx, int fieldy)
 {
     KShip *shipiterator;
     int tempx, tempy, tempx2, tempy2;
@@ -232,7 +232,7 @@ void KShipList::addNewShip(int button, int fieldx, int fieldy)
 	        }
 	    }
 
-	    if(button == LeftButton)
+	    if(!vertical)
 	    {
 		int neighbourp, neighbourm, neighbourt, neighbourb;
 	    	tempx = 0;
@@ -318,17 +318,16 @@ void KShipList::addNewShip(int button, int fieldx, int fieldy)
 
     if(!xokay && !yokay)
     {
-        KMessageBox::information(0L, i18n( "You can't place the ship here." ));
-	return;
+	return false;
     }
     else
     {
-	if(button == LeftButton)
+	if(!vertical)
 	{
     	    if(fieldx + shipCount() <= m_fieldx)
 	    {
 		m_shipsadded--;
-		if(button == LeftButton)
+		if(!vertical)
 		    m_shiplist.append(new KShip(fieldx, fieldx + shipCount(), fieldy, fieldy, shipCount(), true));
 		else
         	    m_shiplist.append(new KShip(fieldx, fieldx, fieldy, fieldy + shipCount(), shipCount(), true));
@@ -357,8 +356,7 @@ void KShipList::addNewShip(int button, int fieldx, int fieldy)
 	    }
 	    else
 	    {
-		KMessageBox::information(0L, i18n( "You can't place the ship here." ));
-		return;
+		return false;
 	    }
 	}
 	else
@@ -366,7 +364,7 @@ void KShipList::addNewShip(int button, int fieldx, int fieldy)
 	    if(fieldy + shipCount() <= m_fieldy)
 	    {
 	    	m_shipsadded--;
-		if(button == LeftButton)
+		if(!vertical)
 		    m_shiplist.append(new KShip(fieldx, fieldx + shipCount(), fieldy, fieldy, shipCount()));
 	        else
         	    m_shiplist.append(new KShip(fieldx, fieldx, fieldy, fieldy + shipCount(), shipCount()));
@@ -394,14 +392,19 @@ void KShipList::addNewShip(int button, int fieldx, int fieldy)
 		}
 	    }
 	    else
-	    {
-		KMessageBox::information(0L, i18n( "You can't place the ship here." ));
-		return;
-	    }
+		return false;
 	}
 
 	if(m_shipsadded == 0)
 	    emit sigLastShipAdded();
-	return;
+	return true;
     }
+}
+
+void KShipList::addNewShip(int button, int fieldx, int fieldy)
+{
+    bool vertical = !(button == LeftButton);
+
+    if(!addNewShip(vertical, fieldx, fieldy))
+	KMessageBox::information(0L, i18n( "You can't place the ship here." ));
 }

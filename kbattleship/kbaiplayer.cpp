@@ -95,7 +95,7 @@ void KBAIPlayer::chooseStrategy()
 	delete m_masterStrategy;
 
     // probablility ajusted to 4:4:(MAX_STRAT_NUM+10-8)
-    switch(m_randomSeq->getLong(MAX_STRAT_NUM + 10))
+    switch (m_randomSeq->getLong(MAX_STRAT_NUM+10))
     {
 	case 0:
 	case 1:
@@ -169,13 +169,21 @@ bool KBAIPlayer::shipPlaced(int shiplen, int x, int y, bool vertical)
 	}
     }
 
-    m_ships[shiplen - 1] = ship;
-  
-    int x1 = ship.x();
-    int x2 = ship.x() + ship.width() - 1;
-    int y1 = ship.y();
-    int y2 = ship.y() + ship.height() - 1;
-    m_ownShipList->addShip(x1, x2, y1, y2, shiplen - 1);
+    if(m_ownShipList->addNewShip(vertical, ship.x(), ship.y()))
+    {
+	m_ships[shiplen - 1] = ship;
+
+			/*
+			int x1 = ship.x();
+			int x2 = ship.x() + ship.width() - 1;
+			int y1 = ship.y();
+			int y2 = ship.y() + ship.height() - 1;
+			m_ownShipList->addShip(x1, x2, y1, y2, shiplen - 1);
+			*/
+
+	return true;
+    }
+
 //    kdDebug() << "     is ok, addShip(" << x1 << ", " << x2 << ", " << y1 << ", " << y2 << ", " << shiplen - 1 << ")" << endl;
-    return true;
+    return false;
 }
