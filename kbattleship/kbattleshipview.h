@@ -74,6 +74,9 @@ class KBattleshipView : public QWidget
 	void paintEnemyField();
         void paintOwnField();
 	
+	void enableTips();
+	void disableTips();
+	
         void startDrawing();
         void clearField();
         void changeOwnFieldData(int fieldx, int fieldy, int type);

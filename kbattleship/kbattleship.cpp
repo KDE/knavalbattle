@@ -59,6 +59,7 @@ void KBattleshipApp::initActions()
 
     viewStatusBar = KStdAction::showStatusbar(this, SLOT(slotViewStatusBar()), actionCollection());
     configSound = new KToggleAction(i18n("&Play sounds"), 0, this, SLOT(slotConfigSound()), actionCollection(), "configsound");
+    configTips = new KToggleAction(i18n("&Show Tooltips"), 0, this, SLOT(slotConfigTips()), actionCollection(), "configtips");
 
     createGUI();
 }
@@ -111,6 +112,7 @@ void KBattleshipApp::initView()
     enemyshiplist = new KShipList();
 
     view->startDrawing();
+    slotConfigTips();
 
     setCentralWidget(splitV);
 
@@ -345,6 +347,7 @@ void KBattleshipApp::saveOptions()
     config->writeEntry("ShowStatusbar", viewStatusBar->isChecked());
     if(!sound->serverError())
 	config->writeEntry("PlaySounds", configSound->isChecked());
+    config->writeEntry("ShowTooltips", configTips->isChecked());
     config->sync();
 }
 
@@ -352,12 +355,11 @@ void KBattleshipApp::readOptions()
 {
     config->setGroup("General");
 
-    bool bViewStatusbar = config->readBoolEntry("ShowStatusbar", true);
-    viewStatusBar->setChecked(bViewStatusbar);
+    viewStatusBar->setChecked(config->readBoolEntry("ShowStatusbar", true));
     slotViewStatusBar();
 
-    bool bConfigSound = config->readBoolEntry("PlaySounds", true);
-    configSound->setChecked(bConfigSound);
+    configSound->setChecked(config->readBoolEntry("PlaySounds", true));
+    configTips->setChecked(config->readBoolEntry("ShowTooltips", true));
 }
 
 void KBattleshipApp::slotGameQuit()
@@ -842,6 +844,14 @@ void KBattleshipApp::gotEnemyShipList(QString fieldX1S1, QString fieldY1S1, QStr
     enemyshiplist->addShip2(fieldX1S2.toInt(), fieldX2S2.toInt(), fieldY1S2.toInt(), fieldY2S2.toInt());
     enemyshiplist->addShip3(fieldX1S3.toInt(), fieldX2S3.toInt(), fieldY1S3.toInt(), fieldY2S3.toInt());
     enemyshiplist->addShip4(fieldX1S4.toInt(), fieldX2S4.toInt(), fieldY1S4.toInt(), fieldY2S4.toInt());
+}
+
+void KBattleshipApp::slotConfigTips()
+{
+    if(!configTips->isChecked())
+	view->disableTips();
+    else
+	view->enableTips();
 }
 
 void KBattleshipApp::slotConfigSound()
