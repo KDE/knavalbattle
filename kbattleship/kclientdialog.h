@@ -41,6 +41,7 @@ class KClientDialog : public clientConnectDlg
     public slots:
         void slotConnectClicked();
         void slotCancelClicked();
+	void slotReturnPressed(const QString &hostname);
     
     signals:
         void connectServer();

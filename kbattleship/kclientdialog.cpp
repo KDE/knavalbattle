@@ -25,8 +25,7 @@ KClientDialog::KClientDialog(QWidget *parent, const char *name) : clientConnectD
 
     connect(connectBtn, SIGNAL(clicked()), this, SLOT(slotConnectClicked()));
     connect(cancelBtn, SIGNAL(clicked()), this, SLOT(slotCancelClicked()));
-    connect(serverEdit, SIGNAL(returnPressed(const QString &)), serverEdit, SLOT(addToHistory(const QString &)));
-
+    connect(serverEdit, SIGNAL(returnPressed(const QString &)), this, SLOT(slotReturnPressed(const QString &)));
     config->setGroup("History");
     serverEdit->completionObject()->setItems(config->readListEntry("CompletionList")); 
     
@@ -44,8 +43,22 @@ KClientDialog::~KClientDialog()
 
 void KClientDialog::slotConnectClicked()
 {
-    hide();
-    emit connectServer();
+    if(!serverEdit->currentText().stripWhiteSpace().isEmpty())
+    {
+	hide();
+	serverEdit->addToHistory(serverEdit->currentText());
+	emit connectServer();
+    }
+    else
+	serverEdit->clearEdit();
+}
+
+void KClientDialog::slotReturnPressed(const QString &hostname)
+{
+    if(!hostname.stripWhiteSpace().isEmpty())
+	serverEdit->addToHistory(hostname);
+    else
+	serverEdit->clearEdit();
 }
 
 void KClientDialog::slotCancelClicked()
@@ -61,7 +74,7 @@ QString KClientDialog::getPort()
 
 QString KClientDialog::getHost()
 {
-    return serverEdit->text(serverEdit->currentItem());
+    return serverEdit->currentText();
 }
 
 QString KClientDialog::getNickname()

@@ -4,6 +4,9 @@ KB Team:
     x = ready
 
     o Fix all network issues (1?)	[p]
+    o Add clever redrawing 		[ ]
+      (using the rect from
+       the QPaintEvent)
  
 User ideas:
     o AI						[ ] (Triskelios)

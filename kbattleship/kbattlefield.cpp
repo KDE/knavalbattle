@@ -1,3 +1,4 @@
+
 /***************************************************************************
                                kbattlefield.cpp
                              -------------------
@@ -85,9 +86,17 @@ void KBattleField::drawOwnField()
 		    drawSquare();	
 		    ship = app->getXYShip(i, j);
 		    if(ship->placedLeft())
-			drawShipIcon(m_ownfield[i][j], true, true);
+		    {
+			int shiptype = ship->shiptype() + 1;
+			int part = ship->shipxstop() - i + 1;
+			drawShipIcon(shiptype, part, true, true);
+		    }
 		    else
-		        drawShipIcon(m_ownfield[i][j], false, true);	
+		    {
+			int shiptype = ship->shiptype() + 1;
+			int part = ship->shipystop() - i + 1;
+		        drawShipIcon(shiptype, part, false, true);	
+		    }
 		    break;
 		    
 		case KBattleField::DEATH:

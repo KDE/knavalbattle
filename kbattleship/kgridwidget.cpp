@@ -33,30 +33,30 @@ KGridWidget::~KGridWidget()
 
 void KGridWidget::cacheImages()
 {
-    seaPng = QImage(findIcon("sea.png"));
-    waterPng = QImage(findIcon("water.png"));
-    hitPng = QImage(findIcon("hit.png"));
-    deathPng = QImage(findIcon("death.png"));
-    ship1p1Png = QImage(findIcon("ship1-1.png"));
-    ship1p1rPng = QImage(findIcon("ship1-1-r.png"));
-    ship2p1Png = QImage(findIcon("ship2-1.png"));
-    ship2p1rPng = QImage(findIcon("ship2-1-r.png"));
-    ship2p2Png = QImage(findIcon("ship2-2.png"));
-    ship2p2rPng = QImage(findIcon("ship2-2-r.png"));
-    ship3p1Png = QImage(findIcon("ship3-1.png"));
-    ship3p1rPng = QImage(findIcon("ship3-1-r.png"));
-    ship3p2Png = QImage(findIcon("ship3-2.png"));
-    ship3p2rPng = QImage(findIcon("ship3-2-r.png"));
-    ship3p3Png = QImage(findIcon("ship3-3.png"));
-    ship3p3rPng = QImage(findIcon("ship3-3-r.png"));
-    ship4p1Png = QImage(findIcon("ship4-1.png"));
-    ship4p1rPng = QImage(findIcon("ship4-1-r.png"));
-    ship4p2Png = QImage(findIcon("ship4-2.png"));
-    ship4p2rPng = QImage(findIcon("ship4-2-r.png"));
-    ship4p3Png = QImage(findIcon("ship4-3.png"));
-    ship4p3rPng = QImage(findIcon("ship4-3-r.png"));
-    ship4p4Png = QImage(findIcon("ship4-4.png"));
-    ship4p4rPng = QImage(findIcon("ship4-4-r.png"));
+    seaPng = QPixmap(findIcon("sea.png"));
+    waterPng = QPixmap(findIcon("water.png"));
+    hitPng = QPixmap(findIcon("hit.png"));
+    deathPng = QPixmap(findIcon("death.png"));
+    ship1p1Png = QPixmap(findIcon("ship1-1.png"));
+    ship1p1rPng = QPixmap(findIcon("ship1-1-r.png"));
+    ship2p1Png = QPixmap(findIcon("ship2-1.png"));
+    ship2p1rPng = QPixmap(findIcon("ship2-1-r.png"));
+    ship2p2Png = QPixmap(findIcon("ship2-2.png"));
+    ship2p2rPng = QPixmap(findIcon("ship2-2-r.png"));
+    ship3p1Png = QPixmap(findIcon("ship3-1.png"));
+    ship3p1rPng = QPixmap(findIcon("ship3-1-r.png"));
+    ship3p2Png = QPixmap(findIcon("ship3-2.png"));
+    ship3p2rPng = QPixmap(findIcon("ship3-2-r.png"));
+    ship3p3Png = QPixmap(findIcon("ship3-3.png"));
+    ship3p3rPng = QPixmap(findIcon("ship3-3-r.png"));
+    ship4p1Png = QPixmap(findIcon("ship4-1.png"));
+    ship4p1rPng = QPixmap(findIcon("ship4-1-r.png"));
+    ship4p2Png = QPixmap(findIcon("ship4-2.png"));
+    ship4p2rPng = QPixmap(findIcon("ship4-2-r.png"));
+    ship4p3Png = QPixmap(findIcon("ship4-3.png"));
+    ship4p3rPng = QPixmap(findIcon("ship4-3-r.png"));
+    ship4p4Png = QPixmap(findIcon("ship4-4.png"));
+    ship4p4rPng = QPixmap(findIcon("ship4-4-r.png"));
 }
 
 void KGridWidget::setValues(int x, int y, int size)
@@ -260,25 +260,116 @@ void KGridWidget::drawShipIcon(int type, bool rotate, bool hit)
     }
 }
 
-void KGridWidget::drawIcon(QImage icon, bool hitBlend)
+void KGridWidget::drawShipIcon(int ship, int part, bool rotate, bool hit)
+{
+    switch(ship)
+    {
+	case 1:
+	    if(!rotate)
+		drawIcon(ship1p1Png, hit);
+	    else
+		drawIcon(ship1p1rPng, hit);
+	    break;
+		
+	case 2:
+	    switch(part)
+	    {
+		case 1:
+		    if(!rotate)
+			drawIcon(ship2p1Png, hit);
+		    else
+			drawIcon(ship2p1rPng, hit);
+		    break;
+		
+		case 2:
+		    if(!rotate)
+			drawIcon(ship2p2Png, hit);
+		    else
+			drawIcon(ship2p2rPng, hit);
+		    break;
+	    }
+	    break;
+	
+	case 3:
+	    switch(part)
+	    {
+		case 1:
+		    if(!rotate)
+			drawIcon(ship3p1Png, hit);
+		    else
+			drawIcon(ship3p1rPng, hit);
+		    break;
+		
+		case 2:
+		    if(!rotate)
+			drawIcon(ship3p2Png, hit);
+		    else
+			drawIcon(ship3p2rPng, hit);
+		    break;
+		    
+		case 3:
+		    if(!rotate)
+			drawIcon(ship3p3Png, hit);
+		    else
+			drawIcon(ship3p3rPng, hit);
+		    break;
+	    }		    
+	    break;
+	    
+	case 4:
+	    switch(part)
+	    {
+		case 1:
+		    if(!rotate)
+			drawIcon(ship4p1Png, hit);
+		    else
+			drawIcon(ship4p1rPng, hit);
+		    break;
+		
+		case 2:
+		    if(!rotate)
+			drawIcon(ship4p2Png, hit);
+		    else
+			drawIcon(ship4p2rPng, hit);
+		    break;
+		    
+		case 3:
+		    if(!rotate)
+			drawIcon(ship4p3Png, hit);
+		    else
+			drawIcon(ship4p3rPng, hit);
+		    break;
+		    
+		case 4:
+		    if(!rotate)
+			drawIcon(ship4p4Png, hit);
+		    else
+			drawIcon(ship4p4rPng, hit);
+		    break;
+	    }
+	    break;	    
+    }
+}
+
+
+void KGridWidget::drawIcon(QPixmap icon, bool hitBlend)
 {
     if(!hitBlend)
     {
 	QPainter painter;
 	painter.begin(doubleBuffer);
-	QPixmap *internalPixmap = new QPixmap(internalSize, internalSize);
-	internalPixmap->convertFromImage(icon);
-	painter.drawPixmap(internalx, internaly, *internalPixmap);
+	painter.drawPixmap(internalx, internaly, icon);
 	painter.end();
     }
     else
     {
 	// Niko Z:
 	// make this work!
-	QImage internalBlend = icon;
 	QPainter painter;
 	painter.begin(doubleBuffer);
-	KAlphaPainter::draw(&painter, hitPng, internalBlend, internaly, internaly);
+	painter.drawPixmap(internalx, internaly, icon);
+	painter.drawPixmap(internalx, internaly, hitPng);
+//	KAlphaPainter::draw(&painter, hitPng, icon, internaly, internaly);
 	painter.end();
     }
 }
