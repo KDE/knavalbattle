@@ -604,6 +604,11 @@ KShip *KBattleshipApp::shipAt(int fieldx, int fieldy)
 	return m_ownshiplist->shipAt(fieldx, fieldy);
 }
 
+KShip *KBattleshipApp::enemyShipAt(int fieldx, int fieldy)
+{
+	return m_enemyshiplist->shipAt(fieldx, fieldy);
+}
+
 void KBattleshipApp::slotUpdateHighscore()
 {
 	m_score->save(m_ownNickname, m_stat->shot(), m_stat->hit(), m_stat->water());
@@ -1233,6 +1238,7 @@ void KBattleshipApp::slotAIShootsAt(const QPoint pos)
 		slotStatusMsg(i18n("You lost the game :("));
 		m_stat->slotAddEnemyWon();
 		slotUpdateHighscore();
+		m_view->drawEnemyShipsAI(m_enemyshiplist); // let's show ai player ships
 		switch(KMessageBox::questionYesNo(this, i18n("Do you want to restart the game?")))
 		{
 			case KMessageBox::Yes:

@@ -20,6 +20,7 @@
 #define KSHIP_H
 
 #include <qobject.h>
+#include "kbattlefield.h"
 
 class KShip : public QObject
 {
@@ -33,6 +34,7 @@ public:
 	int shipystart();
 	int shipystop();
 	int shiptype();
+	int shipTypeEnum(int x, int y);
 
 	bool placedLeft();
 	bool contains(int x, int y);

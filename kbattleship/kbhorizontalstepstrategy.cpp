@@ -83,7 +83,10 @@ bool KBHorizontalStepStrategy::advance()
 		}
 
 		if(col == m_start.x() && row == m_start.y())
+		{
+			col = (col + 1) % m_fieldRect.width();
 			row = (row + 1) % m_fieldRect.height();
+		}
 	}
 
 	if(enemyFieldStateAt(col, row) != KBStrategy::SHOT)

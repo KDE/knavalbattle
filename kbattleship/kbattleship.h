@@ -62,6 +62,7 @@ public:
 	void init();
 
 	KShip *shipAt(int fieldx, int fieldy);
+	KShip *enemyShipAt(int fieldx, int fieldy);
 
 private slots:
     void slotConfigureKeys();

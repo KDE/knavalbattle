@@ -24,6 +24,7 @@
 #include <qstring.h>
 #include <qptrlist.h>
 #include "kship.h"
+#include "kshiplist.h"
 #include "kbattlefield.h"
 
 class KBattleshipView : public QWidget
@@ -44,6 +45,8 @@ public:
 
 	int ownFieldState(int fieldx, int fieldy);
 	int enemyFieldState(int &fieldx, int &fieldy);
+
+	void drawEnemyShipsAI(KShipList *list);
 
 signals:
 	void sigEnemyFieldClicked(int, int);

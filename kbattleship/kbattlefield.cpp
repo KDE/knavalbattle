@@ -144,7 +144,7 @@ void KBattleField::drawOwnField()
 						drawShipIcon(data, !m_rotatedata[i][j], false, true);
 					break;
 			}
-		}		
+		}
 	}
 }
 
@@ -180,7 +180,7 @@ void KBattleField::drawEnemyField()
 					drawSquare();
 					drawDeathBorder();
 					break;
-					
+
 				case KBattleField::DEATH:
 					drawSquare();
 					drawDeathIcon();
@@ -188,7 +188,7 @@ void KBattleField::drawEnemyField()
 
 				default:
 					drawSquare();
-					KShip *ship = app->shipAt(i, j);
+					KShip *ship = app->enemyShipAt(i, j);
 					if(ship->placedLeft())
 						drawShipIcon(m_enemyfield[i][j], true);
 					else

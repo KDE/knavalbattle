@@ -78,6 +78,29 @@ void KBattleshipView::changeEnemyFieldData(int fieldx, int fieldy, int type)
 	m_battlefield->drawField();
 }
 
+void KBattleshipView::drawEnemyShipsAI(KShipList *list)
+{
+	KShip *ship;
+	int state;
+	int grid = m_battlefield->gridSize();
+	int width = m_battlefield->enemyRect().width() / grid;
+	int height = m_battlefield->enemyRect().height() / grid;
+
+	for(int i = 0; i < width; i++)
+	{
+		for(int j = 0; j < height; j++)
+		{
+			ship = list->shipAt(i, j);
+			state = enemyFieldState(i, j);
+			if (ship && state != KBattleField::HIT && state != KBattleField::DEATH)
+			{
+				changeEnemyFieldData(i, j, ship->shipTypeEnum(i, j));
+			}
+		}
+	}
+	m_battlefield->drawField();
+}
+
 bool KBattleshipView::eventFilter(QObject *object, QEvent *event)
 {
 	if(event->type() == QEvent::KeyPress && m_decide)
@@ -128,7 +151,7 @@ bool KBattleshipView::eventFilter(QObject *object, QEvent *event)
 			{
 				fieldx = j;
 				break;
-			}	        
+			}
 		}
 
 		j = -1;
@@ -142,7 +165,7 @@ bool KBattleshipView::eventFilter(QObject *object, QEvent *event)
 			{
 				fieldy = j;
 				break;
-			}	        
+			}
 		}
 
 		if((mouseEvent->state() & ShiftButton) == 0 && newRect == ownRect)
@@ -180,7 +203,7 @@ bool KBattleshipView::eventFilter(QObject *object, QEvent *event)
 				{
 					fieldx = j;
 					break;
-				}	        
+				}
 			}
 
 			j = -1;
@@ -194,7 +217,7 @@ bool KBattleshipView::eventFilter(QObject *object, QEvent *event)
 				{
 					fieldy = j;
 					break;
-				}	        
+				}
 			}
 
 			m_lastX = fieldx;
@@ -208,7 +231,7 @@ bool KBattleshipView::eventFilter(QObject *object, QEvent *event)
 		return true;
 	}
 	else if(event->type() == QEvent::Paint)
-	{ 
+	{
 		m_battlefield->drawField();
 		return true;
 	}
