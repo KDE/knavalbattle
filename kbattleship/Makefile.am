@@ -14,7 +14,7 @@ kbattleship_la_SOURCES      =   kbaiplayer.cpp kbstrategy.cpp kbverticalstepstra
 		                konnectionhandling.cpp kship.cpp kshiplist.cpp \
 		                kbchooserstrategy.cpp kbattleship.cpp main.cpp
 
-kbattleship_la_LIBADD       =   $(top_builddir)/libkdegames/libkdegames.la \
+kbattleship_la_LIBADD       =   $(LIB_KDEGAMES) \
 				dialogs/libkbattleshipdialogs.la $(LIB_KFILE) -lsoundserver_idl
 kbattleship_la_LDFLAGS      =   -avoid-version -module $(all_libraries)
 
