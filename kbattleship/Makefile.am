@@ -17,10 +17,9 @@ kbattleship_SOURCES = kbaiplayer.cpp kbstrategy.cpp kbverticalstepstrategy.cpp\
 	            konnectionhandling.cpp kship.cpp kshiplist.cpp \
 	            kbchooserstrategy.cpp kbattleship.cpp main.cpp
 
-appsdir = $(kde_appsdir)/Games/Board
-apps_DATA = kbattleship.desktop
+xdg_apps_DATA = kbattleship.desktop
 
-EXTRA_DIST = $(apps_DATA)
+EXTRA_DIST = $(xdg_apps_DATA)
 
 rcdir = $(kde_datadir)/kbattleship
 rc_DATA = kbattleshipui.rc
@@ -28,6 +27,3 @@ rc_DATA = kbattleshipui.rc
 messages: rc.cpp
 	$(EXTRACTRC) */*.ui >> rc.cpp
 	$(XGETTEXT) *.cpp main.h -o $(podir)/kbattleship.pot
-
-install-data-local:
-	rm -rf $(DESTDIR)$(kde_appsdir)/Games/kbattleship.desktop
