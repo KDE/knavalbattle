@@ -32,7 +32,6 @@ KBattleshipClient::KBattleshipClient(QString host, int port) : QSocket()
 
 KBattleshipClient::~KBattleshipClient()
 {
-//    QSocket::close();
 }
 
 void KBattleshipClient::init()
@@ -45,7 +44,7 @@ void KBattleshipClient::sendMessage(KMessage *msg)
     if(writeable)
     {
 	QTextStream post(this);
-    post.setEncoding(QTextStream::UnicodeUTF8);
+	post.setEncoding(QTextStream::UnicodeUTF8);
 	post << msg->returnSendStream();
 	if(msg->enemyReady())
 	{
@@ -63,28 +62,16 @@ void KBattleshipClient::connectionControl()
 
 void KBattleshipClient::readData()
 {
-    if(canReadLine())
-    {
-    //fscking QSocket can readLine(), but can not "writeLine()"!
-	KMessage *msg = new KMessage();
-	msg->setDataStream(readLine());
-	emit newMessage(msg);
-	delete msg;
-    /*
-    //we have to do it by bytes :(
-    //temporarily disabled
     int len = bytesAvailable();
     char *buf = new char[len + 1];
     readBlock(buf, len);
-    //buf[len] = 0;
+    buf[len] = 0;
     KMessage *msg = new KMessage();
     QString buffer = QString::fromUtf8(buf);
     msg->setDataStream(buffer);
     emit newMessage(msg);
     delete msg;
     delete []buf;
-    */
-    }
 }
 
 void KBattleshipClient::lostServer()

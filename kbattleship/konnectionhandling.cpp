@@ -188,7 +188,7 @@ void KonnectionHandling::gotNewMessage(KMessage *msg)
 	        break;
 		    
 	    case KMessage::CHAT:
-	        emit gotChatMessage(msg->getField("nickname"), msg->getField("chat"));
+	        emit gotChatMessage(msg->getField("nickname"), msg->getField("chat"), true);
 	        break;
         }
         if(msg->enemyReady())
@@ -226,7 +226,7 @@ void KonnectionHandling::gotNewMessage(KMessage *msg)
 	            break;
 		    
 	    case KMessage::CHAT:
-	        emit gotChatMessage(msg->getField("nickname"), msg->getField("chat"));
+	        emit gotChatMessage(msg->getField("nickname"), msg->getField("chat"), true);
 	        break;
         }
         if(msg->enemyReady())

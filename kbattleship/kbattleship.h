@@ -71,6 +71,7 @@ class KBattleshipApp : public KMainWindow
         void initShipPlacing();
 
     public slots:
+	void slotChangedNickCommand(const QString &text);
         void deleteLists(bool placechange = true);
         void askReplay();
         void sendGreet();

@@ -38,11 +38,12 @@ class KChatWidget : public chatDlg
     public slots:
         void acceptMsg(bool value);
         void slotComputeMessage();
-        void receivedMessage(const QString &nickname, const QString &msg);
+        void receivedMessage(const QString &nickname, const QString &msg, bool fromenemy = true);
     
     signals:
         void sendMessage(const QString &);
 	void changeEnemyNickname(const QString &);
+	void changeOwnNickname(const QString &);
     
     private:
         QString currentNickname;

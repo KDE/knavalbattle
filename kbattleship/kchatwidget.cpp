@@ -42,14 +42,17 @@ void KChatWidget::acceptMsg(bool value)
     acceptMsgs = value;
 }
 
-void KChatWidget::receivedMessage(const QString &nickname, const QString &msg)
+void KChatWidget::receivedMessage(const QString &nickname, const QString &msg, bool fromenemy)
 {
     // Niko Z:
     // IRC roxxx :)
     if(msg.startsWith("/me ")) 
 	chatView->append(QString(" * ") + nickname + QString(" ") + msg.mid(4));
     else if(msg.startsWith("/nick "))
-	emit changeEnemyNickname(msg.mid(6));
+	if(fromenemy)
+	    emit changeEnemyNickname(msg.mid(6));
+	else
+	    emit changeOwnNickname(msg.mid(6));
     else
 	chatView->append(nickname + QString(": ") + msg);
     chatView->setCursorPosition(chatView->numLines(), 0);
@@ -64,7 +67,7 @@ void KChatWidget::slotComputeMessage()
 {
     if(!commentEdit->text().stripWhiteSpace().isEmpty() && acceptMsgs)
     {
-	receivedMessage(currentNickname, commentEdit->text());
+	receivedMessage(currentNickname, commentEdit->text(), false);
 	emit sendMessage(commentEdit->text());
 	commentEdit->setText("");
     }

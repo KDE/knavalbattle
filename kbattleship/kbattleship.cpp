@@ -78,6 +78,7 @@ void KBattleshipApp::initChat()
 {
     connect(chat, SIGNAL(sendMessage(const QString &)), this, SLOT(sendChatMessage(const QString &)));
     connect(chat, SIGNAL(changeEnemyNickname(const QString &)), this, SLOT(slotChangeEnemyPlayer(const QString &)));
+    connect(chat, SIGNAL(changeOwnNickname(const QString &)), this, SLOT(slotChangedNickCommand(const QString &)));
 }
 
 void KBattleshipApp::initShipPlacing()
@@ -300,15 +301,15 @@ void KBattleshipApp::sendChatMessage(const QString &text)
 	        kbserver->forbidWrite();
 	    else if(clientallow)
     	        kbclient->forbidWrite();
-
-	    if(text.startsWith("/nick "))
-	    {
-		ownNickname = text.mid(6);
-		slotChangeOwnPlayer(ownNickname);
-		chat->setNickname(ownNickname);
-	    }
         }
     }
+}
+
+void KBattleshipApp::slotChangedNickCommand(const QString &text)
+{
+    ownNickname = text;
+    slotChangeOwnPlayer(ownNickname);
+    chat->setNickname(ownNickname);
 }
 
 void KBattleshipApp::clientRestart()
@@ -594,7 +595,7 @@ void KBattleshipApp::startBattleshipServer()
 	connect(connection, SIGNAL(enemyNickname(const QString &)), this, SLOT(slotChangeEnemyPlayer(const QString &)));
 	connect(connection, SIGNAL(statusBarMessage(const QString &)), this, SLOT(slotStatusMsg(const QString &)));
 	connect(connection, SIGNAL(ownFieldDataChanged(int, int, int)), this, SLOT(changeOwnFieldData(int, int, int)));
-	connect(connection, SIGNAL(gotChatMessage(const QString &, const QString &)), chat, SLOT(receivedMessage(const QString &, const QString &)));
+	connect(connection, SIGNAL(gotChatMessage(const QString &, const QString &, bool)), chat, SLOT(receivedMessage(const QString &, const QString &, bool)));
 	connect(connection, SIGNAL(gotEnemyShipList(QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString)), this, SLOT(gotEnemyShipList(QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString)));
     }
     else
@@ -611,7 +612,7 @@ void KBattleshipApp::startBattleshipServer()
 	    disconnect(connection, SIGNAL(setPlaceable()), this, SLOT(setPlaceable()));
 	    disconnect(connection, SIGNAL(abortGame(bool)), this, SLOT(deleteLists(bool)));
 	    disconnect(connection, SIGNAL(abortGameStrict(bool)), this, SLOT(resetClient(bool)));
-	    disconnect(connection, SIGNAL(gotChatMessage(const QString &, const QString &)), chat, SLOT(receivedMessage(const QString &, const QString &)));
+	    disconnect(connection, SIGNAL(gotChatMessage(const QString &, const QString &, bool)), chat, SLOT(receivedMessage(const QString &, const QString &, bool)));
 	    disconnect(connection, SIGNAL(gotEnemyShipList(QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString)), this, SLOT(gotEnemyShipList(QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString)));
 	    connection->updateInternal(kbserver);
 	    connect(connection, SIGNAL(updateHighscore()), this, SLOT(updateHighscore()));
@@ -624,7 +625,7 @@ void KBattleshipApp::startBattleshipServer()
 	    connect(connection, SIGNAL(enemyNickname(const QString &)), this, SLOT(slotChangeEnemyPlayer(const QString &)));
 	    connect(connection, SIGNAL(statusBarMessage(const QString &)), this, SLOT(slotStatusMsg(const QString &)));
 	    connect(connection, SIGNAL(ownFieldDataChanged(int, int, int)), this, SLOT(changeOwnFieldData(int, int, int)));
-	    connect(connection, SIGNAL(gotChatMessage(const QString &, const QString &)), chat, SLOT(receivedMessage(const QString &, const QString &)));
+	    connect(connection, SIGNAL(gotChatMessage(const QString &, const QString &, bool)), chat, SLOT(receivedMessage(const QString &, const QString &, bool)));
 	    connect(connection, SIGNAL(gotEnemyShipList(QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString)), this, SLOT(gotEnemyShipList(QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString)));
 	}
 	else
@@ -781,7 +782,7 @@ void KBattleshipApp::connectToBattleshipServer()
 	    connect(connection, SIGNAL(setPlaceable()), this, SLOT(setPlaceable()));
 	    connect(connection, SIGNAL(abortGame(bool)), this, SLOT(deleteLists(bool)));
 	    connect(connection, SIGNAL(abortGameStrict(bool)), this, SLOT(resetClient(bool)));
-	    connect(connection, SIGNAL(gotChatMessage(const QString &, const QString &)), chat, SLOT(receivedMessage(const QString &, const QString &)));
+	    connect(connection, SIGNAL(gotChatMessage(const QString &, const QString &, bool)), chat, SLOT(receivedMessage(const QString &, const QString &, bool)));
 	    connect(connection, SIGNAL(gotEnemyShipList(QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString)), this, SLOT(gotEnemyShipList(QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString)));
 	}
 	else
@@ -798,7 +799,7 @@ void KBattleshipApp::connectToBattleshipServer()
 	        disconnect(connection, SIGNAL(enemyNickname(const QString &)), this, SLOT(slotChangeEnemyPlayer(const QString &)));
 		disconnect(connection, SIGNAL(statusBarMessage(const QString &)), this, SLOT(slotStatusMsg(const QString &)));
 		disconnect(connection, SIGNAL(ownFieldDataChanged(int, int, int)), this, SLOT(changeOwnFieldData(int, int, int)));
-	        disconnect(connection, SIGNAL(gotChatMessage(const QString &, const QString &)), chat, SLOT(receivedMessage(const QString &, const QString &)));
+	        disconnect(connection, SIGNAL(gotChatMessage(const QString &, const QString &, bool)), chat, SLOT(receivedMessage(const QString &, const QString &, bool)));
 		disconnect(connection, SIGNAL(gotEnemyShipList(QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString)), this, SLOT(gotEnemyShipList(QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString)));
 		connection->updateInternal(kbclient);
 		connect(kbclient, SIGNAL(connected()), this, SLOT(sendGreet()));
@@ -813,7 +814,7 @@ void KBattleshipApp::connectToBattleshipServer()
 		connect(connection, SIGNAL(setPlaceable()), this, SLOT(setPlaceable()));
 		connect(connection, SIGNAL(abortGame(bool)), this, SLOT(deleteLists(bool)));
 		connect(connection, SIGNAL(abortGameStrict(bool)), this, SLOT(resetClient(bool)));
-		connect(connection, SIGNAL(gotChatMessage(const QString &, const QString &)), chat, SLOT(receivedMessage(const QString &, const QString &)));
+		connect(connection, SIGNAL(gotChatMessage(const QString &, const QString &, bool)), chat, SLOT(receivedMessage(const QString &, const QString &, bool)));
 		connect(connection, SIGNAL(gotEnemyShipList(QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString)), this, SLOT(gotEnemyShipList(QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString)));
 	    }
     	    else

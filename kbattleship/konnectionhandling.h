@@ -69,7 +69,7 @@ class KonnectionHandling : public QObject
         void abortGameStrict(bool);
         void setPlaceable();
         void gotEnemyShipList(QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString);
-        void gotChatMessage(const QString &, const QString &);
+        void gotChatMessage(const QString &, const QString &, bool);
         void enemyNickname(const QString &);
         void ownFieldDataChanged(int, int, int);
         void changeConnectText();
