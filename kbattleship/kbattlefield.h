@@ -21,6 +21,7 @@
 #include <kdebug.h>
 #include <qpainter.h>
 #include <qwidget.h>
+#include <qwhatsthis.h>
 #include "kbattlefieldtype.h"
 #include "kgridwidget.h"
 

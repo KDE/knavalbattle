@@ -21,27 +21,28 @@
 #include <kdebug.h>
 #include <klocale.h>
 #include <kmessagebox.h>
+#include <kstddirs.h>
+#include <kglobal.h>
 #include <qstring.h>
+#include <qstringlist.h>
 #include <qobject.h>
 #include <arts/soundserver.h>
 
-using namespace std;
 using namespace Arts;
 
 class KBattleshipSound : public QObject
 {
     Q_OBJECT
     public:
+	enum{ SHIP_SINK, SHIP_EXPLODE, PLAYER1_SHOOT_HIT, PLAYER2_SHOOT_HIT, PLAYER_SHOOT_WATER };
         KBattleshipSound();
         ~KBattleshipSound();	
 	
-    public slots:
+	void playSound( int file );
         void initSoundServer();
-	void playSound( QString file );
 	
     private:
-	SimpleSoundServer *soundserver;
-	bool soundRunning;
+	static SimpleSoundServer *soundserver;
 	bool isRunning();
 };
 

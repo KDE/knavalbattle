@@ -268,6 +268,11 @@ int KBattleshipApp::requestedEnemyBattleFieldState( int fieldx, int fieldy )
 void KBattleshipApp::changeEnemyFieldData( int fieldx, int fieldy, int type )
 {
     kdDebug() << "Changing enemyfielddata! ( " << fieldx << " | " << fieldy << " )" << endl;
+//    switch( type )
+//    {
+//	case KBattleshipSound::PLAYER1_SHOOT_HIT:
+//    }
+    sound->playSound( KBattleshipSound::PLAYER_SHOOT_WATER );
     view->changeEnemyFieldData( fieldx, fieldy, 1 ); //type );
 }
 

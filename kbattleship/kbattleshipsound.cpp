@@ -17,6 +17,9 @@
 
 #include "kbattleshipsound.moc"
 
+SimpleSoundServer *soundserver = 0;
+static bool soundRunning;
+
 KBattleshipSound::KBattleshipSound() : QObject()
 {
     initSoundServer();
@@ -42,13 +45,52 @@ void KBattleshipSound::initSoundServer()
 	
 }
 
-void KBattleshipSound::playSound( QString file )
+void KBattleshipSound::playSound( int file )
 {
+    kdDebug() << "PLAY!" << endl;
     if( isRunning() )
-	soundserver->play( file.latin1() );
+    {
+	KStandardDirs *stdDirs = KGlobal::dirs();
+	QString picDir;
+	QStringList picDirl = stdDirs->findDirs( "data", "kbattleship" );
+	for( QStringList::Iterator it=picDirl.begin(); it!=picDirl.end(); ++it )
+	{
+	    picDir=*it;
+	    break;
+	}
+
+	picDir = picDir + "sounds/";
+    
+	switch( file )
+	{
+	    case SHIP_EXPLODE:
+		soundserver->play( QString( picDir + QString( "ship-explode.mp3" ) ).latin1() );
+		break;
+		
+	    case PLAYER1_SHOOT_HIT:
+		soundserver->play( QString( picDir + QString( "ship-player1-shoot.mp3" ) ).latin1() );
+		break;
+		
+	    case PLAYER2_SHOOT_HIT:
+		soundserver->play( QString( picDir + QString( "ship-player2-shoot.mp3" ) ).latin1() );
+		break;
+
+	    case PLAYER_SHOOT_WATER:
+		kdDebug() << "I'll play this NOW" << endl;
+		kdDebug() << "File: " <<  QString( picDir + QString( "ship-player-shoot-water.mp3" ) ) << endl;
+		soundserver->play( QString( picDir + QString( "ship-player-shoot-water.mp3" ) ).latin1() );
+		break;
+    
+	    case SHIP_SINK:
+		soundserver->play( QString( picDir + QString( "ship-sink.mp3" ) ).latin1() );
+		break;
+	}
+    }
 }
 
 bool KBattleshipSound::isRunning()
 {
+    kdDebug() << "RUNCHECK!" << endl;
+    kdDebug() << "isRunning: " << soundRunning << endl;
     return soundRunning;
 }

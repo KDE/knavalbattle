@@ -21,6 +21,7 @@ KBattleField::KBattleField( QWidget *parent, const KBattleFieldType &type, QPain
 {
 
     internalType = type.getType();
+    QWhatsThis::add( this, "foo"  );
     int i, j;
 
     // Hehe this is quite unusual now
