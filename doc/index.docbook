@@ -237,6 +237,19 @@ The first player destroying all their opponents ships wins the game!
 </varlistentry>
 
 <varlistentry>
+<term><menuchoice>
+<shortcut>
+<keycap>F11</keycap></shortcut>
+<guimenu>Game</guimenu>
+<guimenuitem>Enemy Info...</guimenuitem>
+</menuchoice></term>
+<listitem>
+<para> it shows the enemy's client (might also be &Mac;  ), the client
+version, a short description and the protocol version used.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
 <term>
 <menuchoice>
 <shortcut>
