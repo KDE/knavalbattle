@@ -20,6 +20,7 @@
 #include <qlayout.h>
 #include <kgamemisc.h>
 #include "main.h"
+#include <kstatusbar.h>
 #include "kbattleship.moc"
 
 KBattleshipApp::KBattleshipApp(QWidget *, const char *name) : KMainWindow(0, name)
