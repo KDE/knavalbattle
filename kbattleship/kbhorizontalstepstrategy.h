@@ -1,9 +1,8 @@
 /***************************************************************************
-                                 kbaiplayer.h
+                            kbhorizontalstepstrategy.h
                                   ----------
     Developers: (c) 2001 Kevin Krammer <kevin.krammer@gmx.at>
-		(c) 2001 Nikolas Zimmermann <wildfox@kde.org>		
-    
+
  ***************************************************************************/
 
 /***************************************************************************
@@ -15,49 +14,35 @@
  *                                                                         *
  ***************************************************************************/
 
-#ifndef KBAIPLAYER_H
-#define KBAIPLAYER_H
-
-#define MAX_SHIP_LEN 4
-#define MAX_STRAT_NUM 3
-
-#include <qobject.h>
-
-#include <krandomsequence.h>
+#ifndef KBHORIZONTALSTEPSTRATEGY_H
+#define KBHORIZONTALSTEPSTRATEGY_H
 
 #include "kbstrategy.h"
-#include "kbattlefield.h"
-#include "kshiplist.h"
+#include "kbdestroyshipstrategy.h"
 
-class KBAIPlayer : public QObject
+class KBHorizontalStepStrategy : public KBStrategy
 {
-    Q_OBJECT
     public: 
-	KBAIPlayer();
-	~KBAIPlayer();
-	
-	void init(KBattleField *battle_field, KShipList *ai_shiplist);
+	KBHorizontalStepStrategy(KBStrategy *parent = 0);
+	virtual ~KBHorizontalStepStrategy();
 
-    public slots:
-	void slotRestart();
-	bool slotRequestShot();
+	virtual void init(KBattleField *field, const QRect &field_rect);
+	virtual const QPoint getNextShot();
+	virtual bool hasMoreShots();
+	virtual void shotAt(const QPoint &pos);
 
     protected:
-	KBStrategy *m_masterStrategy;
-	KShipList *m_ownShipList;
-	KBattleField *m_battleField;
-	KRandomSequence *m_randomSeq;
+	bool advance();
+	void setStart(int col, int row);
 
-	QRect m_fieldRect;
-	QRect m_ships[MAX_SHIP_LEN];
+	int m_row;
+	int m_column;
+	int m_passes;
 
-	void chooseStrategy();
-	void addShips();
-	bool shipPlaced(int shiplen, int x, int y, bool vertical);
-
-    signals:
-	void sigShootAt(const QPoint pos);
-	void sigReady();
+	QPoint m_start;
+	KBHorizontalStepStrategy *m_child;
+	KBDestroyShipStrategy* m_destroyer;
+	bool m_destroying;
 };
 
 #endif

@@ -19,6 +19,8 @@
 #include <kdebug.h>
 
 #include "kbverticalstepstrategy.h"
+#include "kbhorizontalstepstrategy.h"
+#include "kbrandomshotstrategy.h"
 #include "kbaiplayer.moc"
 
 KBAIPlayer::KBAIPlayer()
@@ -92,7 +94,28 @@ void KBAIPlayer::chooseStrategy()
     if(m_masterStrategy != 0)
 	delete m_masterStrategy;
 
-    m_masterStrategy = new KBVerticalStepStrategy();
+    // probablility ajusted to 4:4:(MAX_STRAT_NUM+10-8)
+    switch(m_randomSeq->getLong(MAX_STRAT_NUM + 10))
+    {
+	case 0:
+	case 1:
+	case 2:
+	case 3:
+	    m_masterStrategy = new KBHorizontalStepStrategy();
+	    //kdDebug() << "KBAIPlayer::chooseStrategy: HorizontalStep" << endl;
+	    break;
+	case 4:
+	case 5:
+	case 6:
+	case 7:
+	    m_masterStrategy = new KBVerticalStepStrategy();
+	    //kdDebug() << "KBAIPlayer::chooseStrategy: VerticalStep" << endl;
+	    break;
+	default:
+	    m_masterStrategy = new KBRandomShotStrategy();
+	    //kdDebug() << "KBAIPlayer::choosingStrategy: RandomShot(default)" << endl;
+	    break;
+    }
     m_masterStrategy->init(m_battleField, m_fieldRect);
 }
 
