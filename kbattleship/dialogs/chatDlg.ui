@@ -1,96 +1,85 @@
-<!DOCTYPE UI><UI version="3.0" stdsetdef="1">
+<!DOCTYPE UI><UI version="3.3" stdsetdef="1">
 <class>chatDlg</class>
-<widget>
-    <class>QWidget</class>
-    <property stdset="1">
-        <name>name</name>
+<widget class="QWidget">
+    <property name="name">
         <cstring>chatDlg</cstring>
     </property>
-    <property stdset="1">
-        <name>caption</name>
+    <property name="geometry">
+        <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>252</width>
+            <height>236</height>
+        </rect>
+    </property>
+    <property name="caption">
         <string>Chat Widget</string>
     </property>
     <hbox>
-        <property stdset="1">
-            <name>margin</name>
+        <property name="name">
+            <cstring>unnamed</cstring>
+        </property>
+        <property name="margin">
             <number>5</number>
         </property>
-        <property stdset="1">
-            <name>spacing</name>
+        <property name="spacing">
             <number>3</number>
         </property>
-        <widget>
-            <class>QLayoutWidget</class>
-            <property stdset="1">
-                <name>name</name>
+        <widget class="QLayoutWidget">
+            <property name="name">
                 <cstring>layouter</cstring>
             </property>
             <grid>
-                <property stdset="1">
-                    <name>margin</name>
+                <property name="name">
+                    <cstring>unnamed</cstring>
+                </property>
+                <property name="margin">
                     <number>0</number>
                 </property>
-                <property stdset="1">
-                    <name>spacing</name>
+                <property name="spacing">
                     <number>6</number>
                 </property>
-                <widget row="2"  column="0" >
-                    <class>QLineEdit</class>
-                    <property stdset="1">
-                        <name>name</name>
+                <widget class="QLineEdit" row="2" column="0">
+                    <property name="name">
                         <cstring>commentEdit</cstring>
                     </property>
-                    <property>
-                        <name>toolTip</name>
+                    <property name="toolTip" stdset="0">
                         <string>Enter a message here</string>
                     </property>
                 </widget>
-                <widget row="2"  column="1" >
-                    <class>QPushButton</class>
-                    <property stdset="1">
-                        <name>name</name>
+                <widget class="QPushButton" row="2" column="1">
+                    <property name="name">
                         <cstring>sendBtn</cstring>
                     </property>
-                    <property stdset="1">
-                        <name>text</name>
+                    <property name="text">
                         <string>&amp;Send</string>
                     </property>
-                    <property stdset="1">
-                        <name>default</name>
+                    <property name="default">
                         <bool>true</bool>
                     </property>
-                    <property>
-                        <name>toolTip</name>
+                    <property name="toolTip" stdset="0">
                         <string>Press here to send the message</string>
                     </property>
-                    <property>
-                        <name>whatsThis</name>
+                    <property name="whatsThis" stdset="0">
                         <string></string>
                     </property>
                 </widget>
-                <widget row="1"  column="0"  rowspan="1"  colspan="2" >
-                    <class>QMultiLineEdit</class>
-                    <property stdset="1">
-                        <name>name</name>
+                <widget class="QMultiLineEdit" row="1" column="0" rowspan="1" colspan="2">
+                    <property name="name">
                         <cstring>chatView</cstring>
                     </property>
-                    <property stdset="1">
-                        <name>wordWrap</name>
+                    <property name="wordWrap">
                         <enum>WidgetWidth</enum>
                     </property>
-                    <property stdset="1">
-                        <name>readOnly</name>
+                    <property name="readOnly">
                         <bool>true</bool>
                     </property>
                 </widget>
-                <widget row="0"  column="0" >
-                    <class>QLabel</class>
-                    <property stdset="1">
-                        <name>name</name>
+                <widget class="QLabel" row="0" column="0">
+                    <property name="name">
                         <cstring>chatLabel</cstring>
                     </property>
-                    <property stdset="1">
-                        <name>text</name>
+                    <property name="text">
                         <string>Chat dialog:</string>
                     </property>
                 </widget>
@@ -98,4 +87,5 @@
         </widget>
     </hbox>
 </widget>
+<layoutdefaults spacing="6" margin="11"/>
 </UI>
