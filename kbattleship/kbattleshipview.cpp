@@ -15,6 +15,7 @@
  *                                                                         *
  ***************************************************************************/
 
+#include <qevent.h>
 #include <qlayout.h>
 
 #include <klocale.h>
@@ -23,10 +24,10 @@
 #include "kbattleshipview.moc"
 
 KBattleshipView::KBattleshipView(QWidget *parent, const char *name, bool draw) 
-	: QWidget(parent, name, WResizeNoErase), m_drawGrid(draw)
+	: QWidget(parent, name, Qt::WResizeNoErase), m_drawGrid(draw)
 {
 	setFixedSize(20 * 32 + 30, 10 * 32 + 20);
-	setBackgroundMode(NoBackground);
+	setBackgroundMode(Qt::NoBackground);
 	setMouseTracking(true);
 	installEventFilter(this);
 
@@ -153,7 +154,7 @@ bool KBattleshipView::eventFilter(QObject *object, QEvent *event)
 	if(event->type() == QEvent::KeyPress && m_decide)
 	{
 		QKeyEvent *keyEvent = static_cast<QKeyEvent *>(event);
-		if(keyEvent->key() == Key_Shift){
+		if(keyEvent->key() == Qt::Key_Shift){
 			emit sigMouseOverField(m_lastX, m_lastY);
 			emit changeShipPlacementDirection();
 		}
@@ -161,7 +162,7 @@ bool KBattleshipView::eventFilter(QObject *object, QEvent *event)
 	else if(event->type() == QEvent::KeyRelease && m_decide)
 	{
 		QKeyEvent *keyEvent = static_cast<QKeyEvent *>(event);
-		if(keyEvent->key() == Key_Shift){
+		if(keyEvent->key() == Qt::Key_Shift){
 			emit sigMouseOverField(m_lastX, m_lastY);
 			emit changeShipPlacementDirection();
 		}
@@ -172,13 +173,13 @@ bool KBattleshipView::eventFilter(QObject *object, QEvent *event)
 
 		QMouseEvent *mouseEvent = static_cast<QMouseEvent *>(event);
 
-		if(mouseEvent->button() == RightButton){
+		if(mouseEvent->button() == Qt::RightButton){
 			emit sigMouseOverField(m_lastX, m_lastY);
 			emit changeShipPlacementDirection();
 			return true;
 		}
 		
-		if(mouseEvent->button() != LeftButton)
+		if(mouseEvent->button() != Qt::LeftButton)
 			return false;
 
 		QPoint point(mouseEvent->x(), mouseEvent->y());

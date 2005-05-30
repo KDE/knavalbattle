@@ -21,7 +21,7 @@
 
 #include <kmessagebox.h>
 #include <klocale.h>
-#include <qptrlist.h>
+#include <q3ptrlist.h>
 #include "kbattlefield.h"
 #include "kship.h"
 
@@ -51,7 +51,7 @@ signals:
 	void sigOwnFieldDataChanged(int, int, int);
 
 private:
-	QPtrList<KShip> m_shiplist;
+	Q3PtrList<KShip> m_shiplist;
 	int m_shipsadded;
 };
 
