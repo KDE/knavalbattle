@@ -21,9 +21,11 @@
 #include <kmainwindow.h>
 
 #include <qpainter.h>
-#include <qptrlist.h>
+#include <q3ptrlist.h>
 #include <qstring.h>
 #include <qwidget.h>
+//Added by qt3to4:
+#include <QEvent>
 
 #include "kbattlefield.h"
 #include "kmessage.h"

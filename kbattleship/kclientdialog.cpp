@@ -17,6 +17,9 @@
 
 #include <qstring.h>
 #include <qglobal.h>
+//Added by qt3to4:
+#include <Q3Frame>
+#include <QGridLayout>
 #include <kdebug.h>
 #include <klocale.h>
 #include <kcombobox.h>
@@ -28,7 +31,7 @@
 KClientDialog::KClientDialog(QWidget *parent, const char *name) 
  : KDialogBase(Plain, i18n("Connect to Server"), Ok|Cancel, Ok, parent, name, true, false, KGuiItem(i18n("&Connect")))
 {
-	QFrame* page = plainPage();
+	Q3Frame* page = plainPage();
 	QGridLayout* pageLayout = new QGridLayout(page, 1, 1, 0, 0);
 	m_mainWidget = new clientConnectDlg(page);
 	pageLayout->addWidget(m_mainWidget, 0, 0);

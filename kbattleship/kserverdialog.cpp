@@ -18,13 +18,16 @@
 #include <klocale.h>
 #include <kuser.h>
 #include <qlayout.h>
+//Added by qt3to4:
+#include <Q3Frame>
+#include <QGridLayout>
 
 #include "kserverdialog.h"
 
 KServerDialog::KServerDialog(QWidget *parent, const char *name) : 
 	KDialogBase(Plain, i18n("Start Server"), Ok|Cancel, Ok, parent, name, true, false, KGuiItem(i18n("&Start")))
 {
-	QFrame* page = plainPage();
+	Q3Frame* page = plainPage();
 	QGridLayout* pageLayout = new QGridLayout(page, 1, 1, 0, 0);
 	m_mainWidget = new serverStartDlg(page);
 	pageLayout->addWidget(m_mainWidget, 0, 0);
