@@ -34,7 +34,6 @@ KBattleField::KBattleField(QWidget *parent, bool grid) : KGridWidget(parent, gri
 	clearOwnField();
 	clearEnemyField();
 	clearPreviewField();
-	drawField();
 }
 
 void KBattleField::clearOwnField()
@@ -78,12 +77,12 @@ void KBattleField::setPreviewState(int fieldx, int fieldy, int type, bool rotate
 	m_rotatedata[fieldx][fieldy] = rotate;
 }
 
-void KBattleField::drawField()
+void KBattleField::drawField(QPainter &p)
 {
 	drawOwnField();
 	drawEnemyField();
 	clearPreviewField();
-	finished();
+	finished(p);
 }
 
 void KBattleField::drawOwnField()

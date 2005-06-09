@@ -31,7 +31,7 @@ public:
 
 protected:
 	void cleanBuffer();
-	void finished();
+	void finished(QPainter &p);
 	void setValues(int x, int y, int size);
 	void drawSquare();
 	void drawWaterIcon();

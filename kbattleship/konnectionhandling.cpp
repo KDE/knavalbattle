@@ -37,7 +37,7 @@ KonnectionHandling::KonnectionHandling(QWidget *parent, KBattleshipClient *clien
 	m_kbserver = 0;
 	m_type = KonnectionHandling::CLIENT;
 	connect(client, SIGNAL(sigEndConnect()), this, SLOT(slotLostServer()));
-	connect(client, SIGNAL(sigSocketFailure(int)), this, SLOT(slotSocketError(int)));
+	connect(client, SIGNAL(sigSocketFailure(KNetwork::KStreamSocket::SocketError)), this, SLOT(slotSocketError(KNetwork::KStreamSocket::SocketError)));
 	connect(client, SIGNAL(sigNewMessage(KMessage *)), this, SLOT(slotNewMessage(KMessage *)));
 	connect(client, SIGNAL(sigMessageSent(KMessage *)), this, SLOT(slotMessageSent(KMessage *)));
 }
@@ -60,7 +60,7 @@ void KonnectionHandling::updateInternal(KBattleshipClient *client)
 	m_kbserver = 0;
 	m_type = KonnectionHandling::CLIENT;
 	connect(client, SIGNAL(sigEndConnect()), this, SLOT(slotLostServer()));
-	connect(client, SIGNAL(sigSocketFailure(int)), this, SLOT(slotSocketError(int)));
+	connect(client, SIGNAL(sigSocketFailure(KNetwork::KStreamSocket::SocketError)), this, SLOT(slotSocketError(KNetwork::KStreamSocket::SocketError)));
 	connect(client, SIGNAL(sigNewMessage(KMessage *)), this, SLOT(slotNewMessage(KMessage *)));
 	connect(client, SIGNAL(sigMessageSent(KMessage *)), this, SLOT(slotMessageSent(KMessage *)));
 }
@@ -215,20 +215,16 @@ void KonnectionHandling::slotNewMessage(KMessage *msg)
 	delete msg;
 }
 
-void KonnectionHandling::slotSocketError(int error)
+void KonnectionHandling::slotSocketError(KNetwork::KStreamSocket::SocketError error)
 {
 	switch(error)
 	{
-		case IO_ConnectError:
+		case KNetwork::KStreamSocket::ConnectionRefused:
 			KMessageBox::error(0L, i18n("Connection refused by other host."));
 			break;
 
-		case IO_LookupError:
+		case KNetwork::KStreamSocket::LookupFailure:
 			KMessageBox::error(0L, i18n("Couldn't lookup host."));
-			break;
-
-		case IO_ReadError:
-			KMessageBox::error(0L, i18n("Couldn't connect to server."));
 			break;
 
 		default:

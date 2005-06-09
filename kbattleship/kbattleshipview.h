@@ -55,6 +55,9 @@ public:
 	void drawEnemyShipsHuman(KMessage *msg, KShipList *list);
 	KMessage *getAliveShips(KShipList *list);
 
+protected:
+	void paintEvent(QPaintEvent *);
+
 signals:
 	void sigEnemyFieldClicked(int, int);
 	void sigOwnFieldClicked(int, int);

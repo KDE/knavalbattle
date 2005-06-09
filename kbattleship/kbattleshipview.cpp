@@ -56,6 +56,12 @@ void KBattleshipView::clearField()
 	m_battlefield->clearEnemyField();
 }
 
+void KBattleshipView::paintEvent(QPaintEvent *)
+{
+	QPainter p(this);
+	m_battlefield->drawField(p);
+}
+
 int KBattleshipView::ownFieldState(int fieldx, int fieldy)
 {
 	return m_battlefield->ownState(fieldx, fieldy);
@@ -74,13 +80,13 @@ void KBattleshipView::previewShip(int fieldx, int fieldy, int type, bool rotate)
 void KBattleshipView::changeOwnFieldData(int fieldx, int fieldy, int type)
 {
 	m_battlefield->setOwnState(fieldx, fieldy, type);
-	m_battlefield->drawField();
+	update();
 }
 
 void KBattleshipView::changeEnemyFieldData(int fieldx, int fieldy, int type)
 {
 	m_battlefield->setEnemyState(fieldx, fieldy, type);
-	m_battlefield->drawField();
+	update();
 }
 
 void KBattleshipView::drawEnemyShipsAI(KShipList *list)
@@ -158,16 +164,16 @@ bool KBattleshipView::eventFilter(QObject *object, QEvent *event)
 	{
 		QKeyEvent *keyEvent = static_cast<QKeyEvent *>(event);
 		if(keyEvent->key() == Qt::Key_Shift){
-			emit sigMouseOverField(m_lastX, m_lastY);
 			emit changeShipPlacementDirection();
+			emit sigMouseOverField(m_lastX, m_lastY);
 		}
 	}
 	else if(event->type() == QEvent::KeyRelease && m_decide)
 	{
 		QKeyEvent *keyEvent = static_cast<QKeyEvent *>(event);
 		if(keyEvent->key() == Qt::Key_Shift){
-			emit sigMouseOverField(m_lastX, m_lastY);
 			emit changeShipPlacementDirection();
+			emit sigMouseOverField(m_lastX, m_lastY);
 		}
 	}
 	else if(event->type() == QEvent::MouseButtonRelease)
@@ -177,8 +183,8 @@ bool KBattleshipView::eventFilter(QObject *object, QEvent *event)
 		QMouseEvent *mouseEvent = static_cast<QMouseEvent *>(event);
 
 		if(mouseEvent->button() == Qt::RightButton){
-			emit sigMouseOverField(m_lastX, m_lastY);
 			emit changeShipPlacementDirection();
+			emit sigMouseOverField(m_lastX, m_lastY);
 			return true;
 		}
 		
@@ -285,13 +291,8 @@ bool KBattleshipView::eventFilter(QObject *object, QEvent *event)
 			emit sigMouseOverField(fieldx, fieldy);
 		}
 		else
-			m_battlefield->drawField();
+			update();
 
-		return true;
-	}
-	else if(event->type() == QEvent::Paint)
-	{
-		m_battlefield->drawField();
 		return true;
 	}
 

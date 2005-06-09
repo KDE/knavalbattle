@@ -19,34 +19,25 @@
 #include <config.h>
 #endif
 
-#include <unistd.h>
-#ifdef HAVE_STROPTS_H
-#include <stropts.h>
-#endif
-#ifdef HAVE_SYS_FILIO_H
-#include <sys/filio.h>
-#endif
-#include <sys/ioctl.h>
-#include <qsocketnotifier.h>
 //Added by qt3to4:
 #include <Q3CString>
 #include "kmessage.h"
 #include "kbattleshipclient.moc"
 
-KBattleshipClient::KBattleshipClient(const QString &host, int port) : KExtendedSocket(host, port, inetSocket)
+KBattleshipClient::KBattleshipClient(const QString &host, int port) : KStreamSocket(host, QString::number(port))
 {
+	setBlocking(true);
 }
 
 void KBattleshipClient::init()
 {
-	if(connect())
+	if(!connect())
 	{
-		emit sigSocketFailure(status());
+		emit sigSocketFailure(error());
 		return;
 	}
 
-	m_readNotifier = new QSocketNotifier(fd(), QSocketNotifier::Read, this);
-	QObject::connect(m_readNotifier, SIGNAL(activated(int)), SLOT(slotReadData()));
+	QObject::connect(this, SIGNAL(readyRead()), SLOT(slotReadData()));
 	emit sigConnected();
 }
 
@@ -60,11 +51,9 @@ void KBattleshipClient::sendMessage(KMessage *msg)
 void KBattleshipClient::slotReadData()
 {
 	int len;
-	ioctl(fd(), FIONREAD, &len);
+	len = bytesAvailable();
 	if(!len)
 	{
-		delete m_readNotifier;
-		m_readNotifier = 0;
 		emit sigEndConnect();
 		return;
 	}
