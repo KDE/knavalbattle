@@ -37,7 +37,8 @@ void KBattleshipClient::init()
 		return;
 	}
 
-	QObject::connect(this, SIGNAL(readyRead()), SLOT(slotReadData()));
+	QObject::connect(this, SIGNAL(readyRead()), this, SLOT(slotReadData()));
+	QObject::connect(this, SIGNAL(gotError(int)), this, SLOT(sigEndConnect()));
 	emit sigConnected();
 }
 

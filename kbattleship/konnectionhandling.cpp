@@ -237,6 +237,8 @@ void KonnectionHandling::slotSocketError(KNetwork::KStreamSocket::SocketError er
 
 void KonnectionHandling::slotLostServer()
 {
+	m_kbclient->close();
+	m_kbclient->deleteLater();
 	KMessageBox::error(0L, i18n("Connection to server lost. Aborting the game."));
 	emit sigServerLost();
 }

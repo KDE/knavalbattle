@@ -42,7 +42,7 @@ void KBattleshipServer::init()
 	m_service.setType(BATTLESHIP_SERVICE);
 	m_service.setPort(m_port);
 	m_service.publishAsync();
-	QObject::connect(this, SIGNAL(readyAccept()), this, SLOT(slotNewConnection()));
+	connect(this, SIGNAL(readyAccept()), this, SLOT(slotNewConnection()));
 }
 
 void KBattleshipServer::slotNewConnection()
@@ -54,6 +54,7 @@ void KBattleshipServer::slotNewConnection()
 		m_service.stop();
 		m_serverSocket = sock;
 		connect(sock, SIGNAL(readyRead()), this, SLOT(slotReadClient()));
+		connect(sock, SIGNAL(gotError(int)), this, SLOT(slotRemoveClient()));
 		emit sigNewConnect();
 	}
 	else
@@ -97,19 +98,22 @@ void KBattleshipServer::sendMessage(KMessage *msg)
 
 void KBattleshipServer::slotDiscardClient(const QString &reason, bool kmversion, bool bemit)
 {
-	KMessage *msg = new KMessage(KMessage::DISCARD);
-	msg->addField("reason", reason);
+	KMessage msg = new KMessage(KMessage::DISCARD);
+	msg.addField("reason", reason);
 	if(kmversion)
-		msg->addField("kmversion", "true");
+		msg.addField("kmversion", "true");
 	else
-		msg->addField("kmversion", "false");
-	Q3CString post = msg->sendStream().utf8();
+		msg.addField("kmversion", "false");
+	Q3CString post = msg.sendStream().utf8();
 	m_serverSocket->writeBlock(post.data(), post.length());
-	delete msg;
+	if (bemit) slotRemoveClient();
+}
 
-	delete m_serverSocket;
+void KBattleshipServer::slotRemoveClient()
+{
+        m_serverSocket->close();
+	m_serverSocket->deleteLater();
 	m_serverSocket = 0;
 
-	if(bemit)
-		emit sigEndConnect();
+	emit sigEndConnect();
 }
