@@ -26,6 +26,7 @@ Type=Application
 DocPath=kbattleship/index.html
 GenericName=Battleship Game
 GenericName[bg]=Морски шах
+GenericName[bn]=ব্যাটেলশীপ খেলা
 GenericName[ca]=Joc d'enfonsar la flota
 GenericName[cs]=Bitva lodí
 GenericName[da]=Krigsskibe-spil
