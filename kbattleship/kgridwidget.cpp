@@ -18,6 +18,8 @@
 #include <qapplication.h>
 #include <qimage.h>
 #include <qpainter.h>
+//Added by qt3to4:
+#include <QPixmap>
 
 #include <kstandarddirs.h>
 #include <kimageeffect.h>
@@ -404,9 +406,9 @@ QString KGridWidget::findIcon(const QString &name) const
 	return locate("data", "kbattleship/pictures/" + name);
 }
 
-void KGridWidget::finished()
+void KGridWidget::finished(QPainter &p)
 {
-	bitBlt(m_parent, 0, 0, m_doubleBuffer);
+	p.drawPixmap(0, 0, *m_doubleBuffer);
 	cleanBuffer();
 }
 

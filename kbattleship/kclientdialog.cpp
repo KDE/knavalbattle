@@ -17,6 +17,8 @@
 
 #include <qstring.h>
 #include <qglobal.h>
+//Added by qt3to4:
+#include <QGridLayout>
 #include <kdebug.h>
 #include <klocale.h>
 #include <kcombobox.h>
@@ -116,8 +118,8 @@ void KClientDialog::nextBatch()
 	if (!m_mainWidget->lanBox->count()) autoselect=true;
 	m_mainWidget->lanBox->clear();
 	QStringList names;
-	QValueList<DNSSD::RemoteService::Ptr>::ConstIterator itEnd = m_browser->services().end();
-	for (QValueList<DNSSD::RemoteService::Ptr>::ConstIterator it = m_browser->services().begin();
+	QList<DNSSD::RemoteService::Ptr>::ConstIterator itEnd = m_browser->services().end();
+	for (QList<DNSSD::RemoteService::Ptr>::ConstIterator it = m_browser->services().begin();
 		it!=itEnd; ++it) names << (*it)->serviceName();
 	m_mainWidget->lanBox->insertStringList(names);
 	if (autoselect && m_mainWidget->lanBox->count()) gameSelected(0);

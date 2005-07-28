@@ -17,6 +17,8 @@
 
 #include <kapplication.h>
 #include "kchatwidget.moc"
+//Added by qt3to4:
+#include <QEvent>
 
 KChatWidget::KChatWidget(QWidget *parent, const char *name) : chatDlg(parent, name)
 {

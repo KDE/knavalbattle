@@ -17,21 +17,14 @@
 
 #include <config.h>
 
-#include <unistd.h>
-#ifdef HAVE_STROPTS_H
-#include <stropts.h>
-#endif
-#ifdef HAVE_SYS_FILIO_H
-#include <sys/filio.h>
-#endif
-#include <sys/ioctl.h>
-#include <qtimer.h>
+//Added by qt3to4:
+#include <Q3CString>
 #include <kmessagebox.h>
 #include <klocale.h>
 #include "kbattleshipserver.moc"
 
 KBattleshipServer::KBattleshipServer(int port, const QString& name) 
-	: KExtendedSocket(QString::null, port, inetSocket | passiveSocket), m_name(name)
+	: KServerSocket(QString::number(port)), m_name(name)
 {
 	m_port = port;
 	m_serverSocket = 0;
@@ -39,7 +32,7 @@ KBattleshipServer::KBattleshipServer(int port, const QString& name)
 
 void KBattleshipServer::init()
 {
-	if(listen())
+	if(!listen())
 	{
 		KMessageBox::error(0L, i18n("Failed to bind to local port \"%1\"\n\nPlease check if another KBattleship server instance\nis running or another application uses this port.").arg(m_port));
 		emit sigServerFailure();
@@ -49,30 +42,31 @@ void KBattleshipServer::init()
 	m_service.setType(BATTLESHIP_SERVICE);
 	m_service.setPort(m_port);
 	m_service.publishAsync();
-	m_connectNotifier = new QSocketNotifier(fd(), QSocketNotifier::Read, this);
-	QObject::connect(m_connectNotifier, SIGNAL(activated(int)), SLOT(slotNewConnection()));
+	connect(this, SIGNAL(readyAccept()), this, SLOT(slotNewConnection()));
 }
 
 void KBattleshipServer::slotNewConnection()
 {
-	KExtendedSocket *sock;
-	accept(sock);
+	KNetwork::KStreamSocket *sock;
+	sock = accept();
 	if(sock && m_serverSocket == 0)
 	{
 		m_service.stop();
 		m_serverSocket = sock;
-		m_readNotifier = new QSocketNotifier(sock->fd(), QSocketNotifier::Read, this);
-		QObject::connect(m_readNotifier, SIGNAL(activated(int)), this, SLOT(slotReadClient()));
+		connect(sock, SIGNAL(readyRead()), this, SLOT(slotReadClient()));
+		connect(sock, SIGNAL(gotError(int)), this, SLOT(slotRemoveClient()));
 		emit sigNewConnect();
 	}
 	else
 		delete sock;
 }
 
+#include <stdlib.h>
+#include <stdio.h>
 void KBattleshipServer::slotReadClient()
 {
-	int len;
-	ioctl(m_serverSocket->fd(), FIONREAD, &len);
+	qint64 len;
+	len = m_serverSocket->bytesAvailable();
 	if(!len)
 	{
 		slotDiscardClient(i18n("The connection broke down!"), false, true);
@@ -97,28 +91,29 @@ void KBattleshipServer::slotReadClient()
 
 void KBattleshipServer::sendMessage(KMessage *msg)
 {
-	QCString post = msg->sendStream().utf8();
+	Q3CString post = msg->sendStream().utf8();
 	m_serverSocket->writeBlock(post.data(), post.length());
 	emit sigMessageSent(msg);
 }
 
 void KBattleshipServer::slotDiscardClient(const QString &reason, bool kmversion, bool bemit)
 {
-	KMessage *msg = new KMessage(KMessage::DISCARD);
-	msg->addField("reason", reason);
+	KMessage msg = new KMessage(KMessage::DISCARD);
+	msg.addField("reason", reason);
 	if(kmversion)
-		msg->addField("kmversion", "true");
+		msg.addField("kmversion", "true");
 	else
-		msg->addField("kmversion", "false");
-	QCString post = msg->sendStream().utf8();
+		msg.addField("kmversion", "false");
+	Q3CString post = msg.sendStream().utf8();
 	m_serverSocket->writeBlock(post.data(), post.length());
-	delete msg;
+	if (bemit) slotRemoveClient();
+}
 
-	delete m_readNotifier;
-	m_readNotifier = 0;
-	delete m_serverSocket;
+void KBattleshipServer::slotRemoveClient()
+{
+        m_serverSocket->close();
+	m_serverSocket->deleteLater();
 	m_serverSocket = 0;
 
-	if(bemit)
-		emit sigEndConnect();
+	emit sigEndConnect();
 }

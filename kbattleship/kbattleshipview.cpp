@@ -15,7 +15,11 @@
  *                                                                         *
  ***************************************************************************/
 
+#include <qevent.h>
 #include <qlayout.h>
+//Added by qt3to4:
+#include <QMouseEvent>
+#include <QKeyEvent>
 
 #include <klocale.h>
 #include <kdebug.h>
@@ -23,10 +27,10 @@
 #include "kbattleshipview.moc"
 
 KBattleshipView::KBattleshipView(QWidget *parent, const char *name, bool draw) 
-	: QWidget(parent, name, WResizeNoErase), m_drawGrid(draw)
+	: QWidget(parent, name, Qt::WResizeNoErase), m_drawGrid(draw)
 {
 	setFixedSize(20 * 32 + 30, 10 * 32 + 20);
-	setBackgroundMode(NoBackground);
+	setBackgroundMode(Qt::NoBackground);
 	setMouseTracking(true);
 	installEventFilter(this);
 
@@ -52,6 +56,12 @@ void KBattleshipView::clearField()
 	m_battlefield->clearEnemyField();
 }
 
+void KBattleshipView::paintEvent(QPaintEvent *)
+{
+	QPainter p(this);
+	m_battlefield->drawField(p);
+}
+
 int KBattleshipView::ownFieldState(int fieldx, int fieldy)
 {
 	return m_battlefield->ownState(fieldx, fieldy);
@@ -70,13 +80,13 @@ void KBattleshipView::previewShip(int fieldx, int fieldy, int type, bool rotate)
 void KBattleshipView::changeOwnFieldData(int fieldx, int fieldy, int type)
 {
 	m_battlefield->setOwnState(fieldx, fieldy, type);
-	m_battlefield->drawField();
+	update();
 }
 
 void KBattleshipView::changeEnemyFieldData(int fieldx, int fieldy, int type)
 {
 	m_battlefield->setEnemyState(fieldx, fieldy, type);
-	m_battlefield->drawField();
+	update();
 }
 
 void KBattleshipView::drawEnemyShipsAI(KShipList *list)
@@ -153,17 +163,17 @@ bool KBattleshipView::eventFilter(QObject *object, QEvent *event)
 	if(event->type() == QEvent::KeyPress && m_decide)
 	{
 		QKeyEvent *keyEvent = static_cast<QKeyEvent *>(event);
-		if(keyEvent->key() == Key_Shift){
-			emit sigMouseOverField(m_lastX, m_lastY);
+		if(keyEvent->key() == Qt::Key_Shift){
 			emit changeShipPlacementDirection();
+			emit sigMouseOverField(m_lastX, m_lastY);
 		}
 	}
 	else if(event->type() == QEvent::KeyRelease && m_decide)
 	{
 		QKeyEvent *keyEvent = static_cast<QKeyEvent *>(event);
-		if(keyEvent->key() == Key_Shift){
-			emit sigMouseOverField(m_lastX, m_lastY);
+		if(keyEvent->key() == Qt::Key_Shift){
 			emit changeShipPlacementDirection();
+			emit sigMouseOverField(m_lastX, m_lastY);
 		}
 	}
 	else if(event->type() == QEvent::MouseButtonRelease)
@@ -172,13 +182,13 @@ bool KBattleshipView::eventFilter(QObject *object, QEvent *event)
 
 		QMouseEvent *mouseEvent = static_cast<QMouseEvent *>(event);
 
-		if(mouseEvent->button() == RightButton){
-			emit sigMouseOverField(m_lastX, m_lastY);
+		if(mouseEvent->button() == Qt::RightButton){
 			emit changeShipPlacementDirection();
+			emit sigMouseOverField(m_lastX, m_lastY);
 			return true;
 		}
 		
-		if(mouseEvent->button() != LeftButton)
+		if(mouseEvent->button() != Qt::LeftButton)
 			return false;
 
 		QPoint point(mouseEvent->x(), mouseEvent->y());
@@ -281,13 +291,8 @@ bool KBattleshipView::eventFilter(QObject *object, QEvent *event)
 			emit sigMouseOverField(fieldx, fieldy);
 		}
 		else
-			m_battlefield->drawField();
+			update();
 
-		return true;
-	}
-	else if(event->type() == QEvent::Paint)
-	{
-		m_battlefield->drawField();
 		return true;
 	}
 

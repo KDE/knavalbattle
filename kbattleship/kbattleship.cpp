@@ -17,6 +17,9 @@
 
 #include <qlayout.h>
 #include <qtimer.h>
+//Added by qt3to4:
+#include <Q3ValueList>
+#include <QGridLayout>
 
 #include <kgamemisc.h>
 #include <kinputdialog.h>
@@ -87,18 +90,18 @@ void KBattleshipWindow::initStatusBar()
 	statusBar()->insertItem(i18n("     Player 1: %1     ").arg(m_ownNickname), ID_PLAYER_OWN, 0, true);
 	statusBar()->insertItem(i18n("     Player 2: %1     ").arg(m_enemyNickname), ID_PLAYER_ENEMY, 0, true);
 	statusBar()->insertItem(i18n("Ready"), ID_STATUS_MSG, 1);
-	statusBar()->setItemAlignment(ID_STATUS_MSG, AlignLeft);
+	statusBar()->setItemAlignment(ID_STATUS_MSG, Qt::AlignLeft);
 }
 
 void KBattleshipWindow::initActions()
 {
 	KStdAction::configureNotifications(this, SLOT(slotConfigureNotifications()), actionCollection());
-	m_gameServerConnect = new KAction(i18n("&Connect to Server..."), "connect_no", Key_F2, this, SLOT(slotServerConnect()), actionCollection(), "game_serverconnect");
-	m_gameNewServer = new KAction(i18n("&Start Server..."), "network", Key_F3, this, SLOT(slotNewServer()), actionCollection(), "game_newserver");
-	m_gameSingle = new KAction(i18n("S&ingle Player..."), "gear", Key_F4, this, SLOT(slotSinglePlayer()), actionCollection(), "game_singleplayer");
+	m_gameServerConnect = new KAction(i18n("&Connect to Server..."), "connect_no", Qt::Key_F2, this, SLOT(slotServerConnect()), actionCollection(), "game_serverconnect");
+	m_gameNewServer = new KAction(i18n("&Start Server..."), "network", Qt::Key_F3, this, SLOT(slotNewServer()), actionCollection(), "game_newserver");
+	m_gameSingle = new KAction(i18n("S&ingle Player..."), "gear", Qt::Key_F4, this, SLOT(slotSinglePlayer()), actionCollection(), "game_singleplayer");
 	m_gameQuit = KStdGameAction::quit(this, SLOT(close()), actionCollection());
 	KStdGameAction::highscores(this, SLOT(slotHighscore()), actionCollection());
-	m_gameEnemyInfo = new KAction(i18n("&Enemy Info"), "view_text", Key_F11, this, SLOT(slotEnemyClientInfo()), actionCollection(), "game_enemyinfo");
+	m_gameEnemyInfo = new KAction(i18n("&Enemy Info"), "view_text", Qt::Key_F11, this, SLOT(slotEnemyClientInfo()), actionCollection(), "game_enemyinfo");
 
 	m_configSound = new KToggleAction(i18n("&Play Sounds"), 0, actionCollection(), "options_configure_sound");
 	m_configGrid = new KToggleAction(i18n("&Show Grid"), 0, this, SLOT(slotShowGrid()), actionCollection(), "options_show_grid");
@@ -213,7 +216,7 @@ void KBattleshipWindow::slotEnemyFieldClick(int fieldx, int fieldy)
 				if(showstate == KBattleField::HIT)
 				{
 					KShip *ship = m_enemyshiplist->shipAt(fieldx, fieldy);
-					typedef QValueList<int> DeathValueList;
+					typedef Q3ValueList<int> DeathValueList;
 					DeathValueList deathList;
 					bool xokay = true, yokay = true;
 					int tempy = 0, tempx = 0;
@@ -530,7 +533,7 @@ void KBattleshipWindow::slotPlaceShipPreview(int fieldx, int fieldy)
 					break;
 			}
 
-			m_view->field()->drawField();
+			m_view->update();
 		}
 	}
 }
@@ -793,7 +796,7 @@ void KBattleshipWindow::cleanup(bool placechange)
 	m_enemyshiplist->clear();
 	m_view->clearField();
 	m_view->field()->setDrawField(true);
-	m_view->field()->drawField();
+	m_view->update();
 }
 
 void KBattleshipWindow::slotNewServer()
@@ -923,7 +926,7 @@ void KBattleshipWindow::slotSendEnemyFieldState(int fieldx, int fieldy)
 {
 	int data, showstate;
 	bool xokay = false, yokay = false;
-	typedef QValueList<int> DeathValueList;
+	typedef Q3ValueList<int> DeathValueList;
 	DeathValueList deathList;
 
 	data = m_ownshiplist->shipTypeAt(fieldx, fieldy);

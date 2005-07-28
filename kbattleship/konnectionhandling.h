@@ -46,7 +46,7 @@ public slots:
 	void slotNewClient();
 	void slotLostClient();
 	void slotLostServer();
-	void slotSocketError(int error);
+	void slotSocketError(KNetwork::KStreamSocket::SocketError error);
 
 signals:
 	void sigStatusBar(const QString &);

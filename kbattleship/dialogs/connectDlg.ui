@@ -170,14 +170,14 @@
     </grid>
 </widget>
 <customwidgets>
+	<customwidget>
+		<class>KHistoryCombo</class>
+		<header location="global">kcombobox.h</header>
+		<container>0</container>
+	</customwidget>
 </customwidgets>
-<includes>
-    <include location="global" impldecl="in implementation">kcombobox.h</include>
-</includes>
 <layoutdefaults spacing="6" margin="11"/>
 <includehints>
-    <includehint>kcombobox.h</includehint>
     <includehint>klineedit.h</includehint>
-    <includehint>kcombobox.h</includehint>
 </includehints>
 </UI>

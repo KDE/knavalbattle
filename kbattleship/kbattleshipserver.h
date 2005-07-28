@@ -18,12 +18,12 @@
 #ifndef KBATTLESHIPSERVER_H
 #define KBATTLESHIPSERVER_H
 
-#include <kextsock.h>
-#include <qsocketnotifier.h>
+#include <kserversocket.h>
+#include <kstreamsocket.h>
 #include <dnssd/publicservice.h>
 #include "kmessage.h"
 
-class KBattleshipServer : public KExtendedSocket
+class KBattleshipServer : public KNetwork::KServerSocket
 {
 	Q_OBJECT
 public:
@@ -37,6 +37,7 @@ public slots:
 private slots:
 	void slotNewConnection();
 	void slotReadClient();
+	void slotRemoveClient();
 
 signals:
 	void sigServerFailure();
@@ -46,9 +47,7 @@ signals:
 	void sigMessageSent(KMessage *);
 
 private:
-	QSocketNotifier *m_connectNotifier;
-	QSocketNotifier *m_readNotifier;
-	KExtendedSocket *m_serverSocket;
+	KNetwork::KStreamSocket *m_serverSocket;
 	QString m_readBuffer;
 	DNSSD::PublicService m_service;
 	int m_port;

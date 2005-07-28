@@ -33,7 +33,7 @@ public:
 	void clearEnemyField();
 	void clearPreviewField();
 
-	void drawField();
+	void drawField(QPainter &p);
 	void setDrawField(bool draw) { m_canDraw = draw; }
 
  	void setOwnState(int fieldx, int fieldy, int type) { m_ownfield[fieldx][fieldy] = type; }

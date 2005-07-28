@@ -36,7 +36,7 @@ KBStrategy::~KBStrategy()
 }
 
 /* Returns the master strategy's shot list. */
-QValueList<QPoint> KBStrategy::masterShotList()
+QList<QPoint> KBStrategy::masterShotList()
 {
 	return (!m_parent) ? m_prevShots : m_parent->masterShotList();
 }

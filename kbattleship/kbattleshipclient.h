@@ -18,11 +18,10 @@
 #ifndef KBATTLESHIPCLIENT_H
 #define KBATTLESHIPCLIENT_H
 
-#include <kextsock.h>
-#include <qsocketnotifier.h>
+#include <kstreamsocket.h>
 #include "kmessage.h"
 
-class KBattleshipClient : public KExtendedSocket
+class KBattleshipClient : public KNetwork::KStreamSocket
 {
 	Q_OBJECT
 public:
@@ -37,12 +36,11 @@ private slots:
 signals:
 	void sigConnected();
 	void sigEndConnect();
-	void sigSocketFailure(int);
+	void sigSocketFailure(KNetwork::KStreamSocket::SocketError);
 	void sigNewMessage(KMessage *);
 	void sigMessageSent(KMessage *);
 
 private:
-	QSocketNotifier *m_readNotifier;
 	QString m_readBuffer;
 };
 
