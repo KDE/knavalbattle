@@ -18,7 +18,6 @@
 #include <qlayout.h>
 #include <qtimer.h>
 //Added by qt3to4:
-#include <Q3ValueList>
 #include <QGridLayout>
 
 #include <kgamemisc.h>
@@ -216,7 +215,7 @@ void KBattleshipWindow::slotEnemyFieldClick(int fieldx, int fieldy)
 				if(showstate == KBattleField::HIT)
 				{
 					KShip *ship = m_enemyshiplist->shipAt(fieldx, fieldy);
-					typedef Q3ValueList<int> DeathValueList;
+					typedef QList<int> DeathValueList;
 					DeathValueList deathList;
 					bool xokay = true, yokay = true;
 					int tempy = 0, tempx = 0;
@@ -926,7 +925,7 @@ void KBattleshipWindow::slotSendEnemyFieldState(int fieldx, int fieldy)
 {
 	int data, showstate;
 	bool xokay = false, yokay = false;
-	typedef Q3ValueList<int> DeathValueList;
+	typedef QList<int> DeathValueList;
 	DeathValueList deathList;
 
 	data = m_ownshiplist->shipTypeAt(fieldx, fieldy);

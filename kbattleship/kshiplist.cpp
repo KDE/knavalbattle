@@ -21,7 +21,7 @@
 
 KShipList::KShipList() : QObject()
 {
-	m_shiplist.setAutoDelete(true);
+	//m_shiplist.setAutoDelete(true);
 	m_shipsadded = 4;
 
 	m_fieldx = 10;
@@ -31,6 +31,7 @@ KShipList::KShipList() : QObject()
 void KShipList::clear()
 {
 	m_shipsadded = 4;
+	qDeleteAll(m_shiplist);
 	m_shiplist.clear();
 }
 
@@ -38,8 +39,10 @@ int KShipList::shipTypeAt(int x, int y)
 {
 	int tempx, tempy;
 	KShip *shipiterator;
-	for(shipiterator = m_shiplist.first(); shipiterator != 0; shipiterator = m_shiplist.next())
+	QListIterator<KShip *> i(m_shiplist);
+	while (i.hasNext())	
 	{
+		shipiterator = i.next();
 		if(shipiterator->shipystart() != shipiterator->shipystop())
 		{
 			for(tempy = shipiterator->shipystart(); tempy <= shipiterator->shipystop(); tempy++)
@@ -92,8 +95,10 @@ KShip *KShipList::shipAt(int x, int y)
 {
 	int tempx, tempy;
 	KShip *shipiterator;
-	for(shipiterator = m_shiplist.first(); shipiterator != 0; shipiterator = m_shiplist.next())
-	{
+    QListIterator<KShip *> i(m_shiplist);
+    while (i.hasNext())
+    {
+        shipiterator = i.next();
 		for(tempy = shipiterator->shipystart(); tempy <= shipiterator->shipystop(); tempy++)
 		{
 			if(tempy == y)
@@ -129,8 +134,11 @@ bool KShipList::addNewShip(bool vertical, int fieldx, int fieldy)
 	if(!field.contains(ship))
 		return false;
 
-	for(KShip *placedShip = m_shiplist.first(); placedShip != 0; placedShip = m_shiplist.next())
-	{
+    KShip *placedShip;
+    QListIterator<KShip *> i(m_shiplist);
+    while (i.hasNext())
+    {
+        placedShip = i.next();
 		for(int i = fieldx-1; i < (fieldx + ship.width()+1); i++)
 		{
 			if(placedShip->contains(i, fieldy - 1) || placedShip->contains(i, fieldy + ship.height()))
