@@ -32,7 +32,7 @@ KBChooserStrategy::KBChooserStrategy(KBStrategy *parent) : KBStrategy(parent)
 
 	m_child = 0;
 
-	m_random = new KRandomSequence(KApplication::random());
+	m_random = new KRandomSequence(KRandom::random());
 }
 
 KBChooserStrategy::~KBChooserStrategy()

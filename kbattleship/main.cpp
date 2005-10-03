@@ -49,7 +49,7 @@ int main(int argc, char *argv[])
 	KCmdLineArgs::init(argc, argv, &aboutData);
 	KCmdLineArgs::addCmdLineOptions( options ); // Add our own options.
 	KApplication app;
-	KGlobal::locale()->insertCatalogue("libkdegames");
+	KGlobal::locale()->insertCatalog("libkdegames");
 
 	QString picDirCheck = locate("data", "kbattleship/pictures/");
 	QString onePicCheck = locate("data", "kbattleship/pictures/hit.png");

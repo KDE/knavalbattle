@@ -17,6 +17,7 @@
 
 #include <kapplication.h>
 #include <kdebug.h>
+#include <krandom.h>
 
 #include "kbchooserstrategy.h"
 
@@ -29,7 +30,7 @@ KBAIPlayer::KBAIPlayer()
 	m_ownShipList = 0;
 	m_battleField = 0;
 	m_masterStrategy = 0;
-	m_randomSeq = new KRandomSequence(KApplication::random());
+	m_randomSeq = new KRandomSequence(KRandom::random());
 }
 
 KBAIPlayer::~KBAIPlayer()
