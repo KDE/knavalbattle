@@ -17,6 +17,7 @@
 #include "kbchooserstrategy.h"
 
 #include <kapplication.h>
+#include <krandom.h>
 
 #include "kbrandomshotstrategy.h"
 #include "kbdiagonalwrapstrategy.h"
