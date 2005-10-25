@@ -59,7 +59,7 @@ int main(int argc, char *argv[])
 		return 1;
 	}
 	
-	if( app.isRestored() )
+	if( app.isSessionRestored() )
 		RESTORE(KBattleshipWindow)
 	else {
 		KBattleshipWindow *mainwin = new KBattleshipWindow;
