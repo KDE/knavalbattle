@@ -24,6 +24,7 @@
 #include <kcombobox.h>
 #include <kuser.h>
 #include <qlayout.h>
+#include <kglobal.h>
 #include "kbattleshipserver.h" // for BATTLESHIP_SERVICE
 #include "kclientdialog.moc"
 
@@ -36,7 +37,7 @@ KClientDialog::KClientDialog(QWidget *parent, const char *name)
 	pageLayout->addWidget(m_mainWidget, 0, 0);
 
 	enableButtonOK(false);
-	m_config = kapp->config();
+	m_config = KGlobal::config();
 	KUser u;
 	m_mainWidget->nicknameEdit->setText(u.loginName());
 

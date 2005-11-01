@@ -32,6 +32,7 @@
 #include <kuser.h>
 
 #include <kscoredialog.h>
+#include <kglobal.h>
 
 
 #include "kbattleship.moc"
@@ -67,7 +68,7 @@ void KBattleshipWindow::init()
 	m_placeable = false;
 	m_shootable = false;
 	m_serverHasClient = false;
-	m_config = kapp->config();
+	m_config = KGlobal::config();
 	initStatusBar();
 	initActions();
 	readOptions();
