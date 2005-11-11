@@ -73,13 +73,13 @@ bool KChatWidget::eventFilter(QObject *obj, QEvent *e)
 
 void KChatWidget::slotComputeMessage()
 {
-	if(!commentEdit->text().stripWhiteSpace().isEmpty() && m_acceptMsgs)
+	if(!commentEdit->text().trimmed().isEmpty() && m_acceptMsgs)
 	{
 		slotReceivedMessage(m_currentNickname, commentEdit->text(), false);
 		emit sigSendMessage(commentEdit->text());
 		commentEdit->setText("");
 	}
-	else if(commentEdit->text().stripWhiteSpace().isEmpty() && m_acceptMsgs)
+	else if(commentEdit->text().trimmed().isEmpty() && m_acceptMsgs)
 		commentEdit->setText("");
 	commentEdit->setFocus();
 }

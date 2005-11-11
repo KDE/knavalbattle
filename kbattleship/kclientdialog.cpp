@@ -68,12 +68,12 @@ KClientDialog::~KClientDialog()
 
 void KClientDialog::slotCheckEnableOk()
 {
-	enableButtonOK(!m_mainWidget->serverEdit->currentText().stripWhiteSpace().isEmpty());
+	enableButtonOK(!m_mainWidget->serverEdit->currentText().trimmed().isEmpty());
 }
 
 void KClientDialog::slotOk()
 {
-	QString server = m_mainWidget->serverEdit->currentText().stripWhiteSpace();
+	QString server = m_mainWidget->serverEdit->currentText().trimmed();
 	if(!server.isEmpty())
 	{
 		hide();
@@ -86,7 +86,7 @@ void KClientDialog::slotOk()
 
 void KClientDialog::slotReturnPressed(const QString &hostname)
 {
-	if(!hostname.stripWhiteSpace().isEmpty())
+	if(!hostname.trimmed().isEmpty())
 		m_mainWidget->serverEdit->addToHistory(hostname);
 	else
 		m_mainWidget->serverEdit->clearEdit();
