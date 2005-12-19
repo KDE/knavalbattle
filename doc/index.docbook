@@ -33,11 +33,11 @@
 
 <copyright>
 <year>2001</year>
-<holder>Daniel Molkentin</holder>
+<holder>&Daniel.Molkentin;</holder>
 </copyright>
 <copyright>
 <year>2001</year>
-<holder>Nikolas Zimmermann</holder>
+<holder>&Nikolas.Zimmermann;</holder>
 </copyright>
 <copyright>
 <year>2001</year>
@@ -45,7 +45,7 @@
 </copyright>
 
 
-<date>2005-02-20</date>
+<date>2005-12-14</date>
 <releaseinfo>1.1</releaseinfo>
 
 <abstract>
@@ -94,15 +94,17 @@ us. We would really like to hear of it.
 <title>Using &kbattleship;</title>
 
 <para>
-If you want to play &kbattleship;, you will need two players as it is a
-network game only. One player has to open the game via
+If you want to play &kbattleship;, you will need two players, either play
+against the computer or in a network against another player.</para>
+<para>
+In a network game one player has to open the game via
 <menuchoice><guimenu>Game</guimenu> <guimenuitem>Start
 Server</guimenuitem></menuchoice> or by pressing <keycap>F3</keycap>.
 </para>
 
 <para>
 A dialog box opens which will ask you for for a
-<guilabel>Nick name</guilabel> and <guilabel>Port</guilabel>. Normally,
+<guilabel>Nick name:</guilabel> and <guilabel>Port:</guilabel>. Normally,
 &kbattleship; will suggest your login name but you can enter any string
 you want. The predefined port should be OK. However, if you encounter
 problems, you can choose any other free ports above 1024.
@@ -117,14 +119,14 @@ to establish a connection.</para>
 <para>
 The other player has to choose <menuchoice><guimenu>Game</guimenu>
 <guimenuitem>Connect to Server</guimenuitem></menuchoice>, or press
-<keycap>F2</keycap>. Again, a <guilabel>Nick name</guilabel> is
+<keycap>F2</keycap>. Again, a <guilabel>Nick name:</guilabel> is
 suggested, but you can choose any name you like.
 </para>
 
 <para>
-An important point is the field <guilabel>Server</guilabel>. Here, you
+An important point is the field <guilabel>Server:</guilabel>. Here, you
 have to enter the host name of the server (the machine of the player
-that initiated the game). 
+that initiated the game).
 </para>
 
 <para>
@@ -155,12 +157,12 @@ Ship placement is very easy: Simply click on the field where you want to
 place your ship. The first one will have a length of four squares, the next
 will be three squares long &etc;. Click on the field where you want to start
 the placement. If you click with the &LMB; the ship will be placed horizontally,
-a &Shift;&LMB; click will cause it to be placed
+a &Shift; &LMB; click will cause it to be placed
 vertically. &Shift; itself will flip the ship placement preview.
 </para>
 
 <para>
-Now you can blindly fire on the enemy battle area. The statusbar indicates
+Now you can blindly fire with a &LMB; click on the enemy battle area. The status bar indicates
 who is about to shoot. 
 </para>
 
@@ -182,7 +184,7 @@ The first player destroying all their opponents ships wins the game!
 <menuchoice>
 <shortcut><keycap>F2</keycap></shortcut>
 <guimenu>Game</guimenu>
-<guimenuitem>Connect to server</guimenuitem>
+<guimenuitem>Connect to Server...</guimenuitem>
 </menuchoice>
 </term>
 <listitem>
@@ -197,7 +199,7 @@ The first player destroying all their opponents ships wins the game!
 <menuchoice>
 <shortcut><keycap>F3</keycap></shortcut>
 <guimenu>Game</guimenu>
-<guimenuitem>Start server</guimenuitem>
+<guimenuitem>Start Server...</guimenuitem>
 </menuchoice>
 </term>
 <listitem>
@@ -212,7 +214,7 @@ The first player destroying all their opponents ships wins the game!
 <menuchoice>
 <shortcut><keycap>F4</keycap></shortcut>
 <guimenu>Game</guimenu>
-<guimenuitem>Single player</guimenuitem>
+<guimenuitem>Single Player...</guimenuitem>
 </menuchoice>
 </term>
 <listitem>
@@ -242,7 +244,7 @@ The first player destroying all their opponents ships wins the game!
 <shortcut>
 <keycap>F11</keycap></shortcut>
 <guimenu>Game</guimenu>
-<guimenuitem>Enemy Info...</guimenuitem>
+<guimenuitem>Enemy Info</guimenuitem>
 </menuchoice></term>
 <listitem>
 <para>Show the enemy's client (might also be &Mac;), the client
@@ -372,10 +374,9 @@ Soundserver. Sound deactivated.</errorname></para>
 <answer>
 <para>&kbattleship; relies on &arts;, &kde;'s soundserver, to play any
 sound. Enable &arts; in the &kcontrolcenter; by browsing to
-<menuchoice><guisubmenu>Sound</guisubmenu>
-<guimenuitem>Sound Server</guimenuitem></menuchoice> and making sure that
-the box labelled <guilabel>Starts &arts; soundserver on &kde;
-startup</guilabel> is checked.</para>
+<menuchoice><guisubmenu>Sound &amp; Multimedia</guisubmenu>
+<guimenuitem>Sound System</guimenuitem></menuchoice> and making sure that
+the box labelled <guilabel>Enable the sound system</guilabel> is checked.</para>
 </answer>
 </qandaentry>
 
