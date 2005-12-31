@@ -20,7 +20,6 @@
 #endif
 
 //Added by qt3to4:
-#include <Q3CString>
 #include "kmessage.h"
 #include "kbattleshipclient.moc"
 
@@ -44,7 +43,7 @@ void KBattleshipClient::init()
 
 void KBattleshipClient::sendMessage(KMessage *msg)
 {
-	Q3CString post = msg->sendStream().utf8();
+	QByteArray post = msg->sendStream().utf8();
 	writeBlock(post.data(), post.length());
 	emit sigMessageSent(msg);
 }

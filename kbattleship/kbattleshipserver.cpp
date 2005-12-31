@@ -17,8 +17,6 @@
 
 #include <config.h>
 
-//Added by qt3to4:
-#include <Q3CString>
 #include <kmessagebox.h>
 #include <klocale.h>
 #include "kbattleshipserver.moc"
@@ -91,7 +89,7 @@ void KBattleshipServer::slotReadClient()
 
 void KBattleshipServer::sendMessage(KMessage *msg)
 {
-	Q3CString post = msg->sendStream().utf8();
+	QByteArray post = msg->sendStream().utf8();
 	m_serverSocket->writeBlock(post.data(), post.length());
 	emit sigMessageSent(msg);
 }
@@ -104,7 +102,7 @@ void KBattleshipServer::slotDiscardClient(const QString &reason, bool kmversion,
 		msg.addField("kmversion", "true");
 	else
 		msg.addField("kmversion", "false");
-	Q3CString post = msg.sendStream().utf8();
+	QByteArray post = msg.sendStream().utf8();
 	m_serverSocket->writeBlock(post.data(), post.length());
 	if (bemit) slotRemoveClient();
 }
