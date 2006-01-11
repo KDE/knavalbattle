@@ -663,8 +663,8 @@ void KBattleshipWindow::saveOptions()
 void KBattleshipWindow::readOptions()
 {
 	m_config->setGroup("General");
-	m_configSound->setChecked(m_config->readBoolEntry("PlaySounds", true));
-	m_configGrid->setChecked(m_config->readBoolEntry("ShowGrid", false));
+	m_configSound->setChecked(m_config->readEntry("PlaySounds", true));
+	m_configGrid->setChecked(m_config->readEntry("ShowGrid", false));
 }
 
 void KBattleshipWindow::slotHighscore()
