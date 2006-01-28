@@ -1060,7 +1060,7 @@ void KBattleshipWindow::parseCommandLine() {
 	KCmdLineArgs *args = KCmdLineArgs::parsedArgs();
         if ( args->count() > 0 )
 	{
-		KURL u( args->url(0));
+		KUrl u( args->url(0));
 		if(u.protocol().isEmpty())
 			u.setProtocol("kbattleship");
 		if( !u.isValid()) {
