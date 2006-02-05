@@ -49,12 +49,12 @@ KClientDialog::KClientDialog(QWidget *parent, const char *name)
 	connect(m_browser,SIGNAL(finished()),SLOT(nextBatch()));
 	m_browser->startBrowse();
 	connect(m_mainWidget->lanBox,SIGNAL(activated(int)),SLOT(gameSelected(int)));
-	m_mainWidget->serverEdit->completionObject()->setItems(m_config->readListEntry("CompletionList")); 
+	m_mainWidget->serverEdit->completionObject()->setItems(m_config->readEntry("CompletionList",QStringList())); 
 
 	m_mainWidget->serverEdit->setMaxCount(5);
-	m_mainWidget->serverEdit->setHistoryItems(m_config->readListEntry("HistoryList"));
+	m_mainWidget->serverEdit->setHistoryItems(m_config->readEntry("HistoryList",QStringList()));
 
-	m_mainWidget->serverEdit->setCurrentItem(m_config->readNumEntry("Index", -1));
+	m_mainWidget->serverEdit->setCurrentItem(m_config->readEntry("Index", -1));
 }
 
 KClientDialog::~KClientDialog()
