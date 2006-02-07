@@ -61,14 +61,14 @@ void KMessage::setDataStream(const QString &stream)
 {
 	m_xmlDocument.setContent(stream);
 #ifdef XMLDUMP
-	kdDebug() << "*** XML-IN ***" << endl << stream << endl << "***  END  ***" << endl;
+	kDebug() << "*** XML-IN ***" << endl << stream << endl << "***  END  ***" << endl;
 #endif
 }
 
 QString KMessage::sendStream() const
 {
 #ifdef XMLDUMP
-	kdDebug() << "*** XML OUT ***" << endl << m_xmlDocument.toString() << endl << "***  END  ***" << endl;
+	kDebug() << "*** XML OUT ***" << endl << m_xmlDocument.toString() << endl << "***  END  ***" << endl;
 #endif
 	return m_xmlDocument.toString();
 }

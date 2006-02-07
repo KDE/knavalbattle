@@ -65,7 +65,7 @@ bool KBDestroyShipStrategy::hasMoreShots()
 				return true;
 			else
 			{
-				//kdDebug << "KBDestroyShipStrategy: failed vertical search!" << endl;
+				//kDebug << "KBDestroyShipStrategy: failed vertical search!" << endl;
 				m_working = false;
 			}
 			break;
@@ -75,7 +75,7 @@ bool KBDestroyShipStrategy::hasMoreShots()
 				return true;
 			else
 			{
-				//kdDebug << "KBDestroyShipStrategy: failed horizontal search!" << endl;
+				//kDebug << "KBDestroyShipStrategy: failed horizontal search!" << endl;
 				m_working = false;
 			}
 			break;
@@ -102,7 +102,7 @@ bool KBDestroyShipStrategy::hasMoreShots()
 				return true;
 			else
 			{
-				//kdDebug << "KBDestroyStrategy: ship unsinkable?" << endl;
+				//kDebug << "KBDestroyStrategy: ship unsinkable?" << endl;
 				m_working = false;
 			}
 			break;
