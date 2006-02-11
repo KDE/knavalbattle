@@ -97,7 +97,8 @@ void KBattleshipWindow::initActions()
 {
 	KStdAction::configureNotifications(this, SLOT(slotConfigureNotifications()), actionCollection());
 	m_gameServerConnect = new KAction(i18n("&Connect to Server..."), "connect_no", Qt::Key_F2, this, SLOT(slotServerConnect()), actionCollection(), "game_serverconnect");
-	m_gameNewServer = new KAction(i18n("&Start Server..."), "network", Qt::Key_F3, this, SLOT(slotNewServer()), actionCollection(), "game_newserver");
+	m_gameNewServer = new KAction(i18n("&Start Server..."), "network", Qt::Key_F3, this, SLOT(slotNewServer()), 
+actionCollection(), "game_newserver");
 	m_gameSingle = new KAction(i18n("S&ingle Player..."), "gear", Qt::Key_F4, this, SLOT(slotSinglePlayer()), actionCollection(), "game_singleplayer");
 	m_gameQuit = KStdGameAction::quit(this, SLOT(close()), actionCollection());
 	KStdGameAction::highscores(this, SLOT(slotHighscore()), actionCollection());
@@ -311,7 +312,7 @@ void KBattleshipWindow::slotEnemyFieldClick(int fieldx, int fieldy)
 				m_shootable = false;
 				slotChangeOwnPlayer("-");
 				slotChangeEnemyPlayer("-");
-				m_gameSingle->setText(i18n("S&ingle Player"));
+				m_gameSingle->setText(i18n("S&ingle Player..."));
 				m_gameNewServer->setEnabled(true);
 				m_gameServerConnect->setEnabled(true);
 				slotStatusMsg(i18n("You won the game :)"));
@@ -434,9 +435,9 @@ void KBattleshipWindow::slotAbortNetworkGame()
 	slotChangeOwnPlayer("-");
 	slotChangeEnemyPlayer("-");
 
-	m_gameServerConnect->setText(i18n("&Connect to server"));
-	m_gameNewServer->setText(i18n("&Start server"));
-	m_gameSingle->setText(i18n("S&ingle game"));
+	m_gameServerConnect->setText(i18n("&Connect to Server..."));
+	m_gameNewServer->setText(i18n("&Start Server..."));
+	m_gameSingle->setText(i18n("S&ingle Player..."));
 	m_gameServerConnect->setEnabled(true);
 	m_gameNewServer->setEnabled(true);
 	m_gameSingle->setEnabled(true);
@@ -1219,7 +1220,7 @@ void KBattleshipWindow::slotSinglePlayer()
 			m_aiPlaying = false;
 			slotChangeOwnPlayer("-");
 			slotChangeEnemyPlayer("-");
-			m_gameSingle->setText(i18n("S&ingle Player"));
+			m_gameSingle->setText(i18n("S&ingle Player..."));
 			m_gameNewServer->setEnabled(true);
 			m_gameServerConnect->setEnabled(true);
 			slotStatusMsg(i18n("Ready"));
@@ -1238,7 +1239,7 @@ void KBattleshipWindow::slotStartBattleshipGame()
 
 void KBattleshipWindow::slotStartBattleshipGame(bool clearstat)
 {
-	m_gameSingle->setText(i18n("&Stop game"));
+	m_gameSingle->setText(i18n("&Stop Game"));
 	m_gameNewServer->setEnabled(false);
 	m_gameServerConnect->setEnabled(false);
 	slotStatusMsg(i18n("Waiting for the AI player to place the ships..."));
@@ -1301,7 +1302,7 @@ void KBattleshipWindow::slotAIShootsAt(const QPoint pos)
 		m_shootable = false;
 		slotChangeOwnPlayer("-");
 		slotChangeEnemyPlayer("-");
-		m_gameSingle->setText(i18n("S&ingle Player"));
+		m_gameSingle->setText(i18n("S&ingle Player..."));
 		m_gameNewServer->setEnabled(true);
 		m_gameServerConnect->setEnabled(true);
 		slotStatusMsg(i18n("You lost the game. :("));
