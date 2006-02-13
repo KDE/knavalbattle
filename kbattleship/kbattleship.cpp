@@ -87,8 +87,8 @@ void KBattleshipWindow::initStatusBar()
 {
 	m_ownNickname = "-";
 	m_enemyNickname = "-";
-	statusBar()->insertItem(i18n("     Player 1: %1     ").arg(m_ownNickname), ID_PLAYER_OWN, 0, true);
-	statusBar()->insertItem(i18n("     Player 2: %1     ").arg(m_enemyNickname), ID_PLAYER_ENEMY, 0, true);
+	statusBar()->insertPermanentItem(i18n("     Player 1: %1     ").arg(m_ownNickname), ID_PLAYER_OWN, 0);
+	statusBar()->insertPermanentItem(i18n("     Player 2: %1     ").arg(m_enemyNickname), ID_PLAYER_ENEMY, 0);
 	statusBar()->insertItem(i18n("Ready"), ID_STATUS_MSG, 1);
 	statusBar()->setItemAlignment(ID_STATUS_MSG, Qt::AlignLeft);
 }
