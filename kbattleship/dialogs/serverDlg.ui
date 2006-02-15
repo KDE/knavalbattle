@@ -12,7 +12,7 @@
             <height>138</height>
         </rect>
     </property>
-    <property name="caption">
+    <property name="windowTitle">
         <string>Start Server</string>
     </property>
     <property name="layoutMargin" stdset="0">
