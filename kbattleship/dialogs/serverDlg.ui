@@ -38,7 +38,7 @@
             <property name="name">
                 <cstring>portEdit</cstring>
             </property>
-            <property name="maxValue">
+            <property name="maximum">
                 <number>65000</number>
             </property>
             <property name="value">
