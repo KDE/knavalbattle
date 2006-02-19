@@ -5,32 +5,40 @@ Comment[x-test]=xxKBattleshipxx
 
 [shoot_water]
 Name=Shot at water
+Name[fr]=Tirer dans l'eau
 Name[x-test]=xxShot at waterxx
 Comment=Someone has shot at the water
+Comment[fr]=Quelqu'un a tiré dans l'eau
 Comment[x-test]=xxSomeone has shot at the waterxx
 default_sound=ship-player-shoot-water.ogg
 default_presentation=1
 
 [shoot_hit_1]
 Name=Player 1 shot
+Name[fr]=Le joueur 1 a tiré
 Name[x-test]=xxPlayer 1 shotxx
 Comment=Player 1 takes a shot
+Comment[fr]=Le joueur 1 a subi un tir
 Comment[x-test]=xxPlayer 1 takes a shotxx
 default_sound=ship-player1-shoot.ogg
 default_presentation=1
 
 [shoot_hit_2]
 Name=Player 2 shot
+Name[fr]=Le joueur 2 a tiré
 Name[x-test]=xxPlayer 2 shotxx
 Comment=Player 2 takes a shot
+Comment[fr]=Le joueur 2 a subi un tir
 Comment[x-test]=xxPlayer 2 takes a shotxx
 default_sound=ship-player2-shoot.ogg
 default_presentation=1
 
 [shoot_sink]
 Name=Sunk ship
+Name[fr]=Bateau coulé
 Name[x-test]=xxSunk shipxx
 Comment=A ship has been sunk
+Comment[fr]=Un bateau a été coulé
 Comment[x-test]=xxA ship has been sunkxx
 default_sound=ship-sink.ogg
 default_presentation=1

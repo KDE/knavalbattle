@@ -7,6 +7,7 @@ Icon=kbattleship
 Type=Application
 DocPath=kbattleship/index.html
 GenericName=Battleship Game
+GenericName[fr]=Jeu de bataille navale
 GenericName[x-test]=xxBattleship Gamexx
 Terminal=false
 X-DCOP-ServiceType=Multi
