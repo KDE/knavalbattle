@@ -27,7 +27,7 @@
 #include <qlineedit.h>
 #include <qspinbox.h>
 #include <kdialogbase.h>
-#include "dialogs/connectDlg.h"
+#include "connectDlg.h"
 
 class KClientDialog : public KDialogBase
 {

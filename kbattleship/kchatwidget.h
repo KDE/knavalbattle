@@ -23,7 +23,7 @@
 #include <qlineedit.h>
 //Added by qt3to4:
 #include <QEvent>
-#include "dialogs/chatDlg.h"
+#include "chatDlg.h"
 #include "kmessage.h"
 
 class KChatWidget : public chatDlg

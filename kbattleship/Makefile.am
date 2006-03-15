@@ -1,6 +1,6 @@
 SUBDIRS	= dialogs . pictures sounds
 
-INCLUDES = -I$(top_srcdir)/libkdegames -I$(top_srcdir)/libkdegames/highscore $(all_includes)
+INCLUDES = -I./dialogs/ -I$(top_srcdir)/libkdegames -I$(top_srcdir)/libkdegames/highscore $(all_includes)
 METASOURCES = AUTO
 
 bin_PROGRAMS = kbattleship

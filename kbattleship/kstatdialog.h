@@ -18,7 +18,7 @@
 #ifndef KSTATDIALOG_H
 #define KSTATDIALOG_H
 
-#include "dialogs/statDlg.h"
+#include "statDlg.h"
 
 class KStatDialog : public statDlg
 {

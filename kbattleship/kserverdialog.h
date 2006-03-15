@@ -25,7 +25,7 @@
 
 #include <kdialogbase.h>
 
-#include "dialogs/serverDlg.h"
+#include "serverDlg.h"
 
 
 class KServerDialog : public KDialogBase

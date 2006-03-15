@@ -30,7 +30,7 @@
 
 #include <qstring.h>
 
-#include "dialogs/infoDlg.h"
+#include "infoDlg.h"
 
 #include "kbaiplayer.h"
 #include "kbattleshipclient.h"
