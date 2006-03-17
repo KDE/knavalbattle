@@ -1,4 +1,5 @@
 kde4_header()
+project(kbattleship)
 
 add_subdirectory( kbattleship ) 
 
