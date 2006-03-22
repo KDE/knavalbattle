@@ -49,7 +49,7 @@ kde4_automoc(${kbattleship_SRCS})
 
 kde4_add_executable(kbattleship ${kbattleship_SRCS})
 
-target_link_libraries(kbattleship  ${KDE4_KDEUI_LIBRARIES} kdegames kdnssd )
+target_link_libraries(kbattleship  ${KDE4_KDEUI_LIBS} kdegames kdnssd )
 
 install_targets(/bin kbattleship )
 
