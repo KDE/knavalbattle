@@ -922,7 +922,7 @@ void KBattleshipWindow::slotLost(KMessage *msg)
 void KBattleshipWindow::slotSendEnemyFieldState(int fieldx, int fieldy)
 {
 	int data, showstate;
-	bool xokay = false, yokay = false;
+	bool xokay = false, yokay = false, is_kill = false;
 	typedef QValueList<int> DeathValueList;
 	DeathValueList deathList;
 
@@ -987,12 +987,12 @@ void KBattleshipWindow::slotSendEnemyFieldState(int fieldx, int fieldy)
 			msg->addField(QString("ystart"), QString::number(fieldy));
 			msg->addField(QString("ystop"), QString::number(fieldy));
 			msg->addField(QString("death"), QString("true"));
+			is_kill = true;
 		}
 	}
 
 	msg->addField(QString("fieldx"), QString::number(fieldx));
 	msg->addField(QString("fieldy"), QString::number(fieldy));
-	msg->addField(QString("fieldstate"), QString::number(data));
 
 	if(xokay)
 	{
@@ -1001,6 +1001,7 @@ void KBattleshipWindow::slotSendEnemyFieldState(int fieldx, int fieldy)
 		msg->addField(QString("ystart"), QString::number(fieldy));
 		msg->addField(QString("ystop"), QString::number(fieldy));
 		msg->addField(QString("death"), QString("true"));
+		is_kill = true;
 	}
 	else if(yokay)
 	{
@@ -1009,7 +1010,18 @@ void KBattleshipWindow::slotSendEnemyFieldState(int fieldx, int fieldy)
 		msg->addField(QString("ystart"), QString::number(deathList.first()));
 		msg->addField(QString("ystop"), QString::number(deathList.last()));
 		msg->addField(QString("death"), QString("true"));
+		is_kill = true;
 	}
+
+	if(is_kill)
+		// If sunk, reveal ship type
+		msg->addField(QString("fieldstate"), QString::number(data));
+	else if(showstate == KBattleField::HIT)
+		// On non-fatal hit, keep ship type secret
+		msg->addField(QString("fieldstate"), QString::number(1));
+	else /* showstate == KBattleField::WATER */
+		// Miss
+		msg->addField(QString("fieldstate"), QString::number(99));
 
 	if(m_connection->type() == KonnectionHandling::SERVER)
 		m_kbserver->sendMessage(msg);
