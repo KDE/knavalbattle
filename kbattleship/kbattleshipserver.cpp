@@ -32,7 +32,7 @@ void KBattleshipServer::init()
 {
 	if(!listen())
 	{
-		KMessageBox::error(0L, i18n("Failed to bind to local port \"%1\"\n\nPlease check if another KBattleship server instance\nis running or another application uses this port.").arg(m_port));
+		KMessageBox::error(0L, i18n("Failed to bind to local port \"%1\"\n\nPlease check if another KBattleship server instance\nis running or another application uses this port.", m_port));
 		emit sigServerFailure();
 		return;
 	}

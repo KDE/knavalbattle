@@ -87,8 +87,8 @@ void KBattleshipWindow::initStatusBar()
 {
 	m_ownNickname = "-";
 	m_enemyNickname = "-";
-	statusBar()->insertPermanentItem(i18n("     Player 1: %1     ").arg(m_ownNickname), ID_PLAYER_OWN, 0);
-	statusBar()->insertPermanentItem(i18n("     Player 2: %1     ").arg(m_enemyNickname), ID_PLAYER_ENEMY, 0);
+	statusBar()->insertPermanentItem(i18n("     Player 1: %1     ", m_ownNickname), ID_PLAYER_OWN, 0);
+	statusBar()->insertPermanentItem(i18n("     Player 2: %1     ", m_enemyNickname), ID_PLAYER_ENEMY, 0);
 	statusBar()->insertItem(i18n("Ready"), ID_STATUS_MSG, 1);
 	statusBar()->setItemAlignment(ID_STATUS_MSG, Qt::AlignLeft);
 }
@@ -1078,15 +1078,15 @@ void KBattleshipWindow::parseCommandLine() {
 			u.setProtocol("kbattleship");
 		if( !u.isValid()) {
 			KMessageBox::sorry(this, 
-			     i18n("The URL passed to KDE Battleship '%1' is not a valid url")
-			         .arg(args->arg(0)));
+			     i18n("The URL passed to KDE Battleship '%1' is not a valid url",
+			          args->arg(0)));
 			return;
 		}
 		if( u.protocol() != "kbattleship" ) {
 			KMessageBox::sorry(this, 
 			      i18n("The URL passed to KDE Battleship '%1' is not recognised "
-			           "as a Battleship game.")
-			          .arg(args->arg(0)));
+			           "as a Battleship game.",
+			           args->arg(0)));
 			return;
 		}
 
@@ -1202,13 +1202,13 @@ void KBattleshipWindow::slotStatusMsg(const QString &text)
 void KBattleshipWindow::slotChangeOwnPlayer(const QString &text)
 {
 	statusBar()->clear();
-	statusBar()->changeItem(i18n("     Player 1: %1     ").arg(text), ID_PLAYER_OWN);
+	statusBar()->changeItem(i18n("     Player 1: %1     ", text), ID_PLAYER_OWN);
 }
 
 void KBattleshipWindow::slotChangeEnemyPlayer(const QString &text)
 {
 	statusBar()->clear();
-	statusBar()->changeItem(i18n("     Player 2: %1     ").arg(text), ID_PLAYER_ENEMY);
+	statusBar()->changeItem(i18n("     Player 2: %1     ", text), ID_PLAYER_ENEMY);
 }
 
 void KBattleshipWindow::slotSinglePlayer()

@@ -94,7 +94,7 @@ void KonnectionHandling::slotNewMessage(KMessage *msg)
 			case KMessage::DISCARD:
 				if(msg->field("kmversion") == QString("true"))
 				{
-					KMessageBox::error(0L, i18n("Connection dropped by enemy. The client's protocol implementation (%1) is not compatible with our (%2) version.").arg(msg->field("reason")).arg(protocolVersion));
+					KMessageBox::error(0L, i18n("Connection dropped by enemy. The client's protocol implementation (%1) is not compatible with our (%2) version.", msg->field("reason"), protocolVersion));
 					emit sigAbortNetworkGame();
 				}
 				else
@@ -159,7 +159,7 @@ void KonnectionHandling::slotNewMessage(KMessage *msg)
 				if(msg->field("protocolVersion") != QString::fromLatin1(protocolVersion))
 				{
 					m_kbserver->slotDiscardClient(protocolVersion, true, false);
-					KMessageBox::error(0L, i18n("Connection to client dropped. The client's protocol implementation (%1) is not compatible with our (%2) version.").arg(msg->field("protocolVersion")).arg(protocolVersion));
+					KMessageBox::error(0L, i18n("Connection to client dropped. The client's protocol implementation (%1) is not compatible with our (%2) version.", msg->field("protocolVersion"), protocolVersion));
 				}
 				else
 					emit sigClientInformation(msg->field("clientName"), msg->field("clientVersion"), msg->field("clientDescription"), msg->field("protocolVersion"));
@@ -228,7 +228,7 @@ void KonnectionHandling::slotSocketError(KNetwork::KStreamSocket::SocketError er
 			break;
 
 		default:
-			KMessageBox::error(0L, i18n("Unknown error; No: %1").arg(error));
+			KMessageBox::error(0L, i18n("Unknown error; No: %1", error));
 			break;
 	}
 
