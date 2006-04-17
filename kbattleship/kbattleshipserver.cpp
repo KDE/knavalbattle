@@ -72,11 +72,11 @@ void KBattleshipServer::slotReadClient()
 	}
 
 	char *buf = new char[len + 1];
-	m_serverSocket->readBlock(buf, len);
+	m_serverSocket->read(buf, len);
 	buf[len] = 0;
 	m_readBuffer += QString::fromUtf8(buf);
 	delete []buf;
-	int pos = m_readBuffer.find("</kmessage>");
+	int pos = m_readBuffer.indexOf("</kmessage>");
 	if(pos >= 0)
 	{
 		pos += 11; // Length of "</kmessage>"
@@ -89,8 +89,8 @@ void KBattleshipServer::slotReadClient()
 
 void KBattleshipServer::sendMessage(KMessage *msg)
 {
-	QByteArray post = msg->sendStream().utf8();
-	m_serverSocket->writeBlock(post.data(), post.length());
+	QByteArray post = msg->sendStream().toUtf8();
+	m_serverSocket->write(post.data(), post.length());
 	emit sigMessageSent(msg);
 }
 
@@ -102,8 +102,8 @@ void KBattleshipServer::slotDiscardClient(const QString &reason, bool kmversion,
 		msg.addField("kmversion", "true");
 	else
 		msg.addField("kmversion", "false");
-	QByteArray post = msg.sendStream().utf8();
-	m_serverSocket->writeBlock(post.data(), post.length());
+	QByteArray post = msg.sendStream().toUtf8();
+	m_serverSocket->write(post.data(), post.length());
 	if (bemit) slotRemoveClient();
 }
 

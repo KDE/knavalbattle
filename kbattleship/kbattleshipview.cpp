@@ -26,8 +26,8 @@
 #include "kbattleship.h"
 #include "kbattleshipview.moc"
 
-KBattleshipView::KBattleshipView(QWidget *parent, const char *name, bool draw) 
-	: QWidget(parent, name, Qt::WResizeNoErase), m_drawGrid(draw)
+KBattleshipView::KBattleshipView(QWidget *parent, bool draw) 
+	: QWidget(parent, Qt::WResizeNoErase), m_drawGrid(draw)
 {
 	setFixedSize(20 * 32 + 30, 10 * 32 + 20);
 	setBackgroundMode(Qt::NoBackground);

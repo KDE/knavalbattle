@@ -62,7 +62,7 @@ KClientDialog::~KClientDialog()
 	m_config->setGroup("History");
 	m_config->writeEntry("CompletionList", m_mainWidget->serverEdit->completionObject()->items());
 	m_config->writeEntry("HistoryList", m_mainWidget->serverEdit->historyItems());
-	m_config->writeEntry("Index", m_mainWidget->serverEdit->currentItem());
+	m_config->writeEntry("Index", m_mainWidget->serverEdit->currentIndex());
 	m_config->sync();
 }
 
@@ -81,7 +81,7 @@ void KClientDialog::slotOk()
 		emit sigConnectServer();
 	}
 	else
-		m_mainWidget->serverEdit->clearEdit();
+		m_mainWidget->serverEdit->clearEditText();
 }
 
 void KClientDialog::slotReturnPressed(const QString &hostname)
@@ -89,7 +89,7 @@ void KClientDialog::slotReturnPressed(const QString &hostname)
 	if(!hostname.trimmed().isEmpty())
 		m_mainWidget->serverEdit->addToHistory(hostname);
 	else
-		m_mainWidget->serverEdit->clearEdit();
+		m_mainWidget->serverEdit->clearEditText();
 }
 
 void KClientDialog::slotCancel()

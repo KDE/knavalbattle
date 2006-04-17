@@ -27,7 +27,7 @@ KBStrategy::~KBStrategy()
 {
   while ( !m_prevShots.empty() ) 
   {
-    m_prevShots.remove( m_prevShots.last() );
+    m_prevShots.removeAll( m_prevShots.last() );
   }
 	if (m_parent == 0 && m_viableShots != 0)
 	{

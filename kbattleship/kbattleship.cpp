@@ -132,13 +132,14 @@ void KBattleshipWindow::initShipPlacing()
 
 void KBattleshipWindow::initView()
 {
-	QWidget *dummy = new QWidget(this, "dummy");
+	QWidget *dummy = new QWidget(this);
+        dummy->setObjectName("dummy");
 	setCentralWidget(dummy);
 
 	QGridLayout *topLayout = new QGridLayout(dummy, 2, 2, 0, -1, "topLayout");
 
 	m_chat = new KChatWidget(dummy);
-	m_view = new KBattleshipView(dummy, "", m_configGrid->isChecked());
+	m_view = new KBattleshipView(dummy, m_configGrid->isChecked());
 	m_stat = new KStatDialog(dummy);
 	topLayout->setColStretch(1, 10);
 	topLayout->setRowStretch(1, 10);
@@ -1195,19 +1196,19 @@ void KBattleshipWindow::slotShowGrid()
 
 void KBattleshipWindow::slotStatusMsg(const QString &text)
 {
-	statusBar()->clear();
+	statusBar()->clearMessage();
 	statusBar()->changeItem(text, ID_STATUS_MSG);
 }
 
 void KBattleshipWindow::slotChangeOwnPlayer(const QString &text)
 {
-	statusBar()->clear();
+	statusBar()->clearMessage();
 	statusBar()->changeItem(i18n("     Player 1: %1     ", text), ID_PLAYER_OWN);
 }
 
 void KBattleshipWindow::slotChangeEnemyPlayer(const QString &text)
 {
-	statusBar()->clear();
+	statusBar()->clearMessage();
 	statusBar()->changeItem(i18n("     Player 2: %1     ", text), ID_PLAYER_ENEMY);
 }
 

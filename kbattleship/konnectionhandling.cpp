@@ -98,7 +98,7 @@ void KonnectionHandling::slotNewMessage(KMessage *msg)
 					emit sigAbortNetworkGame();
 				}
 				else
-					KMessageBox::error(0L, i18n(msg->field("reason").latin1()));
+					KMessageBox::error(0L, i18n(msg->field("reason").toLatin1()));
 				break;
 
 				// Got some informations
