@@ -32,7 +32,9 @@ KClientDialog::KClientDialog(QWidget *parent, const char *name)
  : KDialogBase(Plain, i18n("Connect to Server"), Ok|Cancel, Ok, parent, name, true, false, KGuiItem(i18n("&Connect")))
 {
 	QFrame* page = plainPage();
-	QGridLayout* pageLayout = new QGridLayout(page, 1, 1, 0, 0);
+	QGridLayout* pageLayout = new QGridLayout(page);
+	pageLayout->setMargin(0);
+	pageLayout->setSpacing(0);
 	m_mainWidget = new clientConnectDlg(page);
 	pageLayout->addWidget(m_mainWidget, 0, 0);
 
@@ -122,7 +124,7 @@ void KClientDialog::nextBatch()
 	QList<DNSSD::RemoteService::Ptr>::ConstIterator itEnd = m_browser->services().end();
 	for (QList<DNSSD::RemoteService::Ptr>::ConstIterator it = m_browser->services().begin();
 		it!=itEnd; ++it) names << (*it)->serviceName();
-	m_mainWidget->lanBox->insertStringList(names);
+	m_mainWidget->lanBox->addItems(names);
 	if (autoselect && m_mainWidget->lanBox->count()) gameSelected(0);
 }
 

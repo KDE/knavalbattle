@@ -136,16 +136,18 @@ void KBattleshipWindow::initView()
         dummy->setObjectName("dummy");
 	setCentralWidget(dummy);
 
-	QGridLayout *topLayout = new QGridLayout(dummy, 2, 2, 0, -1, "topLayout");
+	QGridLayout *topLayout = new QGridLayout(dummy);
+	topLayout->setMargin(0);
+	topLayout->setSpacing(0);
 
 	m_chat = new KChatWidget(dummy);
 	m_view = new KBattleshipView(dummy, m_configGrid->isChecked());
 	m_stat = new KStatDialog(dummy);
-	topLayout->setColStretch(1, 10);
+	topLayout->setColumnStretch(1, 10);
 	topLayout->setRowStretch(1, 10);
 	topLayout->addWidget(m_view, 0, 0);
 	topLayout->addWidget(m_stat, 0, 1);
-	topLayout->addMultiCellWidget(m_chat, 1, 1, 0, 1);
+	topLayout->addWidget(m_chat, 1, 0, 1, 2);
 
 	m_ownshiplist = new KShipList();
 	m_enemyshiplist = new KShipList();
