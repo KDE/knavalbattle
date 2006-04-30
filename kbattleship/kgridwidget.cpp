@@ -414,5 +414,5 @@ void KGridWidget::finished(QPainter &p)
 
 void KGridWidget::cleanBuffer()
 {
-	m_doubleBuffer->fill(QApplication::palette().color(QPalette::Normal, QColorGroup::Background));
+	m_doubleBuffer->fill(QApplication::palette().color(QPalette::Normal, QPalette::Background));
 }
