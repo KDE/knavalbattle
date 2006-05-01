@@ -25,6 +25,3 @@ xdg_apps_DATA = kbattleship.desktop
 rcdir = $(kde_datadir)/kbattleship
 rc_DATA = kbattleshipui.rc eventsrc
 
-messages: rc.cpp
-	$(EXTRACTRC) */*.ui >> rc.cpp
-	$(XGETTEXT) *.cpp -o $(podir)/kbattleship.pot
