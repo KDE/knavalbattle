@@ -4,17 +4,11 @@ add_subdirectory( dialogs )
 add_subdirectory( pictures ) 
 add_subdirectory( sounds ) 
 
-include_directories(${CMAKE_SOURCE_DIR}/kbattleship/kbattleship/dialogs/ ${CMAKE_SOURCE_DIR}/libkdegames ${CMAKE_SOURCE_DIR}/libkdegames/highscore ${KDE4_INCLUDE_DIR} ${QT_INCLUDES} ${CMAKE_CURRENT_SOURCE_DIR} ${CMAKE_CURRENT_BINARY_DIR}  )
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/dialogs/ ${CMAKE_SOURCE_DIR}/libkdegames ${CMAKE_SOURCE_DIR}/libkdegames/highscore ${KDE4_INCLUDE_DIR} ${QT_INCLUDES} ${CMAKE_CURRENT_SOURCE_DIR} ${CMAKE_CURRENT_BINARY_DIR}  )
 
 
 ########### next target ###############
-kde4_add_ui3_files(libkibattleship_SRCS 
-	${CMAKE_SOURCE_DIR}/kbattleship/kbattleship/dialogs/connectDlg.ui
-	${CMAKE_SOURCE_DIR}/kbattleship/kbattleship/dialogs/serverDlg.ui
-	${CMAKE_SOURCE_DIR}/kbattleship/kbattleship/dialogs/chatDlg.ui
-	${CMAKE_SOURCE_DIR}/kbattleship/kbattleship/dialogs/statDlg.ui
-	${CMAKE_SOURCE_DIR}/kbattleship/kbattleship/dialogs/infoDlg.ui
-	)
+kde4_add_ui3_files(libkibattleship_SRCS dialogs/connectDlg.ui dialogs/serverDlg.ui dialogs/chatDlg.ui dialogs/statDlg.ui dialogs/infoDlg.ui)
 
 set(kbattleship_SRCS ${libkibattleship_SRCS}
    kbaiplayer.cpp 
