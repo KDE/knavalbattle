@@ -96,13 +96,20 @@ void KBattleshipWindow::initStatusBar()
 void KBattleshipWindow::initActions()
 {
 	KStdAction::configureNotifications(this, SLOT(slotConfigureNotifications()), actionCollection());
-	m_gameServerConnect = new KAction(i18n("&Connect to Server..."), "connect_no", Qt::Key_F2, this, SLOT(slotServerConnect()), actionCollection(), "game_serverconnect");
-	m_gameNewServer = new KAction(i18n("&Start Server..."), "network", Qt::Key_F3, this, SLOT(slotNewServer()), 
-actionCollection(), "game_newserver");
-	m_gameSingle = new KAction(i18n("S&ingle Player..."), "gear", Qt::Key_F4, this, SLOT(slotSinglePlayer()), actionCollection(), "game_singleplayer");
+	m_gameServerConnect = new KAction(KIcon("connect_no"), i18n("&Connect to Server..."), actionCollection(), "game_serverconnect");
+	connect(m_gameServerConnect, SIGNAL(triggered(bool)), SLOT(slotServerConnect()));
+	m_gameServerConnect->setShortcut(Qt::Key_F2);
+	m_gameNewServer = new KAction(KIcon("network"), i18n("&Start Server..."), actionCollection(), "game_newserver");
+	connect(m_gameNewServer, SIGNAL(triggered(bool)), SLOT(slotNewServer()));
+	m_gameNewServer->setShortcut(Qt::Key_F3);
+	m_gameSingle = new KAction(KIcon("gear"), i18n("S&ingle Player..."), actionCollection(), "game_singleplayer");
+	connect(m_gameSingle, SIGNAL(triggered(bool)), SLOT(slotSinglePlayer()));
+	m_gameSingle->setShortcut(Qt::Key_F4);
 	m_gameQuit = KStdGameAction::quit(this, SLOT(close()), actionCollection());
 	KStdGameAction::highscores(this, SLOT(slotHighscore()), actionCollection());
-	m_gameEnemyInfo = new KAction(i18n("&Enemy Info"), "view_text", Qt::Key_F11, this, SLOT(slotEnemyClientInfo()), actionCollection(), "game_enemyinfo");
+	m_gameEnemyInfo = new KAction(KIcon("view_text"), i18n("&Enemy Info"), actionCollection(), "game_enemyinfo");
+	connect(m_gameEnemyInfo, SIGNAL(triggered(bool)), SLOT(slotEnemyClientInfo()));
+	m_gameEnemyInfo->setShortcut(Qt::Key_F11);
 
 	m_configSound = new KToggleAction(i18n("&Play Sounds"), actionCollection(), "options_configure_sound");
 	m_configGrid = new KToggleAction(i18n("&Show Grid"),0, this, SLOT(slotShowGrid()), actionCollection(), "options_show_grid");
