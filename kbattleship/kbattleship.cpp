@@ -30,7 +30,7 @@
 #include <kcmdlineargs.h>
 #include <kmessagebox.h>
 #include <kuser.h>
-
+#include <ktoggleaction.h>
 #include <kscoredialog.h>
 #include <kglobal.h>
 
