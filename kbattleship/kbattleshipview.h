@@ -22,8 +22,8 @@
 
 #include <qpainter.h>
 #include <q3ptrlist.h>
-#include <qstring.h>
-#include <qwidget.h>
+#include <QString>
+#include <QWidget>
 //Added by qt3to4:
 #include <QEvent>
 

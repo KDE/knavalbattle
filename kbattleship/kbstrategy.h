@@ -19,7 +19,7 @@
 #define KBSTRATEGY_H
 
 #include <qlist.h>
-#include <qpoint.h>
+#include <QPoint>
 #include "kbattlefield.h"
 
 class KBStrategy

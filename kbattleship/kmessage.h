@@ -19,7 +19,7 @@
 #define KMESSAGE_H
 
 #include <qdom.h>
-#include <qstring.h>
+#include <QString>
 
 class KMessage
 {

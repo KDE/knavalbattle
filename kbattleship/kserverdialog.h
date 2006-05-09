@@ -18,10 +18,10 @@
 #ifndef KSERVERDIALOG_H
 #define KSERVERDIALOG_H
 
-#include <qstring.h>
-#include <qpushbutton.h>
-#include <qlineedit.h>
-#include <qspinbox.h>
+#include <QString>
+#include <QPushButton>
+#include <QLineEdit>
+#include <QSpinBox>
 
 #include <kdialogbase.h>
 

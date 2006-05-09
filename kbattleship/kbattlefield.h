@@ -19,7 +19,7 @@
 #define KBATTLEFIELD_H
 
 #include <qpainter.h>
-#include <qwidget.h>
+#include <QWidget>
 
 #include "kgridwidget.h"
 

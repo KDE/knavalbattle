@@ -22,10 +22,10 @@
 #include <kconfig.h>
 #include <dnssd/servicebrowser.h>
 #include <dnssd/remoteservice.h>
-#include <qstring.h>
-#include <qpushbutton.h>
-#include <qlineedit.h>
-#include <qspinbox.h>
+#include <QString>
+#include <QPushButton>
+#include <QLineEdit>
+#include <QSpinBox>
 #include <kdialogbase.h>
 #include "connectDlg.h"
 

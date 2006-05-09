@@ -15,7 +15,7 @@
  *                                                                         *
  ***************************************************************************/
 
-#include <qlayout.h>
+#include <QLayout>
 #include <qtimer.h>
 //Added by qt3to4:
 #include <QGridLayout>

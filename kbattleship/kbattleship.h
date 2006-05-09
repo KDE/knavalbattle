@@ -28,7 +28,7 @@
 #include <kmessagebox.h>
 #include <kstdaction.h>
 
-#include <qstring.h>
+#include <QString>
 
 #include "infoDlg.h"
 

@@ -17,7 +17,7 @@
 
 #include <klocale.h>
 #include <kuser.h>
-#include <qlayout.h>
+#include <QLayout>
 //Added by qt3to4:
 #include <QGridLayout>
 

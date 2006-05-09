@@ -16,7 +16,7 @@
  ***************************************************************************/
 
 #include <qlcdnumber.h>
-#include <qlabel.h>
+#include <QLabel>
 #include "kstatdialog.moc"
 
 KStatDialog::KStatDialog(QWidget *parent, const char *name) : statDlg(parent, name)
