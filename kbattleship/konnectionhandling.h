@@ -21,7 +21,7 @@
 #include <klocale.h>
 #include <kmessagebox.h>
 
-#include <qobject.h>
+#include <QObject>
 
 #include "kbattleshipclient.h"
 #include "kbattleshipserver.h"

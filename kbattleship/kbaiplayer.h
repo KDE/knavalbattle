@@ -18,7 +18,7 @@
 #ifndef KBAIPLAYER_H
 #define KBAIPLAYER_H
 
-#include <qobject.h>
+#include <QObject>
 
 #include <krandomsequence.h>
 
