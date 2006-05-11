@@ -4,7 +4,7 @@ add_subdirectory( dialogs )
 add_subdirectory( pictures ) 
 add_subdirectory( sounds ) 
 
-include_directories(${CMAKE_CURRENT_SOURCE_DIR}/dialogs/ ${CMAKE_SOURCE_DIR}/libkdegames ${CMAKE_SOURCE_DIR}/libkdegames/highscore ${KDE4_INCLUDE_DIR} ${QT_INCLUDES} ${CMAKE_CURRENT_SOURCE_DIR} ${CMAKE_CURRENT_BINARY_DIR}  )
+include_directories(dialogs/ ${CMAKE_SOURCE_DIR}/libkdegames ${CMAKE_SOURCE_DIR}/libkdegames/highscore  )
 
 
 ########### next target ###############
