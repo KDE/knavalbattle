@@ -1,4 +1,3 @@
-kde4_header()
 
 add_subdirectory( dialogs ) 
 add_subdirectory( pictures ) 
@@ -51,7 +50,6 @@ install_files( ${XDG_APPS_DIR} FILES kbattleship.desktop )
 install_files( ${DATA_INSTALL_DIR}/kbattleship FILES kbattleshipui.rc eventsrc )
 install_files( ${DATA_INSTALL_DIR}/zeroconf FILES _kbattleship._tcp )
 
-kde4_footer()
 
 
 
