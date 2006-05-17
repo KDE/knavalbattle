@@ -34,6 +34,7 @@
 #include <kscoredialog.h>
 #include <kglobal.h>
 
+#include "ui_infoDlg.h"
 
 #include "kbattleship.moc"
 
@@ -690,14 +691,16 @@ void KBattleshipWindow::slotHighscore()
 
 void KBattleshipWindow::slotEnemyClientInfo()
 {
-	KInfoDialog *m_info = new KInfoDialog(this);
+	QDialog m_info(this);
+	Ui::KInfoDialog ui;
+	ui.setupUi(&m_info);
 
-	m_info->lbl_clientIdentfier->setText(m_enemyClient);
-	m_info->lbl_clientVersion->setText(m_enemyClientVersion);
-	m_info->lbl_ClientInformation->setText(m_enemyClientDescription);
-	m_info->lbl_ProtocolVersion->setText(m_enemyProtocolVersion);
+	ui.lbl_clientIdentfier->setText(m_enemyClient);
+	ui.lbl_clientVersion->setText(m_enemyClientVersion);
+	ui.lbl_ClientInformation->setText(m_enemyClientDescription);
+	ui.lbl_ProtocolVersion->setText(m_enemyProtocolVersion);
 
-	m_info->show();
+	m_info.show();
 }
 
 void KBattleshipWindow::slotServerConnect()

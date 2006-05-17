@@ -27,7 +27,8 @@
 #include <QLineEdit>
 #include <QSpinBox>
 #include <kdialogbase.h>
-#include "connectDlg.h"
+
+class ClientConnectDlg;
 
 class KClientDialog : public KDialogBase
 {
@@ -55,7 +56,7 @@ signals:
 private:
 	KConfig *m_config;
 	DNSSD::ServiceBrowser *m_browser;
-	clientConnectDlg *m_mainWidget;
+	ClientConnectDlg *m_mainWidget;
 };
 
 #endif

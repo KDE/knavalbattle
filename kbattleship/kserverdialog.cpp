@@ -22,6 +22,16 @@
 #include <QGridLayout>
 
 #include "kserverdialog.h"
+#include "ui_serverDlg.h"
+
+class ServerStartDlg: public QWidget, public Ui::serverStartDlg
+{
+public:
+	ServerStartDlg(QWidget* parent) : QWidget(parent)
+	{
+		setupUi(this);
+	}
+};
 
 KServerDialog::KServerDialog(QWidget *parent, const char *name) : 
 	KDialogBase(Plain, i18n("Start Server"), Ok|Cancel, Ok, parent, name, true, false, KGuiItem(i18n("&Start")))
@@ -30,7 +40,7 @@ KServerDialog::KServerDialog(QWidget *parent, const char *name) :
 	QGridLayout* pageLayout = new QGridLayout(page);
 	pageLayout->setMargin(0);
         pageLayout->setSpacing(0);
-	m_mainWidget = new serverStartDlg(page);
+	m_mainWidget = new ServerStartDlg(page);
 	pageLayout->addWidget(m_mainWidget, 0, 0);
 	
 	KUser u;

@@ -28,6 +28,17 @@
 #include "kbattleshipserver.h" // for BATTLESHIP_SERVICE
 #include "kclientdialog.moc"
 
+#include "ui_connectDlg.h"
+
+class ClientConnectDlg: public QWidget, public Ui::clientConnectDlg
+{
+public:
+	ClientConnectDlg(QWidget* parent) : QWidget(parent)
+	{
+		setupUi(this);
+	}
+};
+
 KClientDialog::KClientDialog(QWidget *parent, const char *name) 
  : KDialogBase(Plain, i18n("Connect to Server"), Ok|Cancel, Ok, parent, name, true, false, KGuiItem(i18n("&Connect")))
 {
@@ -35,7 +46,7 @@ KClientDialog::KClientDialog(QWidget *parent, const char *name)
 	QGridLayout* pageLayout = new QGridLayout(page);
 	pageLayout->setMargin(0);
 	pageLayout->setSpacing(0);
-	m_mainWidget = new clientConnectDlg(page);
+	m_mainWidget = new ClientConnectDlg(page);
 	pageLayout->addWidget(m_mainWidget, 0, 0);
 
 	enableButtonOK(false);

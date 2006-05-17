@@ -23,14 +23,14 @@
 #include <QLineEdit>
 //Added by qt3to4:
 #include <QEvent>
-#include "chatDlg.h"
 #include "kmessage.h"
+#include "ui_chatDlg.h"
 
-class KChatWidget : public chatDlg
+class KChatWidget : public QWidget, public Ui::chatDlg
 {
 	Q_OBJECT
 public:
-	KChatWidget(QWidget *parent = 0, const char *name = 0);
+	KChatWidget(QWidget *parent = 0);
 
 	void clear();
 	void setNickname(const QString &nickname) { m_currentNickname = nickname; }
@@ -46,7 +46,7 @@ signals:
 	void sigChangeOwnNickname(const QString &);
 
 private:
-	virtual bool eventFilter(QObject *, QEvent *);
+	bool eventFilter(QObject *, QEvent *);
 
 	QString m_currentNickname;
 	bool m_acceptMsgs;

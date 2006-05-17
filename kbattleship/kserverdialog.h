@@ -25,8 +25,7 @@
 
 #include <kdialogbase.h>
 
-#include "serverDlg.h"
-
+class ServerStartDlg;
 
 class KServerDialog : public KDialogBase
 {
@@ -43,7 +42,7 @@ public slots:
 	virtual void slotCancel();
 
 private:
-	serverStartDlg *m_mainWidget;
+        ServerStartDlg *m_mainWidget;
 };
 
 #endif

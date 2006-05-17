@@ -20,8 +20,10 @@
 //Added by qt3to4:
 #include <QEvent>
 
-KChatWidget::KChatWidget(QWidget *parent, const char *name) : chatDlg(parent, name)
+KChatWidget::KChatWidget(QWidget *parent) 
+    : QWidget(parent)
 {
+        setupUi(this);
 	connect(sendBtn, SIGNAL(clicked()), this, SLOT(slotComputeMessage()));
 	connect(commentEdit, SIGNAL(returnPressed()), this, SLOT(slotComputeMessage()));
 	chatView->setFocusProxy(commentEdit);
@@ -68,7 +70,7 @@ bool KChatWidget::eventFilter(QObject *obj, QEvent *e)
 		kapp->notify(chatView, e);
 		return true;
 	}
-	return chatDlg::eventFilter(obj, e);
+	return QWidget::eventFilter(obj, e);
 }
 
 void KChatWidget::slotComputeMessage()

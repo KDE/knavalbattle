@@ -1,91 +1,79 @@
-<!DOCTYPE UI><UI version="3.3" stdsetdef="1">
-<class>chatDlg</class>
-<widget class="QWidget">
-    <property name="name">
-        <cstring>chatDlg</cstring>
-    </property>
-    <property name="geometry">
-        <rect>
-            <x>0</x>
-            <y>0</y>
-            <width>252</width>
-            <height>236</height>
-        </rect>
-    </property>
-    <property name="windowTitle">
-        <string>Chat Widget</string>
-    </property>
-    <hbox>
-        <property name="name">
-            <cstring>unnamed</cstring>
-        </property>
-        <property name="margin">
-            <number>5</number>
-        </property>
-        <property name="spacing">
-            <number>3</number>
-        </property>
-        <widget class="QLayoutWidget">
-            <property name="name">
-                <cstring>layouter</cstring>
-            </property>
-            <grid>
-                <property name="name">
-                    <cstring>unnamed</cstring>
-                </property>
-                <property name="margin">
-                    <number>0</number>
-                </property>
-                <property name="spacing">
-                    <number>6</number>
-                </property>
-                <widget class="QLineEdit" row="2" column="0">
-                    <property name="name">
-                        <cstring>commentEdit</cstring>
-                    </property>
-                    <property name="toolTip" stdset="0">
-                        <string>Enter a message here</string>
-                    </property>
-                </widget>
-                <widget class="QPushButton" row="2" column="1">
-                    <property name="name">
-                        <cstring>sendBtn</cstring>
-                    </property>
-                    <property name="text">
-                        <string>&amp;Send</string>
-                    </property>
-                    <property name="default">
-                        <bool>true</bool>
-                    </property>
-                    <property name="toolTip" stdset="0">
-                        <string>Press here to send the message</string>
-                    </property>
-                    <property name="whatsThis" stdset="0">
-                        <string></string>
-                    </property>
-                </widget>
-                <widget class="QMultiLineEdit" row="1" column="0" rowspan="1" colspan="2">
-                    <property name="name">
-                        <cstring>chatView</cstring>
-                    </property>
-                    <property name="wordWrap">
-                        <enum>WidgetWidth</enum>
-                    </property>
-                    <property name="readOnly">
-                        <bool>true</bool>
-                    </property>
-                </widget>
-                <widget class="QLabel" row="0" column="0">
-                    <property name="name">
-                        <cstring>chatLabel</cstring>
-                    </property>
-                    <property name="text">
-                        <string>Chat dialog:</string>
-                    </property>
-                </widget>
-            </grid>
-        </widget>
-    </hbox>
-</widget>
-<layoutdefaults spacing="6" margin="11"/>
-</UI>
+<ui version="4.0" >
+ <author></author>
+ <comment></comment>
+ <exportmacro></exportmacro>
+ <class>chatDlg</class>
+ <widget class="QWidget" name="chatDlg" >
+  <property name="geometry" >
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>257</width>
+    <height>246</height>
+   </rect>
+  </property>
+  <property name="windowTitle" >
+   <string>Form</string>
+  </property>
+  <layout class="QHBoxLayout" >
+   <property name="margin" >
+    <number>3</number>
+   </property>
+   <property name="spacing" >
+    <number>3</number>
+   </property>
+   <item>
+    <layout class="QGridLayout" >
+     <property name="margin" >
+      <number>0</number>
+     </property>
+     <property name="spacing" >
+      <number>6</number>
+     </property>
+     <item row="2" column="0" >
+      <widget class="QLineEdit" name="commentEdit" >
+       <property name="toolTip" >
+        <string>Enter a message here</string>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="1" >
+      <widget class="QPushButton" name="sendBtn" >
+       <property name="toolTip" >
+        <string>Press here to send the message</string>
+       </property>
+       <property name="text" >
+        <string>&amp;Send</string>
+       </property>
+       <property name="default" >
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="0" >
+      <widget class="QLabel" name="chatLabel" >
+       <property name="text" >
+        <string>Chat Dialog:</string>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="0" colspan="2" >
+      <widget class="Q3MultiLineEdit" name="chatView" />
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <pixmapfunction></pixmapfunction>
+ <customwidgets>
+  <customwidget>
+   <class>Q3MultiLineEdit</class>
+   <extends>Q3TextEdit</extends>
+   <header>q3multilineedit.h</header>
+   <container>0</container>
+   <pixmap></pixmap>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections/>
+</ui>

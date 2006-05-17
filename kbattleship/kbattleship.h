@@ -30,8 +30,6 @@
 
 #include <QString>
 
-#include "infoDlg.h"
-
 #include "kbaiplayer.h"
 #include "kbattleshipclient.h"
 #include "kbattleshipserver.h"
