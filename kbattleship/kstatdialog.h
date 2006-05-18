@@ -18,13 +18,13 @@
 #ifndef KSTATDIALOG_H
 #define KSTATDIALOG_H
 
-#include "statDlg.h"
+#include "ui_statDlg.h"
 
-class KStatDialog : public statDlg
+class KStatDialog : public QWidget, public Ui::statDlg
 {
 	Q_OBJECT
 public:
-	KStatDialog(QWidget *parent = 0, const char *name = 0);
+	KStatDialog(QWidget *parent = 0);
 
 	void setShot();
 	void setShot(int shot);

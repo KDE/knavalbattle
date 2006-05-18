@@ -67,7 +67,7 @@ KClientDialog::KClientDialog(QWidget *parent, const char *name)
 	m_mainWidget->serverEdit->setMaxCount(5);
 	m_mainWidget->serverEdit->setHistoryItems(m_config->readEntry("HistoryList",QStringList()));
 
-	m_mainWidget->serverEdit->setCurrentItem(m_config->readEntry("Index", -1));
+	m_mainWidget->serverEdit->setCurrentIndex(m_config->readEntry("Index", -1));
 }
 
 KClientDialog::~KClientDialog()

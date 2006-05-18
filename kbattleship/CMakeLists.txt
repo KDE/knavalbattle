@@ -7,8 +7,12 @@ include_directories(dialogs/ ${CMAKE_SOURCE_DIR}/libkdegames ${CMAKE_SOURCE_DIR}
 
 
 ########### next target ###############
-kde4_add_ui3_files(kbattleship_SRCS  dialogs/statDlg.ui )
-kde4_add_ui_files(kbattleship_SRCS dialogs/connectDlg.ui dialogs/serverDlg.ui dialogs/chatDlg.ui dialogs/infoDlg.ui)
+kde4_add_ui_files(kbattleship_SRCS 
+   dialogs/statDlg.ui 
+   dialogs/connectDlg.ui 
+   dialogs/serverDlg.ui 
+   dialogs/chatDlg.ui 
+   dialogs/infoDlg.ui)
 
 set(kbattleship_SRCS ${kbattleship_SRCS}
    kbaiplayer.cpp 
