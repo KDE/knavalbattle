@@ -23,11 +23,11 @@
 #include <QLineEdit>
 #include <QSpinBox>
 
-#include <kdialogbase.h>
+#include <kdialog.h>
 
 class ServerStartDlg;
 
-class KServerDialog : public KDialogBase
+class KServerDialog : public KDialog
 {
 	Q_OBJECT
 public:

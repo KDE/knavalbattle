@@ -40,9 +40,15 @@ public:
 };
 
 KClientDialog::KClientDialog(QWidget *parent, const char *name) 
- : KDialogBase(Plain, i18n("Connect to Server"), Ok|Cancel, Ok, parent, name, true, false, KGuiItem(i18n("&Connect")))
+ : KDialog(parent)
 {
-	QFrame* page = plainPage();
+	setCaption(i18n("Connect to Server"));
+	setButtons(Ok|Cancel);
+	setDefaultButton(Ok);
+	setModal(true);
+	setButtonGuiItem(Ok,KGuiItem(i18n("&Connect")));
+	QFrame* page = new QFrame(this);
+	setMainWidget(page);
 	QGridLayout* pageLayout = new QGridLayout(page);
 	pageLayout->setMargin(0);
 	pageLayout->setSpacing(0);

@@ -34,9 +34,15 @@ public:
 };
 
 KServerDialog::KServerDialog(QWidget *parent, const char *name) : 
-	KDialogBase(Plain, i18n("Start Server"), Ok|Cancel, Ok, parent, name, true, false, KGuiItem(i18n("&Start")))
+	KDialog(parent)
 {
-	QFrame* page = plainPage();
+	setCaption(i18n("Start Server"));
+	setButtons(Ok|Cancel);
+	setDefaultButton(Ok);
+	setButtonGuiItem(Ok,KGuiItem(i18n("&Start")));
+	setModal(true);
+	QFrame* page = new QFrame(this);
+	setMainWidget(page);
 	QGridLayout* pageLayout = new QGridLayout(page);
 	pageLayout->setMargin(0);
         pageLayout->setSpacing(0);

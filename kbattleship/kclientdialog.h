@@ -26,11 +26,11 @@
 #include <QPushButton>
 #include <QLineEdit>
 #include <QSpinBox>
-#include <kdialogbase.h>
+#include <kdialog.h>
 
 class ClientConnectDlg;
 
-class KClientDialog : public KDialogBase
+class KClientDialog : public KDialog
 {
 	Q_OBJECT
 public:
