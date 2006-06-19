@@ -61,6 +61,7 @@ GenericName[sr@Latn]=Igra podmornica
 GenericName[sv]=Sänka fartyg spel
 GenericName[ta]=போர்த்தள விளையாட்டு
 GenericName[uk]=Гра в морський бій
+GenericName[zh_TW]=戰艦遊戲
 Terminal=false
 X-DCOP-ServiceType=Multi
 Categories=Qt;KDE;Game;StrategyGame;
