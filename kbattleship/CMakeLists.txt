@@ -51,9 +51,9 @@ install_targets(/bin kbattleship )
 
 ########### install files ###############
 
-install_files( ${XDG_APPS_DIR} FILES kbattleship.desktop )
-install_files( ${DATA_INSTALL_DIR}/kbattleship FILES kbattleshipui.rc eventsrc )
-install_files( ${DATA_INSTALL_DIR}/zeroconf FILES _kbattleship._tcp )
+install( FILES kbattleship.desktop  DESTINATION  ${XDG_APPS_DIR} )
+install( FILES kbattleshipui.rc eventsrc  DESTINATION  ${DATA_INSTALL_DIR}/kbattleship )
+install( FILES _kbattleship._tcp  DESTINATION  ${DATA_INSTALL_DIR}/zeroconf )
 
 
 
