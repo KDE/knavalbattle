@@ -52,7 +52,7 @@ int main(int argc, char *argv[])
 	KGlobal::locale()->insertCatalog("libkdegames");
 
 	QString picDirCheck = KStandardDirs::locate("data", "kbattleship/pictures/");
-	QString onePicCheck = locate("data", "kbattleship/pictures/hit.png");
+	QString onePicCheck = KStandardDirs::locate("data", "kbattleship/pictures/hit.png");
 	if(picDirCheck.isEmpty() || onePicCheck.isEmpty())
 	{
 		KMessageBox::error(0, i18n("You don't have KBattleship pictures installed. The game cannot run without them!"));
