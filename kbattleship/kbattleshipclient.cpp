@@ -15,9 +15,9 @@
  *                                                                         *
  ***************************************************************************/
 
-#ifdef HAVE_CONFIG_H
+
 #include <config.h>
-#endif
+
 
 //Added by qt3to4:
 #include "kmessage.h"
