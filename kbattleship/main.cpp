@@ -51,7 +51,7 @@ int main(int argc, char *argv[])
 	KApplication app;
 	KGlobal::locale()->insertCatalog("libkdegames");
 
-	QString picDirCheck = locate("data", "kbattleship/pictures/");
+	QString picDirCheck = KStandardDirs::locate("data", "kbattleship/pictures/");
 	QString onePicCheck = locate("data", "kbattleship/pictures/hit.png");
 	if(picDirCheck.isEmpty() || onePicCheck.isEmpty())
 	{

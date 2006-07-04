@@ -24,7 +24,7 @@ KStatDialog::KStatDialog(QWidget *parent) : QWidget(parent)
 {
 	setupUi(this);
 	pShots->setPixmap(QPixmap(KStandardDirs::locate("data","kbattleship/pictures/stat-shots.png")));
-	pHits->setPixmap(QPixmap(locate("data","kbattleship/pictures/stat-hits.png")));
+	pHits->setPixmap(QPixmap(KStandardDirs::locate("data","kbattleship/pictures/stat-hits.png")));
 	pWater->setPixmap(QPixmap(locate("data","kbattleship/pictures/stat-water.png")));
 }
 

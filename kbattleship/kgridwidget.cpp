@@ -403,7 +403,7 @@ void KGridWidget::drawIcon(const QPixmap &icon, bool hitBlend, bool waterBlend, 
 
 QString KGridWidget::findIcon(const QString &name) const
 {
-	return locate("data", "kbattleship/pictures/" + name);
+	return KStandardDirs::locate("data", "kbattleship/pictures/" + name);
 }
 
 void KGridWidget::finished(QPainter &p)
