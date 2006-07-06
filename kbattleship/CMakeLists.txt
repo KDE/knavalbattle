@@ -46,7 +46,7 @@ kde4_add_executable(kbattleship ${kbattleship_SRCS})
 
 target_link_libraries(kbattleship  ${KDE4_KDEUI_LIBS} kdegames kdnssd )
 
-install_targets(/bin kbattleship )
+install(TARGETS kbattleship  DESTINATION ${BIN_INSTALL_DIR} )
 
 
 ########### install files ###############
