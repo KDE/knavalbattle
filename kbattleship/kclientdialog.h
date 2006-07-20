@@ -18,23 +18,21 @@
 #ifndef KCLIENTDIALOG_H
 #define KCLIENTDIALOG_H
 
-#include <kapplication.h>
-#include <kconfig.h>
-#include <dnssd/servicebrowser.h>
-#include <dnssd/remoteservice.h>
-#include <QString>
-#include <QPushButton>
-#include <QLineEdit>
-#include <QSpinBox>
 #include <kdialog.h>
 
 class ClientConnectDlg;
+class KConfig;
+
+namespace DNSSD
+{
+   class ServiceBrowser;
+}
 
 class KClientDialog : public KDialog
 {
 	Q_OBJECT
 public:
-	KClientDialog(QWidget *parent = 0, const char *name = 0);
+	KClientDialog(QWidget *parent = 0);
 	~KClientDialog();
 
 	QString port() const;

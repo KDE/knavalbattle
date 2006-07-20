@@ -18,8 +18,6 @@
 #include <klocale.h>
 #include <kuser.h>
 #include <QLayout>
-//Added by qt3to4:
-#include <QGridLayout>
 
 #include "kserverdialog.h"
 #include "ui_serverDlg.h"
@@ -33,7 +31,7 @@ public:
 	}
 };
 
-KServerDialog::KServerDialog(QWidget *parent, const char *name) : 
+KServerDialog::KServerDialog(QWidget *parent) : 
 	KDialog(parent)
 {
 	setCaption(i18n("Start Server"));

@@ -15,15 +15,14 @@
  *                                                                         *
  ***************************************************************************/
 
-#include <QString>
-#include <qglobal.h>
-//Added by qt3to4:
 #include <QGridLayout>
+#include <dnssd/servicebrowser.h>
+#include <dnssd/remoteservice.h>
 #include <kdebug.h>
+#include <kconfig.h>
 #include <klocale.h>
 #include <kcombobox.h>
 #include <kuser.h>
-#include <QLayout>
 #include <kglobal.h>
 #include "kbattleshipserver.h" // for BATTLESHIP_SERVICE
 #include "kclientdialog.moc"
@@ -39,7 +38,7 @@ public:
 	}
 };
 
-KClientDialog::KClientDialog(QWidget *parent, const char *name) 
+KClientDialog::KClientDialog(QWidget *parent) 
  : KDialog(parent)
 {
 	setCaption(i18n("Connect to Server"));

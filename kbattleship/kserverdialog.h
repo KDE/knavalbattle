@@ -18,11 +18,6 @@
 #ifndef KSERVERDIALOG_H
 #define KSERVERDIALOG_H
 
-#include <QString>
-#include <QPushButton>
-#include <QLineEdit>
-#include <QSpinBox>
-
 #include <kdialog.h>
 
 class ServerStartDlg;
@@ -31,7 +26,7 @@ class KServerDialog : public KDialog
 {
 	Q_OBJECT
 public:
-	KServerDialog(QWidget *parent = 0, const char *name = 0);
+	KServerDialog(QWidget *parent = 0);
 
 	QString port() const;
 	QString nickname() const;
