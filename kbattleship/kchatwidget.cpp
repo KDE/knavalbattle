@@ -17,7 +17,7 @@
 
 #include <kapplication.h>
 #include "kchatwidget.moc"
-//Added by qt3to4:
+#include <QTextEdit>
 #include <QEvent>
 
 KChatWidget::KChatWidget(QWidget *parent) 
@@ -60,7 +60,7 @@ void KChatWidget::slotReceivedMessage(const QString &nickname, const QString &ms
 			emit sigChangeOwnNickname(msg.mid(6));
 	else
 		chatView->append(nickname + QString(": ") + msg);
-	chatView->setCursorPosition(chatView->numLines(), 0);
+        chatView->moveCursor(QTextCursor::End);
 }
 
 bool KChatWidget::eventFilter(QObject *obj, QEvent *e)

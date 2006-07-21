@@ -15,15 +15,16 @@
  *                                                                         *
  ***************************************************************************/
 
-#include <qevent.h>
 #include <QLayout>
-//Added by qt3to4:
 #include <QMouseEvent>
 #include <QKeyEvent>
 
 #include <klocale.h>
 #include <kdebug.h>
 #include "kbattleship.h"
+#include "kbattlefield.h"
+#include "kshiplist.h"
+#include "kmessage.h"
 #include "kbattleshipview.moc"
 
 KBattleshipView::KBattleshipView(QWidget *parent, bool draw) 

@@ -15,9 +15,7 @@
  *                                                                         *
  ***************************************************************************/
 
-#include <QLayout>
 #include <QTimer>
-//Added by qt3to4:
 #include <QGridLayout>
 
 #include <kgamemisc.h>
@@ -26,6 +24,7 @@
 #include <knotifydialog.h>
 #include <kstandarddirs.h>
 #include <kstatusbar.h>
+#include <kstdaction.h>
 #include <kstdgameaction.h>
 #include <kcmdlineargs.h>
 #include <kmessagebox.h>
@@ -33,8 +32,18 @@
 #include <ktoggleaction.h>
 #include <kscoredialog.h>
 #include <kglobal.h>
+#include <kconfig.h>
 
 #include "ui_infoDlg.h"
+
+#include "kbaiplayer.h"
+#include "kmessage.h"
+#include "kchatwidget.h"
+#include "kbattleshipview.h"
+#include "kstatdialog.h"
+#include "konnectionhandling.h"
+#include "kclientdialog.h"
+#include "kserverdialog.h"
 
 #include "kbattleship.moc"
 

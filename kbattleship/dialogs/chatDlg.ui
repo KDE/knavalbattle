@@ -1,7 +1,4 @@
 <ui version="4.0" >
- <author></author>
- <comment></comment>
- <exportmacro></exportmacro>
  <class>chatDlg</class>
  <widget class="QWidget" name="chatDlg" >
   <property name="geometry" >
@@ -58,22 +55,12 @@
       </widget>
      </item>
      <item row="1" column="0" colspan="2" >
-      <widget class="Q3MultiLineEdit" name="chatView" />
+      <widget class="QTextEdit" name="chatView" />
      </item>
     </layout>
    </item>
   </layout>
  </widget>
- <pixmapfunction></pixmapfunction>
- <customwidgets>
-  <customwidget>
-   <class>Q3MultiLineEdit</class>
-   <extends>Q3TextEdit</extends>
-   <header>q3multilineedit.h</header>
-   <container>0</container>
-   <pixmap></pixmap>
-  </customwidget>
- </customwidgets>
  <resources/>
  <connections/>
 </ui>

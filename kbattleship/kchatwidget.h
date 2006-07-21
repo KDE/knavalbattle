@@ -18,11 +18,6 @@
 #ifndef KCHATWIDGET_H
 #define KCHATWIDGET_H
 
-#include <QPushButton>
-#include <q3multilineedit.h>
-#include <QLineEdit>
-//Added by qt3to4:
-#include <QEvent>
 #include "kmessage.h"
 #include "ui_chatDlg.h"
 

@@ -16,9 +16,11 @@
  ***************************************************************************/
 
 #include <kcmdlineargs.h>
+#include <kapplication.h>
 #include <kaboutdata.h>
 #include <klocale.h>
 #include <kstandarddirs.h>
+#include <kmessagebox.h>
 #include "kbattleship.h"
 
 extern const char *clientName, *clientVersion, *clientDescription;

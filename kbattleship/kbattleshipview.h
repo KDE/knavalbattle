@@ -18,19 +18,11 @@
 #ifndef KBATTLESHIPVIEW_H
 #define KBATTLESHIPVIEW_H
 
-#include <kmainwindow.h>
-
-#include <qpainter.h>
-#include <q3ptrlist.h>
-#include <QString>
 #include <QWidget>
-//Added by qt3to4:
-#include <QEvent>
 
-#include "kbattlefield.h"
-#include "kmessage.h"
-#include "kship.h"
-#include "kshiplist.h"
+class KBattleField;
+class KShipList;
+class KMessage;
 
 class KBattleshipView : public QWidget
 {

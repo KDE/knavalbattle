@@ -18,29 +18,21 @@
 #ifndef KBATTLESHIP_H
 #define KBATTLESHIP_H
 
-#include <kaction.h>
-#include <kapplication.h>
-#include <kconfig.h>
-#include <kiconloader.h>
-#include <klocale.h>
 #include <kmainwindow.h>
-#include <kmenubar.h>
-#include <kmessagebox.h>
-#include <kstdaction.h>
 
-#include <QString>
-
-#include "kbaiplayer.h"
-#include "kbattleshipclient.h"
-#include "kbattleshipserver.h"
-#include "kbattleshipview.h"
-#include "kchatwidget.h"
-#include "kclientdialog.h"
-#include "konnectionhandling.h"
-#include "kserverdialog.h"
-#include "kship.h"
-#include "kshiplist.h"
-#include "kstatdialog.h"
+class KShip;
+class KMessage;
+class KBAIPlayer;
+class KonnectionHandling;
+class KBattleshipClient;
+class KBattleshipServer;
+class KChatWidget;
+class KStatDialog;
+class KBattleshipView;
+class KToggleAction;
+class KClientDialog;
+class KServerDialog;
+class KShipList;
 
 class KBattleshipWindow : public KMainWindow
 {
