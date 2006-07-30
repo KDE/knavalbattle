@@ -17,10 +17,10 @@
 
 #include <QTimer>
 #include <QGridLayout>
-
+#include <knotifyconfigwidget.h>
 #include <kgamemisc.h>
 #include <kinputdialog.h>
-#include <knotifyclient.h>
+#include <knotification.h>
 #include <knotifydialog.h>
 #include <kstandarddirs.h>
 #include <kstatusbar.h>
@@ -90,7 +90,7 @@ void KBattleshipWindow::init()
 
 void KBattleshipWindow::slotConfigureNotifications()
 {
-  KNotifyDialog::configure(this);
+  KNotifyConfigWidget::configure(this);
 }
 
 void KBattleshipWindow::initStatusBar()
@@ -1069,18 +1069,19 @@ void KBattleshipWindow::playSound(bool enemy, int fieldstate)
 		switch(fieldstate)
 		{
 			case KBattleField::WATER:
-				KNotifyClient::event(winId(), "shoot_water");
+#warning "add message into knotification";
+				KNotification::event("shoot_water");
 				break;
 
 			case KBattleField::HIT:
 				if(enemy)
-					KNotifyClient::event(winId(), "shoot_hit_1");
+					KNotification::event("shoot_hit_1");
 				else
-					KNotifyClient::event(winId(), "shoot_hit_2");
+					KNotification::event("shoot_hit_2");
 				break;
 
 			case KBattleField::DEATH:
-				KNotifyClient::event(winId(), "shoot_sink");
+				KNotification::event("shoot_sink");
 				break;
 		}
 	}

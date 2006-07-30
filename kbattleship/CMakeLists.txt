@@ -44,7 +44,7 @@ kde4_automoc(${kbattleship_SRCS})
 
 kde4_add_executable(kbattleship ${kbattleship_SRCS})
 
-target_link_libraries(kbattleship  ${KDE4_KDEUI_LIBS} kdegames kdnssd )
+target_link_libraries(kbattleship  ${KDE4_KDEUI_LIBS} kdegames kdnssd knotifyconfig )
 
 install(TARGETS kbattleship  DESTINATION ${BIN_INSTALL_DIR} )
 
@@ -52,7 +52,7 @@ install(TARGETS kbattleship  DESTINATION ${BIN_INSTALL_DIR} )
 ########### install files ###############
 
 install( FILES kbattleship.desktop  DESTINATION  ${XDG_APPS_DIR} )
-install( FILES kbattleshipui.rc eventsrc  DESTINATION  ${DATA_INSTALL_DIR}/kbattleship )
+install( FILES kbattleshipui.rc kbattleship.notifyrc  DESTINATION  ${DATA_INSTALL_DIR}/kbattleship )
 install( FILES _kbattleship._tcp  DESTINATION  ${DATA_INSTALL_DIR}/zeroconf )
 
 
