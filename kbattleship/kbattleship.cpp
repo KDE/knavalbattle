@@ -18,10 +18,10 @@
 #include <QTimer>
 #include <QGridLayout>
 #include <knotifyconfigwidget.h>
+#include <kurl.h>
 #include <kgamemisc.h>
 #include <kinputdialog.h>
 #include <knotification.h>
-#include <knotifydialog.h>
 #include <kstandarddirs.h>
 #include <kstatusbar.h>
 #include <kstdaction.h>
