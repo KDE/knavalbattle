@@ -27,6 +27,7 @@
 #include <kstdaction.h>
 #include <kstdgameaction.h>
 #include <kcmdlineargs.h>
+#include <kicon.h>
 #include <kmessagebox.h>
 #include <kuser.h>
 #include <ktoggleaction.h>
