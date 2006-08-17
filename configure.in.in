@@ -1,2 +1,0 @@
-
-AC_CHECK_HEADERS(sys/filio.h stropts.h)
