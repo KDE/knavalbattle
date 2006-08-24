@@ -621,7 +621,8 @@ void KBattleshipWindow::slotSendMessage(KMessage *msg)
 			m_kbserver->sendMessage(msg);
 		else
 			m_kbclient->sendMessage(msg);
-	}
+	} else
+		delete msg; // taking ownership
 }
 
 void KBattleshipWindow::slotSendChatMessage(const QString &text)
@@ -771,19 +772,19 @@ void KBattleshipWindow::slotServerReplay()
 				slotReplay();
 				slotStatusMsg(i18n("Please place your ships. Use the \"Shift\" key to place the ships vertically."));
 				slotSendMessage(msg);
+				msg = 0;
 			}
 			else
 			{
-				delete msg;
 				slotAbortNetworkGame();
 			}
 			break;
 
 		case KMessageBox::No:
-			delete msg;
 			slotAbortNetworkGame();
 			break;
 	}
+	delete msg;	
 }
 
 void KBattleshipWindow::slotClientReplay()
@@ -797,19 +798,19 @@ void KBattleshipWindow::slotClientReplay()
 				slotReplay();
 				slotStatusMsg(i18n("Waiting for an answer..."));
 				slotSendMessage(msg);
+				msg = 0;
 			}
 			else
 			{
-				delete msg;
 				slotAbortNetworkGame();
 			}
 			break;
 
 		case KMessageBox::No:
-			delete msg;
 			slotAbortNetworkGame();
 			break;
 	}
+	delete msg;
 }
 
 void KBattleshipWindow::cleanup(bool placechange)
