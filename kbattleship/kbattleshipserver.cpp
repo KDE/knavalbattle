@@ -96,7 +96,7 @@ void KBattleshipServer::sendMessage(KMessage *msg)
 
 void KBattleshipServer::slotDiscardClient(const QString &reason, bool kmversion, bool bemit)
 {
-	KMessage msg = new KMessage(KMessage::DISCARD);
+	KMessage msg(KMessage::DISCARD);
 	msg.addField("reason", reason);
 	if(kmversion)
 		msg.addField("kmversion", "true");
