@@ -28,3 +28,11 @@ rc_DATA = kbattleshipui.rc eventsrc
 messages: rc.cpp
 	$(EXTRACTRC) */*.ui >> rc.cpp
 	$(XGETTEXT) *.cpp -o $(podir)/kbattleship.pot
+
+kbattleship.o: dialogs/infoDlg.h dialogs/chatDlg.h dialogs/connectDlg.h dialogs/serverDlg.h dialogs/statDlg.h
+kbattleshipview.o: dialogs/infoDlg.h dialogs/chatDlg.h dialogs/connectDlg.h dialogs/serverDlg.h dialogs/statDlg.h
+kchatwidget.o: dialogs/chatDlg.h
+kclientdialog.o: dialogs/connectDlg.h
+kserverdialog.o: dialogs/serverDlg.h
+kstatdialog.o: dialogs/statDlg.h
+
