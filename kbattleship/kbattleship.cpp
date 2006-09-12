@@ -125,7 +125,7 @@ void KBattleshipWindow::initActions()
 	m_configSound = new KToggleAction(i18n("&Play Sounds"), actionCollection(), "options_configure_sound");
 	m_configGrid = new KToggleAction(i18n("&Show Grid"), actionCollection(), "options_show_grid");
 	connect(m_configGrid, SIGNAL(triggered(bool) ), SLOT(slotShowGrid()));
-	m_configGrid->setCheckedState(i18n("Hide Grid"));
+	m_configGrid->setCheckedState(KGuiItem(i18n("Hide Grid")));
 
 	m_gameEnemyInfo->setEnabled(false);
 
@@ -340,7 +340,7 @@ void KBattleshipWindow::slotEnemyFieldClick(int fieldx, int fieldy)
 				slotStatusMsg(i18n("You won the game :)"));
 				m_stat->slotAddOwnWon();
 				slotUpdateHighscore();
-				switch(KMessageBox::questionYesNo(this, i18n("Do you want to restart the game?"),QString::null,i18n("Restart"),i18n("Do Not Restart")))
+				switch(KMessageBox::questionYesNo(this, i18n("Do you want to restart the game?"),QString::null,KGuiItem(i18n("Restart")),KGuiItem(i18n("Do Not Restart"))))
 				{
 					case KMessageBox::Yes:
 						QTimer::singleShot(0, this, SLOT(slotRestartAI()));
@@ -744,7 +744,7 @@ void KBattleshipWindow::slotDeleteConnectDialog()
 
 void KBattleshipWindow::slotReplayRequest()
 {
-	switch(KMessageBox::questionYesNo(this, i18n("The client is asking to restart the game. Do you accept?"),QString::null,i18n("Accept Restart"), i18n("Deny Restart")))
+	switch(KMessageBox::questionYesNo(this, i18n("The client is asking to restart the game. Do you accept?"),QString::null,KGuiItem(i18n("Accept Restart")), KGuiItem(i18n("Deny Restart"))))
 	{
 		case KMessageBox::Yes:
 			if (m_connection)
@@ -764,7 +764,7 @@ void KBattleshipWindow::slotReplayRequest()
 void KBattleshipWindow::slotServerReplay()
 {
 	KMessage *msg = new KMessage(KMessage::REPLAY);
-	switch(KMessageBox::questionYesNo(this, i18n("Do you want to restart the game?"), QString::null, i18n("Restart"), i18n("Do Not Restart")))
+	switch(KMessageBox::questionYesNo(this, i18n("Do you want to restart the game?"), QString::null, KGuiItem(i18n("Restart")), KGuiItem(i18n("Do Not Restart"))))
 	{
 		case KMessageBox::Yes:
 			if (m_connection)
@@ -790,7 +790,7 @@ void KBattleshipWindow::slotServerReplay()
 void KBattleshipWindow::slotClientReplay()
 {
 	KMessage *msg = new KMessage(KMessage::REPLAY);
-	switch(KMessageBox::questionYesNo(this, i18n("Do you want to ask the server restarting the game?"), QString::null, i18n("Ask to Restart"), i18n("Do Not Ask")))
+	switch(KMessageBox::questionYesNo(this, i18n("Do you want to ask the server restarting the game?"), QString::null, KGuiItem(i18n("Ask to Restart")), KGuiItem(i18n("Do Not Ask"))))
 	{
 		case KMessageBox::Yes:
 			if (m_connection)
@@ -1347,7 +1347,7 @@ void KBattleshipWindow::slotAIShootsAt(const QPoint pos)
 		m_stat->slotAddEnemyWon();
 		slotUpdateHighscore();
 		m_view->drawEnemyShipsAI(m_enemyshiplist); // let's show ai player ships
-		switch(KMessageBox::questionYesNo(this, i18n("Do you want to restart the game?"), QString::null, i18n("Restart"), i18n("Do Not Restart")))
+		switch(KMessageBox::questionYesNo(this, i18n("Do you want to restart the game?"), QString::null, KGuiItem(i18n("Restart")), KGuiItem(i18n("Do Not Restart"))))
 		{
 			case KMessageBox::Yes:
 				QTimer::singleShot(0, this, SLOT(slotRestartAI()));
