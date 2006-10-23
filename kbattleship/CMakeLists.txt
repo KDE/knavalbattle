@@ -40,7 +40,7 @@ set(kbattleship_SRCS ${kbattleship_SRCS}
    kbattleship.cpp 
    main.cpp )
 
-kde4_automoc(kbattleship ${kbattleship_SRCS})
+kde4_automoc(${kbattleship_SRCS})
 
 kde4_add_executable(kbattleship ${kbattleship_SRCS})
 
