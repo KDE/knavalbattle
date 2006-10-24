@@ -3,16 +3,10 @@ add_subdirectory( dialogs )
 add_subdirectory( pictures ) 
 add_subdirectory( sounds ) 
 
-include_directories(dialogs/ ${CMAKE_SOURCE_DIR}/libkdegames ${CMAKE_SOURCE_DIR}/libkdegames/highscore  )
+include_directories(dialogs/ ${CMAKE_SOURCE_DIR}/libkdegames ${CMAKE_SOURCE_DIR}/libkdegames/highscore  ) 
 
 
 ########### next target ###############
-kde4_add_ui_files(kbattleship_SRCS 
-   dialogs/statDlg.ui 
-   dialogs/connectDlg.ui 
-   dialogs/serverDlg.ui 
-   dialogs/chatDlg.ui 
-   dialogs/infoDlg.ui)
 
 set(kbattleship_SRCS ${kbattleship_SRCS}
    kbaiplayer.cpp 
@@ -39,6 +33,13 @@ set(kbattleship_SRCS ${kbattleship_SRCS}
    kbchooserstrategy.cpp 
    kbattleship.cpp 
    main.cpp )
+
+kde4_add_ui_files(kbattleship_SRCS 
+   dialogs/statDlg.ui 
+   dialogs/connectDlg.ui 
+   dialogs/serverDlg.ui 
+   dialogs/chatDlg.ui 
+   dialogs/infoDlg.ui)
 
 kde4_automoc(${kbattleship_SRCS})
 
