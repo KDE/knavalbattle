@@ -45,7 +45,7 @@ kde4_automoc(${kbattleship_SRCS})
 
 kde4_add_executable(kbattleship ${kbattleship_SRCS})
 
-target_link_libraries(kbattleship  ${KDE4_KDEUI_LIBS} kdegames ${KDE4_KDNSSD_LIBS} knotifyconfig )
+target_link_libraries(kbattleship  ${KDE4_KDEUI_LIBS} kdegames ${KDE4_KDNSSD_LIBS} ${KDE4_KNOTIFYCONFIG_LIBS} )
 
 install(TARGETS kbattleship  DESTINATION ${BIN_INSTALL_DIR} )
 
