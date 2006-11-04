@@ -9,6 +9,7 @@ include_directories(dialogs/ ${CMAKE_SOURCE_DIR}/libkdegames ${CMAKE_SOURCE_DIR}
 ########### next target ###############
 
 set(kbattleship_SRCS ${kbattleship_SRCS}
+   kbattleship.cpp
    kbaiplayer.cpp 
    kbstrategy.cpp 
    kbverticalstepstrategy.cpp 
@@ -31,7 +32,6 @@ set(kbattleship_SRCS ${kbattleship_SRCS}
    kship.cpp 
    kshiplist.cpp 
    kbchooserstrategy.cpp 
-   kbattleship.cpp 
    main.cpp )
 
 kde4_add_ui_files(kbattleship_SRCS 
