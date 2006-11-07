@@ -1071,7 +1071,9 @@ void KBattleshipWindow::playSound(bool enemy, int fieldstate)
 		switch(fieldstate)
 		{
 			case KBattleField::WATER:
-#warning "add message into knotification";
+#ifdef __GNUC__
+#warning "add message into knotification"
+#endif
 				KNotification::event("shoot_water");
 				break;
 
