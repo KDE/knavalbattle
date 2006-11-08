@@ -1,5 +1,4 @@
 
-add_subdirectory( dialogs ) 
 add_subdirectory( pictures ) 
 add_subdirectory( sounds ) 
 
