@@ -10,5 +10,5 @@ GenericName=Battleship Game
 GenericName[fr]=Jeu de bataille navale
 GenericName[x-test]=xxBattleship Gamexx
 Terminal=false
-X-DCOP-ServiceType=Multi
+X-DBUS-StartupType=Multi
 Categories=Qt;KDE;Game;StrategyGame;
