@@ -33,6 +33,7 @@ class KToggleAction;
 class KClientDialog;
 class KServerDialog;
 class KShipList;
+class KAction;
 
 class KBattleshipWindow : public KMainWindow
 {
