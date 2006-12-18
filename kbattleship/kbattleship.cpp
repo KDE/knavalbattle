@@ -24,7 +24,7 @@
 #include <knotification.h>
 #include <kstandarddirs.h>
 #include <kstatusbar.h>
-#include <kstdaction.h>
+#include <kstandardaction.h>
 #include <kstdgameaction.h>
 #include <kcmdlineargs.h>
 #include <kicon.h>
@@ -106,7 +106,7 @@ void KBattleshipWindow::initStatusBar()
 
 void KBattleshipWindow::initActions()
 {
-	KStdAction::configureNotifications(this, SLOT(slotConfigureNotifications()), actionCollection());
+	KStandardAction::configureNotifications(this, SLOT(slotConfigureNotifications()), actionCollection());
 	m_gameServerConnect = new KAction(KIcon("connect_no"), i18n("&Connect to Server..."), actionCollection(), "game_serverconnect");
 	connect(m_gameServerConnect, SIGNAL(triggered(bool)), SLOT(slotServerConnect()));
 	m_gameServerConnect->setShortcut(Qt::Key_F2);
