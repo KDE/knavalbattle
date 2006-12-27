@@ -25,7 +25,7 @@
 #include <kstandarddirs.h>
 #include <kstatusbar.h>
 #include <kstandardaction.h>
-#include <kstdgameaction.h>
+#include <kstandardgameaction.h>
 #include <kcmdlineargs.h>
 #include <kicon.h>
 #include <kmessagebox.h>
@@ -116,8 +116,8 @@ void KBattleshipWindow::initActions()
 	m_gameSingle = new KAction(KIcon("gear"), i18n("S&ingle Player..."), actionCollection(), "game_singleplayer");
 	connect(m_gameSingle, SIGNAL(triggered(bool)), SLOT(slotSinglePlayer()));
 	m_gameSingle->setShortcut(Qt::Key_F4);
-	m_gameQuit = KStdGameAction::quit(this, SLOT(close()), actionCollection());
-	KStdGameAction::highscores(this, SLOT(slotHighscore()), actionCollection());
+	m_gameQuit = KStandardGameAction::quit(this, SLOT(close()), actionCollection());
+	KStandardGameAction::highscores(this, SLOT(slotHighscore()), actionCollection());
 	m_gameEnemyInfo = new KAction(KIcon("view_text"), i18n("&Enemy Info"), actionCollection(), "game_enemyinfo");
 	connect(m_gameEnemyInfo, SIGNAL(triggered(bool)), SLOT(slotEnemyClientInfo()));
 	m_gameEnemyInfo->setShortcut(Qt::Key_F11);
