@@ -26,6 +26,7 @@
 #include <kstatusbar.h>
 #include <kstandardaction.h>
 #include <kstandardgameaction.h>
+#include <kactioncollection.h>
 #include <kcmdlineargs.h>
 #include <kicon.h>
 #include <kmessagebox.h>
@@ -106,24 +107,37 @@ void KBattleshipWindow::initStatusBar()
 
 void KBattleshipWindow::initActions()
 {
-	KStandardAction::configureNotifications(this, SLOT(slotConfigureNotifications()), actionCollection());
-	m_gameServerConnect = new KAction(KIcon("connect_no"), i18n("&Connect to Server..."), actionCollection(), "game_serverconnect");
+	QAction *action = KStandardAction::configureNotifications(this, SLOT(slotConfigureNotifications()), this);
+        actionCollection()->addAction(action->objectName(), action);
+	m_gameServerConnect = actionCollection()->addAction("game_serverconnect");
+        m_gameServerConnect->setIcon(KIcon("connect_no"));
+        m_gameServerConnect->setText(i18n("&Connect to Server..."));
 	connect(m_gameServerConnect, SIGNAL(triggered(bool)), SLOT(slotServerConnect()));
 	m_gameServerConnect->setShortcut(Qt::Key_F2);
-	m_gameNewServer = new KAction(KIcon("network"), i18n("&Start Server..."), actionCollection(), "game_newserver");
+	m_gameNewServer = actionCollection()->addAction("game_newserver");
+        m_gameNewServer->setIcon(KIcon("network"));
+        m_gameNewServer->setText(i18n("&Start Server..."));
 	connect(m_gameNewServer, SIGNAL(triggered(bool)), SLOT(slotNewServer()));
 	m_gameNewServer->setShortcut(Qt::Key_F3);
-	m_gameSingle = new KAction(KIcon("gear"), i18n("S&ingle Player..."), actionCollection(), "game_singleplayer");
+	m_gameSingle = actionCollection()->addAction("game_singleplayer");
+        m_gameSingle->setIcon(KIcon("gear"));
+        m_gameSingle->setText(i18n("S&ingle Player..."));
 	connect(m_gameSingle, SIGNAL(triggered(bool)), SLOT(slotSinglePlayer()));
 	m_gameSingle->setShortcut(Qt::Key_F4);
-	m_gameQuit = KStandardGameAction::quit(this, SLOT(close()), actionCollection());
-	KStandardGameAction::highscores(this, SLOT(slotHighscore()), actionCollection());
-	m_gameEnemyInfo = new KAction(KIcon("view_text"), i18n("&Enemy Info"), actionCollection(), "game_enemyinfo");
+	m_gameQuit = KStandardGameAction::quit(this, SLOT(close()), this);
+        actionCollection()->addAction(m_gameQuit->objectName(), m_gameQuit);
+	action = KStandardGameAction::highscores(this, SLOT(slotHighscore()), this);
+        actionCollection()->addAction(action->objectName(), action);
+	m_gameEnemyInfo = actionCollection()->addAction("game_enemyinfo");
+        m_gameEnemyInfo->setIcon(KIcon("view_text"));
+        m_gameEnemyInfo->setText(i18n("&Enemy Info"));
 	connect(m_gameEnemyInfo, SIGNAL(triggered(bool)), SLOT(slotEnemyClientInfo()));
 	m_gameEnemyInfo->setShortcut(Qt::Key_F11);
 
-	m_configSound = new KToggleAction(i18n("&Play Sounds"), actionCollection(), "options_configure_sound");
-	m_configGrid = new KToggleAction(i18n("&Show Grid"), actionCollection(), "options_show_grid");
+	m_configSound = new KToggleAction(i18n("&Play Sounds"), this);
+        actionCollection()->addAction("options_configure_sound", m_configSound);
+	m_configGrid = new KToggleAction(i18n("&Show Grid"), this);
+        actionCollection()->addAction("options_show_grid", m_configGrid);
 	connect(m_configGrid, SIGNAL(triggered(bool) ), SLOT(slotShowGrid()));
 	m_configGrid->setCheckedState(KGuiItem(i18n("Hide Grid")));
 
@@ -661,7 +675,7 @@ void KBattleshipWindow::slotUpdateHighscore()
 	double b = 0.5;
 	double score = (a * m_stat->hit() - b * m_stat->water()) / (m_stat->shot() + m_stat->water()) * 1000;
 	if(score == 0) score = 1;
-	
+
 	KScoreDialog *scoreDialog = new KScoreDialog(KScoreDialog::Name | KScoreDialog::Score | KScoreDialog::Custom1 | KScoreDialog::Custom2 | KScoreDialog::Custom3, this);
 	scoreDialog->addField(KScoreDialog::Custom1, i18n("Shots"), "shots");
 	scoreDialog->addField(KScoreDialog::Custom2, i18n("Hits"), "hits");
@@ -784,7 +798,7 @@ void KBattleshipWindow::slotServerReplay()
 			slotAbortNetworkGame();
 			break;
 	}
-	delete msg;	
+	delete msg;
 }
 
 void KBattleshipWindow::slotClientReplay()
@@ -1105,13 +1119,13 @@ void KBattleshipWindow::parseCommandLine() {
 		if(u.protocol().isEmpty())
 			u.setProtocol("kbattleship");
 		if( !u.isValid()) {
-			KMessageBox::sorry(this, 
+			KMessageBox::sorry(this,
 			     i18n("The URL passed to KDE Battleship '%1' is not a valid url",
 			          args->arg(0)));
 			return;
 		}
 		if( u.protocol() != "kbattleship" ) {
-			KMessageBox::sorry(this, 
+			KMessageBox::sorry(this,
 			      i18n("The URL passed to KDE Battleship '%1' is not recognised "
 			           "as a Battleship game.",
 			           args->arg(0)));
@@ -1119,9 +1133,9 @@ void KBattleshipWindow::parseCommandLine() {
 		}
 
 		slotConnectToBattleshipServer(u.host(), u.port(), u.user());
-		
+
 	}
-		    
+
 }
 
 void KBattleshipWindow::slotConnectToBattleshipServer()

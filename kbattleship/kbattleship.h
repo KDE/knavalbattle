@@ -33,7 +33,7 @@ class KToggleAction;
 class KClientDialog;
 class KServerDialog;
 class KShipList;
-class KAction;
+class QAction;
 
 class KBattleshipWindow : public KMainWindow
 {
@@ -114,7 +114,7 @@ private:
 	void cleanup(bool placechange = true);
 	void playSound(bool enemy, int fieldstate);
 	void parseCommandLine();
-		
+
 	bool m_placeable;
 	bool m_shootable;
 	bool m_aiPlaying;
@@ -135,11 +135,11 @@ private:
 	KChatWidget *m_chat;
 	KStatDialog *m_stat;
 	KBattleshipView *m_view;
-	KAction *m_gameServerConnect;
-	KAction *m_gameNewServer;
-	KAction *m_gameQuit;
-	KAction *m_gameEnemyInfo;
-	KAction *m_gameSingle;
+	QAction *m_gameServerConnect;
+	QAction *m_gameNewServer;
+	QAction *m_gameQuit;
+	QAction *m_gameEnemyInfo;
+	QAction *m_gameSingle;
 	KToggleAction *m_configSound;
 	KToggleAction *m_configGrid;
 	KClientDialog *m_client;
