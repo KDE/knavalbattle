@@ -73,6 +73,8 @@ KClientDialog::KClientDialog(QWidget *parent)
 	m_mainWidget->serverEdit->setHistoryItems(m_config->readEntry("HistoryList",QStringList()));
 
 	m_mainWidget->serverEdit->setCurrentIndex(m_config->readEntry("Index", -1));
+	connect(this,SIGNAL(okClicked()),this,SLOT(slotOk()));
+	connect(this,SIGNAL(cancelClicked()),this,SLOT(slotCancel()));
 }
 
 KClientDialog::~KClientDialog()

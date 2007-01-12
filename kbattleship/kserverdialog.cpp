@@ -53,6 +53,8 @@ KServerDialog::KServerDialog(QWidget *parent) :
 	QString gamename = u.fullName();
 	if(gamename.isEmpty()) gamename = u.loginName();
 	m_mainWidget->gamenameEdit->setText(gamename);
+	connect(this,SIGNAL(okClicked()),this,SLOT(slotOk()));
+	connect(this,SIGNAL(cancelClicked()),this,SLOT(slotCancel()));
 }
 
 void KServerDialog::slotOk()
