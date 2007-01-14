@@ -8,6 +8,7 @@ Type=Application
 DocPath=kbattleship/index.html
 GenericName=Battleship Game
 GenericName[fr]=Jeu de bataille navale
+GenericName[ja]=戦艦ゲーム
 GenericName[x-test]=xxBattleship Gamexx
 Terminal=false
 X-DBUS-StartupType=Multi
