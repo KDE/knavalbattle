@@ -15,13 +15,11 @@
  *                                                                         *
  ***************************************************************************/
 
-#include <config.h>
-
 #include <kmessagebox.h>
 #include <klocale.h>
 #include "kbattleshipserver.moc"
 
-KBattleshipServer::KBattleshipServer(int port, const QString& name) 
+KBattleshipServer::KBattleshipServer(int port, const QString& name)
 	: KServerSocket(QString::number(port)), m_name(name)
 {
 	m_port = port;
