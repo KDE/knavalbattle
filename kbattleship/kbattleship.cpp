@@ -56,7 +56,6 @@ KBattleshipWindow::KBattleshipWindow() : KMainWindow()
 	shift = false;
 	m_connection = 0;
 	m_lost = 0;
-	m_config = 0;
 	m_client = 0;
 	m_server = 0;
 	m_aiPlayer = 0;
@@ -67,7 +66,7 @@ KBattleshipWindow::KBattleshipWindow() : KMainWindow()
 
 KBattleshipWindow::~KBattleshipWindow()
 {
-	if(m_config != 0)
+	if(m_config)
 		saveOptions();
 	delete m_aiPlayer;
 	delete m_ownshiplist;
