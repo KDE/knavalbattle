@@ -19,9 +19,9 @@
 #define KCLIENTDIALOG_H
 
 #include <kdialog.h>
+#include <kconfig.h>
 
 class ClientConnectDlg;
-class KConfig;
 
 namespace DNSSD
 {
@@ -52,7 +52,7 @@ signals:
 	void sigCancelConnect();
 
 private:
-	KConfig *m_config;
+	KSharedConfigPtr m_config;
 	DNSSD::ServiceBrowser *m_browser;
 	ClientConnectDlg *m_mainWidget;
 };

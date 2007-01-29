@@ -19,6 +19,7 @@
 #define KBATTLESHIP_H
 
 #include <kmainwindow.h>
+#include <kconfig.h>
 
 class KShip;
 class KMessage;
@@ -127,7 +128,7 @@ private:
 	QString m_enemyClientDescription;
 	QString m_enemyProtocolVersion;
 
-	KConfig *m_config;
+	KSharedConfigPtr m_config;
 	KBAIPlayer *m_aiPlayer;
 	KonnectionHandling *m_connection;
 	KBattleshipServer *m_kbserver;
