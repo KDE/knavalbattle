@@ -25,7 +25,7 @@
 class KBChooserStrategy : public KBStrategy
 {
 public: 
-	KBChooserStrategy(KBStrategy *parent = 0);
+	explicit KBChooserStrategy(KBStrategy *parent = 0);
 	virtual ~KBChooserStrategy();
 
 	virtual void init(KBattleField *field, const QRect &field_rect);

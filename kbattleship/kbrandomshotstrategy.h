@@ -25,7 +25,7 @@
 class KBRandomShotStrategy : public KBStrategy
 {
 public: 
-	KBRandomShotStrategy(KBStrategy *parent = 0);
+	explicit KBRandomShotStrategy(KBStrategy *parent = 0);
 	virtual ~KBRandomShotStrategy();
 
 	virtual void init(KBattleField *field, const QRect &field_rect);

@@ -24,7 +24,7 @@
 class KBVerticalStepStrategy : public KBStrategy
 {
 public: 
-	KBVerticalStepStrategy(KBStrategy *parent = 0);
+	explicit KBVerticalStepStrategy(KBStrategy *parent = 0);
 	virtual ~KBVerticalStepStrategy();
 
 	virtual void init(KBattleField *field, const QRect &field_rect);

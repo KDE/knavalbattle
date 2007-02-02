@@ -78,7 +78,7 @@ QString KMessage::field(const QString &name) const
 	QDomNode xmlNode = m_xmlDocument.documentElement().namedItem(name);
 	if(!xmlNode.isNull())
 		return (xmlNode.toElement()).text();
-	return QString::null;
+	return QString();
 }
 
 int KMessage::type()

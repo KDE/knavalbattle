@@ -26,7 +26,7 @@ class KBStrategy
 {
 public:
 	enum{FREE, SHOT, SHIP};
-	KBStrategy(KBStrategy *parent = 0);
+	explicit KBStrategy(KBStrategy *parent = 0);
 	virtual ~KBStrategy();
 
 	virtual const QPoint nextShot() = 0;

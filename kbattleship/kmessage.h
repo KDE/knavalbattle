@@ -26,7 +26,7 @@ class KMessage
 public:
 	enum{GETVERSION, DISCARD, GREET, SHIPSREADY, SHOOT, ANSWER_SHOOT, WON, REPLAY, CHAT};
 
-	KMessage(int type);
+	explicit KMessage(int type);
 	KMessage(KMessage *msg);
 	KMessage();
 

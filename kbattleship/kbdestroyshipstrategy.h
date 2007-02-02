@@ -23,7 +23,7 @@
 class KBDestroyShipStrategy : public KBStrategy
 {
 public:
-	KBDestroyShipStrategy(KBStrategy *parent = 0);
+	explicit KBDestroyShipStrategy(KBStrategy *parent = 0);
 
 	virtual void init(KBattleField *field, const QRect &field_rect);
 	virtual const QPoint nextShot();

@@ -32,7 +32,7 @@ class KClientDialog : public KDialog
 {
 	Q_OBJECT
 public:
-	KClientDialog(QWidget *parent = 0);
+	explicit KClientDialog(QWidget *parent = 0);
 	~KClientDialog();
 
 	QString port() const;

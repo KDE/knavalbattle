@@ -57,7 +57,7 @@ int main(int argc, char *argv[])
 	QString onePicCheck = KStandardDirs::locate("data", "kbattleship/pictures/hit.png");
 	if(picDirCheck.isEmpty() || onePicCheck.isEmpty())
 	{
-		KMessageBox::error(0, i18n("You don't have KBattleship pictures installed. The game cannot run without them!"));
+		KMessageBox::error(0, i18n("You do not have KBattleship pictures installed. The game cannot run without them!"));
 		return 1;
 	}
 	

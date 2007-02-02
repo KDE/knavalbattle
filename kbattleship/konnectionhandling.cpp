@@ -224,7 +224,7 @@ void KonnectionHandling::slotSocketError(KNetwork::KStreamSocket::SocketError er
 			break;
 
 		case KNetwork::KStreamSocket::LookupFailure:
-			KMessageBox::error(0L, i18n("Couldn't lookup host."));
+			KMessageBox::error(0L, i18n("Could not lookup host."));
 			break;
 
 		default:

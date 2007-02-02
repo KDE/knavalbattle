@@ -26,7 +26,7 @@ class KServerDialog : public KDialog
 {
 	Q_OBJECT
 public:
-	KServerDialog(QWidget *parent = 0);
+	explicit KServerDialog(QWidget *parent = 0);
 
 	QString port() const;
 	QString nickname() const;

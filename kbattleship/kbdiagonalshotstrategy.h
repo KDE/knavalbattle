@@ -23,7 +23,7 @@ class KBDiagonalShotStrategy : public KBStrategy
 {
 public:
 	enum Direction {LEFTUP, LEFTDOWN, RIGHTUP, RIGHTDOWN};
-	KBDiagonalShotStrategy(KBStrategy *parent = 0);
+	explicit KBDiagonalShotStrategy(KBStrategy *parent = 0);
 
 	virtual const QPoint nextShot();
 	virtual bool hasMoreShots();

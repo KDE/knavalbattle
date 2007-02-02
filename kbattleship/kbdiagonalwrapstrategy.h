@@ -24,7 +24,7 @@
 class KBDiagonalWrapStrategy : public KBStrategy
 {
 public: 
-	KBDiagonalWrapStrategy(KBStrategy *parent = 0);
+	explicit KBDiagonalWrapStrategy(KBStrategy *parent = 0);
 	virtual ~KBDiagonalWrapStrategy();
 
 	virtual void init(KBattleField *field, const QRect &field_rect);

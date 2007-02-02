@@ -28,7 +28,7 @@ class KBattleshipView : public QWidget
 {
 	Q_OBJECT
 public:
-	KBattleshipView(QWidget *parent = 0, bool draw = false);
+	explicit KBattleshipView(QWidget *parent = 0, bool draw = false);
 	~KBattleshipView();
 
 	KBattleField *field() { return m_battlefield; }

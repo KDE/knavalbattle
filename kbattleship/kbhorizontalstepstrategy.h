@@ -23,7 +23,7 @@
 class KBHorizontalStepStrategy : public KBStrategy
 {
 public: 
-	KBHorizontalStepStrategy(KBStrategy *parent = 0);
+	explicit KBHorizontalStepStrategy(KBStrategy *parent = 0);
 	virtual ~KBHorizontalStepStrategy();
 
 	virtual void init(KBattleField *field, const QRect &field_rect);

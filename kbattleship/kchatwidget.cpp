@@ -30,13 +30,12 @@ KChatWidget::KChatWidget(QWidget *parent)
 	chatView->setMinimumSize(0, 50);
 	commentEdit->installEventFilter(this);
 
-	m_currentNickname = QString::null;
 	slotAcceptMsg(false);
 }
 
 void KChatWidget::clear()
 {
-	m_currentNickname = QString::null;
+	m_currentNickname.clear();
 	slotAcceptMsg(false);
 	chatView->clear();
 	commentEdit->clear();
