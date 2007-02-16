@@ -19,7 +19,7 @@
 #define KBATTLESHIP_H
 
 #include <kmainwindow.h>
-#include <kconfig.h>
+#include <ksharedconfig.h>
 
 class KShip;
 class KMessage;
