@@ -28,11 +28,12 @@
 #include "kbattleshipview.moc"
 
 KBattleshipView::KBattleshipView(QWidget *parent, bool draw) 
-	: QWidget(parent, Qt::WResizeNoErase), m_drawGrid(draw)
+	: QWidget(parent), m_drawGrid(draw)
 {
 	setFixedSize(20 * 32 + 30, 10 * 32 + 20);
 	setMouseTracking(true);
 	installEventFilter(this);
+	setAttribute(Qt::WA_OpaquePaintEvent);
 
 	m_decide = false;
 	m_lastX = 0;
