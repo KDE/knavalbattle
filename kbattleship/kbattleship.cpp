@@ -114,7 +114,7 @@ void KBattleshipWindow::initActions()
 	connect(m_gameServerConnect, SIGNAL(triggered(bool)), SLOT(slotServerConnect()));
 	m_gameServerConnect->setShortcut(Qt::Key_F2);
 	m_gameNewServer = actionCollection()->addAction("game_newserver");
-        m_gameNewServer->setIcon(KIcon("network"));
+        m_gameNewServer->setIcon(KIcon("network-wired"));
         m_gameNewServer->setText(i18n("&Start Server..."));
 	connect(m_gameNewServer, SIGNAL(triggered(bool)), SLOT(slotNewServer()));
 	m_gameNewServer->setShortcut(Qt::Key_F3);
@@ -128,7 +128,7 @@ void KBattleshipWindow::initActions()
 	action = KStandardGameAction::highscores(this, SLOT(slotHighscore()), this);
         actionCollection()->addAction(action->objectName(), action);
 	m_gameEnemyInfo = actionCollection()->addAction("game_enemyinfo");
-        m_gameEnemyInfo->setIcon(KIcon("view_text"));
+        m_gameEnemyInfo->setIcon(KIcon("fileview-text"));
         m_gameEnemyInfo->setText(i18n("&Enemy Info"));
 	connect(m_gameEnemyInfo, SIGNAL(triggered(bool)), SLOT(slotEnemyClientInfo()));
 	m_gameEnemyInfo->setShortcut(Qt::Key_F11);
