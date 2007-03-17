@@ -1,9 +1,9 @@
 /***************************************************************************
-                              kbchooserstrategy.h
-                                  ----------
-    Developers: (c) 2001 Kevin Krammer <kevin.krammer@gmx.at>
+                             kbchooserstrategy.h
+                                 ----------
+   Developers: (c) 2001 Kevin Krammer <kevin.krammer@gmx.at>
 
- ***************************************************************************/
+***************************************************************************/
 
 /***************************************************************************
  *                                                                         *
@@ -24,23 +24,23 @@
 
 class KBChooserStrategy : public KBStrategy
 {
-public: 
-	explicit KBChooserStrategy(KBStrategy *parent = 0);
-	virtual ~KBChooserStrategy();
+public:
+    explicit KBChooserStrategy(KBStrategy *parent = 0);
+    virtual ~KBChooserStrategy();
 
-	virtual void init(KBattleField *field, const QRect &field_rect);
-	virtual const QPoint nextShot();
-	virtual bool hasMoreShots();
-	virtual void shotAt(const QPoint &pos);
+    virtual void init(KBattleField *field, const QRect &field_rect);
+    virtual const QPoint nextShot();
+    virtual bool hasMoreShots();
+    virtual void shotAt(const QPoint &pos);
 
 private:
-	bool advance();
+    bool advance();
 
-	KBStrategy *m_child;
-	KBDestroyShipStrategy *m_destroyer;
-	KRandomSequence *m_random;
+    KBStrategy *m_child;
+    KBDestroyShipStrategy *m_destroyer;
+    KRandomSequence *m_random;
 
-	bool m_destroying;
+    bool m_destroying;
 };
 
 #endif

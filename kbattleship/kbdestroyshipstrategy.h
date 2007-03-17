@@ -1,10 +1,10 @@
 /***************************************************************************
-                            kbdestroyshipstratgey.h
-                                  ----------
-    Developers: (c) 2001 Kevin Krammer <kevin.krammer@gmx.at>
-				(c) 2001 Nikolas Zimmermann <wildfox@kde.org>
+                           kbdestroyshipstratgey.h
+                                 ----------
+   Developers: (c) 2001 Kevin Krammer <kevin.krammer@gmx.at>
+   (c) 2001 Nikolas Zimmermann <wildfox@kde.org>
 
- ***************************************************************************/
+***************************************************************************/
 
 /***************************************************************************
  *                                                                         *
@@ -23,33 +23,33 @@
 class KBDestroyShipStrategy : public KBStrategy
 {
 public:
-	explicit KBDestroyShipStrategy(KBStrategy *parent = 0);
+    explicit KBDestroyShipStrategy(KBStrategy *parent = 0);
 
-	virtual void init(KBattleField *field, const QRect &field_rect);
-	virtual const QPoint nextShot();
-	virtual bool hasMoreShots();
-	virtual void shotAt(const QPoint &pos);
+    virtual void init(KBattleField *field, const QRect &field_rect);
+    virtual const QPoint nextShot();
+    virtual bool hasMoreShots();
+    virtual void shotAt(const QPoint &pos);
 
-	virtual void destroyShipAt(const QPoint pos);
+    virtual void destroyShipAt(const QPoint pos);
 
 private:
-	enum {NODIR, VERTICAL, HORIZONTAL};
+    enum {NODIR, VERTICAL, HORIZONTAL};
 
-	bool m_working;
-	QPoint m_start;
+    bool m_working;
+    QPoint m_start;
 
-	int m_column;
-	int m_row;
+    int m_column;
+    int m_row;
 
-	int m_direction;
+    int m_direction;
 
-	virtual bool searchUp();
-	virtual bool searchDown();
-	virtual bool searchLeft();
-	virtual bool searchRight();
+    virtual bool searchUp();
+    virtual bool searchDown();
+    virtual bool searchLeft();
+    virtual bool searchRight();
 
-	virtual bool shipDestroyed();
-	virtual void markBorderingFields();
+    virtual bool shipDestroyed();
+    virtual void markBorderingFields();
 };
 
 #endif

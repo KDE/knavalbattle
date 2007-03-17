@@ -1,9 +1,9 @@
 /***************************************************************************
-                            kbhorizontalstepstrategy.h
-                                  ----------
-    Developers: (c) 2001 Kevin Krammer <kevin.krammer@gmx.at>
+                           kbhorizontalstepstrategy.h
+                                 ----------
+   Developers: (c) 2001 Kevin Krammer <kevin.krammer@gmx.at>
 
- ***************************************************************************/
+***************************************************************************/
 
 /***************************************************************************
  *                                                                         *
@@ -22,27 +22,27 @@
 
 class KBHorizontalStepStrategy : public KBStrategy
 {
-public: 
-	explicit KBHorizontalStepStrategy(KBStrategy *parent = 0);
-	virtual ~KBHorizontalStepStrategy();
+public:
+    explicit KBHorizontalStepStrategy(KBStrategy *parent = 0);
+    virtual ~KBHorizontalStepStrategy();
 
-	virtual void init(KBattleField *field, const QRect &field_rect);
-	virtual const QPoint nextShot();
-	virtual bool hasMoreShots();
-	virtual void shotAt(const QPoint &pos);
+    virtual void init(KBattleField *field, const QRect &field_rect);
+    virtual const QPoint nextShot();
+    virtual bool hasMoreShots();
+    virtual void shotAt(const QPoint &pos);
 
 private:
-	bool advance();
-	void setStart(int col, int row);
+    bool advance();
+    void setStart(int col, int row);
 
-	int m_row;
-	int m_column;
-	int m_passes;
+    int m_row;
+    int m_column;
+    int m_passes;
 
-	QPoint m_start;
-	KBHorizontalStepStrategy *m_child;
-	KBDestroyShipStrategy *m_destroyer;
-	bool m_destroying;
+    QPoint m_start;
+    KBHorizontalStepStrategy *m_child;
+    KBDestroyShipStrategy *m_destroyer;
+    bool m_destroying;
 };
 
 #endif

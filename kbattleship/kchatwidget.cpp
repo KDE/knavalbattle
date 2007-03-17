@@ -1,10 +1,10 @@
 /***************************************************************************
-                              kchatwidget.cpp
-                             -----------------
-    Developers: (c) 2000-2001 Nikolas Zimmermann <wildfox@kde.org>
-                (c) 2000-2001 Daniel Molkentin <molkentin@kde.org>
+                             kchatwidget.cpp
+                            -----------------
+   Developers: (c) 2000-2001 Nikolas Zimmermann <wildfox@kde.org>
+               (c) 2000-2001 Daniel Molkentin <molkentin@kde.org>
 
- ***************************************************************************/
+***************************************************************************/
 
 /***************************************************************************
  *                                                                         *
@@ -20,67 +20,64 @@
 #include <QTextEdit>
 #include <QEvent>
 
-KChatWidget::KChatWidget(QWidget *parent) 
-    : QWidget(parent)
+KChatWidget::KChatWidget(QWidget *parent)
+        : QWidget(parent)
 {
-        setupUi(this);
-	connect(sendBtn, SIGNAL(clicked()), this, SLOT(slotComputeMessage()));
-	connect(commentEdit, SIGNAL(returnPressed()), this, SLOT(slotComputeMessage()));
-	chatView->setFocusProxy(commentEdit);
-	chatView->setMinimumSize(0, 50);
-	commentEdit->installEventFilter(this);
+    setupUi(this);
+    connect(sendBtn, SIGNAL(clicked()), this, SLOT(slotComputeMessage()));
+    connect(commentEdit, SIGNAL(returnPressed()), this, SLOT(slotComputeMessage()));
+    chatView->setFocusProxy(commentEdit);
+    chatView->setMinimumSize(0, 50);
+    commentEdit->installEventFilter(this);
 
-	slotAcceptMsg(false);
+    slotAcceptMsg(false);
 }
 
 void KChatWidget::clear()
 {
-	m_currentNickname.clear();
-	slotAcceptMsg(false);
-	chatView->clear();
-	commentEdit->clear();
+    m_currentNickname.clear();
+    slotAcceptMsg(false);
+    chatView->clear();
+    commentEdit->clear();
 }
 
 void KChatWidget::slotAcceptMsg(bool value)
 {
-	m_acceptMsgs = value;
+    m_acceptMsgs = value;
 }
 
 void KChatWidget::slotReceivedMessage(const QString &nickname, const QString &msg, bool fromenemy)
 {
-	// Niko Z:
-	// IRC roxxx :)
-	if(msg.startsWith("/me "))
-		chatView->append(QString(" * ") + nickname + QString(" ") + msg.mid(4));
-	else if(msg.startsWith("/nick "))
-		if(fromenemy)
-			emit sigChangeEnemyNickname(msg.mid(6));
-		else
-			emit sigChangeOwnNickname(msg.mid(6));
-	else
-		chatView->append(nickname + QString(": ") + msg);
-        chatView->moveCursor(QTextCursor::End);
+    // Niko Z:
+    // IRC roxxx :)
+    if (msg.startsWith("/me "))
+        chatView->append(QString(" * ") + nickname + QString(" ") + msg.mid(4));
+    else if (msg.startsWith("/nick "))
+        if (fromenemy)
+            emit sigChangeEnemyNickname(msg.mid(6));
+        else
+            emit sigChangeOwnNickname(msg.mid(6));
+    else
+        chatView->append(nickname + QString(": ") + msg);
+    chatView->moveCursor(QTextCursor::End);
 }
 
 bool KChatWidget::eventFilter(QObject *obj, QEvent *e)
 {
-	if(obj == commentEdit && e->type() == QEvent::Wheel)
-	{
-		kapp->notify(chatView, e);
-		return true;
-	}
-	return QWidget::eventFilter(obj, e);
+    if (obj == commentEdit && e->type() == QEvent::Wheel) {
+        kapp->notify(chatView, e);
+        return true;
+    }
+    return QWidget::eventFilter(obj, e);
 }
 
 void KChatWidget::slotComputeMessage()
 {
-	if(!commentEdit->text().trimmed().isEmpty() && m_acceptMsgs)
-	{
-		slotReceivedMessage(m_currentNickname, commentEdit->text(), false);
-		emit sigSendMessage(commentEdit->text());
-		commentEdit->setText("");
-	}
-	else if(commentEdit->text().trimmed().isEmpty() && m_acceptMsgs)
-		commentEdit->setText("");
-	commentEdit->setFocus();
+    if (!commentEdit->text().trimmed().isEmpty() && m_acceptMsgs) {
+        slotReceivedMessage(m_currentNickname, commentEdit->text(), false);
+        emit sigSendMessage(commentEdit->text());
+        commentEdit->setText("");
+    } else if (commentEdit->text().trimmed().isEmpty() && m_acceptMsgs)
+        commentEdit->setText("");
+    commentEdit->setFocus();
 }

@@ -1,10 +1,10 @@
 /***************************************************************************
-                                 kbaiplayer.h
-                                  ----------
-    Developers: (c) 2001 Kevin Krammer <kevin.krammer@gmx.at>
-		(c) 2001 Nikolas Zimmermann <wildfox@kde.org>		
-    
- ***************************************************************************/
+                                kbaiplayer.h
+                                 ----------
+   Developers: (c) 2001 Kevin Krammer <kevin.krammer@gmx.at>
+ (c) 2001 Nikolas Zimmermann <wildfox@kde.org>  
+   
+***************************************************************************/
 
 /***************************************************************************
  *                                                                         *
@@ -28,32 +28,32 @@
 
 class KBAIPlayer : public QObject
 {
-	Q_OBJECT
-public: 
-	KBAIPlayer();
-	~KBAIPlayer();
-	
-	void init(KBattleField *battle_field, KShipList *ai_shiplist);
+    Q_OBJECT
+public:
+    KBAIPlayer();
+    ~KBAIPlayer();
+
+    void init(KBattleField *battle_field, KShipList *ai_shiplist);
 
 public slots:
-	void slotRestart();
-	bool slotRequestShot();
-	bool shipPlaced(int shiplen, int x, int y, bool vertical); 
+    void slotRestart();
+    bool slotRequestShot();
+    bool shipPlaced(int shiplen, int x, int y, bool vertical);
 
 signals:
-	void sigShootAt(const QPoint pos);
-	void sigReady();
+    void sigShootAt(const QPoint pos);
+    void sigReady();
 
 private:
-	void chooseStrategy();
-	void addShips();
+    void chooseStrategy();
+    void addShips();
 
-	KBStrategy *m_masterStrategy;
-	KShipList *m_ownShipList;
-	KBattleField *m_battleField;
-	KRandomSequence *m_randomSeq;
+    KBStrategy *m_masterStrategy;
+    KShipList *m_ownShipList;
+    KBattleField *m_battleField;
+    KRandomSequence *m_randomSeq;
 
-	QRect m_fieldRect;
+    QRect m_fieldRect;
 };
 
 #endif

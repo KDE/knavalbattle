@@ -1,10 +1,10 @@
 /***************************************************************************
-                                 kbstrategy.h
-                                  ----------
-    Developers: (c) 2001 Kevin Krammer <kevin.krammer@gmx.at>
-		(c) 2001 Nikolas Zimmermann <wildfox@kde.org>
+                                kbstrategy.h
+                                 ----------
+   Developers: (c) 2001 Kevin Krammer <kevin.krammer@gmx.at>
+ (c) 2001 Nikolas Zimmermann <wildfox@kde.org>
 
- ***************************************************************************/
+***************************************************************************/
 
 /***************************************************************************
  *                                                                         *
@@ -25,28 +25,28 @@
 class KBStrategy
 {
 public:
-	enum{FREE, SHOT, SHIP};
-	explicit KBStrategy(KBStrategy *parent = 0);
-	virtual ~KBStrategy();
+    enum{FREE, SHOT, SHIP};
+    explicit KBStrategy(KBStrategy *parent = 0);
+    virtual ~KBStrategy();
 
-	virtual const QPoint nextShot() = 0;
-	virtual void shotAt(const QPoint &pos);
-	virtual void init(KBattleField *field, const QRect &field_rect);
-	virtual bool hasMoreShots() = 0;
+    virtual const QPoint nextShot() = 0;
+    virtual void shotAt(const QPoint &pos);
+    virtual void init(KBattleField *field, const QRect &field_rect);
+    virtual bool hasMoreShots() = 0;
 
 protected:
-	QList<QPoint> masterShotList();
-	int enemyFieldStateAt(int x, int y);
-	bool* getViableShots();
+    QList<QPoint> masterShotList();
+    int enemyFieldStateAt(int x, int y);
+    bool* getViableShots();
 
-	QRect m_fieldRect;
-	bool* m_viableShots;
-	bool isViablePos(int x, int y);
-	void setViablePos(int x, int y, bool viable);
-	QList<QPoint> m_prevShots;
+    QRect m_fieldRect;
+    bool* m_viableShots;
+    bool isViablePos(int x, int y);
+    void setViablePos(int x, int y, bool viable);
+    QList<QPoint> m_prevShots;
 
-	KBattleField *m_battleField;
-	KBStrategy *m_parent;
+    KBattleField *m_battleField;
+    KBStrategy *m_parent;
 };
 
 #endif

@@ -1,10 +1,10 @@
 /***************************************************************************
-                              kchatwidget.h
-                             ---------------
-    Developers: (c) 2000-2001 Nikolas Zimmermann <wildfox@kde.org>
-                (c) 2000-2001 Daniel Molkentin <molkentin@kde.org>
+                             kchatwidget.h
+                            ---------------
+   Developers: (c) 2000-2001 Nikolas Zimmermann <wildfox@kde.org>
+               (c) 2000-2001 Daniel Molkentin <molkentin@kde.org>
 
- ***************************************************************************/
+***************************************************************************/
 
 /***************************************************************************
  *                                                                         *
@@ -23,28 +23,31 @@
 
 class KChatWidget : public QWidget, public Ui::chatDlg
 {
-	Q_OBJECT
+    Q_OBJECT
 public:
-	explicit KChatWidget(QWidget *parent = 0);
+    explicit KChatWidget(QWidget *parent = 0);
 
-	void clear();
-	void setNickname(const QString &nickname) { m_currentNickname = nickname; }
+    void clear();
+    void setNickname(const QString &nickname)
+    {
+        m_currentNickname = nickname;
+    }
 
 public slots:
-	void slotAcceptMsg(bool value);
-	void slotComputeMessage();
-	void slotReceivedMessage(const QString &nickname, const QString &msg, bool fromenemy = true);
+    void slotAcceptMsg(bool value);
+    void slotComputeMessage();
+    void slotReceivedMessage(const QString &nickname, const QString &msg, bool fromenemy = true);
 
 signals:
-	void sigSendMessage(const QString &);
-	void sigChangeEnemyNickname(const QString &);
-	void sigChangeOwnNickname(const QString &);
+    void sigSendMessage(const QString &);
+    void sigChangeEnemyNickname(const QString &);
+    void sigChangeOwnNickname(const QString &);
 
 private:
-	bool eventFilter(QObject *, QEvent *);
+    bool eventFilter(QObject *, QEvent *);
 
-	QString m_currentNickname;
-	bool m_acceptMsgs;
+    QString m_currentNickname;
+    bool m_acceptMsgs;
 };
 
 #endif

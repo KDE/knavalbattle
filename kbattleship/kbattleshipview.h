@@ -1,10 +1,10 @@
 /***************************************************************************
-                              kbattleshipview.h
-                             -------------------
-    Developers: (c) 2000-2001 Nikolas Zimmermann <wildfox@kde.org>
-                (c) 2000-2001 Daniel Molkentin <molkentin@kde.org>
+                             kbattleshipview.h
+                            -------------------
+   Developers: (c) 2000-2001 Nikolas Zimmermann <wildfox@kde.org>
+               (c) 2000-2001 Daniel Molkentin <molkentin@kde.org>
 
- ***************************************************************************/
+***************************************************************************/
 
 /***************************************************************************
  *                                                                         *
@@ -18,52 +18,63 @@
 #ifndef KBATTLESHIPVIEW_H
 #define KBATTLESHIPVIEW_H
 
-#include <QWidget>
+#include <kgamecanvas.h>
 
 class KBattleField;
 class KShipList;
 class KMessage;
+class KBattleShipField;
+class KBSRenderer;
 
-class KBattleshipView : public QWidget
+class KBattleshipView : public KGameCanvasWidget
 {
-	Q_OBJECT
+    Q_OBJECT
 public:
-	explicit KBattleshipView(QWidget *parent = 0, bool draw = false);
-	~KBattleshipView();
+    KBattleshipView(QWidget *parent = 0, bool draw = false);
+    ~KBattleshipView();
 
-	KBattleField *field() { return m_battlefield; }
+    KBattleField *field()
+    {
+        return m_battlefield;
+    }
 
-	void startDrawing();
-	void clearField();
-	void changeOwnFieldData(int fieldx, int fieldy, int type);
-	void changeEnemyFieldData(int fieldx, int fieldy, int type);
+    void startDrawing();
+    void clearField();
+    void changeOwnFieldData(int fieldx, int fieldy, int type);
+    void changeEnemyFieldData(int fieldx, int fieldy, int type);
 
-	void previewShip(int fieldx, int fieldy, int type, bool rotate);
+    void previewShip(int fieldx, int fieldy, int type, bool rotate);
 
-	int ownFieldState(int fieldx, int fieldy);
-	int enemyFieldState(int &fieldx, int &fieldy);
+    int ownFieldState(int fieldx, int fieldy);
+    int enemyFieldState(int &fieldx, int &fieldy);
 
-	void drawEnemyShipsAI(KShipList *list);
-	void drawEnemyShipsHuman(KMessage *msg, KShipList *list);
-	KMessage *getAliveShips(KShipList *list);
+    void drawEnemyShipsAI(KShipList *list);
+    void drawEnemyShipsHuman(KMessage *msg, KShipList *list);
+    KMessage *getAliveShips(KShipList *list);
 
 protected:
-	void paintEvent(QPaintEvent *);
+    //  void paintEvent(QPaintEvent *);
 
 signals:
-	void sigEnemyFieldClicked(int, int);
-	void sigOwnFieldClicked(int, int);
-	void sigMouseOverField(int, int);
-	void changeShipPlacementDirection();
+    void sigEnemyFieldClicked(int, int);
+    void sigOwnFieldClicked(int, int);
+    void sigMouseOverField(int, int);
+    void changeShipPlacementDirection();
 
 private:
-	bool eventFilter(QObject *object, QEvent *event);
+    bool eventFilter(QObject *object, QEvent *event);
 
-	KBattleField *m_battlefield;
-	bool m_drawGrid;
-	bool m_decide;
-	int m_lastX;
-	int m_lastY;
+    KBattleField *m_battlefield;
+    bool m_drawGrid;
+    bool m_decide;
+    int m_lastX;
+    int m_lastY;
+
+    KBattleShipField *m_ownField;
+    KBattleShipField *m_enemyField;
+    KBSRenderer* m_renderer;
+
+    void adjustFields();
 };
 
 #endif

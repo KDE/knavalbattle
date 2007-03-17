@@ -1,11 +1,11 @@
 /***************************************************************************
-                                    kshiplist.h
-                                  -----------------
-    Developers: (c) 2000-2001 Nikolas Zimmermann <wildfox@kde.org>
-                (c) 2000-2001 Daniel Molkentin <molkentin@kde.org>
-                (c) 2001 Kevin Krammer <kevin.krammer@gmx.at>
+                                   kshiplist.h
+                                 -----------------
+   Developers: (c) 2000-2001 Nikolas Zimmermann <wildfox@kde.org>
+               (c) 2000-2001 Daniel Molkentin <molkentin@kde.org>
+               (c) 2001 Kevin Krammer <kevin.krammer@gmx.at>
 
- ***************************************************************************/
+***************************************************************************/
 
 /***************************************************************************
  *                                                                         *
@@ -27,32 +27,35 @@
 
 class KShipList : public QObject
 {
-	Q_OBJECT
+    Q_OBJECT
 public:
-	KShipList();
+    KShipList();
 
-	KShip *shipAt(int x, int y);
-	int shipTypeAt(int x, int y);
+    KShip *shipAt(int x, int y);
+    int shipTypeAt(int x, int y);
 
-	void clear();
+    void clear();
 
-	void addNewShip(int button, int fieldx, int fieldy);
-	bool addNewShip(bool vertical, int fieldx, int fieldy);
+    void addNewShip(int button, int fieldx, int fieldy);
+    bool addNewShip(bool vertical, int fieldx, int fieldy);
 
-	bool canAddShips();
+    bool canAddShips();
 
-	int shipCount() { return m_shipsadded; }
+    int shipCount()
+    {
+        return m_shipsadded;
+    }
 
-	int m_fieldx;
-	int m_fieldy;
+    int m_fieldx;
+    int m_fieldy;
 
 signals:
-	void sigLastShipAdded();
-	void sigOwnFieldDataChanged(int, int, int);
+    void sigLastShipAdded();
+    void sigOwnFieldDataChanged(int, int, int);
 
 private:
-	QList<KShip*> m_shiplist;
-	int m_shipsadded;
+    QList<KShip*> m_shiplist;
+    int m_shipsadded;
 };
 
 #endif

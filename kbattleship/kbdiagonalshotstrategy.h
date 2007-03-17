@@ -1,9 +1,9 @@
 /***************************************************************************
-                            kbdiagonalshotstrategy.h
-                                  ----------
-    Developers: (c) 2001 Kevin Krammer <kevin.krammer@gmx.at>
+                           kbdiagonalshotstrategy.h
+                                 ----------
+   Developers: (c) 2001 Kevin Krammer <kevin.krammer@gmx.at>
 
- ***************************************************************************/
+***************************************************************************/
 
 /***************************************************************************
  *                                                                         *
@@ -22,22 +22,22 @@
 class KBDiagonalShotStrategy : public KBStrategy
 {
 public:
-	enum Direction {LEFTUP, LEFTDOWN, RIGHTUP, RIGHTDOWN};
-	explicit KBDiagonalShotStrategy(KBStrategy *parent = 0);
+    enum Direction {LEFTUP, LEFTDOWN, RIGHTUP, RIGHTDOWN};
+    explicit KBDiagonalShotStrategy(KBStrategy *parent = 0);
 
-	virtual const QPoint nextShot();
-	virtual bool hasMoreShots();
-	virtual void shotAt(const QPoint &pos);
-	virtual void startAt(int col, int row, Direction dir);
-	virtual QPoint endPoint();
+    virtual const QPoint nextShot();
+    virtual bool hasMoreShots();
+    virtual void shotAt(const QPoint &pos);
+    virtual void startAt(int col, int row, Direction dir);
+    virtual QPoint endPoint();
 
 private:
-	bool advance();
+    bool advance();
 
-	int m_row;
-	int m_column;
-	int m_vertical;
-	int m_horizontal;
+    int m_row;
+    int m_column;
+    int m_vertical;
+    int m_horizontal;
 };
 
 #endif

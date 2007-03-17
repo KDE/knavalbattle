@@ -30,6 +30,8 @@ set(kbattleship_SRCS ${kbattleship_SRCS}
    kship.cpp 
    kshiplist.cpp 
    kbchooserstrategy.cpp 
+   kbsrenderer.cpp
+   kbattleshipfield.cpp
    main.cpp )
 
 kde4_add_ui_files(kbattleship_SRCS 

@@ -1,10 +1,10 @@
 /***************************************************************************
-                                   kclientdialog.h
-                                  -----------------
-    Developers: (c) 2000-2001 Nikolas Zimmermann <wildfox@kde.org>
-                (c) 2000-2001 Daniel Molkentin <molkentin@kde.org>
+                                  kclientdialog.h
+                                 -----------------
+   Developers: (c) 2000-2001 Nikolas Zimmermann <wildfox@kde.org>
+               (c) 2000-2001 Daniel Molkentin <molkentin@kde.org>
 
- ***************************************************************************/
+***************************************************************************/
 
 /***************************************************************************
  *                                                                         *
@@ -25,36 +25,36 @@ class ClientConnectDlg;
 
 namespace DNSSD
 {
-   class ServiceBrowser;
+class ServiceBrowser;
 }
 
 class KClientDialog : public KDialog
 {
-	Q_OBJECT
+    Q_OBJECT
 public:
-	explicit KClientDialog(QWidget *parent = 0);
-	~KClientDialog();
+    explicit KClientDialog(QWidget *parent = 0);
+    ~KClientDialog();
 
-	QString port() const;
-	QString host() const;
-	QString nickname() const;
+    QString port() const;
+    QString host() const;
+    QString nickname() const;
 
 public slots:
-        virtual void slotOk();
-        virtual void slotCancel();
-	void slotReturnPressed(const QString &hostname);
-	void nextBatch();
-	void gameSelected(int);	
-        void slotCheckEnableOk();
+    virtual void slotOk();
+    virtual void slotCancel();
+    void slotReturnPressed(const QString &hostname);
+    void nextBatch();
+    void gameSelected(int);
+    void slotCheckEnableOk();
 
 signals:
-	void sigConnectServer();
-	void sigCancelConnect();
+    void sigConnectServer();
+    void sigCancelConnect();
 
 private:
-	KSharedConfigPtr m_config;
-	DNSSD::ServiceBrowser *m_browser;
-	ClientConnectDlg *m_mainWidget;
+    KSharedConfigPtr m_config;
+    DNSSD::ServiceBrowser *m_browser;
+    ClientConnectDlg *m_mainWidget;
 };
 
 #endif

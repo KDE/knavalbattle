@@ -1,10 +1,10 @@
 /***************************************************************************
-                               kbattlefield.cpp
-                             -------------------
-    Developers: (c) 2000-2001 Nikolas Zimmermann <wildfox@kde.org>
-                (c) 2000-2001 Daniel Molkentin <molkentin@kde.org>
+                              kbattlefield.cpp
+                            -------------------
+   Developers: (c) 2000-2001 Nikolas Zimmermann <wildfox@kde.org>
+               (c) 2000-2001 Daniel Molkentin <molkentin@kde.org>
 
- ***************************************************************************/
+***************************************************************************/
 
 /***************************************************************************
  *                                                                         *
@@ -22,211 +22,197 @@
 
 KBattleField::KBattleField(QWidget *parent, bool grid) : KGridWidget(parent, grid)
 {
-	m_parent = parent;
-	m_width = parent->width();
-	m_canDraw = true;
+    m_parent = parent;
+    m_width = parent->width();
+    m_canDraw = true;
 
-	m_ownfieldx = 10;
-	m_ownfieldy = 10;
-	m_enemyfieldx = 10;
-	m_enemyfieldy = 10;
+    m_ownfieldx = 10;
+    m_ownfieldy = 10;
+    m_enemyfieldx = 10;
+    m_enemyfieldy = 10;
 
-	clearOwnField();
-	clearEnemyField();
-	clearPreviewField();
+    clearOwnField();
+    clearEnemyField();
+    clearPreviewField();
 }
 
 void KBattleField::clearOwnField()
 {
-	for(int i = 0; i != m_ownfieldx; i++)
-	{
-		for(int j = 0; j != m_ownfieldy; j++)
-		{
-			m_ownfield[i][j] = KBattleField::FREE;
-		}
-	}
+    for (int i = 0; i != m_ownfieldx; i++) {
+        for (int j = 0; j != m_ownfieldy; j++) {
+            m_ownfield[i][j] = KBattleField::FREE;
+        }
+    }
 }
 
 void KBattleField::clearEnemyField()
 {
-	for(int i = 0; i != m_enemyfieldx; i++)
-	{
-		for(int j = 0; j != m_enemyfieldy; j++)
-		{
-			m_enemyfield[i][j] = KBattleField::FREE;
-		}
-	}
+    for (int i = 0; i != m_enemyfieldx; i++) {
+        for (int j = 0; j != m_enemyfieldy; j++) {
+            m_enemyfield[i][j] = KBattleField::FREE;
+        }
+    }
 }
 
 void KBattleField::clearPreviewField()
 {
-	for(int i = 0; i != m_ownfieldx; i++)
-	{
-		for(int j = 0; j != m_ownfieldy; j++)
-		{
-			m_newfield[i][j] = KBattleField::FREE;
-	    	m_newdata[i][j] = false;
-		}
-	}
+    for (int i = 0; i != m_ownfieldx; i++) {
+        for (int j = 0; j != m_ownfieldy; j++) {
+            m_newfield[i][j] = KBattleField::FREE;
+            m_newdata[i][j] = false;
+        }
+    }
 }
 
 void KBattleField::setPreviewState(int fieldx, int fieldy, int type, bool rotate)
 {
-	m_newfield[fieldx][fieldy] = type;
-	m_newdata[fieldx][fieldy] = true;
-	m_rotatedata[fieldx][fieldy] = rotate;
+    m_newfield[fieldx][fieldy] = type;
+    m_newdata[fieldx][fieldy] = true;
+    m_rotatedata[fieldx][fieldy] = rotate;
 }
 
 void KBattleField::drawField(QPainter &p)
 {
-	drawOwnField();
-	drawEnemyField();
-	clearPreviewField();
-	finished(p);
+    drawOwnField();
+    drawEnemyField();
+    clearPreviewField();
+    finished(p);
 }
 
 void KBattleField::drawOwnField()
 {
-	if(!m_canDraw)
-		return;
+    if (!m_canDraw)
+        return ;
 
-	KBattleshipWindow *window = static_cast<KBattleshipWindow *>(m_parent->parent()->parent());
-	KShip *ship = 0;
-	int data;
+    KBattleshipWindow *window = static_cast<KBattleshipWindow *>(m_parent->parent()->parent());
+    KShip *ship = 0;
+    int data;
 
-	for(int i = 0; i != m_ownfieldx; i++)
-	{
-		for(int j = 0; j != m_ownfieldy; j++)
-		{
-			setValues(((i * gridSize()) + ownXPosition()), ((j * gridSize()) + ownYPosition()), gridSize());
-			if(!m_newdata[i][j])
-				data = m_ownfield[i][j];
-			else
-				data = m_newfield[i][j];
-			switch(data)
-			{
-				case KBattleField::FREE:
-					drawSquare();
-					break;
+    for (int i = 0; i != m_ownfieldx; i++) {
+        for (int j = 0; j != m_ownfieldy; j++) {
+            setValues(((i * gridSize()) + ownXPosition()), ((j * gridSize()) + ownYPosition()), gridSize());
+            if (!m_newdata[i][j])
+                data = m_ownfield[i][j];
+            else
+                data = m_newfield[i][j];
+            switch (data) {
+            case KBattleField::FREE:
+                drawSquare();
+                break;
 
-				case KBattleField::WATER:
-					drawSquare();
-					drawWaterIcon();
-					break;
+            case KBattleField::WATER:
+                drawSquare();
+                drawWaterIcon();
+                break;
 
-				case KBattleField::HIT:
-					drawSquare();
-					ship = window->shipAt(i, j);
-					if(ship->placedLeft())
-						drawShipIcon((ship->shiptype() + 1), (ship->shipxstop() - i + 1), true, true);
-					else
-						drawShipIcon((ship->shiptype() + 1), (j - ship->shipystart() + 1), false, true);
-					break;
+            case KBattleField::HIT:
+                drawSquare();
+                ship = window->shipAt(i, j);
+                if (ship->placedLeft())
+                    drawShipIcon((ship->shiptype() + 1), (ship->shipxstop() - i + 1), true, true);
+                else
+                    drawShipIcon((ship->shiptype() + 1), (j - ship->shipystart() + 1), false, true);
+                break;
 
-				case KBattleField::DEATH:
-					drawSquare();
-					drawDeathIcon();
-					break;
+            case KBattleField::DEATH:
+                drawSquare();
+                drawDeathIcon();
+                break;
 
-				default:
-					ship = window->shipAt(i, j);
-					if(ship)
-					{
-						drawSquare();
-						if(m_newdata[i][j])
-							data = m_ownfield[i][j];
-						drawShipIcon(data, ship->placedLeft());
-					}
-					else if(!ship)
-						drawShipIcon(data, !m_rotatedata[i][j], false, true);
-					break;
-			}
-		}
-	}
+            default:
+                ship = window->shipAt(i, j);
+                if (ship) {
+                    drawSquare();
+                    if (m_newdata[i][j])
+                        data = m_ownfield[i][j];
+                    drawShipIcon(data, ship->placedLeft());
+                } else if (!ship)
+                    drawShipIcon(data, !m_rotatedata[i][j], false, true);
+                break;
+            }
+        }
+    }
 }
 
 void KBattleField::drawEnemyField()
 {
-	if(!m_canDraw)
-		return;
+    if (!m_canDraw)
+        return ;
 
-	KBattleshipWindow *window = static_cast<KBattleshipWindow *>(m_parent->parent()->parent());
+    KBattleshipWindow *window = static_cast<KBattleshipWindow *>(m_parent->parent()->parent());
 
-	for(int i = 0; i != m_enemyfieldx; i++)
-	{
-		for(int j = 0; j != m_enemyfieldy; j++)
-		{
-			setValues(((i * gridSize()) + enemyXPosition()), ((j * gridSize()) + enemyYPosition()), gridSize());
-			switch(m_enemyfield[i][j])
-			{
-				case KBattleField::FREE:
-					drawSquare();
-					break;
+    for (int i = 0; i != m_enemyfieldx; i++) {
+        for (int j = 0; j != m_enemyfieldy; j++) {
+            setValues(((i * gridSize()) + enemyXPosition()), ((j * gridSize()) + enemyYPosition()), gridSize());
+            switch (m_enemyfield[i][j]) {
+            case KBattleField::FREE:
+                drawSquare();
+                break;
 
-				case KBattleField::WATER:
-					drawSquare();
-					drawWaterIcon();
-					break;
+            case KBattleField::WATER:
+                drawSquare();
+                drawWaterIcon();
+                break;
 
-				case KBattleField::HIT:
-					drawSquare();
-					drawHitIcon();
-					break;
+            case KBattleField::HIT:
+                drawSquare();
+                drawHitIcon();
+                break;
 
-				case KBattleField::BORDER:
-					drawSquare();
-					drawDeathBorder();
-					break;
+            case KBattleField::BORDER:
+                drawSquare();
+                drawDeathBorder();
+                break;
 
-				case KBattleField::DEATH:
-					drawSquare();
-					drawDeathIcon();
-					break;
+            case KBattleField::DEATH:
+                drawSquare();
+                drawDeathIcon();
+                break;
 
-				default:
-					drawSquare();
-					KShip *ship = window->enemyShipAt(i, j);
-					if(ship->placedLeft())
-						drawShipIcon(m_enemyfield[i][j], true);
-					else
-						drawShipIcon(m_enemyfield[i][j]);
-					break;
-			}
-		}
-	}
+            default:
+                drawSquare();
+                KShip *ship = window->enemyShipAt(i, j);
+                if (ship->placedLeft())
+                    drawShipIcon(m_enemyfield[i][j], true);
+                else
+                    drawShipIcon(m_enemyfield[i][j]);
+                break;
+            }
+        }
+    }
 }
 
 int KBattleField::ownXPosition()
 {
-	return 10;
+    return 10;
 }
 
 int KBattleField::ownYPosition()
 {
-	return 10;
+    return 10;
 }
 
 int KBattleField::enemyXPosition()
 {
-	return (m_width / 2) + 10;
+    return (m_width / 2) + 10;
 }
 
 int KBattleField::enemyYPosition()
 {
-	return 10;
+    return 10;
 }
 
 int KBattleField::rectX()
 {
-	return 10;
+    return 10;
 }
 
 QRect KBattleField::ownRect()
 {
-	return QRect(ownXPosition(), ownYPosition(), m_ownfieldx * gridSize(), m_ownfieldy * gridSize());
+    return QRect(ownXPosition(), ownYPosition(), m_ownfieldx * gridSize(), m_ownfieldy * gridSize());
 }
 
 QRect KBattleField::enemyRect()
 {
-	return QRect(enemyXPosition(), enemyYPosition(), m_enemyfieldx * gridSize(), m_enemyfieldy * gridSize());
+    return QRect(enemyXPosition(), enemyYPosition(), m_enemyfieldx * gridSize(), m_enemyfieldy * gridSize());
 }

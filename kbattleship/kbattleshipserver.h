@@ -1,10 +1,10 @@
 /***************************************************************************
-                             kbattleshipserver.h
-                             -------------------
-    Developers: (c) 2000-2001 Nikolas Zimmermann <wildfox@kde.org>
-                (c) 2000-2001 Daniel Molkentin <molkentin@kde.org>
+                            kbattleshipserver.h
+                            -------------------
+   Developers: (c) 2000-2001 Nikolas Zimmermann <wildfox@kde.org>
+               (c) 2000-2001 Daniel Molkentin <molkentin@kde.org>
 
- ***************************************************************************/
+***************************************************************************/
 
 /***************************************************************************
  *                                                                         *
@@ -25,33 +25,33 @@
 
 class KBattleshipServer : public KNetwork::KServerSocket
 {
-	Q_OBJECT
+    Q_OBJECT
 public:
-	KBattleshipServer(int port, const QString& name);
-	void init();
-	void sendMessage(KMessage *msg);
+    KBattleshipServer(int port, const QString& name);
+    void init();
+    void sendMessage(KMessage *msg);
 
 public slots:
-	void slotDiscardClient(const QString &reason, bool kmversion, bool bemit);
+    void slotDiscardClient(const QString &reason, bool kmversion, bool bemit);
 
 private slots:
-	void slotNewConnection();
-	void slotReadClient();
-	void slotRemoveClient();
+    void slotNewConnection();
+    void slotReadClient();
+    void slotRemoveClient();
 
 signals:
-	void sigServerFailure();
-	void sigNewConnect();
-	void sigEndConnect();
-	void sigNewMessage(KMessage *);
-	void sigMessageSent(KMessage *);
+    void sigServerFailure();
+    void sigNewConnect();
+    void sigEndConnect();
+    void sigNewMessage(KMessage *);
+    void sigMessageSent(KMessage *);
 
 private:
-	KNetwork::KStreamSocket *m_serverSocket;
-	QString m_readBuffer;
-	DNSSD::PublicService m_service;
-	int m_port;
-	QString m_name;
+    KNetwork::KStreamSocket *m_serverSocket;
+    QString m_readBuffer;
+    DNSSD::PublicService m_service;
+    int m_port;
+    QString m_name;
 };
 
 #define BATTLESHIP_SERVICE "_kbattleship._tcp"

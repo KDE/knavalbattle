@@ -1,10 +1,10 @@
 /***************************************************************************
-                             kbattleshipclient.h
-                             -------------------
-    Developers: (c) 2000-2001 Nikolas Zimmermann <wildfox@kde.org>
-                (c) 2000-2001 Daniel Molkentin <molkentin@kde.org>
+                            kbattleshipclient.h
+                            -------------------
+   Developers: (c) 2000-2001 Nikolas Zimmermann <wildfox@kde.org>
+               (c) 2000-2001 Daniel Molkentin <molkentin@kde.org>
 
- ***************************************************************************/
+***************************************************************************/
 
 /***************************************************************************
  *                                                                         *
@@ -23,25 +23,25 @@
 
 class KBattleshipClient : public KNetwork::KStreamSocket
 {
-	Q_OBJECT
+    Q_OBJECT
 public:
-	KBattleshipClient(const QString &host, int port);
+    KBattleshipClient(const QString &host, int port);
 
-	void init();
-	void sendMessage(KMessage *msg);
+    void init();
+    void sendMessage(KMessage *msg);
 
 private slots:
-	void slotReadData();
+    void slotReadData();
 
 signals:
-	void sigConnected();
-	void sigEndConnect();
-	void sigSocketFailure(KNetwork::KStreamSocket::SocketError);
-	void sigNewMessage(KMessage *);
-	void sigMessageSent(KMessage *);
+    void sigConnected();
+    void sigEndConnect();
+    void sigSocketFailure(KNetwork::KStreamSocket::SocketError);
+    void sigNewMessage(KMessage *);
+    void sigMessageSent(KMessage *);
 
 private:
-	QString m_readBuffer;
+    QString m_readBuffer;
 };
 
 #endif

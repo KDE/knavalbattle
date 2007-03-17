@@ -1,10 +1,10 @@
 /***************************************************************************
-                                 kmessage.h
-                             -------------------
-    Developers: (c) 2000-2001 Nikolas Zimmermann <wildfox@kde.org>
-                (c) 2000-2001 Daniel Molkentin <molkentin@kde.org>
+                                kmessage.h
+                            -------------------
+   Developers: (c) 2000-2001 Nikolas Zimmermann <wildfox@kde.org>
+               (c) 2000-2001 Daniel Molkentin <molkentin@kde.org>
 
- ***************************************************************************/
+***************************************************************************/
 
 /***************************************************************************
  *                                                                         *
@@ -24,26 +24,26 @@
 class KMessage
 {
 public:
-	enum{GETVERSION, DISCARD, GREET, SHIPSREADY, SHOOT, ANSWER_SHOOT, WON, REPLAY, CHAT};
+    enum{GETVERSION, DISCARD, GREET, SHIPSREADY, SHOOT, ANSWER_SHOOT, WON, REPLAY, CHAT};
 
-	explicit KMessage(int type);
-	KMessage(KMessage *msg);
-	KMessage();
+    explicit KMessage(int type);
+    KMessage(KMessage *msg);
+    KMessage();
 
-	int type();
+    int type();
 
-	void addField(const QString &name, const QString &content);
-	QString field(const QString &name) const;
+    void addField(const QString &name, const QString &content);
+    QString field(const QString &name) const;
 
-	void setDataStream(const QString &stream);
-	QString sendStream() const;
+    void setDataStream(const QString &stream);
+    QString sendStream() const;
 
-	void chatMessage(const QString &nickname, const QString &message);
-	void versionMessage();
+    void chatMessage(const QString &nickname, const QString &message);
+    void versionMessage();
 
 private:
-	QDomDocument m_xmlDocument;
-	int m_messageType;
+    QDomDocument m_xmlDocument;
+    int m_messageType;
 };
 
 #endif

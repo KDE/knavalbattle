@@ -1,9 +1,9 @@
 /***************************************************************************
-                             kbrandomshotstrategy.h
-                                  ----------
-    Developers: (c) 2001 Kevin Krammer <kevin.krammer@gmx.at>
+                            kbrandomshotstrategy.h
+                                 ----------
+   Developers: (c) 2001 Kevin Krammer <kevin.krammer@gmx.at>
 
- ***************************************************************************/
+***************************************************************************/
 
 /***************************************************************************
  *                                                                         *
@@ -24,24 +24,24 @@
 
 class KBRandomShotStrategy : public KBStrategy
 {
-public: 
-	explicit KBRandomShotStrategy(KBStrategy *parent = 0);
-	virtual ~KBRandomShotStrategy();
+public:
+    explicit KBRandomShotStrategy(KBStrategy *parent = 0);
+    virtual ~KBRandomShotStrategy();
 
-	virtual void init(KBattleField *field, const QRect &field_rect);
-	virtual const QPoint nextShot();
-	virtual bool hasMoreShots();
-	virtual void shotAt(const QPoint &pos);
+    virtual void init(KBattleField *field, const QRect &field_rect);
+    virtual const QPoint nextShot();
+    virtual bool hasMoreShots();
+    virtual void shotAt(const QPoint &pos);
 
 private:
-	bool advance();
+    bool advance();
 
-	int m_row;
-	int m_column;
+    int m_row;
+    int m_column;
 
-	KRandomSequence m_randomSeq;
-	KBDestroyShipStrategy *m_destroyer;
-	bool m_destroying;
+    KRandomSequence m_randomSeq;
+    KBDestroyShipStrategy *m_destroyer;
+    bool m_destroying;
 };
 
 #endif

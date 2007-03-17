@@ -1,10 +1,10 @@
 /***************************************************************************
-                                 konnectionhandling.h
-                                  -----------------
-    Developers: (c) 2000-2001 Nikolas Zimmermann <wildfox@kde.org>
-                (c) 2000-2001 Daniel Molkentin <molkentin@kde.org>
+                                konnectionhandling.h
+                                 -----------------
+   Developers: (c) 2000-2001 Nikolas Zimmermann <wildfox@kde.org>
+               (c) 2000-2001 Daniel Molkentin <molkentin@kde.org>
 
- ***************************************************************************/
+***************************************************************************/
 
 /***************************************************************************
  *                                                                         *
@@ -29,45 +29,48 @@
 
 class KonnectionHandling : public QObject
 {
-	Q_OBJECT
+    Q_OBJECT
 public:
-	enum{SERVER, CLIENT};
-	KonnectionHandling(QWidget *parent, KBattleshipServer *server);
-	KonnectionHandling(QWidget *parent, KBattleshipClient *client);
+    enum{SERVER, CLIENT};
+    KonnectionHandling(QWidget *parent, KBattleshipServer *server);
+    KonnectionHandling(QWidget *parent, KBattleshipClient *client);
 
-	int type() { return m_type; }
+    int type()
+    {
+        return m_type;
+    }
 
-	void updateInternal(KBattleshipServer *server);
-	void updateInternal(KBattleshipClient *client);
+    void updateInternal(KBattleshipServer *server);
+    void updateInternal(KBattleshipClient *client);
 
 public slots:
-	void slotNewMessage(KMessage *msg);
-	void slotMessageSent(KMessage *msg);
-	void slotNewClient();
-	void slotLostClient();
-	void slotLostServer();
-	void slotSocketError(KNetwork::KStreamSocket::SocketError error);
+    void slotNewMessage(KMessage *msg);
+    void slotMessageSent(KMessage *msg);
+    void slotNewClient();
+    void slotLostClient();
+    void slotLostServer();
+    void slotSocketError(KNetwork::KStreamSocket::SocketError error);
 
 signals:
-	void sigStatusBar(const QString &);
-	void sigEnemyNickname(const QString &);
-	void sigEnemyFieldData(int, int, int, int, int, int, int, bool);
-	void sigClientInformation(const QString &, const QString &, const QString &, const QString &);
-	void sigSendNickname();
-	void sigSendFieldState(int, int);
-	void sigPlaceShips(bool);
-	void sigShootable(bool);
-	void sigClientLost();
-	void sigServerLost();
-	void sigReplay();
-	void sigLost(KMessage *);
-	void sigAbortNetworkGame();
-	void sigChatMessage(const QString &, const QString &, bool);
+    void sigStatusBar(const QString &);
+    void sigEnemyNickname(const QString &);
+    void sigEnemyFieldData(int, int, int, int, int, int, int, bool);
+    void sigClientInformation(const QString &, const QString &, const QString &, const QString &);
+    void sigSendNickname();
+    void sigSendFieldState(int, int);
+    void sigPlaceShips(bool);
+    void sigShootable(bool);
+    void sigClientLost();
+    void sigServerLost();
+    void sigReplay();
+    void sigLost(KMessage *);
+    void sigAbortNetworkGame();
+    void sigChatMessage(const QString &, const QString &, bool);
 
 private:
-	KBattleshipServer *m_kbserver;
-	KBattleshipClient *m_kbclient;
-	int m_type;
+    KBattleshipServer *m_kbserver;
+    KBattleshipClient *m_kbclient;
+    int m_type;
 };
 
 #endif

@@ -1,10 +1,10 @@
 /***************************************************************************
-                                kstatdlg.cpp
-                             -------------------
-    Developers: (c) 2000-2001 Nikolas Zimmermann <wildfox@kde.org>
-                (c) 2000-2001 Daniel Molkentin <molkentin@kde.org>
+                               kstatdlg.cpp
+                            -------------------
+   Developers: (c) 2000-2001 Nikolas Zimmermann <wildfox@kde.org>
+               (c) 2000-2001 Daniel Molkentin <molkentin@kde.org>
 
- ***************************************************************************/
+***************************************************************************/
 
 /***************************************************************************
  *                                                                         *
@@ -22,76 +22,76 @@
 
 KStatDialog::KStatDialog(QWidget *parent) : QWidget(parent)
 {
-	setupUi(this);
-	pShots->setPixmap(QPixmap(KStandardDirs::locate("data","kbattleship/pictures/stat-shots.png")));
-	pHits->setPixmap(QPixmap(KStandardDirs::locate("data","kbattleship/pictures/stat-hits.png")));
-	pWater->setPixmap(QPixmap(KStandardDirs::locate("data","kbattleship/pictures/stat-water.png")));
+    setupUi(this);
+    pShots->setPixmap(QPixmap(KStandardDirs::locate("data", "kbattleship/pictures/stat-shots.png")));
+    pHits->setPixmap(QPixmap(KStandardDirs::locate("data", "kbattleship/pictures/stat-hits.png")));
+    pWater->setPixmap(QPixmap(KStandardDirs::locate("data", "kbattleship/pictures/stat-water.png")));
 }
 
 void KStatDialog::slotAddOwnWon()
 {
-	OwnLabel->setText(QString::number(OwnLabel->text().toInt() + 1));
+    OwnLabel->setText(QString::number(OwnLabel->text().toInt() + 1));
 }
 
 void KStatDialog::slotAddEnemyWon()
 {
-	EnemyLabel->setText(QString::number(EnemyLabel->text().toInt() + 1));
+    EnemyLabel->setText(QString::number(EnemyLabel->text().toInt() + 1));
 }
 
 void KStatDialog::setShot()
 {
-	setShot(shot() + 1);
+    setShot(shot() + 1);
 }
 
 void KStatDialog::setShot(int shot)
 {
-	ShotLCD->display(shot);
+    ShotLCD->display(shot);
 }
 
 void KStatDialog::setHit()
 {
-	setHit(hit() + 1);
+    setHit(hit() + 1);
 }
 
 void KStatDialog::setHit(int hit)
 {
-	HitLCD->display(hit);
+    HitLCD->display(hit);
 }
 
 void KStatDialog::setWater()
 {
-	setWater(water() + 1);
+    setWater(water() + 1);
 }
 
 void KStatDialog::setWater(int water)
 {
-	WaterLCD->display(water);
+    WaterLCD->display(water);
 }
 
 void KStatDialog::clear()
 {
-	ShotLCD->display(0);
-	HitLCD->display(0);
-	WaterLCD->display(0);
+    ShotLCD->display(0);
+    HitLCD->display(0);
+    WaterLCD->display(0);
 }
 
 void KStatDialog::clearWon()
 {
-	OwnLabel->setText(QString::number(0));
-	EnemyLabel->setText(QString::number(0));
+    OwnLabel->setText(QString::number(0));
+    EnemyLabel->setText(QString::number(0));
 }
 
 int KStatDialog::shot()
 {
-	return ShotLCD->intValue();
+    return ShotLCD->intValue();
 }
 
 int KStatDialog::hit()
 {
-	return HitLCD->intValue();
+    return HitLCD->intValue();
 }
 
 int KStatDialog::water()
 {
-	return WaterLCD->intValue();
+    return WaterLCD->intValue();
 }

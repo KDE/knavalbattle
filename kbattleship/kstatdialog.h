@@ -1,10 +1,10 @@
 /***************************************************************************
-                                    kstatdialog.h
-                                  -----------------
-    Developers: (c) 2000-2001 Nikolas Zimmermann <wildfox@kde.org>
-                (c) 2000-2001 Daniel Molkentin <molkentin@kde.org>
+                                   kstatdialog.h
+                                 -----------------
+   Developers: (c) 2000-2001 Nikolas Zimmermann <wildfox@kde.org>
+               (c) 2000-2001 Daniel Molkentin <molkentin@kde.org>
 
- ***************************************************************************/
+***************************************************************************/
 
 /***************************************************************************
  *                                                                         *
@@ -22,27 +22,27 @@
 
 class KStatDialog : public QWidget, public Ui::statDlg
 {
-	Q_OBJECT
+    Q_OBJECT
 public:
-	explicit KStatDialog(QWidget *parent = 0);
+    explicit KStatDialog(QWidget *parent = 0);
 
-	void setShot();
-	void setShot(int shot);
-	void setHit();
-	void setHit(int hit);
-	void setWater();
-	void setWater(int water);
+    void setShot();
+    void setShot(int shot);
+    void setHit();
+    void setHit(int hit);
+    void setWater();
+    void setWater(int water);
 
-	void clear();
-	void clearWon();
+    void clear();
+    void clearWon();
 
-	int shot();
-	int hit();
-	int water();
+    int shot();
+    int hit();
+    int water();
 
 public slots:
-	void slotAddOwnWon();
-	void slotAddEnemyWon();
+    void slotAddOwnWon();
+    void slotAddEnemyWon();
 };
 
 #endif

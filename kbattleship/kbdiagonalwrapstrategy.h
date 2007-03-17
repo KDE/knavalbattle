@@ -1,9 +1,9 @@
 /***************************************************************************
-                            kbdiagonalwrapstrategy.h
-                                  ----------
-    Developers: (c) 2001 Kevin Krammer <kevin.krammer@gmx.at>
+                           kbdiagonalwrapstrategy.h
+                                 ----------
+   Developers: (c) 2001 Kevin Krammer <kevin.krammer@gmx.at>
 
- ***************************************************************************/
+***************************************************************************/
 
 /***************************************************************************
  *                                                                         *
@@ -23,31 +23,31 @@
 
 class KBDiagonalWrapStrategy : public KBStrategy
 {
-public: 
-	explicit KBDiagonalWrapStrategy(KBStrategy *parent = 0);
-	virtual ~KBDiagonalWrapStrategy();
+public:
+    explicit KBDiagonalWrapStrategy(KBStrategy *parent = 0);
+    virtual ~KBDiagonalWrapStrategy();
 
-	virtual void init(KBattleField *field, const QRect &field_rect);
-	virtual const QPoint nextShot();
-	virtual bool hasMoreShots();
-	virtual void shotAt(const QPoint &pos);
+    virtual void init(KBattleField *field, const QRect &field_rect);
+    virtual const QPoint nextShot();
+    virtual bool hasMoreShots();
+    virtual void shotAt(const QPoint &pos);
 
 private:
-	bool advance();
-	bool advanceRightDown();
-	bool advanceRightUp();
-	bool advanceLeftDown();
-	bool advanceLeftUp();
+    bool advance();
+    bool advanceRightDown();
+    bool advanceRightUp();
+    bool advanceLeftDown();
+    bool advanceLeftUp();
 
-	int m_row;
-	int m_column;
+    int m_row;
+    int m_column;
 
-	QPoint m_start;
-	KBDiagonalShotStrategy *m_child;
-	KBDiagonalShotStrategy::Direction m_direction;
+    QPoint m_start;
+    KBDiagonalShotStrategy *m_child;
+    KBDiagonalShotStrategy::Direction m_direction;
 
-	KBDestroyShipStrategy *m_destroyer;
-	bool m_destroying;
+    KBDestroyShipStrategy *m_destroyer;
+    bool m_destroying;
 };
 
 #endif

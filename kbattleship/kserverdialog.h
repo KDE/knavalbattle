@@ -1,10 +1,10 @@
 /***************************************************************************
-                                   kserverdialog.h
-                                  -----------------
-    Developers: (c) 2000-2001 Nikolas Zimmermann <wildfox@kde.org>
-                (c) 2000-2001 Daniel Molkentin <molkentin@kde.org>
+                                  kserverdialog.h
+                                 -----------------
+   Developers: (c) 2000-2001 Nikolas Zimmermann <wildfox@kde.org>
+               (c) 2000-2001 Daniel Molkentin <molkentin@kde.org>
 
- ***************************************************************************/
+***************************************************************************/
 
 /***************************************************************************
  *                                                                         *
@@ -24,20 +24,20 @@ class ServerStartDlg;
 
 class KServerDialog : public KDialog
 {
-	Q_OBJECT
+    Q_OBJECT
 public:
-	explicit KServerDialog(QWidget *parent = 0);
+    explicit KServerDialog(QWidget *parent = 0);
 
-	QString port() const;
-	QString nickname() const;
-	QString gamename() const;
+    QString port() const;
+    QString nickname() const;
+    QString gamename() const;
 
 public slots:
-	virtual void slotOk();
-	virtual void slotCancel();
+    virtual void slotOk();
+    virtual void slotCancel();
 
 private:
-        ServerStartDlg *m_mainWidget;
+    ServerStartDlg *m_mainWidget;
 };
 
 #endif
