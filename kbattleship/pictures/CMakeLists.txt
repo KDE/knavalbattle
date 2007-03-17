@@ -1,6 +1,6 @@
 
 install(FILES
-sea.png water.png hit.png
+sea.png water.png hit.png default_theme.svgz
 death.png border.png ship1-1.png
 ship2-1.png ship2-2.png ship3-1.png
 ship3-2.png ship3-3.png ship4-1.png
