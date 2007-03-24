@@ -1,26 +1,11 @@
 #include "kbsrenderer.h"
-#include "kbattlefield.h"
 #include <ksvgrenderer.h>
 #include <kdebug.h>
 #include <QPainter>
 
 KBSRenderer::KBSRenderer(const QString& path)
-        : m_renderer(new KSvgRenderer(path, 0))
 {
-    m_typenames[KBattleField::WATER] = "water";
-    m_typenames[KBattleField::HIT] = "hit";
-    m_typenames[KBattleField::DEATH] = "death";
-    m_typenames[KBattleField::BORDER] = "border";
-    m_typenames[KBattleField::SHIP1P1] = "ship1-1";
-    m_typenames[KBattleField::SHIP2P1] = "ship2-1";
-    m_typenames[KBattleField::SHIP2P2] = "ship2-2";
-    m_typenames[KBattleField::SHIP3P1] = "ship3-1";
-    m_typenames[KBattleField::SHIP3P2] = "ship3-2";
-    m_typenames[KBattleField::SHIP3P3] = "ship3-3";
-    m_typenames[KBattleField::SHIP4P1] = "ship4-1";
-    m_typenames[KBattleField::SHIP4P2] = "ship4-2";
-    m_typenames[KBattleField::SHIP4P3] = "ship4-3";
-    m_typenames[KBattleField::SHIP4P4] = "ship4-4";
+    m_renderer = new KSvgRenderer(path, 0);
 }
 
 KBSRenderer::~KBSRenderer()
@@ -35,17 +20,15 @@ void KBSRenderer::resize(int sz)
 
 void KBSRenderer::resize(const QSize& sz)
 {
-    m_size = sz;
+    if (m_size != sz) {
+        m_size = sz;
+        m_cache.clear();
+    }
 }
 
 QSize KBSRenderer::size() const
 {
     return m_size;
-}
-
-void KBSRenderer::resizeBackground(const QSize& sz)
-{
-    m_background_size = sz;
 }
 
 QPixmap KBSRenderer::render(const QString& id, const QSize& sz)
@@ -69,25 +52,22 @@ QPixmap KBSRenderer::render(const QString& id, const QSize& sz)
     return m_cache.value(id);
 }
 
-QPixmap KBSRenderer::render(const QString& id)
+QPixmap KBSRenderer::render(const QString& id, int xScale, int yScale)
 {
-    return render(id, m_size);
+    return render(id, QSize(m_size.width() * xScale, m_size.height() * yScale));
 }
 
-QPixmap KBSRenderer::render(int type, bool rotate)
+Coord KBSRenderer::toLogical(const QPoint& p) const
 {
-    if (!m_typenames.contains(type))
-        return QPixmap();
-    else {
-        QString id = m_typenames.value(type);
-        if (!rotate && id.startsWith("ship"))
-            id += "-r";
-        return render(id);
-    }
+    int x = p.x();
+    x = x >= 0 ? x / m_size.width() : x / m_size.width() - 1;
+    int y = p.y();
+    y = y >= 0 ? y / m_size.height() : y / m_size.height() - 1;
+    return Coord(x, y);
 }
 
-QPixmap KBSRenderer::renderBackground()
+QPoint KBSRenderer::toReal(const Coord& c) const
 {
-    return render("background", m_background_size);
+    return QPoint(c.x * m_size.width(), c.y * m_size.height());
 }
 

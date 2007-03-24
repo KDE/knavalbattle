@@ -1,4 +1,0 @@
-Name=KBattleship games
-Type=_kbattleship._tcp
-Exec=kbattleship %u
-Icon=kbattleship

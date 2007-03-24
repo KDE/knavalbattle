@@ -4,6 +4,7 @@
 #include <QString>
 #include <QPixmap>
 #include <QHash>
+#include "ship.h"
 
 class KSvgRenderer;
 
@@ -33,30 +34,19 @@ public:
     QSize size() const;
 
     /**
-      * Set a new size for the background. Invalidate background cache.
-      */
-    void resizeBackground(const QSize& sz);
-
-    /**
       * Render an item ensuring it is in the cache.
       */
-    QPixmap render(const QString& id);
-    QPixmap render(int type, bool rotate = false);
-
-    /**
-      * Render background.
-      */
-    QPixmap renderBackground();
+    QPixmap render(const QString& id, int xScale = 1, int yScale = 1);
+    
+    Coord toLogical(const QPoint& p) const;
+    QPoint toReal(const Coord& p) const;
 protected:
     QPixmap render(const QString& id, const QSize& sz);
 private:
     KSvgRenderer* m_renderer;
     QSize m_size;
-    QSize m_background_size;
 
     Cache m_cache;
-    QHash<int, QString> m_typenames;
-    QPixmap m_background;
 };
 
 #endif // KBSRENDERER_H
