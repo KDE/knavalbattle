@@ -1,4 +1,4 @@
-set(kbattleship_SRCS ${kbattleship_SRCS}
+set(kbattleship_SRCS
     controller.cpp
     coord.cpp
     element.cpp
@@ -6,7 +6,8 @@ set(kbattleship_SRCS ${kbattleship_SRCS}
     battlefield.cpp
     sea.cpp
     kbsrenderer.cpp
-    shippixmap.cpp
+    sprite.cpp
+    spritefactory.cpp
     battlefieldview.cpp
     seaview.cpp
     mainwindow.cpp

@@ -1,6 +1,7 @@
 #include <QMouseEvent>
 #include <kstandarddirs.h>
 #include <kdebug.h>
+#include <kmessagebox.h>
 #include <kgamecanvas.h>
 
 #include "seaview.h"
@@ -125,7 +126,12 @@ void SeaView::miss(Sea::Player p, const Coord& c)
 
 void SeaView::gameOver(Sea::Status status)
 {
-    
+    if (status == Sea::A_WINS) {
+        KMessageBox::information(this, "You win!", "Game over");
+    }
+    else {
+        KMessageBox::information(this, "You lose!", "Game over");
+    }
 }
 
 BattleFieldView* SeaView::otherField(BattleFieldView* field)

@@ -3,19 +3,33 @@
 
 #include <kgamecanvas.h>
 #include "coord.h"
+#include "spritefactory.h"
+#include "grid.h"
 
 class KBSRenderer;
-class ShipPixmap;
+class Sprite;
 class Ship;
 
 class BattleFieldView : public KGameCanvasGroup
 {
     KGameCanvasPixmap* m_background;
     KBSRenderer* m_renderer;
+    SpriteFactory m_factory;
     int m_gridSize;
-    ShipPixmap* m_preview;
     
-    void addSprite(const Coord&, const QString& name);
+    struct Preview {
+        Coord pos;
+        Sprite* sprite;
+        
+        Preview()
+        : pos(-1, -1)
+        , sprite(0)
+        {
+        }
+    } m_preview;
+    
+    Grid<Sprite*> m_sprites;
+    void addSprite(const Coord& c, Sprite* ship);
 public:
     BattleFieldView(KGameCanvasAbstract* parent, KBSRenderer* renderer, int gridSize);
     QSize size() const;
