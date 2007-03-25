@@ -105,6 +105,10 @@ void BattleFieldView::add(const Coord& c, Ship* ship)
         Animation* a = new FadeAnimation(sprite, PREVIEW_OPACITY, 255, 1000);
         m_animator->add(a);
     }
+    else if (!ship->alive()) {
+        Animation* a = new FadeAnimation(sprite, 0, 200, 1000);
+        m_animator->add(a);
+    }
 }
 
 void BattleFieldView::hit(const Coord& c)
