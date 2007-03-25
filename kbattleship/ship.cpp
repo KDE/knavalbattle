@@ -10,7 +10,6 @@ Ship::Ship(unsigned int size, Direction direction)
 
 void Ship::changeDirection()
 {
-    kDebug() << "changing ship direction" << endl;
     m_direction = m_direction == TOP_DOWN ? LEFT_TO_RIGHT : TOP_DOWN;
 }
 

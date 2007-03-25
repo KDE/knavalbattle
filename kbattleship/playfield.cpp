@@ -19,3 +19,13 @@ PlayField::PlayField(QWidget* parent)
     setLayout(layout);
 }
 
+
+void PlayField::newGame()
+{
+    delete m_controller;
+    m_controller = new OnePlayerController(this, m_sea, Sea::Player(0));
+}
+
+#include "playfield.moc"
+
+

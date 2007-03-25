@@ -19,7 +19,6 @@ Sprite* SpriteFactory::createShip(Ship* ship)
         y = 1;
     }
     else {
-        kDebug() << "top down!" << endl;
         x = 1;
         y = ship->size();
     }

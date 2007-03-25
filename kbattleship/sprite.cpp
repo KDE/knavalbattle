@@ -15,7 +15,6 @@ Sprite::Sprite(KGameCanvasAbstract* parent, KBSRenderer* renderer,
 
 Sprite::~Sprite()
 {
-    kDebug() << "sprite " << m_name << " dying" << endl;
 }
 
 void Sprite::update(KBSRenderer* renderer)

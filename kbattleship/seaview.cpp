@@ -161,7 +161,8 @@ void SeaView::gameOver(Sea::Status status)
 
 void SeaView::clear()
 {
-    
+    m_fields[0]->clear();
+    m_fields[1]->clear();
 }
 
 BattleFieldView* SeaView::otherField(BattleFieldView* field)

@@ -20,6 +20,7 @@ void MainWindow::setupActions()
 {
     KAction* temp = new KAction(i18n("&New game"), this);
     actionCollection()->addAction("game_singleplayer", temp);
+    connect(temp, SIGNAL(triggered()), m_main, SLOT(newGame()));
     
     KStandardAction::preferences(this, SLOT(optionsPreferences()), actionCollection());
     

@@ -14,31 +14,11 @@ Controller::Controller(QObject* parent)
 
 OnePlayerController::OnePlayerController(QObject* parent, SeaView* view, Sea::Player player)
 : Controller(parent)
+, m_sea(0)
 , m_view(view)
 , m_player(player)
 {
-    // create model
-    m_sea = new Sea(this, Coord(10, 10));
-    
-    // set up player ships
-    for (int i = 1; i <= 4; i++) {
-        m_ships.append(new Ship(i, Ship::LEFT_TO_RIGHT));
-    }
-        
-    // set up computer ships
-    srand(time(0));
-    for (int i = 1; i <= 4; i++) {
-        Ship* ship = 0;
-        Sea::Player p = Sea::opponent(m_player);
-        while (ship == 0) {
-            Coord c(rand() % 10, rand() % 10);
-            Ship::Direction dir = rand() % 2 == 0 ? Ship::LEFT_TO_RIGHT : Ship::TOP_DOWN;
-            if (m_sea->canAddShip(p, c, i, dir)) {
-                ship = new Ship(i, dir);
-                m_sea->add(p, c, ship);
-            }
-        }   
-    }
+    reset();
 }
 
 Ship* OnePlayerController::canAddShip(Sea::Player player, const Coord& c)
@@ -59,25 +39,20 @@ void OnePlayerController::hit(Sea::Player player, const Coord& c)
 {
     Sea::Player opponent = Sea::opponent(player);
     if (m_sea->canHit(player, c)) {
-        kDebug() << "hitting " << c << endl;
         HitInfo info = m_sea->hit(c);
         switch (info.type) {
         case HitInfo::HIT:
-            kDebug() << "hit" << endl;
             m_view->hit(opponent, c);
             break;
         case HitInfo::MISS:
-            kDebug() << "miss" << endl;
             m_view->miss(opponent, c);
             break;
         case HitInfo::INVALID:
-            kDebug() << "BUG: invalid hit" << endl;
             break;
         }
             
         if (info.shipDestroyed && player == m_player) {
             // show destroyed ship
-            kDebug() << "ship destroyed" << endl;
             Coord c = m_sea->find(opponent, info.shipDestroyed);
             if (c.valid()) {
                 m_view->add(opponent, c, info.shipDestroyed);
@@ -92,7 +67,6 @@ void OnePlayerController::action(Sea::Player player, const Coord& c)
         // placing ships
         Ship* ship = canAddShip(player, c);
         if (ship) {
-            kDebug() << "adding ship to player " << player << endl;
             
             // remove ship from the list
             m_ships.removeFirst();
@@ -137,6 +111,35 @@ void OnePlayerController::changeDirection(Sea::Player p)
             next->changeDirection();
             m_view->cancelPreview();
         }
+    }
+}
+
+void OnePlayerController::reset()
+{
+    m_view->clear();
+    
+    // create model
+    delete m_sea;
+    m_sea = new Sea(this, Coord(10, 10));
+    
+    // set up player ships
+    for (int i = 1; i <= 4; i++) {
+        m_ships.append(new Ship(i, Ship::LEFT_TO_RIGHT));
+    }
+        
+    // set up computer ships
+    srand(time(0));
+    for (int i = 1; i <= 4; i++) {
+        Ship* ship = 0;
+        Sea::Player p = Sea::opponent(m_player);
+        while (ship == 0) {
+            Coord c(rand() % 10, rand() % 10);
+            Ship::Direction dir = rand() % 2 == 0 ? Ship::LEFT_TO_RIGHT : Ship::TOP_DOWN;
+            if (m_sea->canAddShip(p, c, i, dir)) {
+                ship = new Ship(i, dir);
+                m_sea->add(p, c, ship);
+            }
+        }   
     }
 }
 

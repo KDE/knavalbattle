@@ -50,6 +50,7 @@ public:
     void add(const Coord& c, Ship* ship);
     void hit(const Coord& c);
     void miss(const Coord& c);
+    void clear();
 };
 
 #endif // BATTLEFIELD_H

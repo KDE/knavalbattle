@@ -85,20 +85,9 @@ void BattleFieldView::addSprite(const Coord& c, Sprite* sprite)
 void BattleFieldView::add(const Coord& c, Ship* ship)
 {
     Sprite* sprite = m_factory.createShip(ship);
-    kDebug() << "adding sprite " << sprite << endl;
-    kDebug() << "background = " << m_background << endl;
     addSprite(c, sprite);
     
-    
-    foreach (KGameCanvasItem* item, *items()) {
-        kDebug() << "item = " << item << endl;
-    }
-    
     sprite->stackOver(m_background);
-    
-    foreach (KGameCanvasItem* item, *items()) {
-        kDebug() << "item = " << item << endl;
-    }
     
     // fading preview in
     if (ship == m_preview.ship) {
@@ -120,4 +109,17 @@ void BattleFieldView::miss(const Coord& c)
 {
     addSprite(c, m_factory.createMiss());
 }
+
+void BattleFieldView::clear()
+{
+    delete m_preview.sprite;
+    m_preview.sprite = 0;
+    m_preview.ship = 0;
+    
+    foreach (Sprite* s, m_sprites) {
+        delete s;
+    }
+    m_sprites.clear();
+}
+
 

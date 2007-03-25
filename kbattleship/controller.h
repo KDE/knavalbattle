@@ -32,7 +32,9 @@ public:
     virtual Ship* canAddShip(Sea::Player, const Coord& c);
     virtual void action(Sea::Player, const Coord& c);
     virtual void changeDirection(Sea::Player);
+    
     Ship* nextShip();
+    void reset();
 };
 
 #endif // CONTROLLER_H
