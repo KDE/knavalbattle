@@ -3,10 +3,14 @@
 #include "battlefieldview.h"
 #include "kbsrenderer.h"
 #include "sprite.h"
+#include "animator.h"
+#include "animation.h"
 
-BattleFieldView::BattleFieldView(KGameCanvasAbstract* parent, KBSRenderer* renderer, int gridSize)
+BattleFieldView::BattleFieldView(KGameCanvasAbstract* parent, KBSRenderer* renderer, 
+                                Animator* animator, int gridSize)
 : KGameCanvasGroup(parent)
 , m_renderer(renderer)
+, m_animator(animator)
 , m_factory(this, renderer)
 , m_gridSize(gridSize)
 {
@@ -50,9 +54,10 @@ void BattleFieldView::update()
 void BattleFieldView::setPreview(const QPoint& pos, Ship* ship)
 {
     if (!m_preview.sprite) {
+        m_preview.ship = ship;
         m_preview.sprite = m_factory.createShip(ship);
         kDebug() << "created preview: dir = " << ship->direction() << endl;
-        m_preview.sprite->setOpacity(150);
+        m_preview.sprite->setOpacity(PREVIEW_OPACITY);
         m_preview.sprite->show();
     }
     
@@ -64,6 +69,7 @@ void BattleFieldView::cancelPreview()
 {
     delete m_preview.sprite;
     m_preview.sprite = 0;
+    m_preview.ship = 0;
 }
 
 void BattleFieldView::addSprite(const Coord& c, Sprite* sprite)
@@ -76,7 +82,15 @@ void BattleFieldView::addSprite(const Coord& c, Sprite* sprite)
 
 void BattleFieldView::add(const Coord& c, Ship* ship)
 {
-    addSprite(c, m_factory.createShip(ship));
+    Sprite* sprite = m_factory.createShip(ship);
+    addSprite(c, sprite);
+    
+    // fading preview in
+    if (ship == m_preview.ship) {
+//         sprite->setOpacity(PREVIEW_OPACITY);
+        Animation* a = new FadeAnimation(sprite, PREVIEW_OPACITY, 255, 1000);
+        m_animator->add(a);
+    }
 }
 
 void BattleFieldView::hit(const Coord& c)

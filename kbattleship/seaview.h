@@ -3,6 +3,7 @@
 
 #include <kgamecanvas.h>
 #include "sea.h"
+#include "animator.h"
 
 class BattleFieldView;
 class KBSRenderer;
@@ -17,6 +18,7 @@ class SeaView : public KGameCanvasWidget
     Controller* m_controller;
     BattleFieldView* otherField(BattleFieldView* field);
     QPoint m_last_preview;
+    Animator m_animator;
     
     bool setPreview(Sea::Player player, const QPoint& pos);
     bool updatePreview(const QPoint& pos);

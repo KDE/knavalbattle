@@ -10,6 +10,8 @@ set(kbattleship_SRCS
     spritefactory.cpp
     battlefieldview.cpp
     seaview.cpp
+    animator.cpp
+    animation.cpp
     playfield.cpp
     mainwindow.cpp
     main.cpp)

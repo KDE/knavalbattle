@@ -22,4 +22,3 @@ void Sprite::update(KBSRenderer* renderer)
 {
     setPixmap(renderer->render(m_name, m_rotated, m_scale.x, m_scale.y));
 }
-
