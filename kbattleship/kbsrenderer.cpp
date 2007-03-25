@@ -39,7 +39,7 @@ QPixmap KBSRenderer::render(const PixmapData& data, const QSize& sz)
             return QPixmap();
         }
         QImage tmp(sz, QImage::Format_ARGB32_Premultiplied);
-        tmp.fill(Qt::blue);
+        tmp.fill(0);
         {
             QSize renderSize = sz;
             
