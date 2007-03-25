@@ -1,6 +1,8 @@
 #ifndef HITINFO_H
 #define HITINFO_H
 
+class Ship;
+
 struct HitInfo
 {
     enum Type
@@ -11,9 +13,9 @@ struct HitInfo
     };
     
     Type type;
-    bool shipDestroyed;
+    Ship* shipDestroyed;
     
-    HitInfo(Type type, bool shipDestroyed = false)
+    HitInfo(Type type, Ship* shipDestroyed = 0)
     : type(type)
     , shipDestroyed(shipDestroyed)
     {

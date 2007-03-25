@@ -75,8 +75,13 @@ void OnePlayerController::hit(Sea::Player player, const Coord& c)
             break;
         }
             
-        if (info.shipDestroyed) {
+        if (info.shipDestroyed && player == m_player) {
+            // show destroyed ship
             kDebug() << "ship destroyed" << endl;
+            Coord c = m_sea->find(opponent, info.shipDestroyed);
+            if (c.valid()) {
+                m_view->add(opponent, c, info.shipDestroyed);
+            }
         }
     }
 }

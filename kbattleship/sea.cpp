@@ -48,6 +48,11 @@ HitInfo Sea::hit(const Coord& pos)
     return res;
 }
 
+Coord Sea::find(Player p, Ship* ship) const
+{
+    return m_fields[p]->find(ship);
+}
+
 void Sea::switchTurn()
 {
     m_turn = opponent(m_turn);

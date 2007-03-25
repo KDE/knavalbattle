@@ -40,6 +40,7 @@ public:
     bool canHit(Player p, const Coord& pos) const;
     HitInfo hit(const Coord& pos);
     void startPlaying();
+    Coord find(Player p, Ship* ship) const;
     
     inline Status status() const { return m_status; }
     inline Player turn() const { return m_turn; }

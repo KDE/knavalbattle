@@ -15,6 +15,9 @@ public:
     Coord operator*(int n) const;
     Coord& operator+=(const Coord& other);
     bool operator==(const Coord& other) const;
+    bool valid() const;
+    
+    static Coord invalid();
 };
 
 kdbgstream& operator<<(kdbgstream& os, const Coord& c);

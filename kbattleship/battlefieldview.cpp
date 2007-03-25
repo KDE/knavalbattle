@@ -1,4 +1,5 @@
 #include <kdebug.h>
+#include <QList>
 
 #include "battlefieldview.h"
 #include "kbsrenderer.h"
@@ -16,6 +17,7 @@ BattleFieldView::BattleFieldView(KGameCanvasAbstract* parent, KBSRenderer* rende
 {
     m_background = new KGameCanvasPixmap(m_renderer->render("background", false, m_gridSize, m_gridSize), this);
     m_background->moveTo(0, 0);
+    m_background->setOpacity(250);
     m_background->show();
     
     for (Sprites::iterator i = m_sprites.begin();
@@ -83,11 +85,23 @@ void BattleFieldView::addSprite(const Coord& c, Sprite* sprite)
 void BattleFieldView::add(const Coord& c, Ship* ship)
 {
     Sprite* sprite = m_factory.createShip(ship);
+    kDebug() << "adding sprite " << sprite << endl;
+    kDebug() << "background = " << m_background << endl;
     addSprite(c, sprite);
+    
+    
+    foreach (KGameCanvasItem* item, *items()) {
+        kDebug() << "item = " << item << endl;
+    }
+    
+    sprite->stackOver(m_background);
+    
+    foreach (KGameCanvasItem* item, *items()) {
+        kDebug() << "item = " << item << endl;
+    }
     
     // fading preview in
     if (ship == m_preview.ship) {
-//         sprite->setOpacity(PREVIEW_OPACITY);
         Animation* a = new FadeAnimation(sprite, PREVIEW_OPACITY, 255, 1000);
         m_animator->add(a);
     }

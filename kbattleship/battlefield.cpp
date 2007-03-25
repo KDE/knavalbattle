@@ -6,35 +6,28 @@
 BattleField::BattleField(Sea* parent, const Coord& size)
 : QObject(parent)
 , m_size(size)
+, m_board(size)
 , m_ships(0)
 {
-    const unsigned int n = m_size.x * m_size.y;
-    m_board = new Element[n];
 }
 
 BattleField::~BattleField()
 {
-    delete[] m_board;
 }
 
 bool BattleField::valid(const Coord& pos) const
 {
-    return pos.x >= 0 &&
-        pos.x < m_size.x &&
-        pos.y >= 0 &&
-        pos.y < m_size.y;
+    return m_board.valid(pos);
 }
 
 Element& BattleField::get(const Coord& pos)
 {
-    Q_ASSERT(valid(pos));
-    return m_board[convert(pos)];
+    return m_board[pos];
 }
 
 const Element& BattleField::get(const Coord& pos) const
 {
-    Q_ASSERT(valid(pos));
-    return m_board[convert(pos)];
+    return m_board[pos];
 }
 
 void BattleField::set(const Coord& pos, const Element& e)
@@ -76,10 +69,20 @@ HitInfo BattleField::hit(const Coord& pos)
     if (ship && !ship->alive())
     {
         m_ships--;
-        res.shipDestroyed = true;
+        res.shipDestroyed = ship;
     }
 
     return res;
+}
+
+Coord BattleField::find(Ship* ship) const
+{
+    FOREACH_SQUARE(p, m_board) {
+        if (m_board[p].parent() == ship) {
+            return p;
+        }
+    }
+    return Coord::invalid();
 }
 
 #include "battlefield.moc"

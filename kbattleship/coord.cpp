@@ -28,6 +28,16 @@ bool Coord::operator==(const Coord& other) const
     return x == other.x && y == other.y;
 }
 
+bool Coord::valid() const
+{
+    return x != -1 && y != -1;
+}
+
+Coord Coord::invalid()
+{
+    return Coord(-1, -1);
+}
+
 kdbgstream& operator<<(kdbgstream& os, const Coord& c)
 {
     os << "(" << c.x << "," << c.y << ")";

@@ -86,7 +86,8 @@ void SeaView::mouseMoveEvent(QMouseEvent* e)
     }
     
     if (!updatePreview(e->pos())) {
-        cancelPreview();
+        m_fields[0]->cancelPreview();
+        m_fields[1]->cancelPreview();
     }
 }
 
@@ -156,6 +157,11 @@ void SeaView::gameOver(Sea::Status status)
     else {
         KMessageBox::information(this, "You lose!", "Game over");
     }
+}
+
+void SeaView::clear()
+{
+    
 }
 
 BattleFieldView* SeaView::otherField(BattleFieldView* field)
