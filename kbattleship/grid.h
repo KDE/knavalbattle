@@ -51,24 +51,22 @@ int Grid<T>::convert(const Coord& p) const
 template <typename T>
 bool Grid<T>::valid(const Coord& p) const
 {
-    int n = convert(p);
-    return n >= 0 && n < m_size.x * m_size.y;
+    return p.x >= 0 && p.x < width() &&
+            p.y >= 0 && p.y < height();
 }
 
 template <typename T>
 T& Grid<T>::operator[](const Coord& p)
 {
-    int n = convert(p);
-    Q_ASSERT(n >= 0 && n < m_size.x * m_size.y);
-    return m_grid[n];
+    Q_ASSERT(valid(p));
+    return m_grid[convert(p)];
 }
 
 template <typename T>
 const T& Grid<T>::operator[](const Coord& p) const
 {
-    int n = convert(p);
-    Q_ASSERT(n >= 0 && n < m_size.x * m_size.y);
-    return m_grid[n];
+    Q_ASSERT(valid(p));
+    return m_grid[convert(p)];
 }
 
 
