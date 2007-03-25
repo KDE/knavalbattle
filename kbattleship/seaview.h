@@ -16,8 +16,10 @@ class SeaView : public KGameCanvasWidget
     KBSRenderer* m_renderer;
     Controller* m_controller;
     BattleFieldView* otherField(BattleFieldView* field);
+    QPoint m_last_preview;
     
-    void setPreview(Sea::Player player, const QPoint& pos);
+    bool setPreview(Sea::Player player, const QPoint& pos);
+    bool updatePreview(const QPoint& pos);
     int fieldAt(const QPoint& p);
 public:
     SeaView(QWidget* parent);

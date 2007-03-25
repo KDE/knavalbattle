@@ -34,7 +34,6 @@ QSize KBSRenderer::size() const
 QPixmap KBSRenderer::render(const PixmapData& data, const QSize& sz)
 {
     if (!m_cache.contains(data)) {
-        kDebug() << "caching " << data.name << endl;
         if (!m_renderer->elementExists(data.name)) {
             kDebug() << "no element " << data.name << "\n";
             return QPixmap();
@@ -42,26 +41,19 @@ QPixmap KBSRenderer::render(const PixmapData& data, const QSize& sz)
         QImage tmp(sz, QImage::Format_ARGB32_Premultiplied);
         tmp.fill(Qt::blue);
         {
-            QSize renderSize;
+            QSize renderSize = sz;
             
             QPainter p(&tmp);
             if (data.rotated) {
                 kDebug() << "rotating " << data.name << endl;
-//                 p.setWorldMatrix(QMatrix(0, -1, 1, 0, sz.width(), 0));
                 p.translate(QPoint(sz.width(), 0));
                 p.rotate(90);
                 renderSize = QSize(sz.height(), sz.width());
-            }
-            else {
-                renderSize = sz;
             }
             
             m_renderer->render(&p, data.name, QRectF(QPointF(0, 0), renderSize));
         }
         m_cache[data] = QPixmap::fromImage(tmp);
-    }
-    else {
-        kDebug() << "using chached element " << data.name << endl;
     }
 
     return m_cache.value(data);

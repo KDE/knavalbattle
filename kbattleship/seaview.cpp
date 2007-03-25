@@ -83,29 +83,44 @@ void SeaView::mouseMoveEvent(QMouseEvent* e)
         return;
     }
     
-    KGameCanvasItem* item = itemAt(e->pos());
-    if (static_cast<KGameCanvasItem*>(m_fields[0]) == item) {
-        m_fields[1]->cancelPreview();
-        setPreview(Sea::Player(0), e->pos());
-    }
-    else if (static_cast<KGameCanvasItem*>(m_fields[1]) == item) {
-        m_fields[0]->cancelPreview();
-        setPreview(Sea::Player(1), e->pos());
-    }
-    else {
+    if (!updatePreview(e->pos())) {
         cancelPreview();
     }
 }
 
-void SeaView::setPreview(Sea::Player player, const QPoint& pos)
+bool SeaView::updatePreview(const QPoint& pos)
+{
+    KGameCanvasItem* item = itemAt(pos);
+    if (static_cast<KGameCanvasItem*>(m_fields[0]) == item) {
+        m_fields[1]->cancelPreview();
+        if (setPreview(Sea::Player(0), pos)) {
+            m_last_preview = pos;
+        }
+        return true;
+    }
+    else if (static_cast<KGameCanvasItem*>(m_fields[1]) == item) {
+        m_fields[0]->cancelPreview();
+        if (setPreview(Sea::Player(1), pos)) {
+            m_last_preview = pos;
+        }
+        return true;
+    }
+    else {
+        return false;
+    }
+}
+
+bool SeaView::setPreview(Sea::Player player, const QPoint& pos)
 {
     QPoint p = pos - m_fields[player]->pos();
     Coord c = m_renderer->toLogical(p);
     if (Ship* ship = m_controller->canAddShip(player, c)) {
         m_fields[player]->setPreview(p, ship);
+        return true;
     }
     else {
         m_fields[player]->cancelPreview();
+        return false;
     }
 }
 
@@ -113,6 +128,7 @@ void SeaView::cancelPreview()
 {
     m_fields[0]->cancelPreview();
     m_fields[1]->cancelPreview();
+    updatePreview(m_last_preview);
 }
 
 void SeaView::add(Sea::Player p, const Coord& c, Ship* ship) 

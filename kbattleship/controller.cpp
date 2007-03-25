@@ -91,11 +91,11 @@ void OnePlayerController::action(Sea::Player player, const Coord& c)
             
             // remove ship from the list
             m_ships.removeFirst();
-            m_view->cancelPreview();
             
             // add ship to the sea
             m_sea->add(player, c, ship);
             m_view->add(player, c, ship);
+            m_view->cancelPreview();
             
             if (!nextShip()) {
                 m_sea->startPlaying();
@@ -130,6 +130,7 @@ void OnePlayerController::changeDirection(Sea::Player p)
         Ship* next = nextShip();
         if (next) {
             next->changeDirection();
+            m_view->cancelPreview();
         }
     }
 }
