@@ -1,3 +1,5 @@
+add_subdirectory( pictures ) 
+
 set(kbattleship_SRCS
     controller.cpp
     coord.cpp
