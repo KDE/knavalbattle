@@ -4,24 +4,20 @@
 #include "kbsrenderer.h"
 #include "sprite.h"
 
-#define FOREACH_SQUARE(p, grid) \
-    for (Coord p(0, 0); p.x < grid.width(); p.x++) \
-    for (p.y = 0; p.y < grid.height(); p.y++)
-
 BattleFieldView::BattleFieldView(KGameCanvasAbstract* parent, KBSRenderer* renderer, int gridSize)
 : KGameCanvasGroup(parent)
 , m_renderer(renderer)
 , m_factory(this, renderer)
 , m_gridSize(gridSize)
-, m_sprites(Coord(gridSize, gridSize))
 {
-    m_background = new KGameCanvasPixmap(m_renderer->render("background", m_gridSize, m_gridSize), this);
+    m_background = new KGameCanvasPixmap(m_renderer->render("background", false, m_gridSize, m_gridSize), this);
     m_background->moveTo(0, 0);
     m_background->show();
     
-    FOREACH_SQUARE(p, m_sprites) {
-        kDebug() << "setting up " << p << endl;
-        m_sprites[p] = 0;
+    for (Sprites::iterator i = m_sprites.begin();
+            i != m_sprites.end();
+            ++i) {
+        i.value() = 0;
     }
 }
 
@@ -33,7 +29,7 @@ QSize BattleFieldView::size() const
 void BattleFieldView::update()
 {
     // update background
-    m_background->setPixmap(m_renderer->render("background", m_gridSize, m_gridSize));
+    m_background->setPixmap(m_renderer->render("background", false, m_gridSize, m_gridSize));
     m_background->moveTo(0, 0);
     
     // update preview
@@ -43,11 +39,11 @@ void BattleFieldView::update()
     }
     
     // update sprites
-    FOREACH_SQUARE(p, m_sprites) {
-        if (m_sprites[p]) {
-            m_sprites[p]->update(m_renderer);
-            m_sprites[p]->moveTo(m_renderer->toReal(p));
-        }
+    for (Sprites::const_iterator i = m_sprites.constBegin(); 
+            i != m_sprites.constEnd();
+            ++i) {
+        i.value()->update(m_renderer);
+        i.value()->moveTo(m_renderer->toReal(i.key()));
     }
 }
 
@@ -55,7 +51,7 @@ void BattleFieldView::setPreview(const QPoint& pos, Ship* ship)
 {
     if (!m_preview.sprite) {
         m_preview.sprite = m_factory.createShip(ship);
-        kDebug() << "created preview: size = " << ship->size() << endl;
+        kDebug() << "created preview: dir = " << ship->direction() << endl;
         m_preview.sprite->setOpacity(150);
         m_preview.sprite->show();
     }
@@ -72,8 +68,7 @@ void BattleFieldView::cancelPreview()
 
 void BattleFieldView::addSprite(const Coord& c, Sprite* sprite)
 {
-    delete m_sprites[c];
-    m_sprites[c] = sprite;
+    m_sprites.insert(c, sprite);
     
     sprite->moveTo(m_renderer->toReal(c));
     sprite->show();

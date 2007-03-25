@@ -1,19 +1,35 @@
 #include <QResizeEvent>
+#include <kstandardaction.h>
+#include <kactioncollection.h>
+#include <kaction.h>
+#include <klocale.h>
 
 #include "mainwindow.h"
-#include "seaview.h"
-#include "controller.h"
+#include "playfield.h"
 
 MainWindow::MainWindow()
 {
-    m_sea = new SeaView(this);
-    m_controller = new OnePlayerController(this, m_sea, Sea::Player(0));
-    m_sea->setController(m_controller);
+    m_main = new PlayField(this);
+    setCentralWidget(m_main);
+    setupActions();
+    
     resize(900, 400);
 }
 
-void MainWindow::resizeEvent(QResizeEvent* e)
+void MainWindow::setupActions()
 {
-    m_sea->resize(e->size());
+    KAction* temp = new KAction(i18n("&New game"), this);
+    actionCollection()->addAction("game_singleplayer", temp);
+    
+    KStandardAction::preferences(this, SLOT(optionsPreferences()), actionCollection());
+    
+    setupGUI();
 }
+
+void MainWindow::optionsPreferences()
+{
+    kDebug() << "preferences" << endl;
+}
+
+#include "mainwindow.moc"
 

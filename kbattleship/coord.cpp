@@ -23,9 +23,18 @@ Coord& Coord::operator+=(const Coord& other)
     return *this;
 }
 
+bool Coord::operator==(const Coord& other) const
+{
+    return x == other.x && y == other.y;
+}
+
 kdbgstream& operator<<(kdbgstream& os, const Coord& c)
 {
     os << "(" << c.x << "," << c.y << ")";
     return os;
 }
 
+uint qHash(const Coord& c)
+{
+    return (uint) c.x * 100 + c.y;
+}

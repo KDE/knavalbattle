@@ -68,7 +68,13 @@ void SeaView::mousePressEvent(QMouseEvent* e)
     
     BattleFieldView* field = m_fields[f];
     Coord c = m_renderer->toLogical(e->pos() - field->pos());
-    m_controller->action(Sea::Player(f), c);
+    
+    if (e->button() == Qt::LeftButton) {
+        m_controller->action(Sea::Player(f), c);
+    }
+    else if (e->button() == Qt::RightButton) {
+        m_controller->changeDirection(Sea::Player(f));
+    }
 }
 
 void SeaView::mouseMoveEvent(QMouseEvent* e)

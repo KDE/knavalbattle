@@ -31,30 +31,46 @@ QSize KBSRenderer::size() const
     return m_size;
 }
 
-QPixmap KBSRenderer::render(const QString& id, const QSize& sz)
+QPixmap KBSRenderer::render(const PixmapData& data, const QSize& sz)
 {
-    if (!m_cache.contains(id)) {
-        if (!m_renderer->elementExists(id)) {
-            kDebug() << "no element " << id << "\n";
+    if (!m_cache.contains(data)) {
+        kDebug() << "caching " << data.name << endl;
+        if (!m_renderer->elementExists(data.name)) {
+            kDebug() << "no element " << data.name << "\n";
             return QPixmap();
         }
         QImage tmp(sz, QImage::Format_ARGB32_Premultiplied);
-        tmp.fill(0);
+        tmp.fill(Qt::blue);
         {
+            QSize renderSize;
+            
             QPainter p(&tmp);
-            //      p.setViewport(QRect(0, 0, sz.width(), sz.height()));
-            //p.fillRect(QRect(0, 0, sz.width(), sz.height()), Qt::blue);
-            m_renderer->render(&p, id, QRectF(QPointF(0, 0), sz));
+            if (data.rotated) {
+                kDebug() << "rotating " << data.name << endl;
+//                 p.setWorldMatrix(QMatrix(0, -1, 1, 0, sz.width(), 0));
+                p.translate(QPoint(sz.width(), 0));
+                p.rotate(90);
+                renderSize = QSize(sz.height(), sz.width());
+            }
+            else {
+                renderSize = sz;
+            }
+            
+            m_renderer->render(&p, data.name, QRectF(QPointF(0, 0), renderSize));
         }
-        m_cache[id] = QPixmap::fromImage(tmp);
+        m_cache[data] = QPixmap::fromImage(tmp);
+    }
+    else {
+        kDebug() << "using chached element " << data.name << endl;
     }
 
-    return m_cache.value(id);
+    return m_cache.value(data);
 }
 
-QPixmap KBSRenderer::render(const QString& id, int xScale, int yScale)
+QPixmap KBSRenderer::render(const QString& id, bool rotated, int xScale, int yScale)
 {
-    return render(id, QSize(m_size.width() * xScale, m_size.height() * yScale));
+    return render(PixmapData(id, rotated), 
+        QSize(m_size.width() * xScale, m_size.height() * yScale));
 }
 
 Coord KBSRenderer::toLogical(const QPoint& p) const
@@ -70,4 +86,25 @@ QPoint KBSRenderer::toReal(const Coord& c) const
 {
     return QPoint(c.x * m_size.width(), c.y * m_size.height());
 }
+
+KBSRenderer::PixmapData::PixmapData(const QString& name, bool rotated)
+: name(name)
+, rotated(rotated)
+{
+}
+
+bool KBSRenderer::PixmapData::operator==(const PixmapData& other) const
+{
+    return other.name == name &&
+            other.rotated == rotated;
+}
+
+uint qHash(const KBSRenderer::PixmapData& data) {
+    QString s = data.name;
+    if (data.rotated) {
+        s += "__rotated";
+    }
+    return qHash(s);
+}
+
 

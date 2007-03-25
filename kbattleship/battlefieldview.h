@@ -2,6 +2,7 @@
 #define BATTLEFIELD_H
 
 #include <kgamecanvas.h>
+#include <QMultiHash>
 #include "coord.h"
 #include "spritefactory.h"
 #include "grid.h"
@@ -28,7 +29,8 @@ class BattleFieldView : public KGameCanvasGroup
         }
     } m_preview;
     
-    Grid<Sprite*> m_sprites;
+    typedef QMultiHash<Coord, Sprite*> Sprites;
+    Sprites m_sprites;
     void addSprite(const Coord& c, Sprite* ship);
 public:
     BattleFieldView(KGameCanvasAbstract* parent, KBSRenderer* renderer, int gridSize);

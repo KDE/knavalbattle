@@ -14,6 +14,7 @@ public:
     virtual ~Controller() { }
     virtual Ship* canAddShip(Sea::Player, const Coord& c) = 0;
     virtual void action(Sea::Player, const Coord& c) = 0;
+    virtual void changeDirection(Sea::Player) = 0;
 };
 
 class OnePlayerController : public Controller
@@ -30,6 +31,7 @@ public:
     
     virtual Ship* canAddShip(Sea::Player, const Coord& c);
     virtual void action(Sea::Player, const Coord& c);
+    virtual void changeDirection(Sea::Player);
     Ship* nextShip();
 };
 

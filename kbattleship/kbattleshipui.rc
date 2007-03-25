@@ -1,0 +1,14 @@
+<!DOCTYPE kpartgui SYSTEM "kpartgui.dtd">
+<kpartgui name="kbattleship" version="2">
+
+<MenuBar>
+  <Menu name="game"><text>&amp;Game</text>
+    <Action name="game_singleplayer" append="new_merge"/>
+  </Menu>
+  <Menu name="settings"><text>&amp;Settings</text>
+    <Action name="options_show_grid" append="show_merge"/>
+    <Action name="options_configure_sound" append="save_merge"/>
+  </Menu>
+</MenuBar>
+
+</kpartgui>

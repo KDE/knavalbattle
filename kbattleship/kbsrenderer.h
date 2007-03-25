@@ -13,7 +13,15 @@ class KSvgRenderer;
   */
 class KBSRenderer
 {
-    typedef QHash<QString, QPixmap> Cache; // use QCache maybe?
+    struct PixmapData {
+        QString name;
+        bool rotated;
+        bool operator==(const PixmapData& other) const;
+        
+        PixmapData(const QString& name, bool rotated);
+    };
+    friend uint qHash(const PixmapData&);
+    typedef QHash<PixmapData, QPixmap> Cache; // use QCache maybe?
 public:
     /**
       * Create a new renderer instance. Each instance has a different cache.
@@ -36,12 +44,12 @@ public:
     /**
       * Render an item ensuring it is in the cache.
       */
-    QPixmap render(const QString& id, int xScale = 1, int yScale = 1);
+    QPixmap render(const QString& id, bool rotated = false, int xScale = 1, int yScale = 1);
     
     Coord toLogical(const QPoint& p) const;
     QPoint toReal(const Coord& p) const;
 protected:
-    QPixmap render(const QString& id, const QSize& sz);
+    QPixmap render(const PixmapData& data, const QSize& sz);
 private:
     KSvgRenderer* m_renderer;
     QSize m_size;

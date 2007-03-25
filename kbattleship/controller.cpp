@@ -124,6 +124,16 @@ void OnePlayerController::action(Sea::Player player, const Coord& c)
     }
 }
 
+void OnePlayerController::changeDirection(Sea::Player p)
+{
+    if (p == m_player) {
+        Ship* next = nextShip();
+        if (next) {
+            next->changeDirection();
+        }
+    }
+}
+
 Ship* OnePlayerController::nextShip()
 {
     if (m_ships.isEmpty()) {

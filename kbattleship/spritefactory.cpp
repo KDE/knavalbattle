@@ -19,18 +19,20 @@ Sprite* SpriteFactory::createShip(Ship* ship)
         y = 1;
     }
     else {
+        kDebug() << "top down!" << endl;
         x = 1;
         y = ship->size();
     }
     std::ostringstream os;
     os << "ship" << ship->size() << "-view";
     
-    return new Sprite(m_canvas, m_renderer, Coord(x, y), os.str().c_str());
+    return new Sprite(m_canvas, m_renderer, Coord(x, y), 
+        os.str().c_str(), ship->direction() == Ship::TOP_DOWN);
 }
 
 Sprite* SpriteFactory::createSimpleSprite(const QString& name)
 {
-    return new Sprite(m_canvas, m_renderer, Coord(1, 1), name);
+    return new Sprite(m_canvas, m_renderer, Coord(1, 1), name, false);
 }
 
 Sprite* SpriteFactory::createHit()

@@ -3,17 +3,18 @@
 
 #include <kmainwindow.h>
 
-class SeaView;
-class Controller;
+class PlayField;
 
 class MainWindow : public KMainWindow
 {
-    SeaView* m_sea;
-    Controller* m_controller;
+Q_OBJECT
+    PlayField* m_main;
 public:
     MainWindow();
 protected:
-    virtual void resizeEvent(QResizeEvent*);
+    void setupActions();
+protected slots:
+    void optionsPreferences();
 };
 
 #endif // MAINWINDOW_H

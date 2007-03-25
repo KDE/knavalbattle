@@ -19,6 +19,7 @@ private:
 public:
     Ship(unsigned int size, Direction direction);
 
+    void changeDirection();
     Coord increment() const;
     static Coord increment(Direction);
     inline unsigned int size() const { return m_size; }
