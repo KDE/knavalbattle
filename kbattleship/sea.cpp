@@ -1,3 +1,12 @@
+/*
+  Copyright (c) 2007 Paolo Capriotti <p.capriotti@gmail.com>
+            
+  This program is free software; you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation; either version 2 of the License, or
+  (at your option) any later version.
+*/
+
 #include "sea.h"
 #include "battlefield.h"
 
@@ -9,6 +18,11 @@ Sea::Sea(QObject* parent, const Coord& size)
 {
     m_fields[0] = new BattleField(this, m_size);
     m_fields[1] = new BattleField(this, m_size);
+}
+
+Sea::~Sea() {
+	delete m_fields[0];
+	delete m_fields[1];
 }
 
 bool Sea::canAddShip(Player p, const Coord& pos, int size, Ship::Direction direction) const

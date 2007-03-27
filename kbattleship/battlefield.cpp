@@ -1,3 +1,12 @@
+/*
+  Copyright (c) 2007 Paolo Capriotti <p.capriotti@gmail.com>
+            
+  This program is free software; you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation; either version 2 of the License, or
+  (at your option) any later version.
+*/
+
 #include <kdebug.h>
 
 #include "battlefield.h"
@@ -13,6 +22,14 @@ BattleField::BattleField(Sea* parent, const Coord& size)
 
 BattleField::~BattleField()
 {
+	QSet<Ship*> deleted_ships;
+	FOREACH_SQUARE(p, m_board) {
+		Ship* ship = m_board[p].parent();
+		if (ship && !deleted_ships.contains(ship)) {
+			delete ship;
+			deleted_ships.insert(ship);
+		}
+	}
 }
 
 bool BattleField::valid(const Coord& pos) const

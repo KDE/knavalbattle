@@ -1,3 +1,12 @@
+/*
+  Copyright (c) 2007 Paolo Capriotti <p.capriotti@gmail.com>
+            
+  This program is free software; you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation; either version 2 of the License, or
+  (at your option) any later version.
+*/
+
 #ifndef Sea_H
 #define Sea_H
 
@@ -34,6 +43,7 @@ private:
     inline BattleField* otherField() const { return m_fields[opponent(m_turn)]; }
 public:
     Sea(QObject* parent, const Coord& size);
+    ~Sea();
     
     bool canAddShip(Player p, const Coord& pos, int size, Ship::Direction direction) const;
     void add(Player p, const Coord& pos, Ship* ship);
