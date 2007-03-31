@@ -17,14 +17,15 @@
 #include "animation.h"
 
 BattleFieldView::BattleFieldView(KGameCanvasAbstract* parent, KBSRenderer* renderer, 
-                                Animator* animator, int gridSize)
+                                Animator* animator, const QString& bgID, int gridSize)
 : KGameCanvasGroup(parent)
 , m_renderer(renderer)
 , m_animator(animator)
 , m_factory(this, renderer)
+, m_bgID(bgID)
 , m_gridSize(gridSize)
 {
-    m_background = new KGameCanvasPixmap(m_renderer->render("background", false, m_gridSize, m_gridSize), this);
+    m_background = new KGameCanvasPixmap(m_renderer->render(bgID, false, m_gridSize, m_gridSize), this);
     m_background->moveTo(0, 0);
     m_background->setOpacity(250);
     m_background->show();
@@ -44,7 +45,7 @@ QSize BattleFieldView::size() const
 void BattleFieldView::update()
 {
     // update background
-    m_background->setPixmap(m_renderer->render("background", false, m_gridSize, m_gridSize));
+    m_background->setPixmap(m_renderer->render(m_bgID, false, m_gridSize, m_gridSize));
     m_background->moveTo(0, 0);
     
     // update preview

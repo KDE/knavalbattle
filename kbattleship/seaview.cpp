@@ -26,9 +26,9 @@ SeaView::SeaView(QWidget* parent)
     m_renderer->resize(tileSize());
     
     // create fields
-    m_fields[0] = new BattleFieldView(this, m_renderer, &m_animator, GRID_SIZE);
+    m_fields[0] = new BattleFieldView(this, m_renderer, &m_animator, "background", GRID_SIZE);
     m_fields[0]->show();
-    m_fields[1] = new BattleFieldView(this, m_renderer, &m_animator, GRID_SIZE);
+    m_fields[1] = new BattleFieldView(this, m_renderer, &m_animator, "background2", GRID_SIZE);
     m_fields[1]->show();
     
     m_animator.start();
