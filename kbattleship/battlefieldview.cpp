@@ -24,6 +24,7 @@ BattleFieldView::BattleFieldView(KGameCanvasAbstract* parent, KBSRenderer* rende
 , m_factory(this, renderer)
 , m_bgID(bgID)
 , m_gridSize(gridSize)
+, m_impact(0)
 {
     m_background = new KGameCanvasPixmap(m_renderer->render(bgID, false, m_gridSize, m_gridSize), this);
     m_background->moveTo(0, 0);
@@ -112,12 +113,23 @@ void BattleFieldView::add(const Coord& c, Ship* ship)
 
 void BattleFieldView::hit(const Coord& c)
 {
+    removeImpact();
     addSprite(c, m_factory.createHit());
 }
 
 void BattleFieldView::miss(const Coord& c)
 {
-    addSprite(c, m_factory.createMiss());
+    removeImpact();
+    m_impact = m_factory.createImpact();
+    addSprite(c, m_impact);
+}
+
+void BattleFieldView::removeImpact() {
+    if (m_impact) {
+        m_impact->setName("water");
+        m_impact->update(m_renderer);
+        m_impact = 0;
+    }
 }
 
 void BattleFieldView::clear()

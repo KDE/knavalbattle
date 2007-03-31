@@ -29,6 +29,7 @@ public:
     Sprite* createShip(Ship* ship);
     Sprite* createHit();
     Sprite* createMiss();
+    Sprite* createImpact();
 };
 
 #endif // SPRITEBUILDER_H

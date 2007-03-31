@@ -27,6 +27,7 @@ public:
     ~Sprite();
 
     void update(KBSRenderer* renderer);
+    void setName(const QString& name);
 };
 
 #endif // SPRITE_H

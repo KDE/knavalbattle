@@ -20,7 +20,8 @@ Sea::Sea(QObject* parent, const Coord& size)
     m_fields[1] = new BattleField(this, m_size);
 }
 
-Sea::~Sea() {
+Sea::~Sea()
+{
 	delete m_fields[0];
 	delete m_fields[1];
 }

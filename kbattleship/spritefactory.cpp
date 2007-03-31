@@ -17,6 +17,7 @@ SpriteFactory::SpriteFactory(KGameCanvasAbstract* canvas, KBSRenderer* renderer)
 : m_canvas(canvas)
 , m_renderer(renderer)
 {
+
 }
 
 Sprite* SpriteFactory::createShip(Ship* ship)
@@ -51,6 +52,11 @@ Sprite* SpriteFactory::createHit()
 Sprite* SpriteFactory::createMiss()
 {
     return createSimpleSprite("water");
+}
+
+Sprite* SpriteFactory::createImpact()
+{
+    return createSimpleSprite("water-impact");
 }
 
 
