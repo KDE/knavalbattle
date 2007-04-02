@@ -1,6 +1,8 @@
 add_subdirectory( pictures ) 
 
 set(kbattleship_SRCS
+    ai/ai.cpp
+    ai/dummyai.cpp
     controller.cpp
     coord.cpp
     element.cpp

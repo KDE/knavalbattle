@@ -14,6 +14,7 @@
 #include "sea.h"
 
 class SeaView;
+class AI;
 
 class Controller : public QObject
 {
@@ -33,6 +34,7 @@ Q_OBJECT
     Sea* m_sea;
     SeaView* m_view;
     Sea::Player m_player;
+    AI* m_ai;
     
     void hit(Sea::Player player, const Coord& c);
 public:

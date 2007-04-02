@@ -10,11 +10,8 @@
 #include <kdebug.h>
 #include "controller.h"
 #include "seaview.h"
-
-// for rand
-#include <stdio.h>
-#include <time.h>
-#include <sys/time.h>
+#include "ai/ai.h"
+#include "ai/dummyai.h"
 
 Controller::Controller(QObject* parent)
 : QObject(parent)
@@ -26,6 +23,7 @@ OnePlayerController::OnePlayerController(QObject* parent, SeaView* view, Sea::Pl
 , m_sea(0)
 , m_view(view)
 , m_player(player)
+, m_ai(0)
 {
     reset();
 }
@@ -92,16 +90,18 @@ void OnePlayerController::action(Sea::Player player, const Coord& c)
     }
     else {
         // here player must be the opponent
-        if (Sea::opponent(m_player) == player) {
+        if (Sea::opponent(m_player) == player && m_sea->canHit(m_player, c)) {
             hit(m_player, c);
             
-            // computer answers        
-            while (m_sea->turn() == player &&
-                    m_sea->status() == Sea::PLAYING) {
-                Coord c(rand() % 10, rand() % 10);
-                hit(player, c);
+            Coord mv = m_ai->getMove();
+            if (m_sea->canHit(Sea::opponent(m_player), mv)) {
+                hit(Sea::opponent(m_player), mv);
             }
-            
+            else {
+                kDebug() << "ERROR: Computer played an invalid move " << mv << endl;
+                m_sea->abort(m_player);
+            }
+
             if (m_sea->status() != Sea::PLAYING) {
                 kDebug() << "game over" << endl;
                 m_view->gameOver(m_sea->status());
@@ -136,20 +136,12 @@ void OnePlayerController::reset()
         m_ships.append(new Ship(i, Ship::LEFT_TO_RIGHT));
     }
         
+    // create ai
+    delete m_ai;
+    m_ai = new DummyAI(Sea::opponent(m_player), m_sea);
+    
     // set up computer ships
-    srand(time(0));
-    for (int i = 1; i <= 4; i++) {
-        Ship* ship = 0;
-        Sea::Player p = Sea::opponent(m_player);
-        while (ship == 0) {
-            Coord c(rand() % 10, rand() % 10);
-            Ship::Direction dir = rand() % 2 == 0 ? Ship::LEFT_TO_RIGHT : Ship::TOP_DOWN;
-            if (m_sea->canAddShip(p, c, i, dir)) {
-                ship = new Ship(i, dir);
-                m_sea->add(p, c, ship);
-            }
-        }   
-    }
+    m_ai->setShips();
 }
 
 Ship* OnePlayerController::nextShip()

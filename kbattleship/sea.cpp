@@ -84,5 +84,15 @@ void Sea::startPlaying()
     m_status = PLAYING;
 }
 
+void Sea::abort(Player p)
+{
+    if (p == PLAYER_A) {
+        m_status = A_WINS;
+    }
+    else {
+        m_status = B_WINS;
+    }
+}
+
 #include "sea.moc"
 
