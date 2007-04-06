@@ -13,6 +13,7 @@ public:
     virtual ~AI() { }
     virtual Coord getMove() = 0;
     virtual void setShips() = 0;
+    virtual void notify(Sea::Player player, const Coord& c, const HitInfo& hit) = 0;
 };
 
 #endif // AI__AI_H

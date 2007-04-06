@@ -20,6 +20,11 @@ Coord Coord::operator+(const Coord& other) const
     return Coord(x + other.x, y + other.y);
 }
 
+Coord Coord::operator-(const Coord& other) const
+{
+    return Coord(x - other.x, y - other.y);
+}
+
 Coord Coord::operator*(int n) const
 {
     return Coord(x * n, y * n);

@@ -9,6 +9,7 @@ public:
     DummyAI(Sea::Player player, Sea* sea);
     virtual Coord getMove();
     virtual void setShips();
+    virtual void notify(Sea::Player, const Coord&, const HitInfo&) { }
 };
 
 #endif // AI_DUMMYAI_H

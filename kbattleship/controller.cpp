@@ -47,6 +47,7 @@ void OnePlayerController::hit(Sea::Player player, const Coord& c)
     Sea::Player opponent = Sea::opponent(player);
     if (m_sea->canHit(player, c)) {
         HitInfo info = m_sea->hit(c);
+        m_ai->notify(opponent, c, info);
         switch (info.type) {
         case HitInfo::HIT:
             m_view->hit(opponent, c);

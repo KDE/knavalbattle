@@ -21,6 +21,7 @@ public:
     Coord(int x, int y);
     
     Coord operator+(const Coord& other) const;
+    Coord operator-(const Coord& other) const;
     Coord operator*(int n) const;
     Coord& operator+=(const Coord& other);
     bool operator==(const Coord& other) const;
