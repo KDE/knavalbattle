@@ -162,16 +162,6 @@ void SeaView::miss(Sea::Player p, const Coord& c)
     m_fields[p]->miss(c);
 }
 
-void SeaView::gameOver(Sea::Status status)
-{
-    if (status == Sea::A_WINS) {
-        KMessageBox::information(this, "You win!", "Game over");
-    }
-    else {
-        KMessageBox::information(this, "You lose!", "Game over");
-    }
-}
-
 void SeaView::clear()
 {
     m_fields[0]->clear();

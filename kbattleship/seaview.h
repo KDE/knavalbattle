@@ -42,7 +42,6 @@ public:
     void add(Sea::Player p, const Coord& c, Ship* ship);
     void hit(Sea::Player p, const Coord& c);
     void miss(Sea::Player p, const Coord& c);
-    void gameOver(Sea::Status status);
     void clear();
 protected:
     void mouseMoveEvent(QMouseEvent*);

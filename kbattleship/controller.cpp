@@ -52,9 +52,15 @@ void OnePlayerController::hit(Sea::Player player, const Coord& c)
         switch (info.type) {
         case HitInfo::HIT:
             m_view->hit(opponent, c);
+            if (player == m_player) {
+                m_stats.addHit();
+            }
             break;
         case HitInfo::MISS:
             m_view->miss(opponent, c);
+            if (player == m_player) {
+                m_stats.addMiss();
+            }
             break;
         case HitInfo::INVALID:
             break;
@@ -119,7 +125,9 @@ bool OnePlayerController::checkGameOver()
 {
     if (m_sea->status() != Sea::PLAYING) {
         kDebug() << "game over" << endl;
-        m_view->gameOver(m_sea->status());
+        emit gameOver(m_sea->status() == Sea::A_WINS ? 
+            Sea::PLAYER_A :
+            Sea::PLAYER_B);
         return true;
     }
     return false;

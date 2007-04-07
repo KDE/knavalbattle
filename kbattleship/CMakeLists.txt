@@ -4,22 +4,24 @@ set(kbattleship_SRCS
     ai/ai.cpp
     ai/dummyai.cpp
     ai/smartai.cpp
+    animation.cpp
+    animator.cpp
+    battlefield.cpp
+    battlefieldview.cpp
     controller.cpp
     coord.cpp
     element.cpp
-    ship.cpp
-    battlefield.cpp
-    sea.cpp
     kbsrenderer.cpp
+    main.cpp
+    mainwindow.cpp
+    playfield.cpp
+    sea.cpp
+    seaview.cpp
+    ship.cpp
     sprite.cpp
     spritefactory.cpp
-    battlefieldview.cpp
-    seaview.cpp
-    animator.cpp
-    animation.cpp
-    playfield.cpp
-    mainwindow.cpp
-    main.cpp)
+    stats.cpp)
+
 
 kde4_automoc(${kbattleship_SRCS})
 

@@ -12,6 +12,7 @@
 
 #include <QTimer>
 #include "sea.h"
+#include "stats.h"
 
 class SeaView;
 class AI;
@@ -25,6 +26,9 @@ public:
     virtual Ship* canAddShip(Sea::Player, const Coord& c) = 0;
     virtual void action(Sea::Player, const Coord& c) = 0;
     virtual void changeDirection(Sea::Player) = 0;
+    virtual const Stats* stats() const { return 0; }
+signals:
+    void gameOver(Sea::Player winner);
 };
 
 class OnePlayerController : public Controller
@@ -35,6 +39,7 @@ Q_OBJECT
     SeaView* m_view;
     Sea::Player m_player;
     AI* m_ai;
+    Stats m_stats;
     
     void hit(Sea::Player player, const Coord& c);
     bool checkGameOver();
@@ -44,6 +49,7 @@ public:
     virtual Ship* canAddShip(Sea::Player, const Coord& c);
     virtual void action(Sea::Player, const Coord& c);
     virtual void changeDirection(Sea::Player);
+    virtual const Stats* stats() const { return &m_stats; }
     
     Ship* nextShip();
     void reset();
