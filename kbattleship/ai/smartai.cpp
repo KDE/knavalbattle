@@ -29,6 +29,7 @@ public:
 
 class DestroyStrategy : public Strategy
 {
+    Coord m_original;
     Coord m_begin;
     Coord m_end;
     int m_direction;
@@ -64,7 +65,8 @@ class DestroyStrategy : public Strategy
                 // no more to do on this line
                 // we have probably hit more than one ship
                 // in the process, so start over changing direction            
-                m_end = m_begin;
+                m_begin = m_original;
+                m_end = m_original;
                 m_direction--;
             }
             else {
@@ -81,6 +83,7 @@ class DestroyStrategy : public Strategy
 public:
     DestroyStrategy(Sea::Player player, Sea* sea, SmartAI::State& state, const Coord& begin)
     : Strategy(player, sea, state)
+    , m_original(begin)
     , m_begin(begin)
     , m_end(begin)
     , m_direction(0)
@@ -112,17 +115,14 @@ public:
     {
         if (info.shipDestroyed) {
             // success!
-            kDebug() << "destroyed!" << endl;
             m_state.destroyed(info.shipDestroyed->size());
             return m_state.defaultStrategy(m_player, m_sea);
         }
         else if (info.type == HitInfo::HIT) {
-            kDebug() << "hit" << endl;
             // hit, record info
             m_end = c;
         }
         else {
-            kDebug() << "failure" << endl;
             if (!next_try()) {
                 // give up
                 kDebug() << "giving up (m_direction = " << m_direction << ")" << endl;
@@ -178,6 +178,7 @@ class DiagonalStrategy : public Strategy
         for (int j = 0; j < m_sea->size().y; j++) {
             if ((j - i - m_offset) % m_gap == 0 &&
                 m_sea->at(opp, Coord(i,j)).free()) {
+                kDebug() << "found available move " << Coord(i,j) << endl;
                 return true;
             }
         }
@@ -220,6 +221,7 @@ class DiagonalStrategy : public Strategy
     {
         do {
             m_offset = rand() % m_gap;
+            kDebug() << "offset = " << m_offset << " / " << m_gap << endl;
         } while (!movesAvailable());
         
         m_range = 0;
@@ -237,7 +239,6 @@ class DiagonalStrategy : public Strategy
             }
             m_range += diag;
         }
-        kDebug() << "range = " << m_range << endl;
     }
 public:
     DiagonalStrategy(Sea::Player player, Sea* sea, SmartAI::State& state, int gap)
@@ -251,6 +252,7 @@ public:
     {
     
         if (!movesAvailable()) {
+            kDebug() << "no moves available" << endl;
             setup();
         }
         for (int i = 0; i < 50; i++) {
@@ -323,19 +325,30 @@ void SmartAI::setShips()
 
 
 SmartAI::State::State()
-: m_largest(4)
 {
+    for (int i = 0; i < LARGEST_SHIP; i++) {
+        m_ships[i] = 1;
+    }
 }
 
 Strategy* SmartAI::State::defaultStrategy(Sea::Player player, Sea* sea)
 {
-    return new DiagonalStrategy(player, sea, *this, m_largest);
+    for (int i = LARGEST_SHIP - 1; i >= 0; i--) {
+        if (m_ships[i] > 0 || i == 0) {
+            return new DiagonalStrategy(player, sea, *this, i + 1);
+        }
+    }
+    // unreachable
+    return 0;
 }
 
 void SmartAI::State::destroyed(int size)
 {
-    if (size >= m_largest) {
-        m_largest--;
+    if (size <= LARGEST_SHIP) {
+        int index = size - 1;
+        if (m_ships[index] > 0) {
+            m_ships[index]--;
+        }
     }
 }
 

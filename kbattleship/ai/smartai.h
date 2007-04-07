@@ -13,7 +13,8 @@ class SmartAI : public AI
 public:
     class State
     {
-        int m_largest;
+        static const int LARGEST_SHIP = 4;
+        int m_ships[LARGEST_SHIP];
     public:
         State();
         Strategy* defaultStrategy(Sea::Player player, Sea*);
