@@ -55,7 +55,7 @@ class DestroyStrategy : public Strategy
             // change direction
             m_direction++;
             
-            if (m_direction == 0) {
+            if (m_direction > 3) {
                 return false; // no more to do
             }
         }
@@ -66,7 +66,7 @@ class DestroyStrategy : public Strategy
             // swap begin and end
             std::swap(m_begin, m_end);
             
-            if (m_direction == 0 || m_direction == 1) {
+            if (m_direction > 3) {
                 return false; // no more to do
             }
         }
@@ -78,6 +78,7 @@ public:
     : Strategy(player, sea, state)
     , m_begin(begin)
     , m_end(begin)
+    , m_direction(0)
     {
     }
     
@@ -98,18 +99,22 @@ public:
     {
         if (info.shipDestroyed) {
             // success!
+            kDebug() << "destroyed!" << endl;
             Coord delta = m_end - m_begin;
             int size = abs(delta.x + delta.y);
             m_state.destroyed(size);
             return m_state.defaultStrategy(m_player, m_sea);
         }
         else if (info.type == HitInfo::HIT) {
+            kDebug() << "hit" << endl;
             // hit, record info
             m_end = c;
         }
         else {
+            kDebug() << "failure" << endl;
             if (!next_try()) {
                 // give up
+                kDebug() << "giving up (m_direction = " << m_direction << ")" << endl;
                 return m_state.defaultStrategy(m_player, m_sea);
             }
         }
@@ -139,7 +144,7 @@ public:
     
     virtual Strategy* notify(const Coord& c, const HitInfo& info)
     {
-        if (info.type == HitInfo::HIT ||
+        if (info.type == HitInfo::HIT &&
             !info.shipDestroyed) {
             // non-fatal hit, destroy ship now
             return new DestroyStrategy(m_player, m_sea, m_state, c);

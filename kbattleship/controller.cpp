@@ -11,7 +11,7 @@
 #include "controller.h"
 #include "seaview.h"
 #include "ai/ai.h"
-#include "ai/dummyai.h"
+#include "ai/smartai.h"
 
 Controller::Controller(QObject* parent)
 : QObject(parent)
@@ -47,7 +47,7 @@ void OnePlayerController::hit(Sea::Player player, const Coord& c)
     Sea::Player opponent = Sea::opponent(player);
     if (m_sea->canHit(player, c)) {
         HitInfo info = m_sea->hit(c);
-        m_ai->notify(opponent, c, info);
+        m_ai->notify(player, c, info);
         switch (info.type) {
         case HitInfo::HIT:
             m_view->hit(opponent, c);
@@ -139,7 +139,7 @@ void OnePlayerController::reset()
         
     // create ai
     delete m_ai;
-    m_ai = new DummyAI(Sea::opponent(m_player), m_sea);
+    m_ai = new SmartAI(Sea::opponent(m_player), m_sea);
     
     // set up computer ships
     m_ai->setShips();
