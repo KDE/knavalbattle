@@ -94,6 +94,9 @@ void OnePlayerController::action(Sea::Player player, const Coord& c)
         if (Sea::opponent(m_player) == player && m_sea->canHit(m_player, c)) {
             hit(m_player, c);
             
+            if (checkGameOver())
+                return;
+            
             Coord mv = m_ai->getMove();
             if (m_sea->canHit(Sea::opponent(m_player), mv)) {
                 hit(Sea::opponent(m_player), mv);
@@ -102,15 +105,23 @@ void OnePlayerController::action(Sea::Player player, const Coord& c)
                 kDebug() << "ERROR: Computer played an invalid move " << mv << endl;
                 m_sea->abort(m_player);
             }
-
-            if (m_sea->status() != Sea::PLAYING) {
-                kDebug() << "game over" << endl;
-                m_view->gameOver(m_sea->status());
-            }
+            
+            if (checkGameOver())
+                return;
         }
     
         
     }
+}
+
+bool OnePlayerController::checkGameOver()
+{
+    if (m_sea->status() != Sea::PLAYING) {
+        kDebug() << "game over" << endl;
+        m_view->gameOver(m_sea->status());
+        return true;
+    }
+    return false;
 }
 
 void OnePlayerController::changeDirection(Sea::Player p)

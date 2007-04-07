@@ -37,6 +37,7 @@ Q_OBJECT
     AI* m_ai;
     
     void hit(Sea::Player player, const Coord& c);
+    bool checkGameOver();
 public:
     OnePlayerController(QObject* parent, SeaView* view, Sea::Player player);
     
