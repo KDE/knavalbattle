@@ -16,11 +16,24 @@ AnimationGroup::AnimationGroup()
 {
 }
 
+AnimationGroup::~AnimationGroup()
+{
+    stop();
+}
+
 void AnimationGroup::start(int t)
 {
     m_running = t;
     foreach (Animation* a, m_animations) {
         a->start(t);
+    }
+}
+
+void AnimationGroup::stop()
+{
+    m_running = -1;
+    foreach (Animation* a, m_animations) {
+        delete a;
     }
 }
 

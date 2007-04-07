@@ -51,6 +51,7 @@ public:
     HitInfo hit(const Coord& pos);
     void startPlaying();
     void abort(Player p);
+    const Element& at(Sea::Player player, const Coord& pos) const;
     Coord find(Player p, Ship* ship) const;
     
     inline Status status() const { return m_status; }

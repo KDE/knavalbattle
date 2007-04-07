@@ -92,6 +92,11 @@ HitInfo BattleField::hit(const Coord& pos)
     return res;
 }
 
+const Element& BattleField::at(const Coord& c) const
+{
+    return m_board[c];
+}
+
 Coord BattleField::find(Ship* ship) const
 {
     FOREACH_SQUARE(p, m_board) {

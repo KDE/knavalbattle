@@ -63,6 +63,11 @@ HitInfo Sea::hit(const Coord& pos)
     return res;
 }
 
+const Element& Sea::at(Sea::Player player, const Coord& c) const
+{
+    return m_fields[player]->at(c);
+}
+
 Coord Sea::find(Player p, Ship* ship) const
 {
     return m_fields[p]->find(ship);

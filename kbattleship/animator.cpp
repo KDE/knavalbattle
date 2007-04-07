@@ -26,6 +26,12 @@ void Animator::start()
     m_group.start(0);
 }
 
+void Animator::restart()
+{
+    m_group = AnimationGroup();
+    m_time.restart();
+}
+
 void Animator::tick()
 {
     m_group.step(m_time.elapsed());

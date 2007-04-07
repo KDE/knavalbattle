@@ -27,7 +27,9 @@ class AnimationGroup : public Animation
     int m_running;
 public:
     AnimationGroup();
+    virtual ~AnimationGroup();
     virtual void start(int t);
+    virtual void stop();
     virtual bool step(int t);
     
     void add(Animation*);

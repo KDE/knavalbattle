@@ -38,6 +38,7 @@ public:
     void add(const Coord& pos, Ship* ship);
     bool canAddShip(const Coord& pos, unsigned int size, Ship::Direction direction) const;
     HitInfo hit(const Coord& pos);
+    const Element& at(const Coord& c) const;
     Coord find(Ship* ship) const;
     
     inline unsigned int ships() const { return m_ships; }

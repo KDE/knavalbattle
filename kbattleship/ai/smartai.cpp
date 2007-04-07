@@ -60,14 +60,19 @@ class DestroyStrategy : public Strategy
             }
         }
         else {
-            // change direction on the same line
-            m_direction += 2; 
-            
-            // swap begin and end
-            std::swap(m_begin, m_end);
-            
-            if (m_direction > 3) {
-                return false; // no more to do
+            if (m_direction > 1) {
+                // no more to do on this line
+                // we have probably hit more than one ship
+                // in the process, so start over changing direction            
+                m_end = m_begin;
+                m_direction--;
+            }
+            else {
+                // change direction on the same line
+                m_direction += 2; 
+                
+                // swap begin and end
+                std::swap(m_begin, m_end);
             }
         }
         
@@ -86,6 +91,10 @@ public:
     {
         for (;;) {
             Coord c = m_end + direction();
+            while (m_sea->at(Sea::opponent(m_player), c).type() == Element::DEAD) {
+                // there's already a hit: go on!
+                c += direction();
+            }
             if (m_sea->canHit(m_player, c)) {
                 return c;
             }

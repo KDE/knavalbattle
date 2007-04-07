@@ -33,6 +33,8 @@ public:
     Element(Ship* parent);
     inline Ship* parent() { return m_parent; }
     inline const Ship* parent() const { return m_parent; }
+    inline Type type() const { return m_type; }
+    
     bool free() const;
     bool water() const;
     HitInfo::Type hit();

@@ -138,6 +138,8 @@ void BattleFieldView::clear()
     m_preview.sprite = 0;
     m_preview.ship = 0;
     
+    m_impact = 0;
+    
     foreach (Sprite* s, m_sprites) {
         delete s;
     }
