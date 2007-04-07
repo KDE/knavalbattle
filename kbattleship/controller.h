@@ -10,7 +10,7 @@
 #ifndef CONTROLLER_H
 #define CONTROLLER_H
 
-#include <QObject>
+#include <QTimer>
 #include "sea.h"
 
 class SeaView;
@@ -47,6 +47,26 @@ public:
     
     Ship* nextShip();
     void reset();
+};
+
+class TwoMachinesController : public Controller
+{
+Q_OBJECT
+    Sea* m_sea;
+    SeaView* m_view;
+    AI* m_ai[2];
+    QTimer m_timer;
+    
+    void play(Sea::Player player);
+    void hit(Sea::Player player, const Coord& c);
+private slots:
+    void tick();
+public:
+    TwoMachinesController(QObject* parent, SeaView* view);
+    
+    virtual Ship* canAddShip(Sea::Player, const Coord&) { return 0; }
+    virtual void action(Sea::Player, const Coord&) { }
+    virtual void changeDirection(Sea::Player) { }
 };
 
 #endif // CONTROLLER_H

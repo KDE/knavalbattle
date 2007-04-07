@@ -36,6 +36,13 @@ void PlayField::newGame()
     m_sea->setController(m_controller);
 }
 
+void PlayField::newSimulation()
+{
+    delete m_controller;
+    m_controller = new TwoMachinesController(this, m_sea);
+    m_sea->setController(m_controller);
+}
+
 #include "playfield.moc"
 
 

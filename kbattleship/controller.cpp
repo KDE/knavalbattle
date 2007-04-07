@@ -12,6 +12,7 @@
 #include "seaview.h"
 #include "ai/ai.h"
 #include "ai/smartai.h"
+#include "ai/dummyai.h"
 
 Controller::Controller(QObject* parent)
 : QObject(parent)
@@ -165,5 +166,74 @@ Ship* OnePlayerController::nextShip()
         return m_ships.first();
     }
 }
+
+TwoMachinesController::TwoMachinesController(QObject* parent, SeaView* view)
+: Controller(parent)
+, m_view(view)
+{
+    m_view->clear();
+    m_sea = new Sea(this, Coord(10, 10)); 
+    
+    m_ai[0] = new DummyAI(Sea::PLAYER_A, m_sea);
+    m_ai[1] = new SmartAI(Sea::PLAYER_B, m_sea);
+    
+    m_ai[0]->setShips();
+    m_ai[1]->setShips();
+    
+    m_sea->startPlaying();
+
+    connect(&m_timer, SIGNAL(timeout()), this, SLOT(tick()));
+    m_timer.start(0);
+}
+
+void TwoMachinesController::play(Sea::Player player)
+{
+    Coord c = m_ai[player]->getMove();
+    hit(player, c);
+}
+
+void TwoMachinesController::tick()
+{
+    if (m_sea->status() == Sea::PLAYING) {
+        play(m_sea->turn());
+    }
+    else {
+        m_timer.stop();
+        if (m_sea->status() == Sea::A_WINS) {
+            kDebug() << "dummy wins" << endl;
+        }
+        else {
+            kDebug() << "smart wins" << endl;
+        }
+    }
+}
+
+void TwoMachinesController::hit(Sea::Player player, const Coord& c)
+{
+    Sea::Player opponent = Sea::opponent(player);
+    if (m_sea->canHit(player, c)) {
+        HitInfo info = m_sea->hit(c);
+        m_ai[player]->notify(player, c, info);
+        switch (info.type) {
+        case HitInfo::HIT:
+            m_view->hit(opponent, c);
+            break;
+        case HitInfo::MISS:
+            m_view->miss(opponent, c);
+            break;
+        case HitInfo::INVALID:
+            break;
+        }
+            
+        if (info.shipDestroyed) {
+            // show destroyed ship
+            Coord c = m_sea->find(opponent, info.shipDestroyed);
+            if (c.valid()) {
+                m_view->add(opponent, c, info.shipDestroyed);
+            }
+        }
+    }
+}
+
 
 #include "controller.moc"

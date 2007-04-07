@@ -24,6 +24,7 @@ public:
     PlayField(QWidget* parent);
 public slots:
     void newGame();
+    void newSimulation();
 };
 
 #endif // PLAYFIELD_H

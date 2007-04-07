@@ -95,15 +95,14 @@ public:
         for (;;) {
             Coord c = m_end + direction();
             Sea::Player opp = Sea::opponent(m_player);
-            if (m_sea->valid(opp, c)) {
-                while (m_sea->at(opp, c).type() == Element::DEAD) {
-                    // there's already a hit: go on!
-                    c += direction();
-                }
-                if (m_sea->canHit(m_player, c)) {
-                    return c;
-                }
+            while (m_sea->valid(opp, c) && m_sea->at(opp, c).type() == Element::DEAD) {
+                // there's already a hit: go on!
+                c += direction();
             }
+            if (m_sea->valid(opp, c) && m_sea->canHit(m_player, c)) {
+                return c;
+            }
+
 
             if (!next_try()) {
                 return Coord::invalid();
