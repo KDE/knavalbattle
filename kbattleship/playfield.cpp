@@ -33,6 +33,7 @@ void PlayField::newGame()
 {
     delete m_controller;
     m_controller = new OnePlayerController(this, m_sea, Sea::Player(0));
+    m_sea->setController(m_controller);
 }
 
 #include "playfield.moc"

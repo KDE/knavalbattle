@@ -68,6 +68,11 @@ const Element& Sea::at(Sea::Player player, const Coord& c) const
     return m_fields[player]->at(c);
 }
 
+bool Sea::valid(Sea::Player player, const Coord& pos) const
+{
+    return m_fields[player]->valid(pos);
+}
+
 Coord Sea::find(Player p, Ship* ship) const
 {
     return m_fields[p]->find(ship);
