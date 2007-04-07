@@ -164,6 +164,113 @@ public:
     }
 };
 
+class DiagonalStrategy : public Strategy
+{
+    int m_gap;
+    int m_offset;
+    int m_range;
+    
+    bool movesAvailable() const {
+        for (int i = 0; i < m_sea->size().x; i++)
+        for (int j = 0; j < m_sea->size().y; j++) {
+            if (i + j % m_gap == m_offset &&
+                m_sea->at(m_player, Coord(i,j)).free()) {
+                return true;
+            }
+        }
+        return false;
+    }
+    
+    Coord getMoveHelper()
+    {
+        int index = rand() % m_range;
+        int current = 0;
+        for (int y = m_offset; y < m_sea->size().y; y += m_gap) {
+            int diag = m_sea->size().y - y;
+            if (diag > m_sea->size().x) {
+                diag = m_sea->size().x;
+            }
+            if (current + diag > index) {
+                int x = index - current;
+                y += x;
+                return Coord(x, y);
+            }
+            current += diag;
+        }
+        for (int x = m_gap - m_offset; x < m_sea->size().x; x += m_gap) {
+            int diag = m_sea->size().x - x;
+            if (diag > m_sea->size().y) {
+                diag = m_sea->size().y;
+            }
+            if (current + diag > index) {
+                int y = index - current;
+                x += y;
+                return Coord(x, y);
+            }
+            current += diag;
+        }
+        
+        return Coord::invalid();
+    }
+    
+    void setup()
+    {
+        do {
+            m_offset = rand() % m_gap;
+        } while (!movesAvailable());
+        
+        m_range = 0;
+        for (int y = m_offset; y < m_sea->size().y; y += m_gap) {
+            int diag = m_sea->size().y - y;
+            if (diag > m_sea->size().x) {
+                diag = m_sea->size().x;
+            }
+            m_range += diag;
+        }
+        for (int x = m_gap - m_offset; x < m_sea->size().x; x += m_gap) {
+            int diag = m_sea->size().x - x;
+            if (diag > m_sea->size().y) {
+                diag = m_sea->size().y;
+            }
+            m_range += diag;
+        }
+    }
+public:
+    DiagonalStrategy(Sea::Player player, Sea* sea, SmartAI::State& state, int gap)
+    : Strategy(player, sea, state)
+    , m_gap(gap)
+    {
+        setup();
+    }
+
+    virtual Coord getMove()
+    {
+    
+        if (!movesAvailable()) {
+            setup();
+        }
+        for (int i = 0; i < 10000; i++) {
+            Coord c = getMoveHelper();
+            
+            if (m_sea->canHit(m_player, c)) {
+                return c;
+            }
+        }
+        return Coord::invalid();
+    }
+    
+    virtual Strategy* notify(const Coord& c, const HitInfo& info)
+    {
+        if (info.type == HitInfo::HIT &&
+            !info.shipDestroyed) {
+            // non-fatal hit, destroy ship now
+            return new DestroyStrategy(m_player, m_sea, m_state, c);
+        }
+        else {
+            return 0;
+        }
+    }
+};
 
 SmartAI::SmartAI(Sea::Player player, Sea* sea)
 : AI(player, sea)
@@ -217,7 +324,7 @@ SmartAI::State::State()
 
 Strategy* SmartAI::State::defaultStrategy(Sea::Player player, Sea* sea)
 {
-    return new RandomStrategy(player, sea, *this);
+    return new DiagonalStrategy(player, sea, *this, m_largest);
 }
 
 void SmartAI::State::destroyed(int size)
