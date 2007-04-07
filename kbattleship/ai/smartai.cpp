@@ -113,9 +113,7 @@ public:
         if (info.shipDestroyed) {
             // success!
             kDebug() << "destroyed!" << endl;
-            Coord delta = m_end - m_begin;
-            int size = abs(delta.x + delta.y);
-            m_state.destroyed(size);
+            m_state.destroyed(info.shipDestroyed->size());
             return m_state.defaultStrategy(m_player, m_sea);
         }
         else if (info.type == HitInfo::HIT) {
@@ -175,10 +173,11 @@ class DiagonalStrategy : public Strategy
     int m_range;
     
     bool movesAvailable() const {
+        Sea::Player opp = Sea::opponent(m_player);
         for (int i = 0; i < m_sea->size().x; i++)
         for (int j = 0; j < m_sea->size().y; j++) {
-            if (i + j % m_gap == m_offset &&
-                m_sea->at(m_player, Coord(i,j)).free()) {
+            if ((j - i - m_offset) % m_gap == 0 &&
+                m_sea->at(opp, Coord(i,j)).free()) {
                 return true;
             }
         }
@@ -194,7 +193,7 @@ class DiagonalStrategy : public Strategy
             if (diag > m_sea->size().x) {
                 diag = m_sea->size().x;
             }
-            if (current + diag > index) {
+            if (index < current + diag) {
                 int x = index - current;
                 y += x;
                 return Coord(x, y);
@@ -206,7 +205,7 @@ class DiagonalStrategy : public Strategy
             if (diag > m_sea->size().y) {
                 diag = m_sea->size().y;
             }
-            if (current + diag > index) {
+            if (index < current + diag) {
                 int y = index - current;
                 x += y;
                 return Coord(x, y);
@@ -238,6 +237,7 @@ class DiagonalStrategy : public Strategy
             }
             m_range += diag;
         }
+        kDebug() << "range = " << m_range << endl;
     }
 public:
     DiagonalStrategy(Sea::Player player, Sea* sea, SmartAI::State& state, int gap)
@@ -253,13 +253,14 @@ public:
         if (!movesAvailable()) {
             setup();
         }
-        for (int i = 0; i < 10000; i++) {
+        for (int i = 0; i < 50; i++) {
             Coord c = getMoveHelper();
             
             if (m_sea->canHit(m_player, c)) {
                 return c;
             }
-        }
+        }   
+        
         return Coord::invalid();
     }
     
