@@ -14,7 +14,9 @@ set(kbattleship_SRCS
     kbsrenderer.cpp
     main.cpp
     mainwindow.cpp
+    message.cpp
     playfield.cpp
+    protocol.cpp
     sea.cpp
     seaview.cpp
     ship.cpp
