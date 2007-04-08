@@ -15,6 +15,101 @@
 
 #include "protocol.h"
 
+#define ADD_FIELD(msg, field) addField(#field, msg.field())
+class MessageSender : public MessageVisitor
+{
+    QDomDocument m_doc;
+    QDomElement m_main;
+    
+    void addField(const QString& key, const QString& value)
+    {
+        QDomElement element = m_doc.createElement(key);
+        element.firstChild().toText().setData(value);
+        m_main.appendChild(element);
+    }
+    
+    template <typename Msg>
+    void setType(const Msg&)
+    {
+        addField("msgtype", QString::number(Msg::MSGTYPE));
+    }
+public:
+    MessageSender()
+    : m_doc("kmessage")
+    {
+        m_main = m_doc.createElement("kmessage");
+        m_doc.appendChild(m_main);
+    }
+    
+    QDomDocument document() { return m_doc; }
+
+    virtual void visit(const HeaderMessage& msg)
+    {
+        setType(msg);
+        ADD_FIELD(msg, protocolVersion);
+        ADD_FIELD(msg, clientName);
+        ADD_FIELD(msg, clientVersion);
+        ADD_FIELD(msg, clientDescription);
+    }
+    
+    virtual void visit(const RejectMessage& msg) { setType(msg); }
+    
+    virtual void visit(const NickMessage& msg)
+    {
+        setType(msg);
+        ADD_FIELD(msg, nickname);
+    }
+    
+    virtual void visit(const BeginMessage& msg) { setType(msg); }
+    
+    virtual void visit(const MoveMessage& msg)
+    {
+        setType(msg);
+        addField("fieldx", QString::number(msg.move().x));
+        addField("fieldy", QString::number(msg.move().y));
+    }
+    
+    virtual void visit(const NotificationMessage& msg)
+    {
+        setType(msg);
+        addField("fieldx", QString::number(msg.move().x));
+        addField("fieldy", QString::number(msg.move().y));
+        addField("fieldstate", msg.hit() ? "1" : "99");
+        if (msg.death()) {
+            addField("death", "true");
+            addField("xstart", QString::number(msg.start().x));
+            addField("xstop", QString::number(msg.stop().x));
+            addField("ystart", QString::number(msg.start().y));
+            addField("ystop", QString::number(msg.stop().y));
+        }
+    }
+    
+    virtual void visit(const GameOverMessage& msg)
+    {
+        setType(msg);
+        foreach (GameOverMessage::ShipInfo ship, msg.ships()) {
+            QStringList data;
+            data << QString::number(ship.pos.x)
+                 << QString::number(ship.pos.y)
+                 << (ship.direction == Ship::TOP_DOWN ? "0" : "1");
+            addField(QString("ship") + QString::number(ship.size), data.join(" "));
+        }
+    }
+    
+    virtual void visit(const RestartMessage& msg)
+    {
+        setType(msg);
+    }
+    
+    virtual void visit(const ChatMessage& msg)
+    {
+        setType(msg);
+        ADD_FIELD(msg, chat);
+    }
+};
+
+
+
 Protocol::Protocol(QIODevice* device)
 : m_device(device)
 {
@@ -138,6 +233,15 @@ MessagePtr Protocol::parseMessage(const QString& xmlMessage)
 }
 #undef DEF_COORD
 #undef DEF_ELEMENT
+
+void Protocol::send(const MessagePtr& msg)
+{
+    MessageSender sender;
+    msg->accept(sender);
+    
+    QTextStream stream(m_device);
+    stream << sender.document().toString();
+}
 
 
 #include "protocol.moc"

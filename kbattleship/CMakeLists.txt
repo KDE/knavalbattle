@@ -15,6 +15,7 @@ set(kbattleship_SRCS
     main.cpp
     mainwindow.cpp
     message.cpp
+    networkcontroller.cpp
     playfield.cpp
     protocol.cpp
     sea.cpp

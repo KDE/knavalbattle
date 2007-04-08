@@ -24,6 +24,8 @@ Q_OBJECT
     MessagePtr parseMessage(const QString& xmlMessage);
 public:
     explicit Protocol(QIODevice* device);
+    
+    void send(const MessagePtr& msg);
 private slots:
     void readMore();
 signals:

@@ -39,6 +39,11 @@ public:
                  const QString& clientDescription);
     HeaderMessage();
     virtual void accept(MessageVisitor& visitor) const;
+    
+    const QString& protocolVersion() const { return m_protocol_version; }
+    const QString& clientName() const { return m_client_name; }
+    const QString& clientVersion() const { return m_client_version; }
+    const QString& clientDescription() const { return m_client_description; }
 };
 
 class RejectMessage : public Message
@@ -58,6 +63,8 @@ public:
     static const int MSGTYPE = 2;
     NickMessage(const QString& nickname);
     virtual void accept(MessageVisitor& visitor) const;
+    
+    const QString& nickname() const { return m_nickname; }
 };
 
 class BeginMessage : public Message
@@ -74,6 +81,8 @@ public:
     static const int MSGTYPE = 4;
     explicit MoveMessage(const Coord& move);
     virtual void accept(MessageVisitor& visitor) const;
+    
+    const Coord& move() const { return m_move; }
 };
 
 class NotificationMessage : public Message
@@ -88,6 +97,12 @@ public:
     NotificationMessage(const Coord& m_move, bool hit, bool death,
         const Coord& start = Coord::invalid(), const Coord& stop = Coord::invalid());
     virtual void accept(MessageVisitor& visitor) const;
+    
+    const Coord& move() const { return m_move; }
+    bool hit() const { return m_hit; }
+    bool death() const { return m_death; }
+    const Coord& start() const { return m_start; }
+    const Coord& stop() const { return m_stop; }
 };
 
 class ChatMessage : public Message
@@ -97,6 +112,8 @@ public:
     static const int MSGTYPE = 8;
     explicit ChatMessage(const QString& chat);
     virtual void accept(MessageVisitor& visitor) const;
+    
+    const QString& chat() const { return m_chat; }
 };
 
 class RestartMessage : public Message
@@ -108,6 +125,7 @@ public:
 
 class GameOverMessage : public Message
 {
+public:
     struct ShipInfo
     {
         Coord pos;
@@ -121,6 +139,7 @@ class GameOverMessage : public Message
         {
         }
     };
+private:
     QList<ShipInfo> m_ships;
 public:
     static const int MSGTYPE = 6;
@@ -128,6 +147,8 @@ public:
     
     void addShip(const Coord& pos, int size, Ship::Direction direction);
     virtual void accept(MessageVisitor& visitor) const;
+    
+    const QList<ShipInfo>& ships() const { return m_ships; }
 };
 
 
