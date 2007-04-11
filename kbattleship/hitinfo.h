@@ -29,6 +29,7 @@ struct HitInfo
     
     HitInfo(Type type)
     : type(type)
+    , shipDestroyed(0)
     {
     }
     

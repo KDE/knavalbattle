@@ -17,6 +17,7 @@ set(kbattleship_SRCS
     main.cpp
     mainwindow.cpp
     message.cpp
+    networkentity.cpp
     playerentity.cpp
     playfield.cpp
     protocol.cpp
