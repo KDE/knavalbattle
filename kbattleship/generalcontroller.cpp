@@ -65,16 +65,16 @@ void GeneralController::shoot(Sea::Player player, const Coord& c)
         
         // notify the player
         notify(player, c, info);
-    
-        // notify the opponent
-        notify(player, c, info);
-        
+            
         if (m_sea->status() == Sea::A_WINS) {
             emit gameOver(Sea::PLAYER_A);
         }
         else if (m_sea->status() == Sea::B_WINS) {
             emit gameOver(Sea::PLAYER_B);
         }
+    }
+    else {
+        kDebug() << "illegal move " << c << " for player " << player << endl;
     }
 }
 

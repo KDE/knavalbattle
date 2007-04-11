@@ -186,7 +186,6 @@ class DiagonalStrategy : public Strategy
         for (int j = 0; j < m_sea->size().y; j++) {
             if ((j - i - m_offset) % m_gap == 0 &&
                 m_sea->at(opp, Coord(i,j)).free()) {
-                kDebug() << "found available move " << Coord(i,j) << endl;
                 return true;
             }
         }

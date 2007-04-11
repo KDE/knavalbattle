@@ -47,7 +47,7 @@ void AIEntity::getShoot()
     if (m_sea->turn() == m_player) {
         Coord c = m_ai->getMove();
         
-        QTimer::singleShot(100, new DelayedShot(this, m_player, c), SLOT(shoot()));
+        QTimer::singleShot(0, new DelayedShot(this, m_player, c), SLOT(shoot()));
 //         emit shoot(m_player, c);
     }
 }
