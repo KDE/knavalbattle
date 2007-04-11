@@ -10,6 +10,8 @@
 #ifndef HITINFO_H
 #define HITINFO_H
 
+#include "coord.h"
+
 class Ship;
 
 struct HitInfo
@@ -23,10 +25,17 @@ struct HitInfo
     
     Type type;
     Ship* shipDestroyed;
+    Coord shipPos;
     
-    HitInfo(Type type, Ship* shipDestroyed = 0)
+    HitInfo(Type type)
+    : type(type)
+    {
+    }
+    
+    HitInfo(Type type, Ship* shipDestroyed, const Coord& shipPos)
     : type(type)
     , shipDestroyed(shipDestroyed)
+    , shipPos(shipPos)
     {
     }
 };

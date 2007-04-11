@@ -73,10 +73,10 @@ bool Sea::valid(Sea::Player player, const Coord& pos) const
     return m_fields[player]->valid(pos);
 }
 
-Coord Sea::find(Player p, Ship* ship) const
-{
-    return m_fields[p]->find(ship);
-}
+// Coord Sea::find(Player p, Ship* ship) const
+// {
+//     return m_fields[p]->find(ship);
+// }
 
 void Sea::switchTurn()
 {

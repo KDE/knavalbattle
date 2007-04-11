@@ -57,7 +57,7 @@ void UIEntity::drawShoot(Sea::Player player, const Coord& c, const HitInfo& info
     }
     
     if (info.shipDestroyed) {
-        Coord shipPos = m_sea->find(player, info.shipDestroyed);
+        Coord shipPos = info.shipPos;
         if (shipPos.valid()) {
             // show destroyed opponent ship
             if (player != m_player) {

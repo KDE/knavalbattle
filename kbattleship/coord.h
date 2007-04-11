@@ -19,6 +19,7 @@ public:
     int y;
     
     Coord(int x, int y);
+    Coord() { }
     
     Coord operator+(const Coord& other) const;
     Coord operator-(const Coord& other) const;

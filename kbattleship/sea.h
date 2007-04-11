@@ -54,7 +54,7 @@ public:
     void abort(Player p);
     const Element& at(Sea::Player player, const Coord& pos) const;
     bool valid(Sea::Player, const Coord& pos) const;
-    Coord find(Player p, Ship* ship) const;
+//     Coord find(Player p, Ship* ship) const;
     
     inline Status status() const { return m_status; }
     inline Player turn() const { return m_turn; }

@@ -92,6 +92,7 @@ HitInfo BattleField::hit(const Coord& pos)
     {
         m_ships--;
         res.shipDestroyed = ship;
+        res.shipPos = find(ship);
     }
 
     return res;
