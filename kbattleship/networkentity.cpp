@@ -32,9 +32,16 @@ void NetworkEntity::start()
     m_protocol->send(NickMessage("dude"));
 }
 
+void NetworkEntity::notifyReady(Sea::Player player)
+{
+    if (player != m_player) {
+        m_protocol->send(BeginMessage());
+    }
+}
+
 void NetworkEntity::startPlaying()
 {
-    m_protocol->send(BeginMessage());
+
 }
 
 void NetworkEntity::notify(Sea::Player player, const Coord& c, const HitInfo& info)
@@ -62,7 +69,7 @@ void NetworkEntity::notify(Sea::Player player, const Coord& c, const HitInfo& in
 
 void NetworkEntity::hit(Shot* shot)
 {
-    if (shot->player() != m_player) {
+    if (shot->player() != m_player && m_sea->turn() == shot->player()) {
         m_pending_shot = shot;
         m_protocol->send(MoveMessage(shot->pos()));
     }
@@ -118,6 +125,7 @@ void NetworkEntity::visit(const NotificationMessage& msg)
                 info.shipPos = shipPos;
             }
             
+            m_sea->switchTurn();
             m_pending_shot->execute(info);
         }
         

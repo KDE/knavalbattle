@@ -33,6 +33,7 @@ public:
     virtual void notify(Sea::Player player, const Coord& c, const HitInfo& info);
     virtual void start();
     virtual void startPlaying();
+    virtual void notifyReady(Sea::Player player);
     virtual void hit(Shot* shot);
 private slots:
     void received(MessagePtr msg);

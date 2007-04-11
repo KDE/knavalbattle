@@ -28,6 +28,7 @@ public:
     virtual void hit(Shot* shot) = 0;
     virtual void start() = 0;
     virtual void startPlaying() { }
+    virtual void notifyReady(Sea::Player) { }
     virtual const Stats* stats() const { return 0; }
     
     virtual Sea::Player player() const { return m_player; }

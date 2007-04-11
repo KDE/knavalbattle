@@ -39,7 +39,6 @@ private:
     BattleField* m_fields[2];
     Status m_status;
     
-    void switchTurn();
     inline BattleField* currentField() const { return m_fields[m_turn]; }
     inline BattleField* otherField() const { return m_fields[opponent(m_turn)]; }
 public:
@@ -54,7 +53,7 @@ public:
     void abort(Player p);
     const Element& at(Sea::Player player, const Coord& pos) const;
     bool valid(Sea::Player, const Coord& pos) const;
-//     Coord find(Player p, Ship* ship) const;
+    void switchTurn();
     
     inline Status status() const { return m_status; }
     inline Player turn() const { return m_turn; }

@@ -80,8 +80,10 @@ void GeneralController::shoot(Sea::Player player, const Coord& c)
         // shot in progress
         return;
     }
-
-    entity->hit(m_shot = new Shot(this, player, c)); // kind of CPS
+    
+    if (m_sea->status() == Sea::PLAYING) {
+        entity->hit(m_shot = new Shot(this, player, c)); // kind of CPS
+    }
 }
 
 void GeneralController::finalizeShot(Sea::Player player, const Coord& c, const HitInfo& info)
@@ -112,9 +114,12 @@ void GeneralController::notify(Sea::Player player, const Coord& c, const HitInfo
     }
 }
 
-void GeneralController::ready(Sea::Player)
+void GeneralController::ready(Sea::Player player)
 {
     m_ready++;
+    foreach (Entity* entity, m_entities) {
+        entity->notifyReady(player);
+    }
     kDebug() << "ready = " << m_ready << endl;
     if (m_ready >= 2) {
         m_sea->startPlaying();
