@@ -20,12 +20,12 @@ class Stats;
 class GeneralController : public QObject
 {
 Q_OBJECT
-    Entity* m_entities[2];
+    QList<Entity*> m_entities;
     UIEntity* m_ui;
     Sea* m_sea;
     int m_ready;
     
-    void notify(Sea::Player target, Sea::Player player, const Coord& c, const HitInfo& info);
+    void notify(Sea::Player player, const Coord& c, const HitInfo& info);
     void setupEntity(Entity*);
 public:
     GeneralController(QObject* parent);
@@ -36,7 +36,7 @@ public:
     
     void start(SeaView* view);
 public slots:
-    void shoot(Sea::Player player, const Coord& c, const HitInfo& info);
+    void shoot(Sea::Player player, const Coord& c);
     void ready(Sea::Player player);
 signals:
     void gameOver(Sea::Player);

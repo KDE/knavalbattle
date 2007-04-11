@@ -10,6 +10,8 @@
 #include "aientity.h"
 #include "ai/smartai.h"
 
+#include <QTimer>
+
 AIEntity::AIEntity(Sea::Player player, Sea* sea)
 : Entity(player)
 , m_sea(sea)
@@ -43,16 +45,25 @@ void AIEntity::startPlaying()
 void AIEntity::getShoot()
 {
     if (m_sea->turn() == m_player) {
-        kDebug() << "status = " << m_sea->status() << endl;
         Coord c = m_ai->getMove();
-        kDebug() << m_player << ": ai returned " << c << endl;
-        if (m_sea->canHit(m_player, c)) {
-            HitInfo info = m_sea->hit(c);
-            kDebug() << m_player << ": shooting " << c << endl;
-            emit shoot(m_player, c, info);
-            m_ai->notify(m_player, c, info);
-        }
+        
+        QTimer::singleShot(100, new DelayedShot(this, m_player, c), SLOT(shoot()));
+//         emit shoot(m_player, c);
     }
+}
+
+DelayedShot::DelayedShot(AIEntity* parent, Sea::Player player, const Coord& pos)
+: QObject(parent)
+, m_parent(parent)
+, m_player(player)
+, m_pos(pos)
+{
+}
+
+void DelayedShot::shoot()
+{
+    emit m_parent->shoot(m_player, m_pos);
+    deleteLater();
 }
 
 #include "aientity.moc"

@@ -56,10 +56,8 @@ void PlayerEntity::action(Sea::Player player, const Coord& c)
     }
     else {
         Sea::Player opponent = Sea::opponent(m_player);
-        if (player == opponent && m_sea->canHit(m_player, c)) {
-            HitInfo info = m_sea->hit(c);
-            drawShoot(opponent, c, info);
-            emit shoot(m_player, c, info);
+        if (player == opponent) {
+            emit shoot(m_player, c);
         }
     }
 }

@@ -25,7 +25,7 @@ Q_OBJECT
 public:
     explicit Protocol(QIODevice* device);
     
-    void send(const MessagePtr& msg);
+    void send(const Message& msg);
 private slots:
     void readMore();
 signals:

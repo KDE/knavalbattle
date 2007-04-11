@@ -28,7 +28,7 @@ public:
     virtual void startPlaying() { }
     virtual const Stats* stats() const { return 0; }
 signals:
-    void shoot(Sea::Player player, const Coord& c, const HitInfo& info);
+    void shoot(Sea::Player player, const Coord& c);
     void ready(Sea::Player player);
 };
 

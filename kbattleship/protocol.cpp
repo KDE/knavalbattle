@@ -234,10 +234,10 @@ MessagePtr Protocol::parseMessage(const QString& xmlMessage)
 #undef DEF_COORD
 #undef DEF_ELEMENT
 
-void Protocol::send(const MessagePtr& msg)
+void Protocol::send(const Message& msg)
 {
     MessageSender sender;
-    msg->accept(sender);
+    msg.accept(sender);
     
     QTextStream stream(m_device);
     stream << sender.document().toString();
