@@ -32,7 +32,7 @@ public:
     // entity interface
     virtual void start();
     virtual const Stats* stats() const { return &m_stats; }
-    virtual HitInfo hit(Sea::Player player, const Coord& c);
+    virtual void hit(Shot* shot);
     
     // delegate interface
     virtual void action(Sea::Player player, const Coord& c);

@@ -10,6 +10,7 @@
 #include "uientity.h"
 #include "generalcontroller.h"
 #include "seaview.h"
+#include "shot.h"
 
 UIEntity::UIEntity(Sea::Player player, Sea* sea, SeaView* view)
 : Entity(player)
@@ -33,6 +34,11 @@ void UIEntity::start()
 {
     m_started = true;
     m_view->clear();
+}
+
+void UIEntity::hit(Shot* shot)
+{
+    shot->execute(HitInfo::INVALID);
 }
 
 void UIEntity::drawShoot(Sea::Player player, const Coord& c, const HitInfo& info)

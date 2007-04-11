@@ -16,6 +16,7 @@ class Entity;
 class UIEntity;
 class SeaView;
 class Stats;
+class Shot;
 
 class GeneralController : public QObject
 {
@@ -23,11 +24,15 @@ Q_OBJECT
     QList<Entity*> m_entities;
     UIEntity* m_ui;
     Sea* m_sea;
+    Shot* m_shot;
     int m_ready;
     
     void notify(Sea::Player player, const Coord& c, const HitInfo& info);
     void setupEntity(Entity*);
     Entity* findEntity(Sea::Player) const;
+    void finalizeShot(Sea::Player player, const Coord& c, const HitInfo& info);
+    
+    friend class Shot;
 public:
     GeneralController(QObject* parent);
 

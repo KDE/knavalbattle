@@ -9,6 +9,7 @@
 
 #include "aientity.h"
 #include "ai/smartai.h"
+#include "shot.h"
 
 #include <QTimer>
 
@@ -42,13 +43,13 @@ void AIEntity::startPlaying()
     getShoot();
 }
 
-HitInfo AIEntity::hit(Sea::Player player, const Coord& c)
+void AIEntity::hit(Shot* shot)
 {
-    if (player != m_player && m_sea->canHit(player, c)) {
-        return m_sea->hit(c);
+    if (shot->player() != m_player && m_sea->canHit(shot->player(), shot->pos())) {
+        shot->execute(m_sea->hit(shot->pos()));
     }
     else {
-        return HitInfo::INVALID;
+        shot->execute(HitInfo::INVALID);
     }
 }
 

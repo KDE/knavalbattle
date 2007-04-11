@@ -14,6 +14,7 @@
 #include "sea.h"
 
 class Stats;
+class Shot;
 
 class Entity : public QObject
 {
@@ -24,7 +25,7 @@ public:
     Entity(Sea::Player player);
     virtual ~Entity();
     virtual void notify(Sea::Player player, const Coord& c, const HitInfo& info) = 0;
-    virtual HitInfo hit(Sea::Player player, const Coord& c) = 0;
+    virtual void hit(Shot* shot) = 0;
     virtual void start() = 0;
     virtual void startPlaying() { }
     virtual const Stats* stats() const { return 0; }

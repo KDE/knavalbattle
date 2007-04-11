@@ -10,6 +10,7 @@
 #include "playerentity.h"
 #include "generalcontroller.h"
 #include "seaview.h"
+#include "shot.h"
 
 PlayerEntity::PlayerEntity(Sea::Player player, Sea* sea, SeaView* view)
 : UIEntity(player, sea, view)
@@ -73,13 +74,14 @@ void PlayerEntity::start()
     m_view->setDelegate(this);
 }
 
-HitInfo PlayerEntity::hit(Sea::Player player, const Coord& c)
+void PlayerEntity::hit(Shot* shot)
 {
-    if (player != m_player && m_sea->canHit(player, c)) {
-        return m_sea->hit(c);
+    if (shot->player() != m_player && m_sea->canHit(shot->player(), shot->pos())) {
+        HitInfo info = m_sea->hit(shot->pos());
+        shot->execute(info);
     }
     else {
-        return HitInfo::INVALID;
+        shot->execute(HitInfo::INVALID);
     }
 }
 

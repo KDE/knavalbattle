@@ -23,6 +23,7 @@ set(kbattleship_SRCS
     sea.cpp
     seaview.cpp
     ship.cpp
+    shot.cpp
     sprite.cpp
     spritefactory.cpp
     stats.cpp

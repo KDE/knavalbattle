@@ -11,9 +11,11 @@
 #include "playerentity.h"
 #include "aientity.h"
 #include "seaview.h"
+#include "shot.h"
 
 GeneralController::GeneralController(QObject* parent)
 : QObject(parent)
+, m_shot(0)
 , m_ready(0)
 {
     m_ui = 0;
@@ -62,11 +64,21 @@ void GeneralController::shoot(Sea::Player player, const Coord& c)
 {
     Entity* entity = findEntity(Sea::opponent(player));
     if (!entity) {
+        kDebug() << "no entity!" << endl;
         return;
     }
 
-    HitInfo info = entity->hit(player, c);
-    
+    if (m_shot) {
+        kDebug() << "shot in progress" << endl;
+        // shot in progress
+        return;
+    }
+
+    entity->hit(m_shot = new Shot(this, player, c)); // kind of CPS
+}
+
+void GeneralController::finalizeShot(Sea::Player player, const Coord& c, const HitInfo& info)
+{
     if (info.type != HitInfo::INVALID) {
         // notify entities
         notify(player, c, info);
@@ -81,6 +93,9 @@ void GeneralController::shoot(Sea::Player player, const Coord& c)
     else {
         kDebug() << "illegal move " << c << " for player " << player << endl;
     }
+    
+    delete m_shot;
+    m_shot = 0;
 }
 
 void GeneralController::notify(Sea::Player player, const Coord& c, const HitInfo& info)

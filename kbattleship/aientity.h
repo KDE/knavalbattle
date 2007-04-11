@@ -30,7 +30,7 @@ public:
     virtual void notify(Sea::Player player, const Coord& c, const HitInfo& info);
     virtual void start();
     virtual void startPlaying();
-    virtual HitInfo hit(Sea::Player player, const Coord& c);
+    virtual void hit(Shot* shot);
 };
 
 class DelayedShot : public QObject
