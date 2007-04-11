@@ -12,9 +12,10 @@
 #include "protocol.h"
 #include <QIODevice>
 
-NetworkEntity::NetworkEntity(Sea::Player player, Sea* sea, QIODevice* device)
+NetworkEntity::NetworkEntity(Sea::Player player, Sea* sea, QIODevice* device, bool client)
 : Entity(player)
 , m_sea(sea)
+, m_client(client)
 {
     m_protocol = new Protocol(device);
 }
@@ -28,8 +29,11 @@ NetworkEntity::~NetworkEntity()
 
 void NetworkEntity::start()
 {
-    m_protocol->send(HeaderMessage());
-    m_protocol->send(NickMessage("dude"));
+    connect(m_protocol, SIGNAL(received(MessagePtr)), this, SLOT(received(MessagePtr)));
+    if (m_client) {
+        m_protocol->send(HeaderMessage());
+        m_protocol->send(NickMessage("clientdude"));
+    }
 }
 
 void NetworkEntity::notifyReady(Sea::Player player)
@@ -69,9 +73,14 @@ void NetworkEntity::notify(Sea::Player player, const Coord& c, const HitInfo& in
 
 void NetworkEntity::hit(Shot* shot)
 {
-    if (shot->player() != m_player && m_sea->turn() == shot->player()) {
+    if (shot->player() != m_player 
+        && m_sea->turn() == shot->player()
+        && m_sea->valid(m_player, shot->pos())) {
         m_pending_shot = shot;
         m_protocol->send(MoveMessage(shot->pos()));
+    }
+    else {
+        shot->execute(HitInfo::INVALID);
     }
 }
 
@@ -93,6 +102,11 @@ void NetworkEntity::visit(const RejectMessage&)
 void NetworkEntity::visit(const NickMessage& msg)
 {
     m_nick = msg.nickname();
+    if (!m_client) {
+        // the server sends header at this point
+        m_protocol->send(HeaderMessage());
+        m_protocol->send(NickMessage("serverdude"));
+    }
 }
 
 void NetworkEntity::visit(const BeginMessage&)
@@ -100,8 +114,10 @@ void NetworkEntity::visit(const BeginMessage&)
     emit ready(m_player);
 }
 
-void NetworkEntity::visit(const MoveMessage&)
+void NetworkEntity::visit(const MoveMessage& msg)
 {
+    kDebug() << m_player << ": shooting on " << msg.move() << endl;
+    emit shoot(m_player, msg.move());
 }
 
 void NetworkEntity::visit(const NotificationMessage& msg)

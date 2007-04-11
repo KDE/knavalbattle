@@ -25,9 +25,10 @@ Q_OBJECT
     QIODevice* m_socket;
     Shot* m_pending_shot;
     QList<Ship*> m_destroyed_ships;
+    bool m_client;
     QString m_nick;
 public:
-    NetworkEntity(Sea::Player player, Sea* sea, QIODevice* device);
+    NetworkEntity(Sea::Player player, Sea* sea, QIODevice* device, bool client);
     ~NetworkEntity();
     
     virtual void notify(Sea::Player player, const Coord& c, const HitInfo& info);

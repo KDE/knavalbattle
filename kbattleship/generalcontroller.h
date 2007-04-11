@@ -38,7 +38,7 @@ public:
 
     void createPlayer(Sea::Player player, SeaView* view);
     void createAI(Sea::Player player);
-    void createRemotePlayer(Sea::Player player, QIODevice* device);
+    void createRemotePlayer(Sea::Player player, QIODevice* device, bool client);
     const Stats* stats() const;
     
     void start(SeaView* view);

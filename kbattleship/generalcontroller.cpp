@@ -39,10 +39,13 @@ void GeneralController::createAI(Sea::Player player)
     setupEntity(e);
 }
 
-void GeneralController::createRemotePlayer(Sea::Player player, QIODevice* device)
+void GeneralController::createRemotePlayer(Sea::Player player, QIODevice* device, bool client)
 {
-    Entity* e = new NetworkEntity(player, m_sea, device);
+    Entity* e = new NetworkEntity(player, m_sea, device, client);
     setupEntity(e);
+    if (!client) {
+        m_sea->switchTurn();
+    }
 }
 
 void GeneralController::setupEntity(Entity* entity)

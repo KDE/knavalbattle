@@ -244,7 +244,7 @@ void Protocol::send(const Message& msg)
     msg.accept(sender);
     
     QTextStream stream(m_device);
-    stream << sender.document().toString();
+    stream << sender.document().toString() << endl;
     
     kDebug() << "sending: " << sender.document().toString() << endl;
 }

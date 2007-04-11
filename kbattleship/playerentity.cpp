@@ -57,7 +57,7 @@ void PlayerEntity::action(Sea::Player player, const Coord& c)
     }
     else {
         Sea::Player opponent = Sea::opponent(m_player);
-        if (player == opponent) {
+        if (player == opponent && m_sea->turn() == m_player) {
             emit shoot(m_player, c);
         }
     }

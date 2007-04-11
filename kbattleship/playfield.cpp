@@ -92,16 +92,39 @@ void PlayField::newServer()
     }
 }
 
+void PlayField::newClient()
+{
+    if (!m_client) {
+        m_server->close();
+        setupController();
+        m_client = new QTcpSocket;
+        connect(m_client, SIGNAL(connected()), this, SLOT(clientConnected()));
+        m_client->connectToHost("localhost", 54321);
+    }
+}
+
 void PlayField::acceptClient()
 {
     QTcpSocket* socket = m_server->nextPendingConnection();
     if (socket) {
         m_human_player = 0;
         m_controller->createPlayer(Sea::Player(0), m_sea);
-        m_controller->createRemotePlayer(Sea::Player(1), socket);
+        m_controller->createRemotePlayer(Sea::Player(1), socket, false);
         m_controller->start(m_sea);
         m_server->close();
     }
+}
+
+void PlayField::clientConnected()
+{
+    if (m_client) {
+        m_human_player = 0;
+        m_controller->createPlayer(Sea::Player(0), m_sea);
+        m_controller->createRemotePlayer(Sea::Player(1), m_client, true);
+        m_controller->start(m_sea);
+        m_server->close();
+    }
+    m_client = 0;
 }
 
 void PlayField::highscores()
