@@ -7,19 +7,18 @@
   (at your option) any later version.
 */
 
-#ifndef NETWORKCONTROLLER_H
-#define NETWORKCONTROLLER_H
+#include "entity.h"
 
-#include "controller.h"
 
-class NetworkController : public Controller
+Entity::Entity(Sea::Player player)
+: m_player(player)
 {
-Q_OBJECT
-    SeaView* m_view;
-    Sea::Player m_player;
-public:
-    NetworkController(QObject* parent, SeaView* view, Sea::Player player);
-};
+}
 
-#endif // NETWORKCONTROLLER_H
+Entity::~Entity()
+{
+}
+
+#include "entity.moc"
+
 

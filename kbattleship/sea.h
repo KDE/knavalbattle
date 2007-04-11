@@ -30,7 +30,8 @@ public:
     enum Player
     {
         PLAYER_A = 0,
-        PLAYER_B = 1
+        PLAYER_B = 1,
+        NO_PLAYER = -1
     };
 private:
     Coord m_size;

@@ -14,21 +14,21 @@
 #include "sea.h"
 
 class SeaView;
-class Controller;
+class GeneralController;
 class KScoreDialog;
 
 class PlayField : public QWidget
 {
 Q_OBJECT
     SeaView* m_sea;
-    Controller* m_controller;
+    GeneralController* m_controller;
     KScoreDialog* m_highscores;
     int m_human_player;
-    QString m_nick;
     
-    void setup(Controller*);
+    void setupController();
 public:
     PlayField(QWidget* parent);
+    ~PlayField();
 public slots:
     void newGame();
     void newSimulation();

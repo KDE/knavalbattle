@@ -16,7 +16,7 @@
 
 class BattleFieldView;
 class KBSRenderer;
-class Controller;
+class Delegate;
 
 class SeaView : public KGameCanvasWidget
 {
@@ -24,7 +24,7 @@ class SeaView : public KGameCanvasWidget
     BattleFieldView* m_fields[2];
     
     KBSRenderer* m_renderer;
-    Controller* m_controller;
+    Delegate* m_delegate;
     BattleFieldView* otherField(BattleFieldView* field);
     QPoint m_last_preview;
     Animator m_animator;
@@ -37,7 +37,7 @@ public:
     ~SeaView();
     
     void update();
-    void setController(Controller* c);
+    void setDelegate(Delegate* c);
     void cancelPreview();
     void add(Sea::Player p, const Coord& c, Ship* ship);
     void hit(Sea::Player p, const Coord& c);

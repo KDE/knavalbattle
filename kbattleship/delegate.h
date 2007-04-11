@@ -7,16 +7,16 @@
   (at your option) any later version.
 */
 
-#include "networkcontroller.h"
+#ifndef DELEGATE_H
+#define DELEGATE_H
 
-NetworkController::NetworkController(QObject* parent, SeaView* view, Sea::Player player)
-: Controller(parent)
-, m_view(view)
-, m_player(player)
+class Delegate
 {
-}
+public:
+    virtual ~Delegate() { }
+    virtual void action(Sea::Player player, const Coord& c) = 0;
+    virtual void changeDirection(Sea::Player player) = 0;
+    virtual Ship* canAddShip(Sea::Player player, const Coord& c) = 0;
+};
 
-#include "networkcontroller.moc"
-
-
-
+#endif // DELEGATE_H

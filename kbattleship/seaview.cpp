@@ -16,10 +16,11 @@
 #include "seaview.h"
 #include "battlefieldview.h"
 #include "kbsrenderer.h"
-#include "controller.h"
+#include "delegate.h"
 
 SeaView::SeaView(QWidget* parent)
 : KGameCanvasWidget(parent)
+, m_delegate(0)
 {
     // create renderer
     m_renderer = new KBSRenderer(KStandardDirs::locate("appdata", "pictures/default_theme.svgz"));
@@ -72,7 +73,7 @@ int SeaView::fieldAt(const QPoint& p)
 
 void SeaView::mousePressEvent(QMouseEvent* e)
 {
-    if (!m_controller) {
+    if (!m_delegate) {
         return;
     }
     
@@ -85,16 +86,16 @@ void SeaView::mousePressEvent(QMouseEvent* e)
     Coord c = m_renderer->toLogical(e->pos() - field->pos());
     
     if (e->button() == Qt::LeftButton) {
-        m_controller->action(Sea::Player(f), c);
+        m_delegate->action(Sea::Player(f), c);
     }
     else if (e->button() == Qt::RightButton) {
-        m_controller->changeDirection(Sea::Player(f));
+        m_delegate->changeDirection(Sea::Player(f));
     }
 }
 
 void SeaView::mouseMoveEvent(QMouseEvent* e)
 {
-    if (!m_controller) {
+    if (!m_delegate) {
         return;
     }
     
@@ -130,7 +131,7 @@ bool SeaView::setPreview(Sea::Player player, const QPoint& pos)
 {
     QPoint p = pos - m_fields[player]->pos();
     Coord c = m_renderer->toLogical(p);
-    if (Ship* ship = m_controller->canAddShip(player, c)) {
+    if (Ship* ship = m_delegate->canAddShip(player, c)) {
         m_fields[player]->setPreview(p, ship);
         return true;
     }
@@ -180,9 +181,10 @@ int SeaView::tileSize() const
     return w < h ? w : h;
 }
 
-void SeaView::setController(Controller* c)
+void SeaView::setDelegate(Delegate* c)
 {
-    m_controller = c;
+    kDebug() << "setting delegate to " << c << endl;
+    m_delegate = c;
     setMouseTracking(c != 0);
 }
 

@@ -104,6 +104,7 @@ void BattleFieldView::add(const Coord& c, Ship* ship)
     if (ship == m_preview.ship) {
         Animation* a = new FadeAnimation(sprite, PREVIEW_OPACITY, 255, 1000);
         m_animator->add(a);
+        cancelPreview();
     }
     else if (!ship->alive()) {
         Animation* a = new FadeAnimation(sprite, 0, 200, 1000);
