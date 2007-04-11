@@ -60,10 +60,15 @@ void GeneralController::start(SeaView* view)
 
 void GeneralController::shoot(Sea::Player player, const Coord& c)
 {
-    if (m_sea->canHit(player, c)) {
-        HitInfo info = m_sea->hit(c);
-        
-        // notify the player
+    Entity* entity = findEntity(Sea::opponent(player));
+    if (!entity) {
+        return;
+    }
+
+    HitInfo info = entity->hit(player, c);
+    
+    if (info.type != HitInfo::INVALID) {
+        // notify entities
         notify(player, c, info);
             
         if (m_sea->status() == Sea::A_WINS) {
@@ -103,6 +108,17 @@ const Stats* GeneralController::stats() const
         const Stats* res = entity->stats();
         if (res) {
             return res;
+        }
+    }
+    
+    return 0;
+}
+
+Entity* GeneralController::findEntity(Sea::Player player) const
+{
+    foreach (Entity* entity, m_entities) {
+        if (entity->player() == player) {
+            return entity;
         }
     }
     

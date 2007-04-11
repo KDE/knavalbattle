@@ -42,6 +42,16 @@ void AIEntity::startPlaying()
     getShoot();
 }
 
+HitInfo AIEntity::hit(Sea::Player player, const Coord& c)
+{
+    if (player != m_player && m_sea->canHit(player, c)) {
+        return m_sea->hit(c);
+    }
+    else {
+        return HitInfo::INVALID;
+    }
+}
+
 void AIEntity::getShoot()
 {
     if (m_sea->turn() == m_player) {

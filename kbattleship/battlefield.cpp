@@ -52,6 +52,11 @@ void BattleField::set(const Coord& pos, const Element& e)
     get(pos) = e;
 }
 
+void BattleField::add(int n)
+{
+    m_ships += n;
+}
+
 void BattleField::add(const Coord& pos, Ship* ship)
 {
     Coord p = pos;

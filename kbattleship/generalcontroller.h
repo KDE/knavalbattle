@@ -27,6 +27,7 @@ Q_OBJECT
     
     void notify(Sea::Player player, const Coord& c, const HitInfo& info);
     void setupEntity(Entity*);
+    Entity* findEntity(Sea::Player) const;
 public:
     GeneralController(QObject* parent);
 

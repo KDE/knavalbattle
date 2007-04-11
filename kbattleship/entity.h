@@ -24,9 +24,12 @@ public:
     Entity(Sea::Player player);
     virtual ~Entity();
     virtual void notify(Sea::Player player, const Coord& c, const HitInfo& info) = 0;
+    virtual HitInfo hit(Sea::Player player, const Coord& c) = 0;
     virtual void start() = 0;
     virtual void startPlaying() { }
     virtual const Stats* stats() const { return 0; }
+    
+    virtual Sea::Player player() const { return m_player; }
 signals:
     void shoot(Sea::Player player, const Coord& c);
     void ready(Sea::Player player);

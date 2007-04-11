@@ -73,6 +73,16 @@ void PlayerEntity::start()
     m_view->setDelegate(this);
 }
 
+HitInfo PlayerEntity::hit(Sea::Player player, const Coord& c)
+{
+    if (player != m_player && m_sea->canHit(player, c)) {
+        return m_sea->hit(c);
+    }
+    else {
+        return HitInfo::INVALID;
+    }
+}
+
 void PlayerEntity::changeDirection(Sea::Player player)
 {
     if (player == m_player) {

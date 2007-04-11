@@ -36,6 +36,7 @@ public:
     void set(const Coord& pos, const Element& e);
     
     void add(const Coord& pos, Ship* ship);
+    void add(int n);
     bool canAddShip(const Coord& pos, unsigned int size, Ship::Direction direction) const;
     HitInfo hit(const Coord& pos);
     const Element& at(const Coord& c) const;

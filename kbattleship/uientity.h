@@ -29,6 +29,7 @@ public:
     
     virtual void notify(Sea::Player player, const Coord& c, const HitInfo& info);
     virtual void start();
+    virtual HitInfo hit(Sea::Player, const Coord&) { return HitInfo::INVALID; }
     
     virtual void registerHit(Sea::Player, const Coord&) { }
     virtual void registerMiss(Sea::Player, const Coord&) { }
