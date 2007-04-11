@@ -10,6 +10,7 @@
 #include "generalcontroller.h"
 #include "playerentity.h"
 #include "aientity.h"
+#include "networkentity.h"
 #include "seaview.h"
 #include "shot.h"
 
@@ -35,6 +36,12 @@ void GeneralController::createPlayer(Sea::Player player, SeaView* view)
 void GeneralController::createAI(Sea::Player player)
 {
     Entity* e = new AIEntity(player, m_sea);
+    setupEntity(e);
+}
+
+void GeneralController::createRemotePlayer(Sea::Player player, QIODevice* device)
+{
+    Entity* e = new NetworkEntity(player, m_sea, device);
     setupEntity(e);
 }
 

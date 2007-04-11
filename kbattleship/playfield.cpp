@@ -11,6 +11,8 @@
 
 #include <QResizeEvent>
 #include <QLayout>
+#include <QTcpServer>
+#include <QTcpSocket>
 #include <kscoredialog.h>
 #include <klocale.h>
 
@@ -28,6 +30,9 @@ PlayField::PlayField(QWidget* parent)
     m_sea = new SeaView(this);
     m_controller = 0;
     m_human_player = 0;
+    
+    m_server = new QTcpServer;
+    connect(m_server, SIGNAL(newConnection()), this, SLOT(acceptClient()));
     
     layout->addWidget(m_sea);
     
@@ -61,20 +66,42 @@ void PlayField::setupController()
 
 void PlayField::newGame()
 {
+    m_server->close();
     setupController();
+    m_human_player = 0;
     m_controller->createPlayer(Sea::Player(0), m_sea);
     m_controller->createAI(Sea::Player(1));
     m_controller->start(m_sea);
-    m_human_player = 0;
 }
 
 void PlayField::newSimulation()
 {
+    m_server->close();
     setupController();
+    m_human_player = -1;
     m_controller->createAI(Sea::Player(0));
     m_controller->createAI(Sea::Player(1));
     m_controller->start(m_sea);
-    m_human_player = -1;
+}
+
+void PlayField::newServer()
+{
+    if (!m_server->isListening()) {
+        setupController();
+        m_server->listen(QHostAddress::Any, 54321);
+    }
+}
+
+void PlayField::acceptClient()
+{
+    QTcpSocket* socket = m_server->nextPendingConnection();
+    if (socket) {
+        m_human_player = 0;
+        m_controller->createPlayer(Sea::Player(0), m_sea);
+        m_controller->createRemotePlayer(Sea::Player(1), socket);
+        m_controller->start(m_sea);
+        m_server->close();
+    }
 }
 
 void PlayField::highscores()

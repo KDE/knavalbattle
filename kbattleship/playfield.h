@@ -16,6 +16,7 @@
 class SeaView;
 class GeneralController;
 class KScoreDialog;
+class QTcpServer;
 
 class PlayField : public QWidget
 {
@@ -23,6 +24,7 @@ Q_OBJECT
     SeaView* m_sea;
     GeneralController* m_controller;
     KScoreDialog* m_highscores;
+    QTcpServer* m_server;
     int m_human_player;
     
     void setupController();
@@ -32,8 +34,11 @@ public:
 public slots:
     void newGame();
     void newSimulation();
+    void newServer();
     void highscores();
     void gameOver(Sea::Player winner);
+private slots:
+    void acceptClient();
 };
 
 #endif // PLAYFIELD_H

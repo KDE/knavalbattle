@@ -37,6 +37,10 @@ void MainWindow::setupActions()
     actionCollection()->addAction("game_twomachines", temp);
     connect(temp, SIGNAL(triggered()), m_main, SLOT(newSimulation()));
     
+    temp = new KAction(i18n("Start ser&ver"), this);
+    actionCollection()->addAction("game_server", temp);
+    connect(temp, SIGNAL(triggered()), m_main, SLOT(newServer()));
+    
     temp = new KAction(i18n("Show highscores"), this);
     actionCollection()->addAction("show_highscores", temp);
     connect(temp, SIGNAL(triggered()), m_main, SLOT(highscores()));

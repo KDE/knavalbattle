@@ -24,7 +24,8 @@ class MessageSender : public MessageVisitor
     void addField(const QString& key, const QString& value)
     {
         QDomElement element = m_doc.createElement(key);
-        element.firstChild().toText().setData(value);
+        QDomText text = m_doc.createTextNode(value);
+        element.appendChild(text);
         m_main.appendChild(element);
     }
     
@@ -113,6 +114,7 @@ public:
 Protocol::Protocol(QIODevice* device)
 : m_device(device)
 {
+    m_device->setParent(this);
     connect(m_device, SIGNAL(readyRead()), this, SLOT(readMore()));
 }
 
@@ -135,6 +137,8 @@ void Protocol::readMore()
 #define DEF_COORD(var, varx, vary) DEF_ELEMENT(varx); DEF_ELEMENT(vary); Coord var(varx.toInt(), vary.toInt());
 MessagePtr Protocol::parseMessage(const QString& xmlMessage)
 {
+    kDebug() << "received: " << xmlMessage << endl;
+
     QDomDocument doc;
     doc.setContent(xmlMessage);
     
@@ -241,6 +245,8 @@ void Protocol::send(const Message& msg)
     
     QTextStream stream(m_device);
     stream << sender.document().toString();
+    
+    kDebug() << "sending: " << sender.document().toString() << endl;
 }
 
 
