@@ -39,6 +39,11 @@ void Sea::add(Player p, const Coord& pos, Ship* ship)
     m_fields[p]->add(pos, ship);
 }
 
+void Sea::add(Player p, int n)
+{
+    m_fields[p]->add(n);
+}
+
 bool Sea::canHit(Player p, const Coord& pos) const
 {
     if (m_status != PLAYING || m_turn != p) {
@@ -54,13 +59,24 @@ bool Sea::canHit(Player p, const Coord& pos) const
 HitInfo Sea::hit(const Coord& pos)
 {
     HitInfo res = otherField()->hit(pos);
+    checkGameOver();
+    return res;
+}
+
+void Sea::forceHit(const Coord& pos, const HitInfo& info)
+{
+    otherField()->forceHit(pos, info);
+    checkGameOver();
+}
+
+void Sea::checkGameOver()
+{
     if (otherField()->ships() <= 0) {
         m_status = m_turn == PLAYER_A ? A_WINS : B_WINS;
     }
     else {
         switchTurn();
     }
-    return res;
 }
 
 const Element& Sea::at(Sea::Player player, const Coord& c) const

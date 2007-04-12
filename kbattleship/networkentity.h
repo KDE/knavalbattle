@@ -24,7 +24,6 @@ Q_OBJECT
     Protocol* m_protocol;
     QIODevice* m_socket;
     Shot* m_pending_shot;
-    QList<Ship*> m_destroyed_ships;
     bool m_client;
     QString m_nick;
 public:

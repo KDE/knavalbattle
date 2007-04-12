@@ -98,6 +98,27 @@ HitInfo BattleField::hit(const Coord& pos)
     return res;
 }
 
+void BattleField::forceHit(const Coord& pos, const HitInfo& info)
+{
+    switch (info.type) {
+    case HitInfo::HIT:
+        get(pos).setType(Element::DEAD);
+        if (info.shipDestroyed) {
+            Coord c = info.shipPos;
+            for (unsigned int i = 0; i < info.shipDestroyed->size(); i++) {
+                get(c).setParent(info.shipDestroyed);
+                c += info.shipDestroyed->increment();
+            }
+        }
+        break;
+    case HitInfo::MISS:
+        get(pos).setType(Element::MISS);
+        break;
+    case HitInfo::INVALID:
+        break;
+    }
+}
+
 const Element& BattleField::at(const Coord& c) const
 {
     return m_board[c];

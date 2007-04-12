@@ -30,10 +30,12 @@ private:
     Type m_type;
 public:
     Element();
-    Element(Ship* parent);
+    explicit Element(Ship* parent);
     inline Ship* parent() { return m_parent; }
     inline const Ship* parent() const { return m_parent; }
+    inline void setParent(Ship* ship) { m_parent = ship; }
     inline Type type() const { return m_type; }
+    inline void setType(Type type) { m_type = type; }
     
     bool free() const;
     bool water() const;

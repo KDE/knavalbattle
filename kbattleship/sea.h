@@ -41,14 +41,18 @@ private:
     
     inline BattleField* currentField() const { return m_fields[m_turn]; }
     inline BattleField* otherField() const { return m_fields[opponent(m_turn)]; }
+    
+    void checkGameOver();
 public:
     Sea(QObject* parent, const Coord& size);
     ~Sea();
     
     bool canAddShip(Player p, const Coord& pos, int size, Ship::Direction direction) const;
+    void add(Player p, int n);
     void add(Player p, const Coord& pos, Ship* ship);
     bool canHit(Player p, const Coord& pos) const;
     HitInfo hit(const Coord& pos);
+    void forceHit(const Coord& pos, const HitInfo& info);
     void startPlaying();
     void abort(Player p);
     const Element& at(Sea::Player player, const Coord& pos) const;

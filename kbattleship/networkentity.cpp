@@ -22,9 +22,7 @@ NetworkEntity::NetworkEntity(Sea::Player player, Sea* sea, QIODevice* device, bo
 
 NetworkEntity::~NetworkEntity()
 {
-    foreach (Ship* ship, m_destroyed_ships) {
-        delete ship;
-    }
+
 }
 
 void NetworkEntity::start()
@@ -111,6 +109,7 @@ void NetworkEntity::visit(const NickMessage& msg)
 
 void NetworkEntity::visit(const BeginMessage&)
 {
+    m_sea->add(m_player, 4);
     emit ready(m_player);
 }
 
@@ -135,13 +134,12 @@ void NetworkEntity::visit(const NotificationMessage& msg)
                 Ship::Direction direction = delta.x == 0 ? Ship::TOP_DOWN : Ship::LEFT_TO_RIGHT;
                 Coord shipPos = (delta.x < 0 || delta.y < 0) ? msg.stop() : msg.start();
                 Ship* ship = new Ship(size, direction);
-                m_destroyed_ships.append(ship);
                 
                 info.shipDestroyed = ship;
                 info.shipPos = shipPos;
             }
             
-            m_sea->switchTurn();
+            m_sea->forceHit(msg.move(), info);
             m_pending_shot->execute(info);
         }
         
