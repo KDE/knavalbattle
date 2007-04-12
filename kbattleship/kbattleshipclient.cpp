@@ -72,8 +72,8 @@ void KBattleshipClient::slotReadData()
 	buf[len] = 0;
 	m_readBuffer += QString::fromUtf8(buf);
 	delete []buf;
-	int pos = m_readBuffer.find("</kmessage>");
-	if(pos >= 0)
+	int pos;
+	while ((pos = m_readBuffer.find("</kmessage>")) >= 0)
 	{
 		pos += 11; // Length of "</kmessage>"
 		KMessage *msg = new KMessage();
