@@ -33,6 +33,7 @@ PlayField::PlayField(QWidget* parent)
     
     m_server = new QTcpServer;
     connect(m_server, SIGNAL(newConnection()), this, SLOT(acceptClient()));
+    m_client = 0;
     
     layout->addWidget(m_sea);
     
