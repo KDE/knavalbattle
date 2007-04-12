@@ -43,8 +43,8 @@ public:
     
     void start(SeaView* view);
 public slots:
-    void shoot(Sea::Player player, const Coord& c);
-    void ready(Sea::Player player);
+    void shoot(int player, const Coord& c);
+    void ready(int player);
 signals:
     void gameOver(Sea::Player);
 };

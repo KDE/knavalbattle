@@ -10,6 +10,7 @@
 #ifndef COORD_H
 #define COORD_H
 
+#include <QMetaType>
 #include <kdebug.h>
 
 class Coord
@@ -34,6 +35,7 @@ public:
 
 kdbgstream& operator<<(kdbgstream& os, const Coord& c);
 uint qHash(const Coord& c);
+Q_DECLARE_METATYPE(Coord);
 
 #endif // COORD_H
 

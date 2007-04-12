@@ -33,8 +33,8 @@ public:
     
     virtual Sea::Player player() const { return m_player; }
 signals:
-    void shoot(Sea::Player player, const Coord& c);
-    void ready(Sea::Player player);
+    void shoot(int player, const Coord& c);
+    void ready(int player);
 };
 
 #endif // ENTITY_H

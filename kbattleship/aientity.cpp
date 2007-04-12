@@ -58,24 +58,10 @@ void AIEntity::getShoot()
     if (m_sea->turn() == m_player) {
         Coord c = m_ai->getMove();
         
-        QTimer::singleShot(0, new DelayedShot(this, m_player, c), SLOT(shoot()));
-//         emit shoot(m_player, c);
+        emit shoot(m_player, c);
     }
 }
 
-DelayedShot::DelayedShot(AIEntity* parent, Sea::Player player, const Coord& pos)
-: QObject(parent)
-, m_parent(parent)
-, m_player(player)
-, m_pos(pos)
-{
-}
-
-void DelayedShot::shoot()
-{
-    emit m_parent->shoot(m_player, m_pos);
-    deleteLater();
-}
 
 #include "aientity.moc"
 

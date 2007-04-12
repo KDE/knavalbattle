@@ -11,8 +11,10 @@
 #include <klocale.h>
 #include <kaboutdata.h>
 #include <kcmdlineargs.h>
+#include <QMetaType>
 
 #include "mainwindow.h"
+#include "coord.h"
 
 static KCmdLineOptions options[] = {
     KCmdLineLastOption
@@ -27,6 +29,8 @@ int main(int argc, char** argv)
     KApplication app;
     
     KGlobal::locale()->insertCatalog("libkdegames");
+    
+    qRegisterMetaType<Coord>("Coord");
     
     MainWindow* window = new MainWindow;
     window->show();

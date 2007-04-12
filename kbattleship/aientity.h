@@ -33,17 +33,6 @@ public:
     virtual void hit(Shot* shot);
 };
 
-class DelayedShot : public QObject
-{
-Q_OBJECT
-    AIEntity* m_parent;
-    Sea::Player m_player;
-    Coord m_pos;
-public:
-    DelayedShot(AIEntity* parent, Sea::Player player, const Coord& pos);
-public slots:
-    void shoot();
-};
 
 #endif // AIENTITY_H
 

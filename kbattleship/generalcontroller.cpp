@@ -51,10 +51,10 @@ void GeneralController::createRemotePlayer(Sea::Player player, QIODevice* device
 void GeneralController::setupEntity(Entity* entity)
 {
     entity->setParent(this);
-    connect(entity, SIGNAL(shoot(Sea::Player, const Coord&)),
-            this, SLOT(shoot(Sea::Player, const Coord&)));
-    connect(entity, SIGNAL(ready(Sea::Player)),
-            this, SLOT(ready(Sea::Player)));
+    connect(entity, SIGNAL(shoot(int, const Coord&)),
+            this, SLOT(shoot(int, const Coord&)), Qt::QueuedConnection);
+    connect(entity, SIGNAL(ready(int)),
+            this, SLOT(ready(int)), Qt::QueuedConnection);
     m_entities.append(entity);
 }
 
@@ -70,9 +70,9 @@ void GeneralController::start(SeaView* view)
     }
 }
 
-void GeneralController::shoot(Sea::Player player, const Coord& c)
+void GeneralController::shoot(int player, const Coord& c)
 {
-    Entity* entity = findEntity(Sea::opponent(player));
+    Entity* entity = findEntity(Sea::opponent(Sea::Player(player)));
     if (!entity) {
         kDebug() << "no entity!" << endl;
         return;
@@ -85,7 +85,7 @@ void GeneralController::shoot(Sea::Player player, const Coord& c)
     }
     
     if (m_sea->status() == Sea::PLAYING) {
-        entity->hit(m_shot = new Shot(this, player, c)); // kind of CPS
+        entity->hit(m_shot = new Shot(this, Sea::Player(player), c)); // kind of CPS
     }
 }
 
@@ -117,11 +117,11 @@ void GeneralController::notify(Sea::Player player, const Coord& c, const HitInfo
     }
 }
 
-void GeneralController::ready(Sea::Player player)
+void GeneralController::ready(int player)
 {
     m_ready++;
     foreach (Entity* entity, m_entities) {
-        entity->notifyReady(player);
+        entity->notifyReady(Sea::Player(player));
     }
     kDebug() << "ready = " << m_ready << endl;
     if (m_ready >= 2) {
