@@ -43,7 +43,7 @@ void GeneralController::createRemotePlayer(Sea::Player player, QIODevice* device
 {
     Entity* e = new NetworkEntity(player, m_sea, device, client);
     setupEntity(e);
-    if (!client) {
+    if (client) {
         m_sea->switchTurn();
     }
 }
