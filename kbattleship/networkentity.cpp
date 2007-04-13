@@ -29,15 +29,15 @@ void NetworkEntity::start()
 {
     connect(m_protocol, SIGNAL(received(MessagePtr)), this, SLOT(received(MessagePtr)));
     if (m_client) {
-        m_protocol->send(HeaderMessage());
-        m_protocol->send(NickMessage("clientdude"));
+        m_protocol->send(MessagePtr(new HeaderMessage()));
+        m_protocol->send(MessagePtr(new NickMessage("clientdude")));
     }
 }
 
 void NetworkEntity::notifyReady(Sea::Player player)
 {
     if (player != m_player) {
-        m_protocol->send(BeginMessage());
+        m_protocol->send(MessagePtr(new BeginMessage()));
     }
 }
 
@@ -61,7 +61,7 @@ void NetworkEntity::notify(Sea::Player player, const Coord& c, const HitInfo& in
             begin = info.shipPos;
             end = begin + info.shipDestroyed->increment() * info.shipDestroyed->size();
         }
-        m_protocol->send(NotificationMessage(c, hit, death, begin, end));
+        m_protocol->send(MessagePtr(new NotificationMessage(c, hit, death, begin, end)));
     }
     else {
         // the remote player already knows about the hit
@@ -75,7 +75,7 @@ void NetworkEntity::hit(Shot* shot)
         && m_sea->turn() == shot->player()
         && m_sea->valid(m_player, shot->pos())) {
         m_pending_shot = shot;
-        m_protocol->send(MoveMessage(shot->pos()));
+        m_protocol->send(MessagePtr(new MoveMessage(shot->pos())));
     }
     else {
         shot->execute(HitInfo::INVALID);
@@ -102,8 +102,8 @@ void NetworkEntity::visit(const NickMessage& msg)
     m_nick = msg.nickname();
     if (!m_client) {
         // the server sends header at this point
-        m_protocol->send(HeaderMessage());
-        m_protocol->send(NickMessage("serverdude"));
+        m_protocol->send(MessagePtr(new HeaderMessage()));
+        m_protocol->send(MessagePtr(new NickMessage("serverdude")));
     }
 }
 

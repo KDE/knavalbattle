@@ -115,7 +115,9 @@ Protocol::Protocol(QIODevice* device)
 : m_device(device)
 {
     m_device->setParent(this);
+    m_timer.start(100);
     connect(m_device, SIGNAL(readyRead()), this, SLOT(readMore()));
+    connect(&m_timer, SIGNAL(timeout()), this, SLOT(sendNext()));
 }
 
 void Protocol::readMore()
@@ -238,15 +240,23 @@ MessagePtr Protocol::parseMessage(const QString& xmlMessage)
 #undef DEF_COORD
 #undef DEF_ELEMENT
 
-void Protocol::send(const Message& msg)
+void Protocol::send(const MessagePtr& msg)
 {
-    MessageSender sender;
-    msg.accept(sender);
-    
-    QTextStream stream(m_device);
-    stream << sender.document().toString() << endl;
-    
-    kDebug() << "sending: " << sender.document().toString() << endl;
+    m_message_queue.enqueue(msg);
+}
+
+void Protocol::sendNext()
+{
+    if (!m_message_queue.isEmpty())
+    {
+        MessageSender sender;
+        m_message_queue.dequeue()->accept(sender);
+        
+        QTextStream stream(m_device);
+        stream << sender.document().toString() << endl;
+        
+        kDebug() << "sending: " << sender.document().toString() << endl;
+    }
 }
 
 

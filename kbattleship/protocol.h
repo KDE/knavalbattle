@@ -11,6 +11,8 @@
 #define STREAMREADER_H
 
 #include <QString>
+#include <QTimer>
+#include <QQueue>
 #include "message.h"
 
 class QIODevice;
@@ -20,14 +22,17 @@ class Protocol : public QObject
 Q_OBJECT
     QIODevice* m_device;
     QString m_buffer;
+    QQueue<MessagePtr> m_message_queue;
+    QTimer m_timer;
     
     MessagePtr parseMessage(const QString& xmlMessage);
 public:
     explicit Protocol(QIODevice* device);
     
-    void send(const Message& msg);
+    void send(const MessagePtr& msg);
 private slots:
     void readMore();
+    void sendNext();
 signals:
     void received(MessagePtr);
     void parseError(const QString&);
