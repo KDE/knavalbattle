@@ -46,14 +46,7 @@ int main(int argc, char *argv[])
     KCmdLineArgs *args = KCmdLineArgs::parsedArgs();
     KApplication app;
 
-//     bla->show();
-//     QWidget *container = new QWidget;
-//     KWelcomeScreen *test = new KWelcomeScreen(container);
-//     QPushButton *bla = new QPushButton("test", container);
-//     test->raise();
-//     container->show();
     KWelcomeScreen *test = new KWelcomeScreen();
-//     QPushButton *but = new QPushButton("test", test);
     QGridLayout *testLayout = new QGridLayout(test);
     QLabel *icon1 = new QLabel(test);
     icon1->setPixmap(KIcon("about-kde").pixmap(128, 128));

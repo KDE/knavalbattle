@@ -50,7 +50,6 @@ void KWelcomeScreen::buttonClickedDebug(QString shortText)
 void KWelcomeScreen::init()
 {
     widget->raise();
-    // Connect all the buttons to the buttonClicked slot
 }
 
 void KWelcomeScreen::addButton(const QString &text, const QIcon &icon, const QString &shortText, int rowNum, int colNum)
