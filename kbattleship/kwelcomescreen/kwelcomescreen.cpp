@@ -89,15 +89,40 @@ void KWelcomeWidget::paintEvent(QPaintEvent *event)
     QBrush b(QColor(0, 0, 0, 180));
     p.setBrush(b);
     p.drawRect(event->rect());
-    p.setBrush(Qt::black);
-//     p.drawLine(0, 0, width(), height());
 }
 
 KWelcomeScreenButton::KWelcomeScreenButton(QWidget *parent)
     : QAbstractButton(parent)
+    , m_raised(false)
+    , m_autoraise(true)
 {
     move(150, 50);
     connect(this, SIGNAL(clicked()), this, SLOT(buttonClickedSlot()));
+}
+
+bool KWelcomeScreenButton::autoraise() const
+{
+    return m_autoraise;
+}
+
+void KWelcomeScreenButton::setAutoraise(bool value)
+{
+    m_autoraise = value;
+}
+
+void KWelcomeScreenButton::enterEvent(QEvent* e)
+{
+    if ((m_raised = m_autoraise)) {
+        update();
+    }
+}
+
+void KWelcomeScreenButton::leaveEvent(QEvent* e)
+{
+    m_raised = false;
+    if (m_autoraise) {
+        update();
+    }
 }
 
 void KWelcomeScreenButton::buttonClickedSlot()
@@ -126,6 +151,8 @@ void KWelcomeScreenButton::paintEvent(QPaintEvent *event)
     p.setPen(pen);
     if (this->isDown()) {
         p.setBrush(QBrush(QColor(200, 200, 200, 100)));
+    } else if (m_raised) {
+        p.setBrush(QBrush(QColor(100, 100, 100, 100)));
     } else {
         p.setBrush(QBrush(QColor(0, 0, 0, 100)));
     }

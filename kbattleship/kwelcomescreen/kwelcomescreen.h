@@ -25,6 +25,7 @@ class QPaintEvent;
 class QGridLayout;
 class KWelcomeWidget;
 class KWelcomeScreenButton;
+class QEvent;
 
 class KWelcomeScreen : public QWidget
 {
@@ -73,15 +74,24 @@ signals:
 class KWelcomeScreenButton : public QAbstractButton
 {
     Q_OBJECT
+    
+    Q_PROPERTY(bool autoraise READ autoraise WRITE setAutoraise)
 public:
     KWelcomeScreenButton(QWidget *parent = 0);
     void setProprieties(const QString &text, const QIcon &icon, const QString &shortText);
+    
+    bool autoraise() const;
+    void setAutoraise(bool value);
 protected:
-    void paintEvent(QPaintEvent *event);
+    virtual void paintEvent(QPaintEvent *event);
+    virtual void enterEvent(QEvent*);
+    virtual void leaveEvent(QEvent*);
     QSize sizeHint();
 private:
     QString text, shortText;
     QIcon icon;
+    bool m_raised;
+    bool m_autoraise;
 private Q_SLOTS:
     void buttonClickedSlot();
 signals:
