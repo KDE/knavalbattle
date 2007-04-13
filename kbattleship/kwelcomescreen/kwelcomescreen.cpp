@@ -88,7 +88,7 @@ void KWelcomeWidget::paintEvent(QPaintEvent *event)
     QPainter p(this);
     QBrush b(QColor(0, 0, 0, 180));
     p.setBrush(b);
-    p.drawRect(event->rect());
+    p.drawRect(QRect(event->rect().x(), event->rect().y()-1, event->rect().width()+1, event->rect().height()+1));
 }
 
 KWelcomeScreenButton::KWelcomeScreenButton(QWidget *parent)
@@ -96,7 +96,7 @@ KWelcomeScreenButton::KWelcomeScreenButton(QWidget *parent)
     , m_raised(false)
     , m_autoraise(true)
 {
-    move(150, 50);
+    resize(sizeHint());
     connect(this, SIGNAL(clicked()), this, SLOT(buttonClickedSlot()));
 }
 
@@ -139,11 +139,12 @@ void KWelcomeScreenButton::setProprieties(const QString &text, const QIcon &icon
 
 QSize KWelcomeScreenButton::sizeHint()
 {
-    return QSize(150, 40);
+    return QSize(153, 43);
 }
 
 void KWelcomeScreenButton::paintEvent(QPaintEvent *event)
 {
+    resize(sizeHint());
     QPainter p(this);
     p.setRenderHint(QPainter::Antialiasing);
     QPen pen(QColor(200, 200, 220, 255));
@@ -156,7 +157,7 @@ void KWelcomeScreenButton::paintEvent(QPaintEvent *event)
     } else {
         p.setBrush(QBrush(QColor(0, 0, 0, 100)));
     }
-    p.drawRoundRect(QRectF(2.0, 2.0, sizeHint().rwidth(), sizeHint().rheight()), 8, 40);
+    p.drawRoundRect(QRectF(2.0, 2.0, sizeHint().rwidth()-3, sizeHint().rheight()-3), 8, 40);
     p.drawPixmap(10, (sizeHint().rheight()/2-14), 32, 32, icon.pixmap(32, 32));
 
     //FIXME calculate the position basing on the text height.

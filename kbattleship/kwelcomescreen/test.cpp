@@ -80,6 +80,7 @@ int main(int argc, char *argv[])
     test->addButton("Test Button 3", KIcon("plasmagik"), "tstbtn3", 0, 1);
     test->addButton("Test Button 4", KIcon("plasmagik"), "tstbtn4", 1, 1);
     test->init();
+    //test->setAutoraise(true);
     test->resize(128*3, 128*3);
     test->show();
 
