@@ -158,7 +158,7 @@ void KWelcomeScreenButton::paintEvent(QPaintEvent *event)
         p.setBrush(QBrush(QColor(0, 0, 0, 100)));
     }
     p.drawRoundRect(QRectF(2.0, 2.0, sizeHint().rwidth()-3, sizeHint().rheight()-3), 8, 40);
-    p.drawPixmap(10, (sizeHint().rheight()/2-14), 32, 32, icon.pixmap(32, 32));
+    p.drawPixmap(10, (sizeHint().rheight()/2-16), 32, 32, icon.pixmap(32, 32));
 
     //FIXME calculate the position basing on the text height.
     p.drawText(10+32+10, (sizeHint().rheight()/2+6), text);
