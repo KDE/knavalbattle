@@ -189,7 +189,7 @@ MessagePtr Protocol::parseMessage(const QString& xmlMessage)
         {
             DEF_COORD(field, fieldx, fieldy);
             DEF_ELEMENT(fieldstate);
-            bool hit = fieldstate == "1";
+            bool hit = fieldstate != "99";
             DEF_ELEMENT(death);
             bool destroyed = death == "true";
             if (destroyed) {

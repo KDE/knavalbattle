@@ -17,10 +17,12 @@ class AudioPlayer : private Phonon::AudioPlayer
 {
     QString m_dir;
     KUrl path(const QString& soundName) const;
+    bool m_active;
 public:
     AudioPlayer(QObject* parent);
 
     void play(Sea::Player player, const HitInfo& info);
+    void activate(bool value) { m_active = value; }
 };
 
 #endif // AUDIOPLAYER_H

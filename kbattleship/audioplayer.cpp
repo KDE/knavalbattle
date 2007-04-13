@@ -14,6 +14,7 @@
 
 AudioPlayer::AudioPlayer(QObject* parent)
 : Phonon::AudioPlayer(Phonon::GameCategory, parent)
+, m_active(false)
 {
     m_dir = KStandardDirs::locate("appdata", "sounds/");
 }
@@ -25,23 +26,25 @@ KUrl AudioPlayer::path(const QString& soundName) const
 
 void AudioPlayer::play(Sea::Player player, const HitInfo& info)
 {
-    QString sound;
-    if (info.type == HitInfo::HIT) {
-        if (info.shipDestroyed) {
-            sound = "ship-sink.ogg";
+    if (m_active) {
+        QString sound;
+        if (info.type == HitInfo::HIT) {
+            if (info.shipDestroyed) {
+                sound = "ship-sink.ogg";
+            }
+            else {
+                sound = player == Sea::PLAYER_A ? 
+                                "ship-player1-shoot.ogg" : 
+                                "ship-player2-shoot.ogg";
+            }
         }
         else {
-            sound = player == Sea::PLAYER_A ? 
-                              "ship-player1-shoot.ogg" : 
-                              "ship-player2-shoot.ogg";
+            sound = "ship-player-shoot-water.ogg";
         }
-    }
-    else {
-        sound = "ship-player-shoot-water.ogg";
-    }
-    
-    if (!sound.isEmpty()) {
-        Phonon::AudioPlayer::play(path(sound));
+        
+        if (!sound.isEmpty()) {
+            Phonon::AudioPlayer::play(path(sound));
+        }
     }
 }
 
