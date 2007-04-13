@@ -1,5 +1,6 @@
 add_subdirectory(pictures)
 add_subdirectory(sounds)
+add_subdirectory(kwelcomescreen)
 
 set(kbattleship_SRCS
     ai/ai.cpp
