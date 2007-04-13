@@ -13,11 +13,13 @@
 #include "networkentity.h"
 #include "seaview.h"
 #include "shot.h"
+#include "audioplayer.h"
 
-GeneralController::GeneralController(QObject* parent)
+GeneralController::GeneralController(QObject* parent, AudioPlayer* player)
 : QObject(parent)
 , m_shot(0)
 , m_ready(0)
+, m_player(player)
 {
     m_ui = 0;
     m_sea = new Sea(this, Coord(10, 10));
@@ -94,6 +96,11 @@ void GeneralController::finalizeShot(Sea::Player player, const Coord& c, const H
     if (info.type != HitInfo::INVALID) {
         // notify entities
         notify(player, c, info);
+        
+        // play sounds
+        if (m_player) {
+            m_player->play(player, info);
+        }
             
         if (m_sea->status() == Sea::A_WINS) {
             emit gameOver(Sea::PLAYER_A);

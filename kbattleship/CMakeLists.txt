@@ -1,4 +1,5 @@
-add_subdirectory( pictures ) 
+add_subdirectory(pictures)
+add_subdirectory(sounds)
 
 set(kbattleship_SRCS
     ai/ai.cpp
@@ -7,6 +8,7 @@ set(kbattleship_SRCS
     aientity.cpp
     animation.cpp
     animator.cpp
+    audioplayer.cpp
     battlefield.cpp
     battlefieldview.cpp
     coord.cpp
@@ -35,7 +37,7 @@ kde4_automoc(${kbattleship_SRCS})
 
 kde4_add_executable(kbattleship ${kbattleship_SRCS})
 
-target_link_libraries(kbattleship ${KDE4_KDEUI_LIBS} kdegames)
+target_link_libraries(kbattleship ${KDE4_KDEUI_LIBS} ${KDE4_PHONONCORE_LIBS} kdegames)
 
 install(TARGETS kbattleship  DESTINATION ${BIN_INSTALL_DIR} )
 install( FILES kbattleshipui.rc  DESTINATION  ${DATA_INSTALL_DIR}/kbattleship )

@@ -15,11 +15,14 @@
 #include <QTcpSocket>
 #include <kscoredialog.h>
 #include <klocale.h>
+#include <kmessagebox.h>
 
 #include "playfield.h"
 #include "seaview.h"
 #include "generalcontroller.h"
 #include "stats.h"
+#include "audioplayer.h"
+
 
 PlayField::PlayField(QWidget* parent)
 : QWidget(parent)
@@ -34,6 +37,8 @@ PlayField::PlayField(QWidget* parent)
     m_server = new QTcpServer;
     connect(m_server, SIGNAL(newConnection()), this, SLOT(acceptClient()));
     m_client = 0;
+    
+    m_player = new AudioPlayer(this);
     
     layout->addWidget(m_sea);
     
@@ -60,7 +65,7 @@ PlayField::~PlayField()
 void PlayField::setupController()
 {
     delete m_controller;
-    m_controller = new GeneralController(this);
+    m_controller = new GeneralController(this, m_player);
     connect(m_controller, SIGNAL(gameOver(Sea::Player)),
             this, SLOT(gameOver(Sea::Player)));
 }
@@ -147,8 +152,14 @@ void PlayField::gameOver(Sea::Player winner)
             kDebug() << "score = " << stats->score() << endl;
             if (m_highscores->addScore(stats->score(), info)) {
                 highscores();
+                return;
             }
         }
+        
+        KMessageBox::information(this, "You win!");
+    }
+    else {
+        KMessageBox::information(this, "You lose");
     }
 }
 

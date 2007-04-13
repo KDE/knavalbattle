@@ -17,6 +17,7 @@ class UIEntity;
 class SeaView;
 class Stats;
 class Shot;
+class AudioPlayer;
 
 class GeneralController : public QObject
 {
@@ -26,6 +27,7 @@ Q_OBJECT
     Sea* m_sea;
     Shot* m_shot;
     int m_ready;
+    AudioPlayer* m_player;
     
     void notify(Sea::Player player, const Coord& c, const HitInfo& info);
     void setupEntity(Entity*);
@@ -34,7 +36,7 @@ Q_OBJECT
     
     friend class Shot;
 public:
-    GeneralController(QObject* parent);
+    GeneralController(QObject* parent, AudioPlayer* player = 0);
 
     void createPlayer(Sea::Player player, SeaView* view);
     void createAI(Sea::Player player);
