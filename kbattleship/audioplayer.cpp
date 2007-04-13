@@ -21,7 +21,7 @@ AudioPlayer::AudioPlayer(QObject* parent)
 
 KUrl AudioPlayer::path(const QString& soundName) const
 {
-    return KUrl::fromPath(m_dir + "/" + soundName);
+    return KUrl::fromPath(m_dir + '/' + soundName);
 }
 
 void AudioPlayer::play(Sea::Player player, const HitInfo& info)

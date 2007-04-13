@@ -19,6 +19,7 @@ class KScoreDialog;
 class QTcpServer;
 class QTcpSocket;
 class AudioPlayer;
+class ChatWidget;
 
 class PlayField : public QWidget
 {
@@ -29,6 +30,7 @@ Q_OBJECT
     QTcpServer* m_server;
     QTcpSocket* m_client;
     AudioPlayer* m_player;
+    ChatWidget* m_chat;
     int m_human_player;
     
     void setupController();

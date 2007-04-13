@@ -1,6 +1,5 @@
 add_subdirectory(pictures)
 add_subdirectory(sounds)
-add_subdirectory(kwelcomescreen)
 
 set(kbattleship_SRCS
     ai/ai.cpp
@@ -12,6 +11,7 @@ set(kbattleship_SRCS
     audioplayer.cpp
     battlefield.cpp
     battlefieldview.cpp
+    chatwidget.cpp
     coord.cpp
     element.cpp
     entity.cpp

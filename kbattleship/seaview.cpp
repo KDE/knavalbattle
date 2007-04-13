@@ -35,6 +35,8 @@ SeaView::SeaView(QWidget* parent)
     m_animator.start();
     
     update();
+    
+    setSizePolicy(QSizePolicy::Minimum, QSizePolicy::Preferred);
 }
 
 SeaView::~SeaView() {
@@ -54,7 +56,8 @@ void SeaView::update()
 }
 
 void SeaView::resizeEvent(QResizeEvent*)
-{
+{   
+    kDebug() << "x = " << rect().x() << endl;
     update();
 }
 
@@ -186,5 +189,10 @@ void SeaView::setDelegate(Delegate* c)
     kDebug() << "setting delegate to " << c << endl;
     m_delegate = c;
     setMouseTracking(c != 0);
+}
+
+QSize SeaView::sizeHint() const
+{
+    return QSize(100, 400);
 }
 

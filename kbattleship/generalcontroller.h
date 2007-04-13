@@ -36,7 +36,7 @@ Q_OBJECT
     
     friend class Shot;
 public:
-    GeneralController(QObject* parent, AudioPlayer* player = 0);
+    explicit GeneralController(QObject* parent, AudioPlayer* player = 0);
 
     void createPlayer(Sea::Player player, SeaView* view);
     void createAI(Sea::Player player);

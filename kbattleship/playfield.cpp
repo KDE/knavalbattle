@@ -22,7 +22,7 @@
 #include "generalcontroller.h"
 #include "stats.h"
 #include "audioplayer.h"
-
+#include "chatwidget.h"
 
 PlayField::PlayField(QWidget* parent)
 : QWidget(parent)
@@ -30,7 +30,17 @@ PlayField::PlayField(QWidget* parent)
 {
     QVBoxLayout* layout = new QVBoxLayout;
 
+//     layout->setMargin(0);
+//     layout->setSpacing(0);
     m_sea = new SeaView(this);
+    layout->addWidget(m_sea);
+    
+    m_chat = new ChatWidget(this);
+    m_chat->hide();
+    layout->addWidget(m_chat);
+    
+    setLayout(layout);
+        
     m_controller = 0;
     m_human_player = 0;
     
@@ -39,10 +49,7 @@ PlayField::PlayField(QWidget* parent)
     m_client = 0;
     
     m_player = new AudioPlayer(this);
-    
-    layout->addWidget(m_sea);
-    
-    setLayout(layout);
+
 
     m_highscores = new KScoreDialog(
         KScoreDialog::Name | KScoreDialog::Score | 

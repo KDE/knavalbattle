@@ -43,6 +43,8 @@ public:
     void hit(Sea::Player p, const Coord& c);
     void miss(Sea::Player p, const Coord& c);
     void clear();
+    
+    virtual QSize sizeHint() const;
 protected:
     void mouseMoveEvent(QMouseEvent*);
     void mousePressEvent(QMouseEvent*);
