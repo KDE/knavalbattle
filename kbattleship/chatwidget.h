@@ -31,15 +31,16 @@ Q_OBJECT
 public:
     ChatWidget(QWidget* parent);
     
-    void setNick(const QString& nick);
     virtual QSize sizeHint() const;
+
+    void setNick(const QString& nick);
+    void display(const QString& nick, const QString& message);
+    void display(const QString& message);
 protected:
     virtual bool eventFilter(QObject*, QEvent* e);
     virtual void resizeEvent(QResizeEvent*);
 signals:
     void message(const QString& nick, const QString& text);
-public slots:
-    void display(const QString& nick, const QString& message);
 private slots:
     void sendLine();
 };

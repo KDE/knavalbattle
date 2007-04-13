@@ -37,7 +37,7 @@ public:
     virtual Sea::Player player() const { return m_player; }
     
     QString nick() const { return m_nick; }
-    void setNick(const QString& nick);
+    virtual void setNick(const QString& nick);
 signals:
     void shoot(int player, const Coord& c);
     void ready(int player);

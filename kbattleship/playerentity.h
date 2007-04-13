@@ -16,7 +16,7 @@
 #include "delegate.h"
 #include "stats.h"
 
-class SeaView;
+class ChatWidget;
 
 class PlayerEntity : public UIEntity, private Delegate
 {
@@ -26,19 +26,24 @@ class PlayerEntity : public UIEntity, private Delegate
     
     Ship* nextShip();
     Ship* canAddShip(const Coord& c);
+    
+    ChatWidget* m_chat;
 public:
-    PlayerEntity(Sea::Player player, Sea* sea, SeaView* view);
+    PlayerEntity(Sea::Player player, Sea* sea, SeaView* view, ChatWidget* chat);
     
     // entity interface
     virtual void start();
     virtual const Stats* stats() const { return &m_stats; }
     virtual void hit(Shot* shot);
+    virtual void notifyChat(const QString& nick, const QString& text);
+    virtual void notifyNick(Sea::Player player, const QString& text);
     
     // delegate interface
     virtual void action(Sea::Player player, const Coord& c);
     virtual void changeDirection(Sea::Player player);
     virtual Ship* canAddShip(Sea::Player player, const Coord& c);
     
+    virtual void setNick(const QString& nick);
 protected:
     // parent interface
     virtual void registerHit(Sea::Player player, const Coord& c);

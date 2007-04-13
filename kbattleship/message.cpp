@@ -86,8 +86,9 @@ void NotificationMessage::accept(MessageVisitor& visitor) const
     visitor.visit(*this);
 }
 
-ChatMessage::ChatMessage(const QString& chat)
-: m_chat(chat)
+ChatMessage::ChatMessage(const QString& nickname, const QString& chat)
+: m_nickname(nickname)
+, m_chat(chat)
 {
 }
 

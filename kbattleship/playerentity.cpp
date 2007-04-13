@@ -11,9 +11,11 @@
 #include "generalcontroller.h"
 #include "seaview.h"
 #include "shot.h"
+#include "chatwidget.h"
 
-PlayerEntity::PlayerEntity(Sea::Player player, Sea* sea, SeaView* view)
+PlayerEntity::PlayerEntity(Sea::Player player, Sea* sea, SeaView* view, ChatWidget* chat)
 : UIEntity(player, sea, view)
+, m_chat(chat)
 {
 }
 
@@ -124,3 +126,18 @@ void PlayerEntity::registerMiss(Sea::Player player, const Coord&)
     }
 }
 
+void PlayerEntity::notifyChat(const QString& nickname, const QString& text)
+{
+    m_chat->display(nickname, text);
+}
+
+void PlayerEntity::notifyNick(Sea::Player, const QString& nickname)
+{
+    m_chat->display("Your opponent is now known as " + nickname);
+}
+
+void PlayerEntity::setNick(const QString& nick)
+{
+    UIEntity::setNick(nick);
+    m_chat->setNick(nick);
+}

@@ -92,8 +92,14 @@ void ChatWidget::sendLine()
 
 void ChatWidget::display(const QString& nick, const QString& text)
 {
-    m_chat->append('<' + nick + "> " + text);
+    display('<' + nick + "> " + text);
 }
+
+void ChatWidget::display(const QString& text)
+{
+    m_chat->append(text);
+}
+
 
 void ChatWidget::resizeEvent(QResizeEvent*)
 {

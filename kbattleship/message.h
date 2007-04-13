@@ -107,13 +107,15 @@ public:
 
 class ChatMessage : public Message
 {
+    QString m_nickname;
     QString m_chat;
 public:
     static const int MSGTYPE = 8;
-    explicit ChatMessage(const QString& chat);
+    explicit ChatMessage(const QString& nick, const QString& chat);
     virtual void accept(MessageVisitor& visitor) const;
     
     const QString& chat() const { return m_chat; }
+    const QString& nickname() const { return m_nickname; }
 };
 
 class RestartMessage : public Message

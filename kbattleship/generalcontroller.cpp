@@ -25,13 +25,14 @@ GeneralController::GeneralController(QObject* parent, AudioPlayer* player)
     m_sea = new Sea(this, Coord(10, 10));
 }
 
-PlayerEntity* GeneralController::createPlayer(Sea::Player player, SeaView* view, const QString& nick)
+PlayerEntity* GeneralController::createPlayer(Sea::Player player, SeaView* view,
+                                              ChatWidget* chat, const QString& nick)
 {
     if (m_ui) {
         kDebug() << "Cannot create more than one human player" << endl;
         exit(1);
     }
-    PlayerEntity* entity = new PlayerEntity(player, m_sea, view);
+    PlayerEntity* entity = new PlayerEntity(player, m_sea, view, chat);
     entity->setNick(nick);
     m_ui = entity;
     setupEntity(m_ui);
@@ -181,6 +182,7 @@ Entity* GeneralController::findEntity(Sea::Player player) const
 
 void GeneralController::receivedChat(const QString& nick, const QString& text)
 {
+    kDebug() << "received chat " << nick << ": " << text << endl;
     foreach (Entity* entity, m_entities) {
         if (entity->nick() != nick) {
             entity->notifyChat(nick, text);

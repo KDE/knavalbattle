@@ -106,6 +106,7 @@ public:
     {
         setType(msg);
         ADD_FIELD(msg, chat);
+        ADD_FIELD(msg, nickname);
     }
 };
 
@@ -229,8 +230,9 @@ MessagePtr Protocol::parseMessage(const QString& xmlMessage)
         return MessagePtr(new RestartMessage());
     case ChatMessage::MSGTYPE:
         {
+            DEF_ELEMENT(nickname);
             DEF_ELEMENT(chat);
-            return MessagePtr(new ChatMessage(chat));
+            return MessagePtr(new ChatMessage(nickname, chat));
         }
     default:
         emit parseError("Unknown message type");
