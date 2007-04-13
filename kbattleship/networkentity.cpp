@@ -130,7 +130,7 @@ void NetworkEntity::visit(const NotificationMessage& msg)
             if (msg.death()) {
                 // gather ship data
                 Coord delta = msg.stop() - msg.start();
-                int size = abs(delta.x) + abs(delta.y);
+                int size = abs(delta.x) + abs(delta.y) + 1;
                 Ship::Direction direction = delta.x == 0 ? Ship::TOP_DOWN : Ship::LEFT_TO_RIGHT;
                 Coord shipPos = (delta.x < 0 || delta.y < 0) ? msg.stop() : msg.start();
                 Ship* ship = new Ship(size, direction);
