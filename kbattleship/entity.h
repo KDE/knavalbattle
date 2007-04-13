@@ -21,10 +21,13 @@ class Entity : public QObject
 Q_OBJECT
 protected:
     Sea::Player m_player;
+    QString m_nick;
 public:
     Entity(Sea::Player player);
     virtual ~Entity();
     virtual void notify(Sea::Player player, const Coord& c, const HitInfo& info) = 0;
+    virtual void notifyChat(const QString& nick, const QString& text) = 0;
+    virtual void notifyNick(Sea::Player player, const QString& nick) = 0;
     virtual void hit(Shot* shot) = 0;
     virtual void start() = 0;
     virtual void startPlaying() { }
@@ -32,9 +35,14 @@ public:
     virtual const Stats* stats() const { return 0; }
     
     virtual Sea::Player player() const { return m_player; }
+    
+    QString nick() const { return m_nick; }
+    void setNick(const QString& nick);
 signals:
     void shoot(int player, const Coord& c);
     void ready(int player);
+    void chat(const QString& nick, const QString& text);
+    void nick(int player, const QString& nickname);
 };
 
 #endif // ENTITY_H

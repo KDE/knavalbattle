@@ -19,6 +19,12 @@ Entity::~Entity()
 {
 }
 
+void Entity::setNick(const QString& nickname)
+{
+    m_nick = nickname;
+//     emit nick(m_player, m_nick);
+}
+
 #include "entity.moc"
 
 

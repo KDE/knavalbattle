@@ -14,6 +14,7 @@
 
 class Entity;
 class UIEntity;
+class PlayerEntity;
 class SeaView;
 class Stats;
 class Shot;
@@ -38,7 +39,7 @@ Q_OBJECT
 public:
     explicit GeneralController(QObject* parent, AudioPlayer* player = 0);
 
-    void createPlayer(Sea::Player player, SeaView* view);
+    PlayerEntity* createPlayer(Sea::Player player, SeaView* view, const QString& nick);
     void createAI(Sea::Player player);
     void createRemotePlayer(Sea::Player player, QIODevice* device, bool client);
     const Stats* stats() const;
@@ -47,6 +48,8 @@ public:
 public slots:
     void shoot(int player, const Coord& c);
     void ready(int player);
+    void receivedChat(const QString& nick, const QString& text);
+    void nick(int player, const QString& nick);
 signals:
     void gameOver(Sea::Player);
 };

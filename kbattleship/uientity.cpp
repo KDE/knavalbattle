@@ -16,7 +16,6 @@ UIEntity::UIEntity(Sea::Player player, Sea* sea, SeaView* view)
 : Entity(player)
 , m_sea(sea)
 , m_view(view)
-, m_started(false)
 {
 }
 
@@ -32,7 +31,6 @@ void UIEntity::notify(Sea::Player player, const Coord& c, const HitInfo& info)
 
 void UIEntity::start()
 {
-    m_started = true;
     m_view->clear();
 }
 

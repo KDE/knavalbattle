@@ -25,19 +25,23 @@ GeneralController::GeneralController(QObject* parent, AudioPlayer* player)
     m_sea = new Sea(this, Coord(10, 10));
 }
 
-void GeneralController::createPlayer(Sea::Player player, SeaView* view)
+PlayerEntity* GeneralController::createPlayer(Sea::Player player, SeaView* view, const QString& nick)
 {
     if (m_ui) {
         kDebug() << "Cannot create more than one human player" << endl;
         exit(1);
     }
-    m_ui = new PlayerEntity(player, m_sea, view);
+    PlayerEntity* entity = new PlayerEntity(player, m_sea, view);
+    entity->setNick(nick);
+    m_ui = entity;
     setupEntity(m_ui);
+    return entity;
 }
 
 void GeneralController::createAI(Sea::Player player)
 {
     Entity* e = new AIEntity(player, m_sea);
+    e->setNick("computer");
     setupEntity(e);
 }
 
@@ -57,6 +61,10 @@ void GeneralController::setupEntity(Entity* entity)
             this, SLOT(shoot(int, const Coord&)), Qt::QueuedConnection);
     connect(entity, SIGNAL(ready(int)),
             this, SLOT(ready(int)), Qt::QueuedConnection);
+    connect(entity, SIGNAL(chat(QString, QString)),
+            this, SLOT(receivedChat(QString, QString)));
+    connect(entity, SIGNAL(nick(int,QString)),
+            this, SLOT(nick(int,QString)));
     m_entities.append(entity);
 }
 
@@ -69,6 +77,15 @@ void GeneralController::start(SeaView* view)
     
     foreach (Entity* entity, m_entities) {
         entity->start();
+    }
+    
+    foreach (Entity* source, m_entities) {
+        foreach (Entity* target, m_entities) {
+            if (source->player() != target->player() &&
+                !source->nick().isEmpty()) {
+                target->notifyNick(source->player(), source->nick());
+            }
+        }
     }
 }
 
@@ -160,6 +177,25 @@ Entity* GeneralController::findEntity(Sea::Player player) const
     }
     
     return 0;
+}
+
+void GeneralController::receivedChat(const QString& nick, const QString& text)
+{
+    foreach (Entity* entity, m_entities) {
+        if (entity->nick() != nick) {
+            entity->notifyChat(nick, text);
+        }
+    }
+}
+
+void GeneralController::nick(int player, const QString& nick)
+{
+    kDebug() << "controller: nick" << endl;
+    foreach (Entity* entity, m_entities) {
+        if (entity->player() != Sea::Player(player)) {
+            entity->notifyNick(Sea::Player(player), nick);
+        }
+    }
 }
 
 #include "generalcontroller.moc"

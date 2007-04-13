@@ -23,6 +23,7 @@
 #include "stats.h"
 #include "audioplayer.h"
 #include "chatwidget.h"
+#include "playerentity.h"
 
 PlayField::PlayField(QWidget* parent)
 : QWidget(parent)
@@ -82,9 +83,10 @@ void PlayField::newGame()
     m_server->close();
     setupController();
     m_human_player = 0;
-    m_controller->createPlayer(Sea::Player(0), m_sea);
+    m_controller->createPlayer(Sea::Player(0), m_sea, "dude");
     m_controller->createAI(Sea::Player(1));
     m_controller->start(m_sea);
+    m_chat->hide();
 }
 
 void PlayField::newSimulation()
@@ -95,6 +97,7 @@ void PlayField::newSimulation()
     m_controller->createAI(Sea::Player(0));
     m_controller->createAI(Sea::Player(1));
     m_controller->start(m_sea);
+    m_chat->hide();
 }
 
 void PlayField::newServer()
@@ -121,10 +124,15 @@ void PlayField::acceptClient()
     QTcpSocket* socket = m_server->nextPendingConnection();
     if (socket) {
         m_human_player = 0;
-        m_controller->createPlayer(Sea::Player(0), m_sea);
+        PlayerEntity* player = m_controller->createPlayer(Sea::Player(0), m_sea, "serverdude");
+        connect(m_chat, SIGNAL(message(QString, QString)),
+            player, SIGNAL(chat(QString, QString)));
         m_controller->createRemotePlayer(Sea::Player(1), socket, false);
         m_controller->start(m_sea);
         m_server->close();
+        
+        m_chat->setNick("clientdude");
+        m_chat->show();
     }
 }
 
@@ -132,10 +140,13 @@ void PlayField::clientConnected()
 {
     if (m_client) {
         m_human_player = 0;
-        m_controller->createPlayer(Sea::Player(0), m_sea);
+        m_controller->createPlayer(Sea::Player(0), m_sea, "clientdude");
         m_controller->createRemotePlayer(Sea::Player(1), m_client, true);
         m_controller->start(m_sea);
         m_server->close();
+        
+        m_chat->setNick("serverdude");
+        m_chat->show();
     }
     m_client = 0;
 }

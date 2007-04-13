@@ -25,12 +25,13 @@ Q_OBJECT
     QIODevice* m_socket;
     Shot* m_pending_shot;
     bool m_client;
-    QString m_nick;
 public:
     NetworkEntity(Sea::Player player, Sea* sea, QIODevice* device, bool client);
     ~NetworkEntity();
     
     virtual void notify(Sea::Player player, const Coord& c, const HitInfo& info);
+    virtual void notifyChat(const QString& nick, const QString& text);
+    virtual void notifyNick(Sea::Player player, const QString& nick);
     virtual void start();
     virtual void startPlaying();
     virtual void notifyReady(Sea::Player player);

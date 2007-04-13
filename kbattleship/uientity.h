@@ -20,7 +20,6 @@ Q_OBJECT
 protected:
     Sea* m_sea;
     SeaView* m_view;
-    bool m_started;
     
     void drawShoot(Sea::Player player, const Coord& c, const HitInfo& info);
 public:
@@ -28,13 +27,13 @@ public:
     virtual ~UIEntity();
     
     virtual void notify(Sea::Player player, const Coord& c, const HitInfo& info);
+    virtual void notifyChat(const QString&, const QString&) { };
+    virtual void notifyNick(Sea::Player, const QString&) { };
     virtual void start();
     virtual void hit(Shot*);
     
     virtual void registerHit(Sea::Player, const Coord&) { }
     virtual void registerMiss(Sea::Player, const Coord&) { }
-    
-    inline bool started() const { return m_started; }
 };
 
 #endif // UIENTITY_H

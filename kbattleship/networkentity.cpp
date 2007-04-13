@@ -28,10 +28,9 @@ NetworkEntity::~NetworkEntity()
 void NetworkEntity::start()
 {
     connect(m_protocol, SIGNAL(received(MessagePtr)), this, SLOT(received(MessagePtr)));
-    if (m_client) {
+//     if (m_client) {
         m_protocol->send(MessagePtr(new HeaderMessage()));
-        m_protocol->send(MessagePtr(new NickMessage("clientdude")));
-    }
+//     }
 }
 
 void NetworkEntity::notifyReady(Sea::Player player)
@@ -69,6 +68,20 @@ void NetworkEntity::notify(Sea::Player player, const Coord& c, const HitInfo& in
     }
 }
 
+void NetworkEntity::notifyNick(Sea::Player player, const QString& nick)
+{
+    if (player != m_player) {
+        m_protocol->send(MessagePtr(new NickMessage(nick)));
+    }
+}
+
+void NetworkEntity::notifyChat(const QString& nickname, const QString& text)
+{
+    if (nickname != nick()) {
+        m_protocol->send(MessagePtr(new ChatMessage(text)));
+    }
+}
+
 void NetworkEntity::hit(Shot* shot)
 {
     if (shot->player() != m_player 
@@ -99,12 +112,8 @@ void NetworkEntity::visit(const RejectMessage&)
 
 void NetworkEntity::visit(const NickMessage& msg)
 {
-    m_nick = msg.nickname();
-    if (!m_client) {
-        // the server sends header at this point
-        m_protocol->send(MessagePtr(new HeaderMessage()));
-        m_protocol->send(MessagePtr(new NickMessage("serverdude")));
-    }
+    setNick(msg.nickname());
+    emit nick(m_player, m_nick);
 }
 
 void NetworkEntity::visit(const BeginMessage&)
@@ -157,9 +166,9 @@ void NetworkEntity::visit(const RestartMessage&)
 
 }
 
-void NetworkEntity::visit(const ChatMessage&)
+void NetworkEntity::visit(const ChatMessage& msg)
 {
-
+    emit chat(m_nick, msg.chat());
 }
 
 #include "networkentity.moc"
