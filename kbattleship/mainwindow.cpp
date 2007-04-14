@@ -45,7 +45,7 @@ void MainWindow::setupActions()
     actionCollection()->addAction("game_client", temp);
     connect(temp, SIGNAL(triggered()), m_main, SLOT(newClient()));
     
-    temp = new KAction(i18n("Show highscores"), this);
+    temp = new KAction(i18n("Show &highscores"), this);
     actionCollection()->addAction("show_highscores", temp);
     connect(temp, SIGNAL(triggered()), m_main, SLOT(highscores()));
     

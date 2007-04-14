@@ -163,7 +163,7 @@ void PlayerEntity::notifyChat(const QString& nickname, const QString& text)
 
 void PlayerEntity::notifyNick(Sea::Player, const QString& nickname)
 {
-    m_chat->display("Your opponent is now known as " + nickname);
+    m_chat->display(i18n("Your opponent is now known as %1", nickname));
 }
 
 void PlayerEntity::setNick(const QString& nick)

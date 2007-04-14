@@ -60,7 +60,7 @@ PlayField::PlayField(QWidget* parent)
         this);
     m_highscores->addField(KScoreDialog::Custom1, i18n("Shots"), "shots");
     m_highscores->addField(KScoreDialog::Custom2, i18n("Hits"), "hits");
-    m_highscores->addField(KScoreDialog::Custom3, i18n("Water"), "water");
+    m_highscores->addField(KScoreDialog::Custom3, i18n("Misses"), "water");
 }
 
 PlayField::~PlayField()
@@ -174,10 +174,10 @@ void PlayField::gameOver(Sea::Player winner)
             }
         }
         
-        KMessageBox::information(this, "You win!");
+        KMessageBox::information(this, i18n("You win!"));
     }
     else {
-        KMessageBox::information(this, "You lose");
+        KMessageBox::information(this, i18n("You lose"));
     }
 }
 

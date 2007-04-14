@@ -8,6 +8,8 @@
 */
 
 #include "generalcontroller.h"
+
+#include <klocalizedstring.h>
 #include "playerentity.h"
 #include "aientity.h"
 #include "networkentity.h"
@@ -42,7 +44,7 @@ PlayerEntity* GeneralController::createPlayer(Sea::Player player, SeaView* view,
 void GeneralController::createAI(Sea::Player player)
 {
     Entity* e = new AIEntity(player, m_sea);
-    e->setNick("computer");
+    e->setNick(i18n("computer"));
     setupEntity(e);
 }
 
