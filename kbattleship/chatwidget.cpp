@@ -87,9 +87,16 @@ void ChatWidget::display(const QString& nick, const QString& text)
 
 void ChatWidget::display(const QString& text)
 {
-    m_chat->append(text);
+    if (isVisible()) {
+        m_chat->append(text);
+    }
 }
 
+void ChatWidget::show()
+{
+    m_chat->clear();
+    QWidget::show();
+}
 
 void ChatWidget::resizeEvent(QResizeEvent*)
 {

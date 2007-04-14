@@ -32,6 +32,7 @@ public:
     ChatWidget(QWidget* parent);
     
     virtual QSize sizeHint() const;
+    virtual void show();
 
     void setNick(const QString& nick);
     void display(const QString& nick, const QString& message);
