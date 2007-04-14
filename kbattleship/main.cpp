@@ -22,7 +22,7 @@ static KCmdLineOptions options[] = {
 
 int main(int argc, char** argv)
 {
-    KAboutData aboutData("kbattleship", I18N_NOOP("KBattleShip"), "2.0", I18N_NOOP("The KDE Battleship clone"), KAboutData::License_GPL, "(c) 2007  Paolo Capriotti");
+    KAboutData aboutData("kbattleship", I18N_NOOP("KBattleship"), "2.0", I18N_NOOP("The KDE Battleship clone"), KAboutData::License_GPL, "(c) 2007  Paolo Capriotti");
     
     KCmdLineArgs::init(argc, argv, &aboutData);
     KCmdLineArgs::addCmdLineOptions( options ); // Add our own options.
