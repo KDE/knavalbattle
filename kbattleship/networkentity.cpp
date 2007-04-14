@@ -102,7 +102,10 @@ void NetworkEntity::received(MessagePtr msg)
 
 void NetworkEntity::visit(const HeaderMessage& msg)
 {
-    if (msg.protocolVersion() == "0.1.0") {
+    if (msg.clientName() == "KBattleship" && msg.clientVersion().toFloat() >= 4.0) {
+        // m_level = COMPAT_KBS4;
+    }
+    else {
         m_level = COMPAT_KBS3;
         kDebug() << "emitting compatibility" << endl;
         emit compatibility(m_level);
