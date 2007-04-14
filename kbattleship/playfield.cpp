@@ -124,7 +124,8 @@ void PlayField::acceptClient()
     QTcpSocket* socket = m_server->nextPendingConnection();
     if (socket) {
         m_human_player = 0;
-        PlayerEntity* player = m_controller->createPlayer(Sea::Player(0), m_sea, m_chat, "serverdude");
+        PlayerEntity* player = m_controller->createPlayer(Sea::Player(0), m_sea, 
+                                                          m_chat, "serverdude");
         connect(m_chat, SIGNAL(message(QString, QString)),
             player, SIGNAL(chat(QString, QString)));
         m_controller->createRemotePlayer(Sea::Player(1), socket, false);
@@ -138,12 +139,13 @@ void PlayField::clientConnected()
 {
     if (m_client) {
         m_human_player = 0;
-        m_controller->createPlayer(Sea::Player(0), m_sea, m_chat, "clientdude");
+        PlayerEntity* player = m_controller->createPlayer(Sea::Player(0), m_sea, 
+                                                          m_chat, "clientdude");
+        connect(m_chat, SIGNAL(message(QString, QString)),
+            player, SIGNAL(chat(QString, QString)));
         m_controller->createRemotePlayer(Sea::Player(1), m_client, true);
         m_controller->start(m_sea);
         m_server->close();
-        
-        m_chat->setNick("serverdude");
         m_chat->show();
     }
     m_client = 0;

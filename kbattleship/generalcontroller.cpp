@@ -185,6 +185,7 @@ void GeneralController::receivedChat(const QString& nick, const QString& text)
     kDebug() << "received chat " << nick << ": " << text << endl;
     foreach (Entity* entity, m_entities) {
         if (entity->nick() != nick) {
+            kDebug() << "forwarding to " << entity->nick() << endl;
             entity->notifyChat(nick, text);
         }
     }

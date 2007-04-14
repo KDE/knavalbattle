@@ -55,11 +55,7 @@ void ChatWidget::setHistoryText(int index)
 bool ChatWidget::eventFilter(QObject* obj, QEvent* event)
 {
     if (obj == m_input && event->type() == QEvent::KeyPress) {
-        kDebug() << "event filter" << endl;
         QKeyEvent* e = (QKeyEvent*)event;
-        kDebug() << "key = " << e->key() << endl;
-        kDebug() << "up = " << Qt::Key_Up << endl;
-        kDebug() << "enter = " << Qt::Key_Enter << endl;
         if (e->key() == Qt::Key_Up) {
             if (m_current > 0) {
                 setHistoryText(m_current - 1);
@@ -70,12 +66,6 @@ bool ChatWidget::eventFilter(QObject* obj, QEvent* event)
                 setHistoryText(m_current + 1);
             }
         }
-//         else if (e->key() == Qt::Key_Enter) {
-//             QString text = m_input->text();
-//             m_history.push_back("");
-//             setHistoryText(m_history.size() - 1);
-//             display(m_nick, text);
-//         }
     }
     
     return false;
