@@ -66,6 +66,14 @@ void GeneralController::setupEntity(Entity* entity)
             this, SLOT(receivedChat(QString, QString)));
     connect(entity, SIGNAL(nick(int,QString)),
             this, SLOT(nick(int,QString)));
+            
+    foreach (Entity* e, m_entities) {
+        connect(e, SIGNAL(compatibility(int)),
+                entity, SLOT(setCompatibility(int)));
+        connect(entity, SIGNAL(compatibility(int)),
+                e, SLOT(setCompatibilityLevel(int)));
+    }
+            
     m_entities.append(entity);
 }
 

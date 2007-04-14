@@ -26,6 +26,7 @@ public:
     Coord operator-(const Coord& other) const;
     Coord operator*(int n) const;
     Coord& operator+=(const Coord& other);
+    Coord& operator-=(const Coord& other);
     bool operator==(const Coord& other) const;
     bool operator!=(const Coord& other) const;
     bool valid() const;

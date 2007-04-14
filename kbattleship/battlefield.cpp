@@ -49,7 +49,9 @@ const Element& BattleField::get(const Coord& pos) const
 
 void BattleField::set(const Coord& pos, const Element& e)
 {
-    get(pos) = e;
+    if (valid(pos)) {
+        get(pos) = e;
+    }
 }
 
 void BattleField::add(int n)
@@ -65,6 +67,23 @@ void BattleField::add(const Coord& pos, Ship* ship)
         p = p + ship->increment();
     }
     m_ships++;
+}
+
+void BattleField::addBorder(const Coord& pos)
+{
+    Ship* ship = get(pos).parent();
+    if (ship) {
+        Coord inc = ship->increment();
+        Coord orth(inc.y, inc.x);
+        Coord p = pos - inc;
+        set(p, Element::BORDER);
+        for (; p != pos + inc * (ship->size() + 1); p += inc) {
+            set(p + orth, Element::BORDER);
+            set(p - orth, Element::BORDER);
+        }
+        p -= inc;
+        set(p, Element::BORDER);
+    }
 }
 
 bool BattleField::canAddShip(const Coord& pos, unsigned int size, Ship::Direction direction) const
@@ -132,6 +151,18 @@ Coord BattleField::find(Ship* ship) const
         }
     }
     return Coord::invalid();
+}
+
+bool BattleField::isNearShip(const Coord& pos) const
+{
+    for (int i = -1; i <= 1; i++)
+    for (int j = -1; j <= 1; j++) {
+        Coord p = pos + Coord(i,j);
+        if (valid(p) && get(p).parent()) {
+            return true;
+        }
+    }
+    return false;
 }
 
 #include "battlefield.moc"

@@ -44,6 +44,11 @@ void Sea::add(Player p, int n)
     m_fields[p]->add(n);
 }
 
+void Sea::addBorder(Player p, const Coord& pos)
+{
+    m_fields[p]->addBorder(pos);
+}
+
 bool Sea::canHit(Player p, const Coord& pos) const
 {
     if (m_status != PLAYING || m_turn != p) {
@@ -118,6 +123,11 @@ void Sea::abort(Player p)
     else {
         m_status = B_WINS;
     }
+}
+
+bool Sea::isNearShip(Sea::Player p, const Coord& pos) const
+{
+    return m_fields[p]->isNearShip(pos);
 }
 
 #include "sea.moc"

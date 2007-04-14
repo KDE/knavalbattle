@@ -29,7 +29,7 @@ private:
     Ship* m_parent;
     Type m_type;
 public:
-    Element();
+    Element(Type = WATER);
     explicit Element(Ship* parent);
     inline Ship* parent() { return m_parent; }
     inline const Ship* parent() const { return m_parent; }

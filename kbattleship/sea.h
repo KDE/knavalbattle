@@ -50,6 +50,7 @@ public:
     bool canAddShip(Player p, const Coord& pos, int size, Ship::Direction direction) const;
     void add(Player p, int n);
     void add(Player p, const Coord& pos, Ship* ship);
+    void addBorder(Player p, const Coord& pos);
     bool canHit(Player p, const Coord& pos) const;
     HitInfo hit(const Coord& pos);
     void forceHit(const Coord& pos, const HitInfo& info);
@@ -58,6 +59,7 @@ public:
     const Element& at(Sea::Player player, const Coord& pos) const;
     bool valid(Sea::Player, const Coord& pos) const;
     void switchTurn();
+    bool isNearShip(Sea::Player, const Coord& pos) const;
     
     inline Status status() const { return m_status; }
     inline Player turn() const { return m_turn; }

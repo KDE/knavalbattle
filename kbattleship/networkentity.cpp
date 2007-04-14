@@ -100,9 +100,13 @@ void NetworkEntity::received(MessagePtr msg)
     msg->accept(*this);
 }
 
-void NetworkEntity::visit(const HeaderMessage&)
+void NetworkEntity::visit(const HeaderMessage& msg)
 {
-    
+    if (msg.protocolVersion() == "0.1.0") {
+        m_level = COMPAT_KBS3;
+        kDebug() << "emitting compatibility" << endl;
+        emit compatibility(m_level);
+    }
 }
 
 void NetworkEntity::visit(const RejectMessage&)
@@ -149,6 +153,9 @@ void NetworkEntity::visit(const NotificationMessage& msg)
             }
             
             m_sea->forceHit(msg.move(), info);
+            if (m_level == COMPAT_KBS3 && info.shipDestroyed) {
+                m_sea->addBorder(m_player, msg.move());
+            }
             m_pending_shot->execute(info);
         }
         

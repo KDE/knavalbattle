@@ -37,6 +37,13 @@ Coord& Coord::operator+=(const Coord& other)
     return *this;
 }
 
+Coord& Coord::operator-=(const Coord& other)
+{
+    x -= other.x;
+    y -= other.y;
+    return *this;
+}
+
 bool Coord::operator==(const Coord& other) const
 {
     return x == other.x && y == other.y;

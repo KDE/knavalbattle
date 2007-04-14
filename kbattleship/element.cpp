@@ -10,9 +10,9 @@
 #include "element.h"
 #include "ship.h"
 
-Element::Element()
+Element::Element(Type type)
 : m_parent(0)
-, m_type(WATER)
+, m_type(type)
 {
 }
 

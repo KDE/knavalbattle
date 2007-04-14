@@ -37,11 +37,13 @@ public:
     
     void add(const Coord& pos, Ship* ship);
     void add(int n);
+    void addBorder(const Coord& pos);
     bool canAddShip(const Coord& pos, unsigned int size, Ship::Direction direction) const;
     HitInfo hit(const Coord& pos);
     void forceHit(const Coord& pos, const HitInfo& info);
     const Element& at(const Coord& c) const;
     Coord find(Ship* ship) const;
+    bool isNearShip(const Coord& c) const;
     
     inline unsigned int ships() const { return m_ships; }
 signals:

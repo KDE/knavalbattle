@@ -12,6 +12,7 @@
 
 Entity::Entity(Sea::Player player)
 : m_player(player)
+, m_level(COMPAT_KBS4)
 {
 }
 
@@ -22,7 +23,12 @@ Entity::~Entity()
 void Entity::setNick(const QString& nickname)
 {
     m_nick = nickname;
-//     emit nick(m_player, m_nick);
+}
+
+void Entity::setCompatibilityLevel(int level)
+{
+    
+    m_level = static_cast<CompatibilityLevel>(level);
 }
 
 #include "entity.moc"

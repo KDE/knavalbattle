@@ -19,9 +19,16 @@ class Shot;
 class Entity : public QObject
 {
 Q_OBJECT
+public:
+    enum CompatibilityLevel
+    {
+        COMPAT_KBS3,
+        COMPAT_KBS4
+    };
 protected:
     Sea::Player m_player;
     QString m_nick;
+    CompatibilityLevel m_level;
 public:
     Entity(Sea::Player player);
     virtual ~Entity();
@@ -43,6 +50,9 @@ signals:
     void ready(int player);
     void chat(const QString& nick, const QString& text);
     void nick(int player, const QString& nickname);
+    void compatibility(int level);
+public slots:
+    virtual void setCompatibilityLevel(int level);
 };
 
 #endif // ENTITY_H
