@@ -36,10 +36,10 @@ static KCmdLineOptions options[] =
 
 int main(int argc, char *argv[])
 {
-    KAboutData aboutData ( "kwelcomescreen-test", I18N_NOOP( "KWelcomeScreenTest" ),
-                           "0.1", I18N_NOOP("Test class for KWelcomeScreen"), KAboutData::License_GPL,
-                           "(c) 2007, Riccardo Iaconelli", 0, "http://games.kde.org/", "ruphy@fsfe.org" );
-    aboutData.addAuthor( "Riccardo Iaconelli", 0, "ruphy@fsfe.org" );
+    KAboutData aboutData ("kwelcomescreen-test", I18N_NOOP( "KWelcomeScreenTest" ),
+                          "0.1", I18N_NOOP("Test class for KWelcomeScreen"), KAboutData::License_GPL,
+                          "(c) 2007, Riccardo Iaconelli", 0, "http://games.kde.org/", "ruphy@fsfe.org");
+    aboutData.addAuthor("Riccardo Iaconelli", 0, "ruphy@fsfe.org");
 
     KCmdLineArgs::init(argc, argv, &aboutData);
     KCmdLineArgs::addCmdLineOptions(options);
