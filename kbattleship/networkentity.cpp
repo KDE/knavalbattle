@@ -58,7 +58,7 @@ void NetworkEntity::notify(Sea::Player player, const Coord& c, const HitInfo& in
         Coord end = Coord::invalid();
         if (death) {
             begin = info.shipPos;
-            end = begin + info.shipDestroyed->increment() * info.shipDestroyed->size();
+            end = begin + info.shipDestroyed->increment() * (info.shipDestroyed->size() - 1);
         }
         m_protocol->send(MessagePtr(new NotificationMessage(c, hit, death, begin, end)));
     }
