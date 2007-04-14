@@ -8,6 +8,9 @@
 */
 
 #include "playerentity.h"
+
+#include <kmessagebox.h>
+#include <klocale.h>
 #include "generalcontroller.h"
 #include "seaview.h"
 #include "shot.h"
@@ -168,3 +171,10 @@ void PlayerEntity::setNick(const QString& nick)
     UIEntity::setNick(nick);
     m_chat->setNick(nick);
 }
+
+void PlayerEntity::setCompatibilityLevel(int level)
+{
+    UIEntity::setCompatibilityLevel(level);
+    KMessageBox::information(m_view, i18n("Your opponent is using pre-KDE4 version of KBattleship. Note that, according to the rules enforced by old clients, ships cannot be placed adjacent to one another."));
+}
+

@@ -49,6 +49,8 @@ protected:
     // parent interface
     virtual void registerHit(Sea::Player player, const Coord& c);
     virtual void registerMiss(Sea::Player player, const Coord& c);
+public slots:
+    void setCompatibilityLevel(int level);
 };
 
 #endif // PLAYERENTITY_H
