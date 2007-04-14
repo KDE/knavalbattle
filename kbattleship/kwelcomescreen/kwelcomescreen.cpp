@@ -146,7 +146,7 @@ void KWelcomeScreenButton::leaveEvent(QEvent* e)
 
 void KWelcomeScreenButton::buttonClickedSlot()
 {
-    kDebug(11003) << "Selected action is: " << shortText << endl;
+    kDebug(11000) << "Selected action is: " << shortText << endl;
     emit buttonClicked(shortText);
 }
 
