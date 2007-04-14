@@ -1,5 +1,7 @@
 add_subdirectory(pictures)
 add_subdirectory(sounds)
+add_subdirectory(kwelcomescreen)
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/kwelcomescreen ${CMAKE_SOURCE_DIR} ${CMAKE_BINARY_DIR} ${KDE4_INCLUDES})
 
 set(kbattleship_SRCS
     ai/ai.cpp
@@ -38,7 +40,7 @@ kde4_automoc(${kbattleship_SRCS})
 
 kde4_add_executable(kbattleship ${kbattleship_SRCS})
 
-target_link_libraries(kbattleship ${KDE4_KDEUI_LIBS} ${KDE4_PHONONCORE_LIBS} kdegames)
+target_link_libraries(kbattleship kwelcomescreen ${KDE4_KDEUI_LIBS} ${KDE4_PHONONCORE_LIBS} kdegames)
 
 install(TARGETS kbattleship  DESTINATION ${BIN_INSTALL_DIR} )
 install( FILES kbattleshipui.rc  DESTINATION  ${DATA_INSTALL_DIR}/kbattleship )
