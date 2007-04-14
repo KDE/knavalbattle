@@ -96,7 +96,7 @@ KWelcomeScreenButton::KWelcomeScreenButton(QWidget *parent)
     , m_raised(false)
     , m_autoraise(true)
 {
-    resize(sizeHint());
+    setMaximumSize(sizeHint());
     connect(this, SIGNAL(clicked()), this, SLOT(buttonClickedSlot()));
 }
 
@@ -115,6 +115,7 @@ void KWelcomeScreenButton::enterEvent(QEvent* e)
     if ((m_raised = m_autoraise)) {
         update();
     }
+    Q_UNUSED(e);
 }
 
 void KWelcomeScreenButton::leaveEvent(QEvent* e)
@@ -123,6 +124,7 @@ void KWelcomeScreenButton::leaveEvent(QEvent* e)
     if (m_autoraise) {
         update();
     }
+    Q_UNUSED(e);
 }
 
 void KWelcomeScreenButton::buttonClickedSlot()
@@ -144,7 +146,7 @@ QSize KWelcomeScreenButton::sizeHint()
 
 void KWelcomeScreenButton::paintEvent(QPaintEvent *event)
 {
-    resize(sizeHint());
+//     resize(sizeHint());
     QPainter p(this);
     p.setRenderHint(QPainter::Antialiasing);
     QPen pen(QColor(200, 200, 220, 255));
@@ -162,5 +164,7 @@ void KWelcomeScreenButton::paintEvent(QPaintEvent *event)
 
     //FIXME calculate the position basing on the text height.
     p.drawText(10+32+10, (sizeHint().rheight()/2+6), text);
+
+    Q_UNUSED(event);
 }
 

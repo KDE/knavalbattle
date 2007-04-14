@@ -41,9 +41,8 @@ int main(int argc, char *argv[])
                            "(c) 2007, Riccardo Iaconelli", 0, "http://games.kde.org/", "ruphy@fsfe.org" );
     aboutData.addAuthor( "Riccardo Iaconelli", 0, "ruphy@fsfe.org" );
 
-    KCmdLineArgs::init( argc, argv, &aboutData );
-    KCmdLineArgs::addCmdLineOptions( options );
-    KCmdLineArgs *args = KCmdLineArgs::parsedArgs();
+    KCmdLineArgs::init(argc, argv, &aboutData);
+    KCmdLineArgs::addCmdLineOptions(options);
     KApplication app;
 
     KWelcomeScreen *test = new KWelcomeScreen();
@@ -80,7 +79,6 @@ int main(int argc, char *argv[])
     test->addButton("Test Button 3", KIcon("plasmagik"), "tstbtn3", 0, 1);
     test->addButton("Test Button 4", KIcon("plasmagik"), "tstbtn4", 1, 1);
     test->init();
-    //test->setAutoraise(true);
     test->resize(128*3, 128*3);
     test->show();
 
