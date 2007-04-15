@@ -7,16 +7,57 @@
   (at your option) any later version.
 */
 
+#include "battlefieldview.h"
+
 #include <kdebug.h>
+#include <kicon.h>
 #include <QList>
 
-#include "battlefieldview.h"
 #include "kbsrenderer.h"
 #include "sprite.h"
 #include "animator.h"
 #include "animation.h"
 
-BattleFieldView::BattleFieldView(KGameCanvasAbstract* parent, KBSRenderer* renderer, 
+BattleFieldScreen::BattleFieldScreen(KGameCanvasAbstract* parent, const QFont& font)
+: WelcomeScreen(parent, font)
+, m_opacity(1.0)
+{
+    m_background_color = QColor(100,100,100,50);
+    connect(&m_timer, SIGNAL(timeout()), this, SLOT(tick()));
+}
+
+void BattleFieldScreen::buttonClicked(KWelcomeScreenOverlayButton*)
+{
+    foreach (KWelcomeScreenOverlayButton* button, m_buttons) {
+        button->setEnabled(false);
+    }
+    m_timer.start(0);
+    m_time.restart();
+}
+
+void BattleFieldScreen::tick()
+{
+    bool done = false;
+    m_opacity -= m_time.restart() * 0.003;
+    if (m_opacity <= 0.0) {
+        m_opacity = 0.0;
+        done = true;
+    }
+
+    m_background_color.setAlpha(50 * m_opacity);
+    foreach (KWelcomeScreenOverlayButton* button, m_buttons) {
+        button->setOpacity(m_opacity);
+    }
+    changed();
+    
+    if (done) {
+        hide();
+    }
+}
+
+// -------------------------------------
+
+BattleFieldView::BattleFieldView(KGameCanvasWidget* parent, KBSRenderer* renderer, 
                                 Animator* animator, const QString& bgID, int gridSize)
 : KGameCanvasGroup(parent)
 , m_renderer(renderer)
@@ -30,6 +71,14 @@ BattleFieldView::BattleFieldView(KGameCanvasAbstract* parent, KBSRenderer* rende
     m_background->moveTo(0, 0);
     m_background->setOpacity(250);
     m_background->show();
+    
+    m_screen = new BattleFieldScreen(this, parent->font());
+    m_screen->stackOver(m_background);
+    m_screen->resize(size());
+    m_screen->addButton("Human", KIcon("user-female"));
+    m_screen->addButton("Computer", KIcon("roll"));
+    m_screen->addButton("Network", KIcon("network"));
+    m_screen->show();
     
     for (Sprites::iterator i = m_sprites.begin();
             i != m_sprites.end();
@@ -45,6 +94,9 @@ QSize BattleFieldView::size() const
 
 void BattleFieldView::update()
 {
+    // update welcome screen
+    m_screen->resize(size());
+
     // update background
     m_background->setPixmap(m_renderer->render(m_bgID, false, m_gridSize, m_gridSize));
     m_background->moveTo(0, 0);
@@ -146,5 +198,27 @@ void BattleFieldView::clear()
     }
     m_sprites.clear();
 }
+
+void BattleFieldView::onMousePress(const QPoint& p)
+{
+    m_screen->onMousePress(p);
+}
+
+void BattleFieldView::onMouseRelease(const QPoint& p)
+{
+    m_screen->onMouseRelease(p);
+}
+
+void BattleFieldView::onMouseMove(const QPoint& p)
+{
+    m_screen->onMouseMove(p);
+}
+
+void BattleFieldView::onMouseLeave()
+{
+    m_screen->onMouseLeave();
+}
+
+#include "battlefieldview.moc"
 
 

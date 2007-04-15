@@ -28,6 +28,7 @@ class SeaView : public KGameCanvasWidget
     BattleFieldView* otherField(BattleFieldView* field);
     QPoint m_last_preview;
     Animator m_animator;
+    int m_last_f;
     
     bool setPreview(Sea::Player player, const QPoint& pos);
     bool updatePreview(const QPoint& pos);
@@ -46,9 +47,11 @@ public:
     
     virtual QSize sizeHint() const;
 protected:
-    void mouseMoveEvent(QMouseEvent*);
-    void mousePressEvent(QMouseEvent*);
-    void resizeEvent(QResizeEvent*);
+    virtual void mouseMoveEvent(QMouseEvent*);
+    virtual void mousePressEvent(QMouseEvent*);
+    virtual void mouseReleaseEvent(QMouseEvent*);
+    virtual void resizeEvent(QResizeEvent*);
+    virtual void leaveEvent(QEvent*);
     
     int tileSize() const;
 };

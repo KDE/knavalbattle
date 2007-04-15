@@ -17,28 +17,16 @@
 
 #include "mainwindow.h"
 #include "playfield.h"
-#include <kwelcomescreen.h>
 
 MainWindow::MainWindow()
 {
-    welcomeScreen = new KWelcomeScreen("KBattleship", this);
-    m_main = new PlayField(welcomeScreen);
-//     QVBoxLayoutdddd
-    setCentralWidget(welcomeScreen);
-//     m_main = new PlayField(this);
-//     setCentralWidget(m_main);
-    welcomeScreen->addButton("Start game", KIcon("system-run"), "game_singleplayer", 0, 0);
-    welcomeScreen->addButton("Simulation", KIcon("roll"), "game_twomachines", 1, 0);
-    welcomeScreen->addButton("Start server", KIcon("network"), "game_server", 0, 1);
-    welcomeScreen->addButton("Start client", KIcon("user-female"), "game_client", 1, 1);
-    welcomeScreen->addButton("Highscores", KIcon("arrow-up-double"), "show_highscores", 0, 2);
-    welcomeScreen->init();
+    m_main = new PlayField(this);
+    QVBoxLayout* layout = new QVBoxLayout(this);
+    layout->addWidget(m_main);
+    
+    setCentralWidget(m_main);
+
     setupActions();
-    connect(welcomeScreen, SIGNAL(buttonClicked(QString)), this, SLOT(welcomeScreenSlot(QString)));
-    connect(welcomeScreen, SIGNAL(resized(QSize)), this, SLOT(resizeSlot(QSize)));
-    connect(m_main, SIGNAL(gameFinished()), welcomeScreen, SLOT(showOverlay()));
-    m_main->resize(900, 400);
-    welcomeScreen->resize(m_main->size());
     resize(900, 440);
 }
 
@@ -76,29 +64,7 @@ void MainWindow::optionsPreferences()
     kDebug() << "preferences" << endl;
 }
 
-void MainWindow::welcomeScreenSlot(QString button)
-{
-    if (button == "game_singleplayer") {
-        m_main->newGame();
-        welcomeScreen->hideOverlay();
-    } else if (button == "game_twomachines") {
-        m_main->newSimulation();
-        welcomeScreen->hideOverlay();
-    } else if (button == "game_server") {
-        m_main->newServer();
-        welcomeScreen->hideOverlay();
-    } else if (button == "game_client") {
-        m_main->newClient();
-        welcomeScreen->hideOverlay();
-    } else if (button == "show_highscores") {
-        m_main->highscores();
-    }
-}
 
-void MainWindow::resizeSlot(QSize size)
-{
-    m_main->resize(size);
-}
 
 #include "mainwindow.moc"
 

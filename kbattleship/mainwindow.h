@@ -14,21 +14,17 @@
 #include <kmainwindow.h>
 
 class PlayField;
-class KWelcomeScreen;
 
 class MainWindow : public KMainWindow
 {
 Q_OBJECT
     PlayField* m_main;
-    KWelcomeScreen *welcomeScreen;
 public:
     MainWindow();
 protected:
     void setupActions();
 protected slots:
     void optionsPreferences();
-    void welcomeScreenSlot(QString);
-    void resizeSlot(QSize size);
 };
 
 #endif // MAINWINDOW_H

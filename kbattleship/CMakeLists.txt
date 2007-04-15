@@ -33,7 +33,8 @@ set(kbattleship_SRCS
     sprite.cpp
     spritefactory.cpp
     stats.cpp
-    uientity.cpp)
+    uientity.cpp
+    welcomescreen.cpp)
 
 
 kde4_automoc(${kbattleship_SRCS})

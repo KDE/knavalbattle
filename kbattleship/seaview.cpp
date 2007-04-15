@@ -21,7 +21,11 @@
 SeaView::SeaView(QWidget* parent)
 : KGameCanvasWidget(parent)
 , m_delegate(0)
-{
+, m_last_f(-1)
+{/*
+    setAttribute(Qt::WA_OpaquePaintEvent);
+    setAttribute(Qt::WA_NoSystemBackground);*/
+
     // create renderer
     m_renderer = new KBSRenderer(KStandardDirs::locate("appdata", "pictures/default_theme.svgz"));
     m_renderer->resize(tileSize());
@@ -37,6 +41,8 @@ SeaView::SeaView(QWidget* parent)
     update();
     
     setSizePolicy(QSizePolicy::Minimum, QSizePolicy::Preferred);
+    
+    setMouseTracking(true);
 }
 
 SeaView::~SeaView() {
@@ -76,28 +82,67 @@ int SeaView::fieldAt(const QPoint& p)
 
 void SeaView::mousePressEvent(QMouseEvent* e)
 {
-    if (!m_delegate) {
-        return;
-    }
-    
     int f = fieldAt(e->pos());
     if (f == -1) {
         return;
     }
     
     BattleFieldView* field = m_fields[f];
+    QPoint point = e->pos() - field->pos();
     Coord c = m_renderer->toLogical(e->pos() - field->pos());
     
     if (e->button() == Qt::LeftButton) {
-        m_delegate->action(Sea::Player(f), c);
+        field->onMousePress(point);
+        if (m_delegate) {
+            m_delegate->action(Sea::Player(f), c);
+        }
     }
     else if (e->button() == Qt::RightButton) {
-        m_delegate->changeDirection(Sea::Player(f));
+        if (m_delegate) {
+            m_delegate->changeDirection(Sea::Player(f));
+        }
     }
 }
 
+void SeaView::mouseReleaseEvent(QMouseEvent* e)
+{
+    int f = fieldAt(e->pos());
+    if (f == -1) {
+        return;
+    }
+    
+    BattleFieldView* field = m_fields[f];
+    
+    if (e->button() == Qt::LeftButton) {
+        field->onMouseRelease(e->pos() - field->pos());
+    }
+}
+
+void SeaView::leaveEvent(QEvent*)
+{
+    if (m_last_f != -1) {
+        BattleFieldView* field = m_fields[m_last_f];
+        field->onMouseLeave();
+    }
+    m_last_f = -1;
+}
+
+
 void SeaView::mouseMoveEvent(QMouseEvent* e)
 {
+    // send mouse move info to the welcome screen
+    int f = fieldAt(e->pos());
+    if (m_last_f != -1 && m_last_f != f) {
+        BattleFieldView* field = m_fields[m_last_f];
+        field->onMouseLeave();
+    }
+    m_last_f = f;
+    if (f != -1) {
+        BattleFieldView* field = m_fields[f];
+        field->onMouseMove(e->pos() - field->pos());
+
+    }
+    
     if (!m_delegate) {
         return;
     }
@@ -188,7 +233,6 @@ void SeaView::setDelegate(Delegate* c)
 {
     kDebug() << "setting delegate to " << c << endl;
     m_delegate = c;
-    setMouseTracking(c != 0);
 }
 
 QSize SeaView::sizeHint() const

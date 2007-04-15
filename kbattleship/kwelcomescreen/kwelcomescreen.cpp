@@ -29,8 +29,232 @@
 // #include <QFontMetrics>
 #include <KDebug>
 
+KWelcomeScreenOverlay::KWelcomeScreenOverlay(const QFont& font)
+: m_background_color(0, 0, 0, 80)
+, m_font(font)
+, m_hover_button(0)
+{
 
-KWelcomeScreen::KWelcomeScreen(QString applicationName, QWidget *parent)
+}
+
+KWelcomeScreenOverlay::~KWelcomeScreenOverlay()
+{
+    foreach (KWelcomeScreenOverlayButton* button, m_buttons) {
+        delete button;
+    }
+}
+
+void KWelcomeScreenOverlay::resize(const QSize& sz) 
+{
+    m_size = sz;
+    foreach (KWelcomeScreenOverlayButton* button, m_buttons) {
+        button->onMouseLeave();
+    }
+}
+
+void KWelcomeScreenOverlay::drawScreen(QPainter& p)
+{
+    QBrush b(m_background_color);
+    p.setBrush(b);
+    p.drawRect(QRect(0, 0, m_size.width(), m_size.height()));
+    
+    // draw buttons
+    int n = m_buttons.size();
+    if (n > 0) {
+        int step = m_size.height() / n;
+        int h = 0;
+        for (int i = 0; i < n; i++) {
+            KWelcomeScreenOverlayButton *button = m_buttons[i];
+            QPoint pos((m_size.width() - button->size().width()) / 2, 
+                        h + (step - button->size().height()) / 2);
+            p.translate(pos);
+            button->drawButton(p);
+            p.translate(-pos);
+            
+            h += step;
+        }
+    }
+}
+
+void KWelcomeScreenOverlay::invalidateButton(KWelcomeScreenOverlayButton *b)
+{
+    int n = m_buttons.size();
+    if (n > 0) {
+        int step = m_size.height() / n;
+        int h = 0;
+        for (int i = 0; i < n; i++) {
+            KWelcomeScreenOverlayButton *button = m_buttons[i];
+            if (button == b) {
+                QPoint pos((m_size.width() - button->size().width()) / 2, 
+                            h + (step - button->size().height()) / 2);
+                invalidateScreen(b->size().translated(pos));
+            }
+            
+            h += step;
+        }
+    }
+}
+
+void KWelcomeScreenOverlay::onMousePress(const QPoint &p)
+{
+    QPoint pos = p;
+    KWelcomeScreenOverlayButton *button = at(pos);
+    if (button) {
+        button->onMousePress(pos);
+    }
+}
+
+void KWelcomeScreenOverlay::onMouseRelease(const QPoint &p)
+{
+    QPoint pos = p;
+    KWelcomeScreenOverlayButton *button = at(pos);
+    if (button) {
+        button->onMouseRelease(pos);
+    }
+}
+
+void KWelcomeScreenOverlay::onMouseMove(const QPoint &p)
+{
+    QPoint pos = p;
+    KWelcomeScreenOverlayButton *button = at(pos);
+    
+    if (m_hover_button && button != m_hover_button) {
+        m_hover_button->onMouseLeave();
+    }
+    m_hover_button = button;
+    
+    if (button) {
+        button->onMouseMove(pos);
+    }
+}
+
+void KWelcomeScreenOverlay::onMouseLeave()
+{
+    if (m_hover_button) {
+        m_hover_button->onMouseLeave();
+    }
+    m_hover_button = 0;
+}
+
+KWelcomeScreenOverlayButton *KWelcomeScreenOverlay::at(QPoint &p)
+{
+    int n = m_buttons.size();
+    if (n == 0) {
+        return 0;
+    }
+    
+    int step = m_size.height() / n;
+    int h = 0;
+    for (int i = 0; i < n; i++) {
+        KWelcomeScreenOverlayButton *button = m_buttons[i];
+        QPoint pos((m_size.width() - button->size().width()) / 2, 
+                    h + (step - button->size().height()) / 2);
+        if (button->size().translated(pos).contains(p)) {
+            p = pos - button->size().topLeft();
+            return button;
+        }
+        h += step;
+    }
+    
+    return 0;
+}
+
+KWelcomeScreenOverlayButton* KWelcomeScreenOverlay::createButton(const QString &text, const QIcon &icon)
+{
+    return new KWelcomeScreenOverlayButton(this, m_font, text, icon);
+}
+
+void KWelcomeScreenOverlay::addButton(const QString &text, const QIcon &icon)
+{
+    KWelcomeScreenOverlayButton* button = createButton(text, icon);
+    m_buttons.push_back(button);
+}
+
+KWelcomeScreenOverlayButton::KWelcomeScreenOverlayButton(
+    KWelcomeScreenOverlay* parent, const QFont &font, const QString &text, const QIcon &icon)
+: m_parent(parent)
+, m_text(text)
+, m_icon(icon)
+, m_enabled(true)
+, m_opacity(1.0)
+{
+    QFontMetrics fm(font);
+    int h = fm.height();
+    if (h < 32) {
+        h = 32;
+    }
+    m_size = QRect(0, 0, fm.width(m_text), h);
+    m_size.adjust(0, 0, 10+32+10+10, 10+10);
+}
+
+void KWelcomeScreenOverlayButton::setEnabled(bool value)
+{
+    m_enabled = value;
+    m_parent->invalidateButton(this);
+}
+
+void KWelcomeScreenOverlayButton::setOpacity(double value)
+{
+    m_opacity = value;
+    m_parent->invalidateButton(this);
+}
+
+void KWelcomeScreenOverlayButton::drawButton(QPainter& p)
+{
+    p.setOpacity(m_opacity);
+    
+    p.setRenderHint(QPainter::Antialiasing);
+    QPen pen(QColor(200, 200, 220, 255));
+    pen.setWidth(2);
+    p.setPen(pen);
+    switch (m_enabled ? m_state : UP) {
+    case DOWN:
+        p.setBrush(QBrush(QColor(200, 200, 200, 100)));
+        break;
+    case HOVER:
+        p.setBrush(QBrush(QColor(100, 100, 100, 100)));
+        break;
+    case UP:
+        p.setBrush(QBrush(QColor(0, 0, 0, 100)));
+        break;
+    }
+    p.drawRoundRect(QRectF(2.0, 2.0, m_size.width()-3, m_size.height()-3), 8, 40);
+    p.drawPixmap(10, (m_size.height()/2-16), 32, 32, m_icon.pixmap(32, 32));
+
+    //FIXME calculate the position basing on the text height.
+    p.drawText(10+32+10, (m_size.height()/2+6), m_text);
+    
+    p.setOpacity(1.0);
+}
+
+void KWelcomeScreenOverlayButton::onMousePress(const QPoint &)
+{
+    m_state = DOWN;
+    m_parent->invalidateButton(this);
+}
+
+void KWelcomeScreenOverlayButton::onMouseRelease(const QPoint &)
+{
+    if (m_state == DOWN) {
+        m_parent->buttonClicked(this);
+    }
+    m_state = HOVER;
+    m_parent->invalidateButton(this);
+}
+
+void KWelcomeScreenOverlayButton::onMouseMove(const QPoint &)
+{
+    m_state = m_state == DOWN ? DOWN : HOVER;
+    m_parent->invalidateButton(this);
+}
+
+void KWelcomeScreenOverlayButton::onMouseLeave()
+{
+    m_state = UP;
+    m_parent->invalidateButton(this);
+}
+
+KWelcomeScreen::KWelcomeScreen(const QString& applicationName, QWidget *parent)
     : QWidget(parent)
 {
 //     QWidget *blackWidget = new QWidget;
@@ -44,14 +268,8 @@ KWelcomeScreen::KWelcomeScreen(QString applicationName, QWidget *parent)
     mainLayout = new QGridLayout;
     mainLayout->addWidget(widget);
     setLayout(mainLayout);
-    connect(widget, SIGNAL(buttonClicked(QString)), this, SIGNAL(buttonClicked(QString)));
-    connect(widget, SIGNAL(buttonClicked(QString)), this, SLOT(buttonClickedDebug(QString)));
+    connect(widget, SIGNAL(clicked(int)), this, SIGNAL(buttonClicked(int)));
 //     setCentralWidget(widget);
-}
-
-void KWelcomeScreen::buttonClickedDebug(QString shortText)
-{
-    kDebug() << shortText << endl;
 }
 
 void KWelcomeScreen::init()
@@ -59,11 +277,6 @@ void KWelcomeScreen::init()
     widget->raise();
 }
 
-void KWelcomeScreen::resizeEvent(QResizeEvent *event)
-{
-    emit resized(event->size());
-    QWidget::resizeEvent(event);
-}
 
 void KWelcomeScreen::hideOverlay()
 {
@@ -75,57 +288,43 @@ void KWelcomeScreen::showOverlay()
     widget->show();
 }
 
-void KWelcomeScreen::resize(int w, int h)
+void KWelcomeScreen::addButton(const QString &text, const QIcon &icon)
 {
-    widget->resize(w, h);
-    QWidget::resize(w, h);
+    widget->addButton(text, icon);
 }
 
-void KWelcomeScreen::resize(QSize size)
-{
-    widget->resize(size);
-    QWidget::resize(size);
-}
-
-void KWelcomeScreen::addButton(const QString &text, const QIcon &icon, const QString &shortText, int rowNum, int colNum)
-{
-    widget->addButton(text, icon, shortText, rowNum, colNum);
-}
-
-KWelcomeWidget::KWelcomeWidget(QString applicationName, QWidget *parent)
+KWelcomeWidget::KWelcomeWidget(const QString& applicationName, QWidget *parent)
     : QWidget(parent)
+    , KWelcomeScreenOverlay(font())
 {
     m_applicationName = applicationName;
     buttons.reserve(10);
     buttons.fill(NULL);
+    
+    setMouseTracking(true);
+    
 //     KWelcomeScreenPrivate *d = new KWelcomeScreenPrivate;
-    layout = new QGridLayout;
+//     layout = new QGridLayout;
 //     layout->setSizeConstraint(QLayout::SetMinimumSize);
 //     layout->setSizeConstraint(QLayout::SetFixedSize);
-    frame = new QWidget;
-    frame->setLayout(layout);
-    QGridLayout *mainLayout = new QGridLayout;
-    mainLayout->addWidget(frame);
-    setLayout(mainLayout);
-    resize(418, 418);
+//     frame = new QWidget;
+//     frame->setLayout(layout);
+//     QGridLayout *mainLayout = new QGridLayout;
+//     mainLayout->addWidget(frame);
+//     setLayout(mainLayout);
+//     resize(418, 418);
 }
 
-void KWelcomeWidget::addButton(const QString &text, const QIcon &icon, const QString &shortText, int rowNum, int colNum)
+void KWelcomeWidget::resizeEvent(QResizeEvent *event)
 {
-    buttons.resize((buttons.size()+1));
-    buttons[buttons.size()-1] = new KWelcomeScreenButton(frame);
-    buttons[buttons.size()-1]->setProprieties(text, icon, shortText);
-    layout->addWidget(buttons.at(buttons.size()-1), rowNum, colNum);
-    connect(buttons[buttons.size()-1], SIGNAL(buttonClicked(QString)), this, SIGNAL(buttonClicked(QString)));
+    KWelcomeScreenOverlay::resize(event->size());
 }
 
 void KWelcomeWidget::paintEvent(QPaintEvent *event)
 {
     QPainter p(this);
-    QBrush b(QColor(0, 0, 0, 180));
-    p.setBrush(b);
-    p.drawRect(QRect(event->rect().x(), event->rect().y()-1, event->rect().width()+1, event->rect().height()+1));
-//     b.setColor(QColor(255, 255, 255, 255));
+    KWelcomeScreenOverlay::drawScreen(p);
+#if 0 // TODO: restore this stuff
     QFont font;
     font.setWeight(QFont::Bold);
     font.setStyle(QFont::StyleItalic);
@@ -136,82 +335,42 @@ void KWelcomeWidget::paintEvent(QPaintEvent *event)
     p.setPen(pen);
     p.setFont(font);
     p.drawText(width()/2-(m.width(m_applicationName)/2), m.height()+20, m_applicationName);
+#endif
 }
 
-KWelcomeScreenButton::KWelcomeScreenButton(QWidget *parent)
-    : QAbstractButton(parent)
-    , m_raised(false)
-    , m_autoraise(true)
+void KWelcomeWidget::mouseMoveEvent(QMouseEvent *event)
 {
-    setMaximumSize(sizeHint());
-    connect(this, SIGNAL(clicked()), this, SLOT(buttonClickedSlot()));
+    onMouseMove(event->pos());
 }
 
-bool KWelcomeScreenButton::autoraise() const
+void KWelcomeWidget::leaveEvent(QEvent *event)
 {
-    return m_autoraise;
+    onMouseLeave();
 }
 
-void KWelcomeScreenButton::setAutoraise(bool value)
+void KWelcomeWidget::mousePressEvent(QMouseEvent *event)
 {
-    m_autoraise = value;
-}
-
-void KWelcomeScreenButton::enterEvent(QEvent* e)
-{
-    if ((m_raised = m_autoraise)) {
-        update();
+    if (event->button() == Qt::LeftButton) {
+        onMousePress(event->pos());
     }
-    Q_UNUSED(e);
 }
 
-void KWelcomeScreenButton::leaveEvent(QEvent* e)
+void KWelcomeWidget::mouseReleaseEvent(QMouseEvent *event)
 {
-    m_raised = false;
-    if (m_autoraise) {
-        update();
+    if (event->button() == Qt::LeftButton) {
+        onMouseRelease(event->pos());
     }
-    Q_UNUSED(e);
 }
 
-void KWelcomeScreenButton::buttonClickedSlot()
+void KWelcomeWidget::invalidateScreen(const QRect& rect)
 {
-    kDebug(11000) << "Selected action is: " << shortText << endl;
-    emit buttonClicked(shortText);
+    update(rect);
 }
 
-void KWelcomeScreenButton::setProprieties(const QString &text, const QIcon &icon, const QString &shortText)
+void KWelcomeWidget::buttonClicked(KWelcomeScreenOverlayButton* button)
 {
-    this->text = text;
-    this->icon = icon;
-    this->shortText = shortText;
-}
-
-QSize KWelcomeScreenButton::sizeHint()
-{
-    return QSize(153, 43);
-}
-
-void KWelcomeScreenButton::paintEvent(QPaintEvent *event)
-{
-    QPainter p(this);
-    p.setRenderHint(QPainter::Antialiasing);
-    QPen pen(QColor(200, 200, 220, 255));
-    pen.setWidth(2);
-    p.setPen(pen);
-    if (this->isDown()) {
-        p.setBrush(QBrush(QColor(200, 200, 200, 100)));
-    } else if (m_raised) {
-        p.setBrush(QBrush(QColor(100, 100, 100, 100)));
-    } else {
-        p.setBrush(QBrush(QColor(0, 0, 0, 100)));
+    for (int i = 0; i < m_buttons.size(); i++) {
+        if (button == m_buttons[i])
+            emit clicked(i);
     }
-    p.drawRoundRect(QRectF(2.0, 2.0, sizeHint().rwidth()-3, sizeHint().rheight()-3), 8, 40);
-    p.drawPixmap(10, (sizeHint().rheight()/2-16), 32, 32, icon.pixmap(32, 32));
-
-    //FIXME calculate the position basing on the text height.
-    p.drawText(10+32+10, (sizeHint().rheight()/2+6), text);
-//     QWidget::paintEvent(event);
-    Q_UNUSED(event);
 }
-

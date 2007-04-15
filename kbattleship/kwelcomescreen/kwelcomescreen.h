@@ -31,91 +31,115 @@ class QEvent;
 class QSize;
 class QGridLayout;
 class QResizeEvent;
+class KWelcomeScreenOverlayButton;
+
+class KDE_EXPORT KWelcomeScreenOverlay
+{
+    friend class KWelcomeScreenOverlayButton;
+protected:
+    QSize m_size;
+    QVector<KWelcomeScreenOverlayButton *> m_buttons;
+    QColor m_background_color;
+    QFont m_font;
+    KWelcomeScreenOverlayButton *m_hover_button;
+
+    virtual KWelcomeScreenOverlayButton *createButton(const QString &text, const QIcon &icon);
+    virtual KWelcomeScreenOverlayButton *at(QPoint& pos);
+    virtual void invalidateScreen(const QRect& rect) = 0;
+    virtual void buttonClicked(KWelcomeScreenOverlayButton* button) = 0;
+    
+    virtual void invalidateButton(KWelcomeScreenOverlayButton* button);
+public:
+    explicit KWelcomeScreenOverlay(const QFont&);
+    
+    virtual ~KWelcomeScreenOverlay();
+    virtual void drawScreen(QPainter& p);
+    virtual void addButton(const QString &text, const QIcon &icon);
+    virtual void resize(const QSize& sz);
+    virtual void onMousePress(const QPoint& p);
+    virtual void onMouseRelease(const QPoint& p);
+    virtual void onMouseMove(const QPoint& p);
+    virtual void onMouseLeave();
+    
+    void setBackgroundColor(const QColor &color) { m_background_color = color; }
+    const QColor &backgroundColor() const { return m_background_color; }
+};
+
+class KDE_EXPORT KWelcomeScreenOverlayButton
+{
+    KWelcomeScreenOverlay *m_parent;
+    QString m_text;
+    QIcon m_icon;
+    QRect m_size;
+    enum State {
+        UP,
+        DOWN,
+        HOVER
+    } m_state;
+    bool m_enabled;
+    double m_opacity;
+public:
+    KWelcomeScreenOverlayButton(KWelcomeScreenOverlay *parent, const QFont& font, 
+                                const QString &text, const QIcon &icon);
+    virtual ~KWelcomeScreenOverlayButton() { }
+    
+    virtual void drawButton(QPainter& p);
+    virtual void onMousePress(const QPoint& p);
+    virtual void onMouseMove(const QPoint& p);
+    virtual void onMouseRelease(const QPoint& p);
+    virtual void onMouseLeave();
+    
+    const QRect& size() const { return m_size; }
+    bool isEnabled() const { return m_enabled; }
+    void setEnabled(bool value);
+    double opacity() const { return m_opacity; }
+    void setOpacity(double value);
+};
 
 class KDE_EXPORT KWelcomeScreen : public QWidget
 {
     Q_OBJECT
 public:
-    KWelcomeScreen(QString, QWidget *parent = 0);
-    void init();
-    void resize(QSize size);
-    void resize(int w, int h);
+    explicit KWelcomeScreen(const QString& name, QWidget *parent = 0);
 
-    void addButton(const QString &text, const QIcon &icon, const QString &shortText, int rowNum, int colNum);
+    void addButton(const QString &text, const QIcon &icon);
 public Q_SLOTS:
     void hideOverlay();
     void showOverlay();
-
-protected:
-    void resizeEvent(QResizeEvent *event);
-
+    void init();
+    
 private:
-    QString m_applicationName;
     KWelcomeWidget *widget;
     QGridLayout *mainLayout;
-//     KWelcomeScreenPrivate *d;
-private Q_SLOTS:
-    void buttonClickedDebug(QString shortText);
+    QString m_applicationName;
 
 signals:
-    void buttonClicked(QString shortText);
-    void resized(QSize size);
+    void bluttonClicked(int);
 };
 
-class KWelcomeWidget : public QWidget
+class KWelcomeWidget : public QWidget, public KWelcomeScreenOverlay
 {
     Q_OBJECT
 public:
-    KWelcomeWidget(QString, QWidget *parent = 0);
-    void addButton(const QString &text, const QIcon &icon, const QString &shortText, int rowNum, int colNum);
+    explicit KWelcomeWidget(const QString& name, QWidget *parent = 0);
 protected:
     virtual void paintEvent(QPaintEvent *event);
+    virtual void resizeEvent(QResizeEvent *event);
+    virtual void mouseMoveEvent(QMouseEvent *event);
+    virtual void leaveEvent(QEvent *event);
+    virtual void mousePressEvent(QMouseEvent *event);
+    virtual void mouseReleaseEvent(QMouseEvent *event);
 
+    virtual void invalidateScreen(const QRect &rect);
+    virtual void buttonClicked(KWelcomeScreenOverlayButton *button);
 private:
     QGridLayout *layout;
     QWidget *frame;
-    QString m_applicationName;
     QVector<KWelcomeScreenButton *> buttons;
+    QString m_applicationName;
 //     KWelcomeScreenPrivate *d;
 signals:
-    void buttonClicked(QString shortText);
-};
-
-// class KWelcomeScreenPrivate
-// {
-// friend class KWelcomeScreen;
-// public:
-//     KWelcomeScreenPrivate();
-// private:
-//     QWidget *children;
-//     QString string;
-// };
-
-class KWelcomeScreenButton : public QAbstractButton
-{
-    Q_OBJECT
-
-    Q_PROPERTY(bool autoraise READ autoraise WRITE setAutoraise)
-public:
-    KWelcomeScreenButton(QWidget *parent = 0);
-    void setProprieties(const QString &text, const QIcon &icon, const QString &shortText);
-
-    bool autoraise() const;
-    void setAutoraise(bool value);
-protected:
-    virtual void paintEvent(QPaintEvent *event);
-    virtual void enterEvent(QEvent*);
-    virtual void leaveEvent(QEvent*);
-    QSize sizeHint();
-private:
-    QString text, shortText;
-    QIcon icon;
-    bool m_raised;
-    bool m_autoraise;
-private Q_SLOTS:
-    void buttonClickedSlot();
-signals:
-    void buttonClicked(QString shortText);
+    void clicked(int);
 };
 
 #endif

@@ -12,8 +12,11 @@
 
 #include <kgamecanvas.h>
 #include <QMultiHash>
+#include <QTime>
+#include <QTimer>
 #include "coord.h"
 #include "spritefactory.h"
+#include "welcomescreen.h"
 #include "grid.h"
 
 class KBSRenderer;
@@ -21,11 +24,27 @@ class Sprite;
 class Ship;
 class Animator;
 
+class BattleFieldScreen : public QObject, public WelcomeScreen
+{
+Q_OBJECT
+    QTimer m_timer;
+    QTime m_time;
+    double m_opacity;
+public:
+    BattleFieldScreen(KGameCanvasAbstract* parent, const QFont& font);
+    
+    virtual void buttonClicked(KWelcomeScreenOverlayButton* button);
+    
+public slots:
+    void tick();
+};
+
 class BattleFieldView : public KGameCanvasGroup
 {
     static const int PREVIEW_OPACITY = 120;
 
     KGameCanvasPixmap* m_background;
+    WelcomeScreen* m_screen;
     KBSRenderer* m_renderer;
     Animator* m_animator;
     SpriteFactory m_factory;
@@ -50,7 +69,7 @@ class BattleFieldView : public KGameCanvasGroup
     Sprites m_sprites;
     void addSprite(const Coord& c, Sprite* ship);
 public:
-    BattleFieldView(KGameCanvasAbstract* parent, KBSRenderer* renderer, 
+    BattleFieldView(KGameCanvasWidget* parent, KBSRenderer* renderer, 
                     Animator* animator, const QString& bgID, int gridSize);
     QSize size() const;
     
@@ -63,6 +82,12 @@ public:
     void miss(const Coord& c);
     void removeImpact();
     void clear();
+    
+    
+    void onMousePress(const QPoint& p);
+    void onMouseRelease(const QPoint& p);
+    void onMouseMove(const QPoint& p);
+    void onMouseLeave();
 };
 
 #endif // BATTLEFIELD_H
