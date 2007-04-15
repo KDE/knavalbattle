@@ -9,6 +9,7 @@
 */
 
 #include <QResizeEvent>
+#include <QHBoxLayout>
 #include <kstandardaction.h>
 #include <kactioncollection.h>
 #include <kaction.h>
@@ -22,6 +23,7 @@ MainWindow::MainWindow()
 {
     welcomeScreen = new KWelcomeScreen(this);
     m_main = new PlayField(welcomeScreen);
+//     QVBoxLayoutdddd
     setCentralWidget(welcomeScreen);
 //     m_main = new PlayField(this);
 //     setCentralWidget(m_main);
@@ -33,6 +35,7 @@ MainWindow::MainWindow()
     welcomeScreen->init();
     setupActions();
     connect(welcomeScreen, SIGNAL(buttonClicked(QString)), this, SLOT(welcomeScreenSlot(QString)));
+    connect(welcomeScreen, SIGNAL(resized(QSize)), this, SLOT(resizeSlot(QSize)));
     m_main->resize(900, 400);
     welcomeScreen->resize(m_main->size());
     resize(900, 440);
@@ -58,7 +61,7 @@ void MainWindow::setupActions()
     actionCollection()->addAction("game_client", temp);
     connect(temp, SIGNAL(triggered()), m_main, SLOT(newClient()));
     
-    temp = new KAction(i18n("Show &highscores"), this);
+    temp = new KAction(i18n("Show highscores"), this);
     actionCollection()->addAction("show_highscores", temp);
     connect(temp, SIGNAL(triggered()), m_main, SLOT(highscores()));
     
@@ -90,6 +93,11 @@ void MainWindow::welcomeScreenSlot(QString button)
         m_main->highscores();
         welcomeScreen->hideOverlay();
     }
+}
+
+void MainWindow::resizeSlot(QSize size)
+{
+    m_main->resize(size);
 }
 
 #include "mainwindow.moc"

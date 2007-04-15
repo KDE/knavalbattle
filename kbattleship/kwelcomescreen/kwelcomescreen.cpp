@@ -38,8 +38,13 @@ KWelcomeScreen::KWelcomeScreen(QWidget *parent)
 //     blackWidget->setPalette(palette);
 //     blackWidget->raise();
     widget = new KWelcomeWidget(this);
+
+    mainLayout = new QGridLayout;
+    mainLayout->addWidget(widget);
+    setLayout(mainLayout);
     connect(widget, SIGNAL(buttonClicked(QString)), this, SIGNAL(buttonClicked(QString)));
     connect(widget, SIGNAL(buttonClicked(QString)), this, SLOT(buttonClickedDebug(QString)));
+//     setCentralWidget(widget);
 }
 
 void KWelcomeScreen::buttonClickedDebug(QString shortText)
@@ -50,6 +55,12 @@ void KWelcomeScreen::buttonClickedDebug(QString shortText)
 void KWelcomeScreen::init()
 {
     widget->raise();
+}
+
+void KWelcomeScreen::resizeEvent(QResizeEvent *event)
+{
+    emit resized(event->size());
+    QWidget::resizeEvent(event);
 }
 
 void KWelcomeScreen::hideOverlay()
@@ -182,7 +193,7 @@ void KWelcomeScreenButton::paintEvent(QPaintEvent *event)
 
     //FIXME calculate the position basing on the text height.
     p.drawText(10+32+10, (sizeHint().rheight()/2+6), text);
-
+//     QWidget::paintEvent(event);
     Q_UNUSED(event);
 }
 

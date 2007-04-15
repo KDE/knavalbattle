@@ -28,6 +28,7 @@ protected:
 protected slots:
     void optionsPreferences();
     void welcomeScreenSlot(QString);
+    void resizeSlot(QSize size);
 };
 
 #endif // MAINWINDOW_H

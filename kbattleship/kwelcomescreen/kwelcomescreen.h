@@ -29,6 +29,8 @@ class KWelcomeWidget;
 class KWelcomeScreenButton;
 class QEvent;
 class QSize;
+class QGridLayout;
+class QResizeEvent;
 
 class KDE_EXPORT KWelcomeScreen : public QWidget
 {
@@ -41,14 +43,19 @@ public:
     void resize(int w, int h);
 
     void addButton(const QString &text, const QIcon &icon, const QString &shortText, int rowNum, int colNum);
+protected:
+    void resizeEvent(QResizeEvent *event);
 
 private:
     KWelcomeWidget *widget;
+    QGridLayout *mainLayout;
 //     KWelcomeScreenPrivate *d;
 private Q_SLOTS:
     void buttonClickedDebug(QString shortText);
+
 signals:
     void buttonClicked(QString shortText);
+    void resized(QSize size);
 };
 
 class KWelcomeWidget : public QWidget
