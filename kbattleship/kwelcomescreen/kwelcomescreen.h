@@ -38,11 +38,14 @@ class KDE_EXPORT KWelcomeScreen : public QWidget
 public:
     KWelcomeScreen(QWidget *parent = 0);
     void init();
-    void hideOverlay();
     void resize(QSize size);
     void resize(int w, int h);
 
     void addButton(const QString &text, const QIcon &icon, const QString &shortText, int rowNum, int colNum);
+public Q_SLOTS:
+    void hideOverlay();
+    void showOverlay();
+
 protected:
     void resizeEvent(QResizeEvent *event);
 

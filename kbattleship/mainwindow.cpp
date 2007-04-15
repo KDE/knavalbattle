@@ -36,6 +36,7 @@ MainWindow::MainWindow()
     setupActions();
     connect(welcomeScreen, SIGNAL(buttonClicked(QString)), this, SLOT(welcomeScreenSlot(QString)));
     connect(welcomeScreen, SIGNAL(resized(QSize)), this, SLOT(resizeSlot(QSize)));
+    connect(m_main, SIGNAL(gameFinished()), welcomeScreen, SLOT(showOverlay()));
     m_main->resize(900, 400);
     welcomeScreen->resize(m_main->size());
     resize(900, 440);
@@ -91,7 +92,6 @@ void MainWindow::welcomeScreenSlot(QString button)
         welcomeScreen->hideOverlay();
     } else if (button == "show_highscores") {
         m_main->highscores();
-        welcomeScreen->hideOverlay();
     }
 }
 

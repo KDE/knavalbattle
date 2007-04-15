@@ -47,6 +47,8 @@ public slots:
 private slots:
     void acceptClient();
     void clientConnected();
+signals:
+    void gameFinished();
 };
 
 #endif // PLAYFIELD_H

@@ -179,6 +179,8 @@ void PlayField::gameOver(Sea::Player winner)
     else {
         KMessageBox::information(this, i18n("You lose"));
     }
+    // When we have finished, show again the welcome screen
+    emit gameFinished();
 }
 
 #include "playfield.moc"

@@ -68,6 +68,11 @@ void KWelcomeScreen::hideOverlay()
     widget->hide();
 }
 
+void KWelcomeScreen::showOverlay()
+{
+    widget->show();
+}
+
 void KWelcomeScreen::resize(int w, int h)
 {
     widget->resize(w, h);
