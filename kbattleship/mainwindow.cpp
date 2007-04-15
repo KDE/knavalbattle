@@ -21,7 +21,7 @@
 
 MainWindow::MainWindow()
 {
-    welcomeScreen = new KWelcomeScreen(this);
+    welcomeScreen = new KWelcomeScreen("KBattleship", this);
     m_main = new PlayField(welcomeScreen);
 //     QVBoxLayoutdddd
     setCentralWidget(welcomeScreen);

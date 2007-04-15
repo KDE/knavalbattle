@@ -36,7 +36,7 @@ class KDE_EXPORT KWelcomeScreen : public QWidget
 {
     Q_OBJECT
 public:
-    KWelcomeScreen(QWidget *parent = 0);
+    KWelcomeScreen(QString, QWidget *parent = 0);
     void init();
     void resize(QSize size);
     void resize(int w, int h);
@@ -50,6 +50,7 @@ protected:
     void resizeEvent(QResizeEvent *event);
 
 private:
+    QString m_applicationName;
     KWelcomeWidget *widget;
     QGridLayout *mainLayout;
 //     KWelcomeScreenPrivate *d;
@@ -65,7 +66,7 @@ class KWelcomeWidget : public QWidget
 {
     Q_OBJECT
 public:
-    KWelcomeWidget(QWidget *parent = 0);
+    KWelcomeWidget(QString, QWidget *parent = 0);
     void addButton(const QString &text, const QIcon &icon, const QString &shortText, int rowNum, int colNum);
 protected:
     virtual void paintEvent(QPaintEvent *event);
@@ -73,6 +74,7 @@ protected:
 private:
     QGridLayout *layout;
     QWidget *frame;
+    QString m_applicationName;
     QVector<KWelcomeScreenButton *> buttons;
 //     KWelcomeScreenPrivate *d;
 signals:

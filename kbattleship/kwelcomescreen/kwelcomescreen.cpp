@@ -26,10 +26,11 @@
 #include <QGridLayout>
 #include <QVector>
 #include <QIcon>
+// #include <QFontMetrics>
 #include <KDebug>
 
 
-KWelcomeScreen::KWelcomeScreen(QWidget *parent)
+KWelcomeScreen::KWelcomeScreen(QString applicationName, QWidget *parent)
     : QWidget(parent)
 {
 //     QWidget *blackWidget = new QWidget;
@@ -37,7 +38,8 @@ KWelcomeScreen::KWelcomeScreen(QWidget *parent)
 //     palette.setColor(QPalette::Window, QColor(0, 0, 0, 180));
 //     blackWidget->setPalette(palette);
 //     blackWidget->raise();
-    widget = new KWelcomeWidget(this);
+    m_applicationName = applicationName;
+    widget = new KWelcomeWidget(applicationName, this);
 
     mainLayout = new QGridLayout;
     mainLayout->addWidget(widget);
@@ -90,9 +92,10 @@ void KWelcomeScreen::addButton(const QString &text, const QIcon &icon, const QSt
     widget->addButton(text, icon, shortText, rowNum, colNum);
 }
 
-KWelcomeWidget::KWelcomeWidget(QWidget *parent)
+KWelcomeWidget::KWelcomeWidget(QString applicationName, QWidget *parent)
     : QWidget(parent)
 {
+    m_applicationName = applicationName;
     buttons.reserve(10);
     buttons.fill(NULL);
 //     KWelcomeScreenPrivate *d = new KWelcomeScreenPrivate;
@@ -122,6 +125,17 @@ void KWelcomeWidget::paintEvent(QPaintEvent *event)
     QBrush b(QColor(0, 0, 0, 180));
     p.setBrush(b);
     p.drawRect(QRect(event->rect().x(), event->rect().y()-1, event->rect().width()+1, event->rect().height()+1));
+//     b.setColor(QColor(255, 255, 255, 255));
+    QFont font;
+    font.setWeight(QFont::Bold);
+    font.setStyle(QFont::StyleItalic);
+    font.setPointSize(25);
+    QFontMetrics m(font);
+    QPen pen(QColor(200, 200, 220, 255));
+    pen.setWidth(20);
+    p.setPen(pen);
+    p.setFont(font);
+    p.drawText(width()/2-(m.width(m_applicationName)/2), m.height()+20, m_applicationName);
 }
 
 KWelcomeScreenButton::KWelcomeScreenButton(QWidget *parent)
@@ -180,7 +194,6 @@ QSize KWelcomeScreenButton::sizeHint()
 
 void KWelcomeScreenButton::paintEvent(QPaintEvent *event)
 {
-//     resize(sizeHint());
     QPainter p(this);
     p.setRenderHint(QPainter::Antialiasing);
     QPen pen(QColor(200, 200, 220, 255));
