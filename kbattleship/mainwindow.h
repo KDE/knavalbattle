@@ -11,11 +11,11 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
-#include <kmainwindow.h>
+#include <kxmlguiwindow.h>
 
 class PlayField;
 
-class MainWindow : public KMainWindow
+class MainWindow : public KXmlGuiWindow
 {
 Q_OBJECT
     PlayField* m_main;
