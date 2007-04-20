@@ -56,7 +56,8 @@ void KWelcomeScreenOverlay::drawScreen(QPainter& p)
 {
     QBrush b(m_background_color);
     p.setBrush(b);
-    p.drawRect(QRect(0, 0, m_size.width(), m_size.height()));
+    p.setPen(Qt::NoPen);
+    p.drawRect(QRect(QPoint(0, 0), m_size));
     
     // draw buttons
     int n = m_buttons.size();
@@ -65,8 +66,8 @@ void KWelcomeScreenOverlay::drawScreen(QPainter& p)
         int h = 0;
         for (int i = 0; i < n; i++) {
             KWelcomeScreenOverlayButton *button = m_buttons[i];
-            QPoint pos((m_size.width() - button->size().width()) / 2, 
-                        h + (step - button->size().height()) / 2);
+            QPoint pos((m_size.width() - button->rect().width()) / 2, 
+                        h + (step - button->rect().height()) / 2);
             p.translate(pos);
             button->drawButton(p);
             p.translate(-pos);
@@ -85,9 +86,9 @@ void KWelcomeScreenOverlay::invalidateButton(KWelcomeScreenOverlayButton *b)
         for (int i = 0; i < n; i++) {
             KWelcomeScreenOverlayButton *button = m_buttons[i];
             if (button == b) {
-                QPoint pos((m_size.width() - button->size().width()) / 2, 
-                            h + (step - button->size().height()) / 2);
-                invalidateScreen(b->size().translated(pos));
+                QPoint pos((m_size.width() - button->rect().width()) / 2, 
+                            h + (step - button->rect().height()) / 2);
+                invalidateScreen(b->rect().translated(pos));
             }
             
             h += step;
@@ -147,10 +148,10 @@ KWelcomeScreenOverlayButton *KWelcomeScreenOverlay::at(QPoint &p)
     int h = 0;
     for (int i = 0; i < n; i++) {
         KWelcomeScreenOverlayButton *button = m_buttons[i];
-        QPoint pos((m_size.width() - button->size().width()) / 2, 
-                    h + (step - button->size().height()) / 2);
-        if (button->size().translated(pos).contains(p)) {
-            p = pos - button->size().topLeft();
+        QPoint pos((m_size.width() - button->rect().width()) / 2, 
+                    h + (step - button->rect().height()) / 2);
+        if (button->rect().translated(pos).contains(p)) {
+            p = pos - button->rect().topLeft();
             return button;
         }
         h += step;
@@ -183,8 +184,8 @@ KWelcomeScreenOverlayButton::KWelcomeScreenOverlayButton(
     if (h < 32) {
         h = 32;
     }
-    m_size = QRect(0, 0, fm.width(m_text), h);
-    m_size.adjust(0, 0, 10+32+10+10, 10+10);
+    m_rect = QRect(0, 0, fm.width(m_text), h);
+    m_rect.adjust(0, 0, 10+32+10+10, 10+10);
 }
 
 void KWelcomeScreenOverlayButton::setEnabled(bool value)
@@ -218,11 +219,11 @@ void KWelcomeScreenOverlayButton::drawButton(QPainter& p)
         p.setBrush(QBrush(QColor(0, 0, 0, 100)));
         break;
     }
-    p.drawRoundRect(QRectF(2.0, 2.0, m_size.width()-3, m_size.height()-3), 8, 40);
-    p.drawPixmap(10, (m_size.height()/2-16), 32, 32, m_icon.pixmap(32, 32));
+    p.drawRoundRect(QRectF(0.0, 0.0, m_rect.width() - 2, m_rect.height() -2), 8, 40);
+    p.drawPixmap(10, (m_rect.height()/2-16), 32, 32, m_icon.pixmap(32, 32));
 
     //FIXME calculate the position basing on the text height.
-    p.drawText(10+32+10, (m_size.height()/2+6), m_text);
+    p.drawText(10+32+10, (m_rect.height()/2+6), m_text);
     
     p.setOpacity(1.0);
 }
@@ -320,7 +321,7 @@ void KWelcomeWidget::resizeEvent(QResizeEvent *event)
     KWelcomeScreenOverlay::resize(event->size());
 }
 
-void KWelcomeWidget::paintEvent(QPaintEvent *event)
+void KWelcomeWidget::paintEvent(QPaintEvent *)
 {
     QPainter p(this);
     KWelcomeScreenOverlay::drawScreen(p);
@@ -343,7 +344,7 @@ void KWelcomeWidget::mouseMoveEvent(QMouseEvent *event)
     onMouseMove(event->pos());
 }
 
-void KWelcomeWidget::leaveEvent(QEvent *event)
+void KWelcomeWidget::leaveEvent(QEvent *)
 {
     onMouseLeave();
 }

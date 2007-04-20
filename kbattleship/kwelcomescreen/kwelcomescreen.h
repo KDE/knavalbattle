@@ -62,7 +62,8 @@ public:
     virtual void onMouseLeave();
     
     void setBackgroundColor(const QColor &color) { m_background_color = color; }
-    const QColor &backgroundColor() const { return m_background_color; }
+    QColor backgroundColor() const { return m_background_color; }
+    QSize size() const { return m_size; }
 };
 
 class KDE_EXPORT KWelcomeScreenOverlayButton
@@ -70,7 +71,7 @@ class KDE_EXPORT KWelcomeScreenOverlayButton
     KWelcomeScreenOverlay *m_parent;
     QString m_text;
     QIcon m_icon;
-    QRect m_size;
+    QRect m_rect;
     enum State {
         UP,
         DOWN,
@@ -89,7 +90,7 @@ public:
     virtual void onMouseRelease(const QPoint& p);
     virtual void onMouseLeave();
     
-    const QRect& size() const { return m_size; }
+    const QRect& rect() const { return m_rect; }
     bool isEnabled() const { return m_enabled; }
     void setEnabled(bool value);
     double opacity() const { return m_opacity; }

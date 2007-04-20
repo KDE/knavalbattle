@@ -1,7 +1,5 @@
 /*
-  Copyright (c) 2000-2001 Nikolas Zimmermann <wildfox@kde.org>
-            (c) 2000-2001 Daniel Molkentin <molkentin@kde.org>
-            (c) 2007 Paolo Capriotti <p.capriotti@gmail.com>
+  Copyright (c) 2007 Paolo Capriotti <p.capriotti@gmail.com>
             
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -11,6 +9,8 @@
 
 #include "welcomescreen.h"
 
+#include <kdebug.h>
+
 WelcomeScreen::WelcomeScreen(KGameCanvasAbstract* parent, const QFont& font)
 : KGameCanvasItem(parent)
 , KWelcomeScreenOverlay(font)
@@ -19,7 +19,10 @@ WelcomeScreen::WelcomeScreen(KGameCanvasAbstract* parent, const QFont& font)
 
 void WelcomeScreen::paint(QPainter* p)
 {
+    p->save();
+    p->translate(pos());
     drawScreen(*p);
+    p->restore();
 }
 
 QRect WelcomeScreen::rect() const

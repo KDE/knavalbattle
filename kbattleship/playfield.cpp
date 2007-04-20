@@ -29,10 +29,8 @@ PlayField::PlayField(QWidget* parent)
 : QWidget(parent)
 , m_human_player(-1)
 {
+    setMinimumSize(QSize(400, 200));
     QVBoxLayout* layout = new QVBoxLayout;
-
-//     layout->setMargin(0);
-//     layout->setSpacing(0);
     m_sea = new SeaView(this);
     layout->addWidget(m_sea);
     

@@ -62,8 +62,7 @@ void SeaView::update()
 }
 
 void SeaView::resizeEvent(QResizeEvent*)
-{   
-    kDebug() << "x = " << rect().x() << endl;
+{
     update();
 }
 

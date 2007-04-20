@@ -44,7 +44,7 @@ void BattleFieldScreen::tick()
         done = true;
     }
 
-    m_background_color.setAlpha(50 * m_opacity);
+    m_background_color.setAlpha(static_cast<int>(50 * m_opacity));
     foreach (KWelcomeScreenOverlayButton* button, m_buttons) {
         button->setOpacity(m_opacity);
     }
@@ -52,6 +52,7 @@ void BattleFieldScreen::tick()
     
     if (done) {
         hide();
+        m_timer.stop();
     }
 }
 
@@ -74,7 +75,6 @@ BattleFieldView::BattleFieldView(KGameCanvasWidget* parent, KBSRenderer* rendere
     
     m_screen = new BattleFieldScreen(this, parent->font());
     m_screen->stackOver(m_background);
-    m_screen->resize(size());
     m_screen->addButton("Human", KIcon("user-female"));
     m_screen->addButton("Computer", KIcon("roll"));
     m_screen->addButton("Network", KIcon("network"));
@@ -95,6 +95,7 @@ QSize BattleFieldView::size() const
 void BattleFieldView::update()
 {
     // update welcome screen
+    m_screen->moveTo(0, 0);
     m_screen->resize(size());
 
     // update background
