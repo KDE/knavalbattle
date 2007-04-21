@@ -81,6 +81,7 @@ public:
     void hit(const Coord& c);
     void miss(const Coord& c);
     void removeImpact();
+    void sink(const Coord& c, Ship* ship);
     void clear();
     
     

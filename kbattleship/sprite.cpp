@@ -36,4 +36,7 @@ void Sprite::setName(const QString& name)
     m_name = name;
 }
 
-
+QString Sprite::name() const
+{
+    return m_name;
+}

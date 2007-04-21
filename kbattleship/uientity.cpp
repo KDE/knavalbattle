@@ -62,7 +62,7 @@ void UIEntity::drawShoot(Sea::Player player, const Coord& c, const HitInfo& info
                 m_view->add(player, shipPos, info.shipDestroyed);
             }
             
-            // TODO: sink ship
+            m_view->sink(player, shipPos, info.shipDestroyed);
         }
     }
 }

@@ -210,6 +210,11 @@ void SeaView::miss(Sea::Player p, const Coord& c)
     m_fields[p]->miss(c);
 }
 
+void SeaView::sink(Sea::Player p, const Coord& c, Ship* ship)
+{
+    m_fields[p]->sink(c, ship);
+}
+
 void SeaView::clear()
 {
     m_fields[0]->clear();

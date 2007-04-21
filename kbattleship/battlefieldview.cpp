@@ -165,6 +165,24 @@ void BattleFieldView::add(const Coord& c, Ship* ship)
     }
 }
 
+void BattleFieldView::sink(const Coord& c, Ship* ship)
+{
+    Coord p = c;
+    for (unsigned int i = 0; 
+         i < ship->size(); 
+         i++, p += ship->increment()) {
+        foreach (Sprite* s, m_sprites.values(p)) {
+            if (s->name().startsWith("ship")) {
+                // TODO: sink ship
+            }
+            else if (s->name() == "hit") {
+                s->setName("hit-after");
+                s->update(m_renderer);
+            }
+        }
+    }
+}
+
 void BattleFieldView::hit(const Coord& c)
 {
     removeImpact();
