@@ -181,6 +181,7 @@ void BattleFieldView::add(const Coord& c, Ship* ship)
 void BattleFieldView::sink(const Coord& c, Ship* ship)
 {
     m_last_hit = 0;
+    Sprite* ship_sprite = 0;
     
     Coord p = c;
     for (unsigned int i = 0; 
@@ -188,13 +189,17 @@ void BattleFieldView::sink(const Coord& c, Ship* ship)
          i++, p += ship->increment()) {
         foreach (Sprite* s, m_sprites.values(p)) {
             if (s->name().startsWith("ship")) {
-                s->stackOver(m_background_lower);
+                ship_sprite = s;
             }
             else if (s->name().startsWith("hit")) {
                 s->setName("hit-end");
                 s->update(m_renderer);
+                s->stackOver(m_background_lower);
             }
         }
+    }
+    if (ship_sprite) {
+        ship_sprite->stackOver(m_background_lower);
     }
 }
 
