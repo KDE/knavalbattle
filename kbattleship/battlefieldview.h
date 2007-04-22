@@ -44,6 +44,7 @@ class BattleFieldView : public KGameCanvasGroup
     static const int PREVIEW_OPACITY = 120;
 
     KGameCanvasPixmap* m_background;
+    KGameCanvasPixmap* m_background_lower;
     WelcomeScreen* m_screen;
     KBSRenderer* m_renderer;
     Animator* m_animator;

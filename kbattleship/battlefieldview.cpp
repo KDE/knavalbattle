@@ -69,9 +69,17 @@ BattleFieldView::BattleFieldView(KGameCanvasWidget* parent, KBSRenderer* rendere
 , m_impact(0)
 , m_last_hit(0)
 {
-    m_background = new KGameCanvasPixmap(m_renderer->render(bgID, false, m_gridSize, m_gridSize), this);
+    m_background_lower = new KGameCanvasPixmap(
+        m_renderer->render(bgID + "-layer1", false, m_gridSize, m_gridSize), this);
+    m_background_lower->moveTo(0, 0);
+    m_background_lower->setOpacity(250);
+    m_background_lower->show();
+    
+    m_background = new KGameCanvasPixmap(
+        m_renderer->render(bgID + "-layer2", false, m_gridSize, m_gridSize), this);
     m_background->moveTo(0, 0);
     m_background->setOpacity(250);
+    m_background->stackOver(m_background_lower);
     m_background->show();
     
     m_screen = new BattleFieldScreen(this, parent->font());
@@ -100,7 +108,11 @@ void BattleFieldView::update()
     m_screen->resize(size());
 
     // update background
-    m_background->setPixmap(m_renderer->render(m_bgID, false, m_gridSize, m_gridSize));
+    m_background_lower->setPixmap(
+        m_renderer->render(m_bgID + "-layer1", false, m_gridSize, m_gridSize));
+    m_background_lower->moveTo(0, 0);
+    m_background->setPixmap(
+        m_renderer->render(m_bgID + "-layer2", false, m_gridSize, m_gridSize));
     m_background->moveTo(0, 0);
     
     // update preview
@@ -176,7 +188,7 @@ void BattleFieldView::sink(const Coord& c, Ship* ship)
          i++, p += ship->increment()) {
         foreach (Sprite* s, m_sprites.values(p)) {
             if (s->name().startsWith("ship")) {
-                // TODO: sink ship
+                s->stackOver(m_background_lower);
             }
             else if (s->name().startsWith("hit")) {
                 s->setName("hit-end");
