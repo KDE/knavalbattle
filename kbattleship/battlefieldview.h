@@ -50,7 +50,8 @@ class BattleFieldView : public KGameCanvasGroup
     SpriteFactory m_factory;
     QString m_bgID;
     int m_gridSize;
-		Sprite* m_impact;
+    Sprite* m_impact;
+    Sprite* m_last_hit;
     
     struct Preview {
         Coord pos;
