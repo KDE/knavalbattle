@@ -35,6 +35,7 @@ void MainWindow::setupActions()
     KAction* temp;
      
     temp = new KAction(i18n("&New game"), this);
+    temp->setShortcut(KShortcut("Ctrl+N"));
     actionCollection()->addAction("game_singleplayer", temp);
     connect(temp, SIGNAL(triggered()), m_main, SLOT(newGame()));
     

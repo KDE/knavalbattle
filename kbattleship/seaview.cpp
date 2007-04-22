@@ -219,6 +219,7 @@ void SeaView::clear()
 {
     m_fields[0]->clear();
     m_fields[1]->clear();
+    m_animator.restart();
 }
 
 BattleFieldView* SeaView::otherField(BattleFieldView* field)
