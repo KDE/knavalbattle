@@ -168,6 +168,8 @@ void BattleFieldView::add(const Coord& c, Ship* ship)
 
 void BattleFieldView::sink(const Coord& c, Ship* ship)
 {
+    m_last_hit = 0;
+    
     Coord p = c;
     for (unsigned int i = 0; 
          i < ship->size(); 
@@ -176,8 +178,8 @@ void BattleFieldView::sink(const Coord& c, Ship* ship)
             if (s->name().startsWith("ship")) {
                 // TODO: sink ship
             }
-            else if (s->name() == "hit") {
-                s->setName("hit-after");
+            else if (s->name().startsWith("hit")) {
+                s->setName("hit-end");
                 s->update(m_renderer);
             }
         }
