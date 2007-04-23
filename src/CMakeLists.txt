@@ -1,5 +1,3 @@
-add_subdirectory(pictures)
-add_subdirectory(sounds)
 add_subdirectory(kwelcomescreen)
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/kwelcomescreen ${CMAKE_SOURCE_DIR} ${CMAKE_BINARY_DIR} ${KDE4_INCLUDES})
 
