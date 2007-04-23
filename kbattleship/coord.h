@@ -36,7 +36,7 @@ public:
 
 kdbgstream& operator<<(kdbgstream& os, const Coord& c);
 uint qHash(const Coord& c);
-Q_DECLARE_METATYPE(Coord);
+Q_DECLARE_METATYPE(Coord)
 
 #endif // COORD_H
 
