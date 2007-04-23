@@ -1,5 +1,5 @@
 add_subdirectory(kwelcomescreen)
-include_directories(${CMAKE_CURRENT_SOURCE_DIR}/kwelcomescreen ${CMAKE_SOURCE_DIR} ${CMAKE_BINARY_DIR} ${KDE4_INCLUDES})
+include_directories(${CMAKE_SOURCE_DIR}/libkdegames ${CMAKE_CURRENT_SOURCE_DIR}/kwelcomescreen)
 
 set(kbattleship_SRCS
     ai/ai.cpp
