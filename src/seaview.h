@@ -17,6 +17,7 @@
 class BattleFieldView;
 class KBSRenderer;
 class Delegate;
+class BattleFieldScreen;
 
 class SeaView : public KGameCanvasWidget
 {
@@ -45,6 +46,8 @@ public:
     void miss(Sea::Player p, const Coord& c);
     void sink(Sea::Player p, const Coord& c, Ship* ship);
     void clear();
+
+    BattleFieldScreen* screen(Sea::Player player) const;
     
     virtual QSize sizeHint() const;
 protected:

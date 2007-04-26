@@ -7,9 +7,10 @@
   (at your option) any later version.
 */
 
+#include "sprite.h"
+
 #include <kdebug.h>
 
-#include "sprite.h"
 #include "kbsrenderer.h"
 
 Sprite::Sprite(KGameCanvasAbstract* parent, KBSRenderer* renderer, 

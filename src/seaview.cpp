@@ -7,13 +7,14 @@
   (at your option) any later version.
 */
 
+#include "seaview.h"
+
 #include <QMouseEvent>
 #include <kstandarddirs.h>
 #include <kdebug.h>
 #include <kmessagebox.h>
 #include <kgamecanvas.h>
 
-#include "seaview.h"
 #include "battlefieldview.h"
 #include "kbsrenderer.h"
 #include "delegate.h"
@@ -243,5 +244,10 @@ void SeaView::setDelegate(Delegate* c)
 QSize SeaView::sizeHint() const
 {
     return QSize(100, 400);
+}
+
+BattleFieldScreen* SeaView::screen(Sea::Player p) const
+{
+    return m_fields[p]->screen();
 }
 

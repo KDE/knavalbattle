@@ -7,9 +7,10 @@
   (at your option) any later version.
 */
 
+#include "animation.h"
+
 #include <kgamecanvas.h>
 #include <kdebug.h>
-#include "animation.h"
 
 AnimationGroup::AnimationGroup()
 : m_running(-1)

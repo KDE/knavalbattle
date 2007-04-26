@@ -35,6 +35,8 @@ Q_OBJECT
     void setupEntity(Entity*);
     Entity* findEntity(Sea::Player) const;
     void finalizeShot(Sea::Player player, const Coord& c, const HitInfo& info);
+    bool allPlayers() const;
+
     
     friend class Shot;
 public:
@@ -46,7 +48,7 @@ public:
     void createRemotePlayer(Sea::Player player, QIODevice* device, bool client);
     const Stats* stats() const;
     
-    void start(SeaView* view);
+    bool start(SeaView* view);
 public slots:
     void shoot(int player, const Coord& c);
     void ready(int player);

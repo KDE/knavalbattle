@@ -24,15 +24,34 @@ BattleFieldScreen::BattleFieldScreen(KGameCanvasAbstract* parent, const QFont& f
 {
     m_background_color = QColor(100,100,100,50);
     connect(&m_timer, SIGNAL(timeout()), this, SLOT(tick()));
+    
+    ScreenButton* button;
+    
+    button = static_cast<ScreenButton*>(addButton("Human", KIcon("user-female")));
+    connect(button, SIGNAL(clicked()), this, SIGNAL(human()));
+    
+    button = static_cast<ScreenButton*>(addButton("Computer", KIcon("roll")));
+    connect(button, SIGNAL(clicked()), this, SIGNAL(ai()));
+    
+    button = static_cast<ScreenButton*>(addButton("Network", KIcon("network")));
+    connect(button, SIGNAL(clicked()), this, SIGNAL(network()));
 }
 
-void BattleFieldScreen::buttonClicked(KWelcomeScreenOverlayButton*)
+KWelcomeScreenOverlayButton* BattleFieldScreen::createButton(const QString& text, const QIcon& icon)
+{
+    return new ScreenButton(this, m_font, text, icon);
+}
+
+void BattleFieldScreen::buttonClicked(KWelcomeScreenOverlayButton* button)
 {
     foreach (KWelcomeScreenOverlayButton* button, m_buttons) {
         button->setEnabled(false);
     }
     m_timer.start(0);
     m_time.restart();
+    
+    ScreenButton* btn = static_cast<ScreenButton*>(button);
+    emit btn->clicked();
 }
 
 void BattleFieldScreen::tick()
@@ -54,6 +73,11 @@ void BattleFieldScreen::tick()
         hide();
         m_timer.stop();
     }
+}
+
+ScreenButton::ScreenButton(BattleFieldScreen* parent, const QFont& font, const QString& text, const QIcon& icon)
+: KWelcomeScreenOverlayButton(parent, font, text, icon)
+{
 }
 
 // -------------------------------------
@@ -84,9 +108,6 @@ BattleFieldView::BattleFieldView(KGameCanvasWidget* parent, KBSRenderer* rendere
     
     m_screen = new BattleFieldScreen(this, parent->font());
     m_screen->stackOver(m_background);
-    m_screen->addButton("Human", KIcon("user-female"));
-    m_screen->addButton("Computer", KIcon("roll"));
-    m_screen->addButton("Network", KIcon("network"));
     m_screen->show();
     
     for (Sprites::iterator i = m_sprites.begin();
@@ -246,22 +267,35 @@ void BattleFieldView::clear()
 
 void BattleFieldView::onMousePress(const QPoint& p)
 {
-    m_screen->onMousePress(p);
+    if (m_screen->visible()) {
+        m_screen->onMousePress(p);
+    }
 }
 
 void BattleFieldView::onMouseRelease(const QPoint& p)
 {
-    m_screen->onMouseRelease(p);
+    if (m_screen->visible()) {
+        m_screen->onMouseRelease(p);
+    }
 }
 
 void BattleFieldView::onMouseMove(const QPoint& p)
 {
-    m_screen->onMouseMove(p);
+    if (m_screen->visible()) {
+        m_screen->onMouseMove(p);
+    }
 }
 
 void BattleFieldView::onMouseLeave()
 {
-    m_screen->onMouseLeave();
+    if (m_screen->visible()) {
+        m_screen->onMouseLeave();
+    }
+}
+
+BattleFieldScreen* BattleFieldView::screen() const
+{
+    return m_screen;
 }
 
 #include "battlefieldview.moc"

@@ -32,7 +32,7 @@ PlayerEntity* GeneralController::createPlayer(Sea::Player player, SeaView* view,
 {
     if (m_ui) {
         kDebug() << "Cannot create more than one human player" << endl;
-        exit(1);
+        return 0;
     }
     PlayerEntity* entity = new PlayerEntity(player, m_sea, view, chat);
     entity->setNick(nick);
@@ -79,8 +79,25 @@ void GeneralController::setupEntity(Entity* entity)
     m_entities.append(entity);
 }
 
-void GeneralController::start(SeaView* view)
+bool GeneralController::allPlayers() const
 {
+    unsigned char bitmap = 0;
+    foreach (Entity* entity, m_entities) {
+        int player = entity->player();
+        kDebug() << "found player " << player << endl;
+        bitmap |= (1 << player);    
+    }
+    
+    kDebug() << "bitmap = " << (unsigned) bitmap << endl;
+    return bitmap == 3;
+}
+
+bool GeneralController::start(SeaView* view)
+{
+    if (!allPlayers()) {
+        return false;
+    }
+    
     if (!m_ui) {
         m_ui = new UIEntity(Sea::NO_PLAYER, m_sea, view);
         setupEntity(m_ui);
@@ -98,6 +115,7 @@ void GeneralController::start(SeaView* view)
             }
         }
     }
+    return true;
 }
 
 void GeneralController::shoot(int player, const Coord& c)

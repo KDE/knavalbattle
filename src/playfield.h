@@ -20,6 +20,7 @@ class QTcpServer;
 class QTcpSocket;
 class AudioPlayer;
 class ChatWidget;
+class QSignalMapper;
 
 class PlayField : public QWidget
 {
@@ -32,6 +33,7 @@ Q_OBJECT
     AudioPlayer* m_player;
     ChatWidget* m_chat;
     int m_human_player;
+    QSignalMapper* m_mappers[3];
     
     void setupController();
 public:
@@ -47,6 +49,9 @@ public slots:
 private slots:
     void acceptClient();
     void clientConnected();
+    void human(int);
+    void ai(int);
+    void network(int);
 signals:
     void gameFinished();
 };

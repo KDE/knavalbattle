@@ -54,7 +54,7 @@ public:
     
     virtual ~KWelcomeScreenOverlay();
     virtual void drawScreen(QPainter& p);
-    virtual void addButton(const QString &text, const QIcon &icon);
+    virtual KWelcomeScreenOverlayButton* addButton(const QString &text, const QIcon &icon);
     virtual void resize(const QSize& sz);
     virtual void onMousePress(const QPoint& p);
     virtual void onMouseRelease(const QPoint& p);

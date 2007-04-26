@@ -7,9 +7,10 @@
   (at your option) any later version.
 */
 
+#include "spritefactory.h"
+
 #include <sstream>
 
-#include "spritefactory.h"
 #include "ship.h"
 #include "sprite.h"
 

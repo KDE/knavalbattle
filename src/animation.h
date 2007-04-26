@@ -10,6 +10,8 @@
 #ifndef ANIMATION_H
 #define ANIMATION_H
 
+#include <QList>
+
 class KGameCanvasItem;
 
 class Animation

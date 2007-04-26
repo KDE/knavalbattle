@@ -17,7 +17,6 @@
 *   Boston, MA 02110-1301, USA.                                               *
 *******************************************************************************/
 
-#include "kwelcomescreen.moc"
 #include <kwelcomescreen.h>
 
 #include <QPaintEvent>
@@ -165,14 +164,15 @@ KWelcomeScreenOverlayButton* KWelcomeScreenOverlay::createButton(const QString &
     return new KWelcomeScreenOverlayButton(this, m_font, text, icon);
 }
 
-void KWelcomeScreenOverlay::addButton(const QString &text, const QIcon &icon)
+KWelcomeScreenOverlayButton *KWelcomeScreenOverlay::addButton(const QString &text, const QIcon &icon)
 {
-    KWelcomeScreenOverlayButton* button = createButton(text, icon);
+    KWelcomeScreenOverlayButton *button = createButton(text, icon);
     m_buttons.push_back(button);
+    return button;
 }
 
 KWelcomeScreenOverlayButton::KWelcomeScreenOverlayButton(
-    KWelcomeScreenOverlay* parent, const QFont &font, const QString &text, const QIcon &icon)
+    KWelcomeScreenOverlay *parent, const QFont &font, const QString &text, const QIcon &icon)
 : m_parent(parent)
 , m_text(text)
 , m_icon(icon)
@@ -375,3 +375,6 @@ void KWelcomeWidget::buttonClicked(KWelcomeScreenOverlayButton* button)
             emit clicked(i);
     }
 }
+
+#include "kwelcomescreen.moc"
+

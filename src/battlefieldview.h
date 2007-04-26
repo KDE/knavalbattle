@@ -23,6 +23,7 @@ class KBSRenderer;
 class Sprite;
 class Ship;
 class Animator;
+class ScreenButton;
 
 class BattleFieldScreen : public QObject, public WelcomeScreen
 {
@@ -34,9 +35,24 @@ public:
     BattleFieldScreen(KGameCanvasAbstract* parent, const QFont& font);
     
     virtual void buttonClicked(KWelcomeScreenOverlayButton* button);
-    
+    virtual KWelcomeScreenOverlayButton* createButton(const QString& text, const QIcon& icon);
 public slots:
     void tick();
+    
+signals:
+    void human();
+    void ai();
+    void network();
+};
+
+class ScreenButton : public QObject, public KWelcomeScreenOverlayButton
+{
+Q_OBJECT
+    friend class BattleFieldScreen;
+public:
+    ScreenButton(BattleFieldScreen* parent, const QFont& font, const QString& text, const QIcon& icon);
+signals:
+    void clicked();
 };
 
 class BattleFieldView : public KGameCanvasGroup
@@ -45,7 +61,7 @@ class BattleFieldView : public KGameCanvasGroup
 
     KGameCanvasPixmap* m_background;
     KGameCanvasPixmap* m_background_lower;
-    WelcomeScreen* m_screen;
+    BattleFieldScreen* m_screen;
     KBSRenderer* m_renderer;
     Animator* m_animator;
     SpriteFactory m_factory;
@@ -91,6 +107,8 @@ public:
     void onMouseRelease(const QPoint& p);
     void onMouseMove(const QPoint& p);
     void onMouseLeave();
+    
+    BattleFieldScreen* screen() const;
 };
 
 #endif // BATTLEFIELD_H

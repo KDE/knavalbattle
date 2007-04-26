@@ -8,6 +8,8 @@
   (at your option) any later version.
 */
 
+#include "mainwindow.h"
+
 #include <QResizeEvent>
 #include <QHBoxLayout>
 #include <kstandardaction.h>
@@ -15,7 +17,6 @@
 #include <kaction.h>
 #include <klocale.h>
 
-#include "mainwindow.h"
 #include "playfield.h"
 
 MainWindow::MainWindow()

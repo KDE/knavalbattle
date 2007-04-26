@@ -7,9 +7,10 @@
   (at your option) any later version.
 */
 
+#include "battlefield.h"
+
 #include <kdebug.h>
 
-#include "battlefield.h"
 #include "sea.h"
 
 BattleField::BattleField(Sea* parent, const Coord& size)

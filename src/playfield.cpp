@@ -9,21 +9,24 @@
   (at your option) any later version.
 */
 
+#include "playfield.h"
+
 #include <QResizeEvent>
 #include <QLayout>
 #include <QTcpServer>
 #include <QTcpSocket>
+#include <QSignalMapper>
 #include <kscoredialog.h>
 #include <klocale.h>
 #include <kmessagebox.h>
 
-#include "playfield.h"
 #include "seaview.h"
 #include "generalcontroller.h"
 #include "stats.h"
 #include "audioplayer.h"
 #include "chatwidget.h"
 #include "playerentity.h"
+#include "battlefieldview.h"
 
 PlayField::PlayField(QWidget* parent)
 : QWidget(parent)
@@ -59,6 +62,32 @@ PlayField::PlayField(QWidget* parent)
     m_highscores->addField(KScoreDialog::Custom1, i18n("Shots"), "shots");
     m_highscores->addField(KScoreDialog::Custom2, i18n("Hits"), "hits");
     m_highscores->addField(KScoreDialog::Custom3, i18n("Misses"), "water");
+    
+    // setup signal mappers
+    for (int i = 0; i < 3; i++) {
+        m_mappers[i] = new QSignalMapper(this);
+    }
+    connect(m_sea->screen(Sea::PLAYER_A), SIGNAL(human()),
+            m_mappers[0], SLOT(map()));
+    connect(m_sea->screen(Sea::PLAYER_B), SIGNAL(human()),
+            m_mappers[0], SLOT(map()));
+    connect(m_sea->screen(Sea::PLAYER_A), SIGNAL(ai()),
+            m_mappers[1], SLOT(map()));
+    connect(m_sea->screen(Sea::PLAYER_B), SIGNAL(ai()),
+            m_mappers[1], SLOT(map()));
+    connect(m_sea->screen(Sea::PLAYER_A), SIGNAL(network()),
+            m_mappers[2], SLOT(map()));
+    connect(m_sea->screen(Sea::PLAYER_B), SIGNAL(network()),
+            m_mappers[2], SLOT(map()));
+    for (int i = 0; i < 3; i++) {
+        m_mappers[i]->setMapping(m_sea->screen(Sea::PLAYER_A), 0);
+        m_mappers[i]->setMapping(m_sea->screen(Sea::PLAYER_B), 1);
+    }
+    connect(m_mappers[0], SIGNAL(mapped(int)), this, SLOT(human(int)));
+    connect(m_mappers[1], SIGNAL(mapped(int)), this, SLOT(ai(int)));
+    connect(m_mappers[2], SIGNAL(mapped(int)), this, SLOT(network(int)));
+    
+    setupController();
 }
 
 PlayField::~PlayField()
@@ -136,11 +165,9 @@ void PlayField::acceptClient()
 void PlayField::clientConnected()
 {
     if (m_client) {
-        m_human_player = 0;
-        PlayerEntity* player = m_controller->createPlayer(Sea::Player(0), m_sea, 
-                                                          m_chat, "clientdude");
-        connect(m_chat, SIGNAL(message(QString, QString)),
-            player, SIGNAL(chat(QString, QString)));
+        // TODO restore chat
+//         connect(m_chat, SIGNAL(message(QString, QString)),
+//             player, SIGNAL(chat(QString, QString)));
         m_controller->createRemotePlayer(Sea::Player(1), m_client, true);
         m_controller->start(m_sea);
         m_server->close();
@@ -181,6 +208,36 @@ void PlayField::gameOver(Sea::Player winner)
     // When we have finished, show again the welcome screen
     emit gameFinished();
 }
+
+void PlayField::human(int player)
+{
+    kDebug() << "human " << player << endl;
+    if (m_human_player != -1) {
+//         setupController();
+        m_human_player = player;
+        m_controller->createPlayer(Sea::Player(player), m_sea, m_chat, "dude");
+        m_controller->start(m_sea);
+    }
+}
+
+void PlayField::ai(int player)
+{
+    kDebug() << "ai " << player << endl;
+//     setupController();
+    m_controller->createAI(Sea::Player(player));
+    m_controller->start(m_sea);
+}
+
+void PlayField::network(int player)
+{
+    kDebug() << "network " << player << endl;
+    m_server->close();
+//     setupController();
+    m_client = new QTcpSocket;
+    connect(m_client, SIGNAL(connected()), this, SLOT(clientConnected()));
+    m_client->connectToHost("localhost", 54321);
+}
+
 
 #include "playfield.moc"
 

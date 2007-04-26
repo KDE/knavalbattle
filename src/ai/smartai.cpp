@@ -7,14 +7,14 @@
   (at your option) any later version.
 */
 
+#include "smartai.h"
+
 #include <algorithm>
 
 // for rand
 #include <stdio.h>
 #include <time.h>
 #include <sys/time.h>
-
-#include "smartai.h"
 
 class Strategy
 {
