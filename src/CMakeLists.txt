@@ -54,6 +54,7 @@ target_link_libraries(kbattleship ${KDE4_KDEUI_LIBS} ${KDE4_PHONONCORE_LIBS} kde
 
 install(TARGETS kbattleship  DESTINATION ${BIN_INSTALL_DIR} )
 install( FILES kbattleshipui.rc  DESTINATION  ${DATA_INSTALL_DIR}/kbattleship )
+install(FILES kbattleship.desktop DESTINATION ${XDG_APPS_DIR})
 
 
 
