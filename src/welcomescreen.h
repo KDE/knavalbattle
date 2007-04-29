@@ -11,18 +11,35 @@
 #define WELCOMESCREEN_H
 
 #include <kgamecanvas.h>
-#include "kwelcomescreen.h"
+#include <QHash>
+#include "grid.h"
 
-class WelcomeScreen : public KGameCanvasItem, public KWelcomeScreenOverlay
+class Button;
+
+class WelcomeScreen : public QObject, public KGameCanvasGroup
 {
-protected:
-	virtual void invalidateScreen(const QRect &);
-	virtual void buttonClicked(KWelcomeScreenOverlayButton* ) { }
+Q_OBJECT
+    typedef QHash<Coord, Button*> Buttons;
+    Buttons m_buttons;
+    QFont m_font;
+    QSize m_size;
+    
+    KGameCanvasRectangle* m_background;
+    
+    Button* m_clicked;
+    Button* m_hover;
 public:
 	WelcomeScreen(KGameCanvasAbstract* parent, const QFont& font);
-
-	virtual QRect rect() const;
-	virtual void paint(QPainter* p);
+    
+    void resize(const QSize&);
+    void update();
+    
+    Button* addButton(int x, int y, const QIcon& icon, const QString& text);
+    
+    void onMousePress(const QPoint& p);
+    void onMouseRelease(const QPoint& p);
+    void onMouseMove(const QPoint& p);
+    void onMouseLeave();
 };
 
 #endif // WELCOMESCREEN_H

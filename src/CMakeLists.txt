@@ -22,6 +22,7 @@ set(kbattleship_SRCS
     audioplayer.cpp
     battlefield.cpp
     battlefieldview.cpp
+    button.cpp
     chatwidget.cpp
     coord.cpp
     element.cpp

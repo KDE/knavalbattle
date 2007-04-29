@@ -246,7 +246,7 @@ QSize SeaView::sizeHint() const
     return QSize(100, 400);
 }
 
-BattleFieldScreen* SeaView::screen(Sea::Player p) const
+WelcomeScreen* SeaView::screen(Sea::Player p) const
 {
     return m_fields[p]->screen();
 }

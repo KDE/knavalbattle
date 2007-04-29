@@ -17,70 +17,7 @@
 #include "sprite.h"
 #include "animator.h"
 #include "animation.h"
-
-BattleFieldScreen::BattleFieldScreen(KGameCanvasAbstract* parent, const QFont& font)
-: WelcomeScreen(parent, font)
-, m_opacity(1.0)
-{
-    m_background_color = QColor(100,100,100,50);
-    connect(&m_timer, SIGNAL(timeout()), this, SLOT(tick()));
-    
-    ScreenButton* button;
-    
-    button = static_cast<ScreenButton*>(addButton("Human", KIcon("user-female")));
-    connect(button, SIGNAL(clicked()), this, SIGNAL(human()));
-    
-    button = static_cast<ScreenButton*>(addButton("Computer", KIcon("roll")));
-    connect(button, SIGNAL(clicked()), this, SIGNAL(ai()));
-    
-    button = static_cast<ScreenButton*>(addButton("Network", KIcon("network")));
-    connect(button, SIGNAL(clicked()), this, SIGNAL(network()));
-}
-
-KWelcomeScreenOverlayButton* BattleFieldScreen::createButton(const QString& text, const QIcon& icon)
-{
-    return new ScreenButton(this, m_font, text, icon);
-}
-
-void BattleFieldScreen::buttonClicked(KWelcomeScreenOverlayButton* button)
-{
-    foreach (KWelcomeScreenOverlayButton* button, m_buttons) {
-        button->setEnabled(false);
-    }
-    m_timer.start(0);
-    m_time.restart();
-    
-    ScreenButton* btn = static_cast<ScreenButton*>(button);
-    emit btn->clicked();
-}
-
-void BattleFieldScreen::tick()
-{
-    bool done = false;
-    m_opacity -= m_time.restart() * 0.003;
-    if (m_opacity <= 0.0) {
-        m_opacity = 0.0;
-        done = true;
-    }
-
-    m_background_color.setAlpha(static_cast<int>(50 * m_opacity));
-    foreach (KWelcomeScreenOverlayButton* button, m_buttons) {
-        button->setOpacity(m_opacity);
-    }
-    changed();
-    
-    if (done) {
-        hide();
-        m_timer.stop();
-    }
-}
-
-ScreenButton::ScreenButton(BattleFieldScreen* parent, const QFont& font, const QString& text, const QIcon& icon)
-: KWelcomeScreenOverlayButton(parent, font, text, icon)
-{
-}
-
-// -------------------------------------
+#include "welcomescreen.h"
 
 BattleFieldView::BattleFieldView(KGameCanvasWidget* parent, KBSRenderer* renderer, 
                                 Animator* animator, const QString& bgID, int gridSize)
@@ -106,8 +43,18 @@ BattleFieldView::BattleFieldView(KGameCanvasWidget* parent, KBSRenderer* rendere
     m_background->stackOver(m_background_lower);
     m_background->show();
     
-    m_screen = new BattleFieldScreen(this, parent->font());
+    m_screen = new WelcomeScreen(this, parent->font());
     m_screen->stackOver(m_background);
+
+    Button* button;
+    button = m_screen->addButton(0, 0, KIcon("user-female"), "Human");
+//     connect(button, SIGNAL(clicked()), this, SIGNAL(human()));
+    
+    button = m_screen->addButton(0, 1, KIcon("roll"), "Computer");
+//     connect(button, SIGNAL(clicked()), this, SIGNAL(ai()));
+    
+    button = m_screen->addButton(0, 2, KIcon("network"), "Network");
+//     connect(button, SIGNAL(clicked()), this, SIGNAL(network()));
     m_screen->show();
     
     for (Sprites::iterator i = m_sprites.begin();
@@ -293,11 +240,7 @@ void BattleFieldView::onMouseLeave()
     }
 }
 
-BattleFieldScreen* BattleFieldView::screen() const
+WelcomeScreen* BattleFieldView::screen() const
 {
     return m_screen;
 }
-
-#include "battlefieldview.moc"
-
-

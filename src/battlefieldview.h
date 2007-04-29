@@ -16,44 +16,13 @@
 #include <QTimer>
 #include "coord.h"
 #include "spritefactory.h"
-#include "welcomescreen.h"
 #include "grid.h"
 
 class KBSRenderer;
 class Sprite;
 class Ship;
 class Animator;
-class ScreenButton;
-
-class BattleFieldScreen : public QObject, public WelcomeScreen
-{
-Q_OBJECT
-    QTimer m_timer;
-    QTime m_time;
-    double m_opacity;
-public:
-    BattleFieldScreen(KGameCanvasAbstract* parent, const QFont& font);
-    
-    virtual void buttonClicked(KWelcomeScreenOverlayButton* button);
-    virtual KWelcomeScreenOverlayButton* createButton(const QString& text, const QIcon& icon);
-public slots:
-    void tick();
-    
-signals:
-    void human();
-    void ai();
-    void network();
-};
-
-class ScreenButton : public QObject, public KWelcomeScreenOverlayButton
-{
-Q_OBJECT
-    friend class BattleFieldScreen;
-public:
-    ScreenButton(BattleFieldScreen* parent, const QFont& font, const QString& text, const QIcon& icon);
-signals:
-    void clicked();
-};
+class WelcomeScreen;
 
 class BattleFieldView : public KGameCanvasGroup
 {
@@ -61,7 +30,7 @@ class BattleFieldView : public KGameCanvasGroup
 
     KGameCanvasPixmap* m_background;
     KGameCanvasPixmap* m_background_lower;
-    BattleFieldScreen* m_screen;
+    WelcomeScreen* m_screen;
     KBSRenderer* m_renderer;
     Animator* m_animator;
     SpriteFactory m_factory;
@@ -108,7 +77,7 @@ public:
     void onMouseMove(const QPoint& p);
     void onMouseLeave();
     
-    BattleFieldScreen* screen() const;
+    WelcomeScreen* screen() const;
 };
 
 #endif // BATTLEFIELD_H

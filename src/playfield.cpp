@@ -26,7 +26,7 @@
 #include "audioplayer.h"
 #include "chatwidget.h"
 #include "playerentity.h"
-#include "battlefieldview.h"
+#include "welcomescreen.h"
 
 PlayField::PlayField(QWidget* parent)
 : QWidget(parent)
