@@ -16,6 +16,7 @@
 #include <kgamecanvas.h>
 
 #include "battlefieldview.h"
+#include "entitylabel.h"
 #include "kbsrenderer.h"
 #include "delegate.h"
 
@@ -36,6 +37,14 @@ SeaView::SeaView(QWidget* parent)
     m_fields[0]->show();
     m_fields[1] = new BattleFieldView(this, m_renderer, "background2", GRID_SIZE);
     m_fields[1]->show();
+    
+    // create labels
+    QFont labelFont = parent->font();
+    labelFont.setPixelSize(LABEL_HEIGHT / 3);
+    m_labels[0] = new EntityLabel(this, labelFont, "", QSize(m_fields[0]->size().width(), LABEL_HEIGHT));
+    m_labels[0]->show();
+    m_labels[1] = new EntityLabel(this, labelFont, "", QSize(m_fields[1]->size().width(), LABEL_HEIGHT));
+    m_labels[1]->show();
     
     Animator::instance()->start();
     
@@ -60,6 +69,11 @@ void SeaView::update()
     m_fields[0]->update();
     m_fields[1]->moveTo(m_fields[0]->size().width() + ts, 0);
     m_fields[1]->update();
+    
+    m_labels[0]->resize(QSize(m_fields[0]->size().width(), LABEL_HEIGHT));
+    m_labels[0]->moveTo(m_fields[0]->pos().x(), m_fields[0]->size().height() + 10);
+    m_labels[1]->resize(QSize(m_fields[1]->size().width(), LABEL_HEIGHT));
+    m_labels[1]->moveTo(m_fields[1]->pos().x(), m_fields[1]->size().height() + 10);
 }
 
 void SeaView::resizeEvent(QResizeEvent*)
@@ -230,7 +244,7 @@ BattleFieldView* SeaView::otherField(BattleFieldView* field)
 
 int SeaView::tileSize() const
 {
-    int h = (height() - 60) / GRID_SIZE;
+    int h = (height() - LABEL_HEIGHT) / GRID_SIZE;
     int w = width() / (GRID_SIZE * 2 + 1);
     return w < h ? w : h;
 }

@@ -15,6 +15,7 @@
 #include "animator.h"
 
 class BattleFieldView;
+class EntityLabel;
 class KBSRenderer;
 class Delegate;
 class WelcomeScreen;
@@ -22,7 +23,10 @@ class WelcomeScreen;
 class SeaView : public KGameCanvasWidget
 {
     static const unsigned int GRID_SIZE = 10;
+    static const unsigned int LABEL_HEIGHT = 52;
+    
     BattleFieldView* m_fields[2];
+    EntityLabel* m_labels[2];
     
     KBSRenderer* m_renderer;
     Delegate* m_delegate;

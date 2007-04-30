@@ -27,6 +27,7 @@ set(kbattleship_SRCS
     coord.cpp
     element.cpp
     entity.cpp
+    entitylabel.cpp
     generalcontroller.cpp
     kbsrenderer.cpp
     main.cpp
