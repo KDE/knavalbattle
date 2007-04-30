@@ -19,11 +19,9 @@
 #include "animation.h"
 #include "welcomescreen.h"
 
-BattleFieldView::BattleFieldView(KGameCanvasWidget* parent, KBSRenderer* renderer, 
-                                Animator* animator, const QString& bgID, int gridSize)
+BattleFieldView::BattleFieldView(KGameCanvasWidget* parent, KBSRenderer* renderer, const QString& bgID, int gridSize)
 : KGameCanvasGroup(parent)
 , m_renderer(renderer)
-, m_animator(animator)
 , m_factory(this, renderer)
 , m_bgID(bgID)
 , m_gridSize(gridSize)
@@ -137,12 +135,12 @@ void BattleFieldView::add(const Coord& c, Ship* ship)
     // fading preview in
     if (ship == m_preview.ship) {
         Animation* a = new FadeAnimation(sprite, PREVIEW_OPACITY, 255, 1000);
-        m_animator->add(a);
+        Animator::instance()->add(a);
         cancelPreview();
     }
     else if (!ship->alive()) {
         Animation* a = new FadeAnimation(sprite, 0, 200, 1000);
-        m_animator->add(a);
+        Animator::instance()->add(a);
     }
 }
 

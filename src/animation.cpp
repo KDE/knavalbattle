@@ -84,4 +84,33 @@ bool FadeAnimation::step(int t)
 }
 
 
+MovementAnimation::MovementAnimation(KGameCanvasItem* sprite, const QPoint& from, 
+                                     const QPoint& to, int time)
+: m_sprite(sprite)
+, m_from(from)
+, m_to(to)
+, m_time(time)
+{
+}
+
+void MovementAnimation::start(int t)
+{
+    m_start = t;
+    m_sprite->moveTo(m_from);
+}
+
+bool MovementAnimation::step(int t)
+{
+    if (t >= m_start + m_time) {
+        m_sprite->moveTo(m_to);
+        return true;
+    }
+    else {
+        QPoint pos = m_from + (m_to - m_from) * (t - m_start) / m_time;
+        m_sprite->moveTo(pos);
+        return false;
+    }
+}
+
+#include "animation.moc"
 

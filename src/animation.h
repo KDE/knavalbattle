@@ -11,11 +11,14 @@
 #define ANIMATION_H
 
 #include <QList>
+#include <QObject>
+#include <QPoint>
 
 class KGameCanvasItem;
 
-class Animation
+class Animation : public QObject
 {
+Q_OBJECT
 public:
     virtual ~Animation() { }
     virtual void start(int t) = 0;
@@ -24,6 +27,7 @@ public:
 
 class AnimationGroup : public Animation
 {
+Q_OBJECT
     typedef QList<Animation*> Animations;
     Animations m_animations;
     int m_running;
@@ -39,13 +43,29 @@ public:
 
 class FadeAnimation : public Animation
 {
+Q_OBJECT
     KGameCanvasItem* m_sprite;
     int m_from;
     int m_to;
     int m_time;
     int m_start;
 public:
-    FadeAnimation(KGameCanvasItem* sprite, int from, int to, int m_time);
+    FadeAnimation(KGameCanvasItem* sprite, int from, int to, int time);
+    virtual void start(int t);
+    virtual bool step(int t);
+};
+
+class MovementAnimation : public Animation
+{
+Q_OBJECT
+    KGameCanvasItem* m_sprite;
+    QPoint m_from;
+    QPoint m_to;
+    int m_time;
+    int m_start;
+public:
+    MovementAnimation(KGameCanvasItem* sprite, const QPoint& from,
+                      const QPoint& to, int time);
     virtual void start(int t);
     virtual bool step(int t);
 };

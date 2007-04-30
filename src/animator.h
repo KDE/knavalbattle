@@ -12,16 +12,23 @@
 
 #include <QTimer>
 #include <QTime>
-#include "animation.h"
+
+class AnimationGroup;
+class Animation;
 
 class Animator : public QObject
 {
 Q_OBJECT
-    AnimationGroup m_group;
+    AnimationGroup* m_group;
     QTimer m_timer;
     QTime m_time;
-public:
+    
+    static Animator* m_instance;
     Animator();
+public:
+    static Animator* instance();
+    
+    ~Animator();
     void add(Animation*);
     
     void start();

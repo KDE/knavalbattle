@@ -8,33 +8,52 @@
 */
 
 #include "animator.h"
+#include "animation.h"
+
+Animator* Animator::m_instance = 0;
 
 Animator::Animator()
 {
+    m_group = new AnimationGroup;
     connect(&m_timer, SIGNAL(timeout()), this, SLOT(tick()));
+}
+
+Animator::~Animator()
+{
+    delete m_group;
 }
 
 void Animator::add(Animation* a)
 {
-    m_group.add(a);
+    m_group->add(a);
 }
 
 void Animator::start()
 {
     m_timer.start(20);
     m_time.start();
-    m_group.start(0);
+    m_group->start(0);
 }
 
 void Animator::restart()
 {
-    m_group = AnimationGroup();
+    delete m_group;
+    m_group = new AnimationGroup;
+    
     m_time.restart();
 }
 
 void Animator::tick()
 {
-    m_group.step(m_time.elapsed());
+    m_group->step(m_time.elapsed());
+}
+
+Animator* Animator::instance()
+{
+    if (!m_instance) {
+        m_instance = new Animator;
+    }
+    return m_instance;
 }
 
 #include "animator.moc"

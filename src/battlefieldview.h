@@ -32,7 +32,6 @@ class BattleFieldView : public KGameCanvasGroup
     KGameCanvasPixmap* m_background_lower;
     WelcomeScreen* m_screen;
     KBSRenderer* m_renderer;
-    Animator* m_animator;
     SpriteFactory m_factory;
     QString m_bgID;
     int m_gridSize;
@@ -56,8 +55,7 @@ class BattleFieldView : public KGameCanvasGroup
     Sprites m_sprites;
     void addSprite(const Coord& c, Sprite* ship);
 public:
-    BattleFieldView(KGameCanvasWidget* parent, KBSRenderer* renderer, 
-                    Animator* animator, const QString& bgID, int gridSize);
+    BattleFieldView(KGameCanvasWidget* parent, KBSRenderer* renderer, const QString& bgID, int gridSize);
     QSize size() const;
     
     void update();

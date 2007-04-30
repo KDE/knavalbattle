@@ -32,12 +32,12 @@ SeaView::SeaView(QWidget* parent)
     m_renderer->resize(tileSize());
     
     // create fields
-    m_fields[0] = new BattleFieldView(this, m_renderer, &m_animator, "background", GRID_SIZE);
+    m_fields[0] = new BattleFieldView(this, m_renderer, "background", GRID_SIZE);
     m_fields[0]->show();
-    m_fields[1] = new BattleFieldView(this, m_renderer, &m_animator, "background2", GRID_SIZE);
+    m_fields[1] = new BattleFieldView(this, m_renderer, "background2", GRID_SIZE);
     m_fields[1]->show();
     
-    m_animator.start();
+    Animator::instance()->start();
     
     update();
     
@@ -220,7 +220,7 @@ void SeaView::clear()
 {
     m_fields[0]->clear();
     m_fields[1]->clear();
-    m_animator.restart();
+    Animator::instance()->restart();
 }
 
 BattleFieldView* SeaView::otherField(BattleFieldView* field)
@@ -230,7 +230,7 @@ BattleFieldView* SeaView::otherField(BattleFieldView* field)
 
 int SeaView::tileSize() const
 {
-    int h = height() / GRID_SIZE;
+    int h = (height() - 60) / GRID_SIZE;
     int w = width() / (GRID_SIZE * 2 + 1);
     return w < h ? w : h;
 }

@@ -28,7 +28,6 @@ class SeaView : public KGameCanvasWidget
     Delegate* m_delegate;
     BattleFieldView* otherField(BattleFieldView* field);
     QPoint m_last_preview;
-    Animator m_animator;
     int m_last_f;
     
     bool setPreview(Sea::Player player, const QPoint& pos);
