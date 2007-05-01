@@ -49,8 +49,6 @@ void WelcomeScreen::resize(const QSize& size)
 
 void WelcomeScreen::update()
 {
-    kDebug() << "size = " << m_size << endl;
-
     // find dimensions
     int max_x = 0;
     int max_y = 0;
