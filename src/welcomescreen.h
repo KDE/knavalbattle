@@ -43,6 +43,11 @@ public:
     
 public slots:
     void hide();
+    
+signals:
+    void human();
+    void ai();
+    void network();
 };
 
 #endif // WELCOMESCREEN_H

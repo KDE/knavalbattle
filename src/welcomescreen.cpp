@@ -10,6 +10,7 @@
 #include "welcomescreen.h"
 
 #include <kdebug.h>
+#include <kicon.h>
 
 #include "button.h"
 #include "animator.h"
@@ -22,6 +23,16 @@ WelcomeScreen::WelcomeScreen(KGameCanvasAbstract* parent, const QFont& font)
 {
     m_background = new KGameCanvasRectangle(QColor(0, 0, 0, 80), m_size, this);
     m_background->show();
+    
+    Button* button;
+    button = addButton(0, 0, KIcon("user-female"), "Human");
+    connect(button, SIGNAL(clicked()), this, SIGNAL(human()));
+    
+    button = addButton(0, 1, KIcon("roll"), "Computer");
+    connect(button, SIGNAL(clicked()), this, SIGNAL(ai()));
+    
+    button = addButton(0, 2, KIcon("network"), "Network");
+    connect(button, SIGNAL(clicked()), this, SIGNAL(network()));
 }
 
 void WelcomeScreen::resize(const QSize& size)
@@ -122,7 +133,7 @@ void WelcomeScreen::onMouseRelease(const QPoint& p)
         m_clicked->onClicked();
         
         Animation* hideAnimation = new FadeAnimation(this, opacity(), 0, 500);
-//         connect(hideAnimation, SIGNAL(done()), this, SLOT(hide()));
+        connect(hideAnimation, SIGNAL(done()), this, SLOT(hide()));
         Animator::instance()->add(hideAnimation);
     }
     

@@ -43,16 +43,6 @@ BattleFieldView::BattleFieldView(KGameCanvasWidget* parent, KBSRenderer* rendere
     
     m_screen = new WelcomeScreen(this, parent->font());
     m_screen->stackOver(m_background);
-
-    Button* button;
-    button = m_screen->addButton(0, 0, KIcon("user-female"), "Human");
-//     connect(button, SIGNAL(clicked()), this, SIGNAL(human()));
-    
-    button = m_screen->addButton(0, 1, KIcon("roll"), "Computer");
-//     connect(button, SIGNAL(clicked()), this, SIGNAL(ai()));
-    
-    button = m_screen->addButton(0, 2, KIcon("network"), "Network");
-//     connect(button, SIGNAL(clicked()), this, SIGNAL(network()));
     m_screen->show();
     
     for (Sprites::iterator i = m_sprites.begin();
