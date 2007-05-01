@@ -52,6 +52,8 @@ public:
     
     void setBrightness(double value);
     double brightness() const;
+    
+    KGameCanvasPixmap* extractIcon();
 signals:
     void clicked();
 };

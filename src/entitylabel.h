@@ -12,10 +12,12 @@
 
 #include <kgamecanvas.h>
 
-class EntityLabel : public KGameCanvasGroup
+class EntityLabel : public QObject, public KGameCanvasGroup
 {
+Q_OBJECT
     KGameCanvasText* m_text;
     KGameCanvasPixmap* m_picture;
+    KGameCanvasPixmap* m_pending_picture;
     KGameCanvasRectangle* m_background;
     
     QSize m_size;
@@ -23,12 +25,17 @@ public:
     EntityLabel(KGameCanvasAbstract* parent, const QFont& font, 
         const QString& text, const QSize& size);
     
+    QPoint picturePos(KGameCanvasPixmap* picture);
+    
     void setText(const QString& text);
     QString text() const;
+    void showText();
     
     void update();
     void addPicture(KGameCanvasPixmap* picture);
     void resize(const QSize& size);
+public slots:
+    void setupPicture();
 };
 
 #endif // ENTITYLABEL_H

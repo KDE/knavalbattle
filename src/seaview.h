@@ -19,9 +19,11 @@ class EntityLabel;
 class KBSRenderer;
 class Delegate;
 class WelcomeScreen;
+class Button;
 
 class SeaView : public KGameCanvasWidget
 {
+Q_OBJECT
     static const unsigned int GRID_SIZE = 10;
     static const unsigned int LABEL_HEIGHT = 52;
     
@@ -61,6 +63,8 @@ protected:
     virtual void leaveEvent(QEvent*);
     
     int tileSize() const;
+public slots:
+    void buttonClicked(Button*);
 };
 
 #endif // SEA_H

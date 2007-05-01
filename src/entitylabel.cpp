@@ -8,12 +8,15 @@
 */
 
 #include "entitylabel.h"
+#include "animator.h"
+#include "animation.h"
 
 #include <kdebug.h>
 
 EntityLabel::EntityLabel(KGameCanvasAbstract* parent, const QFont& font, const QString& text, const QSize& size)
 : KGameCanvasGroup(parent)
 , m_picture(0)
+, m_pending_picture(0)
 , m_size(size)
 {
     m_background = new KGameCanvasRectangle(QColor(0x20, 0x4a, 0x87), m_size, this);
@@ -26,14 +29,18 @@ EntityLabel::EntityLabel(KGameCanvasAbstract* parent, const QFont& font, const Q
     update();
 }
 
+QPoint EntityLabel::picturePos(KGameCanvasPixmap* picture)
+{
+    int h = m_size.height();
+    return QPoint(
+        h - picture->pixmap().width(),
+        h - picture->pixmap().height()) / 2;
+}
 
 void EntityLabel::update()
 {
     if (m_picture) {
-        int h = m_size.height();
-        m_picture->moveTo(
-            h - m_picture->pixmap().width(),
-            h - m_picture->pixmap().height());                
+        m_picture->moveTo(picturePos(m_picture));
     }
     m_text->moveTo(m_size.height(), m_size.height() / 2);
     
@@ -50,9 +57,7 @@ void EntityLabel::resize(const QSize& size)
 
 void EntityLabel::addPicture(KGameCanvasPixmap* picture)
 {
-    m_picture = picture;
-    m_picture->putInCanvas(this);
-    update();
+    m_pending_picture = picture;
 }
 
 
@@ -62,9 +67,25 @@ void EntityLabel::setText(const QString& text)
     update();
 }
 
-
 QString EntityLabel::text() const
 {
     return m_text->text();
 }
+
+void EntityLabel::setupPicture()
+{
+    Q_ASSERT(m_pending_picture);
+    m_picture = m_pending_picture;
+    m_pending_picture = 0;
+    m_picture->putInCanvas(this);
+    update();
+}
+
+void EntityLabel::showText()
+{
+    Animation* a = new FadeAnimation(m_text, 0, 255, 500);
+    Animator::instance()->add(a);
+}
+
+#include "entitylabel.moc"
 

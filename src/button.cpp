@@ -161,6 +161,20 @@ void Button::setBrightness(double value)
     repaint();
 }
 
+KGameCanvasPixmap* Button::extractIcon()
+{
+    KGameCanvasPixmap* res = new KGameCanvasPixmap(
+        KGameCanvasPixmap::canvas());
+    res->moveTo(pos() + QPoint(10, 10));
+    res->setPixmap(m_icon.pixmap(32, 32));
+    
+    m_icon = QIcon();
+    repaint();
+    
+    return res;
+}
+
+
 // ------------
 
 double ButtonAnimation::m_speed = 0.38;

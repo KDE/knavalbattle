@@ -19,6 +19,8 @@
 #include "entitylabel.h"
 #include "kbsrenderer.h"
 #include "delegate.h"
+#include "welcomescreen.h"
+#include "button.h"
 
 SeaView::SeaView(QWidget* parent)
 : KGameCanvasWidget(parent)
@@ -35,8 +37,10 @@ SeaView::SeaView(QWidget* parent)
     // create fields
     m_fields[0] = new BattleFieldView(this, m_renderer, "background", GRID_SIZE);
     m_fields[0]->show();
+    connect(m_fields[0]->screen(), SIGNAL(clicked(Button*)), this, SLOT(buttonClicked(Button*)));
     m_fields[1] = new BattleFieldView(this, m_renderer, "background2", GRID_SIZE);
     m_fields[1]->show();
+    connect(m_fields[1]->screen(), SIGNAL(clicked(Button*)), this, SLOT(buttonClicked(Button*)));
     
     // create labels
     QFont labelFont = parent->font();
@@ -47,11 +51,8 @@ SeaView::SeaView(QWidget* parent)
     m_labels[1]->show();
     
     Animator::instance()->start();
-    
     update();
-    
     setSizePolicy(QSizePolicy::Minimum, QSizePolicy::Preferred);
-    
     setMouseTracking(true);
 }
 
@@ -234,7 +235,6 @@ void SeaView::clear()
 {
     m_fields[0]->clear();
     m_fields[1]->clear();
-    Animator::instance()->restart();
 }
 
 BattleFieldView* SeaView::otherField(BattleFieldView* field)
@@ -264,4 +264,27 @@ WelcomeScreen* SeaView::screen(Sea::Player p) const
 {
     return m_fields[p]->screen();
 }
+
+void SeaView::buttonClicked(Button* button)
+{
+    WelcomeScreen* screen = qobject_cast<WelcomeScreen*>(sender());
+    int f = screen == m_fields[0]->screen() ? 0 : 1;
+    Q_ASSERT(m_fields[f]->screen() == screen);
+    
+    KGameCanvasPixmap* pix = button->extractIcon();
+    pix->putInCanvas(this);
+    pix->moveTo(pix->pos() + m_fields[f]->pos());
+    pix->show();
+    
+    m_labels[f]->addPicture(pix);
+    Animation* a = new MovementAnimation(pix, pix->pos(), 
+        m_labels[f]->pos() + m_labels[f]->picturePos(pix), 500);
+    connect(a, SIGNAL(done()), m_labels[f], SLOT(setupPicture()));
+    Animator::instance()->add(a);
+    
+    m_labels[f]->setText("dude");
+    m_labels[f]->showText();
+}
+
+#include "seaview.moc"
 

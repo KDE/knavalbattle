@@ -20,6 +20,7 @@ WelcomeScreen::WelcomeScreen(KGameCanvasAbstract* parent, const QFont& font)
 , m_font(font)
 , m_clicked(0)
 , m_hover(0)
+, m_active(true)
 {
     m_background = new KGameCanvasRectangle(QColor(0, 0, 0, 80), m_size, this);
     m_background->show();
@@ -130,7 +131,10 @@ void WelcomeScreen::onMouseRelease(const QPoint& p)
     Button* button = dynamic_cast<Button*>(itemAt(p));
     if (m_clicked && m_clicked == button) {
         // actual click event
+        m_active = false;
         m_clicked->onClicked();
+        
+        emit clicked(button);
         
         Animation* hideAnimation = new FadeAnimation(this, opacity(), 0, 500);
         connect(hideAnimation, SIGNAL(done()), this, SLOT(hide()));
@@ -151,6 +155,7 @@ void WelcomeScreen::onMouseLeave()
         m_hover->onMouseLeave();
     }
 }
+
 
 
 #include "welcomescreen.moc"

@@ -28,6 +28,7 @@ Q_OBJECT
     
     Button* m_clicked;
     Button* m_hover;
+    bool m_active;
 public:
 	WelcomeScreen(KGameCanvasAbstract* parent, const QFont& font);
     
@@ -41,10 +42,13 @@ public:
     void onMouseMove(const QPoint& p);
     void onMouseLeave();
     
+    bool active() const { return m_active; }
+    
 public slots:
     void hide();
     
 signals:
+    void clicked(Button*);
     void human();
     void ai();
     void network();

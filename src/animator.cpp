@@ -35,14 +35,6 @@ void Animator::start()
     m_group->start(0);
 }
 
-void Animator::restart()
-{
-    delete m_group;
-    m_group = new AnimationGroup;
-    
-    m_time.restart();
-}
-
 void Animator::tick()
 {
     m_group->step(m_time.elapsed());

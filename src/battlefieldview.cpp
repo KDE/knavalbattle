@@ -202,28 +202,28 @@ void BattleFieldView::clear()
 
 void BattleFieldView::onMousePress(const QPoint& p)
 {
-    if (m_screen->visible()) {
+    if (m_screen->active()) {
         m_screen->onMousePress(p);
     }
 }
 
 void BattleFieldView::onMouseRelease(const QPoint& p)
 {
-    if (m_screen->visible()) {
+    if (m_screen->active()) {
         m_screen->onMouseRelease(p);
     }
 }
 
 void BattleFieldView::onMouseMove(const QPoint& p)
 {
-    if (m_screen->visible()) {
+    if (m_screen->active()) {
         m_screen->onMouseMove(p);
     }
 }
 
 void BattleFieldView::onMouseLeave()
 {
-    if (m_screen->visible()) {
+    if (m_screen->active()) {
         m_screen->onMouseLeave();
     }
 }
