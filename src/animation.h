@@ -20,9 +20,12 @@ class Animation : public QObject
 {
 Q_OBJECT
 public:
-    virtual ~Animation() { }
+    virtual ~Animation();
     virtual void start(int t) = 0;
     virtual bool step(int t) = 0;
+    
+signals:
+    void done();
 };
 
 class AnimationGroup : public Animation

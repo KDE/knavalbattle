@@ -10,14 +10,23 @@
 #ifndef BUTTON_H
 #define BUTTON_H
 
-#include "welcomescreen.h"
 #include <QIcon>
 #include <QFont>
 #include <QSize>
+#include <QPointer>
+#include "welcomescreen.h"
+#include "animation.h"
+
+class ButtonAnimation;
 
 class Button : public QObject, public KGameCanvasPixmap
 {
 Q_OBJECT
+    enum {
+        BRIGHTNESS_NORMAL = 0,
+        BRIGHTNESS_HOVER = 120,
+        BRIGHTNESS_DOWN = 180
+    };
     QIcon m_icon;
     QFont m_font;
     QString m_text;
@@ -25,6 +34,8 @@ Q_OBJECT
     
     bool m_down;
     bool m_hover;
+    double m_brightness;
+    QPointer<ButtonAnimation> m_animation;
     
     virtual void repaint();
 public:
@@ -38,8 +49,30 @@ public:
     void onMouseMove(const QPoint& p);
     void onMouseLeave();
     void onClicked();
+    
+    void setBrightness(double value);
+    double brightness() const;
 signals:
     void clicked();
+};
+
+class ButtonAnimation : public Animation
+{
+Q_OBJECT
+public:
+    Button* m_button;
+    int m_brightness;
+    static double m_speed;
+    double m_current;
+    int m_last;
+public:
+    ButtonAnimation(Button* button, int brightness);
+    ~ButtonAnimation();
+    virtual void start(int t);
+    virtual bool step(int t);
+    virtual void abort();
+    
+    void setBrightness(int value);
 };
 
 #endif // BUTTON_H

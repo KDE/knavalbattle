@@ -12,6 +12,11 @@
 #include <kgamecanvas.h>
 #include <kdebug.h>
 
+Animation::~Animation()
+{
+    emit done();
+}
+
 AnimationGroup::AnimationGroup()
 : m_running(-1)
 {
@@ -78,9 +83,15 @@ void FadeAnimation::start(int t)
 
 bool FadeAnimation::step(int t)
 {
-    int opacity = int(m_from + (m_to - m_from) * (t - m_start) / (double)m_time);
-    m_sprite->setOpacity(opacity);
-    return opacity >= m_to;
+    if (t >= m_time + m_start) {
+        m_sprite->setOpacity(m_to);
+        return true;
+    }
+    else {
+        int opacity = int(m_from + (m_to - m_from) * (t - m_start) / (double)m_time);
+        m_sprite->setOpacity(opacity);
+        return false;
+    }
 }
 
 

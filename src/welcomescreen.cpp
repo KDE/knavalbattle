@@ -12,6 +12,7 @@
 #include <kdebug.h>
 
 #include "button.h"
+#include "animator.h"
 
 WelcomeScreen::WelcomeScreen(KGameCanvasAbstract* parent, const QFont& font)
 : KGameCanvasGroup(parent)
@@ -120,10 +121,17 @@ void WelcomeScreen::onMouseRelease(const QPoint& p)
         // actual click event
         m_clicked->onClicked();
         
-        hide();
+        Animation* hideAnimation = new FadeAnimation(this, opacity(), 0, 500);
+//         connect(hideAnimation, SIGNAL(done()), this, SLOT(hide()));
+        Animator::instance()->add(hideAnimation);
     }
     
     m_clicked = 0;
+}
+
+void WelcomeScreen::hide()
+{
+    KGameCanvasGroup::hide();
 }
 
 void WelcomeScreen::onMouseLeave()

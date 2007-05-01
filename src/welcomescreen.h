@@ -40,6 +40,9 @@ public:
     void onMouseRelease(const QPoint& p);
     void onMouseMove(const QPoint& p);
     void onMouseLeave();
+    
+public slots:
+    void hide();
 };
 
 #endif // WELCOMESCREEN_H
