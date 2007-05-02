@@ -33,7 +33,7 @@ class QGridLayout;
 class QResizeEvent;
 class KWelcomeScreenOverlayButton;
 
-class KDE_EXPORT KWelcomeScreenOverlay
+class KWelcomeScreenOverlay
 {
     friend class KWelcomeScreenOverlayButton;
 protected:
@@ -66,7 +66,7 @@ public:
     QSize size() const { return m_size; }
 };
 
-class KDE_EXPORT KWelcomeScreenOverlayButton
+class KWelcomeScreenOverlayButton
 {
     KWelcomeScreenOverlay *m_parent;
     QString m_text;
@@ -97,7 +97,7 @@ public:
     void setOpacity(double value);
 };
 
-class KDE_EXPORT KWelcomeScreen : public QWidget
+class KWelcomeScreen : public QWidget
 {
     Q_OBJECT
 public:
