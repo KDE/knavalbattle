@@ -35,16 +35,16 @@ void MainWindow::setupActions()
 {
     KAction* temp;
      
-    temp = new KAction(i18n("&New game"), this);
+    temp = new KAction(i18n("&New Game"), this);
     temp->setShortcut(KShortcut("Ctrl+N"));
     actionCollection()->addAction("game_singleplayer", temp);
     connect(temp, SIGNAL(triggered()), m_main, SLOT(newGame()));
     
-    temp = new KAction(i18n("New &simulation"), this);
+    temp = new KAction(i18n("New &Simulation"), this);
     actionCollection()->addAction("game_twomachines", temp);
     connect(temp, SIGNAL(triggered()), m_main, SLOT(newSimulation()));
     
-    temp = new KAction(i18n("Start ser&ver"), this);
+    temp = new KAction(i18n("Start Ser&ver"), this);
     actionCollection()->addAction("game_server", temp);
     connect(temp, SIGNAL(triggered()), m_main, SLOT(newServer()));
     
@@ -52,7 +52,7 @@ void MainWindow::setupActions()
     actionCollection()->addAction("game_client", temp);
     connect(temp, SIGNAL(triggered()), m_main, SLOT(newClient()));
     
-    temp = new KAction(i18n("Show highscores"), this);
+    temp = new KAction(i18n("Show Highscores"), this);
     actionCollection()->addAction("show_highscores", temp);
     connect(temp, SIGNAL(triggered()), m_main, SLOT(highscores()));
     
