@@ -7,7 +7,6 @@
     <Action name="game_twomachines" />
     <Action name="game_server" />
     <Action name="game_client" />
-    <Action name="show_highscores" />
   </Menu>
   <Menu name="settings"><text>&amp;Settings</text>
     <Action name="options_show_grid" append="show_merge"/>
