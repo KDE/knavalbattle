@@ -13,6 +13,7 @@
 #include <QResizeEvent>
 #include <QHBoxLayout>
 #include <kstandardaction.h>
+#include <kstandardgameaction.h>
 #include <kactioncollection.h>
 #include <kaction.h>
 #include <klocale.h>
@@ -55,6 +56,9 @@ void MainWindow::setupActions()
     temp = new KAction(i18n("Show Highscores"), this);
     actionCollection()->addAction("show_highscores", temp);
     connect(temp, SIGNAL(triggered()), m_main, SLOT(highscores()));
+    
+    temp = KStandardGameAction::quit(this, SLOT(close()), this);
+    actionCollection()->addAction(temp->objectName(), temp);
     
     KStandardAction::preferences(this, SLOT(optionsPreferences()), actionCollection());
     
