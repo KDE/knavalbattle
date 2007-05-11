@@ -34,17 +34,21 @@ MainWindow::MainWindow()
 
 void MainWindow::setupActions()
 {
+    // Game
+    KStandardGameAction::gameNew(m_main, SLOT(newGame()), actionCollection());
+    KStandardGameAction::demo(m_main, SLOT(newSimulation()), actionCollection());
+    
+    KStandardGameAction::highscores(m_main, SLOT(highscores()), actionCollection());
+    KStandardGameAction::quit(this, SLOT(close()), actionCollection());
+
+    // Move
+
+    // Settings
+    KStandardAction::preferences(this, SLOT(optionsPreferences()), actionCollection());
+    
+    
     KAction* temp;
      
-    temp = new KAction(i18n("&New Game"), this);
-    temp->setShortcut(KShortcut("Ctrl+N"));
-    actionCollection()->addAction("game_singleplayer", temp);
-    connect(temp, SIGNAL(triggered()), m_main, SLOT(newGame()));
-    
-    temp = new KAction(i18n("New &Simulation"), this);
-    actionCollection()->addAction("game_twomachines", temp);
-    connect(temp, SIGNAL(triggered()), m_main, SLOT(newSimulation()));
-    
     temp = new KAction(i18n("Start Ser&ver"), this);
     actionCollection()->addAction("game_server", temp);
     connect(temp, SIGNAL(triggered()), m_main, SLOT(newServer()));
@@ -52,14 +56,6 @@ void MainWindow::setupActions()
     temp = new KAction(i18n("&Connect"), this);
     actionCollection()->addAction("game_client", temp);
     connect(temp, SIGNAL(triggered()), m_main, SLOT(newClient()));
-    
-    temp = KStandardGameAction::highscores(m_main, SLOT(highscores()), this);
-    actionCollection()->addAction(temp->objectName(), temp);
-    
-    temp = KStandardGameAction::quit(this, SLOT(close()), this);
-    actionCollection()->addAction(temp->objectName(), temp);
-    
-    KStandardAction::preferences(this, SLOT(optionsPreferences()), actionCollection());
     
     setupGUI();
 }

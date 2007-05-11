@@ -1,10 +1,8 @@
 <!DOCTYPE kpartgui SYSTEM "kpartgui.dtd">
-<kpartgui name="kbattleship" version="2">
+<kpartgui name="kbattleship" version="3">
 
 <MenuBar>
   <Menu name="game"><text>&amp;Game</text>
-    <Action name="game_singleplayer" />
-    <Action name="game_twomachines" />
     <Action name="game_server" />
     <Action name="game_client" />
   </Menu>
