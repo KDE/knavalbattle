@@ -52,7 +52,8 @@ void Button::repaint()
             static_cast<int>(m_brightness),
             static_cast<int>(m_brightness), 
             static_cast<int>(m_brightness), 100)));
-        p.drawRoundRect(1, 1, m_size.width() - 2, m_size.height() -2, 8, 40);
+        p.drawRoundRect(1, 1, m_size.width() - 2, m_size.height() -2, 
+            2000 / m_size.width(), 2000 / m_size.height());
         p.drawPixmap(10, 
                     m_size.height() / 2 - 16, 
                     32, 
