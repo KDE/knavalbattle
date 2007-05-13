@@ -44,7 +44,7 @@ PlayerEntity* GeneralController::createPlayer(Sea::Player player, SeaView* view,
 void GeneralController::createAI(Sea::Player player)
 {
     Entity* e = new AIEntity(player, m_sea);
-    e->setNick(i18n("computer"));
+    e->setNick(i18n("Computer"));
     setupEntity(e);
 }
 

@@ -11,6 +11,7 @@
 
 #include <kdebug.h>
 #include <kicon.h>
+#include <klocale.h>
 
 #include "button.h"
 #include "animator.h"
@@ -26,13 +27,13 @@ WelcomeScreen::WelcomeScreen(KGameCanvasAbstract* parent, const QFont& font)
     m_background->show();
     
     Button* button;
-    button = addButton(0, 0, KIcon("user-female"), "Human");
+    button = addButton(0, 0, KIcon("user-female"), i18n("Human"));
     connect(button, SIGNAL(clicked()), this, SIGNAL(human()));
     
-    button = addButton(0, 1, KIcon("roll"), "Computer");
+    button = addButton(0, 1, KIcon("roll"), i18n("Computer"));
     connect(button, SIGNAL(clicked()), this, SIGNAL(ai()));
     
-    button = addButton(0, 2, KIcon("network"), "Network");
+    button = addButton(0, 2, KIcon("network"), i18n("Network"));
     connect(button, SIGNAL(clicked()), this, SIGNAL(network()));
 }
 
