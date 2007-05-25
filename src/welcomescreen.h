@@ -36,6 +36,7 @@ public:
     void update();
     
     Button* addButton(int x, int y, const QIcon& icon, const QString& text);
+    void clearButtons();
     
     void onMousePress(const QPoint& p);
     void onMouseRelease(const QPoint& p);
@@ -46,12 +47,11 @@ public:
     
 public slots:
     void hide();
+    void fadeOut();
     
 signals:
     void clicked(Button*);
-    void human();
-    void ai();
-    void network();
+    void hidden();
 };
 
 #endif // WELCOMESCREEN_H

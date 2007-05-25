@@ -28,6 +28,7 @@ set(kbattleship_SRCS
     element.cpp
     entity.cpp
     entitylabel.cpp
+    gamechooser.cpp
     generalcontroller.cpp
     kbsrenderer.cpp
     main.cpp

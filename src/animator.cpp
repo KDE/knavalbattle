@@ -30,7 +30,7 @@ void Animator::add(Animation* a)
 
 void Animator::start()
 {
-    m_timer.start(20);
+    m_timer.start(0);
     m_time.start();
     m_group->start(0);
 }

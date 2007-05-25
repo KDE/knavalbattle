@@ -267,6 +267,7 @@ WelcomeScreen* SeaView::screen(Sea::Player p) const
 
 void SeaView::buttonClicked(Button* button)
 {
+#if 0
     WelcomeScreen* screen = qobject_cast<WelcomeScreen*>(sender());
     int f = screen == m_fields[0]->screen() ? 0 : 1;
     Q_ASSERT(m_fields[f]->screen() == screen);
@@ -284,6 +285,7 @@ void SeaView::buttonClicked(Button* button)
     
     m_labels[f]->setText("dude");
     m_labels[f]->showText();
+#endif
 }
 
 #include "seaview.moc"

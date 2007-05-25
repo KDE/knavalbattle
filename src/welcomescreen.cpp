@@ -25,16 +25,6 @@ WelcomeScreen::WelcomeScreen(KGameCanvasAbstract* parent, const QFont& font)
 {
     m_background = new KGameCanvasRectangle(QColor(0, 0, 0, 80), m_size, this);
     m_background->show();
-    
-    Button* button;
-    button = addButton(0, 0, KIcon("user-female"), i18n("Human"));
-    connect(button, SIGNAL(clicked()), this, SIGNAL(human()));
-    
-    button = addButton(0, 1, KIcon("roll"), i18n("Computer"));
-    connect(button, SIGNAL(clicked()), this, SIGNAL(ai()));
-    
-    button = addButton(0, 2, KIcon("network"), i18n("Network"));
-    connect(button, SIGNAL(clicked()), this, SIGNAL(network()));
 }
 
 void WelcomeScreen::resize(const QSize& size)
@@ -95,8 +85,23 @@ Button* WelcomeScreen::addButton(int x, int y, const QIcon& icon, const QString&
         button->show();
         update();
         
+        kDebug() << "added button " << button << endl;
+        
         return button;
     }
+}
+
+void WelcomeScreen::clearButtons()
+{
+    m_clicked = 0;
+    m_hover = 0;
+    for (Buttons::const_iterator i = m_buttons.constBegin();
+         i != m_buttons.constEnd();
+         ++i) {
+        delete *i;
+    }
+    m_buttons.clear();
+    
 }
 
 void WelcomeScreen::onMouseMove(const QPoint& p)
@@ -114,6 +119,7 @@ void WelcomeScreen::onMouseMove(const QPoint& p)
 
 void WelcomeScreen::onMousePress(const QPoint& p)
 {
+    kDebug() << "on mouse press" << endl;
     Button* button = dynamic_cast<Button*>(itemAt(p));
     if (button) {
         button->onMousePress(p - button->pos());
@@ -130,21 +136,24 @@ void WelcomeScreen::onMouseRelease(const QPoint& p)
     Button* button = dynamic_cast<Button*>(itemAt(p));
     if (m_clicked && m_clicked == button) {
         // actual click event
-        m_active = false;
         m_clicked->onClicked();
         
         emit clicked(button);
-        
-        Animation* hideAnimation = new FadeAnimation(this, opacity(), 0, 500);
-        connect(hideAnimation, SIGNAL(done()), this, SLOT(hide()));
-        Animator::instance()->add(hideAnimation);
     }
     
     m_clicked = 0;
 }
 
+void WelcomeScreen::fadeOut()
+{
+    Animation* hideAnimation = new FadeAnimation(this, opacity(), 0, 500);
+    connect(hideAnimation, SIGNAL(done()), this, SLOT(hide()));
+    Animator::instance()->add(hideAnimation);
+}
+
 void WelcomeScreen::hide()
 {
+    m_active = false;
     KGameCanvasGroup::hide();
 }
 
