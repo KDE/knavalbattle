@@ -3,6 +3,7 @@
 #include <kdebug.h>
 #include <klocale.h>
 #include <kicon.h>
+#include <QLineEdit>
 #include "button.h"
 #include "chatwidget.h"
 #include "generalcontroller.h"
@@ -20,15 +21,40 @@ QString ChooserOption::nick() const
 
 HumanChooserOption::HumanChooserOption(WelcomeScreen* screen)
 : m_screen(screen)
+, m_button(0)
+, m_complete(false)
 {
 }
 
-void HumanChooserOption::initialize()
+void HumanChooserOption::initialize(Button* button)
 {
+    m_button = button;
+    
+    // read username
+    KConfigGroup config(KGlobal::config(), "");
+    m_button->setEditor(config.readEntry("nickname"));
+    QLineEdit* editor = button->editor();
+    Q_ASSERT(editor);
+    connect(editor, SIGNAL(editingFinished()), this, SLOT(finalize()));
+
+}
+
+void HumanChooserOption::finalize()
+{
+    Q_ASSERT(m_button);
+    
+    QLineEdit* editor = m_button->editor();
+    setNick(editor->text());
+    m_button->removeEditor();
+    
+    // save username
+    KConfigGroup config(KGlobal::config(), "");
+    config.writeEntry("nickname", nick());
+    
     m_screen->fadeOut();
+    m_complete = true;
     emit done();
 }
-
 
 void HumanChooserOption::apply(OptionVisitor& visitor)
 {
@@ -37,11 +63,11 @@ void HumanChooserOption::apply(OptionVisitor& visitor)
 
 AIChooserOption::AIChooserOption(WelcomeScreen* screen)
 : m_screen(screen)
-, m_level(Easy)
+, m_level(Undefined)
 {
 }
 
-void AIChooserOption::initialize()
+void AIChooserOption::initialize(Button*)
 {
     m_screen->clearButtons();
     Button* button;
@@ -92,15 +118,15 @@ NetworkChooserOption::NetworkChooserOption(WelcomeScreen* screen)
 {
 }
 
-void NetworkChooserOption::initialize()
+void NetworkChooserOption::initialize(Button*)
 {
     m_screen->clearButtons();
     Button* button;
      
-    button = m_screen->addButton(0, 0, QIcon(), i18n("Server"));
+    button = m_screen->addButton(0, 0, QIcon(), i18n("Wait for a connection"));
     connect(button, SIGNAL(clicked()), this, SLOT(setServer()));
     
-    button = m_screen->addButton(0, 1, QIcon(), i18n("Client"));
+    button = m_screen->addButton(0, 1, QIcon(), i18n("Connect to a server"));
     connect(button, SIGNAL(clicked()), this, SLOT(setClient()));
 }
 
@@ -145,38 +171,47 @@ ScreenManager::ScreenManager(QObject* parent, WelcomeScreen* screen)
 {
     // create buttons
     Button* button;
-    button = screen->addButton(0, 0, KIcon("user-female"), i18n("Human"));
+    button = screen->addButton(0, 0, KIcon("user-female"), i18n("You"));
     connect(button, SIGNAL(clicked()), this, SLOT(human()));
     
     button = screen->addButton(0, 1, KIcon("roll"), i18n("Computer"));
     connect(button, SIGNAL(clicked()), this, SLOT(ai()));
     
-    button = screen->addButton(0, 2, KIcon("network"), i18n("Network"));
+    button = screen->addButton(0, 2, KIcon("network"), i18n("Over the network"));
     connect(button, SIGNAL(clicked()), this, SLOT(network()));
 }
 
 void ScreenManager::human()
 {
-    setOption(new HumanChooserOption(m_screen));
+    setOption(new HumanChooserOption(m_screen), qobject_cast<Button*>(sender()));
 }
 
 void ScreenManager::ai()
 {
-    setOption(new AIChooserOption(m_screen));
+    setOption(new AIChooserOption(m_screen), qobject_cast<Button*>(sender()));
 }
 
 void ScreenManager::network()
 {
-    setOption(new NetworkChooserOption(m_screen));
+    setOption(new NetworkChooserOption(m_screen), qobject_cast<Button*>(sender()));
 }
 
-void ScreenManager::setOption(ChooserOption* option)
+void ScreenManager::removeHumanButton()
+{
+    m_screen->removeButton(0, 0);
+    m_screen->moveButton(0, 1, 0, 0);
+    m_screen->moveButton(0, 2, 0, 1);
+}
+
+
+void ScreenManager::setOption(ChooserOption* option, Button* button)
 {
     if (!m_option) {
         m_option = option;
         connect(m_option, SIGNAL(done()), this, SIGNAL(done()));
         kDebug() << "initializing option" << endl;
-        option->initialize();
+        option->initialize(button);
+        emit selected();
     }
 }
 
@@ -186,12 +221,15 @@ GameChooser::GameChooser(QObject* parent, WelcomeScreen* screen0, WelcomeScreen*
     m_managers[0] = new ScreenManager(this, screen0);
     m_managers[1] = new ScreenManager(this, screen1);
     
-    connect(m_managers[0], SIGNAL(done()), &m_mapper, SLOT(map()));
-    connect(m_managers[1], SIGNAL(done()), &m_mapper, SLOT(map()));
-    m_mapper.setMapping(m_managers[0], 0);
-    m_mapper.setMapping(m_managers[1], 1);
+    for (int i = 0; i < 2; i++) {
+        connect(m_managers[i], SIGNAL(done()), &m_done_mapper, SLOT(map()));
+        m_done_mapper.setMapping(m_managers[i], i);
+        connect(m_managers[i], SIGNAL(selected()), &m_select_mapper, SLOT(map()));
+        m_select_mapper.setMapping(m_managers[i], i);
+    }
     
-    connect(&m_mapper, SIGNAL(mapped(int)), this, SLOT(choose(int)));
+    connect(&m_done_mapper, SIGNAL(mapped(int)), this, SLOT(chosen(int)));
+    connect(&m_select_mapper, SIGNAL(mapped(int)), this, SLOT(selected(int)));
 }
 
 class AddEntityVisitor : public OptionVisitor
@@ -229,13 +267,47 @@ public:
 //         m_chat->show(); //TODO: decomment me
         Q_UNUSED(option);
     }
-        
+};
+
+class OnSelectedVisitor : public OptionVisitor
+{
+    Sea::Player m_player;
+    ScreenManager** m_managers;
+public:
+    OnSelectedVisitor(Sea::Player player, ScreenManager** managers)
+    : m_player(player)
+    , m_managers(managers)
+    {
+    }
+
+    virtual void visit(const HumanChooserOption&)
+    {
+        m_managers[Sea::opponent(m_player)]->removeHumanButton();
+    }
+    
+    virtual void visit(const AIChooserOption&)
+    {
+    }
+    
+    virtual void visit(const NetworkChooserOption&)
+    {
+    }
 };
 
 
-void GameChooser::choose(int player)
+void GameChooser::selected(int player)
 {
-    Q_ASSERT(m_managers[player]->option());
+    ChooserOption* option = m_managers[player]->option();
+    Q_ASSERT(option);
+    
+    OnSelectedVisitor visitor(Sea::Player(player), m_managers);
+    option->apply(visitor);
+}
+
+void GameChooser::chosen(int player)
+{
+    ChooserOption* option = m_managers[player]->option();
+    Q_ASSERT(option);
 //     PrintOption visitor;
     kDebug() << "player " << player << " has chosen" << endl;
 //     m_managers[player]->option()->apply(visitor);
@@ -247,7 +319,10 @@ void GameChooser::choose(int player)
 
 bool GameChooser::complete() const
 {
-    return m_managers[0]->option() && m_managers[1]->option();
+    return m_managers[0]->option() &&
+           m_managers[0]->option()->complete() &&
+           m_managers[1]->option() &&
+           m_managers[1]->option()->complete();
 }
 
 void GameChooser::setupController(GeneralController* controller, SeaView* sea, ChatWidget* chat)

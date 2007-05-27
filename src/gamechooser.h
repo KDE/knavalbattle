@@ -9,6 +9,7 @@ class OptionVisitor;
 class GeneralController;
 class SeaView;
 class ChatWidget;
+class Button;
 
 class ChooserOption : public QObject
 {
@@ -18,9 +19,10 @@ public:
     virtual ~ChooserOption() { }
     
     virtual void apply(OptionVisitor& visitor) = 0;
-    virtual void initialize() = 0;
+    virtual void initialize(Button* button) = 0;
     
     QString nick() const;
+    virtual bool complete() const = 0;
 public slots:
     void setNick(const QString& nick);
 signals:
@@ -31,10 +33,16 @@ class HumanChooserOption : public ChooserOption
 {
 Q_OBJECT
     WelcomeScreen* m_screen;
+    Button* m_button;
+    bool m_complete;
 public:
     HumanChooserOption(WelcomeScreen* screen);
     virtual void apply(OptionVisitor& visitor);
-    virtual void initialize();
+    virtual void initialize(Button* button);
+    
+    virtual bool complete() const { return m_complete; }
+public slots:
+    void finalize();
 };
 
 class AIChooserOption : public ChooserOption
@@ -43,6 +51,7 @@ Q_OBJECT
 public:
     enum Level
     {
+        Undefined,
         Easy,
         Medium,
         Hard
@@ -56,8 +65,9 @@ public:
     AIChooserOption(WelcomeScreen* screen);
     
     virtual void apply(OptionVisitor& visitor);
-    virtual void initialize();
+    virtual void initialize(Button* button);
     Level level() const { return m_level; }
+    virtual bool complete() const { return m_level != Undefined; }
 public slots:
     void setEasy();
     void setMedium();
@@ -75,8 +85,9 @@ Q_OBJECT
     void finalize();
 public:
     NetworkChooserOption(WelcomeScreen* screen);
-    virtual void initialize();
+    virtual void initialize(Button* button);
     virtual void apply(OptionVisitor& visitor);
+    virtual bool complete() const { return false; }
     
 public slots:
     void setServer();
@@ -101,13 +112,14 @@ Q_OBJECT
     WelcomeScreen* m_screen;
     ChooserOption* m_option;
     
-    void setOption(ChooserOption* option);
+    void setOption(ChooserOption* option, Button* button);
 public:
     virtual ~ScreenManager() { }
     
     ScreenManager(QObject* parent, WelcomeScreen* screen);
     
     ChooserOption* option() { return m_option; }
+    void removeHumanButton();
 private slots:
     void human();
     void ai();
@@ -115,20 +127,23 @@ private slots:
     
 signals:
     void done();
+    void selected();
 };
 
 class GameChooser : public QObject
 {
 Q_OBJECT
     ScreenManager* m_managers[2];
-    QSignalMapper m_mapper;
+    QSignalMapper m_done_mapper;
+    QSignalMapper m_select_mapper;
 public:
     GameChooser(QObject* parent, WelcomeScreen* screen0, WelcomeScreen* screen1);
     
     void setupController(GeneralController* controller, SeaView* sea, ChatWidget* chat);
     bool complete() const;
 public slots:
-    void choose(int player);
+    void chosen(int player);
+    void selected(int player);
 signals:
     void done();
 };

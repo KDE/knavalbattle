@@ -10,6 +10,7 @@
 #include "button.h"
 
 #include <QImage>
+#include <QLineEdit>
 #include <kdebug.h>
 #include <math.h> // fabs
 
@@ -25,6 +26,18 @@ Button::Button(WelcomeScreen* parent, const QIcon& icon,
 , m_down(false)
 , m_hover(false)
 , m_brightness(BRIGHTNESS_NORMAL)
+, m_editor(0)
+{
+    computeSize();
+    repaint();
+}
+
+Button::~Button()
+{
+    delete m_editor;
+}
+
+void Button::computeSize()
 {
     QFontMetrics fm(m_font);
     int h = fm.height();
@@ -34,8 +47,6 @@ Button::Button(WelcomeScreen* parent, const QIcon& icon,
     m_size = QSize(fm.width(m_text), h);
     m_size.rwidth() += 10 + 32 + 10 + 10;
     m_size.rheight() += 10 + 10;
-    
-    repaint();
 }
 
 void Button::repaint()
@@ -60,13 +71,14 @@ void Button::repaint()
                     32, 
                     m_icon.pixmap(32, 32));
     
-        p.setFont(m_font);
-        p.drawText(10+32+10, 
-                m_size.height() / 2 + 6, 
-                m_text);
+        if (!m_editor) {
+            p.setFont(m_font);
+            p.drawText(textPos(), m_text);
+        }
     }
     
     setPixmap(QPixmap::fromImage(tmp));
+    updateEditor();
 }
 
 QSize Button::size() const
@@ -74,9 +86,14 @@ QSize Button::size() const
     return m_size;
 }
 
+QPoint Button::textPos() const
+{
+    return QPoint(10 + 32 + 10, m_size.height() / 2 + 6);
+}
+
 void Button::onMousePress(const QPoint&)
 {
-    if (!m_down) {
+    if (!m_editor && !m_down) {
         m_down = true;
         if (m_animation) {
             m_animation->abort();
@@ -101,7 +118,7 @@ void Button::onMouseRelease(const QPoint&)
 
 void Button::onMouseMove(const QPoint&)
 {
-    if (!m_hover) {
+    if (!m_editor && !m_hover) {
         m_hover = true;
         
         if (m_down) {
@@ -151,6 +168,12 @@ void Button::onClicked()
     emit clicked();
 }
 
+void Button::setText(const QString& text)
+{
+    m_text = text;
+    repaint();
+}
+
 double Button::brightness() const
 {
     return m_brightness;
@@ -175,6 +198,44 @@ KGameCanvasPixmap* Button::extractIcon()
     return res;
 }
 
+void Button::setEditor(const QString& value)
+{
+    // remove old editor if existent
+    delete m_editor;
+    
+    // create a new editor
+    m_editor = new QLineEdit(value, topLevelCanvas());
+    
+    // update button
+    m_size.setWidth(32 * 6);
+    emit needsUpdate();
+    repaint();
+    m_editor->show();
+    
+    // set focus and selection
+    m_editor->setFocus();
+    m_editor->selectAll();
+}
+
+void Button::updateEditor()
+{
+    if (m_editor) {
+        const int SPACE = 9;
+        m_editor->setGeometry(QRect(absolutePosition() + QPoint(textPos().x(), SPACE),
+            QSize(m_size.width() - 10 - 10 - 32 - 10, m_size.height() - SPACE * 2)));
+    }
+}
+
+void Button::removeEditor()
+{
+    m_editor->hide();
+    m_editor->deleteLater();
+    m_editor = 0;
+    
+    computeSize();
+    repaint();
+    emit needsUpdate();
+}
 
 // ------------
 

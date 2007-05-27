@@ -18,6 +18,7 @@
 #include "animation.h"
 
 class ButtonAnimation;
+class QLineEdit;
 
 class Button : public QObject, public KGameCanvasPixmap
 {
@@ -37,12 +38,20 @@ Q_OBJECT
     double m_brightness;
     QPointer<ButtonAnimation> m_animation;
     
-    virtual void repaint();
+    QLineEdit* m_editor;
+    
+    QPoint textPos() const;
+    void computeSize();
+    void updateEditor();
 public:
     Button(WelcomeScreen* parent, const QIcon& icon, 
            const QFont& font, const QString& text);
+    virtual ~Button();
            
+    virtual void repaint();
+    
     QSize size() const;
+    QLineEdit* editor() { return m_editor; }
     
     void onMousePress(const QPoint& p);
     void onMouseRelease(const QPoint& p);
@@ -50,12 +59,16 @@ public:
     void onMouseLeave();
     void onClicked();
     
+    void setText(const QString& text);
     void setBrightness(double value);
     double brightness() const;
     
     KGameCanvasPixmap* extractIcon();
+    void setEditor(const QString&);
+    void removeEditor();
 signals:
     void clicked();
+    void needsUpdate();
 };
 
 class ButtonAnimation : public Animation

@@ -43,12 +43,12 @@ SeaView::SeaView(QWidget* parent)
     connect(m_fields[1]->screen(), SIGNAL(clicked(Button*)), this, SLOT(buttonClicked(Button*)));
     
     // create labels
-    QFont labelFont = parent->font();
-    labelFont.setPixelSize(LABEL_HEIGHT / 3);
-    m_labels[0] = new EntityLabel(this, labelFont, "", QSize(m_fields[0]->size().width(), LABEL_HEIGHT));
-    m_labels[0]->show();
-    m_labels[1] = new EntityLabel(this, labelFont, "", QSize(m_fields[1]->size().width(), LABEL_HEIGHT));
-    m_labels[1]->show();
+//     QFont labelFont = parent->font();
+//     labelFont.setPixelSize(LABEL_HEIGHT / 3);
+//     m_labels[0] = new EntityLabel(this, labelFont, "", QSize(m_fields[0]->size().width(), LABEL_HEIGHT));
+//     m_labels[0]->show();
+//     m_labels[1] = new EntityLabel(this, labelFont, "", QSize(m_fields[1]->size().width(), LABEL_HEIGHT));
+//     m_labels[1]->show();
     
     Animator::instance()->start();
     update();
@@ -71,10 +71,10 @@ void SeaView::update()
     m_fields[1]->moveTo(m_fields[0]->size().width() + ts, 0);
     m_fields[1]->update();
     
-    m_labels[0]->resize(QSize(m_fields[0]->size().width(), LABEL_HEIGHT));
-    m_labels[0]->moveTo(m_fields[0]->pos().x(), m_fields[0]->size().height() + 10);
-    m_labels[1]->resize(QSize(m_fields[1]->size().width(), LABEL_HEIGHT));
-    m_labels[1]->moveTo(m_fields[1]->pos().x(), m_fields[1]->size().height() + 10);
+//     m_labels[0]->resize(QSize(m_fields[0]->size().width(), LABEL_HEIGHT));
+//     m_labels[0]->moveTo(m_fields[0]->pos().x(), m_fields[0]->size().height() + 10);
+//     m_labels[1]->resize(QSize(m_fields[1]->size().width(), LABEL_HEIGHT));
+//     m_labels[1]->moveTo(m_fields[1]->pos().x(), m_fields[1]->size().height() + 10);
 }
 
 void SeaView::resizeEvent(QResizeEvent*)

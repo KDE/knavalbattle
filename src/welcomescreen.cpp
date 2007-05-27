@@ -69,8 +69,7 @@ void WelcomeScreen::update()
         QPoint delta((size.width() - i.value()->size().width()) / 2,
                      (size.height() - i.value()->size().height()) / 2);
         i.value()->moveTo(pos + delta);
-        
-        pos += QPoint(size.width(), size.height());
+        i.value()->repaint();
     }
 }
 
@@ -84,10 +83,31 @@ Button* WelcomeScreen::addButton(int x, int y, const QIcon& icon, const QString&
         m_buttons.insert(Coord(x, y), button);
         button->show();
         update();
+        connect(button, SIGNAL(needsUpdate()), this, SLOT(update()));
         
         kDebug() << "added button " << button << endl;
         
         return button;
+    }
+}
+
+void WelcomeScreen::removeButton(int x, int y)
+{
+    Button* button = m_buttons.take(Coord(x, y));
+    delete button;
+    update();
+}
+
+void WelcomeScreen::moveButton(int x1, int y1, int x2, int y2)
+{
+    Coord from(x1, y1);
+    Coord to(x2, y2);
+    
+    if (m_buttons.contains(from) && !m_buttons.contains(to)) {
+        Button* button = m_buttons.value(from);
+        m_buttons.insert(to, button);
+        m_buttons.remove(from);
+        update();
     }
 }
 
@@ -107,6 +127,7 @@ void WelcomeScreen::clearButtons()
 void WelcomeScreen::onMouseMove(const QPoint& p)
 {
     Button* button = dynamic_cast<Button*>(itemAt(p));
+//     kDebug() << "on point " << p << " there is " << button << endl;
     if (m_hover && m_hover != button) {
         m_hover->onMouseLeave();
     }

@@ -33,9 +33,10 @@ public:
 	WelcomeScreen(KGameCanvasAbstract* parent, const QFont& font);
     
     void resize(const QSize&);
-    void update();
     
     Button* addButton(int x, int y, const QIcon& icon, const QString& text);
+    void removeButton(int x, int y);
+    void moveButton(int x1, int y1, int x2, int y2);
     void clearButtons();
     
     void onMousePress(const QPoint& p);
@@ -48,6 +49,7 @@ public:
 public slots:
     void hide();
     void fadeOut();
+    void update();
     
 signals:
     void clicked(Button*);

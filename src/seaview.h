@@ -25,7 +25,7 @@ class SeaView : public KGameCanvasWidget
 {
 Q_OBJECT
     static const unsigned int GRID_SIZE = 10;
-    static const unsigned int LABEL_HEIGHT = 52;
+    static const unsigned int LABEL_HEIGHT = 0;
     
     BattleFieldView* m_fields[2];
     EntityLabel* m_labels[2];
