@@ -32,6 +32,8 @@ public:
     void add(Animation*);
     
     void start();
+    void stop();
+    void restart();
 private slots:
     void tick();
 };

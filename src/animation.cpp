@@ -41,6 +41,7 @@ void AnimationGroup::stop()
     foreach (Animation* a, m_animations) {
         delete a;
     }
+    m_animations.clear();
 }
 
 bool AnimationGroup::step(int t)

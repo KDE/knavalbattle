@@ -81,12 +81,17 @@ void PlayField::setupController()
     m_chooser->setupController(m_controller, m_sea, m_chat);
 }
 
-void PlayField::newGame()
+void PlayField::endGame()
 {
+    Animator::instance()->restart();
     delete m_controller;
     m_controller = 0;
     m_sea->clear();
-    
+}
+
+void PlayField::newGame()
+{
+    endGame();
     delete m_chooser;
     
     m_sea->screen(Sea::Player(0))->show();
@@ -96,6 +101,12 @@ void PlayField::newGame()
         m_sea->screen(Sea::Player(0)),
         m_sea->screen(Sea::Player(1)));
     connect(m_chooser, SIGNAL(done()), this, SLOT(setupController()));
+}
+
+void PlayField::restart()
+{
+    endGame();
+    setupController();
 }
 
 // void PlayField::newSimulation()

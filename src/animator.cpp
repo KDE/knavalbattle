@@ -26,18 +26,35 @@ Animator::~Animator()
 void Animator::add(Animation* a)
 {
     m_group->add(a);
+    start();
 }
 
 void Animator::start()
 {
-    m_timer.start(0);
-    m_time.start();
-    m_group->start(0);
+    if (!m_timer.isActive()) {
+        m_timer.start(0);
+        m_time.restart();
+        m_group->start(0);
+    }
+}
+
+void Animator::stop()
+{
+    m_group->stop();
+    m_timer.stop();
+}
+
+void Animator::restart()
+{
+    stop();
+    start();
 }
 
 void Animator::tick()
 {
-    m_group->step(m_time.elapsed());
+    if (m_group->step(m_time.elapsed())) {
+        stop();
+    }
 }
 
 Animator* Animator::instance()

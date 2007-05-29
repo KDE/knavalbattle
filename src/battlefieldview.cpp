@@ -193,6 +193,7 @@ void BattleFieldView::clear()
     m_preview.ship = 0;
     
     m_impact = 0;
+    m_last_hit = 0;
     
     foreach (Sprite* s, m_sprites) {
         delete s;

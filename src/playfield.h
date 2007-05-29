@@ -33,6 +33,8 @@ Q_OBJECT
     ChatWidget* m_chat;
     GameChooser* m_chooser;
     int m_human_player;
+    
+    void endGame();
 public:
     PlayField(QWidget* parent);
     ~PlayField();
@@ -42,6 +44,7 @@ public slots:
     void setupController();
     
     void newGame();
+    void restart();
 signals:
     void gameFinished();
 };
