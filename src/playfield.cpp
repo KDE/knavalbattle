@@ -46,12 +46,8 @@ PlayField::PlayField(QWidget* parent)
         
     m_controller = 0;
     m_human_player = 0;
-    m_chooser = new GameChooser(this, 
-        m_sea->screen(Sea::Player(0)),
-        m_sea->screen(Sea::Player(1)));
-        
-    connect(m_chooser, SIGNAL(done()), this, SLOT(setupController()));
-
+    m_chooser = 0;
+    
     m_player = new AudioPlayer(this);
 
     m_highscores = new KScoreDialog(
@@ -63,6 +59,9 @@ PlayField::PlayField(QWidget* parent)
     m_highscores->addField(KScoreDialog::Custom1, i18n("Shots"), "shots");
     m_highscores->addField(KScoreDialog::Custom2, i18n("Hits"), "hits");
     m_highscores->addField(KScoreDialog::Custom3, i18n("Misses"), "water");
+    
+    
+    newGame();
 }
 
 PlayField::~PlayField()
@@ -82,16 +81,22 @@ void PlayField::setupController()
     m_chooser->setupController(m_controller, m_sea, m_chat);
 }
 
-// void PlayField::newGame()
-// {
-//     m_server->close();
-//     setupController();
-//     m_human_player = 0;
-//     m_controller->createPlayer(Sea::Player(0), m_sea, m_chat, "dude");
-//     m_controller->createAI(Sea::Player(1));
-//     m_controller->start(m_sea);
-//     m_chat->hide();
-// }
+void PlayField::newGame()
+{
+    delete m_controller;
+    m_controller = 0;
+    m_sea->clear();
+    
+    delete m_chooser;
+    
+    m_sea->screen(Sea::Player(0))->show();
+    m_sea->screen(Sea::Player(1))->show();
+    
+    m_chooser = new GameChooser(this, 
+        m_sea->screen(Sea::Player(0)),
+        m_sea->screen(Sea::Player(1)));
+    connect(m_chooser, SIGNAL(done()), this, SLOT(setupController()));
+}
 
 // void PlayField::newSimulation()
 // {
@@ -182,6 +187,7 @@ void PlayField::gameOver(Sea::Player winner)
     else {
         KMessageBox::information(this, i18n("You lose."));
     }
+    
     // When we have finished, show again the welcome screen
     emit gameFinished();
 }

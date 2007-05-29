@@ -172,12 +172,15 @@ ScreenManager::ScreenManager(QObject* parent, WelcomeScreen* screen)
     // create buttons
     Button* button;
     button = screen->addButton(0, 0, KIcon("user-female"), i18n("You"));
+    Q_ASSERT(button);
     connect(button, SIGNAL(clicked()), this, SLOT(human()));
     
     button = screen->addButton(0, 1, KIcon("roll"), i18n("Computer"));
+    Q_ASSERT(button);
     connect(button, SIGNAL(clicked()), this, SLOT(ai()));
     
     button = screen->addButton(0, 2, KIcon("network"), i18n("Over the network"));
+    Q_ASSERT(button);
     connect(button, SIGNAL(clicked()), this, SLOT(network()));
 }
 

@@ -40,6 +40,8 @@ public slots:
     void highscores();
     void gameOver(Sea::Player winner);
     void setupController();
+    
+    void newGame();
 signals:
     void gameFinished();
 };

@@ -172,10 +172,18 @@ void WelcomeScreen::fadeOut()
     Animator::instance()->add(hideAnimation);
 }
 
+void WelcomeScreen::show()
+{
+    m_active = true;
+    setOpacity(255);
+    KGameCanvasGroup::show();
+}
+
 void WelcomeScreen::hide()
 {
     m_active = false;
     KGameCanvasGroup::hide();
+    clearButtons();
 }
 
 void WelcomeScreen::onMouseLeave()

@@ -45,6 +45,7 @@ public:
     void onMouseLeave();
     
     bool active() const { return m_active; }
+    void show();
     
 public slots:
     void hide();
