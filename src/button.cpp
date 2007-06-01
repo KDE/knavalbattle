@@ -239,7 +239,7 @@ void Button::removeEditor()
 
 // ------------
 
-double ButtonAnimation::m_speed = 0.38;
+double ButtonAnimation::m_speed = 0.46;
 
 ButtonAnimation::ButtonAnimation(Button* button, int brightness)
 : m_button(button)

@@ -16,6 +16,7 @@
 #include "mainwindow.h"
 #include "coord.h"
 
+
 static KCmdLineOptions options[] = {
     KCmdLineLastOption
 };
