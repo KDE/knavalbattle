@@ -77,9 +77,12 @@ void SeaView::update()
 //     m_labels[1]->moveTo(m_fields[1]->pos().x(), m_fields[1]->size().height() + 10);
 }
 
-void SeaView::resizeEvent(QResizeEvent*)
+void SeaView::resizeEvent(QResizeEvent* e)
 {
-    update();
+    if (!QWidget::testAttribute(Qt::WA_PendingResizeEvent)
+      && !e->spontaneous()) {
+        update();
+    }
 }
 
 int SeaView::fieldAt(const QPoint& p)

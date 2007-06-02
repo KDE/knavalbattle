@@ -13,6 +13,9 @@
 #include <klocale.h>
 #include <kicon.h>
 #include <QLineEdit>
+#include <QTcpServer>
+#include <QTcpSocket>
+
 #include "button.h"
 #include "chatwidget.h"
 #include "generalcontroller.h"
@@ -124,12 +127,19 @@ NetworkChooserOption::NetworkChooserOption(WelcomeScreen* screen)
 : m_screen(screen)
 , m_server(false)
 , m_port(54321)
+, m_socket(0)
 {
+    m_host = "localhost";
 }
 
 void NetworkChooserOption::initialize(Button*)
 {
     m_screen->clearButtons();
+    setupButtons();
+}
+
+void NetworkChooserOption::setupButtons()
+{
     Button* button;
      
     button = m_screen->addButton(0, 0, QIcon(), i18n("Wait for a connection"));
@@ -147,14 +157,57 @@ void NetworkChooserOption::apply(OptionVisitor& visitor)
 void NetworkChooserOption::setServer()
 {
     m_server = true;
-    finalize();
+    QTcpServer* server = new QTcpServer;
+    connect(server, SIGNAL(newConnection()), this, SLOT(processServerConnection()));
+    server->listen(QHostAddress::Any, static_cast<quint16>(m_port));
+    
+    m_screen->clearButtons();
+    // TODO: display some animation to distract the user :)
 }
 
 void NetworkChooserOption::setClient()
 {
     m_server = false;
-    m_host = "localhost";
+    m_socket = new QTcpSocket(this);
+    connect(m_socket, SIGNAL(connected()), this, SLOT(finalize()));
+    connect(m_socket, SIGNAL(error(QAbstractSocket::SocketError)), this, SLOT(clientError()));
+    m_socket->connectToHost(m_host, static_cast<quint16>(m_port));
+    
+    m_screen->clearButtons();
+}
+
+void NetworkChooserOption::processServerConnection()
+{
+    kDebug() << "incoming connection" << endl;
+    
+    QTcpServer* server = qobject_cast<QTcpServer*>(sender());
+    Q_ASSERT(server);
+    
+    m_socket = server->nextPendingConnection();
+    Q_ASSERT(m_socket);
+    
+    // refuse all other connections
+    while (server->hasPendingConnections()) {
+        delete server->nextPendingConnection();
+    }
+    
+    // reparent socket, so that we can safely destroy the server
+    m_socket->setParent(this);
+    delete server;
+    
+    // we're done
+    kDebug() << "finalizing" << endl;
     finalize();
+}
+
+void NetworkChooserOption::clientError()
+{
+    // restore buttons
+    setupButtons();
+    
+    // reset internal state
+    delete m_socket;
+    m_socket = 0;
 }
 
 void NetworkChooserOption::setHost(const QString& host)
@@ -275,9 +328,9 @@ public:
     
     virtual void visit(const NetworkChooserOption& option)
     {
-        kDebug() << "network option not implemented" << endl;
-//         m_chat->show(); //TODO: decomment me
-        Q_UNUSED(option);
+        QTcpSocket* socket = option.socket();
+        m_controller->createRemotePlayer(m_player, socket, option.server());
+        m_chat->show();
     }
 };
 
@@ -325,6 +378,7 @@ void GameChooser::chosen(int player)
 //     m_managers[player]->option()->apply(visitor);
 
     if (complete()) {
+        kDebug() << "emitting GameChooser::done()" << endl;
         emit done();
     }
 }

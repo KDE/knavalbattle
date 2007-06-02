@@ -19,6 +19,7 @@ class GeneralController;
 class SeaView;
 class ChatWidget;
 class Button;
+class QTcpSocket;
 
 class ChooserOption : public QObject
 {
@@ -91,16 +92,24 @@ Q_OBJECT
     QString m_host;
     int m_port;
     
+    QTcpSocket* m_socket;
+
+    void setupButtons();
+private slots:
     void finalize();
+    void processServerConnection();
+    void clientError();
 public:
     NetworkChooserOption(WelcomeScreen* screen);
     virtual void initialize(Button* button);
     virtual void apply(OptionVisitor& visitor);
-    virtual bool complete() const { return false; }
+    virtual bool complete() const { return m_socket; }
+    QTcpSocket* socket() const { return m_socket; }
     
 public slots:
     void setServer();
     void setClient();
+    bool server() const { return m_server; }
     
     void setHost(const QString& host);
     void setPort(const QString& port);
