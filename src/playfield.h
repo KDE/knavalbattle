@@ -16,11 +16,8 @@
 class SeaView;
 class GeneralController;
 class KScoreDialog;
-class QTcpServer;
-class QTcpSocket;
 class AudioPlayer;
 class ChatWidget;
-class QSignalMapper;
 class GameChooser;
 
 class PlayField : public QWidget

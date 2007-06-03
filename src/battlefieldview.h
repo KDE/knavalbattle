@@ -21,7 +21,6 @@
 class KBSRenderer;
 class Sprite;
 class Ship;
-class Animator;
 class WelcomeScreen;
 
 class BattleFieldView : public KGameCanvasGroup
