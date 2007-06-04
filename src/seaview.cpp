@@ -270,6 +270,7 @@ WelcomeScreen* SeaView::screen(Sea::Player p) const
 
 void SeaView::buttonClicked(Button* button)
 {
+    Q_UNUSED( button );
 #if 0
     WelcomeScreen* screen = qobject_cast<WelcomeScreen*>(sender());
     int f = screen == m_fields[0]->screen() ? 0 : 1;
