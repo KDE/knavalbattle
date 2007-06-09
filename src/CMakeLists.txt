@@ -24,6 +24,7 @@ set(kbattleship_SRCS
     battlefieldview.cpp
     button.cpp
     chatwidget.cpp
+    connectdialog.cpp
     coord.cpp
     element.cpp
     entity.cpp

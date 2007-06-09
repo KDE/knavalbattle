@@ -106,7 +106,7 @@ void Button::onMousePress(const QPoint&)
 
 void Button::onMouseRelease(const QPoint&)
 {
-    if (m_down) {
+    if (!m_editor && m_down) {
         m_down = false;
         if (m_animation) {
             m_animation->abort();
@@ -162,10 +162,16 @@ void Button::onMouseLeave()
     }
 }
 
-void Button::onClicked()
+bool Button::onClicked()
 {
-    kDebug() << "clicked" << endl;
-    emit clicked();
+    if (!m_editor) {
+        kDebug() << "clicked" << endl;
+        emit clicked();
+        return true;
+    }
+    else {
+        return false;
+    }
 }
 
 void Button::setText(const QString& text)
@@ -198,13 +204,13 @@ KGameCanvasPixmap* Button::extractIcon()
     return res;
 }
 
-void Button::setEditor(const QString& value)
+void Button::setEditor(EditorFactory& factory)
 {
     // remove old editor if existent
     delete m_editor;
     
     // create a new editor
-    m_editor = new QLineEdit(value, topLevelCanvas());
+    m_editor = factory.createEditor(topLevelCanvas());
     
     // update button
     m_size.setWidth(32 * 6);
@@ -212,9 +218,7 @@ void Button::setEditor(const QString& value)
     repaint();
     m_editor->show();
     
-    // set focus and selection
     m_editor->setFocus();
-    m_editor->selectAll();
 }
 
 void Button::updateEditor()

@@ -157,9 +157,9 @@ void WelcomeScreen::onMouseRelease(const QPoint& p)
     Button* button = dynamic_cast<Button*>(itemAt(p));
     if (m_clicked && m_clicked == button) {
         // actual click event
-        m_clicked->onClicked();
-        
-        emit clicked(button);
+        if (m_clicked->onClicked()) {            
+            emit clicked(button);
+        }
     }
     
     m_clicked = 0;

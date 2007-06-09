@@ -18,8 +18,42 @@
 
 #include "button.h"
 #include "chatwidget.h"
+#include "connectdialog.h"
 #include "generalcontroller.h"
 #include "sea.h"
+
+class LineEditorFactory : public EditorFactory
+{
+    QString m_text;
+public:
+    LineEditorFactory(const QString& text)
+    : m_text(text)
+    {
+    }
+    
+    virtual QWidget* createEditor(QWidget* parent)
+    {
+        return new QLineEdit(m_text, parent);
+    }
+};
+
+class ConnectDialogFactory : public EditorFactory
+{
+    QString m_hostname;
+    int m_port;
+public:
+    ConnectDialogFactory(const QString& hostname, int port)
+    : m_hostname(hostname)
+    , m_port(port)
+    {
+    }
+    
+    virtual QWidget* createEditor(QWidget* parent)
+    {
+        return new ConnectDialog(m_hostname, m_port, parent);
+    }
+};
+
 
 void ChooserOption::setNick(const QString& nick)
 {
@@ -44,18 +78,19 @@ void HumanChooserOption::initialize(Button* button)
     
     // read username
     KConfigGroup config(KGlobal::config(), "");
-    m_button->setEditor(config.readEntry("nickname"));
-    QLineEdit* editor = button->editor();
+    LineEditorFactory factory(config.readEntry("nickname"));
+    m_button->setEditor(factory);
+    QLineEdit* editor = qobject_cast<QLineEdit*>(button->editor());
     Q_ASSERT(editor);
-    connect(editor, SIGNAL(editingFinished()), this, SLOT(finalize()));
-
+    connect(editor, SIGNAL(returnPressed()), this, SLOT(finalize()));
 }
 
 void HumanChooserOption::finalize()
 {
     Q_ASSERT(m_button);
     
-    QLineEdit* editor = m_button->editor();
+    QLineEdit* editor = qobject_cast<QLineEdit*>(m_button->editor());
+    Q_ASSERT(editor);
     setNick(editor->text());
     m_button->removeEditor();
     
@@ -126,10 +161,11 @@ void AIChooserOption::finalize()
 NetworkChooserOption::NetworkChooserOption(WelcomeScreen* screen)
 : m_screen(screen)
 , m_server(false)
-, m_port(54321)
 , m_socket(0)
 {
-    m_host = "localhost";
+    m_selected = false;
+    m_server_button = 0;
+    m_client_button = 0;
 }
 
 void NetworkChooserOption::initialize(Button*)
@@ -140,13 +176,11 @@ void NetworkChooserOption::initialize(Button*)
 
 void NetworkChooserOption::setupButtons()
 {
-    Button* button;
-     
-    button = m_screen->addButton(0, 0, QIcon(), i18n("Wait for a connection"));
-    connect(button, SIGNAL(clicked()), this, SLOT(setServer()));
+    m_server_button = m_screen->addButton(0, 0, QIcon(), i18n("Wait for a connection"));
+    connect(m_server_button, SIGNAL(clicked()), this, SLOT(setServer()));
     
-    button = m_screen->addButton(0, 1, QIcon(), i18n("Connect to a server"));
-    connect(button, SIGNAL(clicked()), this, SLOT(setClient()));
+    m_client_button = m_screen->addButton(0, 1, QIcon(), i18n("Connect to a server"));
+    connect(m_client_button, SIGNAL(clicked()), this, SLOT(setClient()));
 }
 
 void NetworkChooserOption::apply(OptionVisitor& visitor)
@@ -156,24 +190,60 @@ void NetworkChooserOption::apply(OptionVisitor& visitor)
 
 void NetworkChooserOption::setServer()
 {
-    m_server = true;
+    if (!m_selected) {
+        m_server = true;
+        m_selected = true;
+        KConfigGroup config(KGlobal::config(), "");
+        ConnectDialogFactory factory("", config.readEntry("port", 54321));
+        m_server_button->setEditor(factory);
+        ConnectDialog* editor = qobject_cast<ConnectDialog*>(m_server_button->editor());
+        Q_ASSERT(editor);
+        connect(editor, SIGNAL(done()), this, SLOT(startServer()));
+    }
+}
+
+void NetworkChooserOption::startServer()
+{
+    Q_ASSERT(m_server);
+    ConnectDialog* editor = qobject_cast<ConnectDialog*>(m_server_button->editor());
+    Q_ASSERT(editor);
+
     QTcpServer* server = new QTcpServer;
     connect(server, SIGNAL(newConnection()), this, SLOT(processServerConnection()));
-    server->listen(QHostAddress::Any, static_cast<quint16>(m_port));
+    server->listen(QHostAddress::Any, static_cast<quint16>(editor->port()));
     
     m_screen->clearButtons();
+    
     // TODO: display some animation to distract the user :)
 }
 
 void NetworkChooserOption::setClient()
 {
-    m_server = false;
+    if (!m_selected) {
+        m_server = false;
+        m_selected = true;
+        KConfigGroup config(KGlobal::config(), "");
+        ConnectDialogFactory factory(config.readEntry("hostname", "localhost"),
+                                    config.readEntry("port", 54321));
+        m_client_button->setEditor(factory);
+        ConnectDialog* editor = qobject_cast<ConnectDialog*>(m_client_button->editor());
+        Q_ASSERT(editor);
+        connect(editor, SIGNAL(done()), this, SLOT(startClient()));
+    }
+}
+
+void NetworkChooserOption::startClient()
+{
+    Q_ASSERT(!m_server);
+    ConnectDialog* editor = qobject_cast<ConnectDialog*>(m_client_button->editor());
+    Q_ASSERT(editor);
+    
     m_socket = new QTcpSocket(this);
     connect(m_socket, SIGNAL(connected()), this, SLOT(finalize()));
     connect(m_socket, SIGNAL(error(QAbstractSocket::SocketError)), this, SLOT(clientError()));
-    m_socket->connectToHost(m_host, static_cast<quint16>(m_port));
+    m_socket->connectToHost(editor->hostname(), static_cast<quint16>(editor->port()));
     
-    m_screen->clearButtons();
+    m_screen->clearButtons();   
 }
 
 void NetworkChooserOption::processServerConnection()
@@ -208,16 +278,6 @@ void NetworkChooserOption::clientError()
     // reset internal state
     delete m_socket;
     m_socket = 0;
-}
-
-void NetworkChooserOption::setHost(const QString& host)
-{
-    m_host = host;
-}
-
-void NetworkChooserOption::setPort(const QString& port)
-{
-    m_port = port.toInt();
 }
 
 void NetworkChooserOption::finalize()

@@ -89,8 +89,9 @@ class NetworkChooserOption : public ChooserOption
 Q_OBJECT
     WelcomeScreen* m_screen;
     bool m_server;
-    QString m_host;
-    int m_port;
+    Button* m_server_button;
+    Button* m_client_button;
+    bool m_selected;
     
     QTcpSocket* m_socket;
 
@@ -108,11 +109,10 @@ public:
     
 public slots:
     void setServer();
+    void startServer();
     void setClient();
+    void startClient();
     bool server() const { return m_server; }
-    
-    void setHost(const QString& host);
-    void setPort(const QString& port);
 };
 
 class OptionVisitor
