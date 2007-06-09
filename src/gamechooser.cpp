@@ -12,6 +12,7 @@
 #include <kdebug.h>
 #include <klocale.h>
 #include <kicon.h>
+#include <kuser.h>
 #include <QLineEdit>
 #include <QTcpServer>
 #include <QTcpSocket>
@@ -78,7 +79,16 @@ void HumanChooserOption::initialize(Button* button)
     
     // read username
     KConfigGroup config(KGlobal::config(), "");
-    LineEditorFactory factory(config.readEntry("nickname"));
+    QString username;
+    if (!config.hasKey("nickname")) {
+        KUser user;
+        username = user.loginName();
+    }
+    else {
+        username = config.readEntry("nickname");
+    }
+    
+    LineEditorFactory factory(username);
     m_button->setEditor(factory);
     QLineEdit* editor = qobject_cast<QLineEdit*>(button->editor());
     Q_ASSERT(editor);
