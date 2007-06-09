@@ -94,6 +94,7 @@ void PlayField::newGame()
     endGame();
     delete m_chooser;
     
+    m_chat->hide();
     m_sea->screen(Sea::Player(0))->show();
     m_sea->screen(Sea::Player(1))->show();
     

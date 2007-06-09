@@ -21,6 +21,7 @@
 #include "chatwidget.h"
 #include "connectdialog.h"
 #include "generalcontroller.h"
+#include "playerentity.h"
 #include "sea.h"
 
 class LineEditorFactory : public EditorFactory
@@ -386,7 +387,11 @@ public:
     
     virtual void visit(const HumanChooserOption& option)
     {
-        m_controller->createPlayer(m_player, m_sea, m_chat, option.nick());
+        PlayerEntity* entity = m_controller->createPlayer(
+            m_player, m_sea, m_chat, option.nick());
+        
+        QObject::connect(m_chat, SIGNAL(message(QString, QString)),
+            entity, SIGNAL(chat(QString, QString)));
     }
     
     virtual void visit(const AIChooserOption& option)
@@ -400,6 +405,7 @@ public:
     {
         QTcpSocket* socket = option.socket();
         m_controller->createRemotePlayer(m_player, socket, option.server());
+
         m_chat->show();
     }
 };
