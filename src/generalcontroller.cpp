@@ -71,7 +71,7 @@ void GeneralController::setupEntity(Entity* entity)
             
     foreach (Entity* e, m_entities) {
         connect(e, SIGNAL(compatibility(int)),
-                entity, SLOT(setCompatibility(int)));
+                entity, SLOT(setCompatibilityLevel(int)));
         connect(entity, SIGNAL(compatibility(int)),
                 e, SLOT(setCompatibilityLevel(int)));
     }

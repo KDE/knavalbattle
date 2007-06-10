@@ -157,7 +157,7 @@ void NetworkEntity::visit(const NotificationMessage& msg)
             
             m_sea->forceHit(msg.move(), info);
             if (m_level == COMPAT_KBS3 && info.shipDestroyed) {
-                m_sea->addBorder(m_player, msg.move());
+                m_sea->addBorder(m_player, info.shipPos);
             }
             m_pending_shot->execute(info);
         }

@@ -29,6 +29,7 @@ ConnectDialog::ConnectDialog(const QString& hostname, int port, QWidget* parent)
     }
     else {
         m_hostname = new QLineEdit(hostname, this);
+        connect(m_hostname, SIGNAL(returnPressed()), this, SIGNAL(done()));
         layout->addWidget(m_hostname, 0, 0, 1, 2);
         rows = 2;
     }
@@ -51,7 +52,7 @@ ConnectDialog::ConnectDialog(const QString& hostname, int port, QWidget* parent)
     layout->setSpacing(1);
     setLayout(layout);
     
-    connect(m_hostname, SIGNAL(returnPressed()), this, SIGNAL(done()));
+
     connect(m_ok, SIGNAL(pressed()), this, SIGNAL(done()));
 }
 

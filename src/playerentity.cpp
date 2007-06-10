@@ -112,7 +112,7 @@ void PlayerEntity::notify(Sea::Player player, const Coord& c, const HitInfo& inf
     if (m_level == COMPAT_KBS3 &&
         player == m_player && 
         info.shipDestroyed) {
-        m_sea->addBorder(player, c);
+        m_sea->addBorder(player, info.shipPos);
     }
 }
 

@@ -289,6 +289,7 @@ void NetworkChooserOption::clientError()
     // reset internal state
     delete m_socket;
     m_socket = 0;
+    m_selected = false;
 }
 
 void NetworkChooserOption::finalize()
@@ -404,7 +405,7 @@ public:
     virtual void visit(const NetworkChooserOption& option)
     {
         QTcpSocket* socket = option.socket();
-        m_controller->createRemotePlayer(m_player, socket, option.server());
+        m_controller->createRemotePlayer(m_player, socket, !option.server());
 
         m_chat->show();
     }
