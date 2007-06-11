@@ -130,6 +130,10 @@ Q_OBJECT
     WelcomeScreen* m_screen;
     ChooserOption* m_option;
     
+    Button* m_human_button;
+    Button* m_ai_button;
+    Button* m_network_button;
+    
     void setOption(ChooserOption* option, Button* button);
 public:
     virtual ~ScreenManager() { }
@@ -137,8 +141,8 @@ public:
     ScreenManager(QObject* parent, WelcomeScreen* screen);
     
     ChooserOption* option() { return m_option; }
-    void removeHumanButton();
-private slots:
+    void removeNonHumanButtons();
+public slots:
     void human();
     void ai();
     void network();

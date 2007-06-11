@@ -288,6 +288,7 @@ void NetworkChooserOption::clientError()
     
     // reset internal state
     delete m_socket;
+    
     m_socket = 0;
     m_selected = false;
 }
@@ -304,42 +305,39 @@ ScreenManager::ScreenManager(QObject* parent, WelcomeScreen* screen)
 , m_option(0)
 {
     // create buttons
-    Button* button;
-    button = screen->addButton(0, 0, KIcon("user-female"), i18n("You"));
-    Q_ASSERT(button);
-    connect(button, SIGNAL(clicked()), this, SLOT(human()));
+    m_human_button = screen->addButton(0, 0, KIcon("user-female"), i18n("You"));
+    Q_ASSERT(m_human_button);
+    connect(m_human_button, SIGNAL(clicked()), this, SLOT(human()));
     
-    button = screen->addButton(0, 1, KIcon("roll"), i18n("Computer"));
-    Q_ASSERT(button);
-    connect(button, SIGNAL(clicked()), this, SLOT(ai()));
+    m_ai_button = screen->addButton(0, 1, KIcon("roll"), i18n("Computer"));
+    Q_ASSERT(m_ai_button);
+    connect(m_ai_button, SIGNAL(clicked()), this, SLOT(ai()));
     
-    button = screen->addButton(0, 2, KIcon("network"), i18n("Over the network"));
-    Q_ASSERT(button);
-    connect(button, SIGNAL(clicked()), this, SLOT(network()));
+    m_network_button = screen->addButton(0, 2, KIcon("network"), i18n("Over the network"));
+    Q_ASSERT(m_network_button);
+    connect(m_network_button, SIGNAL(clicked()), this, SLOT(network()));
 }
 
 void ScreenManager::human()
 {
-    setOption(new HumanChooserOption(m_screen), qobject_cast<Button*>(sender()));
+    if (!m_option) {
+        setOption(new HumanChooserOption(m_screen), m_human_button);
+    }
 }
 
 void ScreenManager::ai()
 {
-    setOption(new AIChooserOption(m_screen), qobject_cast<Button*>(sender()));
+    if (!m_option) {
+        setOption(new AIChooserOption(m_screen), m_ai_button);
+    }
 }
 
 void ScreenManager::network()
 {
-    setOption(new NetworkChooserOption(m_screen), qobject_cast<Button*>(sender()));
+    if (!m_option) {
+        setOption(new NetworkChooserOption(m_screen), m_network_button);
+    }
 }
-
-void ScreenManager::removeHumanButton()
-{
-    m_screen->removeButton(0, 0);
-    m_screen->moveButton(0, 1, 0, 0);
-    m_screen->moveButton(0, 2, 0, 1);
-}
-
 
 void ScreenManager::setOption(ChooserOption* option, Button* button)
 {
@@ -350,6 +348,12 @@ void ScreenManager::setOption(ChooserOption* option, Button* button)
         option->initialize(button);
         emit selected();
     }
+}
+
+void ScreenManager::removeNonHumanButtons()
+{
+    m_screen->removeButton(0, 1);
+    m_screen->removeButton(0, 2);
 }
 
 GameChooser::GameChooser(QObject* parent, WelcomeScreen* screen0, WelcomeScreen* screen1)
@@ -424,15 +428,27 @@ public:
 
     virtual void visit(const HumanChooserOption&)
     {
-        m_managers[Sea::opponent(m_player)]->removeHumanButton();
+        // assume that the opponent is an AI
+        m_managers[Sea::opponent(m_player)]->ai();
+        m_managers[m_player]->removeNonHumanButtons();
+        
+        // no longer needed
+        // m_managers[Sea::opponent(m_player)]->removeHumanButton();
     }
     
     virtual void visit(const AIChooserOption&)
     {
+        // assume that the opponent is humanremoveNonHumanButtons
+        if (!m_managers[Sea::opponent(m_player)]->option()) {
+            m_managers[Sea::opponent(m_player)]->removeNonHumanButtons();
+            m_managers[Sea::opponent(m_player)]->human();
+        }
     }
     
     virtual void visit(const NetworkChooserOption&)
     {
+        // assume that the opponent is human
+        m_managers[Sea::opponent(m_player)]->human();
     }
 };
 
@@ -473,7 +489,7 @@ void GameChooser::setupController(GeneralController* controller, SeaView* sea, C
     Q_ASSERT(complete());
     
     for (int i = 0; i < 2; i++) {
-        chat->hide();
+//         chat->hide();
         
         AddEntityVisitor visitor(controller, Sea::Player(i), sea, chat);
         m_managers[i]->option()->apply(visitor);
