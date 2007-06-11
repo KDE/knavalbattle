@@ -3,6 +3,7 @@
 #include <QLayout>
 #include <QLabel>
 #include <QSpinBox>
+#include <QGridLayout>
 
 #include <klineedit.h>
 #include <kpushbutton.h>
@@ -29,45 +30,58 @@ NetworkWidget::NetworkWidget(QWidget* parent)
     mainLayout->addWidget(sep);
     
     // client
-    tmpLayout = new QHBoxLayout;
-    tmp = new QLabel("Hostname ", this);
-    tmpLayout->addWidget(tmp);
+//     tmpLayout = new QHBoxLayout;
+    QGridLayout *clientLayout = new QGridLayout;
+    QGridLayout *clientWLayout = new QGridLayout;
+    tmp = new QLabel("Hostname       ", this);
+    clientWLayout->addWidget(tmp, 0, 0);
     m_hostname = new KLineEdit(this);
-    tmpLayout->addWidget(m_hostname);
-    mainLayout->addItem(tmpLayout);
-
-    tmpLayout = new QHBoxLayout;
-    tmp = new QLabel("Port ", this);
-    tmpLayout->addWidget(tmp);
-    tmpLayout->addStretch();
+    clientWLayout->addWidget(m_hostname, 0, 1);
+//     tmpLayout = new QHBoxLayout;
+    tmp = new QLabel("Port       ", this);
+    clientWLayout->addWidget(tmp, 1, 0);
+//     clientWLayout->addStretch();
     m_port1 = new QSpinBox(this);
-    tmpLayout->addWidget(m_port1);
-    mainLayout->addItem(tmpLayout);
+    clientWLayout->addWidget(m_port1, 1, 1);
+//     mainLayout->addItem(tmpLayout);
+//     mainLayout->addItem(clientWLayout);
+    clientWLayout->setRowStretch(0,5);
+    clientWLayout->setRowStretch(1,5);
+//     clientWLayout->setColumnStretch(0,5);
+    clientWLayout->setColumnStretch(1,5);
+
     
-    tmpLayout = new QHBoxLayout;
-    tmpLayout->addStretch();
+//     tmpLayout = new QHBoxLayout;
+//     tmpLayout->addStretch();
     m_client_button = new KPushButton("Connect >", this);
-    tmpLayout->addWidget(m_client_button);
-    mainLayout->addItem(tmpLayout);
+    clientLayout->addItem(clientWLayout, 0, 0);
+    clientLayout->addWidget(m_client_button, 1, 1);
+//     mainLayout->addItem(tmpLayout);
+    mainLayout->addItem(clientLayout);
     
     // separator
     sep = new KSeparator(Qt::Horizontal, this);
     mainLayout->addWidget(sep);
     
     // server
-    tmpLayout = new QHBoxLayout;
-    tmp = new QLabel("Port ", this);
-    tmpLayout->addWidget(tmp);
-    tmpLayout->addStretch();
+    QGridLayout *serverLayout = new QGridLayout;
+    QGridLayout *serverWLayout = new QGridLayout;
+//     tmpLayout = new QHBoxLayout;
+    tmp = new QLabel("Port         ", this);
+    serverWLayout->addWidget(tmp, 0, 0);
+//     tmpLayout->addStretch();
     m_port2 = new QSpinBox(this);
-    tmpLayout->addWidget(m_port2);
-    mainLayout->addItem(tmpLayout);
+    serverWLayout->addWidget(m_port2, 0, 1);
+    serverWLayout->setRowStretch(0,5);
+    serverWLayout->setColumnStretch(1,5);
+//     mainLayout->addItem(tmpLayout);
     
-    tmpLayout = new QHBoxLayout;
-    tmpLayout->addStretch();
+//     tmpLayout = new QHBoxLayout;
+//     tmpLayout->addStretch();
     m_client_button = new KPushButton("Start server >", this);
-    tmpLayout->addWidget(m_client_button);
-    mainLayout->addItem(tmpLayout);
+    serverLayout->addItem(serverWLayout, 0, 0);
+    serverLayout->addWidget(m_client_button, 1, 1);
+    mainLayout->addItem(serverLayout);
     
     setLayout(mainLayout);
 }

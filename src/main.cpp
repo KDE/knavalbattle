@@ -13,6 +13,7 @@
 #include <kcmdlineargs.h>
 #include <QMetaType>
 
+// #include "networkwidget.h"
 #include "mainwindow.h"
 #include "coord.h"
 
@@ -34,6 +35,7 @@ int main(int argc, char** argv)
     qRegisterMetaType<Coord>("Coord");
     
     MainWindow* window = new MainWindow;
+//     NetworkWidget *window = new NetworkWidget;
     window->show();
     
     return app.exec();
