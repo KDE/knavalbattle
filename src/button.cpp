@@ -48,12 +48,13 @@ void Button::setWidth(int width)
 void Button::computeSize()
 {
     QFontMetrics fm(m_font);
+    m_text_width = fm.width(m_text);
     int h = fm.height();
     if (h < 32) {
         h = 32;
     }
     if (!m_fixed_width) {        
-        m_size = QSize(fm.width(m_text), h);
+        m_size = QSize(m_text_width, h);
         m_size.rwidth() += 10 + 32 + 10 + 10;
     }
     else {
@@ -102,7 +103,8 @@ QSize Button::size() const
 
 QPoint Button::textPos() const
 {
-    return QPoint(10 + 32 + 10, m_size.height() / 2 + 6);
+    return QPoint(32 + 10 + (m_size.width() - 32 - 10 - m_text_width) / 2, 
+        m_size.height() / 2 + 6);
 }
 
 void Button::onMousePress(const QPoint&)

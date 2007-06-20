@@ -43,6 +43,7 @@ Q_OBJECT
     QFont m_font;
     QString m_text;
     QSize m_size;
+    int m_text_width;
     
     bool m_fixed_width;
     bool m_down;
