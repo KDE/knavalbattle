@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE kcfg SYSTEM 
+    "http://www.kde.org/standards/kcfg/1.0/kcfg.xsd">
+<kcfg>
+  <kcfgfile name="kbattleshiprc"/>
+  <include>kglobalsettings.h</include>
+  <group name="network">
+    <entry name="Hostname" type="String">
+        <label>Default hostname for multiplayer games.</label>
+        <default>localhost</default>
+    </entry>
+    <entry name="Port" type="Int">
+      <label>Default port for multiplayer games.</label>
+      <default>54321</default>
+    </entry>
+  </group>
+  <group name="general">
+    <entry name="Nickname" type="String">
+      <label>User nickname.</label>
+    </entry>
+  </group>
+</kcfg>

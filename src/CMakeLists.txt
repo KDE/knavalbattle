@@ -35,15 +35,17 @@ set(kbattleship_SRCS
     main.cpp
     mainwindow.cpp
     message.cpp
+    networkdialog.cpp
     networkentity.cpp
-    networkwidget.cpp
     playerentity.cpp
     playfield.cpp
     protocol.cpp
     sea.cpp
     seaview.cpp
+    settings.cpp
     ship.cpp
     shot.cpp
+    simplemenu.cpp
     sprite.cpp
     spritefactory.cpp
     stats.cpp
@@ -52,7 +54,7 @@ set(kbattleship_SRCS
 
 
 kde4_automoc(${kbattleship_SRCS})
-
+kde4_add_kcfg_files(kbattleship_SRCS settingsbase.kcfgc)
 kde4_add_executable(kbattleship ${kbattleship_SRCS} ${kwelcomescreen_SRCS})
 
 target_link_libraries(kbattleship ${KDE4_KDEUI_LIBS} ${KDE4_PHONON_LIBS} kdegames)

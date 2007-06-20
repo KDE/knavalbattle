@@ -13,10 +13,8 @@
 #include <kcmdlineargs.h>
 #include <QMetaType>
 
-// #include "networkwidget.h"
 #include "mainwindow.h"
 #include "coord.h"
-
 
 static KCmdLineOptions options[] = {
     KCmdLineLastOption
@@ -34,8 +32,7 @@ int main(int argc, char** argv)
     
     qRegisterMetaType<Coord>("Coord");
     
-    MainWindow* window = new MainWindow;
-//     NetworkWidget *window = new NetworkWidget;
+    MainWindow* window = new MainWindow();
     window->show();
     
     return app.exec();

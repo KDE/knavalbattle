@@ -80,6 +80,18 @@ Button* WelcomeScreen::addButton(int x, int y, const QIcon& icon, const QString&
     }
     else {
         Button* button = new Button(this, icon, m_font, text);
+        if (!m_buttons.isEmpty()) {
+            Button* other = *m_buttons.begin();
+            if (other->size().width() >= button->size().width()) {
+                button->setWidth(other->size().width());
+            }
+            else {
+                for (Buttons::const_iterator i = m_buttons.constBegin();
+                     i != m_buttons.constEnd(); ++i) {
+                    (*i)->setWidth(button->size().width());
+                }
+            }
+        }
         m_buttons.insert(Coord(x, y), button);
         button->show();
         update();

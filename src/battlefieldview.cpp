@@ -43,7 +43,7 @@ BattleFieldView::BattleFieldView(KGameCanvasWidget* parent, KBSRenderer* rendere
     
     m_screen = new WelcomeScreen(this, parent->font());
     m_screen->stackOver(m_background);
-    m_screen->show();
+//     m_screen->show();
     
     for (Sprites::iterator i = m_sprites.begin();
             i != m_sprites.end();

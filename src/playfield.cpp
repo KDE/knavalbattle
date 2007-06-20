@@ -27,7 +27,7 @@
 #include "chatwidget.h"
 #include "playerentity.h"
 #include "welcomescreen.h"
-#include "gamechooser.h"
+#include "simplemenu.h"
 
 PlayField::PlayField(QWidget* parent)
 : QWidget(parent)
@@ -46,9 +46,9 @@ PlayField::PlayField(QWidget* parent)
         
     m_controller = 0;
     m_human_player = 0;
-    m_chooser = 0;
+    m_menu = 0;
     
-    m_player = new AudioPlayer(this);
+    m_player = 0;//new AudioPlayer(this);
 
     m_highscores = new KScoreDialog(
         KScoreDialog::Name | KScoreDialog::Score | 
@@ -78,7 +78,7 @@ void PlayField::setupController()
     connect(m_controller, SIGNAL(gameOver(Sea::Player)),
             this, SLOT(gameOver(Sea::Player)));
             
-    m_chooser->setupController(m_controller, m_sea, m_chat);
+    m_menu->setupController(m_controller, m_sea, m_chat);
 }
 
 void PlayField::endGame()
@@ -92,16 +92,14 @@ void PlayField::endGame()
 void PlayField::newGame()
 {
     endGame();
-    delete m_chooser;
+    delete m_menu;
     
     m_chat->hide();
     m_sea->screen(Sea::Player(0))->show();
-    m_sea->screen(Sea::Player(1))->show();
+//     m_sea->screen(Sea::Player(1))->show();
     
-    m_chooser = new GameChooser(this, 
-        m_sea->screen(Sea::Player(0)),
-        m_sea->screen(Sea::Player(1)));
-    connect(m_chooser, SIGNAL(done()), this, SLOT(setupController()));
+    m_menu = new SimpleMenu(this, m_sea->screen(Sea::Player(0)));
+    connect(m_menu, SIGNAL(done()), this, SLOT(setupController()));
 }
 
 void PlayField::restart()

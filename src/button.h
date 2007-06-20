@@ -44,6 +44,7 @@ Q_OBJECT
     QString m_text;
     QSize m_size;
     
+    bool m_fixed_width;
     bool m_down;
     bool m_hover;
     double m_brightness;
@@ -77,6 +78,7 @@ public:
     KGameCanvasPixmap* extractIcon();
     void setEditor(EditorFactory& factory);
     void removeEditor();
+    void setWidth(int width);
 signals:
     void clicked();
     void needsUpdate();

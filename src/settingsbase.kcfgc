@@ -1,0 +1,4 @@
+File=kbattleship.kcfg
+ClassName=SettingsBase
+Singleton=true
+Mutators=true

@@ -23,8 +23,6 @@
 MainWindow::MainWindow()
 {
     m_main = new PlayField(this);
-    QVBoxLayout* layout = new QVBoxLayout(this);
-    layout->addWidget(m_main);
     
     setCentralWidget(m_main);
 
@@ -36,9 +34,9 @@ void MainWindow::setupActions()
 {
     // Game
     KStandardGameAction::gameNew(m_main, SLOT(newGame()), actionCollection());
-    KStandardGameAction::demo(m_main, SLOT(newSimulation()), actionCollection());
+//     KStandardGameAction::demo(m_main, SLOT(newSimulation()), actionCollection());
     KStandardGameAction::restart(m_main, SLOT(restart()), actionCollection());
-    
+//     
     KStandardGameAction::highscores(m_main, SLOT(highscores()), actionCollection());
     KStandardGameAction::quit(this, SLOT(close()), actionCollection());
 
@@ -50,13 +48,13 @@ void MainWindow::setupActions()
     
     KAction* temp;
      
-    temp = new KAction(i18n("Start Ser&ver"), this);
-    actionCollection()->addAction("game_server", temp);
-    connect(temp, SIGNAL(triggered()), m_main, SLOT(newServer()));
-    
-    temp = new KAction(i18n("&Connect"), this);
-    actionCollection()->addAction("game_client", temp);
-    connect(temp, SIGNAL(triggered()), m_main, SLOT(newClient()));
+//     temp = new KAction(i18n("Start Ser&ver"), this);
+//     actionCollection()->addAction("game_server", temp);
+//     connect(temp, SIGNAL(triggered()), m_main, SLOT(newServer()));
+//     
+//     temp = new KAction(i18n("&Connect"), this);
+//     actionCollection()->addAction("game_client", temp);
+//     connect(temp, SIGNAL(triggered()), m_main, SLOT(newClient()));
     
     setupGUI();
 }

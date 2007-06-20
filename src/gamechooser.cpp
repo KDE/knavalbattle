@@ -83,17 +83,19 @@ void HumanChooserOption::initialize(Button* button)
     QString username;
     if (!config.hasKey("nickname")) {
         KUser user;
-        username = user.loginName();
+        username = user.fullName();
+        if (username.isEmpty()) {
+            username = user.loginName();
+        }
     }
     else {
         username = config.readEntry("nickname");
     }
     
-    LineEditorFactory factory(username);
-    m_button->setEditor(factory);
-    QLineEdit* editor = qobject_cast<QLineEdit*>(button->editor());
-    Q_ASSERT(editor);
-    connect(editor, SIGNAL(returnPressed()), this, SLOT(finalize()));
+    setNick(username);
+    m_screen->fadeOut();
+    m_complete = true;
+    emit done();
 }
 
 void HumanChooserOption::finalize()
@@ -305,7 +307,7 @@ ScreenManager::ScreenManager(QObject* parent, WelcomeScreen* screen)
 , m_option(0)
 {
     // create buttons
-    m_human_button = screen->addButton(0, 0, KIcon("user-female"), i18n("You"));
+    m_human_button = screen->addButton(0, 0, KIcon("user-female"), i18n("Local game"));
     Q_ASSERT(m_human_button);
     connect(m_human_button, SIGNAL(clicked()), this, SLOT(human()));
     
@@ -313,7 +315,7 @@ ScreenManager::ScreenManager(QObject* parent, WelcomeScreen* screen)
     Q_ASSERT(m_ai_button);
     connect(m_ai_button, SIGNAL(clicked()), this, SLOT(ai()));
     
-    m_network_button = screen->addButton(0, 2, KIcon("network"), i18n("Over the network"));
+    m_network_button = screen->addButton(0, 2, KIcon("network"), i18n("Network play"));
     Q_ASSERT(m_network_button);
     connect(m_network_button, SIGNAL(clicked()), this, SLOT(network()));
 }
@@ -428,17 +430,12 @@ public:
 
     virtual void visit(const HumanChooserOption&)
     {
-        // assume that the opponent is an AI
-        m_managers[Sea::opponent(m_player)]->ai();
-        m_managers[m_player]->removeNonHumanButtons();
-        
-        // no longer needed
-        // m_managers[Sea::opponent(m_player)]->removeHumanButton();
+
     }
     
     virtual void visit(const AIChooserOption&)
     {
-        // assume that the opponent is humanremoveNonHumanButtons
+        // assume that the opponent is human
         if (!m_managers[Sea::opponent(m_player)]->option()) {
             m_managers[Sea::opponent(m_player)]->removeNonHumanButtons();
             m_managers[Sea::opponent(m_player)]->human();

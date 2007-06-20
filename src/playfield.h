@@ -18,7 +18,7 @@ class GeneralController;
 class KScoreDialog;
 class AudioPlayer;
 class ChatWidget;
-class GameChooser;
+class SimpleMenu;
 
 class PlayField : public QWidget
 {
@@ -28,7 +28,7 @@ Q_OBJECT
     KScoreDialog* m_highscores;
     AudioPlayer* m_player;
     ChatWidget* m_chat;
-    GameChooser* m_chooser;
+    SimpleMenu* m_menu;
     int m_human_player;
     
     void endGame();

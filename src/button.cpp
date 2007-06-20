@@ -23,6 +23,7 @@ Button::Button(WelcomeScreen* parent, const QIcon& icon,
 , m_icon(icon)
 , m_font(font)
 , m_text(text)
+, m_fixed_width(false)
 , m_down(false)
 , m_hover(false)
 , m_brightness(BRIGHTNESS_NORMAL)
@@ -37,6 +38,13 @@ Button::~Button()
     delete m_editor;
 }
 
+void Button::setWidth(int width)
+{
+    m_fixed_width = width != -1;
+    m_size.setWidth(width);
+    computeSize();
+}
+
 void Button::computeSize()
 {
     QFontMetrics fm(m_font);
@@ -44,8 +52,14 @@ void Button::computeSize()
     if (h < 32) {
         h = 32;
     }
-    m_size = QSize(fm.width(m_text), h);
-    m_size.rwidth() += 10 + 32 + 10 + 10;
+    if (!m_fixed_width) {        
+        m_size = QSize(fm.width(m_text), h);
+        m_size.rwidth() += 10 + 32 + 10 + 10;
+    }
+    else {
+        m_size.setHeight(h);
+    }
+    
     m_size.rheight() += 10 + 10;
 }
 
