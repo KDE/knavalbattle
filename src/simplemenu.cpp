@@ -10,6 +10,7 @@
 #include "chatwidget.h"
 #include "generalcontroller.h"
 #include "networkdialog.h"
+#include "playerentity.h"
 #include "welcomescreen.h"
 
 SimpleMenu::SimpleMenu(QWidget* parent, WelcomeScreen* screen)
@@ -52,7 +53,7 @@ void SimpleMenu::createServer()
     Q_ASSERT(parent_widget);
     NetworkDialog dialog(false, parent_widget);
     if (dialog.exec() == QDialog::Accepted) {
-
+        m_nickname = dialog.nickname();
         QTcpServer* server = new QTcpServer;
         connect(server, SIGNAL(newConnection()), this, SLOT(processServerConnection()));
         server->listen(QHostAddress::Any, static_cast<quint16>(dialog.port()));
@@ -90,6 +91,7 @@ void SimpleMenu::createClient()
     NetworkDialog dialog(true, parent_widget);
     if (dialog.exec() == QDialog::Accepted) {
         m_socket = new QTcpSocket(this);
+        m_nickname = dialog.nickname();
         connect(m_socket, SIGNAL(connected()), this, SLOT(clientOK()));
         connect(m_socket, SIGNAL(error(QAbstractSocket::SocketError)), this, SLOT(clientError()));
         m_socket->connectToHost(dialog.hostname(), dialog.port());
@@ -100,6 +102,9 @@ void SimpleMenu::createClient()
 
 void SimpleMenu::clientError()
 {
+    delete m_socket;
+    m_socket = 0;
+    m_nickname = "";
     // TODO: display error message
 }
 
@@ -120,20 +125,26 @@ void SimpleMenu::setupController(GeneralController* controller, SeaView* sea, Ch
 //         QObject::connect(m_chat, SIGNAL(message(QString, QString)),
 //             entity, SIGNAL(chat(QString, QString)));
         break;
-    case DONE_SERVER:
+    case DONE_SERVER: {
         Q_ASSERT(m_socket);
-        controller->createPlayer(Sea::Player(0), sea, chat, "");
+        PlayerEntity* player = controller->createPlayer(Sea::Player(0), sea, chat, m_nickname);
         controller->createRemotePlayer(Sea::Player(1), m_socket, false);
         controller->start(sea);
         chat->show();
+        connect(chat, SIGNAL(message(QString, QString)),
+            player, SIGNAL(chat(QString, QString)));
         break;
-    case DONE_CLIENT:
+    }
+    case DONE_CLIENT: {
         Q_ASSERT(m_socket);
-        controller->createPlayer(Sea::Player(0), sea, chat, "");
+        PlayerEntity* player = controller->createPlayer(Sea::Player(0), sea, chat, m_nickname);
         controller->createRemotePlayer(Sea::Player(1), m_socket, true);
         controller->start(sea);
         chat->show();
+        connect(chat, SIGNAL(message(QString, QString)),
+            player, SIGNAL(chat(QString, QString)));
         break;
+    }
     default:
         break;
     }

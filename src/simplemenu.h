@@ -20,6 +20,7 @@ Q_OBJECT
     Button* m_client_btn;
     
     QTcpSocket* m_socket;
+    QString m_nickname;
     
     enum State
     {
