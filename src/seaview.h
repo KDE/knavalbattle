@@ -27,6 +27,7 @@ Q_OBJECT
     static const unsigned int GRID_SIZE = 10;
     static const unsigned int LABEL_HEIGHT = 0;
     
+    WelcomeScreen* m_screen;
     BattleFieldView* m_fields[2];
     EntityLabel* m_labels[2];
     
@@ -52,6 +53,7 @@ public:
     void sink(Sea::Player p, const Coord& c, Ship* ship);
     void clear();
 
+    WelcomeScreen* globalScreen() const;
     WelcomeScreen* screen(Sea::Player player) const;
     
     virtual QSize sizeHint() const;

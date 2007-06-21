@@ -38,7 +38,7 @@ SimpleMenu::SimpleMenu(QWidget* parent, WelcomeScreen* screen)
 void SimpleMenu::finalize(State state)
 {
     m_state = state;
-    m_screen->fadeOut();
+//     m_screen->fadeOut();
     emit done();
 }
 

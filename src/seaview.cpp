@@ -34,11 +34,17 @@ SeaView::SeaView(QWidget* parent)
     m_renderer = new KBSRenderer(KStandardDirs::locate("appdata", "pictures/default_theme.svgz"));
     m_renderer->resize(tileSize());
     
+    // create screen
+    m_screen = new WelcomeScreen(this, font());
+    m_screen->hide();
+    
     // create fields
     m_fields[0] = new BattleFieldView(this, m_renderer, "background", GRID_SIZE);
+    m_fields[0]->stackUnder(m_screen);
     m_fields[0]->show();
     connect(m_fields[0]->screen(), SIGNAL(clicked(Button*)), this, SLOT(buttonClicked(Button*)));
     m_fields[1] = new BattleFieldView(this, m_renderer, "background2", GRID_SIZE);
+    m_fields[1]->stackUnder(m_screen);
     m_fields[1]->show();
     connect(m_fields[1]->screen(), SIGNAL(clicked(Button*)), this, SLOT(buttonClicked(Button*)));
     
@@ -71,6 +77,10 @@ void SeaView::update()
     m_fields[1]->moveTo(m_fields[0]->size().width() + ts, 0);
     m_fields[1]->update();
     
+    m_screen->moveTo(0, 0);
+    m_screen->resize(QSize(m_fields[1]->pos().x() + m_fields[1]->size().width(),
+                           m_fields[0]->size().height()));
+    
 //     m_labels[0]->resize(QSize(m_fields[0]->size().width(), LABEL_HEIGHT));
 //     m_labels[0]->moveTo(m_fields[0]->pos().x(), m_fields[0]->size().height() + 10);
 //     m_labels[1]->resize(QSize(m_fields[1]->size().width(), LABEL_HEIGHT));
@@ -100,6 +110,10 @@ int SeaView::fieldAt(const QPoint& p)
 
 void SeaView::mousePressEvent(QMouseEvent* e)
 {
+    if (m_screen->active()) {
+        m_screen->onMousePress(e->pos());
+    }
+
     int f = fieldAt(e->pos());
     if (f == -1) {
         return;
@@ -124,6 +138,10 @@ void SeaView::mousePressEvent(QMouseEvent* e)
 
 void SeaView::mouseReleaseEvent(QMouseEvent* e)
 {
+    if (m_screen->active()) {
+        m_screen->onMouseRelease(e->pos());
+    }
+
     int f = fieldAt(e->pos());
     if (f == -1) {
         return;
@@ -138,6 +156,10 @@ void SeaView::mouseReleaseEvent(QMouseEvent* e)
 
 void SeaView::leaveEvent(QEvent*)
 {
+    if (m_screen->active()) {
+        m_screen->onMouseLeave();
+    }
+    
     if (m_last_f != -1) {
         BattleFieldView* field = m_fields[m_last_f];
         field->onMouseLeave();
@@ -148,6 +170,10 @@ void SeaView::leaveEvent(QEvent*)
 
 void SeaView::mouseMoveEvent(QMouseEvent* e)
 {
+    if (m_screen->active()) {
+        m_screen->onMouseMove(e->pos());
+    }
+    
     // send mouse move info to the welcome screen
     int f = fieldAt(e->pos());
     if (m_last_f != -1 && m_last_f != f) {
@@ -263,9 +289,14 @@ QSize SeaView::sizeHint() const
     return QSize(100, 400);
 }
 
-WelcomeScreen* SeaView::screen(Sea::Player p) const
+WelcomeScreen* SeaView::globalScreen() const
 {
-    return m_fields[p]->screen();
+    return m_screen;
+}
+
+WelcomeScreen* SeaView::screen(Sea::Player player) const
+{
+    return m_fields[player]->screen();
 }
 
 void SeaView::buttonClicked(Button* button)

@@ -73,6 +73,10 @@ PlayField::~PlayField()
 
 void PlayField::setupController()
 {
+    // remove welcome screen
+    m_sea->screen(Sea::Player(0))->fadeOut();
+    m_sea->screen(Sea::Player(1))->fadeOut();
+
     delete m_controller;
     m_controller = new GeneralController(this, m_player);
     connect(m_controller, SIGNAL(gameOver(Sea::Player)),
@@ -96,7 +100,7 @@ void PlayField::newGame()
     
     m_chat->hide();
     m_sea->screen(Sea::Player(0))->show();
-//     m_sea->screen(Sea::Player(1))->show();
+    m_sea->screen(Sea::Player(1))->show();
     
     m_menu = new SimpleMenu(this, m_sea->screen(Sea::Player(0)));
     connect(m_menu, SIGNAL(done()), this, SLOT(setupController()));
