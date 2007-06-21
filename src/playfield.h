@@ -14,7 +14,7 @@
 #include "sea.h"
 
 class SeaView;
-class GeneralController;
+class Controller;
 class KScoreDialog;
 class AudioPlayer;
 class ChatWidget;
@@ -24,7 +24,7 @@ class PlayField : public QWidget
 {
 Q_OBJECT
     SeaView* m_sea;
-    GeneralController* m_controller;
+    Controller* m_controller;
     KScoreDialog* m_highscores;
     AudioPlayer* m_player;
     ChatWidget* m_chat;

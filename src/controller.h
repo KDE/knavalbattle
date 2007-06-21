@@ -7,8 +7,8 @@
   (at your option) any later version.
 */
 
-#ifndef GENERALCONTROLLER_H
-#define GENERALCONTROLLER_H
+#ifndef CONTROLLER_H
+#define CONTROLLER_H
 
 #include "sea.h"
 
@@ -21,7 +21,7 @@ class Stats;
 class Shot;
 class AudioPlayer;
 
-class GeneralController : public QObject
+class Controller : public QObject
 {
 Q_OBJECT
     QList<Entity*> m_entities;
@@ -40,7 +40,7 @@ Q_OBJECT
     
     friend class Shot;
 public:
-    explicit GeneralController(QObject* parent, AudioPlayer* player = 0);
+    explicit Controller(QObject* parent, AudioPlayer* player = 0);
 
     PlayerEntity* createPlayer(Sea::Player player, SeaView* view, 
                                ChatWidget* chat, const QString& nick);
@@ -58,5 +58,5 @@ signals:
     void gameOver(Sea::Player);
 };
 
-#endif // GENERALCONTROLLER_H
+#endif // CONTROLLER_H
 

@@ -11,7 +11,6 @@
 
 #include <kmessagebox.h>
 #include <klocale.h>
-#include "generalcontroller.h"
 #include "seaview.h"
 #include "shot.h"
 #include "chatwidget.h"

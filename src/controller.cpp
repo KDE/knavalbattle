@@ -7,7 +7,7 @@
   (at your option) any later version.
 */
 
-#include "generalcontroller.h"
+#include "controller.h"
 
 #include <klocalizedstring.h>
 #include "playerentity.h"
@@ -17,7 +17,7 @@
 #include "shot.h"
 #include "audioplayer.h"
 
-GeneralController::GeneralController(QObject* parent, AudioPlayer* player)
+Controller::Controller(QObject* parent, AudioPlayer* player)
 : QObject(parent)
 , m_shot(0)
 , m_ready(0)
@@ -27,7 +27,7 @@ GeneralController::GeneralController(QObject* parent, AudioPlayer* player)
     m_sea = new Sea(this, Coord(10, 10));
 }
 
-PlayerEntity* GeneralController::createPlayer(Sea::Player player, SeaView* view,
+PlayerEntity* Controller::createPlayer(Sea::Player player, SeaView* view,
                                               ChatWidget* chat, const QString& nick)
 {
     if (m_ui) {
@@ -41,14 +41,14 @@ PlayerEntity* GeneralController::createPlayer(Sea::Player player, SeaView* view,
     return entity;
 }
 
-void GeneralController::createAI(Sea::Player player)
+void Controller::createAI(Sea::Player player)
 {
     Entity* e = new AIEntity(player, m_sea);
     e->setNick(i18n("Computer"));
     setupEntity(e);
 }
 
-void GeneralController::createRemotePlayer(Sea::Player player, QIODevice* device, bool client)
+void Controller::createRemotePlayer(Sea::Player player, QIODevice* device, bool client)
 {
     Entity* e = new NetworkEntity(player, m_sea, device, client);
     setupEntity(e);
@@ -57,7 +57,7 @@ void GeneralController::createRemotePlayer(Sea::Player player, QIODevice* device
     }
 }
 
-void GeneralController::setupEntity(Entity* entity)
+void Controller::setupEntity(Entity* entity)
 {
     entity->setParent(this);
     connect(entity, SIGNAL(shoot(int, const Coord&)),
@@ -79,7 +79,7 @@ void GeneralController::setupEntity(Entity* entity)
     m_entities.append(entity);
 }
 
-bool GeneralController::allPlayers() const
+bool Controller::allPlayers() const
 {
     unsigned char bitmap = 0;
     foreach (Entity* entity, m_entities) {
@@ -92,7 +92,7 @@ bool GeneralController::allPlayers() const
     return bitmap == 3;
 }
 
-bool GeneralController::start(SeaView* view)
+bool Controller::start(SeaView* view)
 {
     if (!allPlayers()) {
         return false;
@@ -118,7 +118,7 @@ bool GeneralController::start(SeaView* view)
     return true;
 }
 
-void GeneralController::shoot(int player, const Coord& c)
+void Controller::shoot(int player, const Coord& c)
 {
     Entity* entity = findEntity(Sea::opponent(Sea::Player(player)));
     if (!entity) {
@@ -137,7 +137,7 @@ void GeneralController::shoot(int player, const Coord& c)
     }
 }
 
-void GeneralController::finalizeShot(Sea::Player player, const Coord& c, const HitInfo& info)
+void Controller::finalizeShot(Sea::Player player, const Coord& c, const HitInfo& info)
 {
     if (info.type != HitInfo::INVALID) {
         // notify entities
@@ -163,14 +163,14 @@ void GeneralController::finalizeShot(Sea::Player player, const Coord& c, const H
     m_shot = 0;
 }
 
-void GeneralController::notify(Sea::Player player, const Coord& c, const HitInfo& info)
+void Controller::notify(Sea::Player player, const Coord& c, const HitInfo& info)
 {
     foreach (Entity* entity, m_entities) {
         entity->notify(player, c, info);
     }
 }
 
-void GeneralController::ready(int player)
+void Controller::ready(int player)
 {
     m_ready++;
     foreach (Entity* entity, m_entities) {
@@ -185,7 +185,7 @@ void GeneralController::ready(int player)
     }
 }
 
-const Stats* GeneralController::stats() const
+const Stats* Controller::stats() const
 {
     foreach (Entity* entity, m_entities) {
         const Stats* res = entity->stats();
@@ -197,7 +197,7 @@ const Stats* GeneralController::stats() const
     return 0;
 }
 
-Entity* GeneralController::findEntity(Sea::Player player) const
+Entity* Controller::findEntity(Sea::Player player) const
 {
     foreach (Entity* entity, m_entities) {
         if (entity->player() == player) {
@@ -208,7 +208,7 @@ Entity* GeneralController::findEntity(Sea::Player player) const
     return 0;
 }
 
-void GeneralController::receivedChat(const QString& nick, const QString& text)
+void Controller::receivedChat(const QString& nick, const QString& text)
 {
     kDebug() << "received chat " << nick << ": " << text << endl;
     foreach (Entity* entity, m_entities) {
@@ -219,7 +219,7 @@ void GeneralController::receivedChat(const QString& nick, const QString& text)
     }
 }
 
-void GeneralController::nick(int player, const QString& nick)
+void Controller::nick(int player, const QString& nick)
 {
     kDebug() << "controller: nick" << endl;
     foreach (Entity* entity, m_entities) {
@@ -229,6 +229,6 @@ void GeneralController::nick(int player, const QString& nick)
     }
 }
 
-#include "generalcontroller.moc"
+#include "controller.moc"
 
 

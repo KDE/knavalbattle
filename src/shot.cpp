@@ -8,9 +8,9 @@
 */
 
 #include "shot.h"
-#include "generalcontroller.h"
+#include "controller.h"
 
-Shot::Shot(GeneralController* parent, Sea::Player player, const Coord& pos)
+Shot::Shot(Controller* parent, Sea::Player player, const Coord& pos)
 : m_parent(parent)
 , m_player(player)
 , m_pos(pos)

@@ -25,12 +25,12 @@ set(kbattleship_SRCS
     button.cpp
     chatwidget.cpp
     connectdialog.cpp
+    controller.cpp
     coord.cpp
     element.cpp
     entity.cpp
     entitylabel.cpp
     gamechooser.cpp
-    generalcontroller.cpp
     kbsrenderer.cpp
     main.cpp
     mainwindow.cpp

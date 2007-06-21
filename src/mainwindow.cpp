@@ -44,9 +44,6 @@ void MainWindow::setupActions()
 
     // Settings
     KStandardAction::preferences(this, SLOT(optionsPreferences()), actionCollection());
-    
-    
-    KAction* temp;
      
 //     temp = new KAction(i18n("Start Ser&ver"), this);
 //     actionCollection()->addAction("game_server", temp);

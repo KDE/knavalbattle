@@ -21,7 +21,7 @@
 #include <kmessagebox.h>
 
 #include "seaview.h"
-#include "generalcontroller.h"
+#include "controller.h"
 #include "stats.h"
 #include "audioplayer.h"
 #include "chatwidget.h"
@@ -78,7 +78,7 @@ void PlayField::setupController()
     m_sea->screen(Sea::Player(1))->fadeOut();
 
     delete m_controller;
-    m_controller = new GeneralController(this, m_player);
+    m_controller = new Controller(this, m_player);
     connect(m_controller, SIGNAL(gameOver(Sea::Player)),
             this, SLOT(gameOver(Sea::Player)));
             

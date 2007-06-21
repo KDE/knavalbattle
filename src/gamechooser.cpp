@@ -20,7 +20,7 @@
 #include "button.h"
 #include "chatwidget.h"
 #include "connectdialog.h"
-#include "generalcontroller.h"
+#include "controller.h"
 #include "playerentity.h"
 #include "sea.h"
 
@@ -377,13 +377,13 @@ GameChooser::GameChooser(QObject* parent, WelcomeScreen* screen0, WelcomeScreen*
 
 class AddEntityVisitor : public OptionVisitor
 {
-    GeneralController* m_controller;
+    Controller* m_controller;
     Sea::Player m_player;
     SeaView* m_sea;
     ChatWidget* m_chat;
     
 public:
-    AddEntityVisitor(GeneralController* controller, Sea::Player player,
+    AddEntityVisitor(Controller* controller, Sea::Player player,
                      SeaView* sea, ChatWidget* chat)
     : m_controller(controller)
     , m_player(player)
@@ -481,7 +481,7 @@ bool GameChooser::complete() const
            m_managers[1]->option()->complete();
 }
 
-void GameChooser::setupController(GeneralController* controller, SeaView* sea, ChatWidget* chat)
+void GameChooser::setupController(Controller* controller, SeaView* sea, ChatWidget* chat)
 {
     Q_ASSERT(complete());
     

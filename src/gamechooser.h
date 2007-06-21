@@ -15,7 +15,7 @@
 
 class WelcomeScreen;
 class OptionVisitor;
-class GeneralController;
+class Controller;
 class SeaView;
 class ChatWidget;
 class Button;
@@ -161,7 +161,7 @@ Q_OBJECT
 public:
     GameChooser(QObject* parent, WelcomeScreen* screen0, WelcomeScreen* screen1);
     
-    void setupController(GeneralController* controller, SeaView* sea, ChatWidget* chat);
+    void setupController(Controller* controller, SeaView* sea, ChatWidget* chat);
     bool complete() const;
 public slots:
     void chosen(int player);

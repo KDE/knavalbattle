@@ -8,7 +8,6 @@
 */
 
 #include "uientity.h"
-#include "generalcontroller.h"
 #include "seaview.h"
 #include "shot.h"
 

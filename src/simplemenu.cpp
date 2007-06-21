@@ -17,7 +17,7 @@
 
 #include "button.h"
 #include "chatwidget.h"
-#include "generalcontroller.h"
+#include "controller.h"
 #include "networkdialog.h"
 #include "playerentity.h"
 #include "welcomescreen.h"
@@ -122,7 +122,7 @@ void SimpleMenu::clientOK()
     finalize(DONE_CLIENT);
 }
 
-void SimpleMenu::setupController(GeneralController* controller, SeaView* sea, ChatWidget* chat)
+void SimpleMenu::setupController(Controller* controller, SeaView* sea, ChatWidget* chat)
 {
     switch (m_state) {
     case DONE_LOCAL_GAME:

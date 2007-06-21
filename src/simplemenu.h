@@ -13,7 +13,7 @@
 #include <QObject>
 
 class WelcomeScreen;
-class GeneralController;
+class Controller;
 class SeaView;
 class ChatWidget;
 class Button;
@@ -42,7 +42,7 @@ Q_OBJECT
 public:
     SimpleMenu(QWidget* parent, WelcomeScreen* screen);
     
-    void setupController(GeneralController* controller,
+    void setupController(Controller* controller,
         SeaView* sea, ChatWidget* chat);
 private slots:
     void localGame();
