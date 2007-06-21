@@ -64,8 +64,8 @@ void Controller::setupEntity(Entity* entity)
             this, SLOT(shoot(int, const Coord&)), Qt::QueuedConnection);
     connect(entity, SIGNAL(ready(int)),
             this, SLOT(ready(int)), Qt::QueuedConnection);
-    connect(entity, SIGNAL(chat(QString, QString)),
-            this, SLOT(receivedChat(QString, QString)));
+    connect(entity, SIGNAL(chat(QString)),
+            this, SLOT(receivedChat(QString)));
     connect(entity, SIGNAL(nick(int,QString)),
             this, SLOT(nick(int,QString)));
             
@@ -176,7 +176,9 @@ void Controller::ready(int player)
     foreach (Entity* entity, m_entities) {
         entity->notifyReady(Sea::Player(player));
     }
-    kDebug() << "ready = " << m_ready << endl;
+    
+    // when two entities are ready, start
+    // all engines
     if (m_ready >= 2) {
         m_sea->startPlaying();
         foreach (Entity* entity, m_entities) {
@@ -208,13 +210,16 @@ Entity* Controller::findEntity(Sea::Player player) const
     return 0;
 }
 
-void Controller::receivedChat(const QString& nick, const QString& text)
+void Controller::receivedChat(const QString& text)
 {
-    kDebug() << "received chat " << nick << ": " << text << endl;
-    foreach (Entity* entity, m_entities) {
-        if (entity->nick() != nick) {
-            kDebug() << "forwarding to " << entity->nick() << endl;
-            entity->notifyChat(nick, text);
+    Entity* chat_sender = qobject_cast<Entity*>(sender());
+    
+    if (chat_sender) {    
+        foreach (Entity* entity, m_entities) {
+            if (entity != chat_sender) {
+                kDebug() << "forwarding to " << entity->nick() << endl;
+                entity->notifyChat(chat_sender, text);
+            }
         }
     }
 }

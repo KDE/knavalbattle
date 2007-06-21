@@ -130,18 +130,13 @@ void SimpleMenu::setupController(Controller* controller, SeaView* sea, ChatWidge
         controller->createAI(Sea::Player(1));
         controller->start(sea);
         chat->hide();
-        
-//         QObject::connect(m_chat, SIGNAL(message(QString, QString)),
-//             entity, SIGNAL(chat(QString, QString)));
         break;
     case DONE_SERVER: {
         Q_ASSERT(m_socket);
         PlayerEntity* player = controller->createPlayer(Sea::Player(0), sea, chat, m_nickname);
         controller->createRemotePlayer(Sea::Player(1), m_socket, false);
         controller->start(sea);
-        chat->show();
-        connect(chat, SIGNAL(message(QString, QString)),
-            player, SIGNAL(chat(QString, QString)));
+        chat->bindTo(player);
         break;
     }
     case DONE_CLIENT: {
@@ -149,9 +144,7 @@ void SimpleMenu::setupController(Controller* controller, SeaView* sea, ChatWidge
         PlayerEntity* player = controller->createPlayer(Sea::Player(0), sea, chat, m_nickname);
         controller->createRemotePlayer(Sea::Player(1), m_socket, true);
         controller->start(sea);
-        chat->show();
-        connect(chat, SIGNAL(message(QString, QString)),
-            player, SIGNAL(chat(QString, QString)));
+        chat->bindTo(player);
         break;
     }
     default:

@@ -30,7 +30,7 @@ public:
     ~NetworkEntity();
     
     virtual void notify(Sea::Player player, const Coord& c, const HitInfo& info);
-    virtual void notifyChat(const QString& nick, const QString& text);
+    virtual void notifyChat(const Entity* entity, const QString& text);
     virtual void notifyNick(Sea::Player player, const QString& nick);
     virtual void start();
     virtual void startPlaying();

@@ -28,7 +28,7 @@ public:
     virtual ~AIEntity();
 
     virtual void notify(Sea::Player player, const Coord& c, const HitInfo& info);
-    virtual void notifyChat(const QString&, const QString&) { }
+    virtual void notifyChat(const Entity*, const QString&) { }
     virtual void notifyNick(Sea::Player, const QString&) { }
     virtual void start();
     virtual void startPlaying();

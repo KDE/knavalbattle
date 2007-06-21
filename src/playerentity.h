@@ -36,7 +36,7 @@ public:
     virtual const Stats* stats() const { return &m_stats; }
     virtual void hit(Shot* shot);
     virtual void notify(Sea::Player player, const Coord& c, const HitInfo& info);
-    virtual void notifyChat(const QString& nick, const QString& text);
+    virtual void notifyChat(const Entity* entity, const QString& text);
     virtual void notifyNick(Sea::Player player, const QString& text);
     
     // delegate interface

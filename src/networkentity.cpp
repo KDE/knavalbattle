@@ -75,10 +75,10 @@ void NetworkEntity::notifyNick(Sea::Player player, const QString& nick)
     }
 }
 
-void NetworkEntity::notifyChat(const QString& nickname, const QString& text)
+void NetworkEntity::notifyChat(const Entity* entity, const QString& text)
 {
-    if (nickname != nick()) {
-        m_protocol->send(MessagePtr(new ChatMessage(nickname, text)));
+    if (entity != this) {
+        m_protocol->send(MessagePtr(new ChatMessage(entity->nick(), text)));
     }
 }
 
@@ -178,7 +178,7 @@ void NetworkEntity::visit(const RestartMessage&)
 
 void NetworkEntity::visit(const ChatMessage& msg)
 {
-    emit chat(msg.nickname(), msg.chat());
+    emit chat(msg.chat());
 }
 
 #include "networkentity.moc"

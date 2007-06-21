@@ -9,11 +9,12 @@
 
 #include "chatwidget.h"
 
-#include <QVBoxLayout>
-#include <QTextEdit>
-#include <QLineEdit>
 #include <QKeyEvent>
-#include <kdebug.h>
+#include <QLineEdit>
+#include <QTextEdit>
+#include <QVBoxLayout>
+
+#include "entity.h"
 
 ChatWidget::ChatWidget(QWidget* parent)
 : QWidget(parent)
@@ -77,7 +78,7 @@ void ChatWidget::sendLine()
     m_history.push_back("");
     setHistoryText(m_history.size() - 1);
     display(m_nick, text);
-    message(m_nick, text);
+    emit message(text);
 }
 
 void ChatWidget::display(const QString& nick, const QString& text)
@@ -92,8 +93,11 @@ void ChatWidget::display(const QString& text)
     }
 }
 
-void ChatWidget::show()
+void ChatWidget::bindTo(Entity* entity)
 {
+    connect(this, SIGNAL(message(QString)),
+            entity, SIGNAL(chat(QString)));
+    
     m_chat->clear();
     QWidget::show();
 }

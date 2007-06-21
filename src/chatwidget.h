@@ -16,6 +16,7 @@
 class QTextEdit;
 class QLineEdit;
 class QEvent;
+class Entity;
 
 class ChatWidget : public QWidget
 {
@@ -32,7 +33,7 @@ public:
     ChatWidget(QWidget* parent);
     
     virtual QSize sizeHint() const;
-    virtual void show();
+    void bindTo(Entity* entity);
 
     void setNick(const QString& nick);
     void display(const QString& nick, const QString& message);
@@ -41,7 +42,7 @@ protected:
     virtual bool eventFilter(QObject*, QEvent* e);
     virtual void resizeEvent(QResizeEvent*);
 signals:
-    void message(const QString& nick, const QString& text);
+    void message(const QString& text);
 private slots:
     void sendLine();
 };

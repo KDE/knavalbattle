@@ -33,7 +33,7 @@ public:
     Entity(Sea::Player player);
     virtual ~Entity();
     virtual void notify(Sea::Player player, const Coord& c, const HitInfo& info) = 0;
-    virtual void notifyChat(const QString& nick, const QString& text) = 0;
+    virtual void notifyChat(const Entity* entity, const QString& text) = 0;
     virtual void notifyNick(Sea::Player player, const QString& nick) = 0;
     virtual void hit(Shot* shot) = 0;
     virtual void start() = 0;
@@ -48,7 +48,7 @@ public:
 signals:
     void shoot(int player, const Coord& c);
     void ready(int player);
-    void chat(const QString& nick, const QString& text);
+    void chat(const QString& text);
     void nick(int player, const QString& nickname);
     void compatibility(int level);
 public slots:

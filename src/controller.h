@@ -52,7 +52,7 @@ public:
 public slots:
     void shoot(int player, const Coord& c);
     void ready(int player);
-    void receivedChat(const QString& nick, const QString& text);
+    void receivedChat(const QString& text);
     void nick(int player, const QString& nick);
 signals:
     void gameOver(Sea::Player);
