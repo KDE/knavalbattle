@@ -16,9 +16,11 @@
 #include <QTcpServer>
 #include <QTcpSocket>
 #include <QSignalMapper>
-#include <kscoredialog.h>
-#include <klocale.h>
-#include <kmessagebox.h>
+#include <QStatusBar>
+
+#include <KLocale>
+#include <KMessageBox>
+#include <KScoreDialog>
 
 #include "seaview.h"
 #include "controller.h"
@@ -29,8 +31,9 @@
 #include "welcomescreen.h"
 #include "simplemenu.h"
 
-PlayField::PlayField(QWidget* parent)
+PlayField::PlayField(QWidget* parent, QStatusBar* sbar)
 : QWidget(parent)
+, m_status_bar(sbar)
 , m_human_player(-1)
 {
     setMinimumSize(QSize(400, 300));
@@ -82,7 +85,7 @@ void PlayField::setupController()
     connect(m_controller, SIGNAL(gameOver(Sea::Player)),
             this, SLOT(gameOver(Sea::Player)));
             
-    m_menu->setupController(m_controller, m_sea, m_chat);
+    m_menu->setupController(m_controller, m_sea, m_chat, m_status_bar);
 }
 
 void PlayField::endGame()
@@ -196,10 +199,10 @@ void PlayField::gameOver(Sea::Player winner)
             }
         }
         
-        KMessageBox::information(this, i18n("You win!"));
+        m_status_bar->showMessage(i18n("You win!"));
     }
     else {
-        KMessageBox::information(this, i18n("You lose."));
+        m_status_bar->showMessage(i18n("You lose."));
     }
     
     // When we have finished, show again the welcome screen

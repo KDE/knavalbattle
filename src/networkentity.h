@@ -38,6 +38,7 @@ public:
     virtual void hit(Shot* shot);
 private slots:
     void received(MessagePtr msg);
+    virtual void notifyAbort();
 protected:
     virtual void visit(const HeaderMessage& msg);
     virtual void visit(const RejectMessage& msg);

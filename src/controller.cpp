@@ -60,6 +60,7 @@ void Controller::createRemotePlayer(Sea::Player player, QIODevice* device, bool 
 void Controller::setupEntity(Entity* entity)
 {
     entity->setParent(this);
+    
     connect(entity, SIGNAL(shoot(int, const Coord&)),
             this, SLOT(shoot(int, const Coord&)), Qt::QueuedConnection);
     connect(entity, SIGNAL(ready(int)),
@@ -74,6 +75,11 @@ void Controller::setupEntity(Entity* entity)
                 entity, SLOT(setCompatibilityLevel(int)));
         connect(entity, SIGNAL(compatibility(int)),
                 e, SLOT(setCompatibilityLevel(int)));
+                
+        connect(e, SIGNAL(abortGame()),
+                entity, SLOT(notifyAbort()));
+        connect(entity, SIGNAL(abortGame()),
+                e, SLOT(notifyAbort()));
     }
             
     m_entities.append(entity);

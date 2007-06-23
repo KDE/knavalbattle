@@ -19,6 +19,7 @@ class KScoreDialog;
 class AudioPlayer;
 class ChatWidget;
 class SimpleMenu;
+class QStatusBar;
 
 class PlayField : public QWidget
 {
@@ -29,11 +30,12 @@ Q_OBJECT
     AudioPlayer* m_player;
     ChatWidget* m_chat;
     SimpleMenu* m_menu;
-    int m_human_player;
+    QStatusBar* m_status_bar;
+    bool m_human_player;
     
     void endGame();
 public:
-    PlayField(QWidget* parent);
+    PlayField(QWidget* parent, QStatusBar*);
     ~PlayField();
 public slots:
     void highscores();

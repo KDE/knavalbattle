@@ -28,9 +28,8 @@ NetworkEntity::~NetworkEntity()
 void NetworkEntity::start()
 {
     connect(m_protocol, SIGNAL(received(MessagePtr)), this, SLOT(received(MessagePtr)));
-//     if (m_client) {
-        m_protocol->send(MessagePtr(new HeaderMessage()));
-//     }
+    connect(m_protocol, SIGNAL(disconnected()), this, SIGNAL(abortGame()));
+    m_protocol->send(MessagePtr(new HeaderMessage()));
 }
 
 void NetworkEntity::notifyReady(Sea::Player player)
@@ -80,6 +79,11 @@ void NetworkEntity::notifyChat(const Entity* entity, const QString& text)
     if (entity != this) {
         m_protocol->send(MessagePtr(new ChatMessage(entity->nick(), text)));
     }
+}
+
+void NetworkEntity::notifyAbort()
+{
+    // TODO: close connection
 }
 
 void NetworkEntity::hit(Shot* shot)

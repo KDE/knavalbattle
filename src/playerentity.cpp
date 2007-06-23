@@ -83,6 +83,8 @@ void PlayerEntity::action(Sea::Player player, const Coord& c)
 
 void PlayerEntity::start()
 {
+    emit message(i18n("Place your ships"));
+
     m_ships.append(new Ship(1, Ship::LEFT_TO_RIGHT));
     m_ships.append(new Ship(2, Ship::LEFT_TO_RIGHT));
     m_ships.append(new Ship(3, Ship::LEFT_TO_RIGHT));
@@ -167,6 +169,21 @@ void PlayerEntity::notifyNick(Sea::Player, const QString& nickname)
     m_chat->display(i18n("Your opponent is now known as %1", nickname));
 }
 
+void PlayerEntity::notifyReady(Sea::Player)
+{
+//     emit message(i18n("Your opponent is ready."));
+}
+
+void PlayerEntity::startPlaying()
+{
+    emit message(i18n("Ship placed. Now shoot on the enemy field!"));
+}
+
+void PlayerEntity::notifyAbort()
+{
+    m_chat->display(i18n("Your opponent disconnected from the game"));
+}
+
 void PlayerEntity::setNick(const QString& nick)
 {
     UIEntity::setNick(nick);
@@ -178,4 +195,7 @@ void PlayerEntity::setCompatibilityLevel(int level)
     UIEntity::setCompatibilityLevel(level);
     KMessageBox::information(m_view, i18n("Your opponent is using pre-KDE4 version of KBattleship. Note that, according to the rules enforced by old clients, ships cannot be placed adjacent to one another."));
 }
+
+#include "playerentity.moc"
+
 

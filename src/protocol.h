@@ -33,9 +33,11 @@ public:
 private slots:
     void readMore();
     void sendNext();
+    void processDisconnection();
 signals:
     void received(MessagePtr);
     void parseError(const QString&);
+    void disconnected();
 };
 
 

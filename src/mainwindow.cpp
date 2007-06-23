@@ -12,17 +12,20 @@
 
 #include <QResizeEvent>
 #include <QHBoxLayout>
-#include <kstandardaction.h>
-#include <kstandardgameaction.h>
-#include <kactioncollection.h>
-#include <kaction.h>
-#include <klocale.h>
+
+
+#include <KAction>
+#include <KActionCollection>
+#include <KLocalizedString>
+#include <KStandardAction>
+#include <KStandardGameAction>
+#include <KStatusBar>
 
 #include "playfield.h"
 
 MainWindow::MainWindow()
 {
-    m_main = new PlayField(this);
+    m_main = new PlayField(this, statusBar());
     
     setCentralWidget(m_main);
 

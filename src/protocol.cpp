@@ -117,6 +117,7 @@ Protocol::Protocol(QIODevice* device)
 {
     m_device->setParent(this);
     m_timer.start(100);
+    connect(m_device, SIGNAL(disconnected()), this, SLOT(processDisconnection()));
     connect(m_device, SIGNAL(readyRead()), this, SLOT(readMore()));
     connect(&m_timer, SIGNAL(timeout()), this, SLOT(sendNext()));
 }
@@ -261,6 +262,11 @@ void Protocol::sendNext()
     }
 }
 
+void Protocol::processDisconnection()
+{
+    m_timer.stop();
+    emit disconnected();
+}
 
 #include "protocol.moc"
 

@@ -34,6 +34,8 @@ public:
     
     virtual void registerHit(Sea::Player, const Coord&) { }
     virtual void registerMiss(Sea::Player, const Coord&) { }
+public slots:
+    virtual void notifyAbort() { }
 };
 
 #endif // UIENTITY_H

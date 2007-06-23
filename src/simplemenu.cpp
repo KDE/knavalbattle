@@ -9,6 +9,7 @@
 
 #include "simplemenu.h"
 
+#include <QStatusBar>
 #include <QTcpSocket>
 #include <QTcpServer>
 
@@ -122,34 +123,37 @@ void SimpleMenu::clientOK()
     finalize(DONE_CLIENT);
 }
 
-void SimpleMenu::setupController(Controller* controller, SeaView* sea, ChatWidget* chat)
+void SimpleMenu::setupController(Controller* controller, SeaView* sea, ChatWidget* chat, QStatusBar* sbar)
 {
+    PlayerEntity* player;
+    
     switch (m_state) {
     case DONE_LOCAL_GAME:
-        controller->createPlayer(Sea::Player(0), sea, chat, "");
+        player = controller->createPlayer(Sea::Player(0), sea, chat, "");
         controller->createAI(Sea::Player(1));
-        controller->start(sea);
         chat->hide();
         break;
     case DONE_SERVER: {
         Q_ASSERT(m_socket);
-        PlayerEntity* player = controller->createPlayer(Sea::Player(0), sea, chat, m_nickname);
+        player = controller->createPlayer(Sea::Player(0), sea, chat, m_nickname);
         controller->createRemotePlayer(Sea::Player(1), m_socket, false);
-        controller->start(sea);
         chat->bindTo(player);
         break;
     }
     case DONE_CLIENT: {
         Q_ASSERT(m_socket);
-        PlayerEntity* player = controller->createPlayer(Sea::Player(0), sea, chat, m_nickname);
+        player = controller->createPlayer(Sea::Player(0), sea, chat, m_nickname);
         controller->createRemotePlayer(Sea::Player(1), m_socket, true);
-        controller->start(sea);
         chat->bindTo(player);
         break;
     }
     default:
-        break;
+        return;
     }
+    
+    connect(player, SIGNAL(message(const QString&)),
+        sbar, SLOT(showMessage(const QString&)));
+    controller->start(sea);
 }
 
 #include "simplemenu.moc"

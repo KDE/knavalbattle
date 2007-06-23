@@ -51,8 +51,10 @@ signals:
     void chat(const QString& text);
     void nick(int player, const QString& nickname);
     void compatibility(int level);
+    void abortGame();
 public slots:
     virtual void setCompatibilityLevel(int level);
+    virtual void notifyAbort() = 0;
 };
 
 #endif // ENTITY_H
