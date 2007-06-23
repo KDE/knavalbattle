@@ -83,7 +83,7 @@ void PlayerEntity::action(Sea::Player player, const Coord& c)
 
 void PlayerEntity::start()
 {
-    emit message(i18n("Place your ships"));
+    emit message(i18n("Place your ships. Use the right mouse button to rotate them."));
 
     m_ships.append(new Ship(1, Ship::LEFT_TO_RIGHT));
     m_ships.append(new Ship(2, Ship::LEFT_TO_RIGHT));
