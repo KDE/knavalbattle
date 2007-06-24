@@ -15,7 +15,6 @@
 #include "animator.h"
 
 class BattleFieldView;
-class EntityLabel;
 class KBSRenderer;
 class Delegate;
 class WelcomeScreen;
@@ -29,7 +28,6 @@ Q_OBJECT
     
     WelcomeScreen* m_screen;
     BattleFieldView* m_fields[2];
-    EntityLabel* m_labels[2];
     
     KBSRenderer* m_renderer;
     Delegate* m_delegate;

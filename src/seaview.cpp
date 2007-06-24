@@ -10,17 +10,17 @@
 #include "seaview.h"
 
 #include <QMouseEvent>
-#include <kstandarddirs.h>
-#include <kdebug.h>
-#include <kmessagebox.h>
-#include <kgamecanvas.h>
+
+#include <KStandardDirs>
+#include <KDebug>
+#include <KGameCanvas>
 
 #include "battlefieldview.h"
-#include "entitylabel.h"
-#include "kbsrenderer.h"
-#include "delegate.h"
-#include "welcomescreen.h"
 #include "button.h"
+#include "delegate.h"
+#include "kbsrenderer.h"
+#include "welcomescreen.h"
+
 
 SeaView::SeaView(QWidget* parent)
 : KGameCanvasWidget(parent)
@@ -48,14 +48,6 @@ SeaView::SeaView(QWidget* parent)
     m_fields[1]->show();
     connect(m_fields[1]->screen(), SIGNAL(clicked(Button*)), this, SLOT(buttonClicked(Button*)));
     
-    // create labels
-//     QFont labelFont = parent->font();
-//     labelFont.setPixelSize(LABEL_HEIGHT / 3);
-//     m_labels[0] = new EntityLabel(this, labelFont, "", QSize(m_fields[0]->size().width(), LABEL_HEIGHT));
-//     m_labels[0]->show();
-//     m_labels[1] = new EntityLabel(this, labelFont, "", QSize(m_fields[1]->size().width(), LABEL_HEIGHT));
-//     m_labels[1]->show();
-    
     Animator::instance()->start();
     update();
     setSizePolicy(QSizePolicy::Minimum, QSizePolicy::Preferred);
@@ -80,11 +72,6 @@ void SeaView::update()
     m_screen->moveTo(0, 0);
     m_screen->resize(QSize(m_fields[1]->pos().x() + m_fields[1]->size().width(),
                            m_fields[0]->size().height()));
-    
-//     m_labels[0]->resize(QSize(m_fields[0]->size().width(), LABEL_HEIGHT));
-//     m_labels[0]->moveTo(m_fields[0]->pos().x(), m_fields[0]->size().height() + 10);
-//     m_labels[1]->resize(QSize(m_fields[1]->size().width(), LABEL_HEIGHT));
-//     m_labels[1]->moveTo(m_fields[1]->pos().x(), m_fields[1]->size().height() + 10);
 }
 
 void SeaView::resizeEvent(QResizeEvent* e)
@@ -302,25 +289,7 @@ WelcomeScreen* SeaView::screen(Sea::Player player) const
 void SeaView::buttonClicked(Button* button)
 {
     Q_UNUSED( button );
-#if 0
-    WelcomeScreen* screen = qobject_cast<WelcomeScreen*>(sender());
-    int f = screen == m_fields[0]->screen() ? 0 : 1;
-    Q_ASSERT(m_fields[f]->screen() == screen);
-    
-    KGameCanvasPixmap* pix = button->extractIcon();
-    pix->putInCanvas(this);
-    pix->moveTo(pix->pos() + m_fields[f]->pos());
-    pix->show();
-    
-    m_labels[f]->addPicture(pix);
-    Animation* a = new MovementAnimation(pix, pix->pos(), 
-        m_labels[f]->pos() + m_labels[f]->picturePos(pix), 500);
-    connect(a, SIGNAL(done()), m_labels[f], SLOT(setupPicture()));
-    Animator::instance()->add(a);
-    
-    m_labels[f]->setText("dude");
-    m_labels[f]->showText();
-#endif
+
 }
 
 #include "seaview.moc"

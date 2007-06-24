@@ -24,13 +24,10 @@ set(kbattleship_SRCS
     battlefieldview.cpp
     button.cpp
     chatwidget.cpp
-    connectdialog.cpp
     controller.cpp
     coord.cpp
     element.cpp
     entity.cpp
-    entitylabel.cpp
-    gamechooser.cpp
     kbsrenderer.cpp
     main.cpp
     mainwindow.cpp
