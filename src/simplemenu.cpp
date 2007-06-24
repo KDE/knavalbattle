@@ -112,7 +112,7 @@ void SimpleMenu::createClient()
 
 void SimpleMenu::clientError()
 {
-    delete m_socket;
+    m_socket->deleteLater();
     m_socket = 0;
     m_nickname = "";
     // TODO: display error message
@@ -120,6 +120,8 @@ void SimpleMenu::clientError()
 
 void SimpleMenu::clientOK()
 {
+    disconnect(m_socket, SIGNAL(error(QAbstractSocket::SocketError)),
+        this, SLOT(clientError()));
     finalize(DONE_CLIENT);
 }
 
