@@ -48,7 +48,6 @@ public:
                                ChatWidget* chat, const QString& nick);
     AIEntity* createAI(Sea::Player player);
     NetworkEntity* createRemotePlayer(Sea::Player player, QIODevice* device, bool client);
-    const Stats* stats() const;
     
     bool start(SeaView* view);
 public slots:

@@ -161,6 +161,7 @@ void SimpleMenu::setupController(Controller* controller, SeaView* sea,
     connect(player1, SIGNAL(message(const QString&)),
         sbar, SLOT(showMessage(const QString&)));
     stats_widgets[0]->setStats(player1);
+    stats_widgets[0]->setEditable(true);
     stats_widgets[1]->setStats(player2);
     controller->start(sea);
 }

@@ -33,7 +33,6 @@ Q_OBJECT
     ChatWidget* m_chat;
     SimpleMenu* m_menu;
     QStatusBar* m_status_bar;
-    bool m_human_player;
     
     void endGame();
 public:

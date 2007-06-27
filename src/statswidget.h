@@ -29,6 +29,7 @@ Q_OBJECT
     KGameLCD* m_hits;
     KGameLCD* m_misses;
     
+    bool m_editable;
 private slots:
     void updateHits();
     void updateMisses();
@@ -37,6 +38,9 @@ public:
     StatsWidget(QWidget* parent);
     
     void setStats(Entity* stats);
+    const Stats* stats() const { return m_stats; }
+    void setEditable(bool value);
+    bool editable() const;
 };
 
 #endif // STATSWIDGET_H

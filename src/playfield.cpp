@@ -35,7 +35,6 @@
 PlayField::PlayField(QWidget* parent, QStatusBar* sbar)
 : QWidget(parent)
 , m_status_bar(sbar)
-, m_human_player(-1)
 {
     setMinimumSize(QSize(400, 300));
     QVBoxLayout* layout = new QVBoxLayout;
@@ -58,7 +57,6 @@ PlayField::PlayField(QWidget* parent, QStatusBar* sbar)
     setLayout(layout);
         
     m_controller = 0;
-    m_human_player = 0;
     m_menu = 0;
     
     m_player = 0;//new AudioPlayer(this);
@@ -192,8 +190,9 @@ void PlayField::highscores()
 
 void PlayField::gameOver(Sea::Player winner)
 {
-    if (m_human_player == winner) {
-        const Stats* stats = m_controller->stats();
+    if (winner == Sea::Player(0)) {
+        const Stats* stats = m_stats_widgets[0]->stats();
+       
         if (stats) {
             KScoreDialog::FieldInfo info;
 //             info[KScoreDialog::Name] = "my nick";

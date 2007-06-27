@@ -21,6 +21,7 @@
 StatsWidget::StatsWidget(QWidget* parent)
 : QWidget(parent)
 , m_stats(0)
+, m_editable(false)
 {
     QVBoxLayout* mainLayout = new QVBoxLayout;
 
@@ -106,6 +107,16 @@ void StatsWidget::updateMisses()
 void StatsWidget::updateNick(int, const QString& nick)
 {
     m_player_name->setText(nick);
+}
+
+bool StatsWidget::editable() const
+{
+    return m_editable;
+}
+
+void StatsWidget::setEditable(bool value)
+{
+    m_editable = value;
 }
 
 #include "statswidget.moc"

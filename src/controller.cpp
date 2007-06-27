@@ -200,20 +200,6 @@ void Controller::ready(int player)
     }
 }
 
-const Stats* Controller::stats() const
-{
-    // FIXME: this is not correct anymore, as all entities
-    // have stats
-    foreach (Entity* entity, m_entities) {
-        const Stats* res = entity->stats();
-        if (res) {
-            return res;
-        }
-    }
-    
-    return 0;
-}
-
 Entity* Controller::findEntity(Sea::Player player) const
 {
     foreach (Entity* entity, m_entities) {
