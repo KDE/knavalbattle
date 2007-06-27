@@ -119,6 +119,11 @@ void StatsWidget::setEditable(bool value)
     m_editable = value;
 }
 
+QString StatsWidget::nick() const
+{
+    return m_player_name->text();
+}
+
 #include "statswidget.moc"
 
 

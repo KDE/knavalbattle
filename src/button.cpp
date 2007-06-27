@@ -35,6 +35,9 @@ Button::Button(WelcomeScreen* parent, const QIcon& icon,
 
 Button::~Button()
 {
+    if (m_animation) {
+        m_animation->abort();
+    }
     delete m_editor;
 }
 

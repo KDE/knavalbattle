@@ -41,6 +41,8 @@ public:
     const Stats* stats() const { return m_stats; }
     void setEditable(bool value);
     bool editable() const;
+    
+    QString nick() const;
 };
 
 #endif // STATSWIDGET_H
