@@ -176,7 +176,7 @@ void PlayerEntity::notifyReady(Sea::Player)
 
 void PlayerEntity::startPlaying()
 {
-    emit message(i18n("Ship placed. Now shoot on the enemy field!"));
+    emit message(i18n("Ships placed. Now shoot on the enemy field!"));
 }
 
 void PlayerEntity::notifyAbort()
