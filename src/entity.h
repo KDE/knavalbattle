@@ -12,9 +12,10 @@
 
 #include <QObject>
 #include "sea.h"
+#include "stats.h"
 
-class Stats;
 class Shot;
+class KIcon;
 
 class Entity : public QObject
 {
@@ -29,6 +30,7 @@ protected:
     Sea::Player m_player;
     QString m_nick;
     CompatibilityLevel m_level;
+    Stats m_stats;
 public:
     Entity(Sea::Player player);
     virtual ~Entity();
@@ -39,11 +41,12 @@ public:
     virtual void start() = 0;
     virtual void startPlaying() { }
     virtual void notifyReady(Sea::Player) { }
-    virtual const Stats* stats() const { return 0; }
+    Stats* stats();
     
     virtual Sea::Player player() const { return m_player; }
     
     QString nick() const { return m_nick; }
+    virtual KIcon icon() const = 0;
     virtual void setNick(const QString& nick);
 signals:
     void shoot(int player, const Coord& c);

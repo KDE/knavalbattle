@@ -11,6 +11,8 @@
 #include "seaview.h"
 #include "shot.h"
 
+#include <KIcon>
+
 UIEntity::UIEntity(Sea::Player player, Sea* sea, SeaView* view)
 : Entity(player)
 , m_sea(sea)
@@ -43,11 +45,11 @@ void UIEntity::drawShoot(Sea::Player player, const Coord& c, const HitInfo& info
     switch (info.type) {
     case HitInfo::HIT:
         m_view->hit(player, c);
-        registerHit(player, c);
+//         registerHit(player, c);
         break;
     case HitInfo::MISS:
         m_view->miss(player, c);
-        registerMiss(player, c);
+//         registerMiss(player, c);
         break;
     default:
         return;
@@ -66,6 +68,10 @@ void UIEntity::drawShoot(Sea::Player player, const Coord& c, const HitInfo& info
     }
 }
 
+KIcon UIEntity::icon() const
+{
+    return KIcon("user-female");
+}
 
 #include "uientity.moc"
 

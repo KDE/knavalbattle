@@ -46,6 +46,7 @@ set(kbattleship_SRCS
     sprite.cpp
     spritefactory.cpp
     stats.cpp
+    statswidget.cpp
     uientity.cpp
     welcomescreen.cpp)
 

@@ -13,6 +13,8 @@
 
 #include <QTimer>
 
+#include <KIcon>
+
 AIEntity::AIEntity(Sea::Player player, Sea* sea)
 : Entity(player)
 , m_sea(sea)
@@ -62,6 +64,10 @@ void AIEntity::getShoot()
     }
 }
 
+KIcon AIEntity::icon() const
+{
+    return KIcon("roll");
+}
 
 #include "aientity.moc"
 

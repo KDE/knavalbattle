@@ -10,20 +10,31 @@
 #ifndef STATS_H
 #define STATS_H
 
-class Stats
+#include <QObject>
+
+class HitInfo;
+
+class Stats : public QObject
 {
+Q_OBJECT
     int m_hits;
     int m_misses;
 public:
     Stats();
     
     inline int hits() const { return m_hits; }
-    inline void addHit() { m_hits++; }
+    void addHit();
     inline int misses() const { return m_misses; }
-    inline void addMiss() { m_misses++; }
+    void addMiss();
     inline int shots() const { return hits() + misses(); }
     
+    void addInfo(const HitInfo& info);
+    
     int score() const;
+    
+signals:
+    void hitsChanged();
+    void missesChanged();
 };
 
 #endif // STATS_H

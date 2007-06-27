@@ -21,8 +21,6 @@ class ChatWidget;
 class PlayerEntity : public UIEntity, private Delegate
 {
 Q_OBJECT
-    Stats m_stats;
-    
     QList<Ship*> m_ships;
     
     Ship* nextShip();
@@ -34,7 +32,6 @@ public:
     
     // entity interface
     virtual void start();
-    virtual const Stats* stats() const { return &m_stats; }
     virtual void hit(Shot* shot);
     virtual void notify(Sea::Player player, const Coord& c, const HitInfo& info);
     virtual void notifyChat(const Entity* entity, const QString& text);

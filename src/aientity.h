@@ -33,6 +33,8 @@ public:
     virtual void start();
     virtual void startPlaying();
     virtual void hit(Shot* shot);
+    
+    virtual KIcon icon() const;
 public slots:
     virtual void notifyAbort() { }
 };

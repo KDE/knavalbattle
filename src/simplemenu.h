@@ -19,6 +19,7 @@ class ChatWidget;
 class Button;
 class QTcpSocket;
 class QStatusBar;
+class StatsWidget;
 
 class SimpleMenu : public QObject
 {
@@ -44,7 +45,8 @@ public:
     SimpleMenu(QWidget* parent, WelcomeScreen* screen);
     
     void setupController(Controller* controller,
-        SeaView* sea, ChatWidget* chat, QStatusBar* sbar);
+        SeaView* sea, ChatWidget* chat, 
+        QStatusBar* sbar, StatsWidget** stats_widget);
 private slots:
     void localGame();
     

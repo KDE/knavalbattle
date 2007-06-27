@@ -13,6 +13,8 @@
 #include "sea.h"
 
 class Entity;
+class AIEntity;
+class NetworkEntity;
 class UIEntity;
 class PlayerEntity;
 class SeaView;
@@ -44,8 +46,8 @@ public:
 
     PlayerEntity* createPlayer(Sea::Player player, SeaView* view, 
                                ChatWidget* chat, const QString& nick);
-    void createAI(Sea::Player player);
-    void createRemotePlayer(Sea::Player player, QIODevice* device, bool client);
+    AIEntity* createAI(Sea::Player player);
+    NetworkEntity* createRemotePlayer(Sea::Player player, QIODevice* device, bool client);
     const Stats* stats() const;
     
     bool start(SeaView* view);

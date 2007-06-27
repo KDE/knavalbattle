@@ -36,6 +36,8 @@ public:
     virtual void startPlaying();
     virtual void notifyReady(Sea::Player player);
     virtual void hit(Shot* shot);
+    
+    virtual KIcon icon() const;
 private slots:
     void received(MessagePtr msg);
     virtual void notifyAbort();

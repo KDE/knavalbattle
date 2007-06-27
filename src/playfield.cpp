@@ -30,6 +30,7 @@
 #include "playerentity.h"
 #include "welcomescreen.h"
 #include "simplemenu.h"
+#include "statswidget.h"
 
 PlayField::PlayField(QWidget* parent, QStatusBar* sbar)
 : QWidget(parent)
@@ -38,8 +39,17 @@ PlayField::PlayField(QWidget* parent, QStatusBar* sbar)
 {
     setMinimumSize(QSize(400, 300));
     QVBoxLayout* layout = new QVBoxLayout;
+    
+    QHBoxLayout* upper = new QHBoxLayout;
+    m_stats_widgets[0] = new StatsWidget(this);;
+    m_stats_widgets[1] = new StatsWidget(this);;
     m_sea = new SeaView(this);
-    layout->addWidget(m_sea);
+//     m_sea->setMinimumSize(400, 300);
+    upper->addWidget(m_stats_widgets[0]);
+    upper->addWidget(m_sea, 1);
+    upper->addWidget(m_stats_widgets[1]);
+    
+    layout->addItem(upper);
     
     m_chat = new ChatWidget(this);
     m_chat->hide();
@@ -85,7 +95,7 @@ void PlayField::setupController()
     connect(m_controller, SIGNAL(gameOver(Sea::Player)),
             this, SLOT(gameOver(Sea::Player)));
             
-    m_menu->setupController(m_controller, m_sea, m_chat, m_status_bar);
+    m_menu->setupController(m_controller, m_sea, m_chat, m_status_bar, m_stats_widgets);
 }
 
 void PlayField::endGame()

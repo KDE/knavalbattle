@@ -10,7 +10,10 @@
 #include "networkentity.h"
 #include "shot.h"
 #include "protocol.h"
+
 #include <QIODevice>
+
+#include <KIcon>
 
 NetworkEntity::NetworkEntity(Sea::Player player, Sea* sea, QIODevice* device, bool client)
 : Entity(player)
@@ -183,6 +186,11 @@ void NetworkEntity::visit(const RestartMessage&)
 void NetworkEntity::visit(const ChatMessage& msg)
 {
     emit chat(msg.chat());
+}
+
+KIcon NetworkEntity::icon() const
+{
+    return KIcon("network");
 }
 
 #include "networkentity.moc"

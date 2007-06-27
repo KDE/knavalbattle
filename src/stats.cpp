@@ -10,6 +10,7 @@
 */
 
 #include "stats.h"
+#include "hitinfo.h"
 
 Stats::Stats()
 : m_hits(0)
@@ -32,6 +33,33 @@ int Stats::score() const
     return res;
 }
 
+void Stats::addHit()
+{
+    m_hits++;
+    emit hitsChanged();
+}
+
+void Stats::addMiss()
+{
+    m_misses++;
+    emit missesChanged();
+}
+
+void Stats::addInfo(const HitInfo& info)
+{
+    switch (info.type)
+    {
+    case HitInfo::HIT:
+        addHit();
+        break;
+    case HitInfo::MISS:
+        addMiss();
+        break;
+    default:
+        break;
+    }
+}
 
 
+#include "stats.moc"
 

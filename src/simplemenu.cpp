@@ -21,6 +21,9 @@
 #include "controller.h"
 #include "networkdialog.h"
 #include "playerentity.h"
+#include "networkentity.h"
+#include "aientity.h"
+#include "statswidget.h"
 #include "welcomescreen.h"
 
 SimpleMenu::SimpleMenu(QWidget* parent, WelcomeScreen* screen)
@@ -125,36 +128,40 @@ void SimpleMenu::clientOK()
     finalize(DONE_CLIENT);
 }
 
-void SimpleMenu::setupController(Controller* controller, SeaView* sea, ChatWidget* chat, QStatusBar* sbar)
+void SimpleMenu::setupController(Controller* controller, SeaView* sea, 
+    ChatWidget* chat, QStatusBar* sbar, StatsWidget** stats_widgets)
 {
-    PlayerEntity* player;
+    Entity* player1;
+    Entity* player2;
     
     switch (m_state) {
     case DONE_LOCAL_GAME:
-        player = controller->createPlayer(Sea::Player(0), sea, chat, "");
-        controller->createAI(Sea::Player(1));
+        player1 = controller->createPlayer(Sea::Player(0), sea, chat, "");
+        player2 = controller->createAI(Sea::Player(1));
         chat->hide();
         break;
     case DONE_SERVER: {
         Q_ASSERT(m_socket);
-        player = controller->createPlayer(Sea::Player(0), sea, chat, m_nickname);
-        controller->createRemotePlayer(Sea::Player(1), m_socket, false);
-        chat->bindTo(player);
+        player1 = controller->createPlayer(Sea::Player(0), sea, chat, m_nickname);
+        player2 = controller->createRemotePlayer(Sea::Player(1), m_socket, false);
+        chat->bindTo(player1);
         break;
     }
     case DONE_CLIENT: {
         Q_ASSERT(m_socket);
-        player = controller->createPlayer(Sea::Player(0), sea, chat, m_nickname);
-        controller->createRemotePlayer(Sea::Player(1), m_socket, true);
-        chat->bindTo(player);
+        player1 = controller->createPlayer(Sea::Player(0), sea, chat, m_nickname);
+        player2 = controller->createRemotePlayer(Sea::Player(1), m_socket, true);
+        chat->bindTo(player1);
         break;
     }
     default:
         return;
     }
     
-    connect(player, SIGNAL(message(const QString&)),
+    connect(player1, SIGNAL(message(const QString&)),
         sbar, SLOT(showMessage(const QString&)));
+    stats_widgets[0]->setStats(player1);
+    stats_widgets[1]->setStats(player2);
     controller->start(sea);
 }
 

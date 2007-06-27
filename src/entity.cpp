@@ -31,6 +31,11 @@ void Entity::setCompatibilityLevel(int level)
     m_level = static_cast<CompatibilityLevel>(level);
 }
 
+Stats* Entity::stats()
+{
+    return &m_stats;
+}
+
 #include "entity.moc"
 
 

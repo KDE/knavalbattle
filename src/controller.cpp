@@ -41,20 +41,24 @@ PlayerEntity* Controller::createPlayer(Sea::Player player, SeaView* view,
     return entity;
 }
 
-void Controller::createAI(Sea::Player player)
+AIEntity* Controller::createAI(Sea::Player player)
 {
-    Entity* e = new AIEntity(player, m_sea);
+    AIEntity* e = new AIEntity(player, m_sea);
     e->setNick(i18n("Computer"));
     setupEntity(e);
+    
+    return e;
 }
 
-void Controller::createRemotePlayer(Sea::Player player, QIODevice* device, bool client)
+NetworkEntity* Controller::createRemotePlayer(Sea::Player player, QIODevice* device, bool client)
 {
-    Entity* e = new NetworkEntity(player, m_sea, device, client);
+    NetworkEntity* e = new NetworkEntity(player, m_sea, device, client);
     setupEntity(e);
     if (client) {
         m_sea->switchTurn();
     }
+    
+    return e;
 }
 
 void Controller::setupEntity(Entity* entity)
@@ -173,6 +177,9 @@ void Controller::notify(Sea::Player player, const Coord& c, const HitInfo& info)
 {
     foreach (Entity* entity, m_entities) {
         entity->notify(player, c, info);
+        if (player == entity->player()) {
+            entity->stats()->addInfo(info);
+        }
     }
 }
 
@@ -195,6 +202,8 @@ void Controller::ready(int player)
 
 const Stats* Controller::stats() const
 {
+    // FIXME: this is not correct anymore, as all entities
+    // have stats
     foreach (Entity* entity, m_entities) {
         const Stats* res = entity->stats();
         if (res) {

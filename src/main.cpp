@@ -15,6 +15,7 @@
 
 #include "mainwindow.h"
 #include "coord.h"
+#include "statswidget.h"
 
 static KCmdLineOptions options[] = {
     KCmdLineLastOption
@@ -33,6 +34,7 @@ int main(int argc, char** argv)
     qRegisterMetaType<Coord>("Coord");
     
     MainWindow* window = new MainWindow();
+//     StatsWidget* window = new StatsWidget(0, 0);
     window->show();
     
     return app.exec();
