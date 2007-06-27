@@ -55,6 +55,7 @@ public:
     WelcomeScreen* screen(Sea::Player player) const;
     
     virtual QSize sizeHint() const;
+    virtual int heightForWidth(int w) const;
 protected:
     virtual void mouseMoveEvent(QMouseEvent*);
     virtual void mousePressEvent(QMouseEvent*);

@@ -50,7 +50,11 @@ SeaView::SeaView(QWidget* parent)
     
     Animator::instance()->start();
     update();
-    setSizePolicy(QSizePolicy::Minimum, QSizePolicy::Preferred);
+    
+    QSizePolicy policy(QSizePolicy::Minimum, QSizePolicy::Minimum);
+    setMinimumSize(630, 300);
+    policy.setHeightForWidth(true);
+    setSizePolicy(policy);
     setMouseTracking(true);
 }
 
@@ -273,7 +277,12 @@ void SeaView::setDelegate(Delegate* c)
 
 QSize SeaView::sizeHint() const
 {
-    return QSize(100, 400);
+    return QSize(500, 200);
+}
+
+int SeaView::heightForWidth(int w) const
+{
+    return w * (GRID_SIZE / (2 * GRID_SIZE  + 1));
 }
 
 WelcomeScreen* SeaView::globalScreen() const

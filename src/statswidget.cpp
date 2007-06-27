@@ -36,6 +36,7 @@ StatsWidget::StatsWidget(QWidget* parent)
     tmp->addWidget(m_player_name);
     
     mainLayout->addItem(tmp);
+    
     mainLayout->addStretch();
     
     // shots
@@ -80,6 +81,7 @@ void StatsWidget::setStats(Entity* entity)
     Q_ASSERT(m_stats);
     connect(m_stats, SIGNAL(hitsChanged()), this, SLOT(updateHits()));
     connect(m_stats, SIGNAL(missesChanged()), this, SLOT(updateMisses()));
+    connect(entity, SIGNAL(nick(int, QString)), this, SLOT(updateNick(int, QString)));
     
     m_player_name->setText(entity->nick());
     m_player_icon->setPixmap(entity->icon().pixmap(32, 32));
@@ -99,6 +101,11 @@ void StatsWidget::updateMisses()
     m_shots->displayInt(m_stats->shots());
     m_misses->displayInt(m_stats->misses());
     m_misses->highlight();
+}
+
+void StatsWidget::updateNick(int, const QString& nick)
+{
+    m_player_name->setText(nick);
 }
 
 #include "statswidget.moc"

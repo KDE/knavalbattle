@@ -53,7 +53,7 @@ PlayField::PlayField(QWidget* parent, QStatusBar* sbar)
     
     m_chat = new ChatWidget(this);
     m_chat->hide();
-    layout->addWidget(m_chat);
+    layout->addWidget(m_chat, 1);
     
     setLayout(layout);
         

@@ -32,6 +32,7 @@ Q_OBJECT
 private slots:
     void updateHits();
     void updateMisses();
+    void updateNick(int, const QString& nick);
 public:
     StatsWidget(QWidget* parent);
     
