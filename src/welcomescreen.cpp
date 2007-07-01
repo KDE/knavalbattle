@@ -76,7 +76,7 @@ void WelcomeScreen::update()
 Button* WelcomeScreen::addButton(int x, int y, const QIcon& icon, const QString& text)
 {
     if (m_buttons.contains(Coord(x, y))) {
-        return 0;
+        return m_buttons[Coord(x, y)];
     }
     else {
         Button* button = new Button(this, icon, m_font, text);
