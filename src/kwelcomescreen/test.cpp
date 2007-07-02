@@ -26,22 +26,19 @@
 #include <KCmdLineArgs>
 #include <KIcon>
 
-static KCmdLineOptions options[] =
-    {
-        { "s", 0, 0 },
-        { "set-arbitrary-names", I18N_NOOP( "Fill in the fildes to speed up testing. Just for development purpose." ), 0 },
-        KCmdLineLastOption
-    };
-
 
 int main(int argc, char *argv[])
 {
-    KAboutData aboutData ("kwelcomescreen-test", I18N_NOOP( "KWelcomeScreenTest" ),
-                          "0.1", I18N_NOOP("Test class for KWelcomeScreen"), KAboutData::License_GPL,
-                          "(c) 2007, Riccardo Iaconelli", 0, "http://games.kde.org/", "ruphy@fsfe.org");
-    aboutData.addAuthor("Riccardo Iaconelli", 0, "ruphy@fsfe.org");
+    KAboutData aboutData ("kwelcomescreen-test", 0, ki18n( "KWelcomeScreenTest" ),
+                          "0.1", ki18n("Test class for KWelcomeScreen"), KAboutData::License_GPL,
+                          ki18n("(c) 2007, Riccardo Iaconelli"), KLocalizedString(), "http://games.kde.org/", "ruphy@fsfe.org");
+    aboutData.addAuthor(ki18n("Riccardo Iaconelli"), KLocalizedString(), "ruphy@fsfe.org");
 
     KCmdLineArgs::init(argc, argv, &aboutData);
+
+    KCmdLineOptions options;
+    options.add("s");
+    options.add("set-arbitrary-names", ki18n( "Fill in the fildes to speed up testing. Just for development purpose." ));
     KCmdLineArgs::addCmdLineOptions(options);
     KApplication app;
 
