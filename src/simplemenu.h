@@ -38,7 +38,8 @@ Q_OBJECT
         READY,
         DONE_LOCAL_GAME,
         DONE_SERVER,
-        DONE_CLIENT
+        DONE_CLIENT,
+        DONE_GGZ_CLIENT
     } m_state;
     void finalize(State);
 public:
@@ -47,6 +48,7 @@ public:
     void setupController(Controller* controller,
         SeaView* sea, ChatWidget* chat, 
         QStatusBar* sbar, StatsWidget** stats_widget);
+    void runGGZ(int fd);
 private slots:
     void localGame();
     

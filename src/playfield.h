@@ -38,6 +38,7 @@ Q_OBJECT
 public:
     PlayField(QWidget* parent, QStatusBar*);
     ~PlayField();
+    void runGGZ(int fd);
 public slots:
     void highscores();
     void gameOver(Sea::Player winner);

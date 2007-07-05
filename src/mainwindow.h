@@ -15,6 +15,14 @@
 
 class PlayField;
 
+namespace KGGZMod
+{
+    class Module;
+    class Event;
+}
+
+class KGGZRaw;
+
 class MainWindow : public KXmlGuiWindow
 {
 Q_OBJECT
@@ -25,6 +33,15 @@ protected:
     void setupActions();
 protected slots:
     void optionsPreferences();
+private slots:
+    void networkErrorHandler();
+    void networkData(int fd);
+    void networkEvent(const KGGZMod::Event& event);
+private:
+    KGGZMod::Module *m_mod;
+    KGGZRaw *m_raw;
+    int m_fd;
+    bool m_ggzsetup;
 };
 
 #endif // MAINWINDOW_H

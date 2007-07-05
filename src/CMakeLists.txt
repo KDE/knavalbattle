@@ -1,3 +1,5 @@
+include (../../cmake/modules/GGZ.cmake)
+
 include_directories(${CMAKE_SOURCE_DIR}/libkdegames ${CMAKE_SOURCE_DIR}/libkdegames/highscore ${CMAKE_CURRENT_SOURCE_DIR}/kwelcomescreen)
 
  set(kwelcomescreen_SRCS
@@ -55,11 +57,12 @@ kde4_automoc(${kbattleship_SRCS})
 kde4_add_kcfg_files(kbattleship_SRCS settingsbase.kcfgc)
 kde4_add_executable(kbattleship ${kbattleship_SRCS} ${kwelcomescreen_SRCS})
 
-target_link_libraries(kbattleship ${KDE4_KDEUI_LIBS} ${KDE4_PHONON_LIBS} kdegames)
+target_link_libraries(kbattleship ${KDE4_KDEUI_LIBS} ${KDE4_PHONON_LIBS} kdegames ${KGGZGAMES_LIBS})
 
 install(TARGETS kbattleship  DESTINATION ${BIN_INSTALL_DIR} )
 install( FILES kbattleshipui.rc  DESTINATION  ${DATA_INSTALL_DIR}/kbattleship )
 install(FILES kbattleship.desktop DESTINATION ${XDG_APPS_DIR})
 
+register_ggz_module(module.dsc)
 
 

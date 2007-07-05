@@ -16,6 +16,9 @@
 #include <KLocalizedString>
 #include <KIcon>
 
+#include <kggzmod/module.h>
+#include <kggzmod/player.h>
+
 #include "button.h"
 #include "chatwidget.h"
 #include "controller.h"
@@ -133,7 +136,7 @@ void SimpleMenu::setupController(Controller* controller, SeaView* sea,
 {
     Entity* player1;
     Entity* player2;
-    
+
     switch (m_state) {
     case DONE_LOCAL_GAME:
         player1 = controller->createPlayer(Sea::Player(0), sea, chat, "");
@@ -154,6 +157,22 @@ void SimpleMenu::setupController(Controller* controller, SeaView* sea,
         chat->bindTo(player1);
         break;
     }
+    case DONE_GGZ_CLIENT: {
+        KGGZMod::Player *player = KGGZMod::Module::instance()->self();
+        if(player) {
+            kDebug() << "PLAYER-exists" << endl;
+            m_nickname = player->name();
+            kDebug() << "nickname " << m_nickname << endl;
+        } else {
+            kDebug() << "PLAYER-does-not-exist" << endl;
+        }
+
+        Q_ASSERT(m_socket);
+        player1 = controller->createPlayer(Sea::Player(0), sea, chat, m_nickname);
+        player2 = controller->createRemotePlayer(Sea::Player(1), m_socket, true);
+        chat->bindTo(player1);
+        break;
+    }
     default:
         return;
     }
@@ -164,6 +183,13 @@ void SimpleMenu::setupController(Controller* controller, SeaView* sea,
     stats_widgets[0]->setEditable(true);
     stats_widgets[1]->setStats(player2);
     controller->start(sea);
+}
+
+void SimpleMenu::runGGZ(int fd)
+{
+    m_state = DONE_GGZ_CLIENT;
+    m_socket = new QTcpSocket();
+    m_socket->setSocketDescriptor(fd);
 }
 
 #include "simplemenu.moc"

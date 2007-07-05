@@ -218,6 +218,10 @@ void PlayField::gameOver(Sea::Player winner)
     emit gameFinished();
 }
 
+void PlayField::runGGZ(int fd)
+{
+    m_menu->runGGZ(fd);
+}
 
 
 #include "playfield.moc"
