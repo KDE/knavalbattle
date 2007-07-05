@@ -167,9 +167,12 @@ void SimpleMenu::setupController(Controller* controller, SeaView* sea,
             kDebug() << "PLAYER-does-not-exist" << endl;
         }
 
+        int seat = player->seat();
+        int oppseat = 1 - seat;
+
         Q_ASSERT(m_socket);
-        player1 = controller->createPlayer(Sea::Player(0), sea, chat, m_nickname);
-        player2 = controller->createRemotePlayer(Sea::Player(1), m_socket, true);
+        player1 = controller->createPlayer(Sea::Player(seat), sea, chat, m_nickname);
+        player2 = controller->createRemotePlayer(Sea::Player(oppseat), m_socket, true);
         chat->bindTo(player1);
         break;
     }

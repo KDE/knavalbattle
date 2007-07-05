@@ -189,7 +189,7 @@ void Controller::ready(int player)
     foreach (Entity* entity, m_entities) {
         entity->notifyReady(Sea::Player(player));
     }
-    
+
     // when two entities are ready, start
     // all engines
     if (m_ready >= 2) {
