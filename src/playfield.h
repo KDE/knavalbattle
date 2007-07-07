@@ -20,13 +20,13 @@ class AudioPlayer;
 class ChatWidget;
 class SimpleMenu;
 class QStatusBar;
-class StatsWidget;
+class QLabel;
 
 class PlayField : public QWidget
 {
 Q_OBJECT
     SeaView* m_sea;
-    StatsWidget* m_stats_widgets[2];
+    QLabel* m_player_labels[2];
     Controller* m_controller;
     KScoreDialog* m_highscores;
     AudioPlayer* m_player;

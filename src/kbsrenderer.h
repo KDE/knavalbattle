@@ -54,6 +54,7 @@ public:
       * Render an item ensuring it is in the cache.
       */
     QPixmap render(const QString& id, bool rotated = false, int xScale = 1, int yScale = 1);
+    QPixmap render(const QString& id, const QSize& sz);
     
     Coord toLogical(const QPoint& p) const;
     QPoint toReal(const Coord& p) const;

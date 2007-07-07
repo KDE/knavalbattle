@@ -9,6 +9,7 @@
 
 #include "simplemenu.h"
 
+#include <QLabel>
 #include <QStatusBar>
 #include <QTcpSocket>
 #include <QTcpServer>
@@ -26,7 +27,6 @@
 #include "playerentity.h"
 #include "networkentity.h"
 #include "aientity.h"
-#include "statswidget.h"
 #include "welcomescreen.h"
 
 SimpleMenu::SimpleMenu(QWidget* parent, WelcomeScreen* screen)
@@ -132,7 +132,7 @@ void SimpleMenu::clientOK()
 }
 
 void SimpleMenu::setupController(Controller* controller, SeaView* sea, 
-    ChatWidget* chat, QStatusBar* sbar, StatsWidget** stats_widgets)
+    ChatWidget* chat, QStatusBar* sbar, QLabel** player_label)
 {
     Entity* player1;
     Entity* player2;
@@ -182,9 +182,9 @@ void SimpleMenu::setupController(Controller* controller, SeaView* sea,
     
     connect(player1, SIGNAL(message(const QString&)),
         sbar, SLOT(showMessage(const QString&)));
-    stats_widgets[0]->setStats(player1);
-    stats_widgets[0]->setEditable(true);
-    stats_widgets[1]->setStats(player2);
+//     stats_widgets[0]->setStats(player1);
+//     stats_widgets[0]->setEditable(true);
+//     stats_widgets[1]->setStats(player2);
     controller->start(sea);
 }
 

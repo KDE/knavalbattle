@@ -19,7 +19,7 @@ class ChatWidget;
 class Button;
 class QTcpSocket;
 class QStatusBar;
-class StatsWidget;
+class QLabel;
 
 class SimpleMenu : public QObject
 {
@@ -47,7 +47,7 @@ public:
     
     void setupController(Controller* controller,
         SeaView* sea, ChatWidget* chat, 
-        QStatusBar* sbar, StatsWidget** stats_widget);
+        QStatusBar* sbar, QLabel** player_label);
     void runGGZ(int fd);
 private slots:
     void localGame();

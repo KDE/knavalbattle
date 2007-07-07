@@ -11,14 +11,17 @@
 
 #include <QMouseEvent>
 
-#include <KStandardDirs>
 #include <KDebug>
 #include <KGameCanvas>
+#include <KIcon>
+#include <KStandardDirs>
 
 #include "battlefieldview.h"
 #include "button.h"
 #include "delegate.h"
 #include "kbsrenderer.h"
+#include "playerlabel.h"
+#include "statswidget.h"
 #include "welcomescreen.h"
 
 
@@ -38,6 +41,20 @@ SeaView::SeaView(QWidget* parent)
     m_screen = new WelcomeScreen(this, font());
     m_screen->hide();
     
+    // create labels
+    m_labels[0] = new PlayerLabel(
+        m_renderer->render("score_mouse", QSize(32, 32)),
+        "Paolo",
+        this);
+    m_labels[0]->stackUnder(m_screen);
+    m_labels[0]->show();
+    m_labels[1] = new PlayerLabel(
+        m_renderer->render("score_ai", QSize(32, 32)),
+        "Computer", 
+        this);
+    m_labels[1]->stackUnder(m_screen);
+    m_labels[1]->show();
+    
     // create fields
     m_fields[0] = new BattleFieldView(this, m_renderer, "background", GRID_SIZE);
     m_fields[0]->stackUnder(m_screen);
@@ -48,13 +65,19 @@ SeaView::SeaView(QWidget* parent)
     m_fields[1]->show();
     connect(m_fields[1]->screen(), SIGNAL(clicked(Button*)), this, SLOT(buttonClicked(Button*)));
     
+    // create stats widgets
+    m_stats[0] = new StatsWidget(m_fields[0]->size().width(), m_renderer, this);
+    m_stats[0]->stackUnder(m_screen);
+    m_stats[0]->show();
+    
+    m_stats[1] = new StatsWidget(m_fields[1]->size().width(), m_renderer, this);
+    m_stats[1]->stackUnder(m_screen);
+    m_stats[1]->show();
+    
+    
     Animator::instance()->start();
     update();
     
-    QSizePolicy policy(QSizePolicy::Minimum, QSizePolicy::Minimum);
-    setMinimumSize(630, 300);
-    policy.setHeightForWidth(true);
-    setSizePolicy(policy);
     setMouseTracking(true);
 }
 
@@ -64,14 +87,36 @@ SeaView::~SeaView() {
 
 void SeaView::update()
 {
+    kDebug() << "updating" << endl;
+
     int ts = tileSize();
     
     m_renderer->resize(ts);
-    
-    m_fields[0]->moveTo(0, 0);
+
     m_fields[0]->update();
-    m_fields[1]->moveTo(m_fields[0]->size().width() + ts, 0);
     m_fields[1]->update();
+    int actual_width = 
+        m_fields[0]->size().width() +
+        m_fields[1]->size().width() +
+        GAP;
+    
+    m_fields[0]->moveTo(
+        (width() - actual_width) / 2, 
+        PlayerLabel::HEIGHT + LABEL_SPACING * 2);
+    m_labels[0]->moveTo(m_fields[0]->pos().x(), LABEL_SPACING);
+    m_labels[0]->update();
+    m_stats[0]->moveTo(m_fields[0]->pos().x(), height() - StatsWidget::HEIGHT);
+    m_stats[0]->setWidth(m_fields[0]->size().width());
+    m_stats[0]->update();
+    
+    m_fields[1]->moveTo(
+        m_fields[0]->pos().x() + m_fields[0]->size().width() + GAP, 
+        m_fields[0]->pos().y());
+    m_labels[1]->moveTo(m_fields[1]->pos().x(), LABEL_SPACING);
+    m_labels[1]->update();
+    m_stats[1]->moveTo(m_fields[1]->pos().x(), height() - StatsWidget::HEIGHT);
+    m_stats[1]->setWidth(m_fields[0]->size().width());
+    m_stats[1]->update();
     
     m_screen->moveTo(0, 0);
     m_screen->resize(QSize(m_fields[1]->pos().x() + m_fields[1]->size().width(),
@@ -264,8 +309,12 @@ BattleFieldView* SeaView::otherField(BattleFieldView* field)
 
 int SeaView::tileSize() const
 {
-    int h = (height() - LABEL_HEIGHT) / GRID_SIZE;
-    int w = width() / (GRID_SIZE * 2 + 1);
+    int h = (height() - 
+        PlayerLabel::HEIGHT - 
+        LABEL_SPACING * 2 - 
+        StatsWidget::HEIGHT -
+        MARGIN) / GRID_SIZE;
+    int w = (width() - GAP) / (GRID_SIZE * 2);
     return w < h ? w : h;
 }
 
@@ -273,16 +322,6 @@ void SeaView::setDelegate(Delegate* c)
 {
     kDebug() << "setting delegate to " << c << endl;
     m_delegate = c;
-}
-
-QSize SeaView::sizeHint() const
-{
-    return QSize(500, 200);
-}
-
-int SeaView::heightForWidth(int w) const
-{
-    return w * (GRID_SIZE / (2 * GRID_SIZE  + 1));
 }
 
 WelcomeScreen* SeaView::globalScreen() const

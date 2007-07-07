@@ -12,6 +12,7 @@
 #include "playfield.h"
 
 #include <QResizeEvent>
+#include <QLabel>
 #include <QLayout>
 #include <QTcpServer>
 #include <QTcpSocket>
@@ -30,30 +31,36 @@
 #include "playerentity.h"
 #include "welcomescreen.h"
 #include "simplemenu.h"
-#include "statswidget.h"
 
 PlayField::PlayField(QWidget* parent, QStatusBar* sbar)
 : QWidget(parent)
 , m_status_bar(sbar)
 {
-    setMinimumSize(QSize(400, 300));
+//     setMinimumSize(QSize(400, 300));
     QVBoxLayout* layout = new QVBoxLayout;
     
-    QHBoxLayout* upper = new QHBoxLayout;
-    m_stats_widgets[0] = new StatsWidget(this);;
-    m_stats_widgets[1] = new StatsWidget(this);;
+//     QHBoxLayout* upper = new QHBoxLayout;
+//     m_player_labels[0] = new QLabel(this);
+//     m_player_labels[0]->setText("Paolo");
+//     m_player_labels[0]->setPixmap(KIcon("user-female").pixmap(32, 32));
+//     upper->addWidget(m_player_labels[0]);
+//     
+//     m_player_labels[1] = new QLabel(this);
+//     m_player_labels[1]->setText("Computer");
+//     m_player_labels[1]->setPixmap(KIcon("roll").pixmap(32, 32));
+//     upper->addWidget(m_player_labels[1]);
+//     
+//     layout->addItem(upper);
+
     m_sea = new SeaView(this);
-//     m_sea->setMinimumSize(400, 300);
-    upper->addWidget(m_stats_widgets[0]);
-    upper->addWidget(m_sea, 1);
-    upper->addWidget(m_stats_widgets[1]);
-    
-    layout->addItem(upper);
+    layout->addWidget(m_sea, 1);
     
     m_chat = new ChatWidget(this);
     m_chat->hide();
     layout->addWidget(m_chat, 1);
     
+    layout->setMargin(0);
+    layout->setSpacing(0);
     setLayout(layout);
         
     m_controller = 0;
@@ -93,7 +100,7 @@ void PlayField::setupController()
     connect(m_controller, SIGNAL(gameOver(Sea::Player)),
             this, SLOT(gameOver(Sea::Player)));
             
-    m_menu->setupController(m_controller, m_sea, m_chat, m_status_bar, m_stats_widgets);
+    m_menu->setupController(m_controller, m_sea, m_chat, m_status_bar, m_player_labels);
 }
 
 void PlayField::endGame()
@@ -191,22 +198,22 @@ void PlayField::highscores()
 void PlayField::gameOver(Sea::Player winner)
 {
     if (winner == Sea::Player(0)) {
-        const Stats* stats = m_stats_widgets[0]->stats();
-       
-        if (stats) {
-            KScoreDialog::FieldInfo info;
-            info[KScoreDialog::Name] = m_stats_widgets[0]->nick();
-            info[KScoreDialog::Score].setNum(stats->score());
-            info[KScoreDialog::Custom1] = QString::number(stats->shots());
-            info[KScoreDialog::Custom2] = QString::number(stats->hits());
-            info[KScoreDialog::Custom3] = QString::number(stats->misses());
-        
-            kDebug() << "score = " << stats->score() << endl;
-            if (m_highscores->addScore(info, KScoreDialog::AskName)) {
-                highscores();
-                return;
-            }
-        }
+//         const Stats* stats = m_stats_widgets[0]->stats();
+//        
+//         if (stats) {
+//             KScoreDialog::FieldInfo info;
+//             info[KScoreDialog::Name] = m_stats_widgets[0]->nick();
+//             info[KScoreDialog::Score].setNum(stats->score());
+//             info[KScoreDialog::Custom1] = QString::number(stats->shots());
+//             info[KScoreDialog::Custom2] = QString::number(stats->hits());
+//             info[KScoreDialog::Custom3] = QString::number(stats->misses());
+//         
+//             kDebug() << "score = " << stats->score() << endl;
+//             if (m_highscores->addScore(info, KScoreDialog::AskName)) {
+//                 highscores();
+//                 return;
+//             }
+//         }
         
         m_status_bar->showMessage(i18n("You win!"));
     }

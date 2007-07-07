@@ -35,7 +35,6 @@ MainWindow::MainWindow()
     setCentralWidget(m_main);
 
     setupActions();
-    resize(900, 440);
 
     if(KGGZMod::Module::isGGZ())
     {

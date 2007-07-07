@@ -19,15 +19,21 @@ class KBSRenderer;
 class Delegate;
 class WelcomeScreen;
 class Button;
+class PlayerLabel;
+class StatsWidget;
 
 class SeaView : public KGameCanvasWidget
 {
 Q_OBJECT
     static const unsigned int GRID_SIZE = 10;
-    static const unsigned int LABEL_HEIGHT = 0;
+    static const unsigned int LABEL_SPACING = 4;
+    static const unsigned int MARGIN = 10;
+    static const unsigned int GAP = 2;
     
     WelcomeScreen* m_screen;
     BattleFieldView* m_fields[2];
+    PlayerLabel* m_labels[2];
+    StatsWidget* m_stats[2];
     
     KBSRenderer* m_renderer;
     Delegate* m_delegate;
@@ -53,9 +59,6 @@ public:
 
     WelcomeScreen* globalScreen() const;
     WelcomeScreen* screen(Sea::Player player) const;
-    
-    virtual QSize sizeHint() const;
-    virtual int heightForWidth(int w) const;
 protected:
     virtual void mouseMoveEvent(QMouseEvent*);
     virtual void mousePressEvent(QMouseEvent*);

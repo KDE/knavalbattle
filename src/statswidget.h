@@ -10,40 +10,66 @@
 #ifndef STATSWIDGET_H
 #define STATSWIDGET_H
 
-#include <QWidget>
+#include <QFontMetrics>
 
+#include <KGameCanvas>
+
+class KBSRenderer;
 class Stats;
-class QLabel;
-class KGameLCD;
-class Entity;
 
-class StatsWidget : public QWidget
+class RoundFrame : public KGameCanvasItem
 {
-Q_OBJECT
+    QSize m_size;
+public:
+    RoundFrame(const QSize& size, KGameCanvasAbstract* canvas);
+    virtual void paint(QPainter* p);
+    virtual QRect rect() const;
+    
+    void setSize(const QSize& size);
+};
+
+class StatsWidgetElement : public KGameCanvasGroup
+{
+public:
+    static const int HEIGHT = 40;
+    static const int MARGIN = 8;
+private:
+    int m_width; // requested width
+    QSize m_size; // actual width
+    QFontMetrics m_metrics; // font metrics
+    
+    RoundFrame* m_frame;
+    KGameCanvasPixmap* m_icon;
+    KGameCanvasText* m_text;
+    
+    void update();
+    int minimumWidth() const;
+public:
+    StatsWidgetElement(const QPixmap& icon, const QString& text, 
+        KGameCanvasAbstract* parent);
+        
+    void setWidth(int width);
+    void setText(const QString& text);
+    QSize size() const;
+};
+
+class StatsWidget : public KGameCanvasGroup
+{
+public:
+    static const int MARGIN = 10;
+    static const int HEIGHT = StatsWidgetElement::HEIGHT;
+private:
+    int m_width;
     Stats* m_stats;
     
-    QLabel* m_player_icon;
-    QLabel* m_player_name;
-    
-    KGameLCD* m_shots;
-    KGameLCD* m_hits;
-    KGameLCD* m_misses;
-    
-    bool m_editable;
-private slots:
-    void updateHits();
-    void updateMisses();
-    void updateNick(int, const QString& nick);
+    StatsWidgetElement* m_elements[2];
 public:
-    StatsWidget(QWidget* parent);
-    
-    void setStats(Entity* stats);
-    const Stats* stats() const { return m_stats; }
-    void setEditable(bool value);
-    bool editable() const;
-    
-    QString nick() const;
+    StatsWidget(int width, KBSRenderer* renderer, KGameCanvasAbstract* parent);
+
+    void setWidth(int width);
+    void update();
 };
+
 
 #endif // STATSWIDGET_H
 

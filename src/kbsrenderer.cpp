@@ -74,6 +74,12 @@ QPixmap KBSRenderer::render(const QString& id, bool rotated, int xScale, int ySc
         QSize(m_size.width() * xScale, m_size.height() * yScale));
 }
 
+QPixmap KBSRenderer::render(const QString& id, const QSize& size)
+{
+    return render(PixmapData(id, false), size);
+}
+
+
 Coord KBSRenderer::toLogical(const QPoint& p) const
 {
     int x = p.x();

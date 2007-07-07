@@ -8,122 +8,127 @@
 */
 
 #include "statswidget.h"
+#include "kbsrenderer.h"
+#include <QColor>
 
-#include "entity.h"
-
-#include <QLabel>
-#include <QLayout>
-
-#include <KGameLCD>
-#include <KIcon>
-#include <KLocalizedString>
-
-StatsWidget::StatsWidget(QWidget* parent)
-: QWidget(parent)
-, m_stats(0)
-, m_editable(false)
+RoundFrame::RoundFrame(const QSize& size, KGameCanvasAbstract* parent)
+: KGameCanvasItem(parent)
+, m_size(size)
 {
-    QVBoxLayout* mainLayout = new QVBoxLayout;
-
-    // title
-    QHBoxLayout* tmp = new QHBoxLayout;
-    m_player_icon = new QLabel(this);
-//     m_player_icon->setPixmap(KIcon("user-female.png").pixmap(32, 32));
-    tmp->addWidget(m_player_icon);
-    tmp->addSpacing(5);
-    m_player_name = new QLabel(this);
-    m_player_name->setAlignment(Qt::AlignRight);
-    m_player_name->setStyleSheet("font-size: 20px;");
-    tmp->addWidget(m_player_name);
-    
-    mainLayout->addItem(tmp);
-    
-    mainLayout->addStretch();
-    
-    // shots
-    tmp = new QHBoxLayout;
-    QLabel* shots_label = new QLabel(i18n("Shots:"), this);
-    tmp->addWidget(shots_label);
-    tmp->addStretch();
-    
-    m_shots = new KGameLCD(3, this);
-    tmp->addWidget(m_shots);
-    
-    mainLayout->addItem(tmp);
-    
-    // hits
-    tmp = new QHBoxLayout;
-    QLabel* hits_label = new QLabel(i18n("Hits:"), this);
-    tmp->addWidget(hits_label);
-    tmp->addStretch();
-    
-    m_hits = new KGameLCD(3, this);
-    tmp->addWidget(m_hits);
-    
-    mainLayout->addItem(tmp);
-
-    // misses
-    tmp = new QHBoxLayout;
-    QLabel* misses_label = new QLabel(i18n("Misses:"), this);
-    tmp->addWidget(misses_label);
-    tmp->addStretch();
-    
-    m_misses = new KGameLCD(3, this);
-    tmp->addWidget(m_misses);
-    
-    mainLayout->addItem(tmp);
-    
-    setLayout(mainLayout);
 }
 
-void StatsWidget::setStats(Entity* entity)
+void RoundFrame::paint(QPainter* p) 
 {
-    m_stats = entity->stats();
-    Q_ASSERT(m_stats);
-    connect(m_stats, SIGNAL(hitsChanged()), this, SLOT(updateHits()));
-    connect(m_stats, SIGNAL(missesChanged()), this, SLOT(updateMisses()));
-    connect(entity, SIGNAL(nick(int, QString)), this, SLOT(updateNick(int, QString)));
+    p->setRenderHint(QPainter::Antialiasing);
+    p->drawRoundRect(rect(), 1000 / rect().width(), 1000 / rect().height());
+}
+
+QRect RoundFrame::rect() const 
+{
+    return QRect(pos(), m_size);
+}
+
+void RoundFrame::setSize(const QSize& size)
+{
+    m_size = size;
+    if (visible() && canvas())
+        changed();
+}
+
+StatsWidgetElement::StatsWidgetElement(const QPixmap& pixmap, const QString& text, 
+    KGameCanvasAbstract* parent)
+: KGameCanvasGroup(parent)
+, m_width(0)
+, m_metrics(QFont())
+{
+    m_icon = new KGameCanvasPixmap(pixmap, this);
+    m_icon->show();
     
-    m_player_name->setText(entity->nick());
-    m_player_icon->setPixmap(entity->icon().pixmap(32, 32));
+    QFont font;
+    font.setPointSize(15);
+    m_metrics = QFontMetrics(font);
+    m_text = new KGameCanvasText(text, Qt::black, font,
+        KGameCanvasText::HRight, KGameCanvasText::VCenter,  this);
+    m_text->show();   
+
+    m_frame = new RoundFrame(QSize(0, 0), this);
+    m_frame->show();
 }
 
-void StatsWidget::updateHits()
+void StatsWidgetElement::setText(const QString& text)
 {
-    Q_ASSERT(m_stats);
-    m_shots->displayInt(m_stats->shots());
-    m_hits->displayInt(m_stats->hits());
-    m_hits->highlight();
+    m_text->setText(text);
+    update();
 }
 
-void StatsWidget::updateMisses()
+int StatsWidgetElement::minimumWidth() const
 {
-    Q_ASSERT(m_stats);
-    m_shots->displayInt(m_stats->shots());
-    m_misses->displayInt(m_stats->misses());
-    m_misses->highlight();
+    return HEIGHT + MARGIN * 3 + m_metrics.width(m_text->text());
 }
 
-void StatsWidget::updateNick(int, const QString& nick)
+void StatsWidgetElement::update()
 {
-    m_player_name->setText(nick);
+    int width = m_width;
+    int min = minimumWidth();
+    if (m_width < min) {
+        width = min;
+    }
+        
+    m_size = QSize(width, HEIGHT);
+    
+    m_frame->setSize(m_size);
+    m_frame->moveTo(0, 0);
+    m_icon->moveTo(MARGIN, MARGIN / 2);
+    m_text->moveTo(width - MARGIN, HEIGHT / 2);
 }
 
-bool StatsWidget::editable() const
+void StatsWidgetElement::setWidth(int width)
 {
-    return m_editable;
+    if (width != m_size.width()) {
+        m_width = width;
+        update();
+    }
 }
 
-void StatsWidget::setEditable(bool value)
+QSize StatsWidgetElement::size() const
 {
-    m_editable = value;
+    return m_size;
 }
 
-QString StatsWidget::nick() const
+StatsWidget::StatsWidget(int width, KBSRenderer* renderer, KGameCanvasAbstract* parent)
+: KGameCanvasGroup(parent)
+, m_width(width)
 {
-    return m_player_name->text();
+    m_elements[0] = new StatsWidgetElement(
+        renderer->render("water-impact", QSize(32, 32)),
+        "0",
+        this);
+    m_elements[0]->show();
+    m_elements[1] = new StatsWidgetElement(
+        renderer->render("hit", QSize(32, 32)),
+        "0",
+        this);
+    m_elements[1]->show();
+        
+    update();
 }
 
-#include "statswidget.moc"
+void StatsWidget::setWidth(int width)
+{
+    if (width != m_width) {
+        m_width = width;
+        update();
+    }
+}
+
+void StatsWidget::update()
+{
+    int element_width = (m_width - MARGIN*3) / 2;
+    m_elements[0]->moveTo(MARGIN, 0);
+    m_elements[0]->setWidth(element_width);
+    
+    m_elements[1]->moveTo(m_elements[0]->size().width() + MARGIN * 2, 0);
+    m_elements[1]->setWidth(element_width);
+}
 
 

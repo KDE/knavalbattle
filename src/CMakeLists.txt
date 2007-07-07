@@ -37,6 +37,7 @@ set(kbattleship_SRCS
     networkdialog.cpp
     networkentity.cpp
     playerentity.cpp
+    playerlabel.cpp
     playfield.cpp
     protocol.cpp
     sea.cpp
