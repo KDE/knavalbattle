@@ -6,8 +6,6 @@ include_directories(${CMAKE_SOURCE_DIR}/libkdegames ${CMAKE_SOURCE_DIR}/libkdega
      kwelcomescreen/kwelcomescreen.cpp
      )
 
-kde4_automoc(${kwelcomescreen_SRCS})
-
 # currently not needed by anything else, so in benefit of the doubt, don't install it
 #kde4_add_library(kwelcomescreen SHARED ${kwelcomescreen_SRCS})
 #target_link_libraries(kwelcomescreen ${KDE4_KDEUI_LIBS})
@@ -54,7 +52,6 @@ set(kbattleship_SRCS
     welcomescreen.cpp)
 
 
-kde4_automoc(${kbattleship_SRCS})
 kde4_add_kcfg_files(kbattleship_SRCS settingsbase.kcfgc)
 kde4_add_executable(kbattleship ${kbattleship_SRCS} ${kwelcomescreen_SRCS})
 
