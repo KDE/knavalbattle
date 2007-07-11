@@ -39,19 +39,6 @@ PlayField::PlayField(QWidget* parent, QStatusBar* sbar)
 //     setMinimumSize(QSize(400, 300));
     QVBoxLayout* layout = new QVBoxLayout;
     
-//     QHBoxLayout* upper = new QHBoxLayout;
-//     m_player_labels[0] = new QLabel(this);
-//     m_player_labels[0]->setText("Paolo");
-//     m_player_labels[0]->setPixmap(KIcon("user-female").pixmap(32, 32));
-//     upper->addWidget(m_player_labels[0]);
-//     
-//     m_player_labels[1] = new QLabel(this);
-//     m_player_labels[1]->setText("Computer");
-//     m_player_labels[1]->setPixmap(KIcon("roll").pixmap(32, 32));
-//     upper->addWidget(m_player_labels[1]);
-//     
-//     layout->addItem(upper);
-
     m_sea = new SeaView(this);
     layout->addWidget(m_sea, 1);
     
@@ -60,7 +47,7 @@ PlayField::PlayField(QWidget* parent, QStatusBar* sbar)
     layout->addWidget(m_chat, 1);
     
     layout->setMargin(0);
-    layout->setSpacing(0);
+//     layout->setSpacing(0);
     setLayout(layout);
         
     m_controller = 0;
