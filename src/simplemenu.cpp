@@ -165,6 +165,7 @@ void SimpleMenu::setupController(Controller* controller, SeaView* sea,
             kDebug() << "nickname " << m_nickname << endl;
         } else {
             kDebug() << "PLAYER-does-not-exist" << endl;
+            break;
         }
 
         int seat = player->seat();
