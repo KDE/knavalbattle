@@ -12,7 +12,7 @@
 
 #include <QObject>
 
-class HitInfo;
+struct HitInfo;
 
 class Stats : public QObject
 {
