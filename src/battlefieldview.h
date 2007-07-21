@@ -7,8 +7,8 @@
   (at your option) any later version.
 */
 
-#ifndef BATTLEFIELD_H
-#define BATTLEFIELD_H
+#ifndef BATTLEFIELDVIEW_H
+#define BATTLEFIELDVIEW_H
 
 #include <kgamecanvas.h>
 #include <QMultiHash>
