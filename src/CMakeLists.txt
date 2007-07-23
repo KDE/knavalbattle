@@ -59,7 +59,7 @@ target_link_libraries(kbattleship ${KDE4_KDEUI_LIBS} ${KDE4_PHONON_LIBS} kdegame
 
 install(TARGETS kbattleship  DESTINATION ${BIN_INSTALL_DIR} )
 install( FILES kbattleshipui.rc  DESTINATION  ${DATA_INSTALL_DIR}/kbattleship )
-install(FILES kbattleship.desktop DESTINATION ${XDG_APPS_DIR})
+install(FILES kbattleship.desktop DESTINATION ${XDG_APPS_INSTALL_DIR})
 
 register_ggz_module(module.dsc)
 
