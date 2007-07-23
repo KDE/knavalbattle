@@ -70,7 +70,7 @@
 <sect1 id="features">
 <title>Features</title>
 <itemizedlist>
-<listitem><para>Network Gaming</para></listitem>
+<listitem><para>Network Gaming (both stand-alone and via GGZ)</para></listitem>
 <listitem><para>Computer Player (AI)</para></listitem>
 <listitem><para>Sounds</para></listitem>
 <listitem><para>Chat</para></listitem>
@@ -168,6 +168,32 @@ who is about to shoot.
 
 <para>
 The first player destroying all their opponents ships wins the game!
+</para>
+
+</chapter>
+
+<chapter id="multiplayer">
+<title>Multiplayer support</title>
+
+<para>
+Playing online against other humans was already discussed in the
+previous chapter. However, the game also supports another online
+mode.
+</para>
+
+<para>
+&kbattleship; can be played online on any GGZ Gaming Zone site. You can
+find other players there, and compete against them. Just enter one
+of the available Battleship rooms with any GGZ core client, such as
+kggz, and &kbattleship; will be offered to you as your favourite
+game client. If a GGZ core client is installed, you can try
+out GGZ by visiting the <ulink url="ggz://live.ggzgamingzone.org/#Battleship">community site</ulink>.
+</para>
+
+<para>
+Remember that when playing online, the opponent might be either a
+human player or a computer player. The latter one might behave
+differently from the computer player included in &kbattleship;.
 </para>
 
 </chapter>
