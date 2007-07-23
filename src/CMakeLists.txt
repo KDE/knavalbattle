@@ -1,5 +1,3 @@
-include (../../cmake/modules/GGZ.cmake)
-
 include_directories(${CMAKE_SOURCE_DIR}/libkdegames ${CMAKE_SOURCE_DIR}/libkdegames/highscore ${CMAKE_CURRENT_SOURCE_DIR}/kwelcomescreen)
 
  set(kwelcomescreen_SRCS
