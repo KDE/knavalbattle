@@ -97,7 +97,7 @@ Button* WelcomeScreen::addButton(int x, int y, const QIcon& icon, const QString&
         update();
         connect(button, SIGNAL(needsUpdate()), this, SLOT(update()));
         
-        kDebug() << "added button " << button << endl;
+        kDebug() << "added button" << button;
         
         return button;
     }
@@ -139,7 +139,7 @@ void WelcomeScreen::clearButtons()
 void WelcomeScreen::onMouseMove(const QPoint& p)
 {
     Button* button = dynamic_cast<Button*>(itemAt(p));
-//     kDebug() << "on point " << p << " there is " << button << endl;
+//     kDebug() << "on point" << p << "there is" << button;
     if (m_hover && m_hover != button) {
         m_hover->onMouseLeave();
     }
@@ -152,7 +152,7 @@ void WelcomeScreen::onMouseMove(const QPoint& p)
 
 void WelcomeScreen::onMousePress(const QPoint& p)
 {
-    kDebug() << "on mouse press" << endl;
+    kDebug() << "on mouse press";
     Button* button = dynamic_cast<Button*>(itemAt(p));
     if (button) {
         button->onMousePress(p - button->pos());

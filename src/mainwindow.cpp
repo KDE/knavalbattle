@@ -38,13 +38,13 @@ MainWindow::MainWindow()
 
     if(KGGZMod::Module::isGGZ())
     {
-        kDebug() << "GGZDEBUG: running in GGZ mode..." << endl;
+        kDebug() << "GGZDEBUG: running in GGZ mode...";
         m_mod = new KGGZMod::Module("KBattleship");
         connect(m_mod, SIGNAL(signalError()), SLOT(networkErrorHandler()));
         connect(m_mod, SIGNAL(signalNetwork(int)), SLOT(networkData(int)));
         connect(m_mod, SIGNAL(signalEvent(const KGGZMod::Event&)),
             SLOT(networkEvent(const KGGZMod::Event&)));
-        kDebug() << "GGZDEBUG: kggzmod activated" << endl;
+        kDebug() << "GGZDEBUG: kggzmod activated";
     }
 }
 
@@ -76,23 +76,23 @@ void MainWindow::setupActions()
 
 void MainWindow::optionsPreferences()
 {
-    kDebug() << "preferences" << endl;
+    kDebug() << "preferences";
 }
 
 
 void MainWindow::networkErrorHandler()
 {
-    kDebug() << "GGZDEBUG: error" << endl;
+    kDebug() << "GGZDEBUG: error";
 }
 
 void MainWindow::networkData(int fd)
 {
-    kDebug() << "GGZDEBUG: data on fd " << fd << endl;
+    kDebug() << "GGZDEBUG: data on fd" << fd;
 }
 
 void MainWindow::networkEvent(const KGGZMod::Event& event)
 {
-    kDebug() << "GGZDEBUG: event " << event.type() << endl;
+    kDebug() << "GGZDEBUG: event" << event.type();
 
     if(event.type() == KGGZMod::Event::server) {
         KGGZMod::ServerEvent se = (KGGZMod::ServerEvent)event;

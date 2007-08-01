@@ -35,7 +35,7 @@ void AIEntity::notify(Sea::Player player, const Coord& c, const HitInfo& info)
 
 void AIEntity::start()
 {
-    kDebug() << m_player << ": starting" << endl;
+    kDebug() << m_player << ": starting";
     m_ai->setShips();
     emit ready(m_player);
 }

@@ -195,7 +195,7 @@ void PlayField::gameOver(Sea::Player winner)
 //             info[KScoreDialog::Custom2] = QString::number(stats->hits());
 //             info[KScoreDialog::Custom3] = QString::number(stats->misses());
 //         
-//             kDebug() << "score = " << stats->score() << endl;
+//             kDebug() << "score =" << stats->score();
 //             if (m_highscores->addScore(info, KScoreDialog::AskName)) {
 //                 highscores();
 //                 return;

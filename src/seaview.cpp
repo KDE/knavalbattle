@@ -87,7 +87,7 @@ SeaView::~SeaView() {
 
 void SeaView::update()
 {
-    kDebug() << "updating" << endl;
+    kDebug() << "updating";
 
     int ts = tileSize();
     
@@ -320,7 +320,7 @@ int SeaView::tileSize() const
 
 void SeaView::setDelegate(Delegate* c)
 {
-    kDebug() << "setting delegate to " << c << endl;
+    kDebug() << "setting delegate to" << c;
     m_delegate = c;
 }
 

@@ -114,7 +114,7 @@ void NetworkEntity::visit(const HeaderMessage& msg)
     }
     else {
         m_level = COMPAT_KBS3;
-        kDebug() << "emitting compatibility" << endl;
+        kDebug() << "emitting compatibility";
         emit compatibility(m_level);
     }
 }
@@ -138,7 +138,7 @@ void NetworkEntity::visit(const BeginMessage&)
 
 void NetworkEntity::visit(const MoveMessage& msg)
 {
-    kDebug() << m_player << ": shooting on " << msg.move() << endl;
+    kDebug() << m_player << ": shooting on" << msg.move();
     emit shoot(m_player, msg.move());
 }
 

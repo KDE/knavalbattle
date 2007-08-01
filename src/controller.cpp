@@ -31,7 +31,7 @@ PlayerEntity* Controller::createPlayer(Sea::Player player, SeaView* view,
                                               ChatWidget* chat, const QString& nick)
 {
     if (m_ui) {
-        kDebug() << "Cannot create more than one human player" << endl;
+        kDebug() << "Cannot create more than one human player";
         return 0;
     }
     PlayerEntity* entity = new PlayerEntity(player, m_sea, view, chat);
@@ -94,11 +94,11 @@ bool Controller::allPlayers() const
     unsigned char bitmap = 0;
     foreach (Entity* entity, m_entities) {
         int player = entity->player();
-        kDebug() << "found player " << player << endl;
+        kDebug() << "found player" << player;
         bitmap |= (1 << player);    
     }
     
-    kDebug() << "bitmap = " << (unsigned) bitmap << endl;
+    kDebug() << "bitmap =" << (unsigned) bitmap;
     return bitmap == 3;
 }
 
@@ -132,12 +132,12 @@ void Controller::shoot(int player, const Coord& c)
 {
     Entity* entity = findEntity(Sea::opponent(Sea::Player(player)));
     if (!entity) {
-        kDebug() << "no entity!" << endl;
+        kDebug() << "no entity!";
         return;
     }
 
     if (m_shot) {
-        kDebug() << "shot in progress" << endl;
+        kDebug() << "shot in progress";
         // shot in progress
         return;
     }
@@ -166,7 +166,7 @@ void Controller::finalizeShot(Sea::Player player, const Coord& c, const HitInfo&
         }
     }
     else {
-        kDebug() << "illegal move " << c << " for player " << player << endl;
+        kDebug() << "illegal move" << c << "for player" << player;
     }
     
     delete m_shot;
@@ -218,7 +218,7 @@ void Controller::receivedChat(const QString& text)
     if (chat_sender) {    
         foreach (Entity* entity, m_entities) {
             if (entity != chat_sender) {
-                kDebug() << "forwarding to " << entity->nick() << endl;
+                kDebug() << "forwarding to" << entity->nick();
                 entity->notifyChat(chat_sender, text);
             }
         }
@@ -227,7 +227,7 @@ void Controller::receivedChat(const QString& text)
 
 void Controller::nick(int player, const QString& nick)
 {
-    kDebug() << "controller: nick" << endl;
+    kDebug() << "controller: nick";
     foreach (Entity* entity, m_entities) {
         if (entity->player() != Sea::Player(player)) {
             entity->notifyNick(Sea::Player(player), nick);

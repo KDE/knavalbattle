@@ -160,11 +160,11 @@ void SimpleMenu::setupController(Controller* controller, SeaView* sea,
     case DONE_GGZ_CLIENT: {
         KGGZMod::Player *player = KGGZMod::Module::instance()->self();
         if(player) {
-            kDebug() << "PLAYER-exists" << endl;
+            kDebug() << "PLAYER-exists";
             m_nickname = player->name();
-            kDebug() << "nickname " << m_nickname << endl;
+            kDebug() << "nickname" << m_nickname;
         } else {
-            kDebug() << "PLAYER-does-not-exist" << endl;
+            kDebug() << "PLAYER-does-not-exist";
             break;
         }
 

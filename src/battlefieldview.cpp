@@ -91,7 +91,7 @@ void BattleFieldView::setPreview(const QPoint& pos, Ship* ship)
     if (!m_preview.sprite) {
         m_preview.ship = ship;
         m_preview.sprite = m_factory.createShip(ship);
-        kDebug() << "created preview: dir = " << ship->direction() << endl;
+        kDebug() << "created preview: dir =" << ship->direction();
         m_preview.sprite->setOpacity(PREVIEW_OPACITY);
         m_preview.sprite->show();
     }

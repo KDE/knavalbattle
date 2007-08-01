@@ -159,7 +159,7 @@ void PlayerEntity::registerMiss(Sea::Player player, const Coord&)
 void PlayerEntity::notifyChat(const Entity* entity, const QString& text)
 {
     if (entity != this) {
-        kDebug() << "received chat from " << entity->nick() << ": " << text << endl;
+        kDebug() << "received chat from" << entity->nick() << ":" << text;
         m_chat->display(entity->nick(), text);
     }
 }

@@ -44,7 +44,7 @@ QPixmap KBSRenderer::render(const PixmapData& data, const QSize& sz)
 {
     if (!m_cache.contains(data)) {
         if (!m_renderer->elementExists(data.name)) {
-            kDebug() << "no element " << data.name << "\n";
+            kDebug() << "no element" << data.name << "\n";
             return QPixmap();
         }
         QImage tmp(sz, QImage::Format_ARGB32_Premultiplied);
@@ -54,7 +54,7 @@ QPixmap KBSRenderer::render(const PixmapData& data, const QSize& sz)
             
             QPainter p(&tmp);
             if (data.rotated) {
-                kDebug() << "rotating " << data.name << endl;
+                kDebug() << "rotating" << data.name;
                 p.translate(QPoint(sz.width(), 0));
                 p.rotate(90);
                 renderSize = QSize(sz.height(), sz.width());
