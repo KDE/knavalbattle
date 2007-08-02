@@ -1,4 +1,4 @@
-include_directories(${CMAKE_SOURCE_DIR}/libkdegames ${CMAKE_SOURCE_DIR}/libkdegames/highscore ${CMAKE_CURRENT_SOURCE_DIR}/kwelcomescreen)
+include_directories(${CMAKE_SOURCE_DIR}/libkdegames/highscore ${CMAKE_CURRENT_SOURCE_DIR}/kwelcomescreen)
 
  set(kwelcomescreen_SRCS
      kwelcomescreen/kwelcomescreen.cpp
