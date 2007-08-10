@@ -13,15 +13,12 @@
 #include <kurl.h>
 
 AudioPlayer::AudioPlayer(QObject* parent)
-: Phonon::AudioPlayer(Phonon::GameCategory, parent)
+: QObject(parent)
+, m_player(Phonon::createPlayer(Phonon::GameCategory))
 , m_active(false)
 {
+    m_player->setParent(this);
     m_dir = KStandardDirs::locate("appdata", "sounds/");
-}
-
-KUrl AudioPlayer::path(const QString& soundName) const
-{
-    return KUrl::fromPath(m_dir + '/' + soundName);
 }
 
 void AudioPlayer::play(Sea::Player player, const HitInfo& info)
@@ -43,7 +40,8 @@ void AudioPlayer::play(Sea::Player player, const HitInfo& info)
         }
         
         if (!sound.isEmpty()) {
-            Phonon::AudioPlayer::play(path(sound));
+            m_player->setCurrentSource(sound);
+            m_player->play();
         }
     }
 }

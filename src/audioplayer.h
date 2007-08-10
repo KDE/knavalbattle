@@ -10,13 +10,13 @@
 #ifndef AUDIOPLAYER_H
 #define AUDIOPLAYER_H
 
-#include <phonon/audioplayer.h>
+#include <Phonon/MediaObject>
 #include "sea.h"
 
-class AudioPlayer : private Phonon::AudioPlayer
+class AudioPlayer : public QObject
 {
+    Phonon::MediaObject *m_player;
     QString m_dir;
-    KUrl path(const QString& soundName) const;
     bool m_active;
 public:
     AudioPlayer(QObject* parent);
