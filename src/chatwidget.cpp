@@ -10,8 +10,8 @@
 #include "chatwidget.h"
 
 #include <QKeyEvent>
-#include <QLineEdit>
-#include <QTextEdit>
+#include <KLineEdit>
+#include <KTextEdit>
 #include <QVBoxLayout>
 
 #include "entity.h"
@@ -22,11 +22,11 @@ ChatWidget::ChatWidget(QWidget* parent)
     QVBoxLayout* layout = new QVBoxLayout;
     layout->setMargin(0);
     
-    m_chat = new QTextEdit(this);
+    m_chat = new KTextEdit(this);
     m_chat->setReadOnly(true);
     layout->addWidget(m_chat);
     
-    m_input = new QLineEdit(this);
+    m_input = new KLineEdit(this);
     m_input->installEventFilter(this);
     layout->addWidget(m_input);
     
@@ -113,8 +113,3 @@ QSize ChatWidget::sizeHint() const
 
 
 #include "chatwidget.moc"
-
-
-
-
-

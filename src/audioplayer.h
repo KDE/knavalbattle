@@ -15,6 +15,8 @@
 
 class AudioPlayer : public QObject
 {
+    Q_OBJECT
+
     Phonon::MediaObject *m_player;
     QString m_dir;
     bool m_active;
