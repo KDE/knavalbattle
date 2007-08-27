@@ -7,8 +7,8 @@
   (at your option) any later version.
 */
 
-#ifndef SPRITEBUILDER_H
-#define SPRITEBUILDER_H
+#ifndef KBATTLESHIP_SPRITEFACTORY_H
+#define KBATTLESHIP_SPRITEFACTORY_H
 
 #include <QString>
 
@@ -32,5 +32,4 @@ public:
     Sprite* createImpact();
 };
 
-#endif // SPRITEBUILDER_H
-
+#endif // KBATTLESHIP_SPRITEFACTORY_H

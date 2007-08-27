@@ -7,8 +7,8 @@
   (at your option) any later version.
 */
 
-#ifndef STREAMREADER_H
-#define STREAMREADER_H
+#ifndef KBATTLESHIP_PROTOCOL_H
+#define KBATTLESHIP_PROTOCOL_H
 
 #include <QString>
 #include <QTimer>
@@ -40,5 +40,4 @@ signals:
     void disconnected();
 };
 
-
-#endif // STREAMREADER_H
+#endif // KBATTLESHIP_PROTOCOL_H
