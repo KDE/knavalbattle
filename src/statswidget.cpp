@@ -8,8 +8,11 @@
 */
 
 #include "statswidget.h"
-#include "kbsrenderer.h"
+
 #include <QColor>
+
+#include "stats.h"
+#include "kbsrenderer.h"
 
 RoundFrame::RoundFrame(const QSize& size, KGameCanvasAbstract* parent)
 : KGameCanvasItem(parent)
@@ -98,6 +101,7 @@ QSize StatsWidgetElement::size() const
 StatsWidget::StatsWidget(int width, KBSRenderer* renderer, KGameCanvasAbstract* parent)
 : KGameCanvasGroup(parent)
 , m_width(width)
+, m_stats(0)
 {
     m_elements[0] = new StatsWidgetElement(
         renderer->render("water-impact", QSize(32, 32)),
@@ -123,6 +127,11 @@ void StatsWidget::setWidth(int width)
 
 void StatsWidget::update()
 {
+    if (m_stats) {
+        m_elements[0]->setText(QString::number(m_stats->misses()));
+        m_elements[1]->setText(QString::number(m_stats->hits()));
+    }
+    
     int element_width = (m_width - MARGIN*3) / 2;
     m_elements[0]->moveTo(MARGIN, 0);
     m_elements[0]->setWidth(element_width);
@@ -131,9 +140,14 @@ void StatsWidget::update()
     m_elements[1]->setWidth(element_width);
 }
 
-void StatsWidget::setData(int miss, int hits) {
-    m_elements[0]->setText(QString::number(miss));
-    m_elements[1]->setText(QString::number(hits));
+void StatsWidget::setData(Stats* stats) 
+{
+    m_stats = stats;
+    if (m_stats) {
+        connect(m_stats, SIGNAL(hitsChanged()), this, SLOT(update()));
+        connect(m_stats, SIGNAL(missesChanged()), this, SLOT(update()));
+    }
+    update();
 }
 
 

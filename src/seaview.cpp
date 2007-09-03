@@ -354,10 +354,12 @@ void SeaView::buttonClicked(Button* button)
     Q_UNUSED( button );
 }
 
-void SeaView::setStats(Sea::Player p, const QString& icon, const QString& text)
+void SeaView::setStats(Sea::Player p, const QString& icon, 
+                       const QString& text, Stats* stats)
 {
     m_labels[p]->setData(m_renderer->render(icon, QSize(32, 32)), text);
-    m_stats[p]->setData(0, 0);
+    m_stats[p]->setData(stats);
+    
 }
 
 #include "seaview.moc"

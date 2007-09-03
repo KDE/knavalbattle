@@ -21,6 +21,7 @@ class WelcomeScreen;
 class Button;
 class PlayerLabel;
 class StatsWidget;
+class Stats;
 
 class SeaView : public KGameCanvasWidget
 {
@@ -56,7 +57,8 @@ public:
     void sink(Sea::Player p, const Coord& c, Ship* ship);
     void clear();
     
-    void setStats(Sea::Player p, const QString& icon, const QString& text);
+    void setStats(Sea::Player p, const QString& icon, 
+                  const QString& text, Stats* stats);
 
     WelcomeScreen* globalScreen() const;
     WelcomeScreen* screen(Sea::Player player) const;

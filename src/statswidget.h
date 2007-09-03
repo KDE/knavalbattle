@@ -53,8 +53,9 @@ public:
     QSize size() const;
 };
 
-class StatsWidget : public KGameCanvasGroup
+class StatsWidget : public QObject, public KGameCanvasGroup
 {
+Q_OBJECT
 public:
     static const int MARGIN = 10;
     static const int HEIGHT = StatsWidgetElement::HEIGHT;
@@ -67,8 +68,9 @@ public:
     StatsWidget(int width, KBSRenderer* renderer, KGameCanvasAbstract* parent);
 
     void setWidth(int width);
+    void setData(Stats*);
+public slots:
     void update();
-    void setData(int miss, int hits);
 };
 
 
