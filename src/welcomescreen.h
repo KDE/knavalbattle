@@ -54,6 +54,7 @@ public slots:
     
 signals:
     void clicked(Button*);
+    void shown();
     void hidden();
 };
 

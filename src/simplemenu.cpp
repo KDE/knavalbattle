@@ -26,6 +26,8 @@
 #include "networkdialog.h"
 #include "playerentity.h"
 #include "networkentity.h"
+#include "seaview.h"
+#include "settings.h"
 #include "aientity.h"
 #include "welcomescreen.h"
 
@@ -132,7 +134,7 @@ void SimpleMenu::clientOK()
 }
 
 void SimpleMenu::setupController(Controller* controller, SeaView* sea, 
-    ChatWidget* chat, QStatusBar* sbar, QLabel** player_label)
+    ChatWidget* chat, QStatusBar* sbar)
 {
     Entity* player1;
     Entity* player2;
@@ -140,20 +142,26 @@ void SimpleMenu::setupController(Controller* controller, SeaView* sea,
     switch (m_state) {
     case DONE_LOCAL_GAME:
         player1 = controller->createPlayer(Sea::Player(0), sea, chat, "");
+        sea->setStats(Sea::Player(0), "score_mouse", Settings::findNick());
         player2 = controller->createAI(Sea::Player(1));
+        sea->setStats(Sea::Player(1), "score_ai", "Computer");
         chat->hide();
         break;
     case DONE_SERVER: {
         Q_ASSERT(m_socket);
         player1 = controller->createPlayer(Sea::Player(0), sea, chat, m_nickname);
+        sea->setStats(Sea::Player(0), "score_mouse", m_nickname);
         player2 = controller->createRemotePlayer(Sea::Player(1), m_socket, false);
+        sea->setStats(Sea::Player(1), "score_network", "Remote player");
         chat->bindTo(player1);
         break;
     }
     case DONE_CLIENT: {
         Q_ASSERT(m_socket);
         player1 = controller->createPlayer(Sea::Player(0), sea, chat, m_nickname);
+        sea->setStats(Sea::Player(0), "score_mouse", m_nickname);
         player2 = controller->createRemotePlayer(Sea::Player(1), m_socket, true);
+        sea->setStats(Sea::Player(1), "score_network", "Remote player");
         chat->bindTo(player1);
         break;
     }
@@ -183,6 +191,7 @@ void SimpleMenu::setupController(Controller* controller, SeaView* sea,
     
     connect(player1, SIGNAL(message(const QString&)),
         sbar, SLOT(showMessage(const QString&)));
+        
 //     stats_widgets[0]->setStats(player1);
 //     stats_widgets[0]->setEditable(true);
 //     stats_widgets[1]->setStats(player2);

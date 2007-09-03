@@ -131,4 +131,9 @@ void StatsWidget::update()
     m_elements[1]->setWidth(element_width);
 }
 
+void StatsWidget::setData(int miss, int hits) {
+    m_elements[0]->setText(QString::number(miss));
+    m_elements[1]->setText(QString::number(hits));
+}
+
 

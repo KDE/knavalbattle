@@ -48,7 +48,6 @@ public:
     SeaView(QWidget* parent);
     ~SeaView();
     
-    void update();
     void setDelegate(Delegate* c);
     void cancelPreview();
     void add(Sea::Player p, const Coord& c, Ship* ship);
@@ -56,6 +55,8 @@ public:
     void miss(Sea::Player p, const Coord& c);
     void sink(Sea::Player p, const Coord& c, Ship* ship);
     void clear();
+    
+    void setStats(Sea::Player p, const QString& icon, const QString& text);
 
     WelcomeScreen* globalScreen() const;
     WelcomeScreen* screen(Sea::Player player) const;
@@ -69,6 +70,7 @@ protected:
     int tileSize() const;
 public slots:
     void buttonClicked(Button*);
+    void update();
 };
 
 #endif // SEA_H

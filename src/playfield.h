@@ -26,7 +26,6 @@ class PlayField : public QWidget
 {
 Q_OBJECT
     SeaView* m_sea;
-    QLabel* m_player_labels[2];
     Controller* m_controller;
     KScoreDialog* m_highscores;
     AudioPlayer* m_player;

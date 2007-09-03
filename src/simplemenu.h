@@ -46,8 +46,7 @@ public:
     SimpleMenu(QWidget* parent, WelcomeScreen* screen);
     
     void setupController(Controller* controller,
-        SeaView* sea, ChatWidget* chat, 
-        QStatusBar* sbar, QLabel** player_label);
+        SeaView* sea, ChatWidget* chat, QStatusBar* sbar);
     void runGGZ(int fd);
 private slots:
     void localGame();

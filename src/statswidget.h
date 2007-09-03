@@ -68,6 +68,7 @@ public:
 
     void setWidth(int width);
     void update();
+    void setData(int miss, int hits);
 };
 
 

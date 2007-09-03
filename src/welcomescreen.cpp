@@ -189,6 +189,7 @@ void WelcomeScreen::show()
     m_active = true;
     setOpacity(255);
     KGameCanvasGroup::show();
+    emit shown();
 }
 
 void WelcomeScreen::hide()
@@ -196,6 +197,7 @@ void WelcomeScreen::hide()
     m_active = false;
     KGameCanvasGroup::hide();
     clearButtons();
+    emit hidden();
 }
 
 void WelcomeScreen::onMouseLeave()

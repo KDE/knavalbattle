@@ -89,7 +89,7 @@ void PlayField::setupController()
     connect(m_controller, SIGNAL(gameOver(Sea::Player)),
             this, SLOT(gameOver(Sea::Player)));
             
-    m_menu->setupController(m_controller, m_sea, m_chat, m_status_bar, m_player_labels);
+    m_menu->setupController(m_controller, m_sea, m_chat, m_status_bar);
 }
 
 void PlayField::endGame()

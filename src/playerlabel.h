@@ -17,6 +17,7 @@ public:
     PlayerLabel(const QPixmap& icon, const QString& text, KGameCanvasAbstract* parent);
 
     void update();
+    void setData(const QPixmap& icon, const QString& text);
     int height() const;
 };
 
