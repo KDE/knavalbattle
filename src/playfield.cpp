@@ -32,11 +32,13 @@
 #include "welcomescreen.h"
 #include "simplemenu.h"
 
+static const int MINIMUM_HEIGHT = 400;
+
 PlayField::PlayField(QWidget* parent, QStatusBar* sbar)
 : QWidget(parent)
 , m_status_bar(sbar)
 {
-//     setMinimumSize(QSize(400, 300));
+    setMinimumSize(static_cast<int>(MINIMUM_HEIGHT * 1.8), MINIMUM_HEIGHT);
     QVBoxLayout* layout = new QVBoxLayout;
     
     m_sea = new SeaView(this);
