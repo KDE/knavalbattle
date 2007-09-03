@@ -28,7 +28,7 @@ class SeaView : public KGameCanvasWidget
 Q_OBJECT
     static const unsigned int GRID_SIZE = 10;
     static const unsigned int LABEL_SPACING = 4;
-    static const unsigned int MARGIN = 10;
+    static const unsigned int MARGIN = 5;
     static const unsigned int GAP = 2;
     
     WelcomeScreen* m_screen;

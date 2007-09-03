@@ -114,7 +114,8 @@ void SeaView::update()
     else {
         m_labels[0]->hide();
     }
-    m_stats[0]->moveTo(m_fields[0]->pos().x(), height() - StatsWidget::HEIGHT);
+    m_stats[0]->moveTo(m_fields[0]->pos().x(), 
+        height() - StatsWidget::HEIGHT - MARGIN);
     m_stats[0]->setWidth(m_fields[0]->size().width());
     m_stats[0]->update();
     
@@ -129,7 +130,8 @@ void SeaView::update()
     else {
         m_labels[1]->hide();
     }
-    m_stats[1]->moveTo(m_fields[1]->pos().x(), height() - StatsWidget::HEIGHT);
+    m_stats[1]->moveTo(m_fields[1]->pos().x(), 
+        height() - StatsWidget::HEIGHT - MARGIN);
     m_stats[1]->setWidth(m_fields[0]->size().width());
     m_stats[1]->update();
     
@@ -328,7 +330,7 @@ int SeaView::tileSize() const
         PlayerLabel::HEIGHT -
         LABEL_SPACING * 2 -
         StatsWidget::HEIGHT -
-        MARGIN) / GRID_SIZE;
+        MARGIN * 2) / GRID_SIZE;
     int w = (width() - GAP) / (GRID_SIZE * 2);
     return w < h ? w : h;
 }
