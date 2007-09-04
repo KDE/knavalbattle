@@ -55,7 +55,7 @@ PlayField::PlayField(QWidget* parent, QStatusBar* sbar)
     m_controller = 0;
     m_menu = 0;
     
-    m_player = 0;//new AudioPlayer(this);
+    m_player = new AudioPlayer(this);
 
     m_highscores = new KScoreDialog(
         KScoreDialog::Name | KScoreDialog::Score | 

@@ -9,15 +9,14 @@
 
 #include "audioplayer.h"
 
-#include <kstandarddirs.h>
-#include <kurl.h>
+#include <Phonon/MediaObject>
+#include <KStandardDirs>
 
 AudioPlayer::AudioPlayer(QObject* parent)
 : QObject(parent)
-, m_player(Phonon::createPlayer(Phonon::GameCategory))
 , m_active(false)
 {
-    m_player->setParent(this);
+    m_media = Phonon::createPlayer(Phonon::GameCategory);
     m_dir = KStandardDirs::locate("appdata", "sounds/");
 }
 
@@ -40,8 +39,9 @@ void AudioPlayer::play(Sea::Player player, const HitInfo& info)
         }
         
         if (!sound.isEmpty()) {
-            m_player->setCurrentSource(sound);
-            m_player->play();
+            kDebug() << "****** playing" << m_dir.filePath(sound);
+            m_media->setCurrentSource(m_dir.filePath(sound));
+            m_media->play();
         }
     }
 }

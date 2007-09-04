@@ -10,15 +10,19 @@
 #ifndef AUDIOPLAYER_H
 #define AUDIOPLAYER_H
 
-#include <Phonon/MediaObject>
 #include "sea.h"
+#include <QDir>
+
+namespace Phonon {
+    class MediaObject;
+}
 
 class AudioPlayer : public QObject
 {
-    Q_OBJECT
-
-    Phonon::MediaObject *m_player;
-    QString m_dir;
+Q_OBJECT
+    Phonon::MediaObject* m_media;
+    
+    QDir m_dir;
     bool m_active;
 public:
     AudioPlayer(QObject* parent);
