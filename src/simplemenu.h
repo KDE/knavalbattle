@@ -19,7 +19,6 @@ class ChatWidget;
 class Button;
 class QTcpSocket;
 class QStatusBar;
-class QLabel;
 
 class SimpleMenu : public QObject
 {

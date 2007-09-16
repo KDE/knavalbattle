@@ -15,7 +15,6 @@
 
 class KLineEdit;
 class QSpinBox;
-class KPushButton;
 
 class NetworkDialog : public KDialog
 {

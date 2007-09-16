@@ -19,7 +19,6 @@ class UIEntity;
 class PlayerEntity;
 class SeaView;
 class ChatWidget;
-class Stats;
 class Shot;
 class AudioPlayer;
 

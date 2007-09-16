@@ -20,7 +20,6 @@ class AudioPlayer;
 class ChatWidget;
 class SimpleMenu;
 class QStatusBar;
-class QLabel;
 
 class PlayField : public QWidget
 {
