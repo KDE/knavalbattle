@@ -139,15 +139,16 @@ void SimpleMenu::setupController(Controller* controller, SeaView* sea,
     ChatWidget* chat, QStatusBar* sbar)
 {
     switch (m_state) {
-    case DONE_LOCAL_GAME:
-        m_player1 = controller->createPlayer(Sea::Player(0), sea, chat, "");
-        sea->setStats(Sea::Player(0), "score_mouse", 
-                      Settings::findNick(), m_player1->stats());
+    case DONE_LOCAL_GAME: {
+        QString nick = Settings::findNick();
+        m_player1 = controller->createPlayer(Sea::Player(0), sea, chat, nick);
+        sea->setStats(Sea::Player(0), "score_mouse", nick, m_player1->stats());
         m_player2 = controller->createAI(Sea::Player(1));
         sea->setStats(Sea::Player(1), "score_ai", 
                       "Computer", m_player2->stats());
         chat->hide();
         break;
+    }
     case DONE_SERVER: {
         Q_ASSERT(m_socket);
         m_player1 = controller->createPlayer(Sea::Player(0), sea, chat, m_nickname);

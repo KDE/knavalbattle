@@ -52,6 +52,8 @@ public:
     void setupController(Controller* controller,
         SeaView* sea, ChatWidget* chat, QStatusBar* sbar);
     void runGGZ(int fd);
+    
+    Entity* player(int p) { return p == 0 ? m_player1 : m_player2; }
 private slots:
     void localGame();
     

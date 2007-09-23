@@ -23,6 +23,7 @@
 #include <KMessageBox>
 #include <KScoreDialog>
 
+#include "aientity.h"
 #include "seaview.h"
 #include "controller.h"
 #include "stats.h"
@@ -119,65 +120,6 @@ void PlayField::restart()
     setupController();
 }
 
-// void PlayField::newSimulation()
-// {
-//     m_server->close();
-//     setupController();
-//     m_human_player = -1;
-//     m_controller->createAI(Sea::Player(0));
-//     m_controller->createAI(Sea::Player(1));
-//     m_controller->start(m_sea);
-//     m_chat->hide();
-// }
-
-// void PlayField::newServer()
-// {
-//     if (!m_server->isListening()) {
-//         setupController();
-//         m_server->listen(QHostAddress::Any, 54321);
-//     }
-// }
-
-// void PlayField::newClient()
-// {
-//     if (!m_client) {
-//         m_server->close();
-//         setupController();
-//         m_client = new QTcpSocket;
-//         connect(m_client, SIGNAL(connected()), this, SLOT(clientConnected()));
-//         m_client->connectToHost("localhost", 54321);
-//     }
-// }
-
-// void PlayField::acceptClient()
-// {
-//     QTcpSocket* socket = m_server->nextPendingConnection();
-//     if (socket) {
-//         m_human_player = 0;
-//         PlayerEntity* player = m_controller->createPlayer(Sea::Player(0), m_sea, 
-//                                                           m_chat, "serverdude");
-//         connect(m_chat, SIGNAL(message(QString, QString)),
-//             player, SIGNAL(chat(QString, QString)));
-//         m_controller->createRemotePlayer(Sea::Player(1), socket, false);
-//         m_controller->start(m_sea);
-//         m_server->close();
-//         m_chat->show();
-//     }
-// }
-
-// void PlayField::clientConnected()
-// {
-//     if (m_client) {
-//         // TODO restore chat
-// //         connect(m_chat, SIGNAL(message(QString, QString)),
-// //             player, SIGNAL(chat(QString, QString)));
-//         m_controller->createRemotePlayer(Sea::Player(1), m_client, true);
-//         m_controller->start(m_sea);
-//         m_server->close();
-//         m_chat->show();
-//     }
-//     m_client = 0;
-// }
 
 void PlayField::highscores()
 {
@@ -187,22 +129,21 @@ void PlayField::highscores()
 void PlayField::gameOver(Sea::Player winner)
 {
     if (winner == Sea::Player(0)) {
-//         const Stats* stats = m_stats_widgets[0]->stats();
-//        
-//         if (stats) {
-//             KScoreDialog::FieldInfo info;
-//             info[KScoreDialog::Name] = m_stats_widgets[0]->nick();
-//             info[KScoreDialog::Score].setNum(stats->score());
-//             info[KScoreDialog::Custom1] = QString::number(stats->shots());
-//             info[KScoreDialog::Custom2] = QString::number(stats->hits());
-//             info[KScoreDialog::Custom3] = QString::number(stats->misses());
-//         
-//             kDebug() << "score =" << stats->score();
-//             if (m_highscores->addScore(info, KScoreDialog::AskName)) {
-//                 highscores();
-//                 return;
-//             }
-//         }
+        const Stats* stats = m_menu->player(0)->stats();
+       
+        if (stats && qobject_cast<const AIEntity*>(m_menu->player(1))) {
+            KScoreDialog::FieldInfo info;
+            info[KScoreDialog::Name] = m_menu->player(0)->nick();
+            info[KScoreDialog::Score].setNum(stats->score());
+            info[KScoreDialog::Custom2] = QString::number(stats->hits());
+            info[KScoreDialog::Custom3] = QString::number(stats->misses());
+        
+            kDebug() << "score =" << stats->score();
+            if (m_highscores->addScore(info, KScoreDialog::AskName)) {
+                highscores();
+                return;
+            }
+        }
         
         m_status_bar->showMessage(i18n("You win!"));
     }
