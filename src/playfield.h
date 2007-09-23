@@ -46,6 +46,8 @@ public slots:
     void restart();
 signals:
     void gameFinished();
+    void welcomeScreen();
+    void startingGame();
 };
 
 #endif // PLAYFIELD_H

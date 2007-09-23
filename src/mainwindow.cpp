@@ -46,6 +46,11 @@ MainWindow::MainWindow()
             SLOT(networkEvent(const KGGZMod::Event&)));
         kDebug() << "GGZDEBUG: kggzmod activated";
     }
+    
+    connect(m_main, SIGNAL(welcomeScreen()), this, SLOT(welcomeScreen()));
+    connect(m_main, SIGNAL(startingGame()), this, SLOT(startingGame()));
+    
+    m_main->newGame();
 }
 
 void MainWindow::setupActions()
@@ -109,6 +114,17 @@ void MainWindow::networkEvent(const KGGZMod::Event& event)
             }
         }
     }
+}
+
+void MainWindow::startingGame() {
+    kDebug() << "enabling restart action";
+    kDebug() << "action =" << actionCollection()->action("game_restart");
+    
+    stateChanged("playing");
+}
+
+void MainWindow::welcomeScreen() {
+    stateChanged("playing", KXMLGUIClient::StateReverse);
 }
 
 #include "mainwindow.moc"

@@ -13,4 +13,10 @@
   </Menu>
 </MenuBar>
 
+<State name="playing">
+    <enable>
+        <Action name="game_restart"/>
+    </enable>
+</State>
+
 </gui>

@@ -37,6 +37,9 @@ private slots:
     void networkErrorHandler();
     void networkData(int fd);
     void networkEvent(const KGGZMod::Event& event);
+    
+    void startingGame();
+    void welcomeScreen();
 private:
     KGGZMod::Module *m_mod;
     KGGZRaw *m_raw;

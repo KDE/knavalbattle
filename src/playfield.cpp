@@ -67,9 +67,6 @@ PlayField::PlayField(QWidget* parent, QStatusBar* sbar)
     m_highscores->addField(KScoreDialog::Custom1, i18n("Shots"), "shots");
     m_highscores->addField(KScoreDialog::Custom2, i18n("Hits"), "hits");
     m_highscores->addField(KScoreDialog::Custom3, i18n("Misses"), "water");
-    
-    
-    newGame();
 }
 
 PlayField::~PlayField()
@@ -91,6 +88,7 @@ void PlayField::setupController()
             this, SLOT(gameOver(Sea::Player)));
             
     m_menu->setupController(m_controller, m_sea, m_chat, m_status_bar);
+    emit startingGame();
 }
 
 void PlayField::endGame()
@@ -112,6 +110,7 @@ void PlayField::newGame()
     
     m_menu = new SimpleMenu(this, m_sea->screen(Sea::Player(0)));
     connect(m_menu, SIGNAL(done()), this, SLOT(setupController()));
+    emit welcomeScreen();
 }
 
 void PlayField::restart()
