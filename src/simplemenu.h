@@ -19,6 +19,7 @@ class ChatWidget;
 class Button;
 class QTcpSocket;
 class QStatusBar;
+class Entity;
 
 class SimpleMenu : public QObject
 {
@@ -40,6 +41,10 @@ Q_OBJECT
         DONE_CLIENT,
         DONE_GGZ_CLIENT
     } m_state;
+    
+    Entity* m_player1;
+    Entity* m_player2;
+    
     void finalize(State);
 public:
     SimpleMenu(QWidget* parent, WelcomeScreen* screen);

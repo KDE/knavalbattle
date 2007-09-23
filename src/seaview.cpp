@@ -90,8 +90,6 @@ SeaView::~SeaView() {
 
 void SeaView::update()
 {
-    kDebug() << "updating. first wc:" << screen(Sea::Player(0))->active();
-
     int ts = tileSize();
     
     m_renderer->resize(ts);

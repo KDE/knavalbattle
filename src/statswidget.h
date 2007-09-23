@@ -11,7 +11,7 @@
 #define STATSWIDGET_H
 
 #include <QFontMetrics>
-
+#include <QPointer>
 #include <KGameCanvas>
 
 class KBSRenderer;
@@ -61,7 +61,7 @@ public:
     static const int HEIGHT = StatsWidgetElement::HEIGHT;
 private:
     int m_width;
-    Stats* m_stats;
+    QPointer<Stats> m_stats;
     
     StatsWidgetElement* m_elements[2];
 public:

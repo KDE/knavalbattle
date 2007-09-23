@@ -36,6 +36,8 @@ SimpleMenu::SimpleMenu(QWidget* parent, WelcomeScreen* screen)
 , m_screen(screen)
 , m_socket(0)
 , m_state(READY)
+, m_player1(0)
+, m_player2(0)
 {
     Q_ASSERT(m_screen);
     
@@ -136,39 +138,36 @@ void SimpleMenu::clientOK()
 void SimpleMenu::setupController(Controller* controller, SeaView* sea, 
     ChatWidget* chat, QStatusBar* sbar)
 {
-    Entity* player1;
-    Entity* player2;
-
     switch (m_state) {
     case DONE_LOCAL_GAME:
-        player1 = controller->createPlayer(Sea::Player(0), sea, chat, "");
+        m_player1 = controller->createPlayer(Sea::Player(0), sea, chat, "");
         sea->setStats(Sea::Player(0), "score_mouse", 
-                      Settings::findNick(), player1->stats());
-        player2 = controller->createAI(Sea::Player(1));
+                      Settings::findNick(), m_player1->stats());
+        m_player2 = controller->createAI(Sea::Player(1));
         sea->setStats(Sea::Player(1), "score_ai", 
-                      "Computer", player2->stats());
+                      "Computer", m_player2->stats());
         chat->hide();
         break;
     case DONE_SERVER: {
         Q_ASSERT(m_socket);
-        player1 = controller->createPlayer(Sea::Player(0), sea, chat, m_nickname);
+        m_player1 = controller->createPlayer(Sea::Player(0), sea, chat, m_nickname);
         sea->setStats(Sea::Player(0), "score_mouse", 
-                      m_nickname, player1->stats());
-        player2 = controller->createRemotePlayer(Sea::Player(1), m_socket, false);
+                      m_nickname, m_player1->stats());
+        m_player2 = controller->createRemotePlayer(Sea::Player(1), m_socket, false);
         sea->setStats(Sea::Player(1), "score_network", 
-                      "Remote player", player2->stats());
-        chat->bindTo(player1);
+                      "Remote player", m_player2->stats());
+        chat->bindTo(m_player1);
         break;
     }
     case DONE_CLIENT: {
         Q_ASSERT(m_socket);
-        player1 = controller->createPlayer(Sea::Player(0), sea, chat, m_nickname);
+        m_player1 = controller->createPlayer(Sea::Player(0), sea, chat, m_nickname);
         sea->setStats(Sea::Player(0), "score_mouse", 
-                      m_nickname, player1->stats());
-        player2 = controller->createRemotePlayer(Sea::Player(1), m_socket, true);
+                      m_nickname, m_player1->stats());
+        m_player2 = controller->createRemotePlayer(Sea::Player(1), m_socket, true);
         sea->setStats(Sea::Player(1), "score_network", 
-                      "Remote player", player2->stats());
-        chat->bindTo(player1);
+                      "Remote player", m_player2->stats());
+        chat->bindTo(m_player1);
         break;
     }
     case DONE_GGZ_CLIENT: {
@@ -186,16 +185,16 @@ void SimpleMenu::setupController(Controller* controller, SeaView* sea,
         int oppseat = 1 - seat;
 
         Q_ASSERT(m_socket);
-        player1 = controller->createPlayer(Sea::Player(seat), sea, chat, m_nickname);
-        player2 = controller->createRemotePlayer(Sea::Player(oppseat), m_socket, true);
-        chat->bindTo(player1);
+        m_player1 = controller->createPlayer(Sea::Player(seat), sea, chat, m_nickname);
+        m_player2 = controller->createRemotePlayer(Sea::Player(oppseat), m_socket, true);
+        chat->bindTo(m_player1);
         break;
     }
     default:
         return;
     }
     
-    connect(player1, SIGNAL(message(const QString&)),
+    connect(m_player1, SIGNAL(message(const QString&)),
         sbar, SLOT(showMessage(const QString&)));
         
     controller->start(sea);

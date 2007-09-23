@@ -131,6 +131,10 @@ void StatsWidget::update()
         m_elements[0]->setText(QString::number(m_stats->misses()));
         m_elements[1]->setText(QString::number(m_stats->hits()));
     }
+    else {
+        m_elements[0]->setText("0");
+        m_elements[1]->setText("0");
+    }
     
     int element_width = (m_width - MARGIN*3) / 2;
     m_elements[0]->moveTo(MARGIN, 0);
