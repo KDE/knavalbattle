@@ -45,7 +45,7 @@ Q_OBJECT
     Entity* m_player1;
     Entity* m_player2;
     
-    void finalize(State);
+    void finalize(State, const QString& nick, QTcpSocket* socket = 0);
 public:
     SimpleMenu(QWidget* parent, WelcomeScreen* screen);
     
@@ -58,11 +58,7 @@ private slots:
     void localGame();
     
     void createServer();
-    void processServerConnection();
-
     void createClient();
-    void clientError();
-    void clientOK();
 signals:
     void done();
 };

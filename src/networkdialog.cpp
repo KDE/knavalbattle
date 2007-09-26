@@ -14,6 +14,8 @@
 #include <QLabel>
 #include <QLayout>
 #include <QSpinBox>
+#include <QTcpSocket>
+#include <QTcpServer>
 
 #include <KLineEdit>
 #include <KLocalizedString>
@@ -22,13 +24,27 @@
 
 #include "settings.h"
 
-NetworkDialog::NetworkDialog(bool ask_hostname, QWidget* parent)
+NetworkDialog::NetworkDialog(bool client, QWidget* parent)
 : KDialog(parent)
+, m_client(client)
 {
+    setButtons(Ok | Cancel);
+
     QLabel* tmp;
     QWidget* main = new QWidget(this);
     QHBoxLayout* tmpLayout;
     QVBoxLayout* mainLayout = new QVBoxLayout;
+    
+    // feedback
+    m_feedback = new QLabel("Hello", this);
+    m_feedback->setAlignment(Qt::AlignHCenter);
+    {
+        QFont font = m_feedback->font();
+        font.setStyle(QFont::StyleItalic);
+        m_feedback->setFont(font);
+    }
+    m_feedback->hide();
+    mainLayout->addWidget(m_feedback);
     
     // nick
     tmp = new QLabel(i18n("&Nickname:"), main);
@@ -43,7 +59,7 @@ NetworkDialog::NetworkDialog(bool ask_hostname, QWidget* parent)
     mainLayout->addItem(tmpLayout);
     
     // hostname
-    if (ask_hostname) {
+    if (m_client) {
         tmp = new QLabel(i18n("&Hostname:"), main);
         m_hostname = new KLineEdit(main);
         m_hostname->setClearButtonShown(true);
@@ -89,12 +105,7 @@ void NetworkDialog::savePreferences()
     Settings::setPort(port());
 }
 
-QString NetworkDialog::nickname()
-{
-    return m_nickname->text();
-}
-
-QString NetworkDialog::hostname()
+QString NetworkDialog::hostname() const
 {
     if (m_hostname) {
         return m_hostname->text();
@@ -104,9 +115,81 @@ QString NetworkDialog::hostname()
     }
 }
 
-int NetworkDialog::port()
+int NetworkDialog::port() const
 {
     return m_port->value();
+}
+
+QString NetworkDialog::nickname() const
+{
+    return m_nickname->text();
+}
+
+QTcpSocket* NetworkDialog::socket() const
+{
+    return m_socket;
+}
+
+void NetworkDialog::slotButtonClicked(int code)
+{
+    if (code == Ok) {
+        KPushButton* b = button(Ok);
+        b->setEnabled(false);
+        m_feedback->show();
+       
+        if (m_client) {
+            m_feedback->setText(i18n("Connecting to remote host..."));
+            m_socket = new QTcpSocket;
+            connect(m_socket, SIGNAL(connected()), this, SLOT(clientOK()));
+            connect(m_socket, SIGNAL(error(QAbstractSocket::SocketError)), this, SLOT(clientError()));
+            m_socket->connectToHost(m_hostname->text(), m_port->value());
+        }
+        else {
+            m_feedback->setText(i18n("Waiting for an incoming connection..."));        
+            QTcpServer* server = new QTcpServer;
+            connect(server, SIGNAL(newConnection()), this, SLOT(serverOK()));
+            
+            server->listen(QHostAddress::Any, static_cast<quint16>(m_port->value()));
+        }
+    }
+    else {
+        KDialog::slotButtonClicked(code);
+    }
+}
+
+void NetworkDialog::clientOK()
+{
+    accept();
+}
+
+void NetworkDialog::clientError()
+{
+    m_socket->deleteLater();
+    m_socket = 0;
+    m_feedback->setText(i18n("Could not connect to host"));
+    button(Ok)->setEnabled(true);
+}
+
+void NetworkDialog::serverOK()
+{
+    QTcpServer* server = qobject_cast<QTcpServer*>(sender());
+    Q_ASSERT(server);
+    
+    m_socket = server->nextPendingConnection();
+    Q_ASSERT(m_socket);
+    
+    // refuse all other connections
+    while (server->hasPendingConnections()) {
+        delete server->nextPendingConnection();
+    }
+    
+    // reparent socket, so that we can safely destroy the server
+    m_socket->setParent(this);
+    delete server;
+    
+    // we're done
+    server->deleteLater();    
+    accept();
 }
 
 #include "networkdialog.moc"

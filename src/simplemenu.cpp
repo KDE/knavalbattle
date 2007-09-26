@@ -55,16 +55,20 @@ SimpleMenu::SimpleMenu(QWidget* parent, WelcomeScreen* screen)
         this, SLOT(createClient()));
 }
 
-void SimpleMenu::finalize(State state)
+void SimpleMenu::finalize(State state, const QString& nickname, QTcpSocket* socket)
 {
     m_state = state;
-//     m_screen->fadeOut();
+    m_nickname = nickname;
+    m_socket = socket;
+    if (m_socket) {
+        m_socket->setParent(this);
+    }
     emit done();
 }
 
 void SimpleMenu::localGame()
 {
-    finalize(DONE_LOCAL_GAME);
+    finalize(DONE_LOCAL_GAME, Settings::findNick());
 }
 
 void SimpleMenu::createServer()
@@ -72,36 +76,10 @@ void SimpleMenu::createServer()
     QWidget* parent_widget = qobject_cast<QWidget*>(parent());
     Q_ASSERT(parent_widget);
     NetworkDialog dialog(false, parent_widget);
-    if (dialog.exec() == QDialog::Accepted) {
-        m_nickname = dialog.nickname();
-        QTcpServer* server = new QTcpServer;
-        connect(server, SIGNAL(newConnection()), this, SLOT(processServerConnection()));
-        server->listen(QHostAddress::Any, static_cast<quint16>(dialog.port()));
-        
-        // TODO: show feedback: "waiting for an incoming connection"
+    connect(&dialog, SIGNAL(ok()), this, SLOT(createServerOk()));
+    if (dialog.exec()) {
+        finalize(DONE_SERVER, dialog.nickname(), dialog.socket());
     }
-}
-
-void SimpleMenu::processServerConnection()
-{
-    QTcpServer* server = qobject_cast<QTcpServer*>(sender());
-    Q_ASSERT(server);
-    
-    m_socket = server->nextPendingConnection();
-    Q_ASSERT(m_socket);
-    
-    // refuse all other connections
-    while (server->hasPendingConnections()) {
-        delete server->nextPendingConnection();
-    }
-    
-    // reparent socket, so that we can safely destroy the server
-    m_socket->setParent(this);
-    delete server;
-    
-    // we're done
-    server->deleteLater();    
-    finalize(DONE_SERVER);
 }
 
 void SimpleMenu::createClient()
@@ -110,29 +88,8 @@ void SimpleMenu::createClient()
     Q_ASSERT(parent_widget);
     NetworkDialog dialog(true, parent_widget);
     if (dialog.exec() == QDialog::Accepted) {
-        m_socket = new QTcpSocket(this);
-        m_nickname = dialog.nickname();
-        connect(m_socket, SIGNAL(connected()), this, SLOT(clientOK()));
-        connect(m_socket, SIGNAL(error(QAbstractSocket::SocketError)), this, SLOT(clientError()));
-        m_socket->connectToHost(dialog.hostname(), dialog.port());
-        
-        // TODO: show feedback: connecting...
+        finalize(DONE_SERVER, dialog.nickname(), dialog.socket());
     }
-}
-
-void SimpleMenu::clientError()
-{
-    m_socket->deleteLater();
-    m_socket = 0;
-    m_nickname = "";
-    // TODO: display error message
-}
-
-void SimpleMenu::clientOK()
-{
-    disconnect(m_socket, SIGNAL(error(QAbstractSocket::SocketError)),
-        this, SLOT(clientError()));
-    finalize(DONE_CLIENT);
 }
 
 void SimpleMenu::setupController(Controller* controller, SeaView* sea, 
@@ -141,7 +98,7 @@ void SimpleMenu::setupController(Controller* controller, SeaView* sea,
     switch (m_state) {
     case DONE_LOCAL_GAME: {
         QString nick = Settings::findNick();
-        m_player1 = controller->createPlayer(Sea::Player(0), sea, chat, nick);
+        m_player1 = controller->createPlayer(Sea::Player(0), sea, chat, m_nickname);
         sea->setStats(Sea::Player(0), "score_mouse", nick, m_player1->stats());
         m_player2 = controller->createAI(Sea::Player(1));
         sea->setStats(Sea::Player(1), "score_ai", 

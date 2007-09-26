@@ -15,21 +15,36 @@
 
 class KLineEdit;
 class QSpinBox;
+class QLabel;
+class QTcpSocket;
 
 class NetworkDialog : public KDialog
 {
 Q_OBJECT
     KLineEdit* m_nickname;
     KLineEdit* m_hostname;
+    QTcpSocket* m_socket;
     QSpinBox* m_port;
+    QLabel* m_feedback;
+    bool m_client;
+    
+    QString hostname() const;
+    int port() const;
 private slots:
     void savePreferences();
-public:
-    explicit NetworkDialog(bool ask_hostname, QWidget* parent = 0);
     
-    QString nickname();
-    QString hostname();
-    int port();
+    void clientOK();
+    void clientError();
+    void serverOK();
+protected:
+    void slotButtonClicked(int);
+public:
+    explicit NetworkDialog(bool client, QWidget* parent = 0);
+    
+    QString nickname() const;
+    QTcpSocket* socket() const;
+signals:
+    void ok();
 };
 
 #endif // NETWORKDIALOG_H
