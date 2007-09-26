@@ -11,27 +11,28 @@
 
 #include "playfield.h"
 
-#include <QResizeEvent>
 #include <QLabel>
 #include <QLayout>
-#include <QTcpServer>
-#include <QTcpSocket>
+#include <QResizeEvent>
 #include <QSignalMapper>
 #include <QStatusBar>
+#include <QTcpServer>
+#include <QTcpSocket>
 
 #include <KLocale>
 #include <KMessageBox>
 #include <KScoreDialog>
 
 #include "aientity.h"
-#include "seaview.h"
-#include "controller.h"
-#include "stats.h"
 #include "audioplayer.h"
 #include "chatwidget.h"
+#include "controller.h"
 #include "playerentity.h"
-#include "welcomescreen.h"
+#include "seaview.h"
+#include "settings.h"
 #include "simplemenu.h"
+#include "stats.h"
+#include "welcomescreen.h"
 
 static const int MINIMUM_HEIGHT = 400;
 
@@ -57,6 +58,7 @@ PlayField::PlayField(QWidget* parent, QStatusBar* sbar)
     m_menu = 0;
     
     m_player = new AudioPlayer(this);
+    m_player->setActive(Settings::enableSounds());
 
     m_highscores = new KScoreDialog(
         KScoreDialog::Name | KScoreDialog::Score | 
@@ -152,6 +154,11 @@ void PlayField::gameOver(Sea::Player winner)
     
     // When we have finished, show again the welcome screen
     emit gameFinished();
+}
+
+void PlayField::updatePreferences()
+{
+    m_player->setActive(Settings::enableSounds());
 }
 
 void PlayField::runGGZ(int fd)

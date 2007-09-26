@@ -44,6 +44,7 @@ public slots:
     
     void newGame();
     void restart();
+    void updatePreferences();
 signals:
     void gameFinished();
     void welcomeScreen();

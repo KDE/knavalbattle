@@ -12,6 +12,7 @@
 #define MAINWINDOW_H
 
 #include <kxmlguiwindow.h>
+#include "ui_preferences.h"
 
 class PlayField;
 
@@ -27,6 +28,7 @@ class MainWindow : public KXmlGuiWindow
 {
 Q_OBJECT
     PlayField* m_main;
+    Ui_Preferences m_pref_ui;
 public:
     MainWindow();
 protected:

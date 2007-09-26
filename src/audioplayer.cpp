@@ -14,15 +14,14 @@
 
 AudioPlayer::AudioPlayer(QObject* parent)
 : QObject(parent)
-, m_active(false)
+, m_media(false)
 {
-    m_media = Phonon::createPlayer(Phonon::GameCategory);
     m_dir = KStandardDirs::locate("appdata", "sounds/");
 }
 
 void AudioPlayer::play(Sea::Player player, const HitInfo& info)
 {
-    if (m_active) {
+    if (m_media) {
         QString sound;
         if (info.type == HitInfo::HIT) {
             if (info.shipDestroyed) {
@@ -43,6 +42,19 @@ void AudioPlayer::play(Sea::Player player, const HitInfo& info)
             m_media->setCurrentSource(m_dir.filePath(sound));
             m_media->play();
         }
+    }
+}
+
+void AudioPlayer::setActive(bool value) 
+{ 
+    if (value) {
+        if (!m_media) {
+            m_media = Phonon::createPlayer(Phonon::GameCategory);            
+        }
+    }
+    else {
+        delete m_media;
+        m_media = 0;
     }
 }
 

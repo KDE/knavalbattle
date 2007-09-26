@@ -13,9 +13,9 @@
 #include <QResizeEvent>
 #include <QHBoxLayout>
 
-
 #include <KAction>
 #include <KActionCollection>
+#include <KConfigDialog>
 #include <KLocalizedString>
 #include <KStandardAction>
 #include <KStandardGameAction>
@@ -26,6 +26,7 @@
 #include <kggznet/kggzraw.h>
 
 #include "playfield.h"
+#include "settings.h"
 
 MainWindow::MainWindow()
 : m_mod(0), m_raw(0), m_fd(-1), m_ggzsetup(false)
@@ -55,35 +56,30 @@ MainWindow::MainWindow()
 
 void MainWindow::setupActions()
 {
-    // Game
     KStandardGameAction::gameNew(m_main, SLOT(newGame()), actionCollection());
-//     KStandardGameAction::demo(m_main, SLOT(newSimulation()), actionCollection());
-    KStandardGameAction::restart(m_main, SLOT(restart()), actionCollection());
-//     
+    KStandardGameAction::restart(m_main, SLOT(restart()), actionCollection());     
     KStandardGameAction::highscores(m_main, SLOT(highscores()), actionCollection());
     KStandardGameAction::quit(this, SLOT(close()), actionCollection());
-
-    // Move
-
-    // Settings
     KStandardAction::preferences(this, SLOT(optionsPreferences()), actionCollection());
-     
-//     temp = new KAction(i18n("Start Ser&ver"), this);
-//     actionCollection()->addAction("game_server", temp);
-//     connect(temp, SIGNAL(triggered()), m_main, SLOT(newServer()));
-//     
-//     temp = new KAction(i18n("&Connect"), this);
-//     actionCollection()->addAction("game_client", temp);
-//     connect(temp, SIGNAL(triggered()), m_main, SLOT(newClient()));
     
     setupGUI();
 }
 
 void MainWindow::optionsPreferences()
 {
-    kDebug() << "preferences";
-}
+    if (KConfigDialog::showDialog("preferences")) {
+        return;
+    }
+    
+    KConfigDialog* dialog = new KConfigDialog(this, "preferences", Settings::self());
+    QWidget* mainPage = new QWidget(dialog);
+    m_pref_ui.setupUi(mainPage);
+    dialog->addPage(mainPage, i18n("Main page"), "main_page");
+    connect(dialog, SIGNAL(settingsChanged(const QString&)),
+            centralWidget(), SLOT(updatePreferences()));
 
+    dialog->show();
+}
 
 void MainWindow::networkErrorHandler()
 {
@@ -117,9 +113,6 @@ void MainWindow::networkEvent(const KGGZMod::Event& event)
 }
 
 void MainWindow::startingGame() {
-    kDebug() << "enabling restart action";
-    kDebug() << "action =" << actionCollection()->action("game_restart");
-    
     stateChanged("playing");
 }
 

@@ -18,5 +18,9 @@
     <entry name="Nickname" type="String">
       <label>User nickname.</label>
     </entry>
+    <entry name="EnableSounds" type="Bool">
+      <label>Wheter sound effects should be played.</label>
+      <default>false</default>
+    </entry>
   </group>
 </kcfg>

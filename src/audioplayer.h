@@ -23,12 +23,11 @@ Q_OBJECT
     Phonon::MediaObject* m_media;
     
     QDir m_dir;
-    bool m_active;
 public:
     AudioPlayer(QObject* parent);
 
     void play(Sea::Player player, const HitInfo& info);
-    void activate(bool value) { m_active = value; }
+    void setActive(bool value);
 };
 
 #endif // AUDIOPLAYER_H
