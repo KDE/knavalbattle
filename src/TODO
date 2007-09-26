@@ -1,0 +1,13 @@
+[Critical]
+* Improve feedback when setting up a network game.
+* Signal opponent disconnection, network failure, and game over.
+* Fix the "restart" action for network games.
+ 
+[Major]
+* Implement difficulty levels and integrate KGameDifficulty.
+* Usability: ability to choose game type directly in the menu.
+
+[Minor]
+* Theme support.
+* Optional grid (like KBS 3).
+* Usability: make it usable without a mouse.
