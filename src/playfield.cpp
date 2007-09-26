@@ -40,7 +40,7 @@ PlayField::PlayField(QWidget* parent, QStatusBar* sbar)
 : QWidget(parent)
 , m_status_bar(sbar)
 {
-    setMinimumSize(static_cast<int>(MINIMUM_HEIGHT * 1.8), MINIMUM_HEIGHT);
+    setMinimumSize(static_cast<int>(MINIMUM_HEIGHT * 1.6), MINIMUM_HEIGHT);
     QVBoxLayout* layout = new QVBoxLayout;
     
     m_sea = new SeaView(this);

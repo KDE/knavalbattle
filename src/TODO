@@ -1,5 +1,4 @@
 [Critical]
-* Fix the layout issue when starting kbs for the first time.
 * Fix the "restart" action for network games.
  
 [Major]

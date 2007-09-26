@@ -11,7 +11,6 @@
 
 #include <QMouseEvent>
 
-#include <KDebug>
 #include <KGameCanvas>
 #include <KIcon>
 #include <KStandardDirs>
@@ -138,12 +137,9 @@ void SeaView::update()
                            m_fields[0]->size().height()));
 }
 
-void SeaView::resizeEvent(QResizeEvent* e)
+void SeaView::resizeEvent(QResizeEvent*)
 {
-    if (!QWidget::testAttribute(Qt::WA_PendingResizeEvent)
-      && !e->spontaneous()) {
-        update();
-    }
+    update();
 }
 
 int SeaView::fieldAt(const QPoint& p)
@@ -335,7 +331,6 @@ int SeaView::tileSize() const
 
 void SeaView::setDelegate(Delegate* c)
 {
-    kDebug() << "setting delegate to" << c;
     m_delegate = c;
 }
 
