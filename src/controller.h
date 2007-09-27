@@ -36,6 +36,7 @@ Q_OBJECT
     void setupEntity(Entity*);
     Entity* findEntity(Sea::Player) const;
     void finalizeShot(Sea::Player player, const Coord& c, const HitInfo& info);
+    void finalizeGame(Sea::Player winner);
     bool allPlayers() const;
 
     

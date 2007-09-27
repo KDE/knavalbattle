@@ -41,6 +41,7 @@ public:
     virtual void start() = 0;
     virtual void startPlaying() { }
     virtual void notifyReady(Sea::Player) { }
+    virtual void notifyGameOver(Sea::Player) { }
     Stats* stats();
     
     virtual Sea::Player player() const { return m_player; }

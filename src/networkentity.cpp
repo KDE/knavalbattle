@@ -7,6 +7,7 @@
   (at your option) any later version.
 */
 
+#include "battlefield.h"
 #include "networkentity.h"
 #include "shot.h"
 #include "protocol.h"
@@ -40,6 +41,11 @@ void NetworkEntity::notifyReady(Sea::Player player)
     if (player != m_player) {
         m_protocol->send(MessagePtr(new BeginMessage()));
     }
+}
+
+void NetworkEntity::notifyGameOver(Sea::Player)
+{
+    m_protocol->send(MessagePtr(new GameOverMessage));
 }
 
 void NetworkEntity::startPlaying()
@@ -180,7 +186,7 @@ void NetworkEntity::visit(const GameOverMessage&)
 
 void NetworkEntity::visit(const RestartMessage&)
 {
-
+    emit restartRequested();
 }
 
 void NetworkEntity::visit(const ChatMessage& msg)

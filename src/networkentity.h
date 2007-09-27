@@ -35,6 +35,7 @@ public:
     virtual void start();
     virtual void startPlaying();
     virtual void notifyReady(Sea::Player player);
+    virtual void notifyGameOver(Sea::Player winner);
     virtual void hit(Shot* shot);
     
     virtual KIcon icon() const;
@@ -51,6 +52,8 @@ protected:
     virtual void visit(const GameOverMessage& msg);
     virtual void visit(const RestartMessage& msg);
     virtual void visit(const ChatMessage& msg);
+signals:
+    void restartRequested();
 };
 
 #endif // NETWORKENTITY_H

@@ -129,6 +129,7 @@ void BattleField::forceHit(const Coord& pos, const HitInfo& info)
                 get(c).setParent(info.shipDestroyed);
                 c += info.shipDestroyed->increment();
             }
+            m_ships--;
         }
         break;
     case HitInfo::MISS:

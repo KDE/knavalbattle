@@ -158,11 +158,15 @@ void Controller::finalizeShot(Sea::Player player, const Coord& c, const HitInfo&
             m_player->play(player, info);
         }
             
+        kDebug() << "Status:" << m_sea->status();
+            
         if (m_sea->status() == Sea::A_WINS) {
-            emit gameOver(Sea::PLAYER_A);
+            finalizeGame(Sea::PLAYER_A);
+//             emit gameOver(Sea::PLAYER_A);
         }
         else if (m_sea->status() == Sea::B_WINS) {
-            emit gameOver(Sea::PLAYER_B);
+            finalizeGame(Sea::PLAYER_A);
+//             emit gameOver(Sea::PLAYER_B);
         }
     }
     else {
@@ -198,6 +202,14 @@ void Controller::ready(int player)
             entity->startPlaying();
         }
     }
+}
+
+void Controller::finalizeGame(Sea::Player winner)
+{
+    foreach (Entity* entity, m_entities) {
+        entity->notifyGameOver(winner);
+    }
+    emit gameOver(winner);
 }
 
 Entity* Controller::findEntity(Sea::Player player) const
