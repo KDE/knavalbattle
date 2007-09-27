@@ -49,7 +49,7 @@ public:
     AIEntity* createAI(Sea::Player player);
     NetworkEntity* createRemotePlayer(Sea::Player player, QIODevice* device, bool client);
     
-    bool start(SeaView* view);
+    bool start(SeaView* view, bool restart = false);
 public slots:
     void shoot(int player, const Coord& c);
     void ready(int player);
@@ -57,6 +57,7 @@ public slots:
     void nick(int player, const QString& nick);
 signals:
     void gameOver(Sea::Player);
+    void restartRequested();
 };
 
 #endif // CONTROLLER_H

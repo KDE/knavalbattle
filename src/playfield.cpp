@@ -78,7 +78,7 @@ PlayField::~PlayField()
     delete m_controller;
 }
 
-void PlayField::setupController()
+void PlayField::setupController(bool restart)
 {
     // remove welcome screen
     m_sea->screen(Sea::Player(0))->fadeOut();
@@ -88,8 +88,10 @@ void PlayField::setupController()
     m_controller = new Controller(this, m_player);
     connect(m_controller, SIGNAL(gameOver(Sea::Player)),
             this, SLOT(gameOver(Sea::Player)));
+    connect(m_controller, SIGNAL(restartRequested()),
+            this, SLOT(restartRequested()));
             
-    m_menu->setupController(m_controller, m_sea, m_chat, m_status_bar);
+    m_menu->setupController(m_controller, m_sea, m_chat, m_status_bar, restart);
     emit startingGame();
 }
 
@@ -118,7 +120,7 @@ void PlayField::newGame()
 void PlayField::restart()
 {
     endGame();
-    setupController();
+    setupController(true);
 }
 
 
@@ -164,6 +166,14 @@ void PlayField::updatePreferences()
 void PlayField::runGGZ(int fd)
 {
     m_menu->runGGZ(fd);
+}
+
+void PlayField::restartRequested() {
+    int ans = KMessageBox::questionYesNo(this, i18n("Restart game"),
+                    i18n("Your opponent has requested to restart the game. Do you accept?"));
+    if (ans == KMessageBox::Yes) {
+        restart();
+    }
 }
 
 

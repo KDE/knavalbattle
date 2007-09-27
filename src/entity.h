@@ -38,7 +38,7 @@ public:
     virtual void notifyChat(const Entity* entity, const QString& text) = 0;
     virtual void notifyNick(Sea::Player player, const QString& nick) = 0;
     virtual void hit(Shot* shot) = 0;
-    virtual void start() = 0;
+    virtual void start(bool) = 0;
     virtual void startPlaying() { }
     virtual void notifyReady(Sea::Player) { }
     virtual void notifyGameOver(Sea::Player) { }

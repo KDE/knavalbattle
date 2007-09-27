@@ -40,11 +40,12 @@ public:
 public slots:
     void highscores();
     void gameOver(Sea::Player winner);
-    void setupController();
+    void setupController(bool restart = false);
     
     void newGame();
     void restart();
     void updatePreferences();
+    void restartRequested();
 signals:
     void gameFinished();
     void welcomeScreen();

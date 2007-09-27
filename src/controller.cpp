@@ -54,6 +54,7 @@ NetworkEntity* Controller::createRemotePlayer(Sea::Player player, QIODevice* dev
 {
     NetworkEntity* e = new NetworkEntity(player, m_sea, device, client);
     setupEntity(e);
+    connect(e, SIGNAL(restartRequested()), this, SIGNAL(restartRequested()));
     if (client) {
         m_sea->switchTurn();
     }
@@ -102,7 +103,7 @@ bool Controller::allPlayers() const
     return bitmap == 3;
 }
 
-bool Controller::start(SeaView* view)
+bool Controller::start(SeaView* view, bool restart)
 {
     if (!allPlayers()) {
         return false;
@@ -114,7 +115,7 @@ bool Controller::start(SeaView* view)
     }
     
     foreach (Entity* entity, m_entities) {
-        entity->start();
+        entity->start(restart);
     }
     
     foreach (Entity* source, m_entities) {

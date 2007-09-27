@@ -33,7 +33,7 @@ void AIEntity::notify(Sea::Player player, const Coord& c, const HitInfo& info)
     getShoot();
 }
 
-void AIEntity::start()
+void AIEntity::start(bool)
 {
     kDebug() << m_player << ": starting";
     m_ai->setShips();

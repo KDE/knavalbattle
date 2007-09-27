@@ -31,7 +31,7 @@ public:
     PlayerEntity(Sea::Player player, Sea* sea, SeaView* view, ChatWidget* chat);
     
     // entity interface
-    virtual void start();
+    virtual void start(bool);
     virtual void hit(Shot* shot);
     virtual void notify(Sea::Player player, const Coord& c, const HitInfo& info);
     virtual void notifyChat(const Entity* entity, const QString& text);

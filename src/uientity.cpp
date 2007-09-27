@@ -30,7 +30,7 @@ void UIEntity::notify(Sea::Player player, const Coord& c, const HitInfo& info)
     drawShoot(Sea::opponent(player), c, info);
 }
 
-void UIEntity::start()
+void UIEntity::start(bool)
 {
     m_view->clear();
 }

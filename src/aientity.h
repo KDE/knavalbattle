@@ -30,7 +30,7 @@ public:
     virtual void notify(Sea::Player player, const Coord& c, const HitInfo& info);
     virtual void notifyChat(const Entity*, const QString&) { }
     virtual void notifyNick(Sea::Player, const QString&) { }
-    virtual void start();
+    virtual void start(bool);
     virtual void startPlaying();
     virtual void hit(Shot* shot);
     

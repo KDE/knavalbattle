@@ -29,11 +29,16 @@ NetworkEntity::~NetworkEntity()
 
 }
 
-void NetworkEntity::start()
+void NetworkEntity::start(bool restart)
 {
     connect(m_protocol, SIGNAL(received(MessagePtr)), this, SLOT(received(MessagePtr)));
     connect(m_protocol, SIGNAL(disconnected()), this, SIGNAL(abortGame()));
-    m_protocol->send(MessagePtr(new HeaderMessage()));
+    if (restart) {
+        m_protocol->send(MessagePtr(new RestartMessage()));
+    }
+    else {
+        m_protocol->send(MessagePtr(new HeaderMessage()));
+    }
 }
 
 void NetworkEntity::notifyReady(Sea::Player player)

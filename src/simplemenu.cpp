@@ -93,7 +93,7 @@ void SimpleMenu::createClient()
 }
 
 void SimpleMenu::setupController(Controller* controller, SeaView* sea, 
-    ChatWidget* chat, QStatusBar* sbar)
+    ChatWidget* chat, QStatusBar* sbar, bool restart)
 {
     switch (m_state) {
     case DONE_LOCAL_GAME: {
@@ -155,7 +155,7 @@ void SimpleMenu::setupController(Controller* controller, SeaView* sea,
     connect(m_player1, SIGNAL(message(const QString&)),
         sbar, SLOT(showMessage(const QString&)));
         
-    controller->start(sea);
+    controller->start(sea, restart);
 }
 
 void SimpleMenu::runGGZ(int fd)
