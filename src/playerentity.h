@@ -36,8 +36,6 @@ public:
     virtual void notify(Sea::Player player, const Coord& c, const HitInfo& info);
     virtual void notifyChat(const Entity* entity, const QString& text);
     virtual void notifyNick(Sea::Player player, const QString& text);
-    virtual void notifyReady(Sea::Player player);
-    virtual void startPlaying();
     
     // delegate interface
     virtual void action(Sea::Player player, const Coord& c);
@@ -51,8 +49,6 @@ protected:
     virtual void registerMiss(Sea::Player player, const Coord& c);
 public slots:
     virtual void notifyAbort();
-signals:
-    void message(const QString&);
 };
 
 #endif // PLAYERENTITY_H

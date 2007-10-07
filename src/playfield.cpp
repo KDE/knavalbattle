@@ -78,6 +78,24 @@ PlayField::~PlayField()
     delete m_controller;
 }
 
+Controller* PlayField::createController()
+{
+    Controller* controller = new Controller(this, m_player);
+    connect(controller, SIGNAL(gameOver(Sea::Player)),
+            this, SLOT(gameOver(Sea::Player)));
+    connect(controller, SIGNAL(restartRequested()),
+            this, SLOT(restartRequested()));
+    connect(controller, SIGNAL(compatibility(int)),
+            this, SLOT(setCompatibility(int)));
+    connect(controller, SIGNAL(nickChanged(int, const QString&)),
+            this, SLOT(updateNick(int, const QString&)));
+    connect(controller, SIGNAL(turnChanged(int)),
+            this, SLOT(changeTurn(int)));
+    connect(controller, SIGNAL(playerReady(int)),
+            this, SLOT(playerReady(int)));
+    return controller;
+}
+
 void PlayField::setupController()
 {
     // remove welcome screen
@@ -85,18 +103,9 @@ void PlayField::setupController()
     m_sea->screen(Sea::Player(1))->fadeOut();
 
     delete m_controller;
-    m_controller = new Controller(this, m_player);
-    connect(m_controller, SIGNAL(gameOver(Sea::Player)),
-            this, SLOT(gameOver(Sea::Player)));
-    connect(m_controller, SIGNAL(restartRequested()),
-            this, SLOT(restartRequested()));
-    connect(m_controller, SIGNAL(compatibility(int)),
-            this, SLOT(setCompatibility(int)));
-    connect(m_controller, SIGNAL(nickChanged(int, const QString&)),
-            this, SLOT(updateNick(int, const QString&)));
-            
-    m_menu->setupController(m_controller, 0, m_sea, m_chat, m_status_bar, false);
-    emit startingGame();
+    m_controller = createController();
+    m_menu->setupController(m_controller, 0, m_sea, m_chat, false);
+    startGame();
 }
 
 void PlayField::resetupController(bool ask)
@@ -108,21 +117,13 @@ void PlayField::resetupController(bool ask)
     delete m_controller;
 
     // create new controller
-    m_controller = new Controller(this, m_player);
-    connect(m_controller, SIGNAL(gameOver(Sea::Player)),
-            this, SLOT(gameOver(Sea::Player)));
-    connect(m_controller, SIGNAL(restartRequested()),
-            this, SLOT(restartRequested()));
-    connect(m_controller, SIGNAL(compatibility(int)),
-            this, SLOT(setCompatibility(int)));
-    connect(m_controller, SIGNAL(nickChanged(int, const QString&)),
-            this, SLOT(updateNick(int, const QString&)));
+    m_controller = createController();
     m_menu->setupController(m_controller, old_opponent, 
-        m_sea, m_chat, m_status_bar, ask);
+        m_sea, m_chat, ask);
     
     delete old_opponent;
     
-    emit startingGame();
+    startGame();
 }
 
 void PlayField::endGame()
@@ -218,6 +219,40 @@ void PlayField::setCompatibility(int level)
 void PlayField::updateNick(int player, const QString& nick)
 {
     m_sea->setNick(Sea::Player(player), nick);
+}
+
+void PlayField::changeTurn(int player)
+{
+    if (player == 0) {
+        // local user
+        m_status_bar->showMessage(i18n("Enemy has shot. Shoot now!"));
+    }
+    else {
+        // opponent
+        m_status_bar->showMessage(i18n("Waiting for enemy to shoot..."));
+    }
+}
+
+void PlayField::playerReady(int player)
+{
+    if (player == -1) {
+        // game can start
+        if (m_controller->turn() == 0) {
+            m_status_bar->showMessage(i18n("Ships placed. Now shoot on the enemy field!"));
+        }
+        else {
+            m_status_bar->showMessage(i18n("Waiting for other player to start the game..."));
+        }
+    }
+    else if (player == 0) {
+        m_status_bar->showMessage(i18n("Waiting for other player to place his ships..."));
+    }
+}
+
+void PlayField::startGame()
+{
+    emit startingGame();
+    m_status_bar->showMessage(i18n("Place your ships. Use the right mouse button to rotate them."));
 }
 
 #include "playfield.moc"

@@ -83,8 +83,6 @@ void PlayerEntity::action(Sea::Player player, const Coord& c)
 
 void PlayerEntity::start(bool ask)
 {
-    emit message(i18n("Place your ships. Use the right mouse button to rotate them."));
-
     m_ships.append(new Ship(1, Ship::LEFT_TO_RIGHT));
     m_ships.append(new Ship(2, Ship::LEFT_TO_RIGHT));
     m_ships.append(new Ship(3, Ship::LEFT_TO_RIGHT));
@@ -167,16 +165,6 @@ void PlayerEntity::notifyChat(const Entity* entity, const QString& text)
 void PlayerEntity::notifyNick(Sea::Player, const QString& nickname)
 {
     m_chat->display(i18n("Your opponent is now known as %1", nickname));
-}
-
-void PlayerEntity::notifyReady(Sea::Player)
-{
-//     emit message(i18n("Your opponent is ready."));
-}
-
-void PlayerEntity::startPlaying()
-{
-    emit message(i18n("Ships placed. Now shoot on the enemy field!"));
 }
 
 void PlayerEntity::notifyAbort()

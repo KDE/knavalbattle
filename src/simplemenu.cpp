@@ -96,7 +96,7 @@ void SimpleMenu::createClient()
 }
 
 void SimpleMenu::setupController(Controller* controller, Entity* old_opponent, SeaView* sea, 
-    ChatWidget* chat, QStatusBar* sbar, bool ask)
+    ChatWidget* chat, bool ask)
 {
     switch (m_state) {
     case DONE_LOCAL_GAME: {
@@ -120,7 +120,8 @@ void SimpleMenu::setupController(Controller* controller, Entity* old_opponent, S
             m_player2->setNick(old_opponent->nick());
         }
         sea->setStats(Sea::Player(1), "score_network", 
-                      i18n("Remote player"), m_player2->stats());
+                      m_player2->nick().isEmpty() ? i18n("Remote player") : m_player2->nick(),
+                      m_player2->stats());
         chat->bindTo(m_player1);
         break;
     }
@@ -136,7 +137,8 @@ void SimpleMenu::setupController(Controller* controller, Entity* old_opponent, S
             m_player2->setNick(old_opponent->nick());
         }
         sea->setStats(Sea::Player(1), "score_network", 
-                      i18n("Remote player"), m_player2->stats());
+                      m_player2->nick().isEmpty() ? i18n("Remote player") : m_player2->nick(),
+                      m_player2->stats());
         chat->bindTo(m_player1);
         break;
     }
@@ -163,9 +165,6 @@ void SimpleMenu::setupController(Controller* controller, Entity* old_opponent, S
     default:
         return;
     }
-    
-    connect(m_player1, SIGNAL(message(const QString&)),
-        sbar, SLOT(showMessage(const QString&)));
         
     controller->start(sea, ask);
 }

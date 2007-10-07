@@ -169,6 +169,9 @@ void Controller::finalizeShot(Sea::Player player, const Coord& c, const HitInfo&
         else if (m_sea->status() == Sea::B_WINS) {
             finalizeGame(Sea::PLAYER_B);
         }
+        else {
+            emit turnChanged(m_sea->turn());
+        }
     }
     else {
         kDebug() << "illegal move" << c << "for player" << player;
@@ -202,6 +205,10 @@ void Controller::ready(int player)
         foreach (Entity* entity, m_entities) {
             entity->startPlaying();
         }
+        emit playerReady(-1);
+    }
+    else {
+        emit playerReady(player);
     }
 }
 
@@ -247,6 +254,11 @@ void Controller::nick(int player, const QString& nick)
         }
     }
     emit nickChanged(player, nick);
+}
+
+Sea::Player Controller::turn() const
+{
+    return m_sea->turn();
 }
 
 #include "controller.moc"

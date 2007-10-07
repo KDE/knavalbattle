@@ -1,6 +1,3 @@
-[Critical]
-* Better messages on the status bar.
-
 [Major]
 * Implement difficulty levels and integrate KGameDifficulty.
 * Usability: ability to choose game type directly in the menu.

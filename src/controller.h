@@ -51,6 +51,7 @@ public:
     
     bool start(SeaView* view, bool ask = false);
     Entity* findEntity(Sea::Player) const;
+    Sea::Player turn() const;
 public slots:
     void shoot(int player, const Coord& c);
     void ready(int player);
@@ -61,6 +62,8 @@ signals:
     void restartRequested();
     void compatibility(int);
     void nickChanged(int, const QString&);
+    void turnChanged(int);
+    void playerReady(int); // -1 means all players are ready
 };
 
 #endif // CONTROLLER_H

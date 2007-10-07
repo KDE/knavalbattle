@@ -51,7 +51,7 @@ public:
     SimpleMenu(QWidget* parent, WelcomeScreen* screen);
     
     void setupController(Controller* controller, Entity* old_opponent,
-        SeaView* sea, ChatWidget* chat, QStatusBar* sbar, bool ask = false);
+        SeaView* sea, ChatWidget* chat, bool ask = false);
     void runGGZ(int fd);
     
     Entity* player(int p) { return p == 0 ? m_player1 : m_player2; }

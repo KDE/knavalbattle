@@ -32,8 +32,10 @@ Q_OBJECT
     SimpleMenu* m_menu;
     QStatusBar* m_status_bar;
     
+    void startGame();
     void endGame();
     void resetupController(bool ask = false);
+    Controller* createController();
 public:
     PlayField(QWidget* parent, QStatusBar*);
     ~PlayField();
@@ -49,6 +51,8 @@ public slots:
     void restartRequested();
     void setCompatibility(int);
     void updateNick(int, const QString&);
+    void changeTurn(int);
+    void playerReady(int);
 signals:
     void gameFinished();
     void welcomeScreen();
