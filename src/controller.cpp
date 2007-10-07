@@ -163,11 +163,9 @@ void Controller::finalizeShot(Sea::Player player, const Coord& c, const HitInfo&
             
         if (m_sea->status() == Sea::A_WINS) {
             finalizeGame(Sea::PLAYER_A);
-//             emit gameOver(Sea::PLAYER_A);
         }
         else if (m_sea->status() == Sea::B_WINS) {
-            finalizeGame(Sea::PLAYER_A);
-//             emit gameOver(Sea::PLAYER_B);
+            finalizeGame(Sea::PLAYER_B);
         }
     }
     else {
