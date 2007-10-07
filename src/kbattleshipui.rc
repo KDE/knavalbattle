@@ -13,6 +13,12 @@
   </Menu>
 </MenuBar>
 
+<ToolBar name="gameToolbar" >
+    <text>Game Toolbar</text>
+    <Action name="game_new" />
+    <Action name="game_restart" />
+ </ToolBar>
+
 <State name="playing">
     <enable>
         <Action name="game_restart"/>
