@@ -66,6 +66,7 @@ PlayField::PlayField(QWidget* parent, QStatusBar* sbar)
         KScoreDialog::Custom2 | 
         KScoreDialog::Custom3, 
         this);
+    m_highscores->setConfigGroup(KGameDifficulty::levelString());
     m_highscores->addField(KScoreDialog::Custom1, i18n("Shots"), "shots");
     m_highscores->addField(KScoreDialog::Custom2, i18n("Hits"), "hits");
     m_highscores->addField(KScoreDialog::Custom3, i18n("Misses"), "water");
@@ -169,13 +170,15 @@ void PlayField::gameOver(Sea::Player winner)
         const Stats* stats = m_menu->player(0)->stats();
        
         if (stats && qobject_cast<const AIEntity*>(m_menu->player(1))) {
+            m_highscores->setConfigGroup(KGameDifficulty::levelString());
+        
             KScoreDialog::FieldInfo info;
             info[KScoreDialog::Name] = m_menu->player(0)->nick();
             info[KScoreDialog::Score].setNum(stats->score());
+            info[KScoreDialog::Custom1] = QString::number(stats->shots());
             info[KScoreDialog::Custom2] = QString::number(stats->hits());
             info[KScoreDialog::Custom3] = QString::number(stats->misses());
         
-            kDebug() << "score =" << stats->score();
             if (m_highscores->addScore(info, KScoreDialog::AskName)) {
                 highscores();
                 return;

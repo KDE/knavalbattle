@@ -164,8 +164,6 @@ void Controller::finalizeShot(Sea::Player player, const Coord& c, const HitInfo&
             m_player->play(player, info);
         }
             
-        kDebug() << "Status:" << m_sea->status();
-            
         if (m_sea->status() == Sea::A_WINS) {
             finalizeGame(Sea::PLAYER_A);
         }
