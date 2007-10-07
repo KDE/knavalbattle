@@ -16,7 +16,7 @@ QString Settings::findNick()
     QString nick = nickname();
     if (nick.isEmpty()) {
         KUser user;
-        nick = user.fullName();
+        nick = user.property(KUser::FullName).toString();
         if (nick.isEmpty()) {
             nick = user.loginName();
         }
