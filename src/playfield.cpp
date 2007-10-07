@@ -139,6 +139,8 @@ void PlayField::newGame()
     endGame();
     delete m_menu;
     
+    KGameDifficulty::setRunning(false);
+    
     m_chat->hide();
     m_sea->screen(Sea::Player(0))->show();
     m_sea->screen(Sea::Player(1))->show();
@@ -251,8 +253,22 @@ void PlayField::playerReady(int player)
 
 void PlayField::startGame()
 {
-    emit startingGame();
+    KGameDifficulty::setRestartOnChange(
+        m_controller->hasAI() ? KGameDifficulty::RestartOnChange : KGameDifficulty::NoRestartOnChange);
+    KGameDifficulty::setRunning(true);
     m_status_bar->showMessage(i18n("Place your ships. Use the right mouse button to rotate them."));
+    emit startingGame();
+}
+
+
+void PlayField::levelChanged(KGameDifficulty::standardLevel level)
+{
+    Settings::setDifficulty(level);
+    kDebug() << "diff =" << Settings::difficulty();
+    if (m_controller && m_controller->hasAI()) {
+        kDebug() << "restarting";
+        restart();
+    }
 }
 
 #include "playfield.moc"

@@ -286,8 +286,9 @@ public:
     }
 };
 
-SmartAI::SmartAI(Sea::Player player, Sea* sea)
+SmartAI::SmartAI(Sea::Player player, Sea* sea, bool random)
 : AI(player, sea)
+, m_state(random)
 {
     srand(time(0));
     m_strategy = std::auto_ptr<Strategy>(m_state.defaultStrategy(player, sea));
@@ -331,7 +332,8 @@ void SmartAI::setShips()
 }
 
 
-SmartAI::State::State()
+SmartAI::State::State(bool random)
+: m_random(random)
 {
     for (int i = 0; i < LARGEST_SHIP; i++) {
         m_ships[i] = 1;
@@ -340,13 +342,19 @@ SmartAI::State::State()
 
 Strategy* SmartAI::State::defaultStrategy(Sea::Player player, Sea* sea)
 {
-    for (int i = LARGEST_SHIP - 1; i >= 0; i--) {
-        if (m_ships[i] > 0 || i == 0) {
-            return new DiagonalStrategy(player, sea, *this, i + 1);
-        }
+    if (m_random) {
+        return new RandomStrategy(player, sea, *this);
     }
-    // unreachable
-    return 0;
+    else {
+        for (int i = LARGEST_SHIP - 1; i >= 0; i--) {
+            if (m_ships[i] > 0 || i == 0) {
+                return new DiagonalStrategy(player, sea, *this, i + 1);
+            }
+        }
+    
+        // unreachable
+        return 0;
+    }
 }
 
 void SmartAI::State::destroyed(int size)

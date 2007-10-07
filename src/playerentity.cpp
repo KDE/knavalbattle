@@ -9,8 +9,8 @@
 
 #include "playerentity.h"
 
-#include <kmessagebox.h>
-#include <klocale.h>
+#include <KMessageBox>
+#include <KLocalizedString>
 #include "seaview.h"
 #include "shot.h"
 #include "chatwidget.h"

@@ -9,17 +9,29 @@
 
 #include "aientity.h"
 #include "ai/smartai.h"
+#include "ai/dummyai.h"
 #include "shot.h"
 
 #include <QTimer>
 
+#include <KGameDifficulty>
 #include <KIcon>
 
 AIEntity::AIEntity(Sea::Player player, Sea* sea)
 : Entity(player)
 , m_sea(sea)
 {
-    m_ai = new SmartAI(m_player, m_sea);
+    switch (KGameDifficulty::level()) {
+    case KGameDifficulty::Easy:
+        m_ai = new DummyAI(m_player, m_sea);
+        break;
+    case KGameDifficulty::Medium:
+        m_ai = new SmartAI(m_player, m_sea, true);
+        break;
+    default: // hard
+        m_ai = new SmartAI(m_player, m_sea, false);
+        break;
+    }
 }
 
 AIEntity::~AIEntity()

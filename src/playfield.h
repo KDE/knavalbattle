@@ -11,6 +11,7 @@
 #define PLAYFIELD_H
 
 #include <QWidget>
+#include <KGameDifficulty>
 #include "sea.h"
 
 class SeaView;
@@ -53,6 +54,7 @@ public slots:
     void updateNick(int, const QString&);
     void changeTurn(int);
     void playerReady(int);
+    void levelChanged(KGameDifficulty::standardLevel);
 signals:
     void gameFinished();
     void welcomeScreen();

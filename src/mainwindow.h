@@ -11,7 +11,7 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
-#include <kxmlguiwindow.h>
+#include <KXmlGuiWindow>
 #include "ui_preferences.h"
 
 class PlayField;

@@ -22,6 +22,7 @@ Controller::Controller(QObject* parent, AudioPlayer* player)
 , m_shot(0)
 , m_ready(0)
 , m_player(player)
+, m_has_ai(false)
 {
     m_ui = 0;
     m_sea = new Sea(this, Coord(10, 10));
@@ -43,6 +44,8 @@ PlayerEntity* Controller::createPlayer(Sea::Player player, SeaView* view,
 
 AIEntity* Controller::createAI(Sea::Player player)
 {
+    kDebug() << "created ai entity";
+    m_has_ai = true;
     AIEntity* e = new AIEntity(player, m_sea);
     e->setNick(i18n("Computer"));
     setupEntity(e);
@@ -259,6 +262,11 @@ void Controller::nick(int player, const QString& nick)
 Sea::Player Controller::turn() const
 {
     return m_sea->turn();
+}
+
+bool Controller::hasAI() const
+{
+    return m_has_ai;
 }
 
 #include "controller.moc"

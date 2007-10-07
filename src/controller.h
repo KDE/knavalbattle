@@ -32,6 +32,7 @@ Q_OBJECT
     Shot* m_shot;
     int m_ready;
     AudioPlayer* m_player;
+    bool m_has_ai;
     
     void notify(Sea::Player player, const Coord& c, const HitInfo& info);
     void setupEntity(Entity*);
@@ -52,6 +53,7 @@ public:
     bool start(SeaView* view, bool ask = false);
     Entity* findEntity(Sea::Player) const;
     Sea::Player turn() const;
+    bool hasAI() const;
 public slots:
     void shoot(int player, const Coord& c);
     void ready(int player);

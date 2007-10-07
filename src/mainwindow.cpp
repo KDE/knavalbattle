@@ -52,6 +52,13 @@ MainWindow::MainWindow()
     connect(m_main, SIGNAL(startingGame()), this, SLOT(startingGame()));
     
     m_main->newGame();
+    
+    KGameDifficulty::init(this, m_main, SLOT(levelChanged(KGameDifficulty::standardLevel)));
+    KGameDifficulty::setRestartOnChange(KGameDifficulty::RestartOnChange);
+    KGameDifficulty::addStandardLevel(KGameDifficulty::Easy);
+    KGameDifficulty::addStandardLevel(KGameDifficulty::Medium);
+    KGameDifficulty::addStandardLevel(KGameDifficulty::Hard);
+    KGameDifficulty::setLevel(KGameDifficulty::standardLevel(Settings::difficulty()));
 }
 
 void MainWindow::setupActions()

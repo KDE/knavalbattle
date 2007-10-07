@@ -19,8 +19,12 @@
       <label>User nickname.</label>
     </entry>
     <entry name="EnableSounds" type="Bool">
-      <label>Wheter sound effects should be played.</label>
+      <label>Whether sound effects should be played.</label>
       <default>false</default>
+    </entry>
+    <entry name="Difficulty" type="Int">
+      <label>Game difficulty.</label>
+      <default>50</default>
     </entry>
   </group>
 </kcfg>
