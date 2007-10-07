@@ -1,11 +1,16 @@
 [Critical]
-* Fix the "restart" action for network games.
- 
+* Change player label for remote player.
+* Better messages on the status bar.
+
 [Major]
 * Implement difficulty levels and integrate KGameDifficulty.
 * Usability: ability to choose game type directly in the menu.
+* Add a toolbar.
+* Show all ships when the game is over.
 
 [Minor]
 * Theme support.
 * Optional grid (like KBS 3).
 * Usability: make it usable without a mouse.
+* Cumulative scores.
+
