@@ -40,7 +40,6 @@ set(kbattleship_SRCS
     welcomescreen.cpp)
 
 
-kde4_add_ui_files(kbattleship_SRCS preferences.ui)
 kde4_add_kcfg_files(kbattleship_SRCS settingsbase.kcfgc)
 kde4_add_executable(kbattleship ${kbattleship_SRCS} ${kwelcomescreen_SRCS})
 
