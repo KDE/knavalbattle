@@ -21,6 +21,7 @@ class SeaView;
 class ChatWidget;
 class Shot;
 class AudioPlayer;
+class Protocol;
 
 class Controller : public QObject
 {
@@ -34,7 +35,6 @@ Q_OBJECT
     
     void notify(Sea::Player player, const Coord& c, const HitInfo& info);
     void setupEntity(Entity*);
-    Entity* findEntity(Sea::Player) const;
     void finalizeShot(Sea::Player player, const Coord& c, const HitInfo& info);
     void finalizeGame(Sea::Player winner);
     bool allPlayers() const;
@@ -47,9 +47,10 @@ public:
     PlayerEntity* createPlayer(Sea::Player player, SeaView* view, 
                                ChatWidget* chat, const QString& nick);
     AIEntity* createAI(Sea::Player player);
-    NetworkEntity* createRemotePlayer(Sea::Player player, QIODevice* device, bool client);
+    NetworkEntity* createRemotePlayer(Sea::Player player, Protocol* protocol, bool client);
     
-    bool start(SeaView* view, bool restart = false);
+    bool start(SeaView* view, bool ask = false);
+    Entity* findEntity(Sea::Player) const;
 public slots:
     void shoot(int player, const Coord& c);
     void ready(int player);
@@ -58,6 +59,7 @@ public slots:
 signals:
     void gameOver(Sea::Player);
     void restartRequested();
+    void compatibility(int);
 };
 
 #endif // CONTROLLER_H

@@ -78,7 +78,7 @@ PlayField::~PlayField()
     delete m_controller;
 }
 
-void PlayField::setupController(bool restart)
+void PlayField::setupController()
 {
     // remove welcome screen
     m_sea->screen(Sea::Player(0))->fadeOut();
@@ -91,7 +91,31 @@ void PlayField::setupController(bool restart)
     connect(m_controller, SIGNAL(restartRequested()),
             this, SLOT(restartRequested()));
             
-    m_menu->setupController(m_controller, m_sea, m_chat, m_status_bar, restart);
+    m_menu->setupController(m_controller, 0, m_sea, m_chat, m_status_bar, false);
+    emit startingGame();
+}
+
+void PlayField::resetupController(bool ask)
+{
+    Entity* old_opponent = m_controller->findEntity(Sea::Player(1));
+    if (old_opponent) {
+        old_opponent->setParent(0);
+    }    
+    delete m_controller;
+
+    // create new controller
+    m_controller = new Controller(this, m_player);
+    connect(m_controller, SIGNAL(gameOver(Sea::Player)),
+            this, SLOT(gameOver(Sea::Player)));
+    connect(m_controller, SIGNAL(restartRequested()),
+            this, SLOT(restartRequested()));
+    connect(m_controller, SIGNAL(compatibility(int)),
+            this, SLOT(setCompatibility(int)));
+    m_menu->setupController(m_controller, old_opponent, 
+        m_sea, m_chat, m_status_bar, ask);
+    
+    delete old_opponent;
+    
     emit startingGame();
 }
 
@@ -117,10 +141,11 @@ void PlayField::newGame()
     emit welcomeScreen();
 }
 
-void PlayField::restart()
+void PlayField::restart(bool ask)
 {
-    endGame();
-    setupController(true);
+    Animator::instance()->restart();
+    m_sea->clear();
+    resetupController(ask);
 }
 
 
@@ -172,10 +197,15 @@ void PlayField::restartRequested() {
     int ans = KMessageBox::questionYesNo(this, i18n("Restart game"),
                     i18n("Your opponent has requested to restart the game. Do you accept?"));
     if (ans == KMessageBox::Yes) {
-        restart();
+        restart(false);
     }
 }
 
+void PlayField::setCompatibility(int level) {
+    if (level == Entity::COMPAT_KBS3) {
+        KMessageBox::information(this, i18n("Your opponent is using pre-KDE4 version of KBattleship. Note that, according to the rules enforced by old clients, ships cannot be placed adjacent to one another."));
+    }
+}
 
 #include "playfield.moc"
 

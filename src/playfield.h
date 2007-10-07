@@ -33,6 +33,7 @@ Q_OBJECT
     QStatusBar* m_status_bar;
     
     void endGame();
+    void resetupController(bool ask = false);
 public:
     PlayField(QWidget* parent, QStatusBar*);
     ~PlayField();
@@ -40,12 +41,13 @@ public:
 public slots:
     void highscores();
     void gameOver(Sea::Player winner);
-    void setupController(bool restart = false);
+    void setupController();
     
     void newGame();
-    void restart();
+    void restart(bool ask = true);
     void updatePreferences();
     void restartRequested();
+    void setCompatibility(int);
 signals:
     void gameFinished();
     void welcomeScreen();

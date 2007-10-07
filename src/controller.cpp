@@ -50,9 +50,9 @@ AIEntity* Controller::createAI(Sea::Player player)
     return e;
 }
 
-NetworkEntity* Controller::createRemotePlayer(Sea::Player player, QIODevice* device, bool client)
+NetworkEntity* Controller::createRemotePlayer(Sea::Player player, Protocol* protocol, bool client)
 {
-    NetworkEntity* e = new NetworkEntity(player, m_sea, device, client);
+    NetworkEntity* e = new NetworkEntity(player, m_sea, protocol, client);
     setupEntity(e);
     connect(e, SIGNAL(restartRequested()), this, SIGNAL(restartRequested()));
     if (client) {
@@ -74,6 +74,8 @@ void Controller::setupEntity(Entity* entity)
             this, SLOT(receivedChat(QString)));
     connect(entity, SIGNAL(nick(int,QString)),
             this, SLOT(nick(int,QString)));
+    connect(entity, SIGNAL(compatibility(int)),
+            this, SIGNAL(compatibility(int)));
             
     foreach (Entity* e, m_entities) {
         connect(e, SIGNAL(compatibility(int)),
@@ -103,7 +105,7 @@ bool Controller::allPlayers() const
     return bitmap == 3;
 }
 
-bool Controller::start(SeaView* view, bool restart)
+bool Controller::start(SeaView* view, bool ask)
 {
     if (!allPlayers()) {
         return false;
@@ -115,7 +117,7 @@ bool Controller::start(SeaView* view, bool restart)
     }
     
     foreach (Entity* entity, m_entities) {
-        entity->start(restart);
+        entity->start(ask);
     }
     
     foreach (Entity* source, m_entities) {
@@ -192,7 +194,7 @@ void Controller::ready(int player)
     foreach (Entity* entity, m_entities) {
         entity->notifyReady(Sea::Player(player));
     }
-
+    
     // when two entities are ready, start
     // all engines
     if (m_ready >= 2) {

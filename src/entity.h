@@ -47,6 +47,7 @@ public:
     virtual Sea::Player player() const { return m_player; }
     
     QString nick() const { return m_nick; }
+    CompatibilityLevel compatibilityLevel() const { return m_level; }
     virtual KIcon icon() const = 0;
     virtual void setNick(const QString& nick);
 signals:

@@ -15,24 +15,22 @@
 
 class Sea;
 class Protocol;
-class QIODevice;
 
 class NetworkEntity : public Entity, private MessageVisitor
 {
 Q_OBJECT
     Sea* m_sea;
     Protocol* m_protocol;
-    QIODevice* m_socket;
     Shot* m_pending_shot;
     bool m_client;
 public:
-    NetworkEntity(Sea::Player player, Sea* sea, QIODevice* device, bool client);
+    NetworkEntity(Sea::Player player, Sea* sea, Protocol* device, bool client);
     ~NetworkEntity();
     
     virtual void notify(Sea::Player player, const Coord& c, const HitInfo& info);
     virtual void notifyChat(const Entity* entity, const QString& text);
     virtual void notifyNick(Sea::Player player, const QString& nick);
-    virtual void start(bool restart);
+    virtual void start(bool ask);
     virtual void startPlaying();
     virtual void notifyReady(Sea::Player player);
     virtual void notifyGameOver(Sea::Player winner);

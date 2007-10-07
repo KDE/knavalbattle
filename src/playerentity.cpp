@@ -81,7 +81,7 @@ void PlayerEntity::action(Sea::Player player, const Coord& c)
     }
 }
 
-void PlayerEntity::start(bool restart)
+void PlayerEntity::start(bool ask)
 {
     emit message(i18n("Place your ships. Use the right mouse button to rotate them."));
 
@@ -90,7 +90,7 @@ void PlayerEntity::start(bool restart)
     m_ships.append(new Ship(3, Ship::LEFT_TO_RIGHT));
     m_ships.append(new Ship(4, Ship::LEFT_TO_RIGHT));
     
-    UIEntity::start(restart);
+    UIEntity::start(ask);
     m_view->setDelegate(this);
 }
 
@@ -190,11 +190,6 @@ void PlayerEntity::setNick(const QString& nick)
     m_chat->setNick(nick);
 }
 
-void PlayerEntity::setCompatibilityLevel(int level)
-{
-    UIEntity::setCompatibilityLevel(level);
-    KMessageBox::information(m_view, i18n("Your opponent is using pre-KDE4 version of KBattleship. Note that, according to the rules enforced by old clients, ships cannot be placed adjacent to one another."));
-}
 
 #include "playerentity.moc"
 

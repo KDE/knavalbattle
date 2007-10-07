@@ -50,7 +50,6 @@ protected:
     virtual void registerHit(Sea::Player player, const Coord& c);
     virtual void registerMiss(Sea::Player player, const Coord& c);
 public slots:
-    void setCompatibilityLevel(int level);
     virtual void notifyAbort();
 signals:
     void message(const QString&);

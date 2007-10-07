@@ -25,6 +25,7 @@
 #include "controller.h"
 #include "networkdialog.h"
 #include "playerentity.h"
+#include "protocol.h"
 #include "networkentity.h"
 #include "seaview.h"
 #include "settings.h"
@@ -34,7 +35,7 @@
 SimpleMenu::SimpleMenu(QWidget* parent, WelcomeScreen* screen)
 : QObject(parent)
 , m_screen(screen)
-, m_socket(0)
+, m_protocol(0)
 , m_state(READY)
 , m_player1(0)
 , m_player2(0)
@@ -59,9 +60,12 @@ void SimpleMenu::finalize(State state, const QString& nickname, QTcpSocket* sock
 {
     m_state = state;
     m_nickname = nickname;
-    m_socket = socket;
-    if (m_socket) {
-        m_socket->setParent(this);
+    if (socket) {
+        m_protocol = new Protocol(socket);
+        m_protocol->setParent(this);
+    }
+    else {
+        m_protocol = 0;
     }
     emit done();
 }
@@ -91,14 +95,13 @@ void SimpleMenu::createClient()
     }
 }
 
-void SimpleMenu::setupController(Controller* controller, SeaView* sea, 
-    ChatWidget* chat, QStatusBar* sbar, bool restart)
+void SimpleMenu::setupController(Controller* controller, Entity* old_opponent, SeaView* sea, 
+    ChatWidget* chat, QStatusBar* sbar, bool ask)
 {
     switch (m_state) {
     case DONE_LOCAL_GAME: {
-        QString nick = Settings::findNick();
         m_player1 = controller->createPlayer(Sea::Player(0), sea, chat, m_nickname);
-        sea->setStats(Sea::Player(0), "score_mouse", nick, m_player1->stats());
+        sea->setStats(Sea::Player(0), "score_mouse", m_nickname, m_player1->stats());
         m_player2 = controller->createAI(Sea::Player(1));
         sea->setStats(Sea::Player(1), "score_ai", 
                       "Computer", m_player2->stats());
@@ -106,22 +109,32 @@ void SimpleMenu::setupController(Controller* controller, SeaView* sea,
         break;
     }
     case DONE_SERVER: {
-        Q_ASSERT(m_socket);
+        Q_ASSERT(m_protocol);
         m_player1 = controller->createPlayer(Sea::Player(0), sea, chat, m_nickname);
         sea->setStats(Sea::Player(0), "score_mouse", 
                       m_nickname, m_player1->stats());
-        m_player2 = controller->createRemotePlayer(Sea::Player(1), m_socket, false);
+        m_player2 = controller->createRemotePlayer(Sea::Player(1), m_protocol, false);
+        if (old_opponent) {
+            m_player1->setCompatibilityLevel(old_opponent->compatibilityLevel());
+            m_player2->setCompatibilityLevel(old_opponent->compatibilityLevel());
+            m_player2->setNick(old_opponent->nick());
+        }
         sea->setStats(Sea::Player(1), "score_network", 
                       i18n("Remote player"), m_player2->stats());
         chat->bindTo(m_player1);
         break;
     }
     case DONE_CLIENT: {
-        Q_ASSERT(m_socket);
+        Q_ASSERT(m_protocol);
         m_player1 = controller->createPlayer(Sea::Player(0), sea, chat, m_nickname);
         sea->setStats(Sea::Player(0), "score_mouse", 
                       m_nickname, m_player1->stats());
-        m_player2 = controller->createRemotePlayer(Sea::Player(1), m_socket, true);
+        m_player2 = controller->createRemotePlayer(Sea::Player(1), m_protocol, true);
+        if (old_opponent) {
+            m_player1->setCompatibilityLevel(old_opponent->compatibilityLevel());
+            m_player2->setCompatibilityLevel(old_opponent->compatibilityLevel());
+            m_player2->setNick(old_opponent->nick());
+        }
         sea->setStats(Sea::Player(1), "score_network", 
                       i18n("Remote player"), m_player2->stats());
         chat->bindTo(m_player1);
@@ -141,9 +154,9 @@ void SimpleMenu::setupController(Controller* controller, SeaView* sea,
         int seat = player->seat();
         int oppseat = 1 - seat;
 
-        Q_ASSERT(m_socket);
+        Q_ASSERT(m_protocol);
         m_player1 = controller->createPlayer(Sea::Player(seat), sea, chat, m_nickname);
-        m_player2 = controller->createRemotePlayer(Sea::Player(oppseat), m_socket, true);
+        m_player2 = controller->createRemotePlayer(Sea::Player(oppseat), m_protocol, true);
         chat->bindTo(m_player1);
         break;
     }
@@ -154,14 +167,15 @@ void SimpleMenu::setupController(Controller* controller, SeaView* sea,
     connect(m_player1, SIGNAL(message(const QString&)),
         sbar, SLOT(showMessage(const QString&)));
         
-    controller->start(sea, restart);
+    controller->start(sea, ask);
 }
 
 void SimpleMenu::runGGZ(int fd)
 {
     m_state = DONE_GGZ_CLIENT;
-    m_socket = new QTcpSocket();
-    m_socket->setSocketDescriptor(fd);
+    QTcpSocket* socket = new QTcpSocket();
+    socket->setSocketDescriptor(fd);
+    m_protocol = new Protocol(socket);
 }
 
 #include "simplemenu.moc"

@@ -12,28 +12,25 @@
 #include "shot.h"
 #include "protocol.h"
 
-#include <QIODevice>
-
 #include <KIcon>
 
-NetworkEntity::NetworkEntity(Sea::Player player, Sea* sea, QIODevice* device, bool client)
+NetworkEntity::NetworkEntity(Sea::Player player, Sea* sea, Protocol* protocol, bool client)
 : Entity(player)
 , m_sea(sea)
 , m_client(client)
 {
-    m_protocol = new Protocol(device);
+    m_protocol = protocol;
 }
 
 NetworkEntity::~NetworkEntity()
 {
-
 }
 
-void NetworkEntity::start(bool restart)
+void NetworkEntity::start(bool ask)
 {
     connect(m_protocol, SIGNAL(received(MessagePtr)), this, SLOT(received(MessagePtr)));
     connect(m_protocol, SIGNAL(disconnected()), this, SIGNAL(abortGame()));
-    if (restart) {
+    if (ask) {
         m_protocol->send(MessagePtr(new RestartMessage()));
     }
     else {
@@ -124,9 +121,10 @@ void NetworkEntity::visit(const HeaderMessage& msg)
         // m_level = COMPAT_KBS4;
     }
     else {
-        m_level = COMPAT_KBS3;
-        kDebug() << "emitting compatibility";
-        emit compatibility(m_level);
+        if (m_level != COMPAT_KBS3) {
+            m_level = COMPAT_KBS3;
+            emit compatibility(m_level);
+        }
     }
 }
 
@@ -149,7 +147,6 @@ void NetworkEntity::visit(const BeginMessage&)
 
 void NetworkEntity::visit(const MoveMessage& msg)
 {
-    kDebug() << m_player << ": shooting on" << msg.move();
     emit shoot(m_player, msg.move());
 }
 

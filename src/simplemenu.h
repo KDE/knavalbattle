@@ -20,6 +20,7 @@ class Button;
 class QTcpSocket;
 class QStatusBar;
 class Entity;
+class Protocol;
 
 class SimpleMenu : public QObject
 {
@@ -30,7 +31,7 @@ Q_OBJECT
     Button* m_server_btn;
     Button* m_client_btn;
     
-    QTcpSocket* m_socket;
+    Protocol* m_protocol;
     QString m_nickname;
     
     enum State
@@ -49,8 +50,8 @@ Q_OBJECT
 public:
     SimpleMenu(QWidget* parent, WelcomeScreen* screen);
     
-    void setupController(Controller* controller,
-        SeaView* sea, ChatWidget* chat, QStatusBar* sbar, bool restart = false);
+    void setupController(Controller* controller, Entity* old_opponent,
+        SeaView* sea, ChatWidget* chat, QStatusBar* sbar, bool ask = false);
     void runGGZ(int fd);
     
     Entity* player(int p) { return p == 0 ? m_player1 : m_player2; }
