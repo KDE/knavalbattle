@@ -3,16 +3,16 @@
 <gui name="kbattleship" version="3">
 
 <MenuBar>
-  <Menu name="game"><text>&amp;Game</text>
+  <Menu name="game">
     <Action name="game_server" />
     <Action name="game_client" />
     <Action name="game_local" />
     <Action name="game_create_server" />
     <Action name="game_create_client" />
   </Menu>
-  <Menu name="settings"><text>&amp;Settings</text>
-    <Action name="options_show_grid" append="show_merge"/>
-    <Action name="options_configure_sound" append="save_merge"/>
+  <Menu name="settings">
+    <Action name="options_nickname" />
+    <Action name="options_sounds" />
   </Menu>
 </MenuBar>
 

@@ -16,11 +16,11 @@
 #include <KAction>
 #include <KActionCollection>
 #include <KIcon>
-#include <KConfigDialog>
 #include <KLocalizedString>
 #include <KStandardAction>
 #include <KStandardGameAction>
 #include <KStatusBar>
+#include <KToggleAction>
 
 #include <kggzmod/module.h>
 #include <kggzmod/player.h>
@@ -70,7 +70,6 @@ void MainWindow::setupActions()
     KStandardGameAction::highscores(m_main, SLOT(highscores()), actionCollection());
     
     KStandardGameAction::quit(this, SLOT(close()), actionCollection());
-    KStandardAction::preferences(this, SLOT(optionsPreferences()), actionCollection());
     
     KAction* action;
     action = new KAction(KIcon(SimpleMenu::iconLocal), i18n("&Single Player"), this);
@@ -82,24 +81,14 @@ void MainWindow::setupActions()
     action = new KAction(KIcon(SimpleMenu::iconClient), i18n("&Connect to game..."), this);
     actionCollection()->addAction("game_create_client", action);
     connect(action, SIGNAL(triggered()), m_main, SLOT(createClient()));
+    action = new KAction(i18n("Change &nickname..."), this);
+    actionCollection()->addAction("options_nickname", action);
+    connect(action, SIGNAL(triggered()), m_main, SLOT(changeNick()));
+    action = new KToggleAction(i18n("&Play sounds"), this);
+    actionCollection()->addAction("options_sounds", action);
+    connect(action, SIGNAL(triggered(bool)), m_main, SLOT(toggleSounds(bool)));
     
     setupGUI();
-}
-
-void MainWindow::optionsPreferences()
-{
-    if (KConfigDialog::showDialog("preferences")) {
-        return;
-    }
-    
-    KConfigDialog* dialog = new KConfigDialog(this, "preferences", Settings::self());
-    QWidget* mainPage = new QWidget(dialog);
-    m_pref_ui.setupUi(mainPage);
-    dialog->addPage(mainPage, i18n("Main page"), "main_page");
-    connect(dialog, SIGNAL(settingsChanged(const QString&)),
-            centralWidget(), SLOT(updatePreferences()));
-
-    dialog->show();
 }
 
 void MainWindow::networkErrorHandler()
@@ -133,13 +122,16 @@ void MainWindow::networkEvent(const KGGZMod::Event& event)
     }
 }
 
-void MainWindow::startingGame() {
+void MainWindow::startingGame()
+{
     stateChanged("playing");
 }
 
-void MainWindow::welcomeScreen() {
+void MainWindow::welcomeScreen()
+{
     stateChanged("playing", KXMLGUIClient::StateReverse);
 }
+
 
 #include "mainwindow.moc"
 

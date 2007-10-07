@@ -14,7 +14,7 @@
 
 AudioPlayer::AudioPlayer(QObject* parent)
 : QObject(parent)
-, m_media(false)
+, m_media(0)
 {
     m_dir = KStandardDirs::locate("appdata", "sounds/");
 }

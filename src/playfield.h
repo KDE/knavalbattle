@@ -49,7 +49,8 @@ public slots:
     
     void newGame();
     void restart(bool ask = true);
-    void updatePreferences();
+    void changeNick();
+    void toggleSounds(bool);
     void restartRequested();
     void setCompatibility(int);
     void updateNick(int, const QString&);

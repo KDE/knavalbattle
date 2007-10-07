@@ -19,6 +19,7 @@
 #include <QTcpServer>
 #include <QTcpSocket>
 
+#include <KInputDialog>
 #include <KLocale>
 #include <KMessageBox>
 #include <KScoreDialog>
@@ -199,9 +200,17 @@ void PlayField::gameOver(Sea::Player winner)
     emit gameFinished();
 }
 
-void PlayField::updatePreferences()
+void PlayField::changeNick()
 {
-    m_player->setActive(Settings::enableSounds());
+    QString nick = KInputDialog::getText("Change nickname", "Enter new nickname", Settings::findNick());
+    if (!nick.isEmpty()) {
+        Settings::setNickname(nick);
+    }
+}
+
+void PlayField::toggleSounds(bool enable)
+{
+    Settings::setEnableSounds(enable);
 }
 
 void PlayField::runGGZ(int fd)
