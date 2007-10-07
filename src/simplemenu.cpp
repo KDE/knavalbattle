@@ -76,7 +76,6 @@ void SimpleMenu::createServer()
     QWidget* parent_widget = qobject_cast<QWidget*>(parent());
     Q_ASSERT(parent_widget);
     NetworkDialog dialog(false, parent_widget);
-    connect(&dialog, SIGNAL(ok()), this, SLOT(createServerOk()));
     if (dialog.exec()) {
         finalize(DONE_SERVER, dialog.nickname(), dialog.socket());
     }
@@ -88,7 +87,7 @@ void SimpleMenu::createClient()
     Q_ASSERT(parent_widget);
     NetworkDialog dialog(true, parent_widget);
     if (dialog.exec() == QDialog::Accepted) {
-        finalize(DONE_SERVER, dialog.nickname(), dialog.socket());
+        finalize(DONE_CLIENT, dialog.nickname(), dialog.socket());
     }
 }
 
@@ -113,7 +112,7 @@ void SimpleMenu::setupController(Controller* controller, SeaView* sea,
                       m_nickname, m_player1->stats());
         m_player2 = controller->createRemotePlayer(Sea::Player(1), m_socket, false);
         sea->setStats(Sea::Player(1), "score_network", 
-                      "Remote player", m_player2->stats());
+                      i18n("Remote player"), m_player2->stats());
         chat->bindTo(m_player1);
         break;
     }
@@ -124,7 +123,7 @@ void SimpleMenu::setupController(Controller* controller, SeaView* sea,
                       m_nickname, m_player1->stats());
         m_player2 = controller->createRemotePlayer(Sea::Player(1), m_socket, true);
         sea->setStats(Sea::Player(1), "score_network", 
-                      "Remote player", m_player2->stats());
+                      i18n("Remote player"), m_player2->stats());
         chat->bindTo(m_player1);
         break;
     }
