@@ -55,7 +55,11 @@ public:
     void runGGZ(int fd);
     
     Entity* player(int p) { return p == 0 ? m_player1 : m_player2; }
-private slots:
+    
+    static const char* iconLocal;
+    static const char* iconServer;
+    static const char* iconClient;
+public slots:
     void localGame();
     
     void createServer();

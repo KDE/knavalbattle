@@ -15,6 +15,7 @@
 
 #include <KAction>
 #include <KActionCollection>
+#include <KIcon>
 #include <KConfigDialog>
 #include <KLocalizedString>
 #include <KStandardAction>
@@ -27,6 +28,7 @@
 
 #include "playfield.h"
 #include "settings.h"
+#include "simplemenu.h"
 
 MainWindow::MainWindow()
 : m_mod(0), m_raw(0), m_fd(-1), m_ggzsetup(false)
@@ -66,8 +68,20 @@ void MainWindow::setupActions()
     KStandardGameAction::gameNew(m_main, SLOT(newGame()), actionCollection());
     KStandardGameAction::restart(m_main, SLOT(restart()), actionCollection());     
     KStandardGameAction::highscores(m_main, SLOT(highscores()), actionCollection());
+    
     KStandardGameAction::quit(this, SLOT(close()), actionCollection());
     KStandardAction::preferences(this, SLOT(optionsPreferences()), actionCollection());
+    
+    KAction* action;
+    action = new KAction(KIcon(SimpleMenu::iconLocal), i18n("&Single Player"), this);
+    actionCollection()->addAction("game_local", action);
+    connect(action, SIGNAL(triggered()), m_main, SLOT(localGame()));
+    action = new KAction(KIcon(SimpleMenu::iconServer), i18n("&Host Game..."), this);
+    actionCollection()->addAction("game_create_server", action);
+    connect(action, SIGNAL(triggered()), m_main, SLOT(createServer()));
+    action = new KAction(KIcon(SimpleMenu::iconClient), i18n("&Connect to game..."), this);
+    actionCollection()->addAction("game_create_client", action);
+    connect(action, SIGNAL(triggered()), m_main, SLOT(createClient()));
     
     setupGUI();
 }

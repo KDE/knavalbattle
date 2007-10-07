@@ -99,6 +99,10 @@ Controller* PlayField::createController()
 
 void PlayField::setupController()
 {
+    Animator::instance()->restart();
+    m_sea->clear();
+    m_chat->hide();
+    
     // remove welcome screen
     m_sea->screen(Sea::Player(0))->fadeOut();
     m_sea->screen(Sea::Player(1))->fadeOut();
@@ -272,6 +276,39 @@ void PlayField::levelChanged(KGameDifficulty::standardLevel level)
         kDebug() << "restarting";
         restart();
     }
+}
+
+SimpleMenu* PlayField::createAuxMenu()
+{
+    SimpleMenu* menu = new SimpleMenu(this, 0);
+    connect(menu, SIGNAL(done()), this, SLOT(auxMenuDone()));
+    return menu;
+}
+
+void PlayField::auxMenuDone()
+{
+    kDebug() << "aux menu done";
+    SimpleMenu* menu = qobject_cast<SimpleMenu*>(sender());
+    if (menu) {
+        delete m_menu;
+        m_menu = menu;
+        setupController();
+    }
+}
+
+void PlayField::localGame()
+{
+    createAuxMenu()->localGame();
+}
+
+void PlayField::createServer()
+{
+    createAuxMenu()->createServer();
+}
+
+void PlayField::createClient()
+{
+    createAuxMenu()->createClient();
 }
 
 #include "playfield.moc"

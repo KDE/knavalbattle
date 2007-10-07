@@ -37,6 +37,7 @@ Q_OBJECT
     void endGame();
     void resetupController(bool ask = false);
     Controller* createController();
+    SimpleMenu* createAuxMenu();
 public:
     PlayField(QWidget* parent, QStatusBar*);
     ~PlayField();
@@ -55,6 +56,11 @@ public slots:
     void changeTurn(int);
     void playerReady(int);
     void levelChanged(KGameDifficulty::standardLevel);
+    
+    void auxMenuDone();
+    void localGame();
+    void createServer();
+    void createClient();
 signals:
     void gameFinished();
     void welcomeScreen();

@@ -6,6 +6,9 @@
   <Menu name="game"><text>&amp;Game</text>
     <Action name="game_server" />
     <Action name="game_client" />
+    <Action name="game_local" />
+    <Action name="game_create_server" />
+    <Action name="game_create_client" />
   </Menu>
   <Menu name="settings"><text>&amp;Settings</text>
     <Action name="options_show_grid" append="show_merge"/>
@@ -17,6 +20,9 @@
     <text>Game Toolbar</text>
     <Action name="game_new" />
     <Action name="game_restart" />
+    <Action name="game_local" />
+    <Action name="game_create_server" />
+    <Action name="game_create_client" />
  </ToolBar>
 
 <State name="playing">

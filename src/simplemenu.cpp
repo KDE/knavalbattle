@@ -32,6 +32,10 @@
 #include "aientity.h"
 #include "welcomescreen.h"
 
+const char* SimpleMenu::iconLocal = "user-female";
+const char* SimpleMenu::iconServer = "services";
+const char* SimpleMenu::iconClient = "network";
+
 SimpleMenu::SimpleMenu(QWidget* parent, WelcomeScreen* screen)
 : QObject(parent)
 , m_screen(screen)
@@ -40,20 +44,20 @@ SimpleMenu::SimpleMenu(QWidget* parent, WelcomeScreen* screen)
 , m_player1(0)
 , m_player2(0)
 {
-    Q_ASSERT(m_screen);
-    
-    // create buttons
-    m_local_game_btn = m_screen->addButton(0, 0, KIcon("user-female"), i18n("Single player"));
-    m_server_btn = m_screen->addButton(0, 1, KIcon("roll"), i18n("Host network game"));
-    m_client_btn = m_screen->addButton(0, 2, KIcon("network"), i18n("Connect to network game"));
-    
-    // create connections
-    connect(m_local_game_btn, SIGNAL(clicked()),
-        this, SLOT(localGame()));
-    connect(m_server_btn, SIGNAL(clicked()),
-        this, SLOT(createServer()));
-    connect(m_client_btn, SIGNAL(clicked()),
-        this, SLOT(createClient()));
+    if (m_screen) {    
+        // create buttons
+        m_local_game_btn = m_screen->addButton(0, 0, KIcon(iconLocal), i18n("Single player"));
+        m_server_btn = m_screen->addButton(0, 1, KIcon(iconServer), i18n("Host network game"));
+        m_client_btn = m_screen->addButton(0, 2, KIcon(iconClient), i18n("Connect to network game"));
+        
+        // create connections
+        connect(m_local_game_btn, SIGNAL(clicked()),
+            this, SLOT(localGame()));
+        connect(m_server_btn, SIGNAL(clicked()),
+            this, SLOT(createServer()));
+        connect(m_client_btn, SIGNAL(clicked()),
+            this, SLOT(createClient()));
+    }
 }
 
 void SimpleMenu::finalize(State state, const QString& nickname, QTcpSocket* socket)
