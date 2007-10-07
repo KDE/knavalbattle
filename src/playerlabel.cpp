@@ -17,10 +17,17 @@ PlayerLabel::PlayerLabel(const QPixmap& icon, const QString& text,
     m_name->show();
 }
 
-void PlayerLabel::setData(const QPixmap& icon, const QString& text) {
+void PlayerLabel::setData(const QPixmap& icon, const QString& text)
+{
     m_icon->setPixmap(icon);
     m_name->setText(text);
     
+    update();
+}
+
+void PlayerLabel::setText(const QString& text)
+{
+    m_name->setText(text);
     update();
 }
 

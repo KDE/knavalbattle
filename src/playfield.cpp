@@ -90,6 +90,10 @@ void PlayField::setupController()
             this, SLOT(gameOver(Sea::Player)));
     connect(m_controller, SIGNAL(restartRequested()),
             this, SLOT(restartRequested()));
+    connect(m_controller, SIGNAL(compatibility(int)),
+            this, SLOT(setCompatibility(int)));
+    connect(m_controller, SIGNAL(nickChanged(int, const QString&)),
+            this, SLOT(updateNick(int, const QString&)));
             
     m_menu->setupController(m_controller, 0, m_sea, m_chat, m_status_bar, false);
     emit startingGame();
@@ -111,6 +115,8 @@ void PlayField::resetupController(bool ask)
             this, SLOT(restartRequested()));
     connect(m_controller, SIGNAL(compatibility(int)),
             this, SLOT(setCompatibility(int)));
+    connect(m_controller, SIGNAL(nickChanged(int, const QString&)),
+            this, SLOT(updateNick(int, const QString&)));
     m_menu->setupController(m_controller, old_opponent, 
         m_sea, m_chat, m_status_bar, ask);
     
@@ -193,7 +199,8 @@ void PlayField::runGGZ(int fd)
     m_menu->runGGZ(fd);
 }
 
-void PlayField::restartRequested() {
+void PlayField::restartRequested()
+{
     int ans = KMessageBox::questionYesNo(this, i18n("Restart game"),
                     i18n("Your opponent has requested to restart the game. Do you accept?"));
     if (ans == KMessageBox::Yes) {
@@ -201,10 +208,16 @@ void PlayField::restartRequested() {
     }
 }
 
-void PlayField::setCompatibility(int level) {
+void PlayField::setCompatibility(int level)
+{
     if (level == Entity::COMPAT_KBS3) {
         KMessageBox::information(this, i18n("Your opponent is using pre-KDE4 version of KBattleship. Note that, according to the rules enforced by old clients, ships cannot be placed adjacent to one another."));
     }
+}
+
+void PlayField::updateNick(int player, const QString& nick)
+{
+    m_sea->setNick(Sea::Player(player), nick);
 }
 
 #include "playfield.moc"

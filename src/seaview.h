@@ -59,6 +59,7 @@ public:
     
     void setStats(Sea::Player p, const QString& icon, 
                   const QString& text, Stats* stats);
+    void setNick(Sea::Player p, const QString& nick);
 
     WelcomeScreen* globalScreen() const;
     WelcomeScreen* screen(Sea::Player player) const;

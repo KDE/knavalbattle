@@ -18,6 +18,7 @@ public:
 
     void update();
     void setData(const QPixmap& icon, const QString& text);
+    void setText(const QString& text);
     int height() const;
 };
 

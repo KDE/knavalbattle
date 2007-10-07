@@ -357,5 +357,10 @@ void SeaView::setStats(Sea::Player p, const QString& icon,
     
 }
 
+void SeaView::setNick(Sea::Player p, const QString& nick)
+{
+    m_labels[p]->setText(nick);
+}
+
 #include "seaview.moc"
 

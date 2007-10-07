@@ -48,6 +48,7 @@ public slots:
     void updatePreferences();
     void restartRequested();
     void setCompatibility(int);
+    void updateNick(int, const QString&);
 signals:
     void gameFinished();
     void welcomeScreen();

@@ -60,6 +60,7 @@ signals:
     void gameOver(Sea::Player);
     void restartRequested();
     void compatibility(int);
+    void nickChanged(int, const QString&);
 };
 
 #endif // CONTROLLER_H

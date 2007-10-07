@@ -246,6 +246,7 @@ void Controller::nick(int player, const QString& nick)
             entity->notifyNick(Sea::Player(player), nick);
         }
     }
+    emit nickChanged(player, nick);
 }
 
 #include "controller.moc"
