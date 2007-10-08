@@ -205,12 +205,15 @@ void PlayField::changeNick()
     QString nick = KInputDialog::getText("Change nickname", "Enter new nickname", Settings::findNick());
     if (!nick.isEmpty()) {
         Settings::setNickname(nick);
+        Settings::self()->writeConfig();
     }
 }
 
 void PlayField::toggleSounds(bool enable)
 {
     Settings::setEnableSounds(enable);
+    Settings::self()->writeConfig();
+    m_player->setActive(enable);
 }
 
 void PlayField::runGGZ(int fd)
@@ -280,9 +283,8 @@ void PlayField::startGame()
 void PlayField::levelChanged(KGameDifficulty::standardLevel level)
 {
     Settings::setDifficulty(level);
-    kDebug() << "diff =" << Settings::difficulty();
+    Settings::self()->writeConfig();
     if (m_controller && m_controller->hasAI()) {
-        kDebug() << "restarting";
         restart();
     }
 }

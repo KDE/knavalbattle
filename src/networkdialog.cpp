@@ -103,6 +103,7 @@ void NetworkDialog::savePreferences()
         Settings::setHostname(hostname());
     }
     Settings::setPort(port());
+    Settings::self()->writeConfig();
 }
 
 QString NetworkDialog::hostname() const
