@@ -89,7 +89,7 @@ NetworkDialog::NetworkDialog(bool client, QWidget* parent)
     
     main->setLayout(mainLayout);
     setMainWidget(main);
-    setCaption(i18n("Network parameters"));
+    setCaption(i18n("Network Parameters"));
     
     connect(this, SIGNAL(accepted()), this, SLOT(savePreferences()));
     

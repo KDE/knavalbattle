@@ -78,13 +78,13 @@ void MainWindow::setupActions()
     action = new KAction(KIcon(SimpleMenu::iconServer), i18n("&Host Game..."), this);
     actionCollection()->addAction("game_create_server", action);
     connect(action, SIGNAL(triggered()), m_main, SLOT(createServer()));
-    action = new KAction(KIcon(SimpleMenu::iconClient), i18n("&Connect to game..."), this);
+    action = new KAction(KIcon(SimpleMenu::iconClient), i18n("&Connect to Game..."), this);
     actionCollection()->addAction("game_create_client", action);
     connect(action, SIGNAL(triggered()), m_main, SLOT(createClient()));
-    action = new KAction(i18n("Change &nickname..."), this);
+    action = new KAction(i18n("Change &Nickname..."), this);
     actionCollection()->addAction("options_nickname", action);
     connect(action, SIGNAL(triggered()), m_main, SLOT(changeNick()));
-    action = new KToggleAction(i18n("&Play sounds"), this);
+    action = new KToggleAction(i18n("&Play Sounds"), this);
     actionCollection()->addAction("options_sounds", action);
     connect(action, SIGNAL(triggered(bool)), m_main, SLOT(toggleSounds(bool)));
     
