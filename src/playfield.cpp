@@ -202,7 +202,7 @@ void PlayField::gameOver(Sea::Player winner)
 
 void PlayField::changeNick()
 {
-    QString nick = KInputDialog::getText(i18n("Change nickname"), i18n("Enter new nickname"), Settings::findNick());
+    QString nick = KInputDialog::getText(i18n("Change Nickname"), i18n("Enter new nickname:"), Settings::findNick());
     if (!nick.isEmpty()) {
         Settings::setNickname(nick);
         Settings::self()->writeConfig();
