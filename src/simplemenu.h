@@ -18,7 +18,6 @@ class SeaView;
 class ChatWidget;
 class Button;
 class QTcpSocket;
-class QStatusBar;
 class Entity;
 class Protocol;
 
