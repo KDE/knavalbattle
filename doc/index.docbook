@@ -73,25 +73,17 @@
 
 <chapter id="introduction">
 <title>Introduction</title>
-
-<sect1 id="features">
-<title>Features</title>
-<para>
-Game type: Strategy, Board
-Number of players: Two
-</para>
-
+<note><title>Gametype:</title><para>Strategy, Board</para></note><!-- Game genre. use as many as necessary.Available game types are: Arcade, Board, Card, Dice, Toys, Logic, Strategy.-->
+<note><title>Number of possible players:</title><para>Two</para></note><!--Number of possible players. It can be: One, Two,..., Multiplayer-->
 <para>
 &kbattleship; is a Battle Ship game for &kde;. Ships are placed on a board which represents the sea. Players try to hit each others
 ships in turns without knowing where they are placed. The first player to destroy all ships wins the game.
 </para>
-</sect1>
-
 </chapter>
 
 <chapter id="howtoplay">
 <title>How to Play</title>
-
+<note><title>Objective:</title><para>Sink all of the opponent’s ships before the opponent sink all the ships of your own.</para></note><!--Describe the objective of the game.-->
 <para>
 If you want to play &kbattleship;, you will need two players, either play
 against the computer or in a network against another player. To play against your computer, first select the difficulty level on the right of the status bar, and then select <guibutton>Single player</guibutton> on the welcome screen, or directly on the <menuchoice><guimenu>Game</guimenu></menuchoice> menu.</para>
@@ -99,7 +91,7 @@ against the computer or in a network against another player. To play against you
 <para>
 To start a network game, one player has to host the game by selecting <guilabel>Host network game</guilabel> on the welcome screen, or choosing <menuchoice><guimenu>Game</guimenu>
 <guimenuitem>Host Game...</guimenuitem></menuchoice>.
-A dialog box opens which asks for a <guilabel>Nick name:</guilabel> and <guilabel>Port:</guilabel>. Normally,
+A dialog box opens which asks for a <guilabel>Nickname:</guilabel> and <guilabel>Port:</guilabel>. Normally,
 &kbattleship; will suggest your full name, but you can enter any string
 you want. The predefined port should be ok. However, if you encounter
 problems, you can choose any other free port above 1024.
@@ -113,7 +105,7 @@ to establish a connection.</para>
 
 <para>
 The other player has to choose <guilabel>Connect to network game</guilabel>, or click <menuchoice><guimenu>Game</guimenu>
-<guimenuitem>Connect to Game...</guimenuitem></menuchoice>. Again, a <guilabel>Nick name:</guilabel> is
+<guimenuitem>Connect to Game...</guimenuitem></menuchoice>. Again, a <guilabel>Nickname:</guilabel> is
 suggested, but you can choose any name you like. In the field <guilabel>Hostname:</guilabel> you
 have to enter the host name of the server (the machine of the player that initiated the game).
 </para>
@@ -215,7 +207,7 @@ differently from the computer player included in &kbattleship;.
 <title>The Menus</title>
 
 <sect1 id="game-menu">
-<title>The <guimenu>Game</guimenu> menu</title>
+<title>The <guimenu>Game</guimenu> Menu</title>
 
 <variablelist>
 <varlistentry>
@@ -255,7 +247,7 @@ differently from the computer player included in &kbattleship;.
 <menuchoice>
 <shortcut action="simul">&Ctrl;<keycap>H</keycap></shortcut>
 <guimenu>Game</guimenu>
-<guimenuitem>Show Highscores</guimenuitem>
+<guimenuitem>Show High Scores...</guimenuitem>
 </menuchoice>
 </term>
 <listitem>
@@ -300,7 +292,7 @@ differently from the computer player included in &kbattleship;.
 <menuchoice>
 <!-- <shortcut><keycap>F3</keycap></shortcut> -->
 <guimenu>Game</guimenu>
-<guimenuitem>Connect to game...</guimenuitem>
+<guimenuitem>Connect to Game...</guimenuitem>
 </menuchoice>
 </term>
 <listitem>
@@ -331,20 +323,19 @@ differently from the computer player included in &kbattleship;.
 </sect1>
 
 <sect1 id="settings-menu">
-<title>The <guimenu>Settings</guimenu> menu</title>
+<title>The <guimenu>Settings</guimenu> Menu</title>
 
 <variablelist>
 <varlistentry>
 <term>
 <menuchoice>
 <guimenu>Settings</guimenu>
-<guimenuitem>Change Nick Name...</guimenuitem>
+<guimenuitem>Change Nickname...</guimenuitem>
 </menuchoice>
 </term>
 <listitem>
 <para>
-<action>Change the default Nick Name.</action>
-The default is on.
+<action>Change the default nickname.</action>
 </para>
 </listitem>
 </varlistentry>
@@ -426,7 +417,7 @@ default is on.
 </sect1>
 
 <sect1 id="help-menu">
-<title>The <guimenu>Help</guimenu> menu</title>
+<title>The <guimenu>Help</guimenu> Menu</title>
 
 &help.menu.documentation;
 
@@ -575,4 +566,37 @@ Nils Trzebin <email>nils.trzebin@stud.uni-hannover.de</email>
 &underGPL;
 
 </chapter>
+
+<appendix id="installation">
+<title>Installation</title>
+ 
+&install.intro.documentation;
+ 
+ 
+<sect1 id="Compilation">
+<title>Compilation and Installation</title>
+ 
+&install.compile.documentation;
+ 
+</sect1>
+</appendix>
+ 
+&documentation.index; 
 </book>
+<!--
+Local Variables:
+mode: sgml
+sgml-minimize-attributes:nil
+sgml-general-insert-case:lower
+sgml-omittag:t
+sgml-shorttag:t
+sgml-namecase-general:t
+sgml-always-quote-attributes:t
+sgml-indent-step:0
+sgml-indent-data:nil
+sgml-parent-document:nil
+sgml-exposed-tags:nil
+sgml-local-catalogs:nil
+sgml-local-ecat-files:nil
+End:
+-->
