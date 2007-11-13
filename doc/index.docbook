@@ -19,6 +19,14 @@
 &Nikolas.Zimmermann; &Nikolas.Zimmermann.mail;
 </author>
 
+<author>
+<firstname>Anton</firstname>
+<surname>Brondz</surname>
+<affiliation>
+<address><email>dinolinux@gmail.com</email></address>
+</affiliation>
+</author>
+
 <othercredit role="reviewer">
 &Frerich.Raabe;
 <!-- <contrib>Reviewer</contrib> -->
@@ -68,29 +76,21 @@
 
 <sect1 id="features">
 <title>Features</title>
-<itemizedlist>
-<listitem><para>Network Gaming (both stand-alone and via GGZ)</para></listitem>
-<listitem><para>Computer Player (AI)</para></listitem>
-<listitem><para>Sounds</para></listitem>
-<listitem><para>Chat</para></listitem>
-<listitem><para>Statistics</para></listitem>
-<listitem><para>Highscore List</para></listitem>
-</itemizedlist>
-
-<tip>
 <para>
-&kbattleship; uses an &XML; based communication protocol so you can write
-clients for every platform and in any language.  If you want to write
-one in your favorite programming language or/and environment, contact
-us. We would really like to hear of it.
+Game type: Strategy, Board
+Number of players: Two
 </para>
-</tip>
+
+<para>
+&kbattleship; is a Battle Ship game for &kde;. Ships are placed on a board which represents the sea. Players try to hit each others
+ships in turns without knowing where they are placed. The first player to destroy all ships wins the game.
+</para>
 </sect1>
 
 </chapter>
 
-<chapter id="using-kbattleship">
-<title>Using &kbattleship;</title>
+<chapter id="howtoplay">
+<title>How to Play</title>
 
 <para>
 If you want to play &kbattleship;, you will need two players, either play
@@ -145,6 +145,11 @@ to rotate them 90 degrees, click the &RMB; before the placement.
 </para>
 
 <para>
+When a ship is hit, fire will break out on it. To sink it, hit all the squares it
+occupies. A sunk ship will appear faded.
+</para>
+
+<para>
 Now you can use the &LMB; to fire on the battle area of your enemy. The status bar indicates
 who is about to shoot. 
 </para>
@@ -161,14 +166,32 @@ The first player to destroy all their opponents ships wins the game.
 
 </chapter>
 
-<chapter id="multiplayer">
-<title>Multiplayer support</title>
+<chapter id="rulestips">
+<title>Game Rules, Strategies and Tips</title>
+<sect1 id="rules">
+<title>Rules</title>
+<itemizedlist>
+<listitem><para>A player can only fire one shot per turn.</para></listitem>
+<listitem><para>Players must place all their ships.</para></listitem>
+<listitem><para>Ships can not be moved once placed.</para></listitem>
+<listitem><para>A ship is sunk when all the squares it occupies are hit.</para></listitem>
+</itemizedlist>
+</sect1>
 
-<para>
-Playing online against other humans was already discussed in the
-previous chapter. However, the game also supports another online
-mode.
-</para>
+<sect1 id="strattips">
+<title>Strategies and Tips</title>
+<itemizedlist>
+<listitem><para>Never place ships next to one another.</para></listitem>
+<listitem><para>Once you hit a ship, try shooting around the place you hit.</para></listitem>
+<listitem><para>Try to place ships away from the edges of the board.</para></listitem>
+<listitem><para>Small ships are harder to hit, make sure you place them where they are hard to find.</para></listitem>
+<listitem><para>Think before you shoot. Hits on water gives less points.</para></listitem>
+</itemizedlist>
+</sect1>
+
+
+<sect1 id="multiplayer">
+<title>Multiplayer support</title>
 
 <para>
 &kbattleship; can be played online on any GGZ Gaming Zone site. You can
@@ -185,6 +208,7 @@ human player or a computer player. The latter one might behave
 differently from the computer player included in &kbattleship;.
 </para>
 
+</sect1>
 </chapter>
 
 <chapter id="menu-reference">
@@ -407,6 +431,67 @@ default is on.
 &help.menu.documentation;
 
 </sect1>
+</chapter>
+
+<chapter id="faq">
+<title>Frequently Asked Questions</title>
+
+<qandaset>
+
+<qandaentry>
+<question>
+<para>
+How do I start a new game?
+</para>
+</question>
+<answer>
+<para>
+Press the New button, select New from the Game menu or press 
+<keycombo action="simul">&Ctrl;<keycap>N</keycap></keycombo>
+</para>
+</answer>
+</qandaentry>
+
+<qandaentry>
+<question>
+<para>
+I'm not sure where to shoot, can I get a hint?
+</para>
+</question>
+<answer>
+<para>
+No, there is no hint system in &kbattleship;.
+</para>
+</answer>
+</qandaentry>
+
+<qandaentry>
+<question>
+<para>
+How can I rotate a ship?
+</para>
+</question>
+<answer>
+<para>
+Move the ship where you want to place it, then press &RMB;
+</para>
+</answer>
+</qandaentry>
+
+<qandaentry>
+<question>
+<para>
+Can I change how the game looks?
+</para>
+</question>
+<answer>
+<para>
+No, the theme is not changeable.
+</para>
+</answer>
+</qandaentry>
+
+</qandaset>
 </chapter>
 
 <chapter id="credits">
