@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" ?>
+<?xml version="1.0" ?>
 <!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.2-Based Variant V1.1//EN" "dtd/kdex.dtd" [
   <!ENTITY kappname "&kbattleship;">
   <!ENTITY package "kdegames">
@@ -52,8 +52,8 @@
 <holder>Kevin Krammer</holder>
 </copyright>
 
-<date>2005-12-14</date>
-<releaseinfo>1.1</releaseinfo>
+<date>2007-11-14</date>
+<releaseinfo>2.0</releaseinfo>
 
 <abstract>
 <para>
