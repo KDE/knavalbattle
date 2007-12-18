@@ -40,7 +40,7 @@ int main(int argc, char** argv)
     aboutData.addCredit(ki18n("Elmar Hoefner"), ki18n("GFX"), "elmar.hoefner@uibk.ac.at");
     aboutData.addCredit(ki18n("Lukas Tinkl"), ki18n("Non-Latin1 Support"), "lukas@kde.org");
     aboutData.addCredit(ki18n("Malte Starostik"), ki18n("Various improvements"), "malte.starostik@t-online.de");
-    aboutData.addCredit(ki18n("Albert Astals Cid"), ki18n("Various improvements and bugfixes"), "tsdgeos@terra.es");
+    aboutData.addCredit(ki18n("Albert Astals Cid"), ki18n("Various improvements and bugfixes"), "aacid@kde.org");
     aboutData.addCredit(ki18n("John Tapsell"), ki18n("Various improvements and bugfixes"), "john@geola.co.uk");
     aboutData.addCredit(ki18n("Inge Wallin"), ki18n("Bugfixes and refactoring"), "inge@lysator.liu.se");
     aboutData.addCredit(ki18n("Jakub Stachowski"), ki18n("DNS-SD discovery"), "qbast@go2.pl");
