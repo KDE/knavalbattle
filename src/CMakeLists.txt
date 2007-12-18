@@ -41,6 +41,15 @@ set(kbattleship_SRCS
 
 
 kde4_add_kcfg_files(kbattleship_SRCS settingsbase.kcfgc)
+
+set(kbattleship_icons
+    ${CMAKE_CURRENT_SOURCE_DIR}/../data/pictures/hi16-app-kbattleship.png
+    ${CMAKE_CURRENT_SOURCE_DIR}/../data/pictures/hi32-app-kbattleship.png
+    ${CMAKE_CURRENT_SOURCE_DIR}/../data/pictures/hi48-app-kbattleship.png
+    ${CMAKE_CURRENT_SOURCE_DIR}/../data/pictures/hi64-app-kbattleship.png
+    ${CMAKE_CURRENT_SOURCE_DIR}/../data/pictures/hi128-app-kbattleship.png
+)
+kde4_add_win32_app_icon(kbattleship_SRCS ${kbattleship_icons})
 kde4_add_executable(kbattleship ${kbattleship_SRCS} ${kwelcomescreen_SRCS})
 
 target_link_libraries(kbattleship ${KDE4_KDEUI_LIBS} ${KDE4_PHONON_LIBS} kdegames ${KGGZGAMES_LIBS})
