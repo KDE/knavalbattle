@@ -9,7 +9,6 @@
 
 #include "statswidget.h"
 
-#include <QColor>
 
 #include "stats.h"
 #include "kbsrenderer.h"

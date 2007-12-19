@@ -11,7 +11,6 @@
 #include "button.h"
 
 #include <QImage>
-#include <QLineEdit>
 #include <kdebug.h>
 #include <math.h> // fabs
 

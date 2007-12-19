@@ -13,7 +13,6 @@
 #include <klocale.h>
 #include <kaboutdata.h>
 #include <kcmdlineargs.h>
-#include <QMetaType>
 
 #include "mainwindow.h"
 #include "coord.h"

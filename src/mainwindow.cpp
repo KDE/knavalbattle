@@ -10,8 +10,6 @@
 
 #include "mainwindow.h"
 
-#include <QResizeEvent>
-#include <QHBoxLayout>
 
 #include <KAction>
 #include <KActionCollection>

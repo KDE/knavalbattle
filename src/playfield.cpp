@@ -11,13 +11,8 @@
 
 #include "playfield.h"
 
-#include <QLabel>
-#include <QLayout>
-#include <QResizeEvent>
-#include <QSignalMapper>
 #include <QStatusBar>
-#include <QTcpServer>
-#include <QTcpSocket>
+#include <QVBoxLayout>
 
 #include <KInputDialog>
 #include <KLocale>

@@ -13,7 +13,6 @@
 #include <kgamecanvas.h>
 #include <QMultiHash>
 #include <QTime>
-#include <QTimer>
 #include "coord.h"
 #include "spritefactory.h"
 #include "grid.h"

@@ -12,7 +12,6 @@
 #include "ai/dummyai.h"
 #include "shot.h"
 
-#include <QTimer>
 
 #include <KGameDifficulty>
 #include <KIcon>

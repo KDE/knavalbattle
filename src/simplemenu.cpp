@@ -9,10 +9,7 @@
 
 #include "simplemenu.h"
 
-#include <QLabel>
-#include <QStatusBar>
 #include <QTcpSocket>
-#include <QTcpServer>
 
 #include <KLocalizedString>
 #include <KIcon>

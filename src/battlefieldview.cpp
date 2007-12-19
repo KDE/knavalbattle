@@ -11,7 +11,6 @@
 
 #include <kdebug.h>
 #include <kicon.h>
-#include <QList>
 
 #include "kbsrenderer.h"
 #include "sprite.h"

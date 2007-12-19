@@ -10,13 +10,12 @@
 
 #include "networkdialog.h"
 
-#include <QGridLayout>
 #include <QLabel>
-#include <QLayout>
 #include <QSpinBox>
 #include <QTcpSocket>
 #include <QTcpServer>
-
+#include <QVBoxLayout>
+#include <QHBoxLayout>
 #include <KLineEdit>
 #include <KLocalizedString>
 #include <KPushButton>
