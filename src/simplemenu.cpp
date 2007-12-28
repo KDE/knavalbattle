@@ -29,9 +29,9 @@
 #include "aientity.h"
 #include "welcomescreen.h"
 
-const char* SimpleMenu::iconLocal = "user-female";
-const char* SimpleMenu::iconServer = "services";
-const char* SimpleMenu::iconClient = "network";
+const char* SimpleMenu::iconLocal = "user-identity";
+const char* SimpleMenu::iconServer = "network-server";
+const char* SimpleMenu::iconClient = "network-connect";
 
 SimpleMenu::SimpleMenu(QWidget* parent, WelcomeScreen* screen)
 : QObject(parent)
