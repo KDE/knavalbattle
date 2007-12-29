@@ -198,7 +198,7 @@ void NetworkEntity::visit(const ChatMessage& msg)
 
 KIcon NetworkEntity::icon() const
 {
-    return KIcon("network");
+    return KIcon("network-workgroup");
 }
 
 #include "networkentity.moc"
