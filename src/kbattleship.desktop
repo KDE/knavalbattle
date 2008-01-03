@@ -18,6 +18,7 @@ Name[sv]=Kbattleship
 Name[ta]=கேபாட்டில்ஷிப்
 Name[tg]=KҶанги Киштиҳо
 Name[tr]=Amiral Battı
+Name[uk]=Морський бій
 Name[x-test]=xxKBattleshipxx
 Name[zh_TW]=KBattleship 戰艦
 Exec=kbattleship -caption "%c"
