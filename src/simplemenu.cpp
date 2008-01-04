@@ -43,9 +43,9 @@ SimpleMenu::SimpleMenu(QWidget* parent, WelcomeScreen* screen)
 {
     if (m_screen) {    
         // create buttons
-        m_local_game_btn = m_screen->addButton(0, 0, KIcon(iconLocal), i18n("Single player"));
-        m_server_btn = m_screen->addButton(0, 1, KIcon(iconServer), i18n("Host network game"));
-        m_client_btn = m_screen->addButton(0, 2, KIcon(iconClient), i18n("Connect to network game"));
+        m_local_game_btn = m_screen->addButton(0, 0, KIcon(iconLocal), i18n("Single Player"));
+        m_server_btn = m_screen->addButton(0, 1, KIcon(iconServer), i18n("Host Network Game"));
+        m_client_btn = m_screen->addButton(0, 2, KIcon(iconClient), i18n("Connect to Network Game"));
         
         // create connections
         connect(m_local_game_btn, SIGNAL(clicked()),
