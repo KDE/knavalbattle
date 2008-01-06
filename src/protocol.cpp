@@ -88,7 +88,7 @@ public:
     virtual void visit(const GameOverMessage& msg)
     {
         setType(msg);
-        foreach (GameOverMessage::ShipInfo ship, msg.ships()) {
+        foreach (const GameOverMessage::ShipInfo &ship, msg.ships()) {
             QStringList data;
             data << QString::number(ship.pos.x)
                  << QString::number(ship.pos.y)
