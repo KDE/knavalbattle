@@ -22,14 +22,13 @@
 
 #include <kggzmod/module.h>
 #include <kggzmod/player.h>
-#include <kggznet/kggzraw.h>
 
 #include "playfield.h"
 #include "settings.h"
 #include "simplemenu.h"
 
 MainWindow::MainWindow()
-: m_mod(0), m_raw(0), m_fd(-1), m_ggzsetup(false)
+: m_mod(0), m_fd(-1), m_ggzsetup(false)
 {
     m_main = new PlayField(this, statusBar());
     

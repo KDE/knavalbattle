@@ -21,8 +21,6 @@ namespace KGGZMod
     class Event;
 }
 
-class KGGZRaw;
-
 class MainWindow : public KXmlGuiWindow
 {
 Q_OBJECT
@@ -40,7 +38,6 @@ private slots:
     void welcomeScreen();
 private:
     KGGZMod::Module *m_mod;
-    KGGZRaw *m_raw;
     int m_fd;
     bool m_ggzsetup;
 };
