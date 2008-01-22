@@ -188,7 +188,6 @@ void NetworkDialog::serverOK()
     delete server;
     
     // we're done
-    server->deleteLater();    
     accept();
 }
 
