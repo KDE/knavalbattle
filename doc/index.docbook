@@ -437,7 +437,7 @@ How do I start a new game?
 </question>
 <answer>
 <para>
-Press the New button, select New from the Game menu or press 
+Press the <guibutton>New</guibutton> button, select <guimenuitem>New</guimenuitem> from the <guimenu>Game</guimenu> menu or press 
 <keycombo action="simul">&Ctrl;<keycap>N</keycap></keycombo>
 </para>
 </answer>
