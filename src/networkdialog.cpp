@@ -16,16 +16,20 @@
 #include <QTcpServer>
 #include <QVBoxLayout>
 #include <QHBoxLayout>
+#include <QComboBox>
 #include <KLineEdit>
 #include <KLocalizedString>
 #include <KPushButton>
 #include <KSeparator>
+#include <DNSSD/ServiceBrowser>
+#include <DNSSD/ServiceModel>
+#include <DNSSD/PublicService>
 
 #include "settings.h"
 
 NetworkDialog::NetworkDialog(bool client, QWidget* parent)
 : KDialog(parent)
-, m_client(client)
+, m_publisher(0), m_client(client)
 {
     setButtons(Ok | Cancel);
 
@@ -33,7 +37,7 @@ NetworkDialog::NetworkDialog(bool client, QWidget* parent)
     QWidget* main = new QWidget(this);
     QHBoxLayout* tmpLayout;
     QVBoxLayout* mainLayout = new QVBoxLayout;
-    
+
     // feedback
     m_feedback = new QLabel("", this);
     m_feedback->setAlignment(Qt::AlignHCenter);
@@ -56,10 +60,24 @@ NetworkDialog::NetworkDialog(bool client, QWidget* parent)
     tmpLayout->addStretch();
     tmpLayout->addWidget(m_nickname);
     mainLayout->addItem(tmpLayout);
-    
-    // hostname
+
+    // client part
     if (m_client) {
-        tmp = new QLabel(i18n("&Hostname:"), main);
+        tmp = new QLabel(i18n("&Join game:"), main);
+        m_games=new QComboBox(main);
+        DNSSD::ServiceBrowser* browser=new DNSSD::ServiceBrowser("_kbattleship._tcp", true);
+        m_games->setModel(new DNSSD::ServiceModel(browser, this));
+        tmp->setBuddy(m_games);
+        tmpLayout = new QHBoxLayout;
+        tmpLayout->addWidget(tmp);
+        tmpLayout->addWidget(m_games);
+        connect(m_games, SIGNAL(currentIndexChanged(int)), this, SLOT(serviceSelected(int)));
+        mainLayout->addItem(tmpLayout);
+        
+        QWidget* frame=new QWidget(main);
+        QVBoxLayout* frameLayout = new QVBoxLayout;
+        
+        tmp = new QLabel(i18n("&Hostname:"), frame);
         m_hostname = new KLineEdit(main);
         m_hostname->setClearButtonShown(true);
         m_hostname->setText(Settings::hostname());
@@ -68,23 +86,48 @@ NetworkDialog::NetworkDialog(bool client, QWidget* parent)
         tmpLayout->addWidget(tmp);
         tmpLayout->addStretch();
         tmpLayout->addWidget(m_hostname);
-        mainLayout->addItem(tmpLayout);
+        frameLayout->addItem(tmpLayout);
+
+        // port
+        tmp = new QLabel(i18n("&Port:"), main);
+        m_port = new QSpinBox(main);
+        m_port->setRange(1, 99999);
+        m_port->setValue(Settings::port());
+        tmp->setBuddy(m_port);
+        tmpLayout = new QHBoxLayout;
+        tmpLayout->addWidget(tmp);
+        tmpLayout->addStretch();
+        tmpLayout->addWidget(m_port);
+        frameLayout->addItem(tmpLayout);
+        frame->setLayout(frameLayout);
+        
+        mainLayout->addWidget(frame);
+        frame->setVisible(false);
+        
+        QPushButton* sw=new QPushButton(i18n("&Enter server address manually"), main);
+        sw->setCheckable(true);
+        connect(sw,SIGNAL(toggled(bool)), frame, SLOT(setVisible(bool)));
+        connect(sw,SIGNAL(toggled(bool)), m_games, SLOT(setDisabled(bool)));
+        mainLayout->addWidget(sw);
+        
     }
     else {
         m_hostname = 0;
+        m_games = 0;
+    
+        // port
+        tmp = new QLabel(i18n("&Port:"), main);
+        m_port = new QSpinBox(main);
+        m_port->setRange(1, 99999);
+        m_port->setValue(Settings::port());
+        tmp->setBuddy(m_port);
+        tmpLayout = new QHBoxLayout;
+        tmpLayout->addWidget(tmp);
+        tmpLayout->addStretch();
+        tmpLayout->addWidget(m_port);
+        mainLayout->addItem(tmpLayout);
     }
     
-    // port
-    tmp = new QLabel(i18n("&Port:"), main);
-    m_port = new QSpinBox(main);
-    m_port->setRange(1, 99999);
-    m_port->setValue(Settings::port());
-    tmp->setBuddy(m_port);
-    tmpLayout = new QHBoxLayout;
-    tmpLayout->addWidget(tmp);
-    tmpLayout->addStretch();
-    tmpLayout->addWidget(m_port);
-    mainLayout->addItem(tmpLayout);
     
     main->setLayout(mainLayout);
     setMainWidget(main);
@@ -95,6 +138,11 @@ NetworkDialog::NetworkDialog(bool client, QWidget* parent)
     enableButtonApply(false);
 }
 
+NetworkDialog::~NetworkDialog()
+{
+    delete m_publisher;
+}
+
 void NetworkDialog::savePreferences()
 {
     Settings::setNickname(nickname());
@@ -103,6 +151,16 @@ void NetworkDialog::savePreferences()
     }
     Settings::setPort(port());
     Settings::self()->writeConfig();
+}
+
+void NetworkDialog::serviceSelected(int idx)
+{
+    if (idx==-1) {
+        return;
+    }
+    DNSSD::RemoteService::Ptr service=m_games->itemData(idx,DNSSD::ServiceModel::ServicePtrRole ).value<DNSSD::RemoteService::Ptr>();
+    m_hostname->setText(service->hostName());
+    m_port->setValue(service->port());
 }
 
 QString NetworkDialog::hostname() const
@@ -148,6 +206,8 @@ void NetworkDialog::slotButtonClicked(int code)
             m_feedback->setText(i18n("Waiting for an incoming connection..."));        
             QTcpServer* server = new QTcpServer;
             connect(server, SIGNAL(newConnection()), this, SLOT(serverOK()));
+            m_publisher=new DNSSD::PublicService(nickname(), "_kbattleship._tcp", m_port->value());
+            m_publisher->publishAsync();
             
             server->listen(QHostAddress::Any, static_cast<quint16>(m_port->value()));
         }

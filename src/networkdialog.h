@@ -17,6 +17,8 @@ class KLineEdit;
 class QSpinBox;
 class QLabel;
 class QTcpSocket;
+class QComboBox;
+namespace DNSSD { class PublicService; }
 
 class NetworkDialog : public KDialog
 {
@@ -26,6 +28,8 @@ Q_OBJECT
     QTcpSocket* m_socket;
     QSpinBox* m_port;
     QLabel* m_feedback;
+    QComboBox* m_games;
+    DNSSD::PublicService* m_publisher;
     bool m_client;
     
     QString hostname() const;
@@ -36,10 +40,13 @@ private slots:
     void clientOK();
     void clientError();
     void serverOK();
+    void serviceSelected(int idx);
+
 protected:
     void slotButtonClicked(int);
 public:
     explicit NetworkDialog(bool client, QWidget* parent = 0);
+    ~NetworkDialog();
     
     QString nickname() const;
     QTcpSocket* socket() const;
