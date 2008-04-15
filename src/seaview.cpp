@@ -344,6 +344,17 @@ WelcomeScreen* SeaView::screen(Sea::Player player) const
     return m_fields[player]->screen();
 }
 
+void SeaView::toggleLeftGrid(bool show)
+{
+    m_fields[0]->drawGrid(show);
+}
+
+void SeaView::toggleRightGrid(bool show)
+{
+    m_fields[1]->drawGrid(show);
+}
+
+
 void SeaView::buttonClicked(Button* button)
 {
     Q_UNUSED( button );

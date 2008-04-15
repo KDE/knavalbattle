@@ -35,6 +35,7 @@ static const int MINIMUM_HEIGHT = 400;
 PlayField::PlayField(QWidget* parent, QStatusBar* sbar)
 : QWidget(parent)
 , m_status_bar(sbar)
+, m_show_endofgame_message(true)
 {
     setMinimumSize(static_cast<int>(MINIMUM_HEIGHT * 1.6), MINIMUM_HEIGHT);
     QVBoxLayout* layout = new QVBoxLayout;
@@ -186,9 +187,15 @@ void PlayField::gameOver(Sea::Player winner)
         }
         
         m_status_bar->showMessage(i18n("You win!"));
+        if (m_show_endofgame_message) {
+            KMessageBox::information(this, i18n("You win. Excellent!"));
+        }
     }
     else {
         m_status_bar->showMessage(i18n("You lose."));
+        if (m_show_endofgame_message) {
+            KMessageBox::information(this, i18n("You lose. Try harder next time!"));
+        }
     }
     
     // When we have finished, show again the welcome screen
@@ -316,6 +323,21 @@ void PlayField::createClient()
 {
     createAuxMenu()->createClient();
 }
+
+void PlayField::toggleEndOfGameMessage(bool show)
+{
+    m_show_endofgame_message = show;
+}
+
+void PlayField::toggleLeftGrid(bool show)
+{
+    m_sea->toggleLeftGrid(show);
+}
+
+void PlayField::toggleRightGrid(bool show)
+{
+    m_sea->toggleRightGrid(show);
+}        
 
 #include "playfield.moc"
 

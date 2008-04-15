@@ -13,6 +13,9 @@
   <Menu name="settings">
     <Action name="options_nickname" />
     <Action name="options_sounds" />
+    <Action name="options_show_endgame_message" />
+    <Action name="options_showleftgrid" />
+    <Action name="options_showrightgrid" />
   </Menu>
 </MenuBar>
 

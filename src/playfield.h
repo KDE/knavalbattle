@@ -32,6 +32,7 @@ Q_OBJECT
     ChatWidget* m_chat;
     SimpleMenu* m_menu;
     QStatusBar* m_status_bar;
+    bool m_show_endofgame_message;
     
     void startGame();
     void endGame();
@@ -62,6 +63,10 @@ public slots:
     void localGame();
     void createServer();
     void createClient();
+
+    void toggleEndOfGameMessage(bool show);
+    void toggleLeftGrid(bool show);
+    void toggleRightGrid(bool show);
 signals:
     void gameFinished();
     void welcomeScreen();

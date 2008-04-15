@@ -26,6 +26,7 @@ BattleFieldView::BattleFieldView(KGameCanvasWidget* parent, KBSRenderer* rendere
 , m_gridSize(gridSize)
 , m_impact(0)
 , m_last_hit(0)
+, m_drawGrid(true)
 {
     m_background_lower = new KGameCanvasPixmap(
         m_renderer->render(bgID + "-layer1", false, m_gridSize, m_gridSize), this);
@@ -56,6 +57,12 @@ QSize BattleFieldView::size() const
     return m_renderer->size() * m_gridSize;
 }
 
+void BattleFieldView::drawGrid(bool show)
+{
+    m_drawGrid = show;
+    update();
+}
+
 void BattleFieldView::update()
 {
     // update welcome screen
@@ -63,8 +70,29 @@ void BattleFieldView::update()
     m_screen->resize(size());
 
     // update background
-    m_background_lower->setPixmap(
-        m_renderer->render(m_bgID + "-layer1", false, m_gridSize, m_gridSize));
+    if(m_drawGrid) {
+        qreal width, height;
+        qreal distw, disth;
+        width = size().width();
+        height = size().height();
+        distw = width / m_gridSize;
+        disth = height / m_gridSize;
+        QPixmap pixgrid = m_renderer->render(m_bgID + "-layer1", false, m_gridSize, m_gridSize);
+        QPainter p;
+        p.begin(&pixgrid);
+        for(int i = 0; i < m_gridSize - 1; i++) {
+            // vertical lines
+            p.drawLine(QPointF((i + 1) * distw, 0.0), QPointF(( i + 1) * distw, height));
+            // horizontal lines
+            p.drawLine(QPointF(0.0, (i + 1) * disth), QPointF(width, (i + 1) * disth));
+        }
+        p.end();
+        m_background_lower->setPixmap(pixgrid);
+    }
+    else {
+        m_background_lower->setPixmap(
+            m_renderer->render(m_bgID + "-layer1", false, m_gridSize, m_gridSize));
+    }
     m_background_lower->moveTo(0, 0);
     m_background->setPixmap(
         m_renderer->render(m_bgID + "-layer2", false, m_gridSize, m_gridSize));

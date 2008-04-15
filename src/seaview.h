@@ -63,6 +63,9 @@ public:
 
     WelcomeScreen* globalScreen() const;
     WelcomeScreen* screen(Sea::Player player) const;
+
+    void toggleLeftGrid(bool show);
+    void toggleRightGrid(bool show);
 protected:
     virtual void mouseMoveEvent(QMouseEvent*);
     virtual void mousePressEvent(QMouseEvent*);

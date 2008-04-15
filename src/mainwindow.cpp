@@ -84,6 +84,20 @@ void MainWindow::setupActions()
     action = new KToggleAction(i18n("&Play Sounds"), this);
     actionCollection()->addAction("options_sounds", action);
     connect(action, SIGNAL(triggered(bool)), m_main, SLOT(toggleSounds(bool)));
+    // config end of game message
+    action = new KToggleAction(i18n("Show End-of-Game Message"), this);
+    action->setChecked(true);
+    actionCollection()->addAction("options_show_endgame_message", action);
+    connect(action, SIGNAL(triggered(bool)), m_main, SLOT(toggleEndOfGameMessage(bool)));
+    // actions for grid
+    action = new KToggleAction(i18n("Show &Left Grid"), this);
+    action->setChecked(true);
+    actionCollection()->addAction("options_showleftgrid", action);
+    connect(action, SIGNAL(triggered(bool)), m_main, SLOT(toggleLeftGrid(bool)));
+    action = new KToggleAction(i18n("Show &Right Grid"), this);
+    action->setChecked(true);
+    actionCollection()->addAction("options_showrightgrid", action);
+    connect(action, SIGNAL(triggered(bool)), m_main, SLOT(toggleRightGrid(bool)));
     
     setupGUI();
 }

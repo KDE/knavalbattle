@@ -35,6 +35,7 @@ class BattleFieldView : public KGameCanvasGroup
     int m_gridSize;
     Sprite* m_impact;
     Sprite* m_last_hit;
+    bool m_drawGrid;
     
     struct Preview {
         Coord pos;
@@ -55,7 +56,8 @@ class BattleFieldView : public KGameCanvasGroup
 public:
     BattleFieldView(KGameCanvasWidget* parent, KBSRenderer* renderer, const QString& bgID, int gridSize);
     QSize size() const;
-    
+
+    void drawGrid(bool show);
     void update();
     
     void setPreview(const QPoint& pos, Ship* ship);
