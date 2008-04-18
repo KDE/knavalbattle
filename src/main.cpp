@@ -23,7 +23,7 @@ int main(int argc, char** argv)
     KAboutData aboutData("kbattleship", 0, ki18n("KBattleship"), "2.0", 
         ki18n("The KDE Battleship clone"), KAboutData::License_GPL, 
         ki18n("(c) 2000-2005  Nikolas Zimmermann, Daniel Molkentin\n"
-              "(c) 2007 Paolo Capriotti"));
+              "(c) 2007 Paolo Capriotti"), KLocalizedString(), "http://games.kde.org/kbattleship" );
     
     aboutData.addAuthor(ki18n("Paolo Capriotti"), ki18n("Current maintainer"), "p.capriotti@gmail.com");
     aboutData.addAuthor(ki18n("Nikolas Zimmermann"), ki18n("Project Founder, GUI Handling, Client/Server"), "wildfox@kde.org");
