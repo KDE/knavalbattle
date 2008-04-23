@@ -165,7 +165,7 @@ The first player to destroy all their opponents ships wins the game.
 <itemizedlist>
 <listitem><para>A player can only fire one shot per turn.</para></listitem>
 <listitem><para>Players must place all their ships.</para></listitem>
-<listitem><para>Ships can not be moved once placed.</para></listitem>
+<listitem><para>Ships cannot be moved once placed.</para></listitem>
 <listitem><para>A ship is sunk when all the squares it occupies are hit.</para></listitem>
 </itemizedlist>
 </sect1>
