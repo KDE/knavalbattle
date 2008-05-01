@@ -56,17 +56,6 @@ PlayField::PlayField(QWidget* parent, QStatusBar* sbar)
     
     m_player = new AudioPlayer(this);
     m_player->setActive(Settings::enableSounds());
-
-    m_highscores = new KScoreDialog(
-        KScoreDialog::Name | KScoreDialog::Score | 
-        KScoreDialog::Custom1 | 
-        KScoreDialog::Custom2 | 
-        KScoreDialog::Custom3, 
-        this);
-    m_highscores->setConfigGroup(KGameDifficulty::levelString());
-    m_highscores->addField(KScoreDialog::Custom1, i18n("Shots"), "shots");
-    m_highscores->addField(KScoreDialog::Custom2, i18n("Hits"), "hits");
-    m_highscores->addField(KScoreDialog::Custom3, i18n("Misses"), "water");
 }
 
 PlayField::~PlayField()
@@ -162,7 +151,19 @@ void PlayField::restart(bool ask)
 
 void PlayField::highscores()
 {
-    m_highscores->exec();
+    KScoreDialog* highscoredialog = new KScoreDialog(
+            KScoreDialog::Name | KScoreDialog::Score | 
+            KScoreDialog::Custom1 | 
+            KScoreDialog::Custom2 | 
+            KScoreDialog::Custom3, 
+            this);
+    highscoredialog->setConfigGroup(KGameDifficulty::localizedLevelString());
+    highscoredialog->addLocalizedConfigGroupNames(KGameDifficulty::localizedLevelStrings());
+    highscoredialog->addField(KScoreDialog::Custom1, i18n("Shots"), "shots");
+    highscoredialog->addField(KScoreDialog::Custom2, i18n("Hits"), "hits");
+    highscoredialog->addField(KScoreDialog::Custom3, i18n("Misses"), "water");
+    
+    highscoredialog->exec();
 }
 
 void PlayField::gameOver(Sea::Player winner)
@@ -171,7 +172,17 @@ void PlayField::gameOver(Sea::Player winner)
         const Stats* stats = m_menu->player(0)->stats();
        
         if (stats && qobject_cast<const AIEntity*>(m_menu->player(1))) {
-            m_highscores->setConfigGroup(KGameDifficulty::levelString());
+            KScoreDialog* highscoredialog = new KScoreDialog(
+                    KScoreDialog::Name | KScoreDialog::Score | 
+                    KScoreDialog::Custom1 | 
+                    KScoreDialog::Custom2 | 
+                    KScoreDialog::Custom3, 
+                    this);
+            highscoredialog->setConfigGroup(KGameDifficulty::localizedLevelString());
+            highscoredialog->addLocalizedConfigGroupNames(KGameDifficulty::localizedLevelStrings());
+            highscoredialog->addField(KScoreDialog::Custom1, i18n("Shots"), "shots");
+            highscoredialog->addField(KScoreDialog::Custom2, i18n("Hits"), "hits");
+            highscoredialog->addField(KScoreDialog::Custom3, i18n("Misses"), "water");
         
             KScoreDialog::FieldInfo info;
             info[KScoreDialog::Name] = m_menu->player(0)->nick();
@@ -180,8 +191,11 @@ void PlayField::gameOver(Sea::Player winner)
             info[KScoreDialog::Custom2] = QString::number(stats->hits());
             info[KScoreDialog::Custom3] = QString::number(stats->misses());
         
-            if (m_highscores->addScore(info, KScoreDialog::AskName)) {
-                highscores();
+            int temp = highscoredialog->addScore(info, KScoreDialog::AskName);
+            kDebug() << "temp =" << temp;
+            //if (highscoredialog->addScore(info, KScoreDialog::AskName)) {
+            if (temp != 0) {
+                highscoredialog->exec();
                 return;
             }
         }

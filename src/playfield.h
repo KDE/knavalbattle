@@ -16,7 +16,6 @@
 
 class SeaView;
 class Controller;
-class KScoreDialog;
 class AudioPlayer;
 class ChatWidget;
 class SimpleMenu;
@@ -27,7 +26,6 @@ class PlayField : public QWidget
 Q_OBJECT
     SeaView* m_sea;
     Controller* m_controller;
-    KScoreDialog* m_highscores;
     AudioPlayer* m_player;
     ChatWidget* m_chat;
     SimpleMenu* m_menu;
