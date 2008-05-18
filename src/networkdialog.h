@@ -13,11 +13,11 @@
 
 #include <KDialog>
 
+class KComboBox;
 class KLineEdit;
 class QSpinBox;
 class QLabel;
 class QTcpSocket;
-class QComboBox;
 namespace DNSSD { class PublicService; }
 
 class NetworkDialog : public KDialog
@@ -28,7 +28,7 @@ Q_OBJECT
     QTcpSocket* m_socket;
     QSpinBox* m_port;
     QLabel* m_feedback;
-    QComboBox* m_games;
+    KComboBox* m_games;
     DNSSD::PublicService* m_publisher;
     bool m_client;
     

@@ -16,7 +16,7 @@
 #include <QTcpServer>
 #include <QVBoxLayout>
 #include <QHBoxLayout>
-#include <QComboBox>
+#include <KComboBox>
 #include <KLineEdit>
 #include <KLocalizedString>
 #include <KPushButton>
@@ -64,7 +64,7 @@ NetworkDialog::NetworkDialog(bool client, QWidget* parent)
     // client part
     if (m_client) {
         tmp = new QLabel(i18n("&Join game:"), main);
-        m_games=new QComboBox(main);
+        m_games=new KComboBox(main);
         DNSSD::ServiceBrowser* browser=new DNSSD::ServiceBrowser("_kbattleship._tcp", true);
         m_games->setModel(new DNSSD::ServiceModel(browser, this));
         tmp->setBuddy(m_games);
