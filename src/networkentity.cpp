@@ -7,8 +7,9 @@
   (at your option) any later version.
 */
 
-#include "battlefield.h"
 #include "networkentity.h"
+
+#include "battlefield.h"
 #include "shot.h"
 #include "protocol.h"
 
