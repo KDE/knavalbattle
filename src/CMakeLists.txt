@@ -47,7 +47,7 @@ kde4_add_executable(kbattleship ${kbattleship_SRCS} ${kwelcomescreen_SRCS})
 
 target_link_libraries(kbattleship ${KDE4_KDEUI_LIBS} ${KDE4_PHONON_LIBS} kdegames ${KGGZGAMES_LIBS})
 
-install(TARGETS kbattleship  DESTINATION ${BIN_INSTALL_DIR} )
+install(TARGETS kbattleship  ${INSTALL_TARGETS_DEFAULT_ARGS} )
 install( FILES kbattleshipui.rc  DESTINATION  ${DATA_INSTALL_DIR}/kbattleship )
 install(FILES kbattleship.desktop DESTINATION ${XDG_APPS_INSTALL_DIR})
 
