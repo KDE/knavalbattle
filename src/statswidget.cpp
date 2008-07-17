@@ -154,3 +154,5 @@ void StatsWidget::setData(Stats* stats)
 }
 
 
+
+#include "statswidget.moc"
