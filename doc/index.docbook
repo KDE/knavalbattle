@@ -247,7 +247,7 @@ differently from the computer player included in &kbattleship;.
 <menuchoice>
 <shortcut action="simul">&Ctrl;<keycap>H</keycap></shortcut>
 <guimenu>Game</guimenu>
-<guimenuitem>Show High Scores...</guimenuitem>
+<guimenuitem>Show High Scores</guimenuitem>
 </menuchoice>
 </term>
 <listitem>
