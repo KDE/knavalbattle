@@ -159,6 +159,7 @@ void PlayField::highscores()
             this);
     highscoredialog->setConfigGroup(KGameDifficulty::localizedLevelString());
     highscoredialog->addLocalizedConfigGroupNames(KGameDifficulty::localizedLevelStrings());
+    highscoredialog->setConfigGroupWeights(KGameDifficulty::levelWeights());
     highscoredialog->addField(KScoreDialog::Custom1, i18n("Shots"), "shots");
     highscoredialog->addField(KScoreDialog::Custom2, i18n("Hits"), "hits");
     highscoredialog->addField(KScoreDialog::Custom3, i18n("Misses"), "water");
@@ -180,6 +181,7 @@ void PlayField::gameOver(Sea::Player winner)
                     this);
             highscoredialog->setConfigGroup(KGameDifficulty::localizedLevelString());
             highscoredialog->addLocalizedConfigGroupNames(KGameDifficulty::localizedLevelStrings());
+            highscoredialog->setConfigGroupWeights(KGameDifficulty::levelWeights());
             highscoredialog->addField(KScoreDialog::Custom1, i18n("Shots"), "shots");
             highscoredialog->addField(KScoreDialog::Custom2, i18n("Hits"), "hits");
             highscoredialog->addField(KScoreDialog::Custom3, i18n("Misses"), "water");
