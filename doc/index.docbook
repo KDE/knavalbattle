@@ -432,20 +432,6 @@ default is on.
 <qandaentry>
 <question>
 <para>
-How do I start a new game?
-</para>
-</question>
-<answer>
-<para>
-Press the <guibutton>New</guibutton> button, select <guimenuitem>New</guimenuitem> from the <guimenu>Game</guimenu> menu or press 
-<keycombo action="simul">&Ctrl;<keycap>N</keycap></keycombo>
-</para>
-</answer>
-</qandaentry>
-
-<qandaentry>
-<question>
-<para>
 I'm not sure where to shoot, can I get a hint?
 </para>
 </question>
@@ -464,7 +450,7 @@ How can I rotate a ship?
 </question>
 <answer>
 <para>
-Move the ship where you want to place it, then press &RMB;
+Move the ship where you want to place it, then press the &RMB;
 </para>
 </answer>
 </qandaentry>
