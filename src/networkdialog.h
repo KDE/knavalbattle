@@ -45,7 +45,7 @@ private slots:
 protected:
     void slotButtonClicked(int);
 public:
-    explicit NetworkDialog(bool client, QWidget* parent = 0);
+    explicit NetworkDialog(bool client, QWidget* parent = 0, const KUrl* url = 0);
     ~NetworkDialog();
     
     QString nickname() const;

@@ -21,12 +21,14 @@ namespace KGGZMod
     class Event;
 }
 
+class KUrl;
+
 class MainWindow : public KXmlGuiWindow
 {
 Q_OBJECT
     PlayField* m_main;
 public:
-    MainWindow();
+    explicit MainWindow(const KUrl& url);
 protected:
     void setupActions();
 private slots:

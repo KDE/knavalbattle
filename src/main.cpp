@@ -13,6 +13,7 @@
 #include <klocale.h>
 #include <kaboutdata.h>
 #include <kcmdlineargs.h>
+#include <kurl.h>
 
 #include "mainwindow.h"
 #include "coord.h"
@@ -47,16 +48,32 @@ int main(int argc, char** argv)
     KCmdLineArgs::init(argc, argv, &aboutData);
 
     KCmdLineOptions options;
+    options.add("!+[URL]", ki18n("URL of a KBattleship game server to connect to after startup"));
     KCmdLineArgs::addCmdLineOptions( options ); // Add our own options.
     KApplication app;
     
-    KGlobal::locale()->insertCatalog("libkdegames");
-    
     qRegisterMetaType<Coord>("Coord");
-    
-    MainWindow* window = new MainWindow();
+
+    KUrl url;
+    KCmdLineArgs* args = KCmdLineArgs::parsedArgs();
+
+    if (args->count() > 0) {
+        for (int i = 0; i < args->count(); ++i) {
+            url = KUrl(args->url(i));
+
+            if (!url.isValid())
+                continue;
+
+            break;
+        }
+    }
+    args->clear();
+
+    MainWindow* window = new MainWindow(url);
 //     StatsWidget* window = new StatsWidget(0, 0);
     window->show();
-    
+
+    KGlobal::locale()->insertCatalog("libkdegames");
+
     return app.exec();
 }

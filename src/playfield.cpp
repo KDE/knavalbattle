@@ -340,6 +340,11 @@ void PlayField::createClient()
     createAuxMenu()->createClient();
 }
 
+void PlayField::createClient(const KUrl& url)
+{
+    createAuxMenu()->createClient(url);
+}
+
 void PlayField::toggleEndOfGameMessage(bool show)
 {
     m_show_endofgame_message = show;

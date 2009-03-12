@@ -86,6 +86,16 @@ void SimpleMenu::createServer()
     }
 }
 
+void SimpleMenu::createClient(const KUrl& url)
+{
+    QWidget* parent_widget = qobject_cast<QWidget*>(parent());
+    Q_ASSERT(parent_widget);
+    NetworkDialog dialog(true, parent_widget,&url);
+    if (dialog.exec() == QDialog::Accepted) {
+        finalize(DONE_CLIENT, dialog.nickname(), dialog.socket());
+    }
+}
+
 void SimpleMenu::createClient()
 {
     QWidget* parent_widget = qobject_cast<QWidget*>(parent());

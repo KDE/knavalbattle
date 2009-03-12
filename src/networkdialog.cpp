@@ -27,7 +27,7 @@
 
 #include "settings.h"
 
-NetworkDialog::NetworkDialog(bool client, QWidget* parent)
+NetworkDialog::NetworkDialog(bool client, QWidget* parent, const KUrl* url)
 : KDialog(parent)
 , m_publisher(0), m_client(client)
 {
@@ -77,10 +77,11 @@ NetworkDialog::NetworkDialog(bool client, QWidget* parent)
         QWidget* frame=new QWidget(main);
         QVBoxLayout* frameLayout = new QVBoxLayout;
         
+        const QString hostName = url? url->host() : Settings::hostname();
         tmp = new QLabel(i18n("&Hostname:"), frame);
         m_hostname = new KLineEdit(main);
         m_hostname->setClearButtonShown(true);
-        m_hostname->setText(Settings::hostname());
+        m_hostname->setText(hostName);
         tmp->setBuddy(m_hostname);
         tmpLayout = new QHBoxLayout;
         tmpLayout->addWidget(tmp);
@@ -89,10 +90,11 @@ NetworkDialog::NetworkDialog(bool client, QWidget* parent)
         frameLayout->addItem(tmpLayout);
 
         // port
+        const int port = ( url && url->port() != -1 )? url->port(): Settings::port();
         tmp = new QLabel(i18n("&Port:"), main);
         m_port = new QSpinBox(main);
         m_port->setRange(1, 99999);
-        m_port->setValue(Settings::port());
+        m_port->setValue(port);
         tmp->setBuddy(m_port);
         tmpLayout = new QHBoxLayout;
         tmpLayout->addWidget(tmp);
@@ -109,6 +111,9 @@ NetworkDialog::NetworkDialog(bool client, QWidget* parent)
         connect(sw,SIGNAL(toggled(bool)), frame, SLOT(setVisible(bool)));
         connect(sw,SIGNAL(toggled(bool)), m_games, SLOT(setDisabled(bool)));
         mainLayout->addWidget(sw);
+        if(url) {
+            sw->click();
+        }
         
     }
     else {

@@ -27,7 +27,7 @@
 #include "settings.h"
 #include "simplemenu.h"
 
-MainWindow::MainWindow()
+MainWindow::MainWindow(const KUrl& url)
 : m_mod(0), m_fd(-1), m_ggzsetup(false)
 {
     m_main = new PlayField(this, statusBar());
@@ -58,6 +58,9 @@ MainWindow::MainWindow()
     KGameDifficulty::addStandardLevel(KGameDifficulty::Medium);
     KGameDifficulty::addStandardLevel(KGameDifficulty::Hard);
     KGameDifficulty::setLevel(KGameDifficulty::standardLevel(Settings::difficulty()));
+
+    if(! url.isEmpty() )
+        m_main->createClient(url);
 }
 
 void MainWindow::setupActions()
