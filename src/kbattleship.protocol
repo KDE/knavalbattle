@@ -1,0 +1,12 @@
+[Protocol]
+protocol=kbattleship
+
+input=none
+output=none
+
+Icon=kbattleship
+Description=A protocol for the game KBattleship
+#exec=kbattleship %u
+
+helper=true
+Class=:internet
