@@ -6,6 +6,8 @@ output=none
 
 Icon=kbattleship
 Description=A protocol for the game KBattleship
+Description[sv]=Ett protokoll för spelet Sänka fartyg
+Description[uk]=Протокол для гри KBattleship
 #exec=kbattleship %u
 
 helper=true
