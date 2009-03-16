@@ -10,6 +10,7 @@ Description[pt]=Um protocolo para o jogo KBattleship
 Description[pt_BR]=Um protocolo para o jogo KBattleship
 Description[sv]=Ett protokoll för spelet Sänka fartyg
 Description[uk]=Протокол для гри KBattleship
+Description[zh_TW]=KBattleship 遊戲使用的協定
 #exec=kbattleship %u
 
 helper=true
