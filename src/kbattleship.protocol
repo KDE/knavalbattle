@@ -6,6 +6,7 @@ output=none
 
 Icon=kbattleship
 Description=A protocol for the game KBattleship
+Description[nds]=En Protokoll för dat Speel "KBattleship"
 Description[pt]=Um protocolo para o jogo KBattleship
 Description[pt_BR]=Um protocolo para o jogo KBattleship
 Description[sv]=Ett protokoll för spelet Sänka fartyg
