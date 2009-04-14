@@ -7,6 +7,7 @@ output=none
 Icon=kbattleship
 Description=A protocol for the game KBattleship
 Description[de]=Ein Protokoll für das KBattleship-Spiel.
+Description[et]=KBattleshipi protokoll
 Description[ga]=Prótacal le haghaidh an chluiche KBattleship
 Description[nds]=En Protokoll för dat Speel "KBattleship"
 Description[pt]=Um protocolo para o jogo KBattleship
