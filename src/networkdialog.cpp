@@ -11,12 +11,12 @@
 #include "networkdialog.h"
 
 #include <QLabel>
-#include <QSpinBox>
 #include <QTcpSocket>
 #include <QTcpServer>
 #include <QVBoxLayout>
 #include <QHBoxLayout>
 #include <KComboBox>
+#include <KNumInput>
 #include <KLineEdit>
 #include <KLocalizedString>
 #include <KPushButton>
@@ -92,7 +92,7 @@ NetworkDialog::NetworkDialog(bool client, QWidget* parent, const KUrl* url)
         // port
         const int port = ( url && url->port() != -1 )? url->port(): Settings::port();
         tmp = new QLabel(i18n("&Port:"), main);
-        m_port = new QSpinBox(main);
+        m_port = new KIntSpinBox(main);
         m_port->setRange(1, 99999);
         m_port->setValue(port);
         tmp->setBuddy(m_port);
@@ -122,7 +122,7 @@ NetworkDialog::NetworkDialog(bool client, QWidget* parent, const KUrl* url)
     
         // port
         tmp = new QLabel(i18n("&Port:"), main);
-        m_port = new QSpinBox(main);
+        m_port = new KIntSpinBox(main);
         m_port->setRange(1, 99999);
         m_port->setValue(Settings::port());
         tmp->setBuddy(m_port);

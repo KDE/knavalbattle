@@ -14,8 +14,8 @@
 #include <KDialog>
 
 class KComboBox;
+class KIntSpinBox;
 class KLineEdit;
-class QSpinBox;
 class QLabel;
 class QTcpSocket;
 namespace DNSSD { class PublicService; }
@@ -26,7 +26,7 @@ Q_OBJECT
     KLineEdit* m_nickname;
     KLineEdit* m_hostname;
     QTcpSocket* m_socket;
-    QSpinBox* m_port;
+    KIntSpinBox* m_port;
     QLabel* m_feedback;
     KComboBox* m_games;
     DNSSD::PublicService* m_publisher;
