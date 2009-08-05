@@ -51,6 +51,7 @@ int main(int argc, char** argv)
     options.add("!+[URL]", ki18n("URL of a KBattleship game server to connect to after startup"));
     KCmdLineArgs::addCmdLineOptions( options ); // Add our own options.
     KApplication app;
+    KGlobal::locale()->insertCatalog("libkdegames");
     
     qRegisterMetaType<Coord>("Coord");
 
@@ -72,8 +73,6 @@ int main(int argc, char** argv)
     MainWindow* window = new MainWindow(url);
 //     StatsWidget* window = new StatsWidget(0, 0);
     window->show();
-
-    KGlobal::locale()->insertCatalog("libkdegames");
 
     return app.exec();
 }
