@@ -15,7 +15,7 @@
 #include <QHash>
 #include "ship.h"
 
-class KSvgRenderer;
+class QSvgRenderer;
 
 /**
   * Class to render KBattleShip graphical elements.
@@ -61,7 +61,7 @@ public:
 protected:
     QPixmap render(const PixmapData& data, const QSize& sz);
 private:
-    KSvgRenderer* m_renderer;
+    QSvgRenderer* m_renderer;
     QSize m_size;
 
     Cache m_cache;
