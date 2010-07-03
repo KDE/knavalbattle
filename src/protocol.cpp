@@ -213,12 +213,12 @@ MessagePtr Protocol::parseMessage(const QString& xmlMessage)
                 QDomElement element = nodes.item(i).toElement();
                 if (!element.isNull() && element.tagName().startsWith("ship")) {
                     int size = element.tagName().mid(4).toInt() + 1;
-                    QStringList data = element.text().split(" ");
+                    QStringList data = element.text().split(' ');
                     if (data.size() != 3) {
                         continue;
                     }
                     Coord pos(data[0].toInt(), data[1].toInt());
-                    Ship::Direction direction = data[2] == "0"
+                    Ship::Direction direction = data[2] == QChar('0')
                         ? Ship::TOP_DOWN 
                         : Ship::LEFT_TO_RIGHT;
                     msg->addShip(pos, size, direction);
