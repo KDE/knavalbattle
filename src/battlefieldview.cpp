@@ -222,9 +222,7 @@ void BattleFieldView::clear()
     m_impact = 0;
     m_last_hit = 0;
     
-    foreach (Sprite* s, m_sprites) {
-        delete s;
-    }
+    qDeleteAll(m_sprites);
     m_sprites.clear();
 }
 

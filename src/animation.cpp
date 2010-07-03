@@ -38,9 +38,7 @@ void AnimationGroup::start(int t)
 void AnimationGroup::stop()
 {
     m_running = -1;
-    foreach (Animation* a, m_animations) {
-        delete a;
-    }
+    qDeleteAll(m_animations);
     m_animations.clear();
 }
 
