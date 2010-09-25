@@ -93,7 +93,7 @@ public:
             data << QString::number(ship.pos.x)
                  << QString::number(ship.pos.y)
                  << (ship.direction == Ship::TOP_DOWN ? "0" : "1");
-            addField(QString("ship") + QString::number(ship.size), data.join(" "));
+            addField(QString("ship") + QString::number(ship.size), data.join( QLatin1String( " " )));
         }
     }
     

@@ -73,13 +73,13 @@ void MainWindow::setupActions()
     KStandardGameAction::quit(this, SLOT(close()), actionCollection());
     
     KAction* action;
-    action = new KAction(KIcon(SimpleMenu::iconLocal), i18n("&Single Player"), this);
+    action = new KAction(KIcon( QLatin1String( SimpleMenu::iconLocal) ), i18n("&Single Player"), this);
     actionCollection()->addAction("game_local", action);
     connect(action, SIGNAL(triggered()), m_main, SLOT(localGame()));
-    action = new KAction(KIcon(SimpleMenu::iconServer), i18n("&Host Game..."), this);
+    action = new KAction(KIcon( QLatin1String( SimpleMenu::iconServer) ), i18n("&Host Game..."), this);
     actionCollection()->addAction("game_create_server", action);
     connect(action, SIGNAL(triggered()), m_main, SLOT(createServer()));
-    action = new KAction(KIcon(SimpleMenu::iconClient), i18n("&Connect to Game..."), this);
+    action = new KAction(KIcon( QLatin1String( SimpleMenu::iconClient) ), i18n("&Connect to Game..."), this);
     actionCollection()->addAction("game_create_client", action);
     connect(action, SIGNAL(triggered()), m_main, SLOT(createClient()));
     action = new KAction(i18n("Change &Nickname..."), this);
