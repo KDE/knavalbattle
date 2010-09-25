@@ -77,7 +77,7 @@ void AIEntity::getShoot()
 
 KIcon AIEntity::icon() const
 {
-    return KIcon("roll");
+    return KIcon( QLatin1String( "roll" ));
 }
 
 #include "aientity.moc"

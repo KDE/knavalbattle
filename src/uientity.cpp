@@ -70,7 +70,7 @@ void UIEntity::drawShoot(Sea::Player player, const Coord& c, const HitInfo& info
 
 KIcon UIEntity::icon() const
 {
-    return KIcon("user-identity");
+    return KIcon( QLatin1String( "user-identity" ));
 }
 
 #include "uientity.moc"
