@@ -49,7 +49,7 @@ target_link_libraries(kbattleship ${QT_QTXML_LIBRARY} ${QT_QTNETWORK_LIBRARY} ${
 
 install(TARGETS kbattleship  ${INSTALL_TARGETS_DEFAULT_ARGS} )
 install( FILES kbattleshipui.rc  DESTINATION  ${DATA_INSTALL_DIR}/kbattleship )
-install(FILES kbattleship.desktop DESTINATION ${XDG_APPS_INSTALL_DIR})
+install(PROGRAMS kbattleship.desktop DESTINATION ${XDG_APPS_INSTALL_DIR})
 install( FILES kbattleship.protocol  DESTINATION ${SERVICES_INSTALL_DIR})
 
 register_ggz_module(module.dsc)
