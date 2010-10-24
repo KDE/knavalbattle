@@ -6,6 +6,7 @@ output=none
 
 Icon=kbattleship
 Description=A protocol for the game KBattleship
+Description[ast]=Un protocolu pal xuegu KBattleship
 Description[ca]=Un protocol pel joc KBattleship
 Description[ca@valencia]=Un protocol pel joc KBattleship
 Description[da]=En protokol for spillet KBattleship

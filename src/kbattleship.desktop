@@ -1,6 +1,7 @@
 [Desktop Entry]
 Name=KBattleship
 Name[af]=Kbattleship
+Name[ast]=KBattleship
 Name[be]=Марскі бой
 Name[bn]=কে-ব্যাটেলশীপ
 Name[br]=KBattleship
@@ -68,6 +69,7 @@ Icon=kbattleship
 Type=Application
 X-DocPath=kbattleship/index.html
 GenericName=Battleship Game
+GenericName[ast]=Xuegu de la batalla de naves
 GenericName[be]=Гульня ў марскі бой
 GenericName[bn]=ব্যাটেলশীপ খেলা
 GenericName[ca]=Joc d'enfonsar la flota
