@@ -251,7 +251,7 @@ void PlayField::restartRequested()
 void PlayField::setCompatibility(int level)
 {
     if (level == Entity::COMPAT_KBS3) {
-        KMessageBox::information(this, i18n("Your opponent is using a pre-KDE4 version of KBattleship. Note that, according to the rules enforced by old clients, ships cannot be placed adjacent to one another."));
+        KMessageBox::information(this, i18n("Your opponent is using a pre-KDE4 version of Naval Battle. Note that, according to the rules enforced by old clients, ships cannot be placed adjacent to one another."));
     }
 }
 

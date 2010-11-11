@@ -21,8 +21,8 @@
 
 int main(int argc, char** argv)
 {
-    KAboutData aboutData("kbattleship", 0, ki18n("KBattleship"), "2.0", 
-        ki18n("The KDE Battleship clone"), KAboutData::License_GPL, 
+    KAboutData aboutData("kbattleship", 0, ki18n("Naval Battle"), "2.0", 
+        ki18n("The KDE ship sinking game"), KAboutData::License_GPL, 
         ki18n("(c) 2000-2005  Nikolas Zimmermann, Daniel Molkentin\n"
               "(c) 2007 Paolo Capriotti"), KLocalizedString(), "http://games.kde.org/kbattleship" );
     
@@ -48,7 +48,7 @@ int main(int argc, char** argv)
     KCmdLineArgs::init(argc, argv, &aboutData);
 
     KCmdLineOptions options;
-    options.add("!+[URL]", ki18n("URL of a KBattleship game server to connect to after startup"));
+    options.add("!+[URL]", ki18n("URL of a Naval Battle game server to connect to after startup"));
     KCmdLineArgs::addCmdLineOptions( options ); // Add our own options.
     KApplication app;
     KGlobal::locale()->insertCatalog( QLatin1String( "libkdegames" ));

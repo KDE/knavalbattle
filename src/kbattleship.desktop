@@ -1,5 +1,5 @@
 [Desktop Entry]
-Name=KBattleship
+Name=Naval Battle
 Name[af]=Kbattleship
 Name[ast]=KBattleship
 Name[be]=Марскі бой
@@ -68,7 +68,7 @@ MimeType=inode/vnd.kde.service.kbattleship;
 Icon=kbattleship
 Type=Application
 X-DocPath=kbattleship/index.html
-GenericName=Battleship Game
+GenericName=Ship Sinking Game
 GenericName[ast]=Xuegu de la batalla de naves
 GenericName[be]=Гульня ў марскі бой
 GenericName[bn]=ব্যাটেলশীপ খেলা

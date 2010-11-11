@@ -24,7 +24,7 @@ HeaderMessage::HeaderMessage()
 : m_protocol_version("0.1.0")
 , m_client_name("KBattleship")
 , m_client_version("4.0")
-, m_client_description("The KDE Battleship clone")
+, m_client_description("The Naval Battle game")
 {
 }
 
