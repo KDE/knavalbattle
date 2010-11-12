@@ -5,7 +5,7 @@ input=none
 output=none
 
 Icon=kbattleship
-Description=A protocol for the game Naval Battle 
+Description=A protocol for the game Naval Battle
 Description[ast]=Un protocolu pal xuegu KBattleship
 Description[ca]=Un protocol pel joc KBattleship
 Description[ca@valencia]=Un protocol pel joc KBattleship
