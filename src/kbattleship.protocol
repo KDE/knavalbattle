@@ -6,10 +6,14 @@ output=none
 
 Icon=kbattleship
 Description=A protocol for the game Naval Battle
+Description[et]=Merelahingu protokoll
+Description[nl]=Een protocol voor het spel Naval Battle
 Description[pt]=Um protocolo para o jogo da Batalha Naval
+Description[pt_BR]=Um protocolo para o jogo Batalha Naval
 Description[sv]=Ett protokoll för spelet Sänka fartyg
 Description[uk]=Протокол для гри у морський бій
 Description[x-test]=xxA protocol for the game Naval Battlexx
+Description[zh_TW]=海上戰爭遊戲使用的協定
 
 helper=true
 Class=:internet

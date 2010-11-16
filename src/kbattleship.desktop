@@ -1,19 +1,27 @@
 [Desktop Entry]
 Name=Naval Battle
+Name[et]=Merelahing
+Name[nl]=Naval Battle
 Name[pt]=Batalha Naval
+Name[pt_BR]=Batalha Naval
 Name[sv]=Sänka fartyg
 Name[uk]=Морський бій
 Name[x-test]=xxNaval Battlexx
+Name[zh_TW]=海上戰爭
 Exec=kbattleship -caption "%c" %U
 MimeType=inode/vnd.kde.service.kbattleship;
 Icon=kbattleship
 Type=Application
 X-DocPath=kbattleship/index.html
 GenericName=Ship Sinking Game
+GenericName[et]=Laevade pommitamise mäng
+GenericName[nl]=Het spel voor het laten zinken van schepen
 GenericName[pt]=Jogo para Afundar Navios
+GenericName[pt_BR]=Jogo para afundar navios
 GenericName[sv]=Sänka fartygsspel
 GenericName[uk]=Гра у битву кораблів
 GenericName[x-test]=xxShip Sinking Gamexx
+GenericName[zh_TW]=擊沉船隻的遊戲
 Terminal=false
 X-DBUS-StartupType=Multi
 Categories=Qt;KDE;Game;StrategyGame;
