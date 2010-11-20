@@ -7,6 +7,7 @@ output=none
 Icon=kbattleship
 Description=A protocol for the game Naval Battle
 Description[ca]=Un protocol pel joc Batalla naval
+Description[es]=Protocolo para el juego Batalla Naval
 Description[et]=Merelahingu protokoll
 Description[nl]=Een protocol voor het spel Naval Battle
 Description[pt]=Um protocolo para o jogo da Batalha Naval

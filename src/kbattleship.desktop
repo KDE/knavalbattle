@@ -1,6 +1,7 @@
 [Desktop Entry]
 Name=Naval Battle
 Name[ca]=Batalla naval
+Name[es]=Batalla Naval
 Name[et]=Merelahing
 Name[nl]=Naval Battle
 Name[pt]=Batalha Naval
@@ -16,6 +17,7 @@ Type=Application
 X-DocPath=kbattleship/index.html
 GenericName=Ship Sinking Game
 GenericName[ca]=Joc d'enfonsar vaixells
+GenericName[es]=Juego de hundir barcos
 GenericName[et]=Laevade pommitamise mäng
 GenericName[nl]=Het spel voor het laten zinken van schepen
 GenericName[pt]=Jogo para Afundar Navios
