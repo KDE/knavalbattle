@@ -1,6 +1,7 @@
 [Desktop Entry]
 Name=Naval Battle
 Name[ca]=Batalla naval
+Name[ca@valencia]=Batalla naval
 Name[da]=Naval Battle
 Name[de]=Naval Battle
 Name[en_GB]=Naval Battle
@@ -28,6 +29,7 @@ Type=Application
 X-DocPath=kbattleship/index.html
 GenericName=Ship Sinking Game
 GenericName[ca]=Joc d'enfonsar vaixells
+GenericName[ca@valencia]=Joc d'enfonsar vaixells
 GenericName[da]=Sænke slagskibe
 GenericName[de]=Schiffe versenken
 GenericName[en_GB]=Ship Sinking Game
