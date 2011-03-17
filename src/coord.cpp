@@ -64,7 +64,7 @@ Coord Coord::invalid()
     return Coord(-1, -1);
 }
 
-kdbgstream& operator<<(kdbgstream& os, const Coord& c)
+QDebug& operator<<(QDebug& os, const Coord& c)
 {
     os << "(" << c.x << "," << c.y << ")";
     return os;

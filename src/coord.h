@@ -34,7 +34,7 @@ public:
     static Coord invalid();
 };
 
-kdbgstream& operator<<(kdbgstream& os, const Coord& c);
+QDebug& operator<<(QDebug& os, const Coord& c);
 uint qHash(const Coord& c);
 Q_DECLARE_METATYPE(Coord)
 
