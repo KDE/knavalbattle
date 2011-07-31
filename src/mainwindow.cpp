@@ -48,8 +48,8 @@ MainWindow::MainWindow(const KUrl& url)
         m_mod = new KGGZMod::Module("KBattleship");
         connect(m_mod, SIGNAL(signalError()), SLOT(networkErrorHandler()));
         connect(m_mod, SIGNAL(signalNetwork(int)), SLOT(networkData(int)));
-        connect(m_mod, SIGNAL(signalEvent(const KGGZMod::Event&)),
-            SLOT(networkEvent(const KGGZMod::Event&)));
+        connect(m_mod, SIGNAL(signalEvent(KGGZMod::Event)),
+            SLOT(networkEvent(KGGZMod::Event)));
         kDebug() << "GGZDEBUG: kggzmod activated";
     }
     

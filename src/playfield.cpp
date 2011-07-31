@@ -74,8 +74,8 @@ Controller* PlayField::createController()
             this, SLOT(restartRequested()));
     connect(controller, SIGNAL(compatibility(int)),
             this, SLOT(setCompatibility(int)));
-    connect(controller, SIGNAL(nickChanged(int, const QString&)),
-            this, SLOT(updateNick(int, const QString&)));
+    connect(controller, SIGNAL(nickChanged(int,QString)),
+            this, SLOT(updateNick(int,QString)));
     connect(controller, SIGNAL(turnChanged(int)),
             this, SLOT(changeTurn(int)));
     connect(controller, SIGNAL(playerReady(int)),

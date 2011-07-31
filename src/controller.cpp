@@ -69,8 +69,8 @@ void Controller::setupEntity(Entity* entity)
 {
     entity->setParent(this);
     
-    connect(entity, SIGNAL(shoot(int, const Coord&)),
-            this, SLOT(shoot(int, const Coord&)), Qt::QueuedConnection);
+    connect(entity, SIGNAL(shoot(int,Coord)),
+            this, SLOT(shoot(int,Coord)), Qt::QueuedConnection);
     connect(entity, SIGNAL(ready(int)),
             this, SLOT(ready(int)), Qt::QueuedConnection);
     connect(entity, SIGNAL(chat(QString)),
