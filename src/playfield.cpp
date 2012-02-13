@@ -234,11 +234,6 @@ void PlayField::toggleSounds(bool enable)
     m_player->setActive(enable);
 }
 
-void PlayField::runGGZ(int fd)
-{
-    m_menu->runGGZ(fd);
-}
-
 void PlayField::restartRequested()
 {
     int ans = KMessageBox::questionYesNo(this, i18n("Restart game"),

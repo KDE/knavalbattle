@@ -20,15 +20,11 @@
 #include <KStatusBar>
 #include <KToggleAction>
 
-#include <kggzmod/module.h>
-#include <kggzmod/player.h>
-
 #include "playfield.h"
 #include "settings.h"
 #include "simplemenu.h"
 
 MainWindow::MainWindow(const KUrl& url)
-: m_mod(0), m_fd(-1), m_ggzsetup(false)
 {
     m_main = new PlayField(this, statusBar());
     
@@ -42,17 +38,6 @@ MainWindow::MainWindow(const KUrl& url)
 
     setupActions();
 
-    if(KGGZMod::Module::isGGZ())
-    {
-        kDebug() << "GGZDEBUG: running in GGZ mode...";
-        m_mod = new KGGZMod::Module("KBattleship");
-        connect(m_mod, SIGNAL(signalError()), SLOT(networkErrorHandler()));
-        connect(m_mod, SIGNAL(signalNetwork(int)), SLOT(networkData(int)));
-        connect(m_mod, SIGNAL(signalEvent(KGGZMod::Event)),
-            SLOT(networkEvent(KGGZMod::Event)));
-        kDebug() << "GGZDEBUG: kggzmod activated";
-    }
-    
     connect(m_main, SIGNAL(welcomeScreen()), this, SLOT(welcomeScreen()));
     connect(m_main, SIGNAL(startingGame()), this, SLOT(startingGame()));
     
@@ -104,37 +89,6 @@ void MainWindow::setupActions()
     connect(action, SIGNAL(triggered(bool)), m_main, SLOT(toggleRightGrid(bool)));
     
     setupGUI();
-}
-
-void MainWindow::networkErrorHandler()
-{
-    kDebug() << "GGZDEBUG: error";
-}
-
-void MainWindow::networkData(int fd)
-{
-    kDebug() << "GGZDEBUG: data on fd" << fd;
-}
-
-void MainWindow::networkEvent(const KGGZMod::Event& event)
-{
-    kDebug() << "GGZDEBUG: event" << event.type();
-
-    if(event.type() == KGGZMod::Event::server) {
-        KGGZMod::ServerEvent se = (KGGZMod::ServerEvent)event;
-        m_fd = se.fd();
-    }
-
-    if(event.type() == KGGZMod::Event::self) {
-        if(!m_ggzsetup) {
-            KGGZMod::Player *player = KGGZMod::Module::instance()->self();
-            if(player) {
-                m_ggzsetup = true;
-                m_main->runGGZ(m_fd);
-                m_main->setupController();
-            }
-        }
-    }
 }
 
 void MainWindow::startingGame()

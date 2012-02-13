@@ -14,9 +14,6 @@
 #include <KLocalizedString>
 #include <KIcon>
 
-#include <kggzmod/module.h>
-#include <kggzmod/player.h>
-
 #include "button.h"
 #include "chatwidget.h"
 #include "controller.h"
@@ -153,39 +150,11 @@ void SimpleMenu::setupController(Controller* controller, Entity* old_opponent, S
         chat->bindTo(m_player1);
         break;
     }
-    case DONE_GGZ_CLIENT: {
-        KGGZMod::Player *player = KGGZMod::Module::instance()->self();
-        if(player) {
-            kDebug() << "PLAYER-exists";
-            m_nickname = player->name();
-            kDebug() << "nickname" << m_nickname;
-        } else {
-            kDebug() << "PLAYER-does-not-exist";
-            return;
-        }
-
-        int seat = player->seat();
-        int oppseat = 1 - seat;
-
-        Q_ASSERT(m_protocol);
-        m_player1 = controller->createPlayer(Sea::Player(seat), sea, chat, m_nickname);
-        m_player2 = controller->createRemotePlayer(Sea::Player(oppseat), m_protocol, true);
-        chat->bindTo(m_player1);
-        break;
-    }
     default:
         return;
     }
         
     controller->start(sea, ask);
-}
-
-void SimpleMenu::runGGZ(int fd)
-{
-    m_state = DONE_GGZ_CLIENT;
-    QTcpSocket* socket = new QTcpSocket();
-    socket->setSocketDescriptor(fd);
-    m_protocol = new Protocol(socket);
 }
 
 #include "simplemenu.moc"

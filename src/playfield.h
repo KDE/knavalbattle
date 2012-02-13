@@ -40,7 +40,6 @@ Q_OBJECT
 public:
     PlayField(QWidget* parent, QStatusBar*);
     ~PlayField();
-    void runGGZ(int fd);
     void createClient(const KUrl& url);
 public slots:
     void highscores();
