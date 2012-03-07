@@ -30,11 +30,12 @@ MainWindow::MainWindow(const KUrl& url)
     
     setCentralWidget(m_main);
 
-    KGameDifficulty::init(this, m_main, SLOT(levelChanged(KGameDifficulty::standardLevel)));
-    KGameDifficulty::setRestartOnChange(KGameDifficulty::RestartOnChange);
-    KGameDifficulty::addStandardLevel(KGameDifficulty::Easy);
-    KGameDifficulty::addStandardLevel(KGameDifficulty::Medium);
-    KGameDifficulty::addStandardLevel(KGameDifficulty::Hard);
+    Kg::difficulty()->addStandardLevelRange(
+        KgDifficultyLevel::Easy, KgDifficultyLevel::Hard, //range
+        KgDifficultyLevel::Hard //default
+    );
+    KgDifficultyGUI::init(this);
+    connect(Kg::difficulty(), SIGNAL(selectedLevelChanged(const KgDifficultyLevel*)), m_main, SLOT(levelChanged()));
 
     setupActions();
 
@@ -42,8 +43,6 @@ MainWindow::MainWindow(const KUrl& url)
     connect(m_main, SIGNAL(startingGame()), this, SLOT(startingGame()));
     
     m_main->newGame();
-
-    KGameDifficulty::setLevel(KGameDifficulty::standardLevel(Settings::difficulty()));
 
     if(! url.isEmpty() )
         m_main->createClient(url);

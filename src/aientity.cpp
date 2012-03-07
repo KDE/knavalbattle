@@ -13,18 +13,18 @@
 #include "shot.h"
 
 
-#include <KGameDifficulty>
+#include <KgDifficulty>
 #include <KIcon>
 
 AIEntity::AIEntity(Sea::Player player, Sea* sea)
 : Entity(player)
 , m_sea(sea)
 {
-    switch (KGameDifficulty::level()) {
-    case KGameDifficulty::Easy:
+    switch (Kg::difficultyLevel()) {
+    case KgDifficultyLevel::Easy:
         m_ai = new DummyAI(m_player, m_sea);
         break;
-    case KGameDifficulty::Medium:
+    case KgDifficultyLevel::Medium:
         m_ai = new SmartAI(m_player, m_sea, true);
         break;
     default: // hard

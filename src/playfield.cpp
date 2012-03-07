@@ -130,7 +130,7 @@ void PlayField::newGame()
     endGame();
     delete m_menu;
     
-    KGameDifficulty::setRunning(false);
+    Kg::difficulty()->setGameRunning(false);
     
     m_chat->hide();
     m_sea->screen(Sea::Player(0))->show();
@@ -157,9 +157,7 @@ void PlayField::highscores()
             KScoreDialog::Custom2 | 
             KScoreDialog::Custom3, 
             this);
-    highscoredialog->setConfigGroup(KGameDifficulty::localizedLevelString());
-    highscoredialog->addLocalizedConfigGroupNames(KGameDifficulty::localizedLevelStrings());
-    highscoredialog->setConfigGroupWeights(KGameDifficulty::levelWeights());
+    highscoredialog->initFromDifficulty(Kg::difficulty());
     highscoredialog->addField(KScoreDialog::Custom1, i18n("Shots"), "shots");
     highscoredialog->addField(KScoreDialog::Custom2, i18n("Hits"), "hits");
     highscoredialog->addField(KScoreDialog::Custom3, i18n("Misses"), "water");
@@ -179,9 +177,7 @@ void PlayField::gameOver(Sea::Player winner)
                     KScoreDialog::Custom2 | 
                     KScoreDialog::Custom3, 
                     this);
-            highscoredialog->setConfigGroup(KGameDifficulty::localizedLevelString());
-            highscoredialog->addLocalizedConfigGroupNames(KGameDifficulty::localizedLevelStrings());
-            highscoredialog->setConfigGroupWeights(KGameDifficulty::levelWeights());
+            highscoredialog->initFromDifficulty(Kg::difficulty());
             highscoredialog->addField(KScoreDialog::Custom1, i18n("Shots"), "shots");
             highscoredialog->addField(KScoreDialog::Custom2, i18n("Hits"), "hits");
             highscoredialog->addField(KScoreDialog::Custom3, i18n("Misses"), "water");
@@ -285,18 +281,15 @@ void PlayField::playerReady(int player)
 
 void PlayField::startGame()
 {
-    KGameDifficulty::setRestartOnChange(
-        m_controller->hasAI() ? KGameDifficulty::RestartOnChange : KGameDifficulty::NoRestartOnChange);
-    KGameDifficulty::setRunning(true);
+    //the game has a fixed difficulty level only if there is an AI
+    Kg::difficulty()->setGameRunning(m_controller->hasAI());
     m_status_bar->showMessage(i18n("Place your ships. Use the right mouse button to rotate them."));
     emit startingGame();
 }
 
 
-void PlayField::levelChanged(KGameDifficulty::standardLevel level)
+void PlayField::levelChanged()
 {
-    Settings::setDifficulty(level);
-    Settings::self()->writeConfig();
     if (m_controller && m_controller->hasAI()) {
         restart();
     }

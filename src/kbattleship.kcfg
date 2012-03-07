@@ -22,9 +22,5 @@
       <label>Whether sound effects should be played.</label>
       <default>false</default>
     </entry>
-    <entry name="Difficulty" type="Int">
-      <label>Game difficulty.</label>
-      <default>50</default>
-    </entry>
   </group>
 </kcfg>
