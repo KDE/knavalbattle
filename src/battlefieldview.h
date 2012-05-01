@@ -10,12 +10,14 @@
 #ifndef BATTLEFIELDVIEW_H
 #define BATTLEFIELDVIEW_H
 
-#include <kgamecanvas.h>
 #include <QMultiHash>
 #include <QTime>
 #include "coord.h"
 #include "spritefactory.h"
 #include "grid.h"
+
+#define USE_UNSTABLE_LIBKDEGAMESPRIVATE_API
+#include <libkdegamesprivate/kgamecanvas.h>
 
 class KBSRenderer;
 class Sprite;

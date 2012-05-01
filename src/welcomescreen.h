@@ -10,8 +10,11 @@
 #ifndef WELCOMESCREEN_H
 #define WELCOMESCREEN_H
 
-#include <kgamecanvas.h>
 #include <QHash>
+
+#define USE_UNSTABLE_LIBKDEGAMESPRIVATE_API
+#include <libkdegamesprivate/kgamecanvas.h>
+
 #include "grid.h"
 
 class Button;

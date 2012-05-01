@@ -11,7 +11,6 @@
 
 #include <QMouseEvent>
 
-#include <KGameCanvas>
 #include <KIcon>
 #include <KStandardDirs>
 

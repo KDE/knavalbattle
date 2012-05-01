@@ -9,8 +9,8 @@
 
 #include "animation.h"
 
-#include <kgamecanvas.h>
-#include <kdebug.h>
+#define USE_UNSTABLE_LIBKDEGAMESPRIVATE_API
+#include <libkdegamesprivate/kgamecanvas.h>
 
 Animation::~Animation()
 {

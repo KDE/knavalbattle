@@ -12,7 +12,9 @@
 
 #include <QFontMetrics>
 #include <QPointer>
-#include <KGameCanvas>
+
+#define USE_UNSTABLE_LIBKDEGAMESPRIVATE_API
+#include <libkdegamesprivate/kgamecanvas.h>
 
 class KBSRenderer;
 class Stats;

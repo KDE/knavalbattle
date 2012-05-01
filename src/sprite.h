@@ -10,7 +10,9 @@
 #ifndef SPRITE_H
 #define SPRITE_H
 
-#include <kgamecanvas.h>
+#define USE_UNSTABLE_LIBKDEGAMESPRIVATE_API
+#include <libkdegamesprivate/kgamecanvas.h>
+
 #include "coord.h"
 
 class KBSRenderer;
