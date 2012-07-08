@@ -14,24 +14,14 @@
 #include <QFont>
 #include <QSize>
 #include <QPointer>
+#include <QWidget>
+#include <QGraphicsItem>
 #include "welcomescreen.h"
 #include "animation.h"
 
 class ButtonAnimation;
-class QWidget;
 
-class EditorFactory
-{
-public:
-    virtual ~EditorFactory()
-    {
-    }
-    
-    virtual QWidget* createEditor(QWidget* parent) = 0;
-};
-
-
-class Button : public QObject, public KGameCanvasPixmap
+class Button : public QObject, public QGraphicsItem 
 {
 Q_OBJECT
     enum {
@@ -55,30 +45,26 @@ Q_OBJECT
     
     QPoint textPos() const;
     void computeSize();
-    void updateEditor();
 public:
-    Button(WelcomeScreen* parent, const QIcon& icon, 
+    Button(QGraphicsItem* parent, const QIcon& icon, 
            const QFont& font, const QString& text);
     virtual ~Button();
            
-    virtual void repaint();
+    virtual void paint(QPainter *, const QStyleOptionGraphicsItem *, QWidget *);
+    virtual QRectF boundingRect() const;
     
     QSize size() const;
-    QWidget* editor() { return m_editor; }
-    
-    void onMousePress(const QPoint& p);
-    void onMouseRelease(const QPoint& p);
-    void onMouseMove(const QPoint& p);
+ 
+    void onMousePress();
+    void onMouseRelease();
+    void onMouseMove();
     void onMouseLeave();
     bool onClicked();
     
     void setText(const QString& text);
     void setBrightness(double value);
     double brightness() const;
-    
-    KGameCanvasPixmap* extractIcon();
-    void setEditor(EditorFactory& factory);
-    void removeEditor();
+
     void setWidth(int width);
 signals:
     void clicked();

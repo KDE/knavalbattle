@@ -10,27 +10,22 @@
 #ifndef SPRITE_H
 #define SPRITE_H
 
-#define USE_UNSTABLE_LIBKDEGAMESPRIVATE_API
-#include <libkdegamesprivate/kgamecanvas.h>
+#include <KGameRenderedItem>
 
 #include "coord.h"
 
 class KBSRenderer;
 
-class Sprite : public KGameCanvasPixmap
+class Sprite : public KGameRenderedItem
 {
     Coord m_scale;
     QString m_name;
     bool m_rotated;
 public:
-    Sprite(KGameCanvasAbstract* parent, KBSRenderer* renderer, 
-            const Coord& scale, const QString& name, bool rotated);
-            
+    Sprite(KBSRenderer* renderer, const Coord& scale, const QString& name, bool rotated);
     ~Sprite();
 
-    void update(KBSRenderer* renderer);
-    void setName(const QString& name);
-    QString name() const;
+    void refresh(KBSRenderer* renderer);
 };
 
 #endif // SPRITE_H

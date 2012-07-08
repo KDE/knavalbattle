@@ -10,8 +10,7 @@
 #ifndef SEA_H
 #define SEA_H
 
-#define USE_UNSTABLE_LIBKDEGAMESPRIVATE_API
-#include <libkdegamesprivate/kgamecanvas.h>
+#include <QWidget>
 
 #include "sea.h"
 #include "animator.h"
@@ -25,7 +24,7 @@ class PlayerLabel;
 class StatsWidget;
 class Stats;
 
-class SeaView : public KGameCanvasWidget
+class SeaView : public QWidget 
 {
 Q_OBJECT
     static const unsigned int GRID_SIZE = 10;
@@ -69,16 +68,11 @@ public:
     void toggleLeftGrid(bool show);
     void toggleRightGrid(bool show);
 protected:
-    virtual void mouseMoveEvent(QMouseEvent*);
-    virtual void mousePressEvent(QMouseEvent*);
-    virtual void mouseReleaseEvent(QMouseEvent*);
     virtual void resizeEvent(QResizeEvent*);
-    virtual void leaveEvent(QEvent*);
     
-    int tileSize() const;
+    QSize tileSize() const;
 public slots:
-    void buttonClicked(Button*);
-    void update();
+    void refresh();
 };
 
 #endif // SEA_H

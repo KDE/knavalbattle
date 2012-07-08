@@ -14,11 +14,9 @@
 #include "ship.h"
 #include "sprite.h"
 
-SpriteFactory::SpriteFactory(KGameCanvasAbstract* canvas, KBSRenderer* renderer)
-: m_canvas(canvas)
-, m_renderer(renderer)
+SpriteFactory::SpriteFactory(KBSRenderer* renderer)
+: m_renderer(renderer)
 {
-
 }
 
 Sprite* SpriteFactory::createShip(Ship* ship)
@@ -36,13 +34,13 @@ Sprite* SpriteFactory::createShip(Ship* ship)
     std::ostringstream os;
     os << "ship" << ship->size() << "-view";
     
-    return new Sprite(m_canvas, m_renderer, Coord(x, y), 
-        os.str().c_str(), ship->direction() == Ship::TOP_DOWN);
+    return new Sprite(m_renderer, Coord(x, y), 
+            os.str().c_str(), ship->direction() == Ship::TOP_DOWN);
 }
 
 Sprite* SpriteFactory::createSimpleSprite(const QString& name)
 {
-    return new Sprite(m_canvas, m_renderer, Coord(1, 1), name, false);
+    return new Sprite(m_renderer, Coord(1, 1), name, false);
 }
 
 Sprite* SpriteFactory::createHit()

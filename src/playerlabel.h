@@ -10,26 +10,20 @@
 #ifndef PLAYERLABEL_H
 #define PLAYERLABEL_H
 
-#define USE_UNSTABLE_LIBKDEGAMESPRIVATE_API
-#include <libkdegamesprivate/kgamecanvas.h>
+#include <QLabel>
+#include <QWidget>
 
-class PlayerLabel : public KGameCanvasGroup
+class PlayerLabel : public QWidget 
 {
+private: 
+    QLabel *m_name;
+    QLabel *m_icon;
+ 
 public:
-    static const int HEIGHT = 32;
-    static const int MARGIN = 10;
-    
-private:
-    KGameCanvasPixmap* m_icon;
-    KGameCanvasText* m_name;
-    
-public:
-    PlayerLabel(const QPixmap& icon, const QString& text, KGameCanvasAbstract* parent);
+    PlayerLabel(const QPixmap &icon, const QString &text, QWidget *parent);
 
-    void update();
-    void setData(const QPixmap& icon, const QString& text);
-    void setText(const QString& text);
-    int height() const;
+    void setData(const QPixmap &icon, const QString &text);
+    void setText(const QString &text);
 };
 
 #endif // PLAYERLABEL_H

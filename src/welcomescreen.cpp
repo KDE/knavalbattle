@@ -16,29 +16,30 @@
 #include "button.h"
 #include "animator.h"
 
-WelcomeScreen::WelcomeScreen(KGameCanvasAbstract* parent, const QFont& font)
-: KGameCanvasGroup(parent)
+WelcomeScreen::WelcomeScreen(const QFont& font)
+: QObject()
+, QGraphicsRectItem()
 , m_font(font)
 , m_clicked(0)
 , m_hover(0)
 , m_active(true)
 {
-    m_background = new KGameCanvasRectangle(QColor(0, 0, 0, 80), m_size, this);
-    m_background->show();
+    QBrush brush(QColor(0, 0, 0, 80));
+    setBrush(brush);
 }
 
-void WelcomeScreen::resize(const QSize& size)
+void WelcomeScreen::resize(const QSizeF& size)
 {
     m_size = size;
     
     // background
-    m_background->setSize(m_size);
-    m_background->moveTo(0, 0);
+    QRectF rect(QPoint(0, 0), m_size);
+    setRect(rect);
     
-    update();
+    refresh();
 }
 
-void WelcomeScreen::update()
+void WelcomeScreen::refresh()
 {
     // find dimensions
     int max_x = 0;
@@ -57,7 +58,7 @@ void WelcomeScreen::update()
     max_y++;
     
     // place buttons
-    QSize size = m_size;
+    QSizeF size = m_size;
     size.rwidth() /= max_x;
     size.rheight() /= max_y;
     
@@ -68,8 +69,8 @@ void WelcomeScreen::update()
                    size.height() * i.key().y);
         QPoint delta((size.width() - i.value()->size().width()) / 2,
                      (size.height() - i.value()->size().height()) / 2);
-        i.value()->moveTo(pos + delta);
-        i.value()->repaint();
+        i.value()->setPos(pos + delta);
+        i.value()->update();
     }
 }
 
@@ -93,11 +94,10 @@ Button* WelcomeScreen::addButton(int x, int y, const QIcon& icon, const QString&
             }
         }
         m_buttons.insert(Coord(x, y), button);
-        button->show();
-        update();
-        connect(button, SIGNAL(needsUpdate()), this, SLOT(update()));
+        refresh();
+        connect(button, SIGNAL(needsUpdate()), this, SLOT(refresh()));
         
-        kDebug() << "added button" << button;
+        //kDebug() << "added button" << button;
         
         return button;
     }
@@ -107,7 +107,7 @@ void WelcomeScreen::removeButton(int x, int y)
 {
     Button* button = m_buttons.take(Coord(x, y));
     delete button;
-    update();
+    refresh();
 }
 
 void WelcomeScreen::moveButton(int x1, int y1, int x2, int y2)
@@ -119,7 +119,7 @@ void WelcomeScreen::moveButton(int x1, int y1, int x2, int y2)
         Button* button = m_buttons.value(from);
         m_buttons.insert(to, button);
         m_buttons.remove(from);
-        update();
+        refresh();
     }
 }
 
@@ -136,37 +136,32 @@ void WelcomeScreen::clearButtons()
     
 }
 
-void WelcomeScreen::onMouseMove(const QPoint& p)
+void WelcomeScreen::onMouseMove(Button *button)
 {
-    Button* button = dynamic_cast<Button*>(itemAt(p));
-//     kDebug() << "on point" << p << "there is" << button;
     if (m_hover && m_hover != button) {
         m_hover->onMouseLeave();
     }
 
     m_hover = button;
-    if (button && (!m_clicked || button == m_clicked)) {
-        button->onMouseMove(p - button->pos());
+    if (!m_clicked || button == m_clicked) {
+        button->onMouseMove();
     }
 }
 
-void WelcomeScreen::onMousePress(const QPoint& p)
+void WelcomeScreen::onMousePress(Button *button)
 {
     kDebug() << "on mouse press";
-    Button* button = dynamic_cast<Button*>(itemAt(p));
-    if (button) {
-        button->onMousePress(p - button->pos());
-        m_clicked = button;
-    }
+
+    button->onMousePress();
+    m_clicked = button;
 }
 
-void WelcomeScreen::onMouseRelease(const QPoint& p)
+void WelcomeScreen::onMouseRelease(Button *button)
 {
     if (m_clicked) {
-        m_clicked->onMouseRelease(p - m_clicked->pos());
+        m_clicked->onMouseRelease();
     }
 
-    Button* button = dynamic_cast<Button*>(itemAt(p));
     if (m_clicked && m_clicked == button) {
         // actual click event
         if (m_clicked->onClicked()) {            
@@ -179,7 +174,7 @@ void WelcomeScreen::onMouseRelease(const QPoint& p)
 
 void WelcomeScreen::fadeOut()
 {
-    Animation* hideAnimation = new FadeAnimation(this, opacity(), 0, 500);
+    Animation* hideAnimation = new FadeAnimation(this, 1, 0, 500);
     connect(hideAnimation, SIGNAL(done()), this, SLOT(hide()));
     Animator::instance()->add(hideAnimation);
 }
@@ -187,15 +182,15 @@ void WelcomeScreen::fadeOut()
 void WelcomeScreen::show()
 {
     m_active = true;
-    setOpacity(255);
-    KGameCanvasGroup::show();
+    setOpacity(1);
+    QGraphicsRectItem::show();
     emit shown();
 }
 
 void WelcomeScreen::hide()
 {
     m_active = false;
-    KGameCanvasGroup::hide();
+    QGraphicsRectItem::hide();
     clearButtons();
     emit hidden();
 }

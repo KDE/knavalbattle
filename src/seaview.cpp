@@ -10,9 +10,9 @@
 #include "seaview.h"
 
 #include <QMouseEvent>
+#include <QObject>
 
 #include <KIcon>
-#include <KStandardDirs>
 
 #include "battlefieldview.h"
 #include "button.h"
@@ -24,7 +24,7 @@
 
 
 SeaView::SeaView(QWidget* parent)
-: KGameCanvasWidget(parent)
+: QWidget(parent)
 , m_delegate(0)
 , m_last_f(-1)
 {/*
@@ -32,113 +32,95 @@ SeaView::SeaView(QWidget* parent)
     setAttribute(Qt::WA_NoSystemBackground);*/
 
     // create renderer
-    m_renderer = new KBSRenderer(KStandardDirs::locate("appdata", "pictures/default_theme.svgz"));
-    m_renderer->resize(tileSize());
-    
-    // create screen
-    m_screen = new WelcomeScreen(this, font());
-    m_screen->hide();
-    
+    m_renderer = new KBSRenderer();
+   
     // create labels
     m_labels[0] = new PlayerLabel(
-        m_renderer->render("score_mouse", QSize(32, 32)),
+        m_renderer->spritePixmap("score_mouse", QSize(32, 32)),
         "Player",
         this);
-    m_labels[0]->stackUnder(m_screen);
     m_labels[0]->show();
     m_labels[1] = new PlayerLabel(
-        m_renderer->render("score_ai", QSize(32, 32)),
+        m_renderer->spritePixmap("score_ai", QSize(32, 32)),
         "Computer", 
         this);
-    m_labels[1]->stackUnder(m_screen);
     m_labels[1]->show();
-    
+ 
     // create fields
     m_fields[0] = new BattleFieldView(this, m_renderer, "background", GRID_SIZE);
-    m_fields[0]->stackUnder(m_screen);
+    m_fields[0]->setPlayer(Sea::Player(0));
     m_fields[0]->show();
-    connect(m_fields[0]->screen(), SIGNAL(clicked(Button*)), this, SLOT(buttonClicked(Button*)));
     m_fields[1] = new BattleFieldView(this, m_renderer, "background2", GRID_SIZE);
-    m_fields[1]->stackUnder(m_screen);
+    m_fields[1]->setPlayer(Sea::Player(1));
     m_fields[1]->show();
-    connect(m_fields[1]->screen(), SIGNAL(clicked(Button*)), this, SLOT(buttonClicked(Button*)));
     
     // create stats widgets
-    m_stats[0] = new StatsWidget(m_fields[0]->size().width(), m_renderer, this);
-    m_stats[0]->stackUnder(m_screen);
+    m_stats[0] = new StatsWidget(m_renderer, this);
     m_stats[0]->show();
     
-    m_stats[1] = new StatsWidget(m_fields[1]->size().width(), m_renderer, this);
-    m_stats[1]->stackUnder(m_screen);
+    m_stats[1] = new StatsWidget(m_renderer, this);
     m_stats[1]->show();
     
-    
     Animator::instance()->start();
-    update();
+    refresh();
     
-    connect(screen(Sea::Player(0)), SIGNAL(hidden()), this, SLOT(update()));
-    connect(screen(Sea::Player(0)), SIGNAL(shown()), this, SLOT(update()));
-    
-    setMouseTracking(true);
+    connect(screen(Sea::Player(0)), SIGNAL(hidden()), this, SLOT(refresh()));
+    connect(screen(Sea::Player(0)), SIGNAL(shown()), this, SLOT(refresh()));
 }
 
 SeaView::~SeaView() {
 	delete m_renderer;
 }
 
-void SeaView::update()
+void SeaView::refresh()
 {
-    int ts = tileSize();
-    
+    QSize ts = tileSize();
     m_renderer->resize(ts);
 
-    m_fields[0]->update();
-    m_fields[1]->update();
+    m_fields[0]->refresh();
+    m_fields[1]->refresh();
+
     int actual_width = 
         m_fields[0]->size().width() +
         m_fields[1]->size().width() +
         GAP;
-    
-    m_fields[0]->moveTo(
-        (width() - actual_width) / 2, 
-        PlayerLabel::HEIGHT + LABEL_SPACING * 2);
-    if (!screen(Sea::Player(0))->active()) {
+ 
+    m_fields[0]->move((width() - actual_width) / 2, 
+                      m_labels[0]->height() + LABEL_SPACING * 2);
+
+    if (!screen(Sea::Player(0))->isVisible()) {
         m_labels[0]->show();
-        m_labels[0]->moveTo(m_fields[0]->pos().x(), LABEL_SPACING);
+        m_labels[0]->move(m_fields[0]->pos().x(), LABEL_SPACING);
         m_labels[0]->update();
     }
     else {
         m_labels[0]->hide();
     }
-    m_stats[0]->moveTo(m_fields[0]->pos().x(), 
-        height() - StatsWidget::HEIGHT - MARGIN);
+    m_stats[0]->move(m_fields[0]->pos().x(), 
+                     m_fields[0]->pos().y() + m_fields[0]->height() + 2);
     m_stats[0]->setWidth(m_fields[0]->size().width());
-    m_stats[0]->update();
-    
-    m_fields[1]->moveTo(
+    m_stats[0]->refresh();
+ 
+    m_fields[1]->move(
         m_fields[0]->pos().x() + m_fields[0]->size().width() + GAP, 
         m_fields[0]->pos().y());
-    if (!screen(Sea::Player(0))->active()) {
+    if (!screen(Sea::Player(0))->isVisible()) {
         m_labels[1]->show();
-        m_labels[1]->moveTo(m_fields[1]->pos().x(), LABEL_SPACING);
+        m_labels[1]->move(m_fields[1]->pos().x(), LABEL_SPACING);
         m_labels[1]->update();
     }
     else {
         m_labels[1]->hide();
     }
-    m_stats[1]->moveTo(m_fields[1]->pos().x(), 
-        height() - StatsWidget::HEIGHT - MARGIN);
+    m_stats[1]->move(m_fields[1]->pos().x(), 
+                     m_fields[1]->pos().y() + m_fields[1]->height() + 2);
     m_stats[1]->setWidth(m_fields[0]->size().width());
-    m_stats[1]->update();
-    
-    m_screen->moveTo(0, 0);
-    m_screen->resize(QSize(m_fields[1]->pos().x() + m_fields[1]->size().width(),
-                           m_fields[0]->size().height()));
+    m_stats[1]->refresh();
 }
 
 void SeaView::resizeEvent(QResizeEvent*)
 {
-    update();
+    refresh();
 }
 
 int SeaView::fieldAt(const QPoint& p)
@@ -154,106 +136,17 @@ int SeaView::fieldAt(const QPoint& p)
     }
 }
 
-void SeaView::mousePressEvent(QMouseEvent* e)
-{
-    if (m_screen->active()) {
-        m_screen->onMousePress(e->pos());
-    }
-
-    int f = fieldAt(e->pos());
-    if (f == -1) {
-        return;
-    }
-    
-    BattleFieldView* field = m_fields[f];
-    QPoint point = e->pos() - field->pos();
-    Coord c = m_renderer->toLogical(e->pos() - field->pos());
-    
-    if (e->button() == Qt::LeftButton) {
-        field->onMousePress(point);
-        if (m_delegate) {
-            m_delegate->action(Sea::Player(f), c);
-        }
-    }
-    else if (e->button() == Qt::RightButton) {
-        if (m_delegate) {
-            m_delegate->changeDirection(Sea::Player(f));
-        }
-    }
-}
-
-void SeaView::mouseReleaseEvent(QMouseEvent* e)
-{
-    if (m_screen->active()) {
-        m_screen->onMouseRelease(e->pos());
-    }
-
-    int f = fieldAt(e->pos());
-    if (f == -1) {
-        return;
-    }
-    
-    BattleFieldView* field = m_fields[f];
-    
-    if (e->button() == Qt::LeftButton) {
-        field->onMouseRelease(e->pos() - field->pos());
-    }
-}
-
-void SeaView::leaveEvent(QEvent*)
-{
-    if (m_screen->active()) {
-        m_screen->onMouseLeave();
-    }
-    
-    if (m_last_f != -1) {
-        BattleFieldView* field = m_fields[m_last_f];
-        field->onMouseLeave();
-    }
-    m_last_f = -1;
-}
-
-
-void SeaView::mouseMoveEvent(QMouseEvent* e)
-{
-    if (m_screen->active()) {
-        m_screen->onMouseMove(e->pos());
-    }
-    
-    // send mouse move info to the welcome screen
-    int f = fieldAt(e->pos());
-    if (m_last_f != -1 && m_last_f != f) {
-        BattleFieldView* field = m_fields[m_last_f];
-        field->onMouseLeave();
-    }
-    m_last_f = f;
-    if (f != -1) {
-        BattleFieldView* field = m_fields[f];
-        field->onMouseMove(e->pos() - field->pos());
-
-    }
-    
-    if (!m_delegate) {
-        return;
-    }
-    
-    if (!updatePreview(e->pos())) {
-        m_fields[0]->cancelPreview();
-        m_fields[1]->cancelPreview();
-    }
-}
-
 bool SeaView::updatePreview(const QPoint& pos)
 {
-    KGameCanvasItem* item = itemAt(pos);
-    if (static_cast<KGameCanvasItem*>(m_fields[0]) == item) {
+    QWidget* item = childAt(pos);
+    if (static_cast<QGraphicsView*>(m_fields[0]) == item) {
         m_fields[1]->cancelPreview();
         if (setPreview(Sea::Player(0), pos)) {
             m_last_preview = pos;
         }
         return true;
     }
-    else if (static_cast<KGameCanvasItem*>(m_fields[1]) == item) {
+    else if (static_cast<QGraphicsView*>(m_fields[1]) == item) {
         m_fields[0]->cancelPreview();
         if (setPreview(Sea::Player(1), pos)) {
             m_last_preview = pos;
@@ -317,20 +210,21 @@ BattleFieldView* SeaView::otherField(BattleFieldView* field)
     return field == m_fields[0] ? m_fields[1] : m_fields[0];
 }
 
-int SeaView::tileSize() const
+QSize SeaView::tileSize() const
 {
     int h = (height() -
-        PlayerLabel::HEIGHT -
+        m_labels[0]->height() -
         LABEL_SPACING * 2 -
-        StatsWidget::HEIGHT -
+        m_stats[0]->height() -
         MARGIN * 2) / GRID_SIZE;
-    int w = (width() - GAP) / (GRID_SIZE * 2);
-    return w < h ? w : h;
+    int w = (width() - GAP - MARGIN * 2) / (GRID_SIZE * 2);
+    return w < h ? QSize(w, w) : QSize(h, h);
 }
 
 void SeaView::setDelegate(Delegate* c)
 {
-    m_delegate = c;
+    m_fields[0]->setDelegate(c);
+    m_fields[1]->setDelegate(c);
 }
 
 WelcomeScreen* SeaView::globalScreen() const
@@ -345,24 +239,18 @@ WelcomeScreen* SeaView::screen(Sea::Player player) const
 
 void SeaView::toggleLeftGrid(bool show)
 {
-    m_fields[0]->drawGrid(show);
+    m_fields[0]->toggleGrid(show);
 }
 
 void SeaView::toggleRightGrid(bool show)
 {
-    m_fields[1]->drawGrid(show);
-}
-
-
-void SeaView::buttonClicked(Button* button)
-{
-    Q_UNUSED( button );
+    m_fields[1]->toggleGrid(show);
 }
 
 void SeaView::setStats(Sea::Player p, const QString& icon, 
                        const QString& text, Stats* stats)
 {
-    m_labels[p]->setData(m_renderer->render(icon, QSize(32, 32)), text);
+    m_labels[p]->setData(m_renderer->spritePixmap(icon, QSize(32, 32)), text);
     m_stats[p]->setData(stats);
     
 }

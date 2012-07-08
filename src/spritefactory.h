@@ -13,18 +13,16 @@
 #include <QString>
 
 class KBSRenderer;
-class KGameCanvasAbstract;
 class Sprite;
 class Ship;
 
 class SpriteFactory
 {
-    KGameCanvasAbstract* m_canvas;
     KBSRenderer* m_renderer;
     
     Sprite* createSimpleSprite(const QString& name);
 public:
-    SpriteFactory(KGameCanvasAbstract* canvas, KBSRenderer* renderer);
+    SpriteFactory(KBSRenderer* renderer);
     
     Sprite* createShip(Ship* ship);
     Sprite* createHit();

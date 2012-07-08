@@ -6,11 +6,8 @@
   the Free Software Foundation; either version 2 of the License, or
   (at your option) any later version.
 */
-
+#include <QDebug>
 #include "animation.h"
-
-#define USE_UNSTABLE_LIBKDEGAMESPRIVATE_API
-#include <libkdegamesprivate/kgamecanvas.h>
 
 Animation::~Animation()
 {
@@ -66,7 +63,7 @@ void AnimationGroup::add(Animation* a)
     }
 }
 
-FadeAnimation::FadeAnimation(KGameCanvasItem* sprite, int from, int to, int time)
+FadeAnimation::FadeAnimation(QGraphicsItem* sprite, int from, int to, int time)
 : m_sprite(sprite)
 , m_from(from)
 , m_to(to)
@@ -87,15 +84,18 @@ bool FadeAnimation::step(int t)
         return true;
     }
     else {
-        int opacity = int(m_from + (m_to - m_from) * (t - m_start) / (double)m_time);
-        m_sprite->setOpacity(opacity);
+        if (m_to > m_from)
+            m_sprite->setOpacity(m_from + t * (1.0 / m_time));
+        else
+            m_sprite->setOpacity(m_from - t * (1.0 / m_time));
+
         return false;
     }
 }
 
 
-MovementAnimation::MovementAnimation(KGameCanvasItem* sprite, const QPoint& from, 
-                                     const QPoint& to, int time)
+MovementAnimation::MovementAnimation(QGraphicsItem* sprite, const QPointF& from, 
+                                     const QPointF& to, int time)
 : m_sprite(sprite)
 , m_from(from)
 , m_to(to)
@@ -106,18 +106,18 @@ MovementAnimation::MovementAnimation(KGameCanvasItem* sprite, const QPoint& from
 void MovementAnimation::start(int t)
 {
     m_start = t;
-    m_sprite->moveTo(m_from);
+    m_sprite->setPos(m_from);
 }
 
 bool MovementAnimation::step(int t)
 {
     if (t >= m_start + m_time) {
-        m_sprite->moveTo(m_to);
+        m_sprite->setPos(m_to);
         return true;
     }
     else {
-        QPoint pos = m_from + (m_to - m_from) * (t - m_start) / m_time;
-        m_sprite->moveTo(pos);
+        QPointF pos = m_from + (m_to - m_from) * (t - m_start) / m_time;
+        m_sprite->setPos(pos);
         return false;
     }
 }

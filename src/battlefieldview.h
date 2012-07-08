@@ -12,24 +12,32 @@
 
 #include <QMultiHash>
 #include <QTime>
+#include <QWidget>
+#include <QGraphicsView>
+#include <QGraphicsLineItem>
+#include <KGameRenderedItem>
+
 #include "coord.h"
 #include "spritefactory.h"
 #include "grid.h"
-
-#define USE_UNSTABLE_LIBKDEGAMESPRIVATE_API
-#include <libkdegamesprivate/kgamecanvas.h>
+#include "sea.h"
 
 class KBSRenderer;
 class Sprite;
 class Ship;
 class WelcomeScreen;
+class Delegate;
 
-class BattleFieldView : public KGameCanvasGroup
+class BattleFieldView : public QGraphicsView 
 {
-    static const int PREVIEW_OPACITY = 120;
+    static const qreal PREVIEW_OPACITY = 0.5;
 
-    KGameCanvasPixmap* m_background;
-    KGameCanvasPixmap* m_background_lower;
+    KGameRenderedItem* m_background;
+    KGameRenderedItem* m_background_lower;
+
+    QGraphicsLineItem *hlines[11];
+    QGraphicsLineItem *vlines[11];
+
     WelcomeScreen* m_screen;
     KBSRenderer* m_renderer;
     SpriteFactory m_factory;
@@ -38,6 +46,9 @@ class BattleFieldView : public KGameCanvasGroup
     Sprite* m_impact;
     Sprite* m_last_hit;
     bool m_drawGrid;
+
+    Delegate *m_delegate;
+    Sea::Player m_player;
     
     struct Preview {
         Coord pos;
@@ -56,13 +67,12 @@ class BattleFieldView : public KGameCanvasGroup
     Sprites m_sprites;
     void addSprite(const Coord& c, Sprite* ship);
 public:
-    BattleFieldView(KGameCanvasWidget* parent, KBSRenderer* renderer, const QString& bgID, int gridSize);
-    QSize size() const;
+    BattleFieldView(QWidget* parent, KBSRenderer* renderer, const QString& bgID, int gridSize);
 
-    void drawGrid(bool show);
-    void update();
+    void toggleGrid(bool show);
+    void refresh();
     
-    void setPreview(const QPoint& pos, Ship* ship);
+    void setPreview(const QPointF& pos, Ship* ship);
     void cancelPreview();
     void add(const Coord& c, Ship* ship);
     void hit(const Coord& c);
@@ -70,14 +80,18 @@ public:
     void removeImpact();
     void sink(const Coord& c, Ship* ship);
     void clear();
-    
-    
-    void onMousePress(const QPoint& p);
-    void onMouseRelease(const QPoint& p);
-    void onMouseMove(const QPoint& p);
-    void onMouseLeave();
+
+    void setDelegate(Delegate *c);
+    void setPlayer(Sea::Player player);
     
     WelcomeScreen* screen() const;
+protected:
+    void drawGrid();
+
+    virtual void mousePressEvent(QMouseEvent *);
+    virtual void mouseReleaseEvent(QMouseEvent *);
+    virtual void mouseMoveEvent(QMouseEvent *);
+    virtual void leaveEvent(QEvent *);
 };
 
 #endif // BATTLEFIELD_H

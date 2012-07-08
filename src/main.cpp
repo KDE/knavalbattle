@@ -44,6 +44,7 @@ int main(int argc, char** argv)
     aboutData.addCredit(ki18n("John Tapsell"), ki18n("Various improvements and bugfixes"), "john@geola.co.uk");
     aboutData.addCredit(ki18n("Inge Wallin"), ki18n("Bugfixes and refactoring"), "inge@lysator.liu.se");
     aboutData.addCredit(ki18n("Jakub Stachowski"), ki18n("DNS-SD discovery"), "qbast@go2.pl");
+    aboutData.addCredit(ki18n("Roney Gomes"), ki18n("Porting to KGameRenderer and QGraphicsView"), "roney477@gmail.com");
         
     KCmdLineArgs::init(argc, argv, &aboutData);
 

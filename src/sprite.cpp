@@ -13,31 +13,35 @@
 
 #include "kbsrenderer.h"
 
-Sprite::Sprite(KGameCanvasAbstract* parent, KBSRenderer* renderer, 
-            const Coord& scale, const QString& name, bool rotated)
-: KGameCanvasPixmap(parent)
+Sprite::Sprite(KBSRenderer* renderer, const Coord& scale, const QString& name, bool rotated)
+: KGameRenderedItem(renderer, name)
 , m_scale(scale)
 , m_name(name)
 , m_rotated(rotated)
 {
-    update(renderer);
+    refresh(renderer);
 }
 
 Sprite::~Sprite()
 {
 }
 
-void Sprite::update(KBSRenderer* renderer)
+void Sprite::refresh(KBSRenderer* renderer)
 {
-    setPixmap(renderer->render(m_name, m_rotated, m_scale.x, m_scale.y));
-}
-
-void Sprite::setName(const QString& name)
-{
-    m_name = name;
-}
-
-QString Sprite::name() const
-{
-    return m_name;
+    if (m_rotated)
+    {
+        setTransformOriginPoint(renderer->size().width() / 2,
+                                renderer->size().height() / 2);
+        setRotation(90);
+       
+        QSize renderSize(renderer->size().height() * m_scale.y,
+                         renderer->size().width()  * m_scale.x);
+        setRenderSize(renderSize);
+    }
+    else
+    {
+        QSize renderSize(renderer->size().width()  * m_scale.x,
+                         renderer->size().height() * m_scale.y);
+        setRenderSize(renderSize);   
+    }
 }

@@ -10,16 +10,17 @@
 
 #include "button.h"
 
+#include <QPainter>
+#include <QPen>
 #include <QImage>
 #include <kdebug.h>
 #include <math.h> // fabs
 
 #include "animator.h"
 
-Button::Button(WelcomeScreen* parent, const QIcon& icon, 
+Button::Button(QGraphicsItem* parent, const QIcon& icon, 
                const QFont& font, const QString& text)
-: QObject(parent)
-, KGameCanvasPixmap(parent)
+: QGraphicsItem(parent)
 , m_icon(icon)
 , m_font(font)
 , m_text(text)
@@ -30,7 +31,6 @@ Button::Button(WelcomeScreen* parent, const QIcon& icon,
 , m_editor(0)
 {
     computeSize();
-    repaint();
 }
 
 Button::~Button()
@@ -38,7 +38,7 @@ Button::~Button()
     if (m_animation) {
         m_animation->abort();
     }
-    delete m_editor;
+    //delete m_editor;
 }
 
 void Button::setWidth(int width)
@@ -67,36 +67,50 @@ void Button::computeSize()
     m_size.rheight() += 10 + 10;
 }
 
-void Button::repaint()
+void Button::paint(QPainter *p, const QStyleOptionGraphicsItem *, QWidget *)
 {
-    QImage tmp(m_size, QImage::Format_ARGB32_Premultiplied);
-    tmp.fill(0);
-    {
-        QPainter p(&tmp);
-        p.setRenderHint(QPainter::Antialiasing);
-        QPen pen(QColor(200, 200, 220, 255));
-        pen.setWidth(2);
-        p.setPen(pen);
-        p.setBrush(QBrush(QColor(
-            static_cast<int>(m_brightness),
-            static_cast<int>(m_brightness), 
-            static_cast<int>(m_brightness), 100)));
-        p.drawRoundRect(1, 1, m_size.width() - 2, m_size.height() -2, 
-            2000 / m_size.width(), 2000 / m_size.height());
-        p.drawPixmap(10, 
-                    m_size.height() / 2 - 16, 
-                    32, 
-                    32, 
-                    m_icon.pixmap(32, 32));
-    
-        if (!m_editor) {
-            p.setFont(m_font);
-            p.drawText(textPos(), m_text);
-        }
-    }
-    
-    setPixmap(QPixmap::fromImage(tmp));
-    updateEditor();
+    QPen pen(QColor(200, 200, 220, 255));
+    pen.setWidth(2);
+
+    p->setPen(pen);
+    p->setRenderHint(QPainter::Antialiasing);
+    p->setBrush(QBrush(QColor(static_cast<int>(m_brightness),
+                             static_cast<int>(m_brightness),
+                             static_cast<int>(m_brightness), 100)));
+
+    p->drawRoundRect(1, 1,
+                     m_size.width() - 2,
+                     m_size.height() - 2,
+                     2000 / m_size.width(),
+                     2000 / m_size.height());
+
+    p->drawPixmap(10,                        // x coordinate of the icon.
+                  m_size.height() / 2 - 16,  // y coordinate of the icon.
+                  32,                        // Icon's width.
+                  32,                        // Icon's height.
+                  m_icon.pixmap(32, 32));    // Icon's pixmap source.
+
+    p->setFont(m_font);
+
+    // 42 is the distance from the button's left margin to the
+    // icon's right margin. The icon's x coordinate is 10 and its
+    // width is 32.
+    qreal x = boundingRect().x() + 42;
+    qreal y = boundingRect().y();
+    qreal w = boundingRect().width() - 42;
+    qreal h = boundingRect().height();
+
+    // This is the rectangle which ranges from the icon's right margin
+    // to the button's right margin.
+    QRectF rect(x, y, w, h);
+
+    p->drawText(rect, Qt::AlignLeft | Qt::AlignVCenter, m_text);
+    // updateEditor();
+}
+
+QRectF Button::boundingRect() const
+{
+    return QRectF(1, 1, m_size.width() - 2, m_size.height() - 2);
 }
 
 QSize Button::size() const
@@ -104,40 +118,34 @@ QSize Button::size() const
     return m_size;
 }
 
-QPoint Button::textPos() const
+void Button::onMousePress()
 {
-    return QPoint(32 + 10 + (m_size.width() - 32 - 10 - m_text_width) / 2, 
-        m_size.height() / 2 + 6);
-}
-
-void Button::onMousePress(const QPoint&)
-{
-    if (!m_editor && !m_down) {
+    if (!m_down) {
         m_down = true;
         if (m_animation) {
             m_animation->abort();
         }
         m_brightness = BRIGHTNESS_DOWN;
         
-        repaint();
+        update();
     }
 }
 
-void Button::onMouseRelease(const QPoint&)
+void Button::onMouseRelease()
 {
-    if (!m_editor && m_down) {
+    if (m_down) {
         m_down = false;
         if (m_animation) {
             m_animation->abort();
         }
         m_brightness = BRIGHTNESS_NORMAL;
-        repaint();
+        update();
     }
 }
 
-void Button::onMouseMove(const QPoint&)
+void Button::onMouseMove()
 {
-    if (!m_editor && !m_hover) {
+    if (!m_hover) {
         m_hover = true;
         
         if (m_down) {
@@ -154,7 +162,7 @@ void Button::onMouseMove(const QPoint&)
             Animator::instance()->add(m_animation);
         }
         
-        repaint();
+        update();
     }
 }
 
@@ -177,13 +185,13 @@ void Button::onMouseLeave()
             Animator::instance()->add(m_animation);
         }
         
-        repaint();
+        update();
     }
 }
 
 bool Button::onClicked()
 {
-    if (!m_editor) {
+    if (true) {
         kDebug() << "clicked";
         emit clicked();
         return true;
@@ -196,7 +204,7 @@ bool Button::onClicked()
 void Button::setText(const QString& text)
 {
     m_text = text;
-    repaint();
+    update();
 }
 
 double Button::brightness() const
@@ -207,57 +215,7 @@ double Button::brightness() const
 void Button::setBrightness(double value)
 {
     m_brightness = value;
-    repaint();
-}
-
-KGameCanvasPixmap* Button::extractIcon()
-{
-    KGameCanvasPixmap* res = new KGameCanvasPixmap(
-        KGameCanvasPixmap::canvas());
-    res->moveTo(pos() + QPoint(10, 10));
-    res->setPixmap(m_icon.pixmap(32, 32));
-    
-    m_icon = QIcon();
-    repaint();
-    
-    return res;
-}
-
-void Button::setEditor(EditorFactory& factory)
-{
-    // remove old editor if existent
-    delete m_editor;
-    
-    // create a new editor
-    m_editor = factory.createEditor(topLevelCanvas());
-    
-    // update button
-    m_size.setWidth(32 * 6);
-    emit needsUpdate();
-    repaint();
-    m_editor->show();
-    
-    m_editor->setFocus();
-}
-
-void Button::updateEditor()
-{
-    if (m_editor) {
-        const int SPACE = 9;
-        m_editor->setGeometry(QRect(absolutePosition() + QPoint(textPos().x(), SPACE),
-            QSize(m_size.width() - 10 - 10 - 32 - 10, m_size.height() - SPACE * 2)));
-    }
-}
-
-void Button::removeEditor()
-{
-    m_editor->hide();
-    m_editor->deleteLater();
-    m_editor = 0;
-    
-    computeSize();
-    repaint();
-    emit needsUpdate();
+    update();
 }
 
 // ------------

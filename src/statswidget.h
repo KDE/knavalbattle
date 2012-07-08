@@ -10,71 +10,51 @@
 #ifndef STATSWIDGET_H
 #define STATSWIDGET_H
 
-#include <QFontMetrics>
+#include <QLabel>
+#include <QFrame>
+#include <QWidget>
 #include <QPointer>
 
-#define USE_UNSTABLE_LIBKDEGAMESPRIVATE_API
-#include <libkdegamesprivate/kgamecanvas.h>
-
-class KBSRenderer;
 class Stats;
+class KBSRenderer;
 
-class RoundFrame : public KGameCanvasItem
+class StatsWidgetElement : public QFrame 
 {
-    QSize m_size;
 public:
-    RoundFrame(const QSize& size, KGameCanvasAbstract* canvas);
-    virtual void paint(QPainter* p);
-    virtual QRect rect() const;
-    
-    void setSize(const QSize& size);
+    static const int MARGIN         = 5;
+    static const int BORDER_WIDTH   = 2;
+    static const int BORDER_X       = 1;
+    static const int BORDER_Y       = 1;
+
+private:
+    QLabel *m_icon;
+    QLabel *m_text;
+
+public:
+    StatsWidgetElement(const QPixmap &icon, const QString &text, QWidget *parent);
+
+    void setText(const QString &text);
+    void setData(const QPixmap &icon, const QString &text);
+
+protected:
+    virtual void paintEvent(QPaintEvent *);
 };
 
-class StatsWidgetElement : public KGameCanvasGroup
+class StatsWidget : public QWidget
 {
-public:
-    static const int HEIGHT = 40;
-    static const int MARGIN = 8;
+    Q_OBJECT
 private:
-    int m_width; // requested width
-    QSize m_size; // actual width
-    QFontMetrics m_metrics; // font metrics
-    
-    RoundFrame* m_frame;
-    KGameCanvasPixmap* m_icon;
-    KGameCanvasText* m_text;
-    
-    void update();
-    int minimumWidth() const;
-public:
-    StatsWidgetElement(const QPixmap& icon, const QString& text, 
-        KGameCanvasAbstract* parent);
-        
-    void setWidth(int width);
-    void setText(const QString& text);
-    QSize size() const;
-};
-
-class StatsWidget : public QObject, public KGameCanvasGroup
-{
-Q_OBJECT
-public:
-    static const int MARGIN = 10;
-    static const int HEIGHT = StatsWidgetElement::HEIGHT;
-private:
-    int m_width;
     QPointer<Stats> m_stats;
     
     StatsWidgetElement* m_elements[2];
 public:
-    StatsWidget(int width, KBSRenderer* renderer, KGameCanvasAbstract* parent);
-
+    StatsWidget(KBSRenderer* renderer, QWidget* parent);
+    
     void setWidth(int width);
     void setData(Stats*);
 public slots:
-    void update();
+    void refresh();
 };
 
 
 #endif // STATSWIDGET_H
-

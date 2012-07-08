@@ -9,6 +9,8 @@
 
 #include "battlefieldview.h"
 
+#include <QMouseEvent>
+#include <QSizePolicy>
 #include <kdebug.h>
 #include <kicon.h>
 
@@ -17,114 +19,149 @@
 #include "animator.h"
 #include "animation.h"
 #include "welcomescreen.h"
+#include "button.h"
+#include "delegate.h"
+#include "sea.h"
 
-BattleFieldView::BattleFieldView(KGameCanvasWidget* parent, KBSRenderer* renderer, const QString& bgID, int gridSize)
-: KGameCanvasGroup(parent)
+BattleFieldView::BattleFieldView(QWidget* parent, KBSRenderer* renderer, const QString& bgID, int gridSize)
+: QGraphicsView(parent)
 , m_renderer(renderer)
-, m_factory(this, renderer)
+, m_factory(renderer)
 , m_bgID(bgID)
 , m_gridSize(gridSize)
 , m_impact(0)
 , m_last_hit(0)
 , m_drawGrid(true)
+, m_delegate(0)
 {
-    m_background_lower = new KGameCanvasPixmap(
-        m_renderer->render(bgID + "-layer1", false, m_gridSize, m_gridSize), this);
-    m_background_lower->moveTo(0, 0);
-    m_background_lower->setOpacity(250);
-    m_background_lower->show();
+    m_background_lower = new KGameRenderedItem(m_renderer, bgID + "-layer1");
+    m_background_lower->setOpacity(0.98);
     
-    m_background = new KGameCanvasPixmap(
-        m_renderer->render(bgID + "-layer2", false, m_gridSize, m_gridSize), this);
-    m_background->moveTo(0, 0);
-    m_background->setOpacity(250);
-    m_background->stackOver(m_background_lower);
-    m_background->show();
+    m_background = new KGameRenderedItem(m_renderer, bgID + "-layer2");
+    m_background->setOpacity(0.98);
     
-    m_screen = new WelcomeScreen(this, parent->font());
-    m_screen->stackOver(m_background);
-//     m_screen->show();
+    m_screen = new WelcomeScreen(font());
+
+    QGraphicsScene *scene = new QGraphicsScene(this);
+    scene->addItem(m_background_lower);
+    scene->addItem(m_background);
+    scene->addItem(m_screen);
     
     for (Sprites::iterator i = m_sprites.begin();
             i != m_sprites.end();
             ++i) {
         i.value() = 0;
     }
+
+    for (int i = 0; i < 11; i++) {
+        hlines[i] = new QGraphicsLineItem;
+        vlines[i] = new QGraphicsLineItem;
+
+        scene->addItem(hlines[i]);
+        scene->addItem(vlines[i]);
+
+        hlines[i]->stackBefore(m_background);
+        vlines[i]->stackBefore(m_background);
+    }
+
+    setScene(scene);
+    setMouseTracking(true);
+    setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+    setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
 }
 
-QSize BattleFieldView::size() const
+void BattleFieldView::toggleGrid(bool show)
 {
-    return m_renderer->size() * m_gridSize;
+    if (m_drawGrid != show)
+    {
+        m_drawGrid = show;
+        drawGrid();
+    }
 }
 
-void BattleFieldView::drawGrid(bool show)
+void BattleFieldView::drawGrid()
 {
-    m_drawGrid = show;
-    update();
-}
+    if (m_drawGrid)
+    {
+        int spacing = m_renderer->size().width();
+        int width   = spacing * m_gridSize;
+        int height  = spacing * m_gridSize;
 
-void BattleFieldView::update()
-{
-    // update welcome screen
-    m_screen->moveTo(0, 0);
-    m_screen->resize(size());
+        for (int i = 0; i < 11; i++) {
+            hlines[i]->show();
+            hlines[i]->setLine(0, i * spacing, width, i * spacing);
 
-    // update background
-    if(m_drawGrid) {
-        qreal width, height;
-        qreal distw, disth;
-        width = size().width();
-        height = size().height();
-        distw = width / m_gridSize;
-        disth = height / m_gridSize;
-        QPixmap pixgrid = m_renderer->render(m_bgID + "-layer1", false, m_gridSize, m_gridSize);
-        QPainter p;
-        p.begin(&pixgrid);
-        for(int i = 0; i < m_gridSize - 1; i++) {
-            // vertical lines
-            p.drawLine(QPointF((i + 1) * distw, 0.0), QPointF(( i + 1) * distw, height));
-            // horizontal lines
-            p.drawLine(QPointF(0.0, (i + 1) * disth), QPointF(width, (i + 1) * disth));
+            vlines[i]->show();
+            vlines[i]->setLine(i * spacing, 0, i * spacing, height);
         }
-        p.end();
-        m_background_lower->setPixmap(pixgrid);
     }
-    else {
-        m_background_lower->setPixmap(
-            m_renderer->render(m_bgID + "-layer1", false, m_gridSize, m_gridSize));
+    else
+    {
+        for (int i = 0; i < 11; i++) {
+            hlines[i]->hide();
+            vlines[i]->hide();
+        }
     }
-    m_background_lower->moveTo(0, 0);
-    m_background->setPixmap(
-        m_renderer->render(m_bgID + "-layer2", false, m_gridSize, m_gridSize));
-    m_background->moveTo(0, 0);
-    
+}
+
+void BattleFieldView::refresh()
+{
+    // Updates this widget.
+    int x = pos().x();
+    int y = pos().x();
+    int w = m_renderer->size().width() * m_gridSize;
+    int h = m_renderer->size().height() * m_gridSize;
+
+    setSceneRect(0, 0, w, h);
+    // Due the rounded nature of the view, it's necessary to set its
+    // geometry to make sure it will show the entire grid.
+    int fs = frameWidth();
+    setGeometry(x, y, w + 2 * fs, h + 2 * fs); 
+
+    // update welcome screen
+    m_screen->setPos(0, 0);
+    m_screen->resize(m_renderer->size() * m_gridSize);
+
+    // Updates the backgrounds.
+    m_background_lower->hide();
+    m_background_lower->setRenderSize(m_renderer->size() * m_gridSize);
+    m_background_lower->show();
+
+    m_background->hide();
+    m_background->setRenderSize(m_renderer->size() * m_gridSize);
+    m_background->show();
+
+    // Updates the grid.
+    drawGrid();
+ 
     // update preview
     if (m_preview.sprite) {
-        m_preview.sprite->update(m_renderer);
-        m_preview.sprite->moveTo(m_renderer->toReal(m_preview.pos));
+        m_preview.sprite->refresh(m_renderer);
+        m_preview.sprite->setPos(m_renderer->toReal(m_preview.pos));
     }
     
     // update sprites
     for (Sprites::const_iterator i = m_sprites.constBegin(); 
             i != m_sprites.constEnd();
             ++i) {
-        i.value()->update(m_renderer);
-        i.value()->moveTo(m_renderer->toReal(i.key()));
+        i.value()->refresh(m_renderer);
+        i.value()->setPos(m_renderer->toReal(i.key()));
     }
 }
 
-void BattleFieldView::setPreview(const QPoint& pos, Ship* ship)
+void BattleFieldView::setPreview(const QPointF& pos, Ship* ship)
 {
     if (!m_preview.sprite) {
         m_preview.ship = ship;
         m_preview.sprite = m_factory.createShip(ship);
         kDebug() << "created preview: dir =" << ship->direction();
         m_preview.sprite->setOpacity(PREVIEW_OPACITY);
-        m_preview.sprite->show();
+        scene()->addItem(m_preview.sprite);
+        m_preview.sprite->stackBefore(m_screen);
     }
     
     m_preview.pos = m_renderer->toLogical(pos);
-    m_preview.sprite->moveTo(m_renderer->toReal(m_preview.pos));
+    m_preview.sprite->setPos(m_renderer->toReal(m_preview.pos));
 }
 
 void BattleFieldView::cancelPreview()
@@ -138,8 +175,9 @@ void BattleFieldView::addSprite(const Coord& c, Sprite* sprite)
 {
     m_sprites.insert(c, sprite);
     
-    sprite->moveTo(m_renderer->toReal(c));
-    sprite->show();
+    sprite->setPos(m_renderer->toReal(c));
+    scene()->addItem(sprite);
+    sprite->stackBefore(m_screen);
 }
 
 void BattleFieldView::add(const Coord& c, Ship* ship)
@@ -147,16 +185,14 @@ void BattleFieldView::add(const Coord& c, Ship* ship)
     Sprite* sprite = m_factory.createShip(ship);
     addSprite(c, sprite);
     
-    sprite->stackOver(m_background);
-    
     // fading preview in
     if (ship == m_preview.ship) {
-        Animation* a = new FadeAnimation(sprite, PREVIEW_OPACITY, 255, 1000);
+        Animation* a = new FadeAnimation(sprite, PREVIEW_OPACITY, 1, 1000);
         Animator::instance()->add(a);
         cancelPreview();
     }
     else if (!ship->alive()) {
-        Animation* a = new FadeAnimation(sprite, 0, 200, 1000);
+        Animation* a = new FadeAnimation(sprite, 0, 1, 1000);
         Animator::instance()->add(a);
     }
 }
@@ -171,18 +207,19 @@ void BattleFieldView::sink(const Coord& c, Ship* ship)
          i < ship->size(); 
          i++, p += ship->increment()) {
         foreach (Sprite* s, m_sprites.values(p)) {
-            if (s->name().startsWith("ship")) {
+            if (s->spriteKey().startsWith("ship")) {
                 ship_sprite = s;
             }
-            else if (s->name().startsWith("hit")) {
-                s->setName("hit-end");
-                s->update(m_renderer);
-                s->stackOver(m_background_lower);
+            else if (s->spriteKey().startsWith("hit")) {
+                s->setSpriteKey("hit-end");
+                s->refresh(m_renderer);
+                s->stackBefore(m_screen);
+                s->setOpacity(0.5);
             }
         }
     }
     if (ship_sprite) {
-        ship_sprite->stackOver(m_background_lower);
+        ship_sprite->stackBefore(m_background);
     }
 }
 
@@ -202,13 +239,13 @@ void BattleFieldView::miss(const Coord& c)
 
 void BattleFieldView::removeImpact() {
     if (m_impact) {
-        m_impact->setName("water");
-        m_impact->update(m_renderer);
+        m_impact->setSpriteKey("water");
+        m_impact->refresh(m_renderer);
         m_impact = 0;
     }
     if (m_last_hit) {
-        m_last_hit->setName("hit-after");
-        m_last_hit->update(m_renderer);
+        m_last_hit->setSpriteKey("hit-after");
+        m_last_hit->refresh(m_renderer);
         m_last_hit = 0;
     }
 }
@@ -226,35 +263,81 @@ void BattleFieldView::clear()
     m_sprites.clear();
 }
 
-void BattleFieldView::onMousePress(const QPoint& p)
+void BattleFieldView::mousePressEvent(QMouseEvent *ev)
 {
-    if (m_screen->active()) {
-        m_screen->onMousePress(p);
+    Button *button = dynamic_cast<Button *>(itemAt(ev->pos()));
+
+    if (m_screen->isVisible() && button)
+    {
+        m_screen->onMousePress(button);
+    }
+    else if (ev->button() == Qt::LeftButton && m_delegate)
+    {
+        Coord c = m_renderer->toLogical(ev->pos());
+        m_delegate->action(m_player, c);
+    }
+    else if (ev->button() == Qt::RightButton && m_delegate)
+    {
+        m_delegate->changeDirection(m_player);
+
+        Coord c = m_renderer->toLogical(ev->pos());
+
+        if(Ship *ship = m_delegate->canAddShip(m_player, c))
+            setPreview(mapToScene(ev->pos()), ship);
     }
 }
 
-void BattleFieldView::onMouseRelease(const QPoint& p)
+void BattleFieldView::mouseReleaseEvent(QMouseEvent *ev)
 {
-    if (m_screen->active()) {
-        m_screen->onMouseRelease(p);
+    Button *button = dynamic_cast<Button *>(itemAt(ev->pos()));
+
+    if (m_screen->isVisible() && button && ev->button() == Qt::LeftButton) {
+        m_screen->onMouseRelease(button);
     }
 }
 
-void BattleFieldView::onMouseMove(const QPoint& p)
+void BattleFieldView::mouseMoveEvent(QMouseEvent *ev)
 {
-    if (m_screen->active()) {
-        m_screen->onMouseMove(p);
-    }
-}
+    Button *button = dynamic_cast<Button *>(itemAt(ev->pos()));
 
-void BattleFieldView::onMouseLeave()
-{
-    if (m_screen->active()) {
+    if (m_screen->isVisible() && button)
+    {
+        m_screen->onMouseMove(button);
+    }
+    else if (m_screen->isVisible() && !button)
+    {
         m_screen->onMouseLeave();
+    }
+    else
+    {
+        cancelPreview();
+        Coord c = m_renderer->toLogical(ev->pos());
+
+        if(Ship *ship = m_delegate->canAddShip(m_player, c))
+            setPreview(mapToScene(ev->pos()), ship);
+    }
+}
+
+void BattleFieldView::leaveEvent(QEvent *)
+{
+    if (m_screen->isVisible()) {
+        m_screen->onMouseLeave();
+    } else {
+        cancelPreview();
     }
 }
 
 WelcomeScreen* BattleFieldView::screen() const
 {
     return m_screen;
+}
+
+void BattleFieldView::setDelegate(Delegate *c)
+{
+    m_delegate = c;
+}
+
+void BattleFieldView::setPlayer(Sea::Player player)
+{
+    m_player = player;
 }

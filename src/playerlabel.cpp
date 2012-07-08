@@ -6,48 +6,35 @@
   the Free Software Foundation; either version 2 of the License, or
   (at your option) any later version.
 */
+#include <QHBoxLayout>
 
 #include "playerlabel.h"
 
-#include <QFont>
-#include <QPixmap>
-
-PlayerLabel::PlayerLabel(const QPixmap& icon, const QString& text,
-    KGameCanvasAbstract* parent)
-: KGameCanvasGroup(parent)
+PlayerLabel::PlayerLabel(const QPixmap &icon, const QString &text, QWidget *parent)
+: QWidget(parent)
 {
-    m_icon = new KGameCanvasPixmap(icon, this);
-    m_icon->show();
-    
-    QFont font;
-    font.setPixelSize(20);
-    m_name = new KGameCanvasText(text, Qt::black, font, 
-        KGameCanvasText::HLeft, KGameCanvasText::VTop, this);
-    m_name->show();
+    m_icon = new QLabel;
+    m_icon->setPixmap(icon);
+
+    m_name = new QLabel;
+    m_name->setText(text);
+
+    QHBoxLayout *layout = new QHBoxLayout;
+    layout->addWidget(m_icon);
+    layout->addSpacing(10);
+    layout->addWidget(m_name);
+    layout->addStretch();
+
+    setLayout(layout);
 }
 
-void PlayerLabel::setData(const QPixmap& icon, const QString& text)
+void PlayerLabel::setData(const QPixmap &icon, const QString &text)
 {
     m_icon->setPixmap(icon);
-    m_name->setText(text);
-    
-    update();
+    m_name->setText("<font size=\"5\">" + text + "</font>");
 }
 
-void PlayerLabel::setText(const QString& text)
+void PlayerLabel::setText(const QString &text)
 {
-    m_name->setText(text);
-    update();
+    m_name->setText("<font size=\"5\">" + text + "</font>");
 }
-
-void PlayerLabel::update()
-{
-    m_icon->moveTo(0, 0);
-    m_name->moveTo(m_icon->pixmap().width() + MARGIN, 0);
-}
-
-int PlayerLabel::height() const
-{
-    return m_icon->pixmap().height();
-}
-

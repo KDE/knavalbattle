@@ -13,8 +13,8 @@
 #include <QList>
 #include <QObject>
 #include <QPoint>
+#include <QGraphicsItem>
 
-class KGameCanvasItem;
 
 class Animation : public QObject
 {
@@ -47,13 +47,13 @@ public:
 class FadeAnimation : public Animation
 {
 Q_OBJECT
-    KGameCanvasItem* m_sprite;
+    QGraphicsItem* m_sprite;
     int m_from;
     int m_to;
     int m_time;
     int m_start;
 public:
-    FadeAnimation(KGameCanvasItem* sprite, int from, int to, int time);
+    FadeAnimation(QGraphicsItem* sprite, int from, int to, int time);
     virtual void start(int t);
     virtual bool step(int t);
 };
@@ -61,14 +61,14 @@ public:
 class MovementAnimation : public Animation
 {
 Q_OBJECT
-    KGameCanvasItem* m_sprite;
-    QPoint m_from;
-    QPoint m_to;
+    QGraphicsItem* m_sprite;
+    QPointF m_from;
+    QPointF m_to;
     int m_time;
     int m_start;
 public:
-    MovementAnimation(KGameCanvasItem* sprite, const QPoint& from,
-                      const QPoint& to, int time);
+    MovementAnimation(QGraphicsItem* sprite, const QPointF& from,
+                      const QPointF& to, int time);
     virtual void start(int t);
     virtual bool step(int t);
 };
