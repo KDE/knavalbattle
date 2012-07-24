@@ -30,7 +30,7 @@ class Delegate;
 
 class BattleFieldView : public QGraphicsView 
 {
-    static const qreal PREVIEW_OPACITY = 0.5;
+    static const qreal PREVIEW_OPACITY;
 
     KGameRenderedItem* m_background;
     KGameRenderedItem* m_background_lower;

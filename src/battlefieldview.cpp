@@ -341,3 +341,5 @@ void BattleFieldView::setPlayer(Sea::Player player)
 {
     m_player = player;
 }
+
+const qreal BattleFieldView::PREVIEW_OPACITY = 0.5;
