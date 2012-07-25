@@ -259,4 +259,4 @@ WelcomeScreen* BattleFieldView::screen() const
     return m_screen;
 }
 
-const qreal BattleFieldView::PREVIEW_OPACITY = 0.5;
+const int BattleFieldView::PREVIEW_OPACITY = 120;
