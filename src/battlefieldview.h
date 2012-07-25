@@ -26,7 +26,7 @@ class WelcomeScreen;
 
 class BattleFieldView : public KGameCanvasGroup
 {
-    static const int PREVIEW_OPACITY = 120;
+    static const int PREVIEW_OPACITY;
 
     KGameCanvasPixmap* m_background;
     KGameCanvasPixmap* m_background_lower;
