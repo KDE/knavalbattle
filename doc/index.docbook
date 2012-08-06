@@ -52,8 +52,8 @@
 <holder>Kevin Krammer</holder>
 </copyright>
 
-<date>2007-11-14</date>
-<releaseinfo>2.0</releaseinfo>
+<date>2012-08-06</date>
+<releaseinfo>2.0 (&kde; 4.9)</releaseinfo>
 
 <abstract>
 <para>
@@ -246,7 +246,7 @@ differently from the computer player included in &kappname;.
 <varlistentry>
 <term>
 <menuchoice>
-<shortcut action="simul">&Ctrl;<keycap>H</keycap></shortcut>
+<shortcut><keycombo action="simul">&Ctrl;<keycap>H</keycap></keycombo></shortcut>
 <guimenu>Game</guimenu>
 <guimenuitem>Show High Scores</guimenuitem>
 </menuchoice>
