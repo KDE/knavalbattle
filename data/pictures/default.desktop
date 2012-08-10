@@ -1,5 +1,18 @@
 [KGameTheme]
 Name=Naval Battle Default
+Name[nl]=Naval Battle standaard
+Name[pt]=Batalha Naval Predefinida
+Name[pt_BR]=Padrão Batalha Naval
+Name[sv]=Standardtema för Sänka fartyg
+Name[uk]=Типова для «Морського бою»
+Name[x-test]=xxNaval Battle Defaultxx
 Description=The default theme for Naval Battle
+Description[cs]=Výchozí motiv námořní bitvy
+Description[nl]=Het standaardthema van Naval Battle
+Description[pt]=O tema predefinido da Batalha Naval
+Description[pt_BR]=Tema padrão para Batalha Naval
+Description[sv]=Standardtema för Sänka fartyg
+Description[uk]=Типова тема для «Морського бою»
+Description[x-test]=xxThe default theme for Naval Battlexx
 Author=Johann Ollivier Lapeyre and Eugene Trounev
 FileName=default_theme.svgz
