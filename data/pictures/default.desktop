@@ -1,5 +1,6 @@
 [KGameTheme]
 Name=Naval Battle Default
+Name[es]=Predeterminado para Batalla naval
 Name[nl]=Naval Battle standaard
 Name[pt]=Batalha Naval Predefinida
 Name[pt_BR]=Padrão Batalha Naval
@@ -8,6 +9,7 @@ Name[uk]=Типова для «Морського бою»
 Name[x-test]=xxNaval Battle Defaultxx
 Description=The default theme for Naval Battle
 Description[cs]=Výchozí motiv námořní bitvy
+Description[es]=Tema predeterminado de Batalla naval
 Description[nl]=Het standaardthema van Naval Battle
 Description[pt]=O tema predefinido da Batalha Naval
 Description[pt_BR]=Tema padrão para Batalha Naval
