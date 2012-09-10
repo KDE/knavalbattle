@@ -6,6 +6,8 @@ output=none
 
 Icon=kbattleship
 Description=A protocol for the game Naval Battle
+Description[uk]=Протокол для гри у морський бій
+Description[x-test]=xxA protocol for the game Naval Battlexx
 
 helper=true
 Class=:internet

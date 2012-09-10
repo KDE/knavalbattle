@@ -1,11 +1,15 @@
 [Desktop Entry]
 Name=Naval Battle
+Name[uk]=Морський бій
+Name[x-test]=xxNaval Battlexx
 Exec=kbattleship -caption "%c" %U
 MimeType=inode/vnd.kde.service.kbattleship;
 Icon=kbattleship
 Type=Application
 X-DocPath=kbattleship/index.html
 GenericName=Ship Sinking Game
+GenericName[uk]=Гра у битву кораблів
+GenericName[x-test]=xxShip Sinking Gamexx
 Terminal=false
 X-DBUS-StartupType=Multi
 Categories=Qt;KDE;Game;StrategyGame;
