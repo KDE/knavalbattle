@@ -2,6 +2,7 @@
 Name=Naval Battle Default
 Name[de]=Naval-Battle-Standard
 Name[es]=Predeterminado para Batalla naval
+Name[fi]=Meritaistelun oletus
 Name[hu]=Tengeri csata alapértelmezett
 Name[nl]=Naval Battle standaard
 Name[pt]=Batalha Naval Predefinida
@@ -19,6 +20,7 @@ Description=The default theme for Naval Battle
 Description[cs]=Výchozí motiv námořní bitvy
 Description[de]=Das Standard-Design für Naval Battle
 Description[es]=Tema predeterminado de Batalla naval
+Description[fi]=Meritaistelun oletusteema
 Description[hu]=Alapértelmezett téma a Tengeri csatához
 Description[nl]=Het standaardthema van Naval Battle
 Description[pt]=O tema predefinido da Batalha Naval
