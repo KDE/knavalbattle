@@ -1,6 +1,7 @@
 [KGameTheme]
 Name=Naval Battle Default
 Name[de]=Naval-Battle-Standard
+Name[el]=Προκαθορισμένο ναυμαχίας
 Name[es]=Predeterminado para Batalla naval
 Name[et]=Merelahing vaikimisi
 Name[fi]=Meritaistelun oletus
@@ -21,6 +22,7 @@ Name[zh_TW]=海上戰爭預設
 Description=The default theme for Naval Battle
 Description[cs]=Výchozí motiv námořní bitvy
 Description[de]=Das Standard-Design für Naval Battle
+Description[el]=Το προκαθορισμένο θέμα της ναυμαχίας
 Description[es]=Tema predeterminado de Batalla naval
 Description[et]=Merelahingu vaiketeema
 Description[fi]=Meritaistelun oletusteema
