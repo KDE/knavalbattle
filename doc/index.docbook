@@ -182,26 +182,6 @@ The first player to destroy all their opponents ships wins the game.
 </itemizedlist>
 </sect1>
 
-
-<sect1 id="multiplayer">
-<title>Multiplayer support</title>
-
-<para>
-&kappname; can be played online on any GGZ Gaming Zone site. You can
-find other players there, and compete against them. Just enter one
-of the available rooms with any GGZ core client, such as
-kggz, and &kappname; will be offered to you as your favourite
-game client. If a GGZ core client is installed, you can try
-out GGZ by visiting the <ulink url="ggz://live.ggzgamingzone.org/#Battleship">community site</ulink>.
-</para>
-
-<para>
-Remember that when playing online, the opponent might be either a
-human player or a computer player. The latter one might behave
-differently from the computer player included in &kappname;.
-</para>
-
-</sect1>
 </chapter>
 
 <chapter id="menu-reference">
