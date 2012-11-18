@@ -35,7 +35,9 @@ MainWindow::MainWindow(const KUrl& url)
         KgDifficultyLevel::Hard //default
     );
     KgDifficultyGUI::init(this);
-    connect(Kg::difficulty(), SIGNAL(selectedLevelChanged(const KgDifficultyLevel*)), m_main, SLOT(levelChanged()));
+
+    connect(Kg::difficulty(),   SIGNAL  (currentLevelChanged(const KgDifficultyLevel*)),
+            m_main,             SLOT    (levelChanged()));
 
     setupActions();
 
