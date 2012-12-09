@@ -113,7 +113,8 @@ void NetworkEntity::hit(Shot* shot)
 
 void NetworkEntity::received(MessagePtr msg)
 {
-    msg->accept(*this);
+    if (msg)
+      msg->accept(*this);
 }
 
 void NetworkEntity::visit(const HeaderMessage& msg)
