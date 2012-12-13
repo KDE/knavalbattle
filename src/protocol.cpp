@@ -124,7 +124,7 @@ Protocol::Protocol(QIODevice* device)
 
 void Protocol::readMore()
 {
-    QByteArray data = m_device->readAll();
+    QByteArray data = m_device->read(4096);
     m_buffer += QString::fromUtf8(data.constData());
     
     int pos;
