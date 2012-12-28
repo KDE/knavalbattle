@@ -22,7 +22,7 @@ StatsWidgetElement::StatsWidgetElement(const QPixmap &icon, const QString &text,
     setData(icon, text);
 }
 
-void StatsWidgetElement::paintEvent(QPaintEvent *ev)
+void StatsWidgetElement::paintEvent(QPaintEvent * /*ev*/)
 {
     QPen pen;
     pen.setColor(QColor(0, 0, 0, 255));
