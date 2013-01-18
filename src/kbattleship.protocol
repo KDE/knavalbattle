@@ -41,6 +41,7 @@ Description[sv]=Ett protokoll för spelet Sänka fartyg
 Description[tr]=Amiral Battı oyunu protokolü
 Description[uk]=Протокол для гри у морський бій
 Description[x-test]=xxA protocol for the game Naval Battlexx
+Description[zh_CN]=Naval Battle 的游戏用协议
 Description[zh_TW]=海上戰爭遊戲使用的協定
 
 helper=true
