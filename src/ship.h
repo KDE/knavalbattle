@@ -30,7 +30,13 @@ public:
 
     void changeDirection();
     Coord increment() const;
+    Coord decrement() const;
+    Coord incrementPerpendicular() const;
+    Coord decrementPerpendicular() const;
     static Coord increment(Direction);
+    static Coord decrement(Direction);
+    static Coord incrementPerpendicular(Direction);
+    static Coord decrementPerpendicular(Direction);
     inline unsigned int size() const { return m_size; }
     inline Direction direction() const { return m_direction; }
     void decLife();
