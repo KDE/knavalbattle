@@ -45,11 +45,12 @@ public slots:
     void highscores();
     void gameOver(Sea::Player winner);
     void setupController();
-    
+
     void newGame();
     void restart(bool ask = true);
     void changeNick();
     void toggleSounds(bool);
+    void toggleAdjacent(bool);
     void restartRequested();
     void setCompatibility(int);
     void updateNick(int, const QString&);

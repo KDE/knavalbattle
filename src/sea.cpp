@@ -1,6 +1,6 @@
 /*
   Copyright (c) 2007 Paolo Capriotti <p.capriotti@gmail.com>
-            
+
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
   the Free Software Foundation; either version 2 of the License, or
@@ -10,11 +10,12 @@
 #include "sea.h"
 #include "battlefield.h"
 
-Sea::Sea(QObject* parent, const Coord& size)
+Sea::Sea(QObject* parent, const Coord& size, const bool allow_adjacent_ships)
 : QObject(parent)
 , m_size(size)
 , m_turn(PLAYER_A)
 , m_status(PLACING_SHIPS)
+, m_allow_adjacent_ships(allow_adjacent_ships)
 {
     m_fields[0] = new BattleField(this, m_size);
     m_fields[1] = new BattleField(this, m_size);
@@ -31,7 +32,7 @@ bool Sea::canAddShip(Player p, const Coord& pos, int size, Ship::Direction direc
     if (m_status != PLACING_SHIPS) {
         return false;
     }
-    return m_fields[p]->canAddShip(pos, size, direction);
+    return m_fields[p]->canAddShip(pos, size, direction, m_allow_adjacent_ships);
 }
 
 void Sea::add(Player p, const Coord& pos, Ship* ship)
@@ -82,6 +83,11 @@ void Sea::checkGameOver()
     else {
         switchTurn();
     }
+}
+
+void Sea::allowAdjacentShips(const bool allow_adjacent_ships)
+{
+    m_allow_adjacent_ships = allow_adjacent_ships;
 }
 
 const Element& Sea::at(Sea::Player player, const Coord& c) const

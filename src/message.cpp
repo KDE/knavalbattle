@@ -117,4 +117,13 @@ void GameOverMessage::accept(MessageVisitor& visitor) const
     visitor.visit(*this);
 }
 
+GameOptionsMessage::GameOptionsMessage(const QString& enableAdjacentShips, const QString& oneOrSeveralShips)
+: m_enabledAdjacentShipsString(enableAdjacentShips)
+, m_oneOrSeveralShipsString(oneOrSeveralShips)
+{
+}
 
+void GameOptionsMessage::accept(MessageVisitor& visitor) const
+{
+    visitor.visit(*this);
+}

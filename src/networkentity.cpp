@@ -12,12 +12,16 @@
 #include "battlefield.h"
 #include "shot.h"
 #include "protocol.h"
+#include "settings.h"
 
 #include <KIcon>
+#include <klocalizedstring.h>
+#include <kdebug.h>
 
 NetworkEntity::NetworkEntity(Sea::Player player, Sea* sea, Protocol* protocol, bool client)
 : Entity(player)
 , m_sea(sea)
+, m_pending_shot(0)
 , m_client(client)
 {
     m_protocol = protocol;
@@ -36,6 +40,8 @@ void NetworkEntity::start(bool ask)
     }
     else {
         m_protocol->send(MessagePtr(new HeaderMessage()));
+
+        m_protocol->send(MessagePtr(new GameOptionsMessage(QString(Settings::adjacentShips() ? "true" : "false"), /* TODO */"true")));
     }
 }
 
@@ -197,6 +203,20 @@ void NetworkEntity::visit(const ChatMessage& msg)
 {
     emit chat(msg.chat());
 }
+
+void NetworkEntity::visit(const GameOptionsMessage& msg)
+{
+    bool enabledAdjacentShips = (msg.enabledAdjacentShips() == QString("true"));
+    m_sea->allowAdjacentShips( enabledAdjacentShips );
+
+    if (enabledAdjacentShips) {
+        emit chat(i18n("You can place ships adjacent to each other"));
+    }
+    else {
+        emit chat(i18n("You must leave an space between ships"));
+    }
+}
+
 
 KIcon NetworkEntity::icon() const
 {

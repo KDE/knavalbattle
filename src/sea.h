@@ -38,15 +38,16 @@ private:
     Player m_turn;
     BattleField* m_fields[2];
     Status m_status;
-    
+    bool m_allow_adjacent_ships;
+
     inline BattleField* currentField() const { return m_fields[m_turn]; }
     inline BattleField* otherField() const { return m_fields[opponent(m_turn)]; }
-    
+
     void checkGameOver();
 public:
-    Sea(QObject* parent, const Coord& size);
+    Sea(QObject* parent, const Coord& size, const bool allow_adjacent_ships);
     ~Sea();
-    
+
     bool canAddShip(Player p, const Coord& pos, int size, Ship::Direction direction) const;
     void add(Player p, int n);
     void add(Player p, const Coord& pos, Ship* ship);
@@ -60,7 +61,8 @@ public:
     bool valid(Sea::Player, const Coord& pos) const;
     void switchTurn();
     bool isNearShip(Sea::Player, const Coord& pos) const;
-    
+    void allowAdjacentShips(const bool allow_adjacent_ships);
+
     inline Status status() const { return m_status; }
     inline Player turn() const { return m_turn; }
     static Player opponent(Player p);

@@ -22,5 +22,9 @@
       <label>Whether sound effects should be played.</label>
       <default>false</default>
     </entry>
+    <entry name="AdjacentShips" type="Bool">
+      <label>Allow the ships to be adjacent without one empty space between them.</label>
+      <default>true</default>
+    </entry>
   </group>
 </kcfg>

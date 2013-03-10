@@ -42,7 +42,7 @@ public:
         m_doc.appendChild(m_main);
     }
     
-    QDomDocument document() { return m_doc; }
+    QDomDocument document() const { return m_doc; }
 
     virtual void visit(const HeaderMessage& msg)
     {
@@ -107,6 +107,13 @@ public:
         setType(msg);
         ADD_FIELD(msg, chat);
         ADD_FIELD(msg, nickname);
+    }
+
+    virtual void visit(const GameOptionsMessage& msg)
+    {
+        setType(msg);
+        ADD_FIELD(msg, enabledAdjacentShips);
+        ADD_FIELD(msg, oneOrSeveralShips);
     }
 };
 
@@ -234,6 +241,12 @@ MessagePtr Protocol::parseMessage(const QString& xmlMessage)
             DEF_ELEMENT(nickname);
             DEF_ELEMENT(chat);
             return MessagePtr(new ChatMessage(nickname, chat));
+        }
+    case GameOptionsMessage::MSGTYPE:
+        {
+            DEF_ELEMENT(enabledAdjacentShips);
+            DEF_ELEMENT(oneOrSeveralShips);
+            return MessagePtr(new GameOptionsMessage(enabledAdjacentShips, oneOrSeveralShips));
         }
     default:
         emit parseError("Unknown message type");

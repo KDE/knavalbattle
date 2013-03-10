@@ -12,6 +12,7 @@
 #include <kdebug.h>
 
 #include "sea.h"
+#include "settings.h"
 
 BattleField::BattleField(Sea* parent, const Coord& size)
 : QObject(parent)
@@ -87,16 +88,47 @@ void BattleField::addBorder(const Coord& pos)
     }
 }
 
-bool BattleField::canAddShip(const Coord& pos, unsigned int size, Ship::Direction direction) const
+bool BattleField::canAddShip(const Coord& pos, unsigned int size, Ship::Direction direction, const bool allow_adjacent_ships) const
 {
     Coord p = pos;
     Coord inc = Ship::increment(direction);
+    // Can not place a ship outside the battlefield
     for (unsigned int i = 0; i < size; i++) {
-        if (!valid(p))
-            return false;
-        if (!get(p).water())
-            return false;
-        p += inc;
+       if (!valid(p))
+          return false;
+       p += inc;
+    }
+    // nor over another ship
+    if (allow_adjacent_ships) {
+        p = pos;
+        for (unsigned int i = 0; i < size; i++) {
+            if (valid(p) && !get(p).water())
+                return false;
+            p += inc;
+        }
+    }
+    else {
+    // if not addjacent ships enabled, there must be
+    // a space between the already placed ships
+    // and the new ship
+        p=pos + Ship::decrement(direction) + Ship::decrementPerpendicular(direction);
+        for (unsigned int i = 0; i < size+2; i++) {
+            if (valid(p) && !get(p).water())
+                return false;
+            p += inc;
+        }
+        p=pos + Ship::decrement(direction);
+        for (unsigned int i = 0; i < size+2; i++) {
+            if (valid(p) && !get(p).water())
+                return false;
+            p += inc;
+        }
+        p=pos + Ship::decrement(direction) + Ship::incrementPerpendicular(direction);
+        for (unsigned int i = 0; i < size+2; i++) {
+            if (valid(p) && !get(p).water())
+                return false;
+            p += inc;
+        }
     }
     return true;
 }

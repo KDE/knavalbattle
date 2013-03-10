@@ -33,23 +33,24 @@ Q_OBJECT
     int m_ready;
     AudioPlayer* m_player;
     bool m_has_ai;
-    
+    bool m_allow_adjacent_ships;
+
     void notify(Sea::Player player, const Coord& c, const HitInfo& info);
     void setupEntity(Entity*);
     void finalizeShot(Sea::Player player, const Coord& c, const HitInfo& info);
     void finalizeGame(Sea::Player winner);
     bool allPlayers() const;
 
-    
+
     friend class Shot;
 public:
-    explicit Controller(QObject* parent, AudioPlayer* player = 0);
+    explicit Controller(QObject* parent, AudioPlayer* player = 0, const bool allow_adjacent_ships = false);
 
-    PlayerEntity* createPlayer(Sea::Player player, SeaView* view, 
+    PlayerEntity* createPlayer(Sea::Player player, SeaView* view,
                                ChatWidget* chat, const QString& nick);
     AIEntity* createAI(Sea::Player player);
     NetworkEntity* createRemotePlayer(Sea::Player player, Protocol* protocol, bool client);
-    
+
     bool start(SeaView* view, bool ask = false);
     Entity* findEntity(Sea::Player) const;
     Sea::Player turn() const;

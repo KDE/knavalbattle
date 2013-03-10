@@ -105,26 +105,6 @@ public:
     const Coord& stop() const { return m_stop; }
 };
 
-class ChatMessage : public Message
-{
-    QString m_nickname;
-    QString m_chat;
-public:
-    static const int MSGTYPE = 8;
-    explicit ChatMessage(const QString& nick, const QString& chat);
-    virtual void accept(MessageVisitor& visitor) const;
-    
-    const QString& chat() const { return m_chat; }
-    const QString& nickname() const { return m_nickname; }
-};
-
-class RestartMessage : public Message
-{
-public:
-    static const int MSGTYPE = 7;
-    virtual void accept(MessageVisitor& visitor) const;
-};
-
 class GameOverMessage : public Message
 {
 public:
@@ -133,7 +113,7 @@ public:
         Coord pos;
         int size;
         Ship::Direction direction;
-        
+
         ShipInfo(const Coord& pos, int size, Ship::Direction direction)
         : pos(pos)
         , size(size)
@@ -146,11 +126,46 @@ private:
 public:
     static const int MSGTYPE = 6;
     GameOverMessage();
-    
+
     void addShip(const Coord& pos, int size, Ship::Direction direction);
     virtual void accept(MessageVisitor& visitor) const;
-    
+
     const QList<ShipInfo>& ships() const { return m_ships; }
+};
+
+class RestartMessage : public Message
+{
+public:
+    static const int MSGTYPE = 7;
+    virtual void accept(MessageVisitor& visitor) const;
+};
+
+class ChatMessage : public Message
+{
+    QString m_nickname;
+    QString m_chat;
+public:
+    static const int MSGTYPE = 8;
+    explicit ChatMessage(const QString& nick, const QString& chat);
+    virtual void accept(MessageVisitor& visitor) const;
+
+    const QString& chat() const { return m_chat; }
+    const QString& nickname() const { return m_nickname; }
+};
+
+
+class GameOptionsMessage : public Message
+{
+private:
+    QString m_enabledAdjacentShipsString;
+    QString m_oneOrSeveralShipsString;
+public:
+    static const int MSGTYPE = 9;
+    GameOptionsMessage(const QString& enableAdjacentShips, const QString& oneOrSeveralShips);
+
+    const QString & enabledAdjacentShips() const { return m_enabledAdjacentShipsString; }
+    const QString & oneOrSeveralShips() const { return m_oneOrSeveralShipsString; }
+    virtual void accept(MessageVisitor& visitor) const;
 };
 
 
@@ -167,6 +182,7 @@ public:
     virtual void visit(const GameOverMessage& msg) = 0;
     virtual void visit(const RestartMessage& msg) = 0;
     virtual void visit(const ChatMessage& msg) = 0;
+    virtual void visit(const GameOptionsMessage& msg) = 0;
 };
 
 #endif // MESSAGE_H

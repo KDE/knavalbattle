@@ -67,7 +67,7 @@ PlayField::~PlayField()
 
 Controller* PlayField::createController()
 {
-    Controller* controller = new Controller(this, m_player);
+    Controller* controller = new Controller(this, m_player, Settings::adjacentShips());
     connect(controller, SIGNAL(gameOver(Sea::Player)),
             this, SLOT(gameOver(Sea::Player)));
     connect(controller, SIGNAL(restartRequested()),
@@ -228,6 +228,12 @@ void PlayField::toggleSounds(bool enable)
     Settings::setEnableSounds(enable);
     Settings::self()->writeConfig();
     m_player->setActive(enable);
+}
+
+void PlayField::toggleAdjacent(bool enable)
+{
+    Settings::setAdjacentShips(enable);
+    Settings::self()->writeConfig();
 }
 
 void PlayField::restartRequested()

@@ -27,9 +27,39 @@ Coord Ship::increment(Direction direction)
     return direction == TOP_DOWN ? Coord(0, 1) : Coord(1, 0);
 }
 
+Coord Ship::decrement(Direction direction)
+{
+    return direction == TOP_DOWN ? Coord(0, -1) : Coord(-1, 0);
+}
+
+Coord Ship::incrementPerpendicular(Direction direction)
+{
+    return direction == TOP_DOWN ? Coord(1, 0) : Coord(0, 1);
+}
+
+Coord Ship::decrementPerpendicular(Direction direction)
+{
+    return direction == TOP_DOWN ? Coord(-1, 0) : Coord(0, -1);
+}
+
 Coord Ship::increment() const
 {
     return increment(m_direction);
+}
+
+Coord Ship::decrement() const
+{
+    return decrement(m_direction);
+}
+
+Coord Ship::incrementPerpendicular() const
+{
+    return incrementPerpendicular(m_direction);
+}
+
+Coord Ship::decrementPerpendicular() const
+{
+    return decrementPerpendicular(m_direction);
 }
 
 void Ship::decLife()

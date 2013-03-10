@@ -17,15 +17,16 @@
 #include "shot.h"
 #include "audioplayer.h"
 
-Controller::Controller(QObject* parent, AudioPlayer* player)
+Controller::Controller(QObject* parent, AudioPlayer* player, const bool allow_adjacent_ships)
 : QObject(parent)
 , m_shot(0)
 , m_ready(0)
 , m_player(player)
 , m_has_ai(false)
+, m_allow_adjacent_ships(allow_adjacent_ships)
 {
     m_ui = 0;
-    m_sea = new Sea(this, Coord(10, 10));
+    m_sea = new Sea(this, Coord(10, 10), allow_adjacent_ships);
 }
 
 PlayerEntity* Controller::createPlayer(Sea::Player player, SeaView* view,

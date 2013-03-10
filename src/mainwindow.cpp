@@ -68,12 +68,18 @@ void MainWindow::setupActions()
     action = new KAction(KIcon( QLatin1String( SimpleMenu::iconClient) ), i18n("&Connect to Game..."), this);
     actionCollection()->addAction("game_create_client", action);
     connect(action, SIGNAL(triggered()), m_main, SLOT(createClient()));
+    // settings
     action = new KAction(i18n("Change &Nickname..."), this);
     actionCollection()->addAction("options_nickname", action);
     connect(action, SIGNAL(triggered()), m_main, SLOT(changeNick()));
     action = new KToggleAction(i18n("&Play Sounds"), this);
     actionCollection()->addAction("options_sounds", action);
     connect(action, SIGNAL(triggered(bool)), m_main, SLOT(toggleSounds(bool)));
+    // This action will be disabled when a game is being run
+    action = new KToggleAction(i18n("&Adjacent Ships"), this);
+    action->setChecked(Settings::adjacentShips());
+    actionCollection()->addAction("options_adjacent", action);
+    connect(action, SIGNAL(triggered(bool)), m_main, SLOT(toggleAdjacent(bool)));
     // config end of game message
     action = new KToggleAction(i18n("Show End-of-Game Message"), this);
     action->setChecked(true);
