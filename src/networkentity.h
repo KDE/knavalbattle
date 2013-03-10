@@ -50,6 +50,7 @@ protected:
     virtual void visit(const GameOverMessage& msg);
     virtual void visit(const RestartMessage& msg);
     virtual void visit(const ChatMessage& msg);
+    virtual void visit(const GameOptionsMessage& msg);
 signals:
     void restartRequested();
 };
