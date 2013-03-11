@@ -213,7 +213,7 @@ void NetworkEntity::visit(const GameOptionsMessage& msg)
         emit chat(i18n("You can place ships adjacent to each other"));
     }
     else {
-        emit chat(i18n("You must leave an space between ships"));
+        emit chat(i18n("You must leave a space between ships"));
     }
 }
 
