@@ -340,6 +340,21 @@ The default is on.
 <term>
 <menuchoice>
 <guimenu>Settings</guimenu>
+<guimenuitem>Adjacent Ships</guimenuitem>
+</menuchoice>
+</term>
+<listitem>
+<para>
+<action>Toggle whether the ships can be put on a desk without one empty space between them.</action>
+The default is on. This setting should be defined on a host when <link linkend="howtoplay">playing &kappname; via network</link>.
+</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term>
+<menuchoice>
+<guimenu>Settings</guimenu>
 <guimenuitem>Show Toolbar</guimenuitem>
 </menuchoice>
 </term>
@@ -495,7 +510,7 @@ Eugene Trounev <email>irs_me@hotmail.com</email>
 </listitem>
 <listitem>
 <para>
-Robert Wadley <email>rob@robntina.fastmail.us</email>
+&Robert.Wadley; <email>rob@robntina.fastmail.us</email>
 </para>
 </listitem>
 <listitem>
