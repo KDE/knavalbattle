@@ -1,4 +1,4 @@
-project(kbattleship)
+project(knavalbattle)
 
 if(NOT COMPILING_KDEGAMES)
 	find_package(KDE4 REQUIRED)

@@ -21,7 +21,7 @@
 
 int main(int argc, char** argv)
 {
-    KAboutData aboutData("kbattleship", 0, ki18n("Naval Battle"), "2.0", 
+    KAboutData aboutData("knavalbattle", 0, ki18n("Naval Battle"), "2.0", 
         ki18n("The KDE ship sinking game"), KAboutData::License_GPL, 
         ki18n("(c) 2000-2005  Nikolas Zimmermann, Daniel Molkentin\n"
               "(c) 2007 Paolo Capriotti"), KLocalizedString(), "http://games.kde.org/kbattleship" );
