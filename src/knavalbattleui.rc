@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<gui name="kbattleship"
-     version="4"
+<gui name="knavalbattle"
+     version="5"
      xmlns="http://www.kde.org/standards/kxmlgui/1.0"
      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
      xsi:schemaLocation="http://www.kde.org/standards/kxmlgui/1.0
