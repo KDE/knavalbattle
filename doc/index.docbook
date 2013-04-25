@@ -131,7 +131,7 @@ he/she is done, player two sets his/her ships.
 <para>
 Ship placement is very easy: simply click on the field where you want to
 place your ships. You have four ships to place: the first one will have a length of one square, the next
-will be two squares long &etc;. Click on the field where you want to start
+will be two squares long &etc; Click on the field where you want to start
 the placement. By default, ships will be placed horizontally;
 to rotate them 90 degrees, click the &RMB; before the placement.
 <!-- &Shift; itself will flip the ship placement preview. -->
