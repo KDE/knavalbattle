@@ -52,8 +52,8 @@
 <holder>Kevin Krammer</holder>
 </copyright>
 
-<date>2012-08-06</date>
-<releaseinfo>2.0 (&kde; 4.9)</releaseinfo>
+<date>2013-05-05</date>
+<releaseinfo>2.0 (&kde; 4.11)</releaseinfo>
 
 <abstract>
 <para>
@@ -87,10 +87,10 @@ ships in turns without knowing where they are placed. The first player to destro
 <note><title>Objective:</title><para>Sink all of the opponent’s ships before the opponent sink all the ships of your own.</para></note><!--Describe the objective of the game.-->
 <para>
 If you want to play &kappname;, you will need two players, either play
-against the computer or in a network against another player. To play against your computer, first select the difficulty level on the right of the status bar, and then select <guibutton>Single player</guibutton> on the welcome screen, or directly on the <menuchoice><guimenu>Game</guimenu></menuchoice> menu.</para>
+against the computer or in a network against another player. To play against your computer, first select the difficulty level on the right of the status bar, and then select <guibutton>Single Player</guibutton> on the welcome screen, or directly on the <menuchoice><guimenu>Game</guimenu></menuchoice> menu.</para>
 
 <para>
-To start a network game, one player has to host the game by selecting <guilabel>Host network game</guilabel> on the welcome screen, or choosing <menuchoice><guimenu>Game</guimenu>
+To start a network game, one player has to host the game by selecting <guilabel>Host Network Game</guilabel> on the welcome screen, or choosing <menuchoice><guimenu>Game</guimenu>
 <guimenuitem>Host Game...</guimenuitem></menuchoice>.
 A dialog box opens which asks for a <guilabel>Nickname:</guilabel> and <guilabel>Port:</guilabel>. Normally,
 &kappname; will suggest your full name, but you can enter any string
@@ -105,7 +105,7 @@ to establish a connection.</para>
 </note>
 
 <para>
-The other player has to choose <guilabel>Connect to network game</guilabel>, or click <menuchoice><guimenu>Game</guimenu>
+The other player has to choose <guilabel>Connect to Network Game</guilabel>, or click <menuchoice><guimenu>Game</guimenu>
 <guimenuitem>Connect to Game...</guimenuitem></menuchoice>. Again, a <guilabel>Nickname:</guilabel> is
 suggested, but you can choose any name you like. In the field <guilabel>Hostname:</guilabel> you
 have to enter the host name of the server (the machine of the player that initiated the game).
@@ -187,8 +187,8 @@ The first player to destroy all their opponents ships wins the game.
 <chapter id="menu-reference">
 <title>The Menus</title>
 
-<sect1 id="game-menu">
-<title>The <guimenu>Game</guimenu> Menu</title>
+<sect1 id="menu">
+<title>Menu Items</title>
 
 <variablelist>
 <varlistentry>
@@ -299,14 +299,7 @@ The first player to destroy all their opponents ships wins the game.
 </para>
 </listitem>
 </varlistentry>
-</variablelist>
 
-</sect1>
-
-<sect1 id="settings-menu">
-<title>The <guimenu>Settings</guimenu> Menu</title>
-
-<variablelist>
 <varlistentry>
 <term>
 <menuchoice>
@@ -355,13 +348,12 @@ The default is on. This setting should be defined on a host when <link linkend="
 <term>
 <menuchoice>
 <guimenu>Settings</guimenu>
-<guimenuitem>Show Toolbar</guimenuitem>
+<guimenuitem>Show End-of-Game Message</guimenuitem>
 </menuchoice>
 </term>
 <listitem>
-<para>
-<action>Toggle on or off the display of the toolbar.</action> The
-default is on.
+<para>If you won the game and have a new highscore, the highscore dialog will be shown.
+Otherwise the result is displayed in the statusbar or, if this option is enabled, additionally in a dialog.
 </para>
 </listitem>
 </varlistentry>
@@ -370,52 +362,39 @@ default is on.
 <term>
 <menuchoice>
 <guimenu>Settings</guimenu>
-<guimenuitem>Show Statusbar</guimenuitem>
+<guimenuitem>Show Left Grid</guimenuitem>
+<guimenu>Settings</guimenu>
+<guimenuitem>Show Right Grid</guimenuitem>
 </menuchoice>
 </term>
 <listitem>
-<para>
-<action>Toggle on or off the display of the statusbar.</action> The
-default is on.
+<para>Using the grids makes it easier to place a shot with the mouse pointer.
 </para>
 </listitem>
 </varlistentry>
-
+<!--FIXME what is the meaning of the levels for the player? Only when playing against the computer?
 <varlistentry>
 <term>
 <menuchoice>
 <guimenu>Settings</guimenu>
-<guimenuitem>Configure Shortcuts...</guimenuitem>
+<guisubmenu>Difficulty</guisubmenu>
 </menuchoice>
 </term>
 <listitem>
 <para>
-<action>Configure the keyboard shortcuts used by &kappname;.</action>
+<action>Easy Medium Hard.</action>
 </para>
 </listitem>
 </varlistentry>
-
-<varlistentry>
-<term>
-<menuchoice>
-<guimenu>Settings</guimenu>
-<guimenuitem>Configure Toolbars...</guimenuitem>
-</menuchoice>
-</term>
-<listitem>
-<para>
-<action>Configure</action> the toolbars provided by &kappname;.
-</para>
-</listitem>
-</varlistentry>
+-->
 </variablelist>
 
-</sect1>
-
-<sect1 id="help-menu">
-<title>The <guimenu>Help</guimenu> Menu</title>
-
-&help.menu.documentation;
+<para>
+Additionally &kappname; has the common &kde; <guimenu>Settings</guimenu> and <guimenu>Help</guimenu>
+menu items, for more information read the sections about the <ulink url="help:/fundamentals/ui.html#menus-settings"
+>Settings Menu</ulink> and <ulink url="help:/fundamentals/ui.html#menus-help">Help Menu</ulink>
+of the &kde; Fundamentals.
+</para>
 
 </sect1>
 </chapter>
