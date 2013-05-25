@@ -372,7 +372,7 @@ Otherwise the result is displayed in the statusbar or, if this option is enabled
 </para>
 </listitem>
 </varlistentry>
-<!--FIXME what is the meaning of the levels for the player? Only when playing against the computer?
+
 <varlistentry>
 <term>
 <menuchoice>
@@ -382,11 +382,12 @@ Otherwise the result is displayed in the statusbar or, if this option is enabled
 </term>
 <listitem>
 <para>
-<action>Easy Medium Hard.</action>
-</para>
+The game difficulty setting (<guimenuitem>Easy</guimenuitem>, <guimenuitem>Medium</guimenuitem>, 
+<guimenuitem>Hard</guimenuitem>) has effect only in single player games against the computer.
+In higher levels the AI uses a smarter strategy for shooting and placing ships.</para>
 </listitem>
 </varlistentry>
--->
+
 </variablelist>
 
 <para>
