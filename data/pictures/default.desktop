@@ -1,6 +1,5 @@
 [KGameTheme]
 Name=Naval Battle Default
-Name[bs]=Podrazumijevana pomorska bitka
 Name[ca]=Batalla naval per defecte
 Name[ca@valencia]=Batalla naval per defecte
 Name[da]=Standard for Naval Battle
@@ -13,7 +12,7 @@ Name[fr]=Défaut pour Bataille navale
 Name[ga]=Comhrac Cabhlaigh Réamhshocraithe
 Name[gl]=Batalla Naval
 Name[hu]=Tengeri csata alapértelmezett
-Name[it]=Predefinito di Battaglia navale
+Name[kk]=Теңіз соғысының әдеттегісі
 Name[mr]=नाविक युद्ध मूलभूत
 Name[nb]=Standard Sjøslag
 Name[nl]=Naval Battle standaard
@@ -34,7 +33,6 @@ Name[x-test]=xxNaval Battle Defaultxx
 Name[zh_CN]=Naval Battle 默认
 Name[zh_TW]=海上戰爭預設
 Description=The default theme for Naval Battle
-Description[bs]=Podrazumijevana tema za Pomorsku bitku
 Description[ca]=Tema per defecte de la batalla naval
 Description[ca@valencia]=Tema per defecte de la batalla naval
 Description[cs]=Výchozí motiv námořní bitvy
