@@ -57,8 +57,8 @@ NetworkDialog::NetworkDialog(bool client, QWidget* parent, const KUrl* url)
     tmp->setBuddy(m_nickname);
     tmpLayout = new QHBoxLayout;
     tmpLayout->addWidget(tmp);
-    tmpLayout->addStretch();
-    tmpLayout->addWidget(m_nickname);
+    tmpLayout->addWidget(m_nickname, 1);
+    tmpLayout->setSpacing(KDialog::spacingHint());
     mainLayout->addItem(tmpLayout);
 
     // client part
@@ -70,7 +70,8 @@ NetworkDialog::NetworkDialog(bool client, QWidget* parent, const KUrl* url)
         tmp->setBuddy(m_games);
         tmpLayout = new QHBoxLayout;
         tmpLayout->addWidget(tmp);
-        tmpLayout->addWidget(m_games);
+        tmpLayout->addWidget(m_games, 1);
+        tmpLayout->setSpacing(KDialog::spacingHint());
         connect(m_games, SIGNAL(currentIndexChanged(int)), this, SLOT(serviceSelected(int)));
         mainLayout->addItem(tmpLayout);
         
@@ -85,8 +86,8 @@ NetworkDialog::NetworkDialog(bool client, QWidget* parent, const KUrl* url)
         tmp->setBuddy(m_hostname);
         tmpLayout = new QHBoxLayout;
         tmpLayout->addWidget(tmp);
-        tmpLayout->addStretch();
-        tmpLayout->addWidget(m_hostname);
+        tmpLayout->addWidget(m_hostname, 1);
+        tmpLayout->setSpacing(KDialog::spacingHint());
         frameLayout->addItem(tmpLayout);
 
         // port
@@ -132,7 +133,7 @@ NetworkDialog::NetworkDialog(bool client, QWidget* parent, const KUrl* url)
         tmpLayout->addWidget(m_port);
         mainLayout->addItem(tmpLayout);
     }
-    
+    mainLayout->addStretch();
     
     main->setLayout(mainLayout);
     setMainWidget(main);
