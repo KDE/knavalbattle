@@ -2,7 +2,7 @@
 <!DOCTYPE kcfg SYSTEM 
     "http://www.kde.org/standards/kcfg/1.0/kcfg.xsd">
 <kcfg>
-  <kcfgfile name="kbattleshiprc"/>
+  <kcfgfile name="knavalbattlerc"/>
   <include>kglobalsettings.h</include>
   <group name="network">
     <entry name="Hostname" type="String">

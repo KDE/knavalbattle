@@ -1,4 +1,4 @@
-project(kbattleship)
+project(knavalbattle)
 
 if(NOT COMPILING_KDEGAMES)
 	find_package(KDE4 REQUIRED)
@@ -14,3 +14,4 @@ endif(NOT COMPILING_KDEGAMES)
 add_subdirectory(src) 
 add_subdirectory(data) 
 add_subdirectory(doc)
+add_subdirectory(kconf_update)
