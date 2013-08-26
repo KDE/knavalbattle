@@ -206,7 +206,7 @@ void PlayField::gameOver(Sea::Player winner)
     else {
         m_status_bar->showMessage(i18n("You lose."));
         if (m_show_endofgame_message) {
-            KMessageBox::information(this, i18n("You lose. Try harder next time!"));
+            KMessageBox::information(this, i18n("You lose. Better luck next time!"));
         }
     }
     
