@@ -106,13 +106,6 @@ void PlayerEntity::hit(Shot* shot)
 void PlayerEntity::notify(Sea::Player player, const Coord& c, const HitInfo& info)
 {
     UIEntity::notify(player, c, info);
-    
-    // add a border around sunk ship in KBS3 mode
-    if (m_level == COMPAT_KBS3 &&
-        player == m_player && 
-        info.shipDestroyed) {
-        m_sea->addBorder(player, info.shipPos);
-    }
 }
 
 void PlayerEntity::changeDirection(Sea::Player player)

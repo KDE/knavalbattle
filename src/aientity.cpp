@@ -41,6 +41,16 @@ AIEntity::~AIEntity()
 void AIEntity::notify(Sea::Player player, const Coord& c, const HitInfo& info)
 {
     m_ai->notify(player, c, info);
+
+    // add a border around opponent sunk ship in KBS4 mode when no adjacentShips
+    // are allowed, the AI will not try to shoot at points that are not free
+    if (m_level == COMPAT_KBS4 &&
+        player == m_player &&
+        !m_sea->isAdjacentShipsAllowed() &&
+        info.shipDestroyed) {
+            m_sea->addBorder(Sea::opponent(player), info.shipPos);
+    }
+
     getShoot();
 }
 

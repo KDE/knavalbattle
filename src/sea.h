@@ -67,6 +67,7 @@ public:
     inline Player turn() const { return m_turn; }
     static Player opponent(Player p);
     inline Coord size() const { return m_size; }
+    inline bool isAdjacentShipsAllowed() const { return m_allow_adjacent_ships; }
 };
 
 #endif // Sea_H

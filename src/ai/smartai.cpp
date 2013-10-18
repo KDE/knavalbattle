@@ -180,6 +180,7 @@ class DiagonalStrategy : public Strategy
     int m_offset;
     int m_range;
     
+    // following a diagonal, return true if there is water at the enemy's panel.
     bool movesAvailable() const {
         Sea::Player opp = Sea::opponent(m_player);
         for (int i = 0; i < m_sea->size().x; i++)
