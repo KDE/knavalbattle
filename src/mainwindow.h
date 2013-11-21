@@ -28,6 +28,7 @@ protected:
 private slots:
     void startingGame();
     void welcomeScreen();
+    void closeEvent(QCloseEvent *event);
 };
 
 #endif // MAINWINDOW_H

@@ -23,6 +23,7 @@
 #include "playfield.h"
 #include "settings.h"
 #include "simplemenu.h"
+#include "animator.h"
 
 MainWindow::MainWindow(const KUrl& url)
 {
@@ -108,6 +109,10 @@ void MainWindow::welcomeScreen()
     stateChanged("playing", KXMLGUIClient::StateReverse);
 }
 
+void MainWindow::closeEvent(QCloseEvent *event)
+{
+    Animator::instance()->stop();
+}
 
 #include "mainwindow.moc"
 
