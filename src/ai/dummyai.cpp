@@ -31,9 +31,8 @@ Coord DummyAI::getMove()
                 return c;
             }
         }
-        kDebug() << "Could not find a valid move for DummyAI";
-  }
-  return Coord::invalid();
+    }
+    return desperateMove();
 }
 
 void DummyAI::setShips()
