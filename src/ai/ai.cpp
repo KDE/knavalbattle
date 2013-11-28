@@ -15,3 +15,15 @@ AI::AI(Sea::Player player, Sea* sea)
 {
 }
 
+Coord AI::desperateMove() const
+{
+    Sea::Player opp = Sea::opponent(m_player);
+    for (int i = 0; i < m_sea->size().x; i++)
+    for (int j = 0; j < m_sea->size().y; j++) {
+        if (m_sea->at(opp, Coord(i,j)).free()) {
+            return Coord(i,j);
+        }
+    }
+    return Coord::invalid();
+}
+
