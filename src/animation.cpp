@@ -68,6 +68,7 @@ FadeAnimation::FadeAnimation(QGraphicsItem* sprite, int from, int to, int time)
 , m_from(from)
 , m_to(to)
 , m_time(time)
+, m_start(0)
 {
 }
 
@@ -100,6 +101,7 @@ MovementAnimation::MovementAnimation(QGraphicsItem* sprite, const QPointF& from,
 , m_from(from)
 , m_to(to)
 , m_time(time)
+, m_start(0)
 {
 }
 

@@ -78,7 +78,6 @@ public:
     Button* m_button;
     int m_brightness;
     static double m_speed;
-    double m_current;
     int m_last;
 public:
     ButtonAnimation(Button* button, int brightness);
