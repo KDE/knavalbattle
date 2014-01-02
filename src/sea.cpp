@@ -32,12 +32,19 @@ bool Sea::canAddShip(Player p, const Coord& pos, int size, Ship::Direction direc
     if (m_status != PLACING_SHIPS) {
         return false;
     }
-    return m_fields[p]->canAddShip(pos, size, direction, m_allow_adjacent_ships);
+    return m_fields[p]->canAddShip(pos, size, direction);
 }
 
-void Sea::add(Player p, const Coord& pos, Ship* ship)
+void Sea::add(Player p, Ship* ship)
 {
-    m_fields[p]->add(pos, ship);
+    if(p == PLAYER_B) {
+        m_enemyShips.append(ship);
+    }
+    else {
+        m_myShips.append(ship);
+    }
+
+    m_fields[p]->add(ship);
 }
 
 void Sea::add(Player p, int n)
@@ -134,6 +141,16 @@ void Sea::abort(Player p)
 bool Sea::isNearShip(Sea::Player p, const Coord& pos) const
 {
     return m_fields[p]->isNearShip(pos);
+}
+
+const QList<Ship *> Sea::enemyShips() const
+{
+    return m_enemyShips;
+}
+
+const QList<Ship *> Sea::myShips() const
+{
+    return m_myShips;
 }
 
 #include "sea.moc"

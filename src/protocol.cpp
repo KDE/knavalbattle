@@ -214,12 +214,12 @@ MessagePtr Protocol::parseMessage(const QString& xmlMessage)
         }
     case GameOverMessage::MSGTYPE:
         {
-            GameOverMessage* msg = new GameOverMessage;
+            GameOverMessage* msg = new GameOverMessage();
             QDomNodeList nodes = main.childNodes();
             for (int i = 0; i < nodes.count(); i++) {
                 QDomElement element = nodes.item(i).toElement();
                 if (!element.isNull() && element.tagName().startsWith("ship")) {
-                    int size = element.tagName().mid(4).toInt() + 1;
+                    int size = element.tagName().mid(4).toInt();
                     QStringList data = element.text().split(' ');
                     if (data.size() != 3) {
                         continue;

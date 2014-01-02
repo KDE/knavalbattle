@@ -110,7 +110,7 @@ void SimpleMenu::setupController(Controller* controller, Entity* old_opponent, S
     case DONE_LOCAL_GAME: {
         m_player1 = controller->createPlayer(Sea::Player(0), sea, chat, m_nickname);
         sea->setStats(Sea::Player(0), "score_mouse", m_nickname, m_player1->stats());
-        m_player2 = controller->createAI(Sea::Player(1));
+        m_player2 = controller->createAI(Sea::Player(1), sea);
         sea->setStats(Sea::Player(1), "score_ai", 
                       "Computer", m_player2->stats());
         chat->hide();
@@ -121,7 +121,7 @@ void SimpleMenu::setupController(Controller* controller, Entity* old_opponent, S
         m_player1 = controller->createPlayer(Sea::Player(0), sea, chat, m_nickname);
         sea->setStats(Sea::Player(0), "score_mouse", 
                       m_nickname, m_player1->stats());
-        m_player2 = controller->createRemotePlayer(Sea::Player(1), m_protocol, false);
+        m_player2 = controller->createRemotePlayer(Sea::Player(1), sea, m_protocol, false);
         if (old_opponent) {
             m_player1->setCompatibilityLevel(old_opponent->compatibilityLevel());
             m_player2->setCompatibilityLevel(old_opponent->compatibilityLevel());
@@ -138,7 +138,7 @@ void SimpleMenu::setupController(Controller* controller, Entity* old_opponent, S
         m_player1 = controller->createPlayer(Sea::Player(0), sea, chat, m_nickname);
         sea->setStats(Sea::Player(0), "score_mouse", 
                       m_nickname, m_player1->stats());
-        m_player2 = controller->createRemotePlayer(Sea::Player(1), m_protocol, true);
+        m_player2 = controller->createRemotePlayer(Sea::Player(1), sea, m_protocol, true);
         if (old_opponent) {
             m_player1->setCompatibilityLevel(old_opponent->compatibilityLevel());
             m_player2->setCompatibilityLevel(old_opponent->compatibilityLevel());

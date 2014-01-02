@@ -43,26 +43,25 @@ PlayerEntity* Controller::createPlayer(Sea::Player player, SeaView* view,
     return entity;
 }
 
-AIEntity* Controller::createAI(Sea::Player player)
+AIEntity* Controller::createAI(Sea::Player player, SeaView* view)
 {
     kDebug() << "created ai entity";
     m_has_ai = true;
-    AIEntity* e = new AIEntity(player, m_sea);
+    AIEntity* e = new AIEntity(player, m_sea, view);
     e->setNick(i18n("Computer"));
     setupEntity(e);
-    
+
     return e;
 }
 
-NetworkEntity* Controller::createRemotePlayer(Sea::Player player, Protocol* protocol, bool client)
+NetworkEntity* Controller::createRemotePlayer(Sea::Player player, SeaView* view, Protocol* protocol, bool client)
 {
-    NetworkEntity* e = new NetworkEntity(player, m_sea, protocol, client);
+    NetworkEntity* e = new NetworkEntity(player, m_sea, view, protocol, client);
     setupEntity(e);
     connect(e, SIGNAL(restartRequested()), this, SIGNAL(restartRequested()));
     if (client) {
         m_sea->switchTurn();
     }
-    
     return e;
 }
 
@@ -80,19 +79,19 @@ void Controller::setupEntity(Entity* entity)
             this, SLOT(nick(int,QString)));
     connect(entity, SIGNAL(compatibility(int)),
             this, SIGNAL(compatibility(int)));
-            
+
     foreach (Entity* e, m_entities) {
         connect(e, SIGNAL(compatibility(int)),
                 entity, SLOT(setCompatibilityLevel(int)));
         connect(entity, SIGNAL(compatibility(int)),
                 e, SLOT(setCompatibilityLevel(int)));
-                
+
         connect(e, SIGNAL(abortGame()),
                 entity, SLOT(notifyAbort()));
         connect(entity, SIGNAL(abortGame()),
                 e, SLOT(notifyAbort()));
     }
-            
+
     m_entities.append(entity);
 }
 
@@ -216,11 +215,16 @@ void Controller::ready(int player)
 
 void Controller::finalizeGame(Sea::Player winner)
 {
+    // first, every entity will notify the other entity its ships
+    foreach (Entity* entity, m_entities) {
+            entity->notifyShips(winner);
+    }
+    // then, it will notify the end of the game
     foreach (Entity* entity, m_entities) {
         entity->notifyGameOver(winner);
     }
     emit gameOver(winner);
-}
+ }
 
 Entity* Controller::findEntity(Sea::Player player) const
 {

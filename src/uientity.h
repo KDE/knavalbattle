@@ -19,14 +19,15 @@ class UIEntity : public Entity
 Q_OBJECT
 protected:
     Sea* m_sea;
-    SeaView* m_view;
-    
+
     void drawShoot(Sea::Player player, const Coord& c, const HitInfo& info);
+    void drawHiddenShips(Sea::Player winner);
 public:
     UIEntity(Sea::Player player, Sea*, SeaView* view);
     virtual ~UIEntity();
     
     virtual void notify(Sea::Player player, const Coord& c, const HitInfo& info);
+    virtual void notifyGameOver(Sea::Player winner);
     virtual void notifyChat(const Entity*, const QString&) { }
     virtual void notifyNick(Sea::Player, const QString&) { }
     virtual void start(bool);

@@ -12,6 +12,7 @@
 
 #include <QObject>
 #include "sea.h"
+#include "seaview.h"
 #include "stats.h"
 
 class Shot;
@@ -28,11 +29,13 @@ public:
     };
 protected:
     Sea::Player m_player;
+    SeaView* m_seaview;
     QString m_nick;
     CompatibilityLevel m_level;
     Stats m_stats;
+
 public:
-    Entity(Sea::Player player);
+    Entity(Sea::Player player, SeaView* seaview);
     virtual ~Entity();
     virtual void notify(Sea::Player player, const Coord& c, const HitInfo& info) = 0;
     virtual void notifyChat(const Entity* entity, const QString& text) = 0;
@@ -41,6 +44,7 @@ public:
     virtual void start(bool) = 0;
     virtual void startPlaying() { }
     virtual void notifyReady(Sea::Player) { }
+    virtual void notifyShips(Sea::Player) { }
     virtual void notifyGameOver(Sea::Player) { }
     Stats* stats();
     

@@ -44,17 +44,18 @@ Q_OBJECT
 
     friend class Shot;
 public:
-    explicit Controller(QObject* parent, AudioPlayer* player = 0, const bool allow_adjacent_ships = false);
+    explicit Controller(QObject* parent, AudioPlayer* audioPlayer = 0, const bool allow_adjacent_ships = false);
 
     PlayerEntity* createPlayer(Sea::Player player, SeaView* view,
                                ChatWidget* chat, const QString& nick);
-    AIEntity* createAI(Sea::Player player);
-    NetworkEntity* createRemotePlayer(Sea::Player player, Protocol* protocol, bool client);
+    AIEntity* createAI(Sea::Player player, SeaView* view);
+    NetworkEntity* createRemotePlayer(Sea::Player player, SeaView* view, Protocol* protocol, bool client);
 
     bool start(SeaView* view, bool ask = false);
     Entity* findEntity(Sea::Player) const;
     Sea::Player turn() const;
     bool hasAI() const;
+    inline Sea* getSea() const { return m_sea; }
 public slots:
     void shoot(int player, const Coord& c);
     void ready(int player);

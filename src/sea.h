@@ -10,7 +10,9 @@
 #ifndef Sea_H
 #define Sea_H
 
+#include <QList>
 #include <QObject>
+
 #include "ship.h"
 #include "hitinfo.h"
 
@@ -37,6 +39,8 @@ private:
     Coord m_size;
     Player m_turn;
     BattleField* m_fields[2];
+    QList<Ship *> m_enemyShips;
+    QList<Ship *> m_myShips;
     Status m_status;
     bool m_allow_adjacent_ships;
 
@@ -50,7 +54,7 @@ public:
 
     bool canAddShip(Player p, const Coord& pos, int size, Ship::Direction direction) const;
     void add(Player p, int n);
-    void add(Player p, const Coord& pos, Ship* ship);
+    void add(Player p, Ship* ship);
     void addBorder(Player p, const Coord& pos);
     bool canHit(Player p, const Coord& pos) const;
     HitInfo hit(const Coord& pos);
@@ -62,6 +66,9 @@ public:
     void switchTurn();
     bool isNearShip(Sea::Player, const Coord& pos) const;
     void allowAdjacentShips(const bool allow_adjacent_ships);
+ 
+    const QList<Ship *> enemyShips() const;
+    const QList<Ship *> myShips() const;
 
     inline Status status() const { return m_status; }
     inline Player turn() const { return m_turn; }

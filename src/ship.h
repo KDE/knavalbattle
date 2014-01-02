@@ -23,23 +23,30 @@ public:
     };
 private:
     unsigned int m_size;
+    Coord m_position;
     Direction m_direction;
     int m_life;
 public:
-    Ship(unsigned int size, Direction direction);
+    Ship(unsigned int size, Direction direction, Coord position);
 
+    void decLife();
+    void setPosition(const Coord & position);
     void changeDirection();
+
+    const Coord position() const;
     Coord increment() const;
     Coord decrement() const;
     Coord incrementPerpendicular() const;
     Coord decrementPerpendicular() const;
+
     static Coord increment(Direction);
     static Coord decrement(Direction);
     static Coord incrementPerpendicular(Direction);
     static Coord decrementPerpendicular(Direction);
+
     inline unsigned int size() const { return m_size; }
     inline Direction direction() const { return m_direction; }
-    void decLife();
+
     bool alive() const;
 };
 

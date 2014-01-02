@@ -179,9 +179,9 @@ void SeaView::cancelPreview()
     updatePreview(m_last_preview);
 }
 
-void SeaView::add(Sea::Player p, const Coord& c, Ship* ship) 
+void SeaView::add(Sea::Player p, Ship* ship)
 {
-    m_fields[p]->add(c, ship);
+    m_fields[p]->add(ship);
 }
 
 void SeaView::hit(Sea::Player p, const Coord& c)
@@ -194,9 +194,9 @@ void SeaView::miss(Sea::Player p, const Coord& c)
     m_fields[p]->miss(c);
 }
 
-void SeaView::sink(Sea::Player p, const Coord& c, Ship* ship)
+void SeaView::sink(Sea::Player p, Ship* ship)
 {
-    m_fields[p]->sink(c, ship);
+    m_fields[p]->sink(ship);
 }
 
 void SeaView::clear()

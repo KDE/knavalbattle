@@ -10,11 +10,22 @@
 #include "ship.h"
 #include <qdebug.h>
 
-Ship::Ship(unsigned int size, Direction direction)
+Ship::Ship(unsigned int size, Direction direction, Coord position)
 : m_size(size)
+, m_position(position)
 , m_direction(direction)
 {
     m_life = size;
+}
+
+const Coord Ship::position() const
+{
+    return m_position;
+}
+
+void Ship::setPosition(const Coord & position)
+{
+    m_position = position;
 }
 
 void Ship::changeDirection()

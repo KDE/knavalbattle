@@ -20,7 +20,7 @@ public:
     int y;
     
     Coord(int x, int y);
-    Coord() { }
+    Coord():x(0),y(0) { }
     
     Coord operator+(const Coord& other) const;
     Coord operator-(const Coord& other) const;

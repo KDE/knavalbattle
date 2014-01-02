@@ -23,6 +23,7 @@ Q_OBJECT
     typedef Grid<Element> Board;
     Coord m_size;
     Board m_board;
+    bool m_allow_adjacent_ships;
     unsigned int m_ships;
 
     inline int convert(const Coord& c) const { return c.x + m_size.x * c.y; }
@@ -35,10 +36,10 @@ public:
     const Element& get(const Coord& pos) const;
     void set(const Coord& pos, const Element& e);
 
-    void add(const Coord& pos, Ship* ship);
+    void add(Ship* ship);
     void add(int n);
     void addBorder(const Coord& pos);
-    bool canAddShip(const Coord& pos, unsigned int size, Ship::Direction direction, const bool allow_adjacent_ships) const;
+    bool canAddShip(const Coord& pos, unsigned int size, Ship::Direction direction) const;
     HitInfo hit(const Coord& pos);
     void forceHit(const Coord& pos, const HitInfo& info);
     const Element& at(const Coord& c) const;

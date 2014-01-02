@@ -11,13 +11,14 @@
 #include "ai/smartai.h"
 #include "ai/dummyai.h"
 #include "shot.h"
+#include "seaview.h"
 
 
 #include <KgDifficulty>
 #include <KIcon>
 
-AIEntity::AIEntity(Sea::Player player, Sea* sea)
-: Entity(player)
+AIEntity::AIEntity(Sea::Player player, Sea* sea, SeaView *seaview)
+: Entity(player, seaview)
 , m_sea(sea)
 {
     switch (Kg::difficultyLevel()) {

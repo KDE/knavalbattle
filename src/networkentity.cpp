@@ -13,18 +13,20 @@
 #include "shot.h"
 #include "protocol.h"
 #include "settings.h"
+#include "seaview.h"
 
 #include <KIcon>
 #include <klocalizedstring.h>
 #include <kdebug.h>
 
-NetworkEntity::NetworkEntity(Sea::Player player, Sea* sea, Protocol* protocol, bool client)
-: Entity(player)
+NetworkEntity::NetworkEntity(Sea::Player player, Sea* sea, SeaView* seaview, Protocol* protocol, bool client)
+: Entity(player, seaview)
 , m_sea(sea)
+, m_protocol(protocol)
 , m_pending_shot(0)
 , m_client(client)
+, m_winner(false)
 {
-    m_protocol = protocol;
 }
 
 NetworkEntity::~NetworkEntity()
@@ -52,14 +54,27 @@ void NetworkEntity::notifyReady(Sea::Player player)
     }
 }
 
-void NetworkEntity::notifyGameOver(Sea::Player)
+void NetworkEntity::notifyShips(Sea::Player player)
 {
-    m_protocol->send(MessagePtr(new GameOverMessage));
+    m_winner= player == m_player ;
+
+    GameOverMessage* msg=new GameOverMessage();
+    if (!m_winner) {
+        foreach (Ship* ship, m_sea->myShips()) {
+            if (ship->alive()) {
+                msg->addShip(ship->position(), ship->size(), ship->direction());
+            }
+        }
+    }
+    m_protocol->send(MessagePtr(msg));
+}
+
+void NetworkEntity::notifyGameOver(Sea::Player player)
+{
 }
 
 void NetworkEntity::startPlaying()
 {
-
 }
 
 void NetworkEntity::notify(Sea::Player player, const Coord& c, const HitInfo& info)
@@ -67,7 +82,7 @@ void NetworkEntity::notify(Sea::Player player, const Coord& c, const HitInfo& in
     if (info.type == HitInfo::INVALID) {
         return;
     }
-    
+
     if (player == m_player) {
         bool hit = info.type == HitInfo::HIT;
         bool death = info.shipDestroyed != 0;
@@ -172,7 +187,7 @@ void NetworkEntity::visit(const NotificationMessage& msg)
                 int size = abs(delta.x) + abs(delta.y) + 1;
                 Ship::Direction direction = delta.x == 0 ? Ship::TOP_DOWN : Ship::LEFT_TO_RIGHT;
                 Coord shipPos = (delta.x < 0 || delta.y < 0) ? msg.stop() : msg.start();
-                Ship* ship = new Ship(size, direction);
+                Ship* ship = new Ship(size, direction, shipPos);
                 
                 info.shipDestroyed = ship;
                 info.shipPos = shipPos;
@@ -189,9 +204,14 @@ void NetworkEntity::visit(const NotificationMessage& msg)
     }
 }
 
-void NetworkEntity::visit(const GameOverMessage&)
+void NetworkEntity::visit(const GameOverMessage& msg)
 {
-
+    {
+        // receive the ships and add them to the board
+        foreach (GameOverMessage::ShipInfo ship, msg.ships()) {
+                m_seaview->add(m_sea->turn(), new Ship(ship.size, ship.direction, ship.pos));
+        }
+    }
 }
 
 void NetworkEntity::visit(const RestartMessage&)
