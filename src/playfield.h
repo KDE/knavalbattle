@@ -24,14 +24,14 @@ class QStatusBar;
 class PlayField : public QWidget
 {
 Q_OBJECT
-    SeaView* m_sea;
+    SeaView* m_seaView;
     Controller* m_controller;
     AudioPlayer* m_player;
     ChatWidget* m_chat;
     SimpleMenu* m_menu;
     QStatusBar* m_status_bar;
     bool m_show_endofgame_message;
-    
+
     void startGame();
     void endGame();
     void resetupController(bool ask = false);

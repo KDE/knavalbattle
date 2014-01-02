@@ -19,12 +19,12 @@ class AIEntity : public Entity
 Q_OBJECT
     AI* m_ai;
     Sea* m_sea;
-    
+
     void getShoot();
-    
+
     friend class DelayedShot;
 public:
-    AIEntity(Sea::Player player, Sea* sea);
+    AIEntity(Sea::Player player, Sea* sea, SeaView *seaview);
     virtual ~AIEntity();
 
     virtual void notify(Sea::Player player, const Coord& c, const HitInfo& info);
@@ -33,7 +33,7 @@ public:
     virtual void start(bool);
     virtual void startPlaying();
     virtual void hit(Shot* shot);
-    
+
     virtual KIcon icon() const;
 public slots:
     virtual void notifyAbort() { }

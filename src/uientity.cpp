@@ -10,19 +10,20 @@
 #include "uientity.h"
 #include "seaview.h"
 #include "shot.h"
+#include "ship.h"
 
 #include <KIcon>
+#include <QList>
 
 UIEntity::UIEntity(Sea::Player player, Sea* sea, SeaView* view)
-: Entity(player)
+: Entity(player, view)
 , m_sea(sea)
-, m_view(view)
 {
 }
 
 UIEntity::~UIEntity()
 {
-    m_view->setDelegate(0);
+    m_seaview->setDelegate(0);
 }
 
 void UIEntity::notify(Sea::Player player, const Coord& c, const HitInfo& info)
@@ -30,9 +31,14 @@ void UIEntity::notify(Sea::Player player, const Coord& c, const HitInfo& info)
     drawShoot(Sea::opponent(player), c, info);
 }
 
+void UIEntity::notifyGameOver(Sea::Player winner)
+{
+    drawHiddenShips(winner);
+}
+
 void UIEntity::start(bool)
 {
-    m_view->clear();
+    m_seaview->clear();
 }
 
 void UIEntity::hit(Shot* shot)
@@ -40,15 +46,26 @@ void UIEntity::hit(Shot* shot)
     shot->execute(HitInfo::INVALID);
 }
 
+void UIEntity::drawHiddenShips(Sea::Player winner)
+{
+    QList<Ship *> enemyShips = m_sea->enemyShips();
+
+    foreach (Ship * ship, enemyShips) {
+        if (ship->alive()) {
+            m_seaview->add(winner, ship);
+        }
+    }
+}
+
 void UIEntity::drawShoot(Sea::Player player, const Coord& c, const HitInfo& info)
 {
     switch (info.type) {
     case HitInfo::HIT:
-        m_view->hit(player, c);
+        m_seaview->hit(player, c);
 //         registerHit(player, c);
         break;
     case HitInfo::MISS:
-        m_view->miss(player, c);
+        m_seaview->miss(player, c);
 //         registerMiss(player, c);
         break;
     default:
@@ -60,10 +77,10 @@ void UIEntity::drawShoot(Sea::Player player, const Coord& c, const HitInfo& info
         if (shipPos.valid()) {
             // show destroyed opponent ship
             if (player != m_player) {
-                m_view->add(player, shipPos, info.shipDestroyed);
+                m_seaview->add(player, info.shipDestroyed);
             }
-            
-            m_view->sink(player, shipPos, info.shipDestroyed);
+
+            m_seaview->sink(player, info.shipDestroyed);
         }
     }
 }

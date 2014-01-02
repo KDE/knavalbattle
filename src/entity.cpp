@@ -10,8 +10,9 @@
 #include "entity.h"
 
 
-Entity::Entity(Sea::Player player)
+Entity::Entity(Sea::Player player, SeaView* seaview)
 : m_player(player)
+, m_seaview(seaview)
 , m_level(COMPAT_KBS4)
 {
 }

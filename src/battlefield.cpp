@@ -61,9 +61,9 @@ void BattleField::add(int n)
     m_ships += n;
 }
 
-void BattleField::add(const Coord& pos, Ship* ship)
+void BattleField::add(Ship* ship)
 {
-    Coord p = pos;
+    Coord p = ship->position();
     for (unsigned int i = 0; i < ship->size(); i++) {
         set(p, Element(ship));
         p = p + ship->increment();
@@ -88,7 +88,7 @@ void BattleField::addBorder(const Coord& pos)
     }
 }
 
-bool BattleField::canAddShip(const Coord& pos, unsigned int size, Ship::Direction direction, const bool allow_adjacent_ships) const
+bool BattleField::canAddShip(const Coord& pos, unsigned int size, Ship::Direction direction) const
 {
     Coord p = pos;
     Coord inc = Ship::increment(direction);
@@ -99,7 +99,7 @@ bool BattleField::canAddShip(const Coord& pos, unsigned int size, Ship::Directio
        p += inc;
     }
     // nor over another ship
-    if (allow_adjacent_ships) {
+    if (m_allow_adjacent_ships) {
         p = pos;
         for (unsigned int i = 0; i < size; i++) {
             if (valid(p) && !get(p).water())

@@ -38,6 +38,11 @@ class BattleFieldView : public QGraphicsView
     QGraphicsLineItem *hlines[11];
     QGraphicsLineItem *vlines[11];
 
+    enum Planes {
+        BACKGROUND = 1,
+        FOREGROUND = 2
+    };
+
     WelcomeScreen* m_screen;
     KBSRenderer* m_renderer;
     SpriteFactory m_factory;
@@ -74,17 +79,18 @@ public:
     
     void setPreview(const QPointF& pos, Ship* ship);
     void cancelPreview();
-    void add(const Coord& c, Ship* ship);
+    void add(Ship* ship);
     void hit(const Coord& c);
     void miss(const Coord& c);
     void removeImpact();
-    void sink(const Coord& c, Ship* ship);
+    void sink(Ship* ship);
     void clear();
 
     void setDelegate(Delegate *c);
     void setPlayer(Sea::Player player);
-    
+
     WelcomeScreen* screen() const;
+
 protected:
     void drawGrid();
 

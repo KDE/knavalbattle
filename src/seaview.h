@@ -52,10 +52,10 @@ public:
     
     void setDelegate(Delegate* c);
     void cancelPreview();
-    void add(Sea::Player p, const Coord& c, Ship* ship);
+    void add(Sea::Player p, Ship* ship);
     void hit(Sea::Player p, const Coord& c);
     void miss(Sea::Player p, const Coord& c);
-    void sink(Sea::Player p, const Coord& c, Ship* ship);
+    void sink(Sea::Player p, Ship* ship);
     void clear();
     
     void setStats(Sea::Player p, const QString& icon, 

@@ -40,8 +40,8 @@ PlayField::PlayField(QWidget* parent, QStatusBar* sbar)
     setMinimumSize(static_cast<int>(MINIMUM_HEIGHT * 1.6), MINIMUM_HEIGHT);
     QVBoxLayout* layout = new QVBoxLayout;
     
-    m_sea = new SeaView(this);
-    layout->addWidget(m_sea, 1);
+    m_seaView = new SeaView(this);
+    layout->addWidget(m_seaView, 1);
     
     m_chat = new ChatWidget(this);
     m_chat->hide();
@@ -80,22 +80,23 @@ Controller* PlayField::createController()
             this, SLOT(changeTurn(int)));
     connect(controller, SIGNAL(playerReady(int)),
             this, SLOT(playerReady(int)));
+
     return controller;
 }
 
 void PlayField::setupController()
 {
     Animator::instance()->restart();
-    m_sea->clear();
+    m_seaView->clear();
     m_chat->hide();
     
     // remove welcome screen
-    m_sea->screen(Sea::Player(0))->fadeOut();
-    m_sea->screen(Sea::Player(1))->fadeOut();
+    m_seaView->screen(Sea::Player(0))->fadeOut();
+    m_seaView->screen(Sea::Player(1))->fadeOut();
 
     delete m_controller;
     m_controller = createController();
-    m_menu->setupController(m_controller, 0, m_sea, m_chat, false);
+    m_menu->setupController(m_controller, 0, m_seaView, m_chat, false);
     startGame();
 }
 
@@ -110,8 +111,7 @@ void PlayField::resetupController(bool ask)
     // create new controller
     m_controller = createController();
     m_menu->setupController(m_controller, old_opponent, 
-        m_sea, m_chat, ask);
-    
+        m_seaView, m_chat, ask);
     delete old_opponent;
     
     startGame();
@@ -122,7 +122,7 @@ void PlayField::endGame()
     Animator::instance()->restart();
     delete m_controller;
     m_controller = 0;
-    m_sea->clear();
+    m_seaView->clear();
 }
 
 void PlayField::newGame()
@@ -133,10 +133,10 @@ void PlayField::newGame()
     Kg::difficulty()->setGameRunning(false);
     
     m_chat->hide();
-    m_sea->screen(Sea::Player(0))->show();
-    m_sea->screen(Sea::Player(1))->show();
+    m_seaView->screen(Sea::Player(0))->show();
+    m_seaView->screen(Sea::Player(1))->show();
     
-    m_menu = new SimpleMenu(this, m_sea->screen(Sea::Player(0)));
+    m_menu = new SimpleMenu(this, m_seaView->screen(Sea::Player(0)));
     connect(m_menu, SIGNAL(done()), this, SLOT(setupController()));
     emit welcomeScreen();
 }
@@ -144,7 +144,7 @@ void PlayField::newGame()
 void PlayField::restart(bool ask)
 {
     Animator::instance()->restart();
-    m_sea->clear();
+    m_seaView->clear();
     resetupController(ask);
 }
 
@@ -254,7 +254,7 @@ void PlayField::setCompatibility(int level)
 
 void PlayField::updateNick(int player, const QString& nick)
 {
-    m_sea->setNick(Sea::Player(player), nick);
+    m_seaView->setNick(Sea::Player(player), nick);
 }
 
 void PlayField::changeTurn(int player)
@@ -346,12 +346,12 @@ void PlayField::toggleEndOfGameMessage(bool show)
 
 void PlayField::toggleLeftGrid(bool show)
 {
-    m_sea->toggleLeftGrid(show);
+    m_seaView->toggleLeftGrid(show);
 }
 
 void PlayField::toggleRightGrid(bool show)
 {
-    m_sea->toggleRightGrid(show);
+    m_seaView->toggleRightGrid(show);
 }        
 
 #include "playfield.moc"

@@ -34,6 +34,7 @@ Ship* PlayerEntity::nextShip()
 Ship* PlayerEntity::canAddShip(const Coord& c)
 {
     Ship* ship = nextShip();
+    ship->setPosition(c);
     Q_ASSERT(ship);
     
     if (m_sea->canAddShip(m_player, c, ship->size(), ship->direction())) {
@@ -46,26 +47,26 @@ Ship* PlayerEntity::canAddShip(const Coord& c)
                 }
             }
         }
-        
         return ship;
-    }    
-    
+    }
     return 0;
 }
+
 
 void PlayerEntity::action(Sea::Player player, const Coord& c)
 {
     if (nextShip()) {
         if (player == m_player) {
             // placing ships
+            // First check if the ship can be placed anywhere
             Ship* ship = canAddShip(c);
             if (ship) {
                 // remove ship from the list
                 m_ships.removeFirst();
                 
                 // add ship to the sea
-                m_sea->add(m_player, c, ship);
-                m_view->add(m_player, c, ship);
+                m_sea->add(m_player, ship);
+                m_seaview->add(m_player, ship);
                 
                 if (!nextShip()) {
                     emit ready(m_player);
@@ -83,13 +84,15 @@ void PlayerEntity::action(Sea::Player player, const Coord& c)
 
 void PlayerEntity::start(bool ask)
 {
-    m_ships.append(new Ship(1, Ship::LEFT_TO_RIGHT));
-    m_ships.append(new Ship(2, Ship::LEFT_TO_RIGHT));
-    m_ships.append(new Ship(3, Ship::LEFT_TO_RIGHT));
-    m_ships.append(new Ship(4, Ship::LEFT_TO_RIGHT));
-    
+    Coord origin(0, 0);
+
+    m_ships.append(new Ship(1, Ship::LEFT_TO_RIGHT, origin));
+    m_ships.append(new Ship(2, Ship::LEFT_TO_RIGHT, origin));
+    m_ships.append(new Ship(3, Ship::LEFT_TO_RIGHT, origin));
+    m_ships.append(new Ship(4, Ship::LEFT_TO_RIGHT, origin));
+
     UIEntity::start(ask);
-    m_view->setDelegate(this);
+    m_seaview->setDelegate(this);
 }
 
 void PlayerEntity::hit(Shot* shot)
@@ -114,7 +117,7 @@ void PlayerEntity::changeDirection(Sea::Player player)
         Ship* next = nextShip();
         if (next) {
             next->changeDirection();
-            m_view->cancelPreview();
+            m_seaview->cancelPreview();
         }
     }
 }
@@ -126,6 +129,7 @@ Ship* PlayerEntity::canAddShip(Sea::Player player, const Coord& c)
         return 0;
     }
     if (m_sea->canAddShip(player, c, next->size(), next->direction())) {
+        next->setPosition(c);
         return next;
     }
     else {

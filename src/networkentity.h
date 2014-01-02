@@ -14,6 +14,7 @@
 #include "message.h"
 
 class Sea;
+class SeaView;
 class Protocol;
 
 class NetworkEntity : public Entity, private MessageVisitor
@@ -23,19 +24,22 @@ Q_OBJECT
     Protocol* m_protocol;
     Shot* m_pending_shot;
     bool m_client;
+    bool m_winner;
+
 public:
-    NetworkEntity(Sea::Player player, Sea* sea, Protocol* device, bool client);
+    NetworkEntity(Sea::Player player, Sea* sea, SeaView* seaview, Protocol* device, bool client);
     ~NetworkEntity();
-    
+
     virtual void notify(Sea::Player player, const Coord& c, const HitInfo& info);
     virtual void notifyChat(const Entity* entity, const QString& text);
     virtual void notifyNick(Sea::Player player, const QString& nick);
     virtual void start(bool ask);
     virtual void startPlaying();
     virtual void notifyReady(Sea::Player player);
+    virtual void notifyShips(Sea::Player winner);
     virtual void notifyGameOver(Sea::Player winner);
     virtual void hit(Shot* shot);
-    
+
     virtual KIcon icon() const;
 private slots:
     void received(MessagePtr msg);
