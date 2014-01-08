@@ -185,9 +185,10 @@ void BattleFieldView::add(Ship* ship)
     addSprite(ship->position(), sprite);
     
     // fading preview in
+    Animation* a = new FadeAnimation(sprite, PREVIEW_OPACITY, 1, 1000);
+    Animator::instance()->add(a);
+
     if (ship == m_preview.ship) {
-        Animation* a = new FadeAnimation(sprite, PREVIEW_OPACITY, 1, 1000);
-        Animator::instance()->add(a);
         cancelPreview();
     }
     else if (!ship->alive()) {
