@@ -122,19 +122,19 @@ void PlayerEntity::changeDirection(Sea::Player player)
     }
 }
 
-Ship* PlayerEntity::canAddShip(Sea::Player player, const Coord& c)
+bool PlayerEntity::canAddShip(Sea::Player player, const Coord& c)
 {
-    Ship* next = nextShip();
-    if (next == 0 || player != m_player) {
-        return 0;
+    if (m_ships.isEmpty() || player != m_player) {
+        return false;
     }
+
+    Ship * next = m_ships.at(0);
+
     if (m_sea->canAddShip(player, c, next->size(), next->direction())) {
-        next->setPosition(c);
-        return next;
+        return true;
     }
-    else {
-        return 0;
-    }
+
+    return false;
 }
 
 void PlayerEntity::registerHit(Sea::Player player, const Coord&)

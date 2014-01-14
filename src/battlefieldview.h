@@ -70,14 +70,18 @@ class BattleFieldView : public QGraphicsView
     
     typedef QMultiHash<Coord, Sprite*> Sprites;
     Sprites m_sprites;
+
+private:
     void addSprite(const Coord& c, Sprite* ship);
+    void loadPreviewSprite(Ship * ship);
+
 public:
     BattleFieldView(QWidget* parent, KBSRenderer* renderer, const QString& bgID, int gridSize);
 
     void toggleGrid(bool show);
     void refresh();
     
-    void setPreview(const QPointF& pos, Ship* ship);
+    void setPreview(const QPoint &pos);
     void cancelPreview();
     void add(Ship* ship);
     void hit(const Coord& c);

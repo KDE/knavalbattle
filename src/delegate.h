@@ -16,7 +16,8 @@ public:
     virtual ~Delegate() { }
     virtual void action(Sea::Player player, const Coord& c) = 0;
     virtual void changeDirection(Sea::Player player) = 0;
-    virtual Ship* canAddShip(Sea::Player player, const Coord& c) = 0;
+    virtual bool canAddShip(Sea::Player player, const Coord& c) = 0;
+    virtual Ship * nextShip() = 0;
 };
 
 #endif // DELEGATE_H

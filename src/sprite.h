@@ -26,6 +26,8 @@ public:
     ~Sprite();
 
     void refresh(KBSRenderer* renderer);
+    void turnRed();
+    void turnGreen();
 };
 
 #endif // SPRITE_H

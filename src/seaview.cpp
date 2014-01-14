@@ -162,14 +162,9 @@ bool SeaView::setPreview(Sea::Player player, const QPoint& pos)
 {
     QPoint p = pos - m_fields[player]->pos();
     Coord c = m_renderer->toLogical(p);
-    if (Ship* ship = m_delegate->canAddShip(player, c)) {
-        m_fields[player]->setPreview(p, ship);
-        return true;
-    }
-    else {
-        m_fields[player]->cancelPreview();
-        return false;
-    }
+
+    m_fields[player]->setPreview(p);
+    return m_delegate->canAddShip(player, c);
 }
 
 void SeaView::cancelPreview()

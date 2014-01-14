@@ -10,6 +10,7 @@
 #include "sprite.h"
 
 #include <kdebug.h>
+#include <QGraphicsEffect>
 
 #include "kbsrenderer.h"
 
@@ -24,6 +25,20 @@ Sprite::Sprite(KBSRenderer* renderer, const Coord& scale, const QString& name, b
 
 Sprite::~Sprite()
 {
+}
+
+void Sprite::turnGreen()
+{
+    QGraphicsColorizeEffect * fx = new QGraphicsColorizeEffect();
+    fx->setColor(QColor(Qt::green));
+    setGraphicsEffect(fx);
+}
+
+void Sprite::turnRed()
+{
+    QGraphicsColorizeEffect * fx = new QGraphicsColorizeEffect();
+    fx->setColor(QColor(Qt::red));
+    setGraphicsEffect(fx);
 }
 
 void Sprite::refresh(KBSRenderer* renderer)

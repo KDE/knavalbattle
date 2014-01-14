@@ -149,21 +149,40 @@ void BattleFieldView::refresh()
     }
 }
 
-void BattleFieldView::setPreview(const QPointF& pos, Ship* ship)
+void BattleFieldView::setPreview(const QPoint & pos)
 {
-    if (!m_preview.sprite) {
-        m_preview.ship = ship;
-        m_preview.sprite = m_factory.createShip(ship);
-        kDebug() << "created preview: dir =" << ship->direction();
-        m_preview.sprite->setOpacity(PREVIEW_OPACITY);
-        scene()->addItem(m_preview.sprite);
-        m_preview.sprite->stackBefore(m_screen);
+    Ship * ship = m_delegate->nextShip();
+
+    if (!ship) {
+        return;
     }
-    
-    m_preview.pos = m_renderer->toLogical(pos);
+
+    loadPreviewSprite(ship);
+    Coord coordinate = m_renderer->toLogical(pos);
+
+    if (m_delegate->canAddShip(m_player, coordinate)) {
+        m_preview.sprite->turnGreen();
+    } else {
+        m_preview.sprite->turnRed();
+    }
+
+    QPointF scenePos = mapToScene(pos);
+    m_preview.pos = m_renderer->toLogical(scenePos);
     m_preview.sprite->setPos(m_renderer->toReal(m_preview.pos));
 }
 
+void BattleFieldView::loadPreviewSprite(Ship * ship)
+{
+    if (m_preview.ship) {
+        return;
+    }
+
+    m_preview.ship      = ship;
+    m_preview.sprite    = m_factory.createShip(ship);
+
+    m_preview.sprite->setOpacity(PREVIEW_OPACITY);
+    scene()->addItem(m_preview.sprite);
+}
 void BattleFieldView::cancelPreview()
 {
     delete m_preview.sprite;
@@ -281,11 +300,7 @@ void BattleFieldView::mousePressEvent(QMouseEvent *ev)
     else if (ev->button() == Qt::RightButton && m_delegate)
     {
         m_delegate->changeDirection(m_player);
-
-        Coord c = m_renderer->toLogical(ev->pos());
-
-        if(Ship *ship = m_delegate->canAddShip(m_player, c))
-            setPreview(mapToScene(ev->pos()), ship);
+        setPreview(ev->pos());
     }
 }
 
@@ -313,10 +328,7 @@ void BattleFieldView::mouseMoveEvent(QMouseEvent *ev)
     else
     {
         cancelPreview();
-        Coord c = m_renderer->toLogical(ev->pos());
-
-        if(Ship *ship = m_delegate->canAddShip(m_player, c))
-            setPreview(mapToScene(ev->pos()), ship);
+        setPreview(ev->pos());
     }
 }
 
@@ -344,4 +356,4 @@ void BattleFieldView::setPlayer(Sea::Player player)
     m_player = player;
 }
 
-const qreal BattleFieldView::PREVIEW_OPACITY = 0.5;
+const qreal BattleFieldView::PREVIEW_OPACITY = 0.7;

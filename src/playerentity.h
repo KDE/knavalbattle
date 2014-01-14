@@ -23,7 +23,6 @@ class PlayerEntity : public UIEntity, private Delegate
 Q_OBJECT
     QList<Ship*> m_ships;
     
-    Ship* nextShip();
     Ship* canAddShip(const Coord& c);
     
     ChatWidget* m_chat;
@@ -40,7 +39,8 @@ public:
     // delegate interface
     virtual void action(Sea::Player player, const Coord& c);
     virtual void changeDirection(Sea::Player player);
-    virtual Ship* canAddShip(Sea::Player player, const Coord& c);
+    virtual bool canAddShip(Sea::Player player, const Coord& c);
+    virtual Ship * nextShip();
     
     virtual void setNick(const QString& nick);
 protected:
