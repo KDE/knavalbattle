@@ -53,6 +53,7 @@ public:
     ~Sea();
 
     bool canAddShip(Player p, const Coord& pos, int size, Ship::Direction direction) const;
+    bool canAddShipOfSize(Player p, int size) const;
     void add(Player p, int n);
     void add(Player p, Ship* ship);
     void addBorder(Player p, const Coord& pos);
@@ -66,7 +67,8 @@ public:
     void switchTurn();
     bool isNearShip(Sea::Player, const Coord& pos) const;
     void allowAdjacentShips(const bool allow_adjacent_ships);
- 
+    void clear(Sea::Player);
+
     const QList<Ship *> enemyShips() const;
     const QList<Ship *> myShips() const;
 

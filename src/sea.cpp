@@ -17,12 +17,15 @@ Sea::Sea(QObject* parent, const Coord& size, const bool allow_adjacent_ships)
 , m_status(PLACING_SHIPS)
 , m_allow_adjacent_ships(allow_adjacent_ships)
 {
-    m_fields[0] = new BattleField(this, m_size);
-    m_fields[1] = new BattleField(this, m_size);
+    m_fields[0] = new BattleField(this, m_size, allow_adjacent_ships);
+    m_fields[1] = new BattleField(this, m_size, allow_adjacent_ships);
 }
 
 Sea::~Sea()
 {
+    m_enemyShips.clear();
+    m_myShips.clear();
+
 	delete m_fields[0];
 	delete m_fields[1];
 }
@@ -33,6 +36,27 @@ bool Sea::canAddShip(Player p, const Coord& pos, int size, Ship::Direction direc
         return false;
     }
     return m_fields[p]->canAddShip(pos, size, direction);
+}
+
+bool Sea::canAddShipOfSize(Player p, int size) const
+{
+    if (m_status != PLACING_SHIPS) {
+        return false;
+    }
+    return m_fields[p]->canAddShipOfSize(size);
+}
+
+void Sea::clear(Sea::Player p)
+{
+    if (m_status == PLACING_SHIPS) {
+        m_fields[p]->clear();
+        if(p == PLAYER_B) {
+            m_enemyShips.clear();
+        }
+        else {
+            m_myShips.clear();
+        }
+    }
 }
 
 void Sea::add(Player p, Ship* ship)
@@ -95,6 +119,8 @@ void Sea::checkGameOver()
 void Sea::allowAdjacentShips(const bool allow_adjacent_ships)
 {
     m_allow_adjacent_ships = allow_adjacent_ships;
+    m_fields[0]->setAllowAdjacentShips(allow_adjacent_ships);
+    m_fields[1]->setAllowAdjacentShips(allow_adjacent_ships);
 }
 
 const Element& Sea::at(Sea::Player player, const Coord& c) const

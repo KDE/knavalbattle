@@ -14,24 +14,29 @@
 #include "sea.h"
 #include "settings.h"
 
-BattleField::BattleField(Sea* parent, const Coord& size)
+BattleField::BattleField(Sea* parent, const Coord& size, const bool allow_adjacent_ships)
 : QObject(parent)
 , m_size(size)
 , m_board(size)
+, m_secondary_board(size)
+, m_allow_adjacent_ships(allow_adjacent_ships)
 , m_ships(0)
 {
+    setUpSecondaryBoard();
+}
+
+void BattleField::setUpSecondaryBoard()
+{
+    for (int i = 0; i < m_size.x; i++) {
+        for (int j = 0; j < m_size.y ; j++) {
+            m_secondary_board[Coord(i,j)] = false;
+        }
+    }
 }
 
 BattleField::~BattleField()
 {
-	QSet<Ship*> deleted_ships;
-	FOREACH_SQUARE(p, m_board) {
-		Ship* ship = m_board[p].parent();
-		if (ship && !deleted_ships.contains(ship)) {
-			delete ship;
-			deleted_ships.insert(ship);
-		}
-	}
+    clear();
 }
 
 bool BattleField::valid(const Coord& pos) const
@@ -69,6 +74,9 @@ void BattleField::add(Ship* ship)
         p = p + ship->increment();
     }
     m_ships++;
+
+    addSecondaryBoard(ship);
+    addBorderSecondaryBoard(ship);
 }
 
 void BattleField::addBorder(const Coord& pos)
@@ -85,6 +93,40 @@ void BattleField::addBorder(const Coord& pos)
         }
         p -= inc;
         set(p, Element::BORDER);
+    }
+}
+
+void BattleField::addSecondaryBoard(Ship* ship)
+{
+    Coord p = ship->position();
+    for (unsigned int i = 0; i < ship->size(); i++) {
+        m_secondary_board[p]=true;
+        p += ship->increment();
+    }
+}
+
+void BattleField::addBorderSecondaryBoard(Ship* ship)
+{
+    if ( !m_allow_adjacent_ships )
+    {
+        Coord inc = ship->increment();
+        Coord orth(inc.y, inc.x);
+        Coord p = ship->position() - inc;
+        if ( valid (p) ) {
+            m_secondary_board[p]=true;
+        }
+        for (; p != ship->position() + inc * (ship->size() + 1); p += inc) {
+            if ( valid( p + orth ) ) {
+                m_secondary_board[p + orth]=true;
+            }
+            if ( valid( p - orth ) ) {
+                m_secondary_board[p - orth]=true;
+            }
+        }
+        p -= inc;
+        if ( valid (p) ) {
+            m_secondary_board[p]=true;
+        }
     }
 }
 
@@ -132,6 +174,41 @@ bool BattleField::canAddShip(const Coord& pos, unsigned int size, Ship::Directio
     }
     return true;
 }
+
+bool BattleField::canAddShipOfSize(unsigned int size) const
+{
+    unsigned int maxHorLenAvailable = 0;
+    unsigned int horContiguousLen = 0;
+    // one counter/max per column, so only 
+    unsigned int* maxVerLenAvailable=new unsigned int[m_secondary_board.width()];
+    unsigned int* verContiguousLen=new unsigned int[m_secondary_board.width()];
+
+    for (int i=0; i<m_secondary_board.width(); i++) {
+        verContiguousLen[i] = 0;
+        maxVerLenAvailable[i] = 0;
+    }
+    for (int i=0; i<m_secondary_board.height(); i++) {
+        horContiguousLen = 0;
+        for (int j=0; j<m_secondary_board.width(); j++) {
+            if ( m_secondary_board[ Coord(j,i) ] ) {
+                horContiguousLen = 0;
+                verContiguousLen[j] = 0;
+            }
+            else {
+                horContiguousLen += 1;
+                verContiguousLen[j] += 1;
+                maxHorLenAvailable = qMax<int>( horContiguousLen, maxHorLenAvailable );
+                maxVerLenAvailable[j] = qMax<int>( verContiguousLen[j], maxVerLenAvailable[j] );
+                if (maxHorLenAvailable >= size || maxVerLenAvailable[j] >= size)
+                {
+                    return true;
+                }
+            }
+        }
+    }
+    return false;
+}
+
 
 HitInfo BattleField::hit(const Coord& pos)
 {
@@ -198,5 +275,25 @@ bool BattleField::isNearShip(const Coord& pos) const
     }
     return false;
 }
+
+void BattleField::clear()
+{
+    for (int i = 0; i < m_size.x; i++) {
+        for (int j = 0; j < m_size.y ; j++) {
+            m_secondary_board[Coord(i,j)] = false;
+        }
+    }
+    QSet<Ship*> deleted_ships;
+    FOREACH_SQUARE(p, m_board) {
+        Ship* ship = m_board[p].parent();
+        if (ship && !deleted_ships.contains(ship)) {
+            delete ship;
+            deleted_ships.insert(ship);
+        }
+        m_board[p].setType(Element::WATER);
+    }
+    m_ships=0;
+}
+
 
 #include "battlefield.moc"
