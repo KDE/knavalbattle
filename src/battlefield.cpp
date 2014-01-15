@@ -179,7 +179,7 @@ bool BattleField::canAddShipOfSize(unsigned int size) const
 {
     unsigned int maxHorLenAvailable = 0;
     unsigned int horContiguousLen = 0;
-    // one counter/max per column, so only 
+    // one counter/max per column, so only on pass in done
     unsigned int* maxVerLenAvailable=new unsigned int[m_secondary_board.width()];
     unsigned int* verContiguousLen=new unsigned int[m_secondary_board.width()];
 
