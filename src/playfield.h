@@ -52,12 +52,14 @@ public slots:
     void toggleSounds(bool);
     void toggleAdjacent(bool);
     void restartRequested();
+    void startPlacingShips();
+    void restartPlacingShips(Sea::Player player);
     void setCompatibility(int);
     void updateNick(int, const QString&);
     void changeTurn(int);
     void playerReady(int);
     void levelChanged();
-    
+
     void auxMenuDone();
     void localGame();
     void createServer();
@@ -68,8 +70,9 @@ public slots:
     void toggleRightGrid(bool show);
 signals:
     void gameFinished();
+    void abortGame(Sea::Player player);
     void welcomeScreen();
-    void startingGame();
+    void placeShips();
 };
 
 #endif // PLAYFIELD_H

@@ -13,12 +13,14 @@
 #include <KLocalizedString>
 #include "seaview.h"
 #include "shot.h"
+#include "coord.h"
 #include "chatwidget.h"
 
 PlayerEntity::PlayerEntity(Sea::Player player, Sea* sea, SeaView* view, ChatWidget* chat)
 : UIEntity(player, sea, view)
 , m_chat(chat)
 {
+    m_seaview->setStatus(Sea::PLACING_SHIPS);
 }
 
 Ship* PlayerEntity::nextShip()
@@ -34,20 +36,20 @@ Ship* PlayerEntity::nextShip()
 Ship* PlayerEntity::canAddShip(const Coord& c)
 {
     Ship* ship = nextShip();
-    ship->setPosition(c);
-    Q_ASSERT(ship);
-    
-    if (m_sea->canAddShip(m_player, c, ship->size(), ship->direction())) {
-        // check if it is near any other ship
-        // in KBS3 mode
-        if (m_level == COMPAT_KBS3) {
-            for (unsigned int i = 0; i < ship->size(); i++) {
-                if (m_sea->isNearShip(m_player, c + ship->increment() * i)) {
-                    return 0;
+    if (ship) {
+        ship->setPosition(c);
+        if (m_sea->canAddShip(m_player, c, ship->size(), ship->direction())) {
+            // check if it is near any other ship
+            // in KBS3 mode
+            if (m_level == COMPAT_KBS3) {
+                for (unsigned int i = 0; i < ship->size(); i++) {
+                    if (m_sea->isNearShip(m_player, c + ship->increment() * i)) {
+                        return 0;
+                    }
                 }
             }
+            return ship;
         }
-        return ship;
     }
     return 0;
 }
@@ -55,44 +57,74 @@ Ship* PlayerEntity::canAddShip(const Coord& c)
 
 void PlayerEntity::action(Sea::Player player, const Coord& c)
 {
-    if (nextShip()) {
-        if (player == m_player) {
-            // placing ships
-            // First check if the ship can be placed anywhere
-            Ship* ship = canAddShip(c);
-            if (ship) {
-                // remove ship from the list
-                m_ships.removeFirst();
-                
-                // add ship to the sea
-                m_sea->add(m_player, ship);
-                m_seaview->add(m_player, ship);
-                
-                if (!nextShip()) {
-                    emit ready(m_player);
+    Sea::Player opponent = Sea::opponent(m_player);
+    switch ( m_sea->status() )
+    {
+        case Sea::PLACING_SHIPS: 
+            if (!m_ships.empty()) {
+                if (player == m_player) {
+                    // placing ships
+                    // First check if the ship can be placed anywhere
+                    Ship* ship = canAddShip(c);
+                    if (ship) {
+                        // remove ship from the list
+                        m_ships.removeFirst();
+
+                        // add ship to the sea
+                        m_sea->add(m_player, ship);
+                        m_seaview->add(m_player, ship);
+                        if (!m_ships.empty()) {
+                            ship=m_ships.first();
+                            // when multiple ships and an space between them are enabled,
+                            // it is possible to reach impossible combinations
+                            if ( !m_sea->canAddShipOfSize(m_player, ship->size()) ) {
+                                emit restartPlacingShips(m_player);
+                            }
+                        }
+                        else {
+                            emit shipsPlaced(m_player);
+                        }
+                    }
                 }
             }
-        }
-    }
-    else {
-        Sea::Player opponent = Sea::opponent(m_player);
-        if (player == opponent && m_sea->canHit(m_player, c)) {
-            emit shoot(m_player, c);
-        }
+            break;
+        case Sea::PLAYING:
+            if (player == opponent && m_sea->canHit(m_player, c)) {
+                emit shoot(m_player, c);
+            }
+            break;
+        default:
+            // SHOULD NEVER HAPPEN
+            break;
     }
 }
 
-void PlayerEntity::start(bool ask)
+void PlayerEntity::startPlacing(bool restart)
 {
+    UIEntity::startPlacing(restart);
+
     Coord origin(0, 0);
 
+    m_ships.clear();
     m_ships.append(new Ship(1, Ship::LEFT_TO_RIGHT, origin));
     m_ships.append(new Ship(2, Ship::LEFT_TO_RIGHT, origin));
     m_ships.append(new Ship(3, Ship::LEFT_TO_RIGHT, origin));
     m_ships.append(new Ship(4, Ship::LEFT_TO_RIGHT, origin));
-
-    UIEntity::start(ask);
     m_seaview->setDelegate(this);
+    m_seaview->setStatus(Sea::PLACING_SHIPS);
+}
+
+
+void PlayerEntity::start(bool ask)
+{
+    UIEntity::start(ask);
+    emit ready(m_player);
+}
+
+void PlayerEntity::startPlaying()
+{
+    UIEntity::startPlaying();
+    m_seaview->setStatus(Sea::PLAYING);
 }
 
 void PlayerEntity::hit(Shot* shot)
@@ -173,6 +205,14 @@ void PlayerEntity::setNick(const QString& nick)
 {
     UIEntity::setNick(nick);
     m_chat->setNick(nick);
+}
+
+void PlayerEntity::notifyRestartPlacing(Sea::Player player)
+{
+    UIEntity::notifyRestartPlacing(player);
+    m_seaview->clear();
+    m_sea->clear(player);
+    startPlacing(false);
 }
 
 

@@ -41,6 +41,7 @@ public:
     virtual void notifyChat(const Entity* entity, const QString& text) = 0;
     virtual void notifyNick(Sea::Player player, const QString& nick) = 0;
     virtual void hit(Shot* shot) = 0;
+    virtual void startPlacing(bool) = 0;
     virtual void start(bool) = 0;
     virtual void startPlaying() { }
     virtual void notifyReady(Sea::Player) { }
@@ -56,14 +57,17 @@ public:
     virtual void setNick(const QString& nick);
 signals:
     void shoot(int player, const Coord& c);
+    void shipsPlaced(int player);
     void ready(int player);
     void chat(const QString& text);
     void nick(int player, const QString& nickname);
     void compatibility(int level);
     void abortGame();
+    void restartPlacingShips(Sea::Player player);
 public slots:
     virtual void setCompatibilityLevel(int level);
     virtual void notifyAbort() = 0;
+    virtual void notifyRestartPlacing(Sea::Player player) = 0;
 };
 
 #endif // ENTITY_H

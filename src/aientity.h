@@ -31,12 +31,14 @@ public:
     virtual void notifyChat(const Entity*, const QString&) { }
     virtual void notifyNick(Sea::Player, const QString&) { }
     virtual void start(bool);
+    virtual void startPlacing(bool ask);
     virtual void startPlaying();
     virtual void hit(Shot* shot);
 
     virtual KIcon icon() const;
 public slots:
     virtual void notifyAbort() { }
+    virtual void notifyRestartPlacing(Sea::Player player) { };
 };
 
 

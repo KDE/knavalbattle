@@ -38,7 +38,7 @@ void UIEntity::notifyGameOver(Sea::Player winner)
 
 void UIEntity::start(bool)
 {
-    m_seaview->clear();
+
 }
 
 void UIEntity::hit(Shot* shot)

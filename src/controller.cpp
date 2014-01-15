@@ -17,11 +17,11 @@
 #include "shot.h"
 #include "audioplayer.h"
 
-Controller::Controller(QObject* parent, AudioPlayer* player, const bool allow_adjacent_ships)
+Controller::Controller(QObject* parent, AudioPlayer* audioPlayer, const bool allow_adjacent_ships)
 : QObject(parent)
 , m_shot(0)
 , m_ready(0)
-, m_player(player)
+, m_player(audioPlayer)
 , m_has_ai(false)
 , m_allow_adjacent_ships(allow_adjacent_ships)
 {
@@ -68,11 +68,13 @@ NetworkEntity* Controller::createRemotePlayer(Sea::Player player, SeaView* view,
 void Controller::setupEntity(Entity* entity)
 {
     entity->setParent(this);
-    
+
     connect(entity, SIGNAL(shoot(int,Coord)),
             this, SLOT(shoot(int,Coord)), Qt::QueuedConnection);
     connect(entity, SIGNAL(ready(int)),
             this, SLOT(ready(int)), Qt::QueuedConnection);
+    connect(entity, SIGNAL(shipsPlaced(int)),
+            this, SLOT(shipsPlaced(int)), Qt::QueuedConnection);
     connect(entity, SIGNAL(chat(QString)),
             this, SLOT(receivedChat(QString)));
     connect(entity, SIGNAL(nick(int,QString)),
@@ -90,6 +92,8 @@ void Controller::setupEntity(Entity* entity)
                 entity, SLOT(notifyAbort()));
         connect(entity, SIGNAL(abortGame()),
                 e, SLOT(notifyAbort()));
+        connect(e, SIGNAL(restartPlacingShips(Sea::Player)),
+                this, SLOT(notifyRestartPlacingShips(Sea::Player)));
     }
 
     m_entities.append(entity);
@@ -113,16 +117,16 @@ bool Controller::start(SeaView* view, bool ask)
     if (!allPlayers()) {
         return false;
     }
-    
+
     if (!m_ui) {
         m_ui = new UIEntity(Sea::NO_PLAYER, m_sea, view);
         setupEntity(m_ui);
     }
-    
+
     foreach (Entity* entity, m_entities) {
-        entity->start(ask);
+        entity->startPlacing(ask);
     }
-    
+
     foreach (Entity* source, m_entities) {
         foreach (Entity* target, m_entities) {
             if (source->player() != target->player() &&
@@ -131,6 +135,7 @@ bool Controller::start(SeaView* view, bool ask)
             }
         }
     }
+
     return true;
 }
 
@@ -158,12 +163,12 @@ void Controller::finalizeShot(Sea::Player player, const Coord& c, const HitInfo&
     if (info.type != HitInfo::INVALID) {
         // notify entities
         notify(player, c, info);
-        
+
         // play sounds
         if (m_player) {
             m_player->play(player, info);
         }
-            
+
         if (m_sea->status() == Sea::A_WINS) {
             finalizeGame(Sea::PLAYER_A);
         }
@@ -192,17 +197,29 @@ void Controller::notify(Sea::Player player, const Coord& c, const HitInfo& info)
     }
 }
 
+void Controller::shipsPlaced(int player)
+{
+    m_ready++;
+    if (m_ready >= 2 )
+    {
+        foreach (Entity* entity, m_entities) {
+            entity->start(false);
+        }
+    }
+}
+
+
 void Controller::ready(int player)
 {
     m_ready++;
     foreach (Entity* entity, m_entities) {
         entity->notifyReady(Sea::Player(player));
     }
-    
-    // when two entities are ready, start
-    // all engines
-    if (m_ready >= 2) {
+    // when two entities are ready (ships placed and ready)
+    // start all engines
+    if (m_ready >= 4) {
         m_sea->startPlaying();
+
         foreach (Entity* entity, m_entities) {
             entity->startPlaying();
         }
@@ -224,7 +241,16 @@ void Controller::finalizeGame(Sea::Player winner)
         entity->notifyGameOver(winner);
     }
     emit gameOver(winner);
- }
+}
+
+void Controller::notifyRestartPlacingShips(Sea::Player player)
+{
+    foreach (Entity* entity, m_entities) {
+        if (entity->player() == player) {
+            entity->notifyRestartPlacing(player);
+        }
+    }
+}
 
 Entity* Controller::findEntity(Sea::Player player) const
 {

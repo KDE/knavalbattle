@@ -43,7 +43,7 @@ MainWindow::MainWindow(const KUrl& url)
     setupActions();
 
     connect(m_main, SIGNAL(welcomeScreen()), this, SLOT(welcomeScreen()));
-    connect(m_main, SIGNAL(startingGame()), this, SLOT(startingGame()));
+    connect(m_main, SIGNAL(placeShips()), this, SLOT(startingGame()));
     
     m_main->newGame();
 

@@ -57,6 +57,7 @@ public:
     void miss(Sea::Player p, const Coord& c);
     void sink(Sea::Player p, Ship* ship);
     void clear();
+    void setStatus(Sea::Status status);
     
     void setStats(Sea::Player p, const QString& icon, 
                   const QString& text, Stats* stats);

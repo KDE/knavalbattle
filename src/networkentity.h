@@ -34,6 +34,7 @@ public:
     virtual void notifyChat(const Entity* entity, const QString& text);
     virtual void notifyNick(Sea::Player player, const QString& nick);
     virtual void start(bool ask);
+    virtual void startPlacing(bool ask);
     virtual void startPlaying();
     virtual void notifyReady(Sea::Player player);
     virtual void notifyShips(Sea::Player winner);
@@ -44,6 +45,7 @@ public:
 private slots:
     void received(MessagePtr msg);
     virtual void notifyAbort();
+    virtual void notifyRestartPlacing(Sea::Player player) { };
 protected:
     virtual void visit(const HeaderMessage& msg);
     virtual void visit(const RejectMessage& msg);

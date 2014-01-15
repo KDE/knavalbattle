@@ -31,6 +31,8 @@ public:
     
     // entity interface
     virtual void start(bool);
+    virtual void startPlacing(bool);
+    virtual void startPlaying();
     virtual void hit(Shot* shot);
     virtual void notify(Sea::Player player, const Coord& c, const HitInfo& info);
     virtual void notifyChat(const Entity* entity, const QString& text);
@@ -49,6 +51,7 @@ protected:
     virtual void registerMiss(Sea::Player player, const Coord& c);
 public slots:
     virtual void notifyAbort();
+    virtual void notifyRestartPlacing(Sea::Player player);
 };
 
 #endif // PLAYERENTITY_H

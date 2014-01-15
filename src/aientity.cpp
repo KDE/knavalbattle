@@ -57,14 +57,20 @@ void AIEntity::notify(Sea::Player player, const Coord& c, const HitInfo& info)
 
 void AIEntity::start(bool)
 {
-    kDebug() << m_player << ": starting";
-    m_ai->setShips();
     emit ready(m_player);
+}
+
+void AIEntity::startPlacing(bool ask)
+{
+    m_seaview->setStatus(Sea::PLACING_SHIPS);
+    m_ai->setShips();
+    emit shipsPlaced(m_player);
 }
 
 void AIEntity::startPlaying()
 {
     getShoot();
+    m_seaview->setStatus(Sea::PLAYING);
 }
 
 void AIEntity::hit(Shot* shot)

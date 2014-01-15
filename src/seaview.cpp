@@ -194,6 +194,12 @@ void SeaView::sink(Sea::Player p, Ship* ship)
     m_fields[p]->sink(ship);
 }
 
+void SeaView::setStatus(Sea::Status status)
+{
+// TODO:    m_fields[0]->setStatus(status);
+// TODO:    m_fields[1]->setStatus(status);
+}
+
 void SeaView::clear()
 {
     m_fields[0]->clear();

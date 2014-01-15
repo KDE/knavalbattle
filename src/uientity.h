@@ -31,6 +31,7 @@ public:
     virtual void notifyChat(const Entity*, const QString&) { }
     virtual void notifyNick(Sea::Player, const QString&) { }
     virtual void start(bool);
+    virtual void startPlacing(bool) { };
     virtual void hit(Shot*);
     
     virtual void registerHit(Sea::Player, const Coord&) { }
@@ -39,6 +40,7 @@ public:
     virtual KIcon icon() const;
 public slots:
     virtual void notifyAbort() { }
+    virtual void notifyRestartPlacing(Sea::Player player) { };
 };
 
 #endif // UIENTITY_H

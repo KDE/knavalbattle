@@ -59,11 +59,15 @@ public:
 public slots:
     void shoot(int player, const Coord& c);
     void ready(int player);
+    void shipsPlaced(int player);
     void receivedChat(const QString& text);
     void nick(int player, const QString& nick);
+    void notifyRestartPlacingShips(Sea::Player player);
 signals:
     void gameOver(Sea::Player);
     void restartRequested();
+    void startPlacingShips(int player);
+    void restartPlacingShips(Sea::Player player); // in case it is impossible to finish with the current board
     void compatibility(int);
     void nickChanged(int, const QString&);
     void turnChanged(int);

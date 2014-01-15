@@ -80,6 +80,8 @@ Controller* PlayField::createController()
             this, SLOT(changeTurn(int)));
     connect(controller, SIGNAL(playerReady(int)),
             this, SLOT(playerReady(int)));
+    connect(controller, SIGNAL(restartPlacingShips(Sea::Player)),
+            this, SLOT(restartPlacingShips(Sea::Player)));
 
     return controller;
 }
@@ -248,7 +250,7 @@ void PlayField::restartRequested()
 void PlayField::setCompatibility(int level)
 {
     if (level == Entity::COMPAT_KBS3) {
-        KMessageBox::information(this, i18n("Your opponent is using a pre-KDE4 version of Naval Battle. Note that, according to the rules enforced by old clients, ships cannot be placed adjacent to one another."));
+        KMessageBox::information(this, i18n("Your opponent is using a pre-KDE4 version of Naval Battle. Note that, according to the rules enforced by old clients, ships cannot be placed adjacent to one another and only one ship of each size is allowed."));
     }
 }
 
@@ -289,8 +291,28 @@ void PlayField::startGame()
 {
     //the game has a fixed difficulty level only if there is an AI
     Kg::difficulty()->setGameRunning(m_controller->hasAI());
-    m_status_bar->showMessage(i18n("Place your ships. Use the right mouse button to rotate them."));
-    emit startingGame();
+    startPlacingShips();
+    emit placeShips();
+}
+
+void PlayField::startPlacingShips()
+{
+    m_status_bar->showMessage(i18n("Place your 4 ships. Use the right mouse button to rotate them."));
+}
+
+
+void PlayField::restartPlacingShips(Sea::Player player)
+{
+    m_status_bar->showMessage(i18n("You can't place your remaining ships."));
+    KMessageBox restartYesNo;
+    int res=restartYesNo.warningYesNo(this, i18n("You can't place your remaining ships. Please restart placing ships or abort game"), i18n("Restart placing ships"));
+    if (res == KMessageBox::Yes) {
+        startPlacingShips();
+        m_controller->notifyRestartPlacingShips(player);
+    }
+    else {
+        // FIXME: missing an abort game
+    }
 }
 
 
