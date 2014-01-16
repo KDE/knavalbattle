@@ -175,31 +175,20 @@ bool BattleField::canAddShip(const Coord& pos, unsigned int size, Ship::Directio
     return true;
 }
 
-bool BattleField::canAddShipOfSize(unsigned int size) const
+bool BattleField::canAddShipOfSizeInHorizontal(unsigned int size) const
 {
-    unsigned int maxHorLenAvailable = 0;
-    unsigned int horContiguousLen = 0;
-    // one counter/max per column, so only on pass in done
-    unsigned int* maxVerLenAvailable=new unsigned int[m_secondary_board.width()];
-    unsigned int* verContiguousLen=new unsigned int[m_secondary_board.width()];
-
-    for (int i=0; i<m_secondary_board.width(); i++) {
-        verContiguousLen[i] = 0;
-        maxVerLenAvailable[i] = 0;
-    }
-    for (int i=0; i<m_secondary_board.height(); i++) {
-        horContiguousLen = 0;
-        for (int j=0; j<m_secondary_board.width(); j++) {
-            if ( m_secondary_board[ Coord(j,i) ] ) {
-                horContiguousLen = 0;
-                verContiguousLen[j] = 0;
+    unsigned int maxLenAvailable = 0;
+    unsigned int contiguousLen = 0;
+    for (int j=0; j<m_secondary_board.height(); j++) {
+        contiguousLen = 0;
+        for (int i=0; i<m_secondary_board.width(); i++) {
+            if ( m_secondary_board[ Coord(i,j) ] ) {
+                contiguousLen = 0;
             }
             else {
-                horContiguousLen += 1;
-                verContiguousLen[j] += 1;
-                maxHorLenAvailable = qMax<int>( horContiguousLen, maxHorLenAvailable );
-                maxVerLenAvailable[j] = qMax<int>( verContiguousLen[j], maxVerLenAvailable[j] );
-                if (maxHorLenAvailable >= size || maxVerLenAvailable[j] >= size)
+                contiguousLen += 1;
+                maxLenAvailable = qMax<int>( contiguousLen, maxLenAvailable );
+                if (maxLenAvailable >= size)
                 {
                     return true;
                 }
@@ -207,6 +196,34 @@ bool BattleField::canAddShipOfSize(unsigned int size) const
         }
     }
     return false;
+}
+
+bool BattleField::canAddShipOfSizeInVertical(unsigned int size) const
+{
+    unsigned int maxLenAvailable = 0;
+    unsigned int contiguousLen = 0;
+    for (int i=0; i<m_secondary_board.width(); i++) {
+        contiguousLen = 0;
+        for (int j=0; j<m_secondary_board.height(); j++) {
+            if ( m_secondary_board[ Coord(j,i) ] ) {
+                contiguousLen = 0;
+            }
+            else {
+                contiguousLen += 1;
+                maxLenAvailable = qMax<int>( contiguousLen, maxLenAvailable );
+                if (maxLenAvailable >= size)
+                {
+                    return true;
+                }
+            }
+        }
+    }
+    return false;
+}
+
+bool BattleField::canAddShipOfSize(unsigned int size) const
+{
+    return canAddShipOfSizeInHorizontal(size) || canAddShipOfSizeInVertical(size);
 }
 
 

@@ -34,6 +34,8 @@ Q_OBJECT
     void setUpSecondaryBoard();
     void addSecondaryBoard(Ship* ship);
     void addBorderSecondaryBoard(Ship *ship);
+    bool canAddShipOfSizeInHorizontal(unsigned int size) const;
+    bool canAddShipOfSizeInVertical(unsigned int size) const;
 public:
     BattleField(Sea* parent, const Coord& size, const bool allow_adjacent_ships);
     ~BattleField();
