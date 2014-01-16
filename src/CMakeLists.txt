@@ -30,6 +30,7 @@ set(knavalbattle_SRCS
     seaview.cpp
     settings.cpp
     ship.cpp
+    ships.cpp
     shot.cpp
     simplemenu.cpp
     sprite.cpp
