@@ -81,6 +81,11 @@ void MainWindow::setupActions()
     action->setChecked(Settings::adjacentShips());
     actionCollection()->addAction("options_adjacent", action);
     connect(action, SIGNAL(triggered(bool)), m_main, SLOT(toggleAdjacent(bool)));
+    // This action will be disabled when a game is being run
+    action = new KToggleAction(i18n("&Multiple Ships"), this);
+    action->setChecked(Settings::severalShips());
+    actionCollection()->addAction("options_multiple_ships", action);
+    connect(action, SIGNAL(triggered(bool)), m_main, SLOT(toggleMultiple(bool)));
     // config end of game message
     action = new KToggleAction(i18n("Show End-of-Game Message"), this);
     action->setChecked(true);

@@ -22,6 +22,7 @@ class ChatWidget;
 class Shot;
 class AudioPlayer;
 class Protocol;
+class BattleShipsConfiguration;
 
 class Controller : public QObject
 {
@@ -33,7 +34,7 @@ Q_OBJECT
     int m_ready;
     AudioPlayer* m_player;
     bool m_has_ai;
-    bool m_allow_adjacent_ships;
+    BattleShipsConfiguration m_battle_ships_configuration;
 
     void notify(Sea::Player player, const Coord& c, const HitInfo& info);
     void setupEntity(Entity*);
@@ -44,7 +45,7 @@ Q_OBJECT
 
     friend class Shot;
 public:
-    explicit Controller(QObject* parent, AudioPlayer* audioPlayer = 0, const bool allow_adjacent_ships = false);
+    explicit Controller(QObject* parent, AudioPlayer* audioPlayer = 0, const BattleShipsConfiguration& battleConfiguration = BattleShipsConfiguration::defaultSingleShipsConfiguration(true));
 
     PlayerEntity* createPlayer(Sea::Player player, SeaView* view,
                                ChatWidget* chat, const QString& nick);

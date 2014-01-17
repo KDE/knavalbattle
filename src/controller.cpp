@@ -16,17 +16,18 @@
 #include "seaview.h"
 #include "shot.h"
 #include "audioplayer.h"
+#include "ships.h"
 
-Controller::Controller(QObject* parent, AudioPlayer* audioPlayer, const bool allow_adjacent_ships)
+Controller::Controller(QObject* parent, AudioPlayer* audioPlayer, const BattleShipsConfiguration& battleShipsConfiguration)
 : QObject(parent)
 , m_shot(0)
 , m_ready(0)
 , m_player(audioPlayer)
 , m_has_ai(false)
-, m_allow_adjacent_ships(allow_adjacent_ships)
+, m_battle_ships_configuration(battleShipsConfiguration)
 {
     m_ui = 0;
-    m_sea = new Sea(this, Coord(10, 10), allow_adjacent_ships);
+    m_sea = new Sea(this, battleShipsConfiguration);
 }
 
 PlayerEntity* Controller::createPlayer(Sea::Player player, SeaView* view,
@@ -92,6 +93,8 @@ void Controller::setupEntity(Entity* entity)
                 entity, SLOT(notifyAbort()));
         connect(entity, SIGNAL(abortGame()),
                 e, SLOT(notifyAbort()));
+        connect(e, SIGNAL(restartPlacingShips(Sea::Player)),
+                this, SIGNAL(restartPlacingShips(Sea::Player)));
         connect(e, SIGNAL(restartPlacingShips(Sea::Player)),
                 this, SLOT(notifyRestartPlacingShips(Sea::Player)));
     }

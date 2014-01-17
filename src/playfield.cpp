@@ -18,6 +18,7 @@
 #include <KLocale>
 #include <KMessageBox>
 #include <KScoreDialog>
+#include <KDebug>
 
 #include "aientity.h"
 #include "audioplayer.h"
@@ -67,7 +68,12 @@ PlayField::~PlayField()
 
 Controller* PlayField::createController()
 {
-    Controller* controller = new Controller(this, m_player, Settings::adjacentShips());
+    // FIXME: Does it overwrite the client received over the network configuration?
+    m_battle_ships_configuration = Settings::severalShips() ? 
+    BattleShipsConfiguration::defaultMultipleShipsConfiguration(Settings::adjacentShips()):
+    BattleShipsConfiguration::defaultSingleShipsConfiguration(Settings::adjacentShips());
+    kWarning() << m_battle_ships_configuration.boardWidth() << m_battle_ships_configuration.boardWidth() << m_battle_ships_configuration.numberOfShipsOfSize(1) << Settings::adjacentShips();
+    Controller* controller = new Controller(this, m_player, m_battle_ships_configuration);
     connect(controller, SIGNAL(gameOver(Sea::Player)),
             this, SLOT(gameOver(Sea::Player)));
     connect(controller, SIGNAL(restartRequested()),
@@ -238,6 +244,12 @@ void PlayField::toggleAdjacent(bool enable)
     Settings::self()->writeConfig();
 }
 
+void PlayField::toggleMultiple(bool enable)
+{
+    Settings::setSeveralShips(enable);
+    Settings::self()->writeConfig();
+}
+
 void PlayField::restartRequested()
 {
     int ans = KMessageBox::questionYesNo(this, i18n("Restart game"),
@@ -297,7 +309,7 @@ void PlayField::startGame()
 
 void PlayField::startPlacingShips()
 {
-    m_status_bar->showMessage(i18n("Place your 4 ships. Use the right mouse button to rotate them."));
+    m_status_bar->showMessage(i18n("Place your %1 ships. Use the right mouse button to rotate them.", m_battle_ships_configuration.totalNumberOfShipsToPlay()));
 }
 
 
@@ -305,7 +317,9 @@ void PlayField::restartPlacingShips(Sea::Player player)
 {
     m_status_bar->showMessage(i18n("You can't place your remaining ships."));
     KMessageBox restartYesNo;
-    int res=restartYesNo.warningYesNo(this, i18n("You can't place your remaining ships. Please restart placing ships or abort game"), i18n("Restart placing ships"));
+    KGuiItem buttonRestart=KStandardGuiItem::yes(); buttonRestart.setText(i18n("Restart"));
+    KGuiItem buttonAbort=KStandardGuiItem::no(); buttonAbort.setText(i18n("Abort"));
+    int res=restartYesNo.warningYesNo(this, i18n("You can't place your remaining ships. Please restart placing ships or abort game"), i18n("Restart placing ships"), buttonRestart, buttonAbort);
     if (res == KMessageBox::Yes) {
         startPlacingShips();
         m_controller->notifyRestartPlacingShips(player);

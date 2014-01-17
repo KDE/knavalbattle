@@ -18,7 +18,7 @@
 #include <KIcon>
 
 AIEntity::AIEntity(Sea::Player player, Sea* sea, SeaView *seaview)
-: Entity(player, seaview)
+: Entity(player, seaview, sea->battleShipsConfiguration())
 , m_sea(sea)
 {
     switch (Kg::difficultyLevel()) {
@@ -63,7 +63,7 @@ void AIEntity::start(bool)
 void AIEntity::startPlacing(bool ask)
 {
     m_seaview->setStatus(Sea::PLACING_SHIPS);
-    m_ai->setShips();
+    m_ai->setShips(m_battleShipsConfiguration);
     emit shipsPlaced(m_player);
 }
 

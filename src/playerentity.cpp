@@ -106,10 +106,13 @@ void PlayerEntity::startPlacing(bool restart)
     Coord origin(0, 0);
 
     m_ships.clear();
-    m_ships.append(new Ship(1, Ship::LEFT_TO_RIGHT, origin));
-    m_ships.append(new Ship(2, Ship::LEFT_TO_RIGHT, origin));
-    m_ships.append(new Ship(3, Ship::LEFT_TO_RIGHT, origin));
-    m_ships.append(new Ship(4, Ship::LEFT_TO_RIGHT, origin));
+    for (int len=1; len <= m_battleShipsConfiguration->longestShip(); len++)
+    {
+        for (unsigned int i=0; i<m_battleShipsConfiguration->numberOfShipsOfSize(len); i++)
+        {
+            m_ships.append(new Ship(len, Ship::LEFT_TO_RIGHT, origin));
+        }
+    }
     m_seaview->setDelegate(this);
     m_seaview->setStatus(Sea::PLACING_SHIPS);
 }

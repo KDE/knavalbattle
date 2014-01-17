@@ -14,6 +14,7 @@
 #include "sea.h"
 #include "seaview.h"
 #include "stats.h"
+#include "ships.h"
 
 class Shot;
 class KIcon;
@@ -33,9 +34,11 @@ protected:
     QString m_nick;
     CompatibilityLevel m_level;
     Stats m_stats;
+    // not owned by the entity
+    const BattleShipsConfiguration* m_battleShipsConfiguration;
 
 public:
-    Entity(Sea::Player player, SeaView* seaview);
+    Entity(Sea::Player player, SeaView* seaview, const BattleShipsConfiguration* battleShipsConfiguration);
     virtual ~Entity();
     virtual void notify(Sea::Player player, const Coord& c, const HitInfo& info) = 0;
     virtual void notifyChat(const Entity* entity, const QString& text) = 0;

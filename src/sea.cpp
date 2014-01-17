@@ -10,15 +10,15 @@
 #include "sea.h"
 #include "battlefield.h"
 
-Sea::Sea(QObject* parent, const Coord& size, const bool allow_adjacent_ships)
+Sea::Sea(QObject* parent, const BattleShipsConfiguration battleShipsConfiguration)
 : QObject(parent)
-, m_size(size)
+, m_size(Coord(battleShipsConfiguration.boardWidth(), battleShipsConfiguration.boardHeight()))
 , m_turn(PLAYER_A)
 , m_status(PLACING_SHIPS)
-, m_allow_adjacent_ships(allow_adjacent_ships)
+, m_battle_ships_configuration(battleShipsConfiguration)
 {
-    m_fields[0] = new BattleField(this, m_size, allow_adjacent_ships);
-    m_fields[1] = new BattleField(this, m_size, allow_adjacent_ships);
+    m_fields[0] = new BattleField(this, m_size, battleShipsConfiguration.isAllowedAdjacentShips());
+    m_fields[1] = new BattleField(this, m_size, battleShipsConfiguration.isAllowedAdjacentShips());
 }
 
 Sea::~Sea()
@@ -118,7 +118,7 @@ void Sea::checkGameOver()
 
 void Sea::allowAdjacentShips(const bool allow_adjacent_ships)
 {
-    m_allow_adjacent_ships = allow_adjacent_ships;
+    m_battle_ships_configuration.setAllowAdjacentShips(allow_adjacent_ships);
     m_fields[0]->setAllowAdjacentShips(allow_adjacent_ships);
     m_fields[1]->setAllowAdjacentShips(allow_adjacent_ships);
 }

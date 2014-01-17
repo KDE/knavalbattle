@@ -13,6 +13,7 @@
 #include <QWidget>
 #include <KgDifficulty>
 #include "sea.h"
+#include "ships.h"
 
 class SeaView;
 class Controller;
@@ -31,6 +32,7 @@ Q_OBJECT
     SimpleMenu* m_menu;
     QStatusBar* m_status_bar;
     bool m_show_endofgame_message;
+    BattleShipsConfiguration m_battle_ships_configuration;
 
     void startGame();
     void endGame();
@@ -51,6 +53,7 @@ public slots:
     void changeNick();
     void toggleSounds(bool);
     void toggleAdjacent(bool);
+    void toggleMultiple(bool);
     void restartRequested();
     void startPlacingShips();
     void restartPlacingShips(Sea::Player player);

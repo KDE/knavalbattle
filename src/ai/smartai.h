@@ -22,7 +22,6 @@ class SmartAI : public AI
 public:
     class State
     {
-        static const int LARGEST_SHIP = 4;
         int m_ships[LARGEST_SHIP];
         bool m_random;
     public:
@@ -37,7 +36,6 @@ public:
     SmartAI(Sea::Player player, Sea* sea, bool random);
         
     virtual Coord getMove();
-    virtual void setShips();
     virtual void notify(Sea::Player player, const Coord& c, const HitInfo& hit);
 };
 

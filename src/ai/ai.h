@@ -21,7 +21,7 @@ public:
     AI(Sea::Player player, Sea* sea);
     virtual ~AI() { }
     virtual Coord getMove() = 0;
-    virtual void setShips() = 0;
+    virtual void setShips(const BattleShipsConfiguration* config);
     virtual void notify(Sea::Player player, const Coord& c, const HitInfo& hit) = 0;
     Coord desperateMove() const;
 };

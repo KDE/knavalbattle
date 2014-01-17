@@ -10,10 +10,11 @@
 #include "entity.h"
 
 
-Entity::Entity(Sea::Player player, SeaView* seaview)
+Entity::Entity(Sea::Player player, SeaView* seaview, const BattleShipsConfiguration* battleShipsConfiguration)
 : m_player(player)
 , m_seaview(seaview)
 , m_level(COMPAT_KBS4)
+, m_battleShipsConfiguration(battleShipsConfiguration)
 {
 }
 

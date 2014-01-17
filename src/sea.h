@@ -14,6 +14,7 @@
 #include <QObject>
 
 #include "ship.h"
+#include "ships.h"
 #include "hitinfo.h"
 
 class BattleField;
@@ -42,14 +43,14 @@ private:
     QList<Ship *> m_enemyShips;
     QList<Ship *> m_myShips;
     Status m_status;
-    bool m_allow_adjacent_ships;
+    BattleShipsConfiguration m_battle_ships_configuration;
 
     inline BattleField* currentField() const { return m_fields[m_turn]; }
     inline BattleField* otherField() const { return m_fields[opponent(m_turn)]; }
 
     void checkGameOver();
 public:
-    Sea(QObject* parent, const Coord& size, const bool allow_adjacent_ships);
+    Sea(QObject* parent, const BattleShipsConfiguration battleShipsConfiguration);
     ~Sea();
 
     bool canAddShip(Player p, const Coord& pos, int size, Ship::Direction direction) const;
@@ -76,7 +77,9 @@ public:
     inline Player turn() const { return m_turn; }
     static Player opponent(Player p);
     inline Coord size() const { return m_size; }
-    inline bool isAdjacentShipsAllowed() const { return m_allow_adjacent_ships; }
+    inline bool isAdjacentShipsAllowed() const { return m_battle_ships_configuration.isAllowedAdjacentShips(); }
+    inline bool isSeveralShipsAllowed() const { return m_battle_ships_configuration.multipleShips(); }
+    inline const BattleShipsConfiguration* battleShipsConfiguration() const { return &m_battle_ships_configuration; }
 };
 
 #endif // Sea_H

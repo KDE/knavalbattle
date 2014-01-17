@@ -54,7 +54,8 @@ class BattleFieldView : public QGraphicsView
 
     Delegate *m_delegate;
     Sea::Player m_player;
-    
+    Sea::Status m_status;
+
     struct Preview {
         Coord pos;
         Ship* ship;
@@ -94,7 +95,7 @@ public:
     void setPlayer(Sea::Player player);
 
     WelcomeScreen* screen() const;
-
+    inline void setStatus(Sea::Status status) { m_status = status; };
 protected:
     void drawGrid();
 

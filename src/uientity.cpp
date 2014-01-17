@@ -16,7 +16,7 @@
 #include <QList>
 
 UIEntity::UIEntity(Sea::Player player, Sea* sea, SeaView* view)
-: Entity(player, view)
+: Entity(player, view, sea->battleShipsConfiguration())
 , m_sea(sea)
 {
 }

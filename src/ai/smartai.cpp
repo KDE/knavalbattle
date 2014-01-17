@@ -323,22 +323,6 @@ void SmartAI::notify(Sea::Player player, const Coord& c, const HitInfo& info)
     }
 }
 
-void SmartAI::setShips()
-{
-    for (int i = 1; i <= 4; i++) {
-        Ship* ship = 0;
-        while (ship == 0) {
-            Coord c(rand() % m_sea->size().x, rand() % m_sea->size().y);
-            Ship::Direction dir = rand() % 2 == 0 ? Ship::LEFT_TO_RIGHT : Ship::TOP_DOWN;
-            if (m_sea->canAddShip(m_player, c, i, dir)) {
-                ship = new Ship(i, dir, c);
-                m_sea->add(m_player, ship);
-            }
-        }
-    }
-}
-
-
 SmartAI::State::State(bool random)
 : m_random(random)
 {

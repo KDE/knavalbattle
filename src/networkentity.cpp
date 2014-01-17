@@ -20,7 +20,7 @@
 #include <kdebug.h>
 
 NetworkEntity::NetworkEntity(Sea::Player player, Sea* sea, SeaView* seaview, Protocol* protocol, bool client)
-: Entity(player, seaview)
+: Entity(player, seaview, sea->battleShipsConfiguration())
 , m_sea(sea)
 , m_protocol(protocol)
 , m_pending_shot(0)
@@ -74,7 +74,7 @@ void NetworkEntity::startPlacing(bool ask)
     else {
         m_protocol->send(MessagePtr(new HeaderMessage()));
 
-        m_protocol->send(MessagePtr(new GameOptionsMessage(QString(Settings::adjacentShips() ? "true" : "false"), /* TODO */ "true")));
+// FIXME:        m_protocol->send(MessagePtr(new GameOptionsMessage(QString(Settings::adjacentShips() ? "true" : "false"), QString(Settings::severalShips() ? "true" : "false") )));
     }
     emit ready(m_player);
 }
