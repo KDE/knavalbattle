@@ -59,6 +59,7 @@ public:
     inline unsigned int boardHeight() const { return m_boardHeight; }
     inline bool isAllowedAdjacentShips() const { return m_allowAdjacentShips; }
     inline unsigned int longestShip() const { return m_longestShip; }
+    unsigned int totalNumberOfShipsToPlay() const;
     
     bool isAValidConfiguration() const;
 
