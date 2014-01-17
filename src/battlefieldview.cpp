@@ -273,13 +273,15 @@ void BattleFieldView::removeImpact() {
 
 void BattleFieldView::clear()
 {
+    // fixes a crash when the ships can not be placed.
+    Animator::instance()->stop();
     delete m_preview.sprite;
     m_preview.sprite = 0;
     m_preview.ship = 0;
     
     m_impact = 0;
     m_last_hit = 0;
-    
+
     qDeleteAll(m_sprites);
     m_sprites.clear();
 }
