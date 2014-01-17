@@ -15,7 +15,7 @@
 class DummyAI : public AI
 {
 public:
-    DummyAI(Sea::Player player, Sea* sea);
+    DummyAI(Sea::Player player, Sea* sea, const BattleShipsConfiguration* config);
     virtual Coord getMove();
     virtual void notify(Sea::Player, const Coord&, const HitInfo&) { }
 };

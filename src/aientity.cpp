@@ -23,13 +23,13 @@ AIEntity::AIEntity(Sea::Player player, Sea* sea, SeaView *seaview)
 {
     switch (Kg::difficultyLevel()) {
     case KgDifficultyLevel::Easy:
-        m_ai = new DummyAI(m_player, m_sea);
+        m_ai = new DummyAI(m_player, m_sea, sea->battleShipsConfiguration());
         break;
     case KgDifficultyLevel::Medium:
-        m_ai = new SmartAI(m_player, m_sea, true);
+        m_ai = new SmartAI(m_player, m_sea, true, sea->battleShipsConfiguration());
         break;
     default: // hard
-        m_ai = new SmartAI(m_player, m_sea, false);
+        m_ai = new SmartAI(m_player, m_sea, false, sea->battleShipsConfiguration());
         break;
     }
 }
@@ -63,7 +63,7 @@ void AIEntity::start(bool)
 void AIEntity::startPlacing(bool ask)
 {
     m_seaview->setStatus(Sea::PLACING_SHIPS);
-    m_ai->setShips(m_battleShipsConfiguration);
+    m_ai->setShips();
     emit shipsPlaced(m_player);
 }
 

@@ -233,14 +233,31 @@ void NetworkEntity::visit(const ChatMessage& msg)
 void NetworkEntity::visit(const GameOptionsMessage& msg)
 {
     bool enabledAdjacentShips = (msg.enabledAdjacentShips() == QString("true"));
-    m_sea->allowAdjacentShips( enabledAdjacentShips );
+    if (m_client) {
+        m_sea->allowAdjacentShips( enabledAdjacentShips );
+    }
 
-    if (enabledAdjacentShips) {
+    if (m_sea->isAdjacentShipsAllowed()) {
         emit chat(i18n("You can place ships adjacent to each other"));
     }
     else {
         emit chat(i18n("You must leave a space between ships"));
     }
+/*
+    bool enabledSeveralShips = (msg.oneOrSeveralShips() == QString("true"));
+    if (m_client) {
+        m_sea->allowSeveralShips( enabledSeveralShips );
+    }
+
+    if (m_sea->isSeveralShipsAllowed()) {
+        emit chat(i18n("You have 4 minesweepers, 3 frigates, 2 cruises and 1 carrier"));
+    }
+    else {
+        emit chat(i18n("You have 1 minesweeper, 1 frigate, 1 cruise and 1 carrier"));
+    }
+*/
+    // Number of ships to sink
+    m_sea->add(m_player, m_sea->isSeveralShipsAllowed() ?  10 : 4);
 }
 
 

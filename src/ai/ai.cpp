@@ -9,9 +9,10 @@
 
 #include "ai.h"
 
-AI::AI(Sea::Player player, Sea* sea)
+AI::AI(Sea::Player player, Sea* sea, const BattleShipsConfiguration* config)
 : m_player(player)
 , m_sea(sea)
+, m_config(config)
 {
 }
 
@@ -27,7 +28,7 @@ Coord AI::desperateMove() const
     return Coord::invalid();
 }
 
-void AI::setShips(const BattleShipsConfiguration* config)
+void AI::setShips()
 {
     // set up computer ships
     // set first the biggest ship, it is more difficult to reach impossible combinations
@@ -35,8 +36,8 @@ void AI::setShips(const BattleShipsConfiguration* config)
     // number of repetitions because the random place is over a previous ship = 0
     bool canFinish = true;
     do {
-        for (int size = config->longestShip(); size >= 1; size--) {
-            for (unsigned int j = 1; j <= config->numberOfShipsOfSize(size); j++) {
+        for (int size = m_config->longestShip(); size >= 1; size--) {
+            for (unsigned int j = 1; j <= m_config->numberOfShipsOfSize(size); j++) {
                 Ship* ship = 0;
                 while (ship == 0 && canFinish) {
                     Coord c(rand() % m_sea->size().x, rand() % m_sea->size().y);

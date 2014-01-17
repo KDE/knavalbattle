@@ -29,12 +29,11 @@ public:
     , m_state(state)
     {
     }
-    
+
     virtual ~Strategy() { }
     virtual Coord getMove() = 0;
     virtual Strategy* notify(const Coord& c, const HitInfo& info) = 0;
 };
-
 
 class DestroyStrategy : public Strategy
 {
@@ -42,7 +41,7 @@ class DestroyStrategy : public Strategy
     Coord m_begin;
     Coord m_end;
     int m_direction;
-    
+
     inline Coord direction() const
     { 
         switch(m_direction) {
@@ -57,14 +56,14 @@ class DestroyStrategy : public Strategy
             return Coord(0, -1);
         }
     }
-    
+
     bool next_try()
     {
         // if it only hit once
         if (m_begin == m_end) {
             // change direction
             m_direction++;
-            
+
             if (m_direction > 3) {
                 return false; // no more to do
             }
@@ -81,12 +80,12 @@ class DestroyStrategy : public Strategy
             else {
                 // change direction on the same line
                 m_direction += 2; 
-                
+
                 // swap begin and end
                 std::swap(m_begin, m_end);
             }
         }
-        
+
         return true;
     }
 public:
@@ -98,7 +97,7 @@ public:
     , m_direction(0)
     {
     }
-    
+
     virtual Coord getMove()
     {
         for (;;) {
@@ -118,7 +117,7 @@ public:
             }
         }
     }
-    
+
     Strategy* notify(const Coord& c, const HitInfo& info)
     {
         if (info.shipDestroyed) {
@@ -149,7 +148,7 @@ public:
     : Strategy(player, sea, state)
     {
     }
-      
+
     virtual Coord getMove()
     {
         for (int i = 0; i < 10000; i++) {
@@ -160,7 +159,7 @@ public:
         }
         return Coord::invalid();
     }
-    
+
     virtual Strategy* notify(const Coord& c, const HitInfo& info)
     {
         if (info.type == HitInfo::HIT &&
@@ -179,7 +178,7 @@ class DiagonalStrategy : public Strategy
     int m_gap;
     int m_offset;
     int m_range;
-    
+
     // following a diagonal, return true if there is water at the enemy's panel.
     bool movesAvailable() const {
         Sea::Player opp = Sea::opponent(m_player);
@@ -192,7 +191,7 @@ class DiagonalStrategy : public Strategy
         }
         return false;
     }
-    
+
     Coord getMoveHelper()
     {
         int index = rand() % m_range;
@@ -224,14 +223,14 @@ class DiagonalStrategy : public Strategy
         
         return Coord::invalid();
     }
-    
+
     void setup()
     {
         do {
             m_offset = rand() % m_gap;
             kDebug() << "offset =" << m_offset << " / " << m_gap;
         } while (!movesAvailable());
-        
+
         m_range = 0;
         for (int y = m_offset; y < m_sea->size().y; y += m_gap) {
             int diag = m_sea->size().y - y;
@@ -258,14 +257,14 @@ public:
 
     virtual Coord getMove()
     {
-    
+
         if (!movesAvailable()) {
             kDebug() << "no moves available";
             setup();
         }
         for (int i = 0; i < 50; i++) {
             Coord c = getMoveHelper();
-            
+
             if (m_sea->canHit(m_player, c)) {
                 return c;
             }
@@ -273,7 +272,7 @@ public:
         
         return Coord::invalid();
     }
-    
+
     virtual Strategy* notify(const Coord& c, const HitInfo& info)
     {
         if (info.type == HitInfo::HIT &&
@@ -287,9 +286,9 @@ public:
     }
 };
 
-SmartAI::SmartAI(Sea::Player player, Sea* sea, bool random)
-: AI(player, sea)
-, m_state(random)
+SmartAI::SmartAI(Sea::Player player, Sea* sea, bool random, const BattleShipsConfiguration* config)
+: AI(player, sea, config)
+, m_state(random, config)
 {
     srand(time(0));
     m_strategy = std::auto_ptr<Strategy>(m_state.defaultStrategy(player, sea));
@@ -323,11 +322,13 @@ void SmartAI::notify(Sea::Player player, const Coord& c, const HitInfo& info)
     }
 }
 
-SmartAI::State::State(bool random)
-: m_random(random)
+SmartAI::State::State(bool random, const BattleShipsConfiguration* config)
+: m_ships()
+, m_random(random)
+, m_config(config)
 {
-    for (int i = 0; i < LARGEST_SHIP; i++) {
-        m_ships[i] = 1;
+    for (unsigned int i = 0; i < m_config->longestShip(); i++) {
+        m_ships[i] = m_config->numberOfShipsOfSize(i+1);
     }
 }
 
@@ -337,12 +338,12 @@ Strategy* SmartAI::State::defaultStrategy(Sea::Player player, Sea* sea)
         return new RandomStrategy(player, sea, *this);
     }
     else {
-        for (int i = LARGEST_SHIP - 1; i >= 0; i--) {
+        for (int i = m_config->longestShip() - 1; i >= 0; i--) {
             if (m_ships[i] > 0 || i == 0) {
                 return new DiagonalStrategy(player, sea, *this, i + 1);
             }
         }
-    
+
         // unreachable
         return 0;
     }
@@ -350,14 +351,10 @@ Strategy* SmartAI::State::defaultStrategy(Sea::Player player, Sea* sea)
 
 void SmartAI::State::destroyed(int size)
 {
-    if (size <= LARGEST_SHIP) {
+    if (size <= m_config->longestShip()) {
         int index = size - 1;
         if (m_ships[index] > 0) {
             m_ships[index]--;
         }
     }
 }
-
-
-
-

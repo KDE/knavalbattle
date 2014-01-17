@@ -15,8 +15,8 @@
 #include <time.h>
 #include <sys/time.h>
 
-DummyAI::DummyAI(Sea::Player player, Sea* sea)
-: AI(player, sea)
+DummyAI::DummyAI(Sea::Player player, Sea* sea, const BattleShipsConfiguration* config)
+: AI(player, sea, config)
 {
     srand(time(0));
 }

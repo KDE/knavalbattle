@@ -11,6 +11,7 @@
 #define SMARTAI_H
 
 #include <memory>
+#include <QHash>
 
 #include "ai.h"
 #include "sea.h"
@@ -22,10 +23,11 @@ class SmartAI : public AI
 public:
     class State
     {
-        int m_ships[LARGEST_SHIP];
+        QHash<int,int> m_ships;
         bool m_random;
+        const BattleShipsConfiguration* m_config;
     public:
-        explicit State(bool random);
+        explicit State(bool random, const BattleShipsConfiguration* config);
         Strategy* defaultStrategy(Sea::Player player, Sea*);
         void destroyed(int size);
     };
@@ -33,8 +35,8 @@ private:
     std::auto_ptr<Strategy> m_strategy;
     State m_state;
 public:
-    SmartAI(Sea::Player player, Sea* sea, bool random);
-        
+    SmartAI(Sea::Player player, Sea* sea, bool random, const BattleShipsConfiguration* config);
+
     virtual Coord getMove();
     virtual void notify(Sea::Player player, const Coord& c, const HitInfo& hit);
 };
