@@ -8,10 +8,11 @@
 */
 #include "ships.h"
 
-Ships::Ships(unsigned int size, unsigned int number, QString& shipsName)
+Ships::Ships(unsigned int size, unsigned int number, QString& shipsName, QString& shipsNamePlural)
 :m_size(size)
 ,m_number(number)
 ,m_shipsName(shipsName)
+,m_shipsNamePlural(shipsNamePlural)
 {
 }
 
@@ -41,7 +42,6 @@ BattleShipsConfiguration::BattleShipsConfiguration(const BattleShipsConfiguratio
 , m_boardWidth(copy.boardWidth())
 , m_boardHeight(copy.boardHeight())
 {
-    
 }
 
 void BattleShipsConfiguration::setLongestShipSize(unsigned int longestShipSize)
@@ -50,9 +50,9 @@ void BattleShipsConfiguration::setLongestShipSize(unsigned int longestShipSize)
     m_ships.reserve(m_longestShip);
 }
 
-BattleShipsConfiguration& BattleShipsConfiguration::addShips(unsigned int size, unsigned int number, QString shipsName)
+BattleShipsConfiguration& BattleShipsConfiguration::addShips(unsigned int size, unsigned int number, QString shipsName, QString shipsNamePlural)
 {
-    Ships toInsert(size, number, shipsName);
+    Ships toInsert(size, number, shipsName, shipsNamePlural);
     m_ships[size]=toInsert;
     return *this;
 }
@@ -114,17 +114,17 @@ unsigned int BattleShipsConfiguration::totalNumberOfShipsToPlay() const
 BattleShipsConfiguration BattleShipsConfiguration::defaultSingleShipsConfiguration(const bool allowAdjacent)
 {
     BattleShipsConfiguration res(4, allowAdjacent, 10, 10);
-    return res.addShips(1, 1, QLatin1String("minesweepers"))
-              .addShips(2, 1, QLatin1String("frigates"))
-              .addShips(3, 1, QLatin1String("cruises"))
-              .addShips(4, 1, QLatin1String("carrier"));
+    return res.addShips(1, 1, QLatin1String("minesweeper"), QLatin1String("minesweepers"))
+              .addShips(2, 1, QLatin1String("frigate"), QLatin1String("frigates"))
+              .addShips(3, 1, QLatin1String("cruise"), QLatin1String("cruises"))
+              .addShips(4, 1, QLatin1String("carrier"), QLatin1String("carriers"));
 }
 
 BattleShipsConfiguration BattleShipsConfiguration::defaultMultipleShipsConfiguration(const bool allowAdjacent)
 {
     BattleShipsConfiguration res(4, allowAdjacent, 10, 10);
-    return res.addShips(1, 4, QLatin1String("minesweepers"))
-              .addShips(2, 3, QLatin1String("frigates"))
-              .addShips(3, 2, QLatin1String("cruises"))
-              .addShips(4, 1, QLatin1String("carrier"));
+    return res.addShips(1, 4, QLatin1String("minesweeper"), QLatin1String("minesweepers"))
+              .addShips(2, 3, QLatin1String("frigate"), QLatin1String("frigates"))
+              .addShips(3, 2, QLatin1String("cruise"), QLatin1String("cruises"))
+              .addShips(4, 1, QLatin1String("carrier"), QLatin1String("carriers"));
 }

@@ -17,12 +17,13 @@
 class Ships
 {
 private:
-    unsigned int m_size;     // of the ships
-    unsigned int m_number;   // number of ships of this size
-    QString m_shipsName;     // the english name of the ships of this size
+    unsigned int m_size;       // of the ships
+    unsigned int m_number;     // number of ships of this size
+    QString m_shipsName;       // the english singular name of the ships of this size
+    QString m_shipsNamePlural; // the english plural of the ships of this size
 public:
-    Ships(): m_size(0), m_number(0), m_shipsName() { }
-    Ships(unsigned int size, unsigned int number, QString& shipsName);
+    Ships(): m_size(0), m_number(0), m_shipsName(), m_shipsNamePlural() { }
+    Ships(unsigned int size, unsigned int number, QString& shipsName, QString& shipsNamePlurarl);
     inline unsigned int size() const { return m_size; }
     inline unsigned int number() const { return m_number; }
     inline QString shipsName() const { return m_shipsName; }
@@ -45,10 +46,11 @@ public:
     BattleShipsConfiguration(const BattleShipsConfiguration& copy);
     // does not add any ship longer than longestShip
     // overwrites any previous configuration for ships of the requested size
-    BattleShipsConfiguration& addShips(unsigned int size, unsigned int number, QString shipsName);
+    BattleShipsConfiguration& addShips(unsigned int size, unsigned int number, QString shipsName, QString shipsNamePlural);
     BattleShipsConfiguration& addShips(Ships &ships);
     unsigned int numberOfShipsOfSize(unsigned int size) const; // 0 if size is invalid
     QString nameOfShipsOfSize(unsigned int size) const; // QString() if size is invalid
+    QString pluralNameOfShipsOfSize(unsigned int size) const; // QString() if size is invalid
     bool multipleShips() const; // return true if any ship size has more than one ship
 
     void setLongestShipSize(unsigned int longestShipSize);
@@ -58,9 +60,10 @@ public:
     inline unsigned int boardWidth() const { return m_boardWidth; }
     inline unsigned int boardHeight() const { return m_boardHeight; }
     inline bool isAllowedAdjacentShips() const { return m_allowAdjacentShips; }
+    // ships are of 0 < size <= longestShip()
     inline unsigned int longestShip() const { return m_longestShip; }
     unsigned int totalNumberOfShipsToPlay() const;
-    
+
     bool isAValidConfiguration() const;
 
     static BattleShipsConfiguration defaultSingleShipsConfiguration(const bool allowAdjacent);
