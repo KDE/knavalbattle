@@ -8,11 +8,11 @@
 */
 #include "ships.h"
 
-Ships::Ships(unsigned int size, unsigned int number, QString& shipsName, QString& shipsNamePlural)
+Ships::Ships(unsigned int size, unsigned int number, QString& shipsName, QString& shipsPluralName)
 :m_size(size)
 ,m_number(number)
 ,m_shipsName(shipsName)
-,m_shipsNamePlural(shipsNamePlural)
+,m_shipsPluralName(shipsPluralName)
 {
 }
 
@@ -50,35 +50,38 @@ void BattleShipsConfiguration::setLongestShipSize(unsigned int longestShipSize)
     m_ships.reserve(m_longestShip);
 }
 
-BattleShipsConfiguration& BattleShipsConfiguration::addShips(unsigned int size, unsigned int number, QString shipsName, QString shipsNamePlural)
+BattleShipsConfiguration& BattleShipsConfiguration::addShips(unsigned int size, unsigned int number, QString shipsName, QString shipsPluralName)
 {
-    Ships toInsert(size, number, shipsName, shipsNamePlural);
-    m_ships[size]=toInsert;
+    if ( size<=m_longestShip )
+    {
+        Ships toInsert(size, number, shipsName, shipsPluralName);
+        m_ships[size]=toInsert;
+    }
     return *this;
 }
 
 BattleShipsConfiguration& BattleShipsConfiguration::addShips(Ships& ships)
 {
-    m_ships[ships.size()]=ships;
+    if ( ships.size()<=m_longestShip )
+    {
+        m_ships[ships.size()]=ships;
+    }
     return *this;
 }
 
 unsigned int BattleShipsConfiguration::numberOfShipsOfSize(unsigned int size) const
 {
-    if ( size > m_longestShip )
-    {
-        return 0;
-    }
-    return m_ships[size].number();
+    return size <= m_longestShip ? m_ships[size].number() : 0;
 }
 
 QString BattleShipsConfiguration::nameOfShipsOfSize(unsigned int size) const
 {
-    if ( size > m_longestShip )
-    {
-        return QString();
-    }
-    return m_ships[size].shipsName();
+    return size <= m_longestShip ? m_ships[size].shipsName() : QString();
+}
+
+QString BattleShipsConfiguration::pluralNameOfShipsOfSize(unsigned int size) const
+{
+    return size <= m_longestShip ? m_ships[size].pluralShipsName() : QString();
 }
 
 bool BattleShipsConfiguration::multipleShips() const
@@ -96,6 +99,13 @@ bool BattleShipsConfiguration::isAValidConfiguration() const
     if ( m_longestShip==0 || m_boardHeight==0 || m_boardWidth==0 )
     {
         return false;
+    }
+    for (unsigned int size=1; size <= m_longestShip; size++)
+    {
+        if ( m_ships[size].number() ==0 )
+        {
+            return false;
+        }
     }
     return true;
 }

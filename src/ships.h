@@ -20,13 +20,14 @@ private:
     unsigned int m_size;       // of the ships
     unsigned int m_number;     // number of ships of this size
     QString m_shipsName;       // the english singular name of the ships of this size
-    QString m_shipsNamePlural; // the english plural of the ships of this size
+    QString m_shipsPluralName; // the english plural of the ships of this size
 public:
-    Ships(): m_size(0), m_number(0), m_shipsName(), m_shipsNamePlural() { }
-    Ships(unsigned int size, unsigned int number, QString& shipsName, QString& shipsNamePlurarl);
+    Ships(): m_size(0), m_number(0), m_shipsName(), m_shipsPluralName() { }
+    Ships(unsigned int size, unsigned int number, QString& shipsName, QString& shipsPluralName);
     inline unsigned int size() const { return m_size; }
     inline unsigned int number() const { return m_number; }
     inline QString shipsName() const { return m_shipsName; }
+    inline QString pluralShipsName() const { return m_shipsPluralName; }
 };
 
 // This configuration is interchanged in the network games.
@@ -46,7 +47,7 @@ public:
     BattleShipsConfiguration(const BattleShipsConfiguration& copy);
     // does not add any ship longer than longestShip
     // overwrites any previous configuration for ships of the requested size
-    BattleShipsConfiguration& addShips(unsigned int size, unsigned int number, QString shipsName, QString shipsNamePlural);
+    BattleShipsConfiguration& addShips(unsigned int size, unsigned int number, QString shipsName, QString shipsPluralName);
     BattleShipsConfiguration& addShips(Ships &ships);
     unsigned int numberOfShipsOfSize(unsigned int size) const; // 0 if size is invalid
     QString nameOfShipsOfSize(unsigned int size) const; // QString() if size is invalid
