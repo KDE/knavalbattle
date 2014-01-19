@@ -17,30 +17,29 @@ Ships::Ships(unsigned int size, unsigned int number, QString& shipsName, QString
 }
 
 BattleShipsConfiguration::BattleShipsConfiguration()
-: m_ships()
+: m_longestShip(0)
 , m_allowAdjacentShips(true)
-, m_longestShip(0)
 , m_boardWidth(0)
 , m_boardHeight(0)
+, m_ships()
 {
 }
 
-
 BattleShipsConfiguration::BattleShipsConfiguration(unsigned int longestShipSize, const bool allowAdjacentShips, const unsigned int boardWidth, const unsigned int boardHeight)
-: m_ships()
+: m_longestShip(longestShipSize)
 , m_allowAdjacentShips(allowAdjacentShips)
-, m_longestShip(longestShipSize)
 , m_boardWidth(boardWidth)
 , m_boardHeight(boardHeight)
+, m_ships()
 {
 }
 
 BattleShipsConfiguration::BattleShipsConfiguration(const BattleShipsConfiguration& copy)
-: m_ships(copy.m_ships)
+: m_longestShip(copy.longestShip())
 , m_allowAdjacentShips(copy.isAllowedAdjacentShips())
-, m_longestShip(copy.longestShip())
 , m_boardWidth(copy.boardWidth())
 , m_boardHeight(copy.boardHeight())
+, m_ships(copy.m_ships)
 {
 }
 

@@ -10,7 +10,7 @@
 #include "sea.h"
 #include "battlefield.h"
 
-Sea::Sea(QObject* parent, const BattleShipsConfiguration battleShipsConfiguration)
+Sea::Sea(QObject* parent, const BattleShipsConfiguration& battleShipsConfiguration)
 : QObject(parent)
 , m_size(Coord(battleShipsConfiguration.boardWidth(), battleShipsConfiguration.boardHeight()))
 , m_turn(PLAYER_A)

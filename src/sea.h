@@ -50,7 +50,7 @@ private:
 
     void checkGameOver();
 public:
-    Sea(QObject* parent, const BattleShipsConfiguration battleShipsConfiguration);
+    Sea(QObject* parent, const BattleShipsConfiguration& battleShipsConfiguration);
     ~Sea();
 
     bool canAddShip(Player p, const Coord& pos, int size, Ship::Direction direction) const;
