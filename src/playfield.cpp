@@ -72,7 +72,6 @@ Controller* PlayField::createController()
     m_battle_ships_configuration = Settings::severalShips() ? 
     BattleShipsConfiguration::defaultMultipleShipsConfiguration(Settings::adjacentShips()):
     BattleShipsConfiguration::defaultSingleShipsConfiguration(Settings::adjacentShips());
-    kWarning() << m_battle_ships_configuration.boardWidth() << m_battle_ships_configuration.boardWidth() << m_battle_ships_configuration.numberOfShipsOfSize(1) << Settings::adjacentShips();
     Controller* controller = new Controller(this, m_player, m_battle_ships_configuration);
     connect(controller, SIGNAL(gameOver(Sea::Player)),
             this, SLOT(gameOver(Sea::Player)));

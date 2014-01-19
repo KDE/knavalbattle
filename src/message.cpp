@@ -117,9 +117,20 @@ void GameOverMessage::accept(MessageVisitor& visitor) const
     visitor.visit(*this);
 }
 
-GameOptionsMessage::GameOptionsMessage(const QString& enableAdjacentShips, const QString& oneOrSeveralShips)
+GameOptionsMessage::GameOptionsMessage(const QString& enableAdjacentShips, const QString& oneOrSeveralShips,
+    const BattleShipsConfiguration* configuration)
 : m_enabledAdjacentShipsString(enableAdjacentShips)
 , m_oneOrSeveralShipsString(oneOrSeveralShips)
+, m_battleShipsConfiguration(configuration)
+{
+}
+
+//  TODO: Several valgrind sessions. Theese problems does not exist in python
+GameOptionsMessage::GameOptionsMessage(const bool enableAdjacentShips, const bool oneOrSeveralShips,
+    BattleShipsConfiguration& configuration)
+: m_enabledAdjacentShipsString(enableAdjacentShips)
+, m_oneOrSeveralShipsString(oneOrSeveralShips)
+, m_battleShipsConfiguration(&configuration)
 {
 }
 

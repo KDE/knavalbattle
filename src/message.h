@@ -13,6 +13,7 @@
 #include <ksharedptr.h>
 
 #include "ship.h"
+#include "ships.h"
 
 class MessageVisitor;
 
@@ -159,12 +160,19 @@ class GameOptionsMessage : public Message
 private:
     QString m_enabledAdjacentShipsString;
     QString m_oneOrSeveralShipsString;
+    const BattleShipsConfiguration* m_battleShipsConfiguration;
 public:
     static const int MSGTYPE = 9;
-    GameOptionsMessage(const QString& enableAdjacentShips, const QString& oneOrSeveralShips);
+    GameOptionsMessage(const QString& enableAdjacentShips, const QString& oneOrSeveralShips,
+        const BattleShipsConfiguration* configuration);
+    GameOptionsMessage(const bool enableAdjacentShips, const bool oneOrSeveralShips,
+        BattleShipsConfiguration& configuration);
 
     const QString & enabledAdjacentShips() const { return m_enabledAdjacentShipsString; }
     const QString & oneOrSeveralShips() const { return m_oneOrSeveralShipsString; }
+    unsigned int gridWidth() const { return m_battleShipsConfiguration->boardWidth(); }
+    unsigned int gridHeight() const { return m_battleShipsConfiguration->boardHeight(); }
+    const BattleShipsConfiguration* shipsConfiguration() const { return m_battleShipsConfiguration; }
     virtual void accept(MessageVisitor& visitor) const;
 };
 

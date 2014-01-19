@@ -74,7 +74,7 @@ void NetworkEntity::startPlacing(bool ask)
     else {
         m_protocol->send(MessagePtr(new HeaderMessage()));
 
-// FIXME:        m_protocol->send(MessagePtr(new GameOptionsMessage(QString(Settings::adjacentShips() ? "true" : "false"), QString(Settings::severalShips() ? "true" : "false") )));
+        m_protocol->send(MessagePtr(new GameOptionsMessage(QString(Settings::adjacentShips() ? "true" : "false"), QString(Settings::severalShips() ? "true" : "false"), m_battleShipsConfiguration )));
     }
     emit ready(m_player);
 }
