@@ -178,9 +178,8 @@ bool BattleField::canAddShip(const Coord& pos, unsigned int size, Ship::Directio
 bool BattleField::canAddShipOfSizeInHorizontal(unsigned int size) const
 {
     unsigned int maxLenAvailable = 0;
-    unsigned int contiguousLen = 0;
     for (int j=0; j<m_secondary_board.height(); j++) {
-        contiguousLen = 0;
+        unsigned int contiguousLen = 0;
         for (int i=0; i<m_secondary_board.width(); i++) {
             if ( m_secondary_board[ Coord(i,j) ] ) {
                 contiguousLen = 0;
@@ -201,9 +200,8 @@ bool BattleField::canAddShipOfSizeInHorizontal(unsigned int size) const
 bool BattleField::canAddShipOfSizeInVertical(unsigned int size) const
 {
     unsigned int maxLenAvailable = 0;
-    unsigned int contiguousLen = 0;
     for (int i=0; i<m_secondary_board.width(); i++) {
-        contiguousLen = 0;
+        unsigned int contiguousLen = 0;
         for (int j=0; j<m_secondary_board.height(); j++) {
             if ( m_secondary_board[ Coord(j,i) ] ) {
                 contiguousLen = 0;

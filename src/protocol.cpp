@@ -262,51 +262,38 @@ MessagePtr Protocol::parseMessage(const QString& xmlMessage)
             QDomElement oneOrElement=main.namedItem(QLatin1String("oneOrSeveralShips")).toElement();
             QString oneOrSeveralShips = oneOrElement.text();
             bool severalShips = oneOrSeveralShips=="true";
-            int longestShip=0;
+            unsigned int longestShip=0;
             // if the node oneOrSeveralShips does not have the attribute, then it is the single ships configuration.
             if ( !oneOrElement.hasAttribute(QLatin1String("longestShip")) ) {
                 BattleShipsConfiguration ret=BattleShipsConfiguration::defaultSingleShipsConfiguration(adjacentShips);
-                GameOptionsMessage* msg=new GameOptionsMessage(adjacentShips, severalShips, ret);
-                return MessagePtr(msg);
+                return MessagePtr(new GameOptionsMessage(adjacentShips, severalShips, ret));
             }
             else {
-                // longestShip = 
+                longestShip = oneOrElement.attribute(QLatin1String("longestShip")).toUInt();
             }
-
             DEF_ELEMENT(boardWidth);
             DEF_ELEMENT(boardHeight);
-            // FIXME: Check if it is really a number
             unsigned int width=boardWidth.toUInt();
             unsigned int height=boardHeight.toUInt();
             // and get the ships configuration
             QDomNodeList nodes = main.childNodes();
+            BattleShipsConfiguration battleShipsConfiguration(longestShip,adjacentShips,width,height);
             for (int i = 0; i < nodes.count(); i++) {
                 QDomElement element = nodes.item(i).toElement();
                 if (!element.isNull() && element.tagName()==QLatin1String("ships")) {
+                    QString name=element.attribute(QLatin1String("name"));
+                    QString pluralName=element.attribute(QLatin1String("pluralName"));
+                    unsigned int size=element.attribute(QLatin1String("size")).toUInt();
+                    unsigned int number=element.attribute(QLatin1String("number")).toUInt();
+                    battleShipsConfiguration.addShips(size,number,name,pluralName);
                 }
             }
-            BattleShipsConfiguration battleShipsConfiguration(longestShip,adjacentShips,width,height);
-            // check the configuration validity, if it is invalid, then ....
-            /*
-            QDomNodeList nodes = main.childNodes();
-            for (int i = 0; i < nodes.count(); i++) {
-                QDomElement element = nodes.item(i).toElement();
-                if (!element.isNull() && element.tagName().startsWith("ship")) {
-                    int size = element.tagName().mid(4).toInt();
-                    QStringList data = element.text().split(' ');
-                    if (data.size() != 3) {
-                        continue;
-                    }
-                    Coord pos(data[0].toInt(), data[1].toInt());
-                    Ship::Direction direction = data[2] == QChar('0')
-                        ? Ship::TOP_DOWN 
-                        : Ship::LEFT_TO_RIGHT;
-                    msg->addShip(pos, size, direction);
-                }
+            if ( !battleShipsConfiguration.isAValidConfiguration() )
+            {
+                BattleShipsConfiguration ret=BattleShipsConfiguration::defaultSingleShipsConfiguration(adjacentShips);
+                return MessagePtr(new GameOptionsMessage(adjacentShips, severalShips, ret));
             }
-            */
-            GameOptionsMessage* msg=new GameOptionsMessage(enabledAdjacentShips, oneOrSeveralShips, &battleShipsConfiguration);
-            return MessagePtr(msg);
+            return MessagePtr(new GameOptionsMessage(enabledAdjacentShips, oneOrSeveralShips, &battleShipsConfiguration));
         }
     default:
         emit parseError("Unknown message type");
