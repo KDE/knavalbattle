@@ -306,6 +306,7 @@ void BattleField::clear()
             deleted_ships.insert(ship);
         }
         m_board[p].setType(Element::WATER);
+        m_board[p].setParent(0);
     }
     m_ships=0;
 }
