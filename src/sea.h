@@ -69,6 +69,7 @@ public:
     bool isNearShip(Sea::Player, const Coord& pos) const;
     void allowAdjacentShips(const bool allow_adjacent_ships);
     void clear(Sea::Player);
+    void setBattleShipsConfiguration(const BattleShipsConfiguration& configuration);
 
     const QList<Ship *> enemyShips() const;
     const QList<Ship *> myShips() const;

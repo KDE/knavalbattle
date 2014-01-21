@@ -68,7 +68,7 @@ PlayField::~PlayField()
 
 Controller* PlayField::createController()
 {
-    // FIXME: Does it overwrite the client received over the network configuration?
+    // FIXME: Does it overwrite the client received over the network configuration? yes
     m_battle_ships_configuration = Settings::severalShips() ? 
     BattleShipsConfiguration::defaultMultipleShipsConfiguration(Settings::adjacentShips()):
     BattleShipsConfiguration::defaultSingleShipsConfiguration(Settings::adjacentShips());

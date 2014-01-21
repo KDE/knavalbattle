@@ -102,6 +102,9 @@ void PlayerEntity::action(Sea::Player player, const Coord& c)
 void PlayerEntity::startPlacing(bool restart)
 {
     UIEntity::startPlacing(restart);
+    kWarning()<<m_battleShipsConfiguration->totalNumberOfShipsToPlay();
+    m_battleShipsConfiguration = m_sea->battleShipsConfiguration();
+    kWarning()<<m_battleShipsConfiguration->totalNumberOfShipsToPlay();
 
     Coord origin(0, 0);
 
@@ -120,6 +123,7 @@ void PlayerEntity::startPlacing(bool restart)
 
 void PlayerEntity::start(bool ask)
 {
+    kWarning()<<m_battleShipsConfiguration->totalNumberOfShipsToPlay();
     UIEntity::start(ask);
     emit ready(m_player);
 }

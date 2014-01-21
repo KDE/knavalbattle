@@ -179,5 +179,11 @@ const QList<Ship *> Sea::myShips() const
     return m_myShips;
 }
 
+void Sea::setBattleShipsConfiguration(const BattleShipsConfiguration& configuration)
+{
+    m_battle_ships_configuration=configuration;
+}
+
+
 #include "sea.moc"
 

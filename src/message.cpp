@@ -125,12 +125,12 @@ GameOptionsMessage::GameOptionsMessage(const QString& enableAdjacentShips, const
 {
 }
 
-//  TODO: Several valgrind sessions. Theese problems does not exist in python
+//  TODO: Several valgrind sessions. Those problems does not exist in python
 GameOptionsMessage::GameOptionsMessage(const bool enableAdjacentShips, const bool oneOrSeveralShips,
-    BattleShipsConfiguration& configuration)
+    BattleShipsConfiguration configuration)
 : m_enabledAdjacentShipsString(enableAdjacentShips)
 , m_oneOrSeveralShipsString(oneOrSeveralShips)
-, m_battleShipsConfiguration(&configuration)
+, m_battleShipsConfiguration(new BattleShipsConfiguration(configuration))
 {
 }
 

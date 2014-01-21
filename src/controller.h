@@ -57,6 +57,7 @@ public:
     Sea::Player turn() const;
     bool hasAI() const;
     inline Sea* getSea() const { return m_sea; }
+    void setBattleShipsConfiguration(const BattleShipsConfiguration& battleConfiguration);
 public slots:
     void shoot(int player, const Coord& c);
     void ready(int player);

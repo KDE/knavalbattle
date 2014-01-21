@@ -290,10 +290,9 @@ MessagePtr Protocol::parseMessage(const QString& xmlMessage)
             }
             if ( !battleShipsConfiguration.isAValidConfiguration() )
             {
-                BattleShipsConfiguration ret=BattleShipsConfiguration::defaultSingleShipsConfiguration(adjacentShips);
-                return MessagePtr(new GameOptionsMessage(adjacentShips, severalShips, ret));
+                return MessagePtr(new GameOptionsMessage(adjacentShips, severalShips, BattleShipsConfiguration::defaultSingleShipsConfiguration(adjacentShips)));
             }
-            return MessagePtr(new GameOptionsMessage(enabledAdjacentShips, oneOrSeveralShips, &battleShipsConfiguration));
+            return MessagePtr(new GameOptionsMessage(adjacentShips, severalShips, battleShipsConfiguration));
         }
     default:
         emit parseError("Unknown message type");

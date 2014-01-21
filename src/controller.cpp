@@ -102,6 +102,12 @@ void Controller::setupEntity(Entity* entity)
     m_entities.append(entity);
 }
 
+void Controller::setBattleShipsConfiguration(const BattleShipsConfiguration& battleConfiguration)
+{
+    m_battle_ships_configuration = battleConfiguration;
+}
+
+
 bool Controller::allPlayers() const
 {
     unsigned char bitmap = 0;
@@ -121,15 +127,19 @@ bool Controller::start(SeaView* view, bool ask)
         return false;
     }
 
-    if (!m_ui) {
-        m_ui = new UIEntity(Sea::NO_PLAYER, m_sea, view);
-        setupEntity(m_ui);
-    }
 
     foreach (Entity* entity, m_entities) {
         entity->startPlacing(ask);
     }
 
+    // FIXME: Se necesita una señal para empezar a poner barcos cuando se reciba el mensaje de opciones
+    // o algo parecido en el caso local.
+    if (!m_ui) {
+        m_ui = new UIEntity(Sea::NO_PLAYER, m_sea, view);
+        setupEntity(m_ui);
+    }
+    
+    
     foreach (Entity* source, m_entities) {
         foreach (Entity* target, m_entities) {
             if (source->player() != target->player() &&

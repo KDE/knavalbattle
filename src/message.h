@@ -166,7 +166,7 @@ public:
     GameOptionsMessage(const QString& enableAdjacentShips, const QString& oneOrSeveralShips,
         const BattleShipsConfiguration* configuration);
     GameOptionsMessage(const bool enableAdjacentShips, const bool oneOrSeveralShips,
-        BattleShipsConfiguration& configuration);
+        BattleShipsConfiguration configuration);
 
     const QString & enabledAdjacentShips() const { return m_enabledAdjacentShipsString; }
     const QString & oneOrSeveralShips() const { return m_oneOrSeveralShipsString; }

@@ -73,7 +73,7 @@ void NetworkEntity::startPlacing(bool ask)
     }
     else {
         m_protocol->send(MessagePtr(new HeaderMessage()));
-
+        
         m_protocol->send(MessagePtr(new GameOptionsMessage(QString(Settings::adjacentShips() ? "true" : "false"), QString(Settings::severalShips() ? "true" : "false"), m_battleShipsConfiguration )));
     }
     emit ready(m_player);
@@ -243,21 +243,34 @@ void NetworkEntity::visit(const GameOptionsMessage& msg)
     else {
         emit chat(i18n("You must leave a space between ships"));
     }
-/*
-    bool enabledSeveralShips = (msg.oneOrSeveralShips() == QString("true"));
-    if (m_client) {
-        m_sea->allowSeveralShips( enabledSeveralShips );
-    }
 
-    if (m_sea->isSeveralShipsAllowed()) {
-        emit chat(i18n("You have 4 minesweepers, 3 frigates, 2 cruises and 1 carrier"));
+    const BattleShipsConfiguration* gameConfiguration = m_client ? msg.shipsConfiguration() : m_battleShipsConfiguration;
+    // form the chat message telling the number of ships of each type to place and shink
+    QString message=i18n("You have ");
+    bool comma=false;
+    for (unsigned int size = 1; size <= gameConfiguration->longestShip(); size++)
+    {
+        if (comma)
+        {
+            message.append(i18n(", "));
+        }
+        comma=true;
+        if ( gameConfiguration->numberOfShipsOfSize(size) == 1 )
+        {
+            message.append(QLatin1String("1 ")).append(gameConfiguration->nameOfShipsOfSize(size));
+        }
+        else
+        {
+            message.append(QString::number(gameConfiguration->numberOfShipsOfSize(size)))
+                   .append(" ")
+                   .append(i18n(gameConfiguration->pluralNameOfShipsOfSize(size).toLatin1()));
+        }
     }
-    else {
-        emit chat(i18n("You have 1 minesweeper, 1 frigate, 1 cruise and 1 carrier"));
-    }
-*/
+    emit chat(message);
+
+    m_sea->setBattleShipsConfiguration(*gameConfiguration);
     // Number of ships to sink
-    m_sea->add(m_player, m_sea->isSeveralShipsAllowed() ?  10 : 4);
+    m_sea->add(m_player, gameConfiguration->totalNumberOfShipsToPlay());
 }
 
 
