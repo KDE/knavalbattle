@@ -82,6 +82,8 @@ void Controller::setupEntity(Entity* entity)
             this, SLOT(nick(int,QString)));
     connect(entity, SIGNAL(compatibility(int)),
             this, SIGNAL(compatibility(int)));
+    connect(entity, SIGNAL(gameOptionsInterchanged(bool)),
+            this, SLOT(placing(bool)));
 
     foreach (Entity* e, m_entities) {
         connect(e, SIGNAL(compatibility(int)),
@@ -127,18 +129,14 @@ bool Controller::start(SeaView* view, bool ask)
         return false;
     }
 
-
-    foreach (Entity* entity, m_entities) {
-        entity->startPlacing(ask);
-    }
-
-    // FIXME: Se necesita una señal para empezar a poner barcos cuando se reciba el mensaje de opciones
-    // o algo parecido en el caso local.
     if (!m_ui) {
         m_ui = new UIEntity(Sea::NO_PLAYER, m_sea, view);
         setupEntity(m_ui);
     }
-    
+
+    foreach (Entity* entity, m_entities) {
+        entity->notifyGameOptions(ask);
+    }
     
     foreach (Entity* source, m_entities) {
         foreach (Entity* target, m_entities) {
@@ -150,6 +148,16 @@ bool Controller::start(SeaView* view, bool ask)
     }
 
     return true;
+}
+
+// It is sure the entities has interchanged the GameOptions (if any)
+// when the opposite nick is received
+void Controller::placing(bool ask)
+{
+    kWarning();
+    foreach (Entity* entity, m_entities) {
+        entity->startPlacing(ask);
+    }
 }
 
 void Controller::shoot(int player, const Coord& c)

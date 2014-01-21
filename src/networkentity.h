@@ -25,7 +25,7 @@ Q_OBJECT
     Shot* m_pending_shot;
     bool m_client;
     bool m_winner;
-
+    
 public:
     NetworkEntity(Sea::Player player, Sea* sea, SeaView* seaview, Protocol* device, bool client);
     ~NetworkEntity();
@@ -39,6 +39,7 @@ public:
     virtual void notifyReady(Sea::Player player);
     virtual void notifyShips(Sea::Player winner);
     virtual void notifyGameOver(Sea::Player winner);
+    virtual void notifyGameOptions(bool ask);
     virtual void hit(Shot* shot);
 
     virtual KIcon icon() const;

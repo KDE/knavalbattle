@@ -64,7 +64,7 @@ void NetworkEntity::notifyGameOver(Sea::Player player)
 {
 }
 
-void NetworkEntity::startPlacing(bool ask)
+void NetworkEntity::notifyGameOptions(bool ask)
 {
     connect(m_protocol, SIGNAL(received(MessagePtr)), this, SLOT(received(MessagePtr)));
     connect(m_protocol, SIGNAL(disconnected()), this, SIGNAL(abortGame()));
@@ -76,6 +76,10 @@ void NetworkEntity::startPlacing(bool ask)
         
         m_protocol->send(MessagePtr(new GameOptionsMessage(QString(Settings::adjacentShips() ? "true" : "false"), QString(Settings::severalShips() ? "true" : "false"), m_battleShipsConfiguration )));
     }
+}
+
+void NetworkEntity::startPlacing(bool ask)
+{
     emit ready(m_player);
 }
 
@@ -166,11 +170,18 @@ void NetworkEntity::visit(const NickMessage& msg)
 {
     setNick(msg.nickname());
     emit nick(m_player, m_nick);
+    // This is a dirty hack caused by the introduction of GameOptionsMessage.
+    // If that had extended BeginMessage, the following instructions will
+    // be in the right place.
+    // It is emited here because the nickMessage is sent after GameOptionsMessage
+    // (if sent) and before start placing ships.
+    emit gameOptionsInterchanged();
+    // Number of ships to sink
+    m_sea->add(m_player, m_battleShipsConfiguration->totalNumberOfShipsToPlay());
 }
 
 void NetworkEntity::visit(const BeginMessage&)
 {
-    m_sea->add(m_player, 4);
 //    emit ready(m_player);
 }
 
@@ -244,33 +255,33 @@ void NetworkEntity::visit(const GameOptionsMessage& msg)
         emit chat(i18n("You must leave a space between ships"));
     }
 
-    const BattleShipsConfiguration* gameConfiguration = m_client ? msg.shipsConfiguration() : m_battleShipsConfiguration;
+    if (m_client)
+    {
+        m_battleShipsConfiguration = msg.shipsConfiguration();
+        m_sea->setBattleShipsConfiguration(*m_battleShipsConfiguration);
+    }
     // form the chat message telling the number of ships of each type to place and shink
     QString message=i18n("You have ");
     bool comma=false;
-    for (unsigned int size = 1; size <= gameConfiguration->longestShip(); size++)
+    for (unsigned int size = 1; size <= m_battleShipsConfiguration->longestShip(); size++)
     {
         if (comma)
         {
             message.append(i18n(", "));
         }
         comma=true;
-        if ( gameConfiguration->numberOfShipsOfSize(size) == 1 )
+        if ( m_battleShipsConfiguration->numberOfShipsOfSize(size) == 1 )
         {
-            message.append(QLatin1String("1 ")).append(gameConfiguration->nameOfShipsOfSize(size));
+            message.append(QLatin1String("1 ")).append(m_battleShipsConfiguration->nameOfShipsOfSize(size));
         }
         else
         {
-            message.append(QString::number(gameConfiguration->numberOfShipsOfSize(size)))
+            message.append(QString::number(m_battleShipsConfiguration->numberOfShipsOfSize(size)))
                    .append(" ")
-                   .append(i18n(gameConfiguration->pluralNameOfShipsOfSize(size).toLatin1()));
+                   .append(i18n(m_battleShipsConfiguration->pluralNameOfShipsOfSize(size).toLatin1()));
         }
     }
     emit chat(message);
-
-    m_sea->setBattleShipsConfiguration(*gameConfiguration);
-    // Number of ships to sink
-    m_sea->add(m_player, gameConfiguration->totalNumberOfShipsToPlay());
 }
 
 

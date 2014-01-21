@@ -55,6 +55,11 @@ void AIEntity::notify(Sea::Player player, const Coord& c, const HitInfo& info)
     getShoot();
 }
 
+void AIEntity::notifyGameOptions(bool ask)
+{
+    emit gameOptionsInterchanged();
+}
+
 void AIEntity::start(bool)
 {
     emit ready(m_player);

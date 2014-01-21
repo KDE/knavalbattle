@@ -30,6 +30,7 @@ public:
     virtual void notifyGameOver(Sea::Player winner);
     virtual void notifyChat(const Entity*, const QString&) { }
     virtual void notifyNick(Sea::Player, const QString&) { }
+    virtual void notifyGameOptions(bool ask) { emit gameOptionsInterchanged(); }
     virtual void start(bool);
     virtual void startPlacing(bool) { };
     virtual void hit(Shot*);

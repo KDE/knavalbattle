@@ -37,7 +37,7 @@ public:
     virtual void notify(Sea::Player player, const Coord& c, const HitInfo& info);
     virtual void notifyChat(const Entity* entity, const QString& text);
     virtual void notifyNick(Sea::Player player, const QString& text);
-    
+    virtual void notifyGameOptions(bool ask) { };
     // delegate interface
     virtual void action(Sea::Player player, const Coord& c);
     virtual void changeDirection(Sea::Player player);

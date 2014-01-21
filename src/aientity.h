@@ -34,6 +34,7 @@ public:
     virtual void startPlacing(bool ask);
     virtual void startPlaying();
     virtual void hit(Shot* shot);
+    virtual void notifyGameOptions(bool ask);
 
     virtual KIcon icon() const;
 public slots:

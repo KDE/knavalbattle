@@ -65,6 +65,7 @@ public slots:
     void receivedChat(const QString& text);
     void nick(int player, const QString& nick);
     void notifyRestartPlacingShips(Sea::Player player);
+    void placing(bool ask = false);
 signals:
     void gameOver(Sea::Player);
     void restartRequested();
