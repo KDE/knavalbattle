@@ -351,7 +351,7 @@ Strategy* SmartAI::State::defaultStrategy(Sea::Player player, Sea* sea)
 
 void SmartAI::State::destroyed(int size)
 {
-    if (size <= m_config->longestShip()) {
+    if ( size <= static_cast<int>(m_config->longestShip()) ) {
         int index = size - 1;
         if (m_ships[index] > 0) {
             m_ships[index]--;

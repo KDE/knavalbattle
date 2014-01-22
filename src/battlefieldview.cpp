@@ -151,6 +151,9 @@ void BattleFieldView::refresh()
 
 void BattleFieldView::setPreview(const QPoint & pos)
 {
+    if (!m_delegate) {
+        return;
+    }
     Ship * ship = m_delegate->nextShip();
 
     if (!ship) {

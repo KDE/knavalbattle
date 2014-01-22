@@ -68,7 +68,8 @@ PlayField::~PlayField()
 
 Controller* PlayField::createController()
 {
-    // FIXME: Does it overwrite the client received over the network configuration? yes
+    // The client or server will overwrite this default configuration when 
+    // the network messages are interchanged
     m_battle_ships_configuration = Settings::severalShips() ? 
     BattleShipsConfiguration::defaultMultipleShipsConfiguration(Settings::adjacentShips()):
     BattleShipsConfiguration::defaultSingleShipsConfiguration(Settings::adjacentShips());

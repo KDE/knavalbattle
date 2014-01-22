@@ -154,7 +154,6 @@ bool Controller::start(SeaView* view, bool ask)
 // when the opposite nick is received
 void Controller::placing(bool ask)
 {
-    kWarning();
     foreach (Entity* entity, m_entities) {
         entity->startPlacing(ask);
     }

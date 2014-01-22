@@ -102,14 +102,12 @@ void PlayerEntity::action(Sea::Player player, const Coord& c)
 void PlayerEntity::startPlacing(bool restart)
 {
     UIEntity::startPlacing(restart);
-    kWarning()<<m_battleShipsConfiguration->totalNumberOfShipsToPlay();
     m_battleShipsConfiguration = m_sea->battleShipsConfiguration();
-    kWarning()<<m_battleShipsConfiguration->totalNumberOfShipsToPlay();
 
     Coord origin(0, 0);
 
     m_ships.clear();
-    for (int len=1; len <= m_battleShipsConfiguration->longestShip(); len++)
+    for (unsigned int len=1; len <= m_battleShipsConfiguration->longestShip(); len++)
     {
         for (unsigned int i=0; i<m_battleShipsConfiguration->numberOfShipsOfSize(len); i++)
         {
@@ -123,7 +121,6 @@ void PlayerEntity::startPlacing(bool restart)
 
 void PlayerEntity::start(bool ask)
 {
-    kWarning()<<m_battleShipsConfiguration->totalNumberOfShipsToPlay();
     UIEntity::start(ask);
     emit ready(m_player);
 }
