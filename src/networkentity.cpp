@@ -31,6 +31,10 @@ NetworkEntity::NetworkEntity(Sea::Player player, Sea* sea, SeaView* seaview, Pro
 
 NetworkEntity::~NetworkEntity()
 {
+    if ( !m_battleShipsConfiguration->isFromXML() )
+    {
+        delete m_battleShipsConfiguration;
+    }
 }
 
 void NetworkEntity::start(bool ask)
@@ -173,8 +177,36 @@ void NetworkEntity::visit(const NickMessage& msg)
     // This is a dirty hack caused by the introduction of GameOptionsMessage.
     // If that had extended BeginMessage, the following instructions will
     // be in the right place.
-    // It is emited here because the nickMessage is sent after GameOptionsMessage
+    // It is done here because the nickMessage is sent after GameOptionsMessage
     // (if sent) and before start placing ships.
+    if ( !m_battleShipsConfiguration->isFromXML() )
+    {
+        m_battleShipsConfiguration=BattleShipsConfiguration::constDefaultSingleShipsConfiguration(true);
+        m_sea->setBattleShipsConfiguration(*m_battleShipsConfiguration);
+        // TODO: Message explaining why the network game uses this configuration
+    }
+    // form the chat message telling the number of ships of each type to place and shink
+    QString message=i18n("You have ");
+    bool comma=false;
+    for (unsigned int size = 1; size <= m_battleShipsConfiguration->longestShip(); size++)
+    {
+        if (comma)
+        {
+            message.append(i18n(", "));
+        }
+        comma=true;
+        if ( m_battleShipsConfiguration->numberOfShipsOfSize(size) == 1 )
+        {
+            message.append(QLatin1String("1 ")).append(m_battleShipsConfiguration->nameOfShipsOfSize(size));
+        }
+        else
+        {
+            message.append(QString::number(m_battleShipsConfiguration->numberOfShipsOfSize(size)))
+                   .append(" ")
+                   .append(i18n(m_battleShipsConfiguration->pluralNameOfShipsOfSize(size).toLatin1()));
+        }
+    }
+    emit chat(message);
     emit gameOptionsInterchanged();
     // Number of ships to sink
     m_sea->add(m_player, m_battleShipsConfiguration->totalNumberOfShipsToPlay());
@@ -260,28 +292,6 @@ void NetworkEntity::visit(const GameOptionsMessage& msg)
         m_battleShipsConfiguration = msg.shipsConfiguration();
         m_sea->setBattleShipsConfiguration(*m_battleShipsConfiguration);
     }
-    // form the chat message telling the number of ships of each type to place and shink
-    QString message=i18n("You have ");
-    bool comma=false;
-    for (unsigned int size = 1; size <= m_battleShipsConfiguration->longestShip(); size++)
-    {
-        if (comma)
-        {
-            message.append(i18n(", "));
-        }
-        comma=true;
-        if ( m_battleShipsConfiguration->numberOfShipsOfSize(size) == 1 )
-        {
-            message.append(QLatin1String("1 ")).append(m_battleShipsConfiguration->nameOfShipsOfSize(size));
-        }
-        else
-        {
-            message.append(QString::number(m_battleShipsConfiguration->numberOfShipsOfSize(size)))
-                   .append(" ")
-                   .append(i18n(m_battleShipsConfiguration->pluralNameOfShipsOfSize(size).toLatin1()));
-        }
-    }
-    emit chat(message);
 }
 
 

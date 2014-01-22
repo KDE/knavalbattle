@@ -39,11 +39,12 @@ private:
     bool m_allowAdjacentShips;
     unsigned int m_boardWidth;
     unsigned int m_boardHeight;
+    bool m_fromXML;
     QHash<unsigned int,Ships> m_ships;
 public:
 
-    BattleShipsConfiguration();
-    explicit BattleShipsConfiguration(unsigned int longestShipSize, const bool allowAdjacentShips, const unsigned int boardWidth, const unsigned int boardHeight);
+    BattleShipsConfiguration(const bool fromXML=false);
+    explicit BattleShipsConfiguration(unsigned int longestShipSize, const bool allowAdjacentShips, const unsigned int boardWidth, const unsigned int boardHeight, const bool fromXML=false);
     BattleShipsConfiguration(const BattleShipsConfiguration& copy);
     // does not add any ship longer than longestShip
     // overwrites any previous configuration for ships of the requested size
@@ -58,17 +59,19 @@ public:
     void setAllowAdjacentShips(const bool allow) { m_allowAdjacentShips = allow; }
     void setBoardWidth(const unsigned int boardWidth) { m_boardWidth = boardWidth; }
     void setBoardHeight(const unsigned int boardHeight) { m_boardWidth = boardHeight; }
+    void setFromXML(bool fromXML) { m_fromXML=fromXML; }
     inline unsigned int boardWidth() const { return m_boardWidth; }
     inline unsigned int boardHeight() const { return m_boardHeight; }
     inline bool isAllowedAdjacentShips() const { return m_allowAdjacentShips; }
+    inline bool isFromXML() const { return m_fromXML; }
     // ships are of 0 < size <= longestShip()
     inline unsigned int longestShip() const { return m_longestShip; }
     unsigned int totalNumberOfShipsToPlay() const;
-
     bool isAValidConfiguration() const;
 
-    static BattleShipsConfiguration defaultSingleShipsConfiguration(const bool allowAdjacent);
-    static BattleShipsConfiguration defaultMultipleShipsConfiguration(const bool allowAdjacent);
+    static BattleShipsConfiguration defaultSingleShipsConfiguration(const bool allowAdjacent, const bool fromXML = false);
+    static BattleShipsConfiguration defaultMultipleShipsConfiguration(const bool allowAdjacent, const bool fromXML = false);
+    static const BattleShipsConfiguration* constDefaultSingleShipsConfiguration(const bool allowAdjacent, const bool fromXML = false);
 
 };
 

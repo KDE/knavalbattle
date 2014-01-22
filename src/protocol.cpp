@@ -265,8 +265,7 @@ MessagePtr Protocol::parseMessage(const QString& xmlMessage)
             unsigned int longestShip=0;
             // if the node oneOrSeveralShips does not have the attribute, then it is the single ships configuration.
             if ( !oneOrElement.hasAttribute(QLatin1String("longestShip")) ) {
-                BattleShipsConfiguration ret=BattleShipsConfiguration::defaultSingleShipsConfiguration(adjacentShips);
-                return MessagePtr(new GameOptionsMessage(adjacentShips, severalShips, ret));
+                return MessagePtr(new GameOptionsMessage(adjacentShips, severalShips, BattleShipsConfiguration::defaultSingleShipsConfiguration(adjacentShips, true)));
             }
             else {
                 longestShip = oneOrElement.attribute(QLatin1String("longestShip")).toUInt();
@@ -277,7 +276,7 @@ MessagePtr Protocol::parseMessage(const QString& xmlMessage)
             unsigned int height=boardHeight.toUInt();
             // and get the ships configuration
             QDomNodeList nodes = main.childNodes();
-            BattleShipsConfiguration battleShipsConfiguration(longestShip,adjacentShips,width,height);
+            BattleShipsConfiguration battleShipsConfiguration(longestShip, adjacentShips, width, height, true);
             for (int i = 0; i < nodes.count(); i++) {
                 QDomElement element = nodes.item(i).toElement();
                 if (!element.isNull() && element.tagName()==QLatin1String("ships")) {
@@ -290,7 +289,7 @@ MessagePtr Protocol::parseMessage(const QString& xmlMessage)
             }
             if ( !battleShipsConfiguration.isAValidConfiguration() )
             {
-                return MessagePtr(new GameOptionsMessage(adjacentShips, severalShips, BattleShipsConfiguration::defaultSingleShipsConfiguration(adjacentShips)));
+               return MessagePtr(new GameOptionsMessage(adjacentShips, severalShips, BattleShipsConfiguration::defaultSingleShipsConfiguration(adjacentShips, true)));
             }
             return MessagePtr(new GameOptionsMessage(adjacentShips, severalShips, battleShipsConfiguration));
         }

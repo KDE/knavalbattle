@@ -16,20 +16,22 @@ Ships::Ships(unsigned int size, unsigned int number, QString& shipsName, QString
 {
 }
 
-BattleShipsConfiguration::BattleShipsConfiguration()
+BattleShipsConfiguration::BattleShipsConfiguration(const bool fromXML)
 : m_longestShip(0)
 , m_allowAdjacentShips(true)
 , m_boardWidth(0)
 , m_boardHeight(0)
+, m_fromXML(fromXML)
 , m_ships()
 {
 }
 
-BattleShipsConfiguration::BattleShipsConfiguration(unsigned int longestShipSize, const bool allowAdjacentShips, const unsigned int boardWidth, const unsigned int boardHeight)
+BattleShipsConfiguration::BattleShipsConfiguration(unsigned int longestShipSize, const bool allowAdjacentShips, const unsigned int boardWidth, const unsigned int boardHeight, const bool fromXML)
 : m_longestShip(longestShipSize)
 , m_allowAdjacentShips(allowAdjacentShips)
 , m_boardWidth(boardWidth)
 , m_boardHeight(boardHeight)
+, m_fromXML(fromXML)
 , m_ships()
 {
 }
@@ -39,6 +41,7 @@ BattleShipsConfiguration::BattleShipsConfiguration(const BattleShipsConfiguratio
 , m_allowAdjacentShips(copy.isAllowedAdjacentShips())
 , m_boardWidth(copy.boardWidth())
 , m_boardHeight(copy.boardHeight())
+, m_fromXML(copy.m_fromXML)
 , m_ships(copy.m_ships)
 {
 }
@@ -95,7 +98,8 @@ bool BattleShipsConfiguration::multipleShips() const
 
 bool BattleShipsConfiguration::isAValidConfiguration() const
 {
-    if ( m_longestShip==0 || m_boardHeight==0 || m_boardWidth==0 )
+    if ( m_longestShip==0 || m_boardHeight==0 || m_boardWidth==0 
+        || m_longestShip>qMax<unsigned int>(m_boardHeight, m_boardWidth) )
     {
         return false;
     }
@@ -120,18 +124,28 @@ unsigned int BattleShipsConfiguration::totalNumberOfShipsToPlay() const
 }
 
 
-BattleShipsConfiguration BattleShipsConfiguration::defaultSingleShipsConfiguration(const bool allowAdjacent)
+BattleShipsConfiguration BattleShipsConfiguration::defaultSingleShipsConfiguration(const bool allowAdjacent, const bool fromXML)
 {
-    BattleShipsConfiguration res(4, allowAdjacent, 10, 10);
+    BattleShipsConfiguration res(4, allowAdjacent, 10, 10, fromXML);
     return res.addShips(1, 1, QLatin1String("minesweeper"), QLatin1String("minesweepers"))
               .addShips(2, 1, QLatin1String("frigate"), QLatin1String("frigates"))
               .addShips(3, 1, QLatin1String("cruise"), QLatin1String("cruises"))
               .addShips(4, 1, QLatin1String("carrier"), QLatin1String("carriers"));
 }
 
-BattleShipsConfiguration BattleShipsConfiguration::defaultMultipleShipsConfiguration(const bool allowAdjacent)
+const BattleShipsConfiguration* BattleShipsConfiguration::constDefaultSingleShipsConfiguration(const bool allowAdjacent, const bool fromXML)
 {
-    BattleShipsConfiguration res(4, allowAdjacent, 10, 10);
+    BattleShipsConfiguration* res=new BattleShipsConfiguration(4, allowAdjacent, 10, 10, fromXML);
+    res->addShips(1, 1, QLatin1String("minesweeper"), QLatin1String("minesweepers"));
+    res->addShips(2, 1, QLatin1String("frigate"), QLatin1String("frigates"));
+    res->addShips(3, 1, QLatin1String("cruise"), QLatin1String("cruises"));
+    res->addShips(4, 1, QLatin1String("carrier"), QLatin1String("carriers"));
+    return res;
+}
+
+BattleShipsConfiguration BattleShipsConfiguration::defaultMultipleShipsConfiguration(const bool allowAdjacent, const bool fromXML)
+{
+    BattleShipsConfiguration res(4, allowAdjacent, 10, 10, fromXML);
     return res.addShips(1, 4, QLatin1String("minesweeper"), QLatin1String("minesweepers"))
               .addShips(2, 3, QLatin1String("frigate"), QLatin1String("frigates"))
               .addShips(3, 2, QLatin1String("cruise"), QLatin1String("cruises"))
