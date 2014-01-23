@@ -146,6 +146,7 @@ void PlayField::newGame()
     
     m_menu = new SimpleMenu(this, m_seaView->screen(Sea::Player(0)));
     connect(m_menu, SIGNAL(done()), this, SLOT(setupController()));
+    m_status_bar->showMessage(QLatin1String(""));
     emit welcomeScreen();
 }
 
