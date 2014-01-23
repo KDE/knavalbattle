@@ -49,11 +49,11 @@ class FadeAnimation : public Animation
 Q_OBJECT
     QGraphicsItem* m_sprite;
     int m_from;
-    int m_to;
+    qreal m_to;
     int m_time;
     int m_start;
 public:
-    FadeAnimation(QGraphicsItem* sprite, int from, int to, int time);
+    FadeAnimation(QGraphicsItem* sprite, int from, qreal to, int time);
     virtual void start(int t);
     virtual bool step(int t);
 };

@@ -63,7 +63,7 @@ void AnimationGroup::add(Animation* a)
     }
 }
 
-FadeAnimation::FadeAnimation(QGraphicsItem* sprite, int from, int to, int time)
+FadeAnimation::FadeAnimation(QGraphicsItem* sprite, int from, qreal to, int time)
 : m_sprite(sprite)
 , m_from(from)
 , m_to(to)
@@ -85,11 +85,12 @@ bool FadeAnimation::step(int t)
         return true;
     }
     else {
-        if (m_to > m_from)
-            m_sprite->setOpacity(m_from + t * (1.0 / m_time));
-        else
-            m_sprite->setOpacity(m_from - t * (1.0 / m_time));
-
+        if (m_to > m_from) {
+            m_sprite->setOpacity(m_from + t * (m_to / m_time));
+        }
+        else {
+            m_sprite->setOpacity(m_from - t * (m_to / m_time));
+        }
         return false;
     }
 }
