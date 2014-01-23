@@ -292,6 +292,14 @@ void NetworkEntity::visit(const GameOptionsMessage& msg)
         m_battleShipsConfiguration = msg.shipsConfiguration();
         m_sea->setBattleShipsConfiguration(*m_battleShipsConfiguration);
     }
+    else
+    {
+        if (msg.shipsConfiguration()->isFromXML())
+        {
+            // if the client understood GameOptions, then the global preferences in the server are used.
+            const_cast<BattleShipsConfiguration*>(m_battleShipsConfiguration)->setFromXML(true);
+         }
+    }
 }
 
 
