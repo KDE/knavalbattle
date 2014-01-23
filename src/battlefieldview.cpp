@@ -196,7 +196,6 @@ void BattleFieldView::cancelPreview()
 void BattleFieldView::addSprite(const Coord& c, Sprite* sprite)
 {
     m_sprites.insert(c, sprite);
-    
     sprite->setPos(m_renderer->toReal(c));
     scene()->addItem(sprite);
 }
@@ -204,17 +203,21 @@ void BattleFieldView::addSprite(const Coord& c, Sprite* sprite)
 void BattleFieldView::add(Ship* ship)
 {
     Sprite* sprite = m_factory.createShip(ship);
+    sprite->setZValue(BACKGROUND);
     addSprite(ship->position(), sprite);
     
     // fading preview in
-    Animation* a = new FadeAnimation(sprite, PREVIEW_OPACITY, 1, 1000);
-    Animator::instance()->add(a);
+    if (ship->alive()) {
+        Animation* a = new FadeAnimation(sprite, PREVIEW_OPACITY, 1, 1000);
+        Animator::instance()->add(a);
+    }
 
     if (ship == m_preview.ship) {
         cancelPreview();
     }
     else if (!ship->alive()) {
-        Animation* a = new FadeAnimation(sprite, 0, 1, 1000);
+        sprite->setZValue(BACKGROUND);
+        Animation* a = new FadeAnimation(sprite, 0, 0.5, 1000);
         Animator::instance()->add(a);
     }
 }
@@ -222,7 +225,6 @@ void BattleFieldView::add(Ship* ship)
 void BattleFieldView::sink(Ship* ship)
 {
     m_last_hit = 0;
-    Sprite* ship_sprite = 0;
     
     Coord p = ship->position();
     for (unsigned int i = 0; 
@@ -230,18 +232,13 @@ void BattleFieldView::sink(Ship* ship)
          i++, p += ship->increment()) {
         foreach (Sprite* s, m_sprites.values(p)) {
             if (s->spriteKey().startsWith("ship")) {
-                ship_sprite = s;
-            }
-            else if (s->spriteKey().startsWith("hit")) {
-                s->setSpriteKey("hit-end");
-                s->refresh(m_renderer);
                 s->setZValue(BACKGROUND);
                 s->setOpacity(0.5);
             }
+            else if (s->spriteKey().startsWith("hit")) {
+                s->setSpriteKey("hit-end");
+            }
         }
-    }
-    if (ship_sprite) {
-        ship_sprite->stackBefore(m_background);
     }
 }
 
@@ -249,7 +246,8 @@ void BattleFieldView::hit(const Coord& c)
 {
     removeImpact();
     m_last_hit = m_factory.createHit();
-    m_last_hit->setZValue(BACKGROUND);
+    m_last_hit->setZValue(FOREGROUND);
+    m_last_hit->setOpacity(1.0);
     addSprite(c, m_last_hit);
 }
 
@@ -257,7 +255,8 @@ void BattleFieldView::miss(const Coord& c)
 {
     removeImpact();
     m_impact = m_factory.createImpact();
-    m_impact->setZValue(BACKGROUND);
+    m_impact->setZValue(FOREGROUND);
+    m_impact->setOpacity(1.0);
     addSprite(c, m_impact);
 }
 
