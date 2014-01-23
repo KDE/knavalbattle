@@ -325,7 +325,7 @@ void PlayField::restartPlacingShips(Sea::Player player)
         m_controller->notifyRestartPlacingShips(player);
     }
     else {
-        // FIXME: missing an abort game
+        newGame();
     }
 }
 
