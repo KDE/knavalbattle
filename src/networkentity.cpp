@@ -31,10 +31,6 @@ NetworkEntity::NetworkEntity(Sea::Player player, Sea* sea, SeaView* seaview, Pro
 
 NetworkEntity::~NetworkEntity()
 {
-    if ( !m_battleShipsConfiguration->isFromXML() )
-    {
-        delete m_battleShipsConfiguration;
-    }
 }
 
 void NetworkEntity::start(bool ask)
@@ -181,8 +177,8 @@ void NetworkEntity::visit(const NickMessage& msg)
     // (if sent) and before start placing ships.
     if ( !m_battleShipsConfiguration->isFromXML() )
     {
-        m_battleShipsConfiguration=BattleShipsConfiguration::constDefaultSingleShipsConfiguration(true);
-        m_sea->setBattleShipsConfiguration(*m_battleShipsConfiguration);
+        m_sea->setBattleShipsConfiguration(BattleShipsConfiguration::defaultSingleShipsConfiguration(true));
+        m_battleShipsConfiguration = m_sea->battleShipsConfiguration();
         // TODO: Message explaining why the network game uses this configuration
     }
     // form the chat message telling the number of ships of each type to place and shink

@@ -133,16 +133,6 @@ BattleShipsConfiguration BattleShipsConfiguration::defaultSingleShipsConfigurati
               .addShips(4, 1, QLatin1String("carrier"), QLatin1String("carriers"));
 }
 
-const BattleShipsConfiguration* BattleShipsConfiguration::constDefaultSingleShipsConfiguration(const bool allowAdjacent, const bool fromXML)
-{
-    BattleShipsConfiguration* res=new BattleShipsConfiguration(4, allowAdjacent, 10, 10, fromXML);
-    res->addShips(1, 1, QLatin1String("minesweeper"), QLatin1String("minesweepers"));
-    res->addShips(2, 1, QLatin1String("frigate"), QLatin1String("frigates"));
-    res->addShips(3, 1, QLatin1String("cruise"), QLatin1String("cruises"));
-    res->addShips(4, 1, QLatin1String("carrier"), QLatin1String("carriers"));
-    return res;
-}
-
 BattleShipsConfiguration BattleShipsConfiguration::defaultMultipleShipsConfiguration(const bool allowAdjacent, const bool fromXML)
 {
     BattleShipsConfiguration res(4, allowAdjacent, 10, 10, fromXML);

@@ -71,8 +71,6 @@ public:
 
     static BattleShipsConfiguration defaultSingleShipsConfiguration(const bool allowAdjacent, const bool fromXML = false);
     static BattleShipsConfiguration defaultMultipleShipsConfiguration(const bool allowAdjacent, const bool fromXML = false);
-    static const BattleShipsConfiguration* constDefaultSingleShipsConfiguration(const bool allowAdjacent, const bool fromXML = false);
-
 };
 
 
