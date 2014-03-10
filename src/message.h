@@ -40,6 +40,7 @@ public:
                  const QString& clientDescription);
     HeaderMessage();
     virtual void accept(MessageVisitor& visitor) const;
+    static QString messageType() { return QLatin1String("Header"); }
     
     const QString& protocolVersion() const { return m_protocol_version; }
     const QString& clientName() const { return m_client_name; }
@@ -55,6 +56,7 @@ public:
     static const int MSGTYPE = 1;
     RejectMessage(bool versionMismatch, const QString& reason);
     virtual void accept(MessageVisitor& visitor) const;
+    static QString messageType() { return QLatin1String("Reject"); }
 };
 
 class NickMessage : public Message
@@ -66,6 +68,7 @@ public:
     virtual void accept(MessageVisitor& visitor) const;
     
     const QString& nickname() const { return m_nickname; }
+    static QString messageType() { return QLatin1String("Nick"); }
 };
 
 class BeginMessage : public Message
@@ -73,6 +76,7 @@ class BeginMessage : public Message
 public:
     static const int MSGTYPE = 3;
     virtual void accept(MessageVisitor& visitor) const;
+    static QString messageType() { return QLatin1String("Begin"); }
 };
 
 class MoveMessage : public Message
@@ -84,6 +88,7 @@ public:
     virtual void accept(MessageVisitor& visitor) const;
     
     const Coord& move() const { return m_move; }
+    static QString messageType() { return QLatin1String("Move"); }
 };
 
 class NotificationMessage : public Message
@@ -98,6 +103,7 @@ public:
     NotificationMessage(const Coord& m_move, bool hit, bool death,
         const Coord& start = Coord::invalid(), const Coord& stop = Coord::invalid());
     virtual void accept(MessageVisitor& visitor) const;
+    static QString messageType() { return QLatin1String("Notification"); }
     
     const Coord& move() const { return m_move; }
     bool hit() const { return m_hit; }
@@ -130,6 +136,7 @@ public:
 
     void addShip(const Coord& pos, int size, Ship::Direction direction);
     virtual void accept(MessageVisitor& visitor) const;
+    static QString messageType() { return QLatin1String("GameOver"); }
 
     const QList<ShipInfo>& ships() const { return m_ships; }
 };
@@ -139,6 +146,7 @@ class RestartMessage : public Message
 public:
     static const int MSGTYPE = 7;
     virtual void accept(MessageVisitor& visitor) const;
+    static QString messageType() { return QLatin1String("Restart"); }
 };
 
 class ChatMessage : public Message
@@ -149,6 +157,7 @@ public:
     static const int MSGTYPE = 8;
     explicit ChatMessage(const QString& nick, const QString& chat);
     virtual void accept(MessageVisitor& visitor) const;
+    static QString messageType() { return QLatin1String("Chat"); }
 
     const QString& chat() const { return m_chat; }
     const QString& nickname() const { return m_nickname; }
@@ -174,6 +183,7 @@ public:
     unsigned int gridHeight() const { return m_battleShipsConfiguration->boardHeight(); }
     const BattleShipsConfiguration* shipsConfiguration() const { return m_battleShipsConfiguration; }
     virtual void accept(MessageVisitor& visitor) const;
+    static QString messageType() { return QLatin1String("GameOptions"); }
 };
 
 

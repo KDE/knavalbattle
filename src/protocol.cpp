@@ -33,7 +33,9 @@ class MessageSender : public MessageVisitor
     template <typename Msg>
     void setType(const Msg&)
     {
-        addField("msgtype", QString::number(Msg::MSGTYPE));
+        QDomElement element = addField("msgtype", QString::number(Msg::MSGTYPE));
+        // only useful for debuging, just add the name of the message type
+        element.setAttribute(QLatin1String("type"), Msg::messageType());
     }
 public:
     MessageSender()
