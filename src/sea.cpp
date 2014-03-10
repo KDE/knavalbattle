@@ -57,6 +57,7 @@ void Sea::clear(Sea::Player p)
             m_myShips.clear();
         }
     }
+    m_status = PLACING_SHIPS;
 }
 
 void Sea::add(Player p, Ship* ship)
@@ -182,6 +183,8 @@ const QList<Ship *> Sea::myShips() const
 void Sea::setBattleShipsConfiguration(const BattleShipsConfiguration& configuration)
 {
     m_battle_ships_configuration=configuration;
+    m_fields[0]->setAllowAdjacentShips(configuration.isAllowedAdjacentShips());
+    m_fields[1]->setAllowAdjacentShips(configuration.isAllowedAdjacentShips());
 }
 
 

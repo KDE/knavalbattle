@@ -34,7 +34,7 @@ Q_OBJECT
     int m_ready;
     AudioPlayer* m_player;
     bool m_has_ai;
-    BattleShipsConfiguration m_battle_ships_configuration;
+    BattleShipsConfiguration mBattleShipsConfiguration;
 
     void notify(Sea::Player player, const Coord& c, const HitInfo& info);
     void setupEntity(Entity*);
@@ -58,6 +58,7 @@ public:
     bool hasAI() const;
     inline Sea* getSea() const { return m_sea; }
     void setBattleShipsConfiguration(const BattleShipsConfiguration& battleConfiguration);
+    inline BattleShipsConfiguration& getBattleShipsConfiguration() { return mBattleShipsConfiguration; }
 public slots:
     void shoot(int player, const Coord& c);
     void ready(int player);
@@ -66,6 +67,7 @@ public slots:
     void nick(int player, const QString& nick);
     void notifyRestartPlacingShips(Sea::Player player);
     void placing(bool ask = false);
+    void restart(bool ask = false);
 signals:
     void gameOver(Sea::Player);
     void restartRequested();

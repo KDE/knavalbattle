@@ -54,7 +54,7 @@ MainWindow::MainWindow(const KUrl& url)
 void MainWindow::setupActions()
 {
     KStandardGameAction::gameNew(m_main, SLOT(newGame()), actionCollection());
-    KStandardGameAction::restart(m_main, SLOT(restart()), actionCollection());     
+    KStandardGameAction::restart(m_main, SLOT(restart()), actionCollection());
     KStandardGameAction::highscores(m_main, SLOT(highscores()), actionCollection());
     
     KStandardGameAction::quit(this, SLOT(close()), actionCollection());

@@ -24,7 +24,7 @@ Controller::Controller(QObject* parent, AudioPlayer* audioPlayer, const BattleSh
 , m_ready(0)
 , m_player(audioPlayer)
 , m_has_ai(false)
-, m_battle_ships_configuration(battleShipsConfiguration)
+, mBattleShipsConfiguration(battleShipsConfiguration)
 {
     m_ui = 0;
     m_sea = new Sea(this, battleShipsConfiguration);
@@ -73,9 +73,9 @@ void Controller::setupEntity(Entity* entity)
     connect(entity, SIGNAL(shoot(int,Coord)),
             this, SLOT(shoot(int,Coord)), Qt::QueuedConnection);
     connect(entity, SIGNAL(ready(int)),
-            this, SLOT(ready(int)), Qt::QueuedConnection);
+            this, SLOT(ready(int)));
     connect(entity, SIGNAL(shipsPlaced(int)),
-            this, SLOT(shipsPlaced(int)), Qt::QueuedConnection);
+            this, SLOT(shipsPlaced(int)));
     connect(entity, SIGNAL(chat(QString)),
             this, SLOT(receivedChat(QString)));
     connect(entity, SIGNAL(nick(int,QString)),
@@ -106,7 +106,7 @@ void Controller::setupEntity(Entity* entity)
 
 void Controller::setBattleShipsConfiguration(const BattleShipsConfiguration& battleConfiguration)
 {
-    m_battle_ships_configuration = battleConfiguration;
+    mBattleShipsConfiguration = battleConfiguration;
 }
 
 
@@ -150,6 +150,27 @@ bool Controller::start(SeaView* view, bool ask)
     return true;
 }
 
+void Controller::restart(bool ask)
+{
+    m_ready = 0;
+    if (ask)
+    {
+        foreach (Entity* entity, m_entities) {
+            entity->notifyRestart(entity->player());
+        }
+    }
+
+    m_sea->clear(Sea::PLAYER_A);
+    m_sea->clear(Sea::PLAYER_B);
+
+    foreach (Entity* entity, m_entities) {
+        m_sea->clear(entity->player());
+            emit startPlacingShips(Sea::PLAYER_A);
+            entity->startPlacing(false);
+    }
+}
+
+
 // It is sure the entities has interchanged the GameOptions (if any)
 // when the opposite nick is received
 void Controller::placing(bool ask)
@@ -172,7 +193,7 @@ void Controller::shoot(int player, const Coord& c)
         // shot in progress
         return;
     }
-    
+
     if (m_sea->status() == Sea::PLAYING) {
         entity->hit(m_shot = new Shot(this, Sea::Player(player), c)); // kind of CPS
     }
