@@ -36,6 +36,7 @@ protected:
     Stats m_stats;
     // not owned by the entity
     const BattleShipsConfiguration* m_battleShipsConfiguration;
+    bool m_restarted;
 
 public:
     Entity(Sea::Player player, SeaView* seaview, const BattleShipsConfiguration* battleShipsConfiguration);
@@ -51,6 +52,8 @@ public:
     virtual void notifyReady(Sea::Player) { }
     virtual void notifyShips(Sea::Player) { }
     virtual void notifyGameOver(Sea::Player) { }
+    virtual void notifyRestart(Sea::Player) { }
+
     Stats* stats();
     
     virtual Sea::Player player() const { return m_player; }

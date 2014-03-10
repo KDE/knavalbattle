@@ -15,6 +15,7 @@ Entity::Entity(Sea::Player player, SeaView* seaview, const BattleShipsConfigurat
 , m_seaview(seaview)
 , m_level(COMPAT_KBS4)
 , m_battleShipsConfiguration(battleShipsConfiguration)
+, m_restarted(false)
 {
 }
 

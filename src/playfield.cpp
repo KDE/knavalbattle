@@ -88,6 +88,8 @@ Controller* PlayField::createController()
             this, SLOT(playerReady(int)));
     connect(controller, SIGNAL(restartPlacingShips(Sea::Player)),
             this, SLOT(restartPlacingShips(Sea::Player)));
+    connect(controller, SIGNAL(startPlacingShips(int)),
+            this, SLOT(startPlacingShips()));
 
     return controller;
 }
@@ -113,11 +115,13 @@ void PlayField::resetupController(bool ask)
     Entity* old_opponent = m_controller->findEntity(Sea::Player(1));
     if (old_opponent) {
         old_opponent->setParent(0);
-    }    
+    }
+    BattleShipsConfiguration oldBSC=m_controller->getBattleShipsConfiguration();
     delete m_controller;
 
     // create new controller
     m_controller = createController();
+    m_controller->setBattleShipsConfiguration(oldBSC);
     m_menu->setupController(m_controller, old_opponent, 
         m_seaView, m_chat, ask);
     delete old_opponent;
@@ -154,7 +158,8 @@ void PlayField::restart(bool ask)
 {
     Animator::instance()->restart();
     m_seaView->clear();
-    resetupController(ask);
+    startGame();
+    m_controller->restart(ask);
 }
 
 

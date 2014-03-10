@@ -106,6 +106,7 @@ void PlayerEntity::startPlacing(bool restart)
 
     Coord origin(0, 0);
 
+    m_sea->clear(m_player);
     m_ships.clear();
     for (unsigned int len=1; len <= m_battleShipsConfiguration->longestShip(); len++)
     {

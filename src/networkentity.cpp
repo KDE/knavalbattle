@@ -35,7 +35,6 @@ NetworkEntity::~NetworkEntity()
 
 void NetworkEntity::start(bool ask)
 {
-    emit ready(m_player);
 }
 
 void NetworkEntity::notifyReady(Sea::Player player)
@@ -64,12 +63,22 @@ void NetworkEntity::notifyGameOver(Sea::Player player)
 {
 }
 
+void NetworkEntity::notifyRestart(Sea::Player)
+{
+    if (!m_restarted) {
+        m_protocol->send(MessagePtr(new RestartMessage()));
+        m_restarted = true;
+    }
+}
+
+
 void NetworkEntity::notifyGameOptions(bool ask)
 {
     connect(m_protocol, SIGNAL(received(MessagePtr)), this, SLOT(received(MessagePtr)));
     connect(m_protocol, SIGNAL(disconnected()), this, SIGNAL(abortGame()));
-    if (ask) {
+    if (ask || m_restarted) {
         m_protocol->send(MessagePtr(new RestartMessage()));
+        m_restarted = true;
     }
     else {
         m_protocol->send(MessagePtr(new HeaderMessage()));
@@ -80,6 +89,12 @@ void NetworkEntity::notifyGameOptions(bool ask)
 
 void NetworkEntity::startPlacing(bool ask)
 {
+    m_restarted = false;
+    m_sea->clear(m_player);
+
+    // Number of ships to sink again in the new game
+    m_sea->add(m_player, m_battleShipsConfiguration->totalNumberOfShipsToPlay());
+
     emit ready(m_player);
 }
 
@@ -175,7 +190,7 @@ void NetworkEntity::visit(const NickMessage& msg)
     // be in the right place.
     // It is done here because the nickMessage is sent after GameOptionsMessage
     // (if sent) and before start placing ships.
-    if ( !m_battleShipsConfiguration->isFromXML() )
+    if ( !m_battleShipsConfiguration->isFromXML() && !m_restarted)
     {
         m_sea->setBattleShipsConfiguration(BattleShipsConfiguration::defaultSingleShipsConfiguration(true));
         m_battleShipsConfiguration = m_sea->battleShipsConfiguration();
@@ -210,7 +225,7 @@ void NetworkEntity::visit(const NickMessage& msg)
 
 void NetworkEntity::visit(const BeginMessage&)
 {
-//    emit ready(m_player);
+    emit ready(m_player);
 }
 
 void NetworkEntity::visit(const MoveMessage& msg)
@@ -261,7 +276,11 @@ void NetworkEntity::visit(const GameOverMessage& msg)
 
 void NetworkEntity::visit(const RestartMessage&)
 {
-    emit restartRequested();
+    // Keep the current configuration in a restarted game.
+    if (!m_restarted)
+    {
+        emit restartRequested();
+    }
 }
 
 void NetworkEntity::visit(const ChatMessage& msg)
@@ -305,5 +324,3 @@ KIcon NetworkEntity::icon() const
 }
 
 #include "networkentity.moc"
-
-

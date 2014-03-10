@@ -40,6 +40,7 @@ public:
     virtual void notifyShips(Sea::Player winner);
     virtual void notifyGameOver(Sea::Player winner);
     virtual void notifyGameOptions(bool ask);
+    virtual void notifyRestart(Sea::Player);
     virtual void hit(Shot* shot);
 
     virtual KIcon icon() const;
