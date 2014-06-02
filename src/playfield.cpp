@@ -13,12 +13,12 @@
 
 #include <QStatusBar>
 #include <QVBoxLayout>
+#include <QDebug>
 
 #include <KInputDialog>
 #include <KLocale>
 #include <KMessageBox>
 #include <KScoreDialog>
-#include <KDebug>
 
 #include "aientity.h"
 #include "audioplayer.h"
@@ -204,7 +204,7 @@ void PlayField::gameOver(Sea::Player winner)
             info[KScoreDialog::Custom3] = QString::number(stats->misses());
         
             int temp = highscoredialog->addScore(info, KScoreDialog::AskName);
-            kDebug() << "temp =" << temp;
+            qDebug() << "temp =" << temp;
             //if (highscoredialog->addScore(info, KScoreDialog::AskName)) {
             if (temp != 0) {
                 highscoredialog->exec();
@@ -352,7 +352,7 @@ SimpleMenu* PlayField::createAuxMenu()
 
 void PlayField::auxMenuDone()
 {
-    kDebug() << "aux menu done";
+    qDebug() << "aux menu done";
     SimpleMenu* menu = qobject_cast<SimpleMenu*>(sender());
     if (menu) {
         delete m_menu;

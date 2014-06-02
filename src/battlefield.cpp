@@ -9,8 +9,6 @@
 
 #include "battlefield.h"
 
-#include <kdebug.h>
-
 #include "sea.h"
 #include "settings.h"
 

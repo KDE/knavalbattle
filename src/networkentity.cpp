@@ -17,7 +17,6 @@
 
 #include <KIcon>
 #include <klocalizedstring.h>
-#include <kdebug.h>
 
 NetworkEntity::NetworkEntity(Sea::Player player, Sea* sea, SeaView* seaview, Protocol* protocol, bool client)
 : Entity(player, seaview, sea->battleShipsConfiguration())
