@@ -15,14 +15,14 @@
 
 class PlayField;
 
-class KUrl;
+class QUrl;
 
 class MainWindow : public KXmlGuiWindow
 {
 Q_OBJECT
     PlayField* m_main;
 public:
-    explicit MainWindow(const KUrl& url);
+    explicit MainWindow(const QUrl& url);
 protected:
     void setupActions();
 private slots:

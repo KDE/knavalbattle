@@ -12,8 +12,6 @@
 #include <QMouseEvent>
 #include <QSizePolicy>
 
-#include <kicon.h>
-
 #include "kbsrenderer.h"
 #include "sprite.h"
 #include "animator.h"

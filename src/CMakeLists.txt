@@ -1,3 +1,5 @@
+find_package(Phonon4Qt5 REQUIRED)
+
 include_directories(${CMAKE_SOURCE_DIR}/libkdegames/highscore ${CMAKE_CURRENT_SOURCE_DIR}/kwelcomescreen)
 
 set(knavalbattle_SRCS
@@ -41,12 +43,12 @@ set(knavalbattle_SRCS
     welcomescreen.cpp)
 
 
-kde4_add_kcfg_files(knavalbattle_SRCS settingsbase.kcfgc)
+kconfig_add_kcfg_files(knavalbattle_SRCS settingsbase.kcfgc)
 
-kde4_add_app_icon(knavalbattle_SRCS "${CMAKE_CURRENT_SOURCE_DIR}/../data/pictures/hi*-app-knavalbattle.png")
-kde4_add_executable(knavalbattle ${knavalbattle_SRCS} ${kwelcomescreen_SRCS})
+#kde4_add_app_icon(knavalbattle_SRCS "${CMAKE_CURRENT_SOURCE_DIR}/../data/pictures/hi*-app-knavalbattle.png") TODO Port!
+add_executable(knavalbattle ${knavalbattle_SRCS} ${kwelcomescreen_SRCS})
 
-target_link_libraries(knavalbattle ${QT_QTXML_LIBRARY} ${QT_QTNETWORK_LIBRARY} ${KDE4_KDEUI_LIBS} ${KDE4_PHONON_LIBS} ${KDE4_KDNSSD_LIBS} kdegames)
+target_link_libraries(knavalbattle Qt5::Xml Qt5::Qml Qt5::Network KF5::KDELibs4Support KF5::TextWidgets KF5::DNSSD Phonon::phonon4qt5 kdegames)
 
 install(TARGETS knavalbattle  ${INSTALL_TARGETS_DEFAULT_ARGS} )
 install( FILES knavalbattleui.rc  DESTINATION  ${DATA_INSTALL_DIR}/knavalbattle )

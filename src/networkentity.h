@@ -43,7 +43,7 @@ public:
     virtual void notifyRestart(Sea::Player);
     virtual void hit(Shot* shot);
 
-    virtual KIcon icon() const;
+    virtual QIcon icon() const;
 private slots:
     void received(MessagePtr msg);
     virtual void notifyAbort();

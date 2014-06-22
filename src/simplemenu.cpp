@@ -10,9 +10,9 @@
 #include "simplemenu.h"
 
 #include <QTcpSocket>
+#include <QIcon>
 
 #include <KLocalizedString>
-#include <KIcon>
 
 #include "button.h"
 #include "chatwidget.h"
@@ -40,9 +40,9 @@ SimpleMenu::SimpleMenu(QWidget* parent, WelcomeScreen* screen)
 {
     if (m_screen) {    
         // create buttons
-        m_local_game_btn = m_screen->addButton(0, 0, KIcon( QLatin1String( iconLocal) ), i18n("Single Player" ));
-        m_server_btn = m_screen->addButton(0, 1, KIcon( QLatin1String( iconServer) ), i18n("Host Network Game" ));
-        m_client_btn = m_screen->addButton(0, 2, KIcon( QLatin1String( iconClient) ), i18n("Connect to Network Game" ));
+        m_local_game_btn = m_screen->addButton(0, 0, QIcon( QLatin1String( iconLocal) ), i18n("Single Player" ));
+        m_server_btn = m_screen->addButton(0, 1, QIcon( QLatin1String( iconServer) ), i18n("Host Network Game" ));
+        m_client_btn = m_screen->addButton(0, 2, QIcon( QLatin1String( iconClient) ), i18n("Connect to Network Game" ));
         
         // create connections
         connect(m_local_game_btn, SIGNAL(clicked()),
@@ -83,7 +83,7 @@ void SimpleMenu::createServer()
     }
 }
 
-void SimpleMenu::createClient(const KUrl& url)
+void SimpleMenu::createClient(const QUrl& url)
 {
     QWidget* parent_widget = qobject_cast<QWidget*>(parent());
     Q_ASSERT(parent_widget);

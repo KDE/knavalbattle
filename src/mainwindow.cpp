@@ -11,9 +11,10 @@
 #include "mainwindow.h"
 
 
-#include <KAction>
+#include <QAction>
+#include <QIcon>
+
 #include <KActionCollection>
-#include <KIcon>
 #include <KLocalizedString>
 #include <KStandardAction>
 #include <KStandardGameAction>
@@ -25,7 +26,7 @@
 #include "simplemenu.h"
 #include "animator.h"
 
-MainWindow::MainWindow(const KUrl& url)
+MainWindow::MainWindow(const QUrl& url)
 {
     m_main = new PlayField(this, statusBar());
     
@@ -59,18 +60,21 @@ void MainWindow::setupActions()
     
     KStandardGameAction::quit(this, SLOT(close()), actionCollection());
     
-    KAction* action;
-    action = new KAction(KIcon( QLatin1String( SimpleMenu::iconLocal) ), i18n("&Single Player"), this);
+    QAction* action;
+    action = new QAction(i18n("&Single Player"), this);
+    action->setIcon(QIcon::fromTheme( QLatin1String( SimpleMenu::iconLocal)));
     actionCollection()->addAction("game_local", action);
     connect(action, SIGNAL(triggered()), m_main, SLOT(localGame()));
-    action = new KAction(KIcon( QLatin1String( SimpleMenu::iconServer) ), i18n("&Host Game..."), this);
+    action = new QAction(i18n("&Host Game..."), this);
+    action->setIcon(QIcon::fromTheme( QLatin1String( SimpleMenu::iconServer)));
     actionCollection()->addAction("game_create_server", action);
     connect(action, SIGNAL(triggered()), m_main, SLOT(createServer()));
-    action = new KAction(KIcon( QLatin1String( SimpleMenu::iconClient) ), i18n("&Connect to Game..."), this);
+    action = new QAction(i18n("&Connect to Game..."), this);
+    action->setIcon(QIcon::fromTheme( QLatin1String( SimpleMenu::iconClient))),
     actionCollection()->addAction("game_create_client", action);
     connect(action, SIGNAL(triggered()), m_main, SLOT(createClient()));
     // settings
-    action = new KAction(i18n("Change &Nickname..."), this);
+    action = new QAction(i18n("Change &Nickname..."), this);
     actionCollection()->addAction("options_nickname", action);
     connect(action, SIGNAL(triggered()), m_main, SLOT(changeNick()));
     action = new KToggleAction(i18n("&Play Sounds"), this);

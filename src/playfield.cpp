@@ -14,8 +14,8 @@
 #include <QStatusBar>
 #include <QVBoxLayout>
 #include <QDebug>
+#include <QInputDialog>
 
-#include <KInputDialog>
 #include <KLocale>
 #include <KMessageBox>
 #include <KScoreDialog>
@@ -230,30 +230,30 @@ void PlayField::gameOver(Sea::Player winner)
 
 void PlayField::changeNick()
 {
-    QString nick = KInputDialog::getText(i18n("Change Nickname"), i18n("Enter new nickname:"), Settings::findNick());
+    QString nick = QInputDialog::getText(this, i18n("Change Nickname"), i18n("Enter new nickname:"), QLineEdit::Normal, Settings::findNick());
     if (!nick.isEmpty()) {
         Settings::setNickname(nick);
-        Settings::self()->writeConfig();
+        Settings::self()->save();
     }
 }
 
 void PlayField::toggleSounds(bool enable)
 {
     Settings::setEnableSounds(enable);
-    Settings::self()->writeConfig();
+    Settings::self()->save();
     m_player->setActive(enable);
 }
 
 void PlayField::toggleAdjacent(bool enable)
 {
     Settings::setAdjacentShips(enable);
-    Settings::self()->writeConfig();
+    Settings::self()->save();
 }
 
 void PlayField::toggleMultiple(bool enable)
 {
     Settings::setSeveralShips(enable);
-    Settings::self()->writeConfig();
+    Settings::self()->save();
 }
 
 void PlayField::restartRequested()
@@ -322,10 +322,9 @@ void PlayField::startPlacingShips()
 void PlayField::restartPlacingShips(Sea::Player player)
 {
     m_status_bar->showMessage(i18n("You can't place your remaining ships."));
-    KMessageBox restartYesNo;
     KGuiItem buttonRestart=KStandardGuiItem::yes(); buttonRestart.setText(i18n("Restart"));
     KGuiItem buttonAbort=KStandardGuiItem::no(); buttonAbort.setText(i18n("Abort"));
-    int res=restartYesNo.warningYesNo(this, i18n("You can't place your remaining ships. Please restart placing ships or abort game"), i18n("Restart placing ships"), buttonRestart, buttonAbort);
+    int res=KMessageBox::warningYesNo(this, i18n("You can't place your remaining ships. Please restart placing ships or abort game"), i18n("Restart placing ships"), buttonRestart, buttonAbort);
     if (res == KMessageBox::Yes) {
         startPlacingShips();
         m_controller->notifyRestartPlacingShips(player);
@@ -376,7 +375,7 @@ void PlayField::createClient()
     createAuxMenu()->createClient();
 }
 
-void PlayField::createClient(const KUrl& url)
+void PlayField::createClient(const QUrl& url)
 {
     createAuxMenu()->createClient(url);
 }

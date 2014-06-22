@@ -10,8 +10,8 @@
 #include "welcomescreen.h"
 
 #include <QDebug>
+#include <QIcon>
 
-#include <kicon.h>
 #include <klocale.h>
 
 #include "button.h"

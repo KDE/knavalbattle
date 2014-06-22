@@ -9,7 +9,7 @@
 
 #include "audioplayer.h"
 
-#include <Phonon/MediaObject>
+#include <phonon/MediaObject>
 #include <KStandardDirs>
 
 AudioPlayer::AudioPlayer(QObject* parent)
@@ -39,7 +39,7 @@ void AudioPlayer::play(Sea::Player player, const HitInfo& info)
         
         if (!sound.isEmpty()) {
             qDebug() << "****** playing" << m_dir.filePath(sound);
-            m_media->setCurrentSource(m_dir.filePath(sound));
+            m_media->setCurrentSource(QUrl::fromLocalFile(m_dir.filePath(sound)));
             m_media->play();
         }
     }
