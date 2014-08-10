@@ -12,8 +12,6 @@
 #include <QDebug>
 #include <QIcon>
 
-#include <klocale.h>
-
 #include "button.h"
 #include "animator.h"
 

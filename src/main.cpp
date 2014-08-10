@@ -9,12 +9,13 @@
   (at your option) any later version.
 */
 
-#include <kapplication.h>
-#include <kaboutdata.h>
-#include <kcmdlineargs.h>
+#include <KAboutData>
+#include <KLocalizedString>
 
+#include <QApplication>
 #include <QUrl>
-#include <QtCore/QCommandLineParser>
+#include <QCommandLineParser>
+#include <QCommandLineOption>
 
 #include "mainwindow.h"
 #include "coord.h"
@@ -22,6 +23,8 @@
 
 int main(int argc, char** argv)
 {
+    QApplication app(argc, argv);
+    
     KAboutData aboutData(QStringLiteral("knavalbattle"), i18n("Naval Battle"), QStringLiteral("2.0"), 
         i18n("The KDE ship sinking game"), KAboutLicense::GPL, 
         i18n("(c) 2000-2005  Nikolas Zimmermann, Daniel Molkentin\n"
@@ -47,23 +50,36 @@ int main(int argc, char** argv)
     aboutData.addCredit(i18n("Jakub Stachowski"), i18n("DNS-SD discovery"), QStringLiteral("qbast@go2.pl"));
     aboutData.addCredit(i18n("Roney Gomes"), i18n("Porting to KGameRenderer and QGraphicsView"), QStringLiteral("roney477@gmail.com"));
         
-    QApplication::setApplicationName(i18n("knavalbattle"));
-    QApplication app(argc, argv);
+    aboutData.setOrganizationDomain(QByteArray("kde.org"));
+    aboutData.setProgramIconName(QStringLiteral("knavalbattle"));
+    aboutData.setProductName(QByteArray("knavalbattle"));
         
-    //KCmdLineOptions options;
-    //options.add("!+[URL]", ki18n("URL of a Naval Battle game server to connect to after startup"));   TODO Port, use QCommandLineParser?
-    //KCmdLineArgs::addCmdLineOptions( options ); // Add our own options.
+    app.setApplicationName(aboutData.componentName());
+    app.setApplicationDisplayName(aboutData.displayName());
+    app.setOrganizationDomain(aboutData.organizationDomain());
+    app.setApplicationVersion(aboutData.version());
+  
+    QCommandLineParser parser;
     
+    parser.addVersionOption();
+    parser.addHelpOption();
+    parser.process(app);
+    parser.addOption(QCommandLineOption(QStringList() << QLatin1String("!+[URL]"), i18n("URL of a Naval Battle game server to connect to after startup")));
     
-    KLocalizedString::setApplicationDomain("libkdegames" );
+    aboutData.processCommandLine(&parser);
+    aboutData.setupCommandLine(&parser);
+    
+    KAboutData::setApplicationData(aboutData);
+    
+    KLocalizedString::setApplicationDomain("libkdegames");
     
     qRegisterMetaType<Coord>("Coord");
 
     QUrl url;
-    
-    if (argc > 0) {
-        for (int i = 0; i < argc; ++i) {
-            url = QUrl(QUrl::fromUserInput(argv[i])); 
+    const QStringList &args = parser.positionalArguments();
+    if (args.count() > 0) {
+        for (int i = 0; i < args.count(); ++i) {
+            url = QUrl(args.at(i)); 
 
             if (!url.isValid())
                 continue;

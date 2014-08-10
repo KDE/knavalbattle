@@ -44,13 +44,12 @@ set(knavalbattle_SRCS
 
 
 kconfig_add_kcfg_files(knavalbattle_SRCS settingsbase.kcfgc)
-
-#kde4_add_app_icon(knavalbattle_SRCS "${CMAKE_CURRENT_SOURCE_DIR}/../data/pictures/hi*-app-knavalbattle.png") TODO Port!
+kde4_add_app_icon(knavalbattle_SRCS "${CMAKE_CURRENT_SOURCE_DIR}/../data/pictures/hi*-app-knavalbattle.png")
 add_executable(knavalbattle ${knavalbattle_SRCS} ${kwelcomescreen_SRCS})
 
 target_link_libraries(knavalbattle Qt5::Xml Qt5::Qml Qt5::Network KF5::KDELibs4Support KF5::TextWidgets KF5::DNSSD Phonon::phonon4qt5 kdegames)
 
 install(TARGETS knavalbattle  ${INSTALL_TARGETS_DEFAULT_ARGS} )
-install( FILES knavalbattleui.rc  DESTINATION  ${DATA_INSTALL_DIR}/knavalbattle )
+install( FILES knavalbattleui.rc  DESTINATION  ${KXMLGUI_INSTALL_DIR}/knavalbattle )
 install(PROGRAMS knavalbattle.desktop DESTINATION ${XDG_APPS_INSTALL_DIR})
 install( FILES knavalbattle.protocol  DESTINATION ${SERVICES_INSTALL_DIR})

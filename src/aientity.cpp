@@ -13,8 +13,8 @@
 #include "shot.h"
 #include "seaview.h"
 
-
 #include <KgDifficulty>
+
 #include <QIcon>
 
 AIEntity::AIEntity(Sea::Player player, Sea* sea, SeaView *seaview)

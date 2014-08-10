@@ -4,14 +4,38 @@ cmake_minimum_required (VERSION 2.8.12 FATAL_ERROR)
 set (QT_MIN_VERSION "5.2.0")
 
 find_package(ECM 0.0.9 REQUIRED CONFIG)
-set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH})
-set(DATA_INSTALL_DIR "/usr/local/share")
+set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${ECM_MODULE_PATH} ${ECM_KDE_MODULE_DIR})
 
-find_package(Qt5 ${QT_MIN_VERSION} REQUIRED NO_MODULE COMPONENTS Widgets Qml Quick Svg Test)
-find_package(KF5 REQUIRED COMPONENTS CoreAddons Config ItemModels WidgetsAddons WindowSystem Codecs Archive
-    Config DBusAddons DNSSD Declarative
-    I18n GuiAddons Service ConfigWidgets ItemViews IconThemes Completion JobWidgets TextWidgets GlobalAccel XmlGui Crash
-    Bookmarks KIO NotifyConfig NewStuff KDELibs4Support)
+find_package(Qt5 ${QT_MIN_VERSION} REQUIRED NO_MODULE COMPONENTS Widgets Qml Quick QuickWidgets Svg Test)
+find_package(KF5 REQUIRED COMPONENTS 
+  CoreAddons 
+  Config 
+  ItemModels 
+  WidgetsAddons 
+  WindowSystem 
+  Codecs 
+  Archive
+  Config 
+  DBusAddons 
+  DNSSD 
+  Declarative
+  I18n 
+  GuiAddons 
+  Service 
+  ConfigWidgets 
+  ItemViews 
+  IconThemes 
+  Completion 
+  JobWidgets 
+  TextWidgets 
+  GlobalAccel 
+  XmlGui 
+  Crash
+  Bookmarks 
+  KIO 
+  NotifyConfig 
+  NewStuff 
+  KDELibs4Support)
     
 find_package(KDEGames 4.9.0 REQUIRED)
 
