@@ -1,4 +1,4 @@
-include_directories(${CMAKE_SOURCE_DIR}/libkdegames/highscore ${CMAKE_CURRENT_SOURCE_DIR}/kwelcomescreen)
+include_directories(${CMAKE_SOURCE_DIR}/KF5KDEGames/highscore ${CMAKE_CURRENT_SOURCE_DIR}/kwelcomescreen)
 
 set(knavalbattle_SRCS
     ai/ai.cpp
@@ -45,7 +45,7 @@ kconfig_add_kcfg_files(knavalbattle_SRCS settingsbase.kcfgc)
 kde4_add_app_icon(knavalbattle_SRCS "${CMAKE_CURRENT_SOURCE_DIR}/../data/pictures/hi*-app-knavalbattle.png")
 add_executable(knavalbattle ${knavalbattle_SRCS} ${kwelcomescreen_SRCS})
 
-target_link_libraries(knavalbattle Qt5::Xml Qt5::Qml Qt5::Network KF5::KDELibs4Support KF5::TextWidgets KF5::DNSSD Phonon::phonon4qt5 kdegames)
+target_link_libraries(knavalbattle Qt5::Xml Qt5::Qml Qt5::Network KF5::KDELibs4Support KF5::TextWidgets KF5::DNSSD Phonon::phonon4qt5 KF5KDEGames)
 
 install(TARGETS knavalbattle  ${INSTALL_TARGETS_DEFAULT_ARGS} )
 install( FILES knavalbattleui.rc  DESTINATION  ${KXMLGUI_INSTALL_DIR}/knavalbattle )
