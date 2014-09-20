@@ -9,7 +9,8 @@
 
 #include "controller.h"
 
-#include <klocalizedstring.h>
+#include <KLocalizedString>
+
 #include "playerentity.h"
 #include "aientity.h"
 #include "networkentity.h"

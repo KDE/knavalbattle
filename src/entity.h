@@ -11,6 +11,7 @@
 #define ENTITY_H
 
 #include <QObject>
+
 #include "sea.h"
 #include "seaview.h"
 #include "stats.h"

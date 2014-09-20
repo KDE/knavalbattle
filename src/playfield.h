@@ -11,7 +11,9 @@
 #define PLAYFIELD_H
 
 #include <QWidget>
+
 #include <KgDifficulty>
+
 #include "sea.h"
 #include "ships.h"
 

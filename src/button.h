@@ -16,6 +16,7 @@
 #include <QPointer>
 #include <QWidget>
 #include <QGraphicsItem>
+
 #include "welcomescreen.h"
 #include "animation.h"
 

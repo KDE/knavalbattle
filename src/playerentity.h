@@ -11,6 +11,7 @@
 #define PLAYERENTITY_H
 
 #include <QList>
+
 #include "sea.h"
 #include "uientity.h"
 #include "delegate.h"

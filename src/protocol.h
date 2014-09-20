@@ -13,6 +13,7 @@
 #include <QString>
 #include <QTimer>
 #include <QQueue>
+
 #include "message.h"
 
 class QIODevice;

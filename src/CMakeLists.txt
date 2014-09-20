@@ -1,5 +1,3 @@
-find_package(Phonon4Qt5 REQUIRED)
-
 include_directories(${CMAKE_SOURCE_DIR}/libkdegames/highscore ${CMAKE_CURRENT_SOURCE_DIR}/kwelcomescreen)
 
 set(knavalbattle_SRCS

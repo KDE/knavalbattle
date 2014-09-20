@@ -9,10 +9,11 @@
 
 #include "chatwidget.h"
 
-#include <QKeyEvent>
 #include <KLineEdit>
 #include <KTextEdit>
+
 #include <QVBoxLayout>
+#include <QKeyEvent>
 
 #include "entity.h"
 

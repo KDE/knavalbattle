@@ -11,6 +11,7 @@
 
 #include <KMessageBox>
 #include <KLocalizedString>
+
 #include "seaview.h"
 #include "shot.h"
 #include "coord.h"

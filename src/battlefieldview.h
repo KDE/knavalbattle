@@ -15,6 +15,7 @@
 #include <QWidget>
 #include <QGraphicsView>
 #include <QGraphicsLineItem>
+
 #include <KGameRenderedItem>
 
 #include "coord.h"

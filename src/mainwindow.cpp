@@ -10,7 +10,6 @@
 
 #include "mainwindow.h"
 
-
 #include <QAction>
 #include <QIcon>
 

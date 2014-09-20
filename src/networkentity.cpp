@@ -16,7 +16,8 @@
 #include "seaview.h"
 
 #include <QIcon>
-#include <klocalizedstring.h>
+
+#include <KLocalizedString>
 
 NetworkEntity::NetworkEntity(Sea::Player player, Sea* sea, SeaView* seaview, Protocol* protocol, bool client)
 : Entity(player, seaview, sea->battleShipsConfiguration())

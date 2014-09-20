@@ -10,13 +10,14 @@
 #include "audioplayer.h"
 
 #include <phonon/MediaObject>
-#include <KStandardDirs>
+
+#include <QStandardPaths>
 
 AudioPlayer::AudioPlayer(QObject* parent)
 : QObject(parent)
 , m_media(0)
 {
-    m_dir = KStandardDirs::locate("appdata", "sounds/");
+    m_dir = QStandardPaths::locate(QStandardPaths::DataLocation, "sounds/");
 }
 
 void AudioPlayer::play(Sea::Player player, const HitInfo& info)

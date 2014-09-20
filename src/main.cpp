@@ -54,7 +54,6 @@ int main(int argc, char** argv)
     aboutData.setProgramIconName(QStringLiteral("knavalbattle"));
     aboutData.setProductName(QByteArray("knavalbattle"));
         
-    app.setApplicationName(aboutData.componentName());
     app.setApplicationDisplayName(aboutData.displayName());
     app.setOrganizationDomain(aboutData.organizationDomain());
     app.setApplicationVersion(aboutData.version());
@@ -71,7 +70,7 @@ int main(int argc, char** argv)
     
     KAboutData::setApplicationData(aboutData);
     
-    KLocalizedString::setApplicationDomain("libkdegames");
+    KLocalizedString::setApplicationDomain("knavalbattle");
     
     qRegisterMetaType<Coord>("Coord");
 
