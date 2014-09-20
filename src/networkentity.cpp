@@ -15,9 +15,8 @@
 #include "settings.h"
 #include "seaview.h"
 
-#include <KIcon>
+#include <QIcon>
 #include <klocalizedstring.h>
-#include <kdebug.h>
 
 NetworkEntity::NetworkEntity(Sea::Player player, Sea* sea, SeaView* seaview, Protocol* protocol, bool client)
 : Entity(player, seaview, sea->battleShipsConfiguration())
@@ -318,9 +317,9 @@ void NetworkEntity::visit(const GameOptionsMessage& msg)
 }
 
 
-KIcon NetworkEntity::icon() const
+QIcon NetworkEntity::icon() const
 {
-    return KIcon( QLatin1String( "network-workgroup" ));
+    return QIcon( QLatin1String( "network-workgroup" ));
 }
 
 #include "networkentity.moc"

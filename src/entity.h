@@ -17,7 +17,7 @@
 #include "ships.h"
 
 class Shot;
-class KIcon;
+class QIcon;
 
 class Entity : public QObject
 {
@@ -60,7 +60,7 @@ public:
     
     QString nick() const { return m_nick; }
     CompatibilityLevel compatibilityLevel() const { return m_level; }
-    virtual KIcon icon() const = 0;
+    virtual QIcon icon() const = 0;
     virtual void setNick(const QString& nick);
 signals:
     void shoot(int player, const Coord& c);

@@ -36,7 +36,7 @@ public:
     virtual void hit(Shot* shot);
     virtual void notifyGameOptions(bool ask);
 
-    virtual KIcon icon() const;
+    virtual QIcon icon() const;
 public slots:
     virtual void notifyAbort() { }
     virtual void notifyRestartPlacing(Sea::Player player) { };

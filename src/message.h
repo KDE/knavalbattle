@@ -10,21 +10,21 @@
 #ifndef MESSAGE_H
 #define MESSAGE_H
 
-#include <ksharedptr.h>
+#include <QExplicitlySharedDataPointer>
 
 #include "ship.h"
 #include "ships.h"
 
 class MessageVisitor;
 
-class Message : public KShared
+class Message : public QSharedData
 {
 public:
     virtual ~Message() { }
     virtual void accept(MessageVisitor& visitor) const = 0;
 };
 
-typedef KSharedPtr<Message> MessagePtr;
+typedef QExplicitlySharedDataPointer<Message> MessagePtr;
 
 class HeaderMessage : public Message
 {

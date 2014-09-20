@@ -12,13 +12,14 @@
 #define NETWORKDIALOG_H
 
 #include <KDialog>
+#include <QUrl>
 
 class KComboBox;
-class KIntSpinBox;
+class KPluralHandlingSpinBox;
 class KLineEdit;
 class QLabel;
 class QTcpSocket;
-namespace DNSSD { class PublicService; }
+namespace KDNSSD { class PublicService; }
 
 class NetworkDialog : public KDialog
 {
@@ -26,10 +27,10 @@ Q_OBJECT
     KLineEdit* m_nickname;
     KLineEdit* m_hostname;
     QTcpSocket* m_socket;
-    KIntSpinBox* m_port;
+    KPluralHandlingSpinBox* m_port;
     QLabel* m_feedback;
     KComboBox* m_games;
-    DNSSD::PublicService* m_publisher;
+    KDNSSD::PublicService* m_publisher;
     bool m_client;
     
     QString hostname() const;
@@ -45,7 +46,7 @@ private slots:
 protected:
     void slotButtonClicked(int);
 public:
-    explicit NetworkDialog(bool client, QWidget* parent = 0, const KUrl* url = 0);
+    explicit NetworkDialog(bool client, QWidget* parent = 0, const QUrl* url = 0);
     ~NetworkDialog();
     
     QString nickname() const;

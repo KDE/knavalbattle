@@ -11,7 +11,7 @@
 #define COORD_H
 
 #include <QMetaType>
-#include <kdebug.h>
+#include <QDebug>
 
 class Coord
 {

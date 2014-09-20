@@ -38,7 +38,7 @@ public:
     virtual void registerHit(Sea::Player, const Coord&) { }
     virtual void registerMiss(Sea::Player, const Coord&) { }
     
-    virtual KIcon icon() const;
+    virtual QIcon icon() const;
 public slots:
     virtual void notifyAbort() { }
     virtual void notifyRestartPlacing(Sea::Player player) { };

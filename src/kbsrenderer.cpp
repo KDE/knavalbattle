@@ -10,7 +10,6 @@
 #include "coord.h"
 #include "kbsrenderer.h"
 
-#include <kdebug.h>
 #include <KgThemeProvider>
 #include <KGameRenderedItem>
 

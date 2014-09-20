@@ -9,7 +9,6 @@
 
 #include "sprite.h"
 
-#include <kdebug.h>
 #include <QGraphicsEffect>
 
 #include "kbsrenderer.h"

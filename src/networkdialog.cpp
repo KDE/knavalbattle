@@ -15,19 +15,20 @@
 #include <QTcpServer>
 #include <QVBoxLayout>
 #include <QHBoxLayout>
+#include <QPushButton>
+
 #include <KComboBox>
-#include <KNumInput>
+#include <KPluralHandlingSpinBox>
 #include <KLineEdit>
 #include <KLocalizedString>
-#include <KPushButton>
 #include <KSeparator>
-#include <DNSSD/ServiceBrowser>
-#include <DNSSD/ServiceModel>
-#include <DNSSD/PublicService>
+#include <KDNSSD/DNSSD/ServiceBrowser>
+#include <KDNSSD/DNSSD/ServiceModel>
+#include <KDNSSD/DNSSD/PublicService>
 
 #include "settings.h"
 
-NetworkDialog::NetworkDialog(bool client, QWidget* parent, const KUrl* url)
+NetworkDialog::NetworkDialog(bool client, QWidget* parent, const QUrl* url)
 : KDialog(parent)
 , m_publisher(0), m_client(client)
 {
@@ -65,8 +66,8 @@ NetworkDialog::NetworkDialog(bool client, QWidget* parent, const KUrl* url)
     if (m_client) {
         tmp = new QLabel(i18n("&Join game:"), main);
         m_games=new KComboBox(main);
-        DNSSD::ServiceBrowser* browser=new DNSSD::ServiceBrowser("_kbattleship._tcp", true);
-        m_games->setModel(new DNSSD::ServiceModel(browser, this));
+        KDNSSD::ServiceBrowser* browser=new KDNSSD::ServiceBrowser("_kbattleship._tcp", true);
+        m_games->setModel(new KDNSSD::ServiceModel(browser, this));
         tmp->setBuddy(m_games);
         tmpLayout = new QHBoxLayout;
         tmpLayout->addWidget(tmp);
@@ -93,7 +94,7 @@ NetworkDialog::NetworkDialog(bool client, QWidget* parent, const KUrl* url)
         // port
         const int port = ( url && url->port() != -1 )? url->port(): Settings::port();
         tmp = new QLabel(i18n("&Port:"), main);
-        m_port = new KIntSpinBox(main);
+        m_port = new KPluralHandlingSpinBox(main);
         m_port->setRange(1, 99999);
         m_port->setValue(port);
         tmp->setBuddy(m_port);
@@ -123,7 +124,7 @@ NetworkDialog::NetworkDialog(bool client, QWidget* parent, const KUrl* url)
     
         // port
         tmp = new QLabel(i18n("&Port:"), main);
-        m_port = new KIntSpinBox(main);
+        m_port = new KPluralHandlingSpinBox(main);
         m_port->setRange(1, 99999);
         m_port->setValue(Settings::port());
         tmp->setBuddy(m_port);
@@ -156,7 +157,7 @@ void NetworkDialog::savePreferences()
         Settings::setHostname(hostname());
     }
     Settings::setPort(port());
-    Settings::self()->writeConfig();
+    Settings::self()->save();
 }
 
 void NetworkDialog::serviceSelected(int idx)
@@ -164,7 +165,7 @@ void NetworkDialog::serviceSelected(int idx)
     if (idx==-1) {
         return;
     }
-    DNSSD::RemoteService::Ptr service=m_games->itemData(idx,DNSSD::ServiceModel::ServicePtrRole ).value<DNSSD::RemoteService::Ptr>();
+    KDNSSD::RemoteService::Ptr service=m_games->itemData(idx,KDNSSD::ServiceModel::ServicePtrRole ).value<KDNSSD::RemoteService::Ptr>();
     m_hostname->setText(service->hostName());
     m_port->setValue(service->port());
 }
@@ -197,7 +198,7 @@ QTcpSocket* NetworkDialog::socket() const
 void NetworkDialog::slotButtonClicked(int code)
 {
     if (code == Ok) {
-        KPushButton* b = button(Ok);
+        QPushButton* b = button(Ok);
         b->setEnabled(false);
         m_feedback->show();
        
@@ -212,7 +213,7 @@ void NetworkDialog::slotButtonClicked(int code)
             m_feedback->setText(i18n("Waiting for an incoming connection..."));        
             QTcpServer* server = new QTcpServer;
             connect(server, SIGNAL(newConnection()), this, SLOT(serverOK()));
-            m_publisher=new DNSSD::PublicService(nickname(), "_kbattleship._tcp", m_port->value());
+            m_publisher=new KDNSSD::PublicService(nickname(), "_kbattleship._tcp", m_port->value());
             m_publisher->publishAsync();
             
             server->listen(QHostAddress::Any, static_cast<quint16>(m_port->value()));

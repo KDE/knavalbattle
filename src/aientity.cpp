@@ -13,9 +13,9 @@
 #include "shot.h"
 #include "seaview.h"
 
-
 #include <KgDifficulty>
-#include <KIcon>
+
+#include <QIcon>
 
 AIEntity::AIEntity(Sea::Player player, Sea* sea, SeaView *seaview)
 : Entity(player, seaview, sea->battleShipsConfiguration())
@@ -97,9 +97,9 @@ void AIEntity::getShoot()
     }
 }
 
-KIcon AIEntity::icon() const
+QIcon AIEntity::icon() const
 {
-    return KIcon( QLatin1String( "roll" ));
+    return QIcon( QLatin1String( "roll" ));
 }
 
 #include "aientity.moc"

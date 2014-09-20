@@ -12,7 +12,7 @@
 #include "shot.h"
 #include "ship.h"
 
-#include <KIcon>
+#include <QIcon>
 #include <QList>
 
 UIEntity::UIEntity(Sea::Player player, Sea* sea, SeaView* view)
@@ -85,9 +85,9 @@ void UIEntity::drawShoot(Sea::Player player, const Coord& c, const HitInfo& info
     }
 }
 
-KIcon UIEntity::icon() const
+QIcon UIEntity::icon() const
 {
-    return KIcon( QLatin1String( "user-identity" ));
+    return QIcon( QLatin1String( "user-identity" ));
 }
 
 #include "uientity.moc"

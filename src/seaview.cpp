@@ -12,7 +12,7 @@
 #include <QMouseEvent>
 #include <QObject>
 
-#include <KIcon>
+#include <QIcon>
 
 #include "battlefieldview.h"
 #include "button.h"

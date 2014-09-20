@@ -9,11 +9,13 @@
   (at your option) any later version.
 */
 
-#include <kapplication.h>
-#include <klocale.h>
-#include <kaboutdata.h>
-#include <kcmdlineargs.h>
-#include <kurl.h>
+#include <KAboutData>
+#include <KLocalizedString>
+
+#include <QApplication>
+#include <QUrl>
+#include <QCommandLineParser>
+#include <QCommandLineOption>
 
 #include "mainwindow.h"
 #include "coord.h"
@@ -21,47 +23,63 @@
 
 int main(int argc, char** argv)
 {
-    KAboutData aboutData("knavalbattle", 0, ki18n("Naval Battle"), "2.0", 
-        ki18n("The KDE ship sinking game"), KAboutData::License_GPL, 
-        ki18n("(c) 2000-2005  Nikolas Zimmermann, Daniel Molkentin\n"
-              "(c) 2007 Paolo Capriotti"), KLocalizedString(), "http://games.kde.org/kbattleship" );
+    QApplication app(argc, argv);
     
-    aboutData.addAuthor(ki18n("Paolo Capriotti"), ki18n("Current maintainer"), "p.capriotti@gmail.com");
-    aboutData.addAuthor(ki18n("Nikolas Zimmermann"), ki18n("Project Founder, GUI Handling, Client/Server"), "wildfox@kde.org");
-    aboutData.addAuthor(ki18n("Daniel Molkentin"), ki18n("Dialog Stuff, Client/Server"), "molkentin@kde.org");
-    aboutData.addAuthor(ki18n("Kevin Krammer"), ki18n("Computer Player"), "kevin.krammer@gmx.at");
+    KAboutData aboutData(QStringLiteral("knavalbattle"), i18n("Naval Battle"), QStringLiteral("2.0"), 
+        i18n("The KDE ship sinking game"), KAboutLicense::GPL, 
+        i18n("(c) 2000-2005  Nikolas Zimmermann, Daniel Molkentin\n"
+              "(c) 2007 Paolo Capriotti"), QString(), QStringLiteral("http://games.kde.org/kbattleship") );
     
-    aboutData.addCredit(ki18n("Johann Ollivier Lapeyre"), ki18n("Game artwork"), "johann.ollivierlapeyre@gmail.com");
-    aboutData.addCredit(ki18n("Eugene Trounev"), ki18n("Background"), "irs_me@hotmail.com");
-    aboutData.addCredit(ki18n("Robert Wadley"), ki18n("Artwork for some of the ships"), "rob@robntina.fastmail.us");
-    aboutData.addCredit(ki18n("Riccardo Iaconelli"), ki18n("Welcome screen"), "ruphy@fsfe.org");
-    aboutData.addCredit(ki18n("Benjamin Adler"), ki18n("Icon"), "benadler@bigfoot.de");
-    aboutData.addCredit(ki18n("Nils Trzebin"), ki18n("Sounds"), "nils.trzebin@stud.uni-hannover.de");
-    aboutData.addCredit(ki18n("Elmar Hoefner"), ki18n("GFX"), "elmar.hoefner@uibk.ac.at");
-    aboutData.addCredit(ki18n("Lukas Tinkl"), ki18n("Non-Latin1 Support"), "lukas@kde.org");
-    aboutData.addCredit(ki18n("Malte Starostik"), ki18n("Various improvements"), "malte.starostik@t-online.de");
-    aboutData.addCredit(ki18n("Albert Astals Cid"), ki18n("Various improvements and bugfixes"), "aacid@kde.org");
-    aboutData.addCredit(ki18n("John Tapsell"), ki18n("Various improvements and bugfixes"), "john@geola.co.uk");
-    aboutData.addCredit(ki18n("Inge Wallin"), ki18n("Bugfixes and refactoring"), "inge@lysator.liu.se");
-    aboutData.addCredit(ki18n("Jakub Stachowski"), ki18n("DNS-SD discovery"), "qbast@go2.pl");
-    aboutData.addCredit(ki18n("Roney Gomes"), ki18n("Porting to KGameRenderer and QGraphicsView"), "roney477@gmail.com");
+    aboutData.addAuthor(i18n("Paolo Capriotti"), i18n("Current maintainer"), QStringLiteral("p.capriotti@gmail.com"));
+    aboutData.addAuthor(i18n("Nikolas Zimmermann"), i18n("Project Founder, GUI Handling, Client/Server"), QStringLiteral("wildfox@kde.org"));
+    aboutData.addAuthor(i18n("Daniel Molkentin"), i18n("Dialog Stuff, Client/Server"), QStringLiteral("molkentin@kde.org"));
+    aboutData.addAuthor(i18n("Kevin Krammer"), i18n("Computer Player"), QStringLiteral("kevin.krammer@gmx.at"));
+    
+    aboutData.addCredit(i18n("Johann Ollivier Lapeyre"), i18n("Game artwork"), QStringLiteral("johann.ollivierlapeyre@gmail.com"));
+    aboutData.addCredit(i18n("Eugene Trounev"), i18n("Background"), QStringLiteral("irs_me@hotmail.com"));
+    aboutData.addCredit(i18n("Robert Wadley"), i18n("Artwork for some of the ships"), QStringLiteral("rob@robntina.fastmail.us"));
+    aboutData.addCredit(i18n("Riccardo Iaconelli"), i18n("Welcome screen"), QStringLiteral("ruphy@fsfe.org"));
+    aboutData.addCredit(i18n("Benjamin Adler"), i18n("Icon"), QStringLiteral("benadler@bigfoot.de"));
+    aboutData.addCredit(i18n("Nils Trzebin"), i18n("Sounds"), QStringLiteral("nils.trzebin@stud.uni-hannover.de"));
+    aboutData.addCredit(i18n("Elmar Hoefner"), i18n("GFX"), QStringLiteral("elmar.hoefner@uibk.ac.at"));
+    aboutData.addCredit(i18n("Lukas Tinkl"), i18n("Non-Latin1 Support"), QStringLiteral("lukas@kde.org"));
+    aboutData.addCredit(i18n("Malte Starostik"), i18n("Various improvements"), QStringLiteral("malte.starostik@t-online.de"));
+    aboutData.addCredit(i18n("Albert Astals Cid"), i18n("Various improvements and bugfixes"), QStringLiteral("aacid@kde.org"));
+    aboutData.addCredit(i18n("John Tapsell"), i18n("Various improvements and bugfixes"), QStringLiteral("john@geola.co.uk"));
+    aboutData.addCredit(i18n("Inge Wallin"), i18n("Bugfixes and refactoring"), QStringLiteral("inge@lysator.liu.se"));
+    aboutData.addCredit(i18n("Jakub Stachowski"), i18n("DNS-SD discovery"), QStringLiteral("qbast@go2.pl"));
+    aboutData.addCredit(i18n("Roney Gomes"), i18n("Porting to KGameRenderer and QGraphicsView"), QStringLiteral("roney477@gmail.com"));
         
-    KCmdLineArgs::init(argc, argv, &aboutData);
-
-    KCmdLineOptions options;
-    options.add("!+[URL]", ki18n("URL of a Naval Battle game server to connect to after startup"));
-    KCmdLineArgs::addCmdLineOptions( options ); // Add our own options.
-    KApplication app;
-    KGlobal::locale()->insertCatalog( QLatin1String( "libkdegames" ));
+    aboutData.setOrganizationDomain(QByteArray("kde.org"));
+    aboutData.setProgramIconName(QStringLiteral("knavalbattle"));
+    aboutData.setProductName(QByteArray("knavalbattle"));
+        
+    app.setApplicationName(aboutData.componentName());
+    app.setApplicationDisplayName(aboutData.displayName());
+    app.setOrganizationDomain(aboutData.organizationDomain());
+    app.setApplicationVersion(aboutData.version());
+  
+    QCommandLineParser parser;
+    
+    parser.addVersionOption();
+    parser.addHelpOption();
+    parser.process(app);
+    parser.addOption(QCommandLineOption(QStringList() << QLatin1String("!+[URL]"), i18n("URL of a Naval Battle game server to connect to after startup")));
+    
+    aboutData.processCommandLine(&parser);
+    aboutData.setupCommandLine(&parser);
+    
+    KAboutData::setApplicationData(aboutData);
+    
+    KLocalizedString::setApplicationDomain("libkdegames");
     
     qRegisterMetaType<Coord>("Coord");
 
-    KUrl url;
-    KCmdLineArgs* args = KCmdLineArgs::parsedArgs();
-
-    if (args->count() > 0) {
-        for (int i = 0; i < args->count(); ++i) {
-            url = KUrl(args->url(i));
+    QUrl url;
+    const QStringList &args = parser.positionalArguments();
+    if (args.count() > 0) {
+        for (int i = 0; i < args.count(); ++i) {
+            url = QUrl(args.at(i)); 
 
             if (!url.isValid())
                 continue;
@@ -69,10 +87,9 @@ int main(int argc, char** argv)
             break;
         }
     }
-    args->clear();
-
+    
     MainWindow* window = new MainWindow(url);
-//     StatsWidget* window = new StatsWidget(0, 0);
+    //StatsWidget* window = new StatsWidget(0, 0);
     window->show();
 
     return app.exec();
