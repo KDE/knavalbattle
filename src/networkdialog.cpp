@@ -73,7 +73,7 @@ NetworkDialog::NetworkDialog(bool client, QWidget* parent, const QUrl* url)
         tmpLayout->addWidget(tmp);
         tmpLayout->addWidget(m_games, 1);
         tmpLayout->setSpacing(KDialog::spacingHint());
-        connect(m_games, SIGNAL(currentIndexChanged(int)), this, SLOT(serviceSelected(int)));
+        connect(m_games, static_cast<void (KComboBox::*)(int)>(&KComboBox::currentIndexChanged), this, &NetworkDialog::serviceSelected);
         mainLayout->addItem(tmpLayout);
         
         QWidget* frame=new QWidget(main);
@@ -110,8 +110,8 @@ NetworkDialog::NetworkDialog(bool client, QWidget* parent, const QUrl* url)
         
         QPushButton* sw=new QPushButton(i18n("&Enter server address manually"), main);
         sw->setCheckable(true);
-        connect(sw,SIGNAL(toggled(bool)), frame, SLOT(setVisible(bool)));
-        connect(sw,SIGNAL(toggled(bool)), m_games, SLOT(setDisabled(bool)));
+        connect(sw, &QPushButton::toggled, frame, &QWidget::setVisible);
+        connect(sw, &QPushButton::toggled, m_games, &KComboBox::setDisabled);
         mainLayout->addWidget(sw);
         if(url) {
             sw->click();
@@ -140,7 +140,7 @@ NetworkDialog::NetworkDialog(bool client, QWidget* parent, const QUrl* url)
     setMainWidget(main);
     setCaption(i18n("Network Parameters"));
     
-    connect(this, SIGNAL(accepted()), this, SLOT(savePreferences()));
+    connect(this, &NetworkDialog::accepted, this, &NetworkDialog::savePreferences);
     
     enableButtonApply(false);
 }
@@ -205,14 +205,14 @@ void NetworkDialog::slotButtonClicked(int code)
         if (m_client) {
             m_feedback->setText(i18n("Connecting to remote host..."));
             m_socket = new QTcpSocket;
-            connect(m_socket, SIGNAL(connected()), this, SLOT(clientOK()));
-            connect(m_socket, SIGNAL(error(QAbstractSocket::SocketError)), this, SLOT(clientError()));
+            connect(m_socket, &QTcpSocket::connected, this, &NetworkDialog::clientOK);
+            connect(m_socket, static_cast<void (QTcpSocket::*)(QAbstractSocket::SocketError)>(&QTcpSocket::error), this, &NetworkDialog::clientError);
             m_socket->connectToHost(m_hostname->text(), m_port->value());
         }
         else {
             m_feedback->setText(i18n("Waiting for an incoming connection..."));        
             QTcpServer* server = new QTcpServer;
-            connect(server, SIGNAL(newConnection()), this, SLOT(serverOK()));
+            connect(server, &QTcpServer::newConnection, this, &NetworkDialog::serverOK);
             m_publisher=new KDNSSD::PublicService(nickname(), "_kbattleship._tcp", m_port->value());
             m_publisher->publishAsync();
             
@@ -258,5 +258,5 @@ void NetworkDialog::serverOK()
     accept();
 }
 
-#include "networkdialog.moc"
+
 

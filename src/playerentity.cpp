@@ -222,6 +222,6 @@ void PlayerEntity::notifyRestartPlacing(Sea::Player player)
 }
 
 
-#include "playerentity.moc"
+
 
 

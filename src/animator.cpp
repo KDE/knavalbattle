@@ -15,7 +15,7 @@ Animator* Animator::m_instance = 0;
 Animator::Animator()
 {
     m_group = new AnimationGroup;
-    connect(&m_timer, SIGNAL(timeout()), this, SLOT(tick()));
+    connect(&m_timer, &QTimer::timeout, this, &Animator::tick);
 }
 
 Animator::~Animator()
@@ -65,6 +65,6 @@ Animator* Animator::instance()
     return m_instance;
 }
 
-#include "animator.moc"
+
 
 

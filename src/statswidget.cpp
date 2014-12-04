@@ -107,12 +107,12 @@ void StatsWidget::setData(Stats* stats)
 {
     m_stats = stats;
     if (m_stats) {
-        connect(m_stats, SIGNAL(hitsChanged()), this, SLOT(refresh()));
-        connect(m_stats, SIGNAL(missesChanged()), this, SLOT(refresh()));
+        connect(m_stats.data(), &Stats::hitsChanged, this, &StatsWidget::refresh);
+        connect(m_stats.data(), &Stats::missesChanged, this, &StatsWidget::refresh);
     }
    refresh();
 }
 
 
 
-#include "statswidget.moc"
+

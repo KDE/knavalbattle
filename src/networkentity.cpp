@@ -74,8 +74,8 @@ void NetworkEntity::notifyRestart(Sea::Player)
 
 void NetworkEntity::notifyGameOptions(bool ask)
 {
-    connect(m_protocol, SIGNAL(received(MessagePtr)), this, SLOT(received(MessagePtr)));
-    connect(m_protocol, SIGNAL(disconnected()), this, SIGNAL(abortGame()));
+    connect(m_protocol, &Protocol::received, this, &NetworkEntity::received);
+    connect(m_protocol, &Protocol::disconnected, this, &NetworkEntity::abortGame);
     if (ask || m_restarted) {
         m_protocol->send(MessagePtr(new RestartMessage()));
         m_restarted = true;
@@ -323,4 +323,4 @@ QIcon NetworkEntity::icon() const
     return QIcon( QLatin1String( "network-workgroup" ));
 }
 
-#include "networkentity.moc"
+

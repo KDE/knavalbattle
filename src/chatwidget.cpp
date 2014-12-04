@@ -39,7 +39,7 @@ ChatWidget::ChatWidget(QWidget* parent)
     m_history.push_back("");
     m_current = 0;
     
-    connect(m_input, SIGNAL(returnPressed()), this, SLOT(sendLine()));
+    connect(m_input, &QLineEdit::returnPressed, this, &ChatWidget::sendLine);
 }
 
 void ChatWidget::setNick(const QString& nick)
@@ -113,4 +113,4 @@ QSize ChatWidget::sizeHint() const
 }
 
 
-#include "chatwidget.moc"
+

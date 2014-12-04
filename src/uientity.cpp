@@ -90,7 +90,7 @@ QIcon UIEntity::icon() const
     return QIcon( QLatin1String( "user-identity" ));
 }
 
-#include "uientity.moc"
+
 
 
 

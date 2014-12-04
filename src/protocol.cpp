@@ -328,6 +328,3 @@ void Protocol::processDisconnection()
     emit disconnected();
 }
 
-#include "protocol.moc"
-
-

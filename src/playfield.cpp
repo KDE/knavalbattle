@@ -74,22 +74,14 @@ Controller* PlayField::createController()
     BattleShipsConfiguration::defaultMultipleShipsConfiguration(Settings::adjacentShips()):
     BattleShipsConfiguration::defaultSingleShipsConfiguration(Settings::adjacentShips());
     Controller* controller = new Controller(this, m_player, m_battle_ships_configuration);
-    connect(controller, SIGNAL(gameOver(Sea::Player)),
-            this, SLOT(gameOver(Sea::Player)));
-    connect(controller, SIGNAL(restartRequested()),
-            this, SLOT(restartRequested()));
-    connect(controller, SIGNAL(compatibility(int)),
-            this, SLOT(setCompatibility(int)));
-    connect(controller, SIGNAL(nickChanged(int,QString)),
-            this, SLOT(updateNick(int,QString)));
-    connect(controller, SIGNAL(turnChanged(int)),
-            this, SLOT(changeTurn(int)));
-    connect(controller, SIGNAL(playerReady(int)),
-            this, SLOT(playerReady(int)));
-    connect(controller, SIGNAL(restartPlacingShips(Sea::Player)),
-            this, SLOT(restartPlacingShips(Sea::Player)));
-    connect(controller, SIGNAL(startPlacingShips(int)),
-            this, SLOT(startPlacingShips()));
+    connect(controller, &Controller::gameOver, this, &PlayField::gameOver);
+    connect(controller, &Controller::restartRequested, this, &PlayField::restartRequested);
+    connect(controller, &Controller::compatibility, this, &PlayField::setCompatibility);
+    connect(controller, &Controller::nickChanged, this, &PlayField::updateNick);
+    connect(controller, &Controller::turnChanged, this, &PlayField::changeTurn);
+    connect(controller, &Controller::playerReady, this, &PlayField::playerReady);
+    connect(controller, &Controller::restartPlacingShips, this, &PlayField::restartPlacingShips);
+    connect(controller, &Controller::startPlacingShips, this, &PlayField::startPlacingShips);
 
     return controller;
 }
@@ -149,7 +141,7 @@ void PlayField::newGame()
     m_seaView->screen(Sea::Player(1))->show();
     
     m_menu = new SimpleMenu(this, m_seaView->screen(Sea::Player(0)));
-    connect(m_menu, SIGNAL(done()), this, SLOT(setupController()));
+    connect(m_menu, &SimpleMenu::done, this, &PlayField::setupController);
     m_status_bar->showMessage(QLatin1String(""));
     emit welcomeScreen();
 }
@@ -345,7 +337,7 @@ void PlayField::levelChanged()
 SimpleMenu* PlayField::createAuxMenu()
 {
     SimpleMenu* menu = new SimpleMenu(this, 0);
-    connect(menu, SIGNAL(done()), this, SLOT(auxMenuDone()));
+    connect(menu, &SimpleMenu::done, this, &PlayField::auxMenuDone);
     return menu;
 }
 
@@ -395,6 +387,6 @@ void PlayField::toggleRightGrid(bool show)
     m_seaView->toggleRightGrid(show);
 }        
 
-#include "playfield.moc"
+
 
 

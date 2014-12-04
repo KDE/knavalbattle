@@ -17,7 +17,7 @@
 #include <KLocalizedString>
 #include <KStandardAction>
 #include <KStandardGameAction>
-#include <KStatusBar>
+#include <QStatusBar>
 #include <KToggleAction>
 
 #include "playfield.h"
@@ -121,6 +121,4 @@ void MainWindow::closeEvent(QCloseEvent *event)
 {
     Animator::instance()->stop();
 }
-
-#include "mainwindow.moc"
 

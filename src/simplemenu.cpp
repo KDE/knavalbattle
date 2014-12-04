@@ -157,5 +157,4 @@ void SimpleMenu::setupController(Controller* controller, Entity* old_opponent, S
     controller->start(sea, ask);
 }
 
-#include "simplemenu.moc"
 

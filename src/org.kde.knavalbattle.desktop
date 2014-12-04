@@ -93,3 +93,4 @@ GenericName[zh_TW]=擊沉船隻的遊戲
 Terminal=false
 X-DBUS-StartupType=Multi
 Categories=Qt;KDE;Game;StrategyGame;
+X-DBUS-ServiceName=org.kde.knavalbattle

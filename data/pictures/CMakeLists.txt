@@ -10,6 +10,7 @@ ecm_install_icons(ICONS
     32-apps-knavalbattle.png
     48-apps-knavalbattle.png
     64-apps-knavalbattle.png
+    128-apps-knavalbattle.png
     DESTINATION ${ICON_INSTALL_DIR}
     THEME hicolor
 )

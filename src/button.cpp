@@ -270,5 +270,5 @@ ButtonAnimation::~ButtonAnimation()
 }
 
 
-#include "button.moc"
+
 

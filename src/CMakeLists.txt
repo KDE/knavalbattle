@@ -49,5 +49,5 @@ target_link_libraries(knavalbattle Qt5::Xml Qt5::Qml Qt5::Network KF5::KDELibs4S
 
 install(TARGETS knavalbattle  ${INSTALL_TARGETS_DEFAULT_ARGS} )
 install( FILES knavalbattleui.rc  DESTINATION  ${KXMLGUI_INSTALL_DIR}/knavalbattle )
-install(PROGRAMS knavalbattle.desktop DESTINATION ${XDG_APPS_INSTALL_DIR})
+install(PROGRAMS org.kde.knavalbattle.desktop DESTINATION ${XDG_APPS_INSTALL_DIR})
 install( FILES knavalbattle.protocol  DESTINATION ${SERVICES_INSTALL_DIR})

@@ -310,4 +310,4 @@ void BattleField::clear()
 }
 
 
-#include "battlefield.moc"
+
