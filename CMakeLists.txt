@@ -39,6 +39,8 @@ find_package(KF5KDEGames 4.9.0 REQUIRED)
 
 find_package(Phonon4Qt5 REQUIRED)
 
+include_directories(BEFORE ${PHONON_INCLUDES})
+
 include(FeatureSummary)
 include(ECMInstallIcons)
 include(KDEInstallDirs)
