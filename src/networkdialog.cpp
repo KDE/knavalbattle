@@ -25,17 +25,27 @@
 #include <KDNSSD/DNSSD/ServiceBrowser>
 #include <KDNSSD/DNSSD/ServiceModel>
 #include <KDNSSD/DNSSD/PublicService>
+#include <KConfigGroup>
+#include <QDialogButtonBox>
 
 #include "settings.h"
 
 NetworkDialog::NetworkDialog(bool client, QWidget* parent, const QUrl* url)
-: KDialog(parent)
+: QDialog(parent)
 , m_publisher(0), m_client(client)
 {
-    setButtons(Ok | Cancel);
+    QDialogButtonBox *buttonBox = new QDialogButtonBox(QDialogButtonBox::Ok|QDialogButtonBox::Cancel);
+    QVBoxLayout *topLayout = new QVBoxLayout;
+    setLayout(topLayout);
+    m_okButton = buttonBox->button(QDialogButtonBox::Ok);
+    m_okButton->setDefault(true);
+    m_okButton->setShortcut(Qt::CTRL | Qt::Key_Return);
+    connect(buttonBox, SIGNAL(accepted()), this, SLOT(slotOkClicked()));
+    connect(buttonBox, SIGNAL(rejected()), this, SLOT(reject()));
 
     QLabel* tmp;
     QWidget* main = new QWidget(this);
+
     QHBoxLayout* tmpLayout;
     QVBoxLayout* mainLayout = new QVBoxLayout;
 
@@ -59,7 +69,7 @@ NetworkDialog::NetworkDialog(bool client, QWidget* parent, const QUrl* url)
     tmpLayout = new QHBoxLayout;
     tmpLayout->addWidget(tmp);
     tmpLayout->addWidget(m_nickname, 1);
-    tmpLayout->setSpacing(KDialog::spacingHint());
+//TODO PORT QT5     tmpLayout->setSpacing(QDialog::spacingHint());
     mainLayout->addItem(tmpLayout);
 
     // client part
@@ -72,7 +82,7 @@ NetworkDialog::NetworkDialog(bool client, QWidget* parent, const QUrl* url)
         tmpLayout = new QHBoxLayout;
         tmpLayout->addWidget(tmp);
         tmpLayout->addWidget(m_games, 1);
-        tmpLayout->setSpacing(KDialog::spacingHint());
+//TODO PORT QT5         tmpLayout->setSpacing(QDialog::spacingHint());
         connect(m_games, static_cast<void (KComboBox::*)(int)>(&KComboBox::currentIndexChanged), this, &NetworkDialog::serviceSelected);
         mainLayout->addItem(tmpLayout);
         
@@ -88,7 +98,7 @@ NetworkDialog::NetworkDialog(bool client, QWidget* parent, const QUrl* url)
         tmpLayout = new QHBoxLayout;
         tmpLayout->addWidget(tmp);
         tmpLayout->addWidget(m_hostname, 1);
-        tmpLayout->setSpacing(KDialog::spacingHint());
+//TODO PORT QT5         tmpLayout->setSpacing(QDialog::spacingHint());
         frameLayout->addItem(tmpLayout);
 
         // port
@@ -137,12 +147,14 @@ NetworkDialog::NetworkDialog(bool client, QWidget* parent, const QUrl* url)
     mainLayout->addStretch();
     
     main->setLayout(mainLayout);
-    setMainWidget(main);
-    setCaption(i18n("Network Parameters"));
+    topLayout->addWidget(main);
+    topLayout->addWidget(buttonBox);
+
+    setWindowTitle(i18n("Network Parameters"));
     
     connect(this, &NetworkDialog::accepted, this, &NetworkDialog::savePreferences);
     
-    enableButtonApply(false);
+    buttonBox->button(QDialogButtonBox::Apply)->setEnabled(false);
 }
 
 NetworkDialog::~NetworkDialog()
@@ -195,11 +207,9 @@ QTcpSocket* NetworkDialog::socket() const
     return m_socket;
 }
 
-void NetworkDialog::slotButtonClicked(int code)
+void NetworkDialog::slotOkClicked()
 {
-    if (code == Ok) {
-        QPushButton* b = button(Ok);
-        b->setEnabled(false);
+        m_okButton->setEnabled(false);
         m_feedback->show();
        
         if (m_client) {
@@ -218,10 +228,6 @@ void NetworkDialog::slotButtonClicked(int code)
             
             server->listen(QHostAddress::Any, static_cast<quint16>(m_port->value()));
         }
-    }
-    else {
-        KDialog::slotButtonClicked(code);
-    }
 }
 
 void NetworkDialog::clientOK()
@@ -234,7 +240,7 @@ void NetworkDialog::clientError()
     m_socket->deleteLater();
     m_socket = 0;
     m_feedback->setText(i18n("Could not connect to host"));
-    button(Ok)->setEnabled(true);
+    m_okButton->setEnabled(true);
 }
 
 void NetworkDialog::serverOK()

@@ -11,7 +11,7 @@
 #ifndef NETWORKDIALOG_H
 #define NETWORKDIALOG_H
 
-#include <KDialog>
+#include <QDialog>
 #include <QUrl>
 
 class KComboBox;
@@ -19,11 +19,13 @@ class KPluralHandlingSpinBox;
 class KLineEdit;
 class QLabel;
 class QTcpSocket;
+class QPushButton;
 namespace KDNSSD { class PublicService; }
 
-class NetworkDialog : public KDialog
+class NetworkDialog : public QDialog
 {
 Q_OBJECT
+    QPushButton *m_okButton;
     KLineEdit* m_nickname;
     KLineEdit* m_hostname;
     QTcpSocket* m_socket;
@@ -42,9 +44,7 @@ private slots:
     void clientError();
     void serverOK();
     void serviceSelected(int idx);
-
-protected:
-    void slotButtonClicked(int);
+    void slotOkClicked();
 public:
     explicit NetworkDialog(bool client, QWidget* parent = 0, const QUrl* url = 0);
     ~NetworkDialog();
