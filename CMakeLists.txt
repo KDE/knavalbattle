@@ -6,13 +6,12 @@ set (QT_MIN_VERSION "5.2.0")
 find_package(ECM 0.0.9 REQUIRED CONFIG)
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${ECM_MODULE_PATH} ${ECM_KDE_MODULE_DIR})
 
-find_package(Qt5 ${QT_MIN_VERSION} REQUIRED NO_MODULE COMPONENTS Widgets Qml Quick QuickWidgets Svg Test)
+find_package(Qt5 ${QT_MIN_VERSION} REQUIRED NO_MODULE COMPONENTS Widgets Qml Svg)
 find_package(KF5 REQUIRED COMPONENTS 
   CoreAddons 
   Config 
   WidgetsAddons 
   Codecs 
-  Archive
   Config 
   DBusAddons 
   DNSSD 
@@ -22,14 +21,7 @@ find_package(KF5 REQUIRED COMPONENTS
   Service 
   ConfigWidgets 
   ItemViews 
-  IconThemes 
-  Completion 
-  JobWidgets 
-  TextWidgets 
-  GlobalAccel 
   XmlGui 
-  Crash
-  Bookmarks 
   KIO 
   NotifyConfig 
   NewStuff 
@@ -47,9 +39,7 @@ include(KDEInstallDirs)
 include(KDECompilerSettings)
 include(KDECMakeSettings)
 
-add_definitions(${QT_DEFINITIONS})
 add_definitions(-DQT_USE_FAST_CONCATENATION -DQT_USE_FAST_OPERATOR_PLUS)
-include_directories(${KDEGAMES_INCLUDE_DIRS} ${KDE4_INCLUDES} ${QDBUS_INCLUDE_DIRS})
 
 add_subdirectory(src) 
 add_subdirectory(data) 

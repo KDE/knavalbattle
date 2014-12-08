@@ -340,6 +340,4 @@ bool Controller::hasAI() const
     return m_has_ai;
 }
 
-#include "controller.moc"
-
 
