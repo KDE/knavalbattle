@@ -40,8 +40,8 @@ NetworkDialog::NetworkDialog(bool client, QWidget* parent, const QUrl* url)
     m_okButton = buttonBox->button(QDialogButtonBox::Ok);
     m_okButton->setDefault(true);
     m_okButton->setShortcut(Qt::CTRL | Qt::Key_Return);
-    connect(buttonBox, SIGNAL(accepted()), this, SLOT(slotOkClicked()));
-    connect(buttonBox, SIGNAL(rejected()), this, SLOT(reject()));
+    connect(buttonBox, &QDialogButtonBox::accepted, this, &NetworkDialog::slotOkClicked);
+    connect(buttonBox, &QDialogButtonBox::rejected, this, &NetworkDialog::reject);
 
     QLabel* tmp;
     QWidget* main = new QWidget(this);
