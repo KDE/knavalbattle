@@ -99,7 +99,7 @@ void AIEntity::getShoot()
 
 QIcon AIEntity::icon() const
 {
-    return QIcon( QLatin1String( "roll" ));
+    return QIcon::fromTheme( QLatin1String( "roll" ));
 }
 
 
