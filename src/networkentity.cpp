@@ -320,7 +320,7 @@ void NetworkEntity::visit(const GameOptionsMessage& msg)
 
 QIcon NetworkEntity::icon() const
 {
-    return QIcon( QLatin1String( "network-workgroup" ));
+    return QIcon::fromTheme( QLatin1String( "network-workgroup" ));
 }
 
 
