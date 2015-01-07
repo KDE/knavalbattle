@@ -14,18 +14,15 @@ find_package(KF5 REQUIRED COMPONENTS
   Config 
   DBusAddons 
   DNSSD 
-  Declarative
   I18n 
-  GuiAddons 
   Service 
   ConfigWidgets 
   ItemViews 
   XmlGui 
   KIO 
-  NotifyConfig 
-  NewStuff 
   )
     
+
 find_package(KF5KDEGames 4.9.0 REQUIRED)
 
 find_package(Phonon4Qt5 REQUIRED)
