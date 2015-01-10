@@ -154,7 +154,6 @@ NetworkDialog::NetworkDialog(bool client, QWidget* parent, const QUrl* url)
     
     connect(this, &NetworkDialog::accepted, this, &NetworkDialog::savePreferences);
     
-    buttonBox->button(QDialogButtonBox::Apply)->setEnabled(false);
 }
 
 NetworkDialog::~NetworkDialog()
