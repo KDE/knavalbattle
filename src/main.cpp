@@ -11,11 +11,13 @@
 
 #include <KAboutData>
 #include <KLocalizedString>
+#include <KDBusService>
 
 #include <QApplication>
 #include <QUrl>
 #include <QCommandLineParser>
 #include <QCommandLineOption>
+
 
 #include "mainwindow.h"
 #include "coord.h"
@@ -69,7 +71,7 @@ int main(int argc, char** argv)
     aboutData.setupCommandLine(&parser);
     
     KAboutData::setApplicationData(aboutData);
-    
+    KDBusService service; 
     KLocalizedString::setApplicationDomain("knavalbattle");
     
     qRegisterMetaType<Coord>("Coord");
