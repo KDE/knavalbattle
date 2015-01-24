@@ -27,7 +27,7 @@ int main(int argc, char** argv)
 {
     QApplication app(argc, argv);
     
-    KAboutData aboutData(QStringLiteral("knavalbattle"), i18n("Naval Battle"), QStringLiteral("2.0"), 
+    KAboutData aboutData(QStringLiteral("knavalbattle"), i18n("Naval Battle"), QStringLiteral("2.1"), 
         i18n("The KDE ship sinking game"), KAboutLicense::GPL, 
         i18n("(c) 2000-2005  Nikolas Zimmermann, Daniel Molkentin\n"
               "(c) 2007 Paolo Capriotti"), QString(), QStringLiteral("http://games.kde.org/kbattleship") );
