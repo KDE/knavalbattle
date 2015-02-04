@@ -12,6 +12,7 @@
 #include <KAboutData>
 #include <KLocalizedString>
 #include <KDBusService>
+#include <Kdelibs4ConfigMigrator>
 
 #include <QApplication>
 #include <QUrl>
@@ -26,7 +27,11 @@
 int main(int argc, char** argv)
 {
     QApplication app(argc, argv);
-    
+    Kdelibs4ConfigMigrator migrate(QStringLiteral("knavalbattle"));
+    migrate.setConfigFiles(QStringList() << QStringLiteral("knavalbattlerc"));
+    migrate.setUiFiles(QStringList() << QStringLiteral("knavalbattleui.rc"));
+    migrate.migrate();
+
     KAboutData aboutData(QStringLiteral("knavalbattle"), i18n("Naval Battle"), QStringLiteral("2.1"), 
         i18n("The KDE ship sinking game"), KAboutLicense::GPL, 
         i18n("(c) 2000-2005  Nikolas Zimmermann, Daniel Molkentin\n"
@@ -53,9 +58,8 @@ int main(int argc, char** argv)
     aboutData.addCredit(i18n("Roney Gomes"), i18n("Porting to KGameRenderer and QGraphicsView"), QStringLiteral("roney477@gmail.com"));
         
     aboutData.setOrganizationDomain(QByteArray("kde.org"));
-    aboutData.setProgramIconName(QStringLiteral("knavalbattle"));
     aboutData.setProductName(QByteArray("knavalbattle"));
-        
+    app.setWindowIcon(QIcon::fromTheme(QStringLiteral("knavalbattle")));
     app.setApplicationDisplayName(aboutData.displayName());
     app.setOrganizationDomain(aboutData.organizationDomain());
     app.setApplicationVersion(aboutData.version());
