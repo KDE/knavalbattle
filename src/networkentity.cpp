@@ -83,7 +83,7 @@ void NetworkEntity::notifyGameOptions(bool ask)
     else {
         m_protocol->send(MessagePtr(new HeaderMessage()));
         
-        m_protocol->send(MessagePtr(new GameOptionsMessage(QString(Settings::adjacentShips() ? "true" : "false"), QString(Settings::severalShips() ? "true" : "false"), m_battleShipsConfiguration )));
+        m_protocol->send(MessagePtr(new GameOptionsMessage(QString(Settings::adjacentShips() ? QLatin1Literal("true") : QLatin1Literal("false")), QString(Settings::severalShips() ? QLatin1Literal("true") : QLatin1Literal("false")), m_battleShipsConfiguration )));
     }
 }
 
@@ -165,7 +165,7 @@ void NetworkEntity::received(MessagePtr msg)
 
 void NetworkEntity::visit(const HeaderMessage& msg)
 {
-    if (msg.clientName() == "KBattleship" && msg.clientVersion().toFloat() >= 4.0) {
+    if (msg.clientName() == QLatin1String("KBattleship") && msg.clientVersion().toFloat() >= 4.0) {
         // m_level = COMPAT_KBS4;
     }
     else {
@@ -213,7 +213,7 @@ void NetworkEntity::visit(const NickMessage& msg)
         else
         {
             message.append(QString::number(m_battleShipsConfiguration->numberOfShipsOfSize(size)))
-                   .append(" ")
+                   .append(QLatin1String(" "))
                    .append(i18n(m_battleShipsConfiguration->pluralNameOfShipsOfSize(size).toLatin1()));
         }
     }
@@ -290,7 +290,7 @@ void NetworkEntity::visit(const ChatMessage& msg)
 
 void NetworkEntity::visit(const GameOptionsMessage& msg)
 {
-    bool enabledAdjacentShips = (msg.enabledAdjacentShips() == QString("true"));
+    bool enabledAdjacentShips = (msg.enabledAdjacentShips() == QLatin1String("true"));
     if (m_client) {
         m_sea->allowAdjacentShips( enabledAdjacentShips );
     }

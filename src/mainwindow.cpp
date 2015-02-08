@@ -62,46 +62,46 @@ void MainWindow::setupActions()
     QAction* action;
     action = new QAction(i18n("&Single Player"), this);
     action->setIcon(QIcon::fromTheme( QLatin1String( SimpleMenu::iconLocal)));
-    actionCollection()->addAction("game_local", action);
+    actionCollection()->addAction(QLatin1Literal("game_local"), action);
     connect(action, SIGNAL(triggered()), m_main, SLOT(localGame()));
     action = new QAction(i18n("&Host Game..."), this);
     action->setIcon(QIcon::fromTheme( QLatin1String( SimpleMenu::iconServer)));
-    actionCollection()->addAction("game_create_server", action);
+    actionCollection()->addAction(QLatin1Literal("game_create_server"), action);
     connect(action, SIGNAL(triggered()), m_main, SLOT(createServer()));
     action = new QAction(i18n("&Connect to Game..."), this);
     action->setIcon(QIcon::fromTheme( QLatin1String( SimpleMenu::iconClient))),
-    actionCollection()->addAction("game_create_client", action);
+    actionCollection()->addAction(QLatin1Literal("game_create_client"), action);
     connect(action, SIGNAL(triggered()), m_main, SLOT(createClient()));
     // settings
     action = new QAction(i18n("Change &Nickname..."), this);
-    actionCollection()->addAction("options_nickname", action);
+    actionCollection()->addAction(QLatin1Literal("options_nickname"), action);
     connect(action, SIGNAL(triggered()), m_main, SLOT(changeNick()));
     action = new KToggleAction(i18n("&Play Sounds"), this);
-    actionCollection()->addAction("options_sounds", action);
+    actionCollection()->addAction(QLatin1Literal("options_sounds"), action);
     connect(action, SIGNAL(triggered(bool)), m_main, SLOT(toggleSounds(bool)));
     // This action will be disabled when a game is being run
     action = new KToggleAction(i18n("&Adjacent Ships"), this);
     action->setChecked(Settings::adjacentShips());
-    actionCollection()->addAction("options_adjacent", action);
+    actionCollection()->addAction(QLatin1Literal("options_adjacent"), action);
     connect(action, SIGNAL(triggered(bool)), m_main, SLOT(toggleAdjacent(bool)));
     // This action will be disabled when a game is being run
     action = new KToggleAction(i18n("&Multiple Ships"), this);
     action->setChecked(Settings::severalShips());
-    actionCollection()->addAction("options_multiple_ships", action);
+    actionCollection()->addAction(QLatin1Literal("options_multiple_ships"), action);
     connect(action, SIGNAL(triggered(bool)), m_main, SLOT(toggleMultiple(bool)));
     // config end of game message
     action = new KToggleAction(i18n("Show End-of-Game Message"), this);
     action->setChecked(true);
-    actionCollection()->addAction("options_show_endgame_message", action);
+    actionCollection()->addAction(QLatin1Literal("options_show_endgame_message"), action);
     connect(action, SIGNAL(triggered(bool)), m_main, SLOT(toggleEndOfGameMessage(bool)));
     // actions for grid
     action = new KToggleAction(i18n("Show &Left Grid"), this);
     action->setChecked(true);
-    actionCollection()->addAction("options_showleftgrid", action);
+    actionCollection()->addAction(QLatin1Literal("options_showleftgrid"), action);
     connect(action, SIGNAL(triggered(bool)), m_main, SLOT(toggleLeftGrid(bool)));
     action = new KToggleAction(i18n("Show &Right Grid"), this);
     action->setChecked(true);
-    actionCollection()->addAction("options_showrightgrid", action);
+    actionCollection()->addAction(QLatin1Literal("options_showrightgrid"), action);
     connect(action, SIGNAL(triggered(bool)), m_main, SLOT(toggleRightGrid(bool)));
     
     setupGUI();
@@ -109,12 +109,12 @@ void MainWindow::setupActions()
 
 void MainWindow::startingGame()
 {
-    stateChanged("playing");
+    stateChanged(QLatin1Literal("playing"));
 }
 
 void MainWindow::welcomeScreen()
 {
-    stateChanged("playing", KXMLGUIClient::StateReverse);
+    stateChanged(QLatin1Literal("playing"), KXMLGUIClient::StateReverse);
 }
 
 void MainWindow::closeEvent(QCloseEvent *event)

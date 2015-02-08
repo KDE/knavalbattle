@@ -17,7 +17,7 @@ AudioPlayer::AudioPlayer(QObject* parent)
 : QObject(parent)
 , m_media(0)
 {
-    m_dir = QStandardPaths::locate(QStandardPaths::DataLocation, "sounds/");
+    m_dir = QStandardPaths::locate(QStandardPaths::DataLocation, QLatin1Literal("sounds/"));
 }
 
 void AudioPlayer::play(Sea::Player player, const HitInfo& info)
@@ -26,16 +26,16 @@ void AudioPlayer::play(Sea::Player player, const HitInfo& info)
         QString sound;
         if (info.type == HitInfo::HIT) {
             if (info.shipDestroyed) {
-                sound = "ship-sink.ogg";
+                sound = QLatin1Literal("ship-sink.ogg");
             }
             else {
                 sound = player == Sea::PLAYER_A ? 
-                                "ship-player1-shoot.ogg" : 
-                                "ship-player2-shoot.ogg";
+                                QLatin1Literal("ship-player1-shoot.ogg") :
+                                QLatin1Literal("ship-player2-shoot.ogg");
             }
         }
         else {
-            sound = "ship-player-shoot-water.ogg";
+            sound = QLatin1Literal("ship-player-shoot-water.ogg");
         }
         
         if (!sound.isEmpty()) {

@@ -31,10 +31,10 @@ PlayerLabel::PlayerLabel(const QPixmap &icon, const QString &text, QWidget *pare
 void PlayerLabel::setData(const QPixmap &icon, const QString &text)
 {
     m_icon->setPixmap(icon);
-    m_name->setText("<font size=\"5\">" + text + "</font>");
+    m_name->setText(QLatin1String("<font size=\"5\">") + text + QLatin1String("</font>"));
 }
 
 void PlayerLabel::setText(const QString &text)
 {
-    m_name->setText("<font size=\"5\">" + text + "</font>");
+    m_name->setText(QLatin1String("<font size=\"5\">") + text + QLatin1String("</font>"));
 }

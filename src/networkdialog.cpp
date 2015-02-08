@@ -50,7 +50,7 @@ NetworkDialog::NetworkDialog(bool client, QWidget* parent, const QUrl* url)
     QVBoxLayout* mainLayout = new QVBoxLayout;
 
     // feedback
-    m_feedback = new QLabel("", this);
+    m_feedback = new QLabel(QLatin1Literal(""), this);
     m_feedback->setAlignment(Qt::AlignHCenter);
     {
         QFont font = m_feedback->font();
@@ -69,20 +69,18 @@ NetworkDialog::NetworkDialog(bool client, QWidget* parent, const QUrl* url)
     tmpLayout = new QHBoxLayout;
     tmpLayout->addWidget(tmp);
     tmpLayout->addWidget(m_nickname, 1);
-//TODO PORT QT5     tmpLayout->setSpacing(QDialog::spacingHint());
     mainLayout->addItem(tmpLayout);
 
     // client part
     if (m_client) {
         tmp = new QLabel(i18n("&Join game:"), main);
         m_games=new KComboBox(main);
-        KDNSSD::ServiceBrowser* browser=new KDNSSD::ServiceBrowser("_kbattleship._tcp", true);
+        KDNSSD::ServiceBrowser* browser=new KDNSSD::ServiceBrowser(QLatin1Literal("_kbattleship._tcp"), true);
         m_games->setModel(new KDNSSD::ServiceModel(browser, this));
         tmp->setBuddy(m_games);
         tmpLayout = new QHBoxLayout;
         tmpLayout->addWidget(tmp);
         tmpLayout->addWidget(m_games, 1);
-//TODO PORT QT5         tmpLayout->setSpacing(QDialog::spacingHint());
         connect(m_games, static_cast<void (KComboBox::*)(int)>(&KComboBox::currentIndexChanged), this, &NetworkDialog::serviceSelected);
         mainLayout->addItem(tmpLayout);
         
@@ -187,7 +185,7 @@ QString NetworkDialog::hostname() const
         return m_hostname->text();
     }
     else {
-        return "";
+        return QString();
     }
 }
 
@@ -222,7 +220,7 @@ void NetworkDialog::slotOkClicked()
             m_feedback->setText(i18n("Waiting for an incoming connection..."));        
             QTcpServer* server = new QTcpServer;
             connect(server, &QTcpServer::newConnection, this, &NetworkDialog::serverOK);
-            m_publisher=new KDNSSD::PublicService(nickname(), "_kbattleship._tcp", m_port->value());
+            m_publisher=new KDNSSD::PublicService(nickname(), QLatin1Literal("_kbattleship._tcp"), m_port->value());
             m_publisher->publishAsync();
             
             server->listen(QHostAddress::Any, static_cast<quint16>(m_port->value()));

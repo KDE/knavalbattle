@@ -32,10 +32,10 @@ BattleFieldView::BattleFieldView(QWidget* parent, KBSRenderer* renderer, const Q
 , m_drawGrid(true)
 , m_delegate(0)
 {
-    m_background_lower = new KGameRenderedItem(m_renderer, bgID + "-layer1");
+    m_background_lower = new KGameRenderedItem(m_renderer, bgID + QLatin1String("-layer1"));
     m_background_lower->setOpacity(0.98);
     
-    m_background = new KGameRenderedItem(m_renderer, bgID + "-layer2");
+    m_background = new KGameRenderedItem(m_renderer, bgID + QLatin1String("-layer2"));
     m_background->setOpacity(0.98);
     
     m_screen = new WelcomeScreen(font());
@@ -229,12 +229,12 @@ void BattleFieldView::sink(Ship* ship)
          i < ship->size(); 
          i++, p += ship->increment()) {
         foreach (Sprite* s, m_sprites.values(p)) {
-            if (s->spriteKey().startsWith("ship")) {
+            if (s->spriteKey().startsWith(QLatin1Literal("ship"))) {
                 s->setZValue(BACKGROUND);
                 s->setOpacity(0.5);
             }
-            else if (s->spriteKey().startsWith("hit")) {
-                s->setSpriteKey("hit-end");
+            else if (s->spriteKey().startsWith(QLatin1Literal("hit"))) {
+                s->setSpriteKey(QLatin1Literal("hit-end"));
             }
         }
     }
@@ -260,12 +260,12 @@ void BattleFieldView::miss(const Coord& c)
 
 void BattleFieldView::removeImpact() {
     if (m_impact) {
-        m_impact->setSpriteKey("water");
+        m_impact->setSpriteKey(QLatin1Literal("water"));
         m_impact->refresh(m_renderer);
         m_impact = 0;
     }
     if (m_last_hit) {
-        m_last_hit->setSpriteKey("hit-after");
+        m_last_hit->setSpriteKey(QLatin1Literal("hit-after"));
         m_last_hit->refresh(m_renderer);
         m_last_hit = 0;
     }
