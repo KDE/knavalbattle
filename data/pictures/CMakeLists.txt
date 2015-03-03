@@ -2,7 +2,7 @@
 install(FILES
 default.desktop
 default_theme.svgz
-DESTINATION ${DATA_INSTALL_DIR}/knavalbattle/pictures)
+DESTINATION ${KDE_INSTALL_DATADIR}/knavalbattle/pictures)
 
 ecm_install_icons(ICONS
     16-apps-knavalbattle.png
@@ -11,7 +11,7 @@ ecm_install_icons(ICONS
     48-apps-knavalbattle.png
     64-apps-knavalbattle.png
     128-apps-knavalbattle.png
-    DESTINATION ${ICON_INSTALL_DIR}
+    DESTINATION ${KDE_INSTALL_ICONDIR}
     THEME hicolor
 )
 
