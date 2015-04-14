@@ -26,11 +26,12 @@
 
 int main(int argc, char** argv)
 {
+    QApplication app(argc, argv);
+
     Kdelibs4ConfigMigrator migrate(QStringLiteral("knavalbattle"));
     migrate.setConfigFiles(QStringList() << QStringLiteral("knavalbattlerc"));
     migrate.setUiFiles(QStringList() << QStringLiteral("knavalbattleui.rc"));
     migrate.migrate();
-    QApplication app(argc, argv);
 
     KAboutData aboutData(QStringLiteral("knavalbattle"), i18n("Naval Battle"), QStringLiteral("2.1"), 
         i18n("The KDE ship sinking game"), KAboutLicense::GPL, 
