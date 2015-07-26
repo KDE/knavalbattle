@@ -20,6 +20,7 @@ find_package(KF5 REQUIRED COMPONENTS
   ItemViews 
   XmlGui 
   KIO 
+  DocTools
   )
     
 
