@@ -40,7 +40,6 @@ public:
     void notifyShips(Sea::Player winner) override;
     void notifyGameOver(Sea::Player winner) override;
     void notifyGameOptions() override;
-    void notifyRestart(Sea::Player) override;
     void hit(Shot* shot) override;
 
     QIcon icon() const override;

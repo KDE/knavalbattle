@@ -63,15 +63,6 @@ void NetworkEntity::notifyGameOver(Sea::Player)
 {
 }
 
-void NetworkEntity::notifyRestart(Sea::Player)
-{
-    if (!m_restarted) {
-        m_protocol->send(MessagePtr(new RestartMessage()));
-        m_restarted = true;
-    }
-}
-
-
 void NetworkEntity::notifyGameOptions()
 {
     connect(m_protocol, &Protocol::received, this, &NetworkEntity::received);

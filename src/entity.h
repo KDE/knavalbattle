@@ -53,7 +53,6 @@ public:
     virtual void notifyReady(Sea::Player) { }
     virtual void notifyShips(Sea::Player) { }
     virtual void notifyGameOver(Sea::Player) { }
-    virtual void notifyRestart(Sea::Player) { }
 
     Stats* stats();
     
