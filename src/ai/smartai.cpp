@@ -291,7 +291,7 @@ SmartAI::SmartAI(Sea::Player player, Sea* sea, bool random, const BattleShipsCon
 , m_state(random, config)
 {
     srand(time(0));
-    m_strategy = std::auto_ptr<Strategy>(m_state.defaultStrategy(player, sea));
+    m_strategy = std::unique_ptr<Strategy>(m_state.defaultStrategy(player, sea));
 }
 
 Coord SmartAI::getMove()
@@ -317,7 +317,7 @@ void SmartAI::notify(Sea::Player player, const Coord& c, const HitInfo& info)
     if (player == m_player) {
         Strategy* new_strategy = m_strategy->notify(c, info);
         if (new_strategy) {
-            m_strategy = std::auto_ptr<Strategy>(new_strategy);
+            m_strategy = std::unique_ptr<Strategy>(new_strategy);
         }
     }
 }

@@ -32,7 +32,7 @@ public:
         void destroyed(int size);
     };
 private:
-    std::auto_ptr<Strategy> m_strategy;
+    std::unique_ptr<Strategy> m_strategy;
     State m_state;
 public:
     SmartAI(Sea::Player player, Sea* sea, bool random, const BattleShipsConfiguration* config);
