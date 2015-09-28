@@ -83,7 +83,7 @@ void PlayerEntity::action(Sea::Player player, const Coord& c)
                             }
                         }
                         else {
-                            emit shipsPlaced(m_player);
+                            emit shipsPlaced();
                         }
                     }
                 }

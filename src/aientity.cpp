@@ -69,7 +69,7 @@ void AIEntity::startPlacing()
 {
     m_seaview->setStatus(Sea::PLACING_SHIPS);
     m_ai->setShips();
-    emit shipsPlaced(m_player);
+    emit shipsPlaced();
 }
 
 void AIEntity::startPlaying()

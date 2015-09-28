@@ -64,7 +64,7 @@ public:
     virtual void setNick(const QString& nick);
 signals:
     void shoot(int player, const Coord& c);
-    void shipsPlaced(int player);
+    void shipsPlaced();
     void ready(int player);
     void chat(const QString& text);
     void nickChanged(int player, const QString& nickname);

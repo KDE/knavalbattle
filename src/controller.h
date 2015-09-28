@@ -62,7 +62,7 @@ public:
 public slots:
     void shoot(int player, const Coord& c);
     void ready(int player);
-    void shipsPlaced(int player);
+    void shipsPlaced();
     void receivedChat(const QString& text);
     void nick(int player, const QString& nick);
     void notifyRestartPlacingShips(Sea::Player player);

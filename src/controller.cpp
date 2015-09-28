@@ -232,7 +232,7 @@ void Controller::notify(Sea::Player player, const Coord& c, const HitInfo& info)
     }
 }
 
-void Controller::shipsPlaced(int player)
+void Controller::shipsPlaced()
 {
     m_ready++;
     if (m_ready >= 2 )
