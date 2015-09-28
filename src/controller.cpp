@@ -60,7 +60,7 @@ NetworkEntity* Controller::createRemotePlayer(Sea::Player player, SeaView* view,
 {
     NetworkEntity* e = new NetworkEntity(player, m_sea, view, protocol, client);
     setupEntity(e);
-    connect(e, SIGNAL(restartRequested()), this, SIGNAL(restartRequested()));
+    connect(e, &NetworkEntity::restartRequested, this, &Controller::restartRequested);
     if (client) {
         m_sea->switchTurn();
     }
@@ -71,35 +71,35 @@ void Controller::setupEntity(Entity* entity)
 {
     entity->setParent(this);
 
-    connect(entity, SIGNAL(shoot(int,Coord)),
-            this, SLOT(shoot(int,Coord)), Qt::QueuedConnection);
-    connect(entity, SIGNAL(ready(int)),
-            this, SLOT(ready(int)));
-    connect(entity, SIGNAL(shipsPlaced(int)),
-            this, SLOT(shipsPlaced(int)));
-    connect(entity, SIGNAL(chat(QString)),
-            this, SLOT(receivedChat(QString)));
-    connect(entity, SIGNAL(nick(int,QString)),
-            this, SLOT(nick(int,QString)));
-    connect(entity, SIGNAL(compatibility(int)),
-            this, SIGNAL(compatibility(int)));
-    connect(entity, SIGNAL(gameOptionsInterchanged(bool)),
-            this, SLOT(placing(bool)));
+    connect(entity, &Entity::shoot,
+            this, &Controller::shoot, Qt::QueuedConnection);
+    connect(entity, &Entity::ready,
+            this, &Controller::ready);
+    connect(entity, &Entity::shipsPlaced,
+            this, &Controller::shipsPlaced);
+    connect(entity, &Entity::chat,
+            this, &Controller::receivedChat);
+    connect(entity, &Entity::nickChanged,
+            this, &Controller::nick);
+    connect(entity, &Entity::compatibility,
+            this, &Controller::compatibility);
+    connect(entity, &Entity::gameOptionsInterchanged,
+            this, &Controller::placing);
 
     foreach (Entity* e, m_entities) {
-        connect(e, SIGNAL(compatibility(int)),
-                entity, SLOT(setCompatibilityLevel(int)));
-        connect(entity, SIGNAL(compatibility(int)),
-                e, SLOT(setCompatibilityLevel(int)));
+        connect(e, &Entity::compatibility,
+                entity, &Entity::setCompatibilityLevel);
+        connect(entity, &Entity::compatibility,
+                e, &Entity::setCompatibilityLevel);
 
-        connect(e, SIGNAL(abortGame()),
-                entity, SLOT(notifyAbort()));
-        connect(entity, SIGNAL(abortGame()),
-                e, SLOT(notifyAbort()));
-        connect(e, SIGNAL(restartPlacingShips(Sea::Player)),
-                this, SIGNAL(restartPlacingShips(Sea::Player)));
-        connect(e, SIGNAL(restartPlacingShips(Sea::Player)),
-                this, SLOT(notifyRestartPlacingShips(Sea::Player)));
+        connect(e, &Entity::abortGame,
+                entity, &Entity::notifyAbort);
+        connect(entity, &Entity::abortGame,
+                e, &Entity::notifyAbort);
+        connect(e, &Entity::restartPlacingShips,
+                this, &Controller::restartPlacingShips);
+        connect(e, &Entity::restartPlacingShips,
+                this, &Controller::notifyRestartPlacingShips);
     }
 
     m_entities.append(entity);

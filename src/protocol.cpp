@@ -14,6 +14,7 @@
 #include <QStringList>
 #include <QDomElement>
 #include <QDomNode>
+#include <QTcpSocket>
 
 #define ADD_FIELD(msg, field) addField(#field, msg.field())
 class MessageSender : public MessageVisitor
@@ -133,14 +134,14 @@ public:
 
 
 
-Protocol::Protocol(QIODevice* device)
+Protocol::Protocol(QTcpSocket* device)
 : m_device(device)
 {
     m_device->setParent(this);
     m_timer.start(100);
-    connect(m_device, SIGNAL(disconnected()), this, SLOT(processDisconnection()));
-    connect(m_device, SIGNAL(readyRead()), this, SLOT(readMore()));
-    connect(&m_timer, SIGNAL(timeout()), this, SLOT(sendNext()));
+    connect(m_device, &QTcpSocket::disconnected, this, &Protocol::processDisconnection);
+    connect(m_device, &QTcpSocket::readyRead, this, &Protocol::readMore);
+    connect(&m_timer, &QTimer::timeout, this, &Protocol::sendNext);
 }
 
 void Protocol::readMore()

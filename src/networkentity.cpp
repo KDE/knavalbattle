@@ -184,7 +184,7 @@ void NetworkEntity::visit(const RejectMessage&)
 void NetworkEntity::visit(const NickMessage& msg)
 {
     setNick(msg.nickname());
-    emit nick(m_player, m_nick);
+    emit nickChanged(m_player, m_nick);
     // This is a dirty hack caused by the introduction of GameOptionsMessage.
     // If that had extended BeginMessage, the following instructions will
     // be in the right place.

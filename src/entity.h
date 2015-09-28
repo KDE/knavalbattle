@@ -68,7 +68,7 @@ signals:
     void shipsPlaced(int player);
     void ready(int player);
     void chat(const QString& text);
-    void nick(int player, const QString& nickname);
+    void nickChanged(int player, const QString& nickname);
     void compatibility(int level);
     void abortGame();
     void restartPlacingShips(Sea::Player player);

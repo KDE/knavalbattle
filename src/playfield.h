@@ -44,7 +44,7 @@ Q_OBJECT
 public:
     PlayField(QWidget* parent, QStatusBar*);
     ~PlayField();
-    void createClient(const QUrl& url);
+    void createClientWithUrl(const QUrl& url);
 public slots:
     void highscores();
     void gameOver(Sea::Player winner);

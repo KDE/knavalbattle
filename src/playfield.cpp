@@ -367,9 +367,9 @@ void PlayField::createClient()
     createAuxMenu()->createClient();
 }
 
-void PlayField::createClient(const QUrl& url)
+void PlayField::createClientWithUrl(const QUrl& url)
 {
-    createAuxMenu()->createClient(url);
+    createAuxMenu()->createClientWithUrl(url);
 }
 
 void PlayField::toggleEndOfGameMessage(bool show)

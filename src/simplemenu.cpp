@@ -45,12 +45,9 @@ SimpleMenu::SimpleMenu(QWidget* parent, WelcomeScreen* screen)
         m_client_btn = m_screen->addButton(0, 2, QIcon::fromTheme( QLatin1String( iconClient) ), i18n("Connect to Network Game" ));
         
         // create connections
-        connect(m_local_game_btn, SIGNAL(clicked()),
-            this, SLOT(localGame()));
-        connect(m_server_btn, SIGNAL(clicked()),
-            this, SLOT(createServer()));
-        connect(m_client_btn, SIGNAL(clicked()),
-            this, SLOT(createClient()));
+        connect(m_local_game_btn, &Button::clicked, this, &SimpleMenu::localGame);
+        connect(m_server_btn, &Button::clicked, this, &SimpleMenu::createServer);
+        connect(m_client_btn, &Button::clicked, this, &SimpleMenu::createClient);
     }
 }
 
@@ -83,7 +80,7 @@ void SimpleMenu::createServer()
     }
 }
 
-void SimpleMenu::createClient(const QUrl& url)
+void SimpleMenu::createClientWithUrl(const QUrl& url)
 {
     QWidget* parent_widget = qobject_cast<QWidget*>(parent());
     Q_ASSERT(parent_widget);

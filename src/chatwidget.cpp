@@ -96,8 +96,7 @@ void ChatWidget::display(const QString& text)
 
 void ChatWidget::bindTo(Entity* entity)
 {
-    connect(this, SIGNAL(message(QString)),
-            entity, SIGNAL(chat(QString)));
+    connect(this, &ChatWidget::message, entity, &Entity::chat);
     
     m_chat->clear();
     QWidget::show();

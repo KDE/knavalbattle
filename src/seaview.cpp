@@ -64,8 +64,8 @@ SeaView::SeaView(QWidget* parent)
     Animator::instance()->start();
     refresh();
     
-    connect(screen(Sea::Player(0)), SIGNAL(hidden()), this, SLOT(refresh()));
-    connect(screen(Sea::Player(0)), SIGNAL(shown()), this, SLOT(refresh()));
+    connect(screen(Sea::Player(0)), &WelcomeScreen::hidden, this, &SeaView::refresh);
+    connect(screen(Sea::Player(0)), &WelcomeScreen::shown, this, &SeaView::refresh);
 }
 
 SeaView::~SeaView() {
