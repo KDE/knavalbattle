@@ -8,18 +8,11 @@ set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${ECM_MODULE_PATH} ${ECM_KDE_MODULE_D
 
 find_package(Qt5 ${QT_MIN_VERSION} REQUIRED NO_MODULE COMPONENTS Widgets Qml Svg)
 find_package(KF5 REQUIRED COMPONENTS 
-  CoreAddons 
-  Config 
-  WidgetsAddons 
   Config 
   DBusAddons 
   DNSSD 
   I18n 
-  Service 
-  ConfigWidgets 
-  ItemViews 
   XmlGui 
-  KIO 
   DocTools
   TextWidgets
   )
