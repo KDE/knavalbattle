@@ -22,7 +22,7 @@
 
 class ButtonAnimation;
 
-class Button : public QObject, public QGraphicsItem 
+class Button : public QGraphicsObject
 {
 Q_OBJECT
     enum {

@@ -21,7 +21,7 @@
 
 Button::Button(QGraphicsItem* parent, const QIcon& icon, 
                const QFont& font, const QString& text)
-: QGraphicsItem(parent)
+: QGraphicsObject(parent)
 , m_icon(icon)
 , m_font(font)
 , m_text(text)
