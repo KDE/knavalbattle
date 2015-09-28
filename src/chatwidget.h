@@ -32,15 +32,15 @@ Q_OBJECT
 public:
     ChatWidget(QWidget* parent = 0);
     
-    virtual QSize sizeHint() const;
+    QSize sizeHint() const override;
     void bindTo(Entity* entity);
 
     void setNick(const QString& nick);
     void display(const QString& nick, const QString& message);
     void display(const QString& message);
 protected:
-    virtual bool eventFilter(QObject*, QEvent* e);
-    virtual void resizeEvent(QResizeEvent*);
+    bool eventFilter(QObject*, QEvent* e) override;
+    void resizeEvent(QResizeEvent*) override;
 signals:
     void message(const QString& text);
 private slots:

@@ -24,24 +24,24 @@ protected:
     void drawHiddenShips(Sea::Player winner);
 public:
     UIEntity(Sea::Player player, Sea*, SeaView* view);
-    virtual ~UIEntity();
+    ~UIEntity() override;
     
-    virtual void notify(Sea::Player player, const Coord& c, const HitInfo& info);
-    virtual void notifyGameOver(Sea::Player winner);
-    virtual void notifyChat(const Entity*, const QString&) { }
-    virtual void notifyNick(Sea::Player, const QString&) { }
-    virtual void notifyGameOptions(bool ask) { emit gameOptionsInterchanged(); }
-    virtual void start(bool);
-    virtual void startPlacing(bool) { };
-    virtual void hit(Shot*);
+    void notify(Sea::Player player, const Coord& c, const HitInfo& info) override;
+    void notifyGameOver(Sea::Player winner) override;
+    void notifyChat(const Entity*, const QString&) override { }
+    void notifyNick(Sea::Player, const QString&) override { }
+    void notifyGameOptions(bool ask) override { emit gameOptionsInterchanged(); }
+    void start(bool) override;
+    void startPlacing(bool) override { };
+    void hit(Shot*) override;
     
     virtual void registerHit(Sea::Player, const Coord&) { }
     virtual void registerMiss(Sea::Player, const Coord&) { }
     
-    virtual QIcon icon() const;
+    QIcon icon() const override;
 public slots:
-    virtual void notifyAbort() { }
-    virtual void notifyRestartPlacing(Sea::Player player) { };
+    void notifyAbort() override { }
+    void notifyRestartPlacing(Sea::Player player) override { };
 };
 
 #endif // UIENTITY_H

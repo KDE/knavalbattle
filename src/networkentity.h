@@ -28,37 +28,37 @@ Q_OBJECT
     
 public:
     NetworkEntity(Sea::Player player, Sea* sea, SeaView* seaview, Protocol* device, bool client);
-    ~NetworkEntity();
+    ~NetworkEntity() override;
 
-    virtual void notify(Sea::Player player, const Coord& c, const HitInfo& info);
-    virtual void notifyChat(const Entity* entity, const QString& text);
-    virtual void notifyNick(Sea::Player player, const QString& nick);
-    virtual void start(bool ask);
-    virtual void startPlacing(bool ask);
-    virtual void startPlaying();
-    virtual void notifyReady(Sea::Player player);
-    virtual void notifyShips(Sea::Player winner);
-    virtual void notifyGameOver(Sea::Player winner);
-    virtual void notifyGameOptions(bool ask);
-    virtual void notifyRestart(Sea::Player);
-    virtual void hit(Shot* shot);
+    void notify(Sea::Player player, const Coord& c, const HitInfo& info) override;
+    void notifyChat(const Entity* entity, const QString& text) override;
+    void notifyNick(Sea::Player player, const QString& nick) override;
+    void start(bool ask) override;
+    void startPlacing(bool ask) override;
+    void startPlaying() override;
+    void notifyReady(Sea::Player player) override;
+    void notifyShips(Sea::Player winner) override;
+    void notifyGameOver(Sea::Player winner) override;
+    void notifyGameOptions(bool ask) override;
+    void notifyRestart(Sea::Player) override;
+    void hit(Shot* shot) override;
 
-    virtual QIcon icon() const;
+    QIcon icon() const override;
 private slots:
     void received(MessagePtr msg);
-    virtual void notifyAbort();
-    virtual void notifyRestartPlacing(Sea::Player player) { };
+    void notifyAbort() override;
+    void notifyRestartPlacing(Sea::Player player) override { }
 protected:
-    virtual void visit(const HeaderMessage& msg);
-    virtual void visit(const RejectMessage& msg);
-    virtual void visit(const NickMessage& msg);
-    virtual void visit(const BeginMessage& msg);
-    virtual void visit(const MoveMessage& msg);
-    virtual void visit(const NotificationMessage& msg);
-    virtual void visit(const GameOverMessage& msg);
-    virtual void visit(const RestartMessage& msg);
-    virtual void visit(const ChatMessage& msg);
-    virtual void visit(const GameOptionsMessage& msg);
+    void visit(const HeaderMessage& msg) override;
+    void visit(const RejectMessage& msg) override;
+    void visit(const NickMessage& msg) override;
+    void visit(const BeginMessage& msg) override;
+    void visit(const MoveMessage& msg) override;
+    void visit(const NotificationMessage& msg) override;
+    void visit(const GameOverMessage& msg) override;
+    void visit(const RestartMessage& msg) override;
+    void visit(const ChatMessage& msg) override;
+    void visit(const GameOptionsMessage& msg) override;
 signals:
     void restartRequested();
 };

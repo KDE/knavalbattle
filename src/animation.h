@@ -36,10 +36,10 @@ Q_OBJECT
     int m_running;
 public:
     AnimationGroup();
-    virtual ~AnimationGroup();
-    virtual void start(int t);
+    ~AnimationGroup() override;
+    void start(int t) override;
+    bool step(int t) override;
     virtual void stop();
-    virtual bool step(int t);
     
     void add(Animation*);
 };
@@ -54,8 +54,8 @@ Q_OBJECT
     int m_start;
 public:
     FadeAnimation(QGraphicsItem* sprite, int from, qreal to, int time);
-    virtual void start(int t);
-    virtual bool step(int t);
+    void start(int t) override;
+    bool step(int t) override;
 };
 
 class MovementAnimation : public Animation
@@ -69,8 +69,8 @@ Q_OBJECT
 public:
     MovementAnimation(QGraphicsItem* sprite, const QPointF& from,
                       const QPointF& to, int time);
-    virtual void start(int t);
-    virtual bool step(int t);
+    void start(int t) override;
+    bool step(int t) override;
 };
 
 #endif // ANIMATION_H

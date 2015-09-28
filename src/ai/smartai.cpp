@@ -98,7 +98,7 @@ public:
     {
     }
 
-    virtual Coord getMove()
+    Coord getMove() override
     {
         for (;;) {
             Coord c = m_end + direction();
@@ -149,7 +149,7 @@ public:
     {
     }
 
-    virtual Coord getMove()
+    Coord getMove() override
     {
         for (int i = 0; i < 10000; i++) {
             Coord c(rand() % m_sea->size().x, rand() % m_sea->size().y);
@@ -160,7 +160,7 @@ public:
         return Coord::invalid();
     }
 
-    virtual Strategy* notify(const Coord& c, const HitInfo& info)
+    Strategy* notify(const Coord& c, const HitInfo& info) override
     {
         if (info.type == HitInfo::HIT &&
             !info.shipDestroyed) {
@@ -255,7 +255,7 @@ public:
         setup();
     }
 
-    virtual Coord getMove()
+    Coord getMove() override
     {
 
         if (!movesAvailable()) {
@@ -273,7 +273,7 @@ public:
         return Coord::invalid();
     }
 
-    virtual Strategy* notify(const Coord& c, const HitInfo& info)
+    Strategy* notify(const Coord& c, const HitInfo& info) override
     {
         if (info.type == HitInfo::HIT &&
             !info.shipDestroyed) {

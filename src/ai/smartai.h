@@ -37,8 +37,8 @@ private:
 public:
     SmartAI(Sea::Player player, Sea* sea, bool random, const BattleShipsConfiguration* config);
 
-    virtual Coord getMove();
-    virtual void notify(Sea::Player player, const Coord& c, const HitInfo& hit);
+    Coord getMove() override;
+    void notify(Sea::Player player, const Coord& c, const HitInfo& hit) override;
 };
 
 #endif // SMARTAI_H

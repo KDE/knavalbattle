@@ -69,7 +69,7 @@ public:
     void toggleLeftGrid(bool show);
     void toggleRightGrid(bool show);
 protected:
-    virtual void resizeEvent(QResizeEvent*);
+    void resizeEvent(QResizeEvent*) override;
     
     QSize tileSize() const;
 public slots:
