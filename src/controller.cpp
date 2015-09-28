@@ -151,16 +151,9 @@ bool Controller::start(SeaView* view)
     return true;
 }
 
-void Controller::restart(bool ask)
+void Controller::restart()
 {
     m_ready = 0;
-    if (ask)
-    {
-        foreach (Entity* entity, m_entities) {
-            entity->notifyRestart(entity->player());
-        }
-    }
-
     m_sea->clear(Sea::PLAYER_A);
     m_sea->clear(Sea::PLAYER_B);
 
