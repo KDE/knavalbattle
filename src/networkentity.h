@@ -47,7 +47,7 @@ public:
 private slots:
     void received(MessagePtr msg);
     void notifyAbort() override;
-    void notifyRestartPlacing(Sea::Player player) override { }
+    void notifyRestartPlacing(Sea::Player) override { }
 protected:
     void visit(const HeaderMessage& msg) override;
     void visit(const RejectMessage& msg) override;

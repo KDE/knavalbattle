@@ -39,7 +39,7 @@ public:
     QIcon icon() const override;
 public slots:
     void notifyAbort() override { }
-    void notifyRestartPlacing(Sea::Player player) override { }
+    void notifyRestartPlacing(Sea::Player) override { }
 };
 
 

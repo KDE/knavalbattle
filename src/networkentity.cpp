@@ -59,7 +59,7 @@ void NetworkEntity::notifyShips(Sea::Player player)
     m_protocol->send(MessagePtr(msg));
 }
 
-void NetworkEntity::notifyGameOver(Sea::Player player)
+void NetworkEntity::notifyGameOver(Sea::Player)
 {
 }
 

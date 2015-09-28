@@ -116,7 +116,7 @@ void MainWindow::welcomeScreen()
     stateChanged(QLatin1Literal("playing"), KXMLGUIClient::StateReverse);
 }
 
-void MainWindow::closeEvent(QCloseEvent *event)
+void MainWindow::closeEvent(QCloseEvent *)
 {
     Animator::instance()->stop();
 }
