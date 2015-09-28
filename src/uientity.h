@@ -30,9 +30,9 @@ public:
     void notifyGameOver(Sea::Player winner) override;
     void notifyChat(const Entity*, const QString&) override { }
     void notifyNick(Sea::Player, const QString&) override { }
-    void notifyGameOptions(bool ask) override { emit gameOptionsInterchanged(); }
+    void notifyGameOptions() override { emit gameOptionsInterchanged(); }
     void start(bool) override;
-    void startPlacing(bool) override { };
+    void startPlacing() override { };
     void hit(Shot*) override;
     
     virtual void registerHit(Sea::Player, const Coord&) { }

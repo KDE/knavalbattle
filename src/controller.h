@@ -52,7 +52,7 @@ public:
     AIEntity* createAI(Sea::Player player, SeaView* view);
     NetworkEntity* createRemotePlayer(Sea::Player player, SeaView* view, Protocol* protocol, bool client);
 
-    bool start(SeaView* view, bool ask = false);
+    bool start(SeaView* view);
     Entity* findEntity(Sea::Player) const;
     Sea::Player turn() const;
     bool hasAI() const;
@@ -66,7 +66,7 @@ public slots:
     void receivedChat(const QString& text);
     void nick(int player, const QString& nick);
     void notifyRestartPlacingShips(Sea::Player player);
-    void placing(bool ask = false);
+    void placing();
     void restart(bool ask = false);
 signals:
     void gameOver(Sea::Player);

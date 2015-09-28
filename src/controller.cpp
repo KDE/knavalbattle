@@ -124,7 +124,7 @@ bool Controller::allPlayers() const
     return bitmap == 3;
 }
 
-bool Controller::start(SeaView* view, bool ask)
+bool Controller::start(SeaView* view)
 {
     if (!allPlayers()) {
         return false;
@@ -136,7 +136,7 @@ bool Controller::start(SeaView* view, bool ask)
     }
 
     foreach (Entity* entity, m_entities) {
-        entity->notifyGameOptions(ask);
+        entity->notifyGameOptions();
     }
     
     foreach (Entity* source, m_entities) {
@@ -167,17 +167,17 @@ void Controller::restart(bool ask)
     foreach (Entity* entity, m_entities) {
         m_sea->clear(entity->player());
             emit startPlacingShips(Sea::PLAYER_A);
-            entity->startPlacing(false);
+            entity->startPlacing();
     }
 }
 
 
 // It is sure the entities has interchanged the GameOptions (if any)
 // when the opposite nick is received
-void Controller::placing(bool ask)
+void Controller::placing()
 {
     foreach (Entity* entity, m_entities) {
-        entity->startPlacing(ask);
+        entity->startPlacing();
     }
 }
 

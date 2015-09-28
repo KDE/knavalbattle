@@ -55,7 +55,7 @@ void AIEntity::notify(Sea::Player player, const Coord& c, const HitInfo& info)
     getShoot();
 }
 
-void AIEntity::notifyGameOptions(bool ask)
+void AIEntity::notifyGameOptions()
 {
     emit gameOptionsInterchanged();
 }
@@ -65,7 +65,7 @@ void AIEntity::start(bool)
     emit ready(m_player);
 }
 
-void AIEntity::startPlacing(bool ask)
+void AIEntity::startPlacing()
 {
     m_seaview->setStatus(Sea::PLACING_SHIPS);
     m_ai->setShips();

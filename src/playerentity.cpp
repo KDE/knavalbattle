@@ -100,9 +100,9 @@ void PlayerEntity::action(Sea::Player player, const Coord& c)
     }
 }
 
-void PlayerEntity::startPlacing(bool restart)
+void PlayerEntity::startPlacing()
 {
-    UIEntity::startPlacing(restart);
+    UIEntity::startPlacing();
     m_battleShipsConfiguration = m_sea->battleShipsConfiguration();
 
     Coord origin(0, 0);
@@ -218,7 +218,7 @@ void PlayerEntity::notifyRestartPlacing(Sea::Player player)
     UIEntity::notifyRestartPlacing(player);
     m_seaview->clear();
     m_sea->clear(player);
-    startPlacing(false);
+    startPlacing();
 }
 
 

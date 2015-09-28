@@ -72,11 +72,11 @@ void NetworkEntity::notifyRestart(Sea::Player)
 }
 
 
-void NetworkEntity::notifyGameOptions(bool ask)
+void NetworkEntity::notifyGameOptions()
 {
     connect(m_protocol, &Protocol::received, this, &NetworkEntity::received);
     connect(m_protocol, &Protocol::disconnected, this, &NetworkEntity::abortGame);
-    if (ask || m_restarted) {
+    if (m_restarted) {
         m_protocol->send(MessagePtr(new RestartMessage()));
         m_restarted = true;
     }
@@ -87,7 +87,7 @@ void NetworkEntity::notifyGameOptions(bool ask)
     }
 }
 
-void NetworkEntity::startPlacing(bool ask)
+void NetworkEntity::startPlacing()
 {
     m_restarted = false;
     m_sea->clear(m_player);

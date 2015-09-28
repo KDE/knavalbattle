@@ -32,13 +32,13 @@ public:
     
     // entity interface
     void start(bool) override;
-    void startPlacing(bool) override;
+    void startPlacing() override;
     void startPlaying() override;
     void hit(Shot* shot) override;
     void notify(Sea::Player player, const Coord& c, const HitInfo& info) override;
     void notifyChat(const Entity* entity, const QString& text) override;
     void notifyNick(Sea::Player player, const QString& text) override;
-    void notifyGameOptions(bool ask) override { };
+    void notifyGameOptions() override { };
     // delegate interface
     void action(Sea::Player player, const Coord& c) override;
     void changeDirection(Sea::Player player) override;

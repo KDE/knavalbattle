@@ -34,12 +34,12 @@ public:
     void notifyChat(const Entity* entity, const QString& text) override;
     void notifyNick(Sea::Player player, const QString& nick) override;
     void start(bool ask) override;
-    void startPlacing(bool ask) override;
+    void startPlacing() override;
     void startPlaying() override;
     void notifyReady(Sea::Player player) override;
     void notifyShips(Sea::Player winner) override;
     void notifyGameOver(Sea::Player winner) override;
-    void notifyGameOptions(bool ask) override;
+    void notifyGameOptions() override;
     void notifyRestart(Sea::Player) override;
     void hit(Shot* shot) override;
 

@@ -98,7 +98,7 @@ void PlayField::setupController()
 
     delete m_controller;
     m_controller = createController();
-    m_menu->setupController(m_controller, 0, m_seaView, m_chat, false);
+    m_menu->setupController(m_controller, 0, m_seaView, m_chat);
     startGame();
 }
 

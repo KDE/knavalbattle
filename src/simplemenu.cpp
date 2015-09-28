@@ -101,7 +101,7 @@ void SimpleMenu::createClient()
 }
 
 void SimpleMenu::setupController(Controller* controller, Entity* old_opponent, SeaView* sea, 
-    ChatWidget* chat, bool ask)
+    ChatWidget* chat)
 {
     switch (m_state) {
     case DONE_LOCAL_GAME: {
@@ -151,7 +151,7 @@ void SimpleMenu::setupController(Controller* controller, Entity* old_opponent, S
         return;
     }
         
-    controller->start(sea, ask);
+    controller->start(sea);
 }
 
 

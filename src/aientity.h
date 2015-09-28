@@ -31,10 +31,10 @@ public:
     void notifyChat(const Entity*, const QString&) override { }
     void notifyNick(Sea::Player, const QString&) override { }
     void start(bool) override;
-    void startPlacing(bool ask) override;
+    void startPlacing() override;
     void startPlaying() override;
     void hit(Shot* shot) override;
-    void notifyGameOptions(bool ask) override;
+    void notifyGameOptions() override;
 
     QIcon icon() const override;
 public slots:
