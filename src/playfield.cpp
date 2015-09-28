@@ -127,12 +127,12 @@ void PlayField::newGame()
     emit welcomeScreen();
 }
 
-void PlayField::restart(bool ask)
+void PlayField::restart()
 {
     Animator::instance()->restart();
     m_seaView->clear();
     startGame();
-    m_controller->restart(ask);
+    m_controller->restart();
 }
 
 
@@ -234,7 +234,7 @@ void PlayField::restartRequested()
     int ans = KMessageBox::questionYesNo(this, i18n("Restart game"),
                     i18n("Your opponent has requested to restart the game. Do you accept?"));
     if (ans == KMessageBox::Yes) {
-        restart(false);
+        restart();
     }
 }
 

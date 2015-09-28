@@ -50,7 +50,7 @@ public slots:
     void setupController();
 
     void newGame();
-    void restart(bool ask = true);
+    void restart();
     void changeNick();
     void toggleSounds(bool);
     void toggleAdjacent(bool);
