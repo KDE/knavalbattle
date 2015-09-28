@@ -102,25 +102,6 @@ void PlayField::setupController()
     startGame();
 }
 
-void PlayField::resetupController(bool ask)
-{
-    Entity* old_opponent = m_controller->findEntity(Sea::Player(1));
-    if (old_opponent) {
-        old_opponent->setParent(0);
-    }
-    BattleShipsConfiguration oldBSC=m_controller->getBattleShipsConfiguration();
-    delete m_controller;
-
-    // create new controller
-    m_controller = createController();
-    m_controller->setBattleShipsConfiguration(oldBSC);
-    m_menu->setupController(m_controller, old_opponent, 
-        m_seaView, m_chat, ask);
-    delete old_opponent;
-    
-    startGame();
-}
-
 void PlayField::endGame()
 {
     Animator::instance()->restart();

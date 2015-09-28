@@ -38,7 +38,6 @@ Q_OBJECT
 
     void startGame();
     void endGame();
-    void resetupController(bool ask = false);
     Controller* createController();
     SimpleMenu* createAuxMenu();
 public:
