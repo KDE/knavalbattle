@@ -71,7 +71,7 @@ signals:
     void compatibility(int level);
     void abortGame();
     void restartPlacingShips(Sea::Player player);
-    void gameOptionsInterchanged(bool ask=false);
+    void gameOptionsInterchanged();
 public slots:
     virtual void setCompatibilityLevel(int level);
     virtual void notifyAbort() = 0;
