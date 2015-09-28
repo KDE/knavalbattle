@@ -30,7 +30,7 @@ public:
     void notify(Sea::Player player, const Coord& c, const HitInfo& info) override;
     void notifyChat(const Entity*, const QString&) override { }
     void notifyNick(Sea::Player, const QString&) override { }
-    void start(bool) override;
+    void start() override;
     void startPlacing() override;
     void startPlaying() override;
     void hit(Shot* shot) override;

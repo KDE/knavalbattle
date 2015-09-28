@@ -33,7 +33,7 @@ NetworkEntity::~NetworkEntity()
 {
 }
 
-void NetworkEntity::start(bool ask)
+void NetworkEntity::start()
 {
 }
 

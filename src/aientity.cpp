@@ -60,7 +60,7 @@ void AIEntity::notifyGameOptions()
     emit gameOptionsInterchanged();
 }
 
-void AIEntity::start(bool)
+void AIEntity::start()
 {
     emit ready(m_player);
 }

@@ -121,9 +121,9 @@ void PlayerEntity::startPlacing()
 }
 
 
-void PlayerEntity::start(bool ask)
+void PlayerEntity::start()
 {
-    UIEntity::start(ask);
+    UIEntity::start();
     emit ready(m_player);
 }
 

@@ -31,7 +31,7 @@ public:
     void notifyChat(const Entity*, const QString&) override { }
     void notifyNick(Sea::Player, const QString&) override { }
     void notifyGameOptions() override { emit gameOptionsInterchanged(); }
-    void start(bool) override;
+    void start() override;
     void startPlacing() override { };
     void hit(Shot*) override;
     

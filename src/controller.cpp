@@ -245,7 +245,7 @@ void Controller::shipsPlaced(int player)
     if (m_ready >= 2 )
     {
         foreach (Entity* entity, m_entities) {
-            entity->start(false);
+            entity->start();
         }
     }
 }

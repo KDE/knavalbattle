@@ -31,7 +31,7 @@ public:
     PlayerEntity(Sea::Player player, Sea* sea, SeaView* view, ChatWidget* chat);
     
     // entity interface
-    void start(bool) override;
+    void start() override;
     void startPlacing() override;
     void startPlaying() override;
     void hit(Shot* shot) override;

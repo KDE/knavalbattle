@@ -48,7 +48,7 @@ public:
     virtual void hit(Shot* shot) = 0;
     virtual void notifyGameOptions() = 0;
     virtual void startPlacing() = 0;
-    virtual void start(bool) = 0;
+    virtual void start() = 0;
     virtual void startPlaying() { }
     virtual void notifyReady(Sea::Player) { }
     virtual void notifyShips(Sea::Player) { }

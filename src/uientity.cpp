@@ -36,7 +36,7 @@ void UIEntity::notifyGameOver(Sea::Player winner)
     drawHiddenShips(winner);
 }
 
-void UIEntity::start(bool)
+void UIEntity::start()
 {
 
 }
