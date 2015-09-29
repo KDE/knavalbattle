@@ -20,7 +20,6 @@ Q_OBJECT
     AI* m_ai;
     Sea* m_sea;
 
-    void getShoot();
 
     friend class DelayedShot;
 public:
@@ -40,6 +39,9 @@ public:
 public slots:
     void notifyAbort() override { }
     void notifyRestartPlacing(Sea::Player) override { }
+
+private slots:
+    void getShoot();
 };
 
 
