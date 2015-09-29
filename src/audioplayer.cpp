@@ -17,7 +17,7 @@ AudioPlayer::AudioPlayer(QObject* parent)
 : QObject(parent)
 , m_media(0)
 {
-    m_dir = QStandardPaths::locate(QStandardPaths::DataLocation, QLatin1Literal("sounds/"));
+    m_dir = QStandardPaths::locate(QStandardPaths::DataLocation, QLatin1Literal("sounds/"), QStandardPaths::LocateDirectory);
 }
 
 void AudioPlayer::play(Sea::Player player, const HitInfo& info)
