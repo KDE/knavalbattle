@@ -9,53 +9,61 @@
 
 #include "audioplayer.h"
 
-#include <phonon/MediaObject>
+#include <KgSound>
 
+#include <QDir>
 #include <QStandardPaths>
 
 AudioPlayer::AudioPlayer(QObject* parent)
 : QObject(parent)
-, m_media(0)
+, m_sink(0)
+, m_shootA(0)
+, m_shootB(0)
+, m_shootWater(0)
 {
-    m_dir = QStandardPaths::locate(QStandardPaths::DataLocation, QLatin1Literal("sounds/"), QStandardPaths::LocateDirectory);
+
 }
 
 void AudioPlayer::play(Sea::Player player, const HitInfo& info)
 {
-    if (m_media) {
-        QString sound;
-        if (info.type == HitInfo::HIT) {
-            if (info.shipDestroyed) {
-                sound = QLatin1Literal("ship-sink.ogg");
-            }
-            else {
-                sound = player == Sea::PLAYER_A ? 
-                                QLatin1Literal("ship-player1-shoot.ogg") :
-                                QLatin1Literal("ship-player2-shoot.ogg");
-            }
+    KgSound *sound;
+    if (info.type == HitInfo::HIT) {
+        if (info.shipDestroyed) {
+            sound = m_sink;
         }
         else {
-            sound = QLatin1Literal("ship-player-shoot-water.ogg");
+            sound = player == Sea::PLAYER_A ? m_shootA : m_shootB;
         }
-        
-        if (!sound.isEmpty()) {
-            qDebug() << "****** playing" << m_dir.filePath(sound);
-            m_media->setCurrentSource(QUrl::fromLocalFile(m_dir.filePath(sound)));
-            m_media->play();
-        }
+    }
+    else {
+        sound = m_shootWater;
+    }
+
+    if (sound) {
+        sound->start();
     }
 }
 
 void AudioPlayer::setActive(bool value) 
 { 
     if (value) {
-        if (!m_media) {
-            m_media = Phonon::createPlayer(Phonon::GameCategory);            
+        if (!m_sink) {
+            const QDir dir = QStandardPaths::locate(QStandardPaths::DataLocation, QLatin1Literal("sounds/"), QStandardPaths::LocateDirectory);
+            m_sink = new KgSound(dir.filePath("ship-sink.ogg"), this);
+            m_shootA = new KgSound(dir.filePath("ship-player1-shoot.ogg"), this);
+            m_shootB = new KgSound(dir.filePath("ship-player2-shoot.ogg"), this);
+            m_shootWater = new KgSound(dir.filePath("ship-player-shoot-water.ogg"), this);
         }
     }
     else {
-        delete m_media;
-        m_media = 0;
+        delete m_sink;
+        delete m_shootA;
+        delete m_shootB;
+        delete m_shootWater;
+        m_sink = 0;
+        m_shootA = 0;
+        m_shootB = 0;
+        m_shootWater = 0;
     }
 }
 
