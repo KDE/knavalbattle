@@ -76,6 +76,7 @@ void MainWindow::setupActions()
     actionCollection()->addAction(QLatin1Literal("options_nickname"), action);
     connect(action, &QAction::triggered, m_main, &PlayField::changeNick);
     action = new KToggleAction(i18n("&Play Sounds"), this);
+    action->setChecked(Settings::enableSounds());
     actionCollection()->addAction(QLatin1Literal("options_sounds"), action);
     connect(action, &QAction::triggered, m_main, &PlayField::toggleSounds);
     // This action will be disabled when a game is being run
