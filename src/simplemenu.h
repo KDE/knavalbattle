@@ -20,7 +20,7 @@ class Button;
 class QTcpSocket;
 class Entity;
 class Protocol;
-class KUrl;
+class QUrl;
 
 class SimpleMenu : public QObject
 {
@@ -50,8 +50,8 @@ public:
     SimpleMenu(QWidget* parent, WelcomeScreen* screen);
     
     void setupController(Controller* controller, Entity* old_opponent,
-        SeaView* sea, ChatWidget* chat, bool ask = false);
-    void createClient(const KUrl& url);
+        SeaView* sea, ChatWidget* chat);
+    void createClientWithUrl(const QUrl& url);
     
     Entity* player(int p) { return p == 0 ? m_player1 : m_player2; }
     

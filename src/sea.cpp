@@ -188,5 +188,5 @@ void Sea::setBattleShipsConfiguration(const BattleShipsConfiguration& configurat
 }
 
 
-#include "sea.moc"
+
 

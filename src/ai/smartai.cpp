@@ -98,7 +98,7 @@ public:
     {
     }
 
-    virtual Coord getMove()
+    Coord getMove() override
     {
         for (;;) {
             Coord c = m_end + direction();
@@ -132,7 +132,7 @@ public:
         else {
             if (!next_try()) {
                 // give up
-                kDebug() << "giving up (m_direction =" << m_direction << ")";
+                qDebug() << "giving up (m_direction =" << m_direction << ")";
                 return m_state.defaultStrategy(m_player, m_sea);
             }
         }
@@ -149,7 +149,7 @@ public:
     {
     }
 
-    virtual Coord getMove()
+    Coord getMove() override
     {
         for (int i = 0; i < 10000; i++) {
             Coord c(rand() % m_sea->size().x, rand() % m_sea->size().y);
@@ -160,7 +160,7 @@ public:
         return Coord::invalid();
     }
 
-    virtual Strategy* notify(const Coord& c, const HitInfo& info)
+    Strategy* notify(const Coord& c, const HitInfo& info) override
     {
         if (info.type == HitInfo::HIT &&
             !info.shipDestroyed) {
@@ -228,7 +228,7 @@ class DiagonalStrategy : public Strategy
     {
         do {
             m_offset = rand() % m_gap;
-            kDebug() << "offset =" << m_offset << " / " << m_gap;
+            qDebug() << "offset =" << m_offset << " / " << m_gap;
         } while (!movesAvailable());
 
         m_range = 0;
@@ -255,11 +255,11 @@ public:
         setup();
     }
 
-    virtual Coord getMove()
+    Coord getMove() override
     {
 
         if (!movesAvailable()) {
-            kDebug() << "no moves available";
+            qDebug() << "no moves available";
             setup();
         }
         for (int i = 0; i < 50; i++) {
@@ -273,7 +273,7 @@ public:
         return Coord::invalid();
     }
 
-    virtual Strategy* notify(const Coord& c, const HitInfo& info)
+    Strategy* notify(const Coord& c, const HitInfo& info) override
     {
         if (info.type == HitInfo::HIT &&
             !info.shipDestroyed) {
@@ -291,7 +291,7 @@ SmartAI::SmartAI(Sea::Player player, Sea* sea, bool random, const BattleShipsCon
 , m_state(random, config)
 {
     srand(time(0));
-    m_strategy = std::auto_ptr<Strategy>(m_state.defaultStrategy(player, sea));
+    m_strategy = std::unique_ptr<Strategy>(m_state.defaultStrategy(player, sea));
 }
 
 Coord SmartAI::getMove()
@@ -317,7 +317,7 @@ void SmartAI::notify(Sea::Player player, const Coord& c, const HitInfo& info)
     if (player == m_player) {
         Strategy* new_strategy = m_strategy->notify(c, info);
         if (new_strategy) {
-            m_strategy = std::auto_ptr<Strategy>(new_strategy);
+            m_strategy = std::unique_ptr<Strategy>(new_strategy);
         }
     }
 }

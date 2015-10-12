@@ -15,31 +15,42 @@
 #include <QTcpServer>
 #include <QVBoxLayout>
 #include <QHBoxLayout>
+#include <QPushButton>
+
 #include <KComboBox>
-#include <KNumInput>
+#include <KPluralHandlingSpinBox>
 #include <KLineEdit>
 #include <KLocalizedString>
-#include <KPushButton>
 #include <KSeparator>
-#include <DNSSD/ServiceBrowser>
-#include <DNSSD/ServiceModel>
-#include <DNSSD/PublicService>
+#include <KDNSSD/DNSSD/ServiceBrowser>
+#include <KDNSSD/DNSSD/ServiceModel>
+#include <KDNSSD/DNSSD/PublicService>
+#include <KConfigGroup>
+#include <QDialogButtonBox>
 
 #include "settings.h"
 
-NetworkDialog::NetworkDialog(bool client, QWidget* parent, const KUrl* url)
-: KDialog(parent)
+NetworkDialog::NetworkDialog(bool client, QWidget* parent, const QUrl* url)
+: QDialog(parent)
 , m_publisher(0), m_client(client)
 {
-    setButtons(Ok | Cancel);
+    QDialogButtonBox *buttonBox = new QDialogButtonBox(QDialogButtonBox::Ok|QDialogButtonBox::Cancel);
+    QVBoxLayout *topLayout = new QVBoxLayout;
+    setLayout(topLayout);
+    m_okButton = buttonBox->button(QDialogButtonBox::Ok);
+    m_okButton->setDefault(true);
+    m_okButton->setShortcut(Qt::CTRL | Qt::Key_Return);
+    connect(buttonBox, &QDialogButtonBox::accepted, this, &NetworkDialog::slotOkClicked);
+    connect(buttonBox, &QDialogButtonBox::rejected, this, &NetworkDialog::reject);
 
     QLabel* tmp;
     QWidget* main = new QWidget(this);
+
     QHBoxLayout* tmpLayout;
     QVBoxLayout* mainLayout = new QVBoxLayout;
 
     // feedback
-    m_feedback = new QLabel("", this);
+    m_feedback = new QLabel(QLatin1Literal(""), this);
     m_feedback->setAlignment(Qt::AlignHCenter);
     {
         QFont font = m_feedback->font();
@@ -58,21 +69,19 @@ NetworkDialog::NetworkDialog(bool client, QWidget* parent, const KUrl* url)
     tmpLayout = new QHBoxLayout;
     tmpLayout->addWidget(tmp);
     tmpLayout->addWidget(m_nickname, 1);
-    tmpLayout->setSpacing(KDialog::spacingHint());
     mainLayout->addItem(tmpLayout);
 
     // client part
     if (m_client) {
         tmp = new QLabel(i18n("&Join game:"), main);
         m_games=new KComboBox(main);
-        DNSSD::ServiceBrowser* browser=new DNSSD::ServiceBrowser("_kbattleship._tcp", true);
-        m_games->setModel(new DNSSD::ServiceModel(browser, this));
+        KDNSSD::ServiceBrowser* browser=new KDNSSD::ServiceBrowser(QLatin1Literal("_kbattleship._tcp"), true);
+        m_games->setModel(new KDNSSD::ServiceModel(browser, this));
         tmp->setBuddy(m_games);
         tmpLayout = new QHBoxLayout;
         tmpLayout->addWidget(tmp);
         tmpLayout->addWidget(m_games, 1);
-        tmpLayout->setSpacing(KDialog::spacingHint());
-        connect(m_games, SIGNAL(currentIndexChanged(int)), this, SLOT(serviceSelected(int)));
+        connect(m_games, static_cast<void (KComboBox::*)(int)>(&KComboBox::currentIndexChanged), this, &NetworkDialog::serviceSelected);
         mainLayout->addItem(tmpLayout);
         
         QWidget* frame=new QWidget(main);
@@ -87,13 +96,13 @@ NetworkDialog::NetworkDialog(bool client, QWidget* parent, const KUrl* url)
         tmpLayout = new QHBoxLayout;
         tmpLayout->addWidget(tmp);
         tmpLayout->addWidget(m_hostname, 1);
-        tmpLayout->setSpacing(KDialog::spacingHint());
+//TODO PORT QT5         tmpLayout->setSpacing(QDialog::spacingHint());
         frameLayout->addItem(tmpLayout);
 
         // port
         const int port = ( url && url->port() != -1 )? url->port(): Settings::port();
         tmp = new QLabel(i18n("&Port:"), main);
-        m_port = new KIntSpinBox(main);
+        m_port = new KPluralHandlingSpinBox(main);
         m_port->setRange(1, 99999);
         m_port->setValue(port);
         tmp->setBuddy(m_port);
@@ -109,8 +118,8 @@ NetworkDialog::NetworkDialog(bool client, QWidget* parent, const KUrl* url)
         
         QPushButton* sw=new QPushButton(i18n("&Enter server address manually"), main);
         sw->setCheckable(true);
-        connect(sw,SIGNAL(toggled(bool)), frame, SLOT(setVisible(bool)));
-        connect(sw,SIGNAL(toggled(bool)), m_games, SLOT(setDisabled(bool)));
+        connect(sw, &QPushButton::toggled, frame, &QWidget::setVisible);
+        connect(sw, &QPushButton::toggled, m_games, &KComboBox::setDisabled);
         mainLayout->addWidget(sw);
         if(url) {
             sw->click();
@@ -123,7 +132,7 @@ NetworkDialog::NetworkDialog(bool client, QWidget* parent, const KUrl* url)
     
         // port
         tmp = new QLabel(i18n("&Port:"), main);
-        m_port = new KIntSpinBox(main);
+        m_port = new KPluralHandlingSpinBox(main);
         m_port->setRange(1, 99999);
         m_port->setValue(Settings::port());
         tmp->setBuddy(m_port);
@@ -136,12 +145,13 @@ NetworkDialog::NetworkDialog(bool client, QWidget* parent, const KUrl* url)
     mainLayout->addStretch();
     
     main->setLayout(mainLayout);
-    setMainWidget(main);
-    setCaption(i18n("Network Parameters"));
+    topLayout->addWidget(main);
+    topLayout->addWidget(buttonBox);
+
+    setWindowTitle(i18n("Network Parameters"));
     
-    connect(this, SIGNAL(accepted()), this, SLOT(savePreferences()));
+    connect(this, &NetworkDialog::accepted, this, &NetworkDialog::savePreferences);
     
-    enableButtonApply(false);
 }
 
 NetworkDialog::~NetworkDialog()
@@ -156,7 +166,7 @@ void NetworkDialog::savePreferences()
         Settings::setHostname(hostname());
     }
     Settings::setPort(port());
-    Settings::self()->writeConfig();
+    Settings::self()->save();
 }
 
 void NetworkDialog::serviceSelected(int idx)
@@ -164,7 +174,7 @@ void NetworkDialog::serviceSelected(int idx)
     if (idx==-1) {
         return;
     }
-    DNSSD::RemoteService::Ptr service=m_games->itemData(idx,DNSSD::ServiceModel::ServicePtrRole ).value<DNSSD::RemoteService::Ptr>();
+    KDNSSD::RemoteService::Ptr service=m_games->itemData(idx,KDNSSD::ServiceModel::ServicePtrRole ).value<KDNSSD::RemoteService::Ptr>();
     m_hostname->setText(service->hostName());
     m_port->setValue(service->port());
 }
@@ -175,7 +185,7 @@ QString NetworkDialog::hostname() const
         return m_hostname->text();
     }
     else {
-        return "";
+        return QString();
     }
 }
 
@@ -194,33 +204,27 @@ QTcpSocket* NetworkDialog::socket() const
     return m_socket;
 }
 
-void NetworkDialog::slotButtonClicked(int code)
+void NetworkDialog::slotOkClicked()
 {
-    if (code == Ok) {
-        KPushButton* b = button(Ok);
-        b->setEnabled(false);
+        m_okButton->setEnabled(false);
         m_feedback->show();
        
         if (m_client) {
             m_feedback->setText(i18n("Connecting to remote host..."));
             m_socket = new QTcpSocket;
-            connect(m_socket, SIGNAL(connected()), this, SLOT(clientOK()));
-            connect(m_socket, SIGNAL(error(QAbstractSocket::SocketError)), this, SLOT(clientError()));
+            connect(m_socket, &QTcpSocket::connected, this, &NetworkDialog::clientOK);
+            connect(m_socket, static_cast<void (QTcpSocket::*)(QAbstractSocket::SocketError)>(&QTcpSocket::error), this, &NetworkDialog::clientError);
             m_socket->connectToHost(m_hostname->text(), m_port->value());
         }
         else {
             m_feedback->setText(i18n("Waiting for an incoming connection..."));        
             QTcpServer* server = new QTcpServer;
-            connect(server, SIGNAL(newConnection()), this, SLOT(serverOK()));
-            m_publisher=new DNSSD::PublicService(nickname(), "_kbattleship._tcp", m_port->value());
+            connect(server, &QTcpServer::newConnection, this, &NetworkDialog::serverOK);
+            m_publisher=new KDNSSD::PublicService(nickname(), QLatin1Literal("_kbattleship._tcp"), m_port->value());
             m_publisher->publishAsync();
             
             server->listen(QHostAddress::Any, static_cast<quint16>(m_port->value()));
         }
-    }
-    else {
-        KDialog::slotButtonClicked(code);
-    }
 }
 
 void NetworkDialog::clientOK()
@@ -233,7 +237,7 @@ void NetworkDialog::clientError()
     m_socket->deleteLater();
     m_socket = 0;
     m_feedback->setText(i18n("Could not connect to host"));
-    button(Ok)->setEnabled(true);
+    m_okButton->setEnabled(true);
 }
 
 void NetworkDialog::serverOK()
@@ -257,5 +261,5 @@ void NetworkDialog::serverOK()
     accept();
 }
 
-#include "networkdialog.moc"
+
 

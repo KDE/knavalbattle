@@ -13,21 +13,22 @@
 #include <QString>
 #include <QTimer>
 #include <QQueue>
+
 #include "message.h"
 
-class QIODevice;
+class QTcpSocket;
 
 class Protocol : public QObject
 {
 Q_OBJECT
-    QIODevice* m_device;
+    QTcpSocket* m_device;
     QString m_buffer;
     QQueue<MessagePtr> m_message_queue;
     QTimer m_timer;
     
     MessagePtr parseMessage(const QString& xmlMessage);
 public:
-    explicit Protocol(QIODevice* device);
+    explicit Protocol(QTcpSocket* device);
     
     void send(const MessagePtr& msg);
 private slots:

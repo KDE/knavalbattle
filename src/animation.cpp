@@ -125,5 +125,5 @@ bool MovementAnimation::step(int t)
     }
 }
 
-#include "animation.moc"
+
 

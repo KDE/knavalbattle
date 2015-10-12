@@ -37,7 +37,7 @@ public:
     void setData(const QPixmap &icon, const QString &text);
 
 protected:
-    virtual void paintEvent(QPaintEvent *);
+    void paintEvent(QPaintEvent *) override;
 };
 
 class StatsWidget : public QWidget

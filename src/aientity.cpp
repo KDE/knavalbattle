@@ -12,10 +12,11 @@
 #include "ai/dummyai.h"
 #include "shot.h"
 #include "seaview.h"
-
+#include "settings.h"
 
 #include <KgDifficulty>
-#include <KIcon>
+
+#include <QIcon>
 
 AIEntity::AIEntity(Sea::Player player, Sea* sea, SeaView *seaview)
 : Entity(player, seaview, sea->battleShipsConfiguration())
@@ -52,24 +53,29 @@ void AIEntity::notify(Sea::Player player, const Coord& c, const HitInfo& info)
             m_sea->addBorder(Sea::opponent(player), info.shipPos);
     }
 
-    getShoot();
+    if (Settings::enableSounds()) {
+        // This 3sec is hardcoded to current sounds
+        QTimer::singleShot(3000, this, &AIEntity::getShoot);
+    } else {
+        getShoot();
+    }
 }
 
-void AIEntity::notifyGameOptions(bool ask)
+void AIEntity::notifyGameOptions()
 {
     emit gameOptionsInterchanged();
 }
 
-void AIEntity::start(bool)
+void AIEntity::start()
 {
     emit ready(m_player);
 }
 
-void AIEntity::startPlacing(bool ask)
+void AIEntity::startPlacing()
 {
     m_seaview->setStatus(Sea::PLACING_SHIPS);
     m_ai->setShips();
-    emit shipsPlaced(m_player);
+    emit shipsPlaced();
 }
 
 void AIEntity::startPlaying()
@@ -97,11 +103,11 @@ void AIEntity::getShoot()
     }
 }
 
-KIcon AIEntity::icon() const
+QIcon AIEntity::icon() const
 {
-    return KIcon( QLatin1String( "roll" ));
+    return QIcon::fromTheme( QLatin1String( "roll" ));
 }
 
-#include "aientity.moc"
+
 
 

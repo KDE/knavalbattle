@@ -14,6 +14,7 @@
 #include <QStringList>
 #include <QDomElement>
 #include <QDomNode>
+#include <QTcpSocket>
 
 #define ADD_FIELD(msg, field) addField(#field, msg.field())
 class MessageSender : public MessageVisitor
@@ -47,7 +48,7 @@ public:
     
     QDomDocument document() const { return m_doc; }
 
-    virtual void visit(const HeaderMessage& msg)
+    void visit(const HeaderMessage& msg) override
     {
         setType(msg);
         ADD_FIELD(msg, protocolVersion);
@@ -56,24 +57,24 @@ public:
         ADD_FIELD(msg, clientDescription);
     }
     
-    virtual void visit(const RejectMessage& msg) { setType(msg); }
+    void visit(const RejectMessage& msg) override { setType(msg); }
     
-    virtual void visit(const NickMessage& msg)
+    void visit(const NickMessage& msg) override
     {
         setType(msg);
         ADD_FIELD(msg, nickname);
     }
     
-    virtual void visit(const BeginMessage& msg) { setType(msg); }
+    void visit(const BeginMessage& msg) override { setType(msg); }
     
-    virtual void visit(const MoveMessage& msg)
+    void visit(const MoveMessage& msg) override
     {
         setType(msg);
         addField("fieldx", QString::number(msg.move().x));
         addField("fieldy", QString::number(msg.move().y));
     }
     
-    virtual void visit(const NotificationMessage& msg)
+    void visit(const NotificationMessage& msg) override
     {
         setType(msg);
         addField("fieldx", QString::number(msg.move().x));
@@ -88,7 +89,7 @@ public:
         }
     }
     
-    virtual void visit(const GameOverMessage& msg)
+    void visit(const GameOverMessage& msg) override
     {
         setType(msg);
         foreach (const GameOverMessage::ShipInfo &ship, msg.ships()) {
@@ -100,19 +101,19 @@ public:
         }
     }
     
-    virtual void visit(const RestartMessage& msg)
+    void visit(const RestartMessage& msg) override
     {
         setType(msg);
     }
     
-    virtual void visit(const ChatMessage& msg)
+    void visit(const ChatMessage& msg) override
     {
         setType(msg);
         ADD_FIELD(msg, chat);
         ADD_FIELD(msg, nickname);
     }
 
-    virtual void visit(const GameOptionsMessage& msg)
+    void visit(const GameOptionsMessage& msg) override
     {
         // create the message XML contents
         setType(msg);
@@ -133,14 +134,14 @@ public:
 
 
 
-Protocol::Protocol(QIODevice* device)
+Protocol::Protocol(QTcpSocket* device)
 : m_device(device)
 {
     m_device->setParent(this);
     m_timer.start(100);
-    connect(m_device, SIGNAL(disconnected()), this, SLOT(processDisconnection()));
-    connect(m_device, SIGNAL(readyRead()), this, SLOT(readMore()));
-    connect(&m_timer, SIGNAL(timeout()), this, SLOT(sendNext()));
+    connect(m_device, &QTcpSocket::disconnected, this, &Protocol::processDisconnection);
+    connect(m_device, &QTcpSocket::readyRead, this, &Protocol::readMore);
+    connect(&m_timer, &QTimer::timeout, this, &Protocol::sendNext);
 }
 
 void Protocol::readMore()
@@ -162,7 +163,7 @@ void Protocol::readMore()
 #define DEF_COORD(var, varx, vary) DEF_ELEMENT(varx); DEF_ELEMENT(vary); Coord var(varx.toInt(), vary.toInt());
 MessagePtr Protocol::parseMessage(const QString& xmlMessage)
 {
-    kDebug() << "received:" << xmlMessage;
+    qDebug() << "received:" << xmlMessage;
 
     QDomDocument doc;
     doc.setContent(xmlMessage);
@@ -318,7 +319,7 @@ void Protocol::sendNext()
         QTextStream stream(m_device);
         stream << sender.document().toString() << endl;
         
-        kDebug() << "sending:" << sender.document().toString();
+        qDebug() << "sending:" << sender.document().toString();
     }
 }
 
@@ -327,7 +328,4 @@ void Protocol::processDisconnection()
     m_timer.stop();
     emit disconnected();
 }
-
-#include "protocol.moc"
-
 

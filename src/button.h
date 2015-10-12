@@ -16,12 +16,13 @@
 #include <QPointer>
 #include <QWidget>
 #include <QGraphicsItem>
+
 #include "welcomescreen.h"
 #include "animation.h"
 
 class ButtonAnimation;
 
-class Button : public QObject, public QGraphicsItem 
+class Button : public QGraphicsObject
 {
 Q_OBJECT
     enum {
@@ -48,10 +49,10 @@ Q_OBJECT
 public:
     Button(QGraphicsItem* parent, const QIcon& icon, 
            const QFont& font, const QString& text);
-    virtual ~Button();
+    ~Button() override;
            
-    virtual void paint(QPainter *, const QStyleOptionGraphicsItem *, QWidget *);
-    virtual QRectF boundingRect() const;
+    void paint(QPainter *, const QStyleOptionGraphicsItem *, QWidget *) override;
+    QRectF boundingRect() const override;
     
     QSize size() const;
  
@@ -82,8 +83,8 @@ public:
 public:
     ButtonAnimation(Button* button, int brightness);
     ~ButtonAnimation();
-    virtual void start(int t);
-    virtual bool step(int t);
+    void start(int t) override;
+    bool step(int t) override;
     virtual void abort();
     
     void setBrightness(int value);

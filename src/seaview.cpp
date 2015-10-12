@@ -12,7 +12,7 @@
 #include <QMouseEvent>
 #include <QObject>
 
-#include <KIcon>
+#include <QIcon>
 
 #include "battlefieldview.h"
 #include "button.h"
@@ -64,8 +64,8 @@ SeaView::SeaView(QWidget* parent)
     Animator::instance()->start();
     refresh();
     
-    connect(screen(Sea::Player(0)), SIGNAL(hidden()), this, SLOT(refresh()));
-    connect(screen(Sea::Player(0)), SIGNAL(shown()), this, SLOT(refresh()));
+    connect(screen(Sea::Player(0)), &WelcomeScreen::hidden, this, &SeaView::refresh);
+    connect(screen(Sea::Player(0)), &WelcomeScreen::shown, this, &SeaView::refresh);
 }
 
 SeaView::~SeaView() {
@@ -261,5 +261,5 @@ void SeaView::setNick(Sea::Player p, const QString& nick)
     m_labels[p]->setText(nick);
 }
 
-#include "seaview.moc"
+
 

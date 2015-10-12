@@ -13,12 +13,12 @@
 
 #include <QStatusBar>
 #include <QVBoxLayout>
+#include <QDebug>
+#include <QInputDialog>
 
-#include <KInputDialog>
-#include <KLocale>
+#include <KLocalizedString>
 #include <KMessageBox>
 #include <KScoreDialog>
-#include <KDebug>
 
 #include "aientity.h"
 #include "audioplayer.h"
@@ -74,22 +74,14 @@ Controller* PlayField::createController()
     BattleShipsConfiguration::defaultMultipleShipsConfiguration(Settings::adjacentShips()):
     BattleShipsConfiguration::defaultSingleShipsConfiguration(Settings::adjacentShips());
     Controller* controller = new Controller(this, m_player, m_battle_ships_configuration);
-    connect(controller, SIGNAL(gameOver(Sea::Player)),
-            this, SLOT(gameOver(Sea::Player)));
-    connect(controller, SIGNAL(restartRequested()),
-            this, SLOT(restartRequested()));
-    connect(controller, SIGNAL(compatibility(int)),
-            this, SLOT(setCompatibility(int)));
-    connect(controller, SIGNAL(nickChanged(int,QString)),
-            this, SLOT(updateNick(int,QString)));
-    connect(controller, SIGNAL(turnChanged(int)),
-            this, SLOT(changeTurn(int)));
-    connect(controller, SIGNAL(playerReady(int)),
-            this, SLOT(playerReady(int)));
-    connect(controller, SIGNAL(restartPlacingShips(Sea::Player)),
-            this, SLOT(restartPlacingShips(Sea::Player)));
-    connect(controller, SIGNAL(startPlacingShips(int)),
-            this, SLOT(startPlacingShips()));
+    connect(controller, &Controller::gameOver, this, &PlayField::gameOver);
+    connect(controller, &Controller::restartRequested, this, &PlayField::restartRequested);
+    connect(controller, &Controller::compatibility, this, &PlayField::setCompatibility);
+    connect(controller, &Controller::nickChanged, this, &PlayField::updateNick);
+    connect(controller, &Controller::turnChanged, this, &PlayField::changeTurn);
+    connect(controller, &Controller::playerReady, this, &PlayField::playerReady);
+    connect(controller, &Controller::restartPlacingShips, this, &PlayField::restartPlacingShips);
+    connect(controller, &Controller::startPlacingShips, this, &PlayField::startPlacingShips);
 
     return controller;
 }
@@ -106,26 +98,7 @@ void PlayField::setupController()
 
     delete m_controller;
     m_controller = createController();
-    m_menu->setupController(m_controller, 0, m_seaView, m_chat, false);
-    startGame();
-}
-
-void PlayField::resetupController(bool ask)
-{
-    Entity* old_opponent = m_controller->findEntity(Sea::Player(1));
-    if (old_opponent) {
-        old_opponent->setParent(0);
-    }
-    BattleShipsConfiguration oldBSC=m_controller->getBattleShipsConfiguration();
-    delete m_controller;
-
-    // create new controller
-    m_controller = createController();
-    m_controller->setBattleShipsConfiguration(oldBSC);
-    m_menu->setupController(m_controller, old_opponent, 
-        m_seaView, m_chat, ask);
-    delete old_opponent;
-    
+    m_menu->setupController(m_controller, 0, m_seaView, m_chat);
     startGame();
 }
 
@@ -149,17 +122,17 @@ void PlayField::newGame()
     m_seaView->screen(Sea::Player(1))->show();
     
     m_menu = new SimpleMenu(this, m_seaView->screen(Sea::Player(0)));
-    connect(m_menu, SIGNAL(done()), this, SLOT(setupController()));
+    connect(m_menu, &SimpleMenu::done, this, &PlayField::setupController);
     m_status_bar->showMessage(QLatin1String(""));
     emit welcomeScreen();
 }
 
-void PlayField::restart(bool ask)
+void PlayField::restart()
 {
     Animator::instance()->restart();
     m_seaView->clear();
     startGame();
-    m_controller->restart(ask);
+    m_controller->restart();
 }
 
 
@@ -172,9 +145,9 @@ void PlayField::highscores()
             KScoreDialog::Custom3, 
             this);
     highscoredialog->initFromDifficulty(Kg::difficulty());
-    highscoredialog->addField(KScoreDialog::Custom1, i18n("Shots"), "shots");
-    highscoredialog->addField(KScoreDialog::Custom2, i18n("Hits"), "hits");
-    highscoredialog->addField(KScoreDialog::Custom3, i18n("Misses"), "water");
+    highscoredialog->addField(KScoreDialog::Custom1, i18n("Shots"), QLatin1Literal("shots"));
+    highscoredialog->addField(KScoreDialog::Custom2, i18n("Hits"), QLatin1Literal("hits"));
+    highscoredialog->addField(KScoreDialog::Custom3, i18n("Misses"), QLatin1Literal("water"));
     
     highscoredialog->exec();
 }
@@ -192,9 +165,9 @@ void PlayField::gameOver(Sea::Player winner)
                     KScoreDialog::Custom3, 
                     this);
             highscoredialog->initFromDifficulty(Kg::difficulty());
-            highscoredialog->addField(KScoreDialog::Custom1, i18n("Shots"), "shots");
-            highscoredialog->addField(KScoreDialog::Custom2, i18n("Hits"), "hits");
-            highscoredialog->addField(KScoreDialog::Custom3, i18n("Misses"), "water");
+            highscoredialog->addField(KScoreDialog::Custom1, i18n("Shots"), QLatin1Literal("shots"));
+            highscoredialog->addField(KScoreDialog::Custom2, i18n("Hits"), QLatin1Literal("hits"));
+            highscoredialog->addField(KScoreDialog::Custom3, i18n("Misses"), QLatin1Literal("water"));
         
             KScoreDialog::FieldInfo info;
             info[KScoreDialog::Name] = m_menu->player(0)->nick();
@@ -204,7 +177,7 @@ void PlayField::gameOver(Sea::Player winner)
             info[KScoreDialog::Custom3] = QString::number(stats->misses());
         
             int temp = highscoredialog->addScore(info, KScoreDialog::AskName);
-            kDebug() << "temp =" << temp;
+            qDebug() << "temp =" << temp;
             //if (highscoredialog->addScore(info, KScoreDialog::AskName)) {
             if (temp != 0) {
                 highscoredialog->exec();
@@ -230,30 +203,30 @@ void PlayField::gameOver(Sea::Player winner)
 
 void PlayField::changeNick()
 {
-    QString nick = KInputDialog::getText(i18n("Change Nickname"), i18n("Enter new nickname:"), Settings::findNick());
+    QString nick = QInputDialog::getText(this, i18n("Change Nickname"), i18n("Enter new nickname:"), QLineEdit::Normal, Settings::findNick());
     if (!nick.isEmpty()) {
         Settings::setNickname(nick);
-        Settings::self()->writeConfig();
+        Settings::self()->save();
     }
 }
 
 void PlayField::toggleSounds(bool enable)
 {
     Settings::setEnableSounds(enable);
-    Settings::self()->writeConfig();
+    Settings::self()->save();
     m_player->setActive(enable);
 }
 
 void PlayField::toggleAdjacent(bool enable)
 {
     Settings::setAdjacentShips(enable);
-    Settings::self()->writeConfig();
+    Settings::self()->save();
 }
 
 void PlayField::toggleMultiple(bool enable)
 {
     Settings::setSeveralShips(enable);
-    Settings::self()->writeConfig();
+    Settings::self()->save();
 }
 
 void PlayField::restartRequested()
@@ -261,7 +234,7 @@ void PlayField::restartRequested()
     int ans = KMessageBox::questionYesNo(this, i18n("Restart game"),
                     i18n("Your opponent has requested to restart the game. Do you accept?"));
     if (ans == KMessageBox::Yes) {
-        restart(false);
+        restart();
     }
 }
 
@@ -322,10 +295,9 @@ void PlayField::startPlacingShips()
 void PlayField::restartPlacingShips(Sea::Player player)
 {
     m_status_bar->showMessage(i18n("You can't place your remaining ships."));
-    KMessageBox restartYesNo;
     KGuiItem buttonRestart=KStandardGuiItem::yes(); buttonRestart.setText(i18n("Restart"));
     KGuiItem buttonAbort=KStandardGuiItem::no(); buttonAbort.setText(i18n("Abort"));
-    int res=restartYesNo.warningYesNo(this, i18n("You can't place your remaining ships. Please restart placing ships or abort game"), i18n("Restart placing ships"), buttonRestart, buttonAbort);
+    int res=KMessageBox::warningYesNo(this, i18n("You can't place your remaining ships. Please restart placing ships or abort game"), i18n("Restart placing ships"), buttonRestart, buttonAbort);
     if (res == KMessageBox::Yes) {
         startPlacingShips();
         m_controller->notifyRestartPlacingShips(player);
@@ -346,13 +318,13 @@ void PlayField::levelChanged()
 SimpleMenu* PlayField::createAuxMenu()
 {
     SimpleMenu* menu = new SimpleMenu(this, 0);
-    connect(menu, SIGNAL(done()), this, SLOT(auxMenuDone()));
+    connect(menu, &SimpleMenu::done, this, &PlayField::auxMenuDone);
     return menu;
 }
 
 void PlayField::auxMenuDone()
 {
-    kDebug() << "aux menu done";
+    qDebug() << "aux menu done";
     SimpleMenu* menu = qobject_cast<SimpleMenu*>(sender());
     if (menu) {
         delete m_menu;
@@ -376,9 +348,9 @@ void PlayField::createClient()
     createAuxMenu()->createClient();
 }
 
-void PlayField::createClient(const KUrl& url)
+void PlayField::createClientWithUrl(const QUrl& url)
 {
-    createAuxMenu()->createClient(url);
+    createAuxMenu()->createClientWithUrl(url);
 }
 
 void PlayField::toggleEndOfGameMessage(bool show)
@@ -396,6 +368,6 @@ void PlayField::toggleRightGrid(bool show)
     m_seaView->toggleRightGrid(show);
 }        
 
-#include "playfield.moc"
+
 
 

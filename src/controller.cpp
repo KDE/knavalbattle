@@ -9,7 +9,8 @@
 
 #include "controller.h"
 
-#include <klocalizedstring.h>
+#include <KLocalizedString>
+
 #include "playerentity.h"
 #include "aientity.h"
 #include "networkentity.h"
@@ -34,7 +35,7 @@ PlayerEntity* Controller::createPlayer(Sea::Player player, SeaView* view,
                                               ChatWidget* chat, const QString& nick)
 {
     if (m_ui) {
-        kDebug() << "Cannot create more than one human player";
+        qDebug() << "Cannot create more than one human player";
         return 0;
     }
     PlayerEntity* entity = new PlayerEntity(player, m_sea, view, chat);
@@ -46,7 +47,7 @@ PlayerEntity* Controller::createPlayer(Sea::Player player, SeaView* view,
 
 AIEntity* Controller::createAI(Sea::Player player, SeaView* view)
 {
-    kDebug() << "created ai entity";
+    qDebug() << "created ai entity";
     m_has_ai = true;
     AIEntity* e = new AIEntity(player, m_sea, view);
     e->setNick(i18n("Computer"));
@@ -59,7 +60,7 @@ NetworkEntity* Controller::createRemotePlayer(Sea::Player player, SeaView* view,
 {
     NetworkEntity* e = new NetworkEntity(player, m_sea, view, protocol, client);
     setupEntity(e);
-    connect(e, SIGNAL(restartRequested()), this, SIGNAL(restartRequested()));
+    connect(e, &NetworkEntity::restartRequested, this, &Controller::restartRequested);
     if (client) {
         m_sea->switchTurn();
     }
@@ -70,35 +71,35 @@ void Controller::setupEntity(Entity* entity)
 {
     entity->setParent(this);
 
-    connect(entity, SIGNAL(shoot(int,Coord)),
-            this, SLOT(shoot(int,Coord)), Qt::QueuedConnection);
-    connect(entity, SIGNAL(ready(int)),
-            this, SLOT(ready(int)));
-    connect(entity, SIGNAL(shipsPlaced(int)),
-            this, SLOT(shipsPlaced(int)));
-    connect(entity, SIGNAL(chat(QString)),
-            this, SLOT(receivedChat(QString)));
-    connect(entity, SIGNAL(nick(int,QString)),
-            this, SLOT(nick(int,QString)));
-    connect(entity, SIGNAL(compatibility(int)),
-            this, SIGNAL(compatibility(int)));
-    connect(entity, SIGNAL(gameOptionsInterchanged(bool)),
-            this, SLOT(placing(bool)));
+    connect(entity, &Entity::shoot,
+            this, &Controller::shoot, Qt::QueuedConnection);
+    connect(entity, &Entity::ready,
+            this, &Controller::ready);
+    connect(entity, &Entity::shipsPlaced,
+            this, &Controller::shipsPlaced);
+    connect(entity, &Entity::chat,
+            this, &Controller::receivedChat);
+    connect(entity, &Entity::nickChanged,
+            this, &Controller::nick);
+    connect(entity, &Entity::compatibility,
+            this, &Controller::compatibility);
+    connect(entity, &Entity::gameOptionsInterchanged,
+            this, &Controller::placing);
 
     foreach (Entity* e, m_entities) {
-        connect(e, SIGNAL(compatibility(int)),
-                entity, SLOT(setCompatibilityLevel(int)));
-        connect(entity, SIGNAL(compatibility(int)),
-                e, SLOT(setCompatibilityLevel(int)));
+        connect(e, &Entity::compatibility,
+                entity, &Entity::setCompatibilityLevel);
+        connect(entity, &Entity::compatibility,
+                e, &Entity::setCompatibilityLevel);
 
-        connect(e, SIGNAL(abortGame()),
-                entity, SLOT(notifyAbort()));
-        connect(entity, SIGNAL(abortGame()),
-                e, SLOT(notifyAbort()));
-        connect(e, SIGNAL(restartPlacingShips(Sea::Player)),
-                this, SIGNAL(restartPlacingShips(Sea::Player)));
-        connect(e, SIGNAL(restartPlacingShips(Sea::Player)),
-                this, SLOT(notifyRestartPlacingShips(Sea::Player)));
+        connect(e, &Entity::abortGame,
+                entity, &Entity::notifyAbort);
+        connect(entity, &Entity::abortGame,
+                e, &Entity::notifyAbort);
+        connect(e, &Entity::restartPlacingShips,
+                this, &Controller::restartPlacingShips);
+        connect(e, &Entity::restartPlacingShips,
+                this, &Controller::notifyRestartPlacingShips);
     }
 
     m_entities.append(entity);
@@ -115,15 +116,15 @@ bool Controller::allPlayers() const
     unsigned char bitmap = 0;
     foreach (Entity* entity, m_entities) {
         int player = entity->player();
-        kDebug() << "found player" << player;
+        qDebug() << "found player" << player;
         bitmap |= (1 << player);    
     }
     
-    kDebug() << "bitmap =" << (unsigned) bitmap;
+    qDebug() << "bitmap =" << (unsigned) bitmap;
     return bitmap == 3;
 }
 
-bool Controller::start(SeaView* view, bool ask)
+bool Controller::start(SeaView* view)
 {
     if (!allPlayers()) {
         return false;
@@ -135,7 +136,7 @@ bool Controller::start(SeaView* view, bool ask)
     }
 
     foreach (Entity* entity, m_entities) {
-        entity->notifyGameOptions(ask);
+        entity->notifyGameOptions();
     }
     
     foreach (Entity* source, m_entities) {
@@ -150,33 +151,26 @@ bool Controller::start(SeaView* view, bool ask)
     return true;
 }
 
-void Controller::restart(bool ask)
+void Controller::restart()
 {
     m_ready = 0;
-    if (ask)
-    {
-        foreach (Entity* entity, m_entities) {
-            entity->notifyRestart(entity->player());
-        }
-    }
-
     m_sea->clear(Sea::PLAYER_A);
     m_sea->clear(Sea::PLAYER_B);
 
     foreach (Entity* entity, m_entities) {
         m_sea->clear(entity->player());
             emit startPlacingShips(Sea::PLAYER_A);
-            entity->startPlacing(false);
+            entity->startPlacing();
     }
 }
 
 
 // It is sure the entities has interchanged the GameOptions (if any)
 // when the opposite nick is received
-void Controller::placing(bool ask)
+void Controller::placing()
 {
     foreach (Entity* entity, m_entities) {
-        entity->startPlacing(ask);
+        entity->startPlacing();
     }
 }
 
@@ -184,12 +178,12 @@ void Controller::shoot(int player, const Coord& c)
 {
     Entity* entity = findEntity(Sea::opponent(Sea::Player(player)));
     if (!entity) {
-        kDebug() << "no entity!";
+        qDebug() << "no entity!";
         return;
     }
 
     if (m_shot) {
-        kDebug() << "shot in progress";
+        qDebug() << "shot in progress";
         // shot in progress
         return;
     }
@@ -221,7 +215,7 @@ void Controller::finalizeShot(Sea::Player player, const Coord& c, const HitInfo&
         }
     }
     else {
-        kDebug() << "illegal move" << c << "for player" << player;
+        qDebug() << "illegal move" << c << "for player" << player;
     }
     
     delete m_shot;
@@ -238,13 +232,13 @@ void Controller::notify(Sea::Player player, const Coord& c, const HitInfo& info)
     }
 }
 
-void Controller::shipsPlaced(int player)
+void Controller::shipsPlaced()
 {
     m_ready++;
     if (m_ready >= 2 )
     {
         foreach (Entity* entity, m_entities) {
-            entity->start(false);
+            entity->start();
         }
     }
 }
@@ -311,7 +305,7 @@ void Controller::receivedChat(const QString& text)
     if (chat_sender) {    
         foreach (Entity* entity, m_entities) {
             if (entity != chat_sender) {
-                kDebug() << "forwarding to" << entity->nick();
+                qDebug() << "forwarding to" << entity->nick();
                 entity->notifyChat(chat_sender, text);
             }
         }
@@ -320,7 +314,7 @@ void Controller::receivedChat(const QString& text)
 
 void Controller::nick(int player, const QString& nick)
 {
-    kDebug() << "controller: nick";
+    qDebug() << "controller: nick";
     foreach (Entity* entity, m_entities) {
         if (entity->player() != Sea::Player(player)) {
             entity->notifyNick(Sea::Player(player), nick);
@@ -338,7 +332,5 @@ bool Controller::hasAI() const
 {
     return m_has_ai;
 }
-
-#include "controller.moc"
 
 

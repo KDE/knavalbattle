@@ -9,10 +9,11 @@
 
 #include "chatwidget.h"
 
-#include <QKeyEvent>
 #include <KLineEdit>
 #include <KTextEdit>
+
 #include <QVBoxLayout>
+#include <QKeyEvent>
 
 #include "entity.h"
 
@@ -35,10 +36,10 @@ ChatWidget::ChatWidget(QWidget* parent)
     
     m_chat->setFocusProxy(m_input);
     
-    m_history.push_back("");
+    m_history.push_back(QLatin1Literal(""));
     m_current = 0;
     
-    connect(m_input, SIGNAL(returnPressed()), this, SLOT(sendLine()));
+    connect(m_input, &QLineEdit::returnPressed, this, &ChatWidget::sendLine);
 }
 
 void ChatWidget::setNick(const QString& nick)
@@ -75,7 +76,7 @@ bool ChatWidget::eventFilter(QObject* obj, QEvent* event)
 void ChatWidget::sendLine()
 {
     QString text = m_input->text();
-    m_history.push_back("");
+    m_history.push_back(QLatin1Literal(""));
     setHistoryText(m_history.size() - 1);
     display(m_nick, text);
     emit message(text);
@@ -83,7 +84,7 @@ void ChatWidget::sendLine()
 
 void ChatWidget::display(const QString& nick, const QString& text)
 {
-    display('<' + nick + "> " + text);
+    display(QLatin1Char('<') + nick + QLatin1String("> ") + text);
 }
 
 void ChatWidget::display(const QString& text)
@@ -95,8 +96,7 @@ void ChatWidget::display(const QString& text)
 
 void ChatWidget::bindTo(Entity* entity)
 {
-    connect(this, SIGNAL(message(QString)),
-            entity, SIGNAL(chat(QString)));
+    connect(this, &ChatWidget::message, entity, &Entity::chat);
     
     m_chat->clear();
     QWidget::show();
@@ -112,4 +112,4 @@ QSize ChatWidget::sizeHint() const
 }
 
 
-#include "chatwidget.moc"
+

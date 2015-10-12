@@ -13,14 +13,15 @@
 #include <QPainter>
 #include <QPen>
 #include <QImage>
-#include <kdebug.h>
+#include <QDebug>
+
 #include <math.h> // fabs
 
 #include "animator.h"
 
 Button::Button(QGraphicsItem* parent, const QIcon& icon, 
                const QFont& font, const QString& text)
-: QGraphicsItem(parent)
+: QGraphicsObject(parent)
 , m_icon(icon)
 , m_font(font)
 , m_text(text)
@@ -192,7 +193,7 @@ void Button::onMouseLeave()
 bool Button::onClicked()
 {
     if (true) {
-        kDebug() << "clicked";
+        qDebug() << "clicked";
         emit clicked();
         return true;
     }
@@ -242,7 +243,7 @@ bool ButtonAnimation::step(int t)
     
     int sign = (m_button->brightness() > m_brightness) ? -1 : 1;
     double delta = (t - m_last) * m_speed;
-//     kDebug() << "button step t =" << t << "sign =" << sign <<  "delta =" << delta;
+//     qDebug() << "button step t =" << t << "sign =" << sign <<  "delta =" << delta;
     m_last = t;
     if (fabs(m_button->brightness() - m_brightness) <= delta) {
         m_button->setBrightness(m_brightness);
@@ -269,5 +270,5 @@ ButtonAnimation::~ButtonAnimation()
 }
 
 
-#include "button.moc"
+
 

@@ -11,6 +11,7 @@
 #define PLAYERENTITY_H
 
 #include <QList>
+
 #include "sea.h"
 #include "uientity.h"
 #include "delegate.h"
@@ -30,28 +31,28 @@ public:
     PlayerEntity(Sea::Player player, Sea* sea, SeaView* view, ChatWidget* chat);
     
     // entity interface
-    virtual void start(bool);
-    virtual void startPlacing(bool);
-    virtual void startPlaying();
-    virtual void hit(Shot* shot);
-    virtual void notify(Sea::Player player, const Coord& c, const HitInfo& info);
-    virtual void notifyChat(const Entity* entity, const QString& text);
-    virtual void notifyNick(Sea::Player player, const QString& text);
-    virtual void notifyGameOptions(bool ask) { };
+    void start() override;
+    void startPlacing() override;
+    void startPlaying() override;
+    void hit(Shot* shot) override;
+    void notify(Sea::Player player, const Coord& c, const HitInfo& info) override;
+    void notifyChat(const Entity* entity, const QString& text) override;
+    void notifyNick(Sea::Player player, const QString& text) override;
+    void notifyGameOptions() override { };
     // delegate interface
-    virtual void action(Sea::Player player, const Coord& c);
-    virtual void changeDirection(Sea::Player player);
-    virtual bool canAddShip(Sea::Player player, const Coord& c);
-    virtual Ship * nextShip();
+    void action(Sea::Player player, const Coord& c) override;
+    void changeDirection(Sea::Player player) override;
+    bool canAddShip(Sea::Player player, const Coord& c) override;
+    Ship * nextShip() override;
     
-    virtual void setNick(const QString& nick);
+    void setNick(const QString& nick) override;
 protected:
     // parent interface
-    virtual void registerHit(Sea::Player player, const Coord& c);
-    virtual void registerMiss(Sea::Player player, const Coord& c);
+    void registerHit(Sea::Player player, const Coord& c) override;
+    void registerMiss(Sea::Player player, const Coord& c) override;
 public slots:
-    virtual void notifyAbort();
-    virtual void notifyRestartPlacing(Sea::Player player);
+    void notifyAbort() override;
+    void notifyRestartPlacing(Sea::Player player) override;
 };
 
 #endif // PLAYERENTITY_H

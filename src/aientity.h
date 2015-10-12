@@ -20,26 +20,28 @@ Q_OBJECT
     AI* m_ai;
     Sea* m_sea;
 
-    void getShoot();
 
     friend class DelayedShot;
 public:
     AIEntity(Sea::Player player, Sea* sea, SeaView *seaview);
-    virtual ~AIEntity();
+    ~AIEntity() override;
 
-    virtual void notify(Sea::Player player, const Coord& c, const HitInfo& info);
-    virtual void notifyChat(const Entity*, const QString&) { }
-    virtual void notifyNick(Sea::Player, const QString&) { }
-    virtual void start(bool);
-    virtual void startPlacing(bool ask);
-    virtual void startPlaying();
-    virtual void hit(Shot* shot);
-    virtual void notifyGameOptions(bool ask);
+    void notify(Sea::Player player, const Coord& c, const HitInfo& info) override;
+    void notifyChat(const Entity*, const QString&) override { }
+    void notifyNick(Sea::Player, const QString&) override { }
+    void start() override;
+    void startPlacing() override;
+    void startPlaying() override;
+    void hit(Shot* shot) override;
+    void notifyGameOptions() override;
 
-    virtual KIcon icon() const;
+    QIcon icon() const override;
 public slots:
-    virtual void notifyAbort() { }
-    virtual void notifyRestartPlacing(Sea::Player player) { };
+    void notifyAbort() override { }
+    void notifyRestartPlacing(Sea::Player) override { }
+
+private slots:
+    void getShoot();
 };
 
 

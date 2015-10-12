@@ -61,5 +61,5 @@ void Stats::addInfo(const HitInfo& info)
 }
 
 
-#include "stats.moc"
+
 

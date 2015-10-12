@@ -15,9 +15,9 @@
 #include "settings.h"
 #include "seaview.h"
 
-#include <KIcon>
-#include <klocalizedstring.h>
-#include <kdebug.h>
+#include <QIcon>
+
+#include <KLocalizedString>
 
 NetworkEntity::NetworkEntity(Sea::Player player, Sea* sea, SeaView* seaview, Protocol* protocol, bool client)
 : Entity(player, seaview, sea->battleShipsConfiguration())
@@ -33,7 +33,7 @@ NetworkEntity::~NetworkEntity()
 {
 }
 
-void NetworkEntity::start(bool ask)
+void NetworkEntity::start()
 {
 }
 
@@ -59,35 +59,26 @@ void NetworkEntity::notifyShips(Sea::Player player)
     m_protocol->send(MessagePtr(msg));
 }
 
-void NetworkEntity::notifyGameOver(Sea::Player player)
+void NetworkEntity::notifyGameOver(Sea::Player)
 {
 }
 
-void NetworkEntity::notifyRestart(Sea::Player)
+void NetworkEntity::notifyGameOptions()
 {
-    if (!m_restarted) {
-        m_protocol->send(MessagePtr(new RestartMessage()));
-        m_restarted = true;
-    }
-}
-
-
-void NetworkEntity::notifyGameOptions(bool ask)
-{
-    connect(m_protocol, SIGNAL(received(MessagePtr)), this, SLOT(received(MessagePtr)));
-    connect(m_protocol, SIGNAL(disconnected()), this, SIGNAL(abortGame()));
-    if (ask || m_restarted) {
+    connect(m_protocol, &Protocol::received, this, &NetworkEntity::received);
+    connect(m_protocol, &Protocol::disconnected, this, &NetworkEntity::abortGame);
+    if (m_restarted) {
         m_protocol->send(MessagePtr(new RestartMessage()));
         m_restarted = true;
     }
     else {
         m_protocol->send(MessagePtr(new HeaderMessage()));
         
-        m_protocol->send(MessagePtr(new GameOptionsMessage(QString(Settings::adjacentShips() ? "true" : "false"), QString(Settings::severalShips() ? "true" : "false"), m_battleShipsConfiguration )));
+        m_protocol->send(MessagePtr(new GameOptionsMessage(QString(Settings::adjacentShips() ? QLatin1Literal("true") : QLatin1Literal("false")), QString(Settings::severalShips() ? QLatin1Literal("true") : QLatin1Literal("false")), m_battleShipsConfiguration )));
     }
 }
 
-void NetworkEntity::startPlacing(bool ask)
+void NetworkEntity::startPlacing()
 {
     m_restarted = false;
     m_sea->clear(m_player);
@@ -165,7 +156,7 @@ void NetworkEntity::received(MessagePtr msg)
 
 void NetworkEntity::visit(const HeaderMessage& msg)
 {
-    if (msg.clientName() == "KBattleship" && msg.clientVersion().toFloat() >= 4.0) {
+    if (msg.clientName() == QLatin1String("KBattleship") && msg.clientVersion().toFloat() >= 4.0) {
         // m_level = COMPAT_KBS4;
     }
     else {
@@ -184,7 +175,7 @@ void NetworkEntity::visit(const RejectMessage&)
 void NetworkEntity::visit(const NickMessage& msg)
 {
     setNick(msg.nickname());
-    emit nick(m_player, m_nick);
+    emit nickChanged(m_player, m_nick);
     // This is a dirty hack caused by the introduction of GameOptionsMessage.
     // If that had extended BeginMessage, the following instructions will
     // be in the right place.
@@ -213,7 +204,7 @@ void NetworkEntity::visit(const NickMessage& msg)
         else
         {
             message.append(QString::number(m_battleShipsConfiguration->numberOfShipsOfSize(size)))
-                   .append(" ")
+                   .append(QLatin1String(" "))
                    .append(i18n(m_battleShipsConfiguration->pluralNameOfShipsOfSize(size).toLatin1()));
         }
     }
@@ -290,7 +281,7 @@ void NetworkEntity::visit(const ChatMessage& msg)
 
 void NetworkEntity::visit(const GameOptionsMessage& msg)
 {
-    bool enabledAdjacentShips = (msg.enabledAdjacentShips() == QString("true"));
+    bool enabledAdjacentShips = (msg.enabledAdjacentShips() == QLatin1String("true"));
     if (m_client) {
         m_sea->allowAdjacentShips( enabledAdjacentShips );
     }
@@ -318,9 +309,9 @@ void NetworkEntity::visit(const GameOptionsMessage& msg)
 }
 
 
-KIcon NetworkEntity::icon() const
+QIcon NetworkEntity::icon() const
 {
-    return KIcon( QLatin1String( "network-workgroup" ));
+    return QIcon::fromTheme( QLatin1String( "network-workgroup" ));
 }
 
-#include "networkentity.moc"
+

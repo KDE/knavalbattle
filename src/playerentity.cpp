@@ -11,6 +11,7 @@
 
 #include <KMessageBox>
 #include <KLocalizedString>
+
 #include "seaview.h"
 #include "shot.h"
 #include "coord.h"
@@ -82,7 +83,7 @@ void PlayerEntity::action(Sea::Player player, const Coord& c)
                             }
                         }
                         else {
-                            emit shipsPlaced(m_player);
+                            emit shipsPlaced();
                         }
                     }
                 }
@@ -99,9 +100,9 @@ void PlayerEntity::action(Sea::Player player, const Coord& c)
     }
 }
 
-void PlayerEntity::startPlacing(bool restart)
+void PlayerEntity::startPlacing()
 {
-    UIEntity::startPlacing(restart);
+    UIEntity::startPlacing();
     m_battleShipsConfiguration = m_sea->battleShipsConfiguration();
 
     Coord origin(0, 0);
@@ -120,9 +121,9 @@ void PlayerEntity::startPlacing(bool restart)
 }
 
 
-void PlayerEntity::start(bool ask)
+void PlayerEntity::start()
 {
-    UIEntity::start(ask);
+    UIEntity::start();
     emit ready(m_player);
 }
 
@@ -191,7 +192,7 @@ void PlayerEntity::registerMiss(Sea::Player player, const Coord&)
 void PlayerEntity::notifyChat(const Entity* entity, const QString& text)
 {
     if (entity != this) {
-        kDebug() << "received chat from" << entity->nick() << ":" << text;
+        qDebug() << "received chat from" << entity->nick() << ":" << text;
         m_chat->display(entity->nick(), text);
     }
 }
@@ -217,10 +218,10 @@ void PlayerEntity::notifyRestartPlacing(Sea::Player player)
     UIEntity::notifyRestartPlacing(player);
     m_seaview->clear();
     m_sea->clear(player);
-    startPlacing(false);
+    startPlacing();
 }
 
 
-#include "playerentity.moc"
+
 
 

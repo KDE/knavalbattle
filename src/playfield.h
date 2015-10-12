@@ -11,7 +11,9 @@
 #define PLAYFIELD_H
 
 #include <QWidget>
+
 #include <KgDifficulty>
+
 #include "sea.h"
 #include "ships.h"
 
@@ -36,20 +38,19 @@ Q_OBJECT
 
     void startGame();
     void endGame();
-    void resetupController(bool ask = false);
     Controller* createController();
     SimpleMenu* createAuxMenu();
 public:
     PlayField(QWidget* parent, QStatusBar*);
     ~PlayField();
-    void createClient(const KUrl& url);
+    void createClientWithUrl(const QUrl& url);
 public slots:
     void highscores();
     void gameOver(Sea::Player winner);
     void setupController();
 
     void newGame();
-    void restart(bool ask = true);
+    void restart();
     void changeNick();
     void toggleSounds(bool);
     void toggleAdjacent(bool);

@@ -10,21 +10,21 @@
 #ifndef MESSAGE_H
 #define MESSAGE_H
 
-#include <ksharedptr.h>
+#include <QExplicitlySharedDataPointer>
 
 #include "ship.h"
 #include "ships.h"
 
 class MessageVisitor;
 
-class Message : public KShared
+class Message : public QSharedData
 {
 public:
     virtual ~Message() { }
     virtual void accept(MessageVisitor& visitor) const = 0;
 };
 
-typedef KSharedPtr<Message> MessagePtr;
+typedef QExplicitlySharedDataPointer<Message> MessagePtr;
 
 class HeaderMessage : public Message
 {
@@ -39,7 +39,7 @@ public:
                  const QString& clientVersion,
                  const QString& clientDescription);
     HeaderMessage();
-    virtual void accept(MessageVisitor& visitor) const;
+    void accept(MessageVisitor& visitor) const override;
     static QString messageType() { return QLatin1String("Header"); }
     
     const QString& protocolVersion() const { return m_protocol_version; }
@@ -55,7 +55,7 @@ class RejectMessage : public Message
 public:
     static const int MSGTYPE = 1;
     RejectMessage(bool versionMismatch, const QString& reason);
-    virtual void accept(MessageVisitor& visitor) const;
+    void accept(MessageVisitor& visitor) const override;
     static QString messageType() { return QLatin1String("Reject"); }
 };
 
@@ -65,7 +65,7 @@ class NickMessage : public Message
 public:
     static const int MSGTYPE = 2;
     NickMessage(const QString& nickname);
-    virtual void accept(MessageVisitor& visitor) const;
+    void accept(MessageVisitor& visitor) const override;
     
     const QString& nickname() const { return m_nickname; }
     static QString messageType() { return QLatin1String("Nick"); }
@@ -75,7 +75,7 @@ class BeginMessage : public Message
 {
 public:
     static const int MSGTYPE = 3;
-    virtual void accept(MessageVisitor& visitor) const;
+    void accept(MessageVisitor& visitor) const override;
     static QString messageType() { return QLatin1String("Begin"); }
 };
 
@@ -85,7 +85,7 @@ class MoveMessage : public Message
 public:
     static const int MSGTYPE = 4;
     explicit MoveMessage(const Coord& move);
-    virtual void accept(MessageVisitor& visitor) const;
+    void accept(MessageVisitor& visitor) const override;
     
     const Coord& move() const { return m_move; }
     static QString messageType() { return QLatin1String("Move"); }
@@ -102,7 +102,7 @@ public:
     static const int MSGTYPE = 5;
     NotificationMessage(const Coord& m_move, bool hit, bool death,
         const Coord& start = Coord::invalid(), const Coord& stop = Coord::invalid());
-    virtual void accept(MessageVisitor& visitor) const;
+    void accept(MessageVisitor& visitor) const override;
     static QString messageType() { return QLatin1String("Notification"); }
     
     const Coord& move() const { return m_move; }
@@ -135,7 +135,7 @@ public:
     GameOverMessage();
 
     void addShip(const Coord& pos, int size, Ship::Direction direction);
-    virtual void accept(MessageVisitor& visitor) const;
+    void accept(MessageVisitor& visitor) const override;
     static QString messageType() { return QLatin1String("GameOver"); }
 
     const QList<ShipInfo>& ships() const { return m_ships; }
@@ -145,7 +145,7 @@ class RestartMessage : public Message
 {
 public:
     static const int MSGTYPE = 7;
-    virtual void accept(MessageVisitor& visitor) const;
+    void accept(MessageVisitor& visitor) const override;
     static QString messageType() { return QLatin1String("Restart"); }
 };
 
@@ -156,7 +156,7 @@ class ChatMessage : public Message
 public:
     static const int MSGTYPE = 8;
     explicit ChatMessage(const QString& nick, const QString& chat);
-    virtual void accept(MessageVisitor& visitor) const;
+    void accept(MessageVisitor& visitor) const override;
     static QString messageType() { return QLatin1String("Chat"); }
 
     const QString& chat() const { return m_chat; }
@@ -182,7 +182,7 @@ public:
     unsigned int gridWidth() const { return m_battleShipsConfiguration->boardWidth(); }
     unsigned int gridHeight() const { return m_battleShipsConfiguration->boardHeight(); }
     const BattleShipsConfiguration* shipsConfiguration() const { return m_battleShipsConfiguration; }
-    virtual void accept(MessageVisitor& visitor) const;
+    void accept(MessageVisitor& visitor) const override;
     static QString messageType() { return QLatin1String("GameOptions"); }
 };
 

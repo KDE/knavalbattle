@@ -15,6 +15,7 @@
 #include <QWidget>
 #include <QGraphicsView>
 #include <QGraphicsLineItem>
+
 #include <KGameRenderedItem>
 
 #include "coord.h"
@@ -99,10 +100,10 @@ public:
 protected:
     void drawGrid();
 
-    virtual void mousePressEvent(QMouseEvent *);
-    virtual void mouseReleaseEvent(QMouseEvent *);
-    virtual void mouseMoveEvent(QMouseEvent *);
-    virtual void leaveEvent(QEvent *);
+    void mousePressEvent(QMouseEvent *) override;
+    void mouseReleaseEvent(QMouseEvent *) override;
+    void mouseMoveEvent(QMouseEvent *) override;
+    void leaveEvent(QEvent *) override;
 };
 
 #endif // BATTLEFIELD_H

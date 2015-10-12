@@ -10,7 +10,8 @@
 #ifndef GRID_H
 #define GRID_H
 
-#include <qdebug.h>
+#include <QDebug>
+
 #include "coord.h"
 
 #define FOREACH_SQUARE(p, grid) \

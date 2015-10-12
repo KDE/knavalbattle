@@ -11,13 +11,14 @@
 #define ENTITY_H
 
 #include <QObject>
+
 #include "sea.h"
 #include "seaview.h"
 #include "stats.h"
 #include "ships.h"
 
 class Shot;
-class KIcon;
+class QIcon;
 
 class Entity : public QObject
 {
@@ -45,14 +46,13 @@ public:
     virtual void notifyChat(const Entity* entity, const QString& text) = 0;
     virtual void notifyNick(Sea::Player player, const QString& nick) = 0;
     virtual void hit(Shot* shot) = 0;
-    virtual void notifyGameOptions(bool ask) = 0;
-    virtual void startPlacing(bool) = 0;
-    virtual void start(bool) = 0;
+    virtual void notifyGameOptions() = 0;
+    virtual void startPlacing() = 0;
+    virtual void start() = 0;
     virtual void startPlaying() { }
     virtual void notifyReady(Sea::Player) { }
     virtual void notifyShips(Sea::Player) { }
     virtual void notifyGameOver(Sea::Player) { }
-    virtual void notifyRestart(Sea::Player) { }
 
     Stats* stats();
     
@@ -60,18 +60,18 @@ public:
     
     QString nick() const { return m_nick; }
     CompatibilityLevel compatibilityLevel() const { return m_level; }
-    virtual KIcon icon() const = 0;
+    virtual QIcon icon() const = 0;
     virtual void setNick(const QString& nick);
 signals:
     void shoot(int player, const Coord& c);
-    void shipsPlaced(int player);
+    void shipsPlaced();
     void ready(int player);
     void chat(const QString& text);
-    void nick(int player, const QString& nickname);
+    void nickChanged(int player, const QString& nickname);
     void compatibility(int level);
     void abortGame();
     void restartPlacingShips(Sea::Player player);
-    void gameOptionsInterchanged(bool ask=false);
+    void gameOptionsInterchanged();
 public slots:
     virtual void setCompatibilityLevel(int level);
     virtual void notifyAbort() = 0;

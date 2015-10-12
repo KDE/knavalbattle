@@ -21,10 +21,10 @@ HeaderMessage::HeaderMessage(const QString& protocolVersion,
 }
 
 HeaderMessage::HeaderMessage()
-: m_protocol_version("0.1.0")
-, m_client_name("KBattleship")
-, m_client_version("4.0")
-, m_client_description("The Naval Battle game")
+: m_protocol_version(QLatin1Literal("0.1.0"))
+, m_client_name(QLatin1Literal("KBattleship"))
+, m_client_version(QLatin1Literal("4.0"))
+, m_client_description(QLatin1Literal("The Naval Battle game"))
 {
 }
 

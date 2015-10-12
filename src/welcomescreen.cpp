@@ -9,9 +9,8 @@
 
 #include "welcomescreen.h"
 
-#include <kdebug.h>
-#include <kicon.h>
-#include <klocale.h>
+#include <QDebug>
+#include <QIcon>
 
 #include "button.h"
 #include "animator.h"
@@ -95,9 +94,9 @@ Button* WelcomeScreen::addButton(int x, int y, const QIcon& icon, const QString&
         }
         m_buttons.insert(Coord(x, y), button);
         refresh();
-        connect(button, SIGNAL(needsUpdate()), this, SLOT(refresh()));
+        connect(button, &Button::needsUpdate, this, &WelcomeScreen::refresh);
         
-        //kDebug() << "added button" << button;
+        //qDebug() << "added button" << button;
         
         return button;
     }
@@ -150,7 +149,7 @@ void WelcomeScreen::onMouseMove(Button *button)
 
 void WelcomeScreen::onMousePress(Button *button)
 {
-    kDebug() << "on mouse press";
+    qDebug() << "on mouse press";
 
     button->onMousePress();
     m_clicked = button;
@@ -175,7 +174,7 @@ void WelcomeScreen::onMouseRelease(Button *button)
 void WelcomeScreen::fadeOut()
 {
     Animation* hideAnimation = new FadeAnimation(this, 1, 0, 500);
-    connect(hideAnimation, SIGNAL(done()), this, SLOT(hide()));
+    connect(hideAnimation, &Animation::done, this, &WelcomeScreen::hide);
     Animator::instance()->add(hideAnimation);
 }
 
@@ -204,5 +203,5 @@ void WelcomeScreen::onMouseLeave()
 
 
 
-#include "welcomescreen.moc"
+
 

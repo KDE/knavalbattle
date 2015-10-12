@@ -12,7 +12,7 @@
 #include "shot.h"
 #include "ship.h"
 
-#include <KIcon>
+#include <QIcon>
 #include <QList>
 
 UIEntity::UIEntity(Sea::Player player, Sea* sea, SeaView* view)
@@ -36,7 +36,7 @@ void UIEntity::notifyGameOver(Sea::Player winner)
     drawHiddenShips(winner);
 }
 
-void UIEntity::start(bool)
+void UIEntity::start()
 {
 
 }
@@ -85,12 +85,12 @@ void UIEntity::drawShoot(Sea::Player player, const Coord& c, const HitInfo& info
     }
 }
 
-KIcon UIEntity::icon() const
+QIcon UIEntity::icon() const
 {
-    return KIcon( QLatin1String( "user-identity" ));
+    return QIcon::fromTheme( QLatin1String( "user-identity" ));
 }
 
-#include "uientity.moc"
+
 
 
 

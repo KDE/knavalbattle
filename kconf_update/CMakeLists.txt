@@ -1,1 +1,1 @@
-install(FILES knavalbattle.upd DESTINATION ${KCONF_UPDATE_INSTALL_DIR})
+install(FILES knavalbattle.upd DESTINATION ${KDE_INSTALL_KCONFUPDATEDIR})

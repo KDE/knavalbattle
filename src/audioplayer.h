@@ -11,23 +11,24 @@
 #define AUDIOPLAYER_H
 
 #include "sea.h"
-#include <QDir>
 
-namespace Phonon {
-    class MediaObject;
-}
+class KgSound;
 
 class AudioPlayer : public QObject
 {
 Q_OBJECT
-    Phonon::MediaObject* m_media;
-    
-    QDir m_dir;
+
 public:
     AudioPlayer(QObject* parent);
 
     void play(Sea::Player player, const HitInfo& info);
     void setActive(bool value);
+
+private:
+    KgSound *m_sink;
+    KgSound *m_shootA;
+    KgSound *m_shootB;
+    KgSound *m_shootWater;
 };
 
 #endif // AUDIOPLAYER_H

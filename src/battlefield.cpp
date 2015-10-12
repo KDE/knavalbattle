@@ -9,8 +9,6 @@
 
 #include "battlefield.h"
 
-#include <kdebug.h>
-
 #include "sea.h"
 #include "settings.h"
 
@@ -312,4 +310,4 @@ void BattleField::clear()
 }
 
 
-#include "battlefield.moc"
+
