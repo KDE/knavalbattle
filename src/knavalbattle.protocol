@@ -6,6 +6,7 @@ output=none
 
 Icon=kbattleship
 Description=A protocol for the game Naval Battle
+Description[ast]=Un protocolu pal xuegu Batalla naval
 Description[bs]=Protokol za Pomorsku bitku
 Description[ca]=Un protocol pel joc Batalla naval
 Description[ca@valencia]=Un protocol pel joc Batalla naval

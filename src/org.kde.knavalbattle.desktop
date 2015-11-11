@@ -1,5 +1,6 @@
 [Desktop Entry]
 Name=Naval Battle
+Name[ast]=Batalla naval
 Name[bs]=Pomorska bitka
 Name[ca]=Batalla naval
 Name[ca@valencia]=Batalla naval
@@ -48,6 +49,7 @@ Icon=knavalbattle
 Type=Application
 X-DocPath=knavalbattle/index.html
 GenericName=Ship Sinking Game
+GenericName[ast]=Xuegu de fundimentu de barcos
 GenericName[bs]=Igra potapanja brodova
 GenericName[ca]=Joc d'enfonsar vaixells
 GenericName[ca@valencia]=Joc d'enfonsar vaixells
