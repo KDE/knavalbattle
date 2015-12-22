@@ -64,7 +64,7 @@ class NickMessage : public Message
     QString m_nickname;
 public:
     static const int MSGTYPE = 2;
-    NickMessage(const QString& nickname);
+    explicit NickMessage(const QString& nickname);
     void accept(MessageVisitor& visitor) const override;
     
     const QString& nickname() const { return m_nickname; }

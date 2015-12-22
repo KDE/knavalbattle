@@ -30,7 +30,7 @@ Q_OBJECT
     
     void setHistoryText(int index);
 public:
-    ChatWidget(QWidget* parent = 0);
+    explicit ChatWidget(QWidget* parent = 0);
     
     QSize sizeHint() const override;
     void bindTo(Entity* entity);

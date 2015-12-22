@@ -30,7 +30,7 @@ Q_OBJECT
     Button* m_hover;
     bool m_active;
 public:
-    WelcomeScreen(const QFont& font);
+    explicit WelcomeScreen(const QFont& font);
     
     void resize(const QSizeF&);
     

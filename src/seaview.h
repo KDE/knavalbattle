@@ -47,7 +47,7 @@ Q_OBJECT
     bool updatePreview(const QPoint& pos);
     int fieldAt(const QPoint& p);
 public:
-    SeaView(QWidget* parent);
+    explicit SeaView(QWidget* parent);
     ~SeaView();
     
     void setDelegate(Delegate* c);

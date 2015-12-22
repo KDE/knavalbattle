@@ -19,7 +19,7 @@ class AudioPlayer : public QObject
 Q_OBJECT
 
 public:
-    AudioPlayer(QObject* parent);
+    explicit AudioPlayer(QObject* parent);
 
     void play(Sea::Player player, const HitInfo& info);
     void setActive(bool value);

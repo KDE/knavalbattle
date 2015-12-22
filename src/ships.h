@@ -44,7 +44,7 @@ private:
     QHash<unsigned int,Ships> m_ships;
 public:
 
-    BattleShipsConfiguration(const bool fromXML=false);
+    explicit BattleShipsConfiguration(const bool fromXML=false);
     explicit BattleShipsConfiguration(unsigned int longestShipSize, const bool allowAdjacentShips, const unsigned int boardWidth, const unsigned int boardHeight, const bool fromXML=false);
     BattleShipsConfiguration(const BattleShipsConfiguration& copy);
     // does not add any ship longer than longestShip

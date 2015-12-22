@@ -22,7 +22,7 @@ class SpriteFactory
     
     Sprite* createSimpleSprite(const QString& name);
 public:
-    SpriteFactory(KBSRenderer* renderer);
+    explicit SpriteFactory(KBSRenderer* renderer);
     
     Sprite* createShip(Ship* ship);
     Sprite* createHit();
