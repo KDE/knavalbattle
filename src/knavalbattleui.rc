@@ -7,32 +7,32 @@
                          http://www.kde.org/standards/kxmlgui/1.0/kxmlgui.xsd">
 
 <MenuBar>
-  <Menu name="game">
-    <Action name="game_server" />
-    <Action name="game_client" />
-    <Action name="game_local" />
-    <Action name="game_create_server" />
-    <Action name="game_create_client" />
-  </Menu>
-  <Menu name="settings">
-    <Action name="options_nickname" />
-    <Action name="options_sounds" />
-    <Action name="options_adjacent" />
-    <Action name="options_multiple_ships" />
-    <Action name="options_show_endgame_message" />
-    <Action name="options_showleftgrid" />
-    <Action name="options_showrightgrid" />
-  </Menu>
+    <Menu name="game">
+        <Action name="game_server"/>
+        <Action name="game_client"/>
+        <Action name="game_local"/>
+        <Action name="game_create_server"/>
+        <Action name="game_create_client"/>
+    </Menu>
+    <Menu name="settings">
+        <Action name="options_nickname"/>
+        <Action name="options_sounds"/>
+        <Action name="options_adjacent"/>
+        <Action name="options_multiple_ships"/>
+        <Action name="options_show_endgame_message"/>
+        <Action name="options_showleftgrid"/>
+        <Action name="options_showrightgrid"/>
+    </Menu>
 </MenuBar>
 
-<ToolBar name="gameToolbar" >
+<ToolBar name="gameToolbar">
     <text>Game Toolbar</text>
-    <Action name="game_new" />
-    <Action name="game_restart" />
-    <Action name="game_local" />
-    <Action name="game_create_server" />
-    <Action name="game_create_client" />
- </ToolBar>
+    <Action name="game_new"/>
+    <Action name="game_restart"/>
+    <Action name="game_local"/>
+    <Action name="game_create_server"/>
+    <Action name="game_create_client"/>
+</ToolBar>
 
 <State name="playing">
     <enable>
