@@ -35,7 +35,7 @@ class MessageSender : public MessageVisitor
     void setType(const Msg&)
     {
         QDomElement element = addField("msgtype", QString::number(Msg::MSGTYPE));
-        // only useful for debuging, just add the name of the message type
+        // only useful for debugging, just add the name of the message type
         element.setAttribute(QLatin1String("type"), Msg::messageType());
     }
 public:
