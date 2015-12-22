@@ -233,7 +233,7 @@ MessagePtr Protocol::parseMessage(const QString& xmlMessage)
             QDomNodeList nodes = main.childNodes();
             for (int i = 0; i < nodes.count(); i++) {
                 QDomElement element = nodes.item(i).toElement();
-                if (!element.isNull() && element.tagName().startsWith("ship")) {
+                if (!element.isNull() && element.tagName().startsWith(QLatin1String("ship"))) {
                     int size = element.tagName().mid(4).toInt();
                     QStringList data = element.text().split(' ');
                     if (data.size() != 3) {
