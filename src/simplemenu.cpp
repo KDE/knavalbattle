@@ -74,19 +74,24 @@ void SimpleMenu::createServer()
 {
     QWidget* parent_widget = qobject_cast<QWidget*>(parent());
     Q_ASSERT(parent_widget);
-    NetworkDialog dialog(false, parent_widget);
-    if (dialog.exec()) {
-        finalize(DONE_SERVER, dialog.nickname(), dialog.socket());
+    QPointer<NetworkDialog> dialog = new NetworkDialog(false, parent_widget);
+    if (dialog->exec()) {
+        if (dialog) {
+            finalize(DONE_SERVER, dialog->nickname(), dialog->socket());
+        }
     }
+    delete dialog;
 }
 
 void SimpleMenu::createClientWithUrl(const QUrl& url)
 {
     QWidget* parent_widget = qobject_cast<QWidget*>(parent());
     Q_ASSERT(parent_widget);
-    NetworkDialog dialog(true, parent_widget,&url);
-    if (dialog.exec() == QDialog::Accepted) {
-        finalize(DONE_CLIENT, dialog.nickname(), dialog.socket());
+    QPointer<NetworkDialog> dialog = new NetworkDialog(true, parent_widget,&url);
+    if (dialog->exec() == QDialog::Accepted) {
+        if (dialog) {
+            finalize(DONE_CLIENT, dialog->nickname(), dialog->socket());
+        }
     }
 }
 
@@ -94,9 +99,11 @@ void SimpleMenu::createClient()
 {
     QWidget* parent_widget = qobject_cast<QWidget*>(parent());
     Q_ASSERT(parent_widget);
-    NetworkDialog dialog(true, parent_widget);
-    if (dialog.exec() == QDialog::Accepted) {
-        finalize(DONE_CLIENT, dialog.nickname(), dialog.socket());
+    QPointer<NetworkDialog> dialog = new NetworkDialog(true, parent_widget);
+    if (dialog->exec() == QDialog::Accepted) {
+        if (dialog) {
+            finalize(DONE_CLIENT, dialog->nickname(), dialog->socket());
+        }
     }
 }
 

@@ -15,6 +15,7 @@
 #include <QVBoxLayout>
 #include <QDebug>
 #include <QInputDialog>
+#include <QPointer>
 
 #include <KLocalizedString>
 #include <KMessageBox>
@@ -158,7 +159,7 @@ void PlayField::gameOver(Sea::Player winner)
         const Stats* stats = m_menu->player(0)->stats();
        
         if (stats && qobject_cast<const AIEntity*>(m_menu->player(1))) {
-            KScoreDialog* highscoredialog = new KScoreDialog(
+            QPointer<KScoreDialog> highscoredialog = new KScoreDialog(
                     KScoreDialog::Name | KScoreDialog::Score | 
                     KScoreDialog::Custom1 | 
                     KScoreDialog::Custom2 | 
@@ -181,8 +182,10 @@ void PlayField::gameOver(Sea::Player winner)
             //if (highscoredialog->addScore(info, KScoreDialog::AskName)) {
             if (temp != 0) {
                 highscoredialog->exec();
+                delete highscoredialog;
                 return;
             }
+            delete highscoredialog;
         }
         
         m_status_bar->showMessage(i18n("You win!"));
