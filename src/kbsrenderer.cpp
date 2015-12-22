@@ -7,8 +7,8 @@
   (at your option) any later version.
 */
 
-#include "coord.h"
 #include "kbsrenderer.h"
+#include "coord.h"
 
 #include <KgThemeProvider>
 #include <KGameRenderedItem>

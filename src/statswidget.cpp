@@ -6,14 +6,14 @@
   the Free Software Foundation; either version 2 of the License, or
   (at your option) any later version.
 */
+#include "statswidget.h"
+#include "stats.h"
+#include "kbsrenderer.h"
+
 #include <QPen>
 #include <QPainter>
 #include <QPaintEvent>
 #include <QHBoxLayout>
-
-#include "stats.h"
-#include "statswidget.h"
-#include "kbsrenderer.h"
 
 
 StatsWidgetElement::StatsWidgetElement(const QPixmap &icon, const QString &text, QWidget *parent)

@@ -6,9 +6,10 @@
   the Free Software Foundation; either version 2 of the License, or
   (at your option) any later version.
 */
-#include <QHBoxLayout>
 
 #include "playerlabel.h"
+
+#include <QHBoxLayout>
 
 PlayerLabel::PlayerLabel(const QPixmap &icon, const QString &text, QWidget *parent)
 : QWidget(parent)
