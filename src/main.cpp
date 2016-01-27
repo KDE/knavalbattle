@@ -10,6 +10,7 @@
 */
 
 #include <KAboutData>
+#include <KCrash>
 #include <KLocalizedString>
 #include <KDBusService>
 #include <Kdelibs4ConfigMigrator>
@@ -76,6 +77,7 @@ int main(int argc, char** argv)
     aboutData.processCommandLine(&parser);
     
     KAboutData::setApplicationData(aboutData);
+    KCrash::initialize();
     KDBusService service; 
     KLocalizedString::setApplicationDomain("knavalbattle");
     

@@ -38,7 +38,8 @@ set(knavalbattle_SRCS
     stats.cpp
     statswidget.cpp
     uientity.cpp
-    welcomescreen.cpp)
+    welcomescreen.cpp
+)
 
 
 kconfig_add_kcfg_files(knavalbattle_SRCS settingsbase.kcfgc)
@@ -46,9 +47,20 @@ file(GLOB ICONS_SRCS "${CMAKE_CURRENT_SOURCE_DIR}/../data/pictures/*-apps-knaval
 ecm_add_app_icon(knavalbattle_SRCS ICONS ${ICONS_SRCS})
 add_executable(knavalbattle ${knavalbattle_SRCS} ${kwelcomescreen_SRCS})
 
-target_link_libraries(knavalbattle Qt5::Xml Qt5::Network KF5::I18n KF5::XmlGui KF5::Completion KF5::TextWidgets KF5::DNSSD KF5KDEGames KF5::DBusAddons)
+target_link_libraries(knavalbattle
+    Qt5::Xml
+    Qt5::Network
+    KF5::I18n
+    KF5::XmlGui
+    KF5::Completion
+    KF5::TextWidgets
+    KF5::DNSSD
+    KF5::Crash
+    KF5::DBusAddons
+    KF5KDEGames
+)
 
-install(TARGETS knavalbattle  ${KDE_INSTALL_TARGETS_DEFAULT_ARGS} )
-install( FILES knavalbattleui.rc  DESTINATION  ${KDE_INSTALL_KXMLGUI5DIR}/knavalbattle )
+install(TARGETS knavalbattle  ${KDE_INSTALL_TARGETS_DEFAULT_ARGS})
+install(FILES knavalbattleui.rc  DESTINATION  ${KDE_INSTALL_KXMLGUI5DIR}/knavalbattle)
 install(PROGRAMS org.kde.knavalbattle.desktop DESTINATION ${KDE_INSTALL_APPDIR})
-install( FILES knavalbattle.protocol  DESTINATION ${KDE_INSTALL_KSERVICES5DIR})
+install(FILES knavalbattle.protocol  DESTINATION ${KDE_INSTALL_KSERVICES5DIR})
