@@ -118,7 +118,7 @@ public:
         }
     }
 
-    Strategy* notify(const Coord& c, const HitInfo& info)
+    Strategy* notify(const Coord& c, const HitInfo& info) override
     {
         if (info.shipDestroyed) {
             // success!
