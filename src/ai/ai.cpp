@@ -40,8 +40,8 @@ void AI::setShips()
             for (unsigned int j = 1; j <= m_config->numberOfShipsOfSize(size); j++) {
                 Ship* ship = 0;
                 while (ship == 0 && canFinish) {
-                    Coord c(rand() % m_sea->size().x, rand() % m_sea->size().y);
-                    Ship::Direction dir = rand() % 2 == 0 ? Ship::LEFT_TO_RIGHT : Ship::TOP_DOWN;
+                    Coord c(qrand() % m_sea->size().x, qrand() % m_sea->size().y);
+                    Ship::Direction dir = qrand() % 2 == 0 ? Ship::LEFT_TO_RIGHT : Ship::TOP_DOWN;
                     if (m_sea->canAddShip(m_player, c, size, dir)) {
                         ship = new Ship(size, dir, c);
                         m_sea->add(m_player, ship);

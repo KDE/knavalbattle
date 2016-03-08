@@ -10,15 +10,10 @@
 #include "dummyai.h"
 #include "sea.h"
 
-// for rand
-#include <stdio.h>
-#include <time.h>
-#include <sys/time.h>
-
 DummyAI::DummyAI(Sea::Player player, Sea* sea, const BattleShipsConfiguration* config)
 : AI(player, sea, config)
 {
-    srand(time(0));
+    qsrand(time(0));
 }
 
 Coord DummyAI::getMove()
@@ -26,7 +21,7 @@ Coord DummyAI::getMove()
     if (m_sea->turn() == m_player &&
         m_sea->status() == Sea::PLAYING) {
         for (int i = 0; i < 10000; i++) {
-            Coord c(rand() % m_sea->size().x, rand() % m_sea->size().y);
+            Coord c(qrand() % m_sea->size().x, qrand() % m_sea->size().y);
             if (m_sea->canHit(m_player, c)) {
                 return c;
             }

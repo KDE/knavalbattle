@@ -11,11 +11,6 @@
 
 #include <algorithm>
 
-// for rand
-#include <stdio.h>
-#include <time.h>
-#include <sys/time.h>
-
 class Strategy
 {
 protected:
@@ -152,7 +147,7 @@ public:
     Coord getMove() override
     {
         for (int i = 0; i < 10000; i++) {
-            Coord c(rand() % m_sea->size().x, rand() % m_sea->size().y);
+            Coord c(qrand() % m_sea->size().x, qrand() % m_sea->size().y);
             if (m_sea->canHit(m_player, c)) {
                 return c;
             }
@@ -194,7 +189,7 @@ class DiagonalStrategy : public Strategy
 
     Coord getMoveHelper()
     {
-        int index = rand() % m_range;
+        int index = qrand() % m_range;
         int current = 0;
         for (int y = m_offset; y < m_sea->size().y; y += m_gap) {
             int diag = m_sea->size().y - y;
@@ -220,14 +215,14 @@ class DiagonalStrategy : public Strategy
             }
             current += diag;
         }
-        
+
         return Coord::invalid();
     }
 
     void setup()
     {
         do {
-            m_offset = rand() % m_gap;
+            m_offset = qrand() % m_gap;
             qDebug() << "offset =" << m_offset << " / " << m_gap;
         } while (!movesAvailable());
 
@@ -290,7 +285,7 @@ SmartAI::SmartAI(Sea::Player player, Sea* sea, bool random, const BattleShipsCon
 : AI(player, sea, config)
 , m_state(random, config)
 {
-    srand(time(0));
+    qsrand(time(0));
     m_strategy = std::unique_ptr<Strategy>(m_state.defaultStrategy(player, sea));
 }
 
