@@ -10,6 +10,7 @@
 #include "smartai.h"
 
 #include <algorithm>
+#include <time.h>
 
 class Strategy
 {

@@ -9,6 +9,7 @@
 
 #include "dummyai.h"
 #include "sea.h"
+#include <time.h>
 
 DummyAI::DummyAI(Sea::Player player, Sea* sea, const BattleShipsConfiguration* config)
 : AI(player, sea, config)
