@@ -1,6 +1,6 @@
 /*
   Copyright (c) 2007 Paolo Capriotti <p.capriotti@gmail.com>
-            
+
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
   the Free Software Foundation; either version 2 of the License, or
@@ -44,11 +44,11 @@ void AudioPlayer::play(Sea::Player player, const HitInfo& info)
     }
 }
 
-void AudioPlayer::setActive(bool value) 
-{ 
+void AudioPlayer::setActive(bool value)
+{
     if (value) {
         if (!m_sink) {
-            const QDir dir = QStandardPaths::locate(QStandardPaths::DataLocation, QLatin1Literal("sounds/"), QStandardPaths::LocateDirectory);
+            const QDir dir = QStandardPaths::locate(QStandardPaths::AppDataLocation, QLatin1Literal("sounds/"), QStandardPaths::LocateDirectory);
             m_sink = new KgSound(dir.filePath("ship-sink.ogg"), this);
             m_shootA = new KgSound(dir.filePath("ship-player1-shoot.ogg"), this);
             m_shootB = new KgSound(dir.filePath("ship-player2-shoot.ogg"), this);
