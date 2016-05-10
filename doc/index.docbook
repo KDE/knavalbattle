@@ -1,14 +1,13 @@
 <?xml version="1.0" ?>
 <!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN" "dtd/kdedbx45.dtd" [
-  <!ENTITY kappname "<application>Naval Battle</application>">
-  <!ENTITY package "kdegames">
+  <!ENTITY knavalbattle "<application>Naval Battle</application>">  
   <!ENTITY % addindex "IGNORE">
   <!ENTITY % English "INCLUDE" > <!-- change language only here -->
 ]>
 
 <book id="knavalbattle" lang="&language;">
 <bookinfo>
-<title>The &kappname; Handbook</title>
+<title>The &knavalbattle; Handbook</title>
 
 <authorgroup>
 <author>
@@ -52,12 +51,12 @@
 <holder>Kevin Krammer</holder>
 </copyright>
 
-<date>2013-05-05</date>
-<releaseinfo>2.0 (&kde; 4.11)</releaseinfo>
+<date>2016-05-10</date>
+<releaseinfo>2.1 (Applications 16.04)</releaseinfo>
 
 <abstract>
 <para>
-&kappname; is a network-enabled implementation of the famous ship sinking game for &kde;.</para>
+&knavalbattle; is a network-enabled implementation of the famous ship sinking game for &kde;.</para>
 </abstract>
 
 <keywordset>
@@ -76,8 +75,20 @@
 <title>Introduction</title>
 <note><title>Gametype:</title><para>Strategy, Board</para></note><!-- Game genre. Use as many as necessary. Available game types are: Arcade, Board, Card, Dice, Toys, Logic, Strategy.-->
 <note><title>Number of possible players:</title><para>Two</para></note><!--Number of possible players. It can be: One, Two,..., Multiplayer-->
+
+<screenshot>
+<mediaobject>
+<imageobject>
+<imagedata fileref="gameboard.png" format="PNG"/>
+</imageobject>
+<textobject>
+<phrase>&kiriki; Game Board</phrase>
+</textobject>
+</mediaobject>
+</screenshot>
+
 <para>
-&kappname; is a ship sinking game for &kde;. Ships are placed on a board which represents the sea. Players try to hit each others
+&knavalbattle; is a ship sinking game for &kde;. Ships are placed on a board which represents the sea. Players try to hit each others
 ships in turns without knowing where they are placed. The first player to destroy all ships wins the game.
 </para>
 </chapter>
@@ -86,14 +97,14 @@ ships in turns without knowing where they are placed. The first player to destro
 <title>How to Play</title>
 <note><title>Objective:</title><para>Sink all of the opponent’s ships before the opponent sink all the ships of your own.</para></note><!--Describe the objective of the game.-->
 <para>
-If you want to play &kappname;, you will need two players, either play
+If you want to play &knavalbattle;, you will need two players, either play
 against the computer or in a network against another player. To play against your computer, first select the difficulty level on the right of the status bar, and then select <guibutton>Single Player</guibutton> on the welcome screen, or directly on the <menuchoice><guimenu>Game</guimenu></menuchoice> menu.</para>
 
 <para>
 To start a network game, one player has to host the game by selecting <guilabel>Host Network Game</guilabel> on the welcome screen, or choosing <menuchoice><guimenu>Game</guimenu>
 <guimenuitem>Host Game...</guimenuitem></menuchoice>.
 A dialog box opens which asks for a <guilabel>Nickname:</guilabel> and <guilabel>Port:</guilabel>. Normally,
-&kappname; will suggest your full name, but you can enter any string
+&knavalbattle; will suggest your full name, but you can enter any string
 you want. The predefined port should be ok. However, if you encounter
 problems, you can choose any other free port above 1024.
 </para>
@@ -295,7 +306,7 @@ The first player to destroy all their opponents ships wins the game.
 </term>
 <listitem>
 <para>
-<action>Exit</action> &kappname;
+<action>Exit</action> &knavalbattle;
 </para>
 </listitem>
 </varlistentry>
@@ -339,7 +350,7 @@ The default is on.
 <listitem>
 <para>
 <action>Toggle whether the ships can be put on a desk without one empty space between them.</action>
-The default is on. This setting should be defined on a host when <link linkend="howtoplay">playing &kappname; via network</link>.
+The default is on. This setting should be defined on a host when <link linkend="howtoplay">playing &knavalbattle; via network</link>.
 </para>
 </listitem>
 </varlistentry>
@@ -391,7 +402,7 @@ In higher levels the AI uses a smarter strategy for shooting and placing ships.<
 </variablelist>
 
 <para>
-Additionally &kappname; has the common &kde; <guimenu>Settings</guimenu> and <guimenu>Help</guimenu>
+Additionally &knavalbattle; has the common &kde; <guimenu>Settings</guimenu> and <guimenu>Help</guimenu>
 menu items, for more information read the sections about the <ulink url="help:/fundamentals/ui.html#menus-settings"
 >Settings Menu</ulink> and <ulink url="help:/fundamentals/ui.html#menus-help">Help Menu</ulink>
 of the &kde; Fundamentals.
@@ -413,7 +424,7 @@ I'm not sure where to shoot, can I get a hint?
 </question>
 <answer>
 <para>
-No, there is no hint system in &kappname;.
+No, there is no hint system in &knavalbattle;.
 </para>
 </answer>
 </qandaentry>
@@ -450,7 +461,7 @@ No, the theme is not changeable.
 <chapter id="credits">
 <title>Credits and License</title>
 
-<para>&kappname; Copyright 2000-2007</para>
+<para>&knavalbattle; Copyright 2000-2007</para>
 
 <itemizedlist>
 <title>Authors</title>
@@ -529,20 +540,6 @@ Nils Trzebin <email>nils.trzebin@stud.uni-hannover.de</email>
 
 </chapter>
 
-<appendix id="installation">
-<title>Installation</title>
- 
-&install.intro.documentation;
- 
- 
-<sect1 id="Compilation">
-<title>Compilation and Installation</title>
- 
-&install.compile.documentation;
- 
-</sect1>
-</appendix>
- 
 &documentation.index; 
 </book>
 <!--
