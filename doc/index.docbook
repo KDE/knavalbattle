@@ -56,7 +56,7 @@
 
 <abstract>
 <para>
-&knavalbattle; is a network-enabled implementation of the famous ship sinking game for &kde;.</para>
+&knavalbattle; is a network-enabled implementation of the famous ship sinking game by &kde;.</para>
 </abstract>
 
 <keywordset>
@@ -88,7 +88,7 @@
 </screenshot>
 
 <para>
-&knavalbattle; is a ship sinking game for &kde;. Ships are placed on a board which represents the sea. Players try to hit each others
+&knavalbattle; is a ship sinking game by &kde;. Ships are placed on a board which represents the sea. Players try to hit each others
 ships in turns without knowing where they are placed. The first player to destroy all ships wins the game.
 </para>
 </chapter>
