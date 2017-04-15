@@ -70,7 +70,7 @@ int main(int argc, char** argv)
     
     parser.addVersionOption();
     parser.addHelpOption();
-    parser.addOption(QCommandLineOption(QStringList() << QLatin1String("!+[URL]"), i18n("URL of a Naval Battle game server to connect to after startup")));
+    parser.addPositionalArgument(i18n("[URL]"), i18n("URL of a Naval Battle game server to connect to after startup"));
 
     aboutData.setupCommandLine(&parser);
     parser.process(app);
