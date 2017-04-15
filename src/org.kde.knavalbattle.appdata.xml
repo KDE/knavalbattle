@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component type="desktop-application">
+  <id>org.kde.knavalbattle.desktop</id>
+  <metadata_license>FSFAP</metadata_license>
+  <project_license>GPL-2.0+</project_license>
+  <name>Naval Battle</name>
+  <summary>Battle Ship Game</summary>
+    <description>
+    <p>
+      Naval Battle is a ship sinking game. Ships are placed on a board which
+      represents the sea. Players try to hit each others ships in turns without knowing
+      where they are placed. The first player to destroy all ships wins the game.
+    </p>
+  </description>
+  <url type="bugtracker">https://bugs.kde.org/enter_bug.cgi?format=guided&amp;product=knavalbattle</url>
+  <url type="help">https://docs.kde.org/?application=knavalbattle</url>
+  <screenshots>
+    <screenshot type="default">
+      <image>https://kde.org/images/screenshots/knavalbattle.png</image>
+    </screenshot>
+  </screenshots>
+  <project_group>KDE</project_group>
+  <provides>
+    <binary>knavalbattle</binary>
+  </provides>
+</component>
