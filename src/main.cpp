@@ -28,6 +28,7 @@
 int main(int argc, char** argv)
 {
     QApplication app(argc, argv);
+    KLocalizedString::setApplicationDomain("knavalbattle");
 
     Kdelibs4ConfigMigrator migrate(QStringLiteral("knavalbattle"));
     migrate.setConfigFiles(QStringList() << QStringLiteral("knavalbattlerc"));
@@ -79,7 +80,6 @@ int main(int argc, char** argv)
     KAboutData::setApplicationData(aboutData);
     KCrash::initialize();
     KDBusService service; 
-    KLocalizedString::setApplicationDomain("knavalbattle");
     
     qRegisterMetaType<Coord>("Coord");
 
