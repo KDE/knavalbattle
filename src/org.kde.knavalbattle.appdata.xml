@@ -9,6 +9,7 @@
   <name xml:lang="cs">Námořní bitva</name>
   <name xml:lang="es">Batalla naval</name>
   <name xml:lang="nl">Naval Battle</name>
+  <name xml:lang="pl">Bitwa Morska</name>
   <name xml:lang="pt">Batalha Naval</name>
   <name xml:lang="sk">Námorná bitka</name>
   <name xml:lang="sv">Sänka fartyg</name>
@@ -20,6 +21,7 @@
   <summary xml:lang="cs">Hra na lodě</summary>
   <summary xml:lang="es">Juego de batalla naval</summary>
   <summary xml:lang="nl">Spel met slagschepen</summary>
+  <summary xml:lang="pl">Gra w statki</summary>
   <summary xml:lang="pt">Jogo de Batalha Naval</summary>
   <summary xml:lang="sk">Bojová lodná hra</summary>
   <summary xml:lang="sv">Sänka fartygsspel</summary>
@@ -35,6 +37,7 @@
     <p xml:lang="ca-valencia">El Batalla naval és un joc d'enfonsar vaixells. Els vaixells se situen en un tauler que representa el mar. Els jugadors intenten enfonsar els vaixells dels altres sense conèixer a on estan situats. El primer jugador que destrueix tots els vaixells guanya la partida.</p>
     <p xml:lang="es">«Batalla naval» es un juego de hundir los barcos. Los barcos se colocan en un tablero que representa el mar. Los jugadores tratan de alcanzar los barcos del contrincante por turnos sin saber dónde están situados. El primer jugador que destruya todos los barcos de su contrincante ganará el juego.</p>
     <p xml:lang="nl">Naval Battle is het spel Zeeslag. Schepen worden op een bord geplaatst die de zee voorstelt. Spelers proberen om de beurt elkaars schepen te raken zonder te weten waar ze zijn geplaatst. De eerste speler die alle schepen laat zinken wint het spel.</p>
+    <p xml:lang="pl">Gra w statki jest grą polegającą na zatapianiu statków. Statki umieszczane są na planszy, która ma przedstawiać morze. Gracze próbują trafić statek przeciwnika w turach nie wiedząc gdzie te statki są umieszczone. Gracz, który zniszczy jako pierwszy wszystkie statki przeciwnika wygrywa.</p>
     <p xml:lang="pt">A Batalha Naval é um jogo para afundar navios. Os navios são colocados num tabuleiro que representa o mar. Os jogador tentam atingir-se uns aos outros por turnos, sem saber onde eles colocaram os navios. O primeiro jogador a destruir todos os navios ganha o jogo.</p>
     <p xml:lang="sk">Námorná bitka je hra na potápanie lodí. Lode sú umiestnené na poli, ktoré reprezentuje more. Hráči skúšajú zasiahnuť druhého hráča v ťahoch bez toho, aby vedeli, kde sú umiestnení. Prvý hráč, ktorý zničí všetky lode, vyhráva hru.</p>
     <p xml:lang="sv">Sänka fartyg är ett fartygsspel. Fartyg placeras på ett spelbräde som representerar havet. Spelare försöker träffa varandras fartyg i tur och ordning utan att känna till var de är placerade. Den första spelaren som förstör alla fartyg vinner spelet.</p>
