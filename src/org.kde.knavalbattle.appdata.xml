@@ -19,6 +19,7 @@
   <name xml:lang="sv">Sänka fartyg</name>
   <name xml:lang="uk">Морський бій</name>
   <name xml:lang="x-test">xxNaval Battlexx</name>
+  <name xml:lang="zh-CN">Naval Battle</name>
   <summary>Battle Ship Game</summary>
   <summary xml:lang="ca">Joc de batalla naval</summary>
   <summary xml:lang="ca-valencia">Joc de batalla naval</summary>
@@ -35,6 +36,7 @@
   <summary xml:lang="sv">Sänka fartygsspel</summary>
   <summary xml:lang="uk">Гра «Морський бій»</summary>
   <summary xml:lang="x-test">xxBattle Ship Gamexx</summary>
+  <summary xml:lang="zh-CN">舰船游戏</summary>
   <description>
     <p>
       Naval Battle is a ship sinking game. Ships are placed on a board which
