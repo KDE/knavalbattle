@@ -9,6 +9,7 @@
   <name xml:lang="cs">Námořní bitva</name>
   <name xml:lang="en-GB">Naval Battle</name>
   <name xml:lang="es">Batalla naval</name>
+  <name xml:lang="fr">Naval Battle</name>
   <name xml:lang="nl">Naval Battle</name>
   <name xml:lang="pl">Bitwa Morska</name>
   <name xml:lang="pt">Batalha Naval</name>
@@ -27,6 +28,7 @@
   <summary xml:lang="cs">Hra na lodě</summary>
   <summary xml:lang="en-GB">Battle Ship Game</summary>
   <summary xml:lang="es">Juego de batalla naval</summary>
+  <summary xml:lang="fr">Jeu de touché-coulé</summary>
   <summary xml:lang="nl">Spel met slagschepen</summary>
   <summary xml:lang="pl">Gra w statki</summary>
   <summary xml:lang="pt">Jogo de Batalha Naval</summary>
@@ -49,6 +51,7 @@
     <p xml:lang="ca-valencia">El Batalla naval és un joc d'enfonsar vaixells. Els vaixells se situen en un tauler que representa el mar. Els jugadors intenten enfonsar els vaixells dels altres sense conèixer a on estan situats. El primer jugador que destrueix tots els vaixells guanya la partida.</p>
     <p xml:lang="en-GB">Naval Battle is a ship sinking game. Ships are placed on a board which represents the sea. Players try to hit each others ships in turns without knowing where they are placed. The first player to destroy all ships wins the game.</p>
     <p xml:lang="es">«Batalla naval» es un juego de hundir los barcos. Los barcos se colocan en un tablero que representa el mar. Los jugadores tratan de alcanzar los barcos del contrincante por turnos sin saber dónde están situados. El primer jugador que destruya todos los barcos de su contrincante ganará el juego.</p>
+    <p xml:lang="fr">Naval Battle est un jeu de touché-coulé. Les navires sont placés sur une grille qui représente la mer. Les joueurs essaient chacun leur tour de toucher les vaisseaux de leur adversaire sans savoir où ils sont situés. Le premier joueur à détruire la totalité de la flotte adverse gagne la partie.</p>
     <p xml:lang="nl">Naval Battle is het spel Zeeslag. Schepen worden op een bord geplaatst die de zee voorstelt. Spelers proberen om de beurt elkaars schepen te raken zonder te weten waar ze zijn geplaatst. De eerste speler die alle schepen laat zinken wint het spel.</p>
     <p xml:lang="pl">Gra w statki jest grą polegającą na zatapianiu statków. Statki umieszczane są na planszy, która ma przedstawiać morze. Gracze próbują trafić statek przeciwnika w turach nie wiedząc gdzie te statki są umieszczone. Gracz, który zniszczy jako pierwszy wszystkie statki przeciwnika wygrywa.</p>
     <p xml:lang="pt">A Batalha Naval é um jogo para afundar navios. Os navios são colocados num tabuleiro que representa o mar. Os jogador tentam atingir-se uns aos outros por turnos, sem saber onde eles colocaram os navios. O primeiro jogador a destruir todos os navios ganha o jogo.</p>
