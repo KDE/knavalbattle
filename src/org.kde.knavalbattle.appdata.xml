@@ -14,6 +14,7 @@
   <name xml:lang="pl">Bitwa Morska</name>
   <name xml:lang="pt">Batalha Naval</name>
   <name xml:lang="sk">Námorná bitka</name>
+  <name xml:lang="sl">Naval Battle</name>
   <name xml:lang="sr">Поморска битка</name>
   <name xml:lang="sr-Latn">Pomorska bitka</name>
   <name xml:lang="sr-ijekavian">Поморска битка</name>
@@ -33,6 +34,7 @@
   <summary xml:lang="pl">Gra w statki</summary>
   <summary xml:lang="pt">Jogo de Batalha Naval</summary>
   <summary xml:lang="sk">Bojová lodná hra</summary>
+  <summary xml:lang="sl">Igra potapljanja ladjic</summary>
   <summary xml:lang="sr">Игра потапања бродова</summary>
   <summary xml:lang="sr-Latn">Igra potapanja brodova</summary>
   <summary xml:lang="sr-ijekavian">Игра потапања бродова</summary>
@@ -56,6 +58,7 @@
     <p xml:lang="pl">Gra w statki jest grą polegającą na zatapianiu statków. Statki umieszczane są na planszy, która ma przedstawiać morze. Gracze próbują trafić statek przeciwnika w turach nie wiedząc gdzie te statki są umieszczone. Gracz, który zniszczy jako pierwszy wszystkie statki przeciwnika wygrywa.</p>
     <p xml:lang="pt">A Batalha Naval é um jogo para afundar navios. Os navios são colocados num tabuleiro que representa o mar. Os jogador tentam atingir-se uns aos outros por turnos, sem saber onde eles colocaram os navios. O primeiro jogador a destruir todos os navios ganha o jogo.</p>
     <p xml:lang="sk">Námorná bitka je hra na potápanie lodí. Lode sú umiestnené na poli, ktoré reprezentuje more. Hráči skúšajú zasiahnuť druhého hráča v ťahoch bez toho, aby vedeli, kde sú umiestnení. Prvý hráč, ktorý zničí všetky lode, vyhráva hru.</p>
+    <p xml:lang="sl">Naval Battle je igra potapljanja ladjic. Ladje so postavljene na igralno površino, ki predstavlja morje. Igralci izmenično poskušajo zadeti ladje nasprotnikov, pri tem pa ne vedo, kje so te postavljene. Zmaga prvi igralec, ki uniči vse ladje.</p>
     <p xml:lang="sr">Поморска битка је игра потапања бродова. Бродови се смештају на таблу која представља море. Играчи покушавају један другом да погоде бродове, за које не знају где су постављени. Први играч који уништи све бродове добија партију.</p>
     <p xml:lang="sr-Latn">Pomorska bitka je igra potapanja brodova. Brodovi se smeštaju na tablu koja predstavlja more. Igrači pokušavaju jedan drugom da pogode brodove, za koje ne znaju gde su postavljeni. Prvi igrač koji uništi sve brodove dobija partiju.</p>
     <p xml:lang="sr-ijekavian">Поморска битка је игра потапања бродова. Бродови се смештају на таблу која представља море. Играчи покушавају један другом да погоде бродове, за које не знају где су постављени. Први играч који уништи све бродове добија партију.</p>
