@@ -7,6 +7,7 @@
   <name xml:lang="ca">Batalla naval</name>
   <name xml:lang="ca-valencia">Batalla naval</name>
   <name xml:lang="cs">Námořní bitva</name>
+  <name xml:lang="de">Naval Battle</name>
   <name xml:lang="en-GB">Naval Battle</name>
   <name xml:lang="es">Batalla naval</name>
   <name xml:lang="fr">Naval Battle</name>
@@ -27,6 +28,7 @@
   <summary xml:lang="ca">Joc de batalla naval</summary>
   <summary xml:lang="ca-valencia">Joc de batalla naval</summary>
   <summary xml:lang="cs">Hra na lodě</summary>
+  <summary xml:lang="de">„Schiffe versenken“-Spiel</summary>
   <summary xml:lang="en-GB">Battle Ship Game</summary>
   <summary xml:lang="es">Juego de batalla naval</summary>
   <summary xml:lang="fr">Jeu de touché-coulé</summary>
@@ -51,6 +53,7 @@
     </p>
     <p xml:lang="ca">El Batalla naval és un joc d'enfonsar vaixells. Els vaixells se situen en un tauler que representa el mar. Els jugadors intenten enfonsar els vaixells dels altres sense conèixer a on estan situats. El primer jugador que destrueix tots els vaixells guanya la partida.</p>
     <p xml:lang="ca-valencia">El Batalla naval és un joc d'enfonsar vaixells. Els vaixells se situen en un tauler que representa el mar. Els jugadors intenten enfonsar els vaixells dels altres sense conèixer a on estan situats. El primer jugador que destrueix tots els vaixells guanya la partida.</p>
+    <p xml:lang="de"> ist ein „Schiffe versenken“-Spiel. Alle Schiffe werden auf dem Spielfeld - dem Meer - angeordnet. Die Spieler versuchen die gegnerischen Schiffe, deren Lage auf dem Spielfeld Sie nicht kennen, abwechselnd mit Schüssen zu treffen. Sieger ist, wer als erster alle Schiffe des Gegners versenkt hat.</p>
     <p xml:lang="en-GB">Naval Battle is a ship sinking game. Ships are placed on a board which represents the sea. Players try to hit each others ships in turns without knowing where they are placed. The first player to destroy all ships wins the game.</p>
     <p xml:lang="es">«Batalla naval» es un juego de hundir los barcos. Los barcos se colocan en un tablero que representa el mar. Los jugadores tratan de alcanzar los barcos del contrincante por turnos sin saber dónde están situados. El primer jugador que destruya todos los barcos de su contrincante ganará el juego.</p>
     <p xml:lang="fr">Naval Battle est un jeu de touché-coulé. Les navires sont placés sur une grille qui représente la mer. Les joueurs essaient chacun leur tour de toucher les vaisseaux de leur adversaire sans savoir où ils sont situés. Le premier joueur à détruire la totalité de la flotte adverse gagne la partie.</p>
