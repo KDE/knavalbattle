@@ -69,8 +69,6 @@ int main(int argc, char** argv)
   
     QCommandLineParser parser;
     
-    parser.addVersionOption();
-    parser.addHelpOption();
     parser.addPositionalArgument(i18n("[URL]"), i18n("URL of a Naval Battle game server to connect to after startup"));
 
     aboutData.setupCommandLine(&parser);
