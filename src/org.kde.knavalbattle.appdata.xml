@@ -17,6 +17,7 @@
   <name xml:lang="nl">Naval Battle</name>
   <name xml:lang="pl">Bitwa Morska</name>
   <name xml:lang="pt">Batalha Naval</name>
+  <name xml:lang="ru">Морской бой</name>
   <name xml:lang="sk">Námorná bitka</name>
   <name xml:lang="sl">Naval Battle</name>
   <name xml:lang="sr">Поморска битка</name>
@@ -41,6 +42,7 @@
   <summary xml:lang="nl">Spel met slagschepen</summary>
   <summary xml:lang="pl">Gra w statki</summary>
   <summary xml:lang="pt">Jogo de Batalha Naval</summary>
+  <summary xml:lang="ru">Игра «Морской бой»</summary>
   <summary xml:lang="sk">Bojová lodná hra</summary>
   <summary xml:lang="sl">Igra potapljanja ladjic</summary>
   <summary xml:lang="sr">Игра потапања бродова</summary>
