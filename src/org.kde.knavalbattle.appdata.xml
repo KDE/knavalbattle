@@ -16,6 +16,7 @@
   <name xml:lang="gl">Batalla naval</name>
   <name xml:lang="it">Battaglia navale</name>
   <name xml:lang="nl">Naval Battle</name>
+  <name xml:lang="nn">Sjøslag</name>
   <name xml:lang="pl">Bitwa Morska</name>
   <name xml:lang="pt">Batalha Naval</name>
   <name xml:lang="ru">Морской бой</name>
@@ -42,6 +43,7 @@
   <summary xml:lang="gl">Xogo de afundir barcos</summary>
   <summary xml:lang="it">Gioco della battaglia navale</summary>
   <summary xml:lang="nl">Spel met slagschepen</summary>
+  <summary xml:lang="nn">Spel om å senka slagskip</summary>
   <summary xml:lang="pl">Gra w statki</summary>
   <summary xml:lang="pt">Jogo de Batalha Naval</summary>
   <summary xml:lang="ru">Игра «Морской бой»</summary>
