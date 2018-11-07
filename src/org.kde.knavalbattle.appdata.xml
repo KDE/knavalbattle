@@ -91,6 +91,7 @@
   </description>
   <url type="bugtracker">https://bugs.kde.org/enter_bug.cgi?format=guided&amp;product=knavalbattle</url>
   <url type="help">https://docs.kde.org/?application=knavalbattle</url>
+  <url type="donation">https://www.kde.org/community/donations/?app=knavalbattle&amp;source=appdata</url>
   <screenshots>
     <screenshot type="default">
       <image>https://kde.org/images/screenshots/knavalbattle.png</image>
