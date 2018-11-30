@@ -83,7 +83,7 @@ int main(int argc, char** argv)
 
     QUrl url;
     const QStringList &args = parser.positionalArguments();
-    if (args.count() > 0) {
+    if (!args.isEmpty()) {
         for (int i = 0; i < args.count(); ++i) {
             url = QUrl(args.at(i)); 
 
