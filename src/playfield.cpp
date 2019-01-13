@@ -146,9 +146,9 @@ void PlayField::highscores()
             KScoreDialog::Custom3, 
             this);
     highscoredialog->initFromDifficulty(Kg::difficulty());
-    highscoredialog->addField(KScoreDialog::Custom1, i18n("Shots"), QLatin1Literal("shots"));
-    highscoredialog->addField(KScoreDialog::Custom2, i18n("Hits"), QLatin1Literal("hits"));
-    highscoredialog->addField(KScoreDialog::Custom3, i18n("Misses"), QLatin1Literal("water"));
+    highscoredialog->addField(KScoreDialog::Custom1, i18n("Shots"), QStringLiteral("shots"));
+    highscoredialog->addField(KScoreDialog::Custom2, i18n("Hits"), QStringLiteral("hits"));
+    highscoredialog->addField(KScoreDialog::Custom3, i18n("Misses"), QStringLiteral("water"));
     
     highscoredialog->exec();
 }
@@ -166,9 +166,9 @@ void PlayField::gameOver(Sea::Player winner)
                     KScoreDialog::Custom3, 
                     this);
             highscoredialog->initFromDifficulty(Kg::difficulty());
-            highscoredialog->addField(KScoreDialog::Custom1, i18n("Shots"), QLatin1Literal("shots"));
-            highscoredialog->addField(KScoreDialog::Custom2, i18n("Hits"), QLatin1Literal("hits"));
-            highscoredialog->addField(KScoreDialog::Custom3, i18n("Misses"), QLatin1Literal("water"));
+            highscoredialog->addField(KScoreDialog::Custom1, i18n("Shots"), QStringLiteral("shots"));
+            highscoredialog->addField(KScoreDialog::Custom2, i18n("Hits"), QStringLiteral("hits"));
+            highscoredialog->addField(KScoreDialog::Custom3, i18n("Misses"), QStringLiteral("water"));
         
             KScoreDialog::FieldInfo info;
             info[KScoreDialog::Name] = m_menu->player(0)->nick();

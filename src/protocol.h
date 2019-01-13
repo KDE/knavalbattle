@@ -36,7 +36,7 @@ private slots:
     void sendNext();
     void processDisconnection();
 signals:
-    void received(MessagePtr);
+    void received(const MessagePtr&);
     void parseError(const QString&);
     void disconnected();
 };

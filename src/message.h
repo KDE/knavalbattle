@@ -40,7 +40,7 @@ public:
                  const QString& clientDescription);
     HeaderMessage();
     void accept(MessageVisitor& visitor) const override;
-    static QString messageType() { return QLatin1String("Header"); }
+    static QString messageType() { return QStringLiteral("Header"); }
     
     const QString& protocolVersion() const { return m_protocol_version; }
     const QString& clientName() const { return m_client_name; }
@@ -56,7 +56,7 @@ public:
     static const int MSGTYPE = 1;
     RejectMessage(bool versionMismatch, const QString& reason);
     void accept(MessageVisitor& visitor) const override;
-    static QString messageType() { return QLatin1String("Reject"); }
+    static QString messageType() { return QStringLiteral("Reject"); }
 };
 
 class NickMessage : public Message
@@ -68,7 +68,7 @@ public:
     void accept(MessageVisitor& visitor) const override;
     
     const QString& nickname() const { return m_nickname; }
-    static QString messageType() { return QLatin1String("Nick"); }
+    static QString messageType() { return QStringLiteral("Nick"); }
 };
 
 class BeginMessage : public Message
@@ -76,7 +76,7 @@ class BeginMessage : public Message
 public:
     static const int MSGTYPE = 3;
     void accept(MessageVisitor& visitor) const override;
-    static QString messageType() { return QLatin1String("Begin"); }
+    static QString messageType() { return QStringLiteral("Begin"); }
 };
 
 class MoveMessage : public Message
@@ -88,7 +88,7 @@ public:
     void accept(MessageVisitor& visitor) const override;
     
     const Coord& move() const { return m_move; }
-    static QString messageType() { return QLatin1String("Move"); }
+    static QString messageType() { return QStringLiteral("Move"); }
 };
 
 class NotificationMessage : public Message
@@ -103,7 +103,7 @@ public:
     NotificationMessage(const Coord& m_move, bool hit, bool death,
         const Coord& start = Coord::invalid(), const Coord& stop = Coord::invalid());
     void accept(MessageVisitor& visitor) const override;
-    static QString messageType() { return QLatin1String("Notification"); }
+    static QString messageType() { return QStringLiteral("Notification"); }
     
     const Coord& move() const { return m_move; }
     bool hit() const { return m_hit; }
@@ -136,7 +136,7 @@ public:
 
     void addShip(const Coord& pos, int size, Ship::Direction direction);
     void accept(MessageVisitor& visitor) const override;
-    static QString messageType() { return QLatin1String("GameOver"); }
+    static QString messageType() { return QStringLiteral("GameOver"); }
 
     const QList<ShipInfo>& ships() const { return m_ships; }
 };
@@ -146,7 +146,7 @@ class RestartMessage : public Message
 public:
     static const int MSGTYPE = 7;
     void accept(MessageVisitor& visitor) const override;
-    static QString messageType() { return QLatin1String("Restart"); }
+    static QString messageType() { return QStringLiteral("Restart"); }
 };
 
 class ChatMessage : public Message
@@ -157,7 +157,7 @@ public:
     static const int MSGTYPE = 8;
     explicit ChatMessage(const QString& nick, const QString& chat);
     void accept(MessageVisitor& visitor) const override;
-    static QString messageType() { return QLatin1String("Chat"); }
+    static QString messageType() { return QStringLiteral("Chat"); }
 
     const QString& chat() const { return m_chat; }
     const QString& nickname() const { return m_nickname; }
@@ -175,7 +175,7 @@ public:
     GameOptionsMessage(const QString& enableAdjacentShips, const QString& oneOrSeveralShips,
         const BattleShipsConfiguration* configuration);
     GameOptionsMessage(const bool enableAdjacentShips, const bool oneOrSeveralShips,
-        BattleShipsConfiguration configuration);
+        const BattleShipsConfiguration &configuration);
 
     const QString & enabledAdjacentShips() const { return m_enabledAdjacentShipsString; }
     const QString & oneOrSeveralShips() const { return m_oneOrSeveralShipsString; }
@@ -183,7 +183,7 @@ public:
     unsigned int gridHeight() const { return m_battleShipsConfiguration->boardHeight(); }
     const BattleShipsConfiguration* shipsConfiguration() const { return m_battleShipsConfiguration; }
     void accept(MessageVisitor& visitor) const override;
-    static QString messageType() { return QLatin1String("GameOptions"); }
+    static QString messageType() { return QStringLiteral("GameOptions"); }
 };
 
 

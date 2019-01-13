@@ -16,7 +16,7 @@
 static KgThemeProvider *provider()
 {
     KgThemeProvider *prov = new KgThemeProvider;
-    prov->discoverThemes("appdata", QLatin1String("pictures"));
+    prov->discoverThemes("appdata", QStringLiteral("pictures"));
     return prov;
 }
 

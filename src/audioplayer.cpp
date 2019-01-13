@@ -48,11 +48,11 @@ void AudioPlayer::setActive(bool value)
 {
     if (value) {
         if (!m_sink) {
-            const QDir dir = QStandardPaths::locate(QStandardPaths::AppDataLocation, QLatin1Literal("sounds/"), QStandardPaths::LocateDirectory);
-            m_sink = new KgSound(dir.filePath("ship-sink.ogg"), this);
-            m_shootA = new KgSound(dir.filePath("ship-player1-shoot.ogg"), this);
-            m_shootB = new KgSound(dir.filePath("ship-player2-shoot.ogg"), this);
-            m_shootWater = new KgSound(dir.filePath("ship-player-shoot-water.ogg"), this);
+            const QDir dir = QStandardPaths::locate(QStandardPaths::AppDataLocation, QStringLiteral("sounds/"), QStandardPaths::LocateDirectory);
+            m_sink = new KgSound(dir.filePath(QStringLiteral("ship-sink.ogg")), this);
+            m_shootA = new KgSound(dir.filePath(QStringLiteral("ship-player1-shoot.ogg")), this);
+            m_shootB = new KgSound(dir.filePath(QStringLiteral("ship-player2-shoot.ogg")), this);
+            m_shootWater = new KgSound(dir.filePath(QStringLiteral("ship-player-shoot-water.ogg")), this);
         }
     }
     else {

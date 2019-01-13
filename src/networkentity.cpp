@@ -74,7 +74,7 @@ void NetworkEntity::notifyGameOptions()
     else {
         m_protocol->send(MessagePtr(new HeaderMessage()));
         
-        m_protocol->send(MessagePtr(new GameOptionsMessage(QString(Settings::adjacentShips() ? QLatin1Literal("true") : QLatin1Literal("false")), QString(Settings::severalShips() ? QLatin1Literal("true") : QLatin1Literal("false")), m_battleShipsConfiguration )));
+        m_protocol->send(MessagePtr(new GameOptionsMessage(QString(Settings::adjacentShips() ? QStringLiteral("true") : QStringLiteral("false")), QString(Settings::severalShips() ? QStringLiteral("true") : QStringLiteral("false")), m_battleShipsConfiguration )));
     }
 }
 

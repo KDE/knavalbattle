@@ -127,17 +127,17 @@ unsigned int BattleShipsConfiguration::totalNumberOfShipsToPlay() const
 BattleShipsConfiguration BattleShipsConfiguration::defaultSingleShipsConfiguration(const bool allowAdjacent, const bool fromXML)
 {
     BattleShipsConfiguration res(4, allowAdjacent, 10, 10, fromXML);
-    return res.addShips(1, 1, QLatin1String("minesweeper"), QLatin1String("minesweepers"))
-              .addShips(2, 1, QLatin1String("frigate"), QLatin1String("frigates"))
-              .addShips(3, 1, QLatin1String("cruise"), QLatin1String("cruises"))
-              .addShips(4, 1, QLatin1String("carrier"), QLatin1String("carriers"));
+    return res.addShips(1, 1, QStringLiteral("minesweeper"), QStringLiteral("minesweepers"))
+              .addShips(2, 1, QStringLiteral("frigate"), QStringLiteral("frigates"))
+              .addShips(3, 1, QStringLiteral("cruise"), QStringLiteral("cruises"))
+              .addShips(4, 1, QStringLiteral("carrier"), QStringLiteral("carriers"));
 }
 
 BattleShipsConfiguration BattleShipsConfiguration::defaultMultipleShipsConfiguration(const bool allowAdjacent, const bool fromXML)
 {
     BattleShipsConfiguration res(4, allowAdjacent, 10, 10, fromXML);
-    return res.addShips(1, 4, QLatin1String("minesweeper"), QLatin1String("minesweepers"))
-              .addShips(2, 3, QLatin1String("frigate"), QLatin1String("frigates"))
-              .addShips(3, 2, QLatin1String("cruise"), QLatin1String("cruises"))
-              .addShips(4, 1, QLatin1String("carrier"), QLatin1String("carriers"));
+    return res.addShips(1, 4, QStringLiteral("minesweeper"), QStringLiteral("minesweepers"))
+              .addShips(2, 3, QStringLiteral("frigate"), QStringLiteral("frigates"))
+              .addShips(3, 2, QStringLiteral("cruise"), QStringLiteral("cruises"))
+              .addShips(4, 1, QStringLiteral("carrier"), QStringLiteral("carriers"));
 }

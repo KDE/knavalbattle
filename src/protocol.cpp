@@ -40,9 +40,9 @@ class MessageSender : public MessageVisitor
     }
 public:
     MessageSender()
-    : m_doc("kmessage")
+    : m_doc(QStringLiteral("kmessage"))
     {
-        m_main = m_doc.createElement("kmessage");
+        m_main = m_doc.createElement(QStringLiteral("kmessage"));
         m_doc.appendChild(m_main);
     }
     
@@ -70,22 +70,22 @@ public:
     void visit(const MoveMessage& msg) override
     {
         setType(msg);
-        addField("fieldx", QString::number(msg.move().x));
-        addField("fieldy", QString::number(msg.move().y));
+        addField(QStringLiteral("fieldx"), QString::number(msg.move().x));
+        addField(QStringLiteral("fieldy"), QString::number(msg.move().y));
     }
     
     void visit(const NotificationMessage& msg) override
     {
         setType(msg);
-        addField("fieldx", QString::number(msg.move().x));
-        addField("fieldy", QString::number(msg.move().y));
-        addField("fieldstate", msg.hit() ? "1" : "99");
+        addField(QStringLiteral("fieldx"), QString::number(msg.move().x));
+        addField(QStringLiteral("fieldy"), QString::number(msg.move().y));
+        addField(QStringLiteral("fieldstate"), msg.hit() ? "1" : "99");
         if (msg.death()) {
-            addField("death", "true");
-            addField("xstart", QString::number(msg.start().x));
-            addField("xstop", QString::number(msg.stop().x));
-            addField("ystart", QString::number(msg.start().y));
-            addField("ystop", QString::number(msg.stop().y));
+            addField(QStringLiteral("death"), QStringLiteral("true"));
+            addField(QStringLiteral("xstart"), QString::number(msg.start().x));
+            addField(QStringLiteral("xstop"), QString::number(msg.stop().x));
+            addField(QStringLiteral("ystart"), QString::number(msg.start().y));
+            addField(QStringLiteral("ystop"), QString::number(msg.stop().y));
         }
     }
     
@@ -97,7 +97,7 @@ public:
             data << QString::number(ship.pos.x)
                  << QString::number(ship.pos.y)
                  << (ship.direction == Ship::TOP_DOWN ? "0" : "1");
-            addField(QString("ship") + QString::number(ship.size), data.join( QLatin1String( " " )));
+            addField(QStringLiteral("ship") + QString::number(ship.size), data.join( QLatin1String( " " )));
         }
     }
     
@@ -118,16 +118,16 @@ public:
         // create the message XML contents
         setType(msg);
         ADD_FIELD(msg, enabledAdjacentShips);
-        QDomElement oneOrElement=addField ("oneOrSeveralShips", QString(msg.oneOrSeveralShips()));
-        oneOrElement.setAttribute(QLatin1String("longestShip"),QString::number(msg.shipsConfiguration()->longestShip()));
-        addField("boardWidth", QString::number(msg.gridWidth()));
-        addField("boardHeight", QString::number(msg.gridHeight()));
+        QDomElement oneOrElement=addField (QStringLiteral("oneOrSeveralShips"), QString(msg.oneOrSeveralShips()));
+        oneOrElement.setAttribute(QStringLiteral("longestShip"),QString::number(msg.shipsConfiguration()->longestShip()));
+        addField(QStringLiteral("boardWidth"), QString::number(msg.gridWidth()));
+        addField(QStringLiteral("boardHeight"), QString::number(msg.gridHeight()));
         for (unsigned int i=1; i<=msg.shipsConfiguration()->longestShip(); i++) {
-            QDomElement element=addField(QString("ships"), QLatin1String( "" ));
-            element.setAttribute(QLatin1String("size"),QString::number(i));
-            element.setAttribute(QLatin1String("number"),QString::number(msg.shipsConfiguration()->numberOfShipsOfSize(i)));
-            element.setAttribute(QLatin1String("name"),msg.shipsConfiguration()->nameOfShipsOfSize(i));
-            element.setAttribute(QLatin1String("pluralName"),msg.shipsConfiguration()->pluralNameOfShipsOfSize(i));
+            QDomElement element=addField(QStringLiteral("ships"), QLatin1String( "" ));
+            element.setAttribute(QStringLiteral("size"),QString::number(i));
+            element.setAttribute(QStringLiteral("number"),QString::number(msg.shipsConfiguration()->numberOfShipsOfSize(i)));
+            element.setAttribute(QStringLiteral("name"),msg.shipsConfiguration()->nameOfShipsOfSize(i));
+            element.setAttribute(QStringLiteral("pluralName"),msg.shipsConfiguration()->pluralNameOfShipsOfSize(i));
         }
     }
 };
@@ -150,7 +150,7 @@ void Protocol::readMore()
     m_buffer += QString::fromUtf8(data.constData());
     
     int pos;
-    while ((pos = m_buffer.indexOf("</kmessage>")) >= 0) {
+    while ((pos = m_buffer.indexOf(QLatin1String("</kmessage>"))) >= 0) {
         pos += 11; // Length of "</kmessage>"
         MessagePtr msg = parseMessage(m_buffer.left(pos));
         m_buffer.remove(0, pos);
@@ -169,16 +169,16 @@ MessagePtr Protocol::parseMessage(const QString& xmlMessage)
     doc.setContent(xmlMessage);
     
     QDomElement main = doc.documentElement();
-    if (main.tagName() != "kmessage")
+    if (main.tagName() != QLatin1String("kmessage"))
     {
-        emit parseError("Invalid parent tag");
+        emit parseError(QStringLiteral("Invalid parent tag"));
         return MessagePtr();
     }
     
-    QDomElement msgtype = main.namedItem("msgtype").toElement();
+    QDomElement msgtype = main.namedItem(QStringLiteral("msgtype")).toElement();
     if (msgtype.isNull())
     {
-        emit parseError("No message type");
+        emit parseError(QStringLiteral("No message type"));
         return MessagePtr();
     }
     
@@ -197,7 +197,7 @@ MessagePtr Protocol::parseMessage(const QString& xmlMessage)
         {
             DEF_ELEMENT(kmversion);
             DEF_ELEMENT(reason);
-            return MessagePtr(new RejectMessage(kmversion == "true", reason));
+            return MessagePtr(new RejectMessage(kmversion == QLatin1String("true"), reason));
         }
     case NickMessage::MSGTYPE:
         {
@@ -215,9 +215,9 @@ MessagePtr Protocol::parseMessage(const QString& xmlMessage)
         {
             DEF_COORD(field, fieldx, fieldy);
             DEF_ELEMENT(fieldstate);
-            bool hit = fieldstate != "99";
+            bool hit = fieldstate != QLatin1String("99");
             DEF_ELEMENT(death);
-            bool destroyed = death == "true";
+            bool destroyed = death == QLatin1String("true");
             if (destroyed) {
                 DEF_COORD(start, xstart, ystart);
                 DEF_COORD(stop, xstop, ystop);
@@ -234,7 +234,7 @@ MessagePtr Protocol::parseMessage(const QString& xmlMessage)
             for (int i = 0; i < nodes.count(); i++) {
                 QDomElement element = nodes.item(i).toElement();
                 if (!element.isNull() && element.tagName().startsWith(QLatin1String("ship"))) {
-                    int size = element.tagName().mid(4).toInt();
+                    int size = element.tagName().midRef(4).toInt();
                     QStringList data = element.text().split(' ');
                     if (data.size() != 3) {
                         continue;
@@ -261,17 +261,17 @@ MessagePtr Protocol::parseMessage(const QString& xmlMessage)
         {
             // get values from the xml message
             DEF_ELEMENT(enabledAdjacentShips);
-            bool adjacentShips = enabledAdjacentShips=="true";
-            QDomElement oneOrElement=main.namedItem(QLatin1String("oneOrSeveralShips")).toElement();
+            bool adjacentShips = enabledAdjacentShips==QLatin1String("true");
+            QDomElement oneOrElement=main.namedItem(QStringLiteral("oneOrSeveralShips")).toElement();
             QString oneOrSeveralShips = oneOrElement.text();
-            bool severalShips = oneOrSeveralShips=="true";
+            bool severalShips = oneOrSeveralShips==QLatin1String("true");
             unsigned int longestShip=0;
             // if the node oneOrSeveralShips does not have the attribute, then it is the single ships configuration.
-            if ( !oneOrElement.hasAttribute(QLatin1String("longestShip")) ) {
+            if ( !oneOrElement.hasAttribute(QStringLiteral("longestShip")) ) {
                 return MessagePtr(new GameOptionsMessage(adjacentShips, severalShips, BattleShipsConfiguration::defaultSingleShipsConfiguration(adjacentShips, true)));
             }
             else {
-                longestShip = oneOrElement.attribute(QLatin1String("longestShip")).toUInt();
+                longestShip = oneOrElement.attribute(QStringLiteral("longestShip")).toUInt();
             }
             DEF_ELEMENT(boardWidth);
             DEF_ELEMENT(boardHeight);
@@ -283,10 +283,10 @@ MessagePtr Protocol::parseMessage(const QString& xmlMessage)
             for (int i = 0; i < nodes.count(); i++) {
                 QDomElement element = nodes.item(i).toElement();
                 if (!element.isNull() && element.tagName()==QLatin1String("ships")) {
-                    QString name=element.attribute(QLatin1String("name"));
-                    QString pluralName=element.attribute(QLatin1String("pluralName"));
-                    unsigned int size=element.attribute(QLatin1String("size")).toUInt();
-                    unsigned int number=element.attribute(QLatin1String("number")).toUInt();
+                    QString name=element.attribute(QStringLiteral("name"));
+                    QString pluralName=element.attribute(QStringLiteral("pluralName"));
+                    unsigned int size=element.attribute(QStringLiteral("size")).toUInt();
+                    unsigned int number=element.attribute(QStringLiteral("number")).toUInt();
                     battleShipsConfiguration.addShips(size,number,name,pluralName);
                 }
             }
@@ -297,7 +297,7 @@ MessagePtr Protocol::parseMessage(const QString& xmlMessage)
             return MessagePtr(new GameOptionsMessage(adjacentShips, severalShips, battleShipsConfiguration));
         }
     default:
-        emit parseError("Unknown message type");
+        emit parseError(QStringLiteral("Unknown message type"));
         return MessagePtr();
     }
 }

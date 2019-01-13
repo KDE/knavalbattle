@@ -66,13 +66,13 @@ StatsWidget::StatsWidget(KBSRenderer *renderer, QWidget *parent)
 , m_stats(0)
 {
     m_elements[0] = new StatsWidgetElement(
-        renderer->spritePixmap("water-impact", QSize(32, 32)),
-        "0",
+        renderer->spritePixmap(QStringLiteral("water-impact"), QSize(32, 32)),
+        QStringLiteral("0"),
         this);
     m_elements[0]->show();
     m_elements[1] = new StatsWidgetElement(
-        renderer->spritePixmap("hit", QSize(32, 32)),
-        "0",
+        renderer->spritePixmap(QStringLiteral("hit"), QSize(32, 32)),
+        QStringLiteral("0"),
         this);
     m_elements[1]->show();
 
@@ -98,8 +98,8 @@ void StatsWidget::refresh()
         m_elements[1]->setText(QString::number(m_stats->hits()));
     }
     else {
-        m_elements[0]->setText("0");
-        m_elements[1]->setText("0");
+        m_elements[0]->setText(QStringLiteral("0"));
+        m_elements[1]->setText(QStringLiteral("0"));
     }
 }
 

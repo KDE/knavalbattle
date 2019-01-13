@@ -21,10 +21,10 @@ HeaderMessage::HeaderMessage(const QString& protocolVersion,
 }
 
 HeaderMessage::HeaderMessage()
-: m_protocol_version(QLatin1Literal("0.1.0"))
-, m_client_name(QLatin1Literal("KBattleship"))
-, m_client_version(QLatin1Literal("4.0"))
-, m_client_description(QLatin1Literal("The Naval Battle game"))
+: m_protocol_version(QStringLiteral("0.1.0"))
+, m_client_name(QStringLiteral("KBattleship"))
+, m_client_version(QStringLiteral("4.0"))
+, m_client_description(QStringLiteral("The Naval Battle game"))
 {
 }
 
@@ -126,7 +126,7 @@ GameOptionsMessage::GameOptionsMessage(const QString& enableAdjacentShips, const
 }
 
 GameOptionsMessage::GameOptionsMessage(const bool enableAdjacentShips, const bool oneOrSeveralShips,
-    BattleShipsConfiguration configuration)
+    const BattleShipsConfiguration &configuration)
 : m_enabledAdjacentShipsString(enableAdjacentShips)
 , m_oneOrSeveralShipsString(oneOrSeveralShips)
 , m_battleShipsConfiguration(new BattleShipsConfiguration(configuration))

@@ -75,7 +75,7 @@ NetworkDialog::NetworkDialog(bool client, QWidget* parent, const QUrl* url)
     if (m_client) {
         tmp = new QLabel(i18n("&Join game:"), main);
         m_games=new KComboBox(main);
-        KDNSSD::ServiceBrowser* browser=new KDNSSD::ServiceBrowser(QLatin1Literal("_kbattleship._tcp"), true);
+        KDNSSD::ServiceBrowser* browser=new KDNSSD::ServiceBrowser(QStringLiteral("_kbattleship._tcp"), true);
         m_games->setModel(new KDNSSD::ServiceModel(browser, this));
         tmp->setBuddy(m_games);
         tmpLayout = new QHBoxLayout;
@@ -220,7 +220,7 @@ void NetworkDialog::slotOkClicked()
             m_feedback->setText(i18n("Waiting for an incoming connection..."));        
             QTcpServer* server = new QTcpServer;
             connect(server, &QTcpServer::newConnection, this, &NetworkDialog::serverOK);
-            m_publisher=new KDNSSD::PublicService(nickname(), QLatin1Literal("_kbattleship._tcp"), m_port->value());
+            m_publisher=new KDNSSD::PublicService(nickname(), QStringLiteral("_kbattleship._tcp"), m_port->value());
             m_publisher->publishAsync();
             
             server->listen(QHostAddress::Any, static_cast<quint16>(m_port->value()));

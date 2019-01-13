@@ -36,21 +36,21 @@ SeaView::SeaView(QWidget* parent)
    
     // create labels
     m_labels[0] = new PlayerLabel(
-        m_renderer->spritePixmap("score_mouse", QSize(32, 32)),
-        "Player",
+        m_renderer->spritePixmap(QStringLiteral("score_mouse"), QSize(32, 32)),
+        QStringLiteral("Player"),
         this);
     m_labels[0]->show();
     m_labels[1] = new PlayerLabel(
-        m_renderer->spritePixmap("score_ai", QSize(32, 32)),
-        "Computer", 
+        m_renderer->spritePixmap(QStringLiteral("score_ai"), QSize(32, 32)),
+        QStringLiteral("Computer"), 
         this);
     m_labels[1]->show();
  
     // create fields
-    m_fields[0] = new BattleFieldView(this, m_renderer, "background", GRID_SIZE);
+    m_fields[0] = new BattleFieldView(this, m_renderer, QStringLiteral("background"), GRID_SIZE);
     m_fields[0]->setPlayer(Sea::Player(0));
     m_fields[0]->show();
-    m_fields[1] = new BattleFieldView(this, m_renderer, "background2", GRID_SIZE);
+    m_fields[1] = new BattleFieldView(this, m_renderer, QStringLiteral("background2"), GRID_SIZE);
     m_fields[1]->setPlayer(Sea::Player(1));
     m_fields[1]->show();
     

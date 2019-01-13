@@ -113,17 +113,17 @@ void SimpleMenu::setupController(Controller* controller, Entity* old_opponent, S
     switch (m_state) {
     case DONE_LOCAL_GAME: {
         m_player1 = controller->createPlayer(Sea::Player(0), sea, chat, m_nickname);
-        sea->setStats(Sea::Player(0), "score_mouse", m_nickname, m_player1->stats());
+        sea->setStats(Sea::Player(0), QStringLiteral("score_mouse"), m_nickname, m_player1->stats());
         m_player2 = controller->createAI(Sea::Player(1), sea);
-        sea->setStats(Sea::Player(1), "score_ai", 
-                      "Computer", m_player2->stats());
+        sea->setStats(Sea::Player(1), QStringLiteral("score_ai"), 
+                      QStringLiteral("Computer"), m_player2->stats());
         chat->hide();
         break;
     }
     case DONE_SERVER: {
         Q_ASSERT(m_protocol);
         m_player1 = controller->createPlayer(Sea::Player(0), sea, chat, m_nickname);
-        sea->setStats(Sea::Player(0), "score_mouse", 
+        sea->setStats(Sea::Player(0), QStringLiteral("score_mouse"), 
                       m_nickname, m_player1->stats());
         m_player2 = controller->createRemotePlayer(Sea::Player(1), sea, m_protocol, false);
         if (old_opponent) {
@@ -131,7 +131,7 @@ void SimpleMenu::setupController(Controller* controller, Entity* old_opponent, S
             m_player2->setCompatibilityLevel(old_opponent->compatibilityLevel());
             m_player2->setNick(old_opponent->nick());
         }
-        sea->setStats(Sea::Player(1), "score_network", 
+        sea->setStats(Sea::Player(1), QStringLiteral("score_network"), 
                       m_player2->nick().isEmpty() ? i18n("Remote player") : m_player2->nick(),
                       m_player2->stats());
         chat->bindTo(m_player1);
@@ -140,7 +140,7 @@ void SimpleMenu::setupController(Controller* controller, Entity* old_opponent, S
     case DONE_CLIENT: {
         Q_ASSERT(m_protocol);
         m_player1 = controller->createPlayer(Sea::Player(0), sea, chat, m_nickname);
-        sea->setStats(Sea::Player(0), "score_mouse", 
+        sea->setStats(Sea::Player(0), QStringLiteral("score_mouse"), 
                       m_nickname, m_player1->stats());
         m_player2 = controller->createRemotePlayer(Sea::Player(1), sea, m_protocol, true);
         if (old_opponent) {
@@ -148,7 +148,7 @@ void SimpleMenu::setupController(Controller* controller, Entity* old_opponent, S
             m_player2->setCompatibilityLevel(old_opponent->compatibilityLevel());
             m_player2->setNick(old_opponent->nick());
         }
-        sea->setStats(Sea::Player(1), "score_network", 
+        sea->setStats(Sea::Player(1), QStringLiteral("score_network"), 
                       m_player2->nick().isEmpty() ? i18n("Remote player") : m_player2->nick(),
                       m_player2->stats());
         chat->bindTo(m_player1);

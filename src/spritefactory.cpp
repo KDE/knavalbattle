@@ -45,17 +45,17 @@ Sprite* SpriteFactory::createSimpleSprite(const QString& name)
 
 Sprite* SpriteFactory::createHit()
 {
-    return createSimpleSprite("hit");
+    return createSimpleSprite(QStringLiteral("hit"));
 }
 
 Sprite* SpriteFactory::createMiss()
 {
-    return createSimpleSprite("water");
+    return createSimpleSprite(QStringLiteral("water"));
 }
 
 Sprite* SpriteFactory::createImpact()
 {
-    return createSimpleSprite("water-impact");
+    return createSimpleSprite(QStringLiteral("water-impact"));
 }
 
 

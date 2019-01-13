@@ -234,7 +234,7 @@ void BattleFieldView::sink(Ship* ship)
                 s->setOpacity(0.5);
             }
             else if (s->spriteKey().startsWith(QLatin1Literal("hit"))) {
-                s->setSpriteKey(QLatin1Literal("hit-end"));
+                s->setSpriteKey(QStringLiteral("hit-end"));
             }
         }
     }
@@ -260,12 +260,12 @@ void BattleFieldView::miss(const Coord& c)
 
 void BattleFieldView::removeImpact() {
     if (m_impact) {
-        m_impact->setSpriteKey(QLatin1Literal("water"));
+        m_impact->setSpriteKey(QStringLiteral("water"));
         m_impact->refresh(m_renderer);
         m_impact = 0;
     }
     if (m_last_hit) {
-        m_last_hit->setSpriteKey(QLatin1Literal("hit-after"));
+        m_last_hit->setSpriteKey(QStringLiteral("hit-after"));
         m_last_hit->refresh(m_renderer);
         m_last_hit = 0;
     }
