@@ -1,5 +1,3 @@
-include_directories(${CMAKE_SOURCE_DIR}/KF5KDEGames/highscore ${CMAKE_CURRENT_SOURCE_DIR}/kwelcomescreen)
-
 set(knavalbattle_SRCS
     ai/ai.cpp
     ai/dummyai.cpp
