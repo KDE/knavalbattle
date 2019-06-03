@@ -19,7 +19,6 @@ class BattleFieldView;
 class KBSRenderer;
 class Delegate;
 class WelcomeScreen;
-class Button;
 class PlayerLabel;
 class StatsWidget;
 class Stats;
