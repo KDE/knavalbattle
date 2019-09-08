@@ -229,11 +229,11 @@ void BattleFieldView::sink(Ship* ship)
          i < ship->size(); 
          i++, p += ship->increment()) {
         foreach (Sprite* s, m_sprites.values(p)) {
-            if (s->spriteKey().startsWith(QLatin1Literal("ship"))) {
+            if (s->spriteKey().startsWith(QLatin1String("ship"))) {
                 s->setZValue(BACKGROUND);
                 s->setOpacity(0.5);
             }
-            else if (s->spriteKey().startsWith(QLatin1Literal("hit"))) {
+            else if (s->spriteKey().startsWith(QLatin1String("hit"))) {
                 s->setSpriteKey(QStringLiteral("hit-end"));
             }
         }
