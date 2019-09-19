@@ -11,7 +11,7 @@
 #define ANIMATOR_H
 
 #include <QTimer>
-#include <QTime>
+#include <QElapsedTimer>
 
 class AnimationGroup;
 class Animation;
@@ -21,7 +21,7 @@ class Animator : public QObject
 Q_OBJECT
     AnimationGroup* m_group;
     QTimer m_timer;
-    QTime m_time;
+    QElapsedTimer m_time;
     
     static Animator* m_instance;
     Animator();

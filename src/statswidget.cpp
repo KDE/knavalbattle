@@ -35,7 +35,7 @@ void StatsWidgetElement::paintEvent(QPaintEvent * /*ev*/)
     QPainter p(this);
     p.setPen(pen);
     p.setRenderHint(QPainter::Antialiasing);
-    p.drawRoundRect(rect, 1000 / rect.width(), 1000 / rect.height());
+    p.drawRoundedRect(rect, 1000 / rect.width(), 1000 / rect.height(), Qt::RelativeSize);
 }
 
 void StatsWidgetElement::setText(const QString &text)

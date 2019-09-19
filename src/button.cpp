@@ -52,7 +52,7 @@ void Button::setWidth(int width)
 void Button::computeSize()
 {
     QFontMetrics fm(m_font);
-    m_text_width = fm.width(m_text);
+    m_text_width = fm.boundingRect(m_text).width();
     int h = fm.height();
     if (h < 32) {
         h = 32;
@@ -79,11 +79,11 @@ void Button::paint(QPainter *p, const QStyleOptionGraphicsItem *, QWidget *)
                              static_cast<int>(m_brightness),
                              static_cast<int>(m_brightness), 100)));
 
-    p->drawRoundRect(1, 1,
+    p->drawRoundedRect(1, 1,
                      m_size.width() - 2,
                      m_size.height() - 2,
                      2000 / m_size.width(),
-                     2000 / m_size.height());
+                     2000 / m_size.height(), Qt::RelativeSize);
 
     p->drawPixmap(10,                        // x coordinate of the icon.
                   m_size.height() / 2 - 16,  // y coordinate of the icon.
