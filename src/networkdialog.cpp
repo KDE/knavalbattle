@@ -63,7 +63,7 @@ NetworkDialog::NetworkDialog(bool client, QWidget* parent, const QUrl* url)
     // nick
     tmp = new QLabel(i18n("&Nickname:"), main);
     m_nickname = new KLineEdit(main);
-    m_nickname->setClearButtonShown(true);
+    m_nickname->setClearButtonEnabled(true);
     m_nickname->setText(Settings::findNick());
     tmp->setBuddy(m_nickname);
     tmpLayout = new QHBoxLayout;
@@ -90,7 +90,7 @@ NetworkDialog::NetworkDialog(bool client, QWidget* parent, const QUrl* url)
         const QString hostName = url? url->host() : Settings::hostname();
         tmp = new QLabel(i18n("&Hostname:"), frame);
         m_hostname = new KLineEdit(main);
-        m_hostname->setClearButtonShown(true);
+        m_hostname->setClearButtonEnabled(true);
         m_hostname->setText(hostName);
         tmp->setBuddy(m_hostname);
         tmpLayout = new QHBoxLayout;
