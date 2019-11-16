@@ -38,7 +38,7 @@ int main(int argc, char** argv)
     KAboutData aboutData(QStringLiteral("knavalbattle"), i18n("Naval Battle"), QStringLiteral("2.1"), 
         i18n("The KDE ship sinking game"), KAboutLicense::GPL, 
         i18n("(c) 2000-2005  Nikolas Zimmermann, Daniel Molkentin\n"
-              "(c) 2007 Paolo Capriotti"), QString(), QStringLiteral("http://games.kde.org/kbattleship") );
+              "(c) 2007 Paolo Capriotti"), QString(), QStringLiteral("https://kde.org/applications/games/org.kde.kbattleship") );
     
     aboutData.addAuthor(i18n("Paolo Capriotti"), i18n("Current maintainer"), QStringLiteral("p.capriotti@gmail.com"));
     aboutData.addAuthor(i18n("Nikolas Zimmermann"), i18n("Project Founder, GUI Handling, Client/Server"), QStringLiteral("wildfox@kde.org"));
