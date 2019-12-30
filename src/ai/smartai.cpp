@@ -11,6 +11,7 @@
 
 #include <algorithm>
 #include <time.h>
+#include <QRandomGenerator>
 
 class Strategy
 {
@@ -147,8 +148,9 @@ public:
 
     Coord getMove() override
     {
+        auto *generator = QRandomGenerator::global();
         for (int i = 0; i < 10000; i++) {
-            Coord c(qrand() % m_sea->size().x, qrand() % m_sea->size().y);
+            Coord c(generator->bounded(m_sea->size().x), generator->bounded(m_sea->size().y));
             if (m_sea->canHit(m_player, c)) {
                 return c;
             }
@@ -190,7 +192,7 @@ class DiagonalStrategy : public Strategy
 
     Coord getMoveHelper()
     {
-        int index = qrand() % m_range;
+        int index = QRandomGenerator::global()->bounded(m_range);
         int current = 0;
         for (int y = m_offset; y < m_sea->size().y; y += m_gap) {
             int diag = m_sea->size().y - y;
@@ -222,8 +224,9 @@ class DiagonalStrategy : public Strategy
 
     void setup()
     {
+        auto *generator = QRandomGenerator::global();
         do {
-            m_offset = qrand() % m_gap;
+            m_offset = generator->bounded(m_gap);
             qDebug() << "offset =" << m_offset << " / " << m_gap;
         } while (!movesAvailable());
 
@@ -286,7 +289,6 @@ SmartAI::SmartAI(Sea::Player player, Sea* sea, bool random, const BattleShipsCon
 : AI(player, sea, config)
 , m_state(random, config)
 {
-    qsrand(time(0));
     m_strategy = std::unique_ptr<Strategy>(m_state.defaultStrategy(player, sea));
 }
 

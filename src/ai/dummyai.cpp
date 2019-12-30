@@ -10,19 +10,20 @@
 #include "dummyai.h"
 #include "sea.h"
 #include <time.h>
+#include <QRandomGenerator>
 
 DummyAI::DummyAI(Sea::Player player, Sea* sea, const BattleShipsConfiguration* config)
 : AI(player, sea, config)
 {
-    qsrand(time(0));
 }
 
 Coord DummyAI::getMove()
 {
+    auto *generator = QRandomGenerator::global();
     if (m_sea->turn() == m_player &&
         m_sea->status() == Sea::PLAYING) {
         for (int i = 0; i < 10000; i++) {
-            Coord c(qrand() % m_sea->size().x, qrand() % m_sea->size().y);
+            Coord c(generator->bounded(m_sea->size().x), generator->bounded(m_sea->size().y));
             if (m_sea->canHit(m_player, c)) {
                 return c;
             }
