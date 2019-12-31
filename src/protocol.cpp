@@ -317,7 +317,8 @@ void Protocol::sendNext()
         m_message_queue.dequeue()->accept(sender);
         
         QTextStream stream(m_device);
-        stream << sender.document().toString() << endl;
+        stream << sender.document().toString() << QLatin1Char('\n');
+        stream.flush();
         
         qDebug() << "sending:" << sender.document().toString();
     }
