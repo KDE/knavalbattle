@@ -9,7 +9,7 @@
 
 #include "welcomescreen.h"
 
-#include <QDebug>
+#include "knavalbattle_debug.h"
 #include <QIcon>
 
 #include "button.h"
@@ -96,7 +96,7 @@ Button* WelcomeScreen::addButton(int x, int y, const QIcon& icon, const QString&
         refresh();
         connect(button, &Button::needsUpdate, this, &WelcomeScreen::refresh);
         
-        //qDebug() << "added button" << button;
+        //qCDebug(KNAVALBATTLE_LOG) << "added button" << button;
         
         return button;
     }
@@ -149,7 +149,7 @@ void WelcomeScreen::onMouseMove(Button *button)
 
 void WelcomeScreen::onMousePress(Button *button)
 {
-    qDebug() << "on mouse press";
+    qCDebug(KNAVALBATTLE_LOG) << "on mouse press";
 
     button->onMousePress();
     m_clicked = button;

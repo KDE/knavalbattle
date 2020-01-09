@@ -39,7 +39,7 @@ set(knavalbattle_SRCS
     welcomescreen.cpp
 )
 
-
+ecm_qt_declare_logging_category(knavalbattle_SRCS HEADER knavalbattle_debug.h IDENTIFIER KNAVALBATTLE_LOG CATEGORY_NAME org.kde.kdegames.knavalbattle)
 kconfig_add_kcfg_files(knavalbattle_SRCS settingsbase.kcfgc)
 file(GLOB ICONS_SRCS "${CMAKE_CURRENT_SOURCE_DIR}/../data/pictures/*-apps-knavalbattle.png")
 ecm_add_app_icon(knavalbattle_SRCS ICONS ${ICONS_SRCS})

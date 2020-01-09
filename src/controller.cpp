@@ -35,7 +35,7 @@ PlayerEntity* Controller::createPlayer(Sea::Player player, SeaView* view,
                                               ChatWidget* chat, const QString& nick)
 {
     if (m_ui) {
-        qDebug() << "Cannot create more than one human player";
+        qCDebug(KNAVALBATTLE_LOG) << "Cannot create more than one human player";
         return 0;
     }
     PlayerEntity* entity = new PlayerEntity(player, m_sea, view, chat);
@@ -47,7 +47,7 @@ PlayerEntity* Controller::createPlayer(Sea::Player player, SeaView* view,
 
 AIEntity* Controller::createAI(Sea::Player player, SeaView* view)
 {
-    qDebug() << "created ai entity";
+    qCDebug(KNAVALBATTLE_LOG) << "created ai entity";
     m_has_ai = true;
     AIEntity* e = new AIEntity(player, m_sea, view);
     e->setNick(i18n("Computer"));
@@ -116,11 +116,11 @@ bool Controller::allPlayers() const
     unsigned char bitmap = 0;
     foreach (Entity* entity, m_entities) {
         int player = entity->player();
-        qDebug() << "found player" << player;
+        qCDebug(KNAVALBATTLE_LOG) << "found player" << player;
         bitmap |= (1 << player);    
     }
     
-    qDebug() << "bitmap =" << (unsigned) bitmap;
+    qCDebug(KNAVALBATTLE_LOG) << "bitmap =" << (unsigned) bitmap;
     return bitmap == 3;
 }
 
@@ -178,12 +178,12 @@ void Controller::shoot(int player, const Coord& c)
 {
     Entity* entity = findEntity(Sea::opponent(Sea::Player(player)));
     if (!entity) {
-        qDebug() << "no entity!";
+        qCDebug(KNAVALBATTLE_LOG) << "no entity!";
         return;
     }
 
     if (m_shot) {
-        qDebug() << "shot in progress";
+        qCDebug(KNAVALBATTLE_LOG) << "shot in progress";
         // shot in progress
         return;
     }
@@ -215,7 +215,7 @@ void Controller::finalizeShot(Sea::Player player, const Coord& c, const HitInfo&
         }
     }
     else {
-        qDebug() << "illegal move" << c << "for player" << player;
+        qCDebug(KNAVALBATTLE_LOG) << "illegal move" << c << "for player" << player;
     }
     
     delete m_shot;
@@ -305,7 +305,7 @@ void Controller::receivedChat(const QString& text)
     if (chat_sender) {    
         foreach (Entity* entity, m_entities) {
             if (entity != chat_sender) {
-                qDebug() << "forwarding to" << entity->nick();
+                qCDebug(KNAVALBATTLE_LOG) << "forwarding to" << entity->nick();
                 entity->notifyChat(chat_sender, text);
             }
         }
@@ -314,7 +314,7 @@ void Controller::receivedChat(const QString& text)
 
 void Controller::nick(int player, const QString& nick)
 {
-    qDebug() << "controller: nick";
+    qCDebug(KNAVALBATTLE_LOG) << "controller: nick";
     foreach (Entity* entity, m_entities) {
         if (entity->player() != Sea::Player(player)) {
             entity->notifyNick(Sea::Player(player), nick);

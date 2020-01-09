@@ -129,7 +129,7 @@ public:
         else {
             if (!next_try()) {
                 // give up
-                qDebug() << "giving up (m_direction =" << m_direction << ")";
+                qCDebug(KNAVALBATTLE_LOG) << "giving up (m_direction =" << m_direction << ")";
                 return m_state.defaultStrategy(m_player, m_sea);
             }
         }
@@ -227,7 +227,7 @@ class DiagonalStrategy : public Strategy
         auto *generator = QRandomGenerator::global();
         do {
             m_offset = generator->bounded(m_gap);
-            qDebug() << "offset =" << m_offset << " / " << m_gap;
+            qCDebug(KNAVALBATTLE_LOG) << "offset =" << m_offset << " / " << m_gap;
         } while (!movesAvailable());
 
         m_range = 0;
@@ -258,7 +258,7 @@ public:
     {
 
         if (!movesAvailable()) {
-            qDebug() << "no moves available";
+            qCDebug(KNAVALBATTLE_LOG) << "no moves available";
             setup();
         }
         for (int i = 0; i < 50; i++) {

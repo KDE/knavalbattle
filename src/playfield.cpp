@@ -13,7 +13,7 @@
 
 #include <QStatusBar>
 #include <QVBoxLayout>
-#include <QDebug>
+#include "knavalbattle_debug.h"
 #include <QInputDialog>
 #include <QPointer>
 
@@ -178,7 +178,7 @@ void PlayField::gameOver(Sea::Player winner)
             info[KScoreDialog::Custom3] = QString::number(stats->misses());
         
             int temp = highscoredialog->addScore(info, KScoreDialog::AskName);
-            qDebug() << "temp =" << temp;
+            qCDebug(KNAVALBATTLE_LOG) << "temp =" << temp;
             //if (highscoredialog->addScore(info, KScoreDialog::AskName)) {
             if (temp != 0) {
                 highscoredialog->exec();
@@ -327,7 +327,7 @@ SimpleMenu* PlayField::createAuxMenu()
 
 void PlayField::auxMenuDone()
 {
-    qDebug() << "aux menu done";
+    qCDebug(KNAVALBATTLE_LOG) << "aux menu done";
     SimpleMenu* menu = qobject_cast<SimpleMenu*>(sender());
     if (menu) {
         delete m_menu;

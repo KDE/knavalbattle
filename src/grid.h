@@ -10,7 +10,7 @@
 #ifndef GRID_H
 #define GRID_H
 
-#include <QDebug>
+#include "knavalbattle_debug.h"
 
 #include "coord.h"
 

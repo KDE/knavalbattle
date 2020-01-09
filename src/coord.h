@@ -11,7 +11,7 @@
 #define COORD_H
 
 #include <QMetaType>
-#include <QDebug>
+#include "knavalbattle_debug.h"
 
 class Coord
 {

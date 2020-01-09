@@ -9,7 +9,7 @@
 
 #include "ship.h"
 
-#include <QDebug>
+#include "knavalbattle_debug.h"
 
 Ship::Ship(unsigned int size, Direction direction, Coord position)
 : m_size(size)

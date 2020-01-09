@@ -7,7 +7,7 @@
   (at your option) any later version.
 */
 #include "animation.h"
-#include <QDebug>
+#include "knavalbattle_debug.h"
 
 Animation::~Animation()
 {

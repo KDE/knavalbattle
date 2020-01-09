@@ -163,7 +163,7 @@ void Protocol::readMore()
 #define DEF_COORD(var, varx, vary) DEF_ELEMENT(varx); DEF_ELEMENT(vary); Coord var(varx.toInt(), vary.toInt());
 MessagePtr Protocol::parseMessage(const QString& xmlMessage)
 {
-    qDebug() << "received:" << xmlMessage;
+    qCDebug(KNAVALBATTLE_LOG) << "received:" << xmlMessage;
 
     QDomDocument doc;
     doc.setContent(xmlMessage);
@@ -320,7 +320,7 @@ void Protocol::sendNext()
         stream << sender.document().toString() << QLatin1Char('\n');
         stream.flush();
         
-        qDebug() << "sending:" << sender.document().toString();
+        qCDebug(KNAVALBATTLE_LOG) << "sending:" << sender.document().toString();
     }
 }
 

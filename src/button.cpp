@@ -13,7 +13,7 @@
 #include <QPainter>
 #include <QPen>
 #include <QImage>
-#include <QDebug>
+#include "knavalbattle_debug.h"
 
 #include <math.h> // fabs
 
@@ -193,7 +193,7 @@ void Button::onMouseLeave()
 bool Button::onClicked()
 {
     if (true) {
-        qDebug() << "clicked";
+        qCDebug(KNAVALBATTLE_LOG) << "clicked";
         emit clicked();
         return true;
     }
@@ -243,7 +243,7 @@ bool ButtonAnimation::step(int t)
     
     int sign = (m_button->brightness() > m_brightness) ? -1 : 1;
     double delta = (t - m_last) * m_speed;
-//     qDebug() << "button step t =" << t << "sign =" << sign <<  "delta =" << delta;
+//     qCDebug(KNAVALBATTLE_LOG) << "button step t =" << t << "sign =" << sign <<  "delta =" << delta;
     m_last = t;
     if (fabs(m_button->brightness() - m_brightness) <= delta) {
         m_button->setBrightness(m_brightness);
