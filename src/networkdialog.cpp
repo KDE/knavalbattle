@@ -81,7 +81,11 @@ NetworkDialog::NetworkDialog(bool client, QWidget* parent, const QUrl* url)
         tmpLayout = new QHBoxLayout;
         tmpLayout->addWidget(tmp);
         tmpLayout->addWidget(m_games, 1);
+#if QT_VERSION < QT_VERSION_CHECK(5, 15, 0)
         connect(m_games, static_cast<void (KComboBox::*)(int)>(&KComboBox::currentIndexChanged), this, &NetworkDialog::serviceSelected);
+#else
+        connect(m_games, static_cast<void (KComboBox::*)(int, const QString &)>(&KComboBox::currentIndexChanged) , this, &NetworkDialog::serviceSelected);
+#endif
         mainLayout->addItem(tmpLayout);
         
         QWidget* frame=new QWidget(main);
