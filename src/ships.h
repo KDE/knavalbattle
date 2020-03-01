@@ -46,7 +46,8 @@ public:
 
     explicit BattleShipsConfiguration(const bool fromXML=false);
     explicit BattleShipsConfiguration(unsigned int longestShipSize, const bool allowAdjacentShips, const unsigned int boardWidth, const unsigned int boardHeight, const bool fromXML=false);
-    BattleShipsConfiguration(const BattleShipsConfiguration& copy);
+    BattleShipsConfiguration(const BattleShipsConfiguration& copy) = default;
+    BattleShipsConfiguration& operator=(const BattleShipsConfiguration&) = default;
     // does not add any ship longer than longestShip
     // overwrites any previous configuration for ships of the requested size
     BattleShipsConfiguration& addShips(unsigned int size, unsigned int number, QString shipsName, QString shipsPluralName);

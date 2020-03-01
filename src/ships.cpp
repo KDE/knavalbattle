@@ -36,16 +36,6 @@ BattleShipsConfiguration::BattleShipsConfiguration(unsigned int longestShipSize,
 {
 }
 
-BattleShipsConfiguration::BattleShipsConfiguration(const BattleShipsConfiguration& copy)
-: m_longestShip(copy.longestShip())
-, m_allowAdjacentShips(copy.isAllowedAdjacentShips())
-, m_boardWidth(copy.boardWidth())
-, m_boardHeight(copy.boardHeight())
-, m_fromXML(copy.m_fromXML)
-, m_ships(copy.m_ships)
-{
-}
-
 void BattleShipsConfiguration::setLongestShipSize(unsigned int longestShipSize)
 { 
     m_longestShip = longestShipSize; 
