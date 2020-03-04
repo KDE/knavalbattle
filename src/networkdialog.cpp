@@ -217,7 +217,11 @@ void NetworkDialog::slotOkClicked()
             m_feedback->setText(i18n("Connecting to remote host..."));
             m_socket = new QTcpSocket;
             connect(m_socket, &QTcpSocket::connected, this, &NetworkDialog::clientOK);
-            connect(m_socket, static_cast<void (QTcpSocket::*)(QAbstractSocket::SocketError)>(&QTcpSocket::error), this, &NetworkDialog::clientError);
+#if QT_VERSION < QT_VERSION_CHECK(5, 15, 0)
+            connect(m_socket, QOverload<QAbstractSocket::SocketError>::of(&QTcpSocket::error), this, &NetworkDialog::clientError);
+#else
+            connect(m_socket, QOverload<QAbstractSocket::SocketError>::of(&QTcpSocket::errorOccurred), this, &NetworkDialog::clientError);
+#endif
             m_socket->connectToHost(m_hostname->text(), m_port->value());
         }
         else {
