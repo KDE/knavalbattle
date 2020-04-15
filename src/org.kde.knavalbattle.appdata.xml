@@ -114,4 +114,7 @@
   <content_rating type="oars-1.1">
     <content_attribute id="violence-cartoon">mild</content_attribute>
   </content_rating>
+  <releases>
+    <release version="2.1.20040" date="2020-04-23"/>
+  </releases>
 </component>
