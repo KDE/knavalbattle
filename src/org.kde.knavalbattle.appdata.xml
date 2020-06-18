@@ -32,6 +32,7 @@
   <name xml:lang="sv">Sänka fartyg</name>
   <name xml:lang="tr">Amiral Battı</name>
   <name xml:lang="uk">Морський бій</name>
+  <name xml:lang="x-test">xxNaval Battlexx</name>
   <name xml:lang="zh-CN">Naval Battle</name>
   <summary>Battle Ship Game</summary>
   <summary xml:lang="ca">Joc de batalla naval</summary>
@@ -62,6 +63,7 @@
   <summary xml:lang="sv">Sänka fartygsspel</summary>
   <summary xml:lang="tr">Savaş Gemisi Oyunu</summary>
   <summary xml:lang="uk">Гра «Морський бій»</summary>
+  <summary xml:lang="x-test">xxBattle Ship Gamexx</summary>
   <summary xml:lang="zh-CN">舰船游戏</summary>
   <description>
     <p>
@@ -95,6 +97,7 @@
     <p xml:lang="sv">Sänka fartyg är ett fartygsspel. Fartyg placeras på ett spelbräde som representerar havet. Spelare försöker träffa varandras fartyg i tur och ordning utan att känna till var de är placerade. Den första spelaren som förstör alla fartyg vinner spelet.</p>
     <p xml:lang="tr">Amiral Battı, bir gemi batırma oyunudur. Gemiler, denizi temsil eden bir tahta üzerine yerleştirilirler. Oyuncular, diğer oyuncuların nereye yerleştirildiklerini bilmeden, sırayla birbirlerine vurmaya çalışırlar. Tüm gemileri yok eden ilk oyuncu oyunu kazanır.</p>
     <p xml:lang="uk">Морський бій — це гра у морський бій. На ігровому полі, яке відповідає морській поверхні, гравці розташовують кораблі. Після цього кожен з гравців по черзі намагається влучити у кораблі іншого гравця. До початку гри гравці не знають, де розташовано кораблі суперника. Перший з гравців, хто потопить кораблі супротивника, виграє гру.</p>
+    <p xml:lang="x-test">xxNaval Battle is a ship sinking game. Ships are placed on a board which represents the sea. Players try to hit each others ships in turns without knowing where they are placed. The first player to destroy all ships wins the game.xx</p>
     <p xml:lang="zh-CN">Naval Battle 是一款舰船陷阱游戏。船只被放置在一个代表海域的版图上。 玩家试图在不知道对方的位置的情况下轮流攻击。第一个摧毁所有船只的玩家赢得了游戏。</p>
   </description>
   <url type="bugtracker">https://bugs.kde.org/enter_bug.cgi?format=guided&amp;product=knavalbattle</url>
