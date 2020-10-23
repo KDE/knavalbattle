@@ -19,7 +19,6 @@
 #include "welcomescreen.h"
 #include "button.h"
 #include "delegate.h"
-#include "sea.h"
 
 BattleFieldView::BattleFieldView(QWidget* parent, KBSRenderer* renderer, const QString& bgID, int gridSize)
 : QGraphicsView(parent)
