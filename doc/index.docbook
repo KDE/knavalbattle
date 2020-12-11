@@ -1,13 +1,13 @@
 <?xml version="1.0" ?>
 <!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN" "dtd/kdedbx45.dtd" [
-  <!ENTITY knavalbattle "<application>Naval Battle</application>">  
+  <!ENTITY i18n-knavalbattle "<application>Naval Battle</application>">
   <!ENTITY % addindex "IGNORE">
   <!ENTITY % English "INCLUDE" > <!-- change language only here -->
 ]>
 
 <book id="knavalbattle" lang="&language;">
 <bookinfo>
-<title>The &knavalbattle; Handbook</title>
+<title>The &i18n-knavalbattle; Handbook</title>
 
 <authorgroup>
 <author>
@@ -51,12 +51,12 @@
 <holder>Kevin Krammer</holder>
 </copyright>
 
-<date>2016-05-10</date>
+<date>2020-12-10</date>
 <releaseinfo>2.1 (Applications 16.04)</releaseinfo>
 
 <abstract>
 <para>
-&knavalbattle; is a network-enabled implementation of the famous ship sinking game by &kde;.</para>
+&i18n-knavalbattle; is a network-enabled implementation of the famous ship sinking game by &kde;.</para>
 </abstract>
 
 <keywordset>
@@ -82,13 +82,13 @@
 <imagedata fileref="gameboard.png" format="PNG"/>
 </imageobject>
 <textobject>
-<phrase>&knavalbattle; Game Board</phrase>
+<phrase>&i18n-knavalbattle; Game Board</phrase>
 </textobject>
 </mediaobject>
 </screenshot>
 
 <para>
-&knavalbattle; is a ship sinking game by &kde;. Ships are placed on a board which represents the sea. Players try to hit each others
+&i18n-knavalbattle; is a ship sinking game by &kde;. Ships are placed on a board which represents the sea. Players try to hit each others
 ships in turns without knowing where they are placed. The first player to destroy all ships wins the game.
 </para>
 </chapter>
@@ -97,14 +97,14 @@ ships in turns without knowing where they are placed. The first player to destro
 <title>How to Play</title>
 <note><title>Objective:</title><para>Sink all of the opponent’s ships before the opponent sink all the ships of your own.</para></note><!--Describe the objective of the game.-->
 <para>
-If you want to play &knavalbattle;, you will need two players, either play
-against the computer or in a network against another player. To play against your computer, first select the difficulty level on the right of the status bar, and then select <guibutton>Single Player</guibutton> on the welcome screen, or directly on the <menuchoice><guimenu>Game</guimenu></menuchoice> menu.</para>
+If you want to play &i18n-knavalbattle;, you will need two players, either play
+against the computer or in a network against another player. To play against your computer, first select the difficulty level on the right of the status bar, and then select <guilabel>Single Player</guilabel> on the welcome screen, or directly on the <menuchoice><guimenu>Game</guimenu> <guimenuitem>Single Player</guimenuitem></menuchoice> menu item.</para>
 
 <para>
 To start a network game, one player has to host the game by selecting <guilabel>Host Network Game</guilabel> on the welcome screen, or choosing <menuchoice><guimenu>Game</guimenu>
 <guimenuitem>Host Game...</guimenuitem></menuchoice>.
 A dialog box opens which asks for a <guilabel>Nickname:</guilabel> and <guilabel>Port:</guilabel>. Normally,
-&knavalbattle; will suggest your full name, but you can enter any string
+&i18n-knavalbattle; will suggest your full name, but you can enter any string
 you want. The predefined port should be ok. However, if you encounter
 problems, you can choose any other free port above 1024.
 </para>
@@ -116,9 +116,9 @@ to establish a connection.</para>
 </note>
 
 <para>
-The other player has to choose <guilabel>Connect to Network Game</guilabel>, or click <menuchoice><guimenu>Game</guimenu>
-<guimenuitem>Connect to Game...</guimenuitem></menuchoice>. Again, a <guilabel>Nickname:</guilabel> is
-suggested, but you can choose any name you like. In the field <guilabel>Hostname:</guilabel> you
+The other player has to choose <guilabel>Connect to Network Game</guilabel>, or click on the <menuchoice><guimenu>Game</guimenu>
+<guimenuitem>Connect to Game...</guimenuitem></menuchoice> menu item. Again, a <guilabel>Nickname:</guilabel> is
+suggested, but you can choose any nickname you like. In the field <guilabel>Hostname:</guilabel> you
 have to enter the host name of the server (the machine of the player that initiated the game).
 </para>
 
@@ -159,13 +159,13 @@ who is about to shoot.
 </para>
 
 <para>
-You can restart the game by choosing <menuchoice><guimenu>Game</guimenu>
-<guimenuitem>Restart Game</guimenuitem></menuchoice>, or by pressing
+You can restart the game by choosing the <menuchoice><guimenu>Game</guimenu>
+<guimenuitem>Restart Game</guimenuitem></menuchoice> menu item, or by pressing
 <keycap>F5</keycap>.
 </para>
 
 <para>
-The first player to destroy all their opponents ships wins the game.
+The first player to destroy all their opponent's ships wins the game.
 </para>
 
 </chapter>
@@ -306,7 +306,7 @@ The first player to destroy all their opponents ships wins the game.
 </term>
 <listitem>
 <para>
-<action>Exit</action> &knavalbattle;
+<action>Exit</action> &i18n-knavalbattle;.
 </para>
 </listitem>
 </varlistentry>
@@ -350,7 +350,7 @@ The default is on.
 <listitem>
 <para>
 <action>Toggle whether the ships can be put on a desk without one empty space between them.</action>
-The default is on. This setting should be defined on a host when <link linkend="howtoplay">playing &knavalbattle; via network</link>.
+The default is on. This setting should be defined on a host when <link linkend="howtoplay">playing &i18n-knavalbattle; via network</link>.
 </para>
 </listitem>
 </varlistentry>
@@ -402,7 +402,7 @@ In higher levels the AI uses a smarter strategy for shooting and placing ships.<
 </variablelist>
 
 <para>
-Additionally &knavalbattle; has the common &kde; <guimenu>Settings</guimenu> and <guimenu>Help</guimenu>
+Additionally &i18n-knavalbattle; has the common &kde; <guimenu>Settings</guimenu> and <guimenu>Help</guimenu>
 menu items, for more information read the sections about the <ulink url="help:/fundamentals/menus.html#menus-settings"
 >Settings Menu</ulink> and <ulink url="help:/fundamentals/menus.html#menus-help">Help Menu</ulink>
 of the &kde; Fundamentals.
@@ -424,7 +424,7 @@ I'm not sure where to shoot, can I get a hint?
 </question>
 <answer>
 <para>
-No, there is no hint system in &knavalbattle;.
+No, there is no hint system in &i18n-knavalbattle;.
 </para>
 </answer>
 </qandaentry>
@@ -437,7 +437,7 @@ How can I rotate a ship?
 </question>
 <answer>
 <para>
-Move the ship where you want to place it, then press the &RMB;
+Move the ship where you want to place it, then press the &RMB;.
 </para>
 </answer>
 </qandaentry>
@@ -461,7 +461,7 @@ No, the theme is not changeable.
 <chapter id="credits">
 <title>Credits and License</title>
 
-<para>&knavalbattle; Copyright 2000-2007</para>
+<para>&i18n-knavalbattle; Copyright 2000-2007</para>
 
 <itemizedlist>
 <title>Authors</title>
