@@ -1,8 +1,8 @@
 [KGameTheme]
 Name=Naval Battle Default
 Name[bs]=Podrazumijevana pomorska bitka
-Name[ca]=Batalla naval per defecte
-Name[ca@valencia]=Batalla naval per defecte
+Name[ca]=Batalla naval predeterminat
+Name[ca@valencia]=Batalla naval predeterminat
 Name[da]=Standard for Naval Battle
 Name[de]=Naval-Battle-Standard
 Name[el]=Προκαθορισμένο ναυμαχίας
@@ -42,8 +42,8 @@ Name[zh_CN]=Naval Battle 默认
 Name[zh_TW]=海上戰爭預設
 Description=The default theme for Naval Battle
 Description[bs]=Podrazumijevana tema za Pomorsku bitku
-Description[ca]=Tema per defecte de la batalla naval
-Description[ca@valencia]=Tema per defecte de la batalla naval
+Description[ca]=Tema predeterminat per al Batalla naval
+Description[ca@valencia]=Tema predeterminat per al Batalla naval
 Description[cs]=Výchozí motiv námořní bitvy
 Description[da]=Standardtema for Naval Battle
 Description[de]=Das Standard-Design für Naval Battle
