@@ -7,7 +7,7 @@
 
 <book id="knavalbattle" lang="&language;">
 <bookinfo>
-<title>The &i18n-knavalbattle; Handbook</title>
+<title>The &knavalbattle; Handbook</title>
 
 <authorgroup>
 <author>
@@ -461,7 +461,7 @@ No, the theme is not changeable.
 <chapter id="credits">
 <title>Credits and License</title>
 
-<para>&i18n-knavalbattle; Copyright 2000-2007</para>
+<para>&knavalbattle; Copyright 2000-2007</para>
 
 <itemizedlist>
 <title>Authors</title>
