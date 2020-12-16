@@ -1,4 +1,4 @@
-# KNavalBattel
+# KNavalBattle
 
 Naval Battle is a ship sinking game. Ships are placed on a board which
 represents the sea. Players try to hit each others ships in turns without knowing
