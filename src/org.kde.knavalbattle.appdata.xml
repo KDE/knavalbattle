@@ -121,9 +121,9 @@
     <content_attribute id="violence-cartoon">mild</content_attribute>
   </content_rating>
   <releases>
+    <release version="2.1.20121" date="2021-01-07"/>
     <release version="2.1.20120" date="2020-12-10"/>
     <release version="2.1.20083" date="2020-11-05"/>
     <release version="2.1.20082" date="2020-10-08"/>
-    <release version="2.1.20081" date="2020-09-03"/>
   </releases>
 </component>
