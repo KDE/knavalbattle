@@ -44,7 +44,6 @@ Q_OBJECT
     
     QWidget* m_editor;
     
-    QPoint textPos() const;
     void computeSize();
 public:
     Button(QGraphicsItem* parent, const QIcon& icon, 
