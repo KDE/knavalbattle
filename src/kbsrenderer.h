@@ -25,7 +25,7 @@ public:
       */
     KBSRenderer();
 
-    ~KBSRenderer();
+    ~KBSRenderer() override;
 
     /**
       * Set a new size for the elements.

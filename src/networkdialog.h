@@ -47,7 +47,7 @@ private slots:
     void slotOkClicked();
 public:
     explicit NetworkDialog(bool client, QWidget* parent = nullptr, const QUrl* url = nullptr);
-    ~NetworkDialog();
+    ~NetworkDialog() override;
     
     QString nickname() const;
     QTcpSocket* socket() const;

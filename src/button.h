@@ -81,7 +81,7 @@ public:
     int m_last;
 public:
     ButtonAnimation(Button* button, int brightness);
-    ~ButtonAnimation();
+    ~ButtonAnimation() override;
     void start(int t) override;
     bool step(int t) override;
     virtual void abort();

@@ -51,7 +51,7 @@ private:
     void checkGameOver();
 public:
     Sea(QObject* parent, const BattleShipsConfiguration& battleShipsConfiguration);
-    ~Sea();
+    ~Sea() override;
 
     bool canAddShip(Player p, const Coord& pos, int size, Ship::Direction direction) const;
     bool canAddShipOfSize(Player p, int size) const;

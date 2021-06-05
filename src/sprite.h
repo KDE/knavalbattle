@@ -23,7 +23,7 @@ class Sprite : public KGameRenderedItem
     bool m_rotated;
 public:
     Sprite(KBSRenderer* renderer, const Coord& scale, const QString& name, bool rotated);
-    ~Sprite();
+    ~Sprite() override;
 
     void refresh(KBSRenderer* renderer);
     void turnRed();

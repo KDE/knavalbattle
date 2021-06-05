@@ -28,7 +28,7 @@ protected:
 private slots:
     void startingGame();
     void welcomeScreen();
-    void closeEvent(QCloseEvent *event) Q_DECL_OVERRIDE;
+    void closeEvent(QCloseEvent *event) override;
 };
 
 #endif // MAINWINDOW_H

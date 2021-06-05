@@ -42,7 +42,7 @@ Q_OBJECT
     SimpleMenu* createAuxMenu();
 public:
     PlayField(QWidget* parent, QStatusBar*);
-    ~PlayField();
+    ~PlayField() override;
     void createClientWithUrl(const QUrl& url);
 public slots:
     void highscores();

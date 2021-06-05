@@ -20,7 +20,7 @@ class Animation : public QObject
 {
 Q_OBJECT
 public:
-    virtual ~Animation();
+    ~Animation() override;
     virtual void start(int t) = 0;
     virtual bool step(int t) = 0;
     

@@ -28,7 +28,7 @@ Q_OBJECT
 public:
     static Animator* instance();
     
-    ~Animator();
+    ~Animator() override;
     void add(Animation*);
     
     void start();

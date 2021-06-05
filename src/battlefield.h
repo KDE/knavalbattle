@@ -38,7 +38,7 @@ Q_OBJECT
     bool canAddShipOfSizeInVertical(unsigned int size) const;
 public:
     BattleField(Sea* parent, const Coord& size, const bool allow_adjacent_ships);
-    ~BattleField();
+    ~BattleField() override;
 
     bool valid(const Coord& pos) const;
     Element& get(const Coord& pos);
