@@ -40,7 +40,7 @@ void StatsWidgetElement::paintEvent(QPaintEvent * /*ev*/)
 
 void StatsWidgetElement::setText(const QString &text)
 {
-    QString value = "<font size=\"5\">" + text + "</font>";
+    QString value = QLatin1String("<font size=\"5\">") + text + QLatin1String("</font>");
     m_text->setText(value);
 }
 

@@ -16,7 +16,7 @@
 #include <QDomNode>
 #include <QTcpSocket>
 
-#define ADD_FIELD(msg, field) addField(#field, msg.field())
+#define ADD_FIELD(msg, field) addField(QStringLiteral(#field), msg.field())
 class MessageSender : public MessageVisitor
 {
     QDomDocument m_doc;
@@ -34,7 +34,7 @@ class MessageSender : public MessageVisitor
     template <typename Msg>
     void setType(const Msg&)
     {
-        QDomElement element = addField("msgtype", QString::number(Msg::MSGTYPE));
+        QDomElement element = addField(QStringLiteral("msgtype"), QString::number(Msg::MSGTYPE));
         // only useful for debugging, just add the name of the message type
         element.setAttribute(QLatin1String("type"), Msg::messageType());
     }
@@ -79,7 +79,7 @@ public:
         setType(msg);
         addField(QStringLiteral("fieldx"), QString::number(msg.move().x));
         addField(QStringLiteral("fieldy"), QString::number(msg.move().y));
-        addField(QStringLiteral("fieldstate"), msg.hit() ? "1" : "99");
+        addField(QStringLiteral("fieldstate"), msg.hit() ? QStringLiteral("1") : QStringLiteral("99"));
         if (msg.death()) {
             addField(QStringLiteral("death"), QStringLiteral("true"));
             addField(QStringLiteral("xstart"), QString::number(msg.start().x));
@@ -96,7 +96,7 @@ public:
             QStringList data;
             data << QString::number(ship.pos.x)
                  << QString::number(ship.pos.y)
-                 << (ship.direction == Ship::TOP_DOWN ? "0" : "1");
+                 << (ship.direction == Ship::TOP_DOWN ? QStringLiteral("0") : QStringLiteral("1"));
             addField(QStringLiteral("ship") + QString::number(ship.size), data.join( QLatin1String( " " )));
         }
     }
@@ -159,7 +159,7 @@ void Protocol::readMore()
     }
 }
 
-#define DEF_ELEMENT(var) QString var = main.namedItem(#var).toElement().text()
+#define DEF_ELEMENT(var) QString var = main.namedItem(QStringLiteral(#var)).toElement().text()
 #define DEF_COORD(var, varx, vary) DEF_ELEMENT(varx); DEF_ELEMENT(vary); Coord var(varx.toInt(), vary.toInt());
 MessagePtr Protocol::parseMessage(const QString& xmlMessage)
 {
@@ -235,12 +235,12 @@ MessagePtr Protocol::parseMessage(const QString& xmlMessage)
                 QDomElement element = nodes.item(i).toElement();
                 if (!element.isNull() && element.tagName().startsWith(QLatin1String("ship"))) {
                     int size = element.tagName().midRef(4).toInt();
-                    QStringList data = element.text().split(' ');
+                    QStringList data = element.text().split(QLatin1Char(' '));
                     if (data.size() != 3) {
                         continue;
                     }
                     Coord pos(data[0].toInt(), data[1].toInt());
-                    Ship::Direction direction = data[2] == QChar('0')
+                    Ship::Direction direction = data[2] == QLatin1Char('0')
                         ? Ship::TOP_DOWN 
                         : Ship::LEFT_TO_RIGHT;
                     msg->addShip(pos, size, direction);

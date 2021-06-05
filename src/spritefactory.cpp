@@ -9,7 +9,7 @@
 
 #include "spritefactory.h"
 
-#include <sstream>
+#include <QString>
 
 #include "ship.h"
 #include "sprite.h"
@@ -31,11 +31,10 @@ Sprite* SpriteFactory::createShip(Ship* ship)
         x = 1;
         y = ship->size();
     }
-    std::ostringstream os;
-    os << "ship" << ship->size() << "-view";
-    
-    return new Sprite(m_renderer, Coord(x, y), 
-            os.str().c_str(), ship->direction() == Ship::TOP_DOWN);
+
+    const QString name = QLatin1String("ship") + QString::number(ship->size()) + QLatin1String("-view");
+
+    return new Sprite(m_renderer, Coord(x, y), name, ship->direction() == Ship::TOP_DOWN);
 }
 
 Sprite* SpriteFactory::createSimpleSprite(const QString& name)

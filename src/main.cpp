@@ -38,7 +38,8 @@ int main(int argc, char** argv)
     migrate.setUiFiles(QStringList() << QStringLiteral("knavalbattleui.rc"));
     migrate.migrate();
 
-    KAboutData aboutData(QStringLiteral("knavalbattle"), i18n("Naval Battle"), KNAVALBATTLE_VERSION_STRING,
+    KAboutData aboutData(QStringLiteral("knavalbattle"), i18n("Naval Battle"),
+        QStringLiteral(KNAVALBATTLE_VERSION_STRING),
         i18n("The KDE ship sinking game"), KAboutLicense::GPL, 
         i18n("(c) 2000-2005  Nikolas Zimmermann, Daniel Molkentin\n"
               "(c) 2007 Paolo Capriotti"),
