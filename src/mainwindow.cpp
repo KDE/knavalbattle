@@ -52,11 +52,11 @@ MainWindow::MainWindow(const QUrl& url)
 
 void MainWindow::setupActions()
 {
-    KStandardGameAction::gameNew(m_main, SLOT(newGame()), actionCollection());
-    KStandardGameAction::restart(m_main, SLOT(restart()), actionCollection());
-    KStandardGameAction::highscores(m_main, SLOT(highscores()), actionCollection());
+    KStandardGameAction::gameNew(m_main, &PlayField::newGame, actionCollection());
+    KStandardGameAction::restart(m_main, &PlayField::restart, actionCollection());
+    KStandardGameAction::highscores(m_main, &PlayField::highscores, actionCollection());
     
-    KStandardGameAction::quit(this, SLOT(close()), actionCollection());
+    KStandardGameAction::quit(this, &MainWindow::close, actionCollection());
     
     QAction* action;
     action = new QAction(i18n("&Single Player"), this);
