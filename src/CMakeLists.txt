@@ -1,4 +1,6 @@
-set(knavalbattle_SRCS
+add_executable(knavalbattle)
+
+target_sources(knavalbattle PRIVATE
     ai/ai.cpp
     ai/dummyai.cpp
     ai/smartai.cpp
@@ -40,11 +42,19 @@ set(knavalbattle_SRCS
 )
 
 ecm_setup_version(${PROJECT_VERSION} VARIABLE_PREFIX KNAVALBATTLE VERSION_HEADER knavalbattle_version.h)
-ecm_qt_declare_logging_category(knavalbattle_SRCS HEADER knavalbattle_debug.h IDENTIFIER KNAVALBATTLE_LOG CATEGORY_NAME org.kde.kdegames.knavalbattle  DESCRIPTION "knavalbattle (kdegames)" EXPORT KNAVALBATTLE)
-kconfig_add_kcfg_files(knavalbattle_SRCS settingsbase.kcfgc)
+
+ecm_qt_declare_logging_category(knavalbattle
+    HEADER knavalbattle_debug.h
+    IDENTIFIER KNAVALBATTLE_LOG
+    CATEGORY_NAME org.kde.kdegames.knavalbattle
+    DESCRIPTION "knavalbattle (kdegames)"
+    EXPORT KNAVALBATTLE
+)
+
+kconfig_add_kcfg_files(knavalbattle settingsbase.kcfgc)
+
 file(GLOB ICONS_SRCS "${CMAKE_CURRENT_SOURCE_DIR}/../data/pictures/*-apps-knavalbattle.png")
-ecm_add_app_icon(knavalbattle_SRCS ICONS ${ICONS_SRCS})
-add_executable(knavalbattle ${knavalbattle_SRCS} ${kwelcomescreen_SRCS})
+ecm_add_app_icon(knavalbattle ICONS ${ICONS_SRCS})
 
 target_link_libraries(knavalbattle
     Qt5::Xml
