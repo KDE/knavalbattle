@@ -73,5 +73,4 @@ target_link_libraries(knavalbattle
 
 install(TARGETS knavalbattle  ${KDE_INSTALL_TARGETS_DEFAULT_ARGS})
 install(PROGRAMS org.kde.knavalbattle.desktop DESTINATION ${KDE_INSTALL_APPDIR})
-install(FILES knavalbattle.protocol  DESTINATION ${KDE_INSTALL_KSERVICES5DIR})
 install(FILES org.kde.knavalbattle.appdata.xml DESTINATION ${KDE_INSTALL_METAINFODIR})
