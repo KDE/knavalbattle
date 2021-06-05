@@ -43,7 +43,7 @@ public:
     void hit(Shot* shot) override;
 
     QIcon icon() const override;
-private slots:
+private Q_SLOTS:
     void received(MessagePtr msg);
     void notifyAbort() override;
     void notifyRestartPlacing(Sea::Player) override { }
@@ -58,7 +58,7 @@ protected:
     void visit(const RestartMessage& msg) override;
     void visit(const ChatMessage& msg) override;
     void visit(const GameOptionsMessage& msg) override;
-signals:
+Q_SIGNALS:
     void restartRequested();
 };
 

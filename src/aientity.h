@@ -36,11 +36,11 @@ public:
     void notifyGameOptions() override;
 
     QIcon icon() const override;
-public slots:
+public Q_SLOTS:
     void notifyAbort() override { }
     void notifyRestartPlacing(Sea::Player) override { }
 
-private slots:
+private Q_SLOTS:
     void getShoot();
 };
 

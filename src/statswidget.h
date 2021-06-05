@@ -52,7 +52,7 @@ public:
     
     void setWidth(int width);
     void setData(Stats*);
-public slots:
+public Q_SLOTS:
     void refresh();
 };
 

@@ -59,7 +59,7 @@ public:
     inline Sea* getSea() const { return m_sea; }
     void setBattleShipsConfiguration(const BattleShipsConfiguration& battleConfiguration);
     inline BattleShipsConfiguration& getBattleShipsConfiguration() { return mBattleShipsConfiguration; }
-public slots:
+public Q_SLOTS:
     void shoot(int player, const Coord& c);
     void ready(int player);
     void shipsPlaced();
@@ -68,7 +68,7 @@ public slots:
     void notifyRestartPlacingShips(Sea::Player player);
     void placing();
     void restart();
-signals:
+Q_SIGNALS:
     void gameOver(Sea::Player);
     void restartRequested();
     void startPlacingShips(int player);

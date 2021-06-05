@@ -71,7 +71,7 @@ protected:
     void resizeEvent(QResizeEvent*) override;
     
     QSize tileSize() const;
-public slots:
+public Q_SLOTS:
     void refresh();
 };
 

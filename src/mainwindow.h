@@ -25,7 +25,7 @@ public:
     explicit MainWindow(const QUrl& url);
 protected:
     void setupActions();
-private slots:
+private Q_SLOTS:
     void startingGame();
     void welcomeScreen();
     void closeEvent(QCloseEvent *event) override;

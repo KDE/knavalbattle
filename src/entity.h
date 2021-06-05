@@ -62,7 +62,7 @@ public:
     CompatibilityLevel compatibilityLevel() const { return m_level; }
     virtual QIcon icon() const = 0;
     virtual void setNick(const QString& nick);
-signals:
+Q_SIGNALS:
     void shoot(int player, const Coord& c);
     void shipsPlaced();
     void ready(int player);
@@ -72,7 +72,7 @@ signals:
     void abortGame();
     void restartPlacingShips(Sea::Player player);
     void gameOptionsInterchanged();
-public slots:
+public Q_SLOTS:
     virtual void setCompatibilityLevel(int level);
     virtual void notifyAbort() = 0;
     virtual void notifyRestartPlacing(Sea::Player player) = 0;

@@ -47,12 +47,12 @@ public:
     bool active() const { return m_active; }
     void show();
     
-public slots:
+public Q_SLOTS:
     void hide();
     void fadeOut();
     void refresh();
     
-signals:
+Q_SIGNALS:
     void clicked(Button*);
     void shown();
     void hidden();

@@ -41,9 +41,9 @@ public:
 protected:
     bool eventFilter(QObject*, QEvent* e) override;
     void resizeEvent(QResizeEvent*) override;
-signals:
+Q_SIGNALS:
     void message(const QString& text);
-private slots:
+private Q_SLOTS:
     void sendLine();
 };
 

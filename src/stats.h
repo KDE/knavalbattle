@@ -32,7 +32,7 @@ public:
     
     int score() const;
     
-signals:
+Q_SIGNALS:
     void hitsChanged();
     void missesChanged();
 };

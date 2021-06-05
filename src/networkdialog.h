@@ -37,7 +37,7 @@ Q_OBJECT
     
     QString hostname() const;
     int port() const;
-private slots:
+private Q_SLOTS:
     void savePreferences();
     
     void clientOK();
@@ -51,7 +51,7 @@ public:
     
     QString nickname() const;
     QTcpSocket* socket() const;
-signals:
+Q_SIGNALS:
     void ok();
 };
 

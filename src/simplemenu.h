@@ -58,12 +58,12 @@ public:
     static const char* iconLocal;
     static const char* iconServer;
     static const char* iconClient;
-public slots:
+public Q_SLOTS:
     void localGame();
     
     void createServer();
     void createClient();
-signals:
+Q_SIGNALS:
     void done();
 };
 

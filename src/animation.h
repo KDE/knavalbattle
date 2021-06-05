@@ -24,7 +24,7 @@ public:
     virtual void start(int t) = 0;
     virtual bool step(int t) = 0;
     
-signals:
+Q_SIGNALS:
     void done();
 };
 

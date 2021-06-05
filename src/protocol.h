@@ -31,11 +31,11 @@ public:
     explicit Protocol(QTcpSocket* device);
     
     void send(const MessagePtr& msg);
-private slots:
+private Q_SLOTS:
     void readMore();
     void sendNext();
     void processDisconnection();
-signals:
+Q_SIGNALS:
     void received(const MessagePtr&);
     void parseError(const QString&);
     void disconnected();

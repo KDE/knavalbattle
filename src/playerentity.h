@@ -50,7 +50,7 @@ protected:
     // parent interface
     void registerHit(Sea::Player player, const Coord& c) override;
     void registerMiss(Sea::Player player, const Coord& c) override;
-public slots:
+public Q_SLOTS:
     void notifyAbort() override;
     void notifyRestartPlacing(Sea::Player player) override;
 };

@@ -44,7 +44,7 @@ public:
     PlayField(QWidget* parent, QStatusBar*);
     ~PlayField() override;
     void createClientWithUrl(const QUrl& url);
-public slots:
+public Q_SLOTS:
     void highscores();
     void gameOver(Sea::Player winner);
     void setupController();
@@ -72,7 +72,7 @@ public slots:
     void toggleEndOfGameMessage(bool show);
     void toggleLeftGrid(bool show);
     void toggleRightGrid(bool show);
-signals:
+Q_SIGNALS:
     void gameFinished();
     void abortGame(Sea::Player player);
     void welcomeScreen();

@@ -66,7 +66,7 @@ public:
     double brightness() const;
 
     void setWidth(int width);
-signals:
+Q_SIGNALS:
     void clicked();
     void needsUpdate();
 };

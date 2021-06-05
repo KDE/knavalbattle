@@ -34,7 +34,7 @@ public:
     void start();
     void stop();
     void restart();
-private slots:
+private Q_SLOTS:
     void tick();
 };
 

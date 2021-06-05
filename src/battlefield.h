@@ -58,7 +58,7 @@ public:
     void setAllowAdjacentShips(const bool adjacent) { m_allow_adjacent_ships = adjacent; };
     void clear(); // to start placing the ships again in a clean BattleField
     inline unsigned int ships() const { return m_ships; }
-signals:
+Q_SIGNALS:
     void shipDestroyed(Ship*);
 };
 
