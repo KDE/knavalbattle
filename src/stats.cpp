@@ -36,13 +36,13 @@ int Stats::score() const
 void Stats::addHit()
 {
     m_hits++;
-    emit hitsChanged();
+    Q_EMIT hitsChanged();
 }
 
 void Stats::addMiss()
 {
     m_misses++;
-    emit missesChanged();
+    Q_EMIT missesChanged();
 }
 
 void Stats::addInfo(const HitInfo& info)

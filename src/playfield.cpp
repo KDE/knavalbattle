@@ -125,7 +125,7 @@ void PlayField::newGame()
     m_menu = new SimpleMenu(this, m_seaView->screen(Sea::Player(0)));
     connect(m_menu, &SimpleMenu::done, this, &PlayField::setupController);
     m_status_bar->showMessage(QLatin1String(""));
-    emit welcomeScreen();
+    Q_EMIT welcomeScreen();
 }
 
 void PlayField::restart()
@@ -201,7 +201,7 @@ void PlayField::gameOver(Sea::Player winner)
     }
     
     // When we have finished, show again the welcome screen
-    emit gameFinished();
+    Q_EMIT gameFinished();
 }
 
 void PlayField::changeNick()
@@ -286,7 +286,7 @@ void PlayField::startGame()
     //the game has a fixed difficulty level only if there is an AI
     Kg::difficulty()->setGameRunning(m_controller->hasAI());
     startPlacingShips();
-    emit placeShips();
+    Q_EMIT placeShips();
 }
 
 void PlayField::startPlacingShips()

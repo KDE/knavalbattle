@@ -11,7 +11,7 @@
 
 Animation::~Animation()
 {
-    emit done();
+    Q_EMIT done();
 }
 
 AnimationGroup::AnimationGroup()

@@ -159,7 +159,7 @@ void Controller::restart()
 
     for (Entity* entity : qAsConst(m_entities)) {
         m_sea->clear(entity->player());
-            emit startPlacingShips(Sea::PLAYER_A);
+            Q_EMIT startPlacingShips(Sea::PLAYER_A);
             entity->startPlacing();
     }
 }
@@ -211,7 +211,7 @@ void Controller::finalizeShot(Sea::Player player, const Coord& c, const HitInfo&
             finalizeGame(Sea::PLAYER_B);
         }
         else {
-            emit turnChanged(m_sea->turn());
+            Q_EMIT turnChanged(m_sea->turn());
         }
     }
     else {
@@ -258,10 +258,10 @@ void Controller::ready(int player)
         for (Entity* entity : qAsConst(m_entities)) {
             entity->startPlaying();
         }
-        emit playerReady(-1);
+        Q_EMIT playerReady(-1);
     }
     else {
-        emit playerReady(player);
+        Q_EMIT playerReady(player);
     }
 }
 
@@ -275,7 +275,7 @@ void Controller::finalizeGame(Sea::Player winner)
     for (Entity* entity : qAsConst(m_entities)) {
         entity->notifyGameOver(winner);
     }
-    emit gameOver(winner);
+    Q_EMIT gameOver(winner);
 }
 
 void Controller::notifyRestartPlacingShips(Sea::Player player)
@@ -320,7 +320,7 @@ void Controller::nick(int player, const QString& nick)
             entity->notifyNick(Sea::Player(player), nick);
         }
     }
-    emit nickChanged(player, nick);
+    Q_EMIT nickChanged(player, nick);
 }
 
 Sea::Player Controller::turn() const

@@ -79,11 +79,11 @@ void PlayerEntity::action(Sea::Player player, const Coord& c)
                             // when multiple ships and an space between them are enabled,
                             // it is possible to reach impossible combinations
                             if ( !m_sea->canAddShipOfSize(m_player, ship->size()) ) {
-                                emit restartPlacingShips(m_player);
+                                Q_EMIT restartPlacingShips(m_player);
                             }
                         }
                         else {
-                            emit shipsPlaced();
+                            Q_EMIT shipsPlaced();
                         }
                     }
                 }
@@ -91,7 +91,7 @@ void PlayerEntity::action(Sea::Player player, const Coord& c)
             break;
         case Sea::PLAYING:
             if (player == opponent && m_sea->canHit(m_player, c)) {
-                emit shoot(m_player, c);
+                Q_EMIT shoot(m_player, c);
             }
             break;
         default:
@@ -125,7 +125,7 @@ void PlayerEntity::startPlacing()
 void PlayerEntity::start()
 {
     UIEntity::start();
-    emit ready(m_player);
+    Q_EMIT ready(m_player);
 }
 
 void PlayerEntity::startPlaying()

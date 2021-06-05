@@ -79,7 +79,7 @@ void ChatWidget::sendLine()
     m_history.push_back(QLatin1String(""));
     setHistoryText(m_history.size() - 1);
     display(m_nick, text);
-    emit message(text);
+    Q_EMIT message(text);
 }
 
 void ChatWidget::display(const QString& nick, const QString& text)

@@ -63,19 +63,19 @@ void AIEntity::notify(Sea::Player player, const Coord& c, const HitInfo& info)
 
 void AIEntity::notifyGameOptions()
 {
-    emit gameOptionsInterchanged();
+    Q_EMIT gameOptionsInterchanged();
 }
 
 void AIEntity::start()
 {
-    emit ready(m_player);
+    Q_EMIT ready(m_player);
 }
 
 void AIEntity::startPlacing()
 {
     m_seaview->setStatus(Sea::PLACING_SHIPS);
     m_ai->setShips();
-    emit shipsPlaced();
+    Q_EMIT shipsPlaced();
 }
 
 void AIEntity::startPlaying()
@@ -99,7 +99,7 @@ void AIEntity::getShoot()
     if (m_sea->turn() == m_player) {
         Coord c = m_ai->getMove();
         
-        emit shoot(m_player, c);
+        Q_EMIT shoot(m_player, c);
     }
 }
 

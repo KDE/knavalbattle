@@ -194,7 +194,7 @@ bool Button::onClicked()
 {
     if (true) {
         qCDebug(KNAVALBATTLE_LOG) << "clicked";
-        emit clicked();
+        Q_EMIT clicked();
         return true;
     }
     else {

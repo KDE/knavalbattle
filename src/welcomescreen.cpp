@@ -164,7 +164,7 @@ void WelcomeScreen::onMouseRelease(Button *button)
     if (m_clicked && m_clicked == button) {
         // actual click event
         if (m_clicked->onClicked()) {            
-            emit clicked(button);
+            Q_EMIT clicked(button);
         }
     }
     
@@ -183,7 +183,7 @@ void WelcomeScreen::show()
     m_active = true;
     setOpacity(1);
     QGraphicsRectItem::show();
-    emit shown();
+    Q_EMIT shown();
 }
 
 void WelcomeScreen::hide()
@@ -191,7 +191,7 @@ void WelcomeScreen::hide()
     m_active = false;
     QGraphicsRectItem::hide();
     clearButtons();
-    emit hidden();
+    Q_EMIT hidden();
 }
 
 void WelcomeScreen::onMouseLeave()

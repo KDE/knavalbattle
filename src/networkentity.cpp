@@ -87,7 +87,7 @@ void NetworkEntity::startPlacing()
     // Number of ships to sink again in the new game
     m_sea->add(m_player, m_battleShipsConfiguration->totalNumberOfShipsToPlay());
 
-    emit ready(m_player);
+    Q_EMIT ready(m_player);
 }
 
 void NetworkEntity::startPlaying()
@@ -163,7 +163,7 @@ void NetworkEntity::visit(const HeaderMessage& msg)
     else {
         if (m_level != COMPAT_KBS3) {
             m_level = COMPAT_KBS3;
-            emit compatibility(m_level);
+            Q_EMIT compatibility(m_level);
         }
     }
 }
@@ -176,7 +176,7 @@ void NetworkEntity::visit(const RejectMessage&)
 void NetworkEntity::visit(const NickMessage& msg)
 {
     setNick(msg.nickname());
-    emit nickChanged(m_player, m_nick);
+    Q_EMIT nickChanged(m_player, m_nick);
     // This is a dirty hack caused by the introduction of GameOptionsMessage.
     // If that had extended BeginMessage, the following instructions will
     // be in the right place.
@@ -209,20 +209,20 @@ void NetworkEntity::visit(const NickMessage& msg)
                    .append(i18n(m_battleShipsConfiguration->pluralNameOfShipsOfSize(size).toLatin1().constData()));
         }
     }
-    emit chat(message);
-    emit gameOptionsInterchanged();
+    Q_EMIT chat(message);
+    Q_EMIT gameOptionsInterchanged();
     // Number of ships to sink
     m_sea->add(m_player, m_battleShipsConfiguration->totalNumberOfShipsToPlay());
 }
 
 void NetworkEntity::visit(const BeginMessage&)
 {
-    emit ready(m_player);
+    Q_EMIT ready(m_player);
 }
 
 void NetworkEntity::visit(const MoveMessage& msg)
 {
-    emit shoot(m_player, msg.move());
+    Q_EMIT shoot(m_player, msg.move());
 }
 
 void NetworkEntity::visit(const NotificationMessage& msg)
@@ -271,13 +271,13 @@ void NetworkEntity::visit(const RestartMessage&)
     // Keep the current configuration in a restarted game.
     if (!m_restarted)
     {
-        emit restartRequested();
+        Q_EMIT restartRequested();
     }
 }
 
 void NetworkEntity::visit(const ChatMessage& msg)
 {
-    emit chat(msg.chat());
+    Q_EMIT chat(msg.chat());
 }
 
 void NetworkEntity::visit(const GameOptionsMessage& msg)
@@ -288,10 +288,10 @@ void NetworkEntity::visit(const GameOptionsMessage& msg)
     }
 
     if (m_sea->isAdjacentShipsAllowed()) {
-        emit chat(i18n("You can place ships adjacent to each other"));
+        Q_EMIT chat(i18n("You can place ships adjacent to each other"));
     }
     else {
-        emit chat(i18n("You must leave a space between ships"));
+        Q_EMIT chat(i18n("You must leave a space between ships"));
     }
 
     if (m_client)

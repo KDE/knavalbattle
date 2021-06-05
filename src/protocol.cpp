@@ -155,7 +155,7 @@ void Protocol::readMore()
         MessagePtr msg = parseMessage(m_buffer.left(pos));
         m_buffer.remove(0, pos);
         
-        emit received(msg);
+        Q_EMIT received(msg);
     }
 }
 
@@ -171,14 +171,14 @@ MessagePtr Protocol::parseMessage(const QString& xmlMessage)
     QDomElement main = doc.documentElement();
     if (main.tagName() != QLatin1String("kmessage"))
     {
-        emit parseError(QStringLiteral("Invalid parent tag"));
+        Q_EMIT parseError(QStringLiteral("Invalid parent tag"));
         return MessagePtr();
     }
     
     QDomElement msgtype = main.namedItem(QStringLiteral("msgtype")).toElement();
     if (msgtype.isNull())
     {
-        emit parseError(QStringLiteral("No message type"));
+        Q_EMIT parseError(QStringLiteral("No message type"));
         return MessagePtr();
     }
     
@@ -297,7 +297,7 @@ MessagePtr Protocol::parseMessage(const QString& xmlMessage)
             return MessagePtr(new GameOptionsMessage(adjacentShips, severalShips, battleShipsConfiguration));
         }
     default:
-        emit parseError(QStringLiteral("Unknown message type"));
+        Q_EMIT parseError(QStringLiteral("Unknown message type"));
         return MessagePtr();
     }
 }
@@ -327,6 +327,6 @@ void Protocol::sendNext()
 void Protocol::processDisconnection()
 {
     m_timer.stop();
-    emit disconnected();
+    Q_EMIT disconnected();
 }
 

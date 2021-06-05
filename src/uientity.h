@@ -30,7 +30,7 @@ public:
     void notifyGameOver(Sea::Player winner) override;
     void notifyChat(const Entity*, const QString&) override { }
     void notifyNick(Sea::Player, const QString&) override { }
-    void notifyGameOptions() override { emit gameOptionsInterchanged(); }
+    void notifyGameOptions() override { Q_EMIT gameOptionsInterchanged(); }
     void start() override;
     void startPlacing() override { };
     void hit(Shot*) override;

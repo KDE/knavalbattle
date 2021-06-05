@@ -62,7 +62,7 @@ void SimpleMenu::finalize(State state, const QString& nickname, QTcpSocket* sock
     else {
         m_protocol = nullptr;
     }
-    emit done();
+    Q_EMIT done();
 }
 
 void SimpleMenu::localGame()
