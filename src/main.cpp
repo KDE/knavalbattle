@@ -65,10 +65,9 @@ int main(int argc, char** argv)
         
     aboutData.setOrganizationDomain(QByteArray("kde.org"));
     aboutData.setProductName(QByteArray("knavalbattle"));
+
+    KAboutData::setApplicationData(aboutData);
     app.setWindowIcon(QIcon::fromTheme(QStringLiteral("knavalbattle")));
-    app.setApplicationDisplayName(aboutData.displayName());
-    app.setOrganizationDomain(aboutData.organizationDomain());
-    app.setApplicationVersion(aboutData.version());
   
     QCommandLineParser parser;
     
@@ -77,8 +76,7 @@ int main(int argc, char** argv)
     aboutData.setupCommandLine(&parser);
     parser.process(app);
     aboutData.processCommandLine(&parser);
-    
-    KAboutData::setApplicationData(aboutData);
+
     KCrash::initialize();
     KDBusService service; 
     
