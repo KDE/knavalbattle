@@ -205,7 +205,7 @@ void NetworkEntity::visit(const NickMessage& msg)
         {
             message.append(QString::number(m_battleShipsConfiguration->numberOfShipsOfSize(size)))
                    .append(QLatin1String(" "))
-                   .append(i18n(m_battleShipsConfiguration->pluralNameOfShipsOfSize(size).toLatin1()));
+                   .append(i18n(m_battleShipsConfiguration->pluralNameOfShipsOfSize(size).toLatin1().constData()));
         }
     }
     emit chat(message);
