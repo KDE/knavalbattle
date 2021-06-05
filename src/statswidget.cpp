@@ -63,7 +63,7 @@ void StatsWidgetElement::setData(const QPixmap &icon, const QString &text)
 
 StatsWidget::StatsWidget(KBSRenderer *renderer, QWidget *parent)
 : QWidget(parent)
-, m_stats(0)
+, m_stats(nullptr)
 {
     m_elements[0] = new StatsWidgetElement(
         renderer->spritePixmap(QStringLiteral("water-impact"), QSize(32, 32)),

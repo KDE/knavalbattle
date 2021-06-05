@@ -33,10 +33,10 @@ const char* SimpleMenu::iconClient = "network-connect";
 SimpleMenu::SimpleMenu(QWidget* parent, WelcomeScreen* screen)
 : QObject(parent)
 , m_screen(screen)
-, m_protocol(0)
+, m_protocol(nullptr)
 , m_state(READY)
-, m_player1(0)
-, m_player2(0)
+, m_player1(nullptr)
+, m_player2(nullptr)
 {
     if (m_screen) {    
         // create buttons
@@ -60,7 +60,7 @@ void SimpleMenu::finalize(State state, const QString& nickname, QTcpSocket* sock
         m_protocol->setParent(this);
     }
     else {
-        m_protocol = 0;
+        m_protocol = nullptr;
     }
     emit done();
 }

@@ -134,7 +134,7 @@ public:
             }
         }
         
-        return 0;
+        return nullptr;
     }
 };
 
@@ -166,7 +166,7 @@ public:
             return new DestroyStrategy(m_player, m_sea, m_state, c);
         }
         else {
-            return 0;
+            return nullptr;
         }
     }
 };
@@ -280,7 +280,7 @@ public:
             return new DestroyStrategy(m_player, m_sea, m_state, c);
         }
         else {
-            return 0;
+            return nullptr;
         }
     }
 };
@@ -343,7 +343,7 @@ Strategy* SmartAI::State::defaultStrategy(Sea::Player player, Sea* sea)
         }
 
         // unreachable
-        return 0;
+        return nullptr;
     }
 }
 

@@ -27,7 +27,7 @@ PlayerEntity::PlayerEntity(Sea::Player player, Sea* sea, SeaView* view, ChatWidg
 Ship* PlayerEntity::nextShip()
 {
     if (m_ships.empty()) {
-        return 0;
+        return nullptr;
     }
     else {
         return m_ships.first();
@@ -45,14 +45,14 @@ Ship* PlayerEntity::canAddShip(const Coord& c)
             if (m_level == COMPAT_KBS3) {
                 for (unsigned int i = 0; i < ship->size(); i++) {
                     if (m_sea->isNearShip(m_player, c + ship->increment() * i)) {
-                        return 0;
+                        return nullptr;
                     }
                 }
             }
             return ship;
         }
     }
-    return 0;
+    return nullptr;
 }
 
 

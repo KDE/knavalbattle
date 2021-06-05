@@ -32,7 +32,7 @@
 
 NetworkDialog::NetworkDialog(bool client, QWidget* parent, const QUrl* url)
 : QDialog(parent)
-, m_publisher(0), m_client(client)
+, m_publisher(nullptr), m_client(client)
 {
     QDialogButtonBox *buttonBox = new QDialogButtonBox(QDialogButtonBox::Ok|QDialogButtonBox::Cancel);
     QVBoxLayout *topLayout = new QVBoxLayout;
@@ -127,8 +127,8 @@ NetworkDialog::NetworkDialog(bool client, QWidget* parent, const QUrl* url)
         
     }
     else {
-        m_hostname = 0;
-        m_games = 0;
+        m_hostname = nullptr;
+        m_games = nullptr;
     
         // port
         tmp = new QLabel(i18n("&Port:"), main);
@@ -239,7 +239,7 @@ void NetworkDialog::clientOK()
 void NetworkDialog::clientError()
 {
     m_socket->deleteLater();
-    m_socket = 0;
+    m_socket = nullptr;
     m_feedback->setText(i18n("Could not connect to host"));
     m_okButton->setEnabled(true);
 }

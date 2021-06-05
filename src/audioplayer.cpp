@@ -16,10 +16,10 @@
 
 AudioPlayer::AudioPlayer(QObject* parent)
 : QObject(parent)
-, m_sink(0)
-, m_shootA(0)
-, m_shootB(0)
-, m_shootWater(0)
+, m_sink(nullptr)
+, m_shootA(nullptr)
+, m_shootB(nullptr)
+, m_shootWater(nullptr)
 {
 
 }
@@ -60,10 +60,10 @@ void AudioPlayer::setActive(bool value)
         delete m_shootA;
         delete m_shootB;
         delete m_shootWater;
-        m_sink = 0;
-        m_shootA = 0;
-        m_shootB = 0;
-        m_shootWater = 0;
+        m_sink = nullptr;
+        m_shootA = nullptr;
+        m_shootB = nullptr;
+        m_shootWater = nullptr;
     }
 }
 

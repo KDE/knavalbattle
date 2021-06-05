@@ -23,7 +23,7 @@ UIEntity::UIEntity(Sea::Player player, Sea* sea, SeaView* view)
 
 UIEntity::~UIEntity()
 {
-    m_seaview->setDelegate(0);
+    m_seaview->setDelegate(nullptr);
 }
 
 void UIEntity::notify(Sea::Player player, const Coord& c, const HitInfo& info)

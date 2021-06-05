@@ -26,10 +26,10 @@ BattleFieldView::BattleFieldView(QWidget* parent, KBSRenderer* renderer, const Q
 , m_factory(renderer)
 , m_bgID(bgID)
 , m_gridSize(gridSize)
-, m_impact(0)
-, m_last_hit(0)
+, m_impact(nullptr)
+, m_last_hit(nullptr)
 , m_drawGrid(true)
-, m_delegate(0)
+, m_delegate(nullptr)
 {
     m_background_lower = new KGameRenderedItem(m_renderer, bgID + QLatin1String("-layer1"));
     m_background_lower->setOpacity(0.98);
@@ -47,7 +47,7 @@ BattleFieldView::BattleFieldView(QWidget* parent, KBSRenderer* renderer, const Q
     for (Sprites::iterator i = m_sprites.begin();
             i != m_sprites.end();
             ++i) {
-        i.value() = 0;
+        i.value() = nullptr;
     }
 
     for (int i = 0; i < 11; i++) {
@@ -186,8 +186,8 @@ void BattleFieldView::loadPreviewSprite(Ship * ship)
 void BattleFieldView::cancelPreview()
 {
     delete m_preview.sprite;
-    m_preview.sprite = 0;
-    m_preview.ship = 0;
+    m_preview.sprite = nullptr;
+    m_preview.ship = nullptr;
 }
 
 void BattleFieldView::addSprite(const Coord& c, Sprite* sprite)
@@ -221,7 +221,7 @@ void BattleFieldView::add(Ship* ship)
 
 void BattleFieldView::sink(Ship* ship)
 {
-    m_last_hit = 0;
+    m_last_hit = nullptr;
     
     Coord p = ship->position();
     for (unsigned int i = 0; 
@@ -261,12 +261,12 @@ void BattleFieldView::removeImpact() {
     if (m_impact) {
         m_impact->setSpriteKey(QStringLiteral("water"));
         m_impact->refresh(m_renderer);
-        m_impact = 0;
+        m_impact = nullptr;
     }
     if (m_last_hit) {
         m_last_hit->setSpriteKey(QStringLiteral("hit-after"));
         m_last_hit->refresh(m_renderer);
-        m_last_hit = 0;
+        m_last_hit = nullptr;
     }
 }
 
@@ -275,11 +275,11 @@ void BattleFieldView::clear()
     // fixes a crash when the ships can not be placed.
     Animator::instance()->stop();
     delete m_preview.sprite;
-    m_preview.sprite = 0;
-    m_preview.ship = 0;
+    m_preview.sprite = nullptr;
+    m_preview.ship = nullptr;
     
-    m_impact = 0;
-    m_last_hit = 0;
+    m_impact = nullptr;
+    m_last_hit = nullptr;
 
     qDeleteAll(m_sprites);
     m_sprites.clear();

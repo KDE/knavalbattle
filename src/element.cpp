@@ -11,7 +11,7 @@
 #include "ship.h"
 
 Element::Element(Type type)
-: m_parent(0)
+: m_parent(nullptr)
 , m_type(type)
 {
 }

@@ -40,8 +40,8 @@ void AI::setShips()
     do {
         for (int size = m_config->longestShip(); size >= 1; size--) {
             for (unsigned int j = 1; j <= m_config->numberOfShipsOfSize(size); j++) {
-                Ship* ship = 0;
-                while (ship == 0 && canFinish) {
+                Ship* ship = nullptr;
+                while (ship == nullptr && canFinish) {
                     Coord c(generator->bounded(m_sea->size().x), generator->bounded(m_sea->size().y));
                     Ship::Direction dir = generator->bounded(2) == 0 ? Ship::LEFT_TO_RIGHT : Ship::TOP_DOWN;
                     if (m_sea->canAddShip(m_player, c, size, dir)) {

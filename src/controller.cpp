@@ -21,13 +21,13 @@
 
 Controller::Controller(QObject* parent, AudioPlayer* audioPlayer, const BattleShipsConfiguration& battleShipsConfiguration)
 : QObject(parent)
-, m_shot(0)
+, m_shot(nullptr)
 , m_ready(0)
 , m_player(audioPlayer)
 , m_has_ai(false)
 , mBattleShipsConfiguration(battleShipsConfiguration)
 {
-    m_ui = 0;
+    m_ui = nullptr;
     m_sea = new Sea(this, battleShipsConfiguration);
 }
 
@@ -36,7 +36,7 @@ PlayerEntity* Controller::createPlayer(Sea::Player player, SeaView* view,
 {
     if (m_ui) {
         qCDebug(KNAVALBATTLE_LOG) << "Cannot create more than one human player";
-        return 0;
+        return nullptr;
     }
     PlayerEntity* entity = new PlayerEntity(player, m_sea, view, chat);
     entity->setNick(nick);
@@ -219,7 +219,7 @@ void Controller::finalizeShot(Sea::Player player, const Coord& c, const HitInfo&
     }
     
     delete m_shot;
-    m_shot = 0;
+    m_shot = nullptr;
 }
 
 void Controller::notify(Sea::Player player, const Coord& c, const HitInfo& info)
@@ -295,7 +295,7 @@ Entity* Controller::findEntity(Sea::Player player) const
         }
     }
     
-    return 0;
+    return nullptr;
 }
 
 void Controller::receivedChat(const QString& text)

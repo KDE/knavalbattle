@@ -45,7 +45,7 @@ Q_OBJECT
     Entity* m_player1;
     Entity* m_player2;
     
-    void finalize(State, const QString& nick, QTcpSocket* socket = 0);
+    void finalize(State, const QString& nick, QTcpSocket* socket = nullptr);
 public:
     SimpleMenu(QWidget* parent, WelcomeScreen* screen);
     

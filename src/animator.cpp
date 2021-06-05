@@ -10,7 +10,7 @@
 #include "animator.h"
 #include "animation.h"
 
-Animator* Animator::m_instance = 0;
+Animator* Animator::m_instance = nullptr;
 
 Animator::Animator()
 {

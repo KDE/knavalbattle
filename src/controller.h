@@ -45,7 +45,7 @@ Q_OBJECT
 
     friend class Shot;
 public:
-    explicit Controller(QObject* parent, AudioPlayer* audioPlayer = 0, const BattleShipsConfiguration& battleConfiguration = BattleShipsConfiguration::defaultSingleShipsConfiguration(true));
+    explicit Controller(QObject* parent, AudioPlayer* audioPlayer = nullptr, const BattleShipsConfiguration& battleConfiguration = BattleShipsConfiguration::defaultSingleShipsConfiguration(true));
 
     PlayerEntity* createPlayer(Sea::Player player, SeaView* view,
                                ChatWidget* chat, const QString& nick);

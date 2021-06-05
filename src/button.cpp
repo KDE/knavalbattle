@@ -29,7 +29,7 @@ Button::Button(QGraphicsItem* parent, const QIcon& icon,
 , m_down(false)
 , m_hover(false)
 , m_brightness(BRIGHTNESS_NORMAL)
-, m_editor(0)
+, m_editor(nullptr)
 {
     computeSize();
 }

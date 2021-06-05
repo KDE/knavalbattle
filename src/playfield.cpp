@@ -53,8 +53,8 @@ PlayField::PlayField(QWidget* parent, QStatusBar* sbar)
 //     layout->setSpacing(0);
     setLayout(layout);
         
-    m_controller = 0;
-    m_menu = 0;
+    m_controller = nullptr;
+    m_menu = nullptr;
     
     m_player = new AudioPlayer(this);
     m_player->setActive(Settings::enableSounds());
@@ -99,7 +99,7 @@ void PlayField::setupController()
 
     delete m_controller;
     m_controller = createController();
-    m_menu->setupController(m_controller, 0, m_seaView, m_chat);
+    m_menu->setupController(m_controller, nullptr, m_seaView, m_chat);
     startGame();
 }
 
@@ -107,7 +107,7 @@ void PlayField::endGame()
 {
     Animator::instance()->restart();
     delete m_controller;
-    m_controller = 0;
+    m_controller = nullptr;
     m_seaView->clear();
 }
 
@@ -320,7 +320,7 @@ void PlayField::levelChanged()
 
 SimpleMenu* PlayField::createAuxMenu()
 {
-    SimpleMenu* menu = new SimpleMenu(this, 0);
+    SimpleMenu* menu = new SimpleMenu(this, nullptr);
     connect(menu, &SimpleMenu::done, this, &PlayField::auxMenuDone);
     return menu;
 }

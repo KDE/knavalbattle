@@ -25,7 +25,7 @@
 
 SeaView::SeaView(QWidget* parent)
 : QWidget(parent)
-, m_delegate(0)
+, m_delegate(nullptr)
 , m_last_f(-1)
 {/*
     setAttribute(Qt::WA_OpaquePaintEvent);

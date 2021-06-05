@@ -64,8 +64,8 @@ class BattleFieldView : public QGraphicsView
         
         Preview()
         : pos(-1, -1)
-        , ship(0)
-        , sprite(0)
+        , ship(nullptr)
+        , sprite(nullptr)
         {
         }
     } m_preview;

@@ -23,7 +23,7 @@ NetworkEntity::NetworkEntity(Sea::Player player, Sea* sea, SeaView* seaview, Pro
 : Entity(player, seaview, sea->battleShipsConfiguration())
 , m_sea(sea)
 , m_protocol(protocol)
-, m_pending_shot(0)
+, m_pending_shot(nullptr)
 , m_client(client)
 , m_winner(false)
 {
@@ -101,7 +101,7 @@ void NetworkEntity::notify(Sea::Player player, const Coord& c, const HitInfo& in
 
     if (player == m_player) {
         bool hit = info.type == HitInfo::HIT;
-        bool death = info.shipDestroyed != 0;
+        bool death = info.shipDestroyed != nullptr;
         Coord begin = Coord::invalid();
         Coord end = Coord::invalid();
         if (death) {
@@ -251,7 +251,7 @@ void NetworkEntity::visit(const NotificationMessage& msg)
             m_pending_shot->execute(info);
         }
         
-        m_pending_shot = 0;
+        m_pending_shot = nullptr;
     }
 }
 

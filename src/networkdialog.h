@@ -46,7 +46,7 @@ private slots:
     void serviceSelected(int idx);
     void slotOkClicked();
 public:
-    explicit NetworkDialog(bool client, QWidget* parent = 0, const QUrl* url = 0);
+    explicit NetworkDialog(bool client, QWidget* parent = nullptr, const QUrl* url = nullptr);
     ~NetworkDialog();
     
     QString nickname() const;

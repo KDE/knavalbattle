@@ -19,8 +19,8 @@ WelcomeScreen::WelcomeScreen(const QFont& font)
 : QObject()
 , QGraphicsRectItem()
 , m_font(font)
-, m_clicked(0)
-, m_hover(0)
+, m_clicked(nullptr)
+, m_hover(nullptr)
 , m_active(true)
 {
     QBrush brush(QColor(0, 0, 0, 80));
@@ -124,8 +124,8 @@ void WelcomeScreen::moveButton(int x1, int y1, int x2, int y2)
 
 void WelcomeScreen::clearButtons()
 {
-    m_clicked = 0;
-    m_hover = 0;
+    m_clicked = nullptr;
+    m_hover = nullptr;
     for (Buttons::const_iterator i = m_buttons.constBegin();
          i != m_buttons.constEnd();
          ++i) {
@@ -168,7 +168,7 @@ void WelcomeScreen::onMouseRelease(Button *button)
         }
     }
     
-    m_clicked = 0;
+    m_clicked = nullptr;
 }
 
 void WelcomeScreen::fadeOut()
