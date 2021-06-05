@@ -86,7 +86,7 @@ void Controller::setupEntity(Entity* entity)
     connect(entity, &Entity::gameOptionsInterchanged,
             this, &Controller::placing);
 
-    foreach (Entity* e, m_entities) {
+    for (Entity* e : qAsConst(m_entities)) {
         connect(e, &Entity::compatibility,
                 entity, &Entity::setCompatibilityLevel);
         connect(entity, &Entity::compatibility,
@@ -114,7 +114,7 @@ void Controller::setBattleShipsConfiguration(const BattleShipsConfiguration& bat
 bool Controller::allPlayers() const
 {
     unsigned char bitmap = 0;
-    foreach (Entity* entity, m_entities) {
+    for (Entity* entity : m_entities) {
         int player = entity->player();
         qCDebug(KNAVALBATTLE_LOG) << "found player" << player;
         bitmap |= (1 << player);    
@@ -135,12 +135,12 @@ bool Controller::start(SeaView* view)
         setupEntity(m_ui);
     }
 
-    foreach (Entity* entity, m_entities) {
+    for (Entity* entity : qAsConst(m_entities)) {
         entity->notifyGameOptions();
     }
     
-    foreach (Entity* source, m_entities) {
-        foreach (Entity* target, m_entities) {
+    for (Entity* source : qAsConst(m_entities)) {
+        for (Entity* target : qAsConst(m_entities)) {
             if (source->player() != target->player() &&
                 !source->nick().isEmpty()) {
                 target->notifyNick(source->player(), source->nick());
@@ -157,7 +157,7 @@ void Controller::restart()
     m_sea->clear(Sea::PLAYER_A);
     m_sea->clear(Sea::PLAYER_B);
 
-    foreach (Entity* entity, m_entities) {
+    for (Entity* entity : qAsConst(m_entities)) {
         m_sea->clear(entity->player());
             emit startPlacingShips(Sea::PLAYER_A);
             entity->startPlacing();
@@ -169,7 +169,7 @@ void Controller::restart()
 // when the opposite nick is received
 void Controller::placing()
 {
-    foreach (Entity* entity, m_entities) {
+    for (Entity* entity : qAsConst(m_entities)) {
         entity->startPlacing();
     }
 }
@@ -224,7 +224,7 @@ void Controller::finalizeShot(Sea::Player player, const Coord& c, const HitInfo&
 
 void Controller::notify(Sea::Player player, const Coord& c, const HitInfo& info)
 {
-    foreach (Entity* entity, m_entities) {
+    for (Entity* entity : qAsConst(m_entities)) {
         entity->notify(player, c, info);
         if (player == entity->player()) {
             entity->stats()->addInfo(info);
@@ -237,7 +237,7 @@ void Controller::shipsPlaced()
     m_ready++;
     if (m_ready >= 2 )
     {
-        foreach (Entity* entity, m_entities) {
+        for (Entity* entity : qAsConst(m_entities)) {
             entity->start();
         }
     }
@@ -247,7 +247,7 @@ void Controller::shipsPlaced()
 void Controller::ready(int player)
 {
     m_ready++;
-    foreach (Entity* entity, m_entities) {
+    for (Entity* entity : qAsConst(m_entities)) {
         entity->notifyReady(Sea::Player(player));
     }
     // when two entities are ready (ships placed and ready)
@@ -255,7 +255,7 @@ void Controller::ready(int player)
     if (m_ready >= 4) {
         m_sea->startPlaying();
 
-        foreach (Entity* entity, m_entities) {
+        for (Entity* entity : qAsConst(m_entities)) {
             entity->startPlaying();
         }
         emit playerReady(-1);
@@ -268,11 +268,11 @@ void Controller::ready(int player)
 void Controller::finalizeGame(Sea::Player winner)
 {
     // first, every entity will notify the other entity its ships
-    foreach (Entity* entity, m_entities) {
+    for (Entity* entity : qAsConst(m_entities)) {
             entity->notifyShips(winner);
     }
     // then, it will notify the end of the game
-    foreach (Entity* entity, m_entities) {
+    for (Entity* entity : qAsConst(m_entities)) {
         entity->notifyGameOver(winner);
     }
     emit gameOver(winner);
@@ -280,7 +280,7 @@ void Controller::finalizeGame(Sea::Player winner)
 
 void Controller::notifyRestartPlacingShips(Sea::Player player)
 {
-    foreach (Entity* entity, m_entities) {
+    for (Entity* entity : qAsConst(m_entities)) {
         if (entity->player() == player) {
             entity->notifyRestartPlacing(player);
         }
@@ -289,7 +289,7 @@ void Controller::notifyRestartPlacingShips(Sea::Player player)
 
 Entity* Controller::findEntity(Sea::Player player) const
 {
-    foreach (Entity* entity, m_entities) {
+    for (Entity* entity : m_entities) {
         if (entity->player() == player) {
             return entity;
         }
@@ -303,7 +303,7 @@ void Controller::receivedChat(const QString& text)
     Entity* chat_sender = qobject_cast<Entity*>(sender());
     
     if (chat_sender) {    
-        foreach (Entity* entity, m_entities) {
+        for (Entity* entity : qAsConst(m_entities)) {
             if (entity != chat_sender) {
                 qCDebug(KNAVALBATTLE_LOG) << "forwarding to" << entity->nick();
                 entity->notifyChat(chat_sender, text);
@@ -315,7 +315,7 @@ void Controller::receivedChat(const QString& text)
 void Controller::nick(int player, const QString& nick)
 {
     qCDebug(KNAVALBATTLE_LOG) << "controller: nick";
-    foreach (Entity* entity, m_entities) {
+    for (Entity* entity : qAsConst(m_entities)) {
         if (entity->player() != Sea::Player(player)) {
             entity->notifyNick(Sea::Player(player), nick);
         }

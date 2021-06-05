@@ -227,7 +227,8 @@ void BattleFieldView::sink(Ship* ship)
     for (unsigned int i = 0; 
          i < ship->size(); 
          i++, p += ship->increment()) {
-        foreach (Sprite* s, m_sprites.values(p)) {
+        const auto spritesOfPos = m_sprites.values(p);
+        for (Sprite* s : spritesOfPos) {
             if (s->spriteKey().startsWith(QLatin1String("ship"))) {
                 s->setZValue(BACKGROUND);
                 s->setOpacity(0.5);

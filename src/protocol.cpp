@@ -92,7 +92,7 @@ public:
     void visit(const GameOverMessage& msg) override
     {
         setType(msg);
-        foreach (const GameOverMessage::ShipInfo &ship, msg.ships()) {
+        for (const GameOverMessage::ShipInfo &ship : msg.ships()) {
             QStringList data;
             data << QString::number(ship.pos.x)
                  << QString::number(ship.pos.y)

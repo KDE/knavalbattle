@@ -48,9 +48,9 @@ void UIEntity::hit(Shot* shot)
 
 void UIEntity::drawHiddenShips(Sea::Player winner)
 {
-    QList<Ship *> enemyShips = m_sea->enemyShips();
+    const QList<Ship *> enemyShips = m_sea->enemyShips();
 
-    foreach (Ship * ship, enemyShips) {
+    for (Ship * ship : enemyShips) {
         if (ship->alive()) {
             m_seaview->add(winner, ship);
         }

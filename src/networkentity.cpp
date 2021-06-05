@@ -50,7 +50,8 @@ void NetworkEntity::notifyShips(Sea::Player player)
 
     GameOverMessage* msg=new GameOverMessage();
     if (!m_winner) {
-        foreach (Ship* ship, m_sea->myShips()) {
+        const auto myShips = m_sea->myShips();
+        for (Ship* ship : myShips) {
             if (ship->alive()) {
                 msg->addShip(ship->position(), ship->size(), ship->direction());
             }
@@ -259,7 +260,7 @@ void NetworkEntity::visit(const GameOverMessage& msg)
 {
     {
         // receive the ships and add them to the board
-        foreach (GameOverMessage::ShipInfo ship, msg.ships()) {
+        for (const GameOverMessage::ShipInfo& ship : msg.ships()) {
                 m_seaview->add(m_sea->turn(), new Ship(ship.size, ship.direction, ship.pos));
         }
     }

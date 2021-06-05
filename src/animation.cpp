@@ -27,7 +27,7 @@ AnimationGroup::~AnimationGroup()
 void AnimationGroup::start(int t)
 {
     m_running = t;
-    foreach (Animation* a, m_animations) {
+    for (Animation* a : qAsConst(m_animations)) {
         a->start(t);
     }
 }
