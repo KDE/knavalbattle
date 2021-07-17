@@ -22,16 +22,9 @@
 #include <KLineEdit>
 #include <KLocalizedString>
 #include <KSeparator>
-#include <kdnssd_version.h>
-#if KDNSSD_VERSION >= QT_VERSION_CHECK(5, 84, 0)
 #include <KDNSSD/ServiceBrowser>
 #include <KDNSSD/ServiceModel>
 #include <KDNSSD/PublicService>
-#else
-#include <DNSSD/ServiceBrowser>
-#include <DNSSD/ServiceModel>
-#include <DNSSD/PublicService>
-#endif
 #include <KConfigGroup>
 #include <QDialogButtonBox>
 
