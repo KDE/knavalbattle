@@ -127,7 +127,4 @@
     <release version="2.1.21043" date="2021-07-08"/>
     <release version="2.1.21042" date="2021-06-10"/>
   </releases>
-  <content_rating type="oars-1.1">
-    <content_attribute id="violence-cartoon">mild</content_attribute>
-  </content_rating>
 </component>
