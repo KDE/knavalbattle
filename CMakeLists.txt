@@ -48,7 +48,6 @@ add_definitions(
 add_subdirectory(src) 
 add_subdirectory(data)
 add_subdirectory(doc)
-add_subdirectory(kconf_update)
 ecm_qt_install_logging_categories(EXPORT KNAVALBATTLE FILE knavalbattle.categories DESTINATION ${KDE_INSTALL_LOGGINGCATEGORIESDIR})
 
 feature_summary(WHAT ALL INCLUDE_QUIET_PACKAGES FATAL_ON_MISSING_REQUIRED_PACKAGES)
