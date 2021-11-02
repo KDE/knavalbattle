@@ -6,7 +6,6 @@
 
 #include "spritefactory.h"
 
-#include <QString>
 
 #include "ship.h"
 #include "sprite.h"
