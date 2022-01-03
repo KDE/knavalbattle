@@ -124,8 +124,8 @@ GameOptionsMessage::GameOptionsMessage(const QString& enableAdjacentShips, const
 
 GameOptionsMessage::GameOptionsMessage(const bool enableAdjacentShips, const bool oneOrSeveralShips,
     const BattleShipsConfiguration &configuration)
-: m_enabledAdjacentShipsString(enableAdjacentShips)
-, m_oneOrSeveralShipsString(oneOrSeveralShips)
+    : m_enabledAdjacentShipsString(enableAdjacentShips ? QStringLiteral("true") : QStringLiteral("false"))
+, m_oneOrSeveralShipsString(oneOrSeveralShips ? QStringLiteral("true") : QStringLiteral("false"))
 , m_battleShipsConfiguration(new BattleShipsConfiguration(configuration))
 {
 }

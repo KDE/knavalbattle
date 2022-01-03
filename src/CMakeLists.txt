@@ -59,8 +59,8 @@ file(GLOB ICONS_SRCS "${CMAKE_CURRENT_SOURCE_DIR}/../data/pictures/*-apps-knaval
 ecm_add_app_icon(knavalbattle ICONS ${ICONS_SRCS})
 
 target_link_libraries(knavalbattle
-    Qt5::Xml
-    Qt5::Network
+    Qt${QT_MAJOR_VERSION}::Xml
+    Qt${QT_MAJOR_VERSION}::Network
     KF5::I18n
     KF5::XmlGui
     KF5::Completion
