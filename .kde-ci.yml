@@ -6,6 +6,7 @@ Dependencies:
   'require':
     'frameworks/extra-cmake-modules': '@stable'
     'games/libkdegames': '@same'
+    'frameworks/kcoreaddons': '@stable'
     'frameworks/kconfig': '@stable'
     'frameworks/kcrash': '@stable'
     'frameworks/kdbusaddons': '@stable'

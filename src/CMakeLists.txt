@@ -61,6 +61,7 @@ ecm_add_app_icon(knavalbattle ICONS ${ICONS_SRCS})
 target_link_libraries(knavalbattle
     Qt${QT_MAJOR_VERSION}::Xml
     Qt${QT_MAJOR_VERSION}::Network
+    KF5::CoreAddons
     KF5::I18n
     KF5::XmlGui
     KF5::Completion
