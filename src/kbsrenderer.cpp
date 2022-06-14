@@ -6,14 +6,19 @@
 
 #include "kbsrenderer.h"
 #include "coord.h"
-
+// KDEGames
+#include <kdegames_version.h>
 #include <KgThemeProvider>
 #include <KGameRenderedItem>
 
 static KgThemeProvider *provider()
 {
     KgThemeProvider *prov = new KgThemeProvider;
+#if KDEGAMES_VERSION >= QT_VERSION_CHECK(7, 4, 0)
+    prov->discoverThemes(QStringLiteral("pictures"));
+#else
     prov->discoverThemes("appdata", QStringLiteral("pictures"));
+#endif
     return prov;
 }
 
