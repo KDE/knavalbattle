@@ -232,7 +232,9 @@ void PlayField::toggleMultiple(bool enable)
 void PlayField::restartRequested()
 {
     int ans = KMessageBox::questionYesNo(this, i18n("Restart game"),
-                    i18n("Your opponent has requested to restart the game. Do you accept?"));
+                                         i18n("Your opponent has requested to restart the game. Do you accept?"),
+                                         KGuiItem(i18nc("@action:button", "Accept"), QStringLiteral("dialog-ok")),
+                                         KGuiItem(i18nc("@action:button", "Reject"), QStringLiteral("dialog-cancel")));
     if (ans == KMessageBox::Yes) {
         restart();
     }
@@ -295,8 +297,8 @@ void PlayField::startPlacingShips()
 void PlayField::restartPlacingShips(Sea::Player player)
 {
     m_status_bar->showMessage(i18n("You can't place your remaining ships."));
-    KGuiItem buttonRestart=KStandardGuiItem::yes(); buttonRestart.setText(i18n("Restart"));
-    KGuiItem buttonAbort=KStandardGuiItem::no(); buttonAbort.setText(i18n("Abort"));
+    KGuiItem buttonRestart(i18nc("@action", "Restart"), QStringLiteral("view-refresh"));
+    KGuiItem buttonAbort(i18nc("@action", "Abort"), QStringLiteral("dialog-cancel"));
     int res=KMessageBox::warningYesNo(this, i18n("You can't place your remaining ships. Please restart placing ships or abort game"), i18n("Restart placing ships"), buttonRestart, buttonAbort);
     if (res == KMessageBox::Yes) {
         startPlacingShips();
