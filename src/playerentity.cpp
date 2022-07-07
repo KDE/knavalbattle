@@ -6,7 +6,6 @@
 
 #include "playerentity.h"
 
-#include <KMessageBox>
 #include <KLocalizedString>
 
 #include "seaview.h"
