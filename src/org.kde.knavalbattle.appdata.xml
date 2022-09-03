@@ -18,6 +18,7 @@
   <name xml:lang="fr">Naval Battle</name>
   <name xml:lang="gl">Batalla naval</name>
   <name xml:lang="id">Naval Battle</name>
+  <name xml:lang="is">Sjóorusta</name>
   <name xml:lang="it">Battaglia navale</name>
   <name xml:lang="ko">전함 대전</name>
   <name xml:lang="nl">Naval Battle</name>
@@ -52,6 +53,7 @@
   <summary xml:lang="fr">Jeu de touché-coulé</summary>
   <summary xml:lang="gl">Xogo de afundir barcos</summary>
   <summary xml:lang="id">Permainan Kapal Perang</summary>
+  <summary xml:lang="is">Leikur til að sökkva skipum</summary>
   <summary xml:lang="it">Gioco della battaglia navale</summary>
   <summary xml:lang="ko">전함 침몰 게임</summary>
   <summary xml:lang="nl">Spel met slagschepen</summary>
@@ -90,6 +92,7 @@
     <p xml:lang="fr">Naval Battle est un jeu de touché-coulé. Les navires sont placés sur une grille qui représente la mer. Les joueurs essaient chacun leur tour de toucher les vaisseaux de leur adversaire sans savoir où ils sont situés. Le premier joueur à détruire la totalité de la flotte adverse gagne la partie.</p>
     <p xml:lang="gl">Batalla naval é un xogo de afundir barcos. Os barcos colócanse nun taboleiro que representa o mar. Cada xogador intenta afundir os barcos do outro sen saber onde están colocados. O primeiro xogador que destrúe a armada completa do outro gaña a partida.</p>
     <p xml:lang="id">Naval Battle adalah permainan kapal selam. Kapal ditempatkan di papan yang mewakili laut. Pemain mencoba untuk saling memukul kapal secara bergantian tanpa mengetahui di mana mereka ditempatkan. Pemain pertama yang menghancurkan semua kapal memenangkan permainan.</p>
+    <p xml:lang="is">Sjóorusta er leikur sem felst í að sökkva skipum. Skipum er komið fyrir á leikborði sem táknar hafið. Spilarar reyna til skiptis að hitta skip andstæðingsins án þess að vita hvar þau eru staðsett. Sá fyrsti til að sökkva öllum skipum andstæðingsins, vinnur leikinn.</p>
     <p xml:lang="it">Battaglia navale è un gioco di affondamento di navi. Le navi vengono disposte su un riquadro che rappresenta il mare. Poi ogni giocatore a turno tenta di colpire le navi dell'altro, senza sapere dove sono disposte. Vince il primo giocatore che affonda tutte le navi nemiche.</p>
     <p xml:lang="ko">전함 대전은 배 침몰 게임입니다. 전함은 바다를 나타내는 보드 위에 배치됩니다. 각 플레이어는 상대방의 전함 위치를 모른 상태로 포격을 가합니다. 모든 배를 최초로 침몰시키는 플레이어가 게임에서 이깁니다.</p>
     <p xml:lang="nl">Naval Battle is het spel Zeeslag. Schepen worden op een bord geplaatst die de zee voorstelt. Spelers proberen om de beurt elkaars schepen te raken zonder te weten waar ze zijn geplaatst. De eerste speler die alle schepen laat zinken wint het spel.</p>
