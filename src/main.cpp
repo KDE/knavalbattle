@@ -67,9 +67,6 @@ int main(int argc, char** argv)
     aboutData.addCredit(i18n("Jakub Stachowski"), i18n("DNS-SD discovery"), QStringLiteral("qbast@go2.pl"));
     aboutData.addCredit(i18n("Roney Gomes"), i18n("Porting to KGameRenderer and QGraphicsView"), QStringLiteral("roney477@gmail.com"));
         
-    aboutData.setOrganizationDomain(QByteArray("kde.org"));
-    aboutData.setProductName(QByteArray("knavalbattle"));
-
     KAboutData::setApplicationData(aboutData);
     app.setWindowIcon(QIcon::fromTheme(QStringLiteral("knavalbattle")));
   
