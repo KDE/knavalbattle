@@ -1,0 +1,710 @@
+<?xml version="1.0" ?>
+<!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN" "dtd/kdedbx45.dtd" [
+  <!ENTITY i18n-knavalbattle "<application
+>Zeeslag</application
+>">
+  <!ENTITY % addindex "IGNORE">
+  <!ENTITY % Dutch "INCLUDE"
+> <!-- change language only here -->
+]>
+
+<book id="knavalbattle" lang="&language;">
+<bookinfo>
+<title
+>Het handboek van &knavalbattle;</title>
+
+<authorgroup>
+<author
+>&Daniel.Molkentin; &Daniel.Molkentin.mail; </author>
+
+<author
+>&Nikolas.Zimmermann; &Nikolas.Zimmermann.mail; </author>
+
+<author
+><firstname
+>Anton</firstname
+> <surname
+>Brondz</surname
+> <affiliation
+> <address
+><email
+>dinolinux@gmail.com</email
+></address>
+</affiliation>
+</author>
+
+<othercredit role="reviewer"
+>&Frerich.Raabe; &Frerich.Raabe.mail; </othercredit>
+
+&Niels.Reedijk;&Rinse.Devries;&Sander.Koning; 
+
+</authorgroup>
+
+<legalnotice
+>&FDLNotice;</legalnotice>
+
+<copyright>
+<year
+>2001</year>
+<holder
+>&Daniel.Molkentin;</holder>
+</copyright>
+<copyright>
+<year
+>2001</year>
+<holder
+>&Nikolas.Zimmermann;</holder>
+</copyright>
+<copyright>
+<year
+>2001</year>
+<holder
+>Kevin Krammer</holder>
+</copyright>
+
+<date
+>2020-12-10</date>
+<releaseinfo
+>Applications 20.12</releaseinfo>
+
+<abstract>
+<para
+>&i18n-knavalbattle; is een netwerk-gerichte variant van het beroemde spel van het laten zinken van een schip door &kde;.</para>
+</abstract>
+
+<keywordset>
+<keyword
+>KDE</keyword>
+<keyword
+>kdegames</keyword>
+<keyword
+>knavalbattle</keyword>
+<keyword
+>spel</keyword>
+<keyword
+>ruimteschip</keyword>
+<keyword
+>gevecht</keyword>
+<keyword
+>zeevaart</keyword>
+</keywordset>
+
+</bookinfo>
+
+<chapter id="introduction">
+<title
+>Inleiding</title>
+<note
+><title
+>Speltype:</title
+><para
+>Strategie, bord</para
+></note
+><!-- Game genre. Use as many as necessary. Available game types are: Arcade, Board, Card, Dice, Toys, Logic, Strategy.-->
+<note
+><title
+>Aantal mogelijke spelers:</title
+><para
+>Twee</para
+></note
+><!--Number of possible players. It can be: One, Two,..., Multiplayer-->
+
+<screenshot>
+<mediaobject>
+<imageobject>
+<imagedata fileref="gameboard.png" format="PNG"/>
+</imageobject>
+<textobject>
+<phrase
+>Het spelbord van &i18n-knavalbattle;</phrase>
+</textobject>
+</mediaobject>
+</screenshot>
+
+<para
+>&i18n-knavalbattle; is het spel Zeeslag door &kde;. Schepen worden op een bord geplaatst die de zee voorstelt. Spelers proberen om de beurt elkaars schepen te raken zonder te weten waar ze zijn geplaatst. De eerste speler die alle schepen laat zinken wint het spel. </para>
+</chapter>
+
+<chapter id="howtoplay">
+<title
+>Hoe te spelen</title>
+<note
+><title
+>Doel:</title
+><para
+>Laat alle schepen van uw tegenspeler zinken voordat deze al uw schepen laat zinken.</para
+></note
+><!--Describe the objective of the game.-->
+<para
+>Als u &i18n-knavalbattle; wilt spelen, dan zijn er twee spelers nodig, ofwel u speelt tegen de computer of in een netwerk tegen een andere speler. Om tegen uw computer te spelen, selecteert u eerst de moeilijkheidsgraad rechts van de statusbalk en daarna selecteert u <guilabel
+>Eén speler</guilabel
+> in het welkomstscherm of direct in het menu-item <menuchoice
+><guimenu
+>Spel</guimenu
+><guimenuitem
+>Eén speler</guimenuitem
+></menuchoice
+>.</para>
+
+<para
+>Om een spel via het netwerk te spelen moet er één speler zijn die <guilabel
+>Netwerkspel hosten</guilabel
+> heeft geselecteerd in het welkomstscherm of door het kiezen van <menuchoice
+><guimenu
+>Spel</guimenu
+> <guimenuitem
+>Spel hosten...</guimenuitem
+></menuchoice
+>. U wordt dan gevraagd om uw <guilabel
+>Schermnaam:</guilabel
+> en een <guilabel
+>poort</guilabel
+>. &i18n-knavalbattle; heeft uw gebruikersnaam al ingevuld, maar die kunt u vervangen door een andere in te voeren. De opgegeven poort is in principe goed. Mocht u toch problemen ondervinden, kies dan een andere vrije poort boven 1024. </para>
+
+<note>
+<para
+>Als u een andere poort gebruikt dan de standaard, dan dient u de andere speler hiervan op de hoogte te brengen. Om een verbinding te kunnen opbouwen dienen beide spelers dezelfde poort te gebruiken.</para>
+</note>
+
+<para
+>De andere speler kiest <guilabel
+>Verbinden met netwerkspel</guilabel
+> of klikt op het menu-item <menuchoice
+><guimenu
+>Spel</guimenu
+> <guimenuitem
+>Met spel verbinden...</guimenuitem
+></menuchoice
+>. Ook nu wordt er een <guilabel
+>Schermnaam:</guilabel
+> voorgesteld die u eventueel kunt veranderen. In het veld <guilabel
+>Hostnaam:</guilabel
+> voert u de hostnaam van de server in (de machine van de speler die het spel is begonnen). </para>
+
+<para
+>Als u klaar bent kunt u het spel starten. Volg eenvoudigweg de instructies in de statusbalk op. Deze zal u enkele tips geven en u vertellen wat de volgende stap is. Op het scherm ziet u twee blauwe velden, de zogenaamde <quote
+>speelgebieden</quote
+>. Het linker gebied is van u. Hier kunt u uw schepen platsen en de militaire handelingen van uw vijand volgen. Het rechter gebied is waar de vloot van uw vijand zich bevindt. Als het uw beurt is om te schieten, dan klikt u op een sector (een veld in het speelgebied) waarvan u denkt dat er een schip in ligt. </para>
+
+<para
+>Eerst dient u uw schepen te plaatsen. De spelstarter begint. Als hij of zij klaar is, dan kan speler twee zijn of haar schepen plaatsen. </para>
+
+<para
+>Het plaatsen van de schepen is erg eenvoudig: klik op het veld waar u uw schip wilt hebben. U moet vier schepen plaatsen: het eerste schip bezet één veld, het tweede heeft een lengte van twee velden, de derde is drie velden lang, &etc; Klik op het veld waar u wilt beginnen met plaatsen. Standaard worden schepen horizontaal geplaatst; om ze 90 graden te draaien, klik met de &RMB; om het schip vast te leggen op de gekozen plek. </para>
+
+<para
+>Als een schip is getroffen breekt er brand uit. Om het te laten zinken, treft u alle velden die het bezet. Een gezonken schip verschijnt vaag. </para>
+
+<para
+>Nu kunt u de &LMB; gebruiken om schieten op het speelgebied van de vijand. De statusbalk geeft aan wie aan beurt is. </para>
+
+<para
+>U kunt het spel opnieuw starten door menu-item <menuchoice
+><guimenu
+>Spel</guimenu
+> <guimenuitem
+>Spel herstarten</guimenuitem
+></menuchoice
+> te kiezen of door op <keycap
+>F5</keycap
+> te drukken. </para>
+
+<para
+>De eerste speler, die alle schepen van de tegenstander vernietigt, heeft gewonnen! </para>
+
+</chapter>
+
+<chapter id="rulestips">
+<title
+>Spelregels, strategieën en tips</title>
+<sect1 id="rules">
+<title
+>Spelregels</title>
+<itemizedlist>
+<listitem
+><para
+>Een speler kan één keer één schot lossen per beurt.</para
+></listitem>
+<listitem
+><para
+>Spelers moeten alle hun schepen plaatsen.</para
+></listitem>
+<listitem
+><para
+>Schepen die zijn geplaatst kunnen niet meer verplaatst worden.</para
+></listitem>
+<listitem
+><para
+>Een schip is gezonken als alle velden die het bezet zijn geraakt.</para
+></listitem>
+</itemizedlist>
+</sect1>
+
+<sect1 id="strattips">
+<title
+>Strategieën en tips</title>
+<itemizedlist>
+<listitem
+><para
+>Plaats schepen nooit naast elkaar.</para
+></listitem>
+<listitem
+><para
+>Nadat een schip eenmaal is geraakt, probeer er dan omheen te schieten om raak te schieten.</para
+></listitem>
+<listitem
+><para
+>Probeer schepen weg van de randen op het bord te plaatsen.</para
+></listitem>
+<listitem
+><para
+>Kleine schepen zijn moeilijker te raken, zet ze neer waar ze moeilijk zijn te vinden.</para
+></listitem>
+<listitem
+><para
+>Denk na alvorens te schieten. In het water schieten geeft minder punten.</para
+></listitem>
+</itemizedlist>
+</sect1>
+
+</chapter>
+
+<chapter id="menu-reference">
+<title
+>De menu's</title>
+
+<sect1 id="menu">
+<title
+>Menu-items</title>
+
+<variablelist>
+<varlistentry>
+<term>
+<menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>N</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Spel</guimenu
+> <guimenuitem
+>Nieuw</guimenuitem
+> </menuchoice>
+</term>
+<listitem>
+<para>
+<action
+>Beëindig het huidige spel en laadt het welkomstscherm opnieuw.</action>
+</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term>
+<menuchoice
+><shortcut
+><keycap
+>F5</keycap
+></shortcut
+> <guimenu
+>Spel</guimenu
+> <guimenuitem
+>Spel herstarten</guimenuitem
+> </menuchoice>
+</term>
+<listitem>
+<para>
+<action
+>Het spel opnieuw beginnen.</action>
+</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term>
+<menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>H</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Spel</guimenu
+> <guimenuitem
+>Topscores tonen</guimenuitem
+> </menuchoice>
+</term>
+<listitem>
+<para>
+<action
+>Toont de hoogste scores tot nu toe.</action>
+</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term>
+<menuchoice
+><guimenu
+>Spel</guimenu
+> <guimenuitem
+>Eén speler</guimenuitem
+> </menuchoice>
+</term>
+<listitem>
+<para>
+<action
+>Start een spel met uw computer als tegenstander.</action>
+</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term>
+<menuchoice
+><guimenu
+>Spel</guimenu
+> <guimenuitem
+>Host van het spel...w</guimenuitem
+> </menuchoice>
+</term>
+<listitem>
+<para>
+<action
+>Start de server zodat een andere speler verbinding met u kan maken.</action>
+</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term>
+<menuchoice
+><guimenu
+>Spel</guimenu
+> <guimenuitem
+>Met spel verbinden...</guimenuitem
+> </menuchoice>
+</term>
+<listitem>
+<para>
+<action
+>Verbinden met een server om het spel te starten.</action>
+</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term>
+<menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>Q</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Spel</guimenu
+> <guimenuitem
+>Afsluiten</guimenuitem
+> </menuchoice>
+</term>
+<listitem>
+<para
+><action
+>Afsluiten</action
+> van &i18n-knavalbattle;. </para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term>
+<menuchoice
+><guimenu
+>Instellingen</guimenu
+> <guimenuitem
+>Schermnaam wijzigen...</guimenuitem
+> </menuchoice>
+</term>
+<listitem>
+<para>
+<action
+>Wijzig de standaard schermnaam.</action>
+</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term>
+<menuchoice
+><guimenu
+>Instellingen</guimenu
+> <guimenuitem
+>Geluiden afspelen</guimenuitem
+> </menuchoice>
+</term>
+<listitem>
+<para
+><action
+>Bepaalt of geluiden worden afgespeeld</action
+>. Standaard is aan. </para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term>
+<menuchoice
+><guimenu
+>Instellingen</guimenu
+> <guimenuitem
+>Naastliggende schepen</guimenuitem
+> </menuchoice>
+</term>
+<listitem>
+<para
+><action
+>Schakel om of de schepen op het speelveld zonder of met lege ruimte ertussen geplaatst mogen worden.</action
+> De standaard is zonder. Deze instelling moet op een host gedefinieerd worden bij het <link linkend="howtoplay"
+>spelen van &i18n-knavalbattle; via het netwerk</link
+>. </para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term>
+<menuchoice
+><guimenu
+>Instellingen</guimenu
+> <guimenuitem
+>Bericht 'Eind van het spel' tonen</guimenuitem
+> </menuchoice>
+</term>
+<listitem>
+<para
+>Als u het spel hebt gewonnen en u hebt een nieuw hoge score, dan zal de dialoog voor de hoge scores getoond worden. Anders zal het resultaat in de statusbalk getoond worden of, als deze optie is geactiveerd, bovendien in een dialoog. </para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term>
+<menuchoice
+><guimenu
+>Instellingen</guimenu
+> <guimenuitem
+>Linker raster tonen</guimenuitem
+> <guimenu
+>Instellingen</guimenu
+> <guimenuitem
+>Rechter raster tonen</guimenuitem
+> </menuchoice>
+</term>
+<listitem>
+<para
+>De rasters gebruiken maakt het gemakkelijker om een schot te plaatsen met de muisaanwijzer. </para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term>
+<menuchoice
+><guimenu
+>Instellingen</guimenu
+> <guisubmenu
+>Moeilijkheidsgraad</guisubmenu
+> </menuchoice>
+</term>
+<listitem>
+<para
+>De instelling van de moeilijkheidsgraad van het spel (<guimenuitem
+>Gemakkelijk</guimenuitem
+>, <guimenuitem
+>Gemiddeld</guimenuitem
+>, <guimenuitem
+>Moeilijk</guimenuitem
+>) heeft alleen effect in spellen van één speler tegen de computer. In hogere niveaus zal de AI een slimmere strategie voor schieten en de plaatsing van schepen kiezen.</para>
+</listitem>
+</varlistentry>
+
+</variablelist>
+
+<para
+>Bovendien heeft &i18n-knavalbattle; de gezamenlijke menu-items van &kde; <guimenu
+>Instellingen</guimenu
+> en <guimenu
+>Help</guimenu
+>, voor meer informatie lees de secties over de <ulink url="help:/fundamentals/menus.html#menus-settings"
+>Menu Instellingen</ulink
+> en <ulink url="help:/fundamentals/menus.html#menus-help"
+>Menu Help</ulink
+> van &kde;-fundamentals. </para>
+
+</sect1>
+</chapter>
+
+<chapter id="faq">
+<title
+>Veel voorkomende vragen</title>
+
+<qandaset>
+
+<qandaentry>
+<question>
+<para
+>Ik weet niet waar ik moet schieten, kan ik een hint krijgen? </para>
+</question>
+<answer>
+<para
+>Nee, er is geen systeem met tips in &i18n-knavalbattle;. </para>
+</answer>
+</qandaentry>
+
+<qandaentry>
+<question>
+<para
+>Hoe kan ik het schip draaien? </para>
+</question>
+<answer>
+<para
+>Verplaats het schip naar de gewenste plaats en druk op de &RMB;. </para>
+</answer>
+</qandaentry>
+
+<qandaentry>
+<question>
+<para
+>Kan ik het uiterlijk van het spel wijzigen? </para>
+</question>
+<answer>
+<para
+>Nee, het thema is niet te veranderen. </para>
+</answer>
+</qandaentry>
+
+</qandaset>
+</chapter>
+
+<chapter id="credits">
+<title
+>Dankbetuigingen en licentie</title>
+
+<para
+>&knavalbattle; copyright 2000-2007</para>
+
+<itemizedlist>
+<title
+>Auteurs</title>
+<listitem>
+<para
+>Paolo Capriotti <email
+>p.capriotti@gmail.com</email
+> </para>
+</listitem>
+<listitem>
+<para
+>&Nikolas.Zimmermann; &Nikolas.Zimmermann.mail; </para>
+</listitem>
+<listitem>
+<para
+>&Daniel.Molkentin; &Daniel.Molkentin.mail; </para>
+</listitem>
+<listitem>
+<para
+>Kevin Krammer <email
+>kevin.krammer@gmx.at</email
+> </para>
+</listitem>
+</itemizedlist>
+
+<itemizedlist>
+<title
+>Met dank aan:</title>
+<listitem>
+<para
+>Johann Ollivier Lapeyre <email
+>johann.ollivierlapeyre@gmail.com</email
+> </para>
+</listitem>
+<listitem>
+<para
+>Eugene Trounev <email
+>irs_me@hotmail.com</email
+> </para>
+</listitem>
+<listitem>
+<para
+>&Robert.Wadley; <email
+>rob@robntina.fastmail.us</email
+> </para>
+</listitem>
+<listitem>
+<para
+>Riccardo Iaconelli <email
+>ruphy@fsfe.org</email
+> </para>
+</listitem>
+<listitem>
+<para
+>Benjamin Adler <email
+>benadler@bigfoot.de</email
+> </para>
+</listitem>
+<listitem>
+<para
+>Nils Trzebin <email
+>nils.trzebin@stud.uni-hannover.de</email
+> </para>
+</listitem>
+<listitem>
+<para
+>Elmar Hoefner <email
+>elmar.hoefner@uibk.ac.at</email
+></para>
+</listitem>
+
+</itemizedlist>
+
+<para
+>Documentatie bijgewerkt voor &kde; 3.4 door<personname
+><firstname
+>Brian</firstname
+><surname
+>Beck</surname
+></personname
+> <email
+>brian.beck@mchsi.com</email
+></para>
+
+<para
+>Documentatie bijgewerkt voor &kde; 4 door <personname
+><firstname
+>Elisa</firstname
+><surname
+>Tonello</surname
+></personname
+> <email
+>elisa.tonello@gmail.com</email
+></para>
+
+&meld.fouten;&vertaling.niels; &underFDL; &underGPL; </chapter>
+
+&documentation.index; 
+</book>
+<!--
+Local Variables:
+mode: sgml
+sgml-minimize-attributes:nil
+sgml-general-insert-case:lower
+sgml-omittag:t
+sgml-shorttag:t
+sgml-namecase-general:t
+sgml-always-quote-attributes:t
+sgml-indent-step:0
+sgml-indent-data:nil
+sgml-parent-document:nil
+sgml-exposed-tags:nil
+sgml-local-catalogs:nil
+sgml-local-ecat-files:nil
+End:
+-->

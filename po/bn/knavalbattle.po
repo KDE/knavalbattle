@@ -1,0 +1,859 @@
+# Bangla translation of KBattleship.
+# Copyright (C) 2004-2006 KDE Foundation.
+# This file is distributed under the same license as the KBattleship package.
+# Progga <progga@BengaLinux.Org>, 2004-2006.
+# Deepayan Sarkar <deepayan@bengalinux.org>, 2005.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: kbattleship (KDE 3.5)\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2022-09-04 00:43+0000\n"
+"PO-Revision-Date: 2006-04-04 12:30+0600\n"
+"Last-Translator: Progga <progga@BengaLinux.Org>\n"
+"Language-Team: Bangla <kde-translation@BengaLinux.Org>\n"
+"Language: bn\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+
+#, kde-format
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr "প্রজ্ঞা"
+
+#, kde-format
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr "progga@BengaLinux.Org"
+
+#: controller.cpp:50
+#, fuzzy, kde-format
+#| msgid "Computer Player"
+msgid "Computer"
+msgstr "কম্পিউটার নিয়ন্ত্রিত খেলোয়াড়"
+
+#. i18n: ectx: label, entry (Hostname), group (network)
+#: knavalbattle.kcfg:9
+#, kde-format
+msgid "Default hostname for multiplayer games."
+msgstr ""
+
+#. i18n: ectx: label, entry (Port), group (network)
+#: knavalbattle.kcfg:13
+#, kde-format
+msgid "Default port for multiplayer games."
+msgstr ""
+
+#. i18n: ectx: label, entry (Nickname), group (general)
+#: knavalbattle.kcfg:19
+#, fuzzy, kde-format
+#| msgid "&Nick name:"
+msgid "User nickname."
+msgstr "ডা&কনাম:"
+
+#. i18n: ectx: label, entry (EnableSounds), group (general)
+#: knavalbattle.kcfg:22
+#, kde-format
+msgid "Whether sound effects should be played."
+msgstr ""
+
+#. i18n: ectx: label, entry (AdjacentShips), group (general)
+#: knavalbattle.kcfg:26
+#, kde-format
+msgid "Allow the ships to be adjacent without one empty space between them."
+msgstr ""
+
+#. i18n: ectx: label, entry (SeveralShips), group (general)
+#: knavalbattle.kcfg:30
+#, kde-format
+msgid ""
+"Allow multiple ships of any size, default: 4 of 1, 3 of 2, 2 of 3, 1 of 4."
+msgstr ""
+
+#. i18n: ectx: ToolBar (gameToolbar)
+#: knavalbattleui.rc:29
+#, kde-format
+msgid "Game Toolbar"
+msgstr ""
+
+#: main.cpp:42
+#, kde-format
+msgid "Naval Battle"
+msgstr ""
+
+#: main.cpp:44
+#, fuzzy, kde-format
+#| msgid "The KDE Battleship clone"
+msgid "The KDE ship sinking game"
+msgstr "ব্যাটলশিপ খেলার একটি কে.ডি.ই. ক্লোন"
+
+#: main.cpp:45
+#, kde-format
+msgid ""
+"(c) 2000-2005  Nikolas Zimmermann, Daniel Molkentin\n"
+"(c) 2007 Paolo Capriotti"
+msgstr ""
+
+#: main.cpp:50
+#, kde-format
+msgid "Paolo Capriotti"
+msgstr ""
+
+#: main.cpp:50
+#, fuzzy, kde-format
+#| msgid "Client identifier:"
+msgid "Current maintainer"
+msgstr "ক্লায়েন্ট সনাক্তকারী:"
+
+#: main.cpp:51
+#, kde-format
+msgid "Nikolas Zimmermann"
+msgstr ""
+
+#: main.cpp:51
+#, kde-format
+msgid "Project Founder, GUI Handling, Client/Server"
+msgstr "প্রকল্প প্রতিষ্ঠাতা, জি.ইউ.আই. ব্যবস্থাপনা, ক্লায়েন্ট/সার্ভার"
+
+#: main.cpp:52
+#, kde-format
+msgid "Daniel Molkentin"
+msgstr ""
+
+#: main.cpp:52
+#, kde-format
+msgid "Dialog Stuff, Client/Server"
+msgstr "ডায়ালগ সংক্রান্ত জিনিষপত্র, ক্লায়েন্ট/সার্ভার"
+
+#: main.cpp:53
+#, kde-format
+msgid "Kevin Krammer"
+msgstr ""
+
+#: main.cpp:53
+#, fuzzy, kde-format
+#| msgid "Computer Player"
+msgid "Computer Player"
+msgstr "কম্পিউটার নিয়ন্ত্রিত খেলোয়াড়"
+
+#: main.cpp:55
+#, kde-format
+msgid "Johann Ollivier Lapeyre"
+msgstr ""
+
+#: main.cpp:55
+#, kde-format
+msgid "Game artwork"
+msgstr ""
+
+#: main.cpp:56
+#, kde-format
+msgid "Eugene Trounev"
+msgstr ""
+
+#: main.cpp:56
+#, kde-format
+msgid "Background"
+msgstr ""
+
+#: main.cpp:57
+#, kde-format
+msgid "Robert Wadley"
+msgstr ""
+
+#: main.cpp:57
+#, kde-format
+msgid "Artwork for some of the ships"
+msgstr ""
+
+#: main.cpp:58
+#, kde-format
+msgid "Riccardo Iaconelli"
+msgstr ""
+
+#: main.cpp:58
+#, kde-format
+msgid "Welcome screen"
+msgstr ""
+
+#: main.cpp:59
+#, kde-format
+msgid "Benjamin Adler"
+msgstr ""
+
+#: main.cpp:59
+#, kde-format
+msgid "Icon"
+msgstr "আইকন"
+
+#: main.cpp:60
+#, kde-format
+msgid "Nils Trzebin"
+msgstr ""
+
+#: main.cpp:60
+#, kde-format
+msgid "Sounds"
+msgstr "শব্দ"
+
+#: main.cpp:61
+#, kde-format
+msgid "Elmar Hoefner"
+msgstr ""
+
+#: main.cpp:61
+#, kde-format
+msgid "GFX"
+msgstr "জি.এফ.এক্স."
+
+#: main.cpp:62
+#, kde-format
+msgid "Lukas Tinkl"
+msgstr ""
+
+#: main.cpp:62
+#, kde-format
+msgid "Non-Latin1 Support"
+msgstr "Non-Latin1-এর সুবিধা"
+
+#: main.cpp:63
+#, kde-format
+msgid "Malte Starostik"
+msgstr ""
+
+#: main.cpp:63
+#, kde-format
+msgid "Various improvements"
+msgstr "বিবিধ উন্নতি"
+
+#: main.cpp:64
+#, kde-format
+msgid "Albert Astals Cid"
+msgstr ""
+
+#: main.cpp:64 main.cpp:65
+#, kde-format
+msgid "Various improvements and bugfixes"
+msgstr "বিবিধ উন্নতি ও বাগ-সংশোধনী"
+
+#: main.cpp:65
+#, kde-format
+msgid "John Tapsell"
+msgstr ""
+
+#: main.cpp:66
+#, kde-format
+msgid "Inge Wallin"
+msgstr ""
+
+# FIXME
+#: main.cpp:66
+#, kde-format
+msgid "Bugfixes and refactoring"
+msgstr "বাগ সংশোধনী ও রিফ্যাক্টরিং"
+
+#: main.cpp:67
+#, kde-format
+msgid "Jakub Stachowski"
+msgstr ""
+
+#: main.cpp:67
+#, kde-format
+msgid "DNS-SD discovery"
+msgstr "ডি.এন.এস.-এস.ডি. অনুসন্ধান"
+
+#: main.cpp:68
+#, kde-format
+msgid "Roney Gomes"
+msgstr ""
+
+#: main.cpp:68
+#, kde-format
+msgid "Porting to KGameRenderer and QGraphicsView"
+msgstr ""
+
+#: main.cpp:75
+#, kde-format
+msgid "[URL]"
+msgstr ""
+
+#: main.cpp:75
+#, kde-format
+msgid "URL of a Naval Battle game server to connect to after startup"
+msgstr ""
+
+#: mainwindow.cpp:59
+#, fuzzy, kde-format
+#| msgid "S&ingle Player"
+msgid "&Single Player"
+msgstr "&একজন খেলোয়াড়"
+
+#: mainwindow.cpp:63
+#, fuzzy, kde-format
+msgid "&Host Game..."
+msgstr "খেলা &বন্ধ করো"
+
+#: mainwindow.cpp:67
+#, fuzzy, kde-format
+#| msgid "&Connect to Server..."
+msgid "&Connect to Game..."
+msgstr "সার্ভারের সাথে সংযুক্ত &হও..."
+
+#: mainwindow.cpp:72
+#, fuzzy, kde-format
+#| msgid "&Nick name:"
+msgid "Change &Nickname..."
+msgstr "ডা&কনাম:"
+
+#: mainwindow.cpp:75
+#, fuzzy, kde-format
+#| msgid "&Play Sounds"
+msgid "&Play Sounds"
+msgstr "&শব্দ বাজাও"
+
+#: mainwindow.cpp:80
+#, kde-format
+msgid "&Adjacent Ships"
+msgstr ""
+
+#: mainwindow.cpp:85
+#, kde-format
+msgid "&Multiple Ships"
+msgstr ""
+
+#: mainwindow.cpp:90
+#, kde-format
+msgid "Show End-of-Game Message"
+msgstr ""
+
+#: mainwindow.cpp:95
+#, fuzzy, kde-format
+#| msgid "&Show Grid"
+msgid "Show &Left Grid"
+msgstr "ছক প্র&দর্শন করো"
+
+#: mainwindow.cpp:99
+#, fuzzy, kde-format
+#| msgid "&Show Grid"
+msgid "Show &Right Grid"
+msgstr "ছক প্র&দর্শন করো"
+
+#: networkdialog.cpp:61
+#, fuzzy, kde-format
+#| msgid "&Nick name:"
+msgid "&Nickname:"
+msgstr "ডা&কনাম:"
+
+#: networkdialog.cpp:73
+#, fuzzy, kde-format
+#| msgid "S&ingle game"
+msgid "&Join game:"
+msgstr "&একটিমাত্র খেলা"
+
+#: networkdialog.cpp:88
+#, kde-format
+msgid "&Hostname:"
+msgstr ""
+
+#: networkdialog.cpp:101 networkdialog.cpp:131
+#, kde-format
+msgid "&Port:"
+msgstr "পোর্ট (&প):"
+
+#: networkdialog.cpp:116
+#, kde-format
+msgid "&Enter server address manually"
+msgstr ""
+
+#: networkdialog.cpp:148
+#, kde-format
+msgid "Network Parameters"
+msgstr ""
+
+#: networkdialog.cpp:210
+#, fuzzy, kde-format
+#| msgid "Connection refused by other host."
+msgid "Connecting to remote host..."
+msgstr "অপর হোস্ট কর্তৃক সংযোগের আবেদন প্রত্যাখ্যাত হয়েছে।"
+
+#: networkdialog.cpp:217
+#, fuzzy, kde-format
+#| msgid "Waiting for an answer..."
+msgid "Waiting for an incoming connection..."
+msgstr "উত্তরের জন্য অপেক্ষা করা হচ্ছে..."
+
+#: networkdialog.cpp:236
+#, fuzzy, kde-format
+#| msgid "Couldn't connect to server."
+msgid "Could not connect to host"
+msgstr "সার্ভারের সাথে সংযুক্ত হওয়া যায় নি।"
+
+#: networkentity.cpp:189
+#, kde-format
+msgid "You have "
+msgstr ""
+
+#: networkentity.cpp:195
+#, kde-format
+msgid ", "
+msgstr ""
+
+#: networkentity.cpp:288
+#, fuzzy, kde-format
+#| msgid "You cannot place the ship here."
+msgid "You can place ships adjacent to each other"
+msgstr "আপনি এখানে জাহাজ রাখতে পারেন না।"
+
+#: networkentity.cpp:291
+#, kde-format
+msgid "You must leave a space between ships"
+msgstr ""
+
+#: playerentity.cpp:199
+#, kde-format
+msgid "Your opponent is now known as %1"
+msgstr ""
+
+#: playerentity.cpp:204
+#, kde-format
+msgid "Your opponent disconnected from the game"
+msgstr ""
+
+#: playfield.cpp:146 playfield.cpp:166
+#, kde-format
+msgid "Shots"
+msgstr "নিক্ষিপ্ত গোলা"
+
+#: playfield.cpp:147 playfield.cpp:167
+#, kde-format
+msgid "Hits"
+msgstr "সফল আঘাত"
+
+#: playfield.cpp:148 playfield.cpp:168
+#, kde-format
+msgid "Misses"
+msgstr ""
+
+#: playfield.cpp:188
+#, kde-format
+msgid "You win!"
+msgstr ""
+
+#: playfield.cpp:190
+#, kde-format
+msgid "You win. Excellent!"
+msgstr ""
+
+#: playfield.cpp:194
+#, fuzzy, kde-format
+#| msgid "You lost the game. :("
+msgid "You lose."
+msgstr "আপনি হেরে গিয়েছেন :("
+
+#: playfield.cpp:196
+#, kde-format
+msgid "You lose. Better luck next time!"
+msgstr ""
+
+#: playfield.cpp:206
+#, fuzzy, kde-format
+#| msgid "&Nick name:"
+msgid "Change Nickname"
+msgstr "ডা&কনাম:"
+
+#: playfield.cpp:206
+#, kde-format
+msgid "Enter new nickname:"
+msgstr ""
+
+#: playfield.cpp:234
+#, fuzzy, kde-format
+#| msgid "Restart"
+msgid "Restart game"
+msgstr "পুনরায় আরম্ভ"
+
+#: playfield.cpp:235
+#, fuzzy, kde-format
+#| msgid "The client is asking to restart the game. Do you accept?"
+msgid "Your opponent has requested to restart the game. Do you accept?"
+msgstr "ক্লায়েন্ট পুনরায় খেলা আরম্ভ করতে চাচ্ছে।  আপনার কি এতে কোন আপত্তি আছে?"
+
+#: playfield.cpp:236
+#, fuzzy, kde-format
+#| msgid "Accept Restart"
+msgctxt "@action:button"
+msgid "Accept"
+msgstr "পুনরায় আরম্ভ করা অনুমোদন করো"
+
+#: playfield.cpp:237
+#, kde-format
+msgctxt "@action:button"
+msgid "Reject"
+msgstr ""
+
+#: playfield.cpp:246
+#, kde-format
+msgid ""
+"Your opponent is using a pre-KDE4 version of Naval Battle. Note that, "
+"according to the rules enforced by old clients, ships cannot be placed "
+"adjacent to one another and only one ship of each size is allowed."
+msgstr ""
+
+#: playfield.cpp:259
+#, fuzzy, kde-format
+#| msgid "Enemy has shot. Shoot now."
+msgid "Enemy has shot. Shoot now!"
+msgstr "শত্রুপক্ষ গোলা ছুড়েছে।  এবার আপনি ছুড়ুন।"
+
+#: playfield.cpp:263
+#, fuzzy, kde-format
+#| msgid "Waiting for enemy to shoot.."
+msgid "Waiting for enemy to shoot..."
+msgstr "শত্রুপক্ষের গোলা নিক্ষেপের জন্য অপেক্ষা করা হচ্ছে.."
+
+#: playfield.cpp:272
+#, kde-format
+msgid "Ships placed. Now shoot on the enemy field!"
+msgstr ""
+
+#: playfield.cpp:275
+#, fuzzy, kde-format
+#| msgid "Waiting for other player to start the match..."
+msgid "Waiting for other player to start the game..."
+msgstr "অপর খেলোয়াড় কর্তৃক খেলা আরম্ভ করার জন্য অপেক্ষা করা হচ্ছে..."
+
+#: playfield.cpp:279
+#, fuzzy, kde-format
+#| msgid "Waiting for other player to place their ships..."
+msgid "Waiting for other player to place his ships..."
+msgstr "অপর খেলোয়াড়ের জাহাজ সাজানোর জন্য অপেক্ষা করা হচ্ছে..."
+
+#: playfield.cpp:293
+#, fuzzy, kde-format
+#| msgid ""
+#| "Please place your ships. Use the \"Shift\" key to place the ships "
+#| "vertically."
+msgid "Place your %1 ships. Use the right mouse button to rotate them."
+msgstr ""
+"অনুগ্রহপূর্বক আপনার জাহাজগুলো সাজান।  লম্বালম্বিভাবে জাহাজ রাখার জন্য \"Shift\" কী "
+"(Key) ব্যবহার করুন।"
+
+#: playfield.cpp:299
+#, kde-format
+msgid "You can't place your remaining ships."
+msgstr ""
+
+#: playfield.cpp:300
+#, fuzzy, kde-format
+#| msgid "Restart"
+msgctxt "@action"
+msgid "Restart"
+msgstr "পুনরায় আরম্ভ"
+
+#: playfield.cpp:301
+#, kde-format
+msgctxt "@action"
+msgid "Abort"
+msgstr ""
+
+#: playfield.cpp:302
+#, kde-format
+msgid ""
+"You can't place your remaining ships. Please restart placing ships or abort "
+"game"
+msgstr ""
+
+#: playfield.cpp:302
+#, kde-format
+msgid "Restart placing ships"
+msgstr ""
+
+#: simplemenu.cpp:40
+#, fuzzy, kde-format
+#| msgid "S&ingle Player"
+msgid "Single Player"
+msgstr "&একজন খেলোয়াড়"
+
+#: simplemenu.cpp:41
+#, fuzzy, kde-format
+#| msgid "Connect to Server"
+msgid "Host Network Game"
+msgstr "সার্ভারের সাথে সংযুক্ত হও"
+
+#: simplemenu.cpp:42
+#, fuzzy, kde-format
+#| msgid "Connect to Server"
+msgid "Connect to Network Game"
+msgstr "সার্ভারের সাথে সংযুক্ত হও"
+
+#: simplemenu.cpp:132 simplemenu.cpp:149
+#, fuzzy, kde-format
+#| msgid "S&ingle Player"
+msgid "Remote player"
+msgstr "&একজন খেলোয়াড়"
+
+#~ msgid "KBattleship"
+#~ msgstr "কে-ব্যাটলশিপ"
+
+#, fuzzy
+#~| msgid "S&ingle Player"
+#~ msgid "Single player"
+#~ msgstr "&একজন খেলোয়াড়"
+
+#, fuzzy
+#~ msgid "&Game"
+#~ msgstr "খেলার না&ম:"
+
+#, fuzzy
+#~| msgid "Shots"
+#~ msgid "Shots:"
+#~ msgstr "নিক্ষিপ্ত গোলা"
+
+#, fuzzy
+#~| msgid "Hits"
+#~ msgid "Hits:"
+#~ msgstr "সফল আঘাত"
+
+#, fuzzy
+#~| msgid "&Connect to server"
+#~ msgid "Connect to a server"
+#~ msgstr "সার্ভারের সাথে সংযুক্ত &হও"
+
+#, fuzzy
+#~| msgid "LAN games:"
+#~ msgid "Local game"
+#~ msgstr "ল্যান-কেন্দ্রিক খেলা:"
+
+#, fuzzy
+#~| msgid "Start Server"
+#~ msgid "Start Ser&ver"
+#~ msgstr "সার্ভার চালু করো"
+
+#~ msgid "&Connect"
+#~ msgstr "সংযুক্ত &হও"
+
+#~ msgid "     Player 1: %1     "
+#~ msgstr "     খেলোয়াড় ১: %1     "
+
+#~ msgid "     Player 2: %1     "
+#~ msgstr "     খেলোয়াড় ২: %1     "
+
+#~ msgid "Ready"
+#~ msgstr "প্রস্তুত"
+
+#~ msgid "&Start Server..."
+#~ msgstr "সার্ভা&র চালু করো..."
+
+#~ msgid "S&ingle Player..."
+#~ msgstr "&একজন খেলোয়াড়..."
+
+#~ msgid "&Enemy Info"
+#~ msgstr "&শত্রু সংক্রান্ত তথ্য"
+
+#~ msgid "Hide Grid"
+#~ msgstr "ছক লুকাও"
+
+#~ msgid "Sending Message..."
+#~ msgstr "বার্তা প্রেরণ করা হচ্ছে..."
+
+#~ msgid "You won the game :)"
+#~ msgstr "আপনি খেলায় জয়ী হয়েছেন :)"
+
+#~ msgid "Do you want to restart the game?"
+#~ msgstr "আপনি কি খেলাটি পুনরায় আরম্ভ করতে চান?"
+
+#~ msgid "Do Not Restart"
+#~ msgstr "পুনরায় আরম্ভ করবে না"
+
+#~ msgid "Enemy disconnected."
+#~ msgstr "শত্রুপক্ষের সাথে সংযোগ বিচ্ছিন্ন হয়ে গিয়েছে।"
+
+#~ msgid "Waiting for computer player to start the match..."
+#~ msgstr ""
+#~ "কম্পিউটার নিয়ন্ত্রিত খেলোয়াড় কর্তৃক খেলা আরম্ভ করার জন্য অপেক্ষা করা হচ্ছে..."
+
+#~ msgid "Water"
+#~ msgstr "পানিতে পতিত"
+
+#~ msgid "Loading Connect-Server dialog..."
+#~ msgstr "Connect-Server ডায়ালগ লোড করা হচ্ছে..."
+
+# FIXME
+#~ msgid "Deny Restart"
+#~ msgstr "পুনরায় আরম্ভ করার প্রস্তাব প্রত্যাখ্যান করো"
+
+#~ msgid "Do you want to ask the server restarting the game?"
+#~ msgstr "আপনি কি সার্ভারকে পুনরায় খেলা আরম্ভ করতে বলতে চান?"
+
+#~ msgid "Ask to Restart"
+#~ msgstr "পুনরায় আরম্ভ করতে বলো"
+
+#~ msgid "Do Not Ask"
+#~ msgstr "বলবে না"
+
+#~ msgid "Loading Start-Server dialog..."
+#~ msgstr "Start-Server ডায়ালগ লোড করা হচ্ছে..."
+
+#~ msgid "&Stop server"
+#~ msgstr "সার্ভার &বন্ধ করো"
+
+#~ msgid "Waiting for a player..."
+#~ msgstr "একজন খেলোয়াড়ের আশায় অপেক্ষা করা হচ্ছে..."
+
+#~ msgid "The URL passed to KDE Battleship '%1' is not a valid url"
+#~ msgstr "কে.ডি.ই. ব্যাটলশীপ '%1'-কে যে ইউ.আর.এল. দেওয়া হয়েছে, তা বৈধ নয়"
+
+#~ msgid ""
+#~ "The URL passed to KDE Battleship '%1' is not recognised as a Battleship "
+#~ "game."
+#~ msgstr ""
+#~ "কে.ডি.ই. ব্যাটলশীপ '%1'-কে যে ইউ.আর.এল. দেওয়া হয়েছে, তা কোন ব্যাটলশীপ খেলা "
+#~ "নয়।"
+
+#~ msgid "Dis&connect from server"
+#~ msgstr "সার্ভার থেকে সংযো&গ বিচ্ছিন্ন করো"
+
+#~ msgid "Start Game"
+#~ msgstr "খেলা আরম্ভ করো"
+
+#~ msgid "Nick name:"
+#~ msgstr "ডাকনাম:"
+
+#~ msgid "Waiting for the AI player to place the ships..."
+#~ msgstr "এআই (AI) খেলোয়াড়ের জাহাজ সাজানোর জন্য অপেক্ষা করা হচ্ছে..."
+
+#~ msgid ""
+#~ "Failed to bind to local port \"%1\"\n"
+#~ "\n"
+#~ "Please check if another KBattleship server instance\n"
+#~ "is running or another application uses this port."
+#~ msgstr ""
+#~ "স্থানীয় পোর্ট \"%1\"-এ Bind করা যায় নি\n"
+#~ "\n"
+#~ "অনুগ্রহপূর্বক নিশ্চিত হোন যে, কে-ব্যাটলশিপ খেলার অপর কোন সার্ভার চলছে\n"
+#~ "কি না অথবা অন্য কোন অ্যাপলিকেশন এই পোর্টটি ব্যবহার করছে কিনা।"
+
+#~ msgid "The connection broke down!"
+#~ msgstr "সংযোগ বিচ্ছিন্ন হয়ে গিয়েছে!"
+
+#~ msgid "Connection to client lost. Aborting the game."
+#~ msgstr "ক্লায়েন্টের সাথে সংযোগ বিচ্ছিন্ন হয়ে গিয়েছে।  খেলা বাতিল করা হচ্ছে।"
+
+#~ msgid ""
+#~ "Connection dropped by enemy. The client's protocol implementation (%1) is "
+#~ "not compatible with our (%2) version."
+#~ msgstr ""
+#~ "শত্রুপক্ষ সংযোগ বিচ্ছিন্ন করে দিয়েছেন।  ক্লায়েন্টের প্রোটোকল (%1) সংস্করণ এবং "
+#~ "আমাদের প্রোটোকল (%2) সংস্করণ সঙ্গতিপূর্ণ নয়।"
+
+#~ msgid "You lost the game :("
+#~ msgstr "আপনি হেরে গিয়েছেন :("
+
+#~ msgid ""
+#~ "Connection to client dropped. The client's protocol implementation (%1) "
+#~ "is not compatible with our (%2) version."
+#~ msgstr ""
+#~ "ক্লায়েন্টের সাথে সংযোগ বিচ্ছিন্ন করে দেওয়া হয়েছে।  ক্লায়েন্টের প্রোটোকল (%1) "
+#~ "সংস্করণ এবং আমাদের প্রোটোকল (%2) সংস্করণ সঙ্গতিপূর্ণ নয়।"
+
+#~ msgid "We have a player. Let's start..."
+#~ msgstr "একজন খেলোয়াড় পাওয়া গিয়েছে।  চলুন আরম্ভ করা যাক..."
+
+#~ msgid "You can shoot now."
+#~ msgstr "এখন আপনি গোলাবর্ষণ করতে পারেন।"
+
+#, fuzzy
+#~ msgid "Could not lookup host."
+#~ msgstr "হোস্টকে Lookup করা যায় নি।"
+
+#~ msgid "Unknown error; No: %1"
+#~ msgstr "অজ্ঞাত সমস্যা; নং: %1"
+
+#~ msgid "Connection to server lost. Aborting the game."
+#~ msgstr "সার্ভারের সাথে সংযোগ বিচ্ছিন্ন হয়ে গিয়েছে।  খেলা বাতিল করা হচ্ছে।"
+
+#, fuzzy
+#~ msgid "&Start"
+#~ msgstr "সার্ভা&র চালু করো"
+
+#~ msgid ""
+#~ "URL of server to attach to.  In the form kbattleship://host:port/ or host:"
+#~ "port"
+#~ msgstr ""
+#~ "যে সার্ভারের সাথে যুক্ত হতে হবে, তার ইউ.আর.এল. ।  এটি লিখতে হবে এভাবে - "
+#~ "kbattleship://হোস্ট নং:পোর্ট নং/ অথবা শুধু 'হোস্ট নং:পোর্ট নং' "
+
+#, fuzzy
+#~ msgid ""
+#~ "You do not have KBattleship pictures installed. The game cannot run "
+#~ "without them!"
+#~ msgstr "কে-ব্যাটলশিপের ছবিগুলো ইনস্টল করা নেই।  এগুলো ছাড়া খেলা চালানো সম্ভব নয়!"
+
+#~ msgid "Enter a message here"
+#~ msgstr "এখানে একটি বার্তা লিখুন"
+
+#~ msgid "Press here to send the message"
+#~ msgstr "বার্তাটি প্রেরণের জন্য এখানে চাপুন"
+
+#~ msgid "&Send"
+#~ msgstr "প্রের&ণ"
+
+#, fuzzy
+#~ msgid "Chat Dialog:"
+#~ msgstr "আড্ডা দেওয়ার ডায়ালগ:"
+
+#~ msgid "Enter a name that identifies you in the game"
+#~ msgstr "খেলা চলাকালে আপনাকে যে নামে ডাকা হবে তা লিখুন"
+
+#~ msgid "&Server:"
+#~ msgstr "সার্ভা&র:"
+
+#~ msgid "Choose a port to connect to"
+#~ msgstr "সংযুক্ত হওয়ার জন্য একটি পোর্ট বেছে নিন"
+
+#~ msgid "Enemy Client Information"
+#~ msgstr "শত্রুপক্ষের ক্লায়েন্ট সংক্রান্ত তথ্য"
+
+#~ msgid "Client information:"
+#~ msgstr "ক্লায়েন্ট সংক্রান্ত তথ্য:"
+
+#~ msgid "CV"
+#~ msgstr "সিভি"
+
+#~ msgid "Client version:"
+#~ msgstr "ক্লায়েন্ট সংস্করণ:"
+
+#~ msgid "Protocol version:"
+#~ msgstr "প্রোটোকল সংস্করণ:"
+
+#~ msgid "PV"
+#~ msgstr "পিভি"
+
+#~ msgid "CI"
+#~ msgstr "সিআই"
+
+#~ msgid "&Game name:"
+#~ msgstr "খেলার না&ম:"
+
+#~ msgid "Choose a port where the server listens on"
+#~ msgstr "সার্ভার যে পোর্টে Listen করবে তা বেছে নিন"
+
+#~ msgid "0"
+#~ msgstr "০"
+
+#~ msgid ":"
+#~ msgstr ":"
+
+#~ msgid "Shows all shots"
+#~ msgstr "নিক্ষিপ্ত সকল গোলা প্রদর্শন করে"
+
+#~ msgid "Shows all hit ships"
+#~ msgstr "আঘাতপ্রাপ্ত সকল জাহাজ প্রদর্শন করে"
+
+#~ msgid "Shows all water shots"
+#~ msgstr "পানিতে পতিত সকল গোলা প্রদর্শন করে"
+
+#~ msgid "Chat Widget"
+#~ msgstr "আড্ডা দেওয়ার উইজেট"

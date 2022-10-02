@@ -1,0 +1,579 @@
+#
+# Tamas Szanto <tszanto@interware.hu>, 2001.
+# Balázs Úr <urbalazs@gmail.com>, 2012, 2013, 2014.
+msgid ""
+msgstr ""
+"Project-Id-Version: KDE 4.3\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2022-09-04 00:43+0000\n"
+"PO-Revision-Date: 2014-02-08 21:53+0100\n"
+"Last-Translator: Balázs Úr <urbalazs@gmail.com>\n"
+"Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
+"Language: hu\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Lokalize 1.5\n"
+
+#, kde-format
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr "Szántó Tamás"
+
+#, kde-format
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr "taszanto@gmail.com"
+
+#: controller.cpp:50
+#, kde-format
+msgid "Computer"
+msgstr "Gépi játékos"
+
+#. i18n: ectx: label, entry (Hostname), group (network)
+#: knavalbattle.kcfg:9
+#, kde-format
+msgid "Default hostname for multiplayer games."
+msgstr "Alapértelmezett gépnév hálózati játéknál."
+
+#. i18n: ectx: label, entry (Port), group (network)
+#: knavalbattle.kcfg:13
+#, kde-format
+msgid "Default port for multiplayer games."
+msgstr "Alapértelmezett port hálózati játékhoz."
+
+#. i18n: ectx: label, entry (Nickname), group (general)
+#: knavalbattle.kcfg:19
+#, kde-format
+msgid "User nickname."
+msgstr "Becenév."
+
+#. i18n: ectx: label, entry (EnableSounds), group (general)
+#: knavalbattle.kcfg:22
+#, kde-format
+msgid "Whether sound effects should be played."
+msgstr "A hanghatások bekapcsolása."
+
+#. i18n: ectx: label, entry (AdjacentShips), group (general)
+#: knavalbattle.kcfg:26
+#, kde-format
+msgid "Allow the ships to be adjacent without one empty space between them."
+msgstr ""
+"Hajók szomszédossá tételének engedélyezése anélkül, hogy egy üres mező lenne "
+"köztük."
+
+#. i18n: ectx: label, entry (SeveralShips), group (general)
+#: knavalbattle.kcfg:30
+#, kde-format
+msgid ""
+"Allow multiple ships of any size, default: 4 of 1, 3 of 2, 2 of 3, 1 of 4."
+msgstr ""
+"Több hajó engedélyezése bármely méretből, alapértelmezetten: 4 db 1, 3 db 2, "
+"2 db 3, 1 db 4."
+
+#. i18n: ectx: ToolBar (gameToolbar)
+#: knavalbattleui.rc:29
+#, kde-format
+msgid "Game Toolbar"
+msgstr "Játék eszköztár"
+
+#: main.cpp:42
+#, kde-format
+msgid "Naval Battle"
+msgstr "Tengeri csata"
+
+#: main.cpp:44
+#, kde-format
+msgid "The KDE ship sinking game"
+msgstr "A KDE hajóelsüllyesztő játéka"
+
+#: main.cpp:45
+#, kde-format
+msgid ""
+"(c) 2000-2005  Nikolas Zimmermann, Daniel Molkentin\n"
+"(c) 2007 Paolo Capriotti"
+msgstr ""
+"(c) Nikolas Zimmermann, Daniel Molkentin, 2000-2005.\n"
+"(c) Paolo Capriotti, 2007."
+
+#: main.cpp:50
+#, kde-format
+msgid "Paolo Capriotti"
+msgstr "Paolo Capriotti"
+
+#: main.cpp:50
+#, kde-format
+msgid "Current maintainer"
+msgstr "Karbantartó"
+
+#: main.cpp:51
+#, kde-format
+msgid "Nikolas Zimmermann"
+msgstr "Nikolas Zimmermann"
+
+#: main.cpp:51
+#, kde-format
+msgid "Project Founder, GUI Handling, Client/Server"
+msgstr "A projekt alapítója. A felület és a kliens-szerver rész kialakítása."
+
+#: main.cpp:52
+#, kde-format
+msgid "Daniel Molkentin"
+msgstr "Daniel Molkentin"
+
+#: main.cpp:52
+#, kde-format
+msgid "Dialog Stuff, Client/Server"
+msgstr "Párbeszédablakok, kliens-szerver rész"
+
+#: main.cpp:53
+#, kde-format
+msgid "Kevin Krammer"
+msgstr "Kevin Krammer"
+
+#: main.cpp:53
+#, kde-format
+msgid "Computer Player"
+msgstr "Gépi játékos"
+
+#: main.cpp:55
+#, kde-format
+msgid "Johann Ollivier Lapeyre"
+msgstr "Johann Ollivier Lapeyre"
+
+#: main.cpp:55
+#, kde-format
+msgid "Game artwork"
+msgstr "Grafika"
+
+#: main.cpp:56
+#, kde-format
+msgid "Eugene Trounev"
+msgstr "Eugene Trounev"
+
+#: main.cpp:56
+#, kde-format
+msgid "Background"
+msgstr "Háttér"
+
+#: main.cpp:57
+#, kde-format
+msgid "Robert Wadley"
+msgstr "Robert Wadley"
+
+#: main.cpp:57
+#, kde-format
+msgid "Artwork for some of the ships"
+msgstr "Néhány hajó grafikája"
+
+#: main.cpp:58
+#, kde-format
+msgid "Riccardo Iaconelli"
+msgstr "Riccardo Iaconelli"
+
+#: main.cpp:58
+#, kde-format
+msgid "Welcome screen"
+msgstr "Üdvözlő képernyő"
+
+#: main.cpp:59
+#, kde-format
+msgid "Benjamin Adler"
+msgstr "Benjamin Adler"
+
+#: main.cpp:59
+#, kde-format
+msgid "Icon"
+msgstr "Ikon"
+
+#: main.cpp:60
+#, kde-format
+msgid "Nils Trzebin"
+msgstr "Nils Trzebin"
+
+#: main.cpp:60
+#, kde-format
+msgid "Sounds"
+msgstr "Hanghatások"
+
+#: main.cpp:61
+#, kde-format
+msgid "Elmar Hoefner"
+msgstr "Elmar Hoefner"
+
+#: main.cpp:61
+#, kde-format
+msgid "GFX"
+msgstr "Grafika"
+
+#: main.cpp:62
+#, kde-format
+msgid "Lukas Tinkl"
+msgstr "Lukas Tinkl"
+
+#: main.cpp:62
+#, kde-format
+msgid "Non-Latin1 Support"
+msgstr "Nemzetköziesítés"
+
+#: main.cpp:63
+#, kde-format
+msgid "Malte Starostik"
+msgstr "Malte Starostik"
+
+#: main.cpp:63
+#, kde-format
+msgid "Various improvements"
+msgstr "Különféle javítások"
+
+#: main.cpp:64
+#, kde-format
+msgid "Albert Astals Cid"
+msgstr "Albert Astals Cid"
+
+#: main.cpp:64 main.cpp:65
+#, kde-format
+msgid "Various improvements and bugfixes"
+msgstr "Különféle javítások és továbbfejlesztések"
+
+#: main.cpp:65
+#, kde-format
+msgid "John Tapsell"
+msgstr "John Tapsell"
+
+#: main.cpp:66
+#, kde-format
+msgid "Inge Wallin"
+msgstr "Inge Wallin"
+
+#: main.cpp:66
+#, kde-format
+msgid "Bugfixes and refactoring"
+msgstr "Hibajavítások, átalakítás"
+
+#: main.cpp:67
+#, kde-format
+msgid "Jakub Stachowski"
+msgstr "Jakub Stachowski"
+
+#: main.cpp:67
+#, kde-format
+msgid "DNS-SD discovery"
+msgstr "DNS-SD-detektálás"
+
+#: main.cpp:68
+#, kde-format
+msgid "Roney Gomes"
+msgstr "KGameRenderer és QGraphicsView átirat"
+
+#: main.cpp:68
+#, kde-format
+msgid "Porting to KGameRenderer and QGraphicsView"
+msgstr "Roney Gomes"
+
+#: main.cpp:75
+#, kde-format
+msgid "[URL]"
+msgstr ""
+
+#: main.cpp:75
+#, kde-format
+msgid "URL of a Naval Battle game server to connect to after startup"
+msgstr ""
+"URL a Tengeri csata játékkiszolgálóhoz, amelyhez indulás után csatlakozik a "
+"program"
+
+#: mainwindow.cpp:59
+#, kde-format
+msgid "&Single Player"
+msgstr "Játék a &gép ellen"
+
+#: mainwindow.cpp:63
+#, kde-format
+msgid "&Host Game..."
+msgstr "Hálózati játék &kezdése..."
+
+#: mainwindow.cpp:67
+#, kde-format
+msgid "&Connect to Game..."
+msgstr "&Csatlakozás hálózati játékhoz..."
+
+#: mainwindow.cpp:72
+#, kde-format
+msgid "Change &Nickname..."
+msgstr "Más be&cenév..."
+
+#: mainwindow.cpp:75
+#, kde-format
+msgid "&Play Sounds"
+msgstr "Hang&hatások"
+
+#: mainwindow.cpp:80
+#, kde-format
+msgid "&Adjacent Ships"
+msgstr "&Szomszédos hajók"
+
+#: mainwindow.cpp:85
+#, kde-format
+msgid "&Multiple Ships"
+msgstr "&Több hajó"
+
+#: mainwindow.cpp:90
+#, kde-format
+msgid "Show End-of-Game Message"
+msgstr "Vége a játéknak üzenet mutatása"
+
+#: mainwindow.cpp:95
+#, kde-format
+msgid "Show &Left Grid"
+msgstr "Rács (&balról)"
+
+#: mainwindow.cpp:99
+#, kde-format
+msgid "Show &Right Grid"
+msgstr "Rács (&jobbról)"
+
+#: networkdialog.cpp:61
+#, kde-format
+msgid "&Nickname:"
+msgstr "Be&cenév:"
+
+#: networkdialog.cpp:73
+#, kde-format
+msgid "&Join game:"
+msgstr "Csat&lakozás játékhoz:"
+
+#: networkdialog.cpp:88
+#, kde-format
+msgid "&Hostname:"
+msgstr "&Gépnév:"
+
+#: networkdialog.cpp:101 networkdialog.cpp:131
+#, kde-format
+msgid "&Port:"
+msgstr "&Port:"
+
+#: networkdialog.cpp:116
+#, kde-format
+msgid "&Enter server address manually"
+msgstr "A tá&voli gép címének megadása"
+
+#: networkdialog.cpp:148
+#, kde-format
+msgid "Network Parameters"
+msgstr "Hálózati paraméterek"
+
+#: networkdialog.cpp:210
+#, kde-format
+msgid "Connecting to remote host..."
+msgstr "Csatlakozás távoli géphez..."
+
+#: networkdialog.cpp:217
+#, kde-format
+msgid "Waiting for an incoming connection..."
+msgstr "Várakozás mások csatlakozására..."
+
+#: networkdialog.cpp:236
+#, kde-format
+msgid "Could not connect to host"
+msgstr "Nem sikerült csatlakozni a megadott géphez"
+
+#: networkentity.cpp:189
+#, kde-format
+msgid "You have "
+msgstr "Önnek van "
+
+#: networkentity.cpp:195
+#, kde-format
+msgid ", "
+msgstr ", "
+
+#: networkentity.cpp:288
+#, kde-format
+msgid "You can place ships adjacent to each other"
+msgstr "A hajókat egymás mellé teheti"
+
+#: networkentity.cpp:291
+#, kde-format
+msgid "You must leave a space between ships"
+msgstr "Ki kell hagynia egy mezőt a hajók között"
+
+#: playerentity.cpp:199
+#, kde-format
+msgid "Your opponent is now known as %1"
+msgstr "Az ellenfél neve mostantól: %1"
+
+#: playerentity.cpp:204
+#, kde-format
+msgid "Your opponent disconnected from the game"
+msgstr "Az ellenfél kilépett a játékból"
+
+#: playfield.cpp:146 playfield.cpp:166
+#, kde-format
+msgid "Shots"
+msgstr "Lövés"
+
+#: playfield.cpp:147 playfield.cpp:167
+#, kde-format
+msgid "Hits"
+msgstr "Találat"
+
+#: playfield.cpp:148 playfield.cpp:168
+#, kde-format
+msgid "Misses"
+msgstr "Mellé"
+
+#: playfield.cpp:188
+#, kde-format
+msgid "You win!"
+msgstr "Gratulálunk, győzött!"
+
+#: playfield.cpp:190
+#, kde-format
+msgid "You win. Excellent!"
+msgstr "Győzött, gratulálunk!"
+
+#: playfield.cpp:194
+#, kde-format
+msgid "You lose."
+msgstr "Ön vesztett."
+
+#: playfield.cpp:196
+#, kde-format
+msgid "You lose. Better luck next time!"
+msgstr "Ön vesztett. Legközelebb több szerencsét!"
+
+#: playfield.cpp:206
+#, kde-format
+msgid "Change Nickname"
+msgstr "Más becenév"
+
+#: playfield.cpp:206
+#, kde-format
+msgid "Enter new nickname:"
+msgstr "Becenév:"
+
+#: playfield.cpp:234
+#, kde-format
+msgid "Restart game"
+msgstr "Újraindítás"
+
+#: playfield.cpp:235
+#, kde-format
+msgid "Your opponent has requested to restart the game. Do you accept?"
+msgstr "Az ellenfél a játék újraindítását kéri. Elfogadja a kérést?"
+
+#: playfield.cpp:236
+#, kde-format
+msgctxt "@action:button"
+msgid "Accept"
+msgstr ""
+
+#: playfield.cpp:237
+#, kde-format
+msgctxt "@action:button"
+msgid "Reject"
+msgstr ""
+
+#: playfield.cpp:246
+#, kde-format
+msgid ""
+"Your opponent is using a pre-KDE4 version of Naval Battle. Note that, "
+"according to the rules enforced by old clients, ships cannot be placed "
+"adjacent to one another and only one ship of each size is allowed."
+msgstr ""
+"Az ellenfél programja régebbi, KDE 4 előtti verziójú. Ne feledje, hogy a "
+"szabályoknak megfelelően a régi kliensek kikényszerítik, hogy hajókat nem "
+"lehet egymás mellett elhelyezni és minden méretből csak egyetlen hajó "
+"engedélyezett."
+
+#: playfield.cpp:259
+#, kde-format
+msgid "Enemy has shot. Shoot now!"
+msgstr "Az ellenfél leadta a lövését. Most Ön következik."
+
+#: playfield.cpp:263
+#, kde-format
+msgid "Waiting for enemy to shoot..."
+msgstr "Várakozás az ellenfél lövésére..."
+
+#: playfield.cpp:272
+#, kde-format
+msgid "Ships placed. Now shoot on the enemy field!"
+msgstr "A hajók elrendezése megtörtént. Adja le a kezdőlövést!"
+
+#: playfield.cpp:275
+#, kde-format
+msgid "Waiting for other player to start the game..."
+msgstr "Várakozás a másik játékosra (ő kezdi a játékot) ..."
+
+#: playfield.cpp:279
+#, kde-format
+msgid "Waiting for other player to place his ships..."
+msgstr "Várakozás a másik játékosra (amíg elhelyezi a hajóit) ..."
+
+#: playfield.cpp:293
+#, kde-format
+msgid "Place your %1 ships. Use the right mouse button to rotate them."
+msgstr ""
+"Helyezzen el %1 hajót. A jobb egérgomb használható a hajók elfordításához."
+
+#: playfield.cpp:299
+#, kde-format
+msgid "You can't place your remaining ships."
+msgstr "Nem tudja elhelyezni a megmaradt hajóit."
+
+#: playfield.cpp:300
+#, fuzzy, kde-format
+#| msgid "Restart"
+msgctxt "@action"
+msgid "Restart"
+msgstr "Újraindítás"
+
+#: playfield.cpp:301
+#, fuzzy, kde-format
+#| msgid "Abort"
+msgctxt "@action"
+msgid "Abort"
+msgstr "Megszakítás"
+
+#: playfield.cpp:302
+#, kde-format
+msgid ""
+"You can't place your remaining ships. Please restart placing ships or abort "
+"game"
+msgstr ""
+"Nem tudja elhelyezni a megmaradt hajóit. Kérjük indítsa újra az elhelyezést "
+"vagy szakítsa meg a játékot."
+
+#: playfield.cpp:302
+#, kde-format
+msgid "Restart placing ships"
+msgstr "Hajók elhelyezésének újraindítása"
+
+#: simplemenu.cpp:40
+#, kde-format
+msgid "Single Player"
+msgstr "Játék a gép ellen"
+
+#: simplemenu.cpp:41
+#, kde-format
+msgid "Host Network Game"
+msgstr "Hálózati játék kezdése"
+
+#: simplemenu.cpp:42
+#, kde-format
+msgid "Connect to Network Game"
+msgstr "Csatlakozás hálózati játékhoz"
+
+#: simplemenu.cpp:132 simplemenu.cpp:149
+#, kde-format
+msgid "Remote player"
+msgstr "Távoli játékos"
+
+#~ msgid "Game difficulty."
+#~ msgstr "Nehézségi szint."
+
+#~ msgid "KBattleship"
+#~ msgstr "KBattleship"

@@ -1,0 +1,727 @@
+<?xml version="1.0" ?>
+<!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN" "dtd/kdedbx45.dtd" [
+  <!ENTITY i18n-knavalbattle "<application
+>Морський бій</application
+>">
+  <!ENTITY % addindex "IGNORE">
+  <!ENTITY % Ukrainian "INCLUDE"
+> <!-- change language only here -->
+]>
+
+<book id="knavalbattle" lang="&language;">
+<bookinfo>
+<title
+>Підручник з гри «&i18n-knavalbattle;»</title>
+
+<authorgroup>
+<author
+>&Daniel.Molkentin; &Daniel.Molkentin.mail; </author>
+
+<author
+>&Nikolas.Zimmermann; &Nikolas.Zimmermann.mail; </author>
+
+<author
+><firstname
+>Anton</firstname
+> <surname
+>Brondz</surname
+> <affiliation
+> <address
+><email
+>dinolinux@gmail.com</email
+></address>
+</affiliation>
+</author>
+
+<othercredit role="reviewer"
+>&Frerich.Raabe; &Frerich.Raabe.mail; </othercredit>
+
+<othercredit role="translator"
+><firstname
+>Юрій</firstname
+><surname
+>Чорноіван</surname
+><affiliation
+><address
+><email
+>yurchor@ukr.net</email
+></address
+></affiliation
+><contrib
+>Переклад українською</contrib
+></othercredit
+> 
+
+</authorgroup>
+
+<legalnotice
+>&FDLNotice;</legalnotice>
+
+<copyright>
+<year
+>2001</year>
+<holder
+>&Daniel.Molkentin;</holder>
+</copyright>
+<copyright>
+<year
+>2001</year>
+<holder
+>&Nikolas.Zimmermann;</holder>
+</copyright>
+<copyright>
+<year
+>2001</year>
+<holder
+>Kevin Krammer</holder>
+</copyright>
+
+<date
+>10 грудня 2020 року</date>
+<releaseinfo
+>Програми 20.12</releaseinfo>
+
+<abstract>
+<para
+>«&i18n-knavalbattle;» — це мережева інтерпретація відомої гри «Морський бій» у &kde;.</para>
+</abstract>
+
+<keywordset>
+<keyword
+>KDE</keyword>
+<keyword
+>kdegames</keyword>
+<keyword
+>knavalbattle</keyword>
+<keyword
+>гра</keyword>
+<keyword
+>морський</keyword>
+<keyword
+>бій</keyword>
+<keyword
+>морський</keyword>
+</keywordset>
+
+</bookinfo>
+
+<chapter id="introduction">
+<title
+>Вступ</title>
+<note
+><title
+>Тип гри:</title
+><para
+>Стратегія, гра на дошці</para
+></note
+><!-- Game genre. Use as many as necessary. Available game types are: Arcade, Board, Card, Dice, Toys, Logic, Strategy.-->
+<note
+><title
+>Можлива кількість гравців:</title
+><para
+>Два</para
+></note
+><!--Number of possible players. It can be: One, Two,..., Multiplayer-->
+
+<screenshot>
+<mediaobject>
+<imageobject>
+<imagedata fileref="gameboard.png" format="PNG"/>
+</imageobject>
+<textobject>
+<phrase
+>Ігрова дошка гри «&i18n-knavalbattle;»</phrase>
+</textobject>
+</mediaobject>
+</screenshot>
+
+<para
+>«&i18n-knavalbattle;» — це гра у морський бій у &kde;. На ігровому полі, яке відповідає морській поверхні, гравці розташовують кораблі. Після цього кожен з гравців по черзі намагається влучити у кораблі іншого гравця. До початку гри гравці не знають, де розташовано кораблі суперника. Перший з гравців, хто потопить кораблі супротивника, виграє гру. </para>
+</chapter>
+
+<chapter id="howtoplay">
+<title
+>Як грати</title>
+<note
+><title
+>Мета:</title
+><para
+>Затопити всі кораблі суперника, перш ніж цей суперник потопить всі ваші кораблі.</para
+></note
+><!--Describe the objective of the game.-->
+<para
+>Для гри у «&i18n-knavalbattle;» потрібні два гравці, — ви можете зіграти проти комп’ютерного гравця або за допомогою мережі проти іншого гравця. Щоб розпочати гру з вашим комп’ютером, спочатку оберіть рівень складності за допомогою спадного списку, розташованого у правій частині смужки стану. Після цього оберіть пункт <guibutton
+>Один гравець</guibutton
+> у вікні вітання або безпосередньо у меню <menuchoice
+><guimenu
+>Гра</guimenu
+></menuchoice
+>.</para>
+
+<para
+>Щоб розпочати гру мережею, комп’ютер одного з гравців має стати вузлом гри. Це можна зробити за допомогою пункту <guilabel
+>Бути господарем мережної гри</guilabel
+> у вікні вітання або за допомогою пункту меню <menuchoice
+><guimenu
+>Гра</guimenu
+> <guimenuitem
+>Організувати гру...</guimenuitem
+></menuchoice
+>. У відповідь програма відкриє діалогове вікно, у якому запитає вас про <guilabel
+>Псевдонім:</guilabel
+> і <guilabel
+>Порт:</guilabel
+>. Зазвичай, «&i18n-knavalbattle;» запропонує як прізвисько ваше повне ім’я, але ви можете ввести будь-який псевдонім, який вам подобається. Порт, який вказує програма можна не міняти. Але, якщо у вас виникатимуть проблеми, ви можете обрати будь-який з вільних портів з номером, більшим за 1024. </para>
+
+<note>
+<para
+>У такому випадку, вам слід повідомити іншого гравця, що ви використовуєте порт, який відрізняється від типового, оскільки комп’ютери обох гравців мають використовувати для встановлення з’єднання однакові порти.</para>
+</note>
+
+<para
+>Другий гравець має обрати пункт <guilabel
+>Приєднатись до мережної гри</guilabel
+> у вікні вітання або скористатися пунктом <menuchoice
+><guimenu
+>Гра</guimenu
+> <guimenuitem
+>Приєднатись до гри...</guimenuitem
+></menuchoice
+>. Знову ж таки, буде запропоновано <guilabel
+>Прізвисько:</guilabel
+>, але ви зможете обрати будь-яке до вподоби. У полі <guilabel
+>Назва вузла:</guilabel
+> вам слід ввести назву вузла вашого сервера (комп’ютера гравця, який є ініціатором гри). </para>
+
+<para
+>Після того, як ви завершите описані вище процедури, можна починати гру. Для цього можна просто слідувати настановам зі смужки стану. На смужці стану буде показано підказки та пропозиції подальших дій. Якщо ви поглянете тепер на екран, ви побачите у вікні програми дві розкреслені у клітинку поля, так звані <quote
+>поля бою</quote
+>. Ліве поле належить вам. Там вам слід розташувати ваші кораблі для продовження воєнних дій проти вашого ворога. У правому полі буде розташовано флот ворога. Коли надійде ваша черга вести вогонь, вам слід навести вказівник миші на певний сектор (клітинку на полі бою), де як ви підозрюєте є корабель ворога, і клацнути лівою кнопкою миші. </para>
+
+<para
+>Спочатку вам слід розташувати власні кораблі. Ініціатор гри робить це першим. Після завершення розташування кораблів ініціатором, свої кораблі розташовує другий гравець. </para>
+
+<para
+>Розташовувати кораблі дуже легко: просто клацніть на клітинці, де ви бажаєте розташувати корабель. Вам слід розташувати чотири кораблі: перший з них заповнюватиме лише одну клітинку, наступний — дві клітинки тощо. Тепер клацніть на полі, де ви бажаєте розпочати розташування корабля. Типово, кораблі будуть розташовуватися горизонтально, щоб повернути корабель на 90°, клацніть правою кнопкою миші перед фіксуванням розташування. </para>
+
+<para
+>Після влучення у корабель на ньому займеться пожежа. Щоб потопити корабель, слід влучити у всі клітинки, на яких його розташовано. Затоплений корабель буде показано у тьмяних тонах. </para>
+
+<para
+>Тепер ви можете скористатися клацанням лівою кнопкою миші для ведення вогню по полю вашого ворога. У смужці стану буде показано інформацію щодо того, хто має стріляти наступним. </para>
+
+<para
+>Ви можете перезапустити гру за допомогою пункту меню <menuchoice
+><guimenu
+>Гра</guimenu
+> <guimenuitem
+>Перезапустити гру</guimenuitem
+></menuchoice
+> або за допомогою натискання клавіші <keycap
+>F5</keycap
+>. </para>
+
+<para
+>Перший з гравців, який затопить всі кораблі суперника, виграє гру. </para>
+
+</chapter>
+
+<chapter id="rulestips">
+<title
+>Правила гри, стратегія та поради</title>
+<sect1 id="rules">
+<title
+>Правила</title>
+<itemizedlist>
+<listitem
+><para
+>Протягом ходу можна робити лише один постріл.</para
+></listitem>
+<listitem
+><para
+>Перед початком гри гравець має розташувати всі свої кораблі.</para
+></listitem>
+<listitem
+><para
+>Після розташування, кораблі не можна пересувати.</para
+></listitem>
+<listitem
+><para
+>Корабель вважається потопленим, після того, як буде підбито всі клітинки, на яких він розташований.</para
+></listitem>
+</itemizedlist>
+</sect1>
+
+<sect1 id="strattips">
+<title
+>Стратегія та поради</title>
+<itemizedlist>
+<listitem
+><para
+>Не розташовуйте кораблі поряд один з одним.</para
+></listitem>
+<listitem
+><para
+>Після влучення у корабель спробуйте обстріляти сусідні клітинки.</para
+></listitem>
+<listitem
+><para
+>Намагайтеся розташовувати кораблі подалі від країв дошки.</para
+></listitem>
+<listitem
+><para
+>У малі кораблі важче влучити, зробіть так, щоб вони знаходилися у місцях, які важко виявити.</para
+></listitem>
+<listitem
+><para
+>Перш ніж стріляти, подумайте. Влучення у воду не додадуть вам очок.</para
+></listitem>
+</itemizedlist>
+</sect1>
+
+</chapter>
+
+<chapter id="menu-reference">
+<title
+>Меню</title>
+
+<sect1 id="menu">
+<title
+>Пункти меню</title>
+
+<variablelist>
+<varlistentry>
+<term>
+<menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>N</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Гра</guimenu
+> <guimenuitem
+>Створити</guimenuitem
+> </menuchoice>
+</term>
+<listitem>
+<para>
+<action
+>Завершує поточну гру і перезавантажує вікно вітання.</action>
+</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term>
+<menuchoice
+><shortcut
+><keycap
+>F5</keycap
+></shortcut
+> <guimenu
+>Гра</guimenu
+> <guimenuitem
+>Перезапустити гру</guimenuitem
+> </menuchoice>
+</term>
+<listitem>
+<para>
+<action
+>Перезапускає гру.</action>
+</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term>
+<menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>H</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Гра</guimenu
+> <guimenuitem
+>Показати найкращі результати</guimenuitem
+> </menuchoice>
+</term>
+<listitem>
+<para>
+<action
+>Показує найкращі поточні результати.</action>
+</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term>
+<menuchoice
+><guimenu
+>Гра</guimenu
+> <guimenuitem
+>Один гравець</guimenuitem
+> </menuchoice>
+</term>
+<listitem>
+<para>
+<action
+>Почати гру з комп’ютерним суперником.</action>
+</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term>
+<menuchoice
+><guimenu
+>Гра</guimenu
+> <guimenuitem
+>Гостити гру...</guimenuitem
+> </menuchoice>
+</term>
+<listitem>
+<para>
+<action
+>Запускає сервер, щоб інший гравець міг з ним з’єднатися.</action>
+</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term>
+<menuchoice
+><guimenu
+>Гра</guimenu
+> <guimenuitem
+>Приєднатись до гри...</guimenuitem
+> </menuchoice>
+</term>
+<listitem>
+<para>
+<action
+>З’єднатися з сервером для того, щоб розпочати гру.</action>
+</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term>
+<menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>Q</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Гра</guimenu
+> <guimenuitem
+>Вийти</guimenuitem
+> </menuchoice>
+</term>
+<listitem>
+<para
+><action
+>Завершує роботу</action
+> гри «&i18n-knavalbattle;». </para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term>
+<menuchoice
+><guimenu
+>Параметри</guimenu
+> <guimenuitem
+>Змінити псевдонім...</guimenuitem
+> </menuchoice>
+</term>
+<listitem>
+<para>
+<action
+>Змінити типовий псевдонім.</action>
+</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term>
+<menuchoice
+><guimenu
+>Параметри</guimenu
+> <guimenuitem
+>Відтворювати звуки</guimenuitem
+> </menuchoice>
+</term>
+<listitem>
+<para
+><action
+>Вмикає або вимикає звуки (які відтворюються під час пострілу).</action
+> Типово звуковий супровід увімкнено. </para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term>
+<menuchoice
+><guimenu
+>Параметри</guimenu
+> <guimenuitem
+>Сусідні кораблі</guimenuitem
+> </menuchoice>
+</term>
+<listitem>
+<para
+><action
+>Вмикає або вимикає можливість розташування кораблів на дошці поруч, без проміжку між ними.</action
+> Типово увімкнено. Якщо ви  <link linkend="howtoplay"
+>граєте у «&i18n-knavalbattle;» за допомогою мережі</link
+>, значення цього параметра гри має бути визначено на основному комп’ютері гри. </para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term>
+<menuchoice
+><guimenu
+>Параметри</guimenu
+> <guimenuitem
+>Показувати повідомлення про кінець гри</guimenuitem
+> </menuchoice>
+</term>
+<listitem>
+<para
+>Якщо вам вдасться виграти з новим найкращим результатом, програма відкриє діалогове вікно найкращих результатів. Якщо ж результат не потрапить до списку найкращих, його буде показано на смужці стану і, якщо позначено цей пункт, за допомогою діалогового вікна. </para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term>
+<menuchoice
+><guimenu
+>Параметри</guimenu
+> <guimenuitem
+>Показати ліву ґратку</guimenuitem
+> <guimenu
+>Параметри</guimenu
+> <guimenuitem
+>Показати праву ґратку</guimenuitem
+> </menuchoice>
+</term>
+<listitem>
+<para
+>За допомогою сітки спрощує прицілювання вказівником миші. </para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term>
+<menuchoice
+><guimenu
+>Параметри</guimenu
+> <guisubmenu
+>Складність</guisubmenu
+> </menuchoice>
+</term>
+<listitem>
+<para
+>Параметр складності гри (<guimenuitem
+>Проста</guimenuitem
+>, <guimenuitem
+>Середня</guimenuitem
+>, <guimenuitem
+>Складна</guimenuitem
+>) має вплив лише на характер гри гравців-людей проти комп’ютера. Підвищення складності впливає на алгоритми, якими користується комп’ютер для розміщення кораблів та ведення вогню по ваших кораблях.</para>
+</listitem>
+</varlistentry>
+
+</variablelist>
+
+<para
+>Крім того, у грі «&i18n-knavalbattle;» передбачено типові для &kde; пункти меню <guimenu
+>Параметри</guimenu
+> і <guimenu
+>Довідка</guimenu
+>. Щоб дізнатися більше, ознайомтеся з розділами щодо <ulink url="help:/fundamentals/menus.html#menus-settings"
+>меню «Параметри»</ulink
+> та <ulink url="help:/fundamentals/menus.html#menus-help"
+>меню «Довідка»</ulink
+> підручника з основ роботи у &kde;. </para>
+
+</sect1>
+</chapter>
+
+<chapter id="faq">
+<title
+>Часті запитання</title>
+
+<qandaset>
+
+<qandaentry>
+<question>
+<para
+>Не знаю, у яку б клітинку вистрілити, можна підказочку? </para>
+</question>
+<answer>
+<para
+>Ні, у грі «&i18n-knavalbattle;» немає системи підказок. </para>
+</answer>
+</qandaentry>
+
+<qandaentry>
+<question>
+<para
+>Як мені розвернути корабель? </para>
+</question>
+<answer>
+<para
+>Пересуньте корабель у потрібне місце, а потім клацніть правою кнопкою миші. </para>
+</answer>
+</qandaentry>
+
+<qandaentry>
+<question>
+<para
+>Чи можна змінити вигляд гри? </para>
+</question>
+<answer>
+<para
+>Ні, тему гри змінити не можна. </para>
+</answer>
+</qandaentry>
+
+</qandaset>
+</chapter>
+
+<chapter id="credits">
+<title
+>Подяки і ліцензування</title>
+
+<para
+>© &i18n-knavalbattle;, 2000–2007</para>
+
+<itemizedlist>
+<title
+>Автори</title>
+<listitem>
+<para
+>Paolo Capriotti <email
+>p.capriotti@gmail.com</email
+> </para>
+</listitem>
+<listitem>
+<para
+>&Nikolas.Zimmermann; &Nikolas.Zimmermann.mail; </para>
+</listitem>
+<listitem>
+<para
+>&Daniel.Molkentin; &Daniel.Molkentin.mail; </para>
+</listitem>
+<listitem>
+<para
+>Kevin Krammer <email
+>kevin.krammer@gmx.at</email
+> </para>
+</listitem>
+</itemizedlist>
+
+<itemizedlist>
+<title
+>Учасники розробки</title>
+<listitem>
+<para
+>Johann Ollivier Lapeyre <email
+>johann.ollivierlapeyre@gmail.com</email
+> </para>
+</listitem>
+<listitem>
+<para
+>Eugene Trounev <email
+>irs_me@hotmail.com</email
+> </para>
+</listitem>
+<listitem>
+<para
+>&Robert.Wadley; <email
+>rob@robntina.fastmail.us</email
+> </para>
+</listitem>
+<listitem>
+<para
+>Riccardo Iaconelli <email
+>ruphy@fsfe.org</email
+> </para>
+</listitem>
+<listitem>
+<para
+>Benjamin Adler <email
+>benadler@bigfoot.de</email
+> </para>
+</listitem>
+<listitem>
+<para
+>Nils Trzebin <email
+>nils.trzebin@stud.uni-hannover.de</email
+> </para>
+</listitem>
+<listitem>
+<para
+>Elmar Hoefner <email
+>elmar.hoefner@uibk.ac.at</email
+></para>
+</listitem>
+
+</itemizedlist>
+
+<para
+>Автор оновлення документації для &kde; 3.4 — <personname
+><firstname
+>Brian</firstname
+><surname
+>Beck</surname
+></personname
+> <email
+>brian.beck@mchsi.com</email
+></para>
+
+<para
+>Автор оновлення документації для &kde; 4 — <personname
+><firstname
+>Elisa</firstname
+><surname
+>Tonello</surname
+></personname
+> <email
+>elisa.tonello@gmail.com</email
+></para>
+
+<para
+>Переклад українською: Юрій Чорноіван <email
+>yurchor@ukr.net</email
+></para
+> 
+&underFDL; &underGPL; </chapter>
+
+&documentation.index; 
+</book>
+<!--
+Local Variables:
+mode: sgml
+sgml-minimize-attributes:nil
+sgml-general-insert-case:lower
+sgml-omittag:t
+sgml-shorttag:t
+sgml-namecase-general:t
+sgml-always-quote-attributes:t
+sgml-indent-step:0
+sgml-indent-data:nil
+sgml-parent-document:nil
+sgml-exposed-tags:nil
+sgml-local-catalogs:nil
+sgml-local-ecat-files:nil
+End:
+-->

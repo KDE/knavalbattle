@@ -1,0 +1,571 @@
+# Translation of kbattleship to Korean.
+# Copyright (C) 2007 This_file_is_part_of_KDE
+# This file is distributed under the same license as the kdegames package.
+# Myong-sung Kim <xfuncrushx@gmail.com>, 2007.
+# Shinjo Park <kde@peremen.name>, 2011, 2013, 2014, 2015, 2019, 2020, 2022.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: kdegames\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2022-09-04 00:43+0000\n"
+"PO-Revision-Date: 2022-07-13 12:49+0200\n"
+"Last-Translator: Shinjo Park <kde@peremen.name>\n"
+"Language-Team: Korean <kde-kr@kde.org>\n"
+"Language: ko\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Lokalize 21.12.3\n"
+
+#, kde-format
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr "김명성"
+
+#, kde-format
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr "xfuncrushx@gmail.com"
+
+#: controller.cpp:50
+#, kde-format
+msgid "Computer"
+msgstr "컴퓨터"
+
+#. i18n: ectx: label, entry (Hostname), group (network)
+#: knavalbattle.kcfg:9
+#, kde-format
+msgid "Default hostname for multiplayer games."
+msgstr "다중 플레이어 게임의 기본 호스트 이름입니다."
+
+#. i18n: ectx: label, entry (Port), group (network)
+#: knavalbattle.kcfg:13
+#, kde-format
+msgid "Default port for multiplayer games."
+msgstr "다중 플레이어 게임의 기본 포트 번호입니다."
+
+#. i18n: ectx: label, entry (Nickname), group (general)
+#: knavalbattle.kcfg:19
+#, kde-format
+msgid "User nickname."
+msgstr "사용자 별명입니다."
+
+#. i18n: ectx: label, entry (EnableSounds), group (general)
+#: knavalbattle.kcfg:22
+#, kde-format
+msgid "Whether sound effects should be played."
+msgstr "음악 효과가 재생되는 지 여부입니다."
+
+#. i18n: ectx: label, entry (AdjacentShips), group (general)
+#: knavalbattle.kcfg:26
+#, kde-format
+msgid "Allow the ships to be adjacent without one empty space between them."
+msgstr "전함끼리 한 칸 띄우지 않고 배치할 수 있도록 합니다."
+
+#. i18n: ectx: label, entry (SeveralShips), group (general)
+#: knavalbattle.kcfg:30
+#, kde-format
+msgid ""
+"Allow multiple ships of any size, default: 4 of 1, 3 of 2, 2 of 3, 1 of 4."
+msgstr ""
+"임의 크기의 여러 전함을 사용할 수 있도록 합니다. 기본값: 1 4개, 2 3개, 3 2"
+"개, 4 1개."
+
+#. i18n: ectx: ToolBar (gameToolbar)
+#: knavalbattleui.rc:29
+#, kde-format
+msgid "Game Toolbar"
+msgstr "게임 도구 모음"
+
+#: main.cpp:42
+#, kde-format
+msgid "Naval Battle"
+msgstr "Naval Battle"
+
+#: main.cpp:44
+#, kde-format
+msgid "The KDE ship sinking game"
+msgstr "KDE 전함 포격 게임"
+
+#: main.cpp:45
+#, kde-format
+msgid ""
+"(c) 2000-2005  Nikolas Zimmermann, Daniel Molkentin\n"
+"(c) 2007 Paolo Capriotti"
+msgstr ""
+"(c) 2000-2005  Nikolas Zimmermann, Daniel Molkentin\n"
+"(c) 2007 Paolo Capriotti"
+
+#: main.cpp:50
+#, kde-format
+msgid "Paolo Capriotti"
+msgstr "Paolo Capriotti"
+
+#: main.cpp:50
+#, kde-format
+msgid "Current maintainer"
+msgstr "현재 관리자"
+
+#: main.cpp:51
+#, kde-format
+msgid "Nikolas Zimmermann"
+msgstr "Nikolas Zimmermann"
+
+#: main.cpp:51
+#, kde-format
+msgid "Project Founder, GUI Handling, Client/Server"
+msgstr "프로젝트 창시자, GUI 운용, 클라이언트/서버"
+
+#: main.cpp:52
+#, kde-format
+msgid "Daniel Molkentin"
+msgstr "Daniel Molkentin"
+
+#: main.cpp:52
+#, kde-format
+msgid "Dialog Stuff, Client/Server"
+msgstr "대화 상자 관련, 클라이언트/서버"
+
+#: main.cpp:53
+#, kde-format
+msgid "Kevin Krammer"
+msgstr "Kevin Krammer"
+
+#: main.cpp:53
+#, kde-format
+msgid "Computer Player"
+msgstr "컴퓨터 플레이어"
+
+#: main.cpp:55
+#, kde-format
+msgid "Johann Ollivier Lapeyre"
+msgstr "Johann Ollivier Lapeyre"
+
+#: main.cpp:55
+#, kde-format
+msgid "Game artwork"
+msgstr "게임 그림"
+
+#: main.cpp:56
+#, kde-format
+msgid "Eugene Trounev"
+msgstr "Eugene Trounev"
+
+#: main.cpp:56
+#, kde-format
+msgid "Background"
+msgstr "배경 화면"
+
+#: main.cpp:57
+#, kde-format
+msgid "Robert Wadley"
+msgstr "Robert Wadley"
+
+#: main.cpp:57
+#, kde-format
+msgid "Artwork for some of the ships"
+msgstr "몇몇 전함 그림"
+
+#: main.cpp:58
+#, kde-format
+msgid "Riccardo Iaconelli"
+msgstr "Riccardo Iaconelli"
+
+#: main.cpp:58
+#, kde-format
+msgid "Welcome screen"
+msgstr "환영 화면"
+
+#: main.cpp:59
+#, kde-format
+msgid "Benjamin Adler"
+msgstr "Benjamin Adler"
+
+#: main.cpp:59
+#, kde-format
+msgid "Icon"
+msgstr "아이콘"
+
+#: main.cpp:60
+#, kde-format
+msgid "Nils Trzebin"
+msgstr "Nils Trzebin"
+
+#: main.cpp:60
+#, kde-format
+msgid "Sounds"
+msgstr "음악"
+
+#: main.cpp:61
+#, kde-format
+msgid "Elmar Hoefner"
+msgstr "Elmar Hoefner"
+
+#: main.cpp:61
+#, kde-format
+msgid "GFX"
+msgstr "GFX"
+
+#: main.cpp:62
+#, kde-format
+msgid "Lukas Tinkl"
+msgstr "Lukas Tinkl"
+
+#: main.cpp:62
+#, kde-format
+msgid "Non-Latin1 Support"
+msgstr "비 라틴1 지원"
+
+#: main.cpp:63
+#, kde-format
+msgid "Malte Starostik"
+msgstr "Malte Starostik"
+
+#: main.cpp:63
+#, kde-format
+msgid "Various improvements"
+msgstr "여러 개선 사항"
+
+#: main.cpp:64
+#, kde-format
+msgid "Albert Astals Cid"
+msgstr "Albert Astals Cid"
+
+#: main.cpp:64 main.cpp:65
+#, kde-format
+msgid "Various improvements and bugfixes"
+msgstr "여러 개선 사항 및 버그 수정"
+
+#: main.cpp:65
+#, kde-format
+msgid "John Tapsell"
+msgstr "John Tapsell"
+
+#: main.cpp:66
+#, kde-format
+msgid "Inge Wallin"
+msgstr "Inge Wallin"
+
+#: main.cpp:66
+#, kde-format
+msgid "Bugfixes and refactoring"
+msgstr "버그 수정 및 리팩토링"
+
+#: main.cpp:67
+#, kde-format
+msgid "Jakub Stachowski"
+msgstr "Jakub Stachowski"
+
+#: main.cpp:67
+#, kde-format
+msgid "DNS-SD discovery"
+msgstr "DNS-SD 발견"
+
+#: main.cpp:68
+#, kde-format
+msgid "Roney Gomes"
+msgstr "Roney Gomes"
+
+#: main.cpp:68
+#, kde-format
+msgid "Porting to KGameRenderer and QGraphicsView"
+msgstr "KGameRenderer 및 QGraphicsView 포팅"
+
+#: main.cpp:75
+#, kde-format
+msgid "[URL]"
+msgstr "[URL]"
+
+#: main.cpp:75
+#, kde-format
+msgid "URL of a Naval Battle game server to connect to after startup"
+msgstr "시작할 때 연결할 Naval Battle 게임 서버 URL"
+
+#: mainwindow.cpp:59
+#, kde-format
+msgid "&Single Player"
+msgstr "단일 플레이어(&S)"
+
+#: mainwindow.cpp:63
+#, kde-format
+msgid "&Host Game..."
+msgstr "게임 열기(&H)..."
+
+#: mainwindow.cpp:67
+#, kde-format
+msgid "&Connect to Game..."
+msgstr "게임에 연결하기(&C)..."
+
+#: mainwindow.cpp:72
+#, kde-format
+msgid "Change &Nickname..."
+msgstr "별명 바꾸기(&N)..."
+
+#: mainwindow.cpp:75
+#, kde-format
+msgid "&Play Sounds"
+msgstr "소리 재생(&P)"
+
+#: mainwindow.cpp:80
+#, kde-format
+msgid "&Adjacent Ships"
+msgstr "전함 인접(&A)"
+
+#: mainwindow.cpp:85
+#, kde-format
+msgid "&Multiple Ships"
+msgstr "여러 전함(&M)"
+
+#: mainwindow.cpp:90
+#, kde-format
+msgid "Show End-of-Game Message"
+msgstr "게임 끝 메시지 표시"
+
+#: mainwindow.cpp:95
+#, kde-format
+msgid "Show &Left Grid"
+msgstr "왼쪽 모눈 표시(&L)"
+
+#: mainwindow.cpp:99
+#, kde-format
+msgid "Show &Right Grid"
+msgstr "오른쪽 모눈 표시(&R)"
+
+#: networkdialog.cpp:61
+#, kde-format
+msgid "&Nickname:"
+msgstr "별명(&N):"
+
+#: networkdialog.cpp:73
+#, kde-format
+msgid "&Join game:"
+msgstr "게임에 참가하기(&J):"
+
+#: networkdialog.cpp:88
+#, kde-format
+msgid "&Hostname:"
+msgstr "호스트 이름(&H):"
+
+#: networkdialog.cpp:101 networkdialog.cpp:131
+#, kde-format
+msgid "&Port:"
+msgstr "포트(&P):"
+
+#: networkdialog.cpp:116
+#, kde-format
+msgid "&Enter server address manually"
+msgstr "수동으로 서버 주소 입력하기(&E)"
+
+#: networkdialog.cpp:148
+#, kde-format
+msgid "Network Parameters"
+msgstr "네트워크 환경 변수"
+
+#: networkdialog.cpp:210
+#, kde-format
+msgid "Connecting to remote host..."
+msgstr "원격 호스트로 접속 중..."
+
+#: networkdialog.cpp:217
+#, kde-format
+msgid "Waiting for an incoming connection..."
+msgstr "다른 플레이어의 접속을 기다리는 중..."
+
+#: networkdialog.cpp:236
+#, kde-format
+msgid "Could not connect to host"
+msgstr "호스트에 연결할 수 없음"
+
+#: networkentity.cpp:189
+#, kde-format
+msgid "You have "
+msgstr "현재 전함:"
+
+#: networkentity.cpp:195
+#, kde-format
+msgid ", "
+msgstr ", "
+
+#: networkentity.cpp:288
+#, kde-format
+msgid "You can place ships adjacent to each other"
+msgstr "전함을 인접하게 배치할 수 있습니다"
+
+#: networkentity.cpp:291
+#, kde-format
+msgid "You must leave a space between ships"
+msgstr "전함 사이를 띄워야 합니다"
+
+#: playerentity.cpp:199
+#, kde-format
+msgid "Your opponent is now known as %1"
+msgstr ""
+"상대방이 별명을 %1(으)로 바꾸었습니다|/|상대방이 별명을 %1$[으 %1]로 바꾸었습"
+"니다"
+
+#: playerentity.cpp:204
+#, kde-format
+msgid "Your opponent disconnected from the game"
+msgstr "상대방이 게임 접속을 끊었습니다"
+
+#: playfield.cpp:146 playfield.cpp:166
+#, kde-format
+msgid "Shots"
+msgstr "포격"
+
+#: playfield.cpp:147 playfield.cpp:167
+#, kde-format
+msgid "Hits"
+msgstr "적중"
+
+#: playfield.cpp:148 playfield.cpp:168
+#, kde-format
+msgid "Misses"
+msgstr "적중 실패"
+
+#: playfield.cpp:188
+#, kde-format
+msgid "You win!"
+msgstr "승리하셨습니다!"
+
+#: playfield.cpp:190
+#, kde-format
+msgid "You win. Excellent!"
+msgstr "승리하셨습니다. 잘 하셨습니다!"
+
+#: playfield.cpp:194
+#, kde-format
+msgid "You lose."
+msgstr "패배하셨습니다."
+
+#: playfield.cpp:196
+#, kde-format
+msgid "You lose. Better luck next time!"
+msgstr "패배하셨습니다. 다음에 열심히 하십시오!"
+
+#: playfield.cpp:206
+#, kde-format
+msgid "Change Nickname"
+msgstr "별명 바꾸기"
+
+#: playfield.cpp:206
+#, kde-format
+msgid "Enter new nickname:"
+msgstr "새 별명 입력:"
+
+#: playfield.cpp:234
+#, kde-format
+msgid "Restart game"
+msgstr "다시 시작하기"
+
+#: playfield.cpp:235
+#, kde-format
+msgid "Your opponent has requested to restart the game. Do you accept?"
+msgstr "상대방이 새 게임을 요청했습니다. 수락하시겠습니까?"
+
+#: playfield.cpp:236
+#, kde-format
+msgctxt "@action:button"
+msgid "Accept"
+msgstr "수락"
+
+#: playfield.cpp:237
+#, kde-format
+msgctxt "@action:button"
+msgid "Reject"
+msgstr "거부"
+
+#: playfield.cpp:246
+#, kde-format
+msgid ""
+"Your opponent is using a pre-KDE4 version of Naval Battle. Note that, "
+"according to the rules enforced by old clients, ships cannot be placed "
+"adjacent to one another and only one ship of each size is allowed."
+msgstr ""
+"상대방이 KDE 4 이전 버전의 Naval Battle을 사용하고 있습니다. 이전 버전의 클라"
+"이언트에서 강제되는 규칙 때문에 전함끼리 바로 인접한 곳에 배치할 수 없으며 각"
+"각 전함 크기는 하나씩만 사용해야 합니다."
+
+#: playfield.cpp:259
+#, kde-format
+msgid "Enemy has shot. Shoot now!"
+msgstr "적이 포격했습니다. 공격하십시오!"
+
+#: playfield.cpp:263
+#, kde-format
+msgid "Waiting for enemy to shoot..."
+msgstr "적의 포격을 기다리는 중..."
+
+#: playfield.cpp:272
+#, kde-format
+msgid "Ships placed. Now shoot on the enemy field!"
+msgstr "전함이 배치되었습니다. 적의 진영을 향해 포격하십시오!"
+
+#: playfield.cpp:275
+#, kde-format
+msgid "Waiting for other player to start the game..."
+msgstr "다른 플레이어가 게임 시작하기를 기다리는 중..."
+
+#: playfield.cpp:279
+#, kde-format
+msgid "Waiting for other player to place his ships..."
+msgstr "상대방이 전함 배치하는 것을 기다리는 중..."
+
+#: playfield.cpp:293
+#, kde-format
+msgid "Place your %1 ships. Use the right mouse button to rotate them."
+msgstr ""
+"%1 전함을 배치하십시오. 마우스 오른쪽 단추를 누르면 배를 회전할 수 있습니다."
+
+#: playfield.cpp:299
+#, kde-format
+msgid "You can't place your remaining ships."
+msgstr "남은 전함을 배치할 수 없습니다."
+
+#: playfield.cpp:300
+#, kde-format
+msgctxt "@action"
+msgid "Restart"
+msgstr "다시 시작"
+
+#: playfield.cpp:301
+#, kde-format
+msgctxt "@action"
+msgid "Abort"
+msgstr "중단"
+
+#: playfield.cpp:302
+#, kde-format
+msgid ""
+"You can't place your remaining ships. Please restart placing ships or abort "
+"game"
+msgstr ""
+"남은 전함을 배치할 수 없습니다. 전함 배치를 다시 시작하거나 게임을 중단하십시"
+"오"
+
+#: playfield.cpp:302
+#, kde-format
+msgid "Restart placing ships"
+msgstr "전함 배치 다시 시작"
+
+#: simplemenu.cpp:40
+#, kde-format
+msgid "Single Player"
+msgstr "단일 플레이어"
+
+#: simplemenu.cpp:41
+#, kde-format
+msgid "Host Network Game"
+msgstr "네트워크 게임 열기"
+
+#: simplemenu.cpp:42
+#, kde-format
+msgid "Connect to Network Game"
+msgstr "네트워크 게임에 연결하기"
+
+#: simplemenu.cpp:132 simplemenu.cpp:149
+#, kde-format
+msgid "Remote player"
+msgstr "원격 플레이어"

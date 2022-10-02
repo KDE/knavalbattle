@@ -1,0 +1,734 @@
+<?xml version="1.0" ?>
+<!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN" "dtd/kdedbx45.dtd" [
+  <!ENTITY i18n-knavalbattle "<application
+>Naval Battle</application
+>">
+  <!ENTITY % addindex "IGNORE">
+  <!ENTITY % German "INCLUDE"
+> <!-- change language only here -->
+]>
+
+<book id="knavalbattle" lang="&language;">
+<bookinfo>
+<title
+>Das Handbuch zu &knavalbattle;</title>
+
+<authorgroup>
+<author
+>&Daniel.Molkentin; &Daniel.Molkentin.mail; </author>
+
+<author
+>&Nikolas.Zimmermann; &Nikolas.Zimmermann.mail; </author>
+
+<author
+><firstname
+>Anton</firstname
+> <surname
+>Brondz</surname
+> <affiliation
+> <address
+><email
+>dinolinux@gmail.com</email
+></address>
+</affiliation>
+</author>
+
+<othercredit role="reviewer"
+>&Frerich.Raabe; &Frerich.Raabe.mail; </othercredit>
+
+<othercredit role="translator"
+><firstname
+>Maren</firstname
+><surname
+>Pakura</surname
+><affiliation
+><address
+><email
+>maren@kde.org</email
+></address
+></affiliation
+><contrib
+>Deutsche Übersetzung</contrib
+></othercredit
+> 
+
+</authorgroup>
+
+<legalnotice
+>&FDLNotice;</legalnotice>
+
+<copyright>
+<year
+>2001</year>
+<holder
+>&Daniel.Molkentin;</holder>
+</copyright>
+<copyright>
+<year
+>2001</year>
+<holder
+>&Nikolas.Zimmermann;</holder>
+</copyright>
+<copyright>
+<year
+>2001</year>
+<holder
+>Kevin Krammer</holder>
+</copyright>
+
+<date
+>2020-12-10</date>
+<releaseinfo
+>Anwendungen 20.12</releaseinfo>
+
+<abstract>
+<para
+>&i18n-knavalbattle; ist eine netzwerkfähige Umsetzung des bekannten Spiels <quote
+>Schiffe versenken</quote
+> von &kde;.</para>
+</abstract>
+
+<keywordset>
+<keyword
+>KDE</keyword>
+<keyword
+>kdegames</keyword>
+<keyword
+>knavalbattle</keyword>
+<keyword
+>Spiel</keyword>
+<keyword
+>Schiffe versenken</keyword>
+<keyword
+>Schlacht</keyword>
+<keyword
+>Marine</keyword>
+</keywordset>
+
+</bookinfo>
+
+<chapter id="introduction">
+<title
+>Einführung</title>
+<note
+><title
+>Spieltyp:</title
+><para
+>Strategiespiel, Brettspiel</para
+></note
+><!-- Game genre. Use as many as necessary. Available game types are: Arcade, Board, Card, Dice, Toys, Logic, Strategy.-->
+<note
+><title
+>Anzahl der Spieler:</title
+><para
+>Zwei</para
+></note
+><!--Number of possible players. It can be: One, Two,..., Multiplayer-->
+
+<screenshot>
+<mediaobject>
+<imageobject>
+<imagedata fileref="gameboard.png" format="PNG"/>
+</imageobject>
+<textobject>
+<phrase
+>&i18n-knavalbattle;-Spielfeld</phrase>
+</textobject>
+</mediaobject>
+</screenshot>
+
+<para
+>&i18n-knavalbattle; ist ein <quote
+>Schiffe versenken</quote
+>-Spiel von &kde;. Alle Schiffe werden auf dem Spielfeld - dem Meer - angeordnet. Die Spieler versuchen die gegnerischen Schiffe, deren Lage auf dem Spielfeld Sie nicht kennen, abwechselnd mit Schüssen zu treffen. Sieger ist, wer als erster alle Schiffe des Gegners versenkt hat. </para>
+</chapter>
+
+<chapter id="howtoplay">
+<title
+>Spielanleitung</title>
+<note
+><title
+>Ziel des Spiels:</title
+><para
+>Versenken Sie alle Schiffe Ihres Gegners, ehe er Ihre Schiffe versenkt.</para
+></note
+><!--Describe the objective of the game.-->
+<para
+>&i18n-knavalbattle; wird zu zweit gespielt, entweder gegen den Rechner oder im Netzwerk gegen einen anderen Spieler. Spielen Sie gegen den Rechner, wählen Sie zuerst eine Ebene rechts in der Statusleiste, dann <guilabel
+>Einzelspieler</guilabel
+> im Startdialog oder im Menü <menuchoice
+><guimenu
+>Spiel</guimenu
+><guimenuitem
+>Einzelspieler</guimenuitem
+></menuchoice
+>.</para>
+
+<para
+>Um im Netzwerk zu spielen, muss ein Spieler das Spiel ausrichten, indem er <guibutton
+>Netzwerkspiel ausrichten</guibutton
+> im Startdialog oder im Menü <menuchoice
+><guimenu
+>Spiel</guimenu
+><guimenuitem
+>Netzwerkspiel ausrichten ...</guimenuitem
+></menuchoice
+> wählt. Es öffnet sich ein Dialog, um <guilabel
+>Spitzname:</guilabel
+> und <guilabel
+>Port:</guilabel
+> einzugeben. Normalerweise wird &i18n-knavalbattle; Ihren vollen Anmeldenamen vorschlagen, Sie können aber jeden beliebigen Namen eintragen. Mit dem vorgegeben Port sollte das Netzwerkspiel funktionieren. Treten jedoch Probleme auf, können Sie jeden anderen freien Port größer als 1024 wählen. </para>
+
+<note>
+<para
+>Beachten Sie, dass alle Mitspieler den gleichen Port einstellen müssen, wenn Sie einen anderen als den vordefinierten Port benutzen.</para>
+</note>
+
+<para
+>Der andere Spieler muss auf <guilabel
+>Mit Netzwerkspiel verbinden</guilabel
+> klicken oder in der Menüleiste <menuchoice
+><guimenu
+>Spiel</guimenu
+><guimenuitem
+>Mit Netzwerkspiel verbinden ...</guimenuitem
+></menuchoice
+> wählen. Wieder wird ein <guilabel
+>Spitzname:</guilabel
+> vorgeschlagen, den Sie jedoch beliebig ändern können. Im Feld <guilabel
+>Rechnername:</guilabel
+> tragen Sie den Namen des Rechners ein, auf dem das Netzwerkspiel gestartet wurde. </para>
+
+<para
+>Wenn Sie das erledigt haben, können Sie ein Spiel starten. Folgen Sie den Anweisungen in der Statusleiste. Dort werden Hinweise gegeben und Vorschläge gemacht, was als Nächstes zu tun ist. Wenn Sie nun auf den Bildschirm schauen, sehen Sie zwei gerasterte Spielfelder, die so genannten <quote
+>Spielflächen</quote
+>. Die linke Seite gehört Ihnen. Hier können Sie Ihre Schiffe platzieren und sehen die Kampfmaßnahmen Ihres Feindes. Im rechten Feld liegt die Flotte Ihres Gegners. Wenn Sie mit dem Schießen an der Reihe sind, klicken Sie auf einen Sektor (ein Feld auf der Spielfläche), wo Sie ein gegnerisches Schiff vermuten. </para>
+
+<para
+>Als Erstes müssen Sie Ihre Schiffe platzieren. Der Initiator des Spiels beginnt. Wenn er fertig ist, kann der zweite Spieler seine Schiffe platzieren. </para>
+
+<para
+>Das Aufstellen der Schiffe ist sehr leicht. Klicken Sie auf das Feld, in das Sie Ihr Schiff stellen möchten. Sie müssen 4 Schiffe setzen. Das erste Schiff hat eine Länge von einem Feld, das nächste ist zwei Felder lang &etc; Klicken Sie auf das Feld, in dem der Bug des Schiffes liegen soll. Als Standard werden alle Schiffe horizontal ausgerichtet, klicken Sie die &RMB; vor dem Platzieren, um sie vertikal auszurichten. </para>
+
+<para
+>Wird ein Schiff getroffen, bricht ein Feuer aus. Um es zu versenken, müssen alle belegten Felder getroffen werden. Ein versenktes Schiff erscheint durchsichtig. </para>
+
+<para
+>Nun können Sie blind mit der &LMBn; auf das gegnerische Spielfeld feuern. Die Statusleiste zeigt an, wer mit dem Schießen an der Reihe ist. </para>
+
+<para
+>Mit <menuchoice
+><guimenu
+>Spiel</guimenu
+> <guimenuitem
+>Spiel neu starten ...</guimenuitem
+></menuchoice
+> oder mit der Taste <keycap
+>F5</keycap
+> können Sie ein Spiel wieder starten. </para>
+
+<para
+>Der erste Spieler, der alle gegnerischen Schiffe zerstört hat, gewinnt das Spiel. </para>
+
+</chapter>
+
+<chapter id="rulestips">
+<title
+>Spielregeln, Spielstrategien und Tipps</title>
+<sect1 id="rules">
+<title
+>Spielregeln</title>
+<itemizedlist>
+<listitem
+><para
+>Die Spieler feuern abwechselnd einen Schuss ab.</para
+></listitem>
+<listitem
+><para
+>Alle Schiffe müssen auf das Spielfeld gesetzt werden.</para
+></listitem>
+<listitem
+><para
+>Schiffe können nicht verschoben werden, wenn Sie gesetzt wurden.</para
+></listitem>
+<listitem
+><para
+>Ein Schiff sinkt, wenn alle Felder, die es belegt, getroffen wurden.</para
+></listitem>
+</itemizedlist>
+</sect1>
+
+<sect1 id="strattips">
+<title
+>Spielstrategien und Tipps</title>
+<itemizedlist>
+<listitem
+><para
+>Platzieren Sie Schiffe nicht direkt nebeneinander.</para
+></listitem>
+<listitem
+><para
+>Haben Sie ein Schiff getroffen, schießen Sie auf alle Felder drumherum.</para
+></listitem>
+<listitem
+><para
+>Platzieren Sie Schiffe nicht in den Eckbereichen des Spielfeldes.</para
+></listitem>
+<listitem
+><para
+>Kleine Schiffe sind schwer zu treffen, verstecken Sie sie gut auf dem Spielfeld.</para
+></listitem>
+<listitem
+><para
+>Überlegen Sie, bevor Sie schießen. Für Fehlschüsse ins Wasser erhalten Sie keine Punkte.</para
+></listitem>
+</itemizedlist>
+</sect1>
+
+</chapter>
+
+<chapter id="menu-reference">
+<title
+>Die Menüs</title>
+
+<sect1 id="menu">
+<title
+>Menüeinträge</title>
+
+<variablelist>
+<varlistentry>
+<term>
+<menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>N</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Spiel</guimenu
+> <guimenuitem
+>Neu</guimenuitem
+> </menuchoice>
+</term>
+<listitem>
+<para>
+<action
+>Beendet das laufende Spiel und zeigt wieder den Startdialog an.</action>
+</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term>
+<menuchoice
+><shortcut
+><keycap
+>F5</keycap
+></shortcut
+> <guimenu
+>Spiel</guimenu
+> <guimenuitem
+>Spiel neu starten</guimenuitem
+> </menuchoice>
+</term>
+<listitem>
+<para>
+<action
+>Startet das Spiel wieder neu.</action>
+</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term>
+<menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>H</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Spiel</guimenu
+> <guimenuitem
+>Bestenliste anzeigen</guimenuitem
+> </menuchoice>
+</term>
+<listitem>
+<para>
+<action
+>Zeigt die Bestenliste der bisherigen Spiele.</action>
+</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term>
+<menuchoice
+><guimenu
+>Spiel</guimenu
+> <guimenuitem
+>Einzelspieler</guimenuitem
+> </menuchoice>
+</term>
+<listitem>
+<para>
+<action
+>Startet ein Spiel, in dem der Computer Ihr Gegner ist.</action>
+</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term>
+<menuchoice
+><guimenu
+>Spiel</guimenu
+> <guimenuitem
+>Netzwerkspiel leiten ..</guimenuitem
+> </menuchoice>
+</term>
+<listitem>
+<para>
+<action
+>Startet den Server, sodass ein anderer Spieler sich mit Ihrem Rechner verbinden kann.</action>
+</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term>
+<menuchoice
+><guimenu
+>Spiel</guimenu
+> <guimenuitem
+>Mit Netzwerkspiel verbinden ...</guimenuitem
+> </menuchoice>
+</term>
+<listitem>
+<para>
+<action
+>Verbindet mit einem Server, um ein neues Netzwerkspiel zu starten.</action>
+</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term>
+<menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>Q</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Spiel</guimenu
+> <guimenuitem
+>Beenden</guimenuitem
+> </menuchoice>
+</term>
+<listitem>
+<para
+><action
+>Beendet</action
+> &i18n-knavalbattle; </para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term>
+<menuchoice
+><guimenu
+>Einstellungen</guimenu
+> <guimenuitem
+>Spitzname ändern ...</guimenuitem
+> </menuchoice>
+</term>
+<listitem>
+<para>
+<action
+>Geben Sie hier den neuen Spitznamen ein.</action>
+</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term>
+<menuchoice
+><guimenu
+>Einstellungen</guimenu
+> <guimenuitem
+>Klänge wiedergeben</guimenuitem
+> </menuchoice>
+</term>
+<listitem>
+<para
+>Falls markiert, <action
+>werden die Klänge zum Spiel abgespielt.</action
+> In der Voreinstellung sind die Klänge eingeschaltet. </para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term>
+<menuchoice
+><guimenu
+>Einstellungen</guimenu
+> <guimenuitem
+>Angrenzende Schiffe</guimenuitem
+> </menuchoice>
+</term>
+<listitem>
+<para
+><action
+>Legt fest, ob Schiffe auf dem Spielfeld ohne leere Felder dazwischen angeordnet werden können.</action
+> Als Voreinstellung ist dies abgeschaltet. Diese Einstellung sollte auf einem Server eingestellt werden, wenn <link linkend="howtoplay"
+>&i18n-knavalbattle; über ein Netzwerk gespielt wird</link
+>. </para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term>
+<menuchoice
+><guimenu
+>Einstellungen</guimenu
+> <guimenuitem
+>Nachricht am Spielende anzeigen</guimenuitem
+> </menuchoice>
+</term>
+<listitem>
+<para
+>Wenn Sie ein Spiel gewonnen haben und dabei eine neues bestes Spielergebnis erzielt haben, wird der Dialog <guilabel
+>Bestenliste</guilabel
+> geöffnet. Ansonsten wird das Ergebnis in der Statusleiste oder, wenn diese Einstellung aktiviert ist, zusätzlich in einem Dialog angezeigt. </para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term>
+<menuchoice
+><guimenu
+>Einstellungen</guimenu
+> <guimenuitem
+>Linkes Gitter anzeigen</guimenuitem
+> <guimenu
+>Einstellungen</guimenu
+> <guimenuitem
+>Rechtes Gitter anzeigen</guimenuitem
+> </menuchoice>
+</term>
+<listitem>
+<para
+>Mit dem Gitter ist es leichter, einen Schuß mit der Mauszeiger zu platzieren. </para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term>
+<menuchoice
+><guimenu
+>Einstellungen</guimenu
+> <guimenuitem
+>Schwierigkeitsgrad</guimenuitem
+> </menuchoice>
+</term>
+<listitem>
+<para
+>Die Einstellungen für den Schwierigkeitsgrad des Spiels (<guimenuitem
+>Leicht</guimenuitem
+>, <guimenuitem
+>Mittel</guimenuitem
+>, <guimenuitem
+>Schwierig</guimenuitem
+>) wirkt sich nur in Spielen gegen den Rechner aus. In höheren Schwierigkeitsgraden benutzt die KI eine bessere Strategie für das Schießen und die Anordnung der Schiffe.</para>
+</listitem>
+</varlistentry>
+
+</variablelist>
+
+<para
+>Zusätzlich hat &i18n-knavalbattle; die bekannten &kde;-Einträge im Menü <guimenu
+>Einstellungen</guimenu
+> und <guimenu
+>Hilfe</guimenu
+>, weitere Informationen dazu finden Sie in den Abschnitten über die Menüs <ulink url="help:/fundamentals/menus.html#menus-settings"
+>Einstellungen</ulink
+> und <ulink url="help:/fundamentals/menus.html#menus-help"
+>Hilfe</ulink
+> der &kde;-Grundlagen. </para>
+
+</sect1>
+</chapter>
+
+<chapter id="faq">
+<title
+>Häufig gestellte Fragen</title>
+
+<qandaset>
+
+<qandaentry>
+<question>
+<para
+>Ich weiß nicht, wohin ich schießen soll, gibt es Tipps? </para>
+</question>
+<answer>
+<para
+>Nein, in &i18n-knavalbattle; gibt es keine Tipps. </para>
+</answer>
+</qandaentry>
+
+<qandaentry>
+<question>
+<para
+>Wie kann ich ein Schiff drehen? </para>
+</question>
+<answer>
+<para
+>Setzen Sie das Schiff auf das Spielfeld und drücken Sie dann die &RMB;. </para>
+</answer>
+</qandaentry>
+
+<qandaentry>
+<question>
+<para
+>Kann ich das Erscheinungsbild des Spiels ändern? </para>
+</question>
+<answer>
+<para
+>Nein, das Design kann nicht geändert werden. </para>
+</answer>
+</qandaentry>
+
+</qandaset>
+</chapter>
+
+<chapter id="credits">
+<title
+>Danksagungen und Lizenz</title>
+
+<para
+>&knavalbattle; Copyright 2000-2007</para>
+
+<itemizedlist>
+<title
+>Autoren</title>
+<listitem>
+<para
+>Paolo Capriotti <email
+>p.capriotti@gmail.com</email
+> </para>
+</listitem>
+<listitem>
+<para
+>&Nikolas.Zimmermann; &Nikolas.Zimmermann.mail; </para>
+</listitem>
+<listitem>
+<para
+>&Daniel.Molkentin; &Daniel.Molkentin.mail; </para>
+</listitem>
+<listitem>
+<para
+>Kevin Krammer <email
+>kevin.krammer@gmx.at</email
+> </para>
+</listitem>
+</itemizedlist>
+
+<itemizedlist>
+<title
+>Beiträge von:</title>
+<listitem>
+<para
+>Johann Ollivier Lapeyre <email
+>johann.ollivierlapeyre@gmail.com</email
+> </para>
+</listitem>
+<listitem>
+<para
+>Eugene Trounev <email
+>irs_me@hotmail.com</email
+> </para>
+</listitem>
+<listitem>
+<para
+>&Robert.Wadley; <email
+>rob@robntina.fastmail.us</email
+> </para>
+</listitem>
+<listitem>
+<para
+>Riccardo Iaconelli <email
+>ruphy@fsfe.org</email
+> </para>
+</listitem>
+<listitem>
+<para
+>Benjamin Adler <email
+>benadler@bigfoot.de</email
+> </para>
+</listitem>
+<listitem>
+<para
+>Nils Trzebin <email
+>nils.trzebin@stud.uni-hannover.de</email
+> </para>
+</listitem>
+<listitem>
+<para
+>Elmar Hoefner <email
+>elmar.hoefner@uibk.ac.at</email
+></para>
+</listitem>
+
+</itemizedlist>
+
+<para
+>Dokumentation für &kde; 3.4 überarbeitet von <personname
+><firstname
+>Brian</firstname
+><surname
+>Beck</surname
+></personname
+> <email
+>brian.beck@mchsi.com</email
+></para>
+
+<para
+>Dokumentation für &kde; 4 überarbeitet von <personname
+><firstname
+>Elisa</firstname
+><surname
+>Tonello</surname
+></personname
+> <email
+>elisa.tonello@gmail.com</email
+></para>
+
+<para
+>Deutsche Übersetzung von Maren Pakura <email
+>maren@kde.org</email
+></para
+> &underFDL; &underGPL; </chapter>
+
+&documentation.index; 
+</book>
+<!--
+Local Variables:
+mode: sgml
+sgml-minimize-attributes:nil
+sgml-general-insert-case:lower
+sgml-omittag:t
+sgml-shorttag:t
+sgml-namecase-general:t
+sgml-always-quote-attributes:t
+sgml-indent-step:0
+sgml-indent-data:nil
+sgml-parent-document:nil
+sgml-exposed-tags:nil
+sgml-local-catalogs:nil
+sgml-local-ecat-files:nil
+End:
+-->

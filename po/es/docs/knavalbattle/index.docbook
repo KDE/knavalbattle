@@ -1,0 +1,774 @@
+<?xml version="1.0" ?>
+<!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN" "dtd/kdedbx45.dtd" [
+  <!ENTITY i18n-knavalbattle "<application
+>Batalla naval</application
+>">
+  <!ENTITY % addindex "IGNORE">
+  <!ENTITY % Spanish "INCLUDE"
+> <!-- change language only here -->
+]>
+
+<book id="knavalbattle" lang="&language;">
+<bookinfo>
+<title
+>El manual de &knavalbattle;</title>
+
+<authorgroup>
+<author
+>&Daniel.Molkentin; &Daniel.Molkentin.mail; </author>
+
+<author
+>&Nikolas.Zimmermann; &Nikolas.Zimmermann.mail; </author>
+
+<author
+><firstname
+>Anton</firstname
+> <surname
+>Brondz</surname
+> <affiliation
+> <address
+><email
+>dinolinux@gmail.com</email
+></address>
+</affiliation>
+</author>
+
+<othercredit role="reviewer"
+>&Frerich.Raabe; &Frerich.Raabe.mail; </othercredit>
+
+<othercredit role="translator"
+> <firstname
+>Rocío</firstname
+> <surname
+>Gallego</surname
+> <affiliation
+><address
+><email
+>traducciones@rociogallego.com</email
+></address
+></affiliation
+> <contrib
+>Traducción</contrib
+> </othercredit
+> <othercredit role="translator"
+> <firstname
+>Rafael</firstname
+> <surname
+>Osuna</surname
+> <affiliation
+><address
+><email
+>rosuna@wol.es</email
+></address
+></affiliation
+> <contrib
+>Traductor</contrib
+> </othercredit
+> <othercredit role="translator"
+> <firstname
+>Pablo</firstname
+> <surname
+>de Vicente</surname
+> <affiliation
+><address
+><email
+>pablo.devicente@gmail.com</email
+></address
+></affiliation
+> <contrib
+>Traductor</contrib
+> </othercredit
+> <othercredit role="translator"
+> <firstname
+>Kira</firstname
+> <surname
+>J. Fernández</surname
+> <affiliation
+><address
+><email
+>kirajfdez@gmail.com</email
+></address
+></affiliation
+> <contrib
+>Traductora</contrib
+> </othercredit
+> 
+
+</authorgroup>
+
+<legalnotice
+>&FDLNotice;</legalnotice>
+
+<copyright>
+<year
+>2001</year>
+<holder
+>&Daniel.Molkentin;</holder>
+</copyright>
+<copyright>
+<year
+>2001</year>
+<holder
+>&Nikolas.Zimmermann;</holder>
+</copyright>
+<copyright>
+<year
+>2001</year>
+<holder
+>Kevin Krammer</holder>
+</copyright>
+
+<date
+>2020-12-10</date>
+<releaseinfo
+>Aplicaciones 20.12</releaseinfo>
+
+<abstract>
+<para
+>&i18n-knavalbattle; es una implementación con soporte para red del famoso juego de hundir los barcos, creado por &kde;.</para>
+</abstract>
+
+<keywordset>
+<keyword
+>KDE</keyword>
+<keyword
+>kdegames</keyword>
+<keyword
+>knavalbattle</keyword>
+<keyword
+>juego</keyword>
+<keyword
+>batallanaval</keyword>
+<keyword
+>batalla</keyword>
+<keyword
+>naval</keyword>
+</keywordset>
+
+</bookinfo>
+
+<chapter id="introduction">
+<title
+>Introducción</title>
+<note
+><title
+>Tipo de juego:</title
+><para
+>Estrategia, Tablero</para
+></note
+><!-- Game genre. Use as many as necessary. Available game types are: Arcade, Board, Card, Dice, Toys, Logic, Strategy.-->
+<note
+><title
+>Número de posibles jugadores:</title
+><para
+>Dos</para
+></note
+><!--Number of possible players. It can be: One, Two,..., Multiplayer-->
+
+<screenshot>
+<mediaobject>
+<imageobject>
+<imagedata fileref="gameboard.png" format="PNG"/>
+</imageobject>
+<textobject>
+<phrase
+>El tablero de juego de &i18n-knavalbattle;</phrase>
+</textobject>
+</mediaobject>
+</screenshot>
+
+<para
+>&i18n-knavalbattle; es el juego de hundir barcos creado por &kde;. Los barcos se colocan sobre un tablero que representa el mar. Los jugadores intentarán alcanzar los barcos de los otros jugadores por turnos sin saber dónde están situados. Ganará la partida el primer jugador que destruya todos los barcos del oponente. </para>
+</chapter>
+
+<chapter id="howtoplay">
+<title
+>Cómo jugar</title>
+<note
+><title
+>Objetivo:</title
+><para
+>Hunda todos los barcos de su oponente antes de que el contrario hunda los suyos.</para
+></note
+><!--Describe the objective of the game.-->
+<para
+>Si desea jugar a &i18n-knavalbattle;, necesitará dos jugadores, bien jugando contra la máquina o contra otro jugador en red. Para jugar contra su máquina, primero debe seleccionar el nivel de dificultad en la parte derecha de la barra de estado y después seleccione <guilabel
+>Un solo jugador</guilabel
+> en la pantalla de bienvenida o directamente en la opción del menú <menuchoice
+> <guimenu
+>Partida</guimenu
+> <guimenuitem
+>Un solo jugador</guimenuitem
+></menuchoice
+>.</para>
+
+<para
+>Para iniciar una partida de red, un jugador tiene que hospedar el juego seleccionando <guilabel
+>Servidor de juego en red</guilabel
+> en la pantalla de bienvenida o seleccionar <menuchoice
+><guimenu
+>Partida</guimenu
+> <guimenuitem
+>Hospedar partida...</guimenuitem
+></menuchoice
+>. Se mostrará un diálogo para solicitarle un <guilabel
+>Apodo:</guilabel
+> y un <guilabel
+>Puerto</guilabel
+>. Normalmente, &i18n-knavalbattle; sugerirá su nombre completo, pero puede modificarlo si lo desea. El puerto predefinido debería funcionar. Sin embargo, si encuentra problemas, puede elegir cualquier otro puerto libre que se encuentre por encima de 1024. </para>
+
+<note>
+<para
+>En caso de que utilice un puerto diferente al predeterminado, deberá comunicárselo al otro jugador, ya que ambos deben utilizar el mismo puerto para poder establecer una conexión.</para>
+</note>
+
+<para
+>El otro jugador debe elegir <guilabel
+>Conectarse a un juego de red</guilabel
+> o usar la opción del menú <menuchoice
+><guimenu
+>Partida</guimenu
+> <guimenuitem
+>Conectarse a la partida...</guimenuitem
+></menuchoice
+> Nuevamente se sugerirá un <guilabel
+>Apodo:</guilabel
+>, pero se puede elegir el que desee. En el campo <guilabel
+>Nombre del servidor</guilabel
+> debe introducir el nombre del servidor (la máquina del jugador que inició el juego). </para>
+
+<para
+>Una vez haya terminado, puede empezar el juego. Basta con que siga las instrucciones de la barra de estado. En ella se irán mostrando consejos y sugerencias sobre qué hacer en cada momento. Si observa la pantalla, verá dos campos cuadriculados, las conocidas «áreas de batalla». El área izquierda es la suya. Aquí es donde debe colocar sus barcos y donde podrá seguir las acciones militares del enemigo. El área de la derecha es en la que su enemigo ha colocado la flota. Cuando le toque a usted disparar, deberá pulsar en un sector determinado (una casilla del área de batalla) tratando de localizar los barcos enemigos. </para>
+
+<para
+>En primer lugar, debe colocar sus barcos. Primero los coloca el jugador que ha comenzado la partida. Cuando ha terminado, el segundo jugador coloca sus barcos. </para>
+
+<para
+>Colocar los barcos es muy sencillo: simplemente, haga click en el campo donde quiera situar sus barcos. Tiene cuatro barcos para colocar: el primero tiene una longitud de un cuadrado, el segundo la tiene de dos cuadrados, &etc;. Haga click en el campo donde quiera comenzar a colocar el barco. Por omisión, los barcos se colocarán horizontalmente; para girarlos 90 grados, pulse el &RMB; antes de colocar el barco. </para>
+
+<para
+>Cuando se alcanza un barco, se desatará fuego sobre él. Para hundirlo, impacte sobre todos los cuadrados que ocupe. Un barco hundido aparecerá difuminado. </para>
+
+<para
+>Ahora puede comenzar a disparar a ciegas con el &LMB; en el área enemiga. La barra de estado indica a quién le toca disparar. </para>
+
+<para
+>Puede reiniciar la partida eligiendo la opción del menú <menuchoice
+><guimenu
+>Juego</guimenu
+> <guimenuitem
+>Reiniciar la partida</guimenuitem
+></menuchoice
+>, o pulsando <keycap
+>F5</keycap
+>. </para>
+
+<para
+>El primer jugador que destruya todos los barcos de su oponente, gana la partida. </para>
+
+</chapter>
+
+<chapter id="rulestips">
+<title
+>Reglas del juego, estrategias y consejos</title>
+<sect1 id="rules">
+<title
+>Reglas</title>
+<itemizedlist>
+<listitem
+><para
+>Un jugador solo puede disparar una vez por turno.</para
+></listitem>
+<listitem
+><para
+>Los jugadores deben situar primero todos sus barcos.</para
+></listitem>
+<listitem
+><para
+>Los barcos no pueden moverse una vez colocados.</para
+></listitem>
+<listitem
+><para
+>Un barco se hunde cuando todos los cuadrados ocupados estén tocados.</para
+></listitem>
+</itemizedlist>
+</sect1>
+
+<sect1 id="strattips">
+<title
+>Estrategias y consejos</title>
+<itemizedlist>
+<listitem
+><para
+>Nunca coloque los barcos pegados.</para
+></listitem>
+<listitem
+><para
+>Una vez que alcance un barco, intente disparar alrededor del lugar del alcance.</para
+></listitem>
+<listitem
+><para
+>Pruebe a colocar los barcos lejos de los bordes del tablero.</para
+></listitem>
+<listitem
+><para
+>Los barcos pequeños son más difíciles de impactar, asegúrese de que sean difíciles de encontrar.</para
+></listitem>
+<listitem
+><para
+>Piense antes de disparar. Los disparos al agua restan puntos.</para
+></listitem>
+</itemizedlist>
+</sect1>
+
+</chapter>
+
+<chapter id="menu-reference">
+<title
+>Los menús</title>
+
+<sect1 id="menu">
+<title
+>Opciones de menú</title>
+
+<variablelist>
+<varlistentry>
+<term>
+<menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>N</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Juego</guimenu
+> <guimenuitem
+>Nuevo</guimenuitem
+> </menuchoice>
+</term>
+<listitem>
+<para>
+<action
+>Sale de la partida actual y vuelve a cargar la pantalla de bienvenida.</action>
+</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term>
+<menuchoice
+><shortcut
+><keycap
+>F5</keycap
+></shortcut
+> <guimenu
+>Game</guimenu
+> <guimenuitem
+>Reiniciar la partida</guimenuitem
+> </menuchoice>
+</term>
+<listitem>
+<para>
+<action
+>Reinicia la partida.</action>
+</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term>
+<menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>H</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Juego</guimenu
+> <guimenuitem
+>Mostrar mejores puntuaciones</guimenuitem
+> </menuchoice>
+</term>
+<listitem>
+<para>
+<action
+>Muestra las mejores puntuaciones logradas.</action>
+</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term>
+<menuchoice
+><guimenu
+>Juego</guimenu
+> <guimenuitem
+>Un solo jugador</guimenuitem
+> </menuchoice>
+</term>
+<listitem>
+<para>
+<action
+>Inicia un juego con el ordenador como oponente.</action>
+</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term>
+<menuchoice
+><guimenu
+>Juego</guimenu
+> <guimenuitem
+>Partida del servidor...</guimenuitem
+> </menuchoice>
+</term>
+<listitem>
+<para>
+<action
+>Inicia el servidor para que otro jugador se pueda conectar con usted.</action>
+</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term>
+<menuchoice
+><guimenu
+>Juego</guimenu
+> <guimenuitem
+>Conectarse a la partida...</guimenuitem
+> </menuchoice>
+</term>
+<listitem>
+<para>
+<action
+>Se conecta al servidor para iniciar un partida.</action>
+</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term>
+<menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>Q</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Juego</guimenu
+> <guimenuitem
+>Salir</guimenuitem
+> </menuchoice>
+</term>
+<listitem>
+<para
+><action
+>Sale</action
+> de &i18n-knavalbattle;. </para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term>
+<menuchoice
+><guimenu
+>Preferencias</guimenu
+> <guimenuitem
+>Cambiar apodo...</guimenuitem
+> </menuchoice>
+</term>
+<listitem>
+<para>
+<action
+>Cambia el apodo predeterminado.</action>
+</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term>
+<menuchoice
+><guimenu
+>Preferencias</guimenu
+> <guimenuitem
+>Reproducir sonidos</guimenuitem
+> </menuchoice>
+</term>
+<listitem>
+<para
+><action
+>Activa o desactiva la reproducción de sonidos (al disparar).</action
+> Por defecto están activados. </para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term>
+<menuchoice
+><guimenu
+>Preferencias</guimenu
+> <guimenuitem
+>Barcos adyacentes</guimenuitem
+> </menuchoice>
+</term>
+<listitem>
+<para
+><action
+>Conmuta la posibilidad de que los barcos se puedan colocar en un tablero sin espacios en blanco entre ellos.</action
+> De manera predeterminada, sí se permite. Esta preferencia de debe definir en un servidor cuando se <link linkend="howtoplay"
+>juega a &i18n-knavalbattle; a través de la red</link
+>. </para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term>
+<menuchoice
+><guimenu
+>Preferencias</guimenu
+> <guimenuitem
+>Mostrar mensaje de fin de partida</guimenuitem
+> </menuchoice>
+</term>
+<listitem>
+<para
+>Si ha ganado la partida y ha alcanzado una nueva mejor puntuación, se abrirá el diálogo de mejores puntuaciones. Si no, el resultado se muestra en la barra de estado o, si esta opción está activada, también en un diálogo. </para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term>
+<menuchoice
+><guimenu
+>Preferencias</guimenu
+> <guimenuitem
+>Mostrar cuadrícula izquierda</guimenuitem
+> <guimenu
+>Preferencias</guimenu
+> <guimenuitem
+>Mostrar cuadrícula derecha</guimenuitem
+> </menuchoice>
+</term>
+<listitem>
+<para
+>Con la cuadrícula, es más fácil realizar un tiro con el puntero del ratón. </para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term>
+<menuchoice
+><guimenu
+>Preferencias</guimenu
+> <guimenuitem
+>Dificultad</guimenuitem
+> </menuchoice>
+</term>
+<listitem>
+<para
+>La preferencia de dificultad de la partida (<guimenuitem
+>Fácil</guimenuitem
+>, <guimenuitem
+>Media</guimenuitem
+> o <guimenuitem
+>Difícil</guimenuitem
+>) solo tiene efecto en partidas de un solo jugador contra la máquina. En los niveles superiores, la IA utiliza una estrategia más inteligente para disparar y para colocar los barcos.</para>
+</listitem>
+</varlistentry>
+
+</variablelist>
+
+<para
+>Además, &i18n-knavalbattle; tiene las opciones de menú <guimenu
+>Preferencias</guimenu
+> y <guimenu
+>Ayuda</guimenu
+> comunes de &kde;. Para obtener más información, consulte las secciones sobre el <ulink url="help:/fundamentals/menus.html#menus-settings"
+>Menú «Preferencias»</ulink
+> y <ulink url="help:/fundamentals/menus.html#menus-help"
+>Menú «Ayuda» </ulink
+> de «Aspectos básicos de &kde;». </para>
+
+</sect1>
+</chapter>
+
+<chapter id="faq">
+<title
+>Preguntas frecuentes</title>
+
+<qandaset>
+
+<qandaentry>
+<question>
+<para
+>No estoy seguro de a dónde disparar, ¿puedo obtener una pista? </para>
+</question>
+<answer>
+<para
+>No, &i18n-knavalbattle; no tiene un sistema de pistas. </para>
+</answer>
+</qandaentry>
+
+<qandaentry>
+<question>
+<para
+>¿Cómo puedo girar un barco? </para>
+</question>
+<answer>
+<para
+>Mueva el barco hasta donde quiera colocarlo, y pulse el &RMB;. </para>
+</answer>
+</qandaentry>
+
+<qandaentry>
+<question>
+<para
+>¿Puedo cambiar el aspecto del juego? </para>
+</question>
+<answer>
+<para
+>No, el tema no se puede cambiar. </para>
+</answer>
+</qandaentry>
+
+</qandaset>
+</chapter>
+
+<chapter id="credits">
+<title
+>Créditos y licencia</title>
+
+<para
+>&knavalbattle; Copyright 2000-2007</para>
+
+<itemizedlist>
+<title
+>Autores</title>
+<listitem>
+<para
+>Paolo Capriotti <email
+>p.capriotti@gmail.com</email
+>. </para>
+</listitem>
+<listitem>
+<para
+>&Nikolas.Zimmermann; &Nikolas.Zimmermann.mail;. </para>
+</listitem>
+<listitem>
+<para
+>&Daniel.Molkentin; &Daniel.Molkentin.mail;. </para>
+</listitem>
+<listitem>
+<para
+>Kevin Krammer <email
+>kevin.krammer@gmx.at</email
+>. </para>
+</listitem>
+</itemizedlist>
+
+<itemizedlist>
+<title
+>Colaboradores</title>
+<listitem>
+<para
+>Johann Ollivier Lapeyre <email
+>johann.ollivierlapeyre@gmail.com</email
+>. </para>
+</listitem>
+<listitem>
+<para
+>Eugene Trounev <email
+>irs_me@hotmail.com</email
+>. </para>
+</listitem>
+<listitem>
+<para
+>&Robert.Wadley; <email
+>rob@robntina.fastmail.us</email
+> </para>
+</listitem>
+<listitem>
+<para
+>Riccardo Iaconelli <email
+>ruphy@fsfe.org</email
+>. </para>
+</listitem>
+<listitem>
+<para
+>Benjamin Adler <email
+>benadler@bigfoot.de</email
+>. </para>
+</listitem>
+<listitem>
+<para
+>Nils Trzebin <email
+>nils.trzebin@stud.uni-hannover.de</email
+>. </para>
+</listitem>
+<listitem>
+<para
+>Elmar Hoefner <email
+>elmar.hoefner@uibk.ac.at</email
+>.</para>
+</listitem>
+
+</itemizedlist>
+
+<para
+>Documentación actualizada para &kde; 3.4 por <personname
+><firstname
+>Brian</firstname
+><surname
+>Beck</surname
+></personname
+> <email
+>brian.beck@mchsi.com</email
+></para>
+
+<para
+>Documentación actualizada para &kde; 4 por <personname
+><firstname
+>Elisa</firstname
+><surname
+>Tonello</surname
+></personname
+> <email
+>elisa.tonello@gmail.com</email
+></para>
+
+<para
+>Traducido por Rocío Gallego <email
+>traducciones@rociogallego.com</email
+>, Rafael Osuna <email
+>rosuna@wol.es</email
+>, Pablo de Vicente <email
+>pvicentea@nexo.es</email
+> y Kira J. Fernández <email
+>kirajfdez@gmail.com</email
+></para
+>  &underFDL; &underGPL; </chapter>
+
+&documentation.index; 
+</book>
+<!--
+Local Variables:
+mode: sgml
+sgml-minimize-attributes:nil
+sgml-general-insert-case:lower
+sgml-omittag:t
+sgml-shorttag:t
+sgml-namecase-general:t
+sgml-always-quote-attributes:t
+sgml-indent-step:0
+sgml-indent-data:nil
+sgml-parent-document:nil
+sgml-exposed-tags:nil
+sgml-local-catalogs:nil
+sgml-local-ecat-files:nil
+End:
+-->

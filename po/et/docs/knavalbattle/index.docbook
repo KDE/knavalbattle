@@ -1,0 +1,728 @@
+<?xml version="1.0" ?>
+<!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN" "dtd/kdedbx45.dtd" [
+  <!ENTITY kappname "<application
+>Naval Battle</application
+>">
+  <!ENTITY package "kdegames">
+  <!ENTITY % addindex "IGNORE">
+  <!ENTITY % Estonian  "INCLUDE"
+> <!-- change language only here -->
+]>
+
+<book id="knavalbattle" lang="&language;">
+<bookinfo>
+<title
+>&kappname; käsiraamat</title>
+
+<authorgroup>
+<author
+>&Daniel.Molkentin; &Daniel.Molkentin.mail; </author>
+
+<author
+>&Nikolas.Zimmermann; &Nikolas.Zimmermann.mail; </author>
+
+<author
+><firstname
+>Anton</firstname
+> <surname
+>Brondz</surname
+> <affiliation
+> <address
+><email
+>dinolinux@gmail.com</email
+></address>
+</affiliation>
+</author>
+
+<othercredit role="reviewer"
+>&Frerich.Raabe; &Frerich.Raabe.mail; </othercredit>
+
+<othercredit role="translator"
+><firstname
+>Marek</firstname
+> <surname
+>Laane</surname
+> <affiliation
+><address
+><email
+>bald@smail.ee</email
+></address
+></affiliation
+><contrib
+>Tõlge eesti keelde</contrib
+></othercredit
+> 
+
+</authorgroup>
+
+<legalnotice
+>&FDLNotice;</legalnotice>
+
+<copyright>
+<year
+>2001</year>
+<holder
+>&Daniel.Molkentin;</holder>
+</copyright>
+<copyright>
+<year
+>2001</year>
+<holder
+>&Nikolas.Zimmermann;</holder>
+</copyright>
+<copyright>
+<year
+>2001</year>
+<holder
+>Kevin Krammer</holder>
+</copyright>
+
+<date
+>2013-05-05</date>
+<releaseinfo
+>2.0 (&kde; 4.11)</releaseinfo>
+
+<abstract>
+<para
+>&kappname; on kuulsa laevade pommitamise mängu kehastus &kde;s.</para>
+</abstract>
+
+<keywordset>
+<keyword
+>KDE</keyword>
+<keyword
+>kdegames</keyword>
+<keyword
+>knavalbattle</keyword>
+<keyword
+>mäng</keyword>
+<keyword
+>laevade</keyword>
+<keyword
+>pommitamine</keyword>
+<keyword
+>meri</keyword>
+</keywordset>
+
+</bookinfo>
+
+<chapter id="introduction">
+<title
+>Sissejuhatus</title>
+<note
+><title
+>Mängu tüüp:</title
+><para
+>strateegia, lauamäng</para
+></note
+><!-- Game genre. Use as many as necessary. Available game types are: Arcade, Board, Card, Dice, Toys, Logic, Strategy.-->
+<note
+><title
+>Mängijate arv:</title
+><para
+>Kaks</para
+></note
+><!--Number of possible players. It can be: One, Two,..., Multiplayer-->
+<para
+>&kappname; on &kde; laevade pommitamise mäng. Laevad on asetatud merd kujutavale mänguväljale. Mängijad püüavad kordamööda tabada vastase laevu, teadmata, kus need täpselt asuvad. Mängu võidab mängija, kes hävitab esimesena kõik vastase laevad. </para>
+</chapter>
+
+<chapter id="howtoplay">
+<title
+>Kuidas mängida</title>
+<note
+><title
+>Eesmärk:</title
+><para
+>uputada kõik vastase laevad, enne kui vastane jõuab uputada kõik sinu laevad.</para
+></note
+><!--Describe the objective of the game.-->
+<para
+>&kappname; vajab mängimiseks kaht mängijat, olgu siis teiseks mängijaks arvuti või mõni reaalne mängija võrgus. Arvuti vastu mängimiseks vali kõigepealt olekuriba paremas servas raskusaste ja seejärel klõpsa avaekraanil <guibutton
+>Üksikmängija</guibutton
+> või vali seesama käsk menüüst <menuchoice
+><guimenu
+>Mäng</guimenu
+></menuchoice
+>.</para>
+
+<para
+>Võrgumängu alustamiseks peab üks mängijatest täitma serveri rolli, milleks tuleb avaekraanil valida <guilabel
+>Võrgumäng</guilabel
+> või valida menüükäsk <menuchoice
+><guimenu
+>Mäng</guimenu
+> <guimenuitem
+>Serverimäng...</guimenuitem
+></menuchoice
+>. Avaneb dialoog, mis palub sisestada <guilabel
+>hüüdnime</guilabel
+> ja <guilabel
+>pordi</guilabel
+>. Tavaliselt pakub &kappname; ise välja nime, millega oled end sisse loginud, kuid sa võid sisestada sellele väljale, mida soovid. Eelnevalt määratud port peaks üldjuhul sobima. Kui sul tekib aga probleeme, võid valida suvalise vaba pordi ülevalpool porti 1024. </para>
+
+<note>
+<para
+>Kui kasutad mõnda muud kui vaikeporti, tuleks seda öelda ka vastasmängijale, sest ühenduse loomiseks peavad mõlemad mängijad kasutama üht ja sama porti.</para>
+</note>
+
+<para
+>Teine mängija peab valima avaekraanil  <guilabel
+>Ühendu võrgumänguga</guilabel
+> või kasutama menüükäsku <menuchoice
+><guimenu
+>Mäng</guimenu
+> <guimenuitem
+>Ühendu mänguga</guimenuitem
+></menuchoice
+>. Ka siin soovitakse teada <guilabel
+>hüüdnime</guilabel
+> ning ka siin võid väljapakutu asendada millega tahes. Väljale <guilabel
+>Masinanimi:</guilabel
+> tuleb kirjutada serveri nimi (s.t selle mängija masina nimi, kes mängu algatas). </para>
+
+<para
+>Kui oled valmis, võid mängu alustada. Selleks järgi lihtsalt olekuribale ilmuvaid juhiseid, kus pakutakse välja vihjeid ning soovitusi, mida järgmisena ette võtta. Kui ekraanile vaatad, näed seal kaht ruudustikku ehk niinimetatud <quote
+>lahinguvälja</quote
+>. Vasakpoolne kuulub sulle. Sinna saad paigutada oma laevad ja jälgida, mida ja kuidas vastane pommitab. Parempoolne ruudustik kuulubki vastasele. Kui tuleb sinu kord tulistada, pead selleks klõpsama mingil kindlal sektoril (lahinguvälja ruudul), kus sinu arvates võiks asuda vastase laev. </para>
+
+<para
+>Esmalt tuleb sul aga enda laevad paika panna. Esimesena saab seda teha mängu algataja. Kui ta on valmis saanud, paneb oma laevad paika teine mängija. </para>
+
+<para
+>Laevade asetamine on imelihtne: selleks tuleb vaid klõpsata ruudul, kuhu soovid laeva asetada. Paika tuleb panna neli laeva: esimene on ühe ruudu pikkune, järgmine kahe ruudu pikkune &etc; Klõpsa väljal, kus soovid näha laeva esimest otsa. Vaikimisi asetatakse laevad rõhtsalt, nende pööramiseks 90 kraadi võrra, s.t asetamiseks püstiselt, klõpsa enne asetamist &HPNga;. </para>
+
+<para
+>Kui laev saab pihta, ilmub nähtavale tuleleek. Laeva uputamiseks pommita pihta saanud ruudu naaberruute. Uputatud laev ilmub nähtavale tuhmilt. </para>
+
+<para
+>Seejärel võid teha &HVNga; klõpsates esimese lasu vastase alale, mis on sinu eest varjatud. Olekuriba näitab, kelle kord on tulistada. </para>
+
+<para
+>Mängu saab taaskäivitada menüükäsuga <menuchoice
+><guimenu
+>Mäng</guimenu
+> <guimenuitem
+>Käivita mäng uuesti</guimenuitem
+></menuchoice
+> või klahviga <keycap
+>F5</keycap
+>. </para>
+
+<para
+>Mängija, kes esimesena hävitab kõik vastase laevad, on võitja. </para>
+
+</chapter>
+
+<chapter id="rulestips">
+<title
+>Mängureeglid, strateegia ja nõuanded</title>
+<sect1 id="rules">
+<title
+>Reeglid</title>
+<itemizedlist>
+<listitem
+><para
+>Mängija saab tulistada ainult ühe korra vooru jooksul.</para
+></listitem>
+<listitem
+><para
+>Mängijad peavad asetama kõik oma laevad mänguväljale.</para
+></listitem>
+<listitem
+><para
+>Asetatud laevu ei saa enam mujale asetada.</para
+></listitem>
+<listitem
+><para
+>Laev on uputatud, kui pihta on saanud kõik ruudud, mida ta hõivab.</para
+></listitem>
+</itemizedlist>
+</sect1>
+
+<sect1 id="strattips">
+<title
+>Strateegia ja nõuanded</title>
+<itemizedlist>
+<listitem
+><para
+>Ära aseta laevu kunagi üksteise kõrvale.</para
+></listitem>
+<listitem
+><para
+>Kui oled laeva tabanud, proovi tulistada naaberruute.</para
+></listitem>
+<listitem
+><para
+>Proovi asetada laevad mänguvälja servast eemale.</para
+></listitem>
+<listitem
+><para
+>Väiksemaid laevu on raskem tabada, nii et proovi nad asetada kohta, kus neile võikski olla raskem pihta saada.</para
+></listitem>
+<listitem
+><para
+>Mõtle enne tulistamist. Tabamus vette ei kasvata just skoori.</para
+></listitem>
+</itemizedlist>
+</sect1>
+
+</chapter>
+
+<chapter id="menu-reference">
+<title
+>Menüüd</title>
+
+<sect1 id="menu">
+<title
+>Menüükirjed</title>
+
+<variablelist>
+<varlistentry>
+<term>
+<menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>N</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Mäng</guimenu
+> <guimenuitem
+>Uus</guimenuitem
+> </menuchoice>
+</term>
+<listitem>
+<para>
+<action
+>Lõpetab aktiivse mängu ja näitab uuesti avaekraani.</action>
+</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term>
+<menuchoice
+><shortcut
+><keycap
+>F5</keycap
+></shortcut
+> <guimenu
+>Mäng</guimenu
+> <guimenuitem
+>Käivita mäng uuesti</guimenuitem
+> </menuchoice>
+</term>
+<listitem>
+<para>
+<action
+>Taaskäivitab mängu.</action>
+</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term>
+<menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>H</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Mäng</guimenu
+> <guimenuitem
+>Näita rekordeid</guimenuitem
+> </menuchoice>
+</term>
+<listitem>
+<para>
+<action
+>Näitab seniseid rekordeid.</action>
+</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term>
+<menuchoice
+><guimenu
+>Mäng</guimenu
+> <guimenuitem
+>Üksikmängija</guimenuitem
+> </menuchoice>
+</term>
+<listitem>
+<para>
+<action
+>Alustab mängu, kus vastaseks on arvuti.</action>
+</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term>
+<menuchoice
+><guimenu
+>Mäng</guimenu
+> <guimenuitem
+>Serverimäng...</guimenuitem
+> </menuchoice>
+</term>
+<listitem>
+<para>
+<action
+>Käivitab serveri, millega teine mängija saab ühendust võtta.</action>
+</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term>
+<menuchoice
+><guimenu
+>Mäng</guimenu
+> <guimenuitem
+>Ühendu mänguga...</guimenuitem
+> </menuchoice>
+</term>
+<listitem>
+<para>
+<action
+>Ühendub mängu alustamiseks serveriga.</action>
+</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term>
+<menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>Q</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Mäng</guimenu
+> <guimenuitem
+>Välju</guimenuitem
+> </menuchoice>
+</term>
+<listitem>
+<para
+><action
+>Lõpetab</action
+> &kappname; töö. </para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term>
+<menuchoice
+><guimenu
+>Seadistused</guimenu
+> <guimenuitem
+>Hüüdnime muutmine...</guimenuitem
+> </menuchoice>
+</term>
+<listitem>
+<para>
+<action
+>Võimaldab muuta vaikimisi hüüdnime.</action>
+</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term>
+<menuchoice
+><guimenu
+>Seadistused</guimenu
+><guimenuitem
+>Helide esitamine</guimenuitem
+> </menuchoice>
+</term>
+<listitem>
+<para
+><action
+>Lülitab helide mängimise (tulistamisel) sisse ja välja.</action
+> Vaikimisi on see sees. </para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term>
+<menuchoice
+><guimenu
+>Seadistused</guimenu
+><guimenuitem
+>Kokkupuutuvad laevad</guimenuitem
+> </menuchoice>
+</term>
+<listitem>
+<para
+><action
+>Võimaldab lülitada, kas laevu saab asetada lauale nende vahele üht tühja ruutu jätmata või mitte.</action
+> Vaikimisi on see lubatud. Kui <link linkend="howtoplay"
+>mängida &kappname;'i võrgus</link
+>, tuleks see kindlasti masinas määrata. </para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term>
+<menuchoice
+><guimenu
+>Seadistused</guimenu
+> <guimenuitem
+>Mängulõpu teate näitamine</guimenuitem
+> </menuchoice>
+</term>
+<listitem>
+<para
+>Mängu võitmise ja uue rekordi püstitamise korral näidatakse rekordite tabelit. Muidu näidatakse tulemust olekuribal või, kui see valik on sisse lülitatud, ka eraldi dialoogis. </para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term>
+<menuchoice
+><guimenu
+>Seadistused</guimenu
+> <guimenuitem
+>Vasakpoolse alusvõrgu näitamine</guimenuitem
+> <guimenu
+>Seadistused</guimenu
+> <guimenuitem
+>Parempoolse alusvõrgu näitamine</guimenuitem
+> </menuchoice>
+</term>
+<listitem>
+<para
+>Alusvõrgu nähtavale toomisel on hõlpsam laevu hiirega paika panna. </para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term>
+<menuchoice
+><guimenu
+>Seadistused</guimenu
+> <guisubmenu
+>Raskusaste</guisubmenu
+> </menuchoice>
+</term>
+<listitem>
+<para
+>Mängu raskusaste (<guimenuitem
+>lihtne</guimenuitem
+>, <guimenuitem
+>keskmine</guimenuitem
+>, <guimenuitem
+>raske</guimenuitem
+>) avaldab mõju ainult siis, kui mängid arvuti vastu. Raskemal tasemel kasutab tehisintellekt strateegiat laevade paigutamisel ja tulistamisel.</para>
+</listitem>
+</varlistentry>
+
+</variablelist>
+
+<para
+>Lisaks on &kappname;'il tavapärased &kde; <guimenu
+>seadistuste</guimenu
+> ja <guimenu
+>abi</guimenu
+>menüü elemendid, mille kohta leiab rohkem teavet &kde; põhialuste käsiraamatu osadest <ulink url="help:/fundamentals/ui.html#menus-settings"
+>Menüü Seadistused</ulink
+> ja <ulink url="help:/fundamentals/ui.html#menus-help"
+>Menüü Abi</ulink
+>. </para>
+
+</sect1>
+</chapter>
+
+<chapter id="faq">
+<title
+>Korduma kippuvad küsimused</title>
+
+<qandaset>
+
+<qandaentry>
+<question>
+<para
+>Ma ei saa hästi aru, kuidas tulistada. Kas mingeid vihjeid ei saaks? </para>
+</question>
+<answer>
+<para
+>Ei, &kappname; ei kasuta vihjeid. </para>
+</answer>
+</qandaentry>
+
+<qandaentry>
+<question>
+<para
+>Kuidas laeva pöörata? </para>
+</question>
+<answer>
+<para
+>Liiguta laev sinna, kuhu soovid selle asetada, ja klõpsa &HPNga;. </para>
+</answer>
+</qandaentry>
+
+<qandaentry>
+<question>
+<para
+>Kuidas muuta mängu välimust? </para>
+</question>
+<answer>
+<para
+>Teemat ei saa muuta. </para>
+</answer>
+</qandaentry>
+
+</qandaset>
+</chapter>
+
+<chapter id="credits">
+<title
+>Autorid ja litsents</title>
+
+<para
+>&kappname; autoriõigus 2000-2007</para>
+
+<itemizedlist>
+<title
+>Autorid</title>
+<listitem>
+<para
+>Paolo Capriotti <email
+>p.capriotti@gmail.com</email
+> </para>
+</listitem>
+<listitem>
+<para
+>&Nikolas.Zimmermann; &Nikolas.Zimmermann.mail; </para>
+</listitem>
+<listitem>
+<para
+>&Daniel.Molkentin; &Daniel.Molkentin.mail; </para>
+</listitem>
+<listitem>
+<para
+>Kevin Krammer <email
+>kevin.krammer@gmx.at</email
+> </para>
+</listitem>
+</itemizedlist>
+
+<itemizedlist>
+<title
+>Kaasautorid</title>
+<listitem>
+<para
+>Johann Ollivier Lapeyre <email
+>johann.ollivierlapeyre@gmail.com</email
+> </para>
+</listitem>
+<listitem>
+<para
+>Eugene Trounev <email
+>irs_me@hotmail.com</email
+> </para>
+</listitem>
+<listitem>
+<para
+>&Robert.Wadley; <email
+>rob@robntina.fastmail.us</email
+> </para>
+</listitem>
+<listitem>
+<para
+>Riccardo Iaconelli <email
+>ruphy@fsfe.org</email
+> </para>
+</listitem>
+<listitem>
+<para
+>Benjamin Adler <email
+>benadler@bigfoot.de</email
+> </para>
+</listitem>
+<listitem>
+<para
+>Nils Trzebin <email
+>nils.trzebin@stud.uni-hannover.de</email
+> </para>
+</listitem>
+<listitem>
+<para
+>Elmar Hoefner <email
+>elmar.hoefner@uibk.ac.at</email
+></para>
+</listitem>
+
+</itemizedlist>
+
+<para
+>Dokumentatsiooni uuendamine &kde; 3.4 tarbeks: <personname
+><firstname
+>Brian</firstname
+><surname
+>Beck</surname
+></personname
+> <email
+>brian.beck@mchsi.com</email
+></para>
+
+<para
+>Dokumentatsiooni uuendamine &kde; 4 tarbeks: <personname
+><firstname
+>Elisa</firstname
+><surname
+>Tonello</surname
+></personname
+> <email
+>elisa.tonello@gmail.com</email
+></para>
+
+<para
+>Tõlge eesti keelde: Marek Laane <email
+>bald@smail.ee</email
+></para
+> 
+&underFDL; &underGPL; </chapter>
+
+<appendix id="installation">
+<title
+>Paigaldamine</title>
+ 
+&install.intro.documentation;
+ 
+ 
+<sect1 id="Compilation">
+<title
+>Kompileerimine ja paigaldamine</title>
+&install.compile.documentation; </sect1>
+</appendix>
+ 
+&documentation.index; 
+</book>
+<!--
+Local Variables:
+mode: sgml
+sgml-minimize-attributes:nil
+sgml-general-insert-case:lower
+sgml-omittag:t
+sgml-shorttag:t
+sgml-namecase-general:t
+sgml-always-quote-attributes:t
+sgml-indent-step:0
+sgml-indent-data:nil
+sgml-parent-document:nil
+sgml-exposed-tags:nil
+sgml-local-catalogs:nil
+sgml-local-ecat-files:nil
+End:
+-->

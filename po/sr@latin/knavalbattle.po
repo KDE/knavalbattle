@@ -1,0 +1,572 @@
+# Translation of knavalbattle.po into Serbian.
+# Bojan Bozovic <bole89@infosky.net>, 2003.
+# Chusslove Illich <caslav.ilic@gmx.net>, 2004, 2005, 2009, 2010, 2012, 2013, 2014, 2016, 2017.
+# Slobodan Simic <slsimic@gmail.com>, 2005, 2009.
+# Dalibor Djuric <dalibor.djuric@mozilla-srbija.org>, 2010.
+msgid ""
+msgstr ""
+"Project-Id-Version: knavalbattle\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2020-05-12 03:22+0200\n"
+"PO-Revision-Date: 2017-05-07 21:01+0200\n"
+"Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
+"Language-Team: Serbian <kde-i18n-sr@kde.org>\n"
+"Language: sr@latin\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Lokalize 0.3\n"
+"Plural-Forms: nplurals=4; plural=n==1 ? 3 : n%10==1 && n%100!=11 ? 0 : n"
+"%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"X-Accelerator-Marker: &\n"
+"X-Text-Markup: kde4\n"
+"X-Environment: kde\n"
+
+#, kde-format
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr "Časlav Ilić,Bojan Božović,Slobodan Simić"
+
+#, kde-format
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr "caslav.ilic@gmx.net,bole89@infosky.net,slsimic@gmail.com"
+
+# >> Name of computer player
+#: controller.cpp:53
+#, kde-format
+msgid "Computer"
+msgstr "računar"
+
+#. i18n: ectx: label, entry (Hostname), group (network)
+#: knavalbattle.kcfg:9
+#, kde-format
+msgid "Default hostname for multiplayer games."
+msgstr "Podrazumevano ime domaćina za višeigračke partije."
+
+#. i18n: ectx: label, entry (Port), group (network)
+#: knavalbattle.kcfg:13
+#, kde-format
+msgid "Default port for multiplayer games."
+msgstr "Podrazumevani port za višeigračke partije."
+
+#. i18n: ectx: label, entry (Nickname), group (general)
+#: knavalbattle.kcfg:19
+#, kde-format
+msgid "User nickname."
+msgstr "Korisnikov nadimak."
+
+#. i18n: ectx: label, entry (EnableSounds), group (general)
+#: knavalbattle.kcfg:22
+#, kde-format
+msgid "Whether sound effects should be played."
+msgstr "Da li puštati zvučne efekte."
+
+# skip-rule: t-space
+#. i18n: ectx: label, entry (AdjacentShips), group (general)
+#: knavalbattle.kcfg:26
+#, kde-format
+msgid "Allow the ships to be adjacent without one empty space between them."
+msgstr "Brodovi smeju da se postavljaju bez jednog praznog mesta između njih."
+
+#. i18n: ectx: label, entry (SeveralShips), group (general)
+#: knavalbattle.kcfg:30
+#, kde-format
+msgid ""
+"Allow multiple ships of any size, default: 4 of 1, 3 of 2, 2 of 3, 1 of 4."
+msgstr ""
+"Dozvoljeno više brodova bilo koje veličine. Podrazumevano: 4 × 1, 3 × 2, 2 × "
+"3, 1 × 4."
+
+#. i18n: ectx: ToolBar (gameToolbar)
+#: knavalbattleui.rc:29
+#, kde-format
+msgid "Game Toolbar"
+msgstr "Traka igre"
+
+#: main.cpp:41
+#, kde-format
+msgid "Naval Battle"
+msgstr "Pomorska bitka"
+
+#: main.cpp:42
+#, kde-format
+msgid "The KDE ship sinking game"
+msgstr "Igra potapanja brodova za KDE"
+
+#: main.cpp:43
+#, kde-format
+msgid ""
+"(c) 2000-2005  Nikolas Zimmermann, Daniel Molkentin\n"
+"(c) 2007 Paolo Capriotti"
+msgstr ""
+"© 2000–2005, Nikolas Cimerman, Danijel Molkentin\n"
+"© 2007, Paolo Kaprioti"
+
+#: main.cpp:46
+#, kde-format
+msgid "Paolo Capriotti"
+msgstr "Paolo Kaprioti"
+
+#: main.cpp:46
+#, kde-format
+msgid "Current maintainer"
+msgstr "trenutni održavalac"
+
+#: main.cpp:47
+#, kde-format
+msgid "Nikolas Zimmermann"
+msgstr "Nikolas Cimerman"
+
+#: main.cpp:47
+#, kde-format
+msgid "Project Founder, GUI Handling, Client/Server"
+msgstr "osnivač projekta, rad sa sučeljem, klijent-server"
+
+#: main.cpp:48
+#, kde-format
+msgid "Daniel Molkentin"
+msgstr "Danijel Molkentin"
+
+#: main.cpp:48
+#, kde-format
+msgid "Dialog Stuff, Client/Server"
+msgstr "dijalozi, klijent-server"
+
+#: main.cpp:49
+#, kde-format
+msgid "Kevin Krammer"
+msgstr "Kevin Kramer"
+
+#: main.cpp:49
+#, kde-format
+msgid "Computer Player"
+msgstr "računarski igrač"
+
+#: main.cpp:51
+#, kde-format
+msgid "Johann Ollivier Lapeyre"
+msgstr "Johan Olivje Laper"
+
+#: main.cpp:51
+#, kde-format
+msgid "Game artwork"
+msgstr "grafika igre"
+
+#: main.cpp:52
+#, kde-format
+msgid "Eugene Trounev"
+msgstr "Jevgenij Trunjov"
+
+#: main.cpp:52
+#, kde-format
+msgid "Background"
+msgstr "pozadina"
+
+#: main.cpp:53
+#, kde-format
+msgid "Robert Wadley"
+msgstr "Robert Vedli"
+
+#: main.cpp:53
+#, kde-format
+msgid "Artwork for some of the ships"
+msgstr "grafika za neke od brodova"
+
+#: main.cpp:54
+#, kde-format
+msgid "Riccardo Iaconelli"
+msgstr "Rikardo Jakoneli"
+
+#: main.cpp:54
+#, kde-format
+msgid "Welcome screen"
+msgstr "pozdravni ekran"
+
+#: main.cpp:55
+#, kde-format
+msgid "Benjamin Adler"
+msgstr "Benjamin Adler"
+
+#: main.cpp:55
+#, kde-format
+msgid "Icon"
+msgstr "ikonica"
+
+#: main.cpp:56
+#, kde-format
+msgid "Nils Trzebin"
+msgstr "Nils Trcebin"
+
+#: main.cpp:56
+#, kde-format
+msgid "Sounds"
+msgstr "zvukovi"
+
+#: main.cpp:57
+#, kde-format
+msgid "Elmar Hoefner"
+msgstr "Elmar Hefner"
+
+#: main.cpp:57
+#, kde-format
+msgid "GFX"
+msgstr "grafika"
+
+#: main.cpp:58
+#, kde-format
+msgid "Lukas Tinkl"
+msgstr "Lukaš Tinkl"
+
+#: main.cpp:58
+#, kde-format
+msgid "Non-Latin1 Support"
+msgstr "podrška znakova izvan latinice‑1"
+
+#: main.cpp:59
+#, kde-format
+msgid "Malte Starostik"
+msgstr "Malte Starostik"
+
+#: main.cpp:59
+#, kde-format
+msgid "Various improvements"
+msgstr "razna poboljšanja"
+
+#: main.cpp:60
+#, kde-format
+msgid "Albert Astals Cid"
+msgstr "Albert Astals Sid"
+
+#: main.cpp:60 main.cpp:61
+#, kde-format
+msgid "Various improvements and bugfixes"
+msgstr "različita poboljšanja i ispravke grešaka"
+
+#: main.cpp:61
+#, kde-format
+msgid "John Tapsell"
+msgstr "Džon Tapsel"
+
+#: main.cpp:62
+#, kde-format
+msgid "Inge Wallin"
+msgstr "Inge Valin"
+
+#: main.cpp:62
+#, kde-format
+msgid "Bugfixes and refactoring"
+msgstr "ispravke grešaka i refaktorisanje"
+
+#: main.cpp:63
+#, kde-format
+msgid "Jakub Stachowski"
+msgstr "Jakub Stahovski"
+
+#: main.cpp:63
+#, kde-format
+msgid "DNS-SD discovery"
+msgstr "otkrivanje DNSSD‑a"
+
+#: main.cpp:64
+#, kde-format
+msgid "Roney Gomes"
+msgstr "Roni Gomes"
+
+#: main.cpp:64
+#, kde-format
+msgid "Porting to KGameRenderer and QGraphicsView"
+msgstr "prenošenje na KGameRenderer i QGraphicsView"
+
+#: main.cpp:75
+#, kde-format
+msgid "[URL]"
+msgstr "[URL]"
+
+#: main.cpp:75
+#, kde-format
+msgid "URL of a Naval Battle game server to connect to after startup"
+msgstr "URL igračkog servera Pomorske bitke za povezivanje po pokretanju"
+
+#: mainwindow.cpp:62
+#, kde-format
+msgid "&Single Player"
+msgstr "&Jedan igrač"
+
+#: mainwindow.cpp:66
+#, kde-format
+msgid "&Host Game..."
+msgstr "&Domaćin igri..."
+
+#: mainwindow.cpp:70
+#, kde-format
+msgid "&Connect to Game..."
+msgstr "&Poveži se u igru..."
+
+#: mainwindow.cpp:75
+#, kde-format
+msgid "Change &Nickname..."
+msgstr "Promeni &nadimak..."
+
+# >> @option:check
+#: mainwindow.cpp:78
+#, kde-format
+msgid "&Play Sounds"
+msgstr "&Puštaj zvukove"
+
+#: mainwindow.cpp:83
+#, kde-format
+msgid "&Adjacent Ships"
+msgstr "&Nalegli brodovi"
+
+#: mainwindow.cpp:88
+#, kde-format
+msgid "&Multiple Ships"
+msgstr "&Višestruki brodovi"
+
+# >> @option:check
+#: mainwindow.cpp:93
+#, kde-format
+msgid "Show End-of-Game Message"
+msgstr "Poruka za kraj igre"
+
+# >> @option:check
+#: mainwindow.cpp:98
+#, kde-format
+msgid "Show &Left Grid"
+msgstr "&Leva mreža"
+
+# >> @option:check
+#: mainwindow.cpp:102
+#, kde-format
+msgid "Show &Right Grid"
+msgstr "&Desna mreža"
+
+#: networkdialog.cpp:64
+#, kde-format
+msgid "&Nickname:"
+msgstr "&Nadimak:"
+
+#: networkdialog.cpp:76
+#, kde-format
+msgid "&Join game:"
+msgstr "&Pridruži se igri:"
+
+#: networkdialog.cpp:91
+#, kde-format
+msgid "&Hostname:"
+msgstr "&Ime domaćina:"
+
+#: networkdialog.cpp:104 networkdialog.cpp:134
+#, kde-format
+msgid "&Port:"
+msgstr "&Port:"
+
+#: networkdialog.cpp:119
+#, kde-format
+msgid "&Enter server address manually"
+msgstr "&Ručno unesi adresu servera"
+
+#: networkdialog.cpp:151
+#, kde-format
+msgid "Network Parameters"
+msgstr "Mrežni parametri"
+
+#: networkdialog.cpp:213
+#, kde-format
+msgid "Connecting to remote host..."
+msgstr "Povezujem se na udaljeni domaćin..."
+
+#: networkdialog.cpp:224
+#, kde-format
+msgid "Waiting for an incoming connection..."
+msgstr "Čekam dolazeće veze..."
+
+#: networkdialog.cpp:243
+#, kde-format
+msgid "Could not connect to host"
+msgstr "Ne mogu da se povežem sa domaćinom"
+
+# >! Aargh.
+#: networkentity.cpp:191
+#, kde-format
+msgid "You have "
+msgstr "Imate "
+
+#: networkentity.cpp:197
+#, kde-format
+msgid ", "
+msgstr ", "
+
+#: networkentity.cpp:290
+#, kde-format
+msgid "You can place ships adjacent to each other"
+msgstr "Brodovi mogu da se postavljaju bez razmaka"
+
+#: networkentity.cpp:293
+#, kde-format
+msgid "You must leave a space between ships"
+msgstr "Između brodova mora da bude razmaka"
+
+#: playerentity.cpp:203
+#, kde-format
+msgid "Your opponent is now known as %1"
+msgstr "Vaš protivnik je sada %1"
+
+#: playerentity.cpp:208
+#, kde-format
+msgid "Your opponent disconnected from the game"
+msgstr "Protivnik se isključio iz igre"
+
+# >> @item:intext highscore parameters
+#: playfield.cpp:149 playfield.cpp:169
+#, kde-format
+msgid "Shots"
+msgstr "hitaca"
+
+# >> @item:intext highscore parameters
+#: playfield.cpp:150 playfield.cpp:170
+#, kde-format
+msgid "Hits"
+msgstr "pogodaka"
+
+# >> @item:intext highscore parameters
+#: playfield.cpp:151 playfield.cpp:171
+#, kde-format
+msgid "Misses"
+msgstr "promašaja"
+
+#: playfield.cpp:191
+#, kde-format
+msgid "You win!"
+msgstr "Pobeda!"
+
+#: playfield.cpp:193
+#, kde-format
+msgid "You win. Excellent!"
+msgstr "Pobedili ste. Odlično!"
+
+#: playfield.cpp:197
+#, kde-format
+msgid "You lose."
+msgstr "Poraz."
+
+#: playfield.cpp:199
+#, kde-format
+msgid "You lose. Better luck next time!"
+msgstr "Izgubili ste. Više sreće sledeći put!"
+
+# >> @title:window
+#: playfield.cpp:209
+#, kde-format
+msgid "Change Nickname"
+msgstr "Promena nadimka"
+
+#: playfield.cpp:209
+#, kde-format
+msgid "Enter new nickname:"
+msgstr "Unesite novi nadimak:"
+
+# rewrite-msgid: /game//
+# >> @title:window
+#: playfield.cpp:237
+#, kde-format
+msgid "Restart game"
+msgstr "Ponovno pokretanje"
+
+#: playfield.cpp:238
+#, kde-format
+msgid "Your opponent has requested to restart the game. Do you accept?"
+msgstr "Protivnik traži da se partija pokrene iz početka. Prihvatate li?"
+
+#: playfield.cpp:247
+#, kde-format
+msgid ""
+"Your opponent is using a pre-KDE4 version of Naval Battle. Note that, "
+"according to the rules enforced by old clients, ships cannot be placed "
+"adjacent to one another and only one ship of each size is allowed."
+msgstr ""
+"Protivnik koristi verziju Pomorske bitke pre KDE‑a 4. Prema pravilima "
+"starijih klijenata, brodovi se ne mogu smeštati jedan do drugog, niti može "
+"biti više brodova iste veličine."
+
+#: playfield.cpp:260
+#, kde-format
+msgid "Enemy has shot. Shoot now!"
+msgstr "Neprijatelj je opalio. Vaš potez!"
+
+#: playfield.cpp:264
+#, kde-format
+msgid "Waiting for enemy to shoot..."
+msgstr "Čekam da neprijatelj opali..."
+
+#: playfield.cpp:273
+#, kde-format
+msgid "Ships placed. Now shoot on the enemy field!"
+msgstr "Brodovi su postavljeni. Pucajte po neprijateljskom polju!"
+
+#: playfield.cpp:276
+#, kde-format
+msgid "Waiting for other player to start the game..."
+msgstr "Čekam da drugi igrač započne partiju..."
+
+#: playfield.cpp:280
+#, kde-format
+msgid "Waiting for other player to place his ships..."
+msgstr "Čekam da drugi igrač postavi brodove..."
+
+# >! Plurals.
+#: playfield.cpp:294
+#, kde-format
+msgid "Place your %1 ships. Use the right mouse button to rotate them."
+msgstr "Rasporedite svojih %1 brodova. Desnim dugmetom miša ih rotirate."
+
+#: playfield.cpp:300
+#, kde-format
+msgid "You can't place your remaining ships."
+msgstr "Nema mesta da se postave preostali brodovi."
+
+#: playfield.cpp:301
+#, kde-format
+msgid "Restart"
+msgstr "Počni iznova"
+
+#: playfield.cpp:302
+#, kde-format
+msgid "Abort"
+msgstr "Obustavi"
+
+#: playfield.cpp:303
+#, kde-format
+msgid ""
+"You can't place your remaining ships. Please restart placing ships or abort "
+"game"
+msgstr ""
+"Ne možete da razmestite preostale brodove. Počnite iznova sa postavljanjem "
+"ili obustavite partiju."
+
+# >> @title:window
+#: playfield.cpp:303
+#, kde-format
+msgid "Restart placing ships"
+msgstr "Ponovno postavljanje brodova"
+
+#: simplemenu.cpp:43
+#, kde-format
+msgid "Single Player"
+msgstr "Jedan igrač"
+
+#: simplemenu.cpp:44
+#, kde-format
+msgid "Host Network Game"
+msgstr "Domaćin mrežnoj igri"
+
+#: simplemenu.cpp:45
+#, kde-format
+msgid "Connect to Network Game"
+msgstr "Poveži se na mrežnu igru"
+
+#: simplemenu.cpp:135 simplemenu.cpp:152
+#, kde-format
+msgid "Remote player"
+msgstr "Udaljeni igrač"

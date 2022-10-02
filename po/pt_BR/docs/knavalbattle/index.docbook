@@ -1,0 +1,729 @@
+<?xml version="1.0" ?>
+<!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN" "dtd/kdedbx45.dtd" [
+  <!ENTITY knavalbattle "<application
+>Naval Battle</application
+>"
+>  
+  <!ENTITY % addindex "IGNORE">
+  <!ENTITY % Brazilian-Portuguese "INCLUDE"
+> <!-- change language only here -->
+]>
+
+<book id="knavalbattle" lang="&language;">
+<bookinfo>
+<title
+>Manual do &knavalbattle;</title>
+
+<authorgroup>
+<author
+>&Daniel.Molkentin; &Daniel.Molkentin.mail; </author>
+
+<author
+>&Nikolas.Zimmermann; &Nikolas.Zimmermann.mail; </author>
+
+<author
+><firstname
+>Anton</firstname
+> <surname
+>Brondz</surname
+> <affiliation
+> <address
+><email
+>dinolinux@gmail.com</email
+></address>
+</affiliation>
+</author>
+
+<othercredit role="reviewer"
+>&Frerich.Raabe; &Frerich.Raabe.mail; </othercredit>
+
+<othercredit role="translator"
+><firstname
+>André Marcelo</firstname
+><surname
+>Alvarenga</surname
+><affiliation
+><address
+><email
+>alvarenga@kde.org</email
+></address
+></affiliation
+><contrib
+>Tradução</contrib
+></othercredit
+> 
+
+</authorgroup>
+
+<legalnotice
+>&FDLNotice;</legalnotice>
+
+<copyright>
+<year
+>2001</year>
+<holder
+>&Daniel.Molkentin;</holder>
+</copyright>
+<copyright>
+<year
+>2001</year>
+<holder
+>&Nikolas.Zimmermann;</holder>
+</copyright>
+<copyright>
+<year
+>2001</year>
+<holder
+>Kevin Krammer</holder>
+</copyright>
+
+<date
+>10/05/2016</date>
+<releaseinfo
+>2.1 (Applications 16.04)</releaseinfo>
+
+<abstract>
+<para
+>&knavalbattle; é uma implementação com suporte a rede do famoso jogo <quote
+>Batalha Naval</quote
+> do &kde;.</para>
+</abstract>
+
+<keywordset>
+<keyword
+>KDE</keyword>
+<keyword
+>kdegames</keyword>
+<keyword
+>knavalbattle</keyword>
+<keyword
+>jogo</keyword>
+<keyword
+>batalha naval</keyword>
+<keyword
+>batalha</keyword>
+<keyword
+>naval</keyword>
+</keywordset>
+
+</bookinfo>
+
+<chapter id="introduction">
+<title
+>Introdução</title>
+<note
+><title
+>Tipo de jogo:</title
+><para
+>Estratégia, tabuleiro</para
+></note
+><!-- Game genre. Use as many as necessary. Available game types are: Arcade, Board, Card, Dice, Toys, Logic, Strategy.-->
+<note
+><title
+>Número de possíveis jogadores:</title
+><para
+>Dois</para
+></note
+><!--Number of possible players. It can be: One, Two,..., Multiplayer-->
+
+<screenshot>
+<mediaobject>
+<imageobject>
+<imagedata fileref="gameboard.png" format="PNG"/>
+</imageobject>
+<textobject>
+<phrase
+>Tabuleiro do jogo &knavalbattle;</phrase>
+</textobject>
+</mediaobject>
+</screenshot>
+
+<para
+>O &knavalbattle; é um jogo de batalha naval do &kde;. Os navios são posicionados em um tabuleiro que representa o mar. Os jogadores tentam atingir os navios dos adversários por jogadas, não sabendo onde eles estão posicionados. O primeiro jogador a destruir todos os navios ganha o jogo. </para>
+</chapter>
+
+<chapter id="howtoplay">
+<title
+>Como jogar</title>
+<note
+><title
+>Objetivo:</title
+><para
+>Afunde todos os navios do adversário antes que ele afunde todos os seus.</para
+></note
+><!--Describe the objective of the game.-->
+<para
+>Se quiser jogar o &knavalbattle; deverá ter dois jogadores, sendo que um deles pode ser o computador ou um jogador em rede. Para jogar contra o seu computador, selecione primeiro o nível de dificuldade à direita da barra de status e depois a opção <guibutton
+>Um jogador</guibutton
+> na tela de boas-vindas ou diretamente no menu <menuchoice
+><guimenu
+>Jogo</guimenu
+></menuchoice
+>.</para>
+
+<para
+>Para iniciar um jogo em rede, um jogador terá que hospedar o jogo selecionando a opção <guilabel
+>Hospedar jogo em rede</guilabel
+> na tela de boas-vindas ou escolher a opção <menuchoice
+><guimenu
+>Jogo</guimenu
+> <guimenuitem
+>Hospedar jogo...</guimenuitem
+></menuchoice
+>. Será aberta uma caixa de diálogo que lhe perguntará qual o seu <guilabel
+>Apelido:</guilabel
+> e <guilabel
+>Porta:</guilabel
+>. Normalmente, o &knavalbattle; irá sugerir o nome do seu usuário, mas você poderá digitar o que quiser. O número da porta predefinida deve estar correto, mas se tiver algum problema, poderá escolher qualquer outra porta livre acima de 1024. </para>
+
+<note>
+<para
+>Caso escolha uma porta diferente você deve avisar ao outro jogador, pois ambos precisam usar a mesma porta para estabelecer uma conexão.</para>
+</note>
+
+<para
+>O outro jogador precisa escolher a opção <guilabel
+>Conectar a um jogo em rede</guilabel
+> ou clicar em <menuchoice
+><guimenu
+>Jogo</guimenu
+> <guimenuitem
+>Conectar a um jogo...</guimenuitem
+></menuchoice
+>. Mais uma vez, um <guilabel
+>Apelido:</guilabel
+> será sugerido, mas você poderá indicar qualquer o nome que desejar. No campo <guilabel
+>Nome da máquina:</guilabel
+>, você deverá inserir o nome do servidor (a máquina do jogador que iniciou o jogo). </para>
+
+<para
+>Quando terminar você poderá iniciar o jogo. Basta seguir as instruções na barra de status. Ela fará sugestões sobre o que deve ser feito depois. Quando olhar para a tela, você verá dois campos em grade, que são chamadas de <quote
+>áreas de batalha</quote
+>. A área da esquerda é a sua e será aqui onde você deve posicionar os seus navios e poderá seguir as ações militares do seu inimigo. A área da direita é onde a frota do seu inimigo se localiza. Quando for a sua vez de disparar, você precisa clicar em um determinado setor (um campo da área de batalha) onde você supõe que os navios se localizam. </para>
+
+<para
+>Primeiro é necessário posicionar os seus navios. Quem inicia o jogo deve posicionar primeiro. Quando estiver pronto, o segundo jogador posiciona os seus navios. </para>
+
+<para
+>O posicionamento dos navios é muito simples: Basta clicar no campo onde quer colocá-los. Você possui quatro navios para posicionar: o primeiro terá o tamanho de quatro quadrados, o próximo terá três, o seguinte dois, &etc; Clique no campo onde deseja iniciar o posicionamento. Por padrão, os navios serão posicionados na horizontal, mas podem ser girados em 90 graus. Para fazer isso, clique com o &RMB; antes de posicionar. </para>
+
+<para
+>Quando um navio é atingido, será iniciado um incêndio nele. Para afundá-lo, atinja todos os quadrados que ele ocupa. Um navio afundado aparecerá desvanecido. </para>
+
+<para
+>Agora você poderá usar o &LMB; para atirar na área de batalha inimiga. A barra de status indica quem está pronto para atirar. </para>
+
+<para
+>Você poderá reiniciar o jogo se escolher a opção <menuchoice
+><guimenu
+>Jogo</guimenu
+> <guimenuitem
+>Reiniciar o jogo</guimenuitem
+></menuchoice
+> ou clicar em <keycap
+>F5</keycap
+>. </para>
+
+<para
+>O primeiro jogador a destruir todos os navios do adversário vence o jogo. </para>
+
+</chapter>
+
+<chapter id="rulestips">
+<title
+>Regras do jogo, estratégias e dicas</title>
+<sect1 id="rules">
+<title
+>Regras</title>
+<itemizedlist>
+<listitem
+><para
+>Um jogador só poderá fazer um disparo por vez.</para
+></listitem>
+<listitem
+><para
+>Os jogadores deverão posicionar todos os seus navios.</para
+></listitem>
+<listitem
+><para
+>Não é possível mover os navios depois de posicionados.</para
+></listitem>
+<listitem
+><para
+>Um navio é afundado quando todos os quadrados que ocupa forem atingidos.</para
+></listitem>
+</itemizedlist>
+</sect1>
+
+<sect1 id="strattips">
+<title
+>Estratégias e dicas</title>
+<itemizedlist>
+<listitem
+><para
+>Nunca posicione os navios perto uns dos outros.</para
+></listitem>
+<listitem
+><para
+>Assim que atingir um navio, tente disparar ao redor do local que atingiu.</para
+></listitem>
+<listitem
+><para
+>Tente posicionar os navios longe das bordas do tabuleiro.</para
+></listitem>
+<listitem
+><para
+>Os navios menores são difíceis de atingir. Certifique-se de posicioná-los onde sejam difíceis de encontrar.</para
+></listitem>
+<listitem
+><para
+>Pense antes de disparar. Tiros na água dão menos pontos.</para
+></listitem>
+</itemizedlist>
+</sect1>
+
+</chapter>
+
+<chapter id="menu-reference">
+<title
+>Menus</title>
+
+<sect1 id="menu">
+<title
+>Itens dos menus</title>
+
+<variablelist>
+<varlistentry>
+<term>
+<menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>N</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Jogo</guimenu
+> <guimenuitem
+>Novo</guimenuitem
+> </menuchoice>
+</term>
+<listitem>
+<para>
+<action
+>Sai do jogo atual e recarrega a janela de boas-vindas.</action>
+</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term>
+<menuchoice
+><shortcut
+><keycap
+>F5</keycap
+></shortcut
+> <guimenu
+>Jogo</guimenu
+> <guimenuitem
+>Reiniciar o jogo</guimenuitem
+> </menuchoice>
+</term>
+<listitem>
+<para>
+<action
+>Reinicia o jogo.</action>
+</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term>
+<menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>H</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Jogo</guimenu
+> <guimenuitem
+>Mostrar recordes</guimenuitem
+> </menuchoice>
+</term>
+<listitem>
+<para>
+<action
+>Mostra as melhores pontuações até agora.</action>
+</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term>
+<menuchoice
+><guimenu
+>Jogo</guimenu
+> <guimenuitem
+>Um jogador</guimenuitem
+> </menuchoice>
+</term>
+<listitem>
+<para>
+<action
+>Inicia um jogo com o computador como adversário.</action>
+</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term>
+<menuchoice
+><guimenu
+>Jogo</guimenu
+> <guimenuitem
+>Hospedar jogo...</guimenuitem
+> </menuchoice>
+</term>
+<listitem>
+<para>
+<action
+>Inicia o servidor de modo que outro jogador possa conectar-se.</action>
+</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term>
+<menuchoice
+><guimenu
+>Jogo</guimenu
+> <guimenuitem
+>Conectar a um jogo...</guimenuitem
+> </menuchoice>
+</term>
+<listitem>
+<para>
+<action
+>Conecta a um servidor para iniciar um jogo.</action>
+</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term>
+<menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>Q</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Jogo</guimenu
+> <guimenuitem
+>Sair</guimenuitem
+> </menuchoice>
+</term>
+<listitem>
+<para
+><action
+>Sai</action
+> do &knavalbattle; </para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term>
+<menuchoice
+><guimenu
+>Configurações</guimenu
+> <guimenuitem
+>Alterar apelido...</guimenuitem
+> </menuchoice>
+</term>
+<listitem>
+<para>
+<action
+>Altera o apelido padrão.</action>
+</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term>
+<menuchoice
+><guimenu
+>Configurações</guimenu
+> <guimenuitem
+>Reproduzir sons</guimenuitem
+> </menuchoice>
+</term>
+<listitem>
+<para
+><action
+>Ativa ou desativa os sons (que são reproduzidos ao atirar).</action
+> Por padrão, eles estão ativos. </para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term>
+<menuchoice
+><guimenu
+>Configurações</guimenu
+> <guimenuitem
+>Navios próximos</guimenuitem
+> </menuchoice>
+</term>
+<listitem>
+<para
+><action
+>Ativa ou desativa a possibilidade de posicionar navios no tabuleiro sem qualquer espaço vazio entre eles.</action
+> Por padrão está ativo. Esta opção deve estar definida em uma máquina quando <link linkend="howtoplay"
+>jogar o &knavalbattle; pela rede</link
+>. </para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term>
+<menuchoice
+><guimenu
+>Configurações</guimenu
+> <guimenuitem
+>Mostrar mensagem de fim de jogo</guimenuitem
+> </menuchoice>
+</term>
+<listitem>
+<para
+>Se vencer o jogo e conseguir um novo recorde, será apresentada uma caixa de diálogo com os recordes existentes. Caso contrário, o resultado será apresentado na barra de status ou, se esta opção estiver ativa, em uma caixa de diálogo. </para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term>
+<menuchoice
+><guimenu
+>Configurações</guimenu
+> <guimenuitem
+>Mostrar grade esquerda</guimenuitem
+> <guimenu
+>Configurações</guimenu
+> <guimenuitem
+>Mostrar grade direita</guimenuitem
+> </menuchoice>
+</term>
+<listitem>
+<para
+>O uso de grades torna mais fácil atirar com o ponteiro do mouse. </para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term>
+<menuchoice
+><guimenu
+>Configurações</guimenu
+> <guisubmenu
+>Dificuldade</guisubmenu
+> </menuchoice>
+</term>
+<listitem>
+<para
+>A definição da dificuldade do jogo (<guimenuitem
+>Fácil</guimenuitem
+>, <guimenuitem
+>Média</guimenuitem
+> e <guimenuitem
+>Difícil</guimenuitem
+>) tem efeito apenas nos jogos de um jogador contra o computador. Nos níveis mais elevados, a inteligência artificial usa uma estratégia mais inteligente para atirar e posicionar os navios.</para>
+</listitem>
+</varlistentry>
+
+</variablelist>
+
+<para
+>O &knavalbattle; possui os itens dos menus <guimenu
+>Configurações</guimenu
+> e <guimenu
+>Ajuda</guimenu
+> comuns do &kde;. Para mais informações, consulte as seções sobre o <ulink url="help:/fundamentals/menus.html#menus-settings"
+>Menu Configurações</ulink
+> e o <ulink url="help:/fundamentals/menus.html#menus-help"
+>Menu Ajuda</ulink
+> dos Fundamentos do &kde;. </para>
+
+</sect1>
+</chapter>
+
+<chapter id="faq">
+<title
+>Perguntas frequentes</title>
+
+<qandaset>
+
+<qandaentry>
+<question>
+<para
+>Não sei onde atirar, posso obter uma dica? </para>
+</question>
+<answer>
+<para
+>Não, não existe sistema de dicas para o &knavalbattle;. </para>
+</answer>
+</qandaentry>
+
+<qandaentry>
+<question>
+<para
+>Como posso girar um navio? </para>
+</question>
+<answer>
+<para
+>Mova o navio para onde deseja posicioná-lo, e então pressione o &RMB; </para>
+</answer>
+</qandaentry>
+
+<qandaentry>
+<question>
+<para
+>Posso mudar a aparência do jogo? </para>
+</question>
+<answer>
+<para
+>Não, não é possível modificar o tema. </para>
+</answer>
+</qandaentry>
+
+</qandaset>
+</chapter>
+
+<chapter id="credits">
+<title
+>Créditos e licença</title>
+
+<para
+>&knavalbattle; Copyright 2000-2007</para>
+
+<itemizedlist>
+<title
+>Autores</title>
+<listitem>
+<para
+>Paolo Capriotti <email
+>p.capriotti@gmail.com</email
+> </para>
+</listitem>
+<listitem>
+<para
+>&Nikolas.Zimmermann; &Nikolas.Zimmermann.mail; </para>
+</listitem>
+<listitem>
+<para
+>&Daniel.Molkentin; &Daniel.Molkentin.mail; </para>
+</listitem>
+<listitem>
+<para
+>Kevin Krammer <email
+>kevin.krammer@gmx.at</email
+> </para>
+</listitem>
+</itemizedlist>
+
+<itemizedlist>
+<title
+>Colaboradores</title>
+<listitem>
+<para
+>Johann Ollivier Lapeyre <email
+>johann.ollivierlapeyre@gmail.com</email
+> </para>
+</listitem>
+<listitem>
+<para
+>Eugene Trounev <email
+>irs_me@hotmail.com</email
+> </para>
+</listitem>
+<listitem>
+<para
+>&Robert.Wadley; <email
+>rob@robntina.fastmail.us</email
+> </para>
+</listitem>
+<listitem>
+<para
+>Riccardo Iaconelli <email
+>ruphy@fsfe.org</email
+> </para>
+</listitem>
+<listitem>
+<para
+>Benjamin Adler <email
+>benadler@bigfoot.de</email
+> </para>
+</listitem>
+<listitem>
+<para
+>Nils Trzebin <email
+>nils.trzebin@stud.uni-hannover.de</email
+> </para>
+</listitem>
+<listitem>
+<para
+>Elmar Hoefner <email
+>elmar.hoefner@uibk.ac.at</email
+></para>
+</listitem>
+
+</itemizedlist>
+
+<para
+>Documentação atualizada para o &kde; 3.4 por <personname
+><firstname
+>Brian</firstname
+><surname
+>Beck</surname
+></personname
+><email
+>brian.beck@mchsi.com</email
+></para>
+
+<para
+>Documentação atualizada para o &kde; 4 por <personname
+><firstname
+>Elisa</firstname
+><surname
+>Tonello</surname
+></personname
+> <email
+>elisa.tonello@gmail.com</email
+></para>
+
+<para
+>Tradução de André Marcelo Alvarenga <email
+>alvarenga@kde.org</email
+></para
+> &underFDL; &underGPL; </chapter>
+
+&documentation.index; 
+</book>
+<!--
+Local Variables:
+mode: sgml
+sgml-minimize-attributes:nil
+sgml-general-insert-case:lower
+sgml-omittag:t
+sgml-shorttag:t
+sgml-namecase-general:t
+sgml-always-quote-attributes:t
+sgml-indent-step:0
+sgml-indent-data:nil
+sgml-parent-document:nil
+sgml-exposed-tags:nil
+sgml-local-catalogs:nil
+sgml-local-ecat-files:nil
+End:
+-->

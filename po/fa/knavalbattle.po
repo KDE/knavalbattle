@@ -1,0 +1,605 @@
+# translation of kbattleship.po to Persian
+# Mahdi Foladgar <foladgar@itland.ir>, 2006.
+# Nasim Daniarzadeh <daniarzadeh@itland.ir>, 2006.
+# MaryamSadat Razavi <razavi@itland.ir>, 2006.
+# Tahereh Dadkhahfar <dadkhahfar@itland.ir>, 2006.
+# Nazanin Kazemi <kazemi@itland.ir>, 2007.
+# Emil Sedgh <emilsedgh@gmail.com>, 2008.
+msgid ""
+msgstr ""
+"Project-Id-Version: kbattleship\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2022-09-04 00:43+0000\n"
+"PO-Revision-Date: 2008-04-15 16:24+0330\n"
+"Last-Translator: Emil Sedgh <emilsedgh@gmail.com>\n"
+"Language-Team: American English <kde-i18n-doc@lists.kde.org>\n"
+"Language: fa\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: LoKalize 0.2\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#, kde-format
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr "امیل صدق"
+
+#, kde-format
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr "emilsedgh@gmail.com"
+
+#: controller.cpp:50
+#, kde-format
+msgid "Computer"
+msgstr "رایانه"
+
+#. i18n: ectx: label, entry (Hostname), group (network)
+#: knavalbattle.kcfg:9
+#, kde-format
+msgid "Default hostname for multiplayer games."
+msgstr "نام میزبان پیش‌فرض برای بازیهای چندبازیکنی."
+
+#. i18n: ectx: label, entry (Port), group (network)
+#: knavalbattle.kcfg:13
+#, kde-format
+msgid "Default port for multiplayer games."
+msgstr "درگاه پیش‌فرض برای بازیهای چندبازیکنی."
+
+#. i18n: ectx: label, entry (Nickname), group (general)
+#: knavalbattle.kcfg:19
+#, kde-format
+msgid "User nickname."
+msgstr "لقب کاربر."
+
+#. i18n: ectx: label, entry (EnableSounds), group (general)
+#: knavalbattle.kcfg:22
+#, kde-format
+msgid "Whether sound effects should be played."
+msgstr "آیا صدا‌ها پخش بشوند"
+
+#. i18n: ectx: label, entry (AdjacentShips), group (general)
+#: knavalbattle.kcfg:26
+#, kde-format
+msgid "Allow the ships to be adjacent without one empty space between them."
+msgstr ""
+
+#. i18n: ectx: label, entry (SeveralShips), group (general)
+#: knavalbattle.kcfg:30
+#, kde-format
+msgid ""
+"Allow multiple ships of any size, default: 4 of 1, 3 of 2, 2 of 3, 1 of 4."
+msgstr ""
+
+#. i18n: ectx: ToolBar (gameToolbar)
+#: knavalbattleui.rc:29
+#, kde-format
+msgid "Game Toolbar"
+msgstr "نوار ابزار بازی"
+
+#: main.cpp:42
+#, kde-format
+msgid "Naval Battle"
+msgstr ""
+
+#: main.cpp:44
+#, fuzzy, kde-format
+#| msgid "The KDE Battleship clone"
+msgid "The KDE ship sinking game"
+msgstr "بدل کشتی جنگی KDE"
+
+#: main.cpp:45
+#, kde-format
+msgid ""
+"(c) 2000-2005  Nikolas Zimmermann, Daniel Molkentin\n"
+"(c) 2007 Paolo Capriotti"
+msgstr ""
+"حق کپی ۲۰۰۰-۲۰۰۵ نیکلاس زیمرمن، دنیل ملکتنین حق کپی ۲۰۰۷ پائولو کاپربوتی"
+
+#: main.cpp:50
+#, kde-format
+msgid "Paolo Capriotti"
+msgstr "پائولو کاپربوتی"
+
+#: main.cpp:50
+#, kde-format
+msgid "Current maintainer"
+msgstr "نگه‌دارنده فعلی"
+
+#: main.cpp:51
+#, kde-format
+msgid "Nikolas Zimmermann"
+msgstr "نیکلاس زیمرمن"
+
+#: main.cpp:51
+#, kde-format
+msgid "Project Founder, GUI Handling, Client/Server"
+msgstr "موسس پروژه، نگه‌داری واسط گرافیکی، سرویس‌دهنده/سرویس‌گیرنده"
+
+#: main.cpp:52
+#, kde-format
+msgid "Daniel Molkentin"
+msgstr "دانیل ملکتنین"
+
+#: main.cpp:52
+#, kde-format
+msgid "Dialog Stuff, Client/Server"
+msgstr "چیز‌های دیالوگ، سرویس‌دهنده/سرویس‌گیرنده"
+
+#: main.cpp:53
+#, kde-format
+msgid "Kevin Krammer"
+msgstr "کوین کرامر"
+
+#: main.cpp:53
+#, kde-format
+msgid "Computer Player"
+msgstr "بازیکن رایانه‌ای"
+
+#: main.cpp:55
+#, kde-format
+msgid "Johann Ollivier Lapeyre"
+msgstr "جان الیوییر لاپیر"
+
+#: main.cpp:55
+#, kde-format
+msgid "Game artwork"
+msgstr "کار‌های هنری بازی"
+
+#: main.cpp:56
+#, kde-format
+msgid "Eugene Trounev"
+msgstr "ایگوئن ترونو"
+
+#: main.cpp:56
+#, kde-format
+msgid "Background"
+msgstr "پس‌زمینه"
+
+#: main.cpp:57
+#, kde-format
+msgid "Robert Wadley"
+msgstr "روبرت وادلی"
+
+#: main.cpp:57
+#, kde-format
+msgid "Artwork for some of the ships"
+msgstr "کار‌های هنری برای بعضی کشتی‌ها"
+
+#: main.cpp:58
+#, kde-format
+msgid "Riccardo Iaconelli"
+msgstr "ریکاردو لاکونلی"
+
+#: main.cpp:58
+#, kde-format
+msgid "Welcome screen"
+msgstr "صفحه خوش‌آمد‌گویی"
+
+#: main.cpp:59
+#, kde-format
+msgid "Benjamin Adler"
+msgstr "بنیامین آدلر"
+
+#: main.cpp:59
+#, kde-format
+msgid "Icon"
+msgstr "شمایل"
+
+#: main.cpp:60
+#, kde-format
+msgid "Nils Trzebin"
+msgstr "نیلس ترزبین"
+
+#: main.cpp:60
+#, kde-format
+msgid "Sounds"
+msgstr "صدا‌ها"
+
+#: main.cpp:61
+#, kde-format
+msgid "Elmar Hoefner"
+msgstr "المار هافنر"
+
+#: main.cpp:61
+#, kde-format
+msgid "GFX"
+msgstr ""
+
+#: main.cpp:62
+#, kde-format
+msgid "Lukas Tinkl"
+msgstr "لوکاس تینکل"
+
+#: main.cpp:62
+#, kde-format
+msgid "Non-Latin1 Support"
+msgstr "پشتیبانی غیر لاتین"
+
+#: main.cpp:63
+#, kde-format
+msgid "Malte Starostik"
+msgstr "مالته استاروستیک"
+
+#: main.cpp:63
+#, kde-format
+msgid "Various improvements"
+msgstr "بهبودی‌های متعدد"
+
+#: main.cpp:64
+#, kde-format
+msgid "Albert Astals Cid"
+msgstr "آلبرت آستالز سید"
+
+#: main.cpp:64 main.cpp:65
+#, kde-format
+msgid "Various improvements and bugfixes"
+msgstr "بهبودی‌های متعدد و حل اشکال"
+
+#: main.cpp:65
+#, kde-format
+msgid "John Tapsell"
+msgstr "جان تسپل"
+
+#: main.cpp:66
+#, kde-format
+msgid "Inge Wallin"
+msgstr "اینگه والین"
+
+#: main.cpp:66
+#, kde-format
+msgid "Bugfixes and refactoring"
+msgstr "حل اشکال و باز‌سازی"
+
+#: main.cpp:67
+#, kde-format
+msgid "Jakub Stachowski"
+msgstr "ژاکوب استاچوسکی"
+
+#: main.cpp:67
+#, kde-format
+msgid "DNS-SD discovery"
+msgstr "کشف DNS-SD"
+
+#: main.cpp:68
+#, kde-format
+msgid "Roney Gomes"
+msgstr ""
+
+#: main.cpp:68
+#, kde-format
+msgid "Porting to KGameRenderer and QGraphicsView"
+msgstr ""
+
+#: main.cpp:75
+#, kde-format
+msgid "[URL]"
+msgstr ""
+
+#: main.cpp:75
+#, kde-format
+msgid "URL of a Naval Battle game server to connect to after startup"
+msgstr ""
+
+#: mainwindow.cpp:59
+#, kde-format
+msgid "&Single Player"
+msgstr "&تک نفره"
+
+#: mainwindow.cpp:63
+#, kde-format
+msgid "&Host Game..."
+msgstr "&میزبان بازی..."
+
+#: mainwindow.cpp:67
+#, kde-format
+msgid "&Connect to Game..."
+msgstr "&اتصال به بازی شبکه..."
+
+#: mainwindow.cpp:72
+#, kde-format
+msgid "Change &Nickname..."
+msgstr "تغییر &لقب..."
+
+#: mainwindow.cpp:75
+#, kde-format
+msgid "&Play Sounds"
+msgstr "&پخش صدا‌ها"
+
+#: mainwindow.cpp:80
+#, kde-format
+msgid "&Adjacent Ships"
+msgstr ""
+
+#: mainwindow.cpp:85
+#, kde-format
+msgid "&Multiple Ships"
+msgstr ""
+
+#: mainwindow.cpp:90
+#, kde-format
+msgid "Show End-of-Game Message"
+msgstr ""
+
+#: mainwindow.cpp:95
+#, kde-format
+msgid "Show &Left Grid"
+msgstr ""
+
+#: mainwindow.cpp:99
+#, kde-format
+msgid "Show &Right Grid"
+msgstr ""
+
+#: networkdialog.cpp:61
+#, kde-format
+msgid "&Nickname:"
+msgstr "&لقب‌:"
+
+#: networkdialog.cpp:73
+#, kde-format
+msgid "&Join game:"
+msgstr "&پیوستن به بازی:"
+
+#: networkdialog.cpp:88
+#, kde-format
+msgid "&Hostname:"
+msgstr "&نام میزبان:‌"
+
+#: networkdialog.cpp:101 networkdialog.cpp:131
+#, kde-format
+msgid "&Port:"
+msgstr "&درگاه:‌"
+
+#: networkdialog.cpp:116
+#, kde-format
+msgid "&Enter server address manually"
+msgstr "&وارد کردن آدرس سرویس‌دهنده به صورت دستی:"
+
+#: networkdialog.cpp:148
+#, kde-format
+msgid "Network Parameters"
+msgstr "پارامتر‌های شبکه"
+
+#: networkdialog.cpp:210
+#, kde-format
+msgid "Connecting to remote host..."
+msgstr "در حال اتصال به میزبان راه‌دور... "
+
+#: networkdialog.cpp:217
+#, kde-format
+msgid "Waiting for an incoming connection..."
+msgstr "در حال انتظار برای یک اتصال ورودی..."
+
+#: networkdialog.cpp:236
+#, kde-format
+msgid "Could not connect to host"
+msgstr "ناتوان در اتصال به میزبان"
+
+#: networkentity.cpp:189
+#, kde-format
+msgid "You have "
+msgstr ""
+
+#: networkentity.cpp:195
+#, kde-format
+msgid ", "
+msgstr ""
+
+#: networkentity.cpp:288
+#, kde-format
+msgid "You can place ships adjacent to each other"
+msgstr ""
+
+#: networkentity.cpp:291
+#, kde-format
+msgid "You must leave a space between ships"
+msgstr ""
+
+#: playerentity.cpp:199
+#, kde-format
+msgid "Your opponent is now known as %1"
+msgstr "حریفتان اکنون به عنوان %1 شناخته‌شده است"
+
+#: playerentity.cpp:204
+#, kde-format
+msgid "Your opponent disconnected from the game"
+msgstr "حریفتان از بازی قطع شد."
+
+#: playfield.cpp:146 playfield.cpp:166
+#, kde-format
+msgid "Shots"
+msgstr "شلیک‌ها"
+
+#: playfield.cpp:147 playfield.cpp:167
+#, kde-format
+msgid "Hits"
+msgstr "برخورد‌ها"
+
+#: playfield.cpp:148 playfield.cpp:168
+#, kde-format
+msgid "Misses"
+msgstr "هدر دادن‌ها"
+
+#: playfield.cpp:188
+#, kde-format
+msgid "You win!"
+msgstr "شما بردید!"
+
+#: playfield.cpp:190
+#, kde-format
+msgid "You win. Excellent!"
+msgstr ""
+
+#: playfield.cpp:194
+#, kde-format
+msgid "You lose."
+msgstr "شما باختید."
+
+#: playfield.cpp:196
+#, kde-format
+msgid "You lose. Better luck next time!"
+msgstr ""
+
+#: playfield.cpp:206
+#, kde-format
+msgid "Change Nickname"
+msgstr "تعویض لقب"
+
+#: playfield.cpp:206
+#, kde-format
+msgid "Enter new nickname:"
+msgstr "لقب جدید را وارد کنید:"
+
+#: playfield.cpp:234
+#, kde-format
+msgid "Restart game"
+msgstr "شروع مجدد بازی"
+
+#: playfield.cpp:235
+#, kde-format
+msgid "Your opponent has requested to restart the game. Do you accept?"
+msgstr "حریف شما درخواست شروع مجدد بازی را دارد.قبول می‌کنید؟"
+
+#: playfield.cpp:236
+#, kde-format
+msgctxt "@action:button"
+msgid "Accept"
+msgstr ""
+
+#: playfield.cpp:237
+#, kde-format
+msgctxt "@action:button"
+msgid "Reject"
+msgstr ""
+
+#: playfield.cpp:246
+#, fuzzy, kde-format
+#| msgid ""
+#| "Your opponent is using pre-KDE4 version of KBattleship. Note that, "
+#| "according to the rules enforced by old clients, ships cannot be placed "
+#| "adjacent to one another."
+msgid ""
+"Your opponent is using a pre-KDE4 version of Naval Battle. Note that, "
+"according to the rules enforced by old clients, ships cannot be placed "
+"adjacent to one another and only one ship of each size is allowed."
+msgstr ""
+"حریفتان از نسخه قبلی KDE4 KBattleshipاستفاده می‌کند. توجه کنید که طبق قوانین "
+"اجرای قدیمی کارخواهها، کشتیها نمی‌توانند کنار یکدیگر جای بگیرند."
+
+#: playfield.cpp:259
+#, kde-format
+msgid "Enemy has shot. Shoot now!"
+msgstr "دشمن شلیک کرد.حالا شلیک کنید!"
+
+#: playfield.cpp:263
+#, kde-format
+msgid "Waiting for enemy to shoot..."
+msgstr "در حال انظار برای شلیک دشمن..."
+
+#: playfield.cpp:272
+#, kde-format
+msgid "Ships placed. Now shoot on the enemy field!"
+msgstr "کشتیها جا گرفتند. اکنون به حوزه دشمن شلیک کنید!"
+
+#: playfield.cpp:275
+#, kde-format
+msgid "Waiting for other player to start the game..."
+msgstr "در حال انتظار برای بازیکن دیگر که بازی را شروع کند..."
+
+#: playfield.cpp:279
+#, kde-format
+msgid "Waiting for other player to place his ships..."
+msgstr "در حال انتظار برای بازیکن دیگر تا کشتی‌هایش را جای‌گذاری کند..."
+
+#: playfield.cpp:293
+#, fuzzy, kde-format
+#| msgid "Place your ships. Use the right mouse button to rotate them."
+msgid "Place your %1 ships. Use the right mouse button to rotate them."
+msgstr ""
+"لطفاً، کشتیهایتان را جای بدهید. برای چرخش آنها از دکمه راست موشی استفاده کنید."
+
+#: playfield.cpp:299
+#, kde-format
+msgid "You can't place your remaining ships."
+msgstr ""
+
+#: playfield.cpp:300
+#, fuzzy, kde-format
+#| msgid "Restart game"
+msgctxt "@action"
+msgid "Restart"
+msgstr "شروع مجدد بازی"
+
+#: playfield.cpp:301
+#, kde-format
+msgctxt "@action"
+msgid "Abort"
+msgstr ""
+
+#: playfield.cpp:302
+#, kde-format
+msgid ""
+"You can't place your remaining ships. Please restart placing ships or abort "
+"game"
+msgstr ""
+
+#: playfield.cpp:302
+#, kde-format
+msgid "Restart placing ships"
+msgstr ""
+
+#: simplemenu.cpp:40
+#, kde-format
+msgid "Single Player"
+msgstr "تک نفره"
+
+#: simplemenu.cpp:41
+#, kde-format
+msgid "Host Network Game"
+msgstr "میزبانی بازی شبکه‌ای"
+
+#: simplemenu.cpp:42
+#, kde-format
+msgid "Connect to Network Game"
+msgstr "اتصال به بازی شبکه"
+
+#: simplemenu.cpp:132 simplemenu.cpp:149
+#, kde-format
+msgid "Remote player"
+msgstr "بازی از راه دور"
+
+#~ msgid "Game difficulty."
+#~ msgstr "سختی بازی."
+
+#~ msgid "KBattleship"
+#~ msgstr "جنگ کشتی‌ها"
+
+#~ msgid "Host network game"
+#~ msgstr "بازی شبکه میزبان"
+
+#~ msgid "Connect to network game"
+#~ msgstr "اتصال به بازی شبکه"
+
+#~ msgid "Single player"
+#~ msgstr "تک بازیکن"
+
+#~ msgid "&Game"
+#~ msgstr "&بازی‌"
+
+#~ msgid "&Settings"
+#~ msgstr "&تنظیمات‌"
+
+#~ msgid "Test class for KWelcomeScreen"
+#~ msgstr "رده آزمون برای KWelcomeScreen"
+
+#~ msgid ""
+#~ "Fill in the fildes to speed up testing. Just for development purpose."
+#~ msgstr "برای بالا بردن سرعت آزمون، حوزه‌ها را پر کنید. فقط برای هدف توسعه."
+
+#~ msgid "Shots:"
+#~ msgstr "گلوله:"
+
+#~ msgid "Hits:"
+#~ msgstr "ضربت:"

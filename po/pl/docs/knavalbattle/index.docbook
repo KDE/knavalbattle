@@ -1,0 +1,737 @@
+<?xml version="1.0" ?>
+<!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN" "dtd/kdedbx45.dtd" [
+  <!ENTITY kappname "&kbattleship;">
+  <!ENTITY package "kdegames">
+  <!ENTITY % addindex "IGNORE">
+  <!ENTITY % Polish "INCLUDE"
+> <!-- change language only here -->
+]>
+
+<book lang="&language;">
+<bookinfo>
+<title
+>Podręcznik gry &kbattleship; </title>
+
+<authorgroup>
+<author
+>&Daniel.Molkentin; &Daniel.Molkentin.mail; </author>
+
+<author
+>&Nikolas.Zimmermann; &Nikolas.Zimmermann.mail; </author>
+
+<author
+><firstname
+>Anton</firstname
+> <surname
+>Brondz</surname
+> <affiliation
+> <address
+><email
+>dinolinux@gmail.com</email
+></address>
+</affiliation>
+</author>
+
+<othercredit role="reviewer"
+>&Frerich.Raabe; &Frerich.Raabe.mail; </othercredit>
+
+<othercredit role="translator"
+><firstname
+>Krzysztof</firstname
+><surname
+>Woźniak</surname
+><affiliation
+><address
+><email
+>wozniakk@ceti.pl</email
+></address
+></affiliation
+><contrib
+>Polskie tłumaczenie</contrib
+></othercredit
+> 
+
+</authorgroup>
+
+<legalnotice
+>&FDLNotice;</legalnotice>
+
+<copyright>
+<year
+>2001</year>
+<holder
+>&Daniel.Molkentin;</holder>
+</copyright>
+<copyright>
+<year
+>2001</year>
+<holder
+>&Nikolas.Zimmermann;</holder>
+</copyright>
+<copyright>
+<year
+>2001</year>
+<holder
+>Kevin Krammer</holder>
+</copyright>
+
+<date
+>2007-11-14</date>
+<releaseinfo
+>2.0</releaseinfo>
+
+<abstract>
+<para
+>Gra &kbattleship; jest usieciowioną wersją znanej gry w okręty dla środowiska &kde;.</para>
+</abstract>
+
+<keywordset>
+<keyword
+>KDE</keyword>
+<keyword
+>kdegames</keyword>
+<keyword
+>kbattleship</keyword>
+<keyword
+>gra</keyword>
+<keyword
+>okręty</keyword>
+<keyword
+>bitwa</keyword>
+</keywordset>
+
+</bookinfo>
+
+<chapter id="introduction">
+<title
+>Wprowadzenie</title>
+<note
+><title
+>Rodzaj gry:</title
+><para
+>Strategiczna, Planszowa</para
+></note
+><!-- Game genre. Use as many as necessary. Available game types are: Arcade, Board, Card, Dice, Toys, Logic, Strategy.-->
+<note
+><title
+>Liczba graczy:</title
+><para
+>Dwoje</para
+></note
+><!--Number of possible players. It can be: One, Two,..., Multiplayer-->
+<para
+>&kbattleship; jest grą w statki dla środowiska &kde;. Statki umieszcza się na planszy symbolizującej morze. Gracze próbują trafić w statki przeciwnika w kolejnych rundach nie wiedząc gdzie przeciwnik je umieścił. Gracz, który jako pierwszy zatopi wszystkie statki przeciwnika, wygrywa. </para>
+</chapter>
+
+<chapter id="howtoplay">
+<title
+>Jak grać</title>
+<note
+><title
+>Cel gry:</title
+><para
+>Zatop wszystkie statki przeciwnika, zanim on zatopi wszystkie twoje statki.</para
+></note
+><!--Describe the objective of the game.-->
+<para
+>Jeżeli chcesz grać w &kbattleship;, potrzebuje dwóch graczy, można grać z komputerem lub za pomocą sieci z innym graczem. Aby zagrać ze swoim komputerem, należy najpierw wybrać poziom trudności po prawej stronie paska stanu, a następnie wybrać opcję <guibutton
+>Jeden gracz</guibutton
+> na ekranie powitalnymlub z menu <menuchoice
+><guimenu
+>Gra</guimenu
+></menuchoice
+>.</para>
+
+<para
+>Aby uruchomić grę sieciową, jeden gracz musi uruchomić serwer gry za pomocą opcji<guilabel
+>Rozpocznij grę sieciową</guilabel
+> na ekranie powitalnym, lub wybierając w menu<menuchoice
+><guimenu
+>Gra</guimenu
+> <guimenuitem
+>Załóż grę...</guimenuitem
+></menuchoice
+>. Otworzy się okno dialogowe z prośbą o podanie <guilabel
+>Pseudonimu:</guilabel
+> i <guilabel
+>Portu:</guilabel
+>. Zwykle gra &kbattleship; zasugeruje Twoje imię i nazwisko, jednak możesz podać tu dowolny ciąg znaków. Zdefiniowany domyślnie port powinien działać, jednak jeżeli napotkasz problem, możesz wybrać dowolny inny niewykorzystywany port powyżej 1024. </para>
+
+<note>
+<para
+>Musisz poinformować drugiego gracza, o numerze portu (jeżeli jest on inny niż domyślny) ponieważ obaj gracze muszą ustawić ten sam numer, aby nawiązać połączenie.</para>
+</note>
+
+<para
+>Drugi gracz musi wybrać opcję <guilabel
+>Podłącz do gry sieciowej</guilabel
+>, lub w menu <menuchoice
+><guimenu
+>Gra</guimenu
+> <guimenuitem
+>Podłącz do gry...</guimenuitem
+></menuchoice
+>. Podobnie jak wcześniej sugerowany jest <guilabel
+>Pseudonim:</guilabel
+>, ale można wpisać dowolną nazwę. W polu<guilabel
+>Nazwa komputera:</guilabel
+> należy podać nazwę sieciową serwera gry (komputera na którym drugi gracz uruchomił grę sieciową). </para>
+
+<para
+>Kiedy skończysz te czynności, możesz rozpocząć grę. Musisz jedynie postępować zgodnie z instrukcjami wyświetlanymi na pasku stanu. Pokazane będą tam podpowiedzi i sugestie dotyczące Twojego następnego ruchu. Na ekranie widoczne są dwa pola podzielone na małe kwadraty, tzw. <quote
+>pola bitwy</quote
+>. Lewe pole należy do Ciebie, umieszczasz tu swoje statki oraz obserwujesz strzały swojego przeciwnika. Na prawym polu rozmieszczona jest flota przeciwnika. Gdy nadchodzi Twoja kolejka, musisz kliknąć na wybranym sektorze tego pola oddając strzał w miejscu, w którym według ciebie znajduje się okręt przeciwnika. </para>
+
+<para
+>Zanim rozpoczniesz grę, musisz rozmieścić swoje okręty. Gracz inicjujący rozgrywkę sieciową zaczyna, a kiedy skończy, drugi gracz rozmieszcza swoje okręty. </para>
+
+<para
+>Rozmieszczanie okrętów jest bardzo proste: wystarczy kliknąć na polu w miejscu w którym chcesz umieścić okręt. Należy rozmieścić cztery okręty: pierwszy z nich będzie miał długość 4 kwadratów, następny będzie długości 3, itd. Domyślnie, statki będą umieszczane w pozycji leżącej; aby obrócić je o 90 stopni, należy kliknąć prawy przycisk myszki przez ich umieszczeniem na planszy. </para>
+
+<para
+>Jeżeli statek zostanie trafiony, wybucha na nim pożar. Aby go zatopić, należy trafić wszystkie pola, które zajmuje. Zatopiony statek będzie oznaczony ściemnionym kolorem. </para>
+
+<para
+>Możesz strzelać klikając lewym przyciskiem myszy na polu bitewnym twojego przeciwnika. Pasek stanu wskazuje na to, kto aktualnie powinien strzelać. </para>
+
+<para
+>Możesz uruchomić grę ponownie wybierając opcję <menuchoice
+><guimenu
+>Gra</guimenu
+> <guimenuitem
+>Uruchom grę ponownie</guimenuitem
+></menuchoice
+>, lub naciskając<keycap
+>F5</keycap
+>. </para>
+
+<para
+>Gracz, który pierwszy zniszczy wszystkie okręty przeciwnika wygrywa. </para>
+
+</chapter>
+
+<chapter id="rulestips">
+<title
+>Zasady gry, strategia gry i sztuczki</title>
+<sect1 id="rules">
+<title
+>Zasady</title>
+<itemizedlist>
+<listitem
+><para
+>Gracz może oddać tylko jeden strzał w rundzie.</para
+></listitem>
+<listitem
+><para
+>Gracz musi rozmieścić wszystkie swoje statki na planszy.</para
+></listitem>
+<listitem
+><para
+>Statki po umieszczeniu na planszy nie mogą być przesuwane.</para
+></listitem>
+<listitem
+><para
+>Statek jest zatopiony jeżeli zostały trafione wszystkie pola, które zajmuje.</para
+></listitem>
+</itemizedlist>
+</sect1>
+
+<sect1 id="strattips">
+<title
+>Strategia i wskazówki</title>
+<itemizedlist>
+<listitem
+><para
+>Nigdy nie umieszczaj statków obok siebie.</para
+></listitem>
+<listitem
+><para
+>Po trafieniu statku, staraj się strzelać w pola otaczające go.</para
+></listitem>
+<listitem
+><para
+>Staraj się umieszczać statki w oddaleniu od krawędzi planszy.</para
+></listitem>
+<listitem
+><para
+>Małe statki trudniej trafić, staraj się je umieszczać w miejscach, gdzie będzie je trudno znaleźć.</para
+></listitem>
+<listitem
+><para
+>Pomyśl zanim oddasz strzał. Strzały w wodę dają mniej punktów.</para
+></listitem>
+</itemizedlist>
+</sect1>
+
+
+<sect1 id="multiplayer">
+<title
+>Rozgrywka wieloosobowa</title>
+
+<para
+>W &kbattleship; można grać online na każdej stronie systemu GGZ Gaming Zone. Możesz tam znaleźć innych graczy, i współzawodniczyć z nimi.Wystarczy wejść do jednego z pokojów &kbattleship; za pomocą klienta GGZ, jak na przykład kggz, a &kbattleship; zostanie zaproponowane jako domyślny klient rozgrywki. Jeżeli posiadasz klienta GGZ możesz to przetestować pod <ulink url="ggz://live.ggzgamingzone.org/#Battleship"
+>tym</ulink
+> adresem. </para>
+
+<para
+>Rozgrywka online może być toczona z człowiekiem lub komputerem. Ich zachowanie może być inne od komputerowego przeciwnika w &kbattleship;. </para>
+
+</sect1>
+</chapter>
+
+<chapter id="menu-reference">
+<title
+>Menu</title>
+
+<sect1 id="game-menu">
+<title
+>Menu <guimenu
+>Gra</guimenu
+></title>
+
+<variablelist>
+<varlistentry>
+<term>
+<menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>N</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Gra</guimenu
+> <guimenuitem
+>Nowa</guimenuitem
+> </menuchoice>
+</term>
+<listitem>
+<para>
+<action
+>Kończy grę i wraca do ekranu powitalnego.</action>
+</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term>
+<menuchoice
+><shortcut
+><keycap
+>F5</keycap
+></shortcut
+> <guimenu
+>Gra</guimenu
+> <guimenuitem
+>Uruchom grę ponownie</guimenuitem
+> </menuchoice>
+</term>
+<listitem>
+<para>
+<action
+>Uruchamia grę ponownie.</action>
+</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term>
+<menuchoice
+><shortcut action="simul"
+>&Ctrl;<keycap
+>H</keycap
+></shortcut
+> <guimenu
+>Gra</guimenu
+> <guimenuitem
+>Pokaż najlepsze wyniki</guimenuitem
+> </menuchoice>
+</term>
+<listitem>
+<para>
+<action
+>Pokazuje listę najlepszych rezultatów.</action>
+</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term>
+<menuchoice
+><guimenu
+>Ustawienia</guimenu
+> <guimenuitem
+>Pojedynczy gracz</guimenuitem
+> </menuchoice>
+</term>
+<listitem>
+<para>
+<action
+>Uruchamia grę, w której Twoim przeciwnikiem jest komputer.</action>
+</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term>
+<menuchoice
+><guimenu
+>Ustawienia</guimenu
+> <guimenuitem
+>Załóż grę...</guimenuitem
+> </menuchoice>
+</term>
+<listitem>
+<para>
+<action
+>Uruchamia serwer, aby inny gracz mógł się do Ciebie podłączyć.</action>
+</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term>
+<menuchoice
+><guimenu
+>Ustawienia</guimenu
+> <guimenuitem
+>Podłącz do gry...</guimenuitem
+> </menuchoice>
+</term>
+<listitem>
+<para>
+<action
+>Podłącza się do serwera a celu uruchomienia gry.</action>
+</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term>
+<menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>Q</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Gra</guimenu
+> <guimenuitem
+>Zakończ</guimenuitem
+> </menuchoice>
+</term>
+<listitem>
+<para
+><action
+>Kończy</action
+> &kbattleship; </para>
+</listitem>
+</varlistentry>
+</variablelist>
+
+</sect1>
+
+<sect1 id="settings-menu">
+<title
+>Menu <guimenu
+>Ustawienia</guimenu
+></title>
+
+<variablelist>
+<varlistentry>
+<term>
+<menuchoice
+><guimenu
+>Ustawienia</guimenu
+> <guimenuitem
+>Zmień pseudonim</guimenuitem
+> </menuchoice>
+</term>
+<listitem>
+<para>
+<action
+>Zmienia domyślny pseudonim gracza.</action>
+</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term>
+<menuchoice
+><guimenu
+>Ustawienia</guimenu
+> <guimenuitem
+>Dźwięk</guimenuitem
+> </menuchoice>
+</term>
+<listitem>
+<para
+><action
+>Przełącza odtwarzanie dźwięków (odgłosy wystrzałów).</action
+> Wartością domyślną jest: włączone. </para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term>
+<menuchoice
+><guimenu
+>Ustawienia</guimenu
+> <guimenuitem
+>Pokaż pasek narzędzi</guimenuitem
+> </menuchoice>
+</term>
+<listitem>
+<para
+><action
+>Włącza lub wyłącza wyświetlanie paska narzędzi.</action
+> Domyślna wartość to: włączony. </para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term>
+<menuchoice
+><guimenu
+>Ustawienia</guimenu
+> <guimenuitem
+>Pokaż pasek stanu</guimenuitem
+> </menuchoice>
+</term>
+<listitem>
+<para
+><action
+>Włącza lub wyłącza wyświetlanie paska stanu.</action
+> Domyślna wartość to: włączony. </para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term>
+<menuchoice
+><guimenu
+>Ustawienia</guimenu
+> <guimenuitem
+>Konfiguracja skrótów...</guimenuitem
+> </menuchoice>
+</term>
+<listitem>
+<para>
+<action
+>Konfiguracja skrótów klawiszowych wykorzystywanych przez grę &kbattleship;.</action>
+</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term>
+<menuchoice
+><guimenu
+>Ustawienia</guimenu
+> <guimenuitem
+>Konfiguracja pasków narzędziowych...</guimenuitem
+> </menuchoice>
+</term>
+<listitem>
+<para
+><action
+>Konfiguruje</action
+> paski narzędzi programu &kbattleship;. </para>
+</listitem>
+</varlistentry>
+</variablelist>
+
+</sect1>
+
+<sect1 id="help-menu">
+<title
+>Menu <guimenu
+>Pomoc</guimenu
+></title>
+&help.menu.documentation; </sect1>
+</chapter>
+
+<chapter id="faq">
+<title
+>Najczęściej zadawane pytania</title>
+
+<qandaset>
+
+<qandaentry>
+<question>
+<para
+>Nie wiem gdzie strzelać, czy mogę dostać podpowiedź? </para>
+</question>
+<answer>
+<para
+>Nie, nie ma podpowiedzi w grze &kbattleship;. </para>
+</answer>
+</qandaentry>
+
+<qandaentry>
+<question>
+<para
+>Jak mogę obrócić statek? </para>
+</question>
+<answer>
+<para
+>Przesuń statek w okolice pożądanej pozycji i naciśnij prawy przycisk myszy. </para>
+</answer>
+</qandaentry>
+
+<qandaentry>
+<question>
+<para
+>Chciałbym zmienić wygląd gry. Czy mogę? </para>
+</question>
+<answer>
+<para
+>Nie, nie da się zmienić wyglądu. </para>
+</answer>
+</qandaentry>
+
+</qandaset>
+</chapter>
+
+<chapter id="credits">
+<title
+>Zasługi i licencje</title>
+
+<para
+>Prawa autorskie &kbattleship;: (c) 2000, 2007</para>
+
+<itemizedlist>
+<title
+>Autorzy</title>
+<listitem>
+<para
+>Paolo Capriotti <email
+>p.capriotti@gmail.com</email
+> </para>
+</listitem>
+<listitem>
+<para
+>&Nikolas.Zimmermann; &Nikolas.Zimmermann.mail; </para>
+</listitem>
+<listitem>
+<para
+>&Daniel.Molkentin; &Daniel.Molkentin.mail; </para>
+</listitem>
+<listitem>
+<para
+>Kevin Krammer <email
+>kevin.krammer@gmx.at</email
+> </para>
+</listitem>
+</itemizedlist>
+
+<itemizedlist>
+<title
+>Twórcy</title>
+<listitem>
+<para
+>Johann Ollivier Lapeyre <email
+>johann.ollivierlapeyre@gmail.com</email
+> </para>
+</listitem>
+<listitem>
+<para
+>Eugene Trounev <email
+>irs_me@hotmail.com</email
+> </para>
+</listitem>
+<listitem>
+<para
+>Robert Wadley <email
+>rob@robntina.fastmail.us</email
+> </para>
+</listitem>
+<listitem>
+<para
+>Riccardo Iaconelli <email
+>ruphy@fsfe.org</email
+> </para>
+</listitem>
+<listitem>
+<para
+>Benjamin Adler <email
+>benadler@bigfoot.de</email
+> </para>
+</listitem>
+<listitem>
+<para
+>Nils Trzebin <email
+>nils.trzebin@stud.uni-hannover.de</email
+> </para>
+</listitem>
+<listitem>
+<para
+>Elmar Hoefner <email
+>elmar.hoefner@uibk.ac.at</email
+></para>
+</listitem>
+
+</itemizedlist>
+
+<para
+>Uaktualnienie dokumentacji dla &kde; 3.4 przez: <personname
+><firstname
+>Brian</firstname
+><surname
+>Beck</surname
+></personname
+> <email
+>brian.beck@mchsi.com</email
+></para>
+
+<para
+>Uaktualnienie dokumentacji dla &kde; 4 przez: <personname
+><firstname
+>Elisa</firstname
+><surname
+>Tonello</surname
+></personname
+> <email
+>elisa.tonello@gmail.com</email
+></para>
+
+<para
+>Polskie tłumaczenie: Krzysztof Woźniak <email
+>wozniakk@ceti.pl</email
+></para
+> 
+&underFDL; &underGPL; </chapter>
+
+<appendix id="installation">
+<title
+>Instalacja</title>
+ 
+&install.intro.documentation;
+ 
+ 
+<sect1 id="Compilation">
+<title
+>Kompilacja i instalacja</title>
+&install.compile.documentation; </sect1>
+</appendix>
+ 
+&documentation.index; 
+</book>
+<!--
+Local Variables:
+mode: sgml
+sgml-minimize-attributes:nil
+sgml-general-insert-case:lower
+sgml-omittag:t
+sgml-shorttag:t
+sgml-namecase-general:t
+sgml-always-quote-attributes:t
+sgml-indent-step:0
+sgml-indent-data:nil
+sgml-parent-document:nil
+sgml-exposed-tags:nil
+sgml-local-catalogs:nil
+sgml-local-ecat-files:nil
+End:
+-->

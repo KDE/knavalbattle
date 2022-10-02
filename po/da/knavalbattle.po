@@ -1,0 +1,579 @@
+# translation of kbattleship.po to Danish
+# Danish translation of kbattleship
+# Copyright (C)
+# Erik Kjær Pedersen <erik@binghamton.edu>, 2001, 2002, 2003, 2004, 2005.
+# Martin Schlander <mschlander@opensuse.org>, 2008, 2009, 2010, 2012, 2013, 2014, 2022.
+# Jan Madsen <jan-portugal@opensuse.org>, 2009.
+# scootergrisen, 2017.
+msgid ""
+msgstr ""
+"Project-Id-Version: kbattleship\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2022-09-04 00:43+0000\n"
+"PO-Revision-Date: 2022-08-08 17:38+0200\n"
+"Last-Translator: Martin Schlander <mschlander@opensuse.org>\n"
+"Language-Team: Danish <kde-i18n-doc@kde.org>\n"
+"Language: da\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Lokalize 21.12.3\n"
+
+#, kde-format
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr "Erik Kjær Pedersen,Martin Schlander"
+
+#, kde-format
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr "erik@binghamton.edu,mschlander@opensuse.org"
+
+#: controller.cpp:50
+#, kde-format
+msgid "Computer"
+msgstr "Computer"
+
+#. i18n: ectx: label, entry (Hostname), group (network)
+#: knavalbattle.kcfg:9
+#, kde-format
+msgid "Default hostname for multiplayer games."
+msgstr "Standard værtsnavn for multiplayer-spil."
+
+#. i18n: ectx: label, entry (Port), group (network)
+#: knavalbattle.kcfg:13
+#, kde-format
+msgid "Default port for multiplayer games."
+msgstr "Standardport til multiplayer-spil."
+
+#. i18n: ectx: label, entry (Nickname), group (general)
+#: knavalbattle.kcfg:19
+#, kde-format
+msgid "User nickname."
+msgstr "Brugers kaldenavn."
+
+#. i18n: ectx: label, entry (EnableSounds), group (general)
+#: knavalbattle.kcfg:22
+#, kde-format
+msgid "Whether sound effects should be played."
+msgstr "Om lydeffekter skal afspilles."
+
+#. i18n: ectx: label, entry (AdjacentShips), group (general)
+#: knavalbattle.kcfg:26
+#, kde-format
+msgid "Allow the ships to be adjacent without one empty space between them."
+msgstr ""
+"Tillad at skibene er ved siden af hinanden uden en tom plads imellem dem."
+
+#. i18n: ectx: label, entry (SeveralShips), group (general)
+#: knavalbattle.kcfg:30
+#, kde-format
+msgid ""
+"Allow multiple ships of any size, default: 4 of 1, 3 of 2, 2 of 3, 1 of 4."
+msgstr ""
+"Tillad flere skibe af alle størrelser, standard: 4 på 1, 3 på 2, 2 på 3, 1 "
+"på 4."
+
+#. i18n: ectx: ToolBar (gameToolbar)
+#: knavalbattleui.rc:29
+#, kde-format
+msgid "Game Toolbar"
+msgstr "Spilværktøjslinje"
+
+#: main.cpp:42
+#, kde-format
+msgid "Naval Battle"
+msgstr "Naval Battle"
+
+#: main.cpp:44
+#, kde-format
+msgid "The KDE ship sinking game"
+msgstr "KDE's sænke slagskibe"
+
+#: main.cpp:45
+#, kde-format
+msgid ""
+"(c) 2000-2005  Nikolas Zimmermann, Daniel Molkentin\n"
+"(c) 2007 Paolo Capriotti"
+msgstr ""
+"(c) 2000-2005  Nikolas Zimmermann, Daniel Molkentin\n"
+"(c) 2007 Paolo Capriotti"
+
+#: main.cpp:50
+#, kde-format
+msgid "Paolo Capriotti"
+msgstr "Paolo Capriotti"
+
+#: main.cpp:50
+#, kde-format
+msgid "Current maintainer"
+msgstr "Nuværende vedligeholder"
+
+#: main.cpp:51
+#, kde-format
+msgid "Nikolas Zimmermann"
+msgstr "Nikolas Zimmermann"
+
+#: main.cpp:51
+#, kde-format
+msgid "Project Founder, GUI Handling, Client/Server"
+msgstr "Projekt grundlægger, GUI Håndtering, Klient/Server"
+
+#: main.cpp:52
+#, kde-format
+msgid "Daniel Molkentin"
+msgstr "Daniel Molkentin"
+
+#: main.cpp:52
+#, kde-format
+msgid "Dialog Stuff, Client/Server"
+msgstr "Dialog ting, Klient/Server"
+
+#: main.cpp:53
+#, kde-format
+msgid "Kevin Krammer"
+msgstr "Kevin Krammer"
+
+#: main.cpp:53
+#, kde-format
+msgid "Computer Player"
+msgstr "Computerspiller"
+
+#: main.cpp:55
+#, kde-format
+msgid "Johann Ollivier Lapeyre"
+msgstr "Johann Ollivier Lapeyre"
+
+#: main.cpp:55
+#, kde-format
+msgid "Game artwork"
+msgstr "Spilgrafik"
+
+#: main.cpp:56
+#, kde-format
+msgid "Eugene Trounev"
+msgstr "Eugene Trounev"
+
+#: main.cpp:56
+#, kde-format
+msgid "Background"
+msgstr "Baggrund"
+
+#: main.cpp:57
+#, kde-format
+msgid "Robert Wadley"
+msgstr "Robert Wadley"
+
+#: main.cpp:57
+#, kde-format
+msgid "Artwork for some of the ships"
+msgstr "Grafik for nogle af skibene"
+
+#: main.cpp:58
+#, kde-format
+msgid "Riccardo Iaconelli"
+msgstr "Riccardo Iaconelli"
+
+#: main.cpp:58
+#, kde-format
+msgid "Welcome screen"
+msgstr "Velkomstskærm"
+
+#: main.cpp:59
+#, kde-format
+msgid "Benjamin Adler"
+msgstr "Benjamin Adler"
+
+#: main.cpp:59
+#, kde-format
+msgid "Icon"
+msgstr "Ikon"
+
+#: main.cpp:60
+#, kde-format
+msgid "Nils Trzebin"
+msgstr "Nils Trzebin"
+
+#: main.cpp:60
+#, kde-format
+msgid "Sounds"
+msgstr "Lyde"
+
+#: main.cpp:61
+#, kde-format
+msgid "Elmar Hoefner"
+msgstr "Elmar Hoefner"
+
+#: main.cpp:61
+#, kde-format
+msgid "GFX"
+msgstr "GFX"
+
+#: main.cpp:62
+#, kde-format
+msgid "Lukas Tinkl"
+msgstr "Lukas Tinkl"
+
+#: main.cpp:62
+#, kde-format
+msgid "Non-Latin1 Support"
+msgstr "Ikke-Latin1 støtte"
+
+#: main.cpp:63
+#, kde-format
+msgid "Malte Starostik"
+msgstr "Malte Starostik"
+
+#: main.cpp:63
+#, kde-format
+msgid "Various improvements"
+msgstr "Forskellige forbedringer"
+
+#: main.cpp:64
+#, kde-format
+msgid "Albert Astals Cid"
+msgstr "Albert Astals Cid"
+
+#: main.cpp:64 main.cpp:65
+#, kde-format
+msgid "Various improvements and bugfixes"
+msgstr "Forskellige forbedringer og fejlretninger"
+
+#: main.cpp:65
+#, kde-format
+msgid "John Tapsell"
+msgstr "John Tapsell"
+
+#: main.cpp:66
+#, kde-format
+msgid "Inge Wallin"
+msgstr "Inge Wallin"
+
+#: main.cpp:66
+#, kde-format
+msgid "Bugfixes and refactoring"
+msgstr "Fejlrettelser og genfaktorisering"
+
+#: main.cpp:67
+#, kde-format
+msgid "Jakub Stachowski"
+msgstr "Jakub Stachowski"
+
+#: main.cpp:67
+#, kde-format
+msgid "DNS-SD discovery"
+msgstr "DNS-SD-opdagelse"
+
+#: main.cpp:68
+#, kde-format
+msgid "Roney Gomes"
+msgstr "Roney Gomes"
+
+#: main.cpp:68
+#, kde-format
+msgid "Porting to KGameRenderer and QGraphicsView"
+msgstr "Portering til KGameRenderer og QGraphicsView"
+
+#: main.cpp:75
+#, kde-format
+msgid "[URL]"
+msgstr "[URL]"
+
+#: main.cpp:75
+#, kde-format
+msgid "URL of a Naval Battle game server to connect to after startup"
+msgstr "URL på en Naval Battle-spilserver der skal forbindes til efter opstart"
+
+#: mainwindow.cpp:59
+#, kde-format
+msgid "&Single Player"
+msgstr "&Enkelt spiller"
+
+#: mainwindow.cpp:63
+#, kde-format
+msgid "&Host Game..."
+msgstr "&Vær vært for spil..."
+
+#: mainwindow.cpp:67
+#, kde-format
+msgid "&Connect to Game..."
+msgstr "&Forbind til spil..."
+
+#: mainwindow.cpp:72
+#, kde-format
+msgid "Change &Nickname..."
+msgstr "Skift &kaldenavn..."
+
+#: mainwindow.cpp:75
+#, kde-format
+msgid "&Play Sounds"
+msgstr "&Afspil lyde"
+
+#: mainwindow.cpp:80
+#, kde-format
+msgid "&Adjacent Ships"
+msgstr "Skibe ved siden &af hinanden"
+
+#: mainwindow.cpp:85
+#, kde-format
+msgid "&Multiple Ships"
+msgstr "&Flere skibe"
+
+#: mainwindow.cpp:90
+#, kde-format
+msgid "Show End-of-Game Message"
+msgstr "Vis \"Spillet-er-slut\"-besked"
+
+#: mainwindow.cpp:95
+#, kde-format
+msgid "Show &Left Grid"
+msgstr "Vis gitter til &venstre"
+
+#: mainwindow.cpp:99
+#, kde-format
+msgid "Show &Right Grid"
+msgstr "Vis gitter til &højre"
+
+#: networkdialog.cpp:61
+#, kde-format
+msgid "&Nickname:"
+msgstr "&Kaldenavn:"
+
+#: networkdialog.cpp:73
+#, kde-format
+msgid "&Join game:"
+msgstr "&Deltag i spil:"
+
+#: networkdialog.cpp:88
+#, kde-format
+msgid "&Hostname:"
+msgstr "&Værtsnavn:"
+
+#: networkdialog.cpp:101 networkdialog.cpp:131
+#, kde-format
+msgid "&Port:"
+msgstr "&Port:"
+
+#: networkdialog.cpp:116
+#, kde-format
+msgid "&Enter server address manually"
+msgstr "&Indtast serveradresse manuelt"
+
+#: networkdialog.cpp:148
+#, kde-format
+msgid "Network Parameters"
+msgstr "Netværksparametre"
+
+#: networkdialog.cpp:210
+#, kde-format
+msgid "Connecting to remote host..."
+msgstr "Forbinder til ekstern vært..."
+
+#: networkdialog.cpp:217
+#, kde-format
+msgid "Waiting for an incoming connection..."
+msgstr "Venter på en indkommende forbindelse..."
+
+#: networkdialog.cpp:236
+#, kde-format
+msgid "Could not connect to host"
+msgstr "Kunne ikke forbinde til vært"
+
+#: networkentity.cpp:189
+#, kde-format
+msgid "You have "
+msgstr "Du har "
+
+#: networkentity.cpp:195
+#, kde-format
+msgid ", "
+msgstr ", "
+
+#: networkentity.cpp:288
+#, kde-format
+msgid "You can place ships adjacent to each other"
+msgstr "Du kan placere skibe ved siden af hinanden"
+
+#: networkentity.cpp:291
+#, kde-format
+msgid "You must leave a space between ships"
+msgstr "Du skal have en plads mellem skibe"
+
+#: playerentity.cpp:199
+#, kde-format
+msgid "Your opponent is now known as %1"
+msgstr "Din modstander er kendt som %1"
+
+#: playerentity.cpp:204
+#, kde-format
+msgid "Your opponent disconnected from the game"
+msgstr "Din modstander afbrød forbindelsen til spillet"
+
+#: playfield.cpp:146 playfield.cpp:166
+#, kde-format
+msgid "Shots"
+msgstr "Skud"
+
+#: playfield.cpp:147 playfield.cpp:167
+#, kde-format
+msgid "Hits"
+msgstr "Træffere"
+
+#: playfield.cpp:148 playfield.cpp:168
+#, kde-format
+msgid "Misses"
+msgstr "Missere"
+
+#: playfield.cpp:188
+#, kde-format
+msgid "You win!"
+msgstr "Du vandt!"
+
+#: playfield.cpp:190
+#, kde-format
+msgid "You win. Excellent!"
+msgstr "Du vandt. Glimrende!"
+
+#: playfield.cpp:194
+#, kde-format
+msgid "You lose."
+msgstr "Du tabte."
+
+#: playfield.cpp:196
+#, kde-format
+msgid "You lose. Better luck next time!"
+msgstr "Du tabte. Bedre held næste gang!"
+
+#: playfield.cpp:206
+#, kde-format
+msgid "Change Nickname"
+msgstr "Skift kaldenavn"
+
+#: playfield.cpp:206
+#, kde-format
+msgid "Enter new nickname:"
+msgstr "Angiv nyt kaldenavn:"
+
+#: playfield.cpp:234
+#, kde-format
+msgid "Restart game"
+msgstr "Genstart spil"
+
+#: playfield.cpp:235
+#, kde-format
+msgid "Your opponent has requested to restart the game. Do you accept?"
+msgstr "Din modstander beder om at genstarte spillet. Vil du acceptere?"
+
+#: playfield.cpp:236
+#, kde-format
+msgctxt "@action:button"
+msgid "Accept"
+msgstr "Acceptér"
+
+#: playfield.cpp:237
+#, kde-format
+msgctxt "@action:button"
+msgid "Reject"
+msgstr "Afvis"
+
+#: playfield.cpp:246
+#, kde-format
+msgid ""
+"Your opponent is using a pre-KDE4 version of Naval Battle. Note that, "
+"according to the rules enforced by old clients, ships cannot be placed "
+"adjacent to one another and only one ship of each size is allowed."
+msgstr ""
+"Din modstander bruger en version af Naval Batte fra før KDE4. Bemærk at i "
+"henhold til reglerne som følges af gamle klienter, kan skibe ikke placeres "
+"umiddelbart op ad hinanden og kun ét skib af hver størrelse er tilladt."
+
+#: playfield.cpp:259
+#, kde-format
+msgid "Enemy has shot. Shoot now!"
+msgstr "Fjenden har affyret. Skyd nu!"
+
+#: playfield.cpp:263
+#, kde-format
+msgid "Waiting for enemy to shoot..."
+msgstr "Venter på at fjenden skal skyde..."
+
+#: playfield.cpp:272
+#, kde-format
+msgid "Ships placed. Now shoot on the enemy field!"
+msgstr "Skibe placeret. Skyd nu på mod fjendens felt!"
+
+#: playfield.cpp:275
+#, kde-format
+msgid "Waiting for other player to start the game..."
+msgstr "Venter på at den anden spiller skal starte spillet..."
+
+#: playfield.cpp:279
+#, kde-format
+msgid "Waiting for other player to place his ships..."
+msgstr "Venter på at den anden spiller skal placere sine skibe..."
+
+#: playfield.cpp:293
+#, kde-format
+msgid "Place your %1 ships. Use the right mouse button to rotate them."
+msgstr "Placér dine %1 skibe. Brug højre museknap til at rotere dem."
+
+#: playfield.cpp:299
+#, kde-format
+msgid "You can't place your remaining ships."
+msgstr "Du kan ikke placere dine resterende skibe."
+
+#: playfield.cpp:300
+#, kde-format
+msgctxt "@action"
+msgid "Restart"
+msgstr "Genstart"
+
+#: playfield.cpp:301
+#, kde-format
+msgctxt "@action"
+msgid "Abort"
+msgstr "Afbryd"
+
+#: playfield.cpp:302
+#, kde-format
+msgid ""
+"You can't place your remaining ships. Please restart placing ships or abort "
+"game"
+msgstr ""
+"Du kan ikke placere dine resterende skibe. Start forfra med at placere "
+"skibene eller afbryd spillet"
+
+#: playfield.cpp:302
+#, kde-format
+msgid "Restart placing ships"
+msgstr "Start forfra med placering af skibe"
+
+#: simplemenu.cpp:40
+#, kde-format
+msgid "Single Player"
+msgstr "Enkelt spiller"
+
+#: simplemenu.cpp:41
+#, kde-format
+msgid "Host Network Game"
+msgstr "Vær vært for netværksspil"
+
+#: simplemenu.cpp:42
+#, kde-format
+msgid "Connect to Network Game"
+msgstr "Forbind til netværksspil"
+
+#: simplemenu.cpp:132 simplemenu.cpp:149
+#, kde-format
+msgid "Remote player"
+msgstr "Ekstern spiller"
+
+#~ msgid "Game difficulty."
+#~ msgstr "Spillets sværhedsgrad."
+
+#~ msgid "KBattleship"
+#~ msgstr "KBattleship"
+
+#~ msgid "Single player"
+#~ msgstr "Enkelt spiller"

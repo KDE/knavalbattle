@@ -1,0 +1,646 @@
+# translation of kbattleship.po to Romanian
+# Copyright (C) 2004 Free Software Foundation, Inc.
+# Sergiu Bivol <sergiu@cip.md>, 2008, 2009, 2013.
+# Laurenţiu Buzdugan <lbuz@rolix.org>, 2009.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: kbattleship\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2022-09-04 00:43+0000\n"
+"PO-Revision-Date: 2013-11-23 20:55+0200\n"
+"Last-Translator: Sergiu Bivol <sergiu@cip.md>\n"
+"Language-Team: Romanian <kde-i18n-ro@kde.org>\n"
+"Language: ro\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=n==1 ? 0 : (n==0 || (n%100 > 0 && n%100 < "
+"20)) ? 1 : 2;\n"
+
+#, kde-format
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr "Sergiu Bivol"
+
+#, kde-format
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr "sergiu@cip.md"
+
+#: controller.cpp:50
+#, kde-format
+msgid "Computer"
+msgstr "Calculator"
+
+#. i18n: ectx: label, entry (Hostname), group (network)
+#: knavalbattle.kcfg:9
+#, kde-format
+msgid "Default hostname for multiplayer games."
+msgstr "Denumirea implicită a gazdei pentru jocuri cu mai mulți jucători."
+
+#. i18n: ectx: label, entry (Port), group (network)
+#: knavalbattle.kcfg:13
+#, kde-format
+msgid "Default port for multiplayer games."
+msgstr "Portul implicit pentru jocuri cu mai mulți jucători."
+
+#. i18n: ectx: label, entry (Nickname), group (general)
+#: knavalbattle.kcfg:19
+#, kde-format
+msgid "User nickname."
+msgstr "Porecla utilizatorului."
+
+#. i18n: ectx: label, entry (EnableSounds), group (general)
+#: knavalbattle.kcfg:22
+#, kde-format
+msgid "Whether sound effects should be played."
+msgstr "Dacă să fie redate efecte sonore."
+
+#. i18n: ectx: label, entry (AdjacentShips), group (general)
+#: knavalbattle.kcfg:26
+#, kde-format
+msgid "Allow the ships to be adjacent without one empty space between them."
+msgstr "Permite navelor să fie adiacente, fără un spațiu gol între ele."
+
+#. i18n: ectx: label, entry (SeveralShips), group (general)
+#: knavalbattle.kcfg:30
+#, kde-format
+msgid ""
+"Allow multiple ships of any size, default: 4 of 1, 3 of 2, 2 of 3, 1 of 4."
+msgstr ""
+
+#. i18n: ectx: ToolBar (gameToolbar)
+#: knavalbattleui.rc:29
+#, kde-format
+msgid "Game Toolbar"
+msgstr "Bara de unelte a jocului"
+
+#: main.cpp:42
+#, kde-format
+msgid "Naval Battle"
+msgstr "Bătălie navală"
+
+#: main.cpp:44
+#, kde-format
+msgid "The KDE ship sinking game"
+msgstr "Jocul KDE de scufundat corăbii"
+
+#: main.cpp:45
+#, kde-format
+msgid ""
+"(c) 2000-2005  Nikolas Zimmermann, Daniel Molkentin\n"
+"(c) 2007 Paolo Capriotti"
+msgstr ""
+"(c) 2000-2005  Nikolas Zimmermann, Daniel Molkentin\n"
+"(c) 2007 Paolo Capriotti"
+
+#: main.cpp:50
+#, kde-format
+msgid "Paolo Capriotti"
+msgstr "Paolo Capriotti"
+
+#: main.cpp:50
+#, kde-format
+msgid "Current maintainer"
+msgstr "Responsabil actual"
+
+#: main.cpp:51
+#, kde-format
+msgid "Nikolas Zimmermann"
+msgstr "Nikolas Zimmermann"
+
+#: main.cpp:51
+#, kde-format
+msgid "Project Founder, GUI Handling, Client/Server"
+msgstr "Fondatorul proiectului, manipularea interfeței, client/server"
+
+#: main.cpp:52
+#, kde-format
+msgid "Daniel Molkentin"
+msgstr "Daniel Molkentin"
+
+#: main.cpp:52
+#, kde-format
+msgid "Dialog Stuff, Client/Server"
+msgstr "Chestii de dialog, client/server"
+
+#: main.cpp:53
+#, kde-format
+msgid "Kevin Krammer"
+msgstr "Kevin Krammer"
+
+#: main.cpp:53
+#, kde-format
+msgid "Computer Player"
+msgstr "Jucătorul calculator"
+
+#: main.cpp:55
+#, kde-format
+msgid "Johann Ollivier Lapeyre"
+msgstr "Johann Ollivier Lapeyre"
+
+#: main.cpp:55
+#, kde-format
+msgid "Game artwork"
+msgstr "Grafica jocului"
+
+#: main.cpp:56
+#, kde-format
+msgid "Eugene Trounev"
+msgstr "Eugene Trounev"
+
+#: main.cpp:56
+#, kde-format
+msgid "Background"
+msgstr "Fundal"
+
+#: main.cpp:57
+#, kde-format
+msgid "Robert Wadley"
+msgstr "Robert Wadley"
+
+#: main.cpp:57
+#, kde-format
+msgid "Artwork for some of the ships"
+msgstr "Grafica unora dintre nave"
+
+#: main.cpp:58
+#, kde-format
+msgid "Riccardo Iaconelli"
+msgstr "Riccardo Iaconelli"
+
+#: main.cpp:58
+#, kde-format
+msgid "Welcome screen"
+msgstr "Ecran de bun venit"
+
+#: main.cpp:59
+#, kde-format
+msgid "Benjamin Adler"
+msgstr "Benjamin Adler"
+
+#: main.cpp:59
+#, kde-format
+msgid "Icon"
+msgstr "Pictogramă"
+
+#: main.cpp:60
+#, kde-format
+msgid "Nils Trzebin"
+msgstr "Nils Trzebin"
+
+#: main.cpp:60
+#, kde-format
+msgid "Sounds"
+msgstr "Sunete"
+
+#: main.cpp:61
+#, kde-format
+msgid "Elmar Hoefner"
+msgstr "Elmar Hoefner"
+
+#: main.cpp:61
+#, kde-format
+msgid "GFX"
+msgstr "GFX"
+
+#: main.cpp:62
+#, kde-format
+msgid "Lukas Tinkl"
+msgstr "Lukas Tinkl"
+
+#: main.cpp:62
+#, kde-format
+msgid "Non-Latin1 Support"
+msgstr "Suport non-Latin1"
+
+#: main.cpp:63
+#, kde-format
+msgid "Malte Starostik"
+msgstr "Malte Starostik"
+
+#: main.cpp:63
+#, kde-format
+msgid "Various improvements"
+msgstr "Diverse îmbunătățiri"
+
+#: main.cpp:64
+#, kde-format
+msgid "Albert Astals Cid"
+msgstr "Albert Astals Cid"
+
+#: main.cpp:64 main.cpp:65
+#, kde-format
+msgid "Various improvements and bugfixes"
+msgstr "Diverse îmbunătățiri și corecții"
+
+#: main.cpp:65
+#, kde-format
+msgid "John Tapsell"
+msgstr "John Tapsell"
+
+#: main.cpp:66
+#, kde-format
+msgid "Inge Wallin"
+msgstr "Inge Wallin"
+
+#: main.cpp:66
+#, kde-format
+msgid "Bugfixes and refactoring"
+msgstr "Corecții și reproiectare"
+
+#: main.cpp:67
+#, kde-format
+msgid "Jakub Stachowski"
+msgstr "Jakub Stachowski"
+
+#: main.cpp:67
+#, kde-format
+msgid "DNS-SD discovery"
+msgstr "Descoperire DNS-SD"
+
+#: main.cpp:68
+#, kde-format
+msgid "Roney Gomes"
+msgstr "Roney Gomes"
+
+#: main.cpp:68
+#, kde-format
+msgid "Porting to KGameRenderer and QGraphicsView"
+msgstr "Portarea către KGameRenderer și QGraphicsView"
+
+#: main.cpp:75
+#, kde-format
+msgid "[URL]"
+msgstr ""
+
+#: main.cpp:75
+#, kde-format
+msgid "URL of a Naval Battle game server to connect to after startup"
+msgstr ""
+"URL-ul serverului de jocuri „Bătălie Navală” pentru conectare după pornire"
+
+#: mainwindow.cpp:59
+#, kde-format
+msgid "&Single Player"
+msgstr "Un &singur jucător"
+
+#: mainwindow.cpp:63
+#, kde-format
+msgid "&Host Game..."
+msgstr "&Găzduire joc..."
+
+#: mainwindow.cpp:67
+#, kde-format
+msgid "&Connect to Game..."
+msgstr "&Conectare la joc..."
+
+#: mainwindow.cpp:72
+#, kde-format
+msgid "Change &Nickname..."
+msgstr "Schimbare &poreclă..."
+
+#: mainwindow.cpp:75
+#, kde-format
+msgid "&Play Sounds"
+msgstr "&Redă sunete"
+
+#: mainwindow.cpp:80
+#, kde-format
+msgid "&Adjacent Ships"
+msgstr "Nave &adiacente"
+
+#: mainwindow.cpp:85
+#, kde-format
+msgid "&Multiple Ships"
+msgstr ""
+
+#: mainwindow.cpp:90
+#, kde-format
+msgid "Show End-of-Game Message"
+msgstr "Afișează mesajul de încheiere a jocului"
+
+#: mainwindow.cpp:95
+#, kde-format
+msgid "Show &Left Grid"
+msgstr "&Afișează grila stângă"
+
+#: mainwindow.cpp:99
+#, kde-format
+msgid "Show &Right Grid"
+msgstr "&Afișează grila dreaptă"
+
+#: networkdialog.cpp:61
+#, kde-format
+msgid "&Nickname:"
+msgstr "&Poreclă:"
+
+#: networkdialog.cpp:73
+#, kde-format
+msgid "&Join game:"
+msgstr "Alăturare la &joc:"
+
+#: networkdialog.cpp:88
+#, kde-format
+msgid "&Hostname:"
+msgstr "Denumire &gazdă:"
+
+#: networkdialog.cpp:101 networkdialog.cpp:131
+#, kde-format
+msgid "&Port:"
+msgstr "&Port:"
+
+#: networkdialog.cpp:116
+#, kde-format
+msgid "&Enter server address manually"
+msgstr "Introduceți manual adr&esa serverului"
+
+#: networkdialog.cpp:148
+#, kde-format
+msgid "Network Parameters"
+msgstr "Parametri rețea"
+
+#: networkdialog.cpp:210
+#, kde-format
+msgid "Connecting to remote host..."
+msgstr "Conectare la server distant..."
+
+#: networkdialog.cpp:217
+#, kde-format
+msgid "Waiting for an incoming connection..."
+msgstr "Așteptare conexiune de intrare..."
+
+#: networkdialog.cpp:236
+#, kde-format
+msgid "Could not connect to host"
+msgstr "Nu m-am putut conecta la gazdă"
+
+#: networkentity.cpp:189
+#, kde-format
+msgid "You have "
+msgstr ""
+
+#: networkentity.cpp:195
+#, kde-format
+msgid ", "
+msgstr ""
+
+#: networkentity.cpp:288
+#, kde-format
+msgid "You can place ships adjacent to each other"
+msgstr "Puteți plasa nave adiacente una alteia"
+
+#: networkentity.cpp:291
+#, kde-format
+msgid "You must leave a space between ships"
+msgstr "Trebuie să lăsați un spațiu între nave"
+
+#: playerentity.cpp:199
+#, kde-format
+msgid "Your opponent is now known as %1"
+msgstr "Oponentul dumneavoastră este cunoscut acum ca %1"
+
+#: playerentity.cpp:204
+#, kde-format
+msgid "Your opponent disconnected from the game"
+msgstr "Oponentul dumneavoastră s-a deconectat de la joc"
+
+#: playfield.cpp:146 playfield.cpp:166
+#, kde-format
+msgid "Shots"
+msgstr "Împușcături"
+
+#: playfield.cpp:147 playfield.cpp:167
+#, kde-format
+msgid "Hits"
+msgstr "Nimeriri"
+
+#: playfield.cpp:148 playfield.cpp:168
+#, kde-format
+msgid "Misses"
+msgstr "Ratări"
+
+#: playfield.cpp:188
+#, kde-format
+msgid "You win!"
+msgstr "Ați învins!"
+
+#: playfield.cpp:190
+#, kde-format
+msgid "You win. Excellent!"
+msgstr "Ați învins. Excelent!"
+
+#: playfield.cpp:194
+#, kde-format
+msgid "You lose."
+msgstr "Ați pierdut."
+
+#: playfield.cpp:196
+#, kde-format
+msgid "You lose. Better luck next time!"
+msgstr "Ați pierdut. Mult succes pentru data viitoare!"
+
+#: playfield.cpp:206
+#, kde-format
+msgid "Change Nickname"
+msgstr "Schimbă porecla"
+
+#: playfield.cpp:206
+#, kde-format
+msgid "Enter new nickname:"
+msgstr "Introduceți noua poreclă:"
+
+#: playfield.cpp:234
+#, kde-format
+msgid "Restart game"
+msgstr "Reinițializare joc"
+
+#: playfield.cpp:235
+#, kde-format
+msgid "Your opponent has requested to restart the game. Do you accept?"
+msgstr "Oponentul dumneavoastră a cerut reinițializarea jocului. Acceptați?"
+
+#: playfield.cpp:236
+#, kde-format
+msgctxt "@action:button"
+msgid "Accept"
+msgstr ""
+
+#: playfield.cpp:237
+#, kde-format
+msgctxt "@action:button"
+msgid "Reject"
+msgstr ""
+
+#: playfield.cpp:246
+#, fuzzy, kde-format
+#| msgid ""
+#| "Your opponent is using a pre-KDE4 version of Naval Battle. Note that, "
+#| "according to the rules enforced by old clients, ships cannot be placed "
+#| "adjacent to one another."
+msgid ""
+"Your opponent is using a pre-KDE4 version of Naval Battle. Note that, "
+"according to the rules enforced by old clients, ships cannot be placed "
+"adjacent to one another and only one ship of each size is allowed."
+msgstr ""
+"Oponentul dumneavoastră utilizează o versiune de Bătălie Navală pre-KDE4. "
+"Rețineți că, potrivit regulilor impuse de vechii clienți, navele nu pot fi "
+"amplasate adiacent una alteia."
+
+#: playfield.cpp:259
+#, kde-format
+msgid "Enemy has shot. Shoot now!"
+msgstr "Inamicul a tras. Împușcați acum!"
+
+#: playfield.cpp:263
+#, kde-format
+msgid "Waiting for enemy to shoot..."
+msgstr "Aștept inamicul să tragă..."
+
+#: playfield.cpp:272
+#, kde-format
+msgid "Ships placed. Now shoot on the enemy field!"
+msgstr "Nave amplasate. Acum trageți în câmpul inamicului!"
+
+#: playfield.cpp:275
+#, kde-format
+msgid "Waiting for other player to start the game..."
+msgstr "Aștept celălalt jucător să înceapă jocul..."
+
+#: playfield.cpp:279
+#, kde-format
+msgid "Waiting for other player to place his ships..."
+msgstr "Aștept celălalt jucător să-și amplaseze navele..."
+
+#: playfield.cpp:293
+#, fuzzy, kde-format
+#| msgid "Place your ships. Use the right mouse button to rotate them."
+msgid "Place your %1 ships. Use the right mouse button to rotate them."
+msgstr ""
+"Amplasați-vă navele. Utilizați butonul drept al mausului pentru a le roti."
+
+#: playfield.cpp:299
+#, kde-format
+msgid "You can't place your remaining ships."
+msgstr ""
+
+#: playfield.cpp:300
+#, fuzzy, kde-format
+#| msgid "Restart game"
+msgctxt "@action"
+msgid "Restart"
+msgstr "Reinițializare joc"
+
+#: playfield.cpp:301
+#, kde-format
+msgctxt "@action"
+msgid "Abort"
+msgstr ""
+
+#: playfield.cpp:302
+#, kde-format
+msgid ""
+"You can't place your remaining ships. Please restart placing ships or abort "
+"game"
+msgstr ""
+
+#: playfield.cpp:302
+#, kde-format
+msgid "Restart placing ships"
+msgstr ""
+
+#: simplemenu.cpp:40
+#, kde-format
+msgid "Single Player"
+msgstr "Un singur jucător"
+
+#: simplemenu.cpp:41
+#, kde-format
+msgid "Host Network Game"
+msgstr "Găzduire joc prin rețea"
+
+#: simplemenu.cpp:42
+#, kde-format
+msgid "Connect to Network Game"
+msgstr "Conectare la joc prin rețea"
+
+#: simplemenu.cpp:132 simplemenu.cpp:149
+#, kde-format
+msgid "Remote player"
+msgstr "Jucător distant"
+
+#~ msgid "Game difficulty."
+#~ msgstr "Dificultatea jocului."
+
+#~ msgid "KBattleship"
+#~ msgstr "Bătălie navală"
+
+#, fuzzy
+#~ msgid "&Game"
+#~ msgstr "Poreclă:"
+
+#, fuzzy
+#~| msgid "&Connect to server"
+#~ msgid "Connect to a server"
+#~ msgstr "&Conectează la server"
+
+#, fuzzy
+#~ msgid "Local game"
+#~ msgstr "Poreclă:"
+
+#, fuzzy
+#~| msgid "&Start Server..."
+#~ msgid "Start Ser&ver"
+#~ msgstr "&Pornește serverul..."
+
+#~ msgid "&Connect"
+#~ msgstr "&Conectează"
+
+#~ msgid "     Player 1: %1     "
+#~ msgstr "     Jucător 1: %1     "
+
+#~ msgid "     Player 2: %1     "
+#~ msgstr "     Jucător 2: %1     "
+
+#~ msgid "Ready"
+#~ msgstr "Gata"
+
+#~ msgid "&Enemy Info"
+#~ msgstr "Informații &inamic"
+
+#~ msgid "Sending Message..."
+#~ msgstr "Trimit mesajul..."
+
+#~ msgid "You won the game :)"
+#~ msgstr "Ați câștigat partida!"
+
+#~ msgid "Do you want to restart the game?"
+#~ msgstr "Doriți să repornesc jocul?"
+
+#~ msgid "Enemy disconnected."
+#~ msgstr "Inamic deconectat."
+
+#, fuzzy
+#~ msgid "Water"
+#~ msgstr "Apă:"
+
+#, fuzzy
+#~ msgid "Nick name:"
+#~ msgstr "Poreclă:"
+
+#, fuzzy
+#~ msgid "&Start"
+#~ msgstr "&Pornește serverul"
+
+#, fuzzy
+#~ msgid "&Send"
+#~ msgstr "Trimite"
+
+#, fuzzy
+#~ msgid "&Server:"
+#~ msgstr "Server:    "
+
+#, fuzzy
+#~ msgid "&Game name:"
+#~ msgstr "Poreclă:"

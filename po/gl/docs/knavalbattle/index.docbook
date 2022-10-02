@@ -1,0 +1,737 @@
+<?xml version="1.0" ?>
+<!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN" "dtd/kdedbx45.dtd" [
+  <!ENTITY kappname "&kbattleship;">
+  <!ENTITY package "kdegames">
+  <!ENTITY % addindex "IGNORE">
+  <!ENTITY % Galician  "INCLUDE"
+> <!-- change language only here -->
+]>
+
+<book lang="&language;">
+<bookinfo>
+<title
+>The &kbattleship; Handbook</title>
+
+<authorgroup>
+<author
+>&Daniel.Molkentin; &Daniel.Molkentin.mail; </author>
+
+<author
+>&Nikolas.Zimmermann; &Nikolas.Zimmermann.mail; </author>
+
+<author
+><firstname
+>Anton</firstname
+> <surname
+>Brondz</surname
+> <affiliation
+> <address
+><email
+>dinolinux@gmail.com</email
+></address>
+</affiliation>
+</author>
+
+<othercredit role="reviewer"
+>&Frerich.Raabe; &Frerich.Raabe.mail; </othercredit>
+
+<othercredit role="translator"
+><firstname
+>Xosé</firstname
+><surname
+>Calvo</surname
+><affiliation
+><address
+><email
+></email
+></address
+></affiliation
+><contrib
+>Tradutor do proxecto Trasno</contrib
+></othercredit
+> 
+
+</authorgroup>
+
+<legalnotice
+>&FDLNotice;</legalnotice>
+
+<copyright>
+<year
+>2001</year>
+<holder
+>&Daniel.Molkentin;</holder>
+</copyright>
+<copyright>
+<year
+>2001</year>
+<holder
+>&Nikolas.Zimmermann;</holder>
+</copyright>
+<copyright>
+<year
+>2001</year>
+<holder
+>Kevin Krammer</holder>
+</copyright>
+
+<date
+>2007-11-14</date>
+<releaseinfo
+>2.0</releaseinfo>
+
+<abstract>
+<para
+>&kbattleship; is a network-enabled implementation of the famous <quote
+>Battle Ship</quote
+> game for &kde;.</para>
+</abstract>
+
+<keywordset>
+<keyword
+>KDE</keyword>
+<keyword
+>kdegames</keyword>
+<keyword
+>kbattleship</keyword>
+<keyword
+>xogo</keyword>
+<keyword
+>barco de guerra</keyword>
+<keyword
+>batalla</keyword>
+</keywordset>
+
+</bookinfo>
+
+<chapter id="introduction">
+<title
+>Introdución</title>
+<note
+><title
+>Tipo de xogo:</title
+><para
+>Estratexia, Taboleiro</para
+></note
+><!-- Game genre. Use as many as necessary. Available game types are: Arcade, Board, Card, Dice, Toys, Logic, Strategy.-->
+<note
+><title
+>Número de xogadores posíbeis:</title
+><para
+>Dous</para
+></note
+><!--Number of possible players. It can be: One, Two,..., Multiplayer-->
+<para
+>&kbattleship; is a Battle Ship game for &kde;. Ships are placed on a board which represents the sea. Players try to hit each others ships in turns without knowing where they are placed. The first player to destroy all ships wins the game. </para>
+</chapter>
+
+<chapter id="howtoplay">
+<title
+>Como xogar</title>
+<note
+><title
+>Obxectivo:</title
+><para
+>Afundir todos os barcos do opoñente antes de que o opoñente afunda todos os teus.</para
+></note
+><!--Describe the objective of the game.-->
+<para
+>If you want to play &kbattleship;, you will need two players, either play against the computer or in a network against another player. To play against your computer, first select the difficulty level on the right of the status bar, and then select <guibutton
+>Single player</guibutton
+> on the welcome screen, or directly on the <menuchoice
+><guimenu
+>Game</guimenu
+></menuchoice
+> menu.</para>
+
+<para
+>To start a network game, one player has to host the game by selecting <guilabel
+>Host network game</guilabel
+> on the welcome screen, or choosing <menuchoice
+><guimenu
+>Game</guimenu
+> <guimenuitem
+>Host Game...</guimenuitem
+></menuchoice
+>. A dialog box opens which asks for a <guilabel
+>Nickname:</guilabel
+> and <guilabel
+>Port:</guilabel
+>. Normally, &kbattleship; will suggest your full name, but you can enter any string you want. The predefined port should be ok. However, if you encounter problems, you can choose any other free port above 1024. </para>
+
+<note>
+<para
+>Tesllo que dicir ao outro xogador, no caso de que empregues un porto distinto do predeterminado, por causa de que ambos os dous xogadores teñen que empregar o mesmo porto para poderen estabelecer unha conexión.</para>
+</note>
+
+<para
+>O outro xogador ten que escoller <guilabel
+>Conectar a un xogo en rede</guilabel
+> ou premer <menuchoice
+><guimenu
+>Partida</guimenu
+> <guimenuitem
+>Conectar a unha partida...</guimenuitem
+></menuchoice
+>. De novo, suxírese un <guilabel
+>Alcume:</guilabel
+>, mais pódese escoller o que se queira. No campo <guilabel
+>Servidor:</guilabel
+> hai que introducir o nome do servidor (a máquina do xogador que iniciou a partida). </para>
+
+<para
+>Unha vez rematado isto xa pode comezar a partida. Simplemente segue as instrucións da barra de estado. Mostra axuda e suxire o que facer a seguir. Cando mires para a pantalla verás dous campos con grades, as chamadas <quote
+>zonas de guerra</quote
+>. A da esquerda é a túa. Nela é na que colocas os teus barcos e na que podes seguir as accións militares do teu inimigo. A da dereita é onde se sitúa a frota do teu inimigo. Cando che toque disparar tes que premer un sector dado (un campo da zona de guerra) na que supós que están colocados os barcos. </para>
+
+<para
+>Primeiro tes que colocar os teus barcos. Comeza a persoa que inicie a partida. Cando remate, o segundo xogador coloca os seus. </para>
+
+<para
+>A colocación dos barcos é doada: simplemente preme o campo no que desexas colocalos. Hai que colocar catro: o primeiro ten un tamaño de un cadrado, o seguinte de dous, &etc;. Preme o campo no que desexas comezar a colocar. Por omisión, os barcos colócanse horizontalmente; para rotalos 90 graos, preme o &RMB; antes de os colocares. </para>
+
+<para
+>Cando se bate nun barco, o lume esténdese por el. Para o afundires, bate en todos os cadrados que ocupe. Os barcos afundidos aparecen esvaecidos. </para>
+
+<para
+>Agora podes utilizar o &LMB; para disparares á zona de guerra do teu inimigo. A barra de estado indica a quen lle toca disparar. </para>
+
+<para
+>Podes reiniciar a partida escollendo <menuchoice
+><guimenu
+>Partida</guimenu
+><guimenuitem
+>Reiniciar a partida</guimenuitem
+></menuchoice
+> ou premendo <keycap
+>F5</keycap
+>. </para>
+
+<para
+>O primeiro xogador que destrúa todos os barcos do seu inimigo gaña a partida. </para>
+
+</chapter>
+
+<chapter id="rulestips">
+<title
+>Regras do xogo, estratexias e suxestións</title>
+<sect1 id="rules">
+<title
+>Regras</title>
+<itemizedlist>
+<listitem
+><para
+>Un xogador só pode disparar un tiro por quenda.</para
+></listitem>
+<listitem
+><para
+>Os xogadores teñen que colocar todos os seus barcos.</para
+></listitem>
+<listitem
+><para
+>Os barcos non poden ser desprazados unha vez colocados.</para
+></listitem>
+<listitem
+><para
+>Un barco afúndase cando se bate en todos os cadrados que ocupa.</para
+></listitem>
+</itemizedlist>
+</sect1>
+
+<sect1 id="strattips">
+<title
+>Estratexias e suxestións</title>
+<itemizedlist>
+<listitem
+><para
+>Nunca coloques barcos un a lado doutro.</para
+></listitem>
+<listitem
+><para
+>Cando deas cun barco, tenta disparar arredor do sitio no que diche.</para
+></listitem>
+<listitem
+><para
+>Tenta colocar os barcos sen tocar os bordos do taboleiro.</para
+></listitem>
+<listitem
+><para
+>Os barcos pequenos son máis difíciles de afundir; asegúrate de que os colocas onde sexan difíciles de atopar.</para
+></listitem>
+<listitem
+><para
+>Pensa antes de disparar. Os disparos á auga dan menos puntos.</para
+></listitem>
+</itemizedlist>
+</sect1>
+
+
+<sect1 id="multiplayer">
+<title
+>Posibilidade de varios xogadores</title>
+
+<para
+>&kbattleship; can be played online on any GGZ Gaming Zone site. You can find other players there, and compete against them. Just enter one of the available Battleship rooms with any GGZ core client, such as kggz, and &kbattleship; will be offered to you as your favourite game client. If a GGZ core client is installed, you can try out GGZ by visiting the <ulink url="ggz://live.ggzgamingzone.org/#Battleship"
+>community site</ulink
+>. </para>
+
+<para
+>Remember that when playing online, the opponent might be either a human player or a computer player. The latter one might behave differently from the computer player included in &kbattleship;. </para>
+
+</sect1>
+</chapter>
+
+<chapter id="menu-reference">
+<title
+>Os menús</title>
+
+<sect1 id="game-menu">
+<title
+>O menú <guimenu
+>Partida</guimenu
+></title>
+
+<variablelist>
+<varlistentry>
+<term>
+<menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+></keycap
+></keycombo
+></shortcut
+><guimenu
+>Partida</guimenu
+> <guimenuitem
+>Nova</guimenuitem
+> </menuchoice>
+</term>
+<listitem>
+<para>
+<action
+>Saír da partida e cargar de novo as pantalla de benvida.</action>
+</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term>
+<menuchoice
+><shortcut
+><keycap
+>F5</keycap
+></shortcut
+> <guimenu
+>Partida</guimenu
+> <guimenuitem
+>Reiniciar a partida</guimenuitem
+> </menuchoice>
+</term>
+<listitem>
+<para>
+<action
+>Reiniciar a partida.</action>
+</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term>
+<menuchoice
+><shortcut action="simul"
+>&Ctrl;<keycap
+>H</keycap
+></shortcut
+> <guimenu
+>Partida</guimenu
+> <guimenuitem
+>Mostrar as mellores puntuacións</guimenuitem
+> </menuchoice>
+</term>
+<listitem>
+<para>
+<action
+>Mostrar as mellores puntuacións até o momento.</action>
+</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term>
+<menuchoice
+><guimenu
+>Partida</guimenu
+> <guimenuitem
+>Xogador individual</guimenuitem
+> </menuchoice>
+</term>
+<listitem>
+<para>
+<action
+>Iniciar unha partida co computador como contrincante.</action>
+</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term>
+<menuchoice
+><guimenu
+>Partida</guimenu
+> <guimenuitem
+>Aloxar unha partida...</guimenuitem
+> </menuchoice>
+</term>
+<listitem>
+<para>
+<action
+>Iniciar o servidor para que outro xogador se poda conectar.</action>
+</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term>
+<menuchoice
+><guimenu
+>Partida</guimenu
+> <guimenuitem
+>Conectar a unha partida...</guimenuitem
+> </menuchoice>
+</term>
+<listitem>
+<para>
+<action
+>Conectar cun servidor para comezar unha partida.</action>
+</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term>
+<menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>Q</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Partida</guimenu
+> <guimenuitem
+>Saír</guimenuitem
+> </menuchoice>
+</term>
+<listitem>
+<para
+><action
+>Exit</action
+> &kbattleship; </para>
+</listitem>
+</varlistentry>
+</variablelist>
+
+</sect1>
+
+<sect1 id="settings-menu">
+<title
+>O <guimenu
+>menú</guimenu
+> Configuración</title>
+
+<variablelist>
+<varlistentry>
+<term>
+<menuchoice
+><guimenu
+>Configuración</guimenu
+> <guimenuitem
+>Trocar o alcume...</guimenuitem
+> </menuchoice>
+</term>
+<listitem>
+<para>
+<action
+>Trocar o alcume predeterminado.</action>
+</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term>
+<menuchoice
+><guimenu
+>Configuración</guimenu
+> <guimenuitem
+>Reproducir os sons</guimenuitem
+> </menuchoice>
+</term>
+<listitem>
+<para
+><action
+>Alternar entre se se reproducen os sons (cando dispara un xogador) ou non.</action
+> Por omisión está activado. </para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term>
+<menuchoice
+><guimenu
+>Configuración</guimenu
+> <guimenuitem
+>Mostrar a barra de ferramentas</guimenuitem
+> </menuchoice>
+</term>
+<listitem>
+<para
+><action
+>Mostrar ou agochar a barra de ferramentas.</action
+> Por omisión móstraa. </para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term>
+<menuchoice
+><guimenu
+>Configuración</guimenu
+> <guimenuitem
+>Mostrar a barra de estado</guimenuitem
+> </menuchoice>
+</term>
+<listitem>
+<para
+><action
+>Mostrar ou agochar a barra de estado</action
+> Por omisión móstraa. </para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term>
+<menuchoice
+><guimenu
+>Configuración</guimenu
+> <guimenuitem
+>Configurar os atallos de teclado...</guimenuitem
+> </menuchoice>
+</term>
+<listitem>
+<para>
+<action
+>Configure the keyboard shortcuts used by &kbattleship;.</action>
+</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term>
+<menuchoice
+><guimenu
+>Configuración</guimenu
+> <guimenuitem
+>Configurar as barras de ferramentas...</guimenuitem
+> </menuchoice>
+</term>
+<listitem>
+<para
+><action
+>Configure</action
+> the toolbars provided by &kbattleship;. </para>
+</listitem>
+</varlistentry>
+</variablelist>
+
+</sect1>
+
+<sect1 id="help-menu">
+<title
+>O <guimenu
+>menú</guimenu
+> Axuda</title>
+&help.menu.documentation; </sect1>
+</chapter>
+
+<chapter id="faq">
+<title
+>Preguntas frecuentes</title>
+
+<qandaset>
+
+<qandaentry>
+<question>
+<para
+>Non sei moi ben a onde disparar; pódesme axudar? </para>
+</question>
+<answer>
+<para
+>No, there is no hint system in &kbattleship;. </para>
+</answer>
+</qandaentry>
+
+<qandaentry>
+<question>
+<para
+>Como podo virar un barco? </para>
+</question>
+<answer>
+<para
+>Móveo a onde o desexas colocar e preme o &RMB; </para>
+</answer>
+</qandaentry>
+
+<qandaentry>
+<question>
+<para
+>Podo mudar a aparencia do xogo? </para>
+</question>
+<answer>
+<para
+>Non, non se pode alterar o tema. </para>
+</answer>
+</qandaentry>
+
+</qandaset>
+</chapter>
+
+<chapter id="credits">
+<title
+>Créditos e licenza</title>
+
+<para
+>&kbattleship; Copyright 2000-2007</para>
+
+<itemizedlist>
+<title
+>Autores</title>
+<listitem>
+<para
+>Paolo Capriotti <email
+>p.capriotti@gmail.com</email
+> </para>
+</listitem>
+<listitem>
+<para
+>&Nikolas.Zimmermann; &Nikolas.Zimmermann.mail; </para>
+</listitem>
+<listitem>
+<para
+>&Daniel.Molkentin; &Daniel.Molkentin.mail; </para>
+</listitem>
+<listitem>
+<para
+>Kevin Krammer <email
+>kevin.krammer@gmx.at</email
+> </para>
+</listitem>
+</itemizedlist>
+
+<itemizedlist>
+<title
+>Colaboradores</title>
+<listitem>
+<para
+>Johann Ollivier Lapeyre <email
+>johann.ollivierlapeyre@gmail.com</email
+> </para>
+</listitem>
+<listitem>
+<para
+>Eugene Trounev <email
+>irs_me@hotmail.com</email
+> </para>
+</listitem>
+<listitem>
+<para
+>Robert Wadley <email
+>rob@robntina.fastmail.us</email
+> </para>
+</listitem>
+<listitem>
+<para
+>Riccardo Iaconelli <email
+>ruphy@fsfe.org</email
+> </para>
+</listitem>
+<listitem>
+<para
+>Benjamin Adler <email
+>benadler@bigfoot.de</email
+> </para>
+</listitem>
+<listitem>
+<para
+>Nils Trzebin <email
+>nils.trzebin@stud.uni-hannover.de</email
+> </para>
+</listitem>
+<listitem>
+<para
+>Elmar Hoefner <email
+>elmar.hoefner@uibk.ac.at</email
+></para>
+</listitem>
+
+</itemizedlist>
+
+<para
+>Documentación actualizada para o &kde; 3.4 por <personname
+><firstname
+>Brian</firstname
+><surname
+>Beck</surname
+></personname
+> <email
+>brian.beck@mchsi.com</email
+></para>
+
+<para
+>Documentación actualizada para &kde; 4 por <personname
+><firstname
+>Elisa</firstname
+><surname
+>Tonello</surname
+></personname
+> <email
+>elisa.tonello@gmail.com</email
+></para>
+
+<para
+>Tradución da documentación: Xosé Calvo - http://trasno.net/</para
+> 
+&underFDL; &underGPL; </chapter>
+
+<appendix id="installation">
+<title
+>Instalación</title>
+ 
+&install.intro.documentation;
+ 
+ 
+<sect1 id="Compilation">
+<title
+>Compilación e instalación</title>
+&install.compile.documentation; </sect1>
+</appendix>
+ 
+&documentation.index; 
+</book>
+<!--
+Local Variables:
+mode: sgml
+sgml-minimize-attributes:nil
+sgml-general-insert-case:lower
+sgml-omittag:t
+sgml-shorttag:t
+sgml-namecase-general:t
+sgml-always-quote-attributes:t
+sgml-indent-step:0
+sgml-indent-data:nil
+sgml-parent-document:nil
+sgml-exposed-tags:nil
+sgml-local-catalogs:nil
+sgml-local-ecat-files:nil
+End:
+-->

@@ -1,0 +1,863 @@
+# translation of kbattleship.po to Cymraeg
+# Cyfieithiad o kbattleship.po i Cymraeg
+# Penbwrdd yn Gymraeg.
+# Copyright (C) 2003, 2005 Free Software Foundation, Inc.
+# www.kyfieithu.co.uk<kyfieithu@dotmon.com>2003.
+# Kevin Donnelly <kevin@dotmon.com>, 2005.
+#
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: kbattleship\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2022-09-04 00:43+0000\n"
+"PO-Revision-Date: 2005-09-08 22:52+0100\n"
+"Last-Translator: Kevin Donnelly <kevin@dotmon.com>\n"
+"Language-Team: Cymraeg <cy@li.org>\n"
+"Language: cy\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: KBabel 1.10\n"
+"\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+
+#, kde-format
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr "Kyfieithu: Thierry Vignaud, KD, dylunio"
+
+#, kde-format
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr ",kyfieithu@dotmon.com,"
+
+#: controller.cpp:50
+#, fuzzy, kde-format
+#| msgid "Computer Player"
+msgid "Computer"
+msgstr "Chwaraewr Cyfrifiadur"
+
+#. i18n: ectx: label, entry (Hostname), group (network)
+#: knavalbattle.kcfg:9
+#, kde-format
+msgid "Default hostname for multiplayer games."
+msgstr ""
+
+#. i18n: ectx: label, entry (Port), group (network)
+#: knavalbattle.kcfg:13
+#, kde-format
+msgid "Default port for multiplayer games."
+msgstr ""
+
+#. i18n: ectx: label, entry (Nickname), group (general)
+#: knavalbattle.kcfg:19
+#, fuzzy, kde-format
+#| msgid "&Nick name:"
+msgid "User nickname."
+msgstr "&Ffugenw:"
+
+#. i18n: ectx: label, entry (EnableSounds), group (general)
+#: knavalbattle.kcfg:22
+#, kde-format
+msgid "Whether sound effects should be played."
+msgstr ""
+
+#. i18n: ectx: label, entry (AdjacentShips), group (general)
+#: knavalbattle.kcfg:26
+#, kde-format
+msgid "Allow the ships to be adjacent without one empty space between them."
+msgstr ""
+
+#. i18n: ectx: label, entry (SeveralShips), group (general)
+#: knavalbattle.kcfg:30
+#, kde-format
+msgid ""
+"Allow multiple ships of any size, default: 4 of 1, 3 of 2, 2 of 3, 1 of 4."
+msgstr ""
+
+#. i18n: ectx: ToolBar (gameToolbar)
+#: knavalbattleui.rc:29
+#, kde-format
+msgid "Game Toolbar"
+msgstr ""
+
+#: main.cpp:42
+#, kde-format
+msgid "Naval Battle"
+msgstr ""
+
+#: main.cpp:44
+#, fuzzy, kde-format
+#| msgid "The KDE Battleship clone"
+msgid "The KDE ship sinking game"
+msgstr "Clôn Llong Ryfel KDE"
+
+#: main.cpp:45
+#, kde-format
+msgid ""
+"(c) 2000-2005  Nikolas Zimmermann, Daniel Molkentin\n"
+"(c) 2007 Paolo Capriotti"
+msgstr ""
+
+#: main.cpp:50
+#, kde-format
+msgid "Paolo Capriotti"
+msgstr ""
+
+#: main.cpp:50
+#, fuzzy, kde-format
+#| msgid "Client identifier:"
+msgid "Current maintainer"
+msgstr "Dynodydd y dibynnydd:"
+
+#: main.cpp:51
+#, kde-format
+msgid "Nikolas Zimmermann"
+msgstr ""
+
+#: main.cpp:51
+#, kde-format
+msgid "Project Founder, GUI Handling, Client/Server"
+msgstr "Sylfaenydd y Cywaith, Trin y GUI, Dibynnydd/Gweinydd"
+
+#: main.cpp:52
+#, kde-format
+msgid "Daniel Molkentin"
+msgstr ""
+
+#: main.cpp:52
+#, kde-format
+msgid "Dialog Stuff, Client/Server"
+msgstr "Pethau Ymgom, Dibynnydd/Gweinydd"
+
+#: main.cpp:53
+#, kde-format
+msgid "Kevin Krammer"
+msgstr ""
+
+#: main.cpp:53
+#, fuzzy, kde-format
+#| msgid "Computer Player"
+msgid "Computer Player"
+msgstr "Chwaraewr Cyfrifiadur"
+
+#: main.cpp:55
+#, kde-format
+msgid "Johann Ollivier Lapeyre"
+msgstr ""
+
+#: main.cpp:55
+#, kde-format
+msgid "Game artwork"
+msgstr ""
+
+#: main.cpp:56
+#, kde-format
+msgid "Eugene Trounev"
+msgstr ""
+
+#: main.cpp:56
+#, kde-format
+msgid "Background"
+msgstr ""
+
+#: main.cpp:57
+#, kde-format
+msgid "Robert Wadley"
+msgstr ""
+
+#: main.cpp:57
+#, kde-format
+msgid "Artwork for some of the ships"
+msgstr ""
+
+#: main.cpp:58
+#, kde-format
+msgid "Riccardo Iaconelli"
+msgstr ""
+
+#: main.cpp:58
+#, kde-format
+msgid "Welcome screen"
+msgstr ""
+
+#: main.cpp:59
+#, kde-format
+msgid "Benjamin Adler"
+msgstr ""
+
+#: main.cpp:59
+#, kde-format
+msgid "Icon"
+msgstr "Eicon"
+
+#: main.cpp:60
+#, kde-format
+msgid "Nils Trzebin"
+msgstr ""
+
+#: main.cpp:60
+#, kde-format
+msgid "Sounds"
+msgstr "Syniau"
+
+#: main.cpp:61
+#, kde-format
+msgid "Elmar Hoefner"
+msgstr ""
+
+#: main.cpp:61
+#, kde-format
+msgid "GFX"
+msgstr "GFX"
+
+#: main.cpp:62
+#, kde-format
+msgid "Lukas Tinkl"
+msgstr ""
+
+#: main.cpp:62
+#, kde-format
+msgid "Non-Latin1 Support"
+msgstr "Cynhaliaeth Di-Ladin1"
+
+#: main.cpp:63
+#, kde-format
+msgid "Malte Starostik"
+msgstr ""
+
+#: main.cpp:63
+#, kde-format
+msgid "Various improvements"
+msgstr "Amrywiaeth o welliannau"
+
+#: main.cpp:64
+#, kde-format
+msgid "Albert Astals Cid"
+msgstr ""
+
+#: main.cpp:64 main.cpp:65
+#, kde-format
+msgid "Various improvements and bugfixes"
+msgstr "Amrywiaeth o welliannau a chywiriadau"
+
+#: main.cpp:65
+#, kde-format
+msgid "John Tapsell"
+msgstr ""
+
+#: main.cpp:66
+#, kde-format
+msgid "Inge Wallin"
+msgstr ""
+
+#: main.cpp:66
+#, kde-format
+msgid "Bugfixes and refactoring"
+msgstr "Trwsio namau ac ailddylunio"
+
+#: main.cpp:67
+#, kde-format
+msgid "Jakub Stachowski"
+msgstr ""
+
+#: main.cpp:67
+#, kde-format
+msgid "DNS-SD discovery"
+msgstr "Darganfod DNS-SD"
+
+#: main.cpp:68
+#, kde-format
+msgid "Roney Gomes"
+msgstr ""
+
+#: main.cpp:68
+#, kde-format
+msgid "Porting to KGameRenderer and QGraphicsView"
+msgstr ""
+
+#: main.cpp:75
+#, kde-format
+msgid "[URL]"
+msgstr ""
+
+#: main.cpp:75
+#, kde-format
+msgid "URL of a Naval Battle game server to connect to after startup"
+msgstr ""
+
+#: mainwindow.cpp:59
+#, fuzzy, kde-format
+#| msgid "S&ingle Player"
+msgid "&Single Player"
+msgstr "Chwaraewr &Sengl"
+
+#: mainwindow.cpp:63
+#, fuzzy, kde-format
+msgid "&Host Game..."
+msgstr "&Stopio'r Gêm"
+
+#: mainwindow.cpp:67
+#, fuzzy, kde-format
+#| msgid "&Connect to Server..."
+msgid "&Connect to Game..."
+msgstr "C&ysylltu â'r Gweinydd..."
+
+#: mainwindow.cpp:72
+#, fuzzy, kde-format
+#| msgid "&Nick name:"
+msgid "Change &Nickname..."
+msgstr "&Ffugenw:"
+
+#: mainwindow.cpp:75
+#, fuzzy, kde-format
+#| msgid "&Play Sounds"
+msgid "&Play Sounds"
+msgstr "Chwa&rae Sain"
+
+#: mainwindow.cpp:80
+#, kde-format
+msgid "&Adjacent Ships"
+msgstr ""
+
+#: mainwindow.cpp:85
+#, kde-format
+msgid "&Multiple Ships"
+msgstr ""
+
+#: mainwindow.cpp:90
+#, kde-format
+msgid "Show End-of-Game Message"
+msgstr ""
+
+#: mainwindow.cpp:95
+#, fuzzy, kde-format
+#| msgid "&Show Grid"
+msgid "Show &Left Grid"
+msgstr "Dangos &Grid"
+
+#: mainwindow.cpp:99
+#, fuzzy, kde-format
+#| msgid "&Show Grid"
+msgid "Show &Right Grid"
+msgstr "Dangos &Grid"
+
+#: networkdialog.cpp:61
+#, fuzzy, kde-format
+#| msgid "&Nick name:"
+msgid "&Nickname:"
+msgstr "&Ffugenw:"
+
+#: networkdialog.cpp:73
+#, fuzzy, kde-format
+#| msgid "S&ingle game"
+msgid "&Join game:"
+msgstr "Gêm sen&gl"
+
+#: networkdialog.cpp:88
+#, kde-format
+msgid "&Hostname:"
+msgstr ""
+
+#: networkdialog.cpp:101 networkdialog.cpp:131
+#, kde-format
+msgid "&Port:"
+msgstr "&Porth:"
+
+#: networkdialog.cpp:116
+#, kde-format
+msgid "&Enter server address manually"
+msgstr ""
+
+#: networkdialog.cpp:148
+#, kde-format
+msgid "Network Parameters"
+msgstr ""
+
+#: networkdialog.cpp:210
+#, fuzzy, kde-format
+#| msgid "Connection refused by other host."
+msgid "Connecting to remote host..."
+msgstr "Gwrthodwyd y cysylltiad gan y gwesteiwr arall."
+
+#: networkdialog.cpp:217
+#, fuzzy, kde-format
+#| msgid "Waiting for an answer..."
+msgid "Waiting for an incoming connection..."
+msgstr "Yn aros am ateb..."
+
+#: networkdialog.cpp:236
+#, fuzzy, kde-format
+#| msgid "Couldn't connect to server."
+msgid "Could not connect to host"
+msgstr "Methu cysylltu â'r gweinydd."
+
+#: networkentity.cpp:189
+#, kde-format
+msgid "You have "
+msgstr ""
+
+#: networkentity.cpp:195
+#, kde-format
+msgid ", "
+msgstr ""
+
+#: networkentity.cpp:288
+#, fuzzy, kde-format
+#| msgid "You cannot place the ship here."
+msgid "You can place ships adjacent to each other"
+msgstr "Ni allwch roi'r llong yma."
+
+#: networkentity.cpp:291
+#, kde-format
+msgid "You must leave a space between ships"
+msgstr ""
+
+#: playerentity.cpp:199
+#, kde-format
+msgid "Your opponent is now known as %1"
+msgstr ""
+
+#: playerentity.cpp:204
+#, kde-format
+msgid "Your opponent disconnected from the game"
+msgstr ""
+
+#: playfield.cpp:146 playfield.cpp:166
+#, kde-format
+msgid "Shots"
+msgstr "Ergydion"
+
+#: playfield.cpp:147 playfield.cpp:167
+#, kde-format
+msgid "Hits"
+msgstr "Trawiadau"
+
+#: playfield.cpp:148 playfield.cpp:168
+#, kde-format
+msgid "Misses"
+msgstr ""
+
+#: playfield.cpp:188
+#, kde-format
+msgid "You win!"
+msgstr ""
+
+#: playfield.cpp:190
+#, kde-format
+msgid "You win. Excellent!"
+msgstr ""
+
+#: playfield.cpp:194
+#, fuzzy, kde-format
+#| msgid "You lost the game. :("
+msgid "You lose."
+msgstr "Rydych wedi colli'r gêm. :("
+
+#: playfield.cpp:196
+#, kde-format
+msgid "You lose. Better luck next time!"
+msgstr ""
+
+#: playfield.cpp:206
+#, fuzzy, kde-format
+#| msgid "&Nick name:"
+msgid "Change Nickname"
+msgstr "&Ffugenw:"
+
+#: playfield.cpp:206
+#, kde-format
+msgid "Enter new nickname:"
+msgstr ""
+
+#: playfield.cpp:234
+#, fuzzy, kde-format
+#| msgid "Restart"
+msgid "Restart game"
+msgstr "Ailddechrau"
+
+#: playfield.cpp:235
+#, fuzzy, kde-format
+#| msgid "The client is asking to restart the game. Do you accept?"
+msgid "Your opponent has requested to restart the game. Do you accept?"
+msgstr "Mae'r dibynnydd yn gofyn i ailddechrau'r gêm.  Ydych am dderbyn?"
+
+#: playfield.cpp:236
+#, fuzzy, kde-format
+#| msgid "Accept Restart"
+msgctxt "@action:button"
+msgid "Accept"
+msgstr "Derbyn Ailddechrau"
+
+#: playfield.cpp:237
+#, kde-format
+msgctxt "@action:button"
+msgid "Reject"
+msgstr ""
+
+#: playfield.cpp:246
+#, kde-format
+msgid ""
+"Your opponent is using a pre-KDE4 version of Naval Battle. Note that, "
+"according to the rules enforced by old clients, ships cannot be placed "
+"adjacent to one another and only one ship of each size is allowed."
+msgstr ""
+
+#: playfield.cpp:259
+#, fuzzy, kde-format
+#| msgid "Enemy has shot. Shoot now."
+msgid "Enemy has shot. Shoot now!"
+msgstr "Mae'r gelyn wedi saethu.  Saethwch nawr."
+
+#: playfield.cpp:263
+#, fuzzy, kde-format
+#| msgid "Waiting for enemy to shoot.."
+msgid "Waiting for enemy to shoot..."
+msgstr "Aros i'r gelyn saethu.."
+
+#: playfield.cpp:272
+#, kde-format
+msgid "Ships placed. Now shoot on the enemy field!"
+msgstr ""
+
+#: playfield.cpp:275
+#, fuzzy, kde-format
+#| msgid "Waiting for other player to start the match..."
+msgid "Waiting for other player to start the game..."
+msgstr "Aros i'r chwaraewr arall ddechrau'r gêm..."
+
+#: playfield.cpp:279
+#, fuzzy, kde-format
+#| msgid "Waiting for other player to place their ships..."
+msgid "Waiting for other player to place his ships..."
+msgstr "Aros i'r chwaraewr arall osod ei longau..."
+
+#: playfield.cpp:293
+#, fuzzy, kde-format
+#| msgid ""
+#| "Please place your ships. Use the \"Shift\" key to place the ships "
+#| "vertically."
+msgid "Place your %1 ships. Use the right mouse button to rotate them."
+msgstr ""
+"Gosodwch eich llongau. Defnyddiwch y fysell allwedd \"Shift\" i leoli'r "
+"llongau'n fertigol."
+
+#: playfield.cpp:299
+#, kde-format
+msgid "You can't place your remaining ships."
+msgstr ""
+
+#: playfield.cpp:300
+#, fuzzy, kde-format
+#| msgid "Restart"
+msgctxt "@action"
+msgid "Restart"
+msgstr "Ailddechrau"
+
+#: playfield.cpp:301
+#, kde-format
+msgctxt "@action"
+msgid "Abort"
+msgstr ""
+
+#: playfield.cpp:302
+#, kde-format
+msgid ""
+"You can't place your remaining ships. Please restart placing ships or abort "
+"game"
+msgstr ""
+
+#: playfield.cpp:302
+#, kde-format
+msgid "Restart placing ships"
+msgstr ""
+
+#: simplemenu.cpp:40
+#, fuzzy, kde-format
+#| msgid "S&ingle Player"
+msgid "Single Player"
+msgstr "Chwaraewr &Sengl"
+
+#: simplemenu.cpp:41
+#, fuzzy, kde-format
+#| msgid "Connect to Server"
+msgid "Host Network Game"
+msgstr "Cysylltu â'r Gweinydd"
+
+#: simplemenu.cpp:42
+#, fuzzy, kde-format
+#| msgid "Connect to Server"
+msgid "Connect to Network Game"
+msgstr "Cysylltu â'r Gweinydd"
+
+#: simplemenu.cpp:132 simplemenu.cpp:149
+#, fuzzy, kde-format
+#| msgid "S&ingle Player"
+msgid "Remote player"
+msgstr "Chwaraewr &Sengl"
+
+#~ msgid "KBattleship"
+#~ msgstr "KBattleship"
+
+#, fuzzy
+#~| msgid "S&ingle Player"
+#~ msgid "Single player"
+#~ msgstr "Chwaraewr &Sengl"
+
+#, fuzzy
+#~ msgid "&Game"
+#~ msgstr "&Enw'r gêm:"
+
+#, fuzzy
+#~| msgid "Shots"
+#~ msgid "Shots:"
+#~ msgstr "Ergydion"
+
+#, fuzzy
+#~| msgid "Hits"
+#~ msgid "Hits:"
+#~ msgstr "Trawiadau"
+
+#, fuzzy
+#~| msgid "&Connect to server"
+#~ msgid "Connect to a server"
+#~ msgstr "Cysyll&tu â'r gweinydd"
+
+#, fuzzy
+#~| msgid "LAN games:"
+#~ msgid "Local game"
+#~ msgstr "Gemau LAN:"
+
+#, fuzzy
+#~| msgid "Start Server"
+#~ msgid "Start Ser&ver"
+#~ msgstr "Cychwyn y Gweinydd"
+
+#~ msgid "&Connect"
+#~ msgstr "&Cysylltu"
+
+#~ msgid "     Player 1: %1     "
+#~ msgstr "Chwaraewr 1: %1       "
+
+#~ msgid "     Player 2: %1     "
+#~ msgstr "Chwaraewr 2: %1       "
+
+#~ msgid "Ready"
+#~ msgstr "Parod"
+
+#~ msgid "&Start Server..."
+#~ msgstr "Cychwyn y G&weinydd..."
+
+#~ msgid "S&ingle Player..."
+#~ msgstr "Chwaraewr S&engl..."
+
+#~ msgid "&Enemy Info"
+#~ msgstr "&Gwybodaeth am y Gelyn"
+
+#~ msgid "Hide Grid"
+#~ msgstr "Cuddio Grid"
+
+#~ msgid "Sending Message..."
+#~ msgstr "Anfon Neges..."
+
+#~ msgid "You won the game :)"
+#~ msgstr "Rydych wedi ennill y gêm :)"
+
+#~ msgid "Do you want to restart the game?"
+#~ msgstr "Ydych eisiau ailgychwyn y gêm?"
+
+#~ msgid "Do Not Restart"
+#~ msgstr "Peidio ag Ailddechrau"
+
+#~ msgid "Enemy disconnected."
+#~ msgstr "Dadgysylltwyd y gelyn."
+
+#~ msgid "Waiting for computer player to start the match..."
+#~ msgstr "Aros i'r chwaraewr cyfrifiadur ddechrau'r gêm..."
+
+#~ msgid "Water"
+#~ msgstr "Dŵr"
+
+#~ msgid "Loading Connect-Server dialog..."
+#~ msgstr "Yn llwytho'r ymgom Cysylltu-â'r-Gweinydd..."
+
+#~ msgid "Deny Restart"
+#~ msgstr "Gwrthod Ailddechrau"
+
+#~ msgid "Do you want to ask the server restarting the game?"
+#~ msgstr "Hoffech ofyn i'r gweinydd ailddechrau'r gêm?"
+
+#~ msgid "Ask to Restart"
+#~ msgstr "Gofyn i Ailddechrau"
+
+#~ msgid "Do Not Ask"
+#~ msgstr "Peidio â Gofyn"
+
+#~ msgid "Loading Start-Server dialog..."
+#~ msgstr "Yn llwytho'r ymgom Cychwyn-y-Gweinydd..."
+
+#~ msgid "&Stop server"
+#~ msgstr "&Atal gweinydd"
+
+#~ msgid "Waiting for a player..."
+#~ msgstr "Yn aros am chwaraewr..."
+
+#~ msgid "The URL passed to KDE Battleship '%1' is not a valid url"
+#~ msgstr "Nid URL dilys yw'r URL a basiwyd i Long Rhyfel KDE '%1'"
+
+#~ msgid ""
+#~ "The URL passed to KDE Battleship '%1' is not recognised as a Battleship "
+#~ "game."
+#~ msgstr ""
+#~ "Nid yw'r URL a basiwyd i Long Rhyfel KDE '%1' wedi cael ei adnabod fel "
+#~ "gêm Long Rhyfel."
+
+#~ msgid "Dis&connect from server"
+#~ msgstr "&Dadgysylltu o'r gweinydd"
+
+#~ msgid "Start Game"
+#~ msgstr "Cychwyn y Gêm"
+
+#~ msgid "Nick name:"
+#~ msgstr "Llysenw:"
+
+#~ msgid "Waiting for the AI player to place the ships..."
+#~ msgstr ""
+#~ "Aros am y chwaraewr AI (deallusrwydd artiffisial) i osod y llongau..."
+
+#~ msgid ""
+#~ "Failed to bind to local port \"%1\"\n"
+#~ "\n"
+#~ "Please check if another KBattleship server instance\n"
+#~ "is running or another application uses this port."
+#~ msgstr ""
+#~ "Methodd glymu at y porth lleol \"%1\"\n"
+#~ " \n"
+#~ "Gwiriwch os oes enghraifft arall o weinydd KBattleship yn rhedeg, \n"
+#~ "neu os mae cymhwysiad arall yn defnyddio'r porth yma."
+
+#~ msgid "The connection broke down!"
+#~ msgstr "Torrodd y cysylltiad!"
+
+#~ msgid "Connection to client lost. Aborting the game."
+#~ msgstr "Collwyd y cysylltiad i'r dibynnydd.  Yn erthylu'r gem."
+
+#~ msgid ""
+#~ "Connection dropped by enemy. The client's protocol implementation (%1) is "
+#~ "not compatible with our (%2) version."
+#~ msgstr ""
+#~ "Gollynwyd y cysylltiad gan y gelyn.  Nid yw gweithredoliant protocol y "
+#~ "dibynnydd (%1) yn gyfaddas â'n fersiwn ni (%2)."
+
+#~ msgid "You lost the game :("
+#~ msgstr "Rydych wedi colli'r gêm :("
+
+#~ msgid ""
+#~ "Connection to client dropped. The client's protocol implementation (%1) "
+#~ "is not compatible with our (%2) version."
+#~ msgstr ""
+#~ "Gollynwyd y cysylltiad i'r dibynnydd.  Nid yw gweithredoliant protocol y "
+#~ "dibynnydd (%1) yn gyfaddas â'n fersiwn ni (%2)."
+
+#~ msgid "We have a player. Let's start..."
+#~ msgstr "Mae gennym chwaraewr.  Beth am gychwyn..."
+
+#~ msgid "You can shoot now."
+#~ msgstr "Gallwch saethu rwan."
+
+#, fuzzy
+#~ msgid "Could not lookup host."
+#~ msgstr "Methodd chwilio am y gwesteiwr."
+
+#~ msgid "Unknown error; No: %1"
+#~ msgstr "Gwall anhysbys; Rhif: %1"
+
+#~ msgid "Connection to server lost. Aborting the game."
+#~ msgstr "Collwyd y cysylltiad â'r gweinydd.  Yn erthylu'r gêm."
+
+#, fuzzy
+#~ msgid "&Start"
+#~ msgstr "&Cychwyn y Gweinydd"
+
+#~ msgid ""
+#~ "URL of server to attach to.  In the form kbattleship://host:port/ or host:"
+#~ "port"
+#~ msgstr ""
+#~ "URL o'r gweinydd i gysylltu iddo.  O'r ffurf kbattleship://gweinydd:"
+#~ "porth/ neu gweinydd:porth"
+
+#, fuzzy
+#~ msgid ""
+#~ "You do not have KBattleship pictures installed. The game cannot run "
+#~ "without them!"
+#~ msgstr ""
+#~ "Does gennych chi ddim lluniau KBattleship wedi eu harsefydlu. Ni all y "
+#~ "gêm redeg hebddynt! "
+
+#~ msgid "Enter a message here"
+#~ msgstr "Rhowch neges yma"
+
+#~ msgid "Press here to send the message"
+#~ msgstr "Gwasgwch yma i anfon y neges"
+
+#~ msgid "&Send"
+#~ msgstr "&Anfon"
+
+#, fuzzy
+#~ msgid "Chat Dialog:"
+#~ msgstr "Ymgom sgwrs:"
+
+#~ msgid "Enter a name that identifies you in the game"
+#~ msgstr "Rhowch enw sy'n eich dynodi yn y gêm"
+
+#~ msgid "&Server:"
+#~ msgstr "&Gweinydd:"
+
+#~ msgid "Choose a port to connect to"
+#~ msgstr "Dewiswch borth i gysylltu â hi"
+
+#~ msgid "Enemy Client Information"
+#~ msgstr "Gwybodaeth am Ddibynnydd y Gelyn"
+
+#~ msgid "Client information:"
+#~ msgstr "Gwybodaeth am y dibynnydd:"
+
+#~ msgid "CV"
+#~ msgstr "CV"
+
+#~ msgid "Client version:"
+#~ msgstr "Fersiwn y dibynnydd:"
+
+#~ msgid "Protocol version:"
+#~ msgstr "Fersiwn y protocol:"
+
+#~ msgid "PV"
+#~ msgstr "PV"
+
+#~ msgid "CI"
+#~ msgstr "CI"
+
+#~ msgid "&Game name:"
+#~ msgstr "&Enw'r gêm:"
+
+#~ msgid "Choose a port where the server listens on"
+#~ msgstr "Dewiswch porth y mae'r gweinydd yn gwrando arnodd"
+
+#~ msgid "0"
+#~ msgstr "0"
+
+#~ msgid ":"
+#~ msgstr ":"
+
+#~ msgid "Shows all shots"
+#~ msgstr "Dangos pob ergyd"
+
+#~ msgid "Shows all hit ships"
+#~ msgstr "Dangos pob llong a gafodd ei tharo"
+
+#~ msgid "Shows all water shots"
+#~ msgstr "Dangos pob ergyd dŵr"
+
+#~ msgid "Chat Widget"
+#~ msgstr "Celfigyn Sgwrs"

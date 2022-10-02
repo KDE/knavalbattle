@@ -1,0 +1,813 @@
+# WEB-Translator generated file. UTF-8 test:äëïöü
+# Copyright (C) 2001 Free Software Foundation, Inc.
+# Frikkie Thirion <frix@expertron.co.za>, 2001,2002.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: kbattleship VERSION\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2022-09-04 00:43+0000\n"
+"PO-Revision-Date: 2002-11-07 11:31+0200\n"
+"Last-Translator: WEB-Translator <http://kde.af.org.za>\n"
+"Language-Team: AFRIKAANS <AF@lia.org.za>\n"
+"Language: af\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+
+#, kde-format
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr "WEB-Vertaler (http://kde.af.org.za)"
+
+#, kde-format
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr "frix@expertron.co.za"
+
+#: controller.cpp:50
+#, fuzzy, kde-format
+#| msgid "Computer Player"
+msgid "Computer"
+msgstr "Rekenaar Speler"
+
+#. i18n: ectx: label, entry (Hostname), group (network)
+#: knavalbattle.kcfg:9
+#, kde-format
+msgid "Default hostname for multiplayer games."
+msgstr ""
+
+#. i18n: ectx: label, entry (Port), group (network)
+#: knavalbattle.kcfg:13
+#, kde-format
+msgid "Default port for multiplayer games."
+msgstr ""
+
+#. i18n: ectx: label, entry (Nickname), group (general)
+#: knavalbattle.kcfg:19
+#, fuzzy, kde-format
+msgid "User nickname."
+msgstr "By naam:"
+
+#. i18n: ectx: label, entry (EnableSounds), group (general)
+#: knavalbattle.kcfg:22
+#, kde-format
+msgid "Whether sound effects should be played."
+msgstr ""
+
+#. i18n: ectx: label, entry (AdjacentShips), group (general)
+#: knavalbattle.kcfg:26
+#, kde-format
+msgid "Allow the ships to be adjacent without one empty space between them."
+msgstr ""
+
+#. i18n: ectx: label, entry (SeveralShips), group (general)
+#: knavalbattle.kcfg:30
+#, kde-format
+msgid ""
+"Allow multiple ships of any size, default: 4 of 1, 3 of 2, 2 of 3, 1 of 4."
+msgstr ""
+
+#. i18n: ectx: ToolBar (gameToolbar)
+#: knavalbattleui.rc:29
+#, kde-format
+msgid "Game Toolbar"
+msgstr ""
+
+#: main.cpp:42
+#, kde-format
+msgid "Naval Battle"
+msgstr ""
+
+#: main.cpp:44
+#, fuzzy, kde-format
+#| msgid "The KDE Battleship clone"
+msgid "The KDE ship sinking game"
+msgstr "Die Kde Oorlogskip kloon"
+
+#: main.cpp:45
+#, kde-format
+msgid ""
+"(c) 2000-2005  Nikolas Zimmermann, Daniel Molkentin\n"
+"(c) 2007 Paolo Capriotti"
+msgstr ""
+
+#: main.cpp:50
+#, kde-format
+msgid "Paolo Capriotti"
+msgstr ""
+
+#: main.cpp:50
+#, fuzzy, kde-format
+#| msgid "Client identifier:"
+msgid "Current maintainer"
+msgstr "Kliënt identifiseerder:"
+
+#: main.cpp:51
+#, kde-format
+msgid "Nikolas Zimmermann"
+msgstr ""
+
+#: main.cpp:51
+#, kde-format
+msgid "Project Founder, GUI Handling, Client/Server"
+msgstr "Projek Stigter, Gui Handtering, Kliënt/Bediener"
+
+#: main.cpp:52
+#, kde-format
+msgid "Daniel Molkentin"
+msgstr ""
+
+#: main.cpp:52
+#, kde-format
+msgid "Dialog Stuff, Client/Server"
+msgstr "Dialoog Goed, Kliënt/Bediener"
+
+#: main.cpp:53
+#, kde-format
+msgid "Kevin Krammer"
+msgstr ""
+
+#: main.cpp:53
+#, fuzzy, kde-format
+#| msgid "Computer Player"
+msgid "Computer Player"
+msgstr "Rekenaar Speler"
+
+#: main.cpp:55
+#, kde-format
+msgid "Johann Ollivier Lapeyre"
+msgstr ""
+
+#: main.cpp:55
+#, kde-format
+msgid "Game artwork"
+msgstr ""
+
+#: main.cpp:56
+#, kde-format
+msgid "Eugene Trounev"
+msgstr ""
+
+#: main.cpp:56
+#, kde-format
+msgid "Background"
+msgstr ""
+
+#: main.cpp:57
+#, kde-format
+msgid "Robert Wadley"
+msgstr ""
+
+#: main.cpp:57
+#, kde-format
+msgid "Artwork for some of the ships"
+msgstr ""
+
+#: main.cpp:58
+#, kde-format
+msgid "Riccardo Iaconelli"
+msgstr ""
+
+#: main.cpp:58
+#, kde-format
+msgid "Welcome screen"
+msgstr ""
+
+#: main.cpp:59
+#, kde-format
+msgid "Benjamin Adler"
+msgstr ""
+
+#: main.cpp:59
+#, kde-format
+msgid "Icon"
+msgstr "Ikoon"
+
+#: main.cpp:60
+#, kde-format
+msgid "Nils Trzebin"
+msgstr ""
+
+#: main.cpp:60
+#, kde-format
+msgid "Sounds"
+msgstr "Klanke"
+
+#: main.cpp:61
+#, kde-format
+msgid "Elmar Hoefner"
+msgstr ""
+
+#: main.cpp:61
+#, kde-format
+msgid "GFX"
+msgstr "Gfx"
+
+#: main.cpp:62
+#, kde-format
+msgid "Lukas Tinkl"
+msgstr ""
+
+#: main.cpp:62
+#, kde-format
+msgid "Non-Latin1 Support"
+msgstr "Non-Latin1 Ondersteun"
+
+#: main.cpp:63
+#, kde-format
+msgid "Malte Starostik"
+msgstr ""
+
+#: main.cpp:63
+#, kde-format
+msgid "Various improvements"
+msgstr "Verskeie verbeteringe"
+
+#: main.cpp:64
+#, kde-format
+msgid "Albert Astals Cid"
+msgstr ""
+
+#: main.cpp:64 main.cpp:65
+#, fuzzy, kde-format
+msgid "Various improvements and bugfixes"
+msgstr "Verskeie verbeteringe"
+
+#: main.cpp:65
+#, kde-format
+msgid "John Tapsell"
+msgstr ""
+
+#: main.cpp:66
+#, kde-format
+msgid "Inge Wallin"
+msgstr ""
+
+#: main.cpp:66
+#, kde-format
+msgid "Bugfixes and refactoring"
+msgstr ""
+
+#: main.cpp:67
+#, kde-format
+msgid "Jakub Stachowski"
+msgstr ""
+
+#: main.cpp:67
+#, kde-format
+msgid "DNS-SD discovery"
+msgstr ""
+
+#: main.cpp:68
+#, kde-format
+msgid "Roney Gomes"
+msgstr ""
+
+#: main.cpp:68
+#, kde-format
+msgid "Porting to KGameRenderer and QGraphicsView"
+msgstr ""
+
+#: main.cpp:75
+#, kde-format
+msgid "[URL]"
+msgstr ""
+
+#: main.cpp:75
+#, kde-format
+msgid "URL of a Naval Battle game server to connect to after startup"
+msgstr ""
+
+#: mainwindow.cpp:59
+#, fuzzy, kde-format
+#| msgid "S&ingle Player"
+msgid "&Single Player"
+msgstr "Enkel Speler"
+
+#: mainwindow.cpp:63
+#, fuzzy, kde-format
+msgid "&Host Game..."
+msgstr "Stop speletjie"
+
+#: mainwindow.cpp:67
+#, fuzzy, kde-format
+#| msgid "&Connect to Server..."
+msgid "&Connect to Game..."
+msgstr "Konnekteer na Bediener..."
+
+#: mainwindow.cpp:72
+#, fuzzy, kde-format
+msgid "Change &Nickname..."
+msgstr "By naam:"
+
+#: mainwindow.cpp:75
+#, fuzzy, kde-format
+#| msgid "&Play Sounds"
+msgid "&Play Sounds"
+msgstr "Speel Klanke"
+
+#: mainwindow.cpp:80
+#, kde-format
+msgid "&Adjacent Ships"
+msgstr ""
+
+#: mainwindow.cpp:85
+#, kde-format
+msgid "&Multiple Ships"
+msgstr ""
+
+#: mainwindow.cpp:90
+#, kde-format
+msgid "Show End-of-Game Message"
+msgstr ""
+
+#: mainwindow.cpp:95
+#, fuzzy, kde-format
+#| msgid "&Show Grid"
+msgid "Show &Left Grid"
+msgstr "Vertoon Rooster"
+
+#: mainwindow.cpp:99
+#, fuzzy, kde-format
+#| msgid "&Show Grid"
+msgid "Show &Right Grid"
+msgstr "Vertoon Rooster"
+
+#: networkdialog.cpp:61
+#, fuzzy, kde-format
+msgid "&Nickname:"
+msgstr "By naam:"
+
+#: networkdialog.cpp:73
+#, fuzzy, kde-format
+#| msgid "S&ingle game"
+msgid "&Join game:"
+msgstr "Enkel speletjie"
+
+#: networkdialog.cpp:88
+#, kde-format
+msgid "&Hostname:"
+msgstr ""
+
+#: networkdialog.cpp:101 networkdialog.cpp:131
+#, fuzzy, kde-format
+msgid "&Port:"
+msgstr "Poort:"
+
+#: networkdialog.cpp:116
+#, kde-format
+msgid "&Enter server address manually"
+msgstr ""
+
+#: networkdialog.cpp:148
+#, kde-format
+msgid "Network Parameters"
+msgstr ""
+
+#: networkdialog.cpp:210
+#, fuzzy, kde-format
+msgid "Connecting to remote host..."
+msgstr "Verbinding geweier deur ander bediener!"
+
+#: networkdialog.cpp:217
+#, fuzzy, kde-format
+#| msgid "Waiting for an answer..."
+msgid "Waiting for an incoming connection..."
+msgstr "Terwyl gewag het vir 'n antwoord..."
+
+#: networkdialog.cpp:236
+#, fuzzy, kde-format
+msgid "Could not connect to host"
+msgstr "Konnekteer na bediener"
+
+#: networkentity.cpp:189
+#, kde-format
+msgid "You have "
+msgstr ""
+
+#: networkentity.cpp:195
+#, kde-format
+msgid ", "
+msgstr ""
+
+#: networkentity.cpp:288
+#, kde-format
+msgid "You can place ships adjacent to each other"
+msgstr ""
+
+#: networkentity.cpp:291
+#, kde-format
+msgid "You must leave a space between ships"
+msgstr ""
+
+#: playerentity.cpp:199
+#, kde-format
+msgid "Your opponent is now known as %1"
+msgstr ""
+
+#: playerentity.cpp:204
+#, kde-format
+msgid "Your opponent disconnected from the game"
+msgstr ""
+
+#: playfield.cpp:146 playfield.cpp:166
+#, kde-format
+msgid "Shots"
+msgstr "Skote"
+
+#: playfield.cpp:147 playfield.cpp:167
+#, kde-format
+msgid "Hits"
+msgstr "Trefslae"
+
+#: playfield.cpp:148 playfield.cpp:168
+#, kde-format
+msgid "Misses"
+msgstr ""
+
+#: playfield.cpp:188
+#, kde-format
+msgid "You win!"
+msgstr ""
+
+#: playfield.cpp:190
+#, kde-format
+msgid "You win. Excellent!"
+msgstr ""
+
+#: playfield.cpp:194
+#, fuzzy, kde-format
+msgid "You lose."
+msgstr "Jy verloor die speletjie :("
+
+#: playfield.cpp:196
+#, kde-format
+msgid "You lose. Better luck next time!"
+msgstr ""
+
+#: playfield.cpp:206
+#, fuzzy, kde-format
+msgid "Change Nickname"
+msgstr "By naam:"
+
+#: playfield.cpp:206
+#, kde-format
+msgid "Enter new nickname:"
+msgstr ""
+
+#: playfield.cpp:234
+#, fuzzy, kde-format
+#| msgid "Start Game"
+msgid "Restart game"
+msgstr "Begin Speletjie"
+
+#: playfield.cpp:235
+#, fuzzy, kde-format
+msgid "Your opponent has requested to restart the game. Do you accept?"
+msgstr "Die kliënt vra vir herbeginne Die speletjie. Doen jy aanvaar?"
+
+#: playfield.cpp:236
+#, kde-format
+msgctxt "@action:button"
+msgid "Accept"
+msgstr ""
+
+#: playfield.cpp:237
+#, kde-format
+msgctxt "@action:button"
+msgid "Reject"
+msgstr ""
+
+#: playfield.cpp:246
+#, kde-format
+msgid ""
+"Your opponent is using a pre-KDE4 version of Naval Battle. Note that, "
+"according to the rules enforced by old clients, ships cannot be placed "
+"adjacent to one another and only one ship of each size is allowed."
+msgstr ""
+
+#: playfield.cpp:259
+#, fuzzy, kde-format
+msgid "Enemy has shot. Shoot now!"
+msgstr "Vyand het geskiet. Skiet nou"
+
+#: playfield.cpp:263
+#, fuzzy, kde-format
+#| msgid "Waiting for enemy to shoot.."
+msgid "Waiting for enemy to shoot..."
+msgstr "Terwyl gewag het vir vyand na skiet.."
+
+#: playfield.cpp:272
+#, kde-format
+msgid "Ships placed. Now shoot on the enemy field!"
+msgstr ""
+
+#: playfield.cpp:275
+#, fuzzy, kde-format
+#| msgid "Waiting for other player to start the match..."
+msgid "Waiting for other player to start the game..."
+msgstr "Terwyl gewag het vir ander speler na begin die ooreenstem..."
+
+#: playfield.cpp:279
+#, fuzzy, kde-format
+msgid "Waiting for other player to place his ships..."
+msgstr "Terwyl gewag het vir ander speler na plek die skepe..."
+
+#: playfield.cpp:293
+#, fuzzy, kde-format
+#| msgid ""
+#| "Please place your ships. Use the \"Shift\" key to place the ships "
+#| "vertically."
+msgid "Place your %1 ships. Use the right mouse button to rotate them."
+msgstr ""
+"Asseblief plek jou skepe. Gebruik die \"Verskuiwende\" sleutel na plek die "
+"skepe vertikaal."
+
+#: playfield.cpp:299
+#, kde-format
+msgid "You can't place your remaining ships."
+msgstr ""
+
+#: playfield.cpp:300
+#, fuzzy, kde-format
+#| msgid "Start Game"
+msgctxt "@action"
+msgid "Restart"
+msgstr "Begin Speletjie"
+
+#: playfield.cpp:301
+#, kde-format
+msgctxt "@action"
+msgid "Abort"
+msgstr ""
+
+#: playfield.cpp:302
+#, kde-format
+msgid ""
+"You can't place your remaining ships. Please restart placing ships or abort "
+"game"
+msgstr ""
+
+#: playfield.cpp:302
+#, kde-format
+msgid "Restart placing ships"
+msgstr ""
+
+#: simplemenu.cpp:40
+#, fuzzy, kde-format
+#| msgid "S&ingle Player"
+msgid "Single Player"
+msgstr "Enkel Speler"
+
+#: simplemenu.cpp:41
+#, fuzzy, kde-format
+#| msgid "Connect to Server"
+msgid "Host Network Game"
+msgstr "Konnekteer na Bediener"
+
+#: simplemenu.cpp:42
+#, fuzzy, kde-format
+#| msgid "Connect to Server"
+msgid "Connect to Network Game"
+msgstr "Konnekteer na Bediener"
+
+#: simplemenu.cpp:132 simplemenu.cpp:149
+#, fuzzy, kde-format
+#| msgid "S&ingle Player"
+msgid "Remote player"
+msgstr "Enkel Speler"
+
+#~ msgid "KBattleship"
+#~ msgstr "Kbattleship"
+
+#, fuzzy
+#~| msgid "S&ingle Player"
+#~ msgid "Single player"
+#~ msgstr "Enkel Speler"
+
+#, fuzzy
+#~ msgid "&Game"
+#~ msgstr "Naam"
+
+#, fuzzy
+#~| msgid "Shots"
+#~ msgid "Shots:"
+#~ msgstr "Skote"
+
+#, fuzzy
+#~| msgid "Hits"
+#~ msgid "Hits:"
+#~ msgstr "Trefslae"
+
+#, fuzzy
+#~| msgid "&Connect to server"
+#~ msgid "Connect to a server"
+#~ msgstr "Konnekteer na bediener"
+
+#, fuzzy
+#~ msgid "Local game"
+#~ msgstr "Naam"
+
+#, fuzzy
+#~| msgid "Start Server"
+#~ msgid "Start Ser&ver"
+#~ msgstr "Begin Bediener"
+
+#~ msgid "&Connect"
+#~ msgstr "Konnekteer"
+
+#~ msgid "     Player 1: %1     "
+#~ msgstr "     Speler 1: %1     "
+
+#~ msgid "     Player 2: %1     "
+#~ msgstr "     Speler 2: %1     "
+
+#~ msgid "Ready"
+#~ msgstr "Gereed"
+
+#~ msgid "&Start Server..."
+#~ msgstr "Begin Bediener..."
+
+#~ msgid "S&ingle Player..."
+#~ msgstr "Enkel Speler..."
+
+#, fuzzy
+#~ msgid "&Enemy Info"
+#~ msgstr "Vyand Inligting..."
+
+#~ msgid "Sending Message..."
+#~ msgstr "Stuur Boodskap..."
+
+#~ msgid "You won the game :)"
+#~ msgstr "Jy wen die speletjie :)"
+
+#~ msgid "Do you want to restart the game?"
+#~ msgstr "Doen jy wil hê na herbegin die speletjie?"
+
+#~ msgid "Enemy disconnected."
+#~ msgstr "Vyand geontkoppel."
+
+#~ msgid "Waiting for computer player to start the match..."
+#~ msgstr "Terwyl gewag het vir rekenaar speler na begin die ooreenstem..."
+
+#~ msgid "Water"
+#~ msgstr "Water"
+
+#~ msgid "Loading Connect-Server dialog..."
+#~ msgstr "Laaiïng van Connect-Server dialoog..."
+
+#~ msgid "Do you want to ask the server restarting the game?"
+#~ msgstr "Doen jy wil hê na vra die bediener herbeginne die speletjie?"
+
+#~ msgid "Loading Start-Server dialog..."
+#~ msgstr "Laaiïng van Start-Server dialoog..."
+
+#~ msgid "&Stop server"
+#~ msgstr "Stop bediener"
+
+#~ msgid "Waiting for a player..."
+#~ msgstr "Terwyl gewag het vir 'n speler..."
+
+#~ msgid "Dis&connect from server"
+#~ msgstr "Ontkoppel van bediener"
+
+#~ msgid "Nick name:"
+#~ msgstr "By naam:"
+
+#~ msgid "Waiting for the AI player to place the ships..."
+#~ msgstr ""
+#~ "Terwyl gewag het vir die Kunsmatige inteligensie speler na plek die "
+#~ "skepe..."
+
+#~ msgid ""
+#~ "Failed to bind to local port \"%1\"\n"
+#~ "\n"
+#~ "Please check if another KBattleship server instance\n"
+#~ "is running or another application uses this port."
+#~ msgstr ""
+#~ "Gevaal na bind na plaaslike poort \"%1\"\n"
+#~ "\n"
+#~ "Asseblief bevestig as nog 'n Kbattleship bediener voorbeeld\n"
+#~ "is wat loop of nog 'n aansoek gebruik hierdie poort."
+
+#~ msgid "The connection broke down!"
+#~ msgstr "Die verbinding breek ondertoe!"
+
+#, fuzzy
+#~ msgid "Connection to client lost. Aborting the game."
+#~ msgstr "Verbinding na kliënt verloor. Gaan staak die speletjie!"
+
+#, fuzzy
+#~ msgid ""
+#~ "Connection dropped by enemy. The client's protocol implementation (%1) is "
+#~ "not compatible with our (%2) version."
+#~ msgstr ""
+#~ "Verbinding gegooi deur vyand. Die kliënt se protokol implementering (%1) "
+#~ "is nie aanpasbaar met ons (%2) weergawe!"
+
+#~ msgid "You lost the game :("
+#~ msgstr "Jy verloor die speletjie :("
+
+#, fuzzy
+#~ msgid ""
+#~ "Connection to client dropped. The client's protocol implementation (%1) "
+#~ "is not compatible with our (%2) version."
+#~ msgstr ""
+#~ "Verbinding na kliënt gegooi. Die kliënt's protokol implementering (%1) is "
+#~ "nie aanpasbaar met ons (%2) weergawe!"
+
+#~ msgid "We have a player. Let's start..."
+#~ msgstr "Ons het 'n speler. Kom ons begin..."
+
+#, fuzzy
+#~ msgid "You can shoot now."
+#~ msgstr "Jy kan skiet nou"
+
+#, fuzzy
+#~ msgid "Unknown error; No: %1"
+#~ msgstr "Onbekende Fout; Nee: %1"
+
+#, fuzzy
+#~ msgid "Connection to server lost. Aborting the game."
+#~ msgstr "Verbinding na bediener verloor. Gaan staak die speletjie!"
+
+#, fuzzy
+#~ msgid "&Start"
+#~ msgstr "Begin bediener"
+
+#, fuzzy
+#~ msgid ""
+#~ "You do not have KBattleship pictures installed. The game cannot run "
+#~ "without them!"
+#~ msgstr ""
+#~ "Jy moet nie het Kbattleship Prentjies geïnstalleer. Die speletjie kan nie "
+#~ "hardloop sonder om te hulle!"
+
+#~ msgid "Enter a message here"
+#~ msgstr "Invoer 'n boodskap hier"
+
+#~ msgid "Press here to send the message"
+#~ msgstr "Druk hier na stuur die boodskap"
+
+#, fuzzy
+#~ msgid "&Send"
+#~ msgstr "Stuur"
+
+#, fuzzy
+#~ msgid "Chat Dialog:"
+#~ msgstr "Gesels dialoog:"
+
+#, fuzzy
+#~ msgid "&Server:"
+#~ msgstr "Bediener:"
+
+#~ msgid "Choose a port to connect to"
+#~ msgstr "Kies 'n poort na konnekteer na"
+
+#~ msgid "Enemy Client Information"
+#~ msgstr "Vyand Kliënt Informasie"
+
+#~ msgid "Client information:"
+#~ msgstr "Kliënt informasie:"
+
+#~ msgid "CV"
+#~ msgstr "Cv"
+
+#~ msgid "Client version:"
+#~ msgstr "Kliënt weergawe:"
+
+#~ msgid "Protocol version:"
+#~ msgstr "Protokol weergawe:"
+
+#~ msgid "PV"
+#~ msgstr "Pv"
+
+#~ msgid "CI"
+#~ msgstr "Ci"
+
+#, fuzzy
+#~ msgid "&Game name:"
+#~ msgstr "Naam"
+
+#~ msgid "Choose a port where the server listens on"
+#~ msgstr "Kies 'n poort waar die bediener luister op"
+
+#~ msgid "0"
+#~ msgstr "0"
+
+#~ msgid ":"
+#~ msgstr ":"
+
+#~ msgid "Shows all shots"
+#~ msgstr "Vertoon alle skote"
+
+#~ msgid "Shows all hit ships"
+#~ msgstr "Vertoon alle getref skepe"
+
+#~ msgid "Shows all water shots"
+#~ msgstr "Vertoon alle water skote"
+
+#~ msgid "Chat Widget"
+#~ msgstr "Gesels Gui-element"

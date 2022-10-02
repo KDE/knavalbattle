@@ -1,0 +1,727 @@
+<?xml version="1.0" ?>
+<!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN" "dtd/kdedbx45.dtd" [
+  <!ENTITY knavalbattle "<application
+>Naval Battle</application
+>"
+>  
+  <!ENTITY % addindex "IGNORE">
+  <!ENTITY % French "INCLUDE"
+> <!-- change language only here -->
+]>
+
+<book id="knavalbattle" lang="&language;">
+<bookinfo>
+<title
+>Manuel utilisateur de &knavalbattle;</title>
+
+<authorgroup>
+<author
+>&Daniel.Molkentin; &Daniel.Molkentin.mail; </author>
+
+<author
+>&Nikolas.Zimmermann; &Nikolas.Zimmermann.mail; </author>
+
+<author
+><firstname
+>Anton</firstname
+> <surname
+>Brondz</surname
+> <affiliation
+> <address
+><email
+>dinolinux@gmail.com</email
+></address>
+</affiliation>
+</author>
+
+<othercredit role="reviewer"
+>&Frerich.Raabe; &Frerich.Raabe.mail; </othercredit>
+
+&traducteurLudovicGrossard; &traducteurStanislasZeller; <othercredit role="translator"
+><firstname
+>Mickaël</firstname
+><surname
+>Ganchegui</surname
+><affiliation
+><address
+><email
+>mickeyg@voila.fr</email
+></address
+></affiliation
+><contrib
+>Traduction française&nbsp;</contrib
+></othercredit
+> 
+
+</authorgroup>
+
+<legalnotice
+>&FDLNotice;</legalnotice>
+
+<copyright>
+<year
+>2001</year>
+<holder
+>&Daniel.Molkentin;</holder>
+</copyright>
+<copyright>
+<year
+>2001</year>
+<holder
+>&Nikolas.Zimmermann;</holder>
+</copyright>
+<copyright>
+<year
+>2001</year>
+<holder
+>Kevin Krammer</holder>
+</copyright>
+
+<date
+>01-05-2016</date>
+<releaseinfo
+>2.1 (Applications 16.04)</releaseinfo>
+
+<abstract>
+<para
+>&knavalbattle; est une implémentation, avec possibilité de jouer en réseau, du fameux jeu de bataille navale pour &kde;.</para>
+</abstract>
+
+<keywordset>
+<keyword
+>KDE</keyword>
+<keyword
+>kdegames</keyword>
+<keyword
+>bataille navale</keyword>
+<keyword
+>jeu</keyword>
+<keyword
+>bataille navale</keyword>
+<keyword
+>bataille</keyword>
+<keyword
+>navale</keyword>
+</keywordset>
+
+</bookinfo>
+
+<chapter id="introduction">
+<title
+>Introduction</title>
+<note
+><title
+>Type de jeu : </title
+><para
+>Stratégie, plateau</para
+></note
+><!-- Game genre. Use as many as necessary. Available game types are: Arcade, Board, Card, Dice, Toys, Logic, Strategy.-->
+<note
+><title
+>Nombre possible de joueurs : </title
+><para
+>Deux</para
+></note
+><!--Number of possible players. It can be: One, Two,..., Multiplayer-->
+
+<screenshot>
+<mediaobject>
+<imageobject>
+<imagedata fileref="gameboard.png" format="PNG"/>
+</imageobject>
+<textobject>
+<phrase
+>Jeu de plateau bataille &knavalbattle; </phrase>
+</textobject>
+</mediaobject>
+</screenshot>
+
+<para
+>&kappname; est un jeu de bataille navale pour &kde;. Les bateaux sont placés sur un plateau représentant la mer. Les joueurs tentent de frapper et couler les bateaux de l'autre, chacun à son tour sans connaître l'emplacement de ceux-ci. Le premier joueur qui détruit tous les bateaux remporte la partie. </para>
+</chapter>
+
+<chapter id="howtoplay">
+<title
+>Comment jouer</title>
+<note
+><title
+>Objectif : </title
+><para
+>Couler tous les bateaux des adversaires avant que l'adversaire ne coule tous les vôtres.</para
+></note
+><!--Describe the objective of the game.-->
+<para
+>Si vous voulez jouer à &knavalbattle;, vous pouvez soit, jouer à deux joueurs, soit jouer contre l'ordinateur, soit contre un autre joueur en réseau. Pour jouer contre l'ordinateur, sélectionnez le niveau de difficulté sur la droite de la barre d'état et ensuite sélectionnez <guibutton
+>Joueur unique</guibutton
+> sur l'écran d'accueil, ou directement sur le menu <menuchoice
+><guimenu
+>Jeu</guimenu
+></menuchoice
+>.</para>
+
+<para
+>Pour démarrer une nouvelle partie en réseau, un joueur doit héberger une partie en sélectionnant <guilabel
+>Héberger une partie en réseau</guilabel
+> sur l'écran d'accueil, ou en choisissant <menuchoice
+><guimenu
+>Jeu</guimenu
+> <guimenuitem
+>Héberger une partie en réseau...</guimenuitem
+></menuchoice
+>. Une boîte de dialogue s'ouvre vous demandant votre <guilabel
+>Pseudo</guilabel
+> et un <guilabel
+>Port</guilabel
+>. Normalement, &knavalbattle; vous suggère votre nom d'utilisateur, mais vous êtes libre de mettre ce que vous voulez. Le port prédéfini devrait convenir. Cependant, si vous rencontrez des problèmes, vous pouvez choisir n'importe quel port libre au-dessus de 1024. </para>
+
+<note>
+<para
+>Vous devez informer l'autre joueur lorsque vous utilisez un port différent du port par défaut, car les deux joueurs doivent utiliser le même port pour pouvoir établir une connexion.</para>
+</note>
+
+<para
+>L'autre joueur doit choisir <guilabel
+>Se connecter à une partie en réseau</guilabel
+>, ou cliquez sur <menuchoice
+><guimenu
+>Jeu</guimenu
+> <guimenuitem
+>Se connecter à une partie en réseau...</guimenuitem
+></menuchoice
+>. Encore une fois, un <guilabel
+>Pseudo</guilabel
+> est suggéré, vous pouvez choisir celui que vous voulez. Dans le champ <guilabel
+>Nom de l'hôte</guilabel
+>, vous devez saisir votre nom d'hôte du serveur (la machine du joueur qui a initialisé la partie). </para>
+
+<para
+>Lorsque c'est fait, vous pouvez démarrer le jeu. Suivez simplement les instructions dans la barre d'état. Elle vous indiquera des astuces et suggérera ce qu'il faut faire ensuite. Lorsque vous regardez l'écran, vous voyez deux grilles, nommées <quote
+>champs de bataille</quote
+>. La zone à gauche vous appartient. C'est ici que vous placez vos bateaux et que vous pouvez suivre les actions militaires de votre adversaire. La partie droite correspond à la flotte de votre adversaire. Lorsque c'est à votre tour de jouer, cliquez sur un certain secteur (une case dans le champ de bataille) où vous pensez qu'un bateau de votre adversaire se trouve. </para>
+
+<para
+>Tout d'abord, vous devez placer vos bateaux. C'est la phase de préparation de la partie. Lorsque c'est fait, c'est au joueur 2 de placer ses bateaux. </para>
+
+<para
+>Le placement des bateaux est très simple. Cliquez simplement à l'endroit où vous voulez placer un bateau. Vous avez quatre bateaux à placer : le premier à une longueur d'une case, le suivant de deux, &etc; Cliquez sur l'endroit où vous voulez que commence le placement. Par défaut, les bateaux seront placés horizontalement ; pour les faire pivoter de 90 degrés, cliquez sur le &BDS; avant de les placer. </para>
+
+<para
+>Quand un bateau est touché, le feu va prendre à bord. Pour le couler, frappez toutes les cases qu'il occupe. Un bateau coulé va ensuite apparaître. </para>
+
+<para
+>Maintenant, vous pouvez utiliser le &BGS; pour faire feu sur la zone de bataille de votre ennemi. La barre d'état indique qui est touché. </para>
+
+<para
+>Vous pouvez redémarrer la partie en choisissant <menuchoice
+><guimenu
+>Jeu</guimenu
+> <guimenuitem
+>Recommencer la partie</guimenuitem
+></menuchoice
+>, ou en pressant <keycap
+>F5</keycap
+>. </para>
+
+<para
+>Le premier joueur qui détruit tous les navires de l'adversaire remporte la partie ! </para>
+
+</chapter>
+
+<chapter id="rulestips">
+<title
+>Règles du jeu, stratégies et astuces</title>
+<sect1 id="rules">
+<title
+>Règles</title>
+<itemizedlist>
+<listitem
+><para
+>Un joueur peut tirer seulement une fois par tour.</para
+></listitem>
+<listitem
+><para
+>Les joueurs doivent placer tous leurs bateaux.</para
+></listitem>
+<listitem
+><para
+>Les bateaux ne peuvent pas être déplacés une fois placés.</para
+></listitem>
+<listitem
+><para
+>Un bateau est coulé quand toutes les cases qu'il occupe sont touchées.</para
+></listitem>
+</itemizedlist>
+</sect1>
+
+<sect1 id="strattips">
+<title
+>Stratégies et astuces</title>
+<itemizedlist>
+<listitem
+><para
+>Ne jamais placer des bateaux à coté d'un autre bateau.</para
+></listitem>
+<listitem
+><para
+>Une fois que vous avez touché un bateau, essayez de tirer autour de l'emplacement où vous avez tiré.</para
+></listitem>
+<listitem
+><para
+>Essayez de placer des bateaux loin des bords du plateau.</para
+></listitem>
+<listitem
+><para
+>Les petits bateaux sont difficiles à toucher. Soyez sûr de les placer où il sera difficile de les trouver.</para
+></listitem>
+<listitem
+><para
+>Réfléchissez avant de tirer. Tirer dans l'eau rapporte moins de points.</para
+></listitem>
+</itemizedlist>
+</sect1>
+
+</chapter>
+
+<chapter id="menu-reference">
+<title
+>Les menus</title>
+
+<sect1 id="menu">
+<title
+>Éléments du menu</title>
+
+<variablelist>
+<varlistentry>
+<term>
+<menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>N</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Jeu</guimenu
+> <guimenuitem
+>Nouveau</guimenuitem
+> </menuchoice>
+</term>
+<listitem>
+<para>
+<action
+>Quitte la partie courante et recharge l'écran accueil.</action>
+</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term>
+<menuchoice
+><shortcut
+><keycap
+>F5</keycap
+></shortcut
+> <guimenu
+>Jeu</guimenu
+> <guimenuitem
+>Recommencer la partie</guimenuitem
+> </menuchoice>
+</term>
+<listitem>
+<para>
+<action
+>Recommence la partie</action>
+</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term>
+<menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>H</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Jeu</guimenu
+> <guimenuitem
+>Afficher les meilleurs scores</guimenuitem
+> </menuchoice>
+</term>
+<listitem>
+<para>
+<action
+>Affiche les meilleurs scores jusqu'à maintenant.</action>
+</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term>
+<menuchoice
+><guimenu
+>Jeu</guimenu
+> <guimenuitem
+>Joueur unique</guimenuitem
+> </menuchoice>
+</term>
+<listitem>
+<para>
+<action
+>Vous permet de jouer contre l'ordinateur.</action>
+</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term>
+<menuchoice
+><guimenu
+>Jeu</guimenu
+> <guimenuitem
+>Créer une partie réseau...</guimenuitem
+> </menuchoice>
+</term>
+<listitem>
+<para>
+<action
+>Démarre le serveur afin qu'un autre joueur puisse se connecter à vous.</action>
+</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term>
+<menuchoice
+><guimenu
+>Jeu</guimenu
+> <guimenuitem
+>Se connecter à une partie en réseau</guimenuitem
+> </menuchoice>
+</term>
+<listitem>
+<para>
+<action
+>Se connecter à un serveur pour démarrer une partie.</action>
+</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term>
+<menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>Q</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Jeu</guimenu
+> <guimenuitem
+>Quitter</guimenuitem
+> </menuchoice>
+</term>
+<listitem>
+<para
+><action
+>Quitter</action
+> &knavalbattle; </para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term>
+<menuchoice
+><guimenu
+>Configuration</guimenu
+> <guimenuitem
+>Modifier le pseudo</guimenuitem
+> </menuchoice>
+</term>
+<listitem>
+<para>
+<action
+>Modifie le pseudo par défaut</action>
+</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term>
+<menuchoice
+><guimenu
+>Configuration</guimenu
+> <guimenuitem
+>Jouer les sons</guimenuitem
+> </menuchoice>
+</term>
+<listitem>
+<para
+><action
+>(Dés)active les sons (lors des tirs).</action
+> Par défaut, ils sont joués. </para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term>
+<menuchoice
+><guimenu
+>Configuration</guimenu
+> <guimenuitem
+>Bateaux adjacents</guimenuitem
+> </menuchoice>
+</term>
+<listitem>
+<para
+><action
+>Indique si les bateaux peuvent être disposés sans espace vide entre eux.</action
+> Ceci est le choix par défaut. Ce paramètre doit être défini sur la machine hébergeant la partie quand <link linkend="howtoplay"
+>le jeu &kappname; se déroule en réseau</link
+>. </para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term>
+<menuchoice
+><guimenu
+>Configuration</guimenu
+> <guimenuitem
+>Afficher le message de fin de partie</guimenuitem
+> </menuchoice>
+</term>
+<listitem>
+<para
+>Si vous gagnez la partie avec un des meilleurs scores, le tableau des meilleurs scores sera affiché. Sinon, le résultat est affiché dans la barre d'état ou, si cette option est activée, dans une boîte de dialogue supplémentaire. </para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term>
+<menuchoice
+><guimenu
+>Configuration</guimenu
+> <guimenuitem
+>Afficher la grille à gauche</guimenuitem
+><guimenu
+>Configuration</guimenu
+> <guimenuitem
+>Afficher la grille droite</guimenuitem
+> </menuchoice>
+</term>
+<listitem>
+<para
+>L'usage de la grille rend plus facile la placement d'un tir avec le pointeur de la souris. </para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term>
+<menuchoice
+><guimenu
+>Configuration</guimenu
+> <guimenuitem
+>Difficulté</guimenuitem
+> </menuchoice>
+</term>
+<listitem>
+<para
+>La réglage du niveau de difficulté du jeu (<guimenuitem
+>Facile</guimenuitem
+>, <guimenuitem
+>Moyen</guimenuitem
+>, <guimenuitem
+>Difficile</guimenuitem
+>) a un effet uniquement sur les parties en solo contre l'ordinateur. Pour les niveaux supérieurs, l'ordinateur utilisera une meilleure stratégie pour placer ses bateaux et pour tirer.</para>
+</listitem>
+</varlistentry>
+
+</variablelist>
+
+<para
+>De plus, &knavalbattle; possède des éléments communs de menu &kde; <guimenu
+>Configuration</guimenu
+> et <guimenu
+>Aide</guimenu
+>. Pour plus d'informations, veuillez consulter les sections <ulink url="help:/fundamentals/menus.html#menus-settings"
+>Menu de configuration</ulink
+> et <ulink url="help:/fundamentals/menus.html#menus-help"
+>Menu d'aide</ulink
+> des fondamentaux de &kde;. </para>
+
+</sect1>
+</chapter>
+
+<chapter id="faq">
+<title
+>Foire aux questions</title>
+
+<qandaset>
+
+<qandaentry>
+<question>
+<para
+>Je ne sais pas trop où tirer, puis-je avoir un conseil ? </para>
+</question>
+<answer>
+<para
+>Non. &knavalbattle; n'inclut pas cette fonctionnalité. </para>
+</answer>
+</qandaentry>
+
+<qandaentry>
+<question>
+<para
+>Comment puis-je pivoter le bateau ? </para>
+</question>
+<answer>
+<para
+>Déplacez le bateau où vous souhaitez le placer, ensuite cliquez sur le &BDS;. </para>
+</answer>
+</qandaentry>
+
+<qandaentry>
+<question>
+<para
+>Je veux modifier la façon dont le jeu s'affiche. Est-ce possible ? </para>
+</question>
+<answer>
+<para
+>Non, le thème n'est pas modifiable. </para>
+</answer>
+</qandaentry>
+
+</qandaset>
+</chapter>
+
+<chapter id="credits">
+<title
+>Remerciements et licence</title>
+
+<para
+>&knavalbattle; Copyright 2000-2007</para>
+
+<itemizedlist>
+<title
+>Auteurs</title>
+<listitem>
+<para
+>Paolo Capriotti <email
+>p.capriotti@gmail.com</email
+> </para>
+</listitem>
+<listitem>
+<para
+>&Nikolas.Zimmermann; &Nikolas.Zimmermann.mail; </para>
+</listitem>
+<listitem>
+<para
+>&Daniel.Molkentin; &Daniel.Molkentin.mail; </para>
+</listitem>
+<listitem>
+<para
+>Kevin Krammer <email
+>kevin.krammer@gmx.at</email
+> </para>
+</listitem>
+</itemizedlist>
+
+<itemizedlist>
+<title
+>Collaborateurs</title>
+<listitem>
+<para
+>Johann Ollivier Lapeyre <email
+>johann.ollivierlapeyre@gmail.com</email
+> </para>
+</listitem>
+<listitem>
+<para
+>Eugene Trounev <email
+>irs_me@hotmail.com</email
+> </para>
+</listitem>
+<listitem>
+<para
+>&Robert.Wadley; <email
+>rob@robntina.fastmail.us</email
+> </para>
+</listitem>
+<listitem>
+<para
+>Riccardo Iaconelli <email
+>ruphy@fsfe.org</email
+> </para>
+</listitem>
+<listitem>
+<para
+>Benjamin Adler <email
+>benadler@bigfoot.de</email
+> </para>
+</listitem>
+<listitem>
+<para
+>Nils Trzebin <email
+>nils.trzebin@stud.uni-hannover.de</email
+> </para>
+</listitem>
+<listitem>
+<para
+>Elmar Hoefner <email
+>elmar.hoefner@uibk.ac.at</email
+></para>
+</listitem>
+
+</itemizedlist>
+
+<para
+>Documentation mise à jour pour &kde; 3.4 par <personname
+><firstname
+>Brian</firstname
+><surname
+>Beck</surname
+></personname
+><email
+>brian.beck@mchsi.com</email
+></para>
+
+<para
+>Documentation mise à jour pour &kde; 4 par <personname
+><firstname
+>Elisa</firstname
+><surname
+>Tonello</surname
+></personname
+> <email
+>elisa.tonello@gmail.com</email
+></para>
+
+<para
+>Traduction française par &LudovicGrossard;, &StanislasZeller; et Mickaël Ganchegui <email
+>mickeyg@voila.fr</email
+>.</para
+> &underFDL; &underGPL; </chapter>
+
+&documentation.index; 
+</book>
+<!--
+Local Variables:
+mode: sgml
+sgml-minimize-attributes:nil
+sgml-general-insert-case:lower
+sgml-omittag:t
+sgml-shorttag:t
+sgml-namecase-general:t
+sgml-always-quote-attributes:t
+sgml-indent-step:0
+sgml-indent-data:nil
+sgml-parent-document:nil
+sgml-exposed-tags:nil
+sgml-local-catalogs:nil
+sgml-local-ecat-files:nil
+End:
+-->

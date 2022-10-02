@@ -1,0 +1,576 @@
+# translation of kbattleship.po to Hindi
+# Copyright (C) YEAR This_file_is_part_of_KDE
+# This file is distributed under the same license as the PACKAGE package.
+#
+# Ravishankar Shrivastava <raviratlami@yahoo.com>, 2007.
+# Ravishankar Shrivastava <raviratlami@aol.in>, 2009.
+msgid ""
+msgstr ""
+"Project-Id-Version: kbattleship\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2022-09-04 00:43+0000\n"
+"PO-Revision-Date: 2009-02-25 18:22+0530\n"
+"Last-Translator: Ravishankar Shrivastava <raviratlami@aol.in>\n"
+"Language-Team: Hindi <kde-i18n-doc@lists.kde.org>\n"
+"Language: hne\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Lokalize 0.2\n"
+"Plural-Forms: nplurals=2; plural=(n!=1);\n"
+
+#, kde-format
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr "रविसंकर सिरीवास्तव, जी. करूनाकर"
+
+#, kde-format
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr "raviratlami@aol.in,"
+
+#: controller.cpp:50
+#, kde-format
+msgid "Computer"
+msgstr "कम्प्यूटर"
+
+#. i18n: ectx: label, entry (Hostname), group (network)
+#: knavalbattle.kcfg:9
+#, kde-format
+msgid "Default hostname for multiplayer games."
+msgstr "मल्टीप्लेयर खेल बर डिफाल्ट होस्ट-नाम."
+
+#. i18n: ectx: label, entry (Port), group (network)
+#: knavalbattle.kcfg:13
+#, kde-format
+msgid "Default port for multiplayer games."
+msgstr "मल्टीप्लेयर खेल बर डिफाल्ट पोर्ट."
+
+#. i18n: ectx: label, entry (Nickname), group (general)
+#: knavalbattle.kcfg:19
+#, kde-format
+msgid "User nickname."
+msgstr "कमइया के उपनाम."
+
+#. i18n: ectx: label, entry (EnableSounds), group (general)
+#: knavalbattle.kcfg:22
+#, kde-format
+msgid "Whether sound effects should be played."
+msgstr "का अवाज प्रभाव चलाय जाए."
+
+#. i18n: ectx: label, entry (AdjacentShips), group (general)
+#: knavalbattle.kcfg:26
+#, kde-format
+msgid "Allow the ships to be adjacent without one empty space between them."
+msgstr ""
+
+#. i18n: ectx: label, entry (SeveralShips), group (general)
+#: knavalbattle.kcfg:30
+#, kde-format
+msgid ""
+"Allow multiple ships of any size, default: 4 of 1, 3 of 2, 2 of 3, 1 of 4."
+msgstr ""
+
+#. i18n: ectx: ToolBar (gameToolbar)
+#: knavalbattleui.rc:29
+#, kde-format
+msgid "Game Toolbar"
+msgstr "खेल औजार-पट्टी"
+
+#: main.cpp:42
+#, kde-format
+msgid "Naval Battle"
+msgstr ""
+
+#: main.cpp:44
+#, fuzzy, kde-format
+#| msgid "The KDE Battleship clone"
+msgid "The KDE ship sinking game"
+msgstr "केडीई बैटलसिप प्रतिरूप"
+
+#: main.cpp:45
+#, kde-format
+msgid ""
+"(c) 2000-2005  Nikolas Zimmermann, Daniel Molkentin\n"
+"(c) 2007 Paolo Capriotti"
+msgstr ""
+"(c) 2000-2005  निकोलस जिमरमैन, डेनियल मोलकेंटिन\n"
+"(c) 2007 पाउलो केप्रियाती"
+
+#: main.cpp:50
+#, kde-format
+msgid "Paolo Capriotti"
+msgstr "पाउलो केप्रियाती"
+
+#: main.cpp:50
+#, kde-format
+msgid "Current maintainer"
+msgstr "अभी हाल के मेंटेनर"
+
+#: main.cpp:51
+#, kde-format
+msgid "Nikolas Zimmermann"
+msgstr "निकोलस जिमरमैन"
+
+#: main.cpp:51
+#, kde-format
+msgid "Project Founder, GUI Handling, Client/Server"
+msgstr "परियोजना स्थापक, जीयूआई हेंडलिंग, क्लायंट/सर्वर"
+
+#: main.cpp:52
+#, kde-format
+msgid "Daniel Molkentin"
+msgstr "डेनियल माल्केनटिन"
+
+#: main.cpp:52
+#, kde-format
+msgid "Dialog Stuff, Client/Server"
+msgstr "गोठ सामग्री, क्लायंट/सर्वर"
+
+#: main.cpp:53
+#, kde-format
+msgid "Kevin Krammer"
+msgstr "केविन क्रेमर"
+
+#: main.cpp:53
+#, kde-format
+msgid "Computer Player"
+msgstr "कम्प्यूटर खिलाड़ी"
+
+#: main.cpp:55
+#, kde-format
+msgid "Johann Ollivier Lapeyre"
+msgstr "जोहान ओलिवर लापेरे"
+
+#: main.cpp:55
+#, kde-format
+msgid "Game artwork"
+msgstr "खेल कलाकृति"
+
+#: main.cpp:56
+#, kde-format
+msgid "Eugene Trounev"
+msgstr "यूजीन त्रोवनेव"
+
+#: main.cpp:56
+#, kde-format
+msgid "Background"
+msgstr "पिछोत अंगना"
+
+#: main.cpp:57
+#, kde-format
+msgid "Robert Wadley"
+msgstr "राबर्ट वाडले"
+
+#: main.cpp:57
+#, kde-format
+msgid "Artwork for some of the ships"
+msgstr "कुछ जहाजों बर कलाकृतियाँ"
+
+#: main.cpp:58
+#, kde-format
+msgid "Riccardo Iaconelli"
+msgstr "रिकार्दो इयाकोनेल्ली"
+
+#: main.cpp:58
+#, kde-format
+msgid "Welcome screen"
+msgstr "स्वागत स्क्रीन"
+
+#: main.cpp:59
+#, kde-format
+msgid "Benjamin Adler"
+msgstr "बेंजामिन एडलर"
+
+#: main.cpp:59
+#, kde-format
+msgid "Icon"
+msgstr "चिनहा"
+
+#: main.cpp:60
+#, kde-format
+msgid "Nils Trzebin"
+msgstr "नील्ज त्रजेबिन"
+
+#: main.cpp:60
+#, kde-format
+msgid "Sounds"
+msgstr "अवाज"
+
+#: main.cpp:61
+#, kde-format
+msgid "Elmar Hoefner"
+msgstr "एल्मर हाफनर"
+
+#: main.cpp:61
+#, kde-format
+msgid "GFX"
+msgstr "GFX"
+
+#: main.cpp:62
+#, kde-format
+msgid "Lukas Tinkl"
+msgstr "लुकास टिंकल"
+
+#: main.cpp:62
+#, kde-format
+msgid "Non-Latin1 Support"
+msgstr "नान-लेटिन1 समर्थन"
+
+#: main.cpp:63
+#, kde-format
+msgid "Malte Starostik"
+msgstr "माल्ते स्टारोस्टिक"
+
+#: main.cpp:63
+#, kde-format
+msgid "Various improvements"
+msgstr "अनेकानेक सुधार"
+
+#: main.cpp:64
+#, kde-format
+msgid "Albert Astals Cid"
+msgstr "अलबर्ट एस्टल्स सिड"
+
+#: main.cpp:64 main.cpp:65
+#, kde-format
+msgid "Various improvements and bugfixes"
+msgstr "अनेकानेक सुधार अउ बग- फिक्सेस"
+
+#: main.cpp:65
+#, kde-format
+msgid "John Tapsell"
+msgstr "जान टापसेल"
+
+#: main.cpp:66
+#, kde-format
+msgid "Inge Wallin"
+msgstr "इंग वालिन"
+
+#: main.cpp:66
+#, kde-format
+msgid "Bugfixes and refactoring"
+msgstr "रीफ्रेक्टरिंग अउ बगफिक्सेस"
+
+#: main.cpp:67
+#, kde-format
+msgid "Jakub Stachowski"
+msgstr "जेकब स्टाचोव्स्की"
+
+#: main.cpp:67
+#, kde-format
+msgid "DNS-SD discovery"
+msgstr "डीएनएस-एसडी खोज"
+
+#: main.cpp:68
+#, kde-format
+msgid "Roney Gomes"
+msgstr ""
+
+#: main.cpp:68
+#, kde-format
+msgid "Porting to KGameRenderer and QGraphicsView"
+msgstr ""
+
+#: main.cpp:75
+#, kde-format
+msgid "[URL]"
+msgstr ""
+
+#: main.cpp:75
+#, kde-format
+msgid "URL of a Naval Battle game server to connect to after startup"
+msgstr ""
+
+#: mainwindow.cpp:59
+#, kde-format
+msgid "&Single Player"
+msgstr "एकल खिलाड़ी (&S)"
+
+#: mainwindow.cpp:63
+#, kde-format
+msgid "&Host Game..."
+msgstr "होस्ट खेल... (&H)"
+
+#: mainwindow.cpp:67
+#, kde-format
+msgid "&Connect to Game..."
+msgstr "खेल से जुड़व... (&C)"
+
+#: mainwindow.cpp:72
+#, kde-format
+msgid "Change &Nickname..."
+msgstr "उपनाम बदलव... (&N)"
+
+#: mainwindow.cpp:75
+#, kde-format
+msgid "&Play Sounds"
+msgstr "अवाज बजाव (&P)"
+
+#: mainwindow.cpp:80
+#, kde-format
+msgid "&Adjacent Ships"
+msgstr ""
+
+#: mainwindow.cpp:85
+#, kde-format
+msgid "&Multiple Ships"
+msgstr ""
+
+#: mainwindow.cpp:90
+#, kde-format
+msgid "Show End-of-Game Message"
+msgstr ""
+
+#: mainwindow.cpp:95
+#, kde-format
+msgid "Show &Left Grid"
+msgstr ""
+
+#: mainwindow.cpp:99
+#, kde-format
+msgid "Show &Right Grid"
+msgstr ""
+
+#: networkdialog.cpp:61
+#, kde-format
+msgid "&Nickname:"
+msgstr "उपनामः (&N)"
+
+#: networkdialog.cpp:73
+#, kde-format
+msgid "&Join game:"
+msgstr "खेल मं सामिल होव: (&J)"
+
+#: networkdialog.cpp:88
+#, kde-format
+msgid "&Hostname:"
+msgstr "होस्टनामः (&H)"
+
+#: networkdialog.cpp:101 networkdialog.cpp:131
+#, kde-format
+msgid "&Port:"
+msgstr "पोर्टः (&P)"
+
+#: networkdialog.cpp:116
+#, kde-format
+msgid "&Enter server address manually"
+msgstr ""
+
+#: networkdialog.cpp:148
+#, kde-format
+msgid "Network Parameters"
+msgstr "नेटवर्क पैरामीटर"
+
+#: networkdialog.cpp:210
+#, kde-format
+msgid "Connecting to remote host..."
+msgstr "रिमोट होस्ट से कनेक्ट करत हे..."
+
+#: networkdialog.cpp:217
+#, kde-format
+msgid "Waiting for an incoming connection..."
+msgstr "इनकमिंग कनेक्सन बर इंतजार करत हे..."
+
+#: networkdialog.cpp:236
+#, kde-format
+msgid "Could not connect to host"
+msgstr "होस्ट से जुड़ नइ सकिस"
+
+#: networkentity.cpp:189
+#, kde-format
+msgid "You have "
+msgstr ""
+
+#: networkentity.cpp:195
+#, kde-format
+msgid ", "
+msgstr ""
+
+#: networkentity.cpp:288
+#, kde-format
+msgid "You can place ships adjacent to each other"
+msgstr ""
+
+#: networkentity.cpp:291
+#, kde-format
+msgid "You must leave a space between ships"
+msgstr ""
+
+#: playerentity.cpp:199
+#, kde-format
+msgid "Your opponent is now known as %1"
+msgstr "आप मन के प्रतिद्वंद्वी अब %1 के नाम से जाना जाही"
+
+#: playerentity.cpp:204
+#, kde-format
+msgid "Your opponent disconnected from the game"
+msgstr "आप मन के प्रतिद्वंद्वी खेल से डिसकेक्ट हो गे हे"
+
+#: playfield.cpp:146 playfield.cpp:166
+#, kde-format
+msgid "Shots"
+msgstr "गोले"
+
+#: playfield.cpp:147 playfield.cpp:167
+#, kde-format
+msgid "Hits"
+msgstr "हिट्स"
+
+#: playfield.cpp:148 playfield.cpp:168
+#, kde-format
+msgid "Misses"
+msgstr "चूकें"
+
+#: playfield.cpp:188
+#, kde-format
+msgid "You win!"
+msgstr "आप जीते!"
+
+#: playfield.cpp:190
+#, kde-format
+msgid "You win. Excellent!"
+msgstr "आप मन जीत गेव! बहुत बढ़िया!"
+
+#: playfield.cpp:194
+#, kde-format
+msgid "You lose."
+msgstr "आप हारे."
+
+#: playfield.cpp:196
+#, fuzzy, kde-format
+#| msgid "You lose. Try harder next time!"
+msgid "You lose. Better luck next time!"
+msgstr "आप मन हार गेव. अगली दफा जादा मेहनत करव!"
+
+#: playfield.cpp:206
+#, kde-format
+msgid "Change Nickname"
+msgstr "उपनाम बदलव"
+
+#: playfield.cpp:206
+#, kde-format
+msgid "Enter new nickname:"
+msgstr "नवा उपनाम भरव:"
+
+#: playfield.cpp:234
+#, kde-format
+msgid "Restart game"
+msgstr "खेल फिर से चालू करव"
+
+#: playfield.cpp:235
+#, kde-format
+msgid "Your opponent has requested to restart the game. Do you accept?"
+msgstr ""
+"आप मन के प्रतिद्वंद्वी हर खेल ल फिर से चालू करे बर आमंत्रित करे हे. का आप मन एला स्वीकारते  "
+"हे?"
+
+#: playfield.cpp:236
+#, kde-format
+msgctxt "@action:button"
+msgid "Accept"
+msgstr ""
+
+#: playfield.cpp:237
+#, kde-format
+msgctxt "@action:button"
+msgid "Reject"
+msgstr ""
+
+#: playfield.cpp:246
+#, kde-format
+msgid ""
+"Your opponent is using a pre-KDE4 version of Naval Battle. Note that, "
+"according to the rules enforced by old clients, ships cannot be placed "
+"adjacent to one another and only one ship of each size is allowed."
+msgstr ""
+
+#: playfield.cpp:259
+#, kde-format
+msgid "Enemy has shot. Shoot now!"
+msgstr "दुस्मन हर गोली चलाई. अभी गोली चलाव!"
+
+#: playfield.cpp:263
+#, kde-format
+msgid "Waiting for enemy to shoot..."
+msgstr "दुस्मन के गोली चलाय के इंतजार में..."
+
+#: playfield.cpp:272
+#, kde-format
+msgid "Ships placed. Now shoot on the enemy field!"
+msgstr "जहाजों ल रख दे गे हे. अब आप मन दुस्मन ल फील्ड मं गोली मारें!"
+
+#: playfield.cpp:275
+#, kde-format
+msgid "Waiting for other player to start the game..."
+msgstr "अऊ दूसर खिलाड़ी से खेल चालू करे के इंतजार में..."
+
+#: playfield.cpp:279
+#, kde-format
+msgid "Waiting for other player to place his ships..."
+msgstr "अऊ दूसर खिलाड़ियों से ऊंखर जहाजों ल रखे जाय के इंतजार में..."
+
+#: playfield.cpp:293
+#, fuzzy, kde-format
+#| msgid "Place your ships. Use the right mouse button to rotate them."
+msgid "Place your %1 ships. Use the right mouse button to rotate them."
+msgstr "अपन जहाज रखव. ओ मन ल घुमाय बर दाहिना मुसुवा बटन के परयोग करव."
+
+#: playfield.cpp:299
+#, kde-format
+msgid "You can't place your remaining ships."
+msgstr ""
+
+#: playfield.cpp:300
+#, fuzzy, kde-format
+#| msgid "Restart game"
+msgctxt "@action"
+msgid "Restart"
+msgstr "खेल फिर से चालू करव"
+
+#: playfield.cpp:301
+#, kde-format
+msgctxt "@action"
+msgid "Abort"
+msgstr ""
+
+#: playfield.cpp:302
+#, kde-format
+msgid ""
+"You can't place your remaining ships. Please restart placing ships or abort "
+"game"
+msgstr ""
+
+#: playfield.cpp:302
+#, kde-format
+msgid "Restart placing ships"
+msgstr ""
+
+#: simplemenu.cpp:40
+#, kde-format
+msgid "Single Player"
+msgstr "एकल खिलाड़ी"
+
+#: simplemenu.cpp:41
+#, kde-format
+msgid "Host Network Game"
+msgstr "होस्ट नेटवर्क खेल"
+
+#: simplemenu.cpp:42
+#, kde-format
+msgid "Connect to Network Game"
+msgstr "नेटवर्क खेल से कनेक्ट हों"
+
+#: simplemenu.cpp:132 simplemenu.cpp:149
+#, kde-format
+msgid "Remote player"
+msgstr "रिमोट खिलाड़ी"
+
+#~ msgid "Game difficulty."
+#~ msgstr "खेल कठिनाई."
+
+#~ msgid "KBattleship"
+#~ msgstr "के-बैटलसिप"
+
+#~ msgid "Single player"
+#~ msgstr "एकल खिलाड़ी"

@@ -1,0 +1,726 @@
+<?xml version="1.0" ?>
+<!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN" "dtd/kdedbx45.dtd" [
+  <!ENTITY i18n-knavalbattle "<application
+>Sänka fartyg</application
+>">
+  <!ENTITY % addindex "IGNORE">
+  <!ENTITY % Swedish "INCLUDE"
+> <!-- change language only here -->
+]>
+
+<book id="knavalbattle" lang="&language;">
+<bookinfo>
+<title
+>Handbok Sänka fartyg</title>
+
+<authorgroup>
+<author
+>&Daniel.Molkentin; &Daniel.Molkentin.mail; </author>
+
+<author
+>&Nikolas.Zimmermann; &Nikolas.Zimmermann.mail; </author>
+
+<author
+><firstname
+>Anton</firstname
+> <surname
+>Brondz</surname
+> <affiliation
+> <address
+><email
+>dinolinux@gmail.com</email
+></address>
+</affiliation>
+</author>
+
+<othercredit role="reviewer"
+>&Frerich.Raabe; &Frerich.Raabe.mail; </othercredit>
+
+<othercredit role="translator"
+> <firstname
+>Stefan</firstname
+> <surname
+>Asserhäll</surname
+> <affiliation
+><address
+><email
+>stefan.asserhall@bredband.net</email
+></address
+></affiliation
+> <contrib
+>Översättare</contrib
+></othercredit
+> 
+
+</authorgroup>
+
+<legalnotice
+>&FDLNotice;</legalnotice>
+
+<copyright>
+<year
+>2001</year>
+<holder
+>&Daniel.Molkentin;</holder>
+</copyright>
+<copyright>
+<year
+>2001</year>
+<holder
+>&Nikolas.Zimmermann;</holder>
+</copyright>
+<copyright>
+<year
+>2001</year>
+<holder
+>Kevin Krammer</holder>
+</copyright>
+
+<date
+>2020-12-10</date>
+<releaseinfo
+>Program 20.12</releaseinfo>
+
+<abstract>
+<para
+>Sänka fartyg är en nätverksredo implementering av det berömda spelet Sänka fartyg av &kde;.</para>
+</abstract>
+
+<keywordset>
+<keyword
+>KDE</keyword>
+<keyword
+>kdegames</keyword>
+<keyword
+>knavalbattle</keyword>
+<keyword
+>spel</keyword>
+<keyword
+>slagskepp</keyword>
+<keyword
+>slag</keyword>
+<keyword
+>marin</keyword>
+</keywordset>
+
+</bookinfo>
+
+<chapter id="introduction">
+<title
+>Inledning</title>
+<note
+><title
+>Speltyp:</title
+><para
+>Strategi, brädspel</para
+></note
+><!-- Game genre. Use as many as necessary. Available game types are: Arcade, Board, Card, Dice, Toys, Logic, Strategy.-->
+<note
+><title
+>Antal möjliga spelare:</title
+><para
+>Två</para
+></note
+><!--Number of possible players. It can be: One, Two,..., Multiplayer-->
+
+<screenshot>
+<mediaobject>
+<imageobject>
+<imagedata fileref="gameboard.png" format="PNG"/>
+</imageobject>
+<textobject>
+<phrase
+>Spelbrädet i Sänka fartyg</phrase>
+</textobject>
+</mediaobject>
+</screenshot>
+
+<para
+>Sänka fartyg är ett fartygsspel av &kde;. Fartyg placeras på ett spelbräde som representerar havet. Spelare försöker träffa varandras fartyg i tur och ordning utan att känna till var de är placerade. Den första spelaren som förstör alla fartyg vinner spelet. </para>
+</chapter>
+
+<chapter id="howtoplay">
+<title
+>Hur man spelar</title>
+<note
+><title
+>Syfte:</title
+><para
+>Sänk alla motståndarens fartyg innan motståndaren sänker alla dina egna fartyg.</para
+></note
+><!--Describe the objective of the game.-->
+<para
+>Om du vill spela Sänka fartyg behövs två spelare. Spela antingen mot datorn eller mot en annan spelare i ett nätverk. För att spela mot datorn, välj först svårighetsnivå till höger om statusraden, och välj därefter <guibutton
+>Ensam spelare</guibutton
+> på välkomstskärmen, eller direkt i menyn <menuchoice
+><guimenu
+>Spel</guimenu
+></menuchoice
+>.</para>
+
+<para
+>För att påbörja ett nätverksspel måste en spelare vara värd för spelet genom att välja <guilabel
+>Värd för nätverksspel</guilabel
+> på välkomstskärmen, eller välja <menuchoice
+><guimenu
+>Spel</guimenu
+> <guimenuitem
+>Värd för spel...</guimenuitem
+></menuchoice
+>. En dialogruta visas som frågar dig efter ett <guilabel
+>Smeknamn:</guilabel
+> och <guilabel
+>Port:</guilabel
+>. Normalt föreslår Sänka fartyg ditt fullständiga namn, men du kan ange vilken sträng du vill. Den förvalda porten bör vara ok. Om du råkar ut för problem i alla fall, kan du välja vilken annan ledig port ovanför 1024 som helst. </para>
+
+<note>
+<para
+>Du måste informera den andra spelaren när du använder en annan port än den förvalda, eftersom båda spelare måste använda samma port för att kunna upprätta en förbindelse.</para>
+</note>
+
+<para
+>Den andra spelaren måste välja <guilabel
+>Anslut till nätverksspel</guilabel
+>, eller <menuchoice
+><guimenu
+>Spel</guimenu
+> <guimenuitem
+>Anslut till spel...</guimenuitem
+></menuchoice
+>. Återigen föreslås ett <guilabel
+>Smeknamn:</guilabel
+>, men du kan välja vilket namn du vill. Du måste ange serverns värddatornamn (datorn som påbörjade spelet) i fältet <guilabel
+>Värddatornamn:</guilabel
+>. </para>
+
+<para
+>När du är klar, kan du starta spelet. Följ helt enkelt instruktionerna på statusraden. Där visas tips och föreslås vad som ska göras härnäst. När du nu tittar på skärmen, ser du två inrutade bräden, som kallas <quote
+>spelområden</quote
+>. Det vänstra området hör till dig. Här placerar du dina fartyg och följer din fiendes militära åtgärder. Det högra området är platsen för din fiendes flotta. När det är din tur att skjuta, ska du klicka på något ställe (ett ruta i spelområdet) där du tror att ett fartyg är placerat. </para>
+
+<para
+>Först måste du placera dina fartyg. Den som inleder spelet börjar. När han/hon är klar, placerar spelare två sina fartyg. </para>
+
+<para
+>Att placera fartyg är mycket enkelt: Klicka helt enkelt på fältet där du vill placera dina fartyg. Det finns fyra fartyg att placera. Det första har längden en ruta, nästa har längden två rutor, etc. Klicka på stället där du vill att början av fartyget ska placeras. Normalt placeras fartyg horisontellt. Klicka med höger musknapp innan du placerar dem för att rotera dem 90 grader. </para>
+
+<para
+>När ett fartyg träffas, bryter en eldsvåda ut på det. Träffa alla rutor det upptar för att sänka det. Ett sänkt fartyg ser ut att vara borttonat. </para>
+
+<para
+>Nu kan du använda vänster musknapp för att skjuta på fiendens spelområde. Statusraden anger vem som ska skjuta. </para>
+
+<para
+>Du kan starta om spelet genom att välja <menuchoice
+><guimenu
+>Spel</guimenu
+><guimenuitem
+>Starta om spel</guimenuitem
+></menuchoice
+> eller genom att trycka på <keycap
+>F5</keycap
+>. </para>
+
+<para
+>Den första spelaren som förstör alla motspelarens fartyg vinner spelet. </para>
+
+</chapter>
+
+<chapter id="rulestips">
+<title
+>Spelets regler, strategier och tips</title>
+<sect1 id="rules">
+<title
+>Regler</title>
+<itemizedlist>
+<listitem
+><para
+>En spelare kan bara skjuta ett skott åt gången.</para
+></listitem>
+<listitem
+><para
+>Spelare måste placera ut alla sina fartyg.</para
+></listitem>
+<listitem
+><para
+>Fartyg kan inte flyttas när de väl har placerats ut.</para
+></listitem>
+<listitem
+><para
+>Ett fartyg har sänkts när all rutor som det upptar har träffats.</para
+></listitem>
+</itemizedlist>
+</sect1>
+
+<sect1 id="strattips">
+<title
+>Strategier och tips</title>
+<itemizedlist>
+<listitem
+><para
+>Placera aldrig fartyg intill varandra.</para
+></listitem>
+<listitem
+><para
+>När du väl träffar ett fartyg, försök skjuta omkring stället du träffade.</para
+></listitem>
+<listitem
+><para
+>Försök placera fartyg borta från spelbrädets kanter.</para
+></listitem>
+<listitem
+><para
+>Små fartyg är svårare att träffa. Försäkra dig om att du placerar dem där de är svåra att hitta.</para
+></listitem>
+<listitem
+><para
+>Tänk innan du skjuter. Träffar i vattnet ger mindre poäng.</para
+></listitem>
+</itemizedlist>
+</sect1>
+
+</chapter>
+
+<chapter id="menu-reference">
+<title
+>Menyerna</title>
+
+<sect1 id="menu">
+<title
+>Menyalternativ</title>
+
+<variablelist>
+<varlistentry>
+<term>
+<menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>N</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Spel</guimenu
+> <guimenuitem
+>Nytt</guimenuitem
+> </menuchoice>
+</term>
+<listitem>
+<para>
+<action
+>Avsluta pågående spel och visa välkomstskärmen igen.</action>
+</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term>
+<menuchoice
+><shortcut
+><keycap
+>F5</keycap
+></shortcut
+> <guimenu
+>Spel</guimenu
+> <guimenuitem
+>Starta om spel</guimenuitem
+> </menuchoice>
+</term>
+<listitem>
+<para>
+<action
+>Starta om spelet.</action>
+</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term>
+<menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>H</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Spel</guimenu
+> <guimenuitem
+>Visa bästa resultat</guimenuitem
+> </menuchoice>
+</term>
+<listitem>
+<para>
+<action
+>Visar poängtoppen så här långt.</action>
+</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term>
+<menuchoice
+><guimenu
+>Spel</guimenu
+> <guimenuitem
+>Ensam spelare</guimenuitem
+> </menuchoice>
+</term>
+<listitem>
+<para>
+<action
+>Starta ett spel med din dator som motspelare.</action>
+</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term>
+<menuchoice
+><guimenu
+>Spel</guimenu
+> <guimenuitem
+>Värd för spel...</guimenuitem
+> </menuchoice>
+</term>
+<listitem>
+<para>
+<action
+>Starta servern så att en annan spelare kan ansluta till dig.</action>
+</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term>
+<menuchoice
+><guimenu
+>Spel</guimenu
+> <guimenuitem
+>Anslut till spel...</guimenuitem
+> </menuchoice>
+</term>
+<listitem>
+<para>
+<action
+>Anslut till en server för att starta ett spel.</action>
+</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term>
+<menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>Q</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Spel</guimenu
+> <guimenuitem
+>Avsluta</guimenuitem
+> </menuchoice>
+</term>
+<listitem>
+<para
+><action
+>Avsluta</action
+> Sänka fartyg </para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term>
+<menuchoice
+><guimenu
+>Inställningar</guimenu
+> <guimenuitem
+>Ändra smeknamn...</guimenuitem
+> </menuchoice>
+</term>
+<listitem>
+<para>
+<action
+>Ändra förvalt smeknamn.</action>
+</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term>
+<menuchoice
+><guimenu
+>Inställningar</guimenu
+> <guimenuitem
+>Spela ljud</guimenuitem
+> </menuchoice>
+</term>
+<listitem>
+<para
+><action
+>Välj om ljud (som spelas när du skjuter) ska aktiveras.</action
+> Förvalt värde är aktiverat. </para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term>
+<menuchoice
+><guimenu
+>Inställningar</guimenu
+> <guimenuitem
+>Intilliggande fartyg</guimenuitem
+> </menuchoice>
+</term>
+<listitem>
+<para
+><action
+>Ändra om fartyg kan placeras på en spelplan utan ett tomt utrymme mellan dem.</action
+> Normalvärdet är på. Inställningen ska definieras på värddatorn när <link linkend="howtoplay"
+>Sänka fartyg spelas via nätverket</link
+>. </para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term>
+<menuchoice
+><guimenu
+>Inställningar</guimenu
+> <guimenuitem
+>Visa meddelande när spelet är slut</guimenuitem
+> </menuchoice>
+</term>
+<listitem>
+<para
+>Om du vann spelet och har ett nytt bästa resultat, visas dialogrutan med bästa resultat. Annars visas resultatet i statusraden, eller om alternativet är aktiverat dessutom i en dialogruta. </para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term>
+<menuchoice
+><guimenu
+>Inställningar</guimenu
+> <guimenuitem
+>Visa rutnät till vänster</guimenuitem
+> <guimenu
+>Inställningar</guimenu
+> <guimenuitem
+>Visa rutnät till höger</guimenuitem
+> </menuchoice>
+</term>
+<listitem>
+<para
+>Genom att använda rutnäten blir det enklare att placera ett skott med muspekaren. </para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term>
+<menuchoice
+><guimenu
+>Inställningar</guimenu
+> <guisubmenu
+>Svårighetsnivå</guisubmenu
+> </menuchoice>
+</term>
+<listitem>
+<para
+>Spelets svårighetsinställning (<guimenuitem
+>Lätt</guimenuitem
+>, <guimenuitem
+>Normal</guimenuitem
+>, <guimenuitem
+>Svår</guimenuitem
+>) har bara någon effekt för ensam spelare mot datorn. Med svårare nivåer använder den automatiska intelligensen en smartare strategi för att skjuta och placera fartyg.</para>
+</listitem>
+</varlistentry>
+
+</variablelist>
+
+<para
+>Dessutom har Sänka fartyg de vanliga menyalternativen <guimenu
+>Inställningar</guimenu
+> och <guimenu
+>Hjälp</guimenu
+> i &kde;. För mer information, läs avsnitten  <ulink url="help:/fundamentals/menus.html#menus-settings"
+>Menyn Inställningar</ulink
+> och <ulink url="help:/fundamentals/menus.html#menus-help"
+>Menyn Hjälp</ulink
+> i &kde;:s Grunder. </para>
+
+</sect1>
+</chapter>
+
+<chapter id="faq">
+<title
+>Vanliga frågor</title>
+
+<qandaset>
+
+<qandaentry>
+<question>
+<para
+>Jag är inte säker på var man ska skjuta. Finns det några tips? </para>
+</question>
+<answer>
+<para
+>Nej, det finns inget tipssystem i Sänka fartyg. </para>
+</answer>
+</qandaentry>
+
+<qandaentry>
+<question>
+<para
+>Hur kan man rotera ett fartyg? </para>
+</question>
+<answer>
+<para
+>Flytta fartyget dit du vill placera det, och klicka sedan med höger musknapp. </para>
+</answer>
+</qandaentry>
+
+<qandaentry>
+<question>
+<para
+>Kan man ändra hur spelet ser ut? </para>
+</question>
+<answer>
+<para
+>Nej, temat kan inte ändras. </para>
+</answer>
+</qandaentry>
+
+</qandaset>
+</chapter>
+
+<chapter id="credits">
+<title
+>Tack till och licens</title>
+
+<para
+>&knavalbattle; Copyright 2000-2007</para>
+
+<itemizedlist>
+<title
+>Upphovsmän</title>
+<listitem>
+<para
+>Paolo Capriotti <email
+>p.capriotti@gmail.com</email
+> </para>
+</listitem>
+<listitem>
+<para
+>&Nikolas.Zimmermann; &Nikolas.Zimmermann.mail; </para>
+</listitem>
+<listitem>
+<para
+>&Daniel.Molkentin; &Daniel.Molkentin.mail; </para>
+</listitem>
+<listitem>
+<para
+>Kevin Krammer <email
+>kevin.krammer@gmx.at</email
+> </para>
+</listitem>
+</itemizedlist>
+
+<itemizedlist>
+<title
+>Bidragsgivare</title>
+<listitem>
+<para
+>Johann Ollivier Lapeyre <email
+>johann.ollivierlapeyre@gmail.com</email
+> </para>
+</listitem>
+<listitem>
+<para
+>Eugene Trounev <email
+>irs_me@hotmail.com</email
+> </para>
+</listitem>
+<listitem>
+<para
+>&Robert.Wadley; <email
+>rob@robntina.fastmail.us</email
+> </para>
+</listitem>
+<listitem>
+<para
+>Riccardo Iaconelli <email
+>ruphy@fsfe.org</email
+> </para>
+</listitem>
+<listitem>
+<para
+>Benjamin Adler <email
+>benadler@bigfoot.de</email
+> </para>
+</listitem>
+<listitem>
+<para
+>Nils Trzebin <email
+>nils.trzebin@stud.uni-hannover.de</email
+> </para>
+</listitem>
+<listitem>
+<para
+>Elmar Hoefner <email
+>elmar.hoefner@uibk.ac.at</email
+></para>
+</listitem>
+
+</itemizedlist>
+
+<para
+>Dokumentation uppdaterad för &kde; 3.4 av <personname
+><firstname
+>Brian</firstname
+><surname
+>Beck</surname
+></personname
+> <email
+>brian.beck@mchsi.com</email
+></para>
+
+<para
+>Dokumentation uppdaterad för &kde; 4 av <personname
+><firstname
+>Elisa</firstname
+><surname
+>Tonello</surname
+></personname
+> <email
+>elisa.tonello@gmail.com</email
+></para>
+
+<para
+>Översättning Stefan Asserhäll <email
+>stefan.asserhall@bredband.net</email
+></para
+> &underFDL; &underGPL; </chapter>
+
+&documentation.index; 
+</book>
+<!--
+Local Variables:
+mode: sgml
+sgml-minimize-attributes:nil
+sgml-general-insert-case:lower
+sgml-omittag:t
+sgml-shorttag:t
+sgml-namecase-general:t
+sgml-always-quote-attributes:t
+sgml-indent-step:0
+sgml-indent-data:nil
+sgml-parent-document:nil
+sgml-exposed-tags:nil
+sgml-local-catalogs:nil
+sgml-local-ecat-files:nil
+End:
+-->
