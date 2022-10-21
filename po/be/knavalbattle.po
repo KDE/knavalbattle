@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kbattleship\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-09-04 00:43+0000\n"
+"POT-Creation-Date: 2022-10-21 00:44+0000\n"
 "PO-Revision-Date: 2007-04-03 20:51+0300\n"
 "Last-Translator: Darafei Praliaskouski <komzpa@licei2.com>\n"
 "Language-Team: Belarusian (Official spelling) <i18n@mova.org>\n"
@@ -404,74 +404,74 @@ msgstr ""
 msgid "Your opponent disconnected from the game"
 msgstr ""
 
-#: playfield.cpp:146 playfield.cpp:166
+#: playfield.cpp:147 playfield.cpp:167
 #, fuzzy, kde-format
 msgid "Shots"
 msgstr "Стрэлаў"
 
-#: playfield.cpp:147 playfield.cpp:167
+#: playfield.cpp:148 playfield.cpp:168
 #, fuzzy, kde-format
 msgid "Hits"
 msgstr "Трапленняў"
 
-#: playfield.cpp:148 playfield.cpp:168
+#: playfield.cpp:149 playfield.cpp:169
 #, kde-format
 msgid "Misses"
 msgstr ""
 
-#: playfield.cpp:188
+#: playfield.cpp:189
 #, kde-format
 msgid "You win!"
 msgstr ""
 
-#: playfield.cpp:190
+#: playfield.cpp:191
 #, kde-format
 msgid "You win. Excellent!"
 msgstr ""
 
-#: playfield.cpp:194
+#: playfield.cpp:195
 #, fuzzy, kde-format
 msgid "You lose."
 msgstr "Вы прайгралі :("
 
-#: playfield.cpp:196
+#: playfield.cpp:197
 #, kde-format
 msgid "You lose. Better luck next time!"
 msgstr ""
 
-#: playfield.cpp:206
+#: playfield.cpp:207
 #, fuzzy, kde-format
 msgid "Change Nickname"
 msgstr "Імя:"
 
-#: playfield.cpp:206
+#: playfield.cpp:207
 #, kde-format
 msgid "Enter new nickname:"
 msgstr ""
 
-#: playfield.cpp:234
+#: playfield.cpp:240
 #, fuzzy, kde-format
 msgid "Restart game"
 msgstr "Перазапусціць"
 
-#: playfield.cpp:235
+#: playfield.cpp:241
 #, fuzzy, kde-format
 msgid "Your opponent has requested to restart the game. Do you accept?"
 msgstr "Кліент жадае перазапусціць гульню. Дазволіць?"
 
-#: playfield.cpp:236
+#: playfield.cpp:242
 #, fuzzy, kde-format
 msgctxt "@action:button"
 msgid "Accept"
 msgstr "Дазволіць перазапуск"
 
-#: playfield.cpp:237
+#: playfield.cpp:243
 #, kde-format
 msgctxt "@action:button"
 msgid "Reject"
 msgstr ""
 
-#: playfield.cpp:246
+#: playfield.cpp:256
 #, kde-format
 msgid ""
 "Your opponent is using a pre-KDE4 version of Naval Battle. Note that, "
@@ -479,63 +479,63 @@ msgid ""
 "adjacent to one another and only one ship of each size is allowed."
 msgstr ""
 
-#: playfield.cpp:259
+#: playfield.cpp:269
 #, fuzzy, kde-format
 msgid "Enemy has shot. Shoot now!"
 msgstr "Вы патрапілі ў ворага. Страляйце зноў."
 
-#: playfield.cpp:263
+#: playfield.cpp:273
 #, fuzzy, kde-format
 msgid "Waiting for enemy to shoot..."
 msgstr "Чаканне стрэлу ворага..."
 
-#: playfield.cpp:272
+#: playfield.cpp:282
 #, kde-format
 msgid "Ships placed. Now shoot on the enemy field!"
 msgstr ""
 
-#: playfield.cpp:275
+#: playfield.cpp:285
 #, fuzzy, kde-format
 msgid "Waiting for other player to start the game..."
 msgstr "Чаканне іншых гульцоў для пачатку гульні..."
 
-#: playfield.cpp:279
+#: playfield.cpp:289
 #, fuzzy, kde-format
 msgid "Waiting for other player to place his ships..."
 msgstr "Чаканне, пакуль супернік расстаўляе караблі..."
 
-#: playfield.cpp:293
+#: playfield.cpp:303
 #, fuzzy, kde-format
 msgid "Place your %1 ships. Use the right mouse button to rotate them."
 msgstr ""
 "Размесціце свае караблі. Выкарыстайце клавішу \"Shift\", каб размясціць "
 "карабель вертыкальна."
 
-#: playfield.cpp:299
+#: playfield.cpp:309
 #, kde-format
 msgid "You can't place your remaining ships."
 msgstr ""
 
-#: playfield.cpp:300
+#: playfield.cpp:310
 #, fuzzy, kde-format
 msgctxt "@action"
 msgid "Restart"
 msgstr "Перазапусціць"
 
-#: playfield.cpp:301
+#: playfield.cpp:311
 #, kde-format
 msgctxt "@action"
 msgid "Abort"
 msgstr ""
 
-#: playfield.cpp:302
+#: playfield.cpp:317
 #, kde-format
 msgid ""
 "You can't place your remaining ships. Please restart placing ships or abort "
 "game"
 msgstr ""
 
-#: playfield.cpp:302
+#: playfield.cpp:317
 #, kde-format
 msgid "Restart placing ships"
 msgstr ""

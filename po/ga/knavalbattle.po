@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdegames/kbattleship.po\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-09-04 00:43+0000\n"
+"POT-Creation-Date: 2022-10-21 00:44+0000\n"
 "PO-Revision-Date: 2004-12-03 14:52-0500\n"
 "Last-Translator: Kevin Scannell <kscanne@gmail.com>\n"
 "Language-Team: Irish <gaeilge-gnulinux@lists.sourceforge.net>\n"
@@ -406,75 +406,75 @@ msgstr "Tugtar %1 ar do chéile comhraic anois"
 msgid "Your opponent disconnected from the game"
 msgstr "Dhícheangail do chéile comhraic ón chluiche"
 
-#: playfield.cpp:146 playfield.cpp:166
+#: playfield.cpp:147 playfield.cpp:167
 #, kde-format
 msgid "Shots"
 msgstr "Urchair"
 
-#: playfield.cpp:147 playfield.cpp:167
+#: playfield.cpp:148 playfield.cpp:168
 #, kde-format
 msgid "Hits"
 msgstr "Amais"
 
-#: playfield.cpp:148 playfield.cpp:168
+#: playfield.cpp:149 playfield.cpp:169
 #, kde-format
 msgid "Misses"
 msgstr "Urchair Iomraill"
 
-#: playfield.cpp:188
+#: playfield.cpp:189
 #, kde-format
 msgid "You win!"
 msgstr "Bhuaigh tú!"
 
-#: playfield.cpp:190
+#: playfield.cpp:191
 #, kde-format
 msgid "You win. Excellent!"
 msgstr "Bhuaigh tú.  Go hiontach!"
 
-#: playfield.cpp:194
+#: playfield.cpp:195
 #, kde-format
 msgid "You lose."
 msgstr "Chaill tú."
 
-#: playfield.cpp:196
+#: playfield.cpp:197
 #, fuzzy, kde-format
 #| msgid "You lose. Try harder next time!"
 msgid "You lose. Better luck next time!"
 msgstr "Chaill tú. Déan do dhícheall an chéad uair eile!"
 
-#: playfield.cpp:206
+#: playfield.cpp:207
 #, kde-format
 msgid "Change Nickname"
 msgstr "Athraigh do Leasainm"
 
-#: playfield.cpp:206
+#: playfield.cpp:207
 #, kde-format
 msgid "Enter new nickname:"
 msgstr "Iontráil leasainm nua:"
 
-#: playfield.cpp:234
+#: playfield.cpp:240
 #, kde-format
 msgid "Restart game"
 msgstr "Atosaigh an cluiche"
 
-#: playfield.cpp:235
+#: playfield.cpp:241
 #, kde-format
 msgid "Your opponent has requested to restart the game. Do you accept?"
 msgstr "D'iarr do chéile comhraic an cluiche a atosú. An nglacann tú leis?"
 
-#: playfield.cpp:236
+#: playfield.cpp:242
 #, kde-format
 msgctxt "@action:button"
 msgid "Accept"
 msgstr ""
 
-#: playfield.cpp:237
+#: playfield.cpp:243
 #, kde-format
 msgctxt "@action:button"
 msgid "Reject"
 msgstr ""
 
-#: playfield.cpp:246
+#: playfield.cpp:256
 #, fuzzy, kde-format
 #| msgid ""
 #| "Your opponent is using a pre-KDE4 version of Naval Battle. Note that, "
@@ -489,32 +489,32 @@ msgstr ""
 "KDE4.  De réir na rialacha a chuir na seanchliaint i bhfeidhm, ní "
 "cheadaítear longa a shuí go díreach in aice lena chéile."
 
-#: playfield.cpp:259
+#: playfield.cpp:269
 #, kde-format
 msgid "Enemy has shot. Shoot now!"
 msgstr "Chaith an namhaid urchar. Caith anois!"
 
-#: playfield.cpp:263
+#: playfield.cpp:273
 #, kde-format
 msgid "Waiting for enemy to shoot..."
 msgstr "Ag feitheamh le hurchar ón namhaid..."
 
-#: playfield.cpp:272
+#: playfield.cpp:282
 #, kde-format
 msgid "Ships placed. Now shoot on the enemy field!"
 msgstr "Cuireadh na longa. Caith urchar anois!"
 
-#: playfield.cpp:275
+#: playfield.cpp:285
 #, kde-format
 msgid "Waiting for other player to start the game..."
 msgstr "Ag feitheamh leis an imreoir eile an cluiche a thosú..."
 
-#: playfield.cpp:279
+#: playfield.cpp:289
 #, kde-format
 msgid "Waiting for other player to place his ships..."
 msgstr "Ag feitheamh leis an imreoir eile a chuid long a shuí..."
 
-#: playfield.cpp:293
+#: playfield.cpp:303
 #, fuzzy, kde-format
 #| msgid "Place your ships. Use the right mouse button to rotate them."
 msgid "Place your %1 ships. Use the right mouse button to rotate them."
@@ -522,32 +522,32 @@ msgstr ""
 "Cuir do chuid long síos.  Úsáid an cnaipe luiche ar dheis chun na longa a "
 "rothlú."
 
-#: playfield.cpp:299
+#: playfield.cpp:309
 #, kde-format
 msgid "You can't place your remaining ships."
 msgstr ""
 
-#: playfield.cpp:300
+#: playfield.cpp:310
 #, fuzzy, kde-format
 #| msgid "Restart game"
 msgctxt "@action"
 msgid "Restart"
 msgstr "Atosaigh an cluiche"
 
-#: playfield.cpp:301
+#: playfield.cpp:311
 #, kde-format
 msgctxt "@action"
 msgid "Abort"
 msgstr ""
 
-#: playfield.cpp:302
+#: playfield.cpp:317
 #, kde-format
 msgid ""
 "You can't place your remaining ships. Please restart placing ships or abort "
 "game"
 msgstr ""
 
-#: playfield.cpp:302
+#: playfield.cpp:317
 #, kde-format
 msgid "Restart placing ships"
 msgstr ""

@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kbattleship\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-09-04 00:43+0000\n"
+"POT-Creation-Date: 2022-10-21 00:44+0000\n"
 "PO-Revision-Date: 2022-08-02 22:52+0300\n"
 "Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
@@ -418,74 +418,74 @@ msgstr "Vastustajasi nimi on nyt %1"
 msgid "Your opponent disconnected from the game"
 msgstr "Vastustajasi on poistunut."
 
-#: playfield.cpp:146 playfield.cpp:166
+#: playfield.cpp:147 playfield.cpp:167
 #, kde-format
 msgid "Shots"
 msgstr "Laukaukset"
 
-#: playfield.cpp:147 playfield.cpp:167
+#: playfield.cpp:148 playfield.cpp:168
 #, kde-format
 msgid "Hits"
 msgstr "Osumat"
 
-#: playfield.cpp:148 playfield.cpp:168
+#: playfield.cpp:149 playfield.cpp:169
 #, kde-format
 msgid "Misses"
 msgstr "Ohi"
 
-#: playfield.cpp:188
+#: playfield.cpp:189
 #, kde-format
 msgid "You win!"
 msgstr "Voitit!"
 
-#: playfield.cpp:190
+#: playfield.cpp:191
 #, kde-format
 msgid "You win. Excellent!"
 msgstr "Voitit. Loistavaa!"
 
-#: playfield.cpp:194
+#: playfield.cpp:195
 #, kde-format
 msgid "You lose."
 msgstr "Hävisit."
 
-#: playfield.cpp:196
+#: playfield.cpp:197
 #, kde-format
 msgid "You lose. Better luck next time!"
 msgstr "Hävisit. Parempi onni ensi kerralla!"
 
-#: playfield.cpp:206
+#: playfield.cpp:207
 #, kde-format
 msgid "Change Nickname"
 msgstr "Muuta nimeä"
 
-#: playfield.cpp:206
+#: playfield.cpp:207
 #, kde-format
 msgid "Enter new nickname:"
 msgstr "Anna uusi nimi:"
 
-#: playfield.cpp:234
+#: playfield.cpp:240
 #, kde-format
 msgid "Restart game"
 msgstr "Aloita uudelleen"
 
-#: playfield.cpp:235
+#: playfield.cpp:241
 #, kde-format
 msgid "Your opponent has requested to restart the game. Do you accept?"
 msgstr "Vastustajasi haluaa aloitta uuden pelin. Hyväksytkö sen?"
 
-#: playfield.cpp:236
+#: playfield.cpp:242
 #, kde-format
 msgctxt "@action:button"
 msgid "Accept"
 msgstr "Hyväksy"
 
-#: playfield.cpp:237
+#: playfield.cpp:243
 #, kde-format
 msgctxt "@action:button"
 msgid "Reject"
 msgstr "Hylkää"
 
-#: playfield.cpp:246
+#: playfield.cpp:256
 #, kde-format
 msgid ""
 "Your opponent is using a pre-KDE4 version of Naval Battle. Note that, "
@@ -496,56 +496,56 @@ msgstr ""
 "huomioon, että vanhojen asiakasohjelmien sääntöjen mukaan laivoja ei voi "
 "sijoittaa vierekkäin, ja samankokoisia laivoja voi olla vain yksi."
 
-#: playfield.cpp:259
+#: playfield.cpp:269
 #, kde-format
 msgid "Enemy has shot. Shoot now!"
 msgstr "Vihollinen ampui. Ammu nyt!"
 
-#: playfield.cpp:263
+#: playfield.cpp:273
 #, kde-format
 msgid "Waiting for enemy to shoot..."
 msgstr "Odotan vihollisen laukausta…"
 
-#: playfield.cpp:272
+#: playfield.cpp:282
 #, kde-format
 msgid "Ships placed. Now shoot on the enemy field!"
 msgstr "Laivat on sijoitettu. Ammu kohti vihollista!"
 
-#: playfield.cpp:275
+#: playfield.cpp:285
 #, kde-format
 msgid "Waiting for other player to start the game..."
 msgstr "Odotetaan, kunnes toinen pelaaja aloittaa pelin…"
 
-#: playfield.cpp:279
+#: playfield.cpp:289
 #, kde-format
 msgid "Waiting for other player to place his ships..."
 msgstr "Odotetaan, kunnes toinen pelaaja on sijoittanut laivansa…"
 
-#: playfield.cpp:293
+#: playfield.cpp:303
 #, kde-format
 msgid "Place your %1 ships. Use the right mouse button to rotate them."
 msgstr ""
 "Sijoita %1 laivaasi. Voit kääntää laivan suuntaa hiiren oikealla "
 "painikkeella."
 
-#: playfield.cpp:299
+#: playfield.cpp:309
 #, kde-format
 msgid "You can't place your remaining ships."
 msgstr "Et voi sijoittaa loppuja laivojasi."
 
-#: playfield.cpp:300
+#: playfield.cpp:310
 #, kde-format
 msgctxt "@action"
 msgid "Restart"
 msgstr "Aloita alusta"
 
-#: playfield.cpp:301
+#: playfield.cpp:311
 #, kde-format
 msgctxt "@action"
 msgid "Abort"
 msgstr "Keskeytä"
 
-#: playfield.cpp:302
+#: playfield.cpp:317
 #, kde-format
 msgid ""
 "You can't place your remaining ships. Please restart placing ships or abort "
@@ -554,7 +554,7 @@ msgstr ""
 "Et voi sijoittaa loppuja laivoja. Aloita laivojen sijoittaminen alusta tai "
 "keskeytä peli."
 
-#: playfield.cpp:302
+#: playfield.cpp:317
 #, kde-format
 msgid "Restart placing ships"
 msgstr "Aloita laivojen sijoittaminen alusta"
