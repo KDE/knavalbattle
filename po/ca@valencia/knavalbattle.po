@@ -277,7 +277,7 @@ msgstr "Roney Gomes"
 #: main.cpp:68
 #, kde-format
 msgid "Porting to KGameRenderer and QGraphicsView"
-msgstr "Adaptació a KGameRenderer i al QGraphicsView"
+msgstr "Adaptació a KGameRenderer i a QGraphicsView"
 
 #: main.cpp:75
 #, kde-format
