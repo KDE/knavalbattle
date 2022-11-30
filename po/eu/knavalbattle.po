@@ -1,33 +1,37 @@
-# translation of kbattleship.po to Basque
-# Copyright (C) 2003, 2005, 2006, 2009 Free Software Foundation, Inc.
+# Translation for knavalbattle.po to Euskara/Basque (eu)
+# Copyright (C) 2003-2022 This file is copyright:
+# This file is distributed under the same license as the knavalbattle package.
+# KDE euskaratzeko proiektuko arduraduna <xalba@ni.eus>.
 #
+# Translators:
 # Marcos  <marcos@euskalgnu.org>, 2003.
 # Ion Gaztañaga <igaztanaga@gmail.com>, 2005, 2006.
 # Iñaki Larrañaga Murgoitio <dooteo@euskalgnu.org>, 2009.
+# Iñigo Salvador Azurmendi <xalba@ni.eus>, 2022.
 msgid ""
 msgstr ""
-"Project-Id-Version: kbattleship\n"
+"Project-Id-Version: knavalbattle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-10-21 00:44+0000\n"
-"PO-Revision-Date: 2009-06-16 10:26+0200\n"
-"Last-Translator: Iñaki Larrañaga Murgoitio <dooteo@euskalgnu.org>\n"
-"Language-Team: Basque <itzulpena@euskalgnu.org>\n"
+"PO-Revision-Date: 2022-11-29 06:27+0100\n"
+"Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
+"Language-Team: Basque <kde-i18n-eu@kde.org>\n"
 "Language: eu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 1.11.4\n"
+"X-Generator: Lokalize 22.08.3\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr "Ion Gaztañaga"
+msgstr "Iñigo Salvador Azurmendi,Ion Gaztañaga"
 
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
-msgstr "igaztanaga@gmail.com"
+msgstr "xalba@ni.eus,igaztanaga@gmail.com"
 
 #: controller.cpp:50
 #, kde-format
@@ -38,13 +42,13 @@ msgstr "Ordenagailua"
 #: knavalbattle.kcfg:9
 #, kde-format
 msgid "Default hostname for multiplayer games."
-msgstr "Ostalari-izen lehentsia hainbat jokalaritako jokoentzako."
+msgstr "Jokalari anizkoitzeko jokoetarako ostalari-izen lehenetsia."
 
 #. i18n: ectx: label, entry (Port), group (network)
 #: knavalbattle.kcfg:13
 #, kde-format
 msgid "Default port for multiplayer games."
-msgstr "Ataka lehentsia hainbat jokalaritako jokoentzako."
+msgstr "Jokalari anizkoitzeko jokoetarako ataka lehenetsia."
 
 #. i18n: ectx: label, entry (Nickname), group (general)
 #: knavalbattle.kcfg:19
@@ -56,13 +60,14 @@ msgstr "Erabiltzailearen goitizena."
 #: knavalbattle.kcfg:22
 #, kde-format
 msgid "Whether sound effects should be played."
-msgstr "Soinuen efektuak erreproduzituko diren edo ez."
+msgstr "Soinu-efektuak jo behar diren edo ez."
 
 #. i18n: ectx: label, entry (AdjacentShips), group (general)
 #: knavalbattle.kcfg:26
 #, kde-format
 msgid "Allow the ships to be adjacent without one empty space between them."
 msgstr ""
+"Baimendu ontziak elkarren ondoan egoten, haien artean tarte hutsik utzi gabe."
 
 #. i18n: ectx: label, entry (SeveralShips), group (general)
 #: knavalbattle.kcfg:30
@@ -70,6 +75,8 @@ msgstr ""
 msgid ""
 "Allow multiple ships of any size, default: 4 of 1, 3 of 2, 2 of 3, 1 of 4."
 msgstr ""
+"Baimendu edozein luzerako ontzi anizkoitzak, lehenetsia: 1eko 4, 2ko 3, 3ko "
+"2, 4ko 1."
 
 #. i18n: ectx: ToolBar (gameToolbar)
 #: knavalbattleui.rc:29
@@ -80,13 +87,12 @@ msgstr "Jokoaren tresna-barra"
 #: main.cpp:42
 #, kde-format
 msgid "Naval Battle"
-msgstr ""
+msgstr "Itsas-bataila"
 
 #: main.cpp:44
-#, fuzzy, kde-format
-#| msgid "The KDE Battleship clone"
+#, kde-format
 msgid "The KDE ship sinking game"
-msgstr "KDE-ren ontzi-guda"
+msgstr "Ontziak hondoratzeko KDEren jokoa"
 
 #: main.cpp:45
 #, kde-format
@@ -105,7 +111,7 @@ msgstr "Paolo Capriotti"
 #: main.cpp:50
 #, kde-format
 msgid "Current maintainer"
-msgstr "Uneko mantentzailea"
+msgstr "Uneko arduraduna"
 
 #: main.cpp:51
 #, kde-format
@@ -115,8 +121,7 @@ msgstr "Nikolas Zimmermann"
 #: main.cpp:51
 #, kde-format
 msgid "Project Founder, GUI Handling, Client/Server"
-msgstr ""
-"Proiektuaren eratzailea, interfaze grafikoaren maneiua, bezero/zerbitzaria"
+msgstr "Proiektuaren sortzailea, GUI maneiua, bezero/zerbitzaria"
 
 #: main.cpp:52
 #, kde-format
@@ -126,7 +131,7 @@ msgstr "Daniel Molkentin"
 #: main.cpp:52
 #, kde-format
 msgid "Dialog Stuff, Client/Server"
-msgstr "Elkarrizketak, bezero/zerbitzaria"
+msgstr "Elkarrizketa kontuak, bezero/zerbitzaria"
 
 #: main.cpp:53
 #, kde-format
@@ -166,7 +171,7 @@ msgstr "Robert Wadley"
 #: main.cpp:57
 #, kde-format
 msgid "Artwork for some of the ships"
-msgstr "Ontzi batzuen artelanak"
+msgstr "Ontzi batzuen artelana"
 
 #: main.cpp:58
 #, kde-format
@@ -176,7 +181,7 @@ msgstr "Riccardo Iaconelli"
 #: main.cpp:58
 #, kde-format
 msgid "Welcome screen"
-msgstr "Ongietorriko iragarkia"
+msgstr "Ongietorri-pantaila"
 
 #: main.cpp:59
 #, kde-format
@@ -206,7 +211,7 @@ msgstr "Elmar Hoefner"
 #: main.cpp:61
 #, kde-format
 msgid "GFX"
-msgstr "Efektu grafikoak"
+msgstr "GFX"
 
 #: main.cpp:62
 #, kde-format
@@ -216,7 +221,7 @@ msgstr "Lukas Tinkl"
 #: main.cpp:62
 #, kde-format
 msgid "Non-Latin1 Support"
-msgstr "Latin1-ez besteko euskarria"
+msgstr "Ez-Latin1 euskarria"
 
 #: main.cpp:63
 #, kde-format
@@ -236,7 +241,7 @@ msgstr "Albert Astals Cid"
 #: main.cpp:64 main.cpp:65
 #, kde-format
 msgid "Various improvements and bugfixes"
-msgstr "Hainbat hobekuntza eta programa-arazoen konponeketak"
+msgstr "Hainbat hobekuntza eta akats-zuzenketa"
 
 #: main.cpp:65
 #, kde-format
@@ -251,7 +256,7 @@ msgstr "Inge Wallin"
 #: main.cpp:66
 #, kde-format
 msgid "Bugfixes and refactoring"
-msgstr "Programa-arazoen konponeketak eta berridazketak"
+msgstr "Akats-zuzenketak eta birfaktorizatzea"
 
 #: main.cpp:67
 #, kde-format
@@ -266,25 +271,23 @@ msgstr "DNS-SD aurkikuntza"
 #: main.cpp:68
 #, kde-format
 msgid "Roney Gomes"
-msgstr ""
+msgstr "Roney Gomes"
 
 #: main.cpp:68
 #, kde-format
 msgid "Porting to KGameRenderer and QGraphicsView"
-msgstr ""
+msgstr "KGameRenderer eta QGraphicsView-era eratortzea"
 
 #: main.cpp:75
 #, kde-format
 msgid "[URL]"
-msgstr ""
+msgstr "[URL]"
 
 #: main.cpp:75
-#, fuzzy, kde-format
-#| msgid "URL of a KBattleship game server to connect to after startup"
+#, kde-format
 msgid "URL of a Naval Battle game server to connect to after startup"
 msgstr ""
-"KBattleship jokoaren zerbitzari baten URLa (abiatu ondoren horra "
-"konektatzeko)"
+"Abiatu ondoren, konektatu beharreko itsas-bataila joko-zerbitzari bateko URLa"
 
 #: mainwindow.cpp:59
 #, kde-format
@@ -294,7 +297,7 @@ msgstr "Jokalari &bakarra"
 #: mainwindow.cpp:63
 #, kde-format
 msgid "&Host Game..."
-msgstr "&Ostalariaren jokoa..."
+msgstr "&Ostatu jokoa..."
 
 #: mainwindow.cpp:67
 #, kde-format
@@ -309,22 +312,22 @@ msgstr "Aldatu &goitizena..."
 #: mainwindow.cpp:75
 #, kde-format
 msgid "&Play Sounds"
-msgstr "&Erreproduzitu soinuak"
+msgstr "&Jo soinuak"
 
 #: mainwindow.cpp:80
 #, kde-format
 msgid "&Adjacent Ships"
-msgstr ""
+msgstr "&Aldameneko ontziak"
 
 #: mainwindow.cpp:85
 #, kde-format
 msgid "&Multiple Ships"
-msgstr ""
+msgstr "Ontzi a&nizkoitzak"
 
 #: mainwindow.cpp:90
 #, kde-format
 msgid "Show End-of-Game Message"
-msgstr "Erakutsi jokoaren amaierako mezua"
+msgstr "Erakutsi joko-amaierako mezua"
 
 #: mainwindow.cpp:95
 #, kde-format
@@ -344,7 +347,7 @@ msgstr "&Goitizena:"
 #: networkdialog.cpp:73
 #, kde-format
 msgid "&Join game:"
-msgstr "&Elkartu jokora:"
+msgstr "El&kartu jokora:"
 
 #: networkdialog.cpp:88
 #, kde-format
@@ -354,7 +357,7 @@ msgstr "&Ostalari-izena:"
 #: networkdialog.cpp:101 networkdialog.cpp:131
 #, kde-format
 msgid "&Port:"
-msgstr "&Ataka:"
+msgstr "A&taka:"
 
 #: networkdialog.cpp:116
 #, kde-format
@@ -369,7 +372,7 @@ msgstr "Sareko parametroak"
 #: networkdialog.cpp:210
 #, kde-format
 msgid "Connecting to remote host..."
-msgstr "Urruneko ostalariarekin konektatzen..."
+msgstr "Urruneko ostalarira konektatzen..."
 
 #: networkdialog.cpp:217
 #, kde-format
@@ -379,27 +382,27 @@ msgstr "Sarrerako konexio baten zain..."
 #: networkdialog.cpp:236
 #, kde-format
 msgid "Could not connect to host"
-msgstr "Ezin izan da ostalariarekin konektatu"
+msgstr "Ezin izan du ostalariarekin konektatu"
 
 #: networkentity.cpp:189
 #, kde-format
 msgid "You have "
-msgstr ""
+msgstr "Zuk duzu"
 
 #: networkentity.cpp:195
 #, kde-format
 msgid ", "
-msgstr ""
+msgstr ", "
 
 #: networkentity.cpp:288
 #, kde-format
 msgid "You can place ships adjacent to each other"
-msgstr ""
+msgstr "Ontziak bata bestearen alboan ipin ditzakezu"
 
 #: networkentity.cpp:291
 #, kde-format
 msgid "You must leave a space between ships"
-msgstr ""
+msgstr "Ontzien artean tartea utzi behar duzu"
 
 #: playerentity.cpp:199
 #, kde-format
@@ -419,12 +422,12 @@ msgstr "Tiroak"
 #: playfield.cpp:148 playfield.cpp:168
 #, kde-format
 msgid "Hits"
-msgstr "Asmatutakoak"
+msgstr "Astinduak"
 
 #: playfield.cpp:149 playfield.cpp:169
 #, kde-format
 msgid "Misses"
-msgstr "Huts egindakoak"
+msgstr "Hutsegiteak"
 
 #: playfield.cpp:189
 #, kde-format
@@ -442,10 +445,9 @@ msgid "You lose."
 msgstr "Galdu egin duzu."
 
 #: playfield.cpp:197
-#, fuzzy, kde-format
-#| msgid "You lose. Try harder next time!"
+#, kde-format
 msgid "You lose. Better luck next time!"
-msgstr "Galdu egin duzu. Saiatu gogorrago hurrengo batean!"
+msgstr "Galdu egin duzu. Zorte hobea hurrengoan!"
 
 #: playfield.cpp:207
 #, kde-format
@@ -471,78 +473,73 @@ msgstr "Zure aurkariak jokoa berriro hastea eskatu du. Onartzen duzu?"
 #, kde-format
 msgctxt "@action:button"
 msgid "Accept"
-msgstr ""
+msgstr "Onartu"
 
 #: playfield.cpp:243
 #, kde-format
 msgctxt "@action:button"
 msgid "Reject"
-msgstr ""
+msgstr "Ukatu"
 
 #: playfield.cpp:256
-#, fuzzy, kde-format
-#| msgid ""
-#| "Your opponent is using a pre-KDE4 version of KBattleship. Note that, "
-#| "according to the rules enforced by old clients, ships cannot be placed "
-#| "adjacent to one another."
+#, kde-format
 msgid ""
 "Your opponent is using a pre-KDE4 version of Naval Battle. Note that, "
 "according to the rules enforced by old clients, ships cannot be placed "
 "adjacent to one another and only one ship of each size is allowed."
 msgstr ""
-"Zure aurkariak KBattleship-ren KDE4 baino zaharragoa den bertsioa darabil. "
-"Jakin ezazu bezero zaharrek bultzatzen dituzten arauen arabera, ontziak ezin "
-"direla bata bestearen alboan jarri."
+"Zure aurkaria Itsas-batailaren KDE4ren aurreko bertsio bat erabiltzen ari "
+"da. Jakizu, bezero zaharrek ezarritako arauen arabera, ontziak ezin direla "
+"bata bestearen alboan egon, eta neurri bakoitzeko ontzi bana besterik ez "
+"dela onartzen."
 
 #: playfield.cpp:269
 #, kde-format
 msgid "Enemy has shot. Shoot now!"
-msgstr "Etsaiak tiro egin du. Tiro egin orain."
+msgstr "Etsaiak tiro egin du. Egin tiro orain!"
 
 #: playfield.cpp:273
 #, kde-format
 msgid "Waiting for enemy to shoot..."
-msgstr "Etsaiaren tiroa itxaroten..."
+msgstr "Etsaiak tiro egiteko zain..."
 
 #: playfield.cpp:282
 #, kde-format
 msgid "Ships placed. Now shoot on the enemy field!"
-msgstr "Ontziak jarrita. Egin tiro etsaiaren eremuan."
+msgstr "Ontziak jarrita. Orain, egin tiro etsaiaren eremura!"
 
 #: playfield.cpp:285
 #, kde-format
 msgid "Waiting for other player to start the game..."
-msgstr "Beste jokalariak jokoa hasi dezan zain..."
+msgstr "Beste jokalariak jokoa has dezan itxoiten..."
 
 #: playfield.cpp:289
 #, kde-format
 msgid "Waiting for other player to place his ships..."
-msgstr "Beste jokalariak bere ontziak koka ditzan zain..."
+msgstr "Beste jokalariak bere ontziak koka ditzan itxoiten..."
 
 #: playfield.cpp:303
-#, fuzzy, kde-format
-#| msgid "Place your ships. Use the right mouse button to rotate them."
+#, kde-format
 msgid "Place your %1 ships. Use the right mouse button to rotate them."
 msgstr ""
-"Kokatu zure ontziak. Erabili saguaren eskuineko botoia haiek biratzeko."
+"Kokatu zure %1 ontziak. Erabili saguaren eskuineko botoia haiek biratzeko."
 
 #: playfield.cpp:309
 #, kde-format
 msgid "You can't place your remaining ships."
-msgstr ""
+msgstr "Zure gainerako ontziak ezin dituzu kokatu."
 
 #: playfield.cpp:310
-#, fuzzy, kde-format
-#| msgid "Restart game"
+#, kde-format
 msgctxt "@action"
 msgid "Restart"
-msgstr "Berrabiarazi jokoa"
+msgstr "Berrabiarazi"
 
 #: playfield.cpp:311
 #, kde-format
 msgctxt "@action"
 msgid "Abort"
-msgstr ""
+msgstr "Galarazi"
 
 #: playfield.cpp:317
 #, kde-format
@@ -550,11 +547,13 @@ msgid ""
 "You can't place your remaining ships. Please restart placing ships or abort "
 "game"
 msgstr ""
+"Zure gainerako ontziak ezin dituzu kokatu. Mesedez, hasi berriz zure ontziak "
+"kokatzen edo jokoa galarazi"
 
 #: playfield.cpp:317
 #, kde-format
 msgid "Restart placing ships"
-msgstr ""
+msgstr "Hasi berriz ontziak kokatzen"
 
 #: simplemenu.cpp:40
 #, kde-format
@@ -564,7 +563,7 @@ msgstr "Jokalari bakarra"
 #: simplemenu.cpp:41
 #, kde-format
 msgid "Host Network Game"
-msgstr "Sareko ostalariko jokoa"
+msgstr "Ostatu sareko jokoa"
 
 #: simplemenu.cpp:42
 #, kde-format
