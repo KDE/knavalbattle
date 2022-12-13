@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: knavalbattle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-10-21 00:44+0000\n"
-"PO-Revision-Date: 2022-10-08 11:59+0200\n"
+"PO-Revision-Date: 2022-12-12 10:00+0100\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.1.1\n"
+"X-Generator: Poedit 3.2.2\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -166,17 +166,17 @@ msgstr ""
 #: main.cpp:58
 #, kde-format
 msgid "Riccardo Iaconelli"
-msgstr ""
+msgstr "Riccardo Iaconelli"
 
 #: main.cpp:58
 #, kde-format
 msgid "Welcome screen"
-msgstr ""
+msgstr "საწყისი ეკრანი"
 
 #: main.cpp:59
 #, kde-format
 msgid "Benjamin Adler"
-msgstr ""
+msgstr "Benjamin Adler"
 
 #: main.cpp:59
 #, kde-format
@@ -421,7 +421,7 @@ msgstr ""
 #: playfield.cpp:189
 #, kde-format
 msgid "You win!"
-msgstr ""
+msgstr "მოიგეთ!"
 
 #: playfield.cpp:191
 #, kde-format
