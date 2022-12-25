@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: knavalbattle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-10-21 00:44+0000\n"
-"PO-Revision-Date: 2022-12-13 06:33+0100\n"
+"PO-Revision-Date: 2022-12-24 07:07+0100\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -62,6 +62,8 @@ msgstr "დაიკვრება თუ არა ხმოვანი ე�
 #, kde-format
 msgid "Allow the ships to be adjacent without one empty space between them."
 msgstr ""
+"ხომალდების ახლო-მახლოს დალაგების დაშვება, მათ შორის თავისუფალი ადგილის "
+"გარეშე."
 
 #. i18n: ectx: label, entry (SeveralShips), group (general)
 #: knavalbattle.kcfg:30
@@ -69,6 +71,7 @@ msgstr ""
 msgid ""
 "Allow multiple ships of any size, default: 4 of 1, 3 of 2, 2 of 3, 1 of 4."
 msgstr ""
+"ბევრი ნებისმიერი ზომის ხომალდის დაშვება. ნაგულისხმები: 4x1, 3x2, 2x3 და 1x4."
 
 #. i18n: ectx: ToolBar (gameToolbar)
 #: knavalbattleui.rc:29
@@ -278,7 +281,7 @@ msgstr "[URL]"
 #: main.cpp:75
 #, kde-format
 msgid "URL of a Naval Battle game server to connect to after startup"
-msgstr ""
+msgstr "საზღვაო ბრძოლის სერვერის ბმული გაშვებისას მისაერთებლად"
 
 #: mainwindow.cpp:59
 #, kde-format
@@ -479,6 +482,9 @@ msgid ""
 "according to the rules enforced by old clients, ships cannot be placed "
 "adjacent to one another and only one ship of each size is allowed."
 msgstr ""
+"თქვენი მეტოქე საზღვაო ბრძოლის KDE4-მდელ ვერსიას იყენებს. დაიმახსოვრეთ, რომ "
+"ძველი კლიენტების წესების მიხედვით გემებს შუაში ადგილის გარეშე ახლო-მახლოს "
+"ვერ დაალაგებთ."
 
 #: playfield.cpp:269
 #, kde-format
@@ -509,6 +515,8 @@ msgstr "სხვა მოთამაშის ხომალდების 
 #, kde-format
 msgid "Place your %1 ships. Use the right mouse button to rotate them."
 msgstr ""
+"დაალაგეთ თქვენი %1 ხომალდი. მოსაბრუნებლად თაგუნას მარჯვენა ღილაკს "
+"დააწკაპუნეთ."
 
 #: playfield.cpp:309
 #, kde-format
@@ -533,6 +541,8 @@ msgid ""
 "You can't place your remaining ships. Please restart placing ships or abort "
 "game"
 msgstr ""
+"დარჩენილი ხომალდების დალაგება არ შეგიძლიათ. თავიდან დაიწყეთ დალაგება ან "
+"გააუქმეთ თამაში"
 
 #: playfield.cpp:317
 #, kde-format
