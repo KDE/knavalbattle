@@ -1,80 +1,129 @@
 <?xml version="1.0" ?>
 <!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN" "dtd/kdedbx45.dtd" [
-  <!ENTITY i18n-knavalbattle "<application>Naval Battle</application>">
+  <!ENTITY i18n-knavalbattle "<application
+>Naval Battle</application
+>">
   <!ENTITY % addindex "IGNORE">
-  <!ENTITY % English "INCLUDE" > <!-- change language only here -->
+  <!ENTITY % German "INCLUDE"
+> <!-- change language only here -->
 ]>
 
 <book id="knavalbattle" lang="&language;">
 <bookinfo>
-<title>The &knavalbattle; Handbook</title>
+<title
+>Das Handbuch zu &knavalbattle;</title>
 
 <authorgroup>
-<author>
-&Daniel.Molkentin; &Daniel.Molkentin.mail;
-</author>
+<author
+>&Daniel.Molkentin; &Daniel.Molkentin.mail; </author>
 
-<author>
-&Nikolas.Zimmermann; &Nikolas.Zimmermann.mail;
-</author>
+<author
+>&Nikolas.Zimmermann; &Nikolas.Zimmermann.mail; </author>
 
-<author>
-<firstname>Anton</firstname>
-<surname>Brondz</surname>
-<affiliation>
-<address><email>dinolinux@gmail.com</email></address>
+<author
+><firstname
+>Anton</firstname
+> <surname
+>Brondz</surname
+> <affiliation
+> <address
+><email
+>dinolinux@gmail.com</email
+></address>
 </affiliation>
 </author>
 
-<othercredit role="reviewer">
-&Frerich.Raabe;
-<!-- <contrib>Reviewer</contrib> -->
-&Frerich.Raabe.mail;
-</othercredit>
+<othercredit role="reviewer"
+>&Frerich.Raabe; &Frerich.Raabe.mail; </othercredit>
 
-<!-- TRANS:ROLES_OF_TRANSLATORS -->
+<othercredit role="translator"
+><firstname
+>Maren</firstname
+><surname
+>Pakura</surname
+><affiliation
+><address
+><email
+>maren@kde.org</email
+></address
+></affiliation
+><contrib
+>Deutsche Übersetzung</contrib
+></othercredit
+> 
 
 </authorgroup>
 
-<legalnotice>&FDLNotice;</legalnotice>
+<legalnotice
+>&FDLNotice;</legalnotice>
 
 <copyright>
-<year>2001</year>
-<holder>&Daniel.Molkentin;</holder>
+<year
+>2001</year>
+<holder
+>&Daniel.Molkentin;</holder>
 </copyright>
 <copyright>
-<year>2001</year>
-<holder>&Nikolas.Zimmermann;</holder>
+<year
+>2001</year>
+<holder
+>&Nikolas.Zimmermann;</holder>
 </copyright>
 <copyright>
-<year>2001</year>
-<holder>Kevin Krammer</holder>
+<year
+>2001</year>
+<holder
+>Kevin Krammer</holder>
 </copyright>
 
-<date>2020-12-10</date>
-<releaseinfo>Applications 20.12</releaseinfo>
+<date
+>2020-12-10</date>
+<releaseinfo
+>Anwendungen 20.12</releaseinfo>
 
 <abstract>
-<para>
-&i18n-knavalbattle; is a network-enabled implementation of the famous ship sinking game by &kde;.</para>
+<para
+>&i18n-knavalbattle; ist eine netzwerkfähige Umsetzung des bekannten Spiels <quote
+>Schiffe versenken</quote
+> von &kde;.</para>
 </abstract>
 
 <keywordset>
-<keyword>KDE</keyword>
-<keyword>kdegames</keyword>
-<keyword>knavalbattle</keyword>
-<keyword>game</keyword>
-<keyword>battleship</keyword>
-<keyword>battle</keyword>
-<keyword>naval</keyword>
+<keyword
+>KDE</keyword>
+<keyword
+>kdegames</keyword>
+<keyword
+>knavalbattle</keyword>
+<keyword
+>Spiel</keyword>
+<keyword
+>Schiffe versenken</keyword>
+<keyword
+>Schlacht</keyword>
+<keyword
+>Marine</keyword>
 </keywordset>
 
 </bookinfo>
 
 <chapter id="introduction">
-<title>Introduction</title>
-<note><title>Gametype:</title><para>Strategy, Board</para></note><!-- Game genre. Use as many as necessary. Available game types are: Arcade, Board, Card, Dice, Toys, Logic, Strategy.-->
-<note><title>Number of possible players:</title><para>Two</para></note><!--Number of possible players. It can be: One, Two,..., Multiplayer-->
+<title
+>Einführung</title>
+<note
+><title
+>Spieltyp:</title
+><para
+>Strategiespiel, Brettspiel</para
+></note
+><!-- Game genre. Use as many as necessary. Available game types are: Arcade, Board, Card, Dice, Toys, Logic, Strategy.-->
+<note
+><title
+>Anzahl der Spieler:</title
+><para
+>Zwei</para
+></note
+><!--Number of possible players. It can be: One, Two,..., Multiplayer-->
 
 <screenshot>
 <mediaobject>
@@ -82,376 +131,474 @@
 <imagedata fileref="gameboard.png" format="PNG"/>
 </imageobject>
 <textobject>
-<phrase>&i18n-knavalbattle; Game Board</phrase>
+<phrase
+>&i18n-knavalbattle;-Spielfeld</phrase>
 </textobject>
 </mediaobject>
 </screenshot>
 
-<para>
-&i18n-knavalbattle; is a ship sinking game by &kde;. Ships are placed on a board which represents the sea. Players try to hit each others
-ships in turns without knowing where they are placed. The first player to destroy all ships wins the game.
-</para>
+<para
+>&i18n-knavalbattle; ist ein <quote
+>Schiffe versenken</quote
+>-Spiel von &kde;. Alle Schiffe werden auf dem Spielfeld - dem Meer - angeordnet. Die Spieler versuchen die gegnerischen Schiffe, deren Lage auf dem Spielfeld Sie nicht kennen, abwechselnd mit Schüssen zu treffen. Sieger ist, wer als erster alle Schiffe des Gegners versenkt hat. </para>
 </chapter>
 
 <chapter id="howtoplay">
-<title>How to Play</title>
-<note><title>Objective:</title><para>Sink all of the opponent’s ships before the opponent sink all the ships of your own.</para></note><!--Describe the objective of the game.-->
-<para>
-If you want to play &i18n-knavalbattle;, you will need two players, either play
-against the computer or in a network against another player. To play against your computer, first select the difficulty level on the right of the status bar, and then select <guilabel>Single Player</guilabel> on the welcome screen, or directly on the <menuchoice><guimenu>Game</guimenu> <guimenuitem>Single Player</guimenuitem></menuchoice> menu item.</para>
+<title
+>Spielanleitung</title>
+<note
+><title
+>Ziel des Spiels:</title
+><para
+>Versenken Sie alle Schiffe Ihres Gegners, ehe er Ihre Schiffe versenkt.</para
+></note
+><!--Describe the objective of the game.-->
+<para
+>&i18n-knavalbattle; wird zu zweit gespielt, entweder gegen den Rechner oder im Netzwerk gegen einen anderen Spieler. Spielen Sie gegen den Rechner, wählen Sie zuerst eine Ebene rechts in der Statusleiste, dann <guilabel
+>Einzelspieler</guilabel
+> im Startdialog oder im Menü <menuchoice
+><guimenu
+>Spiel</guimenu
+><guimenuitem
+>Einzelspieler</guimenuitem
+></menuchoice
+>.</para>
 
-<para>
-To start a network game, one player has to host the game by selecting <guilabel>Host Network Game</guilabel> on the welcome screen, or choosing <menuchoice><guimenu>Game</guimenu>
-<guimenuitem>Host Game...</guimenuitem></menuchoice>.
-A dialog box opens which asks for a <guilabel>Nickname:</guilabel> and <guilabel>Port:</guilabel>. Normally,
-&i18n-knavalbattle; will suggest your full name, but you can enter any string
-you want. The predefined port should be ok. However, if you encounter
-problems, you can choose any other free port above 1024.
-</para>
+<para
+>Um im Netzwerk zu spielen, muss ein Spieler das Spiel ausrichten, indem er <guibutton
+>Netzwerkspiel ausrichten</guibutton
+> im Startdialog oder im Menü <menuchoice
+><guimenu
+>Spiel</guimenu
+><guimenuitem
+>Netzwerkspiel ausrichten ...</guimenuitem
+></menuchoice
+> wählt. Es öffnet sich ein Dialog, um <guilabel
+>Spitzname:</guilabel
+> und <guilabel
+>Port:</guilabel
+> einzugeben. Normalerweise wird &i18n-knavalbattle; Ihren vollen Anmeldenamen vorschlagen, Sie können aber jeden beliebigen Namen eintragen. Mit dem vorgegeben Port sollte das Netzwerkspiel funktionieren. Treten jedoch Probleme auf, können Sie jeden anderen freien Port größer als 1024 wählen. </para>
 
 <note>
-<para>You need to tell the other player in case you use a port other than
-the default as both players need to use the same port in order to be able
-to establish a connection.</para>
+<para
+>Beachten Sie, dass alle Mitspieler den gleichen Port einstellen müssen, wenn Sie einen anderen als den vordefinierten Port benutzen.</para>
 </note>
 
-<para>
-The other player has to choose <guilabel>Connect to Network Game</guilabel>, or click on the <menuchoice><guimenu>Game</guimenu>
-<guimenuitem>Connect to Game...</guimenuitem></menuchoice> menu item. Again, a <guilabel>Nickname:</guilabel> is
-suggested, but you can choose any nickname you like. In the field <guilabel>Hostname:</guilabel> you
-have to enter the host name of the server (the machine of the player that initiated the game).
-</para>
+<para
+>Der andere Spieler muss auf <guilabel
+>Mit Netzwerkspiel verbinden</guilabel
+> klicken oder in der Menüleiste <menuchoice
+><guimenu
+>Spiel</guimenu
+><guimenuitem
+>Mit Netzwerkspiel verbinden ...</guimenuitem
+></menuchoice
+> wählen. Wieder wird ein <guilabel
+>Spitzname:</guilabel
+> vorgeschlagen, den Sie jedoch beliebig ändern können. Im Feld <guilabel
+>Rechnername:</guilabel
+> tragen Sie den Namen des Rechners ein, auf dem das Netzwerkspiel gestartet wurde. </para>
 
-<para>
-When you are done, you can start the game. Simply follow the
-instructions in the statusbar. It will issue hints and suggest what to
-do next. When you now look at the screen, you will find two grid fields,
-the so-called <quote>battle areas</quote>. The left area belongs to
-you. This is where you place your ships and where you can follow the
-military actions of your enemy. The right area is where your enemy's
-fleet is located. When it's your turn to fire, you need to click on a
-certain sector (a field of the battle area) where you suppose the ships
-to be located.
-</para>
+<para
+>Wenn Sie das erledigt haben, können Sie ein Spiel starten. Folgen Sie den Anweisungen in der Statusleiste. Dort werden Hinweise gegeben und Vorschläge gemacht, was als Nächstes zu tun ist. Wenn Sie nun auf den Bildschirm schauen, sehen Sie zwei gerasterte Spielfelder, die so genannten <quote
+>Spielflächen</quote
+>. Die linke Seite gehört Ihnen. Hier können Sie Ihre Schiffe platzieren und sehen die Kampfmaßnahmen Ihres Feindes. Im rechten Feld liegt die Flotte Ihres Gegners. Wenn Sie mit dem Schießen an der Reihe sind, klicken Sie auf einen Sektor (ein Feld auf der Spielfläche), wo Sie ein gegnerisches Schiff vermuten. </para>
 
-<para>
-First, you need to place your ships. The game initiator starts. When
-he/she is done, player two sets his/her ships.
-</para>
+<para
+>Als Erstes müssen Sie Ihre Schiffe platzieren. Der Initiator des Spiels beginnt. Wenn er fertig ist, kann der zweite Spieler seine Schiffe platzieren. </para>
 
-<para>
-Ship placement is very easy: simply click on the field where you want to
-place your ships. You have four ships to place: the first one will have a length of one square, the next
-will be two squares long &etc; Click on the field where you want to start
-the placement. By default, ships will be placed horizontally;
-to rotate them 90 degrees, click the &RMB; before the placement.
-<!-- &Shift; itself will flip the ship placement preview. -->
-</para>
+<para
+>Das Aufstellen der Schiffe ist sehr leicht. Klicken Sie auf das Feld, in das Sie Ihr Schiff stellen möchten. Sie müssen 4 Schiffe setzen. Das erste Schiff hat eine Länge von einem Feld, das nächste ist zwei Felder lang &etc; Klicken Sie auf das Feld, in dem der Bug des Schiffes liegen soll. Als Standard werden alle Schiffe horizontal ausgerichtet, klicken Sie die &RMB; vor dem Platzieren, um sie vertikal auszurichten. </para>
 
-<para>
-When a ship is hit, fire will break out on it. To sink it, hit all the squares it
-occupies. A sunk ship will appear faded.
-</para>
+<para
+>Wird ein Schiff getroffen, bricht ein Feuer aus. Um es zu versenken, müssen alle belegten Felder getroffen werden. Ein versenktes Schiff erscheint durchsichtig. </para>
 
-<para>
-Now you can use the &LMB; to fire on the battle area of your enemy. The status bar indicates
-who is about to shoot. 
-</para>
+<para
+>Nun können Sie blind mit der &LMBn; auf das gegnerische Spielfeld feuern. Die Statusleiste zeigt an, wer mit dem Schießen an der Reihe ist. </para>
 
-<para>
-You can restart the game by choosing the <menuchoice><guimenu>Game</guimenu>
-<guimenuitem>Restart Game</guimenuitem></menuchoice> menu item, or by pressing
-<keycap>F5</keycap>.
-</para>
+<para
+>Mit <menuchoice
+><guimenu
+>Spiel</guimenu
+> <guimenuitem
+>Spiel neu starten ...</guimenuitem
+></menuchoice
+> oder mit der Taste <keycap
+>F5</keycap
+> können Sie ein Spiel wieder starten. </para>
 
-<para>
-The first player to destroy all their opponent's ships wins the game.
-</para>
+<para
+>Der erste Spieler, der alle gegnerischen Schiffe zerstört hat, gewinnt das Spiel. </para>
 
 </chapter>
 
 <chapter id="rulestips">
-<title>Game Rules, Strategies and Tips</title>
+<title
+>Spielregeln, Spielstrategien und Tipps</title>
 <sect1 id="rules">
-<title>Rules</title>
+<title
+>Spielregeln</title>
 <itemizedlist>
-<listitem><para>A player can only fire one shot per turn.</para></listitem>
-<listitem><para>Players must place all their ships.</para></listitem>
-<listitem><para>Ships cannot be moved once placed.</para></listitem>
-<listitem><para>A ship is sunk when all the squares it occupies are hit.</para></listitem>
+<listitem
+><para
+>Die Spieler feuern abwechselnd einen Schuss ab.</para
+></listitem>
+<listitem
+><para
+>Alle Schiffe müssen auf das Spielfeld gesetzt werden.</para
+></listitem>
+<listitem
+><para
+>Schiffe können nicht verschoben werden, wenn Sie gesetzt wurden.</para
+></listitem>
+<listitem
+><para
+>Ein Schiff sinkt, wenn alle Felder, die es belegt, getroffen wurden.</para
+></listitem>
 </itemizedlist>
 </sect1>
 
 <sect1 id="strattips">
-<title>Strategies and Tips</title>
+<title
+>Spielstrategien und Tipps</title>
 <itemizedlist>
-<listitem><para>Never place ships next to one another.</para></listitem>
-<listitem><para>Once you hit a ship, try shooting around the place you hit.</para></listitem>
-<listitem><para>Try to place ships away from the edges of the board.</para></listitem>
-<listitem><para>Small ships are harder to hit, make sure you place them where they are hard to find.</para></listitem>
-<listitem><para>Think before you shoot. Hits on water gives less points.</para></listitem>
+<listitem
+><para
+>Platzieren Sie Schiffe nicht direkt nebeneinander.</para
+></listitem>
+<listitem
+><para
+>Haben Sie ein Schiff getroffen, schießen Sie auf alle Felder drumherum.</para
+></listitem>
+<listitem
+><para
+>Platzieren Sie Schiffe nicht in den Eckbereichen des Spielfeldes.</para
+></listitem>
+<listitem
+><para
+>Kleine Schiffe sind schwer zu treffen, verstecken Sie sie gut auf dem Spielfeld.</para
+></listitem>
+<listitem
+><para
+>Überlegen Sie, bevor Sie schießen. Für Fehlschüsse ins Wasser erhalten Sie keine Punkte.</para
+></listitem>
 </itemizedlist>
 </sect1>
 
 </chapter>
 
 <chapter id="menu-reference">
-<title>The Menus</title>
+<title
+>Die Menüs</title>
 
 <sect1 id="menu">
-<title>Menu Items</title>
+<title
+>Menüeinträge</title>
 
 <variablelist>
 <varlistentry>
 <term>
-<menuchoice>
-<shortcut>
-<keycombo action="simul">&Ctrl;<keycap>N</keycap></keycombo>
-</shortcut>
-<guimenu>Game</guimenu>
-<guimenuitem>New</guimenuitem>
-</menuchoice>
+<menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>N</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Spiel</guimenu
+> <guimenuitem
+>Neu</guimenuitem
+> </menuchoice>
 </term>
 <listitem>
 <para>
-<action>Exit the current game and reload the welcome screen.</action>
+<action
+>Beendet das laufende Spiel und zeigt wieder den Startdialog an.</action>
 </para>
 </listitem>
 </varlistentry>
 
 <varlistentry>
 <term>
-<menuchoice>
-<shortcut><keycap>F5</keycap></shortcut>
-<guimenu>Game</guimenu>
-<guimenuitem>Restart Game</guimenuitem>
-</menuchoice>
+<menuchoice
+><shortcut
+><keycap
+>F5</keycap
+></shortcut
+> <guimenu
+>Spiel</guimenu
+> <guimenuitem
+>Spiel neu starten</guimenuitem
+> </menuchoice>
 </term>
 <listitem>
 <para>
-<action>Restart the game.</action>
+<action
+>Startet das Spiel wieder neu.</action>
 </para>
 </listitem>
 </varlistentry>
 
 <varlistentry>
 <term>
-<menuchoice>
-<shortcut><keycombo action="simul">&Ctrl;<keycap>H</keycap></keycombo></shortcut>
-<guimenu>Game</guimenu>
-<guimenuitem>Show High Scores</guimenuitem>
-</menuchoice>
+<menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>H</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Spiel</guimenu
+> <guimenuitem
+>Bestenliste anzeigen</guimenuitem
+> </menuchoice>
 </term>
 <listitem>
 <para>
-<action>Show the highest scores so far.</action>
+<action
+>Zeigt die Bestenliste der bisherigen Spiele.</action>
 </para>
 </listitem>
 </varlistentry>
 
 <varlistentry>
 <term>
-<menuchoice>
-<!-- <shortcut><keycap>F4</keycap></shortcut> -->
-<guimenu>Game</guimenu>
-<guimenuitem>Single Player</guimenuitem>
-</menuchoice>
+<menuchoice
+><guimenu
+>Spiel</guimenu
+> <guimenuitem
+>Einzelspieler</guimenuitem
+> </menuchoice>
 </term>
 <listitem>
 <para>
-<action>Start a game with your computer as the opponent.</action>
+<action
+>Startet ein Spiel, in dem der Computer Ihr Gegner ist.</action>
 </para>
 </listitem>
 </varlistentry>
 
 <varlistentry>
 <term>
-<menuchoice>
-<!-- <shortcut><keycap>F3</keycap></shortcut> -->
-<guimenu>Game</guimenu>
-<guimenuitem>Host Game...</guimenuitem>
-</menuchoice>
+<menuchoice
+><guimenu
+>Spiel</guimenu
+> <guimenuitem
+>Netzwerkspiel leiten ..</guimenuitem
+> </menuchoice>
 </term>
 <listitem>
 <para>
-<action>Start the server so another player can connect to you.</action>
+<action
+>Startet den Server, sodass ein anderer Spieler sich mit Ihrem Rechner verbinden kann.</action>
 </para>
 </listitem>
 </varlistentry>
 
 <varlistentry>
 <term>
-<menuchoice>
-<!-- <shortcut><keycap>F3</keycap></shortcut> -->
-<guimenu>Game</guimenu>
-<guimenuitem>Connect to Game...</guimenuitem>
-</menuchoice>
+<menuchoice
+><guimenu
+>Spiel</guimenu
+> <guimenuitem
+>Mit Netzwerkspiel verbinden ...</guimenuitem
+> </menuchoice>
 </term>
 <listitem>
 <para>
-<action>Connect to a server to start a game.</action>
+<action
+>Verbindet mit einem Server, um ein neues Netzwerkspiel zu starten.</action>
 </para>
 </listitem>
 </varlistentry>
 
 <varlistentry>
 <term>
-<menuchoice>
-<shortcut>
-<keycombo action="simul">&Ctrl;<keycap>Q</keycap></keycombo>
-</shortcut>
-<guimenu>Game</guimenu>
-<guimenuitem>Quit</guimenuitem>
-</menuchoice>
+<menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>Q</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Spiel</guimenu
+> <guimenuitem
+>Beenden</guimenuitem
+> </menuchoice>
+</term>
+<listitem>
+<para
+><action
+>Beendet</action
+> &i18n-knavalbattle; </para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term>
+<menuchoice
+><guimenu
+>Einstellungen</guimenu
+> <guimenuitem
+>Spitzname ändern ...</guimenuitem
+> </menuchoice>
 </term>
 <listitem>
 <para>
-<action>Exit</action> &i18n-knavalbattle;.
+<action
+>Geben Sie hier den neuen Spitznamen ein.</action>
 </para>
 </listitem>
 </varlistentry>
 
 <varlistentry>
 <term>
-<menuchoice>
-<guimenu>Settings</guimenu>
-<guimenuitem>Change Nickname...</guimenuitem>
-</menuchoice>
+<menuchoice
+><guimenu
+>Einstellungen</guimenu
+> <guimenuitem
+>Klänge wiedergeben</guimenuitem
+> </menuchoice>
 </term>
 <listitem>
-<para>
-<action>Change the default nickname.</action>
-</para>
+<para
+>Falls markiert, <action
+>werden die Klänge zum Spiel abgespielt.</action
+> In der Voreinstellung sind die Klänge eingeschaltet. </para>
 </listitem>
 </varlistentry>
 
 <varlistentry>
 <term>
-<menuchoice>
-<guimenu>Settings</guimenu>
-<guimenuitem>Play Sounds</guimenuitem>
-</menuchoice>
+<menuchoice
+><guimenu
+>Einstellungen</guimenu
+> <guimenuitem
+>Angrenzende Schiffe</guimenuitem
+> </menuchoice>
 </term>
 <listitem>
-<para>
-<action>Toggle whether sounds (played when shooting) should be played.</action>
-The default is on.
-</para>
+<para
+><action
+>Legt fest, ob Schiffe auf dem Spielfeld ohne leere Felder dazwischen angeordnet werden können.</action
+> Als Voreinstellung ist dies abgeschaltet. Diese Einstellung sollte auf einem Server eingestellt werden, wenn <link linkend="howtoplay"
+>&i18n-knavalbattle; über ein Netzwerk gespielt wird</link
+>. </para>
 </listitem>
 </varlistentry>
 
 <varlistentry>
 <term>
-<menuchoice>
-<guimenu>Settings</guimenu>
-<guimenuitem>Adjacent Ships</guimenuitem>
-</menuchoice>
+<menuchoice
+><guimenu
+>Einstellungen</guimenu
+> <guimenuitem
+>Nachricht am Spielende anzeigen</guimenuitem
+> </menuchoice>
 </term>
 <listitem>
-<para>
-<action>Toggle whether the ships can be put on a desk without one empty space between them.</action>
-The default is on. This setting should be defined on a host when <link linkend="howtoplay">playing &i18n-knavalbattle; via network</link>.
-</para>
+<para
+>Wenn Sie ein Spiel gewonnen haben und dabei eine neues bestes Spielergebnis erzielt haben, wird der Dialog <guilabel
+>Bestenliste</guilabel
+> geöffnet. Ansonsten wird das Ergebnis in der Statusleiste oder, wenn diese Einstellung aktiviert ist, zusätzlich in einem Dialog angezeigt. </para>
 </listitem>
 </varlistentry>
 
 <varlistentry>
 <term>
-<menuchoice>
-<guimenu>Settings</guimenu>
-<guimenuitem>Show End-of-Game Message</guimenuitem>
-</menuchoice>
+<menuchoice
+><guimenu
+>Einstellungen</guimenu
+> <guimenuitem
+>Linkes Gitter anzeigen</guimenuitem
+> <guimenu
+>Einstellungen</guimenu
+> <guimenuitem
+>Rechtes Gitter anzeigen</guimenuitem
+> </menuchoice>
 </term>
 <listitem>
-<para>If you won the game and have a new highscore, the highscore dialog will be shown.
-Otherwise the result is displayed in the statusbar or, if this option is enabled, additionally in a dialog.
-</para>
+<para
+>Mit dem Gitter ist es leichter, einen Schuß mit der Mauszeiger zu platzieren. </para>
 </listitem>
 </varlistentry>
 
 <varlistentry>
 <term>
-<menuchoice>
-<guimenu>Settings</guimenu>
-<guimenuitem>Show Left Grid</guimenuitem>
-<guimenu>Settings</guimenu>
-<guimenuitem>Show Right Grid</guimenuitem>
-</menuchoice>
+<menuchoice
+><guimenu
+>Einstellungen</guimenu
+> <guimenuitem
+>Schwierigkeitsgrad</guimenuitem
+> </menuchoice>
 </term>
 <listitem>
-<para>Using the grids makes it easier to place a shot with the mouse pointer.
-</para>
-</listitem>
-</varlistentry>
-
-<varlistentry>
-<term>
-<menuchoice>
-<guimenu>Settings</guimenu>
-<guisubmenu>Difficulty</guisubmenu>
-</menuchoice>
-</term>
-<listitem>
-<para>
-The game difficulty setting (<guimenuitem>Easy</guimenuitem>, <guimenuitem>Medium</guimenuitem>, 
-<guimenuitem>Hard</guimenuitem>) has effect only in single player games against the computer.
-In higher levels the AI uses a smarter strategy for shooting and placing ships.</para>
+<para
+>Die Einstellungen für den Schwierigkeitsgrad des Spiels (<guimenuitem
+>Leicht</guimenuitem
+>, <guimenuitem
+>Mittel</guimenuitem
+>, <guimenuitem
+>Schwierig</guimenuitem
+>) wirkt sich nur in Spielen gegen den Rechner aus. In höheren Schwierigkeitsgraden benutzt die KI eine bessere Strategie für das Schießen und die Anordnung der Schiffe.</para>
 </listitem>
 </varlistentry>
 
 </variablelist>
 
-<para>
-Additionally &i18n-knavalbattle; has the common &kde; <guimenu>Settings</guimenu> and <guimenu>Help</guimenu>
-menu items, for more information read the sections about the <ulink url="help:/fundamentals/menus.html#menus-settings"
->Settings Menu</ulink> and <ulink url="help:/fundamentals/menus.html#menus-help">Help Menu</ulink>
-of the &kde; Fundamentals.
-</para>
+<para
+>Zusätzlich hat &i18n-knavalbattle; die bekannten &kde;-Einträge im Menü <guimenu
+>Einstellungen</guimenu
+> und <guimenu
+>Hilfe</guimenu
+>, weitere Informationen dazu finden Sie in den Abschnitten über die Menüs <ulink url="help:/fundamentals/menus.html#menus-settings"
+>Einstellungen</ulink
+> und <ulink url="help:/fundamentals/menus.html#menus-help"
+>Hilfe</ulink
+> der &kde;-Grundlagen. </para>
 
 </sect1>
 </chapter>
 
 <chapter id="faq">
-<title>Frequently Asked Questions</title>
+<title
+>Häufig gestellte Fragen</title>
 
 <qandaset>
 
 <qandaentry>
 <question>
-<para>
-I'm not sure where to shoot, can I get a hint?
-</para>
+<para
+>Ich weiß nicht, wohin ich schießen soll, gibt es Tipps? </para>
 </question>
 <answer>
-<para>
-No, there is no hint system in &i18n-knavalbattle;.
-</para>
+<para
+>Nein, in &i18n-knavalbattle; gibt es keine Tipps. </para>
 </answer>
 </qandaentry>
 
 <qandaentry>
 <question>
-<para>
-How can I rotate a ship?
-</para>
+<para
+>Wie kann ich ein Schiff drehen? </para>
 </question>
 <answer>
-<para>
-Move the ship where you want to place it, then press the &RMB;.
-</para>
+<para
+>Setzen Sie das Schiff auf das Spielfeld und drücken Sie dann die &RMB;. </para>
 </answer>
 </qandaentry>
 
 <qandaentry>
 <question>
-<para>
-Can I change how the game looks?
-</para>
+<para
+>Kann ich das Erscheinungsbild des Spiels ändern? </para>
 </question>
 <answer>
-<para>
-No, the theme is not changeable.
-</para>
+<para
+>Nein, das Design kann nicht geändert werden. </para>
 </answer>
 </qandaentry>
 
@@ -459,86 +606,112 @@ No, the theme is not changeable.
 </chapter>
 
 <chapter id="credits">
-<title>Credits and License</title>
+<title
+>Danksagungen und Lizenz</title>
 
-<para>&knavalbattle; Copyright 2000-2007</para>
+<para
+>&knavalbattle; Copyright 2000-2007</para>
 
 <itemizedlist>
-<title>Authors</title>
+<title
+>Autoren</title>
 <listitem>
-<para>
-Paolo Capriotti <email>p.capriotti@gmail.com</email>
-</para>
+<para
+>Paolo Capriotti <email
+>p.capriotti@gmail.com</email
+> </para>
 </listitem>
 <listitem>
-<para>
-&Nikolas.Zimmermann; &Nikolas.Zimmermann.mail;
-</para>
+<para
+>&Nikolas.Zimmermann; &Nikolas.Zimmermann.mail; </para>
 </listitem>
 <listitem>
-<para>
-&Daniel.Molkentin; &Daniel.Molkentin.mail;
-</para>
+<para
+>&Daniel.Molkentin; &Daniel.Molkentin.mail; </para>
 </listitem>
 <listitem>
-<para>
-Kevin Krammer <email>kevin.krammer@gmx.at</email>
-</para>
+<para
+>Kevin Krammer <email
+>kevin.krammer@gmx.at</email
+> </para>
 </listitem>
 </itemizedlist>
 
 <itemizedlist>
-<title>Contributors</title>
+<title
+>Beiträge von:</title>
 <listitem>
-<para>
-Johann Ollivier Lapeyre <email>johann.ollivierlapeyre@gmail.com</email>
-</para>
+<para
+>Johann Ollivier Lapeyre <email
+>johann.ollivierlapeyre@gmail.com</email
+> </para>
 </listitem>
 <listitem>
-<para>
-Eugene Trounev <email>irs_me@hotmail.com</email>
-</para>
+<para
+>Eugene Trounev <email
+>irs_me@hotmail.com</email
+> </para>
 </listitem>
 <listitem>
-<para>
-&Robert.Wadley; <email>rob@robntina.fastmail.us</email>
-</para>
+<para
+>&Robert.Wadley; <email
+>rob@robntina.fastmail.us</email
+> </para>
 </listitem>
 <listitem>
-<para>
-Riccardo Iaconelli <email>ruphy@fsfe.org</email>
-</para>
+<para
+>Riccardo Iaconelli <email
+>ruphy@fsfe.org</email
+> </para>
 </listitem>
 <listitem>
-<para>
-Benjamin Adler <email>benadler@bigfoot.de</email>
-</para>
+<para
+>Benjamin Adler <email
+>benadler@bigfoot.de</email
+> </para>
 </listitem>
 <listitem>
-<para>
-Nils Trzebin <email>nils.trzebin@stud.uni-hannover.de</email>
-</para>
+<para
+>Nils Trzebin <email
+>nils.trzebin@stud.uni-hannover.de</email
+> </para>
 </listitem>
 <listitem>
-<para>Elmar Hoefner <email>elmar.hoefner@uibk.ac.at</email></para>
+<para
+>Elmar Hoefner <email
+>elmar.hoefner@uibk.ac.at</email
+></para>
 </listitem>
 
 </itemizedlist>
 
-<para>Documentation updated for &kde; 3.4 by
-<personname><firstname>Brian</firstname><surname>Beck</surname></personname>
-<email>brian.beck@mchsi.com</email></para>
+<para
+>Dokumentation für &kde; 3.4 überarbeitet von <personname
+><firstname
+>Brian</firstname
+><surname
+>Beck</surname
+></personname
+> <email
+>brian.beck@mchsi.com</email
+></para>
 
-<para>Documentation updated for &kde; 4 by
-<personname><firstname>Elisa</firstname><surname>Tonello</surname></personname>
-<email>elisa.tonello@gmail.com</email></para>
+<para
+>Dokumentation für &kde; 4 überarbeitet von <personname
+><firstname
+>Elisa</firstname
+><surname
+>Tonello</surname
+></personname
+> <email
+>elisa.tonello@gmail.com</email
+></para>
 
-<!-- TRANS:CREDIT_FOR_TRANSLATORS -->
-
-&underFDL;
-&underGPL;
-
-</chapter>
+<para
+>Deutsche Übersetzung von Maren Pakura <email
+>maren@kde.org</email
+></para
+> &underFDL; &underGPL; </chapter>
 
 &documentation.index; 
 </book>
