@@ -61,14 +61,14 @@ ecm_add_app_icon(knavalbattle ICONS ${ICONS_SRCS})
 target_link_libraries(knavalbattle
     Qt${QT_MAJOR_VERSION}::Xml
     Qt${QT_MAJOR_VERSION}::Network
-    KF5::CoreAddons
-    KF5::I18n
-    KF5::XmlGui
-    KF5::Completion
-    KF5::TextWidgets
-    KF5::DNSSD
-    KF5::Crash
-    KF5::DBusAddons
+    KF${KF_MAJOR_VERSION}::CoreAddons
+    KF${KF_MAJOR_VERSION}::I18n
+    KF${KF_MAJOR_VERSION}::XmlGui
+    KF${KF_MAJOR_VERSION}::Completion
+    KF${KF_MAJOR_VERSION}::TextWidgets
+    KF${KF_MAJOR_VERSION}::DNSSD
+    KF${KF_MAJOR_VERSION}::Crash
+    KF${KF_MAJOR_VERSION}::DBusAddons
     KF5KDEGames
 )
 
