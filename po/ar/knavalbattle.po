@@ -87,7 +87,7 @@ msgstr "المعركة البحرية"
 #: main.cpp:44
 #, kde-format
 msgid "The KDE ship sinking game"
-msgstr "نسخة كدي من لعبة إغراق السفن"
+msgstr "نسخة كِيدِي من لعبة إغراق السفن"
 
 #: main.cpp:45
 #, kde-format
@@ -482,7 +482,7 @@ msgid ""
 "according to the rules enforced by old clients, ships cannot be placed "
 "adjacent to one another and only one ship of each size is allowed."
 msgstr ""
-"يستخدم خصمك إصدارًا سابقًا لكدي٤ من المعركة البحرية. لاحظ أنه وفقًا للقواعد "
+"يستخدم خصمك إصدارًا سابقًا لكِيدِي٤ من المعركة البحرية. لاحظ أنه وفقًا للقواعد "
 "التي يفرضها العملاء القدامى ، لا يمكن وضع السفن بجوار بعضها البعض ولا يُسمح "
 "إلا بسفينة واحدة من كل حجم."
 
