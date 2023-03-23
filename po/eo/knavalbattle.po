@@ -1,14 +1,14 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR Free Software Foundation, Inc.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# translation of knavalbattle.pot to esperanto
+# Copyright (C) 2002 Free Software Foundation, Inc.
+# Wolfram Diestel <wolfram@steloj.de>, 2002.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: kbattleship\n"
+"Project-Id-Version: knavalbattle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-10-21 00:44+0000\n"
-"PO-Revision-Date: 2002-03-08 14:52GMT\n"
-"Last-Translator: Wolfram Diestel <wolfram@steloj.de>\n"
+"PO-Revision-Date: 2023-03-22 19:14+01\n"
+"Last-Translator: Oliver Kellogg <okellogg@users.sourceforge.net>\n"
 "Language-Team: Esperanto <eo@li.org>\n"
 "Language: eo\n"
 "MIME-Version: 1.0\n"
@@ -46,9 +46,9 @@ msgstr ""
 
 #. i18n: ectx: label, entry (Nickname), group (general)
 #: knavalbattle.kcfg:19
-#, fuzzy, kde-format
+#, kde-format
 msgid "User nickname."
-msgstr "Karesnomo:"
+msgstr ""
 
 #. i18n: ectx: label, entry (EnableSounds), group (general)
 #: knavalbattle.kcfg:22
@@ -81,10 +81,9 @@ msgid "Naval Battle"
 msgstr ""
 
 #: main.cpp:44
-#, fuzzy, kde-format
-#| msgid "The KDE Battleship clone"
+#, kde-format
 msgid "The KDE ship sinking game"
-msgstr "La KDEa Batalŝipo-imitaĵo"
+msgstr ""
 
 #: main.cpp:45
 #, kde-format
@@ -229,9 +228,9 @@ msgid "Albert Astals Cid"
 msgstr "Albert Astals Cid"
 
 #: main.cpp:64 main.cpp:65
-#, fuzzy, kde-format
+#, kde-format
 msgid "Various improvements and bugfixes"
-msgstr "Diversaj plibonigoj"
+msgstr ""
 
 #: main.cpp:65
 #, kde-format
@@ -279,25 +278,24 @@ msgid "URL of a Naval Battle game server to connect to after startup"
 msgstr ""
 
 #: mainwindow.cpp:59
-#, fuzzy, kde-format
-#| msgid "S&ingle Player"
+#, kde-format
 msgid "&Single Player"
 msgstr "&Sola ludanto"
 
 #: mainwindow.cpp:63
-#, fuzzy, kde-format
+#, kde-format
 msgid "&Host Game..."
-msgstr "&Haltigu ludon"
+msgstr ""
 
 #: mainwindow.cpp:67
-#, fuzzy, kde-format
+#, kde-format
 msgid "&Connect to Game..."
-msgstr "&Kontaktu servilon"
+msgstr ""
 
 #: mainwindow.cpp:72
-#, fuzzy, kde-format
+#, kde-format
 msgid "Change &Nickname..."
-msgstr "Karesnomo:"
+msgstr ""
 
 #: mainwindow.cpp:75
 #, kde-format
@@ -320,27 +318,24 @@ msgid "Show End-of-Game Message"
 msgstr ""
 
 #: mainwindow.cpp:95
-#, fuzzy, kde-format
-#| msgid "&Show Grid"
+#, kde-format
 msgid "Show &Left Grid"
-msgstr "&Montru kradon"
+msgstr ""
 
 #: mainwindow.cpp:99
-#, fuzzy, kde-format
-#| msgid "&Show Grid"
+#, kde-format
 msgid "Show &Right Grid"
-msgstr "&Montru kradon"
+msgstr ""
 
 #: networkdialog.cpp:61
-#, fuzzy, kde-format
+#, kde-format
 msgid "&Nickname:"
-msgstr "Karesnomo:"
+msgstr ""
 
 #: networkdialog.cpp:73
-#, fuzzy, kde-format
-#| msgid "S&ingle game"
+#, kde-format
 msgid "&Join game:"
-msgstr "&Sola ludo"
+msgstr ""
 
 #: networkdialog.cpp:88
 #, kde-format
@@ -348,9 +343,9 @@ msgid "&Hostname:"
 msgstr "&Komputilnomo:"
 
 #: networkdialog.cpp:101 networkdialog.cpp:131
-#, fuzzy, kde-format
+#, kde-format
 msgid "&Port:"
-msgstr "Pordo:"
+msgstr ""
 
 #: networkdialog.cpp:116
 #, kde-format
@@ -363,20 +358,19 @@ msgid "Network Parameters"
 msgstr ""
 
 #: networkdialog.cpp:210
-#, fuzzy, kde-format
+#, kde-format
 msgid "Connecting to remote host..."
-msgstr "La alia komputilo rifuzis kontakton!"
+msgstr ""
 
 #: networkdialog.cpp:217
-#, fuzzy, kde-format
-#| msgid "Waiting for an answer..."
+#, kde-format
 msgid "Waiting for an incoming connection..."
-msgstr "Atendante respondon..."
+msgstr ""
 
 #: networkdialog.cpp:236
-#, fuzzy, kde-format
+#, kde-format
 msgid "Could not connect to host"
-msgstr "Ne eblis kontakti la servilon!"
+msgstr ""
 
 #: networkentity.cpp:189
 #, kde-format
@@ -389,9 +383,9 @@ msgid ", "
 msgstr ", "
 
 #: networkentity.cpp:288
-#, fuzzy, kde-format
+#, kde-format
 msgid "You can place ships adjacent to each other"
-msgstr "Vi ne povas meti ŝipon tie ĉi."
+msgstr ""
 
 #: networkentity.cpp:291
 #, kde-format
@@ -434,9 +428,9 @@ msgid "You win. Excellent!"
 msgstr ""
 
 #: playfield.cpp:195
-#, fuzzy, kde-format
+#, kde-format
 msgid "You lose."
-msgstr "Vi malgajnis la ludon :("
+msgstr ""
 
 #: playfield.cpp:197
 #, kde-format
@@ -444,9 +438,9 @@ msgid "You lose. Better luck next time!"
 msgstr ""
 
 #: playfield.cpp:207
-#, fuzzy, kde-format
+#, kde-format
 msgid "Change Nickname"
-msgstr "Karesnomo:"
+msgstr ""
 
 #: playfield.cpp:207
 #, kde-format
@@ -454,15 +448,14 @@ msgid "Enter new nickname:"
 msgstr ""
 
 #: playfield.cpp:240
-#, fuzzy, kde-format
-#| msgid "Start Game"
+#, kde-format
 msgid "Restart game"
-msgstr "Komencu ludon"
+msgstr ""
 
 #: playfield.cpp:241
-#, fuzzy, kde-format
+#, kde-format
 msgid "Your opponent has requested to restart the game. Do you accept?"
-msgstr "La kliento volas relanĉi la ludon. Ĉu vi akceptas?"
+msgstr ""
 
 #: playfield.cpp:242
 #, kde-format
@@ -485,13 +478,12 @@ msgid ""
 msgstr ""
 
 #: playfield.cpp:269
-#, fuzzy, kde-format
+#, kde-format
 msgid "Enemy has shot. Shoot now!"
-msgstr "La kontraŭulo pafis. Nun pafu vi"
+msgstr ""
 
 #: playfield.cpp:273
-#, fuzzy, kde-format
-#| msgid "Waiting for enemy to shoot.."
+#, kde-format
 msgid "Waiting for enemy to shoot..."
 msgstr "Atendante la pafon de la kontraŭulo..."
 
@@ -501,25 +493,19 @@ msgid "Ships placed. Now shoot on the enemy field!"
 msgstr ""
 
 #: playfield.cpp:285
-#, fuzzy, kde-format
-#| msgid "Waiting for other player to start the match..."
+#, kde-format
 msgid "Waiting for other player to start the game..."
-msgstr "Atendante, ke la alia ludanto komencu la ludon..."
+msgstr ""
 
 #: playfield.cpp:289
-#, fuzzy, kde-format
+#, kde-format
 msgid "Waiting for other player to place his ships..."
-msgstr "Atendante, ke la alia ludanto aranĝu siajn ŝipojn..."
+msgstr ""
 
 #: playfield.cpp:303
-#, fuzzy, kde-format
-#| msgid ""
-#| "Please place your ships. Use the \"Shift\" key to place the ships "
-#| "vertically."
+#, kde-format
 msgid "Place your %1 ships. Use the right mouse button to rotate them."
 msgstr ""
-"Bonvolu aranĝi viajn ŝipojn. Uzu la majuskligan klavon por meti la ŝipojn "
-"vertikale."
 
 #: playfield.cpp:309
 #, kde-format
@@ -527,11 +513,10 @@ msgid "You can't place your remaining ships."
 msgstr ""
 
 #: playfield.cpp:310
-#, fuzzy, kde-format
-#| msgid "Start Game"
+#, kde-format
 msgctxt "@action"
 msgid "Restart"
-msgstr "Komencu ludon"
+msgstr ""
 
 #: playfield.cpp:311
 #, kde-format
@@ -552,270 +537,21 @@ msgid "Restart placing ships"
 msgstr ""
 
 #: simplemenu.cpp:40
-#, fuzzy, kde-format
-#| msgid "S&ingle Player"
+#, kde-format
 msgid "Single Player"
-msgstr "&Sola ludanto"
+msgstr "Sola ludanto"
 
 #: simplemenu.cpp:41
-#, fuzzy, kde-format
-#| msgid "Connect to Server"
+#, kde-format
 msgid "Host Network Game"
-msgstr "Kontaktu servilon"
+msgstr ""
 
 #: simplemenu.cpp:42
-#, fuzzy, kde-format
-#| msgid "Connect to Server"
+#, kde-format
 msgid "Connect to Network Game"
-msgstr "Kontaktu servilon"
+msgstr ""
 
 #: simplemenu.cpp:132 simplemenu.cpp:149
-#, fuzzy, kde-format
-#| msgid "S&ingle Player"
+#, kde-format
 msgid "Remote player"
-msgstr "&Sola ludanto"
-
-#~ msgid "KBattleship"
-#~ msgstr "Batalŝipo"
-
-#, fuzzy
-#~| msgid "S&ingle Player"
-#~ msgid "Single player"
-#~ msgstr "&Sola ludanto"
-
-#, fuzzy
-#~ msgid "&Game"
-#~ msgstr "Nomo"
-
-#, fuzzy
-#~| msgid "Shots"
-#~ msgid "Shots:"
-#~ msgstr "Pafoj"
-
-#, fuzzy
-#~| msgid "Hits"
-#~ msgid "Hits:"
-#~ msgstr "Trafoj"
-
-#, fuzzy
-#~| msgid "&Connect to server"
-#~ msgid "Connect to a server"
-#~ msgstr "&Kontaktu servilon"
-
-#, fuzzy
-#~ msgid "Local game"
-#~ msgstr "Nomo"
-
-#, fuzzy
-#~| msgid "Start Server"
-#~ msgid "Start Ser&ver"
-#~ msgstr "Lanĉu servon"
-
-#~ msgid "&Connect"
-#~ msgstr "&Konektu"
-
-#~ msgid "     Player 1: %1     "
-#~ msgstr "     Ludanto 1: %1     "
-
-#~ msgid "     Player 2: %1     "
-#~ msgstr "     Ludanto 2: %1     "
-
-#~ msgid "Ready"
-#~ msgstr "Preta"
-
-#, fuzzy
-#~ msgid "&Start Server..."
-#~ msgstr "&Lanĉu servon"
-
-#, fuzzy
-#~ msgid "S&ingle Player..."
-#~ msgstr "&Sola ludanto"
-
-#, fuzzy
-#~ msgid "&Enemy Info"
-#~ msgstr "&Informo pri kontraŭulo..."
-
-#~ msgid "Sending Message..."
-#~ msgstr "Sendante mesaĝon..."
-
-#~ msgid "You won the game :)"
-#~ msgstr "Vi gajnis :)"
-
-#~ msgid "Do you want to restart the game?"
-#~ msgstr "Ĉu vi volas rekomenci la ludon?"
-
-#~ msgid "Enemy disconnected."
-#~ msgstr "La kontraŭulo malkonektiĝis."
-
-#~ msgid "Waiting for computer player to start the match..."
-#~ msgstr "Atendante, ke la komputila ludanto komencu la ludon..."
-
-#~ msgid "Water"
-#~ msgstr "Akvo"
-
-#~ msgid "Loading Connect-Server dialog..."
-#~ msgstr "Legante la dialogon pri servilokonekto..."
-
-#~ msgid "Do you want to ask the server restarting the game?"
-#~ msgstr "Ĉu vi volas peti la servon pri relanĉo de la ludo?"
-
-#~ msgid "Loading Start-Server dialog..."
-#~ msgstr "Legante la dialogon por servolanĉo..."
-
-#~ msgid "&Stop server"
-#~ msgstr "&Haltigu servon"
-
-#~ msgid "Waiting for a player..."
-#~ msgstr "Atendante iun ludanton..."
-
-#~ msgid "Dis&connect from server"
-#~ msgstr "&Malkontaktu de la servilo"
-
-#, fuzzy
-#~ msgid "Nick name:"
-#~ msgstr "Karesnomo:"
-
-#~ msgid "Waiting for the AI player to place the ships..."
-#~ msgstr "Atendante, ke la komputilo aranĝis la ŝipojn..."
-
-#~ msgid ""
-#~ "Failed to bind to local port \"%1\"\n"
-#~ "\n"
-#~ "Please check if another KBattleship server instance\n"
-#~ "is running or another application uses this port."
-#~ msgstr ""
-#~ "Malsukcesis ligiĝi al loka pordo \"%1\"\n"
-#~ "\n"
-#~ "Bonvolu kontrilo, ĉu alia Batalŝipo-servo jam ruliĝas\n"
-#~ "aŭ ĉu alia programo uzas tiun pordon."
-
-#~ msgid "The connection broke down!"
-#~ msgstr "La kontakto rompiĝis!"
-
-#, fuzzy
-#~ msgid "Connection to client lost. Aborting the game."
-#~ msgstr "Kontakto al kliento rompiĝis. Haltigante la ludon!"
-
-#, fuzzy
-#~ msgid ""
-#~ "Connection dropped by enemy. The client's protocol implementation (%1) is "
-#~ "not compatible with our (%2) version."
-#~ msgstr ""
-#~ "La kontraŭulo finis la kontakton. La protokolrealigo de la kliento (%1) "
-#~ "ne estas kongrua kun via versio (%2)!"
-
-#~ msgid "You lost the game :("
-#~ msgstr "Vi malgajnis la ludon :("
-
-#, fuzzy
-#~ msgid ""
-#~ "Connection to client dropped. The client's protocol implementation (%1) "
-#~ "is not compatible with our (%2) version."
-#~ msgstr ""
-#~ "Kontakto al kliento rompiĝis. La protokolrealigo de la kliento (%1) ne "
-#~ "estas kongrua kun via versio (%2)!"
-
-#, fuzzy
-#~ msgid "We have a player. Let's start..."
-#~ msgstr "Ni trovis kunludanton. Ni komencu..."
-
-#, fuzzy
-#~ msgid "You can shoot now."
-#~ msgstr "Vi povas pafi nun"
-
-#, fuzzy
-#~ msgid "Could not lookup host."
-#~ msgstr "Ne povs trovi la alian komputilon!"
-
-#, fuzzy
-#~ msgid "Unknown error; No: %1"
-#~ msgstr "Nekonata eraro; N-ro: %1"
-
-#, fuzzy
-#~ msgid "Connection to server lost. Aborting the game."
-#~ msgstr "Kontakto al servo perdiĝis. Haltigante la ludon!"
-
-#, fuzzy
-#~ msgid "&Start"
-#~ msgstr "&Lanĉu servon"
-
-#, fuzzy
-#~ msgid ""
-#~ "You do not have KBattleship pictures installed. The game cannot run "
-#~ "without them!"
-#~ msgstr ""
-#~ "Vi ne instalis iujn batalŝipajn bildojn. La ludo ne funkcias sen ili!"
-
-#~ msgid "Enter a message here"
-#~ msgstr "Skribu mesaĝon tie ĉi"
-
-#~ msgid "Press here to send the message"
-#~ msgstr "Premu por sendi la mesaĝon"
-
-#, fuzzy
-#~ msgid "&Send"
-#~ msgstr "Sendu"
-
-#, fuzzy
-#~ msgid "Chat Dialog:"
-#~ msgstr "Babildialogo:"
-
-#, fuzzy
-#~ msgid "Enter a name that identifies you in the game"
-#~ msgstr "Donu nomon, kiu prezentas vin en la ludo"
-
-#, fuzzy
-#~ msgid "&Server:"
-#~ msgstr "Servilo:    "
-
-#~ msgid "Choose a port to connect to"
-#~ msgstr "Elektu pordon al kiu konekti"
-
-#~ msgid "Enemy Client Information"
-#~ msgstr "Informo pri kliento de la kontraŭulo"
-
-#, fuzzy
-#~ msgid "Client information:"
-#~ msgstr "Klientinformo:"
-
-#~ msgid "CV"
-#~ msgstr "CV"
-
-#, fuzzy
-#~ msgid "Client version:"
-#~ msgstr "Klientversio:"
-
-#, fuzzy
-#~ msgid "Protocol version:"
-#~ msgstr "Protokolversio:"
-
-#~ msgid "PV"
-#~ msgstr "PV"
-
-#~ msgid "CI"
-#~ msgstr "CI"
-
-#, fuzzy
-#~ msgid "&Game name:"
-#~ msgstr "Nomo"
-
-#~ msgid "Choose a port where the server listens on"
-#~ msgstr "Elektu pordon, ĉe kiu la servo aŭskultu"
-
-#~ msgid "0"
-#~ msgstr "0"
-
-#~ msgid ":"
-#~ msgstr ":"
-
-#~ msgid "Shows all shots"
-#~ msgstr "Montras ĉiujn pafojn"
-
-#~ msgid "Shows all hit ships"
-#~ msgstr "Montras ĉiujn ŝipojn"
-
-#~ msgid "Shows all water shots"
-#~ msgstr "Montras ĉiujn akvopafojn"
-
-#~ msgid "Chat Widget"
-#~ msgstr "Babililo"
+msgstr ""
