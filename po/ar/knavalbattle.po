@@ -482,7 +482,7 @@ msgid ""
 "according to the rules enforced by old clients, ships cannot be placed "
 "adjacent to one another and only one ship of each size is allowed."
 msgstr ""
-"يستخدم خصمك إصدارًا سابقًا لكِيدِي٤ من المعركة البحرية. لاحظ أنه وفقًا للقواعد "
+"يستخدم خصمك إصدارًا سابقًا لكِيدِي4 من المعركة البحرية. لاحظ أنه وفقًا للقواعد "
 "التي يفرضها العملاء القدامى ، لا يمكن وضع السفن بجوار بعضها البعض ولا يُسمح "
 "إلا بسفينة واحدة من كل حجم."
 
