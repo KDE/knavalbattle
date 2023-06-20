@@ -280,8 +280,7 @@ msgstr "Roney Gomes"
 #, kde-format
 msgid "Porting to KGameRenderer and QGraphicsView"
 msgstr ""
-"Actualización do código para empregar as clases KGameRenderer e "
-"QGraphicsView."
+"Actualización do código para usar as clases KGameRenderer e QGraphicsView."
 
 #: main.cpp:75
 #, kde-format
@@ -331,17 +330,17 @@ msgstr "&Varios barcos."
 #: mainwindow.cpp:90
 #, kde-format
 msgid "Show End-of-Game Message"
-msgstr "Mostrar a mensaxe de final da partida"
+msgstr "Amosar a mensaxe de final da partida"
 
 #: mainwindow.cpp:95
 #, kde-format
 msgid "Show &Left Grid"
-msgstr "Mostrar a grade da &esquerda"
+msgstr "Amosar a grade da &esquerda"
 
 #: mainwindow.cpp:99
 #, kde-format
 msgid "Show &Right Grid"
-msgstr "Mostrar a grade da &dereita"
+msgstr "Amosar a grade da &dereita"
 
 #: networkdialog.cpp:61
 #, kde-format
