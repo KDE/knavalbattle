@@ -331,3 +331,4 @@ void Protocol::processDisconnection()
     Q_EMIT disconnected();
 }
 
+#include "moc_protocol.cpp"

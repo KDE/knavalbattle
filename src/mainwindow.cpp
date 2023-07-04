@@ -119,3 +119,4 @@ void MainWindow::closeEvent(QCloseEvent *)
     Animator::instance()->stop();
 }
 
+#include "moc_mainwindow.cpp"

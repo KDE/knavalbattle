@@ -36,6 +36,4 @@ Stats* Entity::stats()
     return &m_stats;
 }
 
-
-
-
+#include "moc_entity.cpp"

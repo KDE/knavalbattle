@@ -258,5 +258,4 @@ void NetworkDialog::serverOK()
     accept();
 }
 
-
-
+#include "moc_networkdialog.cpp"

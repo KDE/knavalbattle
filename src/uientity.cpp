@@ -87,7 +87,4 @@ QIcon UIEntity::icon() const
     return QIcon::fromTheme( QLatin1String( "user-identity" ));
 }
 
-
-
-
-
+#include "moc_uientity.cpp"

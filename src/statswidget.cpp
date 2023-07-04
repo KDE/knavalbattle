@@ -110,6 +110,4 @@ void StatsWidget::setData(Stats* stats)
    refresh();
 }
 
-
-
-
+#include "moc_statswidget.cpp"

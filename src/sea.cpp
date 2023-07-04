@@ -184,6 +184,4 @@ void Sea::setBattleShipsConfiguration(const BattleShipsConfiguration& configurat
     m_fields[1]->setAllowAdjacentShips(configuration.isAllowedAdjacentShips());
 }
 
-
-
-
+#include "moc_sea.cpp"

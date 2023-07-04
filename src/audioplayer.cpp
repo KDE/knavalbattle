@@ -64,5 +64,4 @@ void AudioPlayer::setActive(bool value)
     }
 }
 
-
-
+#include "moc_audioplayer.cpp"

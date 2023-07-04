@@ -387,8 +387,6 @@ void PlayField::toggleLeftGrid(bool show)
 void PlayField::toggleRightGrid(bool show)
 {
     m_seaView->toggleRightGrid(show);
-}        
+}
 
-
-
-
+#include "moc_playfield.cpp"

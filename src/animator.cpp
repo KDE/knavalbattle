@@ -62,6 +62,4 @@ Animator* Animator::instance()
     return m_instance;
 }
 
-
-
-
+#include "moc_animator.cpp"

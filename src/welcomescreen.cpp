@@ -198,7 +198,4 @@ void WelcomeScreen::onMouseLeave()
     }
 }
 
-
-
-
-
+#include "moc_welcomescreen.cpp"

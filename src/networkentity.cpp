@@ -312,4 +312,4 @@ QIcon NetworkEntity::icon() const
     return QIcon::fromTheme( QLatin1String( "network-workgroup" ));
 }
 
-
+#include "moc_networkentity.cpp"

@@ -258,5 +258,4 @@ void SeaView::setNick(Sea::Player p, const QString& nick)
     m_labels[p]->setText(nick);
 }
 
-
-
+#include "moc_seaview.cpp"

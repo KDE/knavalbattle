@@ -218,7 +218,4 @@ void PlayerEntity::notifyRestartPlacing(Sea::Player player)
     startPlacing();
 }
 
-
-
-
-
+#include "moc_playerentity.cpp"

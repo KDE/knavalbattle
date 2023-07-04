@@ -22,4 +22,4 @@ QString Settings::findNick()
     return nick;
 }
 
-
+#include "moc_settings.cpp"

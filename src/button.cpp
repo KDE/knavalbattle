@@ -266,6 +266,4 @@ ButtonAnimation::~ButtonAnimation()
 {
 }
 
-
-
-
+#include "moc_button.cpp"

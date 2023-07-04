@@ -57,6 +57,4 @@ void Stats::addInfo(const HitInfo& info)
     }
 }
 
-
-
-
+#include "moc_stats.cpp"

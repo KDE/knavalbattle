@@ -105,6 +105,4 @@ QIcon AIEntity::icon() const
     return QIcon::fromTheme( QLatin1String( "roll" ));
 }
 
-
-
-
+#include "moc_aientity.cpp"

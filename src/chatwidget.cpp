@@ -108,5 +108,4 @@ QSize ChatWidget::sizeHint() const
     return QSize(100, 100);
 }
 
-
-
+#include "moc_chatwidget.cpp"

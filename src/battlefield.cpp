@@ -306,5 +306,4 @@ void BattleField::clear()
     m_ships=0;
 }
 
-
-
+#include "moc_battlefield.cpp"
