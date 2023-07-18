@@ -13,6 +13,7 @@
   <name xml:lang="de">Naval Battle</name>
   <name xml:lang="el">Ναυμαχία</name>
   <name xml:lang="en-GB">Naval Battle</name>
+  <name xml:lang="eo">Naval Battle</name>
   <name xml:lang="es">Batalla naval</name>
   <name xml:lang="et">Naval Battle</name>
   <name xml:lang="eu">Itsas-bataila</name>
@@ -51,6 +52,7 @@
   <summary xml:lang="de">„Schiffe versenken“-Spiel</summary>
   <summary xml:lang="el">ΠΑιχνίδι με το στόλο</summary>
   <summary xml:lang="en-GB">Battle Ship Game</summary>
+  <summary xml:lang="eo">Batalŝipa Ludo</summary>
   <summary xml:lang="es">Juego de batalla naval</summary>
   <summary xml:lang="et">Laevade pommitamise mäng</summary>
   <summary xml:lang="eu">Bataila-ontzi jokoa</summary>
@@ -93,6 +95,7 @@
     <p xml:lang="de"> ist ein „Schiffe versenken“-Spiel. Alle Schiffe werden auf dem Spielfeld - dem Meer - angeordnet. Die Spieler versuchen die gegnerischen Schiffe, deren Lage auf dem Spielfeld Sie nicht kennen, abwechselnd mit Schüssen zu treffen. Sieger ist, wer als erster alle Schiffe des Gegners versenkt hat.</p>
     <p xml:lang="el">Η Ναυμαχία είαι ένα παιχνίδι βύθισης πλοίων. Τα πλοία τοποθετούνται σε έναν πίνακα που αναπαριστά τη θάλασσα. Οι παίκτες προσπαθούν εναλλάξ να χτυπήσουν τα πλοία του αντιπάλου χωρίς να γνωρίζουν πού αυτά βρίσκονται. Ο πρώτος παίκτης που καταστρέφει όλα τα πλοία κερδίζει.</p>
     <p xml:lang="en-GB">Naval Battle is a ship sinking game. Ships are placed on a board which represents the sea. Players try to hit each others ships in turns without knowing where they are placed. The first player to destroy all ships wins the game.</p>
+    <p xml:lang="eo">Naval Battle estas ŝipsinkiga ludo. Ŝipoj estas metitaj sur tabulon kiu reprezentas la maron. Ludantoj provas trafi unu la alian ŝipojn laŭvice sen scii kie ili estas metitaj. La unua ludanto kiu detruas ĉiujn ŝipojn venkas en la ludo.</p>
     <p xml:lang="es">«Batalla naval» es un juego de hundir los barcos. Los barcos se colocan en un tablero que representa el mar. Los jugadores tratan de alcanzar los barcos del contrincante por turnos sin saber dónde están situados. El primer jugador que destruya todos los barcos de su contrincante ganará el juego.</p>
     <p xml:lang="et">Naval Battle on laevade uputamise mäng. Laevad seatakse merd kujutavale mänguväljakule. Mängijad ründavad kordamööda vastase laevu, teadmata, kuhu täpselt on need asetatud. Kes esimesena kõik vastase laevad hävitab, on mängu võitnud.</p>
     <p xml:lang="eu">Itsas-bataila ontziak hondoratzeko joko bat da. Ontziak itsasoa irudikatzen duen taula batean kokatzen dira. Jokalariek elkarren ontziak jotzen saiatzen dira aurkariaren ontziak non kokatuta dauden jakin gabe. Aurkariaren ontzi guztiak suntsitzen dituen aurreneko jokalariak irabazten du.</p>
