@@ -57,4 +57,12 @@ void Stats::addInfo(const HitInfo& info)
     }
 }
 
+void Stats::reset()
+{
+    m_hits = 0;
+    m_misses = 0;
+    Q_EMIT hitsChanged();
+    Q_EMIT missesChanged();
+}
+
 #include "moc_stats.cpp"
