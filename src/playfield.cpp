@@ -132,6 +132,8 @@ void PlayField::restart()
     m_seaView->clear();
     startGame();
     m_controller->restart();
+    m_menu->player(0)->stats()->reset();
+    m_menu->player(1)->stats()->reset();
 }
 
 

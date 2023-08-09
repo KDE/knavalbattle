@@ -26,9 +26,11 @@ public:
     inline int shots() const { return hits() + misses(); }
     
     void addInfo(const HitInfo& info);
-    
+
     int score() const;
-    
+
+    void reset();
+
 Q_SIGNALS:
     void hitsChanged();
     void missesChanged();
