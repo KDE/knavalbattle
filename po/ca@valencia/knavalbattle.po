@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: knavalbattle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-10-21 00:44+0000\n"
+"POT-Creation-Date: 2023-08-24 00:43+0000\n"
 "PO-Revision-Date: 2022-07-08 11:38+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
@@ -415,74 +415,74 @@ msgstr "El teu oponent es coneix com a %1"
 msgid "Your opponent disconnected from the game"
 msgstr "El teu oponent s'ha desconnectat de la partida"
 
-#: playfield.cpp:147 playfield.cpp:167
+#: playfield.cpp:149 playfield.cpp:169
 #, kde-format
 msgid "Shots"
 msgstr "Trets"
 
-#: playfield.cpp:148 playfield.cpp:168
+#: playfield.cpp:150 playfield.cpp:170
 #, kde-format
 msgid "Hits"
 msgstr "Impactes"
 
-#: playfield.cpp:149 playfield.cpp:169
+#: playfield.cpp:151 playfield.cpp:171
 #, kde-format
 msgid "Misses"
 msgstr "Errors"
 
-#: playfield.cpp:189
+#: playfield.cpp:191
 #, kde-format
 msgid "You win!"
 msgstr "Has guanyat!"
 
-#: playfield.cpp:191
+#: playfield.cpp:193
 #, kde-format
 msgid "You win. Excellent!"
 msgstr "Has guanyat. Excel·lent!"
 
-#: playfield.cpp:195
+#: playfield.cpp:197
 #, kde-format
 msgid "You lose."
 msgstr "Has perdut."
 
-#: playfield.cpp:197
+#: playfield.cpp:199
 #, kde-format
 msgid "You lose. Better luck next time!"
 msgstr "Has perdut. Que tingues més sort la pròxima vegada!"
 
-#: playfield.cpp:207
+#: playfield.cpp:209
 #, kde-format
 msgid "Change Nickname"
 msgstr "Canvia el sobrenom"
 
-#: playfield.cpp:207
+#: playfield.cpp:209
 #, kde-format
 msgid "Enter new nickname:"
 msgstr "Introduïu el sobrenom nou:"
 
-#: playfield.cpp:240
+#: playfield.cpp:242
 #, kde-format
 msgid "Restart game"
 msgstr "Reinicia la partida"
 
-#: playfield.cpp:241
+#: playfield.cpp:243
 #, kde-format
 msgid "Your opponent has requested to restart the game. Do you accept?"
 msgstr "L'oponent demana reiniciar la partida. Acceptes?"
 
-#: playfield.cpp:242
+#: playfield.cpp:244
 #, kde-format
 msgctxt "@action:button"
 msgid "Accept"
 msgstr "Accepta"
 
-#: playfield.cpp:243
+#: playfield.cpp:245
 #, kde-format
 msgctxt "@action:button"
 msgid "Reject"
 msgstr "Rebutja"
 
-#: playfield.cpp:256
+#: playfield.cpp:258
 #, kde-format
 msgid ""
 "Your opponent is using a pre-KDE4 version of Naval Battle. Note that, "
@@ -494,56 +494,56 @@ msgstr ""
 "poden posar un al costat de l'altre i només es permet un vaixell de cada "
 "mida."
 
-#: playfield.cpp:269
+#: playfield.cpp:271
 #, kde-format
 msgid "Enemy has shot. Shoot now!"
 msgstr "L'oponent ha disparat. Dispara ara!"
 
-#: playfield.cpp:273
+#: playfield.cpp:275
 #, kde-format
 msgid "Waiting for enemy to shoot..."
 msgstr "S'està esperant que l'oponent dispari..."
 
-#: playfield.cpp:282
+#: playfield.cpp:284
 #, kde-format
 msgid "Ships placed. Now shoot on the enemy field!"
 msgstr "Vaixells situats. Dispara ara al camp de l'oponent!"
 
-#: playfield.cpp:285
+#: playfield.cpp:287
 #, kde-format
 msgid "Waiting for other player to start the game..."
 msgstr "S'està esperant que l'altre jugador inicie la partida..."
 
-#: playfield.cpp:289
+#: playfield.cpp:291
 #, kde-format
 msgid "Waiting for other player to place his ships..."
 msgstr "S'està esperant que l'altre jugador situe els vaixells..."
 
-#: playfield.cpp:303
+#: playfield.cpp:305
 #, kde-format
 msgid "Place your %1 ships. Use the right mouse button to rotate them."
 msgstr ""
 "Situa els teus %1 vaixells. Utilitza el botó dret del ratolí per a fer-los "
 "girar."
 
-#: playfield.cpp:309
+#: playfield.cpp:311
 #, kde-format
 msgid "You can't place your remaining ships."
 msgstr "No pots situar els vaixells romanents."
 
-#: playfield.cpp:310
+#: playfield.cpp:312
 #, kde-format
 msgctxt "@action"
 msgid "Restart"
 msgstr "Reinicia"
 
-#: playfield.cpp:311
+#: playfield.cpp:313
 #, kde-format
 msgctxt "@action"
 msgid "Abort"
 msgstr "Interromp"
 
-#: playfield.cpp:317
+#: playfield.cpp:319
 #, kde-format
 msgid ""
 "You can't place your remaining ships. Please restart placing ships or abort "
@@ -552,7 +552,7 @@ msgstr ""
 "No pots situar els vaixells romanents. Per favor, reinicia la posició dels "
 "vaixells o interromp el joc"
 
-#: playfield.cpp:317
+#: playfield.cpp:319
 #, kde-format
 msgid "Restart placing ships"
 msgstr "Reinicia la posició dels vaixells"

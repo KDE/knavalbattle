@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: knavalbattle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-10-21 00:44+0000\n"
+"POT-Creation-Date: 2023-08-24 00:43+0000\n"
 "PO-Revision-Date: 2023-02-03 17:14+0100\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
@@ -408,74 +408,74 @@ msgstr "თქვენი მეტოქე ახლა ცნობილი
 msgid "Your opponent disconnected from the game"
 msgstr "მეტოქე თამაშიდან გავარდა"
 
-#: playfield.cpp:147 playfield.cpp:167
+#: playfield.cpp:149 playfield.cpp:169
 #, kde-format
 msgid "Shots"
 msgstr "გარტყმები"
 
-#: playfield.cpp:148 playfield.cpp:168
+#: playfield.cpp:150 playfield.cpp:170
 #, kde-format
 msgid "Hits"
 msgstr "მინიშნებები"
 
-#: playfield.cpp:149 playfield.cpp:169
+#: playfield.cpp:151 playfield.cpp:171
 #, kde-format
 msgid "Misses"
 msgstr "აცდენები"
 
-#: playfield.cpp:189
+#: playfield.cpp:191
 #, kde-format
 msgid "You win!"
 msgstr "მოიგეთ!"
 
-#: playfield.cpp:191
+#: playfield.cpp:193
 #, kde-format
 msgid "You win. Excellent!"
 msgstr "მოიგეთ. გადასარევია!"
 
-#: playfield.cpp:195
+#: playfield.cpp:197
 #, kde-format
 msgid "You lose."
 msgstr "წააგეთ."
 
-#: playfield.cpp:197
+#: playfield.cpp:199
 #, kde-format
 msgid "You lose. Better luck next time!"
 msgstr "წააგეთ. წარმატებები შემდეგ თამაშზე!"
 
-#: playfield.cpp:207
+#: playfield.cpp:209
 #, kde-format
 msgid "Change Nickname"
 msgstr "მეტსახელის შეცვლა"
 
-#: playfield.cpp:207
+#: playfield.cpp:209
 #, kde-format
 msgid "Enter new nickname:"
 msgstr "შეყვანეთ ახალი მეტსახელი:"
 
-#: playfield.cpp:240
+#: playfield.cpp:242
 #, kde-format
 msgid "Restart game"
 msgstr "თამაშის გადატვირთვა"
 
-#: playfield.cpp:241
+#: playfield.cpp:243
 #, kde-format
 msgid "Your opponent has requested to restart the game. Do you accept?"
 msgstr "მეტოქემ თამაშის გადატვირთვა მოითხოვა. ეთანხმებით?"
 
-#: playfield.cpp:242
+#: playfield.cpp:244
 #, kde-format
 msgctxt "@action:button"
 msgid "Accept"
 msgstr "დასტური"
 
-#: playfield.cpp:243
+#: playfield.cpp:245
 #, kde-format
 msgctxt "@action:button"
 msgid "Reject"
 msgstr "უარყოფა"
 
-#: playfield.cpp:256
+#: playfield.cpp:258
 #, kde-format
 msgid ""
 "Your opponent is using a pre-KDE4 version of Naval Battle. Note that, "
@@ -486,56 +486,56 @@ msgstr ""
 "ძველი კლიენტების წესების მიხედვით გემებს შუაში ადგილის გარეშე ახლო-მახლოს "
 "ვერ დაალაგებთ."
 
-#: playfield.cpp:269
+#: playfield.cpp:271
 #, kde-format
 msgid "Enemy has shot. Shoot now!"
 msgstr "მტერმა გაისროლა. გაისროლეთ ახლა!"
 
-#: playfield.cpp:273
+#: playfield.cpp:275
 #, kde-format
 msgid "Waiting for enemy to shoot..."
 msgstr "მტრის სროლის მოლოდინი..."
 
-#: playfield.cpp:282
+#: playfield.cpp:284
 #, kde-format
 msgid "Ships placed. Now shoot on the enemy field!"
 msgstr "ხომალდები დასმულია. ახლა ისროლეთ მტრის ველზე!"
 
-#: playfield.cpp:285
+#: playfield.cpp:287
 #, kde-format
 msgid "Waiting for other player to start the game..."
 msgstr "სხვა მოთამაშის მიერ თამაშის დაწყების მოლოდინი..."
 
-#: playfield.cpp:289
+#: playfield.cpp:291
 #, kde-format
 msgid "Waiting for other player to place his ships..."
 msgstr "სხვა მოთამაშის ხომალდების განლაგების მოლოდინი..."
 
-#: playfield.cpp:303
+#: playfield.cpp:305
 #, kde-format
 msgid "Place your %1 ships. Use the right mouse button to rotate them."
 msgstr ""
 "დაალაგეთ თქვენი %1 ხომალდი. მოსაბრუნებლად თაგუნას მარჯვენა ღილაკს "
 "დააწკაპუნეთ."
 
-#: playfield.cpp:309
+#: playfield.cpp:311
 #, kde-format
 msgid "You can't place your remaining ships."
 msgstr "თქვენს დარჩენილ ხომალდებს ვერ მოათავსებთ."
 
-#: playfield.cpp:310
+#: playfield.cpp:312
 #, kde-format
 msgctxt "@action"
 msgid "Restart"
 msgstr "რესტარტ"
 
-#: playfield.cpp:311
+#: playfield.cpp:313
 #, kde-format
 msgctxt "@action"
 msgid "Abort"
 msgstr "შეწყვეტა"
 
-#: playfield.cpp:317
+#: playfield.cpp:319
 #, kde-format
 msgid ""
 "You can't place your remaining ships. Please restart placing ships or abort "
@@ -544,7 +544,7 @@ msgstr ""
 "დარჩენილი ხომალდების დალაგება არ შეგიძლიათ. თავიდან დაიწყეთ დალაგება ან "
 "გააუქმეთ თამაში"
 
-#: playfield.cpp:317
+#: playfield.cpp:319
 #, kde-format
 msgid "Restart placing ships"
 msgstr "ხომალდების განთავსების თავიდან დაწყება"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kbattleship\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-10-21 00:44+0000\n"
+"POT-Creation-Date: 2023-08-24 00:43+0000\n"
 "PO-Revision-Date: 2014-06-09 22:21+0200\n"
 "Last-Translator: Sönke Dibbern <s_dibbern@web.de>\n"
 "Language-Team: Low Saxon <kde-i18n-nds@kde.org>\n"
@@ -412,74 +412,74 @@ msgstr "Dien Gegensmann is nu as %1 begäng"
 msgid "Your opponent disconnected from the game"
 msgstr "Dien Gegensmann is afkoppelt"
 
-#: playfield.cpp:147 playfield.cpp:167
+#: playfield.cpp:149 playfield.cpp:169
 #, kde-format
 msgid "Shots"
 msgstr "Schöten"
 
-#: playfield.cpp:148 playfield.cpp:168
+#: playfield.cpp:150 playfield.cpp:170
 #, kde-format
 msgid "Hits"
 msgstr "Drepers"
 
-#: playfield.cpp:149 playfield.cpp:169
+#: playfield.cpp:151 playfield.cpp:171
 #, kde-format
 msgid "Misses"
 msgstr "Daneven"
 
-#: playfield.cpp:189
+#: playfield.cpp:191
 #, kde-format
 msgid "You win!"
 msgstr "Du hest wunnen!"
 
-#: playfield.cpp:191
+#: playfield.cpp:193
 #, kde-format
 msgid "You win. Excellent!"
 msgstr "Du hest wunnen! Grootoordig!"
 
-#: playfield.cpp:195
+#: playfield.cpp:197
 #, kde-format
 msgid "You lose."
 msgstr "Du hest verloren."
 
-#: playfield.cpp:197
+#: playfield.cpp:199
 #, kde-format
 msgid "You lose. Better luck next time!"
 msgstr "Du hest verloren. Mehr Spood bi't nakamen Maal!"
 
-#: playfield.cpp:207
+#: playfield.cpp:209
 #, kde-format
 msgid "Change Nickname"
 msgstr "Ökelnaam ännern"
 
-#: playfield.cpp:207
+#: playfield.cpp:209
 #, kde-format
 msgid "Enter new nickname:"
 msgstr "Nieg Ökelnaam ingeven:"
 
-#: playfield.cpp:240
+#: playfield.cpp:242
 #, kde-format
 msgid "Restart game"
 msgstr "Speel nieg starten"
 
-#: playfield.cpp:241
+#: playfield.cpp:243
 #, kde-format
 msgid "Your opponent has requested to restart the game. Do you accept?"
 msgstr "Dien Gegensmann will dat Speel nieg starten. Annehmen?"
 
-#: playfield.cpp:242
+#: playfield.cpp:244
 #, kde-format
 msgctxt "@action:button"
 msgid "Accept"
 msgstr ""
 
-#: playfield.cpp:243
+#: playfield.cpp:245
 #, kde-format
 msgctxt "@action:button"
 msgid "Reject"
 msgstr ""
 
-#: playfield.cpp:256
+#: playfield.cpp:258
 #, kde-format
 msgid ""
 "Your opponent is using a pre-KDE4 version of Naval Battle. Note that, "
@@ -490,56 +490,56 @@ msgstr ""
 "KDE4. Beacht, Scheep mööt wegen de öller Regeln nich blangenanner liggen un "
 "Du dörvst bloots en Schipp vun elkeen Grött hebben."
 
-#: playfield.cpp:269
+#: playfield.cpp:271
 #, kde-format
 msgid "Enemy has shot. Shoot now!"
 msgstr "De Gegensmann hett schaten. Scheet nu."
 
-#: playfield.cpp:273
+#: playfield.cpp:275
 #, kde-format
 msgid "Waiting for enemy to shoot..."
 msgstr "An't Töven op Schööt vun den Gegensmann..."
 
-#: playfield.cpp:282
+#: playfield.cpp:284
 #, kde-format
 msgid "Ships placed. Now shoot on the enemy field!"
 msgstr "Scheep opstellt. Scheet nu op Dien Gegensmann sien Feld!"
 
-#: playfield.cpp:285
+#: playfield.cpp:287
 #, kde-format
 msgid "Waiting for other player to start the game..."
 msgstr "An't Töven, dat de Gegensmann dat Speel start..."
 
-#: playfield.cpp:289
+#: playfield.cpp:291
 #, kde-format
 msgid "Waiting for other player to place his ships..."
 msgstr "An't Töven, dat de Gegensmann sien Scheep opstellt..."
 
-#: playfield.cpp:303
+#: playfield.cpp:305
 #, kde-format
 msgid "Place your %1 ships. Use the right mouse button to rotate them."
 msgstr "Stell Dien %1 Scheep op. Mit de rechte Muustast laat se sik dreihen."
 
-#: playfield.cpp:309
+#: playfield.cpp:311
 #, kde-format
 msgid "You can't place your remaining ships."
 msgstr "Du kannst Dien anner Scheep nich setten."
 
-#: playfield.cpp:310
+#: playfield.cpp:312
 #, fuzzy, kde-format
 #| msgid "Restart"
 msgctxt "@action"
 msgid "Restart"
 msgstr "Nieg starten"
 
-#: playfield.cpp:311
+#: playfield.cpp:313
 #, fuzzy, kde-format
 #| msgid "Abort"
 msgctxt "@action"
 msgid "Abort"
 msgstr "Afbreken"
 
-#: playfield.cpp:317
+#: playfield.cpp:319
 #, kde-format
 msgid ""
 "You can't place your remaining ships. Please restart placing ships or abort "
@@ -548,7 +548,7 @@ msgstr ""
 "Du kannst Dien anner Scheep nich setten. Fang dor noch maal mit an oder "
 "brick dat Speel af."
 
-#: playfield.cpp:317
+#: playfield.cpp:319
 #, kde-format
 msgid "Restart placing ships"
 msgstr "Nochmaal Scheep nieg setten"
