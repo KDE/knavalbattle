@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kbattleship\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-10-21 00:44+0000\n"
+"POT-Creation-Date: 2023-08-24 02:22+0000\n"
 "PO-Revision-Date: 2007-08-20 12:23+0545\n"
 "Last-Translator: Nabin Gautam <nabin@mpp.org.np>\n"
 "Language-Team: Nepali <info@mpp.org.np>\n"
@@ -411,76 +411,76 @@ msgstr "हाल तपाईँको बिरोधी %1 को रुप�
 msgid "Your opponent disconnected from the game"
 msgstr "तपाईँको बिरोधी खेलबाट विच्छेदन भएको छ"
 
-#: playfield.cpp:147 playfield.cpp:167
+#: playfield.cpp:149 playfield.cpp:169
 #, kde-format
 msgid "Shots"
 msgstr "हानेको गोली"
 
-#: playfield.cpp:148 playfield.cpp:168
+#: playfield.cpp:150 playfield.cpp:170
 #, kde-format
 msgid "Hits"
 msgstr "लागेको गोली"
 
-#: playfield.cpp:149 playfield.cpp:169
+#: playfield.cpp:151 playfield.cpp:171
 #, kde-format
 msgid "Misses"
 msgstr "नलागेको गोली"
 
-#: playfield.cpp:189
+#: playfield.cpp:191
 #, kde-format
 msgid "You win!"
 msgstr "तपाईँले जित्नुभयो!"
 
-#: playfield.cpp:191
+#: playfield.cpp:193
 #, kde-format
 msgid "You win. Excellent!"
 msgstr ""
 
-#: playfield.cpp:195
+#: playfield.cpp:197
 #, kde-format
 msgid "You lose."
 msgstr "तपाईँले हार्नु भयो ।"
 
-#: playfield.cpp:197
+#: playfield.cpp:199
 #, kde-format
 msgid "You lose. Better luck next time!"
 msgstr ""
 
-#: playfield.cpp:207
+#: playfield.cpp:209
 #, fuzzy, kde-format
 #| msgid "User nickname."
 msgid "Change Nickname"
 msgstr "प्रयोगकर्ता उपनाम:"
 
-#: playfield.cpp:207
+#: playfield.cpp:209
 #, fuzzy, kde-format
 #| msgid "User nickname."
 msgid "Enter new nickname:"
 msgstr "प्रयोगकर्ता उपनाम:"
 
-#: playfield.cpp:240
+#: playfield.cpp:242
 #, kde-format
 msgid "Restart game"
 msgstr ""
 
-#: playfield.cpp:241
+#: playfield.cpp:243
 #, kde-format
 msgid "Your opponent has requested to restart the game. Do you accept?"
 msgstr ""
 
-#: playfield.cpp:242
+#: playfield.cpp:244
 #, kde-format
 msgctxt "@action:button"
 msgid "Accept"
 msgstr ""
 
-#: playfield.cpp:243
+#: playfield.cpp:245
 #, kde-format
 msgctxt "@action:button"
 msgid "Reject"
 msgstr ""
 
-#: playfield.cpp:256
+#: playfield.cpp:258
 #, fuzzy, kde-format
 #| msgid ""
 #| "Your opponent is using pre-KDE4 version of KBattleship. Note that, "
@@ -495,63 +495,63 @@ msgstr ""
 "गर्नुहोस्, पुरानो क्लाइन्टलाई लागू गरिएको नियम अनुसार, जाहाजहरू एक अर्कामा आसन्न हुने गरी "
 "राख्न सकिदैँन ।"
 
-#: playfield.cpp:269
+#: playfield.cpp:271
 #, kde-format
 msgid "Enemy has shot. Shoot now!"
 msgstr ""
 
-#: playfield.cpp:273
+#: playfield.cpp:275
 #, kde-format
 msgid "Waiting for enemy to shoot..."
 msgstr ""
 
-#: playfield.cpp:282
+#: playfield.cpp:284
 #, kde-format
 msgid "Ships placed. Now shoot on the enemy field!"
 msgstr "जाहाज राखियो । अब दुश्मन क्षेत्रमा गोली हान्नुहोस्!"
 
-#: playfield.cpp:285
+#: playfield.cpp:287
 #, kde-format
 msgid "Waiting for other player to start the game..."
 msgstr ""
 
-#: playfield.cpp:289
+#: playfield.cpp:291
 #, kde-format
 msgid "Waiting for other player to place his ships..."
 msgstr ""
 
-#: playfield.cpp:303
+#: playfield.cpp:305
 #, fuzzy, kde-format
 #| msgid "Place your ships. Use the right mouse button to rotate them."
 msgid "Place your %1 ships. Use the right mouse button to rotate them."
 msgstr ""
 "कृपया तपाईँका पानीजहाज राख्नुहोस् । तिनीहरूलाई घुमाउन दायाँ माउस बटन प्रयोग गर्नुहोस् ।"
 
-#: playfield.cpp:309
+#: playfield.cpp:311
 #, kde-format
 msgid "You can't place your remaining ships."
 msgstr ""
 
-#: playfield.cpp:310
+#: playfield.cpp:312
 #, kde-format
 msgctxt "@action"
 msgid "Restart"
 msgstr ""
 
-#: playfield.cpp:311
+#: playfield.cpp:313
 #, kde-format
 msgctxt "@action"
 msgid "Abort"
 msgstr ""
 
-#: playfield.cpp:317
+#: playfield.cpp:319
 #, kde-format
 msgid ""
 "You can't place your remaining ships. Please restart placing ships or abort "
 "game"
 msgstr ""
 
-#: playfield.cpp:317
+#: playfield.cpp:319
 #, kde-format
 msgid "Restart placing ships"
 msgstr ""
