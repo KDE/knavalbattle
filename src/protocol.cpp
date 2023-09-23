@@ -231,11 +231,7 @@ MessagePtr Protocol::parseMessage(const QString& xmlMessage)
             for (int i = 0; i < nodes.count(); i++) {
                 QDomElement element = nodes.item(i).toElement();
                 if (!element.isNull() && element.tagName().startsWith(QLatin1String("ship"))) {
-#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
-                    int size = element.tagName().midRef(4).toInt();
-#else
                     int size = QStringView(element.tagName()).mid(4).toInt();
-#endif
                     QStringList data = element.text().split(QLatin1Char(' '));
                     if (data.size() != 3) {
                         continue;

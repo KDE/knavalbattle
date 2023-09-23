@@ -58,23 +58,18 @@ kconfig_add_kcfg_files(knavalbattle settingsbase.kcfgc)
 file(GLOB ICONS_SRCS "${CMAKE_CURRENT_SOURCE_DIR}/../data/pictures/*-apps-knavalbattle.png")
 ecm_add_app_icon(knavalbattle ICONS ${ICONS_SRCS})
 
-if (QT_MAJOR_VERSION STREQUAL "6")
-    target_link_libraries(knavalbattle KDEGames6)
-else()
-    target_link_libraries(knavalbattle KF5KDEGames)
-endif()
-
 target_link_libraries(knavalbattle
-    Qt${QT_MAJOR_VERSION}::Xml
-    Qt${QT_MAJOR_VERSION}::Network
-    KF${KF_MAJOR_VERSION}::CoreAddons
-    KF${KF_MAJOR_VERSION}::I18n
-    KF${KF_MAJOR_VERSION}::XmlGui
-    KF${KF_MAJOR_VERSION}::Completion
-    KF${KF_MAJOR_VERSION}::TextWidgets
-    KF${KF_MAJOR_VERSION}::DNSSD
-    KF${KF_MAJOR_VERSION}::Crash
-    KF${KF_MAJOR_VERSION}::DBusAddons
+    KDEGames6
+    KF6::CoreAddons
+    KF6::I18n
+    KF6::XmlGui
+    KF6::Completion
+    KF6::TextWidgets
+    KF6::DNSSD
+    KF6::Crash
+    KF6::DBusAddons
+    Qt6::Xml
+    Qt6::Network
 )
 
 install(TARGETS knavalbattle  ${KDE_INSTALL_TARGETS_DEFAULT_ARGS})

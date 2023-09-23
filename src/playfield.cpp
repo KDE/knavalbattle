@@ -14,7 +14,6 @@
 #include <QInputDialog>
 #include <QPointer>
 
-#include <kwidgetsaddons_version.h>
 #include <KLocalizedString>
 #include <KMessageBox>
 #include <KScoreDialog>
@@ -234,20 +233,12 @@ void PlayField::toggleMultiple(bool enable)
 
 void PlayField::restartRequested()
 {
-#if KWIDGETSADDONS_VERSION >= QT_VERSION_CHECK(5, 100, 0)
     int ans = KMessageBox::questionTwoActions(this,
-#else
-    int ans = KMessageBox::questionYesNo(this,
-#endif
                                          i18n("Restart game"),
                                          i18n("Your opponent has requested to restart the game. Do you accept?"),
                                          KGuiItem(i18nc("@action:button", "Accept"), QStringLiteral("dialog-ok")),
                                          KGuiItem(i18nc("@action:button", "Reject"), QStringLiteral("dialog-cancel")));
-#if KWIDGETSADDONS_VERSION >= QT_VERSION_CHECK(5, 100, 0)
     if (ans == KMessageBox::PrimaryAction) {
-#else
-    if (ans == KMessageBox::Yes) {
-#endif
         restart();
     }
 }
@@ -311,17 +302,9 @@ void PlayField::restartPlacingShips(Sea::Player player)
     m_status_bar->showMessage(i18n("You can't place your remaining ships."));
     KGuiItem buttonRestart(i18nc("@action", "Restart"), QStringLiteral("view-refresh"));
     KGuiItem buttonAbort(i18nc("@action", "Abort"), QStringLiteral("dialog-cancel"));
-#if KWIDGETSADDONS_VERSION >= QT_VERSION_CHECK(5, 100, 0)
     int res=KMessageBox::warningTwoActions(this,
-#else
-    int res=KMessageBox::warningYesNo(this,
-#endif
                                       i18n("You can't place your remaining ships. Please restart placing ships or abort game"), i18n("Restart placing ships"), buttonRestart, buttonAbort);
-#if KWIDGETSADDONS_VERSION >= QT_VERSION_CHECK(5, 100, 0)
     if (res == KMessageBox::PrimaryAction) {
-#else
-    if (res == KMessageBox::Yes) {
-#endif
         startPlacingShips();
         m_controller->notifyRestartPlacingShips(player);
     }

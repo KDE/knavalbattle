@@ -10,14 +10,11 @@
 #include <KCrash>
 #include <KLocalizedString>
 #include <KDBusService>
-#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
-#include <Kdelibs4ConfigMigrator>
-#endif
+
 #include <QApplication>
 #include <QUrl>
 #include <QCommandLineParser>
 #include <QCommandLineOption>
-
 
 #include "mainwindow.h"
 #include "coord.h"
@@ -26,18 +23,9 @@
 
 int main(int argc, char** argv)
 {
-    // Fixes blurry icons with fractional scaling
-#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
-    QCoreApplication::setAttribute(Qt::AA_UseHighDpiPixmaps);
-#endif
     QApplication app(argc, argv);
+
     KLocalizedString::setApplicationDomain("knavalbattle");
-#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
-    Kdelibs4ConfigMigrator migrate(QStringLiteral("knavalbattle"));
-    migrate.setConfigFiles(QStringList() << QStringLiteral("knavalbattlerc"));
-    migrate.setUiFiles(QStringList() << QStringLiteral("knavalbattleui.rc"));
-    migrate.migrate();
-#endif
 
     KAboutData aboutData(QStringLiteral("knavalbattle"), i18n("Naval Battle"),
         QStringLiteral(KNAVALBATTLE_VERSION_STRING),
