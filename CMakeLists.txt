@@ -71,12 +71,7 @@ add_subdirectory(data)
 add_subdirectory(doc)
 ecm_qt_install_logging_categories(EXPORT KNAVALBATTLE FILE knavalbattle.categories DESTINATION ${KDE_INSTALL_LOGGINGCATEGORIESDIR})
 
-
-if (QT_MAJOR_VERSION STREQUAL "5")
 ki18n_install(po)
 kdoctools_install(po)
-else()
-    MESSAGE(STATUS "po disabled in kf6 as it uses some deprecated definition which was removed in docbook kf6. Port it before reactivate it.")
-endif()
 
 feature_summary(WHAT ALL INCLUDE_QUIET_PACKAGES FATAL_ON_MISSING_REQUIRED_PACKAGES)
