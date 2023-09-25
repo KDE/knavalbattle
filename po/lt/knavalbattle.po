@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kbattleship\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-08-24 00:43+0000\n"
+"POT-Creation-Date: 2023-09-25 01:40+0000\n"
 "PO-Revision-Date: 2011-04-17 13:25+0300\n"
 "Last-Translator: Donatas G. <dgvirtual@akl.lt>\n"
 "Language-Team: Lithuanian <kde-i18n-lt@kde.org>\n"
@@ -77,17 +77,17 @@ msgstr ""
 msgid "Game Toolbar"
 msgstr "Žaidimo įrankinė"
 
-#: main.cpp:42
+#: main.cpp:30
 #, kde-format
 msgid "Naval Battle"
 msgstr "Jūrų mūšis"
 
-#: main.cpp:44
+#: main.cpp:32
 #, kde-format
 msgid "The KDE ship sinking game"
 msgstr "KDE laivų skandinimo žaidimas"
 
-#: main.cpp:45
+#: main.cpp:33
 #, kde-format
 msgid ""
 "(c) 2000-2005  Nikolas Zimmermann, Daniel Molkentin\n"
@@ -96,187 +96,187 @@ msgstr ""
 "(c) 2000-2005  Nikolas Zimmermann, Daniel Molkentin\n"
 "(c) 2007 Paolo Capriotti"
 
-#: main.cpp:50
+#: main.cpp:38
 #, kde-format
 msgid "Paolo Capriotti"
 msgstr "Paolo Capriotti"
 
-#: main.cpp:50
+#: main.cpp:38
 #, kde-format
 msgid "Current maintainer"
 msgstr "Dabartinis prižiūrėtojas"
 
-#: main.cpp:51
+#: main.cpp:39
 #, kde-format
 msgid "Nikolas Zimmermann"
 msgstr "Nikolas Zimmermann"
 
-#: main.cpp:51
+#: main.cpp:39
 #, kde-format
 msgid "Project Founder, GUI Handling, Client/Server"
 msgstr "Projekto įkūrėjas, sukūrė naudotojo sąsają, klientą/serverį"
 
-#: main.cpp:52
+#: main.cpp:40
 #, kde-format
 msgid "Daniel Molkentin"
 msgstr "Daniel Molkentin"
 
-#: main.cpp:52
+#: main.cpp:40
 #, kde-format
 msgid "Dialog Stuff, Client/Server"
 msgstr "Kūrė dialogų turinį, klientą/serverį"
 
-#: main.cpp:53
+#: main.cpp:41
 #, kde-format
 msgid "Kevin Krammer"
 msgstr "Kevin Krammer"
 
-#: main.cpp:53
+#: main.cpp:41
 #, kde-format
 msgid "Computer Player"
 msgstr "Kompiuterio žaidėjas"
 
-#: main.cpp:55
+#: main.cpp:43
 #, kde-format
 msgid "Johann Ollivier Lapeyre"
 msgstr "Johann Ollivier Lapeyre"
 
-#: main.cpp:55
+#: main.cpp:43
 #, kde-format
 msgid "Game artwork"
 msgstr "Žaidimo grafika"
 
-#: main.cpp:56
+#: main.cpp:44
 #, kde-format
 msgid "Eugene Trounev"
 msgstr "Eugene Trounev"
 
-#: main.cpp:56
+#: main.cpp:44
 #, kde-format
 msgid "Background"
 msgstr "Fonas"
 
-#: main.cpp:57
+#: main.cpp:45
 #, kde-format
 msgid "Robert Wadley"
 msgstr "Robert Wadley"
 
-#: main.cpp:57
+#: main.cpp:45
 #, kde-format
 msgid "Artwork for some of the ships"
 msgstr "Kai kurių laivų grafika"
 
-#: main.cpp:58
+#: main.cpp:46
 #, kde-format
 msgid "Riccardo Iaconelli"
 msgstr "Riccardo Iaconelli"
 
-#: main.cpp:58
+#: main.cpp:46
 #, kde-format
 msgid "Welcome screen"
 msgstr "Pasisveikinimo ekranas"
 
-#: main.cpp:59
+#: main.cpp:47
 #, kde-format
 msgid "Benjamin Adler"
 msgstr "Benjamin Adler"
 
-#: main.cpp:59
+#: main.cpp:47
 #, kde-format
 msgid "Icon"
 msgstr "Ženkliukas"
 
-#: main.cpp:60
+#: main.cpp:48
 #, kde-format
 msgid "Nils Trzebin"
 msgstr "Nils Trzebin"
 
-#: main.cpp:60
+#: main.cpp:48
 #, kde-format
 msgid "Sounds"
 msgstr "Garsai"
 
-#: main.cpp:61
+#: main.cpp:49
 #, kde-format
 msgid "Elmar Hoefner"
 msgstr "Elmar Hoefner"
 
-#: main.cpp:61
+#: main.cpp:49
 #, kde-format
 msgid "GFX"
 msgstr "GFX"
 
-#: main.cpp:62
+#: main.cpp:50
 #, kde-format
 msgid "Lukas Tinkl"
 msgstr "Lukas Tinkl"
 
-#: main.cpp:62
+#: main.cpp:50
 #, kde-format
 msgid "Non-Latin1 Support"
 msgstr "Sukūrė galimybę naudoti ne Latin1 simbolius"
 
-#: main.cpp:63
+#: main.cpp:51
 #, kde-format
 msgid "Malte Starostik"
 msgstr "Malte Starostik"
 
-#: main.cpp:63
+#: main.cpp:51
 #, kde-format
 msgid "Various improvements"
 msgstr "Įvairūs patobulinimai"
 
-#: main.cpp:64
+#: main.cpp:52
 #, kde-format
 msgid "Albert Astals Cid"
 msgstr "Albert Astals Cid"
 
-#: main.cpp:64 main.cpp:65
+#: main.cpp:52 main.cpp:53
 #, kde-format
 msgid "Various improvements and bugfixes"
 msgstr "Įvairūs patobulinimai ir ydų taisymas"
 
-#: main.cpp:65
+#: main.cpp:53
 #, kde-format
 msgid "John Tapsell"
 msgstr "John Tapsell"
 
-#: main.cpp:66
+#: main.cpp:54
 #, kde-format
 msgid "Inge Wallin"
 msgstr "Inge Wallin"
 
-#: main.cpp:66
+#: main.cpp:54
 #, kde-format
 msgid "Bugfixes and refactoring"
 msgstr "Teikė klaidų aprašymus ir pertvarkė programą"
 
-#: main.cpp:67
+#: main.cpp:55
 #, kde-format
 msgid "Jakub Stachowski"
 msgstr "Jakub Stachowski"
 
-#: main.cpp:67
+#: main.cpp:55
 #, kde-format
 msgid "DNS-SD discovery"
 msgstr "DNS-SD aptikimas"
 
-#: main.cpp:68
+#: main.cpp:56
 #, kde-format
 msgid "Roney Gomes"
 msgstr ""
 
-#: main.cpp:68
+#: main.cpp:56
 #, kde-format
 msgid "Porting to KGameRenderer and QGraphicsView"
 msgstr ""
 
-#: main.cpp:75
+#: main.cpp:63
 #, kde-format
 msgid "[URL]"
 msgstr ""
 
-#: main.cpp:75
+#: main.cpp:63
 #, kde-format
 msgid "URL of a Naval Battle game server to connect to after startup"
 msgstr ""
@@ -407,75 +407,75 @@ msgstr "Jūsų priešininkas dabar yra žinomas kaip %1"
 msgid "Your opponent disconnected from the game"
 msgstr "Jūsų priešininkas atsijungė nuo žaidimo"
 
-#: playfield.cpp:149 playfield.cpp:169
+#: playfield.cpp:148 playfield.cpp:168
 #, kde-format
 msgid "Shots"
 msgstr "Šūviai"
 
-#: playfield.cpp:150 playfield.cpp:170
+#: playfield.cpp:149 playfield.cpp:169
 #, kde-format
 msgid "Hits"
 msgstr "Kreipimaisi"
 
-#: playfield.cpp:151 playfield.cpp:171
+#: playfield.cpp:150 playfield.cpp:170
 #, kde-format
 msgid "Misses"
 msgstr "Nepataikyta"
 
-#: playfield.cpp:191
+#: playfield.cpp:190
 #, kde-format
 msgid "You win!"
 msgstr "Jūs laimėjote!"
 
-#: playfield.cpp:193
+#: playfield.cpp:192
 #, kde-format
 msgid "You win. Excellent!"
 msgstr "Jūs laimėjote. Nuostabu!"
 
-#: playfield.cpp:197
+#: playfield.cpp:196
 #, kde-format
 msgid "You lose."
 msgstr "Jūs pralaimėjote."
 
-#: playfield.cpp:199
+#: playfield.cpp:198
 #, fuzzy, kde-format
 #| msgid "You lose. Try harder next time!"
 msgid "You lose. Better luck next time!"
 msgstr "Jūs pralaimėjote. Kitą kartą bandykite labiau!"
 
-#: playfield.cpp:209
+#: playfield.cpp:208
 #, kde-format
 msgid "Change Nickname"
 msgstr "Keisti slapyvardį"
 
-#: playfield.cpp:209
+#: playfield.cpp:208
 #, kde-format
 msgid "Enter new nickname:"
 msgstr "Įveskite naują slapyvardį:"
 
-#: playfield.cpp:242
+#: playfield.cpp:237
 #, kde-format
 msgid "Restart game"
 msgstr "Perstartuoti žaidimą"
 
-#: playfield.cpp:243
+#: playfield.cpp:238
 #, kde-format
 msgid "Your opponent has requested to restart the game. Do you accept?"
 msgstr "Jūsų priešininkas paprašė perstartuoti žaidimą. Ar sutinkate?"
 
-#: playfield.cpp:244
+#: playfield.cpp:239
 #, kde-format
 msgctxt "@action:button"
 msgid "Accept"
 msgstr ""
 
-#: playfield.cpp:245
+#: playfield.cpp:240
 #, kde-format
 msgctxt "@action:button"
 msgid "Reject"
 msgstr ""
 
-#: playfield.cpp:258
+#: playfield.cpp:249
 #, fuzzy, kde-format
 #| msgid ""
 #| "Your opponent is using a pre-KDE4 version of Naval Battle. Note that, "
@@ -490,64 +490,64 @@ msgstr ""
 "Pastebėtina, kad, pagal senųjų žaidimo klientų nustatomas taisykles, laivai "
 "negali būti padedami greta vienas kito."
 
-#: playfield.cpp:271
+#: playfield.cpp:262
 #, kde-format
 msgid "Enemy has shot. Shoot now!"
 msgstr "Priešas šovė. Šaukite dabar!"
 
-#: playfield.cpp:275
+#: playfield.cpp:266
 #, kde-format
 msgid "Waiting for enemy to shoot..."
 msgstr "Laukiama priešo šūvio..."
 
-#: playfield.cpp:284
+#: playfield.cpp:275
 #, kde-format
 msgid "Ships placed. Now shoot on the enemy field!"
 msgstr "Laivai sustatyti. Dabar šaukite priešo lauke!"
 
-#: playfield.cpp:287
+#: playfield.cpp:278
 #, kde-format
 msgid "Waiting for other player to start the game..."
 msgstr "Laukiama, kol kitas žaidėjas pradės žaidimą..."
 
-#: playfield.cpp:291
+#: playfield.cpp:282
 #, kde-format
 msgid "Waiting for other player to place his ships..."
 msgstr "Laukiama, kol kitas žaidėjas išdėstys laivus..."
 
-#: playfield.cpp:305
+#: playfield.cpp:296
 #, fuzzy, kde-format
 #| msgid "Place your ships. Use the right mouse button to rotate them."
 msgid "Place your %1 ships. Use the right mouse button to rotate them."
 msgstr ""
 "Išdėstykite laivus. Naudokite dešinįjį pelės klavišą norėdami juos pasukti."
 
-#: playfield.cpp:311
+#: playfield.cpp:302
 #, kde-format
 msgid "You can't place your remaining ships."
 msgstr ""
 
-#: playfield.cpp:312
+#: playfield.cpp:303
 #, fuzzy, kde-format
 #| msgid "Restart game"
 msgctxt "@action"
 msgid "Restart"
 msgstr "Perstartuoti žaidimą"
 
-#: playfield.cpp:313
+#: playfield.cpp:304
 #, kde-format
 msgctxt "@action"
 msgid "Abort"
 msgstr ""
 
-#: playfield.cpp:319
+#: playfield.cpp:306
 #, kde-format
 msgid ""
 "You can't place your remaining ships. Please restart placing ships or abort "
 "game"
 msgstr ""
 
-#: playfield.cpp:319
+#: playfield.cpp:306
 #, kde-format
 msgid "Restart placing ships"
 msgstr ""

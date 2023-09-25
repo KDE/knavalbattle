@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdegames/kbattleship.pot\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-08-24 00:43+0000\n"
+"POT-Creation-Date: 2023-09-25 01:40+0000\n"
 "PO-Revision-Date: 2004-09-20 15:44+0200\n"
 "Last-Translator: Thierry Vignaud <tvignaud@mandriva.com>\n"
 "Language-Team: br <LL@li.org>\n"
@@ -74,205 +74,205 @@ msgstr ""
 msgid "Game Toolbar"
 msgstr ""
 
-#: main.cpp:42
+#: main.cpp:30
 #, kde-format
 msgid "Naval Battle"
 msgstr ""
 
-#: main.cpp:44
+#: main.cpp:32
 #, kde-format
 msgid "The KDE ship sinking game"
 msgstr ""
 
-#: main.cpp:45
+#: main.cpp:33
 #, kde-format
 msgid ""
 "(c) 2000-2005  Nikolas Zimmermann, Daniel Molkentin\n"
 "(c) 2007 Paolo Capriotti"
 msgstr ""
 
-#: main.cpp:50
+#: main.cpp:38
 #, kde-format
 msgid "Paolo Capriotti"
 msgstr ""
 
-#: main.cpp:50
+#: main.cpp:38
 #, kde-format
 msgid "Current maintainer"
 msgstr "Ratreer red"
 
-#: main.cpp:51
+#: main.cpp:39
 #, kde-format
 msgid "Nikolas Zimmermann"
 msgstr ""
 
-#: main.cpp:51
+#: main.cpp:39
 #, kde-format
 msgid "Project Founder, GUI Handling, Client/Server"
 msgstr ""
 
-#: main.cpp:52
+#: main.cpp:40
 #, kde-format
 msgid "Daniel Molkentin"
 msgstr ""
 
-#: main.cpp:52
+#: main.cpp:40
 #, kde-format
 msgid "Dialog Stuff, Client/Server"
 msgstr ""
 
-#: main.cpp:53
+#: main.cpp:41
 #, kde-format
 msgid "Kevin Krammer"
 msgstr ""
 
-#: main.cpp:53
+#: main.cpp:41
 #, fuzzy, kde-format
 #| msgid "Computer Player"
 msgid "Computer Player"
 msgstr "C'hoarier-urzhiataer"
 
-#: main.cpp:55
+#: main.cpp:43
 #, kde-format
 msgid "Johann Ollivier Lapeyre"
 msgstr ""
 
-#: main.cpp:55
+#: main.cpp:43
 #, kde-format
 msgid "Game artwork"
 msgstr ""
 
-#: main.cpp:56
+#: main.cpp:44
 #, kde-format
 msgid "Eugene Trounev"
 msgstr ""
 
-#: main.cpp:56
+#: main.cpp:44
 #, kde-format
 msgid "Background"
 msgstr "Drekleur"
 
-#: main.cpp:57
+#: main.cpp:45
 #, kde-format
 msgid "Robert Wadley"
 msgstr ""
 
-#: main.cpp:57
+#: main.cpp:45
 #, kde-format
 msgid "Artwork for some of the ships"
 msgstr ""
 
-#: main.cpp:58
+#: main.cpp:46
 #, kde-format
 msgid "Riccardo Iaconelli"
 msgstr ""
 
-#: main.cpp:58
+#: main.cpp:46
 #, kde-format
 msgid "Welcome screen"
 msgstr ""
 
-#: main.cpp:59
+#: main.cpp:47
 #, kde-format
 msgid "Benjamin Adler"
 msgstr ""
 
-#: main.cpp:59
+#: main.cpp:47
 #, kde-format
 msgid "Icon"
 msgstr "Arlun"
 
-#: main.cpp:60
+#: main.cpp:48
 #, kde-format
 msgid "Nils Trzebin"
 msgstr ""
 
-#: main.cpp:60
+#: main.cpp:48
 #, kde-format
 msgid "Sounds"
 msgstr "Sonioù"
 
-#: main.cpp:61
+#: main.cpp:49
 #, kde-format
 msgid "Elmar Hoefner"
 msgstr ""
 
-#: main.cpp:61
+#: main.cpp:49
 #, kde-format
 msgid "GFX"
 msgstr "GFX"
 
-#: main.cpp:62
+#: main.cpp:50
 #, kde-format
 msgid "Lukas Tinkl"
 msgstr ""
 
-#: main.cpp:62
+#: main.cpp:50
 #, kde-format
 msgid "Non-Latin1 Support"
 msgstr ""
 
-#: main.cpp:63
+#: main.cpp:51
 #, kde-format
 msgid "Malte Starostik"
 msgstr ""
 
-#: main.cpp:63
+#: main.cpp:51
 #, kde-format
 msgid "Various improvements"
 msgstr ""
 
-#: main.cpp:64
+#: main.cpp:52
 #, kde-format
 msgid "Albert Astals Cid"
 msgstr ""
 
-#: main.cpp:64 main.cpp:65
+#: main.cpp:52 main.cpp:53
 #, kde-format
 msgid "Various improvements and bugfixes"
 msgstr ""
 
-#: main.cpp:65
+#: main.cpp:53
 #, kde-format
 msgid "John Tapsell"
 msgstr ""
 
-#: main.cpp:66
+#: main.cpp:54
 #, kde-format
 msgid "Inge Wallin"
 msgstr ""
 
-#: main.cpp:66
+#: main.cpp:54
 #, kde-format
 msgid "Bugfixes and refactoring"
 msgstr ""
 
-#: main.cpp:67
+#: main.cpp:55
 #, kde-format
 msgid "Jakub Stachowski"
 msgstr ""
 
-#: main.cpp:67
+#: main.cpp:55
 #, kde-format
 msgid "DNS-SD discovery"
 msgstr ""
 
-#: main.cpp:68
+#: main.cpp:56
 #, kde-format
 msgid "Roney Gomes"
 msgstr ""
 
-#: main.cpp:68
+#: main.cpp:56
 #, kde-format
 msgid "Porting to KGameRenderer and QGraphicsView"
 msgstr ""
 
-#: main.cpp:75
+#: main.cpp:63
 #, kde-format
 msgid "[URL]"
 msgstr ""
 
-#: main.cpp:75
+#: main.cpp:63
 #, kde-format
 msgid "URL of a Naval Battle game server to connect to after startup"
 msgstr ""
@@ -413,77 +413,77 @@ msgstr ""
 msgid "Your opponent disconnected from the game"
 msgstr ""
 
-#: playfield.cpp:149 playfield.cpp:169
+#: playfield.cpp:148 playfield.cpp:168
 #, kde-format
 msgid "Shots"
 msgstr ""
 
-#: playfield.cpp:150 playfield.cpp:170
+#: playfield.cpp:149 playfield.cpp:169
 #, kde-format
 msgid "Hits"
 msgstr ""
 
-#: playfield.cpp:151 playfield.cpp:171
+#: playfield.cpp:150 playfield.cpp:170
 #, kde-format
 msgid "Misses"
 msgstr ""
 
-#: playfield.cpp:191
+#: playfield.cpp:190
 #, kde-format
 msgid "You win!"
 msgstr ""
 
-#: playfield.cpp:193
+#: playfield.cpp:192
 #, kde-format
 msgid "You win. Excellent!"
 msgstr ""
 
-#: playfield.cpp:197
+#: playfield.cpp:196
 #, fuzzy, kde-format
 #| msgid "You lost the game. :("
 msgid "You lose."
 msgstr "Kollet eo ar c'hoari ganit. :('"
 
-#: playfield.cpp:199
+#: playfield.cpp:198
 #, kde-format
 msgid "You lose. Better luck next time!"
 msgstr ""
 
-#: playfield.cpp:209
+#: playfield.cpp:208
 #, fuzzy, kde-format
 #| msgid "&Nick name:"
 msgid "Change Nickname"
 msgstr "&Lesanv :"
 
-#: playfield.cpp:209
+#: playfield.cpp:208
 #, kde-format
 msgid "Enter new nickname:"
 msgstr ""
 
-#: playfield.cpp:242
+#: playfield.cpp:237
 #, fuzzy, kde-format
 #| msgid "Restart"
 msgid "Restart game"
 msgstr "Adloc'hañ"
 
-#: playfield.cpp:243
+#: playfield.cpp:238
 #, kde-format
 msgid "Your opponent has requested to restart the game. Do you accept?"
 msgstr ""
 
-#: playfield.cpp:244
+#: playfield.cpp:239
 #, kde-format
 msgctxt "@action:button"
 msgid "Accept"
 msgstr ""
 
-#: playfield.cpp:245
+#: playfield.cpp:240
 #, kde-format
 msgctxt "@action:button"
 msgid "Reject"
 msgstr ""
 
-#: playfield.cpp:258
+#: playfield.cpp:249
 #, kde-format
 msgid ""
 "Your opponent is using a pre-KDE4 version of Naval Battle. Note that, "
@@ -491,65 +491,65 @@ msgid ""
 "adjacent to one another and only one ship of each size is allowed."
 msgstr ""
 
-#: playfield.cpp:271
+#: playfield.cpp:262
 #, kde-format
 msgid "Enemy has shot. Shoot now!"
 msgstr ""
 
-#: playfield.cpp:275
+#: playfield.cpp:266
 #, fuzzy, kde-format
 #| msgid "Waiting for an answer..."
 msgid "Waiting for enemy to shoot..."
 msgstr "Emaon o c'hortoz evit un eilger ..."
 
-#: playfield.cpp:284
+#: playfield.cpp:275
 #, kde-format
 msgid "Ships placed. Now shoot on the enemy field!"
 msgstr ""
 
-#: playfield.cpp:287
+#: playfield.cpp:278
 #, fuzzy, kde-format
 #| msgid "Waiting for a player..."
 msgid "Waiting for other player to start the game..."
 msgstr "Emaon o c'hortoz evit ur c'hoarier ..."
 
-#: playfield.cpp:291
+#: playfield.cpp:282
 #, fuzzy, kde-format
 #| msgid "Waiting for a player..."
 msgid "Waiting for other player to place his ships..."
 msgstr "Emaon o c'hortoz evit ur c'hoarier ..."
 
-#: playfield.cpp:305
+#: playfield.cpp:296
 #, kde-format
 msgid "Place your %1 ships. Use the right mouse button to rotate them."
 msgstr ""
 
-#: playfield.cpp:311
+#: playfield.cpp:302
 #, kde-format
 msgid "You can't place your remaining ships."
 msgstr ""
 
-#: playfield.cpp:312
+#: playfield.cpp:303
 #, fuzzy, kde-format
 #| msgid "Restart"
 msgctxt "@action"
 msgid "Restart"
 msgstr "Adloc'hañ"
 
-#: playfield.cpp:313
+#: playfield.cpp:304
 #, kde-format
 msgctxt "@action"
 msgid "Abort"
 msgstr ""
 
-#: playfield.cpp:319
+#: playfield.cpp:306
 #, kde-format
 msgid ""
 "You can't place your remaining ships. Please restart placing ships or abort "
 "game"
 msgstr ""
 
-#: playfield.cpp:319
+#: playfield.cpp:306
 #, kde-format
 msgid "Restart placing ships"
 msgstr ""

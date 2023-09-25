@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: knavalbattle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2020-05-12 03:22+0200\n"
+"POT-Creation-Date: 2023-09-25 01:40+0000\n"
 "PO-Revision-Date: 2017-05-07 21:01+0200\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian <kde-i18n-sr@kde.org>\n"
@@ -33,7 +33,7 @@ msgid "Your emails"
 msgstr "caslav.ilic@gmx.net,bole89@infosky.net,slsimic@gmail.com"
 
 # >> Name of computer player
-#: controller.cpp:53
+#: controller.cpp:50
 #, kde-format
 msgid "Computer"
 msgstr "рачунар"
@@ -84,17 +84,17 @@ msgstr ""
 msgid "Game Toolbar"
 msgstr "Трака игре"
 
-#: main.cpp:41
+#: main.cpp:30
 #, kde-format
 msgid "Naval Battle"
 msgstr "Поморска битка"
 
-#: main.cpp:42
+#: main.cpp:32
 #, kde-format
 msgid "The KDE ship sinking game"
 msgstr "Игра потапања бродова за КДЕ"
 
-#: main.cpp:43
+#: main.cpp:33
 #, kde-format
 msgid ""
 "(c) 2000-2005  Nikolas Zimmermann, Daniel Molkentin\n"
@@ -103,366 +103,366 @@ msgstr ""
 "© 2000–2005, Николас Цимерман, Данијел Молкентин\n"
 "© 2007, Паоло Каприоти"
 
-#: main.cpp:46
+#: main.cpp:38
 #, kde-format
 msgid "Paolo Capriotti"
 msgstr "Паоло Каприоти"
 
-#: main.cpp:46
+#: main.cpp:38
 #, kde-format
 msgid "Current maintainer"
 msgstr "тренутни одржавалац"
 
-#: main.cpp:47
+#: main.cpp:39
 #, kde-format
 msgid "Nikolas Zimmermann"
 msgstr "Николас Цимерман"
 
-#: main.cpp:47
+#: main.cpp:39
 #, kde-format
 msgid "Project Founder, GUI Handling, Client/Server"
 msgstr "оснивач пројекта, рад са сучељем, клијент-сервер"
 
-#: main.cpp:48
+#: main.cpp:40
 #, kde-format
 msgid "Daniel Molkentin"
 msgstr "Данијел Молкентин"
 
-#: main.cpp:48
+#: main.cpp:40
 #, kde-format
 msgid "Dialog Stuff, Client/Server"
 msgstr "дијалози, клијент-сервер"
 
-#: main.cpp:49
+#: main.cpp:41
 #, kde-format
 msgid "Kevin Krammer"
 msgstr "Кевин Крамер"
 
-#: main.cpp:49
+#: main.cpp:41
 #, kde-format
 msgid "Computer Player"
 msgstr "рачунарски играч"
 
-#: main.cpp:51
+#: main.cpp:43
 #, kde-format
 msgid "Johann Ollivier Lapeyre"
 msgstr "Јохан Оливје Лапер"
 
-#: main.cpp:51
+#: main.cpp:43
 #, kde-format
 msgid "Game artwork"
 msgstr "графика игре"
 
-#: main.cpp:52
+#: main.cpp:44
 #, kde-format
 msgid "Eugene Trounev"
 msgstr "Јевгениј Труњов"
 
-#: main.cpp:52
+#: main.cpp:44
 #, kde-format
 msgid "Background"
 msgstr "позадина"
 
-#: main.cpp:53
+#: main.cpp:45
 #, kde-format
 msgid "Robert Wadley"
 msgstr "Роберт Ведли"
 
-#: main.cpp:53
+#: main.cpp:45
 #, kde-format
 msgid "Artwork for some of the ships"
 msgstr "графика за неке од бродова"
 
-#: main.cpp:54
+#: main.cpp:46
 #, kde-format
 msgid "Riccardo Iaconelli"
 msgstr "Рикардо Јаконели"
 
-#: main.cpp:54
+#: main.cpp:46
 #, kde-format
 msgid "Welcome screen"
 msgstr "поздравни екран"
 
-#: main.cpp:55
+#: main.cpp:47
 #, kde-format
 msgid "Benjamin Adler"
 msgstr "Бенјамин Адлер"
 
-#: main.cpp:55
+#: main.cpp:47
 #, kde-format
 msgid "Icon"
 msgstr "иконица"
 
-#: main.cpp:56
+#: main.cpp:48
 #, kde-format
 msgid "Nils Trzebin"
 msgstr "Нилс Трцебин"
 
-#: main.cpp:56
+#: main.cpp:48
 #, kde-format
 msgid "Sounds"
 msgstr "звукови"
 
-#: main.cpp:57
+#: main.cpp:49
 #, kde-format
 msgid "Elmar Hoefner"
 msgstr "Елмар Хефнер"
 
-#: main.cpp:57
+#: main.cpp:49
 #, kde-format
 msgid "GFX"
 msgstr "графика"
 
-#: main.cpp:58
+#: main.cpp:50
 #, kde-format
 msgid "Lukas Tinkl"
 msgstr "Лукаш Тинкл"
 
-#: main.cpp:58
+#: main.cpp:50
 #, kde-format
 msgid "Non-Latin1 Support"
 msgstr "подршка знакова изван латинице‑1"
 
-#: main.cpp:59
+#: main.cpp:51
 #, kde-format
 msgid "Malte Starostik"
 msgstr "Малте Старостик"
 
-#: main.cpp:59
+#: main.cpp:51
 #, kde-format
 msgid "Various improvements"
 msgstr "разна побољшања"
 
-#: main.cpp:60
+#: main.cpp:52
 #, kde-format
 msgid "Albert Astals Cid"
 msgstr "Алберт Асталс Сид"
 
-#: main.cpp:60 main.cpp:61
+#: main.cpp:52 main.cpp:53
 #, kde-format
 msgid "Various improvements and bugfixes"
 msgstr "различита побољшања и исправке грешака"
 
-#: main.cpp:61
+#: main.cpp:53
 #, kde-format
 msgid "John Tapsell"
 msgstr "Џон Тапсел"
 
-#: main.cpp:62
+#: main.cpp:54
 #, kde-format
 msgid "Inge Wallin"
 msgstr "Инге Валин"
 
-#: main.cpp:62
+#: main.cpp:54
 #, kde-format
 msgid "Bugfixes and refactoring"
 msgstr "исправке грешака и рефакторисање"
 
-#: main.cpp:63
+#: main.cpp:55
 #, kde-format
 msgid "Jakub Stachowski"
 msgstr "Јакуб Стаховски"
 
-#: main.cpp:63
+#: main.cpp:55
 #, kde-format
 msgid "DNS-SD discovery"
 msgstr "откривање ДНССД‑а"
 
-#: main.cpp:64
+#: main.cpp:56
 #, kde-format
 msgid "Roney Gomes"
 msgstr "Рони Гомес"
 
-#: main.cpp:64
+#: main.cpp:56
 #, kde-format
 msgid "Porting to KGameRenderer and QGraphicsView"
 msgstr "преношење на KGameRenderer и QGraphicsView"
 
-#: main.cpp:75
+#: main.cpp:63
 #, kde-format
 msgid "[URL]"
 msgstr "[УРЛ]"
 
-#: main.cpp:75
+#: main.cpp:63
 #, kde-format
 msgid "URL of a Naval Battle game server to connect to after startup"
 msgstr "УРЛ играчког сервера Поморске битке за повезивање по покретању"
 
-#: mainwindow.cpp:62
+#: mainwindow.cpp:59
 #, kde-format
 msgid "&Single Player"
 msgstr "&Један играч"
 
-#: mainwindow.cpp:66
+#: mainwindow.cpp:63
 #, kde-format
 msgid "&Host Game..."
 msgstr "&Домаћин игри..."
 
-#: mainwindow.cpp:70
+#: mainwindow.cpp:67
 #, kde-format
 msgid "&Connect to Game..."
 msgstr "&Повежи се у игру..."
 
-#: mainwindow.cpp:75
+#: mainwindow.cpp:72
 #, kde-format
 msgid "Change &Nickname..."
 msgstr "Промени &надимак..."
 
 # >> @option:check
-#: mainwindow.cpp:78
+#: mainwindow.cpp:75
 #, kde-format
 msgid "&Play Sounds"
 msgstr "&Пуштај звукове"
 
-#: mainwindow.cpp:83
+#: mainwindow.cpp:80
 #, kde-format
 msgid "&Adjacent Ships"
 msgstr "&Налегли бродови"
 
-#: mainwindow.cpp:88
+#: mainwindow.cpp:85
 #, kde-format
 msgid "&Multiple Ships"
 msgstr "&Вишеструки бродови"
 
 # >> @option:check
-#: mainwindow.cpp:93
+#: mainwindow.cpp:90
 #, kde-format
 msgid "Show End-of-Game Message"
 msgstr "Порука за крај игре"
 
 # >> @option:check
-#: mainwindow.cpp:98
+#: mainwindow.cpp:95
 #, kde-format
 msgid "Show &Left Grid"
 msgstr "&Лева мрежа"
 
 # >> @option:check
-#: mainwindow.cpp:102
+#: mainwindow.cpp:99
 #, kde-format
 msgid "Show &Right Grid"
 msgstr "&Десна мрежа"
 
-#: networkdialog.cpp:64
+#: networkdialog.cpp:61
 #, kde-format
 msgid "&Nickname:"
 msgstr "&Надимак:"
 
-#: networkdialog.cpp:76
+#: networkdialog.cpp:73
 #, kde-format
 msgid "&Join game:"
 msgstr "&Придружи се игри:"
 
-#: networkdialog.cpp:91
+#: networkdialog.cpp:88
 #, kde-format
 msgid "&Hostname:"
 msgstr "&Име домаћина:"
 
-#: networkdialog.cpp:104 networkdialog.cpp:134
+#: networkdialog.cpp:101 networkdialog.cpp:131
 #, kde-format
 msgid "&Port:"
 msgstr "&Порт:"
 
-#: networkdialog.cpp:119
+#: networkdialog.cpp:116
 #, kde-format
 msgid "&Enter server address manually"
 msgstr "&Ручно унеси адресу сервера"
 
-#: networkdialog.cpp:151
+#: networkdialog.cpp:148
 #, kde-format
 msgid "Network Parameters"
 msgstr "Мрежни параметри"
 
-#: networkdialog.cpp:213
+#: networkdialog.cpp:210
 #, kde-format
 msgid "Connecting to remote host..."
 msgstr "Повезујем се на удаљени домаћин..."
 
-#: networkdialog.cpp:224
+#: networkdialog.cpp:217
 #, kde-format
 msgid "Waiting for an incoming connection..."
 msgstr "Чекам долазеће везе..."
 
-#: networkdialog.cpp:243
+#: networkdialog.cpp:236
 #, kde-format
 msgid "Could not connect to host"
 msgstr "Не могу да се повежем са домаћином"
 
 # >! Aargh.
-#: networkentity.cpp:191
+#: networkentity.cpp:189
 #, kde-format
 msgid "You have "
 msgstr "Имате "
 
-#: networkentity.cpp:197
+#: networkentity.cpp:195
 #, kde-format
 msgid ", "
 msgstr ", "
 
-#: networkentity.cpp:290
+#: networkentity.cpp:288
 #, kde-format
 msgid "You can place ships adjacent to each other"
 msgstr "Бродови могу да се постављају без размака"
 
-#: networkentity.cpp:293
+#: networkentity.cpp:291
 #, kde-format
 msgid "You must leave a space between ships"
 msgstr "Између бродова мора да буде размака"
 
-#: playerentity.cpp:203
+#: playerentity.cpp:199
 #, kde-format
 msgid "Your opponent is now known as %1"
 msgstr "Ваш противник је сада %1"
 
-#: playerentity.cpp:208
+#: playerentity.cpp:204
 #, kde-format
 msgid "Your opponent disconnected from the game"
 msgstr "Противник се искључио из игре"
 
 # >> @item:intext highscore parameters
-#: playfield.cpp:149 playfield.cpp:169
+#: playfield.cpp:148 playfield.cpp:168
 #, kde-format
 msgid "Shots"
 msgstr "хитаца"
 
 # >> @item:intext highscore parameters
-#: playfield.cpp:150 playfield.cpp:170
+#: playfield.cpp:149 playfield.cpp:169
 #, kde-format
 msgid "Hits"
 msgstr "погодака"
 
 # >> @item:intext highscore parameters
-#: playfield.cpp:151 playfield.cpp:171
+#: playfield.cpp:150 playfield.cpp:170
 #, kde-format
 msgid "Misses"
 msgstr "промашаја"
 
-#: playfield.cpp:191
+#: playfield.cpp:190
 #, kde-format
 msgid "You win!"
 msgstr "Победа!"
 
-#: playfield.cpp:193
+#: playfield.cpp:192
 #, kde-format
 msgid "You win. Excellent!"
 msgstr "Победили сте. Одлично!"
 
-#: playfield.cpp:197
+#: playfield.cpp:196
 #, kde-format
 msgid "You lose."
 msgstr "Пораз."
 
-#: playfield.cpp:199
+#: playfield.cpp:198
 #, kde-format
 msgid "You lose. Better luck next time!"
 msgstr "Изгубили сте. Више среће следећи пут!"
 
 # >> @title:window
-#: playfield.cpp:209
+#: playfield.cpp:208
 #, kde-format
 msgid "Change Nickname"
 msgstr "Промена надимка"
 
-#: playfield.cpp:209
+#: playfield.cpp:208
 #, kde-format
 msgid "Enter new nickname:"
 msgstr "Унесите нови надимак:"
@@ -479,7 +479,19 @@ msgstr "Поновно покретање"
 msgid "Your opponent has requested to restart the game. Do you accept?"
 msgstr "Противник тражи да се партија покрене из почетка. Прихватате ли?"
 
-#: playfield.cpp:247
+#: playfield.cpp:239
+#, kde-format
+msgctxt "@action:button"
+msgid "Accept"
+msgstr ""
+
+#: playfield.cpp:240
+#, kde-format
+msgctxt "@action:button"
+msgid "Reject"
+msgstr ""
+
+#: playfield.cpp:249
 #, kde-format
 msgid ""
 "Your opponent is using a pre-KDE4 version of Naval Battle. Note that, "
@@ -490,53 +502,57 @@ msgstr ""
 "старијих клијената, бродови се не могу смештати један до другог, нити може "
 "бити више бродова исте величине."
 
-#: playfield.cpp:260
+#: playfield.cpp:262
 #, kde-format
 msgid "Enemy has shot. Shoot now!"
 msgstr "Непријатељ је опалио. Ваш потез!"
 
-#: playfield.cpp:264
+#: playfield.cpp:266
 #, kde-format
 msgid "Waiting for enemy to shoot..."
 msgstr "Чекам да непријатељ опали..."
 
-#: playfield.cpp:273
+#: playfield.cpp:275
 #, kde-format
 msgid "Ships placed. Now shoot on the enemy field!"
 msgstr "Бродови су постављени. Пуцајте по непријатељском пољу!"
 
-#: playfield.cpp:276
+#: playfield.cpp:278
 #, kde-format
 msgid "Waiting for other player to start the game..."
 msgstr "Чекам да други играч започне партију..."
 
-#: playfield.cpp:280
+#: playfield.cpp:282
 #, kde-format
 msgid "Waiting for other player to place his ships..."
 msgstr "Чекам да други играч постави бродове..."
 
 # >! Plurals.
-#: playfield.cpp:294
+#: playfield.cpp:296
 #, kde-format
 msgid "Place your %1 ships. Use the right mouse button to rotate them."
 msgstr "Распоредите својих %1 бродова. Десним дугметом миша их ротирате."
 
-#: playfield.cpp:300
+#: playfield.cpp:302
 #, kde-format
 msgid "You can't place your remaining ships."
 msgstr "Нема места да се поставе преостали бродови."
 
-#: playfield.cpp:301
-#, kde-format
+#: playfield.cpp:303
+#, fuzzy, kde-format
+#| msgid "Restart"
+msgctxt "@action"
 msgid "Restart"
 msgstr "Почни изнова"
 
-#: playfield.cpp:302
-#, kde-format
+#: playfield.cpp:304
+#, fuzzy, kde-format
+#| msgid "Abort"
+msgctxt "@action"
 msgid "Abort"
 msgstr "Обустави"
 
-#: playfield.cpp:303
+#: playfield.cpp:306
 #, kde-format
 msgid ""
 "You can't place your remaining ships. Please restart placing ships or abort "
@@ -546,27 +562,27 @@ msgstr ""
 "обуставите партију."
 
 # >> @title:window
-#: playfield.cpp:303
+#: playfield.cpp:306
 #, kde-format
 msgid "Restart placing ships"
 msgstr "Поновно постављање бродова"
 
-#: simplemenu.cpp:43
+#: simplemenu.cpp:40
 #, kde-format
 msgid "Single Player"
 msgstr "Један играч"
 
-#: simplemenu.cpp:44
+#: simplemenu.cpp:41
 #, kde-format
 msgid "Host Network Game"
 msgstr "Домаћин мрежној игри"
 
-#: simplemenu.cpp:45
+#: simplemenu.cpp:42
 #, kde-format
 msgid "Connect to Network Game"
 msgstr "Повежи се на мрежну игру"
 
-#: simplemenu.cpp:135 simplemenu.cpp:152
+#: simplemenu.cpp:132 simplemenu.cpp:149
 #, kde-format
 msgid "Remote player"
 msgstr "Удаљени играч"

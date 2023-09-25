@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kbattleship\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-08-24 00:43+0000\n"
+"POT-Creation-Date: 2023-09-25 01:40+0000\n"
 "PO-Revision-Date: 2013-01-02 10:06+0700\n"
 "Last-Translator: sutha <sutha@khmeros.info>\n"
 "Language-Team: Khmer <support@khmeros>\n"
@@ -77,17 +77,17 @@ msgstr ""
 msgid "Game Toolbar"
 msgstr "របារ​ឧបករណ៍​ល្បែង"
 
-#: main.cpp:42
+#: main.cpp:30
 #, kde-format
 msgid "Naval Battle"
 msgstr "នាវា​ចម្បាំង"
 
-#: main.cpp:44
+#: main.cpp:32
 #, kde-format
 msgid "The KDE ship sinking game"
 msgstr "ល្បែង​ពន្លិច​នាវា​របស់​ KDE"
 
-#: main.cpp:45
+#: main.cpp:33
 #, kde-format
 msgid ""
 "(c) 2000-2005  Nikolas Zimmermann, Daniel Molkentin\n"
@@ -96,187 +96,187 @@ msgstr ""
 "រក្សាសិទ្ធិ​ឆ្នាំ ២​០​០​០-២​០​០​៥ ដោយ Nikolas Zimmermann, Daniel Molkentin\n"
 "រក្សាសិទ្ធិ​ឆ្នាំ ២​០០៧ ដោយ Paolo Capriotti"
 
-#: main.cpp:50
+#: main.cpp:38
 #, kde-format
 msgid "Paolo Capriotti"
 msgstr "Paolo Capriotti"
 
-#: main.cpp:50
+#: main.cpp:38
 #, kde-format
 msgid "Current maintainer"
 msgstr "អ្នក​ថែទាំ​បច្ចុប្បន្ន"
 
-#: main.cpp:51
+#: main.cpp:39
 #, kde-format
 msgid "Nikolas Zimmermann"
 msgstr "Nikolas Zimmermann"
 
-#: main.cpp:51
+#: main.cpp:39
 #, kde-format
 msgid "Project Founder, GUI Handling, Client/Server"
 msgstr "អ្នក​បង្កើត​គម្រោង, ដោះស្រាយ GUI, ម៉ាស៊ីន​ភ្ញៀវ/ម៉ាស៊ីន​បម្រើ"
 
-#: main.cpp:52
+#: main.cpp:40
 #, kde-format
 msgid "Daniel Molkentin"
 msgstr "Daniel Molkentin"
 
-#: main.cpp:52
+#: main.cpp:40
 #, kde-format
 msgid "Dialog Stuff, Client/Server"
 msgstr "ប្រអប់​ផ្សេងៗ, ម៉ាស៊ីន​ភ្ញៀវ/ម៉ាស៊ីន​បម្រើ"
 
-#: main.cpp:53
+#: main.cpp:41
 #, kde-format
 msgid "Kevin Krammer"
 msgstr "Kevin Krammer"
 
-#: main.cpp:53
+#: main.cpp:41
 #, kde-format
 msgid "Computer Player"
 msgstr "អ្នក​លេង​ជា​កុំព្យូទ័រ"
 
-#: main.cpp:55
+#: main.cpp:43
 #, kde-format
 msgid "Johann Ollivier Lapeyre"
 msgstr "Johann Ollivier Lapeyre"
 
-#: main.cpp:55
+#: main.cpp:43
 #, kde-format
 msgid "Game artwork"
 msgstr "ការងារ​សិល្បៈ​ល្បែង"
 
-#: main.cpp:56
+#: main.cpp:44
 #, kde-format
 msgid "Eugene Trounev"
 msgstr "Eugene Trounev"
 
-#: main.cpp:56
+#: main.cpp:44
 #, kde-format
 msgid "Background"
 msgstr "ផ្ទៃ​ខាងក្រោយ"
 
-#: main.cpp:57
+#: main.cpp:45
 #, kde-format
 msgid "Robert Wadley"
 msgstr "Robert Wadley"
 
-#: main.cpp:57
+#: main.cpp:45
 #, kde-format
 msgid "Artwork for some of the ships"
 msgstr "ការងារ​​សិល្បៈ​សម្រាប់​នាវា​ខ្លះ"
 
-#: main.cpp:58
+#: main.cpp:46
 #, kde-format
 msgid "Riccardo Iaconelli"
 msgstr "Riccardo Iaconelli"
 
-#: main.cpp:58
+#: main.cpp:46
 #, kde-format
 msgid "Welcome screen"
 msgstr "អេក្រង់​ស្វាគមន៍"
 
-#: main.cpp:59
+#: main.cpp:47
 #, kde-format
 msgid "Benjamin Adler"
 msgstr "Benjamin Adler"
 
-#: main.cpp:59
+#: main.cpp:47
 #, kde-format
 msgid "Icon"
 msgstr "រូប​តំណាង"
 
-#: main.cpp:60
+#: main.cpp:48
 #, kde-format
 msgid "Nils Trzebin"
 msgstr "Nils Trzebin"
 
-#: main.cpp:60
+#: main.cpp:48
 #, kde-format
 msgid "Sounds"
 msgstr "សំឡេង"
 
-#: main.cpp:61
+#: main.cpp:49
 #, kde-format
 msgid "Elmar Hoefner"
 msgstr "Elmar Hoefner"
 
-#: main.cpp:61
+#: main.cpp:49
 #, kde-format
 msgid "GFX"
 msgstr "GFX​"
 
-#: main.cpp:62
+#: main.cpp:50
 #, kde-format
 msgid "Lukas Tinkl"
 msgstr "Lukas Tinkl"
 
-#: main.cpp:62
+#: main.cpp:50
 #, kde-format
 msgid "Non-Latin1 Support"
 msgstr "ការ​គាំទ្រ​ដែល​មិន​មែន​ជា​អក្សរ​ឡាតាំង​ ១"
 
-#: main.cpp:63
+#: main.cpp:51
 #, kde-format
 msgid "Malte Starostik"
 msgstr "Malte Starostik"
 
-#: main.cpp:63
+#: main.cpp:51
 #, kde-format
 msgid "Various improvements"
 msgstr "ការ​ធ្វើឲ្យ​ប្រសើរ​ឡើង​ផ្សេងៗ"
 
-#: main.cpp:64
+#: main.cpp:52
 #, kde-format
 msgid "Albert Astals Cid"
 msgstr "Albert Astals Cid"
 
-#: main.cpp:64 main.cpp:65
+#: main.cpp:52 main.cpp:53
 #, kde-format
 msgid "Various improvements and bugfixes"
 msgstr "ភាព​ប្រសើរ​ឡើង​ផ្សេងៗ និង​ការ​បំបាត់​កំហុស"
 
-#: main.cpp:65
+#: main.cpp:53
 #, kde-format
 msgid "John Tapsell"
 msgstr "John Tapsell"
 
-#: main.cpp:66
+#: main.cpp:54
 #, kde-format
 msgid "Inge Wallin"
 msgstr "Inge Wallin"
 
-#: main.cpp:66
+#: main.cpp:54
 #, kde-format
 msgid "Bugfixes and refactoring"
 msgstr "បំបាត់​កំហុស និង ធ្វើ​ឲ្យ​ប្រសើរ​ឡើង"
 
-#: main.cpp:67
+#: main.cpp:55
 #, kde-format
 msgid "Jakub Stachowski"
 msgstr "Jakub Stachowski"
 
-#: main.cpp:67
+#: main.cpp:55
 #, kde-format
 msgid "DNS-SD discovery"
 msgstr "ការ​រក​​​​​​​​​​​​​​​​​ឃើញ DNS-SD"
 
-#: main.cpp:68
+#: main.cpp:56
 #, kde-format
 msgid "Roney Gomes"
 msgstr "Roney Gomes"
 
-#: main.cpp:68
+#: main.cpp:56
 #, kde-format
 msgid "Porting to KGameRenderer and QGraphicsView"
 msgstr "ច្រក​ទៅ​កាន់ KGameRenderer និង QGraphicsView"
 
-#: main.cpp:75
+#: main.cpp:63
 #, kde-format
 msgid "[URL]"
 msgstr ""
 
-#: main.cpp:75
+#: main.cpp:63
 #, kde-format
 msgid "URL of a Naval Battle game server to connect to after startup"
 msgstr "URL ​របស់​ម៉ាស៊ីន​បម្រើ​ល្បែង​នាវាចម្បាំង សម្រាប់​ត​ភ្ជាប់​ បន្ទាប់​ពី​បាន​ចាប់​ផ្តើម"
@@ -406,75 +406,75 @@ msgstr "សត្រូវ​របស់​អ្នក​​ឥឡូវ​ស
 msgid "Your opponent disconnected from the game"
 msgstr "សត្រូវ​របស់​អ្នក​បាន​ផ្ដាច់​ពី​ល្បែង"
 
-#: playfield.cpp:149 playfield.cpp:169
+#: playfield.cpp:148 playfield.cpp:168
 #, kde-format
 msgid "Shots"
 msgstr "បាញ់"
 
-#: playfield.cpp:150 playfield.cpp:170
+#: playfield.cpp:149 playfield.cpp:169
 #, kde-format
 msgid "Hits"
 msgstr "បាញ់​ត្រូវ"
 
-#: playfield.cpp:151 playfield.cpp:171
+#: playfield.cpp:150 playfield.cpp:170
 #, kde-format
 msgid "Misses"
 msgstr "ខុស"
 
-#: playfield.cpp:191
+#: playfield.cpp:190
 #, kde-format
 msgid "You win!"
 msgstr "អ្នក​ឈ្នះ​ហើយ !"
 
-#: playfield.cpp:193
+#: playfield.cpp:192
 #, kde-format
 msgid "You win. Excellent!"
 msgstr "អ្នក​​ឈ្នះ​ហើយ​ ។ អស្ចារ្យ!"
 
-#: playfield.cpp:197
+#: playfield.cpp:196
 #, kde-format
 msgid "You lose."
 msgstr "អ្នក​ចាញ់​ហើយ​ ។"
 
-#: playfield.cpp:199
+#: playfield.cpp:198
 #, fuzzy, kde-format
 #| msgid "You lose. Try harder next time!"
 msgid "You lose. Better luck next time!"
 msgstr "អ្នក​ចាញ់​ហើយ​ ។ សូម​ព្យាយាម​ថែម​ទៀត​ពេល​ក្រោយ​!"
 
-#: playfield.cpp:209
+#: playfield.cpp:208
 #, kde-format
 msgid "Change Nickname"
 msgstr "ប្ដូរ​សម្មតិនាម"
 
-#: playfield.cpp:209
+#: playfield.cpp:208
 #, kde-format
 msgid "Enter new nickname:"
 msgstr "បញ្ចូល​សម្មតិនាម​ថ្មី ៖"
 
-#: playfield.cpp:242
+#: playfield.cpp:237
 #, kde-format
 msgid "Restart game"
 msgstr "ចាប់​ផ្ដើម​ល្បែង​​ឡើង​វិញ"
 
-#: playfield.cpp:243
+#: playfield.cpp:238
 #, kde-format
 msgid "Your opponent has requested to restart the game. Do you accept?"
 msgstr "សត្រូវ​របស់​អ្នក​បាន​ស្នើ​ឲ្យ​ចាប់ផ្ដើម​ល្បែង​ឡើង​វិញ ។ តើ​អ្នក​ទទួល​ដែរ​ឬទេ ?"
 
-#: playfield.cpp:244
+#: playfield.cpp:239
 #, kde-format
 msgctxt "@action:button"
 msgid "Accept"
 msgstr ""
 
-#: playfield.cpp:245
+#: playfield.cpp:240
 #, kde-format
 msgctxt "@action:button"
 msgid "Reject"
 msgstr ""
 
-#: playfield.cpp:258
+#: playfield.cpp:249
 #, fuzzy, kde-format
 #| msgid ""
 #| "Your opponent is using a pre-KDE4 version of Naval Battle. Note that, "
@@ -488,63 +488,63 @@ msgstr ""
 "សត្រូវ​របស់​អ្នក​កំពុង​តែ​ប្រើ​កំណែ​ Naval Battle មុន​របស់​ KDE4 ។ ​ចំណាំ​ថា យោង​ទៅ​តាម​ក្បួន​ដែល​បាន​ពង្រឹង​"
 "ដោយ​កម្មវិធី​ចាស់​ៗ​ មិន​អាច​ដាក់​នាវា​នៅ​ក្បែរ​នាវា​មួយ​ទៀត​បាន​ទេ ។"
 
-#: playfield.cpp:271
+#: playfield.cpp:262
 #, kde-format
 msgid "Enemy has shot. Shoot now!"
 msgstr "សត្រូវ​បាន​បាញ់​ហើយ ។ បាញ់​ឥឡូវ​!"
 
-#: playfield.cpp:275
+#: playfield.cpp:266
 #, kde-format
 msgid "Waiting for enemy to shoot..."
 msgstr "កំពុង​រង់​ចាំ​ឲ្យ​សត្រូវ​បាញ់.."
 
-#: playfield.cpp:284
+#: playfield.cpp:275
 #, kde-format
 msgid "Ships placed. Now shoot on the enemy field!"
 msgstr "បាន​ដាក់​នាវា ។ ឥឡូវ​បាញ់​លើ​វាល​​សត្រូវ !"
 
-#: playfield.cpp:287
+#: playfield.cpp:278
 #, kde-format
 msgid "Waiting for other player to start the game..."
 msgstr "កំពុង​រង់​ចាំ​ឲ្យ​អ្នក​លេង​ផ្សេង​ទៀត​​ចាប់​ផ្ដើម​ល្បែង..."
 
-#: playfield.cpp:291
+#: playfield.cpp:282
 #, kde-format
 msgid "Waiting for other player to place his ships..."
 msgstr "កំពុង​រង់ចាំ​អ្នក​លេង​ផ្សេង​ទៀត​ ដាក់​នាវា​របស់​គេ..."
 
-#: playfield.cpp:305
+#: playfield.cpp:296
 #, fuzzy, kde-format
 #| msgid "Place your ships. Use the right mouse button to rotate them."
 msgid "Place your %1 ships. Use the right mouse button to rotate them."
 msgstr "ដាក់​នាវា​របស់​អ្នក ។ ប្រើ​ប៊ូតុង​កណ្ដុរ​ស្ដាំ​ដើម្បី​បង្វិល​ពួកវា ។"
 
-#: playfield.cpp:311
+#: playfield.cpp:302
 #, kde-format
 msgid "You can't place your remaining ships."
 msgstr ""
 
-#: playfield.cpp:312
+#: playfield.cpp:303
 #, fuzzy, kde-format
 #| msgid "Restart game"
 msgctxt "@action"
 msgid "Restart"
 msgstr "ចាប់​ផ្ដើម​ល្បែង​​ឡើង​វិញ"
 
-#: playfield.cpp:313
+#: playfield.cpp:304
 #, kde-format
 msgctxt "@action"
 msgid "Abort"
 msgstr ""
 
-#: playfield.cpp:319
+#: playfield.cpp:306
 #, kde-format
 msgid ""
 "You can't place your remaining ships. Please restart placing ships or abort "
 "game"
 msgstr ""
 
-#: playfield.cpp:319
+#: playfield.cpp:306
 #, kde-format
 msgid "Restart placing ships"
 msgstr ""
