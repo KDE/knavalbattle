@@ -7,8 +7,8 @@
 #ifndef CHATWIDGET_H
 #define CHATWIDGET_H
 
+#include <QList>
 #include <QWidget>
-#include <QVector>
 
 class QTextEdit;
 class QLineEdit;
@@ -22,7 +22,7 @@ Q_OBJECT
     QLineEdit* m_input;
     
     int m_current;
-    QVector<QString> m_history;
+    QList<QString> m_history;
     QString m_nick;
     
     void setHistoryText(int index);
