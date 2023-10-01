@@ -385,7 +385,7 @@ msgstr "Á espera dalgunha conexión entrante…"
 #: networkdialog.cpp:236
 #, kde-format
 msgid "Could not connect to host"
-msgstr "Non se puido conectar co servidor"
+msgstr "Non foi posíbel conectar co servidor"
 
 #: networkentity.cpp:189
 #, kde-format
