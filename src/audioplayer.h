@@ -9,7 +9,7 @@
 
 #include "sea.h"
 
-class KgSound;
+class KGameSound;
 
 class AudioPlayer : public QObject
 {
@@ -22,10 +22,10 @@ public:
     void setActive(bool value);
 
 private:
-    KgSound *m_sink;
-    KgSound *m_shootA;
-    KgSound *m_shootB;
-    KgSound *m_shootWater;
+    KGameSound *m_sink;
+    KGameSound *m_shootA;
+    KGameSound *m_shootB;
+    KGameSound *m_shootWater;
 };
 
 #endif // AUDIOPLAYER_H

@@ -6,7 +6,7 @@
 
 #include "audioplayer.h"
 
-#include <KgSound>
+#include <KGameSound>
 
 #include <QDir>
 #include <QStandardPaths>
@@ -23,7 +23,7 @@ AudioPlayer::AudioPlayer(QObject* parent)
 
 void AudioPlayer::play(Sea::Player player, const HitInfo& info)
 {
-    KgSound *sound;
+    KGameSound *sound;
     if (info.type == HitInfo::HIT) {
         if (info.shipDestroyed) {
             sound = m_sink;
@@ -46,10 +46,10 @@ void AudioPlayer::setActive(bool value)
     if (value) {
         if (!m_sink) {
             const QDir dir = QStandardPaths::locate(QStandardPaths::AppDataLocation, QStringLiteral("sounds/"), QStandardPaths::LocateDirectory);
-            m_sink = new KgSound(dir.filePath(QStringLiteral("ship-sink.ogg")), this);
-            m_shootA = new KgSound(dir.filePath(QStringLiteral("ship-player1-shoot.ogg")), this);
-            m_shootB = new KgSound(dir.filePath(QStringLiteral("ship-player2-shoot.ogg")), this);
-            m_shootWater = new KgSound(dir.filePath(QStringLiteral("ship-player-shoot-water.ogg")), this);
+            m_sink = new KGameSound(dir.filePath(QStringLiteral("ship-sink.ogg")), this);
+            m_shootA = new KGameSound(dir.filePath(QStringLiteral("ship-player1-shoot.ogg")), this);
+            m_shootB = new KGameSound(dir.filePath(QStringLiteral("ship-player2-shoot.ogg")), this);
+            m_shootWater = new KGameSound(dir.filePath(QStringLiteral("ship-player-shoot-water.ogg")), this);
         }
     }
     else {
