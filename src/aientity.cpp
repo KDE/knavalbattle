@@ -11,7 +11,7 @@
 #include "seaview.h"
 #include "settings.h"
 
-#include <KgDifficulty>
+#include <KGameDifficulty>
 
 #include <QIcon>
 
@@ -19,11 +19,11 @@ AIEntity::AIEntity(Sea::Player player, Sea* sea, SeaView *seaview)
 : Entity(player, seaview, sea->battleShipsConfiguration())
 , m_sea(sea)
 {
-    switch (Kg::difficultyLevel()) {
-    case KgDifficultyLevel::Easy:
+    switch (KGameDifficulty::globalLevel()) {
+    case KGameDifficultyLevel::Easy:
         m_ai = new DummyAI(m_player, m_sea, sea->battleShipsConfiguration());
         break;
-    case KgDifficultyLevel::Medium:
+    case KGameDifficultyLevel::Medium:
         m_ai = new SmartAI(m_player, m_sea, true, sea->battleShipsConfiguration());
         break;
     default: // hard

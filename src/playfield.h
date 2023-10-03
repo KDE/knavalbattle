@@ -9,7 +9,7 @@
 
 #include <QWidget>
 
-#include <KgDifficulty>
+#include <KGameDifficulty>
 
 #include "sea.h"
 #include "ships.h"

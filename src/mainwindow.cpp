@@ -28,13 +28,13 @@ MainWindow::MainWindow(const QUrl& url)
     
     setCentralWidget(m_main);
 
-    Kg::difficulty()->addStandardLevelRange(
-        KgDifficultyLevel::Easy, KgDifficultyLevel::Hard, //range
-        KgDifficultyLevel::Hard //default
+    KGameDifficulty::global()->addStandardLevelRange(
+        KGameDifficultyLevel::Easy, KGameDifficultyLevel::Hard, //range
+        KGameDifficultyLevel::Hard //default
     );
-    KgDifficultyGUI::init(this);
+    KGameDifficultyGUI::init(this);
 
-    connect(Kg::difficulty(), &KgDifficulty::currentLevelChanged, m_main, &PlayField::levelChanged);
+    connect(KGameDifficulty::global(), &KGameDifficulty::currentLevelChanged, m_main, &PlayField::levelChanged);
 
     setupActions();
 

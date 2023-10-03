@@ -113,7 +113,7 @@ void PlayField::newGame()
     endGame();
     delete m_menu;
     
-    Kg::difficulty()->setGameRunning(false);
+    KGameDifficulty::global()->setGameRunning(false);
     
     m_chat->hide();
     m_seaView->screen(Sea::Player(0))->show();
@@ -144,7 +144,7 @@ void PlayField::highscores()
             KScoreDialog::Custom2 | 
             KScoreDialog::Custom3, 
             this);
-    highscoredialog->initFromDifficulty(Kg::difficulty());
+    highscoredialog->initFromDifficulty(KGameDifficulty::global());
     highscoredialog->addField(KScoreDialog::Custom1, i18n("Shots"), QStringLiteral("shots"));
     highscoredialog->addField(KScoreDialog::Custom2, i18n("Hits"), QStringLiteral("hits"));
     highscoredialog->addField(KScoreDialog::Custom3, i18n("Misses"), QStringLiteral("water"));
@@ -164,7 +164,7 @@ void PlayField::gameOver(Sea::Player winner)
                     KScoreDialog::Custom2 | 
                     KScoreDialog::Custom3, 
                     this);
-            highscoredialog->initFromDifficulty(Kg::difficulty());
+            highscoredialog->initFromDifficulty(KGameDifficulty::global());
             highscoredialog->addField(KScoreDialog::Custom1, i18n("Shots"), QStringLiteral("shots"));
             highscoredialog->addField(KScoreDialog::Custom2, i18n("Hits"), QStringLiteral("hits"));
             highscoredialog->addField(KScoreDialog::Custom3, i18n("Misses"), QStringLiteral("water"));
@@ -286,7 +286,7 @@ void PlayField::playerReady(int player)
 void PlayField::startGame()
 {
     //the game has a fixed difficulty level only if there is an AI
-    Kg::difficulty()->setGameRunning(m_controller->hasAI());
+    KGameDifficulty::global()->setGameRunning(m_controller->hasAI());
     startPlacingShips();
     Q_EMIT placeShips();
 }
