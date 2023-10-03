@@ -7,12 +7,12 @@
 #include "kbsrenderer.h"
 #include "coord.h"
 // KDEGames
-#include <KgThemeProvider>
+#include <KGameThemeProvider>
 #include <KGameRenderedItem>
 
-static KgThemeProvider *provider()
+static KGameThemeProvider *provider()
 {
-    KgThemeProvider *prov = new KgThemeProvider;
+    KGameThemeProvider *prov = new KGameThemeProvider;
     prov->discoverThemes(QStringLiteral("pictures"));
     return prov;
 }
