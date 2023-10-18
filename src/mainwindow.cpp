@@ -13,7 +13,7 @@
 #include <KActionCollection>
 #include <KLocalizedString>
 #include <KStandardAction>
-#include <KStandardGameAction>
+#include <KGameStandardAction>
 #include <QStatusBar>
 #include <KToggleAction>
 
@@ -49,11 +49,11 @@ MainWindow::MainWindow(const QUrl& url)
 
 void MainWindow::setupActions()
 {
-    KStandardGameAction::gameNew(m_main, &PlayField::newGame, actionCollection());
-    KStandardGameAction::restart(m_main, &PlayField::restart, actionCollection());
-    KStandardGameAction::highscores(m_main, &PlayField::highscores, actionCollection());
+    KGameStandardAction::gameNew(m_main, &PlayField::newGame, actionCollection());
+    KGameStandardAction::restart(m_main, &PlayField::restart, actionCollection());
+    KGameStandardAction::highscores(m_main, &PlayField::highscores, actionCollection());
     
-    KStandardGameAction::quit(this, &MainWindow::close, actionCollection());
+    KGameStandardAction::quit(this, &MainWindow::close, actionCollection());
     
     QAction* action;
     action = new QAction(i18n("&Single Player"), this);
