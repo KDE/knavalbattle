@@ -16,7 +16,8 @@
 
 #include <KLocalizedString>
 #include <KMessageBox>
-#include <KScoreDialog>
+
+#include <KGameHighScoreDialog>
 
 #include "aientity.h"
 #include "audioplayer.h"
@@ -138,16 +139,16 @@ void PlayField::restart()
 
 void PlayField::highscores()
 {
-    KScoreDialog* highscoredialog = new KScoreDialog(
-            KScoreDialog::Name | KScoreDialog::Score | 
-            KScoreDialog::Custom1 | 
-            KScoreDialog::Custom2 | 
-            KScoreDialog::Custom3, 
+    KGameHighScoreDialog* highscoredialog = new KGameHighScoreDialog(
+            KGameHighScoreDialog::Name | KGameHighScoreDialog::Score |
+            KGameHighScoreDialog::Custom1 |
+            KGameHighScoreDialog::Custom2 |
+            KGameHighScoreDialog::Custom3,
             this);
     highscoredialog->initFromDifficulty(KGameDifficulty::global());
-    highscoredialog->addField(KScoreDialog::Custom1, i18n("Shots"), QStringLiteral("shots"));
-    highscoredialog->addField(KScoreDialog::Custom2, i18n("Hits"), QStringLiteral("hits"));
-    highscoredialog->addField(KScoreDialog::Custom3, i18n("Misses"), QStringLiteral("water"));
+    highscoredialog->addField(KGameHighScoreDialog::Custom1, i18n("Shots"), QStringLiteral("shots"));
+    highscoredialog->addField(KGameHighScoreDialog::Custom2, i18n("Hits"), QStringLiteral("hits"));
+    highscoredialog->addField(KGameHighScoreDialog::Custom3, i18n("Misses"), QStringLiteral("water"));
     
     highscoredialog->exec();
 }
@@ -158,27 +159,27 @@ void PlayField::gameOver(Sea::Player winner)
         const Stats* stats = m_menu->player(0)->stats();
        
         if (stats && qobject_cast<const AIEntity*>(m_menu->player(1))) {
-            QPointer<KScoreDialog> highscoredialog = new KScoreDialog(
-                    KScoreDialog::Name | KScoreDialog::Score | 
-                    KScoreDialog::Custom1 | 
-                    KScoreDialog::Custom2 | 
-                    KScoreDialog::Custom3, 
+            QPointer<KGameHighScoreDialog> highscoredialog = new KGameHighScoreDialog(
+                    KGameHighScoreDialog::Name | KGameHighScoreDialog::Score |
+                    KGameHighScoreDialog::Custom1 |
+                    KGameHighScoreDialog::Custom2 |
+                    KGameHighScoreDialog::Custom3,
                     this);
             highscoredialog->initFromDifficulty(KGameDifficulty::global());
-            highscoredialog->addField(KScoreDialog::Custom1, i18n("Shots"), QStringLiteral("shots"));
-            highscoredialog->addField(KScoreDialog::Custom2, i18n("Hits"), QStringLiteral("hits"));
-            highscoredialog->addField(KScoreDialog::Custom3, i18n("Misses"), QStringLiteral("water"));
+            highscoredialog->addField(KGameHighScoreDialog::Custom1, i18n("Shots"), QStringLiteral("shots"));
+            highscoredialog->addField(KGameHighScoreDialog::Custom2, i18n("Hits"), QStringLiteral("hits"));
+            highscoredialog->addField(KGameHighScoreDialog::Custom3, i18n("Misses"), QStringLiteral("water"));
         
-            KScoreDialog::FieldInfo info;
-            info[KScoreDialog::Name] = m_menu->player(0)->nick();
-            info[KScoreDialog::Score].setNum(stats->score());
-            info[KScoreDialog::Custom1] = QString::number(stats->shots());
-            info[KScoreDialog::Custom2] = QString::number(stats->hits());
-            info[KScoreDialog::Custom3] = QString::number(stats->misses());
+            KGameHighScoreDialog::FieldInfo info;
+            info[KGameHighScoreDialog::Name] = m_menu->player(0)->nick();
+            info[KGameHighScoreDialog::Score].setNum(stats->score());
+            info[KGameHighScoreDialog::Custom1] = QString::number(stats->shots());
+            info[KGameHighScoreDialog::Custom2] = QString::number(stats->hits());
+            info[KGameHighScoreDialog::Custom3] = QString::number(stats->misses());
         
-            int temp = highscoredialog->addScore(info, KScoreDialog::AskName);
+            int temp = highscoredialog->addScore(info, KGameHighScoreDialog::AskName);
             qCDebug(KNAVALBATTLE_LOG) << "temp =" << temp;
-            //if (highscoredialog->addScore(info, KScoreDialog::AskName)) {
+            //if (highscoredialog->addScore(info, KGameHighScoreDialog::AskName)) {
             if (temp != 0) {
                 highscoredialog->exec();
                 delete highscoredialog;
