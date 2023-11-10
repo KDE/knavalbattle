@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kbattleship\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-09-25 01:40+0000\n"
+"POT-Creation-Date: 2023-11-10 01:46+0000\n"
 "PO-Revision-Date: 2009-07-21 01:50+0900\n"
 "Last-Translator: Yukiko Bando <ybando@k6.dion.ne.jp>\n"
 "Language-Team: Japanese <kde-jp@kde.org>\n"
@@ -414,75 +414,75 @@ msgstr "敵が名前を “%1” に変更しました"
 msgid "Your opponent disconnected from the game"
 msgstr "敵がゲームとの接続を切りました"
 
-#: playfield.cpp:148 playfield.cpp:168
+#: playfield.cpp:149 playfield.cpp:169
 #, kde-format
 msgid "Shots"
 msgstr "射撃"
 
-#: playfield.cpp:149 playfield.cpp:169
+#: playfield.cpp:150 playfield.cpp:170
 #, kde-format
 msgid "Hits"
 msgstr "命中"
 
-#: playfield.cpp:150 playfield.cpp:170
+#: playfield.cpp:151 playfield.cpp:171
 #, kde-format
 msgid "Misses"
 msgstr "はずれ"
 
-#: playfield.cpp:190
+#: playfield.cpp:191
 #, kde-format
 msgid "You win!"
 msgstr "あなたの勝ちです!"
 
-#: playfield.cpp:192
+#: playfield.cpp:193
 #, kde-format
 msgid "You win. Excellent!"
 msgstr "あなたの勝ちです。素晴しい!"
 
-#: playfield.cpp:196
+#: playfield.cpp:197
 #, kde-format
 msgid "You lose."
 msgstr "あなたの負けです。"
 
-#: playfield.cpp:198
+#: playfield.cpp:199
 #, fuzzy, kde-format
 #| msgid "You lose. Try harder next time!"
 msgid "You lose. Better luck next time!"
 msgstr "あなたの負けです。次回はもっと頑張ってください!"
 
-#: playfield.cpp:208
+#: playfield.cpp:209
 #, kde-format
 msgid "Change Nickname"
 msgstr "ニックネームを変更"
 
-#: playfield.cpp:208
+#: playfield.cpp:209
 #, kde-format
 msgid "Enter new nickname:"
 msgstr "新しいニックネームを入力:"
 
-#: playfield.cpp:237
+#: playfield.cpp:238
 #, kde-format
 msgid "Restart game"
 msgstr "ゲームを再スタート"
 
-#: playfield.cpp:238
+#: playfield.cpp:239
 #, kde-format
 msgid "Your opponent has requested to restart the game. Do you accept?"
 msgstr "敵がゲームの再スタートを要求しています。受け入れますか？"
 
-#: playfield.cpp:239
+#: playfield.cpp:240
 #, kde-format
 msgctxt "@action:button"
 msgid "Accept"
 msgstr ""
 
-#: playfield.cpp:240
+#: playfield.cpp:241
 #, kde-format
 msgctxt "@action:button"
 msgid "Reject"
 msgstr ""
 
-#: playfield.cpp:249
+#: playfield.cpp:250
 #, fuzzy, kde-format
 #| msgid ""
 #| "Your opponent is using a pre-KDE4 version of KBattleship. Note that, "
@@ -496,63 +496,63 @@ msgstr ""
 "敵は KDE4 より古いバージョンの KBattleship を使っています。古いクライアントの"
 "ルールにより、戦艦を隣接して配置することはできません。"
 
-#: playfield.cpp:262
+#: playfield.cpp:263
 #, kde-format
 msgid "Enemy has shot. Shoot now!"
 msgstr "敵艦隊が撃ちました。撃ってください!"
 
-#: playfield.cpp:266
+#: playfield.cpp:267
 #, kde-format
 msgid "Waiting for enemy to shoot..."
 msgstr "敵艦隊が射撃するのを待っています..."
 
-#: playfield.cpp:275
+#: playfield.cpp:276
 #, kde-format
 msgid "Ships placed. Now shoot on the enemy field!"
 msgstr "艦隊の配置が完了しました。敵陣に向かって発射してください!"
 
-#: playfield.cpp:278
+#: playfield.cpp:279
 #, kde-format
 msgid "Waiting for other player to start the game..."
 msgstr "相手プレイヤーがゲームを開始するのを待っています..."
 
-#: playfield.cpp:282
+#: playfield.cpp:283
 #, kde-format
 msgid "Waiting for other player to place his ships..."
 msgstr "相手プレイヤーが艦隊を配置するのを待っています..."
 
-#: playfield.cpp:296
+#: playfield.cpp:297
 #, fuzzy, kde-format
 #| msgid "Place your ships. Use the right mouse button to rotate them."
 msgid "Place your %1 ships. Use the right mouse button to rotate them."
 msgstr "艦隊を配置してください。マウスの右ボタンを使うと回転できます。"
 
-#: playfield.cpp:302
+#: playfield.cpp:303
 #, kde-format
 msgid "You can't place your remaining ships."
 msgstr ""
 
-#: playfield.cpp:303
+#: playfield.cpp:304
 #, fuzzy, kde-format
 #| msgid "Restart game"
 msgctxt "@action"
 msgid "Restart"
 msgstr "ゲームを再スタート"
 
-#: playfield.cpp:304
+#: playfield.cpp:305
 #, kde-format
 msgctxt "@action"
 msgid "Abort"
 msgstr ""
 
-#: playfield.cpp:306
+#: playfield.cpp:307
 #, kde-format
 msgid ""
 "You can't place your remaining ships. Please restart placing ships or abort "
 "game"
 msgstr ""
 
-#: playfield.cpp:306
+#: playfield.cpp:307
 #, kde-format
 msgid "Restart placing ships"
 msgstr ""

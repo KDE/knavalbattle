@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kbattleship\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-09-25 01:40+0000\n"
+"POT-Creation-Date: 2023-11-10 01:46+0000\n"
 "PO-Revision-Date: 2022-07-13 19:12+0200\n"
 "Last-Translator: Valter Mura <valtermura@gmail.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
@@ -408,74 +408,74 @@ msgstr "Il tuo avversario si fa chiamare %1"
 msgid "Your opponent disconnected from the game"
 msgstr "Il tuo avversario si è scollegato dalla partita"
 
-#: playfield.cpp:148 playfield.cpp:168
+#: playfield.cpp:149 playfield.cpp:169
 #, kde-format
 msgid "Shots"
 msgstr "Tiri"
 
-#: playfield.cpp:149 playfield.cpp:169
+#: playfield.cpp:150 playfield.cpp:170
 #, kde-format
 msgid "Hits"
 msgstr "Centri"
 
-#: playfield.cpp:150 playfield.cpp:170
+#: playfield.cpp:151 playfield.cpp:171
 #, kde-format
 msgid "Misses"
 msgstr "Colpi in acqua"
 
-#: playfield.cpp:190
+#: playfield.cpp:191
 #, kde-format
 msgid "You win!"
 msgstr "Hai vinto!"
 
-#: playfield.cpp:192
+#: playfield.cpp:193
 #, kde-format
 msgid "You win. Excellent!"
 msgstr "Hai vinto. Sei grande!"
 
-#: playfield.cpp:196
+#: playfield.cpp:197
 #, kde-format
 msgid "You lose."
 msgstr "Hai perso."
 
-#: playfield.cpp:198
+#: playfield.cpp:199
 #, kde-format
 msgid "You lose. Better luck next time!"
 msgstr "Hai perso. Andrà meglio la prossima volta!"
 
-#: playfield.cpp:208
+#: playfield.cpp:209
 #, kde-format
 msgid "Change Nickname"
 msgstr "Cambia &nome di battaglia:"
 
-#: playfield.cpp:208
+#: playfield.cpp:209
 #, kde-format
 msgid "Enter new nickname:"
 msgstr "Scrivi il nuovo nome di battaglia:"
 
-#: playfield.cpp:237
+#: playfield.cpp:238
 #, kde-format
 msgid "Restart game"
 msgstr "Nuova battaglia"
 
-#: playfield.cpp:238
+#: playfield.cpp:239
 #, kde-format
 msgid "Your opponent has requested to restart the game. Do you accept?"
 msgstr "Il tuo avversario sta chiedendo di riavviare la battaglia. Accetti?"
 
-#: playfield.cpp:239
+#: playfield.cpp:240
 #, kde-format
 msgctxt "@action:button"
 msgid "Accept"
 msgstr "Accetta"
 
-#: playfield.cpp:240
+#: playfield.cpp:241
 #, kde-format
 msgctxt "@action:button"
 msgid "Reject"
 msgstr "Rifiuta"
 
-#: playfield.cpp:249
+#: playfield.cpp:250
 #, kde-format
 msgid ""
 "Your opponent is using a pre-KDE4 version of Naval Battle. Note that, "
@@ -487,54 +487,54 @@ msgstr ""
 "possono essere accostate l'una all'altra e si può schierare solo una nave di "
 "ogni tipo.."
 
-#: playfield.cpp:262
+#: playfield.cpp:263
 #, kde-format
 msgid "Enemy has shot. Shoot now!"
 msgstr "Il nemico ha sparato. Puoi sparare."
 
-#: playfield.cpp:266
+#: playfield.cpp:267
 #, kde-format
 msgid "Waiting for enemy to shoot..."
 msgstr "In attesa che il nemico spari..."
 
-#: playfield.cpp:275
+#: playfield.cpp:276
 #, kde-format
 msgid "Ships placed. Now shoot on the enemy field!"
 msgstr "Le navi sono schierate. Puoi sparare sul mare avversario!"
 
-#: playfield.cpp:278
+#: playfield.cpp:279
 #, kde-format
 msgid "Waiting for other player to start the game..."
 msgstr "In attesa che l'altro giocatore avvi la partita..."
 
-#: playfield.cpp:282
+#: playfield.cpp:283
 #, kde-format
 msgid "Waiting for other player to place his ships..."
 msgstr "In attesa che l'altro giocatore disponga la flotta..."
 
-#: playfield.cpp:296
+#: playfield.cpp:297
 #, kde-format
 msgid "Place your %1 ships. Use the right mouse button to rotate them."
 msgstr "Schiera le tue %1 navi. Usa il tasto destro del mouse per ruotarle."
 
-#: playfield.cpp:302
+#: playfield.cpp:303
 #, kde-format
 msgid "You can't place your remaining ships."
 msgstr "Non puoi inserire le navi che ti restano"
 
-#: playfield.cpp:303
+#: playfield.cpp:304
 #, kde-format
 msgctxt "@action"
 msgid "Restart"
 msgstr "Nuova battaglia"
 
-#: playfield.cpp:304
+#: playfield.cpp:305
 #, kde-format
 msgctxt "@action"
 msgid "Abort"
 msgstr "Termina partita"
 
-#: playfield.cpp:306
+#: playfield.cpp:307
 #, kde-format
 msgid ""
 "You can't place your remaining ships. Please restart placing ships or abort "
@@ -543,7 +543,7 @@ msgstr ""
 "Non puoi più inserire le navi che ti restano. Dovresti ricominciare a "
 "disporle o terminare la partita."
 
-#: playfield.cpp:306
+#: playfield.cpp:307
 #, kde-format
 msgid "Restart placing ships"
 msgstr "Ridisponi le navi da capo"
