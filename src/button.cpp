@@ -9,7 +9,6 @@
 
 #include <QPainter>
 #include <QPen>
-#include <QImage>
 #include "knavalbattle_debug.h"
 
 #include <math.h> // fabs
