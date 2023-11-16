@@ -43,7 +43,7 @@ msgstr "Ordinador"
 #: knavalbattle.kcfg:9
 #, kde-format
 msgid "Default hostname for multiplayer games."
-msgstr "Ordinador predeterminat per a les partides multijugador."
+msgstr "Amfitrió predeterminat per a les partides multijugador."
 
 #. i18n: ectx: label, entry (Port), group (network)
 #: knavalbattle.kcfg:13
@@ -298,7 +298,7 @@ msgstr "Jugador &individual"
 #: mainwindow.cpp:63
 #, kde-format
 msgid "&Host Game..."
-msgstr "&Hostatja una partida..."
+msgstr "&Allotja una partida..."
 
 #: mainwindow.cpp:67
 #, kde-format
@@ -353,7 +353,7 @@ msgstr "&Partida a unir-se:"
 #: networkdialog.cpp:88
 #, kde-format
 msgid "&Hostname:"
-msgstr "Nom de la &màquina:"
+msgstr "Nom de l'amfitrió:"
 
 #: networkdialog.cpp:101 networkdialog.cpp:131
 #, kde-format
@@ -373,7 +373,7 @@ msgstr "Paràmetres de xarxa"
 #: networkdialog.cpp:210
 #, kde-format
 msgid "Connecting to remote host..."
-msgstr "S'està connectant amb l'ordinador remot..."
+msgstr "S'està connectant amb l'amfitrió remot..."
 
 #: networkdialog.cpp:217
 #, kde-format
@@ -383,7 +383,7 @@ msgstr "S'està esperant una connexió entrant..."
 #: networkdialog.cpp:236
 #, kde-format
 msgid "Could not connect to host"
-msgstr "No s'ha pogut connectar amb l'ordinador"
+msgstr "No s'ha pogut connectar amb l'amfitrió"
 
 #: networkentity.cpp:189
 #, kde-format
@@ -565,7 +565,7 @@ msgstr "Jugador individual"
 #: simplemenu.cpp:41
 #, kde-format
 msgid "Host Network Game"
-msgstr "Hostatja una partida de xarxa"
+msgstr "Allotja una partida de xarxa"
 
 #: simplemenu.cpp:42
 #, kde-format
