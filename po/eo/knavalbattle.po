@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: knavalbattle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-08-24 02:22+0000\n"
-"PO-Revision-Date: 2023-12-09 08:24+0100\n"
+"PO-Revision-Date: 2023-12-17 20:35+0100\n"
 "Last-Translator: Oliver Kellogg <okellogg@users.sourceforge.net>\n"
 "Language-Team: Esperanto <eo@li.org>\n"
 "Language: eo\n"
@@ -21,12 +21,12 @@ msgstr ""
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr "Wolfram Diestel"
+msgstr "Wolfram Diestel,Oliver Kellogg"
 
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
-msgstr "wolfram@steloj.de"
+msgstr "wolfram@steloj.de,okellogg@users.sourceforge.net"
 
 #: controller.cpp:50
 #, kde-format
@@ -380,7 +380,7 @@ msgstr "Ne eblis konekti al gastiganto"
 #: networkentity.cpp:189
 #, kde-format
 msgid "You have "
-msgstr "Vi havas"
+msgstr "Vi havas "
 
 #: networkentity.cpp:195
 #, kde-format
