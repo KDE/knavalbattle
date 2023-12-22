@@ -198,7 +198,7 @@ bool BattleField::canAddShipOfSizeInVertical(unsigned int size) const
     for (int i=0; i<m_secondary_board.width(); i++) {
         unsigned int contiguousLen = 0;
         for (int j=0; j<m_secondary_board.height(); j++) {
-            if ( m_secondary_board[ Coord(j,i) ] ) {
+            if ( m_secondary_board[ Coord(i,j) ] ) {
                 contiguousLen = 0;
             }
             else {
