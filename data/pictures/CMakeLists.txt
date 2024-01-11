@@ -1,9 +1,3 @@
-
-install(FILES
-default.desktop
-default_theme.svgz
-DESTINATION ${KDE_INSTALL_DATADIR}/knavalbattle/pictures)
-
 ecm_install_icons(ICONS
     16-apps-knavalbattle.png
     22-apps-knavalbattle.png

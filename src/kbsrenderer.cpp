@@ -13,7 +13,7 @@
 static KGameThemeProvider *provider()
 {
     KGameThemeProvider *prov = new KGameThemeProvider;
-    prov->discoverThemes(QStringLiteral("pictures"));
+    prov->discoverThemes(QStringLiteral("themes"));
     return prov;
 }
 

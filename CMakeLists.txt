@@ -50,6 +50,7 @@ ecm_set_disabled_deprecation_versions(
 )
 
 add_subdirectory(src) 
+add_subdirectory(themes)
 add_subdirectory(data)
 add_subdirectory(doc)
 ecm_qt_install_logging_categories(EXPORT KNAVALBATTLE FILE knavalbattle.categories DESTINATION ${KDE_INSTALL_LOGGINGCATEGORIESDIR})
