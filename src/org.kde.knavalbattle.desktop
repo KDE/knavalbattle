@@ -111,6 +111,4 @@ GenericName[uk]=Гра у битву кораблів
 GenericName[x-test]=xxShip Sinking Gamexx
 GenericName[zh_CN]=击沉舰船游戏
 GenericName[zh_TW]=擊沉船隻的遊戲
-X-DBUS-StartupType=Multi
 Categories=Qt;KDE;Game;StrategyGame;
-X-DBUS-ServiceName=org.kde.knavalbattle
