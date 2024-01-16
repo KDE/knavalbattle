@@ -25,7 +25,7 @@ int main(int argc, char** argv)
 {
     QApplication app(argc, argv);
 
-    KLocalizedString::setApplicationDomain("knavalbattle");
+    KLocalizedString::setApplicationDomain(QByteArrayLiteral("knavalbattle"));
 
     KAboutData aboutData(QStringLiteral("knavalbattle"), i18n("Naval Battle"),
         QStringLiteral(KNAVALBATTLE_VERSION_STRING),
