@@ -1,9 +1,8 @@
 <?xml version="1.0" ?>
 <!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN" "dtd/kdedbx45.dtd" [
-  <!ENTITY knavalbattle "<application
->Naval Battle</application
->"
->  
+  <!ENTITY i18n-knavalbattle "<application
+>Bataille navale</application
+>">
   <!ENTITY % addindex "IGNORE">
   <!ENTITY % French "INCLUDE"
 > <!-- change language only here -->
@@ -78,9 +77,9 @@
 </copyright>
 
 <date
->01-05-2016</date>
+>10-12-2020</date>
 <releaseinfo
->2.1 (Applications 16.04)</releaseinfo>
+>Applications 20.12</releaseinfo>
 
 <abstract>
 <para
@@ -131,13 +130,13 @@
 </imageobject>
 <textobject>
 <phrase
->Jeu de plateau bataille &knavalbattle; </phrase>
+>Jeu de plateau &i18n-knavalbattle;</phrase>
 </textobject>
 </mediaobject>
 </screenshot>
 
 <para
->&kappname; est un jeu de bataille navale pour &kde;. Les bateaux sont placés sur un plateau représentant la mer. Les joueurs tentent de frapper et couler les bateaux de l'autre, chacun à son tour sans connaître l'emplacement de ceux-ci. Le premier joueur qui détruit tous les bateaux remporte la partie. </para>
+>&i18n-knavalbattle; est un jeu de bataille navale pour &kde;. Les bateaux sont placés sur un plateau représentant la mer. Les joueurs tentent de frapper et couler les bateaux de l'autre, chacun à son tour sans connaître l'emplacement de ceux-ci. Le premier joueur qui détruit tous les bateaux remporte la partie. </para>
 </chapter>
 
 <chapter id="howtoplay">
@@ -151,18 +150,20 @@
 ></note
 ><!--Describe the objective of the game.-->
 <para
->Si vous voulez jouer à &knavalbattle;, vous pouvez soit, jouer à deux joueurs, soit jouer contre l'ordinateur, soit contre un autre joueur en réseau. Pour jouer contre l'ordinateur, sélectionnez le niveau de difficulté sur la droite de la barre d'état et ensuite sélectionnez <guibutton
+>Si vous voulez jouer à &i18n-knavalbattle;, vous avez besoin de deux joueurs, soit jouer contre l'ordinateur, soit jouer contre un autre joueur en réseau. Pour jouer contre l'ordinateur, veuillez tout d'abord sélectionner le niveau de difficulté sur la droite de la barre d'état et ensuite sélectionner <guibutton
 >Joueur unique</guibutton
 > sur l'écran d'accueil, ou directement sur le menu <menuchoice
 ><guimenu
 >Jeu</guimenu
+> <guimenuitem
+>Joueur unique</guimenuitem
 ></menuchoice
 >.</para>
 
 <para
 >Pour démarrer une nouvelle partie en réseau, un joueur doit héberger une partie en sélectionnant <guilabel
 >Héberger une partie en réseau</guilabel
-> sur l'écran d'accueil, ou en choisissant <menuchoice
+> sur l'écran d'accueil ou en sélectionnant <menuchoice
 ><guimenu
 >Jeu</guimenu
 > <guimenuitem
@@ -172,7 +173,7 @@
 >Pseudo</guilabel
 > et un <guilabel
 >Port</guilabel
->. Normalement, &knavalbattle; vous suggère votre nom d'utilisateur, mais vous êtes libre de mettre ce que vous voulez. Le port prédéfini devrait convenir. Cependant, si vous rencontrez des problèmes, vous pouvez choisir n'importe quel port libre au-dessus de 1024. </para>
+>. Normalement, &i18n-knavalbattle; vous suggérera votre nom d'utilisateur, mais vous êtes libre de saisir ce que vous voulez. Le port prédéfini devrait convenir. Cependant, si vous rencontrez des problèmes, vous pouvez choisir n'importe quel port libre au-dessus de 1024. </para>
 
 <note>
 <para
@@ -182,7 +183,7 @@
 <para
 >L'autre joueur doit choisir <guilabel
 >Se connecter à une partie en réseau</guilabel
->, ou cliquez sur <menuchoice
+> ou cliquer sur <menuchoice
 ><guimenu
 >Jeu</guimenu
 > <guimenuitem
@@ -190,9 +191,9 @@
 ></menuchoice
 >. Encore une fois, un <guilabel
 >Pseudo</guilabel
-> est suggéré, vous pouvez choisir celui que vous voulez. Dans le champ <guilabel
->Nom de l'hôte</guilabel
->, vous devez saisir votre nom d'hôte du serveur (la machine du joueur qui a initialisé la partie). </para>
+> est suggéré. Mais, vous pouvez choisir celui qui vous convient. Dans le champ <guilabel
+>Nom de l'hôte : </guilabel
+>, vous devez saisir votre nom d'hôte du serveur (C'est-à-dire, la machine du joueur qui a initialisé la partie). </para>
 
 <para
 >Lorsque c'est fait, vous pouvez démarrer le jeu. Suivez simplement les instructions dans la barre d'état. Elle vous indiquera des astuces et suggérera ce qu'il faut faire ensuite. Lorsque vous regardez l'écran, vous voyez deux grilles, nommées <quote
@@ -212,13 +213,13 @@
 >Maintenant, vous pouvez utiliser le &BGS; pour faire feu sur la zone de bataille de votre ennemi. La barre d'état indique qui est touché. </para>
 
 <para
->Vous pouvez redémarrer la partie en choisissant <menuchoice
+>Vous pouvez relancer la partie en sélectionnant <menuchoice
 ><guimenu
 >Jeu</guimenu
 > <guimenuitem
->Recommencer la partie</guimenuitem
+>Relancer la partie</guimenuitem
 ></menuchoice
->, ou en pressant <keycap
+> ou en appuyant sur la touche <keycap
 >F5</keycap
 >. </para>
 
@@ -428,7 +429,7 @@
 <para
 ><action
 >Quitter</action
-> &knavalbattle; </para>
+> &i18n-knavalbattle;. </para>
 </listitem>
 </varlistentry>
 
@@ -479,8 +480,8 @@
 <para
 ><action
 >Indique si les bateaux peuvent être disposés sans espace vide entre eux.</action
-> Ceci est le choix par défaut. Ce paramètre doit être défini sur la machine hébergeant la partie quand <link linkend="howtoplay"
->le jeu &kappname; se déroule en réseau</link
+> Ceci est le choix par défaut. Ce paramètre doit être défini sur la machine lorsque la <link linkend="howtoplay"
+>la partie de &kappname; se déroule en réseau</link
 >. </para>
 </listitem>
 </varlistentry>
@@ -543,7 +544,7 @@
 </variablelist>
 
 <para
->De plus, &knavalbattle; possède des éléments communs de menu &kde; <guimenu
+>De plus,  &i18n-knavalbattle; possède des éléments communs de menu de &kde; comme <guimenu
 >Configuration</guimenu
 > et <guimenu
 >Aide</guimenu
@@ -569,7 +570,7 @@
 </question>
 <answer>
 <para
->Non. &knavalbattle; n'inclut pas cette fonctionnalité. </para>
+>Non, il n'y a aucun système d'indices dans &i18n-knavalbattle;. </para>
 </answer>
 </qandaentry>
 
@@ -580,7 +581,7 @@
 </question>
 <answer>
 <para
->Déplacez le bateau où vous souhaitez le placer, ensuite cliquez sur le &BDS;. </para>
+>Déplacez le bateau où vous le voulez et ensuite cliquez sur le &BDS;. </para>
 </answer>
 </qandaentry>
 
