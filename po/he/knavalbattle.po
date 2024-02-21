@@ -13,36 +13,37 @@
 # Israel Berger <israelb@gmail.com>, 2005.
 # Diego Iastrubni <elcuco@kde.org>, 2005, 2012.
 # Elkana Bardugo <ttv200@gmail.com>, 2017. #zanata
+# SPDX-FileCopyrightText: 2024 Yaron Shahrabani <sh.yaron@gmail.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: knavalbattle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-11-10 01:46+0000\n"
-"PO-Revision-Date: 2017-05-16 07:01-0400\n"
-"Last-Translator: Copied by Zanata <copied-by-zanata@zanata.org>\n"
-"Language-Team: Hebrew <kde-i18n-he@kde.org>\n"
+"PO-Revision-Date: 2024-02-20 11:14+0200\n"
+"Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
+"Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Zanata 3.9.6\n"
+"X-Generator: Lokalize 23.08.4\n"
 "Plural-Forms: nplurals=4; plural=(n == 1) ? 0 : ((n == 2) ? 1 : ((n > 10 && "
 "n % 10 == 0) ? 2 : 3));\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr "Diego Iastrubni, Israel Berger"
+msgstr "Diego Iastrubni,Israel Berger,צוות התרגום של KDE ישראל"
 
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
-msgstr "elcuco@kde.org,israelb@gmail.com"
+msgstr "elcuco@kde.org,israelb@gmail.com,kde-l10n-he@kde.org"
 
 #: controller.cpp:50
-#, fuzzy, kde-format
+#, kde-format
 msgid "Computer"
-msgstr "שחקן המחשב"
+msgstr "מחשב"
 
 #. i18n: ectx: label, entry (Hostname), group (network)
 #: knavalbattle.kcfg:9
@@ -58,9 +59,9 @@ msgstr ""
 
 #. i18n: ectx: label, entry (Nickname), group (general)
 #: knavalbattle.kcfg:19
-#, fuzzy, kde-format
+#, kde-format
 msgid "User nickname."
-msgstr "&כינוי:"
+msgstr "כינוי המשתמש."
 
 #. i18n: ectx: label, entry (EnableSounds), group (general)
 #: knavalbattle.kcfg:22
@@ -85,7 +86,7 @@ msgstr ""
 #: knavalbattleui.rc:29
 #, kde-format
 msgid "Game Toolbar"
-msgstr ""
+msgstr "סרגל כלי משחק"
 
 #: main.cpp:30
 #, kde-format
@@ -93,9 +94,9 @@ msgid "Naval Battle"
 msgstr ""
 
 #: main.cpp:32
-#, fuzzy, kde-format
+#, kde-format
 msgid "The KDE ship sinking game"
-msgstr "משחק תואם צוללות ל־KDE"
+msgstr "משחק הטבעת הספינות של KDE"
 
 #: main.cpp:33
 #, kde-format
@@ -110,69 +111,69 @@ msgid "Paolo Capriotti"
 msgstr ""
 
 #: main.cpp:38
-#, fuzzy, kde-format
+#, kde-format
 msgid "Current maintainer"
-msgstr "מזהה לקוח:"
+msgstr "מתחזק נוכחי"
 
 #: main.cpp:39
 #, kde-format
 msgid "Nikolas Zimmermann"
-msgstr ""
+msgstr "ניקולס צימרמן"
 
 #: main.cpp:39
 #, kde-format
 msgid "Project Founder, GUI Handling, Client/Server"
-msgstr "מייסד הפרויקט, טיפול בממשק המשתמש הגרפי, לקוח\\שרת"
+msgstr "מייסד המיזם, טיפול בממשק המשתמש הגרפי, לקוח/שרת"
 
 #: main.cpp:40
 #, kde-format
 msgid "Daniel Molkentin"
-msgstr ""
+msgstr "דניאל מולקנטין"
 
 #: main.cpp:40
 #, kde-format
 msgid "Dialog Stuff, Client/Server"
-msgstr "ענייני דו־שיח, לקוח\\שרת"
+msgstr "ענייני דו־שיח, לקוח/שרת"
 
 #: main.cpp:41
 #, kde-format
 msgid "Kevin Krammer"
-msgstr ""
+msgstr "קווין קרמר"
 
 #: main.cpp:41
-#, fuzzy, kde-format
+#, kde-format
 msgid "Computer Player"
 msgstr "שחקן המחשב"
 
 #: main.cpp:43
 #, kde-format
 msgid "Johann Ollivier Lapeyre"
-msgstr ""
+msgstr "יוהאן אוליבייר לאפייר"
 
 #: main.cpp:43
 #, kde-format
 msgid "Game artwork"
-msgstr ""
+msgstr "עיצוב המשחק"
 
 #: main.cpp:44
 #, kde-format
 msgid "Eugene Trounev"
-msgstr ""
+msgstr "יוג׳ין טרונב"
 
 #: main.cpp:44
 #, kde-format
 msgid "Background"
-msgstr ""
+msgstr "רקע"
 
 #: main.cpp:45
 #, kde-format
 msgid "Robert Wadley"
-msgstr ""
+msgstr "רוברט ואדלי"
 
 #: main.cpp:45
 #, kde-format
 msgid "Artwork for some of the ships"
-msgstr ""
+msgstr "עיצוב של חלק מהספינות"
 
 #: main.cpp:46
 #, kde-format
@@ -182,12 +183,12 @@ msgstr ""
 #: main.cpp:46
 #, kde-format
 msgid "Welcome screen"
-msgstr ""
+msgstr "מסך קבלת פנים"
 
 #: main.cpp:47
 #, kde-format
 msgid "Benjamin Adler"
-msgstr ""
+msgstr "בנג׳מין אדלר"
 
 #: main.cpp:47
 #, kde-format
@@ -237,7 +238,7 @@ msgstr "שיפורים שונים"
 #: main.cpp:52
 #, kde-format
 msgid "Albert Astals Cid"
-msgstr ""
+msgstr "אלברט אסטלס סיד"
 
 #: main.cpp:52 main.cpp:53
 #, kde-format
@@ -247,12 +248,12 @@ msgstr "שיפורים שונים ותיקוני באגים"
 #: main.cpp:53
 #, kde-format
 msgid "John Tapsell"
-msgstr ""
+msgstr "ג׳ון טאפסל"
 
 #: main.cpp:54
 #, kde-format
 msgid "Inge Wallin"
-msgstr ""
+msgstr "אינגה וולין"
 
 #: main.cpp:54
 #, kde-format
@@ -262,7 +263,7 @@ msgstr "תיקוני באגים ו־refactoring"
 #: main.cpp:55
 #, kde-format
 msgid "Jakub Stachowski"
-msgstr ""
+msgstr "יאקוב שטכובסקי"
 
 #: main.cpp:55
 #, kde-format
@@ -272,87 +273,87 @@ msgstr "זיהוי DNS-SD"
 #: main.cpp:56
 #, kde-format
 msgid "Roney Gomes"
-msgstr ""
+msgstr "רוני גומז"
 
 #: main.cpp:56
 #, kde-format
 msgid "Porting to KGameRenderer and QGraphicsView"
-msgstr ""
+msgstr "הסבה ל־KGameRenderer ול־QGraphicsView"
 
 #: main.cpp:63
 #, kde-format
 msgid "[URL]"
-msgstr ""
+msgstr "[כתובת]"
 
 #: main.cpp:63
 #, kde-format
 msgid "URL of a Naval Battle game server to connect to after startup"
-msgstr ""
+msgstr "כתובת שרת משחק קרב ימי להתחברות לאחר ההפעלה"
 
 #: mainwindow.cpp:59
-#, fuzzy, kde-format
+#, kde-format
 msgid "&Single Player"
-msgstr "שחקן &בודד"
+msgstr "שחקן י&חיד"
 
 #: mainwindow.cpp:63
-#, fuzzy, kde-format
+#, kde-format
 msgid "&Host Game..."
-msgstr "&עצור משחק"
+msgstr "&אירוח משחק…"
 
 #: mainwindow.cpp:67
-#, fuzzy, kde-format
+#, kde-format
 msgid "&Connect to Game..."
-msgstr "&התחבר לשרת..."
+msgstr "התחברות למ&שחק…"
 
 #: mainwindow.cpp:72
-#, fuzzy, kde-format
+#, kde-format
 msgid "Change &Nickname..."
-msgstr "&כינוי:"
+msgstr "החלפת &כינוי…"
 
 #: mainwindow.cpp:75
-#, fuzzy, kde-format
+#, kde-format
 msgid "&Play Sounds"
-msgstr "&נגן צלילים"
+msgstr "&ניגון צלילים"
 
 #: mainwindow.cpp:80
 #, kde-format
 msgid "&Adjacent Ships"
-msgstr ""
+msgstr "&ספינות סמוכות"
 
 #: mainwindow.cpp:85
 #, kde-format
 msgid "&Multiple Ships"
-msgstr ""
+msgstr "מ&גוון ספינות"
 
 #: mainwindow.cpp:90
 #, kde-format
 msgid "Show End-of-Game Message"
-msgstr ""
+msgstr "הצגת הודעות סוף משחק"
 
 #: mainwindow.cpp:95
-#, fuzzy, kde-format
+#, kde-format
 msgid "Show &Left Grid"
-msgstr "הצג &רשת"
+msgstr "הצגת רשת &שמאלית"
 
 #: mainwindow.cpp:99
-#, fuzzy, kde-format
+#, kde-format
 msgid "Show &Right Grid"
-msgstr "הצג &רשת"
+msgstr "הצגת רשת ימ&נית"
 
 #: networkdialog.cpp:61
-#, fuzzy, kde-format
+#, kde-format
 msgid "&Nickname:"
 msgstr "&כינוי:"
 
 #: networkdialog.cpp:73
-#, fuzzy, kde-format
+#, kde-format
 msgid "&Join game:"
-msgstr "שחקן &בודד"
+msgstr "ה&צטרפות למשחק:"
 
 #: networkdialog.cpp:88
 #, kde-format
 msgid "&Hostname:"
-msgstr ""
+msgstr "שם מ&ארח:"
 
 #: networkdialog.cpp:101 networkdialog.cpp:131
 #, kde-format
@@ -362,57 +363,57 @@ msgstr "&יציאה:"
 #: networkdialog.cpp:116
 #, kde-format
 msgid "&Enter server address manually"
-msgstr ""
+msgstr "מילוי כתובת שרת י&דנית"
 
 #: networkdialog.cpp:148
 #, kde-format
 msgid "Network Parameters"
-msgstr ""
+msgstr "משתני רשת"
 
 #: networkdialog.cpp:210
-#, fuzzy, kde-format
+#, kde-format
 msgid "Connecting to remote host..."
-msgstr "החיבור נדחה על ידי המארח המרוחק."
+msgstr "התחברות למארח המרוחק…"
 
 #: networkdialog.cpp:217
-#, fuzzy, kde-format
+#, kde-format
 msgid "Waiting for an incoming connection..."
-msgstr "ממתין לתשובה..."
+msgstr "בהמתנה לחיבור נכנס…"
 
 #: networkdialog.cpp:236
-#, fuzzy, kde-format
+#, kde-format
 msgid "Could not connect to host"
-msgstr "אין אפשרות להתחבר אל השרת."
+msgstr "לא ניתן להתחבר למארח"
 
 #: networkentity.cpp:189
 #, kde-format
 msgid "You have "
-msgstr ""
+msgstr "יש לך"
 
 #: networkentity.cpp:195
 #, kde-format
 msgid ", "
-msgstr ""
+msgstr ", "
 
 #: networkentity.cpp:288
-#, fuzzy, kde-format
+#, kde-format
 msgid "You can place ships adjacent to each other"
-msgstr "אין אפשרות להציב כאן את כלי השיט."
+msgstr "אפשר להציב ספינות בסמוך זו לזו"
 
 #: networkentity.cpp:291
 #, kde-format
 msgid "You must leave a space between ships"
-msgstr ""
+msgstr "צריך להשאיר רווח בין הספינות"
 
 #: playerentity.cpp:199
 #, kde-format
 msgid "Your opponent is now known as %1"
-msgstr ""
+msgstr "שם היריב או היריבה שלך מעתה הוא %1"
 
 #: playerentity.cpp:204
 #, kde-format
 msgid "Your opponent disconnected from the game"
-msgstr ""
+msgstr "היריב או היריבה שלך התנתקו מהמשחק"
 
 #: playfield.cpp:149 playfield.cpp:169
 #, kde-format
@@ -427,59 +428,59 @@ msgstr "פגיעות"
 #: playfield.cpp:151 playfield.cpp:171
 #, kde-format
 msgid "Misses"
-msgstr ""
+msgstr "החטאות"
 
 #: playfield.cpp:191
 #, kde-format
 msgid "You win!"
-msgstr ""
+msgstr "ניצחת!"
 
 #: playfield.cpp:193
 #, kde-format
 msgid "You win. Excellent!"
-msgstr ""
+msgstr "ניצחת . מעולה!"
 
 #: playfield.cpp:197
-#, fuzzy, kde-format
+#, kde-format
 msgid "You lose."
-msgstr "הפסדת במשחק :("
+msgstr "הפסדת."
 
 #: playfield.cpp:199
 #, kde-format
 msgid "You lose. Better luck next time!"
-msgstr ""
+msgstr "הפסדת. בהצלחה בפעם הבאה!"
 
 #: playfield.cpp:209
-#, fuzzy, kde-format
+#, kde-format
 msgid "Change Nickname"
-msgstr "&כינוי:"
+msgstr "החלפת כינוי"
 
 #: playfield.cpp:209
 #, kde-format
 msgid "Enter new nickname:"
-msgstr ""
+msgstr "נא למלא כינוי חדש:"
 
 #: playfield.cpp:238
-#, fuzzy, kde-format
+#, kde-format
 msgid "Restart game"
-msgstr "התחלת משחק"
+msgstr "התחלת המשחק מחדש"
 
 #: playfield.cpp:239
-#, fuzzy, kde-format
+#, kde-format
 msgid "Your opponent has requested to restart the game. Do you accept?"
-msgstr "הלקוח מבקש להתחיל מחדש את המשחק . האם אתה מסכים?"
+msgstr "היריב או היריבה שלך ביקשו להתחיל את המשחק מחדש. מקובל עליך?"
 
 #: playfield.cpp:240
 #, kde-format
 msgctxt "@action:button"
 msgid "Accept"
-msgstr ""
+msgstr "אישור"
 
 #: playfield.cpp:241
 #, kde-format
 msgctxt "@action:button"
 msgid "Reject"
-msgstr ""
+msgstr "דחייה"
 
 #: playfield.cpp:250
 #, kde-format
@@ -490,14 +491,14 @@ msgid ""
 msgstr ""
 
 #: playfield.cpp:263
-#, fuzzy, kde-format
+#, kde-format
 msgid "Enemy has shot. Shoot now!"
-msgstr "היריב ירה. עכשיו תורך לירות"
+msgstr "היריב או היריבה ירו. לירות עכשיו!"
 
 #: playfield.cpp:267
-#, fuzzy, kde-format
+#, kde-format
 msgid "Waiting for enemy to shoot..."
-msgstr "ממתין ליריב לירות..."
+msgstr "בהמתנה לירי של היריב או היריבה…"
 
 #: playfield.cpp:276
 #, kde-format
@@ -505,20 +506,20 @@ msgid "Ships placed. Now shoot on the enemy field!"
 msgstr ""
 
 #: playfield.cpp:279
-#, fuzzy, kde-format
+#, kde-format
 msgid "Waiting for other player to start the game..."
-msgstr "ממתין לשחקן השני להתחיל את המשחק..."
+msgstr "בהמתנה להתחלת המשחק מהצד השני…"
 
 #: playfield.cpp:283
-#, fuzzy, kde-format
+#, kde-format
 msgid "Waiting for other player to place his ships..."
-msgstr "ממתין שהשחקן השני יציב את כלי השיט..."
+msgstr "בהמתנה להצבת הספינות בצד השני…"
 
 #: playfield.cpp:297
-#, fuzzy, kde-format
+#, kde-format
 msgid "Place your %1 ships. Use the right mouse button to rotate them."
 msgstr ""
-"הצב את כלי השיט שלך. השתמש במקש \"Shift\" כדי להציב את כלי השיט במאונך."
+"נא להציב את %1 הספינות שלך. אפשר להשתמש בלחצן הימני בעכבר כדי לסובב אותן."
 
 #: playfield.cpp:303
 #, kde-format
@@ -526,10 +527,10 @@ msgid "You can't place your remaining ships."
 msgstr ""
 
 #: playfield.cpp:304
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@action"
 msgid "Restart"
-msgstr "התחלת משחק"
+msgstr "הפעלה מחדש"
 
 #: playfield.cpp:305
 #, kde-format
@@ -550,21 +551,21 @@ msgid "Restart placing ships"
 msgstr ""
 
 #: simplemenu.cpp:40
-#, fuzzy, kde-format
+#, kde-format
 msgid "Single Player"
-msgstr "שחקן &בודד"
+msgstr "שחקן יחיד"
 
 #: simplemenu.cpp:41
-#, fuzzy, kde-format
+#, kde-format
 msgid "Host Network Game"
-msgstr "התחברות לשרת"
+msgstr "אירוח משחק רשת"
 
 #: simplemenu.cpp:42
-#, fuzzy, kde-format
+#, kde-format
 msgid "Connect to Network Game"
-msgstr "התחברות לשרת"
+msgstr "חיבור למשחק רשת"
 
 #: simplemenu.cpp:132 simplemenu.cpp:149
-#, fuzzy, kde-format
+#, kde-format
 msgid "Remote player"
-msgstr "שחקן &בודד"
+msgstr "שחקן מרוחק"
