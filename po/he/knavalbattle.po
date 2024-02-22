@@ -19,7 +19,7 @@ msgstr ""
 "Project-Id-Version: knavalbattle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-11-10 01:46+0000\n"
-"PO-Revision-Date: 2024-02-20 11:14+0200\n"
+"PO-Revision-Date: 2024-02-20 22:27+0200\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
@@ -49,13 +49,13 @@ msgstr "מחשב"
 #: knavalbattle.kcfg:9
 #, kde-format
 msgid "Default hostname for multiplayer games."
-msgstr ""
+msgstr "שם מארח כברירת מחדל למשחקים מרובי משתתפים."
 
 #. i18n: ectx: label, entry (Port), group (network)
 #: knavalbattle.kcfg:13
 #, kde-format
 msgid "Default port for multiplayer games."
-msgstr ""
+msgstr "פתחה כברירת מחדל למשחקים מרובי משתתפים."
 
 #. i18n: ectx: label, entry (Nickname), group (general)
 #: knavalbattle.kcfg:19
@@ -67,13 +67,13 @@ msgstr "כינוי המשתמש."
 #: knavalbattle.kcfg:22
 #, kde-format
 msgid "Whether sound effects should be played."
-msgstr ""
+msgstr "האם להשמיע רעשי רקע."
 
 #. i18n: ectx: label, entry (AdjacentShips), group (general)
 #: knavalbattle.kcfg:26
 #, kde-format
 msgid "Allow the ships to be adjacent without one empty space between them."
-msgstr ""
+msgstr "לאפשר להצמיד את הספינות זו לזו בלי רווח ביניהן."
 
 #. i18n: ectx: label, entry (SeveralShips), group (general)
 #: knavalbattle.kcfg:30
@@ -81,6 +81,8 @@ msgstr ""
 msgid ""
 "Allow multiple ships of any size, default: 4 of 1, 3 of 2, 2 of 3, 1 of 4."
 msgstr ""
+"לאפשר מגוון ספינות בכל מיני גדלים, ברירת המחדל: 4 בגודל 1, 3 בגודל 2, 2 "
+"בגודל 3 ו־1 בגודל 4."
 
 #. i18n: ectx: ToolBar (gameToolbar)
 #: knavalbattleui.rc:29
@@ -91,7 +93,7 @@ msgstr "סרגל כלי משחק"
 #: main.cpp:30
 #, kde-format
 msgid "Naval Battle"
-msgstr ""
+msgstr "קרב ימי"
 
 #: main.cpp:32
 #, kde-format
@@ -104,11 +106,13 @@ msgid ""
 "(c) 2000-2005  Nikolas Zimmermann, Daniel Molkentin\n"
 "(c) 2007 Paolo Capriotti"
 msgstr ""
+"(c) 2000‏-2005  ניקולס צימרמן, דניאל מולקנטין\n"
+"(c) 2007 פאולו קפריוטי"
 
 #: main.cpp:38
 #, kde-format
 msgid "Paolo Capriotti"
-msgstr ""
+msgstr "פאולו קפריוטי"
 
 #: main.cpp:38
 #, kde-format
@@ -133,7 +137,7 @@ msgstr "דניאל מולקנטין"
 #: main.cpp:40
 #, kde-format
 msgid "Dialog Stuff, Client/Server"
-msgstr "ענייני דו־שיח, לקוח/שרת"
+msgstr "נושאי חלוניות, לקוח/שרת"
 
 #: main.cpp:41
 #, kde-format
@@ -178,7 +182,7 @@ msgstr "עיצוב של חלק מהספינות"
 #: main.cpp:46
 #, kde-format
 msgid "Riccardo Iaconelli"
-msgstr ""
+msgstr "ריקארדו יאקונלי"
 
 #: main.cpp:46
 #, kde-format
@@ -195,10 +199,11 @@ msgstr "בנג׳מין אדלר"
 msgid "Icon"
 msgstr "סמל"
 
+# זה שם פולני שהתגלגל לגרמנית אבל עדיין נכתב כמו בפולנית, אין שם z בהגייה הגרמנית.
 #: main.cpp:48
 #, kde-format
 msgid "Nils Trzebin"
-msgstr ""
+msgstr "נילס טרבין"
 
 #: main.cpp:48
 #, kde-format
@@ -208,7 +213,7 @@ msgstr "צלילים"
 #: main.cpp:49
 #, kde-format
 msgid "Elmar Hoefner"
-msgstr ""
+msgstr "אלמר הופנר"
 
 #: main.cpp:49
 #, kde-format
@@ -218,7 +223,7 @@ msgstr "גרפיקה"
 #: main.cpp:50
 #, kde-format
 msgid "Lukas Tinkl"
-msgstr ""
+msgstr "לוקאש טינקל"
 
 #: main.cpp:50
 #, kde-format
@@ -228,12 +233,12 @@ msgstr "תמיכה במערכי תווים שאינם Latin1"
 #: main.cpp:51
 #, kde-format
 msgid "Malte Starostik"
-msgstr ""
+msgstr "מאלטה שטארוסיק"
 
 #: main.cpp:51
 #, kde-format
 msgid "Various improvements"
-msgstr "שיפורים שונים"
+msgstr "מגוון שיפורים"
 
 #: main.cpp:52
 #, kde-format
@@ -243,7 +248,7 @@ msgstr "אלברט אסטלס סיד"
 #: main.cpp:52 main.cpp:53
 #, kde-format
 msgid "Various improvements and bugfixes"
-msgstr "שיפורים שונים ותיקוני באגים"
+msgstr "שיפורים שונים ותיקוני תקלות"
 
 #: main.cpp:53
 #, kde-format
@@ -258,7 +263,7 @@ msgstr "אינגה וולין"
 #: main.cpp:54
 #, kde-format
 msgid "Bugfixes and refactoring"
-msgstr "תיקוני באגים ו־refactoring"
+msgstr "תיקוני תקלות ושכתוב קוד"
 
 #: main.cpp:55
 #, kde-format
@@ -268,7 +273,7 @@ msgstr "יאקוב שטכובסקי"
 #: main.cpp:55
 #, kde-format
 msgid "DNS-SD discovery"
-msgstr "זיהוי DNS-SD"
+msgstr "איתור דרך DNS-SD"
 
 #: main.cpp:56
 #, kde-format
@@ -358,7 +363,7 @@ msgstr "שם מ&ארח:"
 #: networkdialog.cpp:101 networkdialog.cpp:131
 #, kde-format
 msgid "&Port:"
-msgstr "&יציאה:"
+msgstr "&פתחה:"
 
 #: networkdialog.cpp:116
 #, kde-format
@@ -489,6 +494,9 @@ msgid ""
 "according to the rules enforced by old clients, ships cannot be placed "
 "adjacent to one another and only one ship of each size is allowed."
 msgstr ""
+"היריב או היריבה שלך משתמשים בגרסה טרום KDE4 של הקרב הימי. נא לשים שעקב כללים "
+"שנאכפו על ידי לקוחות ישנים יותר, אי אפשר להציב ספינות בסמוך זו לזו ומותר רק "
+"ספינה אחת מכל גודל."
 
 #: playfield.cpp:263
 #, kde-format
@@ -503,7 +511,7 @@ msgstr "בהמתנה לירי של היריב או היריבה…"
 #: playfield.cpp:276
 #, kde-format
 msgid "Ships placed. Now shoot on the enemy field!"
-msgstr ""
+msgstr "הספינות הוצבו. עכשיו יש לירות לשדה היריב או היריבה!"
 
 #: playfield.cpp:279
 #, kde-format
@@ -524,7 +532,7 @@ msgstr ""
 #: playfield.cpp:303
 #, kde-format
 msgid "You can't place your remaining ships."
-msgstr ""
+msgstr "אין לך איך להציב את הספינות הנותרות."
 
 #: playfield.cpp:304
 #, kde-format
@@ -536,7 +544,7 @@ msgstr "הפעלה מחדש"
 #, kde-format
 msgctxt "@action"
 msgid "Abort"
-msgstr ""
+msgstr "ביטול"
 
 #: playfield.cpp:307
 #, kde-format
@@ -544,11 +552,13 @@ msgid ""
 "You can't place your remaining ships. Please restart placing ships or abort "
 "game"
 msgstr ""
+"אין לך איפה להציב את הספינות הנותרות שלך. נא להתחיל להציב את הספינות מחדש או "
+"לבטל את המשחק"
 
 #: playfield.cpp:307
 #, kde-format
 msgid "Restart placing ships"
-msgstr ""
+msgstr "התחלת הצבת הספינות מחדש"
 
 #: simplemenu.cpp:40
 #, kde-format
