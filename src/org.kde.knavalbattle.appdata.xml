@@ -21,6 +21,7 @@
   <name xml:lang="fi">Meritaistelu</name>
   <name xml:lang="fr">Naval Battle</name>
   <name xml:lang="gl">Batalla naval</name>
+  <name xml:lang="he">קרב ימי</name>
   <name xml:lang="hu">Tengeri csata</name>
   <name xml:lang="ia">Battalia Naval (Naval Battle)</name>
   <name xml:lang="id">Naval Battle</name>
@@ -63,6 +64,7 @@
   <summary xml:lang="fi">Meritaistelupeli</summary>
   <summary xml:lang="fr">Jeu de touché-coulé</summary>
   <summary xml:lang="gl">Xogo de afundir barcos</summary>
+  <summary xml:lang="he">משחק ספינות מלחמה</summary>
   <summary xml:lang="hu">Torpedó játék</summary>
   <summary xml:lang="ia">Joco de Battalia Naval</summary>
   <summary xml:lang="id">Permainan Kapal Perang</summary>
@@ -109,6 +111,7 @@
     <p xml:lang="fi">Meritaistelu on laivanopetuspeli. Laivat sijoitetaan merta edustavalle laudalle. Pelaajat yrittävät vuoroon osua toistensa laivoihin tietämättä niiden sijaintia. Pelaaja, joka ensimmäisenä upottaa toisen kaikki laivat, voittaa pelin.</p>
     <p xml:lang="fr">Naval Battle est un jeu de touché-coulé. Les navires sont placés sur une grille qui représente la mer. Les joueurs essaient chacun leur tour de toucher les vaisseaux de leur adversaire sans savoir où ils sont situés. Le premier joueur à détruire la totalité de la flotte adverse gagne la partie.</p>
     <p xml:lang="gl">Batalla naval é un xogo de afundir barcos. Os barcos colócanse nun taboleiro que representa o mar. Cada xogador intenta afundir os barcos do outro sen saber onde están colocados. O primeiro xogador que destrúe a armada completa do outro gaña a partida.</p>
+    <p xml:lang="he">קרב ימי הוא משחק הטבעת ספינות. הספינות מוצבות על לוח שמייצג את הים. השחקנים מנסים לפגוע בספינותיהם זה של זה בתורות מבלי לדעת מה מיקומן. השחקן הראשון שמשמיד את כל הספינות מנצח במשחק.</p>
     <p xml:lang="hu">A Tengeri csata egy hajóelsüllyesztős játék. A hajók a tengert ábrázoló táblán helyezkednek el. A játékosok felváltva próbálják eltalálni egymás hajóit anélkül, hogy tudnák, hol vannak elhelyezve. A játékot az nyeri, aki először pusztítja el az összes hajót.</p>
     <p xml:lang="ia">Battalia Naval es un joco de submerger nave. Naves es  placiate sur untabula que representa le mar. Jocatores essaya colpar omne alteres in turnos sin saper ubi illos es placiate. Le prime jocator qui destrue omne naves gania le joco.</p>
     <p xml:lang="id">Naval Battle adalah permainan kapal selam. Kapal ditempatkan di papan yang mewakili laut. Pemain mencoba untuk saling memukul kapal secara bergantian tanpa mengetahui di mana mereka ditempatkan. Pemain pertama yang menghancurkan semua kapal memenangkan permainan.</p>
