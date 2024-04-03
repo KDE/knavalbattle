@@ -3,6 +3,9 @@
   <id>org.kde.knavalbattle.desktop</id>
   <metadata_license>FSFAP</metadata_license>
   <project_license>GPL-2.0+</project_license>
+  <developer id="org.kde">
+    <name translate="no">KDE</name>
+  </developer>
   <name>Naval Battle</name>
   <name xml:lang="ar">المعركة البحرية</name>
   <name xml:lang="ast">Batalla naval</name>
