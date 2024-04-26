@@ -48,8 +48,9 @@ ecm_setup_version(${PROJECT_VERSION} VARIABLE_PREFIX KNAVALBATTLE VERSION_HEADER
 ecm_qt_declare_logging_category(knavalbattle
     HEADER knavalbattle_debug.h
     IDENTIFIER KNAVALBATTLE_LOG
-    CATEGORY_NAME org.kde.kdegames.knavalbattle
-    DESCRIPTION "knavalbattle (kdegames)"
+    CATEGORY_NAME knavalbattle
+    OLD_CATEGORY_NAMES org.kde.kdegames.knavalbattle
+    DESCRIPTION "KNavalBattle game"
     EXPORT KNAVALBATTLE
 )
 
