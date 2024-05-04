@@ -264,7 +264,7 @@ void PlayField::changeTurn(int player)
     }
     else {
         // opponent
-        m_status_bar->showMessage(i18n("Waiting for enemy to shoot..."));
+        m_status_bar->showMessage(i18n("Waiting for enemy to shoot…"));
     }
 }
 
@@ -276,11 +276,11 @@ void PlayField::playerReady(int player)
             m_status_bar->showMessage(i18n("Ships placed. Now shoot on the enemy field!"));
         }
         else {
-            m_status_bar->showMessage(i18n("Waiting for other player to start the game..."));
+            m_status_bar->showMessage(i18n("Waiting for other player to start the game…"));
         }
     }
     else if (player == 0) {
-        m_status_bar->showMessage(i18n("Waiting for other player to place his ships..."));
+        m_status_bar->showMessage(i18n("Waiting for other player to place his ships…"));
     }
 }
 
