@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kbattleship\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-10 01:46+0000\n"
+"POT-Creation-Date: 2024-05-04 00:37+0000\n"
 "PO-Revision-Date: 2012-06-29 20:17+0300\n"
 "Last-Translator: Einars Sprugis <einars8@gmail.com>\n"
 "Language-Team: Latvian <locale@laka.lv>\n"
@@ -284,52 +284,70 @@ msgid "URL of a Naval Battle game server to connect to after startup"
 msgstr "Naval Battle spēles servera URL, kam pieslēgties pēc palaišanas"
 
 #: mainwindow.cpp:59
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "&Single Player"
+msgctxt "@action"
 msgid "&Single Player"
 msgstr "&Viens spēlētājs"
 
 #: mainwindow.cpp:63
-#, kde-format
-msgid "&Host Game..."
+#, fuzzy, kde-format
+#| msgid "&Host Game..."
+msgctxt "@action"
+msgid "&Host Game…"
 msgstr "&Uzturēt spēli..."
 
 #: mainwindow.cpp:67
-#, kde-format
-msgid "&Connect to Game..."
+#, fuzzy, kde-format
+#| msgid "&Connect to Game..."
+msgctxt "@action"
+msgid "&Connect to Game…"
 msgstr "&Pieslēgties spēlei..."
 
 #: mainwindow.cpp:72
-#, kde-format
-msgid "Change &Nickname..."
-msgstr "Mainīt &iesauku..."
+#, fuzzy, kde-format
+#| msgid "Change Nickname"
+msgctxt "@action"
+msgid "Change &Nickname…"
+msgstr "Mainīt iesauku"
 
-#: mainwindow.cpp:75
-#, kde-format
-msgid "&Play Sounds"
+#: mainwindow.cpp:76
+#, fuzzy, kde-format
+#| msgid "&Play Sounds"
+msgctxt "@option:check"
+msgid "Play Sounds"
 msgstr "&Atskaņot skaņas"
 
-#: mainwindow.cpp:80
+#: mainwindow.cpp:81
 #, kde-format
+msgctxt "@option:check"
 msgid "&Adjacent Ships"
 msgstr ""
 
-#: mainwindow.cpp:85
+#: mainwindow.cpp:86
 #, kde-format
+msgctxt "@option:check"
 msgid "&Multiple Ships"
 msgstr ""
 
-#: mainwindow.cpp:90
-#, kde-format
+#: mainwindow.cpp:91
+#, fuzzy, kde-format
+#| msgid "Show End-of-Game Message"
+msgctxt "@option:check"
 msgid "Show End-of-Game Message"
 msgstr "Rādīt spēles beigu paziņojumu"
 
-#: mainwindow.cpp:95
-#, kde-format
+#: mainwindow.cpp:96
+#, fuzzy, kde-format
+#| msgid "Show &Left Grid"
+msgctxt "@option:check"
 msgid "Show &Left Grid"
 msgstr "Rādīt &kreiso režģi"
 
-#: mainwindow.cpp:99
-#, kde-format
+#: mainwindow.cpp:100
+#, fuzzy, kde-format
+#| msgid "Show &Right Grid"
+msgctxt "@option:check"
 msgid "Show &Right Grid"
 msgstr "Rādīt &labo režģi"
 
@@ -354,23 +372,29 @@ msgid "&Port:"
 msgstr "&Ports:"
 
 #: networkdialog.cpp:116
-#, kde-format
-msgid "&Enter server address manually"
+#, fuzzy, kde-format
+#| msgid "&Enter server address manually"
+msgctxt "@action:button"
+msgid "&Enter Server Address Manually"
 msgstr "&Ievadīt servera adresi ar roku"
 
 #: networkdialog.cpp:148
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Network Parameters"
+msgctxt "@title:window"
 msgid "Network Parameters"
 msgstr "Tīkla parametri"
 
 #: networkdialog.cpp:210
-#, kde-format
-msgid "Connecting to remote host..."
+#, fuzzy, kde-format
+#| msgid "Connecting to remote host..."
+msgid "Connecting to remote host…"
 msgstr "Pieslēgšanās attālinātajam datoram..."
 
 #: networkdialog.cpp:217
-#, kde-format
-msgid "Waiting for an incoming connection..."
+#, fuzzy, kde-format
+#| msgid "Waiting for an incoming connection..."
+msgid "Waiting for an incoming connection…"
 msgstr "Tiek gaidīts ienākošais savienojums..."
 
 #: networkdialog.cpp:236
@@ -445,18 +469,24 @@ msgid "You lose. Better luck next time!"
 msgstr "Jūs zaudējāt. Nākamreiz mēģiniet labāk!"
 
 #: playfield.cpp:209
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Change Nickname"
+msgctxt "@title:window"
 msgid "Change Nickname"
 msgstr "Mainīt iesauku"
 
 #: playfield.cpp:209
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Enter new nickname:"
+msgctxt "@label:textbox"
 msgid "Enter new nickname:"
 msgstr "Ievadiet jaunu iesauku:"
 
 #: playfield.cpp:238
-#, kde-format
-msgid "Restart game"
+#, fuzzy, kde-format
+#| msgid "Restart game"
+msgctxt "@title:window"
+msgid "Restart Game"
 msgstr "Pārstartēt spēli"
 
 #: playfield.cpp:239
@@ -497,8 +527,9 @@ msgid "Enemy has shot. Shoot now!"
 msgstr "Pretinieks ir izšāvis. Tagad šaujiet!"
 
 #: playfield.cpp:267
-#, kde-format
-msgid "Waiting for enemy to shoot..."
+#, fuzzy, kde-format
+#| msgid "Waiting for enemy to shoot..."
+msgid "Waiting for enemy to shoot…"
 msgstr "Gaidam pretinieka šāvienu..."
 
 #: playfield.cpp:276
@@ -507,13 +538,15 @@ msgid "Ships placed. Now shoot on the enemy field!"
 msgstr "Kuģi ir novietoti. Tagad šaujiet par pirmo pretinieka lauciņu!"
 
 #: playfield.cpp:279
-#, kde-format
-msgid "Waiting for other player to start the game..."
+#, fuzzy, kde-format
+#| msgid "Waiting for other player to start the game..."
+msgid "Waiting for other player to start the game…"
 msgstr "Gaidam kamēr otrs spēlētājs sāks spēli..."
 
 #: playfield.cpp:283
-#, kde-format
-msgid "Waiting for other player to place his ships..."
+#, fuzzy, kde-format
+#| msgid "Waiting for other player to place his ships..."
+msgid "Waiting for other player to place his ships…"
 msgstr "Gaidam kamēr otrs spēlētājs novietos kuģus..."
 
 #: playfield.cpp:297
@@ -530,13 +563,13 @@ msgstr ""
 #: playfield.cpp:304
 #, fuzzy, kde-format
 #| msgid "Restart game"
-msgctxt "@action"
+msgctxt "@action:button"
 msgid "Restart"
 msgstr "Pārstartēt spēli"
 
 #: playfield.cpp:305
 #, kde-format
-msgctxt "@action"
+msgctxt "@action:button"
 msgid "Abort"
 msgstr ""
 
@@ -547,23 +580,30 @@ msgid ""
 "game"
 msgstr ""
 
-#: playfield.cpp:307
+#: playfield.cpp:308
 #, kde-format
-msgid "Restart placing ships"
+msgctxt "@title:window"
+msgid "Restart Placing Ships"
 msgstr ""
 
 #: simplemenu.cpp:40
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Single Player"
+msgctxt "@action:button"
 msgid "Single Player"
 msgstr "Viens spēlētājs"
 
 #: simplemenu.cpp:41
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Host Network Game"
+msgctxt "@action:button"
 msgid "Host Network Game"
 msgstr "Uzturēt tīkla spēli"
 
 #: simplemenu.cpp:42
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Connect to Network Game"
+msgctxt "@action:button"
 msgid "Connect to Network Game"
 msgstr "Pieslēgties tīkla spēlei"
 
@@ -571,6 +611,9 @@ msgstr "Pieslēgties tīkla spēlei"
 #, kde-format
 msgid "Remote player"
 msgstr "Attālinātais spēlētājs"
+
+#~ msgid "Change &Nickname..."
+#~ msgstr "Mainīt &iesauku..."
 
 #~ msgid "Game difficulty."
 #~ msgstr "Spēles sarežģītības pakāpe."

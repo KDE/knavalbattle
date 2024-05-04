@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kbattleship\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-10 01:46+0000\n"
+"POT-Creation-Date: 2024-05-04 00:37+0000\n"
 "PO-Revision-Date: 2013-11-23 20:55+0200\n"
 "Last-Translator: Sergiu Bivol <sergiu@cip.md>\n"
 "Language-Team: Romanian <kde-i18n-ro@kde.org>\n"
@@ -282,52 +282,71 @@ msgstr ""
 "URL-ul serverului de jocuri „Bătălie Navală” pentru conectare după pornire"
 
 #: mainwindow.cpp:59
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "&Single Player"
+msgctxt "@action"
 msgid "&Single Player"
 msgstr "Un &singur jucător"
 
 #: mainwindow.cpp:63
-#, kde-format
-msgid "&Host Game..."
+#, fuzzy, kde-format
+#| msgid "&Host Game..."
+msgctxt "@action"
+msgid "&Host Game…"
 msgstr "&Găzduire joc..."
 
 #: mainwindow.cpp:67
-#, kde-format
-msgid "&Connect to Game..."
+#, fuzzy, kde-format
+#| msgid "&Connect to Game..."
+msgctxt "@action"
+msgid "&Connect to Game…"
 msgstr "&Conectare la joc..."
 
 #: mainwindow.cpp:72
-#, kde-format
-msgid "Change &Nickname..."
-msgstr "Schimbare &poreclă..."
+#, fuzzy, kde-format
+#| msgid "Change Nickname"
+msgctxt "@action"
+msgid "Change &Nickname…"
+msgstr "Schimbă porecla"
 
-#: mainwindow.cpp:75
-#, kde-format
-msgid "&Play Sounds"
+#: mainwindow.cpp:76
+#, fuzzy, kde-format
+#| msgid "&Play Sounds"
+msgctxt "@option:check"
+msgid "Play Sounds"
 msgstr "&Redă sunete"
 
-#: mainwindow.cpp:80
-#, kde-format
+#: mainwindow.cpp:81
+#, fuzzy, kde-format
+#| msgid "&Adjacent Ships"
+msgctxt "@option:check"
 msgid "&Adjacent Ships"
 msgstr "Nave &adiacente"
 
-#: mainwindow.cpp:85
+#: mainwindow.cpp:86
 #, kde-format
+msgctxt "@option:check"
 msgid "&Multiple Ships"
 msgstr ""
 
-#: mainwindow.cpp:90
-#, kde-format
+#: mainwindow.cpp:91
+#, fuzzy, kde-format
+#| msgid "Show End-of-Game Message"
+msgctxt "@option:check"
 msgid "Show End-of-Game Message"
 msgstr "Afișează mesajul de încheiere a jocului"
 
-#: mainwindow.cpp:95
-#, kde-format
+#: mainwindow.cpp:96
+#, fuzzy, kde-format
+#| msgid "Show &Left Grid"
+msgctxt "@option:check"
 msgid "Show &Left Grid"
 msgstr "&Afișează grila stângă"
 
-#: mainwindow.cpp:99
-#, kde-format
+#: mainwindow.cpp:100
+#, fuzzy, kde-format
+#| msgid "Show &Right Grid"
+msgctxt "@option:check"
 msgid "Show &Right Grid"
 msgstr "&Afișează grila dreaptă"
 
@@ -352,23 +371,29 @@ msgid "&Port:"
 msgstr "&Port:"
 
 #: networkdialog.cpp:116
-#, kde-format
-msgid "&Enter server address manually"
+#, fuzzy, kde-format
+#| msgid "&Enter server address manually"
+msgctxt "@action:button"
+msgid "&Enter Server Address Manually"
 msgstr "Introduceți manual adr&esa serverului"
 
 #: networkdialog.cpp:148
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Network Parameters"
+msgctxt "@title:window"
 msgid "Network Parameters"
 msgstr "Parametri rețea"
 
 #: networkdialog.cpp:210
-#, kde-format
-msgid "Connecting to remote host..."
+#, fuzzy, kde-format
+#| msgid "Connecting to remote host..."
+msgid "Connecting to remote host…"
 msgstr "Conectare la server distant..."
 
 #: networkdialog.cpp:217
-#, kde-format
-msgid "Waiting for an incoming connection..."
+#, fuzzy, kde-format
+#| msgid "Waiting for an incoming connection..."
+msgid "Waiting for an incoming connection…"
 msgstr "Așteptare conexiune de intrare..."
 
 #: networkdialog.cpp:236
@@ -442,18 +467,24 @@ msgid "You lose. Better luck next time!"
 msgstr "Ați pierdut. Mult succes pentru data viitoare!"
 
 #: playfield.cpp:209
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Change Nickname"
+msgctxt "@title:window"
 msgid "Change Nickname"
 msgstr "Schimbă porecla"
 
 #: playfield.cpp:209
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Enter new nickname:"
+msgctxt "@label:textbox"
 msgid "Enter new nickname:"
 msgstr "Introduceți noua poreclă:"
 
 #: playfield.cpp:238
-#, kde-format
-msgid "Restart game"
+#, fuzzy, kde-format
+#| msgid "Restart game"
+msgctxt "@title:window"
+msgid "Restart Game"
 msgstr "Reinițializare joc"
 
 #: playfield.cpp:239
@@ -494,8 +525,9 @@ msgid "Enemy has shot. Shoot now!"
 msgstr "Inamicul a tras. Împușcați acum!"
 
 #: playfield.cpp:267
-#, kde-format
-msgid "Waiting for enemy to shoot..."
+#, fuzzy, kde-format
+#| msgid "Waiting for enemy to shoot..."
+msgid "Waiting for enemy to shoot…"
 msgstr "Aștept inamicul să tragă..."
 
 #: playfield.cpp:276
@@ -504,13 +536,15 @@ msgid "Ships placed. Now shoot on the enemy field!"
 msgstr "Nave amplasate. Acum trageți în câmpul inamicului!"
 
 #: playfield.cpp:279
-#, kde-format
-msgid "Waiting for other player to start the game..."
+#, fuzzy, kde-format
+#| msgid "Waiting for other player to start the game..."
+msgid "Waiting for other player to start the game…"
 msgstr "Aștept celălalt jucător să înceapă jocul..."
 
 #: playfield.cpp:283
-#, kde-format
-msgid "Waiting for other player to place his ships..."
+#, fuzzy, kde-format
+#| msgid "Waiting for other player to place his ships..."
+msgid "Waiting for other player to place his ships…"
 msgstr "Aștept celălalt jucător să-și amplaseze navele..."
 
 #: playfield.cpp:297
@@ -528,13 +562,13 @@ msgstr ""
 #: playfield.cpp:304
 #, fuzzy, kde-format
 #| msgid "Restart game"
-msgctxt "@action"
+msgctxt "@action:button"
 msgid "Restart"
 msgstr "Reinițializare joc"
 
 #: playfield.cpp:305
 #, kde-format
-msgctxt "@action"
+msgctxt "@action:button"
 msgid "Abort"
 msgstr ""
 
@@ -545,23 +579,30 @@ msgid ""
 "game"
 msgstr ""
 
-#: playfield.cpp:307
+#: playfield.cpp:308
 #, kde-format
-msgid "Restart placing ships"
+msgctxt "@title:window"
+msgid "Restart Placing Ships"
 msgstr ""
 
 #: simplemenu.cpp:40
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Single Player"
+msgctxt "@action:button"
 msgid "Single Player"
 msgstr "Un singur jucător"
 
 #: simplemenu.cpp:41
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Host Network Game"
+msgctxt "@action:button"
 msgid "Host Network Game"
 msgstr "Găzduire joc prin rețea"
 
 #: simplemenu.cpp:42
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Connect to Network Game"
+msgctxt "@action:button"
 msgid "Connect to Network Game"
 msgstr "Conectare la joc prin rețea"
 
@@ -569,6 +610,9 @@ msgstr "Conectare la joc prin rețea"
 #, kde-format
 msgid "Remote player"
 msgstr "Jucător distant"
+
+#~ msgid "Change &Nickname..."
+#~ msgstr "Schimbare &poreclă..."
 
 #~ msgid "Game difficulty."
 #~ msgstr "Dificultatea jocului."

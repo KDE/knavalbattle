@@ -18,7 +18,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: knavalbattle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-10 01:46+0000\n"
+"POT-Creation-Date: 2024-05-04 00:37+0000\n"
 "PO-Revision-Date: 2024-02-20 22:27+0200\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
@@ -296,52 +296,72 @@ msgid "URL of a Naval Battle game server to connect to after startup"
 msgstr "כתובת שרת משחק קרב ימי להתחברות לאחר ההפעלה"
 
 #: mainwindow.cpp:59
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "&Single Player"
+msgctxt "@action"
 msgid "&Single Player"
 msgstr "שחקן י&חיד"
 
 #: mainwindow.cpp:63
-#, kde-format
-msgid "&Host Game..."
+#, fuzzy, kde-format
+#| msgid "&Host Game..."
+msgctxt "@action"
+msgid "&Host Game…"
 msgstr "&אירוח משחק…"
 
 #: mainwindow.cpp:67
-#, kde-format
-msgid "&Connect to Game..."
+#, fuzzy, kde-format
+#| msgid "&Connect to Game..."
+msgctxt "@action"
+msgid "&Connect to Game…"
 msgstr "התחברות למ&שחק…"
 
 #: mainwindow.cpp:72
-#, kde-format
-msgid "Change &Nickname..."
-msgstr "החלפת &כינוי…"
+#, fuzzy, kde-format
+#| msgid "Change Nickname"
+msgctxt "@action"
+msgid "Change &Nickname…"
+msgstr "החלפת כינוי"
 
-#: mainwindow.cpp:75
-#, kde-format
-msgid "&Play Sounds"
+#: mainwindow.cpp:76
+#, fuzzy, kde-format
+#| msgid "&Play Sounds"
+msgctxt "@option:check"
+msgid "Play Sounds"
 msgstr "&ניגון צלילים"
 
-#: mainwindow.cpp:80
-#, kde-format
+#: mainwindow.cpp:81
+#, fuzzy, kde-format
+#| msgid "&Adjacent Ships"
+msgctxt "@option:check"
 msgid "&Adjacent Ships"
 msgstr "&ספינות סמוכות"
 
-#: mainwindow.cpp:85
-#, kde-format
+#: mainwindow.cpp:86
+#, fuzzy, kde-format
+#| msgid "&Multiple Ships"
+msgctxt "@option:check"
 msgid "&Multiple Ships"
 msgstr "מ&גוון ספינות"
 
-#: mainwindow.cpp:90
-#, kde-format
+#: mainwindow.cpp:91
+#, fuzzy, kde-format
+#| msgid "Show End-of-Game Message"
+msgctxt "@option:check"
 msgid "Show End-of-Game Message"
 msgstr "הצגת הודעות סוף משחק"
 
-#: mainwindow.cpp:95
-#, kde-format
+#: mainwindow.cpp:96
+#, fuzzy, kde-format
+#| msgid "Show &Left Grid"
+msgctxt "@option:check"
 msgid "Show &Left Grid"
 msgstr "הצגת רשת &שמאלית"
 
-#: mainwindow.cpp:99
-#, kde-format
+#: mainwindow.cpp:100
+#, fuzzy, kde-format
+#| msgid "Show &Right Grid"
+msgctxt "@option:check"
 msgid "Show &Right Grid"
 msgstr "הצגת רשת ימ&נית"
 
@@ -366,23 +386,29 @@ msgid "&Port:"
 msgstr "&פתחה:"
 
 #: networkdialog.cpp:116
-#, kde-format
-msgid "&Enter server address manually"
+#, fuzzy, kde-format
+#| msgid "&Enter server address manually"
+msgctxt "@action:button"
+msgid "&Enter Server Address Manually"
 msgstr "מילוי כתובת שרת י&דנית"
 
 #: networkdialog.cpp:148
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Network Parameters"
+msgctxt "@title:window"
 msgid "Network Parameters"
 msgstr "משתני רשת"
 
 #: networkdialog.cpp:210
-#, kde-format
-msgid "Connecting to remote host..."
+#, fuzzy, kde-format
+#| msgid "Connecting to remote host..."
+msgid "Connecting to remote host…"
 msgstr "התחברות למארח המרוחק…"
 
 #: networkdialog.cpp:217
-#, kde-format
-msgid "Waiting for an incoming connection..."
+#, fuzzy, kde-format
+#| msgid "Waiting for an incoming connection..."
+msgid "Waiting for an incoming connection…"
 msgstr "בהמתנה לחיבור נכנס…"
 
 #: networkdialog.cpp:236
@@ -456,18 +482,24 @@ msgid "You lose. Better luck next time!"
 msgstr "הפסדת. בהצלחה בפעם הבאה!"
 
 #: playfield.cpp:209
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Change Nickname"
+msgctxt "@title:window"
 msgid "Change Nickname"
 msgstr "החלפת כינוי"
 
 #: playfield.cpp:209
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Enter new nickname:"
+msgctxt "@label:textbox"
 msgid "Enter new nickname:"
 msgstr "נא למלא כינוי חדש:"
 
 #: playfield.cpp:238
-#, kde-format
-msgid "Restart game"
+#, fuzzy, kde-format
+#| msgid "Restart game"
+msgctxt "@title:window"
+msgid "Restart Game"
 msgstr "התחלת המשחק מחדש"
 
 #: playfield.cpp:239
@@ -504,8 +536,9 @@ msgid "Enemy has shot. Shoot now!"
 msgstr "היריב או היריבה ירו. לירות עכשיו!"
 
 #: playfield.cpp:267
-#, kde-format
-msgid "Waiting for enemy to shoot..."
+#, fuzzy, kde-format
+#| msgid "Waiting for enemy to shoot..."
+msgid "Waiting for enemy to shoot…"
 msgstr "בהמתנה לירי של היריב או היריבה…"
 
 #: playfield.cpp:276
@@ -514,13 +547,15 @@ msgid "Ships placed. Now shoot on the enemy field!"
 msgstr "הספינות הוצבו. עכשיו יש לירות לשדה היריב או היריבה!"
 
 #: playfield.cpp:279
-#, kde-format
-msgid "Waiting for other player to start the game..."
+#, fuzzy, kde-format
+#| msgid "Waiting for other player to start the game..."
+msgid "Waiting for other player to start the game…"
 msgstr "בהמתנה להתחלת המשחק מהצד השני…"
 
 #: playfield.cpp:283
-#, kde-format
-msgid "Waiting for other player to place his ships..."
+#, fuzzy, kde-format
+#| msgid "Waiting for other player to place his ships..."
+msgid "Waiting for other player to place his ships…"
 msgstr "בהמתנה להצבת הספינות בצד השני…"
 
 #: playfield.cpp:297
@@ -535,14 +570,18 @@ msgid "You can't place your remaining ships."
 msgstr "אין לך איך להציב את הספינות הנותרות."
 
 #: playfield.cpp:304
-#, kde-format
-msgctxt "@action"
+#, fuzzy, kde-format
+#| msgctxt "@action"
+#| msgid "Restart"
+msgctxt "@action:button"
 msgid "Restart"
 msgstr "הפעלה מחדש"
 
 #: playfield.cpp:305
-#, kde-format
-msgctxt "@action"
+#, fuzzy, kde-format
+#| msgctxt "@action"
+#| msgid "Abort"
+msgctxt "@action:button"
 msgid "Abort"
 msgstr "ביטול"
 
@@ -555,23 +594,31 @@ msgstr ""
 "אין לך איפה להציב את הספינות הנותרות שלך. נא להתחיל להציב את הספינות מחדש או "
 "לבטל את המשחק"
 
-#: playfield.cpp:307
-#, kde-format
-msgid "Restart placing ships"
+#: playfield.cpp:308
+#, fuzzy, kde-format
+#| msgid "Restart placing ships"
+msgctxt "@title:window"
+msgid "Restart Placing Ships"
 msgstr "התחלת הצבת הספינות מחדש"
 
 #: simplemenu.cpp:40
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Single Player"
+msgctxt "@action:button"
 msgid "Single Player"
 msgstr "שחקן יחיד"
 
 #: simplemenu.cpp:41
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Host Network Game"
+msgctxt "@action:button"
 msgid "Host Network Game"
 msgstr "אירוח משחק רשת"
 
 #: simplemenu.cpp:42
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Connect to Network Game"
+msgctxt "@action:button"
 msgid "Connect to Network Game"
 msgstr "חיבור למשחק רשת"
 
@@ -579,3 +626,6 @@ msgstr "חיבור למשחק רשת"
 #, kde-format
 msgid "Remote player"
 msgstr "שחקן מרוחק"
+
+#~ msgid "Change &Nickname..."
+#~ msgstr "החלפת &כינוי…"

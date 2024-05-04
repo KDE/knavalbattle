@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kbattleship\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-10 01:46+0000\n"
+"POT-Creation-Date: 2024-05-04 00:37+0000\n"
 "PO-Revision-Date: 2005-10-22 15:07+0500\n"
 "Last-Translator: Victor Ibragimov <youth_opportunities@tajikngo.org>\n"
 "Language-Team: Tajik\n"
@@ -293,56 +293,66 @@ msgstr ""
 #: mainwindow.cpp:59
 #, fuzzy, kde-format
 #| msgid "S&ingle Player"
+msgctxt "@action"
 msgid "&Single Player"
 msgstr "Бозингари &Ягона"
 
 #: mainwindow.cpp:63
 #, fuzzy, kde-format
-msgid "&Host Game..."
+msgctxt "@action"
+msgid "&Host Game…"
 msgstr "&Боздоштани бозӣ"
 
 #: mainwindow.cpp:67
 #, fuzzy, kde-format
 #| msgid "&Connect to Server..."
-msgid "&Connect to Game..."
+msgctxt "@action"
+msgid "&Connect to Game…"
 msgstr "&Пайвастшавӣ ба Хидматрасон..."
 
 #: mainwindow.cpp:72
 #, fuzzy, kde-format
 #| msgid "&Nick name:"
-msgid "Change &Nickname..."
+msgctxt "@action"
+msgid "Change &Nickname…"
 msgstr "&Ник:"
 
-#: mainwindow.cpp:75
+#: mainwindow.cpp:76
 #, fuzzy, kde-format
 #| msgid "&Play Sounds"
-msgid "&Play Sounds"
+msgctxt "@option:check"
+msgid "Play Sounds"
 msgstr "&Бозикунии Овозҳо"
 
-#: mainwindow.cpp:80
+#: mainwindow.cpp:81
 #, kde-format
+msgctxt "@option:check"
 msgid "&Adjacent Ships"
 msgstr ""
 
-#: mainwindow.cpp:85
+#: mainwindow.cpp:86
 #, kde-format
+msgctxt "@option:check"
 msgid "&Multiple Ships"
 msgstr ""
 
-#: mainwindow.cpp:90
+#: mainwindow.cpp:91
 #, kde-format
+msgctxt "@option:check"
 msgid "Show End-of-Game Message"
 msgstr ""
 
-#: mainwindow.cpp:95
+#: mainwindow.cpp:96
 #, fuzzy, kde-format
 #| msgid "&Show Grid"
+msgctxt "@option:check"
 msgid "Show &Left Grid"
 msgstr "&Нишон додани Тӯр"
 
-#: mainwindow.cpp:99
+#: mainwindow.cpp:100
 #, fuzzy, kde-format
 #| msgid "&Show Grid"
+msgctxt "@option:check"
 msgid "Show &Right Grid"
 msgstr "&Нишон додани Тӯр"
 
@@ -370,24 +380,27 @@ msgstr "&Даргоҳ:"
 
 #: networkdialog.cpp:116
 #, kde-format
-msgid "&Enter server address manually"
+msgctxt "@action:button"
+msgid "&Enter Server Address Manually"
 msgstr ""
 
 #: networkdialog.cpp:148
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Connect to Server"
+msgctxt "@title:window"
 msgid "Network Parameters"
-msgstr ""
+msgstr "Пайвастшавӣ ба Хидматрасон"
 
 #: networkdialog.cpp:210
 #, fuzzy, kde-format
 #| msgid "Connection refused by other host."
-msgid "Connecting to remote host..."
+msgid "Connecting to remote host…"
 msgstr "Пайвастшавӣ аз тарафи соҳиби дигар рад шуд."
 
 #: networkdialog.cpp:217
 #, fuzzy, kde-format
 #| msgid "Waiting for an answer..."
-msgid "Waiting for an incoming connection..."
+msgid "Waiting for an incoming connection…"
 msgstr "Интизори ҷавоб..."
 
 #: networkdialog.cpp:236
@@ -466,18 +479,22 @@ msgstr ""
 #: playfield.cpp:209
 #, fuzzy, kde-format
 #| msgid "&Nick name:"
+msgctxt "@title:window"
 msgid "Change Nickname"
 msgstr "&Ник:"
 
 #: playfield.cpp:209
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "&Nick name:"
+msgctxt "@label:textbox"
 msgid "Enter new nickname:"
-msgstr ""
+msgstr "&Ник:"
 
 #: playfield.cpp:238
 #, fuzzy, kde-format
 #| msgid "Restart"
-msgid "Restart game"
+msgctxt "@title:window"
+msgid "Restart Game"
 msgstr "Бозоғозӣ"
 
 #: playfield.cpp:239
@@ -516,7 +533,7 @@ msgstr "Рақиб тир паронд. Ҳозир шумо паронед."
 #: playfield.cpp:267
 #, fuzzy, kde-format
 #| msgid "Waiting for enemy to shoot.."
-msgid "Waiting for enemy to shoot..."
+msgid "Waiting for enemy to shoot…"
 msgstr "Тирпаронии рақибро интизор шавед.."
 
 #: playfield.cpp:276
@@ -527,13 +544,13 @@ msgstr ""
 #: playfield.cpp:279
 #, fuzzy, kde-format
 #| msgid "Waiting for other player to start the match..."
-msgid "Waiting for other player to start the game..."
+msgid "Waiting for other player to start the game…"
 msgstr "Интизорӣ, то он даме, ки дигар бозингар бозиро оғоз намояд..."
 
 #: playfield.cpp:283
 #, fuzzy, kde-format
 #| msgid "Waiting for other player to place their ships..."
-msgid "Waiting for other player to place his ships..."
+msgid "Waiting for other player to place his ships…"
 msgstr ""
 "Интизорӣ, то он даме, ки дигар бозингар киштиҳои худро ҷойгир намояд..."
 
@@ -555,13 +572,13 @@ msgstr ""
 #: playfield.cpp:304
 #, fuzzy, kde-format
 #| msgid "Restart"
-msgctxt "@action"
+msgctxt "@action:button"
 msgid "Restart"
 msgstr "Бозоғозӣ"
 
 #: playfield.cpp:305
 #, kde-format
-msgctxt "@action"
+msgctxt "@action:button"
 msgid "Abort"
 msgstr ""
 
@@ -572,26 +589,30 @@ msgid ""
 "game"
 msgstr ""
 
-#: playfield.cpp:307
+#: playfield.cpp:308
 #, kde-format
-msgid "Restart placing ships"
+msgctxt "@title:window"
+msgid "Restart Placing Ships"
 msgstr ""
 
 #: simplemenu.cpp:40
 #, fuzzy, kde-format
 #| msgid "S&ingle Player"
+msgctxt "@action:button"
 msgid "Single Player"
 msgstr "Бозингари &Ягона"
 
 #: simplemenu.cpp:41
 #, fuzzy, kde-format
 #| msgid "Connect to Server"
+msgctxt "@action:button"
 msgid "Host Network Game"
 msgstr "Пайвастшавӣ ба Хидматрасон"
 
 #: simplemenu.cpp:42
 #, fuzzy, kde-format
 #| msgid "Connect to Server"
+msgctxt "@action:button"
 msgid "Connect to Network Game"
 msgstr "Пайвастшавӣ ба Хидматрасон"
 
@@ -600,6 +621,11 @@ msgstr "Пайвастшавӣ ба Хидматрасон"
 #| msgid "S&ingle Player"
 msgid "Remote player"
 msgstr "Бозингари &Ягона"
+
+#, fuzzy
+#~| msgid "&Nick name:"
+#~ msgid "Change &Nickname..."
+#~ msgstr "&Ник:"
 
 #~ msgid "KBattleship"
 #~ msgstr "KҶанги Киштиҳо"

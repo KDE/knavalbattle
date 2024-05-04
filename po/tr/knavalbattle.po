@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdegames-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-10 01:46+0000\n"
+"POT-Creation-Date: 2024-05-04 00:37+0000\n"
 "PO-Revision-Date: 2023-03-07 20:43+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
@@ -294,52 +294,72 @@ msgid "URL of a Naval Battle game server to connect to after startup"
 msgstr "Açılıştan sonra bağlanılacak bir Amiral Battı oyun sunucusunun URL'si"
 
 #: mainwindow.cpp:59
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "&Single Player"
+msgctxt "@action"
 msgid "&Single Player"
 msgstr "&Tek Oyuncu"
 
 #: mainwindow.cpp:63
-#, kde-format
-msgid "&Host Game..."
+#, fuzzy, kde-format
+#| msgid "&Host Game..."
+msgctxt "@action"
+msgid "&Host Game…"
 msgstr "&Oyun Sunucusu Ol..."
 
 #: mainwindow.cpp:67
-#, kde-format
-msgid "&Connect to Game..."
+#, fuzzy, kde-format
+#| msgid "&Connect to Game..."
+msgctxt "@action"
+msgid "&Connect to Game…"
 msgstr "Oyuna &Bağlan..."
 
 #: mainwindow.cpp:72
-#, kde-format
-msgid "Change &Nickname..."
-msgstr "&Takma Ad Değiştir..."
+#, fuzzy, kde-format
+#| msgid "Change Nickname"
+msgctxt "@action"
+msgid "Change &Nickname…"
+msgstr "Takma Adı Değiştir"
 
-#: mainwindow.cpp:75
-#, kde-format
-msgid "&Play Sounds"
+#: mainwindow.cpp:76
+#, fuzzy, kde-format
+#| msgid "&Play Sounds"
+msgctxt "@option:check"
+msgid "Play Sounds"
 msgstr "&Sesleri Çal"
 
-#: mainwindow.cpp:80
-#, kde-format
+#: mainwindow.cpp:81
+#, fuzzy, kde-format
+#| msgid "&Adjacent Ships"
+msgctxt "@option:check"
 msgid "&Adjacent Ships"
 msgstr "&Komşu Gemiler"
 
-#: mainwindow.cpp:85
-#, kde-format
+#: mainwindow.cpp:86
+#, fuzzy, kde-format
+#| msgid "&Multiple Ships"
+msgctxt "@option:check"
 msgid "&Multiple Ships"
 msgstr "&Çoklu Gemiler"
 
-#: mainwindow.cpp:90
-#, kde-format
+#: mainwindow.cpp:91
+#, fuzzy, kde-format
+#| msgid "Show End-of-Game Message"
+msgctxt "@option:check"
 msgid "Show End-of-Game Message"
 msgstr "Oyun Sonu İletisini Göster"
 
-#: mainwindow.cpp:95
-#, kde-format
+#: mainwindow.cpp:96
+#, fuzzy, kde-format
+#| msgid "Show &Left Grid"
+msgctxt "@option:check"
 msgid "Show &Left Grid"
 msgstr "S&ol Izgarayı Göster"
 
-#: mainwindow.cpp:99
-#, kde-format
+#: mainwindow.cpp:100
+#, fuzzy, kde-format
+#| msgid "Show &Right Grid"
+msgctxt "@option:check"
 msgid "Show &Right Grid"
 msgstr "S&ağ Izgarayı Göster"
 
@@ -364,23 +384,29 @@ msgid "&Port:"
 msgstr "Ka&pı:"
 
 #: networkdialog.cpp:116
-#, kde-format
-msgid "&Enter server address manually"
+#, fuzzy, kde-format
+#| msgid "&Enter server address manually"
+msgctxt "@action:button"
+msgid "&Enter Server Address Manually"
 msgstr "&Sunucu adresini elle gir"
 
 #: networkdialog.cpp:148
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Network Parameters"
+msgctxt "@title:window"
 msgid "Network Parameters"
 msgstr "Ağ Parametreleri"
 
 #: networkdialog.cpp:210
-#, kde-format
-msgid "Connecting to remote host..."
+#, fuzzy, kde-format
+#| msgid "Connecting to remote host..."
+msgid "Connecting to remote host…"
 msgstr "Uzak sunucuya bağlanılıyor..."
 
 #: networkdialog.cpp:217
-#, kde-format
-msgid "Waiting for an incoming connection..."
+#, fuzzy, kde-format
+#| msgid "Waiting for an incoming connection..."
+msgid "Waiting for an incoming connection…"
 msgstr "Gelen bir bağlantı bekleniyor..."
 
 #: networkdialog.cpp:236
@@ -454,18 +480,24 @@ msgid "You lose. Better luck next time!"
 msgstr "Kaybettiniz. Gelecek sefere iyi şanslar!"
 
 #: playfield.cpp:209
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Change Nickname"
+msgctxt "@title:window"
 msgid "Change Nickname"
 msgstr "Takma Adı Değiştir"
 
 #: playfield.cpp:209
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Enter new nickname:"
+msgctxt "@label:textbox"
 msgid "Enter new nickname:"
 msgstr "Yeni takma adı girin:"
 
 #: playfield.cpp:238
-#, kde-format
-msgid "Restart game"
+#, fuzzy, kde-format
+#| msgid "Restart game"
+msgctxt "@title:window"
+msgid "Restart Game"
 msgstr "Yeniden başlat"
 
 #: playfield.cpp:239
@@ -502,8 +534,9 @@ msgid "Enemy has shot. Shoot now!"
 msgstr "Düşman ateş etti. Ateş sırası sende!"
 
 #: playfield.cpp:267
-#, kde-format
-msgid "Waiting for enemy to shoot..."
+#, fuzzy, kde-format
+#| msgid "Waiting for enemy to shoot..."
+msgid "Waiting for enemy to shoot…"
 msgstr "Düşmanın ateş etmesini bekliyoruz..."
 
 #: playfield.cpp:276
@@ -512,13 +545,15 @@ msgid "Ships placed. Now shoot on the enemy field!"
 msgstr "Gemiler yerleştirildi. Düşman sathına ateş edin!"
 
 #: playfield.cpp:279
-#, kde-format
-msgid "Waiting for other player to start the game..."
+#, fuzzy, kde-format
+#| msgid "Waiting for other player to start the game..."
+msgid "Waiting for other player to start the game…"
 msgstr "Diğer oyuncunun oyunu başlatmasını bekliyoruz..."
 
 #: playfield.cpp:283
-#, kde-format
-msgid "Waiting for other player to place his ships..."
+#, fuzzy, kde-format
+#| msgid "Waiting for other player to place his ships..."
+msgid "Waiting for other player to place his ships…"
 msgstr "Diğer oyuncunun gemileri yerleştirmesini bekliyoruz..."
 
 #: playfield.cpp:297
@@ -532,14 +567,18 @@ msgid "You can't place your remaining ships."
 msgstr "Geri kalan gemilerinizi yerleştiremezsiniz."
 
 #: playfield.cpp:304
-#, kde-format
-msgctxt "@action"
+#, fuzzy, kde-format
+#| msgctxt "@action"
+#| msgid "Restart"
+msgctxt "@action:button"
 msgid "Restart"
 msgstr "Yeniden Başlat"
 
 #: playfield.cpp:305
-#, kde-format
-msgctxt "@action"
+#, fuzzy, kde-format
+#| msgctxt "@action"
+#| msgid "Abort"
+msgctxt "@action:button"
 msgid "Abort"
 msgstr "İptal Et"
 
@@ -552,23 +591,31 @@ msgstr ""
 "Geri kalan gemilerinizi yerleştiremezsiniz. Lütfen gemileri yerleştirmeye "
 "yeniden başlayın veya oyunu iptal edin"
 
-#: playfield.cpp:307
-#, kde-format
-msgid "Restart placing ships"
+#: playfield.cpp:308
+#, fuzzy, kde-format
+#| msgid "Restart placing ships"
+msgctxt "@title:window"
+msgid "Restart Placing Ships"
 msgstr "Gemileri yeniden yerleştirmeyi başlat"
 
 #: simplemenu.cpp:40
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Single Player"
+msgctxt "@action:button"
 msgid "Single Player"
 msgstr "Tek Oyuncu"
 
 #: simplemenu.cpp:41
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Host Network Game"
+msgctxt "@action:button"
 msgid "Host Network Game"
 msgstr "Ağ Oyunu Sunucusu Ol"
 
 #: simplemenu.cpp:42
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Connect to Network Game"
+msgctxt "@action:button"
 msgid "Connect to Network Game"
 msgstr "Ağ Oyununa Bağlan"
 
@@ -576,3 +623,6 @@ msgstr "Ağ Oyununa Bağlan"
 #, kde-format
 msgid "Remote player"
 msgstr "Uzak oyuncu"
+
+#~ msgid "Change &Nickname..."
+#~ msgstr "&Takma Ad Değiştir..."
