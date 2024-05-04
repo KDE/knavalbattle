@@ -33,7 +33,7 @@ ChatWidget::ChatWidget(QWidget* parent)
     
     m_chat->setFocusProxy(m_input);
     
-    m_history.push_back(QLatin1String(""));
+    m_history.push_back(QString());
     m_current = 0;
     
     connect(m_input, &QLineEdit::returnPressed, this, &ChatWidget::sendLine);
@@ -73,7 +73,7 @@ bool ChatWidget::eventFilter(QObject* obj, QEvent* event)
 void ChatWidget::sendLine()
 {
     QString text = m_input->text();
-    m_history.push_back(QLatin1String(""));
+    m_history.push_back(QString());
     setHistoryText(m_history.size() - 1);
     display(m_nick, text);
     Q_EMIT message(text);

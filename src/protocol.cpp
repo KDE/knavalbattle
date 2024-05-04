@@ -120,7 +120,7 @@ public:
         addField(QStringLiteral("boardWidth"), QString::number(msg.gridWidth()));
         addField(QStringLiteral("boardHeight"), QString::number(msg.gridHeight()));
         for (unsigned int i=1; i<=msg.shipsConfiguration()->longestShip(); i++) {
-            QDomElement element=addField(QStringLiteral("ships"), QLatin1String( "" ));
+            QDomElement element=addField(QStringLiteral("ships"), QString());
             element.setAttribute(QStringLiteral("size"),QString::number(i));
             element.setAttribute(QStringLiteral("number"),QString::number(msg.shipsConfiguration()->numberOfShipsOfSize(i)));
             element.setAttribute(QStringLiteral("name"),msg.shipsConfiguration()->nameOfShipsOfSize(i));
