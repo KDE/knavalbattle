@@ -102,7 +102,7 @@ against the computer or in a network against another player. To play against you
 
 <para>
 To start a network game, one player has to host the game by selecting <guilabel>Host Network Game</guilabel> on the welcome screen, or choosing <menuchoice><guimenu>Game</guimenu>
-<guimenuitem>Host Game...</guimenuitem></menuchoice>.
+<guimenuitem>Host Game…</guimenuitem></menuchoice>.
 A dialog box opens which asks for a <guilabel>Nickname:</guilabel> and <guilabel>Port:</guilabel>. Normally,
 &i18n-knavalbattle; will suggest your full name, but you can enter any string
 you want. The predefined port should be ok. However, if you encounter
@@ -117,7 +117,7 @@ to establish a connection.</para>
 
 <para>
 The other player has to choose <guilabel>Connect to Network Game</guilabel>, or click on the <menuchoice><guimenu>Game</guimenu>
-<guimenuitem>Connect to Game...</guimenuitem></menuchoice> menu item. Again, a <guilabel>Nickname:</guilabel> is
+<guimenuitem>Connect to Game…</guimenuitem></menuchoice> menu item. Again, a <guilabel>Nickname:</guilabel> is
 suggested, but you can choose any nickname you like. In the field <guilabel>Hostname:</guilabel> you
 have to enter the host name of the server (the machine of the player that initiated the game).
 </para>
@@ -269,7 +269,7 @@ The first player to destroy all their opponent's ships wins the game.
 <menuchoice>
 <!-- <shortcut><keycap>F3</keycap></shortcut> -->
 <guimenu>Game</guimenu>
-<guimenuitem>Host Game...</guimenuitem>
+<guimenuitem>Host Game…</guimenuitem>
 </menuchoice>
 </term>
 <listitem>
@@ -284,7 +284,7 @@ The first player to destroy all their opponent's ships wins the game.
 <menuchoice>
 <!-- <shortcut><keycap>F3</keycap></shortcut> -->
 <guimenu>Game</guimenu>
-<guimenuitem>Connect to Game...</guimenuitem>
+<guimenuitem>Connect to Game…</guimenuitem>
 </menuchoice>
 </term>
 <listitem>
@@ -315,7 +315,7 @@ The first player to destroy all their opponent's ships wins the game.
 <term>
 <menuchoice>
 <guimenu>Settings</guimenu>
-<guimenuitem>Change Nickname...</guimenuitem>
+<guimenuitem>Change Nickname…</guimenuitem>
 </menuchoice>
 </term>
 <listitem>
