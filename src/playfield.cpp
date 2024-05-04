@@ -206,7 +206,7 @@ void PlayField::gameOver(Sea::Player winner)
 
 void PlayField::changeNick()
 {
-    QString nick = QInputDialog::getText(this, i18n("Change Nickname"), i18n("Enter new nickname:"), QLineEdit::Normal, Settings::findNick());
+    QString nick = QInputDialog::getText(this, i18nc("@title:window", "Change Nickname"), i18nc("@label:textbox", "Enter new nickname:"), QLineEdit::Normal, Settings::findNick());
     if (!nick.isEmpty()) {
         Settings::setNickname(nick);
         Settings::self()->save();
@@ -235,7 +235,7 @@ void PlayField::toggleMultiple(bool enable)
 void PlayField::restartRequested()
 {
     int ans = KMessageBox::questionTwoActions(this,
-                                         i18n("Restart game"),
+                                         i18nc("@title:window", "Restart Game"),
                                          i18n("Your opponent has requested to restart the game. Do you accept?"),
                                          KGuiItem(i18nc("@action:button", "Accept"), QStringLiteral("dialog-ok")),
                                          KGuiItem(i18nc("@action:button", "Reject"), QStringLiteral("dialog-cancel")));
@@ -301,10 +301,12 @@ void PlayField::startPlacingShips()
 void PlayField::restartPlacingShips(Sea::Player player)
 {
     m_status_bar->showMessage(i18n("You can't place your remaining ships."));
-    KGuiItem buttonRestart(i18nc("@action", "Restart"), QStringLiteral("view-refresh"));
-    KGuiItem buttonAbort(i18nc("@action", "Abort"), QStringLiteral("dialog-cancel"));
+    KGuiItem buttonRestart(i18nc("@action:button", "Restart"), QStringLiteral("view-refresh"));
+    KGuiItem buttonAbort(i18nc("@action:button", "Abort"), QStringLiteral("dialog-cancel"));
     int res=KMessageBox::warningTwoActions(this,
-                                      i18n("You can't place your remaining ships. Please restart placing ships or abort game"), i18n("Restart placing ships"), buttonRestart, buttonAbort);
+                                           i18n("You can't place your remaining ships. Please restart placing ships or abort game"),
+                                           i18nc("@title:window", "Restart Placing Ships"),
+                                           buttonRestart, buttonAbort);
     if (res == KMessageBox::PrimaryAction) {
         startPlacingShips();
         m_controller->notifyRestartPlacingShips(player);

@@ -37,9 +37,9 @@ SimpleMenu::SimpleMenu(QWidget* parent, WelcomeScreen* screen)
 {
     if (m_screen) {    
         // create buttons
-        m_local_game_btn = m_screen->addButton(0, 0, QIcon::fromTheme( QLatin1String( iconLocal) ), i18n("Single Player" ));
-        m_server_btn = m_screen->addButton(0, 1, QIcon::fromTheme( QLatin1String( iconServer) ), i18n("Host Network Game" ));
-        m_client_btn = m_screen->addButton(0, 2, QIcon::fromTheme( QLatin1String( iconClient) ), i18n("Connect to Network Game" ));
+        m_local_game_btn = m_screen->addButton(0, 0, QIcon::fromTheme( QLatin1String( iconLocal) ), i18nc("@action:button", "Single Player" ));
+        m_server_btn = m_screen->addButton(0, 1, QIcon::fromTheme( QLatin1String( iconServer) ), i18nc("@action:button", "Host Network Game" ));
+        m_client_btn = m_screen->addButton(0, 2, QIcon::fromTheme( QLatin1String( iconClient) ), i18nc("@action:button", "Connect to Network Game" ));
         
         // create connections
         connect(m_local_game_btn, &Button::clicked, this, &SimpleMenu::localGame);

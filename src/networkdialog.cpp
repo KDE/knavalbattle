@@ -113,7 +113,7 @@ NetworkDialog::NetworkDialog(bool client, QWidget* parent, const QUrl* url)
         mainLayout->addWidget(frame);
         frame->setVisible(false);
         
-        QPushButton* sw=new QPushButton(i18n("&Enter server address manually"), main);
+        auto* sw = new QPushButton(i18nc("@action:button", "&Enter Server Address Manually"), main);
         sw->setCheckable(true);
         connect(sw, &QPushButton::toggled, frame, &QWidget::setVisible);
         connect(sw, &QPushButton::toggled, m_games, &KComboBox::setDisabled);
@@ -145,7 +145,7 @@ NetworkDialog::NetworkDialog(bool client, QWidget* parent, const QUrl* url)
     topLayout->addWidget(main);
     topLayout->addWidget(buttonBox);
 
-    setWindowTitle(i18n("Network Parameters"));
+    setWindowTitle(i18nc("@title:window", "Network Parameters"));
     
     connect(this, &NetworkDialog::accepted, this, &NetworkDialog::savePreferences);
     
