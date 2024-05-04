@@ -47,7 +47,7 @@ NetworkDialog::NetworkDialog(bool client, QWidget* parent, const QUrl* url)
     QVBoxLayout* mainLayout = new QVBoxLayout;
 
     // feedback
-    m_feedback = new QLabel(QLatin1String(""), this);
+    m_feedback = new QLabel(this);
     m_feedback->setAlignment(Qt::AlignHCenter);
     {
         QFont font = m_feedback->font();
