@@ -122,7 +122,7 @@ void PlayField::newGame()
     
     m_menu = new SimpleMenu(this, m_seaView->screen(Sea::Player(0)));
     connect(m_menu, &SimpleMenu::done, this, &PlayField::setupController);
-    m_status_bar->showMessage(QLatin1String(""));
+    m_status_bar->showMessage(QString());
     Q_EMIT welcomeScreen();
 }
 
