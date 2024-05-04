@@ -72,7 +72,8 @@ void MainWindow::setupActions()
     action = new QAction(i18nc("@action", "Change &Nickname…"), this);
     actionCollection()->addAction(QStringLiteral("options_nickname"), action);
     connect(action, &QAction::triggered, m_main, &PlayField::changeNick);
-    action = new KToggleAction(i18nc("@option:check", "Play Sounds"), this);
+    action = new KToggleAction(QIcon::fromTheme(QStringLiteral("speaker")),
+                               i18nc("@option:check", "Play Sounds"), this);
     action->setChecked(Settings::enableSounds());
     actionCollection()->addAction(QStringLiteral("options_sounds"), action);
     connect(action, &QAction::triggered, m_main, &PlayField::toggleSounds);
