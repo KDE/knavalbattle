@@ -309,7 +309,7 @@ void NetworkEntity::visit(const GameOptionsMessage& msg)
 
 QIcon NetworkEntity::icon() const
 {
-    return QIcon::fromTheme( QLatin1String( "network-workgroup" ));
+    return QIcon::fromTheme( QStringLiteral( "network-workgroup" ));
 }
 
 #include "moc_networkentity.cpp"

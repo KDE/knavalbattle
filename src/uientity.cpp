@@ -84,7 +84,7 @@ void UIEntity::drawShoot(Sea::Player player, const Coord& c, const HitInfo& info
 
 QIcon UIEntity::icon() const
 {
-    return QIcon::fromTheme( QLatin1String( "user-identity" ));
+    return QIcon::fromTheme( QStringLiteral( "user-identity" ));
 }
 
 #include "moc_uientity.cpp"
