@@ -2,7 +2,7 @@
 # Translation of kbattleship.po to Slovenian
 # SLOVENIAN TRANSLATION OF KBATTLESHIP.
 # Copyright (C) 2001, 2003, 2004, 2005, 2006, 2007 Free Software Foundation, Inc.
-# $Id: knavalbattle.po 1679202 2024-05-04 01:13:01Z scripty $
+# $Id: knavalbattle.po 1679271 2024-05-05 01:10:22Z scripty $
 # $Source$
 #
 # Roman Maurer <roman.maurer@amis.net>, 2001.
@@ -16,7 +16,7 @@ msgstr ""
 "Project-Id-Version: kbattleship\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-05-04 00:37+0000\n"
-"PO-Revision-Date: 2022-07-10 15:57+0200\n"
+"PO-Revision-Date: 2024-05-04 06:21+0200\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
 "Language: sl\n"
@@ -25,7 +25,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n%100==1 ? 1 : n%100==2 ? 2 : n%100==3 || n"
 "%100==4 ? 3 : 0);\n"
-"X-Generator: Poedit 3.1\n"
+"X-Generator: Poedit 3.4.2\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -294,74 +294,64 @@ msgid "URL of a Naval Battle game server to connect to after startup"
 msgstr "URL strežnika za Naval Battle, na katerega se naj povežem po zagonu"
 
 #: mainwindow.cpp:59
-#, fuzzy, kde-format
-#| msgid "&Single Player"
+#, kde-format
 msgctxt "@action"
 msgid "&Single Player"
-msgstr "&En sam igralec"
+msgstr "En &sam igralec"
 
 #: mainwindow.cpp:63
-#, fuzzy, kde-format
-#| msgid "&Host Game..."
+#, kde-format
 msgctxt "@action"
 msgid "&Host Game…"
-msgstr "&Gosti igro ..."
+msgstr "Gosti igro…"
 
 #: mainwindow.cpp:67
-#, fuzzy, kde-format
-#| msgid "&Connect to Game..."
+#, kde-format
 msgctxt "@action"
 msgid "&Connect to Game…"
-msgstr "&Poveži se s strežnikom ..."
+msgstr "Poveži se na igro…"
 
 #: mainwindow.cpp:72
-#, fuzzy, kde-format
-#| msgid "Change Nickname"
+#, kde-format
 msgctxt "@action"
 msgid "Change &Nickname…"
-msgstr "Spremeni vzdevek"
+msgstr "Spremeni vzdevek…"
 
 #: mainwindow.cpp:76
-#, fuzzy, kde-format
-#| msgid "&Play Sounds"
+#, kde-format
 msgctxt "@option:check"
 msgid "Play Sounds"
-msgstr "Pred&vajaj zvoke"
+msgstr "Predvajaj zvoke"
 
 #: mainwindow.cpp:81
-#, fuzzy, kde-format
-#| msgid "&Adjacent Ships"
+#, kde-format
 msgctxt "@option:check"
 msgid "&Adjacent Ships"
-msgstr "&Sosednje ladje"
+msgstr "Sosednje ladje"
 
 #: mainwindow.cpp:86
-#, fuzzy, kde-format
-#| msgid "&Multiple Ships"
+#, kde-format
 msgctxt "@option:check"
 msgid "&Multiple Ships"
-msgstr "&Več ladij"
+msgstr "Več ladij"
 
 #: mainwindow.cpp:91
-#, fuzzy, kde-format
-#| msgid "Show End-of-Game Message"
+#, kde-format
 msgctxt "@option:check"
 msgid "Show End-of-Game Message"
 msgstr "Prikaži sporočilo ob koncu igre"
 
 #: mainwindow.cpp:96
-#, fuzzy, kde-format
-#| msgid "Show &Left Grid"
+#, kde-format
 msgctxt "@option:check"
 msgid "Show &Left Grid"
 msgstr "Prikaži mrežo na &levi"
 
 #: mainwindow.cpp:100
-#, fuzzy, kde-format
-#| msgid "Show &Right Grid"
+#, kde-format
 msgctxt "@option:check"
 msgid "Show &Right Grid"
-msgstr "Prikaži mrežo na &desni"
+msgstr "Prikaži mrežo na desni"
 
 #: networkdialog.cpp:61
 #, kde-format
@@ -384,30 +374,26 @@ msgid "&Port:"
 msgstr "&Vrata:"
 
 #: networkdialog.cpp:116
-#, fuzzy, kde-format
-#| msgid "&Enter server address manually"
+#, kde-format
 msgctxt "@action:button"
 msgid "&Enter Server Address Manually"
 msgstr "Ročno vn&esite naslov strežnika"
 
 #: networkdialog.cpp:148
-#, fuzzy, kde-format
-#| msgid "Network Parameters"
+#, kde-format
 msgctxt "@title:window"
 msgid "Network Parameters"
-msgstr "Nastavitve omrežja"
+msgstr "Parametri omrežja"
 
 #: networkdialog.cpp:210
-#, fuzzy, kde-format
-#| msgid "Connecting to remote host..."
+#, kde-format
 msgid "Connecting to remote host…"
-msgstr "Povezovanje z oddaljenim gostiteljem ..."
+msgstr "Povezovanje z oddaljenim gostiteljem…"
 
 #: networkdialog.cpp:217
-#, fuzzy, kde-format
-#| msgid "Waiting for an incoming connection..."
+#, kde-format
 msgid "Waiting for an incoming connection…"
-msgstr "Čakanje na dohodno povezavo ..."
+msgstr "Čakanje na dohodno povezavo…"
 
 #: networkdialog.cpp:236
 #, kde-format
@@ -480,25 +466,22 @@ msgid "You lose. Better luck next time!"
 msgstr "Izgubili ste. Več sreče prihodnjič!"
 
 #: playfield.cpp:209
-#, fuzzy, kde-format
-#| msgid "Change Nickname"
+#, kde-format
 msgctxt "@title:window"
 msgid "Change Nickname"
 msgstr "Spremeni vzdevek"
 
 #: playfield.cpp:209
-#, fuzzy, kde-format
-#| msgid "Enter new nickname:"
+#, kde-format
 msgctxt "@label:textbox"
 msgid "Enter new nickname:"
 msgstr "Vnesite novi vzdevek:"
 
 #: playfield.cpp:238
-#, fuzzy, kde-format
-#| msgid "Restart game"
+#, kde-format
 msgctxt "@title:window"
 msgid "Restart Game"
-msgstr "Znova zaženi"
+msgstr "Znova zaženi igro"
 
 #: playfield.cpp:239
 #, kde-format
@@ -535,10 +518,9 @@ msgid "Enemy has shot. Shoot now!"
 msgstr "Sovražnik je ustrelil. Zdaj ustrelite še vi!"
 
 #: playfield.cpp:267
-#, fuzzy, kde-format
-#| msgid "Waiting for enemy to shoot..."
+#, kde-format
 msgid "Waiting for enemy to shoot…"
-msgstr "Čakanje na sovražnikov strel ..."
+msgstr "Čakanje na sovražnikov strel…"
 
 #: playfield.cpp:276
 #, kde-format
@@ -546,16 +528,14 @@ msgid "Ships placed. Now shoot on the enemy field!"
 msgstr "Ladje postavljene. Zdaj streljajte na sovražnikovo polje!"
 
 #: playfield.cpp:279
-#, fuzzy, kde-format
-#| msgid "Waiting for other player to start the game..."
+#, kde-format
 msgid "Waiting for other player to start the game…"
-msgstr "Čakanje, da drugi igralec začne igro ..."
+msgstr "Čakanje, da drugi igralec začne igro…"
 
 #: playfield.cpp:283
-#, fuzzy, kde-format
-#| msgid "Waiting for other player to place his ships..."
+#, kde-format
 msgid "Waiting for other player to place his ships…"
-msgstr "Čakanje, da drugi igralec postavi svoje ladje ..."
+msgstr "Čakanje, da drugi igralec postavi svoje ladje…"
 
 #: playfield.cpp:297
 #, kde-format
@@ -568,17 +548,13 @@ msgid "You can't place your remaining ships."
 msgstr "Ne morete postaviti svojih preostalih ladij."
 
 #: playfield.cpp:304
-#, fuzzy, kde-format
-#| msgctxt "@action"
-#| msgid "Restart"
+#, kde-format
 msgctxt "@action:button"
 msgid "Restart"
 msgstr "Znova zaženi"
 
 #: playfield.cpp:305
-#, fuzzy, kde-format
-#| msgctxt "@action"
-#| msgid "Abort"
+#, kde-format
 msgctxt "@action:button"
 msgid "Abort"
 msgstr "Prekini"
@@ -593,29 +569,25 @@ msgstr ""
 "ladij ali prekinite igro"
 
 #: playfield.cpp:308
-#, fuzzy, kde-format
-#| msgid "Restart placing ships"
+#, kde-format
 msgctxt "@title:window"
 msgid "Restart Placing Ships"
-msgstr "Znova začnite s postavljanjem ladij"
+msgstr "Znova začni s postavljanjem ladij"
 
 #: simplemenu.cpp:40
-#, fuzzy, kde-format
-#| msgid "Single Player"
+#, kde-format
 msgctxt "@action:button"
 msgid "Single Player"
 msgstr "En sam igralec"
 
 #: simplemenu.cpp:41
-#, fuzzy, kde-format
-#| msgid "Host Network Game"
+#, kde-format
 msgctxt "@action:button"
 msgid "Host Network Game"
-msgstr "Gosti mrežno igro"
+msgstr "Gostitelj mrežne igre"
 
 #: simplemenu.cpp:42
-#, fuzzy, kde-format
-#| msgid "Connect to Network Game"
+#, kde-format
 msgctxt "@action:button"
 msgid "Connect to Network Game"
 msgstr "Poveži se na mrežno igro"

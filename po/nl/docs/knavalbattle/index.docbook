@@ -153,7 +153,7 @@
 ><guimenu
 >Spel</guimenu
 > <guimenuitem
->Spel hosten...</guimenuitem
+>Spel hosten…</guimenuitem
 ></menuchoice
 >. U wordt dan gevraagd om uw <guilabel
 >Schermnaam:</guilabel
@@ -173,7 +173,7 @@
 ><guimenu
 >Spel</guimenu
 > <guimenuitem
->Met spel verbinden...</guimenuitem
+>Met spel verbinden…</guimenuitem
 ></menuchoice
 >. Ook nu wordt er een <guilabel
 >Schermnaam:</guilabel
@@ -368,7 +368,7 @@
 ><guimenu
 >Spel</guimenu
 > <guimenuitem
->Host van het spel...w</guimenuitem
+>Host van het spel…</guimenuitem
 > </menuchoice>
 </term>
 <listitem>
@@ -385,7 +385,7 @@
 ><guimenu
 >Spel</guimenu
 > <guimenuitem
->Met spel verbinden...</guimenuitem
+>Met spel verbinden…</guimenuitem
 > </menuchoice>
 </term>
 <listitem>
@@ -425,7 +425,7 @@
 ><guimenu
 >Instellingen</guimenu
 > <guimenuitem
->Schermnaam wijzigen...</guimenuitem
+>Schermnaam wijzigen…</guimenuitem
 > </menuchoice>
 </term>
 <listitem>

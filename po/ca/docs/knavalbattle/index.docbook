@@ -153,7 +153,7 @@
 ><guimenu
 >Joc</guimenu
 > <guimenuitem
->Hostatja una partida...</guimenuitem
+>Hostatja una partida…</guimenuitem
 ></menuchoice
 >. S'obrirà un diàleg que sol·licitarà un <guilabel
 >Sobrenom:</guilabel
@@ -173,7 +173,7 @@
 ><guimenu
 >Joc</guimenu
 > <guimenuitem
->Connecta amb la partida...</guimenuitem
+>Connecta amb la partida…</guimenuitem
 ></menuchoice
 >. De nou, se suggerirà un <guilabel
 >Sobrenom:</guilabel
@@ -366,7 +366,7 @@
 ><guimenu
 >Joc</guimenu
 > <guimenuitem
->Hostatja una partida...</guimenuitem
+>Hostatja una partida…</guimenuitem
 > </menuchoice>
 </term>
 <listitem>
@@ -383,7 +383,7 @@
 ><guimenu
 >Joc</guimenu
 > <guimenuitem
->Connecta amb la partida...</guimenuitem
+>Connecta amb la partida…</guimenuitem
 > </menuchoice>
 </term>
 <listitem>
@@ -423,7 +423,7 @@
 ><guimenu
 >Arranjament</guimenu
 > <guimenuitem
->Canvia el sobrenom...</guimenuitem
+>Canvia el sobrenom…</guimenuitem
 > </menuchoice>
 </term>
 <listitem>

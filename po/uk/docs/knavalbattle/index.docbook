@@ -165,7 +165,7 @@
 ><guimenu
 >Гра</guimenu
 > <guimenuitem
->Організувати гру...</guimenuitem
+>Організувати гру…</guimenuitem
 ></menuchoice
 >. У відповідь програма відкриє діалогове вікно, у якому запитає вас про <guilabel
 >Псевдонім:</guilabel
@@ -185,7 +185,7 @@
 ><guimenu
 >Гра</guimenu
 > <guimenuitem
->Приєднатись до гри...</guimenuitem
+>Приєднатись до гри…</guimenuitem
 ></menuchoice
 >. Знову ж таки, буде запропоновано <guilabel
 >Прізвисько:</guilabel
@@ -380,7 +380,7 @@
 ><guimenu
 >Гра</guimenu
 > <guimenuitem
->Гостити гру...</guimenuitem
+>Гостити гру…</guimenuitem
 > </menuchoice>
 </term>
 <listitem>
@@ -397,7 +397,7 @@
 ><guimenu
 >Гра</guimenu
 > <guimenuitem
->Приєднатись до гри...</guimenuitem
+>Приєднатись до гри…</guimenuitem
 > </menuchoice>
 </term>
 <listitem>
@@ -437,7 +437,7 @@
 ><guimenu
 >Параметри</guimenu
 > <guimenuitem
->Змінити псевдонім...</guimenuitem
+>Змінити псевдонім…</guimenuitem
 > </menuchoice>
 </term>
 <listitem>
