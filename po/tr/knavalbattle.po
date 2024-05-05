@@ -10,13 +10,13 @@
 # obsoleteman <tulliana@gmail.com>, 2008-2009.
 # Volkan Gezer <volkangezer@gmail.com>, 2013-2014.
 # Yıldız Kardeşler <turkishprogram@xposta.com>, 2004.
-# Emir SARI <emir_sari@icloud.com>, 2022, 2023.
+# SPDX-FileCopyrightText: 2022, 2023, 2024 Emir SARI <emir_sari@icloud.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: kdegames-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-11-10 01:46+0000\n"
-"PO-Revision-Date: 2023-03-07 20:43+0300\n"
+"PO-Revision-Date: 2024-05-04 14:29+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -24,7 +24,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 22.12.3\n"
+"X-Generator: Lokalize 24.07.70\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -80,8 +80,8 @@ msgstr ""
 msgid ""
 "Allow multiple ships of any size, default: 4 of 1, 3 of 2, 2 of 3, 1 of 4."
 msgstr ""
-"Herhangi boyuttan birden fazla gemiye izin ver, öntanımlı: 1'den 5, 2'den 3, "
-"3'ten 2, 4'ten 1."
+"Herhangi boyuttan birden fazla gemiye izin ver, öntanımlı: 1’den 5, 2’den 3, "
+"3’ten 2, 4’ten 1."
 
 #. i18n: ectx: ToolBar (gameToolbar)
 #: knavalbattleui.rc:29
@@ -105,7 +105,7 @@ msgid ""
 "(c) 2000-2005  Nikolas Zimmermann, Daniel Molkentin\n"
 "(c) 2007 Paolo Capriotti"
 msgstr ""
-"(c) 2000-2005  Nikolas Zimmermann, Daniel Molkentin\n"
+"(c) 2000–2005  Nikolas Zimmermann, Daniel Molkentin\n"
 "(c) 2007 Paolo Capriotti"
 
 #: main.cpp:38
@@ -126,7 +126,7 @@ msgstr "Nikolas Zimmermann"
 #: main.cpp:39
 #, kde-format
 msgid "Project Founder, GUI Handling, Client/Server"
-msgstr "Projeyi başlatan, grafik arayüzü, istemci-sunucu programcısı"
+msgstr "Projeyi başlatan, grafik arayüzü, istemci–sunucu programcısı"
 
 #: main.cpp:40
 #, kde-format
@@ -136,7 +136,7 @@ msgstr "Daniel Molkentin"
 #: main.cpp:40
 #, kde-format
 msgid "Dialog Stuff, Client/Server"
-msgstr "Pencereler, istemci/sunucu"
+msgstr "Pencereler, istemci–sunucu"
 
 #: main.cpp:41
 #, kde-format
@@ -146,7 +146,7 @@ msgstr "Kevin Krammer"
 #: main.cpp:41
 #, kde-format
 msgid "Computer Player"
-msgstr "Bilgisayar Oyuncu"
+msgstr "Bilgisayar oyuncu"
 
 #: main.cpp:43
 #, kde-format
@@ -166,7 +166,7 @@ msgstr "Eugene Trounev"
 #: main.cpp:44
 #, kde-format
 msgid "Background"
-msgstr "Arka Plan"
+msgstr "Arka plan"
 
 #: main.cpp:45
 #, kde-format
@@ -226,7 +226,7 @@ msgstr "Lukas Tinkl"
 #: main.cpp:50
 #, kde-format
 msgid "Non-Latin1 Support"
-msgstr "Latin1 Dışı Destek"
+msgstr "Latin1 dışı destek"
 
 #: main.cpp:51
 #, kde-format
@@ -291,7 +291,7 @@ msgstr "[URL]"
 #: main.cpp:63
 #, kde-format
 msgid "URL of a Naval Battle game server to connect to after startup"
-msgstr "Açılıştan sonra bağlanılacak bir Amiral Battı oyun sunucusunun URL'si"
+msgstr "Açılıştan sonra bağlanılacak bir Amiral Battı oyun sunucusunun URL’si"
 
 #: mainwindow.cpp:59
 #, kde-format
@@ -391,7 +391,7 @@ msgstr "Sunucuya bağlantı kurulamadı"
 #: networkentity.cpp:189
 #, kde-format
 msgid "You have "
-msgstr "Sahip olduğunuz "
+msgstr "Sahip olduğunuz: "
 
 #: networkentity.cpp:195
 #, kde-format
@@ -431,7 +431,7 @@ msgstr "İsabetler"
 #: playfield.cpp:151 playfield.cpp:171
 #, kde-format
 msgid "Misses"
-msgstr "Kaçırışlar"
+msgstr "Kaçırmalar"
 
 #: playfield.cpp:191
 #, kde-format
@@ -499,7 +499,7 @@ msgstr ""
 #: playfield.cpp:263
 #, kde-format
 msgid "Enemy has shot. Shoot now!"
-msgstr "Düşman ateş etti. Ateş sırası sende!"
+msgstr "Düşman ateş etti. Ateş sırası sizde!"
 
 #: playfield.cpp:267
 #, kde-format
