@@ -1,7 +1,7 @@
 # Copyright (C) YEAR This_file_is_part_of_KDE
 # This file is distributed under the same license as the PACKAGE package.
 #
-# Eloy Cuadra <ecuadra@eloihr.net>, 2013, 2017, 2022.
+# SPDX-FileCopyrightText: 2013, 2017, 2022, 2024 Eloy Cuadra <ecuadra@eloihr.net>
 # David Paul <eodos0@gmail.com>, 2014.
 # Sofía Priego <spriego@darksylvania.net>, %Y.
 msgid ""
@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-11-10 01:46+0000\n"
-"PO-Revision-Date: 2022-07-10 15:40+0100\n"
+"PO-Revision-Date: 2024-05-05 22:34+0100\n"
 "Last-Translator: Sofía Priego <spriego@darksylvania.net>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
 "Language: es\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 22.04.3\n"
+"X-Generator: Lokalize 24.02.2\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -32,7 +32,7 @@ msgstr "spriego@darksylvania.net,ecuadra@eloihr.net,eodos0@gmail.com"
 #: controller.cpp:50
 #, kde-format
 msgid "Computer"
-msgstr "Equipo"
+msgstr "Máquina"
 
 #. i18n: ectx: label, entry (Hostname), group (network)
 #: knavalbattle.kcfg:9
@@ -56,7 +56,7 @@ msgstr "Alias de usuario."
 #: knavalbattle.kcfg:22
 #, kde-format
 msgid "Whether sound effects should be played."
-msgstr "Definir si se deben reproducir efectos de sonido."
+msgstr "Indica si se deben reproducir efectos de sonido."
 
 #. i18n: ectx: label, entry (AdjacentShips), group (general)
 #: knavalbattle.kcfg:26
@@ -108,7 +108,7 @@ msgstr "Paolo Capriotti"
 #: main.cpp:38
 #, kde-format
 msgid "Current maintainer"
-msgstr "Encargado actual"
+msgstr "Encargado actual."
 
 #: main.cpp:39
 #, kde-format
@@ -118,7 +118,7 @@ msgstr "Nikolas Zimmermann"
 #: main.cpp:39
 #, kde-format
 msgid "Project Founder, GUI Handling, Client/Server"
-msgstr "Fundador del proyecto, manejo de la interfaz, cliente/servidor"
+msgstr "Fundador del proyecto, manejo de la interfaz, cliente/servidor."
 
 #: main.cpp:40
 #, kde-format
@@ -128,7 +128,7 @@ msgstr "Daniel Molkentin"
 #: main.cpp:40
 #, kde-format
 msgid "Dialog Stuff, Client/Server"
-msgstr "Diálogos, cliente/servidor"
+msgstr "Diálogos, cliente/servidor."
 
 #: main.cpp:41
 #, kde-format
@@ -138,7 +138,7 @@ msgstr "Kevin Krammer"
 #: main.cpp:41
 #, kde-format
 msgid "Computer Player"
-msgstr "Jugador del equipo"
+msgstr "Jugador de la máquina."
 
 #: main.cpp:43
 #, kde-format
@@ -148,7 +148,7 @@ msgstr "Johann Ollivier Lapeyre"
 #: main.cpp:43
 #, kde-format
 msgid "Game artwork"
-msgstr "Gráficos del juego"
+msgstr "Gráficos del juego."
 
 #: main.cpp:44
 #, kde-format
@@ -158,7 +158,7 @@ msgstr "Eugene Trounev"
 #: main.cpp:44
 #, kde-format
 msgid "Background"
-msgstr "Fondo"
+msgstr "Fondo."
 
 #: main.cpp:45
 #, kde-format
@@ -168,7 +168,7 @@ msgstr "Robert Wadley"
 #: main.cpp:45
 #, kde-format
 msgid "Artwork for some of the ships"
-msgstr "Gráficos para algunos barcos"
+msgstr "Gráficos para algunos barcos."
 
 #: main.cpp:46
 #, kde-format
@@ -178,7 +178,7 @@ msgstr "Riccardo Iaconelli"
 #: main.cpp:46
 #, kde-format
 msgid "Welcome screen"
-msgstr "Pantalla de bienvenida"
+msgstr "Pantalla de bienvenida."
 
 #: main.cpp:47
 #, kde-format
@@ -188,7 +188,7 @@ msgstr "Benjamin Adler"
 #: main.cpp:47
 #, kde-format
 msgid "Icon"
-msgstr "Icono"
+msgstr "Icono."
 
 #: main.cpp:48
 #, kde-format
@@ -198,7 +198,7 @@ msgstr "Nils Trzebin"
 #: main.cpp:48
 #, kde-format
 msgid "Sounds"
-msgstr "Sonidos"
+msgstr "Sonidos."
 
 #: main.cpp:49
 #, kde-format
@@ -208,7 +208,7 @@ msgstr "Elmar Hoefner"
 #: main.cpp:49
 #, kde-format
 msgid "GFX"
-msgstr "Efectos gráficos"
+msgstr "Efectos gráficos."
 
 #: main.cpp:50
 #, kde-format
@@ -218,7 +218,7 @@ msgstr "Lukas Tinkl"
 #: main.cpp:50
 #, kde-format
 msgid "Non-Latin1 Support"
-msgstr "Implementación de juegos de caracteres distintos de Latin1"
+msgstr "Implementación de juegos de caracteres distintos de Latin1."
 
 #: main.cpp:51
 #, kde-format
@@ -228,7 +228,7 @@ msgstr "Malte Starostik"
 #: main.cpp:51
 #, kde-format
 msgid "Various improvements"
-msgstr "Mejoras diversas"
+msgstr "Mejoras diversas."
 
 #: main.cpp:52
 #, kde-format
@@ -238,7 +238,7 @@ msgstr "Albert Astals Cid"
 #: main.cpp:52 main.cpp:53
 #, kde-format
 msgid "Various improvements and bugfixes"
-msgstr "Diversas mejoras y corrección de errores"
+msgstr "Diversas mejoras y corrección de errores."
 
 #: main.cpp:53
 #, kde-format
@@ -253,7 +253,7 @@ msgstr "Inge Wallin"
 #: main.cpp:54
 #, kde-format
 msgid "Bugfixes and refactoring"
-msgstr "Corrección de errores y refactorización"
+msgstr "Corrección de errores y refactorización."
 
 #: main.cpp:55
 #, kde-format
@@ -263,7 +263,7 @@ msgstr "Jakub Stachowski"
 #: main.cpp:55
 #, kde-format
 msgid "DNS-SD discovery"
-msgstr "Descubrimiento DNS-SD"
+msgstr "Descubrimiento DNS-SD."
 
 #: main.cpp:56
 #, kde-format
@@ -273,7 +273,7 @@ msgstr "Roney Gomes"
 #: main.cpp:56
 #, kde-format
 msgid "Porting to KGameRenderer and QGraphicsView"
-msgstr "Adaptación a KGameRenderer y a QGraphicsView"
+msgstr "Adaptación a KGameRenderer y a QGraphicsView."
 
 #: main.cpp:63
 #, kde-format
@@ -384,7 +384,7 @@ msgstr "No se puede conectar con el servidor"
 #: networkentity.cpp:189
 #, kde-format
 msgid "You have "
-msgstr "Tiene "
+msgstr "Tienes "
 
 #: networkentity.cpp:195
 #, kde-format
@@ -394,22 +394,22 @@ msgstr ", "
 #: networkentity.cpp:288
 #, kde-format
 msgid "You can place ships adjacent to each other"
-msgstr "Debe situar los barcos de forma adyacente entre ellos"
+msgstr "Debes situar los barcos de forma adyacente entre ellos"
 
 #: networkentity.cpp:291
 #, kde-format
 msgid "You must leave a space between ships"
-msgstr "Debe dejar un espacio entre los barcos"
+msgstr "Debes dejar un espacio entre los barcos"
 
 #: playerentity.cpp:199
 #, kde-format
 msgid "Your opponent is now known as %1"
-msgstr "Su oponente se llama ahora %1"
+msgstr "Tu oponente se llama ahora %1"
 
 #: playerentity.cpp:204
 #, kde-format
 msgid "Your opponent disconnected from the game"
-msgstr "Su oponente se ha desconectado del juego"
+msgstr "Tu oponente se ha desconectado del juego"
 
 #: playfield.cpp:149 playfield.cpp:169
 #, kde-format
@@ -429,22 +429,22 @@ msgstr "Fallos"
 #: playfield.cpp:191
 #, kde-format
 msgid "You win!"
-msgstr "¡Ha ganado!"
+msgstr "¡Has ganado!"
 
 #: playfield.cpp:193
 #, kde-format
 msgid "You win. Excellent!"
-msgstr "Ha ganado. ¡Excelente!"
+msgstr "Has ganado. ¡Excelente!"
 
 #: playfield.cpp:197
 #, kde-format
 msgid "You lose."
-msgstr "Ha perdido."
+msgstr "Has perdido."
 
 #: playfield.cpp:199
 #, kde-format
 msgid "You lose. Better luck next time!"
-msgstr "Ha perdido. ¡Que tenga más suerte la próxima vez!"
+msgstr "Has perdido. ¡Que tengas más suerte la próxima vez!"
 
 #: playfield.cpp:209
 #, kde-format
@@ -464,7 +464,7 @@ msgstr "Reiniciar juego"
 #: playfield.cpp:239
 #, kde-format
 msgid "Your opponent has requested to restart the game. Do you accept?"
-msgstr "Su oponente ha solicitado reiniciar el juego. ¿Lo acepta?"
+msgstr "Tu oponente ha solicitado reiniciar el juego. ¿Lo aceptas?"
 
 #: playfield.cpp:240
 #, kde-format
@@ -485,15 +485,15 @@ msgid ""
 "according to the rules enforced by old clients, ships cannot be placed "
 "adjacent to one another and only one ship of each size is allowed."
 msgstr ""
-"Su oponente está usando una versión de «Batalla naval» anterior a KDE4. "
-"Tenga en cuenta que, según las reglas forzadas por las versiones anteriores, "
-"los barcos no se pueden situar de forma adyacente entre ellos y solo se "
-"permite un barco de cada tamaño."
+"Tu oponente está usando una versión de «Batalla naval» anterior a KDE4. Ten "
+"en cuenta que, según las reglas forzadas por las versiones anteriores, los "
+"barcos no se pueden situar de forma adyacente entre ellos y solo se permite "
+"un barco de cada tamaño."
 
 #: playfield.cpp:263
 #, kde-format
 msgid "Enemy has shot. Shoot now!"
-msgstr "El enemigo ha disparado. ¡Dispare ahora!"
+msgstr "El enemigo ha disparado. ¡Dispara ahora!"
 
 #: playfield.cpp:267
 #, kde-format
@@ -503,7 +503,7 @@ msgstr "Esperando el disparo del enemigo..."
 #: playfield.cpp:276
 #, kde-format
 msgid "Ships placed. Now shoot on the enemy field!"
-msgstr "Barcos situados. ¡Dispare ahora a las aguas del enemigo!"
+msgstr "Barcos situados. ¡Dispara ahora a las aguas del enemigo!"
 
 #: playfield.cpp:279
 #, kde-format
@@ -518,12 +518,12 @@ msgstr "Esperando a que el otro jugador sitúe sus barcos..."
 #: playfield.cpp:297
 #, kde-format
 msgid "Place your %1 ships. Use the right mouse button to rotate them."
-msgstr "Coloque sus %1 barcos. Use el botón derecho del ratón para rotarlos."
+msgstr "Coloca tus %1 barcos. Usa el botón derecho del ratón para rotarlos."
 
 #: playfield.cpp:303
 #, kde-format
 msgid "You can't place your remaining ships."
-msgstr "No puede colocar los barcos que le quedan."
+msgstr "No puedes colocar los barcos que te quedan."
 
 #: playfield.cpp:304
 #, kde-format
@@ -543,8 +543,8 @@ msgid ""
 "You can't place your remaining ships. Please restart placing ships or abort "
 "game"
 msgstr ""
-"No puede colocar los barcos que le quedan. Vuelva a colocarlos todos o "
-"interrumpa la partida."
+"No puedes colocar los barcos que te quedan. Vuelve a colocarlos todos o "
+"interrumpe la partida."
 
 #: playfield.cpp:307
 #, kde-format
