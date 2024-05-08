@@ -607,6 +607,3 @@ msgstr "Koble til et nettspill"
 #, kde-format
 msgid "Remote player"
 msgstr "Nettspiller"
-
-#~ msgid "Change &Nickname..."
-#~ msgstr "Endre &Kallenavn …"

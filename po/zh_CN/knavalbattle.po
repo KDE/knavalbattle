@@ -280,71 +280,61 @@ msgid "URL of a Naval Battle game server to connect to after startup"
 msgstr "Naval Battle 启动后要连接到的游戏服务器地址"
 
 #: mainwindow.cpp:59
-#, fuzzy, kde-format
-#| msgid "&Single Player"
+#, kde-format
 msgctxt "@action"
 msgid "&Single Player"
 msgstr "单人游戏(&S)"
 
 #: mainwindow.cpp:63
-#, fuzzy, kde-format
-#| msgid "&Host Game..."
+#, kde-format
 msgctxt "@action"
 msgid "&Host Game…"
-msgstr "建立游戏主机(&H)..."
+msgstr ""
 
 #: mainwindow.cpp:67
-#, fuzzy, kde-format
-#| msgid "&Connect to Game..."
+#, kde-format
 msgctxt "@action"
 msgid "&Connect to Game…"
-msgstr "连接到游戏(&C)..."
+msgstr ""
 
 #: mainwindow.cpp:72
-#, fuzzy, kde-format
-#| msgid "Change Nickname"
+#, kde-format
 msgctxt "@action"
 msgid "Change &Nickname…"
-msgstr "更改昵称"
+msgstr ""
 
 #: mainwindow.cpp:76
-#, fuzzy, kde-format
-#| msgid "&Play Sounds"
+#, kde-format
 msgctxt "@option:check"
 msgid "Play Sounds"
-msgstr "播放声音(&P)"
+msgstr ""
 
 #: mainwindow.cpp:81
-#, fuzzy, kde-format
-#| msgid "&Adjacent Ships"
+#, kde-format
 msgctxt "@option:check"
 msgid "&Adjacent Ships"
 msgstr "相邻船只(&A)"
 
 #: mainwindow.cpp:86
-#, fuzzy, kde-format
-#| msgid "&Multiple Ships"
+#, kde-format
 msgctxt "@option:check"
 msgid "&Multiple Ships"
 msgstr "多条船只(&M)"
 
 #: mainwindow.cpp:91
-#, fuzzy, kde-format
-#| msgid "Show End-of-Game Message"
+#, kde-format
 msgctxt "@option:check"
 msgid "Show End-of-Game Message"
 msgstr "显示游戏结束信息"
 
 #: mainwindow.cpp:96
-#, fuzzy, kde-format
-#| msgid "Show &Left Grid"
+#, kde-format
 msgctxt "@option:check"
 msgid "Show &Left Grid"
 msgstr "显示左侧网格(&L)"
 
 #: mainwindow.cpp:100
-#, fuzzy, kde-format
-#| msgid "Show &Right Grid"
+#, kde-format
 msgctxt "@option:check"
 msgid "Show &Right Grid"
 msgstr "显示右侧网格(&R)"
@@ -370,30 +360,26 @@ msgid "&Port:"
 msgstr "端口(&P)："
 
 #: networkdialog.cpp:116
-#, fuzzy, kde-format
-#| msgid "&Enter server address manually"
+#, kde-format
 msgctxt "@action:button"
 msgid "&Enter Server Address Manually"
-msgstr "手动输入服务器地址(&E)"
+msgstr ""
 
 #: networkdialog.cpp:148
-#, fuzzy, kde-format
-#| msgid "Network Parameters"
+#, kde-format
 msgctxt "@title:window"
 msgid "Network Parameters"
 msgstr "网络参数"
 
 #: networkdialog.cpp:210
-#, fuzzy, kde-format
-#| msgid "Connecting to remote host..."
+#, kde-format
 msgid "Connecting to remote host…"
-msgstr "正在连接到远程主机..."
+msgstr ""
 
 #: networkdialog.cpp:217
-#, fuzzy, kde-format
-#| msgid "Waiting for an incoming connection..."
+#, kde-format
 msgid "Waiting for an incoming connection…"
-msgstr "正在等待一个接入连接..."
+msgstr ""
 
 #: networkdialog.cpp:236
 #, kde-format
@@ -466,25 +452,22 @@ msgid "You lose. Better luck next time!"
 msgstr "您输了。祝下次好运！"
 
 #: playfield.cpp:209
-#, fuzzy, kde-format
-#| msgid "Change Nickname"
+#, kde-format
 msgctxt "@title:window"
 msgid "Change Nickname"
 msgstr "更改昵称"
 
 #: playfield.cpp:209
-#, fuzzy, kde-format
-#| msgid "Enter new nickname:"
+#, kde-format
 msgctxt "@label:textbox"
 msgid "Enter new nickname:"
 msgstr "输入新昵称："
 
 #: playfield.cpp:238
-#, fuzzy, kde-format
-#| msgid "Restart game"
+#, kde-format
 msgctxt "@title:window"
 msgid "Restart Game"
-msgstr "重新开始"
+msgstr ""
 
 #: playfield.cpp:239
 #, kde-format
@@ -519,10 +502,9 @@ msgid "Enemy has shot. Shoot now!"
 msgstr "敌军已经射击。立即射击！"
 
 #: playfield.cpp:267
-#, fuzzy, kde-format
-#| msgid "Waiting for enemy to shoot..."
+#, kde-format
 msgid "Waiting for enemy to shoot…"
-msgstr "正在等待敌军射击..."
+msgstr ""
 
 #: playfield.cpp:276
 #, kde-format
@@ -530,16 +512,14 @@ msgid "Ships placed. Now shoot on the enemy field!"
 msgstr "舰艇已放置好。现在请向敌军阵地开火！"
 
 #: playfield.cpp:279
-#, fuzzy, kde-format
-#| msgid "Waiting for other player to start the game..."
+#, kde-format
 msgid "Waiting for other player to start the game…"
-msgstr "正在等待其他玩家开始游戏..."
+msgstr ""
 
 #: playfield.cpp:283
-#, fuzzy, kde-format
-#| msgid "Waiting for other player to place his ships..."
+#, kde-format
 msgid "Waiting for other player to place his ships…"
-msgstr "正在等待其他玩家放置舰艇..."
+msgstr ""
 
 #: playfield.cpp:297
 #, kde-format
@@ -552,17 +532,13 @@ msgid "You can't place your remaining ships."
 msgstr "无法放置剩余船只。"
 
 #: playfield.cpp:304
-#, fuzzy, kde-format
-#| msgctxt "@action"
-#| msgid "Restart"
+#, kde-format
 msgctxt "@action:button"
 msgid "Restart"
 msgstr "重启启动"
 
 #: playfield.cpp:305
-#, fuzzy, kde-format
-#| msgctxt "@action"
-#| msgid "Abort"
+#, kde-format
 msgctxt "@action:button"
 msgid "Abort"
 msgstr "中止"
@@ -575,29 +551,25 @@ msgid ""
 msgstr "无法放置剩余船只。请重新放置或者终止游戏。"
 
 #: playfield.cpp:308
-#, fuzzy, kde-format
-#| msgid "Restart placing ships"
+#, kde-format
 msgctxt "@title:window"
 msgid "Restart Placing Ships"
-msgstr "重新放置舰船"
+msgstr ""
 
 #: simplemenu.cpp:40
-#, fuzzy, kde-format
-#| msgid "Single Player"
+#, kde-format
 msgctxt "@action:button"
 msgid "Single Player"
 msgstr "单人游戏"
 
 #: simplemenu.cpp:41
-#, fuzzy, kde-format
-#| msgid "Host Network Game"
+#, kde-format
 msgctxt "@action:button"
 msgid "Host Network Game"
 msgstr "建立网络游戏主机"
 
 #: simplemenu.cpp:42
-#, fuzzy, kde-format
-#| msgid "Connect to Network Game"
+#, kde-format
 msgctxt "@action:button"
 msgid "Connect to Network Game"
 msgstr "连接到网络游戏"
@@ -606,6 +578,3 @@ msgstr "连接到网络游戏"
 #, kde-format
 msgid "Remote player"
 msgstr "远程玩家"
-
-#~ msgid "Change &Nickname..."
-#~ msgstr "更改昵称(&N)..."
