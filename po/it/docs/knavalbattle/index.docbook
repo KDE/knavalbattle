@@ -166,12 +166,12 @@
 
 <para
 >Per giocare in rete, uno dei giocatori deve ospitare la partita selezionando <guilabel
->Ospitare una partita in rete</guilabel
+>Ospita una partita in rete</guilabel
 > nella schermata di benvenuto o <menuchoice
 ><guimenu
 >Partita</guimenu
 > <guimenuitem
->Server di gioco...</guimenuitem
+>Server di gioco…</guimenuitem
 ></menuchoice
 >. Si aprirà una finestra di dialogo che chiederà un <guilabel
 >Nome di battaglia:</guilabel
@@ -191,7 +191,7 @@
 ><guimenu
 >Partita</guimenu
 > <guimenuitem
->Collegarsi alla partita...</guimenuitem
+>Collegati per giocare…</guimenuitem
 ></menuchoice
 >. Verrà ancora proposto un <guilabel
 >nome di battaglia</guilabel
@@ -386,7 +386,7 @@
 ><guimenu
 >Partita</guimenu
 > <guimenuitem
->Server di gioco</guimenuitem
+>Server di gioco…</guimenuitem
 > </menuchoice>
 </term>
 <listitem>
@@ -403,13 +403,13 @@
 ><guimenu
 >Partita</guimenu
 > <guimenuitem
->Collegarsi per giocare...</guimenuitem
+>Collegarsi per giocare…</guimenuitem
 > </menuchoice>
 </term>
 <listitem>
 <para>
 <action
->Collegarsi ad un server per incominciare una partita.</action>
+>Collegarsi a un server per incominciare una partita.</action>
 </para>
 </listitem>
 </varlistentry>
@@ -443,7 +443,7 @@
 ><guimenu
 >Impostazioni</guimenu
 > <guimenuitem
->Cambia il nome di battaglia...</guimenuitem
+>Cambia il nome di battaglia…</guimenuitem
 > </menuchoice>
 </term>
 <listitem>
