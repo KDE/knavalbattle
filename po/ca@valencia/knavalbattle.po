@@ -257,7 +257,7 @@ msgstr "Inge Wallin"
 #: main.cpp:54
 #, kde-format
 msgid "Bugfixes and refactoring"
-msgstr "Correcció d'errors i reordenament del codi"
+msgstr "Esmena d'errors i reordenament del codi"
 
 #: main.cpp:55
 #, kde-format
@@ -298,17 +298,17 @@ msgstr "Jugador &individual"
 #: mainwindow.cpp:63
 #, kde-format
 msgid "&Host Game..."
-msgstr "&Allotja una partida..."
+msgstr "&Allotja una partida…"
 
 #: mainwindow.cpp:67
 #, kde-format
 msgid "&Connect to Game..."
-msgstr "&Connecta amb la partida..."
+msgstr "&Connecta amb la partida…"
 
 #: mainwindow.cpp:72
 #, kde-format
 msgid "Change &Nickname..."
-msgstr "Canvia el &sobrenom..."
+msgstr "Canvia el &sobrenom…"
 
 #: mainwindow.cpp:75
 #, kde-format
@@ -373,12 +373,12 @@ msgstr "Paràmetres de xarxa"
 #: networkdialog.cpp:210
 #, kde-format
 msgid "Connecting to remote host..."
-msgstr "S'està connectant amb l'amfitrió remot..."
+msgstr "S'està connectant amb l'amfitrió remot…"
 
 #: networkdialog.cpp:217
 #, kde-format
 msgid "Waiting for an incoming connection..."
-msgstr "S'està esperant una connexió entrant..."
+msgstr "S'està esperant una connexió entrant…"
 
 #: networkdialog.cpp:236
 #, kde-format
@@ -502,7 +502,7 @@ msgstr "L'oponent ha disparat. Dispara ara!"
 #: playfield.cpp:267
 #, kde-format
 msgid "Waiting for enemy to shoot..."
-msgstr "S'està esperant que l'oponent dispari..."
+msgstr "S'està esperant que l'oponent dispari…"
 
 #: playfield.cpp:276
 #, kde-format
@@ -512,12 +512,12 @@ msgstr "Vaixells situats. Dispara ara al camp de l'oponent!"
 #: playfield.cpp:279
 #, kde-format
 msgid "Waiting for other player to start the game..."
-msgstr "S'està esperant que l'altre jugador inicie la partida..."
+msgstr "S'està esperant que l'altre jugador inicie la partida…"
 
 #: playfield.cpp:283
 #, kde-format
 msgid "Waiting for other player to place his ships..."
-msgstr "S'està esperant que l'altre jugador situe els vaixells..."
+msgstr "S'està esperant que l'altre jugador situe els vaixells…"
 
 #: playfield.cpp:297
 #, kde-format
