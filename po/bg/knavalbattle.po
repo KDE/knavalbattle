@@ -2,7 +2,7 @@
 # Bulgarian translation of KDE.
 # This file is licensed under the GPL.
 #
-# $Id: knavalbattle.po 1679402 2024-05-07 01:10:25Z scripty $
+# $Id: knavalbattle.po 1679994 2024-05-14 01:10:29Z scripty $
 #
 # Zlatko Popov <zlatkopopov@fsa-bg.org>, 2006, 2007.
 # Petar Toushkov <pt.launchpad@gmail.com>, 2009.
@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kbattleship\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-05-04 00:37+0000\n"
-"PO-Revision-Date: 2024-05-06 10:36+0200\n"
+"PO-Revision-Date: 2024-05-13 22:48+0200\n"
 "Last-Translator: Mincho Kondarev <mkondarev@yahoo.de>\n"
 "Language-Team: Bulgarian <kde-i18n-doc@kde.org>\n"
 "Language: bg\n"
@@ -302,13 +302,13 @@ msgstr "Е&динична игра"
 #, kde-format
 msgctxt "@action"
 msgid "&Host Game…"
-msgstr "&Организиране на игра..."
+msgstr "&Организиране на игра…"
 
 #: mainwindow.cpp:67
 #, kde-format
 msgctxt "@action"
 msgid "&Connect to Game…"
-msgstr "&Свързване към игра..."
+msgstr "&Свързване към игра…"
 
 #: mainwindow.cpp:72
 #, kde-format
@@ -392,7 +392,7 @@ msgstr "Свързване към отдалечен сървър…"
 #: networkdialog.cpp:217
 #, kde-format
 msgid "Waiting for an incoming connection…"
-msgstr "Изчакване за обратна връзка..."
+msgstr "Изчакване за обратна връзка…"
 
 #: networkdialog.cpp:236
 #, kde-format
@@ -529,7 +529,7 @@ msgstr "Корабите са разположени. Сега стреляйт�
 #: playfield.cpp:279
 #, kde-format
 msgid "Waiting for other player to start the game…"
-msgstr "Изчакване на противника да започне играта..."
+msgstr "Изчакване на противника да започне играта…"
 
 #: playfield.cpp:283
 #, kde-format
