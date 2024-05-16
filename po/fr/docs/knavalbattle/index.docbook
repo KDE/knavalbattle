@@ -167,13 +167,13 @@
 ><guimenu
 >Jeu</guimenu
 > <guimenuitem
->Héberger une partie en réseau...</guimenuitem
+>Héberger une partie...</guimenuitem
 ></menuchoice
 >. Une boîte de dialogue s'ouvre vous demandant votre <guilabel
->Pseudo</guilabel
+>Pseudo : </guilabel
 > et un <guilabel
->Port</guilabel
->. Normalement, &i18n-knavalbattle; vous suggérera votre nom d'utilisateur, mais vous êtes libre de saisir ce que vous voulez. Le port prédéfini devrait convenir. Cependant, si vous rencontrez des problèmes, vous pouvez choisir n'importe quel port libre au-dessus de 1024. </para>
+>Port : </guilabel
+>. Normalement, &i18n-knavalbattle; vous suggérera votre nom complet d'utilisateur, mais vous êtes libre de saisir ce que vous voulez. Le port prédéfini devrait convenir. Cependant, si vous rencontrez des problèmes, vous pouvez choisir n'importe quel port libre au-dessus de 1024. </para>
 
 <note>
 <para
@@ -181,17 +181,17 @@
 </note>
 
 <para
->L'autre joueur doit choisir <guilabel
+>L'autre joueur doit sélectionner <guilabel
 >Se connecter à une partie en réseau</guilabel
-> ou cliquer sur <menuchoice
+> ou cliquer sur l'élément de menu <menuchoice
 ><guimenu
 >Jeu</guimenu
 > <guimenuitem
->Se connecter à une partie en réseau...</guimenuitem
+>Se connecter à une partie...</guimenuitem
 ></menuchoice
 >. Encore une fois, un <guilabel
->Pseudo</guilabel
-> est suggéré. Mais, vous pouvez choisir celui qui vous convient. Dans le champ <guilabel
+>Pseudo : </guilabel
+> est conseillé. Mais, vous pouvez choisir celui qui vous convient. Dans le champ <guilabel
 >Nom de l'hôte : </guilabel
 >, vous devez saisir votre nom d'hôte du serveur (C'est-à-dire, la machine du joueur qui a initialisé la partie). </para>
 
@@ -382,7 +382,7 @@
 ><guimenu
 >Jeu</guimenu
 > <guimenuitem
->Créer une partie réseau...</guimenuitem
+>Héberger une partie...</guimenuitem
 > </menuchoice>
 </term>
 <listitem>
@@ -399,7 +399,7 @@
 ><guimenu
 >Jeu</guimenu
 > <guimenuitem
->Se connecter à une partie en réseau</guimenuitem
+>Se connecter à une partie...</guimenuitem
 > </menuchoice>
 </term>
 <listitem>
@@ -439,7 +439,7 @@
 ><guimenu
 >Configuration</guimenu
 > <guimenuitem
->Modifier le pseudo</guimenuitem
+>Modifier le pseudo...</guimenuitem
 > </menuchoice>
 </term>
 <listitem>
@@ -544,7 +544,7 @@
 </variablelist>
 
 <para
->De plus,  &i18n-knavalbattle; possède des éléments communs de menu de &kde; comme <guimenu
+>De plus, &i18n-knavalbattle; possède des éléments communs de menu de &kde; comme <guimenu
 >Configuration</guimenu
 > et <guimenu
 >Aide</guimenu
