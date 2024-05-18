@@ -1,15 +1,15 @@
 # translation of knavalbattle.pot to esperanto
 # Copyright (C) 2002 Free Software Foundation, Inc.
 # Wolfram Diestel <wolfram@steloj.de>, 2002.
-# Oliver Kellogg <okellogg@users.sourceforge.net>, 2023.
+# Oliver Kellogg <olivermkellogg@gmail.com>, 2023.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: knavalbattle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-11-10 01:46+0000\n"
-"PO-Revision-Date: 2023-12-17 20:35+0100\n"
-"Last-Translator: Oliver Kellogg <okellogg@users.sourceforge.net>\n"
+"PO-Revision-Date: 2024-05-04 07:47+0100\n"
+"Last-Translator: Oliver Kellogg <olivermkellogg@gmail.com>\n"
 "Language-Team: Esperanto <eo@li.org>\n"
 "Language: eo\n"
 "MIME-Version: 1.0\n"
@@ -26,7 +26,7 @@ msgstr "Wolfram Diestel,Oliver Kellogg"
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
-msgstr "wolfram@steloj.de,okellogg@users.sourceforge.net"
+msgstr "wolfram@steloj.de,olivermkellogg@gmail.com"
 
 #: controller.cpp:50
 #, kde-format
@@ -285,7 +285,7 @@ msgstr "URL de Naval Battle-ludservilo al kiu konektiĝi post ekfunkciiĝo"
 #: mainwindow.cpp:59
 #, kde-format
 msgid "&Single Player"
-msgstr "&Sola ludanto"
+msgstr "&Sola Ludanto"
 
 #: mainwindow.cpp:63
 #, kde-format
@@ -554,12 +554,12 @@ msgstr "Sola ludanto"
 #: simplemenu.cpp:41
 #, kde-format
 msgid "Host Network Game"
-msgstr "Gastiga Retludo"
+msgstr "Gastigi Retludon"
 
 #: simplemenu.cpp:42
 #, kde-format
 msgid "Connect to Network Game"
-msgstr "Konekti al Reta Ludo"
+msgstr "Konekti al Retludo"
 
 #: simplemenu.cpp:132 simplemenu.cpp:149
 #, kde-format
