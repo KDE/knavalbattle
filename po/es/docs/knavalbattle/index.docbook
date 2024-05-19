@@ -11,7 +11,7 @@
 <book id="knavalbattle" lang="&language;">
 <bookinfo>
 <title
->El manual de &knavalbattle;</title>
+>Manual de &knavalbattle;</title>
 
 <authorgroup>
 <author
@@ -92,6 +92,20 @@
 > <contrib
 >Traductora</contrib
 > </othercredit
+> <othercredit role="translator"
+><firstname
+>Eloy</firstname
+> <surname
+>Cuadra</surname
+> <affiliation
+><address
+><email
+>ecuadra@eloihr.net</email
+></address
+></affiliation
+> <contrib
+>Corrección de la traducción</contrib
+></othercredit
 > 
 
 </authorgroup>
@@ -125,7 +139,7 @@
 
 <abstract>
 <para
->&i18n-knavalbattle; es una implementación con soporte para red del famoso juego de hundir los barcos, creado por &kde;.</para>
+>&i18n-knavalbattle; es una implementación del famoso juego de hundir los barcos que permite jugar en red, creado por &kde;.</para>
 </abstract>
 
 <keywordset>
@@ -138,7 +152,7 @@
 <keyword
 >juego</keyword>
 <keyword
->batallanaval</keyword>
+>batalla naval</keyword>
 <keyword
 >batalla</keyword>
 <keyword
@@ -188,11 +202,11 @@
 ><title
 >Objetivo:</title
 ><para
->Hunda todos los barcos de su oponente antes de que el contrario hunda los suyos.</para
+>Hunde todos los barcos de tu oponente antes de que él hunda los tuyos.</para
 ></note
 ><!--Describe the objective of the game.-->
 <para
->Si desea jugar a &i18n-knavalbattle;, necesitará dos jugadores, bien jugando contra la máquina o contra otro jugador en red. Para jugar contra su máquina, primero debe seleccionar el nivel de dificultad en la parte derecha de la barra de estado y después seleccione <guilabel
+>Para jugar a &i18n-knavalbattle; se necesitan dos jugadores: se puede jugar contra la máquina o contra otro jugador en red. Para jugar contra la máquina, primero debes seleccionar el nivel de dificultad en la parte derecha de la barra de estado y después seleccionar <guilabel
 >Un solo jugador</guilabel
 > en la pantalla de bienvenida o directamente en la opción del menú <menuchoice
 > <guimenu
@@ -219,7 +233,7 @@
 
 <note>
 <para
->En caso de que utilice un puerto diferente al predeterminado, deberá comunicárselo al otro jugador, ya que ambos deben utilizar el mismo puerto para poder establecer una conexión.</para>
+>En caso de que uses un puerto diferente al predeterminado, deberás comunicárselo al otro jugador, ya que ambos debéis usar el mismo puerto para poder establecer una conexión.</para>
 </note>
 
 <para
@@ -238,22 +252,22 @@
 > debe introducir el nombre del servidor (la máquina del jugador que inició el juego). </para>
 
 <para
->Una vez haya terminado, puede empezar el juego. Basta con que siga las instrucciones de la barra de estado. En ella se irán mostrando consejos y sugerencias sobre qué hacer en cada momento. Si observa la pantalla, verá dos campos cuadriculados, las conocidas «áreas de batalla». El área izquierda es la suya. Aquí es donde debe colocar sus barcos y donde podrá seguir las acciones militares del enemigo. El área de la derecha es en la que su enemigo ha colocado la flota. Cuando le toque a usted disparar, deberá pulsar en un sector determinado (una casilla del área de batalla) tratando de localizar los barcos enemigos. </para>
+>Una vez hayas terminado, puedes empezar el juego. Basta con que sigas las instrucciones de la barra de estado. En ella se irán mostrando consejos y sugerencias sobre qué hacer en cada momento. Si observas la pantalla, verás dos campos cuadriculados, las conocidas «áreas de batalla». El área izquierda es la tuya. Aquí es donde debes colocar tus barcos y donde podrás seguir las acciones militares del enemigo. El área de la derecha es en la que tu enemigo ha colocado su flota. Cuando te toque disparar, deberás pulsar en un sector determinado (una casilla del área de batalla) para tratar de localizar los barcos enemigos. </para>
 
 <para
->En primer lugar, debe colocar sus barcos. Primero los coloca el jugador que ha comenzado la partida. Cuando ha terminado, el segundo jugador coloca sus barcos. </para>
+>En primer lugar, debes colocar tus barcos. Primero los coloca el jugador que ha comenzado la partida. Cuando ha terminado, el segundo jugador coloca sus barcos. </para>
 
 <para
->Colocar los barcos es muy sencillo: simplemente, haga click en el campo donde quiera situar sus barcos. Tiene cuatro barcos para colocar: el primero tiene una longitud de un cuadrado, el segundo la tiene de dos cuadrados, &etc;. Haga click en el campo donde quiera comenzar a colocar el barco. Por omisión, los barcos se colocarán horizontalmente; para girarlos 90 grados, pulse el &RMB; antes de colocar el barco. </para>
+>Colocar los barcos es muy sencillo: simplemente, pulsa en el campo donde quieras situar tus barcos. Tienes cuatro barcos para colocar: el primero tiene una longitud de un cuadrado, el segundo la tiene de dos cuadrados, etc. Haz clic en el campo donde quieras empezar a colocar el barco. Por omisión, los barcos se colocarán horizontalmente; para girarlos 90 grados, pulsa el &RMB; antes de colocar el barco. </para>
 
 <para
->Cuando se alcanza un barco, se desatará fuego sobre él. Para hundirlo, impacte sobre todos los cuadrados que ocupe. Un barco hundido aparecerá difuminado. </para>
+>Cuando se alcanza un barco, se desatará fuego sobre él. Para hundirlo, impacta sobre todos los cuadrados que ocupe. Un barco hundido aparecerá difuminado. </para>
 
 <para
->Ahora puede comenzar a disparar a ciegas con el &LMB; en el área enemiga. La barra de estado indica a quién le toca disparar. </para>
+>Ahora puedes comenzar a disparar a ciegas con el &LMB; en el área enemiga. La barra de estado indica a quién le toca disparar. </para>
 
 <para
->Puede reiniciar la partida eligiendo la opción del menú <menuchoice
+>Puedes reiniciar la partida eligiendo la opción del menú <menuchoice
 ><guimenu
 >Juego</guimenu
 > <guimenuitem
@@ -300,23 +314,23 @@
 <itemizedlist>
 <listitem
 ><para
->Nunca coloque los barcos pegados.</para
+>Nunca coloques los barcos pegados.</para
 ></listitem>
 <listitem
 ><para
->Una vez que alcance un barco, intente disparar alrededor del lugar del alcance.</para
+>Una vez que alcances un barco, intenta disparar alrededor del lugar del alcance.</para
 ></listitem>
 <listitem
 ><para
->Pruebe a colocar los barcos lejos de los bordes del tablero.</para
+>Prueba a colocar los barcos lejos de los bordes del tablero.</para
 ></listitem>
 <listitem
 ><para
->Los barcos pequeños son más difíciles de impactar, asegúrese de que sean difíciles de encontrar.</para
+>Los barcos pequeños son más difíciles de impactar, asegúrate de que sean difíciles de encontrar.</para
 ></listitem>
 <listitem
 ><para
->Piense antes de disparar. Los disparos al agua restan puntos.</para
+>Piensa antes de disparar. Los disparos al agua restan puntos.</para
 ></listitem>
 </itemizedlist>
 </sect1>
@@ -329,7 +343,7 @@
 
 <sect1 id="menu">
 <title
->Opciones de menú</title>
+>Opciones del menú</title>
 
 <variablelist>
 <varlistentry>
@@ -394,7 +408,7 @@
 <listitem>
 <para>
 <action
->Muestra las mejores puntuaciones logradas.</action>
+>Muestra las mejores puntuaciones conseguidas.</action>
 </para>
 </listitem>
 </varlistentry>
@@ -411,7 +425,7 @@
 <listitem>
 <para>
 <action
->Inicia un juego con el ordenador como oponente.</action>
+>Inicia un juego con la máquina como oponente.</action>
 </para>
 </listitem>
 </varlistentry>
@@ -428,7 +442,7 @@
 <listitem>
 <para>
 <action
->Inicia el servidor para que otro jugador se pueda conectar con usted.</action>
+>Inicia el servidor para que otro jugador se pueda conectar a él.</action>
 </para>
 </listitem>
 </varlistentry>
@@ -445,7 +459,7 @@
 <listitem>
 <para>
 <action
->Se conecta al servidor para iniciar un partida.</action>
+>Se conecta a un servidor para iniciar un partida.</action>
 </para>
 </listitem>
 </varlistentry>
@@ -537,7 +551,7 @@
 </term>
 <listitem>
 <para
->Si ha ganado la partida y ha alcanzado una nueva mejor puntuación, se abrirá el diálogo de mejores puntuaciones. Si no, el resultado se muestra en la barra de estado o, si esta opción está activada, también en un diálogo. </para>
+>Si has ganado la partida y has conseguido una nueva mejor puntuación, se abrirá el diálogo de mejores puntuaciones. Si no, el resultado se muestra en la barra de estado o, si esta opción está activada, también en un diálogo. </para>
 </listitem>
 </varlistentry>
 
@@ -556,7 +570,7 @@
 </term>
 <listitem>
 <para
->Con la cuadrícula, es más fácil realizar un tiro con el puntero del ratón. </para>
+>Con la cuadrícula es más fácil realizar un tiro con el puntero del ratón. </para>
 </listitem>
 </varlistentry>
 
@@ -584,11 +598,11 @@
 </variablelist>
 
 <para
->Además, &i18n-knavalbattle; tiene las opciones de menú <guimenu
+>Además, &i18n-knavalbattle; tiene las opciones de los menús <guimenu
 >Preferencias</guimenu
 > y <guimenu
 >Ayuda</guimenu
-> comunes de &kde;. Para obtener más información, consulte las secciones sobre el <ulink url="help:/fundamentals/menus.html#menus-settings"
+> comunes de &kde;. Para obtener más información, consulta las secciones sobre el <ulink url="help:/fundamentals/menus.html#menus-settings"
 >Menú «Preferencias»</ulink
 > y <ulink url="help:/fundamentals/menus.html#menus-help"
 >Menú «Ayuda» </ulink
@@ -606,7 +620,7 @@
 <qandaentry>
 <question>
 <para
->No estoy seguro de a dónde disparar, ¿puedo obtener una pista? </para>
+>No estoy seguro de dónde disparar. ¿Puedo obtener una pista? </para>
 </question>
 <answer>
 <para
@@ -621,7 +635,7 @@
 </question>
 <answer>
 <para
->Mueva el barco hasta donde quiera colocarlo, y pulse el &RMB;. </para>
+>Mueve el barco hasta donde quieras colocarlo y pulsa el &RMB;. </para>
 </answer>
 </qandaentry>
 
@@ -742,7 +756,7 @@
 ></para>
 
 <para
->Traducido por Rocío Gallego <email
+>Documentación traducida por Rocío Gallego <email
 >traducciones@rociogallego.com</email
 >, Rafael Osuna <email
 >rosuna@wol.es</email
@@ -751,7 +765,11 @@
 > y Kira J. Fernández <email
 >kirajfdez@gmail.com</email
 ></para
->  &underFDL; &underGPL; </chapter>
+><para
+>Corregida por Eloy Cuadra <email
+>ecuadra@eloihr.net</email
+>.</para
+> &underFDL; &underGPL; </chapter>
 
 &documentation.index; 
 </book>
