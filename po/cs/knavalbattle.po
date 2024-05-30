@@ -2,22 +2,22 @@
 # This file is distributed under the same license as the PACKAGE package.
 # Vít Pelčák <vit@pelcak.org>, 2010, 2011, 2012, 2013, 2014, 2017.
 # Tomáš Chvátal <tomas.chvatal@gmail.com>, 2012, 2013.
-# Vit Pelcak <vit@pelcak.org>, 2021, 2022.
+# SPDX-FileCopyrightText: 2021, 2022, 2024 Vit Pelcak <vit@pelcak.org>
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: kbattleship\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-05-04 00:37+0000\n"
-"PO-Revision-Date: 2022-07-08 14:53+0200\n"
-"Last-Translator: Vit Pelcak <vit@pelcak.org>\n"
+"PO-Revision-Date: 2024-05-27 15:28+0200\n"
+"Last-Translator: Vit Pelcak <vpelcak@suse.cz>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
 "Language: cs\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Lokalize 22.04.2\n"
+"X-Generator: Lokalize 24.02.2\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -286,61 +286,61 @@ msgstr "URL herního serveru Námořní bitvy k připojení při spuštění"
 #, kde-format
 msgctxt "@action"
 msgid "&Single Player"
-msgstr ""
+msgstr "&Jeden hráč"
 
 #: mainwindow.cpp:63
 #, kde-format
 msgctxt "@action"
 msgid "&Host Game…"
-msgstr ""
+msgstr "&Hostit hru…"
 
 #: mainwindow.cpp:67
 #, kde-format
 msgctxt "@action"
 msgid "&Connect to Game…"
-msgstr ""
+msgstr "&Připojit se ke hře…"
 
 #: mainwindow.cpp:72
 #, kde-format
 msgctxt "@action"
 msgid "Change &Nickname…"
-msgstr ""
+msgstr "Změ&nit přezdívku…"
 
 #: mainwindow.cpp:76
 #, kde-format
 msgctxt "@option:check"
 msgid "Play Sounds"
-msgstr ""
+msgstr "Přehrávat zvuky"
 
 #: mainwindow.cpp:81
 #, kde-format
 msgctxt "@option:check"
 msgid "&Adjacent Ships"
-msgstr ""
+msgstr "Přil&ehlé lodě"
 
 #: mainwindow.cpp:86
 #, kde-format
 msgctxt "@option:check"
 msgid "&Multiple Ships"
-msgstr ""
+msgstr "Ví&cero lodí"
 
 #: mainwindow.cpp:91
 #, kde-format
 msgctxt "@option:check"
 msgid "Show End-of-Game Message"
-msgstr ""
+msgstr "Zobrazovat zprávu na konci hry"
 
 #: mainwindow.cpp:96
 #, kde-format
 msgctxt "@option:check"
 msgid "Show &Left Grid"
-msgstr ""
+msgstr "Zobrazit &levou mřížku"
 
 #: mainwindow.cpp:100
 #, kde-format
 msgctxt "@option:check"
 msgid "Show &Right Grid"
-msgstr ""
+msgstr "Zob&razit pravou mřížku"
 
 #: networkdialog.cpp:61
 #, kde-format
@@ -366,23 +366,23 @@ msgstr "&Port:"
 #, kde-format
 msgctxt "@action:button"
 msgid "&Enter Server Address Manually"
-msgstr ""
+msgstr "Zadat adr&esu serveru ručně"
 
 #: networkdialog.cpp:148
 #, kde-format
 msgctxt "@title:window"
 msgid "Network Parameters"
-msgstr ""
+msgstr "Síťové parametry"
 
 #: networkdialog.cpp:210
 #, kde-format
 msgid "Connecting to remote host…"
-msgstr ""
+msgstr "Připojování ke vzdálenému počítači…"
 
 #: networkdialog.cpp:217
 #, kde-format
 msgid "Waiting for an incoming connection…"
-msgstr ""
+msgstr "Čekám na příchozí spojení…"
 
 #: networkdialog.cpp:236
 #, kde-format
@@ -458,19 +458,19 @@ msgstr "Prohráli jste. Hodně štěstí příště!"
 #, kde-format
 msgctxt "@title:window"
 msgid "Change Nickname"
-msgstr ""
+msgstr "Změnit přezdívku"
 
 #: playfield.cpp:209
 #, kde-format
 msgctxt "@label:textbox"
 msgid "Enter new nickname:"
-msgstr ""
+msgstr "Zadejte novou přezdívku:"
 
 #: playfield.cpp:238
 #, kde-format
 msgctxt "@title:window"
 msgid "Restart Game"
-msgstr ""
+msgstr "Restartovat hru"
 
 #: playfield.cpp:239
 #, kde-format
@@ -508,7 +508,7 @@ msgstr "Protivník vystřelil. Nyní střílejte vy!"
 #: playfield.cpp:267
 #, kde-format
 msgid "Waiting for enemy to shoot…"
-msgstr ""
+msgstr "Čekám na výstřel protivníka…"
 
 #: playfield.cpp:276
 #, kde-format
@@ -518,12 +518,12 @@ msgstr "Lodě umístěny. Nyní střílejte do protivníkova pole!"
 #: playfield.cpp:279
 #, kde-format
 msgid "Waiting for other player to start the game…"
-msgstr ""
+msgstr "Čekám až protihráč začne hru…"
 
 #: playfield.cpp:283
 #, kde-format
 msgid "Waiting for other player to place his ships…"
-msgstr ""
+msgstr "Čekám až si protihráč umístí své lodě…"
 
 #: playfield.cpp:297
 #, kde-format
@@ -562,25 +562,25 @@ msgstr ""
 #, kde-format
 msgctxt "@title:window"
 msgid "Restart Placing Ships"
-msgstr ""
+msgstr "Znovu vložit lodě"
 
 #: simplemenu.cpp:40
 #, kde-format
 msgctxt "@action:button"
 msgid "Single Player"
-msgstr ""
+msgstr "Jeden hráč"
 
 #: simplemenu.cpp:41
 #, kde-format
 msgctxt "@action:button"
 msgid "Host Network Game"
-msgstr ""
+msgstr "Hostit síťovou hru"
 
 #: simplemenu.cpp:42
 #, kde-format
 msgctxt "@action:button"
 msgid "Connect to Network Game"
-msgstr ""
+msgstr "Připojit se k síťové hře"
 
 #: simplemenu.cpp:132 simplemenu.cpp:149
 #, kde-format
