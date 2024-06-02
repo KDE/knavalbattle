@@ -1,18 +1,18 @@
 # translation of kbattleship.po to
-# Version: $Revision: 1681191 $
+# Version: $Revision: 1681346 $
 # Copyright (C) YEAR Free Software Fundation, Inc.
 # Michal Rudolf <mrudolf@kdewebdev.org>, 2002, 2003, 2004, 2005.
 # tazdzioch <tazdzioch@o2.pl>, 2007.
 # Marta Rybczyńska <kde-i18n@rybczynska.net>, 2007, 2008.
 # Maciej Wikło <maciej.wiklo@wp.pl>, 2009.
-# Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>, 2011, 2012, 2013, 2014, 2016, 2017, 2020, 2022.
+# SPDX-FileCopyrightText: 2011, 2012, 2013, 2014, 2016, 2017, 2020, 2022, 2024 Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: kbattleship\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-05-04 00:37+0000\n"
-"PO-Revision-Date: 2022-07-28 20:42+0200\n"
+"PO-Revision-Date: 2024-06-01 08:50+0200\n"
 "Last-Translator: Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>\n"
 "Language-Team: Polish <kde-i18n-doc@kde.org>\n"
 "Language: pl\n"
@@ -21,6 +21,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2);\n"
+"X-Generator: Lokalize 23.08.5\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -290,71 +291,61 @@ msgid "URL of a Naval Battle game server to connect to after startup"
 msgstr "Adres URL serwera gry Bitew Morskich do połączenia po uruchomieniu"
 
 #: mainwindow.cpp:59
-#, fuzzy, kde-format
-#| msgid "&Single Player"
+#, kde-format
 msgctxt "@action"
 msgid "&Single Player"
 msgstr "&Jeden gracz"
 
 #: mainwindow.cpp:63
-#, fuzzy, kde-format
-#| msgid "&Host Game..."
+#, kde-format
 msgctxt "@action"
 msgid "&Host Game…"
-msgstr "&Załóż grę..."
+msgstr "&Załóż grę…"
 
 #: mainwindow.cpp:67
-#, fuzzy, kde-format
-#| msgid "&Connect to Game..."
+#, kde-format
 msgctxt "@action"
 msgid "&Connect to Game…"
-msgstr "&Podłącz do gry..."
+msgstr "Podłą&cz do gry…"
 
 #: mainwindow.cpp:72
-#, fuzzy, kde-format
-#| msgid "Change Nickname"
+#, kde-format
 msgctxt "@action"
 msgid "Change &Nickname…"
-msgstr "Zmień pseudonim"
+msgstr "Zmień pseudo&nim…"
 
 #: mainwindow.cpp:76
-#, fuzzy, kde-format
-#| msgid "&Play Sounds"
+#, kde-format
 msgctxt "@option:check"
 msgid "Play Sounds"
-msgstr "Odtwarzaj &dźwięki"
+msgstr "Odtwarzaj dźwięki"
 
 #: mainwindow.cpp:81
-#, fuzzy, kde-format
-#| msgid "&Adjacent Ships"
+#, kde-format
 msgctxt "@option:check"
 msgid "&Adjacent Ships"
 msgstr "Przyst&ające statki"
 
 #: mainwindow.cpp:86
-#, fuzzy, kde-format
-#| msgid "&Multiple Ships"
+#, kde-format
 msgctxt "@option:check"
 msgid "&Multiple Ships"
 msgstr "&Wiele statków"
 
 #: mainwindow.cpp:91
-#, fuzzy, kde-format
-#| msgid "Show End-of-Game Message"
+#, kde-format
 msgctxt "@option:check"
 msgid "Show End-of-Game Message"
 msgstr "Pokaż wiadomość o końcu gry"
 
 #: mainwindow.cpp:96
-#, fuzzy, kde-format
-#| msgid "Show &Left Grid"
+#, kde-format
 msgctxt "@option:check"
 msgid "Show &Left Grid"
 msgstr "Pokaż &lewą siatkę"
 
 #: mainwindow.cpp:100
-#, fuzzy, kde-format
-#| msgid "Show &Right Grid"
+#, kde-format
 msgctxt "@option:check"
 msgid "Show &Right Grid"
 msgstr "Pokaż &prawą siatkę"
@@ -380,30 +371,26 @@ msgid "&Port:"
 msgstr "&Port:"
 
 #: networkdialog.cpp:116
-#, fuzzy, kde-format
-#| msgid "&Enter server address manually"
+#, kde-format
 msgctxt "@action:button"
 msgid "&Enter Server Address Manually"
-msgstr "Podaj ręcznie adr&es serwera"
+msgstr "Wpisz adr&es serwera ręcznie"
 
 #: networkdialog.cpp:148
-#, fuzzy, kde-format
-#| msgid "Network Parameters"
+#, kde-format
 msgctxt "@title:window"
 msgid "Network Parameters"
 msgstr "Parametry sieci"
 
 #: networkdialog.cpp:210
-#, fuzzy, kde-format
-#| msgid "Connecting to remote host..."
+#, kde-format
 msgid "Connecting to remote host…"
-msgstr "Łączenie ze zdalnym serwerem..."
+msgstr "Łączenie ze zdalnym serwerem…"
 
 #: networkdialog.cpp:217
-#, fuzzy, kde-format
-#| msgid "Waiting for an incoming connection..."
+#, kde-format
 msgid "Waiting for an incoming connection…"
-msgstr "Oczekiwanie na przychodzące połączenie..."
+msgstr "Oczekiwanie na przychodzące połączenie…"
 
 #: networkdialog.cpp:236
 #, kde-format
@@ -476,25 +463,22 @@ msgid "You lose. Better luck next time!"
 msgstr "Przegrana. Życzymy więcej szczęścia następnym razem!"
 
 #: playfield.cpp:209
-#, fuzzy, kde-format
-#| msgid "Change Nickname"
+#, kde-format
 msgctxt "@title:window"
 msgid "Change Nickname"
 msgstr "Zmień pseudonim"
 
 #: playfield.cpp:209
-#, fuzzy, kde-format
-#| msgid "Enter new nickname:"
+#, kde-format
 msgctxt "@label:textbox"
 msgid "Enter new nickname:"
 msgstr "Wprowadź nowy pseudonim:"
 
 #: playfield.cpp:238
-#, fuzzy, kde-format
-#| msgid "Restart game"
+#, kde-format
 msgctxt "@title:window"
 msgid "Restart Game"
-msgstr "Rozpocznij grę na nowo"
+msgstr "Rozpocznij nową układankę"
 
 #: playfield.cpp:239
 #, kde-format
@@ -531,10 +515,9 @@ msgid "Enemy has shot. Shoot now!"
 msgstr "Wróg oddał strzał. Teraz Ty strzelaj!"
 
 #: playfield.cpp:267
-#, fuzzy, kde-format
-#| msgid "Waiting for enemy to shoot..."
+#, kde-format
 msgid "Waiting for enemy to shoot…"
-msgstr "Oczekiwanie na strzał przeciwnika..."
+msgstr "Oczekiwanie na strzał przeciwnika…"
 
 #: playfield.cpp:276
 #, kde-format
@@ -542,16 +525,14 @@ msgid "Ships placed. Now shoot on the enemy field!"
 msgstr "Okręty ustawione. Teraz ostrzeliwuj pole przeciwnika!"
 
 #: playfield.cpp:279
-#, fuzzy, kde-format
-#| msgid "Waiting for other player to start the game..."
+#, kde-format
 msgid "Waiting for other player to start the game…"
-msgstr "Oczekiwanie na rozpoczęcie gry przez drugiego gracza..."
+msgstr "Oczekiwanie na rozpoczęcie gry przez drugiego gracza…"
 
 #: playfield.cpp:283
-#, fuzzy, kde-format
-#| msgid "Waiting for other player to place his ships..."
+#, kde-format
 msgid "Waiting for other player to place his ships…"
-msgstr "Oczekiwanie aż przeciwnik zakończy ustawiać statki..."
+msgstr "Oczekiwanie aż przeciwnik zakończy ustawiać statki…"
 
 #: playfield.cpp:297
 #, kde-format
@@ -565,17 +546,13 @@ msgid "You can't place your remaining ships."
 msgstr "Nie możesz rozmieścić swoich pozostałych statków."
 
 #: playfield.cpp:304
-#, fuzzy, kde-format
-#| msgctxt "@action"
-#| msgid "Restart"
+#, kde-format
 msgctxt "@action:button"
 msgid "Restart"
 msgstr "Uruchom ponownie"
 
 #: playfield.cpp:305
-#, fuzzy, kde-format
-#| msgctxt "@action"
-#| msgid "Abort"
+#, kde-format
 msgctxt "@action:button"
 msgid "Abort"
 msgstr "Przerwij"
@@ -590,29 +567,25 @@ msgstr ""
 "rozmieszczanie statków albo przerwać grę"
 
 #: playfield.cpp:308
-#, fuzzy, kde-format
-#| msgid "Restart placing ships"
+#, kde-format
 msgctxt "@title:window"
 msgid "Restart Placing Ships"
 msgstr "Rozmieść statki ponownie"
 
 #: simplemenu.cpp:40
-#, fuzzy, kde-format
-#| msgid "Single Player"
+#, kde-format
 msgctxt "@action:button"
 msgid "Single Player"
 msgstr "Jeden gracz"
 
 #: simplemenu.cpp:41
-#, fuzzy, kde-format
-#| msgid "Host Network Game"
+#, kde-format
 msgctxt "@action:button"
 msgid "Host Network Game"
 msgstr "Rozpocznij grę sieciową"
 
 #: simplemenu.cpp:42
-#, fuzzy, kde-format
-#| msgid "Connect to Network Game"
+#, kde-format
 msgctxt "@action:button"
 msgid "Connect to Network Game"
 msgstr "Podłącz do gry sieciowej"
