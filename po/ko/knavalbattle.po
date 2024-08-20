@@ -2,14 +2,14 @@
 # Copyright (C) 2007 This_file_is_part_of_KDE
 # This file is distributed under the same license as the kdegames package.
 # Myong-sung Kim <xfuncrushx@gmail.com>, 2007.
-# Shinjo Park <kde@peremen.name>, 2011, 2013, 2014, 2015, 2019, 2020, 2022.
+# SPDX-FileCopyrightText: 2011, 2013, 2014, 2015, 2019, 2020, 2022, 2024 Shinjo Park <kde@peremen.name>
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: kdegames\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-05-04 00:37+0000\n"
-"PO-Revision-Date: 2022-07-13 12:49+0200\n"
+"PO-Revision-Date: 2024-08-19 23:39+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
 "Language: ko\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Lokalize 21.12.3\n"
+"X-Generator: Lokalize 23.08.5\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -284,71 +284,61 @@ msgid "URL of a Naval Battle game server to connect to after startup"
 msgstr "시작할 때 연결할 Naval Battle 게임 서버 URL"
 
 #: mainwindow.cpp:59
-#, fuzzy, kde-format
-#| msgid "&Single Player"
+#, kde-format
 msgctxt "@action"
 msgid "&Single Player"
 msgstr "단일 플레이어(&S)"
 
 #: mainwindow.cpp:63
-#, fuzzy, kde-format
-#| msgid "&Host Game..."
+#, kde-format
 msgctxt "@action"
 msgid "&Host Game…"
-msgstr "게임 열기(&H)..."
+msgstr "게임 열기(&H)…"
 
 #: mainwindow.cpp:67
-#, fuzzy, kde-format
-#| msgid "&Connect to Game..."
+#, kde-format
 msgctxt "@action"
 msgid "&Connect to Game…"
-msgstr "게임에 연결하기(&C)..."
+msgstr "게임에 연결하기(&C)…"
 
 #: mainwindow.cpp:72
-#, fuzzy, kde-format
-#| msgid "Change Nickname"
+#, kde-format
 msgctxt "@action"
 msgid "Change &Nickname…"
-msgstr "별명 바꾸기"
+msgstr "별명 바꾸기(&N)…"
 
 #: mainwindow.cpp:76
-#, fuzzy, kde-format
-#| msgid "&Play Sounds"
+#, kde-format
 msgctxt "@option:check"
 msgid "Play Sounds"
-msgstr "소리 재생(&P)"
+msgstr "소리 재생"
 
 #: mainwindow.cpp:81
-#, fuzzy, kde-format
-#| msgid "&Adjacent Ships"
+#, kde-format
 msgctxt "@option:check"
 msgid "&Adjacent Ships"
 msgstr "전함 인접(&A)"
 
 #: mainwindow.cpp:86
-#, fuzzy, kde-format
-#| msgid "&Multiple Ships"
+#, kde-format
 msgctxt "@option:check"
 msgid "&Multiple Ships"
 msgstr "여러 전함(&M)"
 
 #: mainwindow.cpp:91
-#, fuzzy, kde-format
-#| msgid "Show End-of-Game Message"
+#, kde-format
 msgctxt "@option:check"
 msgid "Show End-of-Game Message"
 msgstr "게임 끝 메시지 표시"
 
 #: mainwindow.cpp:96
-#, fuzzy, kde-format
-#| msgid "Show &Left Grid"
+#, kde-format
 msgctxt "@option:check"
 msgid "Show &Left Grid"
 msgstr "왼쪽 모눈 표시(&L)"
 
 #: mainwindow.cpp:100
-#, fuzzy, kde-format
-#| msgid "Show &Right Grid"
+#, kde-format
 msgctxt "@option:check"
 msgid "Show &Right Grid"
 msgstr "오른쪽 모눈 표시(&R)"
@@ -374,30 +364,26 @@ msgid "&Port:"
 msgstr "포트(&P):"
 
 #: networkdialog.cpp:116
-#, fuzzy, kde-format
-#| msgid "&Enter server address manually"
+#, kde-format
 msgctxt "@action:button"
 msgid "&Enter Server Address Manually"
 msgstr "수동으로 서버 주소 입력하기(&E)"
 
 #: networkdialog.cpp:148
-#, fuzzy, kde-format
-#| msgid "Network Parameters"
+#, kde-format
 msgctxt "@title:window"
 msgid "Network Parameters"
 msgstr "네트워크 환경 변수"
 
 #: networkdialog.cpp:210
-#, fuzzy, kde-format
-#| msgid "Connecting to remote host..."
+#, kde-format
 msgid "Connecting to remote host…"
-msgstr "원격 호스트로 접속 중..."
+msgstr "원격 호스트로 접속 중…"
 
 #: networkdialog.cpp:217
-#, fuzzy, kde-format
-#| msgid "Waiting for an incoming connection..."
+#, kde-format
 msgid "Waiting for an incoming connection…"
-msgstr "다른 플레이어의 접속을 기다리는 중..."
+msgstr "다른 플레이어의 접속을 기다리는 중…"
 
 #: networkdialog.cpp:236
 #, kde-format
@@ -472,25 +458,22 @@ msgid "You lose. Better luck next time!"
 msgstr "패배하셨습니다. 다음에 열심히 하십시오!"
 
 #: playfield.cpp:209
-#, fuzzy, kde-format
-#| msgid "Change Nickname"
+#, kde-format
 msgctxt "@title:window"
 msgid "Change Nickname"
 msgstr "별명 바꾸기"
 
 #: playfield.cpp:209
-#, fuzzy, kde-format
-#| msgid "Enter new nickname:"
+#, kde-format
 msgctxt "@label:textbox"
 msgid "Enter new nickname:"
 msgstr "새 별명 입력:"
 
 #: playfield.cpp:238
-#, fuzzy, kde-format
-#| msgid "Restart game"
+#, kde-format
 msgctxt "@title:window"
 msgid "Restart Game"
-msgstr "다시 시작하기"
+msgstr "게임 다시 시작"
 
 #: playfield.cpp:239
 #, kde-format
@@ -526,10 +509,9 @@ msgid "Enemy has shot. Shoot now!"
 msgstr "적이 포격했습니다. 공격하십시오!"
 
 #: playfield.cpp:267
-#, fuzzy, kde-format
-#| msgid "Waiting for enemy to shoot..."
+#, kde-format
 msgid "Waiting for enemy to shoot…"
-msgstr "적의 포격을 기다리는 중..."
+msgstr "적의 포격을 기다리는 중…"
 
 #: playfield.cpp:276
 #, kde-format
@@ -537,16 +519,14 @@ msgid "Ships placed. Now shoot on the enemy field!"
 msgstr "전함이 배치되었습니다. 적의 진영을 향해 포격하십시오!"
 
 #: playfield.cpp:279
-#, fuzzy, kde-format
-#| msgid "Waiting for other player to start the game..."
+#, kde-format
 msgid "Waiting for other player to start the game…"
-msgstr "다른 플레이어가 게임 시작하기를 기다리는 중..."
+msgstr "다른 플레이어가 게임 시작하기를 기다리는 중…"
 
 #: playfield.cpp:283
-#, fuzzy, kde-format
-#| msgid "Waiting for other player to place his ships..."
+#, kde-format
 msgid "Waiting for other player to place his ships…"
-msgstr "상대방이 전함 배치하는 것을 기다리는 중..."
+msgstr "상대방이 전함 배치하는 것을 기다리는 중…"
 
 #: playfield.cpp:297
 #, kde-format
@@ -560,20 +540,16 @@ msgid "You can't place your remaining ships."
 msgstr "남은 전함을 배치할 수 없습니다."
 
 #: playfield.cpp:304
-#, fuzzy, kde-format
-#| msgctxt "@action"
-#| msgid "Restart"
+#, kde-format
 msgctxt "@action:button"
 msgid "Restart"
 msgstr "다시 시작"
 
 #: playfield.cpp:305
-#, fuzzy, kde-format
-#| msgctxt "@action"
-#| msgid "Abort"
+#, kde-format
 msgctxt "@action:button"
 msgid "Abort"
-msgstr "중단"
+msgstr "중지"
 
 #: playfield.cpp:307
 #, kde-format
@@ -585,29 +561,25 @@ msgstr ""
 "오"
 
 #: playfield.cpp:308
-#, fuzzy, kde-format
-#| msgid "Restart placing ships"
+#, kde-format
 msgctxt "@title:window"
 msgid "Restart Placing Ships"
 msgstr "전함 배치 다시 시작"
 
 #: simplemenu.cpp:40
-#, fuzzy, kde-format
-#| msgid "Single Player"
+#, kde-format
 msgctxt "@action:button"
 msgid "Single Player"
 msgstr "단일 플레이어"
 
 #: simplemenu.cpp:41
-#, fuzzy, kde-format
-#| msgid "Host Network Game"
+#, kde-format
 msgctxt "@action:button"
 msgid "Host Network Game"
 msgstr "네트워크 게임 열기"
 
 #: simplemenu.cpp:42
-#, fuzzy, kde-format
-#| msgid "Connect to Network Game"
+#, kde-format
 msgctxt "@action:button"
 msgid "Connect to Network Game"
 msgstr "네트워크 게임에 연결하기"
