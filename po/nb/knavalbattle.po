@@ -289,42 +289,36 @@ msgstr ""
 
 #: mainwindow.cpp:59
 #, fuzzy, kde-format
-#| msgid "&Single Player"
 msgctxt "@action"
 msgid "&Single Player"
 msgstr "&En spiller"
 
 #: mainwindow.cpp:63
 #, fuzzy, kde-format
-#| msgid "&Host Game..."
 msgctxt "@action"
 msgid "&Host Game…"
 msgstr "&Vertsspill …"
 
 #: mainwindow.cpp:67
 #, fuzzy, kde-format
-#| msgid "&Connect to Game..."
 msgctxt "@action"
 msgid "&Connect to Game…"
 msgstr "&Koble til spill …"
 
 #: mainwindow.cpp:72
 #, fuzzy, kde-format
-#| msgid "Change Nickname"
 msgctxt "@action"
 msgid "Change &Nickname…"
 msgstr "Endre kallenavn"
 
 #: mainwindow.cpp:76
 #, fuzzy, kde-format
-#| msgid "&Play Sounds"
 msgctxt "@option:check"
 msgid "Play Sounds"
 msgstr "S&pill lyder"
 
 #: mainwindow.cpp:81
 #, fuzzy, kde-format
-#| msgid "&Adjacent Ships"
 msgctxt "@option:check"
 msgid "&Adjacent Ships"
 msgstr "&Skip ved siden av hverandre"
@@ -337,21 +331,18 @@ msgstr ""
 
 #: mainwindow.cpp:91
 #, fuzzy, kde-format
-#| msgid "Show End-of-Game Message"
 msgctxt "@option:check"
 msgid "Show End-of-Game Message"
 msgstr "Vis «slutt-på-spillet»-melding"
 
 #: mainwindow.cpp:96
 #, fuzzy, kde-format
-#| msgid "Show &Left Grid"
 msgctxt "@option:check"
 msgid "Show &Left Grid"
 msgstr "Vis &venstre rutenett"
 
 #: mainwindow.cpp:100
 #, fuzzy, kde-format
-#| msgid "Show &Right Grid"
 msgctxt "@option:check"
 msgid "Show &Right Grid"
 msgstr "Vis &høyre rutenett"
@@ -378,27 +369,23 @@ msgstr "&Port:"
 
 #: networkdialog.cpp:116
 #, fuzzy, kde-format
-#| msgid "&Enter server address manually"
 msgctxt "@action:button"
 msgid "&Enter Server Address Manually"
 msgstr "&Skriv inn tjeneradresse manuelt"
 
 #: networkdialog.cpp:148
 #, fuzzy, kde-format
-#| msgid "Network Parameters"
 msgctxt "@title:window"
 msgid "Network Parameters"
 msgstr "Nettverksparametre"
 
 #: networkdialog.cpp:210
 #, fuzzy, kde-format
-#| msgid "Connecting to remote host..."
 msgid "Connecting to remote host…"
 msgstr "Kobler til nettverksmaskin …"
 
 #: networkdialog.cpp:217
 #, fuzzy, kde-format
-#| msgid "Waiting for an incoming connection..."
 msgid "Waiting for an incoming connection…"
 msgstr "Venter på en innkommende tilkobling …"
 
@@ -474,21 +461,18 @@ msgstr "Du taper. Bedre lykke neste gang!"
 
 #: playfield.cpp:209
 #, fuzzy, kde-format
-#| msgid "Change Nickname"
 msgctxt "@title:window"
 msgid "Change Nickname"
 msgstr "Endre kallenavn"
 
 #: playfield.cpp:209
 #, fuzzy, kde-format
-#| msgid "Enter new nickname:"
 msgctxt "@label:textbox"
 msgid "Enter new nickname:"
 msgstr "Oppgi nytt kallenavn:"
 
 #: playfield.cpp:238
 #, fuzzy, kde-format
-#| msgid "Restart game"
 msgctxt "@title:window"
 msgid "Restart Game"
 msgstr "Start spillet på nytt"
@@ -525,7 +509,6 @@ msgstr "Fienden har skutt. Skyt nå!"
 
 #: playfield.cpp:267
 #, fuzzy, kde-format
-#| msgid "Waiting for enemy to shoot..."
 msgid "Waiting for enemy to shoot…"
 msgstr "Venter på at fienden skal skyte …"
 
@@ -536,13 +519,11 @@ msgstr "Skipene er plassert. Skyt på på fiendens område!"
 
 #: playfield.cpp:279
 #, fuzzy, kde-format
-#| msgid "Waiting for other player to start the game..."
 msgid "Waiting for other player to start the game…"
 msgstr "Venter på at den andre spilleren skal starte spillet …"
 
 #: playfield.cpp:283
 #, fuzzy, kde-format
-#| msgid "Waiting for other player to place his ships..."
 msgid "Waiting for other player to place his ships…"
 msgstr "Venter på at den andre spilleren skal plassere skipene sine …"
 
@@ -558,7 +539,6 @@ msgstr ""
 
 #: playfield.cpp:304
 #, fuzzy, kde-format
-#| msgid "Restart game"
 msgctxt "@action:button"
 msgid "Restart"
 msgstr "Start spillet på nytt"
@@ -584,21 +564,18 @@ msgstr ""
 
 #: simplemenu.cpp:40
 #, fuzzy, kde-format
-#| msgid "Single Player"
 msgctxt "@action:button"
 msgid "Single Player"
 msgstr "En spiller"
 
 #: simplemenu.cpp:41
 #, fuzzy, kde-format
-#| msgid "Host Network Game"
 msgctxt "@action:button"
 msgid "Host Network Game"
 msgstr "Vær vert for et nettspill"
 
 #: simplemenu.cpp:42
 #, fuzzy, kde-format
-#| msgid "Connect to Network Game"
 msgctxt "@action:button"
 msgid "Connect to Network Game"
 msgstr "Koble til et nettspill"

@@ -286,70 +286,60 @@ msgstr "Adressa til speltenaren å kopla til etter oppstart"
 
 #: mainwindow.cpp:59
 #, fuzzy, kde-format
-#| msgid "&Single Player"
 msgctxt "@action"
 msgid "&Single Player"
 msgstr "&Éin spelar"
 
 #: mainwindow.cpp:63
 #, fuzzy, kde-format
-#| msgid "&Host Game..."
 msgctxt "@action"
 msgid "&Host Game…"
 msgstr "&Vert for nettverksspel …"
 
 #: mainwindow.cpp:67
 #, fuzzy, kde-format
-#| msgid "&Connect to Game..."
 msgctxt "@action"
 msgid "&Connect to Game…"
 msgstr "&Kopla til nettverksspel …"
 
 #: mainwindow.cpp:72
 #, fuzzy, kde-format
-#| msgid "Change Nickname"
 msgctxt "@action"
 msgid "Change &Nickname…"
 msgstr "Byt kallenamn"
 
 #: mainwindow.cpp:76
 #, fuzzy, kde-format
-#| msgid "&Play Sounds"
 msgctxt "@option:check"
 msgid "Play Sounds"
 msgstr "&Spel lydar"
 
 #: mainwindow.cpp:81
 #, fuzzy, kde-format
-#| msgid "&Adjacent Ships"
 msgctxt "@option:check"
 msgid "&Adjacent Ships"
 msgstr "&Skip ved sida av kvarandre"
 
 #: mainwindow.cpp:86
 #, fuzzy, kde-format
-#| msgid "&Multiple Ships"
 msgctxt "@option:check"
 msgid "&Multiple Ships"
 msgstr "&Fleire skip"
 
 #: mainwindow.cpp:91
 #, fuzzy, kde-format
-#| msgid "Show End-of-Game Message"
 msgctxt "@option:check"
 msgid "Show End-of-Game Message"
 msgstr "Vis sluttspelsmelding"
 
 #: mainwindow.cpp:96
 #, fuzzy, kde-format
-#| msgid "Show &Left Grid"
 msgctxt "@option:check"
 msgid "Show &Left Grid"
 msgstr "Vis &venstre rutenett"
 
 #: mainwindow.cpp:100
 #, fuzzy, kde-format
-#| msgid "Show &Right Grid"
 msgctxt "@option:check"
 msgid "Show &Right Grid"
 msgstr "Vis &høgre rutenett"
@@ -376,27 +366,23 @@ msgstr "&Port:"
 
 #: networkdialog.cpp:116
 #, fuzzy, kde-format
-#| msgid "&Enter server address manually"
 msgctxt "@action:button"
 msgid "&Enter Server Address Manually"
 msgstr "&Skriv inn tenarnamnet"
 
 #: networkdialog.cpp:148
 #, fuzzy, kde-format
-#| msgid "Network Parameters"
 msgctxt "@title:window"
 msgid "Network Parameters"
 msgstr "Nettverksparametrar"
 
 #: networkdialog.cpp:210
 #, fuzzy, kde-format
-#| msgid "Connecting to remote host..."
 msgid "Connecting to remote host…"
 msgstr "Koplar til vert …"
 
 #: networkdialog.cpp:217
 #, fuzzy, kde-format
-#| msgid "Waiting for an incoming connection..."
 msgid "Waiting for an incoming connection…"
 msgstr "Ventar på innkommande tilkopling …"
 
@@ -472,21 +458,18 @@ msgstr "Du tapte. Betre lukke neste gong!"
 
 #: playfield.cpp:209
 #, fuzzy, kde-format
-#| msgid "Change Nickname"
 msgctxt "@title:window"
 msgid "Change Nickname"
 msgstr "Byt kallenamn"
 
 #: playfield.cpp:209
 #, fuzzy, kde-format
-#| msgid "Enter new nickname:"
 msgctxt "@label:textbox"
 msgid "Enter new nickname:"
 msgstr "Skriv inn nytt kallenamn:"
 
 #: playfield.cpp:238
 #, fuzzy, kde-format
-#| msgid "Restart game"
 msgctxt "@title:window"
 msgid "Restart Game"
 msgstr "Start spel på nytt"
@@ -527,7 +510,6 @@ msgstr "Fienden har skote. Skyt no!"
 
 #: playfield.cpp:267
 #, fuzzy, kde-format
-#| msgid "Waiting for enemy to shoot..."
 msgid "Waiting for enemy to shoot…"
 msgstr "Ventar på at fienden skal skyta …"
 
@@ -538,13 +520,11 @@ msgstr "Alle slagskipa er utplasserte. Skyt no på fienden sitt brett."
 
 #: playfield.cpp:279
 #, fuzzy, kde-format
-#| msgid "Waiting for other player to start the game..."
 msgid "Waiting for other player to start the game…"
 msgstr "Ventar på at ein annan spelar skal verta med …"
 
 #: playfield.cpp:283
 #, fuzzy, kde-format
-#| msgid "Waiting for other player to place his ships..."
 msgid "Waiting for other player to place his ships…"
 msgstr "Ventar på at fienden skal plassera skipa sine …"
 
@@ -560,16 +540,12 @@ msgstr "Du kan ikkje plassera dei gjenståande skipa."
 
 #: playfield.cpp:304
 #, fuzzy, kde-format
-#| msgctxt "@action"
-#| msgid "Restart"
 msgctxt "@action:button"
 msgid "Restart"
 msgstr "Start på nytt"
 
 #: playfield.cpp:305
 #, fuzzy, kde-format
-#| msgctxt "@action"
-#| msgid "Abort"
 msgctxt "@action:button"
 msgid "Abort"
 msgstr "Avbryt"
@@ -585,28 +561,24 @@ msgstr ""
 
 #: playfield.cpp:308
 #, fuzzy, kde-format
-#| msgid "Restart placing ships"
 msgctxt "@title:window"
 msgid "Restart Placing Ships"
 msgstr "Plasser skip på nytt"
 
 #: simplemenu.cpp:40
 #, fuzzy, kde-format
-#| msgid "Single Player"
 msgctxt "@action:button"
 msgid "Single Player"
 msgstr "Éin spelar"
 
 #: simplemenu.cpp:41
 #, fuzzy, kde-format
-#| msgid "Host Network Game"
 msgctxt "@action:button"
 msgid "Host Network Game"
 msgstr "Vert for nettverksspel"
 
 #: simplemenu.cpp:42
 #, fuzzy, kde-format
-#| msgid "Connect to Network Game"
 msgctxt "@action:button"
 msgid "Connect to Network Game"
 msgstr "Kopla til nettverksspel"
