@@ -20,8 +20,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 21.12.3\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Lokalize 21.12.3\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -290,71 +290,61 @@ msgstr ""
 "Το URL ενός εξυπηρετητή παιχνιδιού ναυμαχίας για σύνδεση μετά την εκκίνηση"
 
 #: mainwindow.cpp:59
-#, fuzzy, kde-format
-#| msgid "&Single Player"
+#, kde-format
 msgctxt "@action"
 msgid "&Single Player"
 msgstr "&Παιχνίδι ενός παίκτη"
 
 #: mainwindow.cpp:63
-#, fuzzy, kde-format
-#| msgid "&Host Game..."
+#, kde-format
 msgctxt "@action"
 msgid "&Host Game…"
-msgstr "&Φιλοξενία παιχνιδιού..."
+msgstr "&Φιλοξενία παιχνιδιού…"
 
 #: mainwindow.cpp:67
-#, fuzzy, kde-format
-#| msgid "&Connect to Game..."
+#, kde-format
 msgctxt "@action"
 msgid "&Connect to Game…"
-msgstr "&Σύνδεση σε παιχνίδι..."
+msgstr "&Σύνδεση σε παιχνίδι…"
 
 #: mainwindow.cpp:72
-#, fuzzy, kde-format
-#| msgid "Change Nickname"
+#, kde-format
 msgctxt "@action"
 msgid "Change &Nickname…"
-msgstr "Τροποποίηση ψευδωνύμου"
+msgstr "Τροποποίηση ψευδωνύ&μου…"
 
 #: mainwindow.cpp:76
-#, fuzzy, kde-format
-#| msgid "&Play Sounds"
+#, kde-format
 msgctxt "@option:check"
 msgid "Play Sounds"
-msgstr "&Αναπαραγωγή ήχων"
+msgstr "Αναπαραγωγή ήχων"
 
 #: mainwindow.cpp:81
-#, fuzzy, kde-format
-#| msgid "&Adjacent Ships"
+#, kde-format
 msgctxt "@option:check"
 msgid "&Adjacent Ships"
 msgstr "Παρα&κείμενα πλοία"
 
 #: mainwindow.cpp:86
-#, fuzzy, kde-format
-#| msgid "&Multiple Ships"
+#, kde-format
 msgctxt "@option:check"
 msgid "&Multiple Ships"
 msgstr "&Πολλά πλοία"
 
 #: mainwindow.cpp:91
-#, fuzzy, kde-format
-#| msgid "Show End-of-Game Message"
+#, kde-format
 msgctxt "@option:check"
 msgid "Show End-of-Game Message"
 msgstr "Εμφάνιση μηνύματος τέλους παιχνιδιού"
 
 #: mainwindow.cpp:96
-#, fuzzy, kde-format
-#| msgid "Show &Left Grid"
+#, kde-format
 msgctxt "@option:check"
 msgid "Show &Left Grid"
 msgstr "Εμφάνιση α&ριστερού καννάβου"
 
 #: mainwindow.cpp:100
-#, fuzzy, kde-format
-#| msgid "Show &Right Grid"
+#, kde-format
 msgctxt "@option:check"
 msgid "Show &Right Grid"
 msgstr "Εμφάνιση &δεξιού καννάβου"
@@ -380,30 +370,26 @@ msgid "&Port:"
 msgstr "&Θύρα:"
 
 #: networkdialog.cpp:116
-#, fuzzy, kde-format
-#| msgid "&Enter server address manually"
+#, kde-format
 msgctxt "@action:button"
 msgid "&Enter Server Address Manually"
 msgstr "&Χειροκίνητη εισαγωγή διεύθυνσης εξυπηρετητή"
 
 #: networkdialog.cpp:148
-#, fuzzy, kde-format
-#| msgid "Network Parameters"
+#, kde-format
 msgctxt "@title:window"
 msgid "Network Parameters"
 msgstr "Παράμετροι δικτύου"
 
 #: networkdialog.cpp:210
-#, fuzzy, kde-format
-#| msgid "Connecting to remote host..."
+#, kde-format
 msgid "Connecting to remote host…"
-msgstr "Σύνδεση με τον απομακρυσμένο υπολογιστή..."
+msgstr "Σύνδεση με τον απομακρυσμένο υπολογιστή…"
 
 #: networkdialog.cpp:217
-#, fuzzy, kde-format
-#| msgid "Waiting for an incoming connection..."
+#, kde-format
 msgid "Waiting for an incoming connection…"
-msgstr "Αναμονή για μια εισερχόμενη σύνδεση..."
+msgstr "Αναμονή για μια εισερχόμενη σύνδεση…"
 
 #: networkdialog.cpp:236
 #, kde-format
@@ -476,22 +462,19 @@ msgid "You lose. Better luck next time!"
 msgstr "Χάσατε. Καλύτερη τύχη την επόμενη φορά!"
 
 #: playfield.cpp:209
-#, fuzzy, kde-format
-#| msgid "Change Nickname"
+#, kde-format
 msgctxt "@title:window"
 msgid "Change Nickname"
 msgstr "Τροποποίηση ψευδωνύμου"
 
 #: playfield.cpp:209
-#, fuzzy, kde-format
-#| msgid "Enter new nickname:"
+#, kde-format
 msgctxt "@label:textbox"
 msgid "Enter new nickname:"
 msgstr "Εισάγετε νέο ψευδώνυμο:"
 
 #: playfield.cpp:238
-#, fuzzy, kde-format
-#| msgid "Restart game"
+#, kde-format
 msgctxt "@title:window"
 msgid "Restart Game"
 msgstr "Επανεκκίνηση παιχνιδιού"
@@ -531,10 +514,9 @@ msgid "Enemy has shot. Shoot now!"
 msgstr "Ο εχθρός πυροβόλησε. Σειρά σας!"
 
 #: playfield.cpp:267
-#, fuzzy, kde-format
-#| msgid "Waiting for enemy to shoot..."
+#, kde-format
 msgid "Waiting for enemy to shoot…"
-msgstr "Αναμονή για επίθεση του εχθρού..."
+msgstr "Αναμονή για επίθεση του εχθρού…"
 
 #: playfield.cpp:276
 #, kde-format
@@ -542,16 +524,14 @@ msgid "Ships placed. Now shoot on the enemy field!"
 msgstr "Τα πλοία τοποθετήθηκαν. Τώρα ρίξτε βολή στο πεδίο του αντιπάλου!"
 
 #: playfield.cpp:279
-#, fuzzy, kde-format
-#| msgid "Waiting for other player to start the game..."
+#, kde-format
 msgid "Waiting for other player to start the game…"
-msgstr "Αναμονή του άλλου παίκτη για εκκίνηση του παιχνιδιού..."
+msgstr "Αναμονή του άλλου παίκτη για εκκίνηση του παιχνιδιού…"
 
 #: playfield.cpp:283
-#, fuzzy, kde-format
-#| msgid "Waiting for other player to place his ships..."
+#, kde-format
 msgid "Waiting for other player to place his ships…"
-msgstr "Αναμονή του άλλου παίκτη για την τοποθέτηση των πλοίων..."
+msgstr "Αναμονή του άλλου παίκτη για την τοποθέτηση των πλοίων…"
 
 #: playfield.cpp:297
 #, kde-format
@@ -566,17 +546,13 @@ msgid "You can't place your remaining ships."
 msgstr "Δεν μπορείτε να τοποθετήσετε τα υπόλοιπα πλοία σας."
 
 #: playfield.cpp:304
-#, fuzzy, kde-format
-#| msgctxt "@action"
-#| msgid "Restart"
+#, kde-format
 msgctxt "@action:button"
 msgid "Restart"
 msgstr "Επανεκκίνηση"
 
 #: playfield.cpp:305
-#, fuzzy, kde-format
-#| msgctxt "@action"
-#| msgid "Abort"
+#, kde-format
 msgctxt "@action:button"
 msgid "Abort"
 msgstr "Εγκατάλειψη"
@@ -591,29 +567,25 @@ msgstr ""
 "τοποθετείτε πλοία ή εγκαταλείψτε το παιχνίδι"
 
 #: playfield.cpp:308
-#, fuzzy, kde-format
-#| msgid "Restart placing ships"
+#, kde-format
 msgctxt "@title:window"
 msgid "Restart Placing Ships"
 msgstr "Επανατοποθέτηση πλοίων"
 
 #: simplemenu.cpp:40
-#, fuzzy, kde-format
-#| msgid "Single Player"
+#, kde-format
 msgctxt "@action:button"
 msgid "Single Player"
 msgstr "Ένας παίκτης"
 
 #: simplemenu.cpp:41
-#, fuzzy, kde-format
-#| msgid "Host Network Game"
+#, kde-format
 msgctxt "@action:button"
 msgid "Host Network Game"
 msgstr "Φιλοξενία δικτυακού παιχνιδιού"
 
 #: simplemenu.cpp:42
-#, fuzzy, kde-format
-#| msgid "Connect to Network Game"
+#, kde-format
 msgctxt "@action:button"
 msgid "Connect to Network Game"
 msgstr "Σύνδεση με δικτυακό παιχνίδι"
