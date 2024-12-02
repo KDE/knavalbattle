@@ -1,19 +1,19 @@
 # translation of kbattleship.po to Finnish
 # translation of kbattleship.po to
 # KDE Finnish translation sprint participants:
+# SPDX-FileCopyrightText: 2010, 2011, 2018, 2022, 2024 Tommi Nieminen <translator@legisign.org>
 # Kim Enkovaara <kim.enkovaara@iki.fi>, 2002, 2003, 2004.
 # Teemu Rytilahti <teemu.rytilahti@d5k.net>, 2003.
 # Ilpo Kantonen <ilpo@iki.fi>, 2005.
 # Mikko Piippo <piippo@cc.helsinki.fi>, 2008.
 # Teemu Rytilahti <teemu.rytilahti@kde-fi.org>, 2008.
-# Tommi Nieminen <translator@legisign.org>, 2010, 2011, 2018, 2022.
 # Lasse Liehu <lasse.liehu@gmail.com>, 2010, 2012, 2013, 2014.
 msgid ""
 msgstr ""
 "Project-Id-Version: kbattleship\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-05-04 00:37+0000\n"
-"PO-Revision-Date: 2022-08-02 22:52+0300\n"
+"PO-Revision-Date: 2024-10-29 13:28+0200\n"
 "Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
 "Language: fi\n"
@@ -21,8 +21,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 20.12.0\n"
-"X-POT-Import-Date: 2012-12-01 22:23:59+0000\n"
+"X-Generator: Lokalize 23.08.5\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -294,71 +293,61 @@ msgstr ""
 "Meritaistelupelipalvelimen osoite, johon yhdistetään käynnistyksen jälkeen"
 
 #: mainwindow.cpp:59
-#, fuzzy, kde-format
-#| msgid "&Single Player"
+#, kde-format
 msgctxt "@action"
 msgid "&Single Player"
-msgstr "&Yksi pelaaja"
+msgstr "&Yksinpeli"
 
 #: mainwindow.cpp:63
-#, fuzzy, kde-format
-#| msgid "&Host Game..."
+#, kde-format
 msgctxt "@action"
 msgid "&Host Game…"
-msgstr "&Koneen nimi"
+msgstr "&Isännöi peliä…"
 
 #: mainwindow.cpp:67
-#, fuzzy, kde-format
-#| msgid "&Connect to Game..."
+#, kde-format
 msgctxt "@action"
 msgid "&Connect to Game…"
-msgstr "&Yhdistä palvelimeen…"
+msgstr "&Yhdistä peliin…"
 
 #: mainwindow.cpp:72
-#, fuzzy, kde-format
-#| msgid "Change Nickname"
+#, kde-format
 msgctxt "@action"
 msgid "Change &Nickname…"
-msgstr "Muuta nimeä"
+msgstr "Vaihda kutsuma&nimi…"
 
 #: mainwindow.cpp:76
-#, fuzzy, kde-format
-#| msgid "&Play Sounds"
+#, kde-format
 msgctxt "@option:check"
 msgid "Play Sounds"
-msgstr "&Äänet"
+msgstr "Käytä ääniä"
 
 #: mainwindow.cpp:81
-#, fuzzy, kde-format
-#| msgid "&Adjacent Ships"
+#, kde-format
 msgctxt "@option:check"
 msgid "&Adjacent Ships"
-msgstr "Vi&erekkäiset laivat"
+msgstr "&Vierekkäiset laivat"
 
 #: mainwindow.cpp:86
-#, fuzzy, kde-format
-#| msgid "&Multiple Ships"
+#, kde-format
 msgctxt "@option:check"
 msgid "&Multiple Ships"
-msgstr "&Useat laivat"
+msgstr "M&onta laivaa"
 
 #: mainwindow.cpp:91
-#, fuzzy, kde-format
-#| msgid "Show End-of-Game Message"
+#, kde-format
 msgctxt "@option:check"
 msgid "Show End-of-Game Message"
 msgstr "Näytä viesti pelin lopussa"
 
 #: mainwindow.cpp:96
-#, fuzzy, kde-format
-#| msgid "Show &Left Grid"
+#, kde-format
 msgctxt "@option:check"
 msgid "Show &Left Grid"
 msgstr "Näytä &vasen ruudukko"
 
 #: mainwindow.cpp:100
-#, fuzzy, kde-format
-#| msgid "Show &Right Grid"
+#, kde-format
 msgctxt "@option:check"
 msgid "Show &Right Grid"
 msgstr "Näytä &oikea ruudukko"
@@ -384,30 +373,26 @@ msgid "&Port:"
 msgstr "&Portti:"
 
 #: networkdialog.cpp:116
-#, fuzzy, kde-format
-#| msgid "&Enter server address manually"
+#, kde-format
 msgctxt "@action:button"
 msgid "&Enter Server Address Manually"
 msgstr "&Syötä palvelimen osoite itse"
 
 #: networkdialog.cpp:148
-#, fuzzy, kde-format
-#| msgid "Network Parameters"
+#, kde-format
 msgctxt "@title:window"
 msgid "Network Parameters"
 msgstr "Verkkoasetukset"
 
 #: networkdialog.cpp:210
-#, fuzzy, kde-format
-#| msgid "Connecting to remote host..."
+#, kde-format
 msgid "Connecting to remote host…"
-msgstr "Yhdistetään etäpalvelimeen"
+msgstr "Yhdistetään etäpalvelimeen…"
 
 #: networkdialog.cpp:217
-#, fuzzy, kde-format
-#| msgid "Waiting for an incoming connection..."
+#, kde-format
 msgid "Waiting for an incoming connection…"
-msgstr "Odotetaan sisään tulevaa yhteyttä…"
+msgstr "Odotetaan saapuvaa yhteyttä…"
 
 #: networkdialog.cpp:236
 #, kde-format
@@ -480,25 +465,22 @@ msgid "You lose. Better luck next time!"
 msgstr "Hävisit. Parempi onni ensi kerralla!"
 
 #: playfield.cpp:209
-#, fuzzy, kde-format
-#| msgid "Change Nickname"
+#, kde-format
 msgctxt "@title:window"
 msgid "Change Nickname"
-msgstr "Muuta nimeä"
+msgstr "Vaihda kutsumanimi"
 
 #: playfield.cpp:209
-#, fuzzy, kde-format
-#| msgid "Enter new nickname:"
+#, kde-format
 msgctxt "@label:textbox"
 msgid "Enter new nickname:"
-msgstr "Anna uusi nimi:"
+msgstr "Anna uusi kutsumanimi:"
 
 #: playfield.cpp:238
-#, fuzzy, kde-format
-#| msgid "Restart game"
+#, kde-format
 msgctxt "@title:window"
 msgid "Restart Game"
-msgstr "Aloita uudelleen"
+msgstr "Aloita peli uudelleen"
 
 #: playfield.cpp:239
 #, kde-format
@@ -534,10 +516,9 @@ msgid "Enemy has shot. Shoot now!"
 msgstr "Vihollinen ampui. Ammu nyt!"
 
 #: playfield.cpp:267
-#, fuzzy, kde-format
-#| msgid "Waiting for enemy to shoot..."
+#, kde-format
 msgid "Waiting for enemy to shoot…"
-msgstr "Odotan vihollisen laukausta…"
+msgstr "Odotetaan vihollisen laukausta…"
 
 #: playfield.cpp:276
 #, kde-format
@@ -545,16 +526,14 @@ msgid "Ships placed. Now shoot on the enemy field!"
 msgstr "Laivat on sijoitettu. Ammu kohti vihollista!"
 
 #: playfield.cpp:279
-#, fuzzy, kde-format
-#| msgid "Waiting for other player to start the game..."
+#, kde-format
 msgid "Waiting for other player to start the game…"
-msgstr "Odotetaan, kunnes toinen pelaaja aloittaa pelin…"
+msgstr "Odotetaan toisen pelaajan aloitusta…"
 
 #: playfield.cpp:283
-#, fuzzy, kde-format
-#| msgid "Waiting for other player to place his ships..."
+#, kde-format
 msgid "Waiting for other player to place his ships…"
-msgstr "Odotetaan, kunnes toinen pelaaja on sijoittanut laivansa…"
+msgstr "Odotetaan toisen pelaajan sijoittavan laivansa…"
 
 #: playfield.cpp:297
 #, kde-format
@@ -569,17 +548,13 @@ msgid "You can't place your remaining ships."
 msgstr "Et voi sijoittaa loppuja laivojasi."
 
 #: playfield.cpp:304
-#, fuzzy, kde-format
-#| msgctxt "@action"
-#| msgid "Restart"
+#, kde-format
 msgctxt "@action:button"
 msgid "Restart"
 msgstr "Aloita alusta"
 
 #: playfield.cpp:305
-#, fuzzy, kde-format
-#| msgctxt "@action"
-#| msgid "Abort"
+#, kde-format
 msgctxt "@action:button"
 msgid "Abort"
 msgstr "Keskeytä"
@@ -594,29 +569,25 @@ msgstr ""
 "keskeytä peli."
 
 #: playfield.cpp:308
-#, fuzzy, kde-format
-#| msgid "Restart placing ships"
+#, kde-format
 msgctxt "@title:window"
 msgid "Restart Placing Ships"
 msgstr "Aloita laivojen sijoittaminen alusta"
 
 #: simplemenu.cpp:40
-#, fuzzy, kde-format
-#| msgid "Single Player"
+#, kde-format
 msgctxt "@action:button"
 msgid "Single Player"
-msgstr "Yksi pelaaja"
+msgstr "Yksinpeli"
 
 #: simplemenu.cpp:41
-#, fuzzy, kde-format
-#| msgid "Host Network Game"
+#, kde-format
 msgctxt "@action:button"
 msgid "Host Network Game"
 msgstr "Isännöi verkkopeliä"
 
 #: simplemenu.cpp:42
-#, fuzzy, kde-format
-#| msgid "Connect to Network Game"
+#, kde-format
 msgctxt "@action:button"
 msgid "Connect to Network Game"
 msgstr "Yhdistä verkkopeliin"
