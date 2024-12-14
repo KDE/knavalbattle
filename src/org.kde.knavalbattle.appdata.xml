@@ -39,6 +39,7 @@
   <name xml:lang="pt">Batalha Naval</name>
   <name xml:lang="pt-BR">Batalha Naval</name>
   <name xml:lang="ru">Морской бой</name>
+  <name xml:lang="sa">नौसैनिकयुद्धम्</name>
   <name xml:lang="sk">Námorná bitka</name>
   <name xml:lang="sl">Naval Battle</name>
   <name xml:lang="sr">Поморска битка</name>
@@ -83,6 +84,7 @@
   <summary xml:lang="pt">Jogo de Batalha Naval</summary>
   <summary xml:lang="pt-BR">Jogo Batalha Naval</summary>
   <summary xml:lang="ru">Игра «Морской бой»</summary>
+  <summary xml:lang="sa">युद्धपोत खेल</summary>
   <summary xml:lang="sk">Bojová lodná hra</summary>
   <summary xml:lang="sl">Igra potapljanja ladjic</summary>
   <summary xml:lang="sr">Игра потапања бродова</summary>
@@ -131,6 +133,7 @@
     <p xml:lang="pt">A Batalha Naval é um jogo para afundar navios. Os navios são colocados num tabuleiro que representa o mar. Os jogador tentam atingir-se uns aos outros por turnos, sem saber onde eles colocaram os navios. O primeiro jogador a destruir todos os navios ganha o jogo.</p>
     <p xml:lang="pt-BR">Batalha Naval é um jogo para naufragar navios. Os navios são posicionados em um tabuleiro que representa o mar. Os jogadores tentam atingir os navios dos adversários por jogadas, não sabendo onde eles estão posicionados. O primeiro jogador a destruir todos os navios ganha o jogo.</p>
     <p xml:lang="ru">Компьютерная версия игры «Морской бой». Корабли размещаются на доске, представляющей море. Игроки по очереди стараются потопить корабли противника, расположение которых им неизвестно. Побеждает тот, кто первым потопит все корабли.</p>
+    <p xml:lang="sa">नौसेनायुद्धं जहाजस्य डुबकी क्रीडा अस्ति । समुद्रस्य प्रतिनिधित्वं कृत्वा एकस्मिन् फलकस्य उपरि जहाजाः स्थापिताः भवन्ति। क्रीडकाः क्रमेण परस्परं जहाजं प्रहारयितुं प्रयतन्ते यत् ते कुत्र स्थापिताः सन्ति इति न जानन्ति। सर्वान् जहाजान् नाशयन् प्रथमः क्रीडकः क्रीडायां विजयं प्राप्नोति ।</p>
     <p xml:lang="sk">Námorná bitka je hra na potápanie lodí. Lode sú umiestnené na poli, ktoré reprezentuje more. Hráči skúšajú zasiahnuť druhého hráča v ťahoch bez toho, aby vedeli, kde sú umiestnení. Prvý hráč, ktorý zničí všetky lode, vyhráva hru.</p>
     <p xml:lang="sl">Naval Battle je igra potapljanja ladjic. Ladje so postavljene na igralno površino, ki predstavlja morje. Igralci izmenično poskušajo zadeti ladje nasprotnikov, pri tem pa ne vedo, kje so te postavljene. Zmaga prvi igralec, ki uniči vse ladje.</p>
     <p xml:lang="sr">Поморска битка је игра потапања бродова. Бродови се смештају на таблу која представља море. Играчи покушавају један другом да погоде бродове, за које не знају где су постављени. Први играч који уништи све бродове добија партију.</p>
