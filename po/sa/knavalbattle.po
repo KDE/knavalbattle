@@ -3,28 +3,31 @@
 # This file is distributed under the same license as the knavalbattle package.
 # Kali <EMAIL@ADDRESS>, 2024.
 #
+# SPDX-FileCopyrightText: 2024 kali <skkalwar999@gmail.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: knavalbattle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-05-04 00:37+0000\n"
-"PO-Revision-Date: 2024-12-13 19:10+0530\n"
-"Last-Translator: Kali <EMAIL@ADDRESS>\n"
-"Language-Team: Sanskrit\n"
+"PO-Revision-Date: 2024-12-14 01:48+0530\n"
+"Last-Translator: kali <skkalwar999@gmail.com>\n"
+"Language-Team: Sanskrit <kde-i18n-doc@kde.org>\n"
 "Language: sa\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Lokalize 24.08.2\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr ""
+msgstr "भवतः नामानि"
 
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
-msgstr ""
+msgstr "भवतः ईमेलपत्राणि"
 
 #: controller.cpp:50
 #, kde-format
@@ -284,61 +287,61 @@ msgstr "प्रारम्भानन्तरं सम्बद्धं �
 #, kde-format
 msgctxt "@action"
 msgid "&Single Player"
-msgstr ""
+msgstr "&एकल खिलाडी"
 
 #: mainwindow.cpp:63
 #, kde-format
 msgctxt "@action"
 msgid "&Host Game…"
-msgstr ""
+msgstr "&होस्ट गेम…"
 
 #: mainwindow.cpp:67
 #, kde-format
 msgctxt "@action"
 msgid "&Connect to Game…"
-msgstr ""
+msgstr "&खेलेन सह कनेक्ट् कुर्वन्तु…"
 
 #: mainwindow.cpp:72
 #, kde-format
 msgctxt "@action"
 msgid "Change &Nickname…"
-msgstr ""
+msgstr "परिवर्तन &उपनाम…"
 
 #: mainwindow.cpp:76
 #, kde-format
 msgctxt "@option:check"
 msgid "Play Sounds"
-msgstr ""
+msgstr "ध्वनयः वादयन्तु"
 
 #: mainwindow.cpp:81
 #, kde-format
 msgctxt "@option:check"
 msgid "&Adjacent Ships"
-msgstr ""
+msgstr "&समीपस्थ जहाज"
 
 #: mainwindow.cpp:86
 #, kde-format
 msgctxt "@option:check"
 msgid "&Multiple Ships"
-msgstr ""
+msgstr "&बहु जहाज"
 
 #: mainwindow.cpp:91
 #, kde-format
 msgctxt "@option:check"
 msgid "Show End-of-Game Message"
-msgstr ""
+msgstr "क्रीडायाः अन्त्यसन्देशं दर्शयतु"
 
 #: mainwindow.cpp:96
 #, kde-format
 msgctxt "@option:check"
 msgid "Show &Left Grid"
-msgstr ""
+msgstr "&Left Grid दर्शयतु"
 
 #: mainwindow.cpp:100
 #, kde-format
 msgctxt "@option:check"
 msgid "Show &Right Grid"
-msgstr ""
+msgstr "&Right Grid दर्शयतु"
 
 #: networkdialog.cpp:61
 #, kde-format
@@ -364,23 +367,23 @@ msgstr "&पोताश्रय:"
 #, kde-format
 msgctxt "@action:button"
 msgid "&Enter Server Address Manually"
-msgstr ""
+msgstr "&सर्वर-पतेः मैन्युअल् रूपेण प्रविष्टं कुर्वन्तु"
 
 #: networkdialog.cpp:148
 #, kde-format
 msgctxt "@title:window"
 msgid "Network Parameters"
-msgstr ""
+msgstr "संजाल पैरामीटर"
 
 #: networkdialog.cpp:210
 #, kde-format
 msgid "Connecting to remote host…"
-msgstr "दूरस्थहोस्ट् इत्यनेन सह सम्बद्धः भवति..."
+msgstr "दूरस्थहोस्ट् इत्यनेन सह सम्बद्धः भवति…"
 
 #: networkdialog.cpp:217
 #, kde-format
 msgid "Waiting for an incoming connection…"
-msgstr "आगच्छन्तं संयोजनं प्रतीक्षमाणः..."
+msgstr "आगच्छन्तं संयोजनं प्रतीक्षमाणः…"
 
 #: networkdialog.cpp:236
 #, kde-format
@@ -456,19 +459,19 @@ msgstr "त्वं हास्यसि। अग्रिमे समये
 #, kde-format
 msgctxt "@title:window"
 msgid "Change Nickname"
-msgstr ""
+msgstr "उपनाम परिवर्तयतु"
 
 #: playfield.cpp:209
 #, kde-format
 msgctxt "@label:textbox"
 msgid "Enter new nickname:"
-msgstr ""
+msgstr "नूतनं उपनाम प्रविष्टं कुर्वन्तु:"
 
 #: playfield.cpp:238
 #, kde-format
 msgctxt "@title:window"
 msgid "Restart Game"
-msgstr ""
+msgstr "पुनः क्रीडां आरभत"
 
 #: playfield.cpp:239
 #, kde-format
@@ -479,13 +482,13 @@ msgstr "भवतः प्रतिद्वन्द्वी पुनः क
 #, kde-format
 msgctxt "@action:button"
 msgid "Accept"
-msgstr ""
+msgstr "स्वीकरोतु"
 
 #: playfield.cpp:241
 #, kde-format
 msgctxt "@action:button"
 msgid "Reject"
-msgstr ""
+msgstr "अस्वीकार"
 
 #: playfield.cpp:250
 #, kde-format
@@ -506,7 +509,7 @@ msgstr "शत्रुः शूटिंग् कृतवान्। अध
 #: playfield.cpp:267
 #, kde-format
 msgid "Waiting for enemy to shoot…"
-msgstr "शत्रुस्य गोलीकाण्डस्य प्रतीक्षां कुर्वन्..."
+msgstr "शत्रुस्य गोलीकाण्डस्य प्रतीक्षां कुर्वन्…"
 
 #: playfield.cpp:276
 #, kde-format
@@ -516,12 +519,12 @@ msgstr "जहाजाः स्थापिताः। अधुना शत
 #: playfield.cpp:279
 #, kde-format
 msgid "Waiting for other player to start the game…"
-msgstr "अन्यस्य खिलाडयः क्रीडां आरभ्यत इति प्रतीक्षमाणः..."
+msgstr "अन्यस्य खिलाडयः क्रीडां आरभ्यत इति प्रतीक्षमाणः…"
 
 #: playfield.cpp:283
 #, kde-format
 msgid "Waiting for other player to place his ships…"
-msgstr "अन्यस्य खिलाडयः स्वस्य जहाजान् स्थापयितुं प्रतीक्षमाणः..."
+msgstr "अन्यस्य खिलाडयः स्वस्य जहाजान् स्थापयितुं प्रतीक्षमाणः…"
 
 #: playfield.cpp:297
 #, kde-format
@@ -537,13 +540,13 @@ msgstr "भवन्तः स्वस्य अवशिष्टानि प
 #, kde-format
 msgctxt "@action:button"
 msgid "Restart"
-msgstr ""
+msgstr "पुनः आरभत"
 
 #: playfield.cpp:305
 #, kde-format
 msgctxt "@action:button"
 msgid "Abort"
-msgstr ""
+msgstr "गर्भपातं कुरुत"
 
 #: playfield.cpp:307
 #, kde-format
@@ -558,25 +561,25 @@ msgstr ""
 #, kde-format
 msgctxt "@title:window"
 msgid "Restart Placing Ships"
-msgstr ""
+msgstr "जहाजस्थापनं पुनः आरभत"
 
 #: simplemenu.cpp:40
 #, kde-format
 msgctxt "@action:button"
 msgid "Single Player"
-msgstr ""
+msgstr "एकल खिलाडी"
 
 #: simplemenu.cpp:41
 #, kde-format
 msgctxt "@action:button"
 msgid "Host Network Game"
-msgstr ""
+msgstr "होस्ट नेटवर्क गेम"
 
 #: simplemenu.cpp:42
 #, kde-format
 msgctxt "@action:button"
 msgid "Connect to Network Game"
-msgstr ""
+msgstr "Network Game इत्यनेन सह सम्बद्धं कुर्वन्तु"
 
 #: simplemenu.cpp:132 simplemenu.cpp:149
 #, kde-format
