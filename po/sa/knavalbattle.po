@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: knavalbattle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-05-04 00:37+0000\n"
-"PO-Revision-Date: 2024-12-14 01:48+0530\n"
+"PO-Revision-Date: 2024-12-20 22:01+0530\n"
 "Last-Translator: kali <skkalwar999@gmail.com>\n"
 "Language-Team: Sanskrit <kde-i18n-doc@kde.org>\n"
 "Language: sa\n"
@@ -276,7 +276,7 @@ msgstr "KGameRenderer तथा QGraphicsView इत्यत्र पोर्
 #: main.cpp:63
 #, kde-format
 msgid "[URL]"
-msgstr "[URL] ९."
+msgstr "[URL]"
 
 #: main.cpp:63
 #, kde-format
@@ -346,7 +346,7 @@ msgstr "&Right Grid दर्शयतु"
 #: networkdialog.cpp:61
 #, kde-format
 msgid "&Nickname:"
-msgstr "&उपनाम : १."
+msgstr "&उपनाम :"
 
 #: networkdialog.cpp:73
 #, kde-format
@@ -356,7 +356,7 @@ msgstr "&क्रीडायां सम्मिलितं भवतु:"
 #: networkdialog.cpp:88
 #, kde-format
 msgid "&Hostname:"
-msgstr "&होस्टनाम: १."
+msgstr "&होस्टनाम:"
 
 #: networkdialog.cpp:101 networkdialog.cpp:131
 #, kde-format
