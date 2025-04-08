@@ -1,15 +1,16 @@
-# Copyright (C) YEAR This_file_is_part_of_KDE
-# This file is distributed under the same license as the PACKAGE package.
+# Spanish translations for knavalbattle.po package.
+# Copyright (C) 2013-2025 This_file_is_part_of_KDE
+# This file is distributed under the same license as the knavalbattle package.
 #
 # SPDX-FileCopyrightText: 2013, 2017, 2022, 2024 Eloy Cuadra <ecuadra@eloihr.net>
-# David Paul <eodos0@gmail.com>, 2014.
-# Sofía Priego <spriego@darksylvania.net>, %Y.
+# SPDX-FileCopyrightText: 2014 David Paul <eodos0@gmail.com>
+# SPDX-FileCopyrightText: 2024, 2025 Sofía Priego <spriego@darksylvania.net>
 msgid ""
 msgstr ""
-"Project-Id-Version: \n"
+"Project-Id-Version: knavalbattle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-05-04 00:37+0000\n"
-"PO-Revision-Date: 2024-05-05 22:34+0100\n"
+"PO-Revision-Date: 2025-04-07 21:30+0100\n"
 "Last-Translator: Sofía Priego <spriego@darksylvania.net>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
 "Language: es\n"
@@ -296,19 +297,19 @@ msgstr "Un &solo jugador"
 #, kde-format
 msgctxt "@action"
 msgid "&Host Game…"
-msgstr "&Hospedar juego..."
+msgstr "&Hospedar juego…"
 
 #: mainwindow.cpp:67
 #, kde-format
 msgctxt "@action"
 msgid "&Connect to Game…"
-msgstr "&Conectar a juego..."
+msgstr "&Conectar a juego…"
 
 #: mainwindow.cpp:72
 #, kde-format
 msgctxt "@action"
 msgid "Change &Nickname…"
-msgstr "Ca&mbiar alias..."
+msgstr "Ca&mbiar alias…"
 
 #: mainwindow.cpp:76
 #, kde-format
@@ -381,12 +382,12 @@ msgstr "Parámetros de la red"
 #: networkdialog.cpp:210
 #, kde-format
 msgid "Connecting to remote host…"
-msgstr "Conectando a un servidor remoto..."
+msgstr "Conectando a un servidor remoto…"
 
 #: networkdialog.cpp:217
 #, kde-format
 msgid "Waiting for an incoming connection…"
-msgstr "Esperando una conexión entrante..."
+msgstr "Esperando una conexión entrante…"
 
 #: networkdialog.cpp:236
 #, kde-format
@@ -513,7 +514,7 @@ msgstr "El enemigo ha disparado. ¡Dispara ahora!"
 #: playfield.cpp:267
 #, kde-format
 msgid "Waiting for enemy to shoot…"
-msgstr "Esperando el disparo del enemigo..."
+msgstr "Esperando el disparo del enemigo…"
 
 #: playfield.cpp:276
 #, kde-format
@@ -523,12 +524,12 @@ msgstr "Barcos situados. ¡Dispara ahora a las aguas del enemigo!"
 #: playfield.cpp:279
 #, kde-format
 msgid "Waiting for other player to start the game…"
-msgstr "Esperando a que el otro jugador inicie el juego..."
+msgstr "Esperando a que el otro jugador inicie el juego…"
 
 #: playfield.cpp:283
 #, kde-format
 msgid "Waiting for other player to place his ships…"
-msgstr "Esperando a que el otro jugador sitúe sus barcos..."
+msgstr "Esperando a que el otro jugador sitúe sus barcos…"
 
 #: playfield.cpp:297
 #, kde-format
@@ -589,6 +590,3 @@ msgstr "Conectar a un juego en red"
 #, kde-format
 msgid "Remote player"
 msgstr "Jugador remoto"
-
-#~ msgid "Change &Nickname..."
-#~ msgstr "Ca&mbiar alias..."
