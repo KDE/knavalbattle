@@ -1,5 +1,5 @@
 # translation of kbattleship.po to
-# Version: $Revision: 1681346 $
+# Version: $Revision: 1709616 $
 # Copyright (C) YEAR Free Software Fundation, Inc.
 # Michal Rudolf <mrudolf@kdewebdev.org>, 2002, 2003, 2004, 2005.
 # tazdzioch <tazdzioch@o2.pl>, 2007.
@@ -21,7 +21,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2);\n"
-"X-Generator: Lokalize 23.08.5\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
