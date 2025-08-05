@@ -105,7 +105,7 @@ msgstr "Paolo Capriotti"
 #: main.cpp:38
 #, kde-format
 msgid "Current maintainer"
-msgstr "المصين الحاليّ"
+msgstr "الصائن الحاليّ"
 
 #: main.cpp:39
 #, kde-format
