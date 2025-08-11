@@ -289,25 +289,25 @@ msgstr "单人游戏(&S)"
 #, kde-format
 msgctxt "@action"
 msgid "&Host Game…"
-msgstr ""
+msgstr "创建游戏(&H)..."
 
 #: mainwindow.cpp:67
 #, kde-format
 msgctxt "@action"
 msgid "&Connect to Game…"
-msgstr ""
+msgstr "连接到游戏(&C)..."
 
 #: mainwindow.cpp:72
 #, kde-format
 msgctxt "@action"
 msgid "Change &Nickname…"
-msgstr ""
+msgstr "更改昵称(&N)..."
 
 #: mainwindow.cpp:76
 #, kde-format
 msgctxt "@option:check"
 msgid "Play Sounds"
-msgstr ""
+msgstr "播放声音"
 
 #: mainwindow.cpp:81
 #, kde-format
@@ -363,7 +363,7 @@ msgstr "端口(&P)："
 #, kde-format
 msgctxt "@action:button"
 msgid "&Enter Server Address Manually"
-msgstr ""
+msgstr "手动输入服务器地址(&E)"
 
 #: networkdialog.cpp:148
 #, kde-format
@@ -374,12 +374,12 @@ msgstr "网络参数"
 #: networkdialog.cpp:210
 #, kde-format
 msgid "Connecting to remote host…"
-msgstr ""
+msgstr "正在连接到远程主机..."
 
 #: networkdialog.cpp:217
 #, kde-format
 msgid "Waiting for an incoming connection…"
-msgstr ""
+msgstr "正在等待一个接入连接..."
 
 #: networkdialog.cpp:236
 #, kde-format
@@ -467,7 +467,7 @@ msgstr "输入新昵称："
 #, kde-format
 msgctxt "@title:window"
 msgid "Restart Game"
-msgstr ""
+msgstr "重新开始游戏"
 
 #: playfield.cpp:239
 #, kde-format
@@ -504,7 +504,7 @@ msgstr "敌军已经射击。立即射击！"
 #: playfield.cpp:267
 #, kde-format
 msgid "Waiting for enemy to shoot…"
-msgstr ""
+msgstr "正在等待敌军射击..."
 
 #: playfield.cpp:276
 #, kde-format
@@ -514,12 +514,12 @@ msgstr "舰艇已放置好。现在请向敌军阵地开火！"
 #: playfield.cpp:279
 #, kde-format
 msgid "Waiting for other player to start the game…"
-msgstr ""
+msgstr "正在等待其他玩家开始游戏..."
 
 #: playfield.cpp:283
 #, kde-format
 msgid "Waiting for other player to place his ships…"
-msgstr ""
+msgstr "正在等待其他玩家放置舰艇..."
 
 #: playfield.cpp:297
 #, kde-format
@@ -554,7 +554,7 @@ msgstr "无法放置剩余船只。请重新放置或者终止游戏。"
 #, kde-format
 msgctxt "@title:window"
 msgid "Restart Placing Ships"
-msgstr ""
+msgstr "重新放置舰船"
 
 #: simplemenu.cpp:40
 #, kde-format
