@@ -165,6 +165,7 @@
     <content_attribute id="violence-cartoon">mild</content_attribute>
   </content_rating>
   <releases>
+    <release version="2.1.25081" date="2025-09-11"/>
     <release version="2.1.25080" date="2025-08-14"/>
     <release version="2.1.25043" date="2025-07-03"/>
     <release version="2.1.25042" date="2025-06-05"/>
