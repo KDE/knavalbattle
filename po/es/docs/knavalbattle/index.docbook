@@ -223,7 +223,7 @@
 ><guimenu
 >Partida</guimenu
 > <guimenuitem
->Hospedar partida...</guimenuitem
+>Hospedar partida…</guimenuitem
 ></menuchoice
 >. Se mostrará un diálogo que solicitará un <guilabel
 >Apodo:</guilabel
@@ -243,7 +243,7 @@
 ><guimenu
 >Partida</guimenu
 > <guimenuitem
->Conectarse a la partida...</guimenuitem
+>Conectarse a la partida…</guimenuitem
 ></menuchoice
 > Nuevamente se sugerirá un <guilabel
 >Apodo:</guilabel
@@ -436,7 +436,7 @@
 ><guimenu
 >Juego</guimenu
 > <guimenuitem
->Hospedar juego...</guimenuitem
+>Hospedar juego…</guimenuitem
 > </menuchoice>
 </term>
 <listitem>
@@ -453,7 +453,7 @@
 ><guimenu
 >Juego</guimenu
 > <guimenuitem
->Conectarse a partida...</guimenuitem
+>Conectarse a partida…</guimenuitem
 > </menuchoice>
 </term>
 <listitem>
@@ -493,7 +493,7 @@
 ><guimenu
 >Preferencias</guimenu
 > <guimenuitem
->Cambiar apodo...</guimenuitem
+>Cambiar apodo…</guimenuitem
 > </menuchoice>
 </term>
 <listitem>
