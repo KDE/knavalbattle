@@ -169,7 +169,7 @@
 > <guimenuitem
 >Héberger une partie...</guimenuitem
 ></menuchoice
->. Une boîte de dialogue s'ouvre vous demandant votre <guilabel
+>. Une boite de dialogue s'ouvre vous demandant votre <guilabel
 >Pseudo : </guilabel
 > et un <guilabel
 >Port : </guilabel
@@ -207,7 +207,7 @@
 >Le placement des bateaux est très simple. Cliquez simplement à l'endroit où vous voulez placer un bateau. Vous avez quatre bateaux à placer : le premier à une longueur d'une case, le suivant de deux, &etc; Cliquez sur l'endroit où vous voulez que commence le placement. Par défaut, les bateaux seront placés horizontalement ; pour les faire pivoter de 90 degrés, cliquez sur le &BDS; avant de les placer. </para>
 
 <para
->Quand un bateau est touché, le feu va prendre à bord. Pour le couler, frappez toutes les cases qu'il occupe. Un bateau coulé va ensuite apparaître. </para>
+>Quand un bateau est touché, le feu va prendre à bord. Pour le couler, frappez toutes les cases qu'il occupe. Un bateau coulé va ensuite apparaitre. </para>
 
 <para
 >Maintenant, vous pouvez utiliser le &BGS; pour faire feu sur la zone de bataille de votre ennemi. La barre d'état indique qui est touché. </para>
@@ -497,7 +497,7 @@
 </term>
 <listitem>
 <para
->Si vous gagnez la partie avec un des meilleurs scores, le tableau des meilleurs scores sera affiché. Sinon, le résultat est affiché dans la barre d'état ou, si cette option est activée, dans une boîte de dialogue supplémentaire. </para>
+>Si vous gagnez la partie avec un des meilleurs scores, le tableau des meilleurs scores sera affiché. Sinon, le résultat est affiché dans la barre d'état ou, si cette option est activée, dans une boite de dialogue supplémentaire. </para>
 </listitem>
 </varlistentry>
 
