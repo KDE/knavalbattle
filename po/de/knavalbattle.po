@@ -1,24 +1,25 @@
-# SPDX-FileCopyrightText: 2009, 2010, 2024 Johannes Obermayr <johannesobermayr@gmx.de>
 # SPDX-FileCopyrightText: 2003, 2004, 2005, 2007 Stefan Winter <swinter@kde.org>
 # SPDX-FileCopyrightText: 2005 Stephan Johach <hunsum@gmx.de>
 # SPDX-FileCopyrightText: 2005 Thomas Reitelbach <tr@erdfunkstelle.de>
 # SPDX-FileCopyrightText: 2008, 2012, 2013, 2014, 2017, 2021 Burkhard Lück <lueck@hube-lueck.de>
 # SPDX-FileCopyrightText: 2009 Panagiotis Papadopoulos <pano_90@gmx.net>
+# SPDX-FileCopyrightText: 2009, 2010, 2024 Johannes Obermayr <johannesobermayr@gmx.de>
 # SPDX-FileCopyrightText: 2022 Frederik Schwarzer <schwarzer@kde.org>
+# SPDX-FileCopyrightText: 2025 Philipp Kiemle <l10n@prly.mozmail.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: knavalbattle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-05-04 00:37+0000\n"
-"PO-Revision-Date: 2024-08-19 23:09+0200\n"
-"Last-Translator: Johannes Obermayr <johannesobermayr@gmx.de>\n"
+"PO-Revision-Date: 2025-11-08 23:04+0100\n"
+"Last-Translator: Philipp Kiemle <l10n@prly.mozmail.com>\n"
 "Language-Team: German <kde-i18n-de@kde.org>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 24.05.2\n"
+"X-Generator: Lokalize 25.08.2\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -57,14 +58,14 @@ msgstr "Spitzname des Benutzers."
 #: knavalbattle.kcfg:22
 #, kde-format
 msgid "Whether sound effects should be played."
-msgstr "Ist diese Einstellung aktiviert, werden die Klänge wiedergegeben."
+msgstr "Ist diese Einstellung aktiviert, werden Klänge wiedergegeben."
 
 #. i18n: ectx: label, entry (AdjacentShips), group (general)
 #: knavalbattle.kcfg:26
 #, kde-format
 msgid "Allow the ships to be adjacent without one empty space between them."
 msgstr ""
-"Ermöglicht die Anordnung von Schiffen ohne eine leeres Feld zwischen ihnen."
+"Ermöglicht die Anordnung von Schiffen ohne ein leeres Feld zwischen ihnen."
 
 #. i18n: ectx: label, entry (SeveralShips), group (general)
 #: knavalbattle.kcfg:30
@@ -72,7 +73,7 @@ msgstr ""
 msgid ""
 "Allow multiple ships of any size, default: 4 of 1, 3 of 2, 2 of 3, 1 of 4."
 msgstr ""
-"Ermöglicht mehrere Schiffen von beliebiger Größe. Voreinstellung: 4 mit 1, 3 "
+"Ermöglicht mehrere Schiffe von beliebiger Größe. Voreinstellung: 4 mit 1, 3 "
 "mit 2, 2 mit 3, 1 mit 4 Feldern."
 
 #. i18n: ectx: ToolBar (gameToolbar)
@@ -89,7 +90,7 @@ msgstr "Naval Battle"
 #: main.cpp:32
 #, kde-format
 msgid "The KDE ship sinking game"
-msgstr "Schiffe versenken für KDE"
+msgstr "„Schiffe versenken“-Spiel für KDE"
 
 #: main.cpp:33
 #, kde-format
@@ -97,8 +98,8 @@ msgid ""
 "(c) 2000-2005  Nikolas Zimmermann, Daniel Molkentin\n"
 "(c) 2007 Paolo Capriotti"
 msgstr ""
-"© 2000–2005, Nikolas Zimmermann, Daniel Molkentin\n"
-"© 2007, Paolo Capriotti"
+"© 2000–2005 Nikolas Zimmermann, Daniel Molkentin\n"
+"© 2007 Paolo Capriotti"
 
 #: main.cpp:38
 #, kde-format
@@ -148,7 +149,7 @@ msgstr "Johann Ollivier Lapeyre"
 #: main.cpp:43
 #, kde-format
 msgid "Game artwork"
-msgstr "Grafiken im Spiel"
+msgstr "Spielgrafiken"
 
 #: main.cpp:44
 #, kde-format
@@ -178,7 +179,7 @@ msgstr "Riccardo Iaconelli"
 #: main.cpp:46
 #, kde-format
 msgid "Welcome screen"
-msgstr "Startbildschirm"
+msgstr "Willkommensbildschirm"
 
 #: main.cpp:47
 #, kde-format
@@ -284,8 +285,8 @@ msgstr "[URL]"
 #, kde-format
 msgid "URL of a Naval Battle game server to connect to after startup"
 msgstr ""
-"Adresse des Servers von Naval Battle, zu dem die Verbindung nach dem "
-"Programmaufruf hergestellt wird"
+"Adresse eines „Naval Battle“-Spielservers, zu dem nach dem Programmstart "
+"eine Verbindung hergestellt werden soll"
 
 #: mainwindow.cpp:59
 #, kde-format
@@ -297,19 +298,19 @@ msgstr "&Einzelspieler"
 #, kde-format
 msgctxt "@action"
 msgid "&Host Game…"
-msgstr "&Netzwerkspiel ausrichten …"
+msgstr "&Netzwerkspiel ausrichten …"
 
 #: mainwindow.cpp:67
 #, kde-format
 msgctxt "@action"
 msgid "&Connect to Game…"
-msgstr "Mit Netzwerkspiel &verbinden …"
+msgstr "Mit Netzwerkspiel &verbinden …"
 
 #: mainwindow.cpp:72
 #, kde-format
 msgctxt "@action"
 msgid "Change &Nickname…"
-msgstr "&Spitznamen ändern …"
+msgstr "&Spitznamen ändern …"
 
 #: mainwindow.cpp:76
 #, kde-format
@@ -333,7 +334,7 @@ msgstr "&Mehrere Schiffe"
 #, kde-format
 msgctxt "@option:check"
 msgid "Show End-of-Game Message"
-msgstr "Nachricht am Spielende anzeigen"
+msgstr "Spielende-Nachricht anzeigen"
 
 #: mainwindow.cpp:96
 #, kde-format
@@ -371,7 +372,7 @@ msgstr "&Port:"
 #, kde-format
 msgctxt "@action:button"
 msgid "&Enter Server Address Manually"
-msgstr "S&erveradresse direkt eingeben"
+msgstr "S&erveradresse manuell eingeben"
 
 #: networkdialog.cpp:148
 #, kde-format
@@ -382,12 +383,12 @@ msgstr "Netzwerkparameter"
 #: networkdialog.cpp:210
 #, kde-format
 msgid "Connecting to remote host…"
-msgstr "Verbindung mit entferntem Rechner wird hergestellt …"
+msgstr "Verbindung mit entferntem Rechner wird hergestellt …"
 
 #: networkdialog.cpp:217
 #, kde-format
 msgid "Waiting for an incoming connection…"
-msgstr "Warten auf ankommende Verbindung …"
+msgstr "Es wird auf eine eingehende Verbindung gewartet …"
 
 #: networkdialog.cpp:236
 #, kde-format
@@ -412,8 +413,7 @@ msgstr "Sie können Schiffe direkt nebeneinander anordnen"
 #: networkentity.cpp:291
 #, kde-format
 msgid "You must leave a space between ships"
-msgstr ""
-"Es muss ein Abstand von mindestens einem Feld zwischen Schiffen bleiben"
+msgstr "Zwischen zwei Schiffen muss mindestens ein Feld Abstand sein"
 
 #: playerentity.cpp:199
 #, kde-format
@@ -510,38 +510,40 @@ msgstr ""
 #: playfield.cpp:263
 #, kde-format
 msgid "Enemy has shot. Shoot now!"
-msgstr "Gegner hat geschossen. Schießen Sie jetzt zurück!"
+msgstr "Der Gegner hat geschossen. Schießen Sie jetzt zurück!"
 
 #: playfield.cpp:267
 #, kde-format
 msgid "Waiting for enemy to shoot…"
-msgstr "Warten auf Schuss des Gegners …"
+msgstr "Warten auf den Schuss des Gegners …"
 
 #: playfield.cpp:276
 #, kde-format
 msgid "Ships placed. Now shoot on the enemy field!"
-msgstr "Schiffe sind platziert. Schießen Sie jetzt auf das gegnerische Feld!"
+msgstr ""
+"Die Schiffe sind platziert. Schießen Sie jetzt auf das gegnerische Feld!"
 
 #: playfield.cpp:279
 #, kde-format
 msgid "Waiting for other player to start the game…"
-msgstr "Warten, dass der andere Spieler das Spiel beginnt …"
+msgstr "Warten, bis der andere Spieler das Spiel beginnt …"
 
 #: playfield.cpp:283
 #, kde-format
 msgid "Waiting for other player to place his ships…"
-msgstr "Warten, dass der andere Spieler seine Schiffe positioniert …"
+msgstr "Warten, bis der andere Spieler seine Schiffe positioniert hat …"
 
 #: playfield.cpp:297
 #, kde-format
 msgid "Place your %1 ships. Use the right mouse button to rotate them."
 msgstr ""
-"Platzieren Sie Ihre %1 Schiffe. Zum Drehen drücken Sie die rechte Maustaste."
+"Platzieren Sie Ihre %1 Schiffe. Drücken Sie die rechte Maustaste, um die "
+"Schiffe zu drehen."
 
 #: playfield.cpp:303
 #, kde-format
 msgid "You can't place your remaining ships."
-msgstr "Sie können Ihre verbleibenden Schiffe nicht mehr platzieren."
+msgstr "Sie können Ihre verbleibenden Schiffe nicht platzieren."
 
 #: playfield.cpp:304
 #, kde-format
@@ -561,8 +563,8 @@ msgid ""
 "You can't place your remaining ships. Please restart placing ships or abort "
 "game"
 msgstr ""
-"Sie können Ihre verbleibenden Schiffe nicht mehr platzieren. Bitte starten "
-"Sie das Platzieren von Schiffen erneut oder brechen Sie das Spiel ab."
+"Sie können Ihre verbleibenden Schiffe nicht platzieren. Bitte starten Sie "
+"das Platzieren von Schiffen erneut oder brechen Sie das Spiel ab."
 
 #: playfield.cpp:308
 #, kde-format
