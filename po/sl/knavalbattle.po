@@ -2,7 +2,7 @@
 # Translation of kbattleship.po to Slovenian
 # SLOVENIAN TRANSLATION OF KBATTLESHIP.
 # Copyright (C) 2001, 2003, 2004, 2005, 2006, 2007 Free Software Foundation, Inc.
-# $Id: knavalbattle.po 1679271 2024-05-05 01:10:22Z scripty $
+# $Id: knavalbattle.po 1723120 2025-11-17 15:24:07Z scripty $
 # $Source$
 #
 # Roman Maurer <roman.maurer@amis.net>, 2001.
@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kbattleship\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-04 00:37+0000\n"
+"POT-Creation-Date: 2025-11-17 14:39+0000\n"
 "PO-Revision-Date: 2024-05-04 06:21+0200\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
