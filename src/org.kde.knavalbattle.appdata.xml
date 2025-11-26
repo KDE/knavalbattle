@@ -187,6 +187,6 @@
     <release version="2.1.23085" date="2024-02-15"/>
   </releases>
   <custom>
-    <value key="KDE::supporters">@krake@graz.social</value>
+    <value key="KDE::supporters">@krake@graz.social, 雨歇OSC AC1QS</value>
   </custom>
 </component>
