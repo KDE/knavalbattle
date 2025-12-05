@@ -1,9 +1,8 @@
 <?xml version="1.0" ?>
 <!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN" "dtd/kdedbx45.dtd" [
-  <!ENTITY knavalbattle "<application
->Naval Battle</application
->"
->  
+  <!ENTITY i18n-knavalbattle "<application
+>Batalha Naval</application
+>">
   <!ENTITY % addindex "IGNORE">
   <!ENTITY % Brazilian-Portuguese "INCLUDE"
 > <!-- change language only here -->
@@ -78,13 +77,13 @@
 </copyright>
 
 <date
->10/05/2016</date>
+>10/12/2020</date>
 <releaseinfo
->2.1 (Applications 16.04)</releaseinfo>
+>Applications 20.12</releaseinfo>
 
 <abstract>
 <para
->&knavalbattle; é uma implementação com suporte a rede do famoso jogo <quote
+>&i18n-knavalbattle; é uma implementação com suporte a rede do famoso jogo <quote
 >Batalha Naval</quote
 > do &kde;.</para>
 </abstract>
@@ -133,13 +132,13 @@
 </imageobject>
 <textobject>
 <phrase
->Tabuleiro do jogo &knavalbattle;</phrase>
+>Tabuleiro do jogo &i18n-knavalbattle;</phrase>
 </textobject>
 </mediaobject>
 </screenshot>
 
 <para
->O &knavalbattle; é um jogo de batalha naval do &kde;. Os navios são posicionados em um tabuleiro que representa o mar. Os jogadores tentam atingir os navios dos adversários por jogadas, não sabendo onde eles estão posicionados. O primeiro jogador a destruir todos os navios ganha o jogo. </para>
+>O &i18n-knavalbattle; é um jogo de batalha naval do &kde;. Os navios são posicionados em um tabuleiro que representa o mar. Os jogadores tentam atingir os navios dos adversários por jogadas, não sabendo onde eles estão posicionados. O primeiro jogador a destruir todos os navios ganha o jogo. </para>
 </chapter>
 
 <chapter id="howtoplay">
@@ -153,11 +152,13 @@
 ></note
 ><!--Describe the objective of the game.-->
 <para
->Se quiser jogar o &knavalbattle; deverá ter dois jogadores, sendo que um deles pode ser o computador ou um jogador em rede. Para jogar contra o seu computador, selecione primeiro o nível de dificuldade à direita da barra de status e depois a opção <guibutton
->Um jogador</guibutton
+>Se quiser jogar o &i18n-knavalbattle; deverá ter dois jogadores, sendo que um deles pode ser o computador ou um jogador em rede. Para jogar contra o seu computador, selecione primeiro o nível de dificuldade à direita da barra de status e depois a opção <guilabel
+>Um jogador</guilabel
 > na tela de boas-vindas ou diretamente no menu <menuchoice
 ><guimenu
 >Jogo</guimenu
+><guimenuitem
+>Jogador único</guimenuitem
 ></menuchoice
 >.</para>
 
@@ -168,13 +169,13 @@
 ><guimenu
 >Jogo</guimenu
 > <guimenuitem
->Hospedar jogo...</guimenuitem
+>Hospedar jogo…</guimenuitem
 ></menuchoice
 >. Será aberta uma caixa de diálogo que lhe perguntará qual o seu <guilabel
 >Apelido:</guilabel
 > e <guilabel
 >Porta:</guilabel
->. Normalmente, o &knavalbattle; irá sugerir o nome do seu usuário, mas você poderá digitar o que quiser. O número da porta predefinida deve estar correto, mas se tiver algum problema, poderá escolher qualquer outra porta livre acima de 1024. </para>
+>. Normalmente, o &i18n-knavalbattle; irá sugerir o nome do seu usuário, mas você poderá digitar o que quiser. O número da porta predefinida deve estar correto, mas se tiver algum problema, poderá escolher qualquer outra porta livre acima de 1024. </para>
 
 <note>
 <para
@@ -184,15 +185,15 @@
 <para
 >O outro jogador precisa escolher a opção <guilabel
 >Conectar a um jogo em rede</guilabel
-> ou clicar em <menuchoice
+> ou clicar no menu <menuchoice
 ><guimenu
 >Jogo</guimenu
 > <guimenuitem
->Conectar a um jogo...</guimenuitem
+>Conectar a um jogo…</guimenuitem
 ></menuchoice
 >. Mais uma vez, um <guilabel
 >Apelido:</guilabel
-> será sugerido, mas você poderá indicar qualquer o nome que desejar. No campo <guilabel
+> será sugerido, mas você poderá indicar qualquer o apelido que desejar. No campo <guilabel
 >Nome da máquina:</guilabel
 >, você deverá inserir o nome do servidor (a máquina do jogador que iniciou o jogo). </para>
 
@@ -208,13 +209,13 @@
 >O posicionamento dos navios é muito simples: Basta clicar no campo onde quer colocá-los. Você possui quatro navios para posicionar: o primeiro terá o tamanho de quatro quadrados, o próximo terá três, o seguinte dois, &etc; Clique no campo onde deseja iniciar o posicionamento. Por padrão, os navios serão posicionados na horizontal, mas podem ser girados em 90 graus. Para fazer isso, clique com o &RMB; antes de posicionar. </para>
 
 <para
->Quando um navio é atingido, será iniciado um incêndio nele. Para afundá-lo, atinja todos os quadrados que ele ocupa. Um navio afundado aparecerá desvanecido. </para>
+>Quando um navio é atingido, será iniciado um incêndio nele. Para afundá-lo, atinja todos os quadrados que ele ocupa. Um navio afundado aparecerá esmaecido. </para>
 
 <para
 >Agora você poderá usar o &LMB; para atirar na área de batalha inimiga. A barra de status indica quem está pronto para atirar. </para>
 
 <para
->Você poderá reiniciar o jogo se escolher a opção <menuchoice
+>Você poderá reiniciar o jogo se escolher o menu <menuchoice
 ><guimenu
 >Jogo</guimenu
 > <guimenuitem
@@ -383,7 +384,7 @@
 ><guimenu
 >Jogo</guimenu
 > <guimenuitem
->Hospedar jogo...</guimenuitem
+>Hospedar jogo…</guimenuitem
 > </menuchoice>
 </term>
 <listitem>
@@ -400,7 +401,7 @@
 ><guimenu
 >Jogo</guimenu
 > <guimenuitem
->Conectar a um jogo...</guimenuitem
+>Conectar a um jogo…</guimenuitem
 > </menuchoice>
 </term>
 <listitem>
@@ -430,7 +431,7 @@
 <para
 ><action
 >Sai</action
-> do &knavalbattle; </para>
+> do &i18n-knavalbattle;. </para>
 </listitem>
 </varlistentry>
 
@@ -440,7 +441,7 @@
 ><guimenu
 >Configurações</guimenu
 > <guimenuitem
->Alterar apelido...</guimenuitem
+>Alterar apelido…</guimenuitem
 > </menuchoice>
 </term>
 <listitem>
@@ -482,7 +483,7 @@
 ><action
 >Ativa ou desativa a possibilidade de posicionar navios no tabuleiro sem qualquer espaço vazio entre eles.</action
 > Por padrão está ativo. Esta opção deve estar definida em uma máquina quando <link linkend="howtoplay"
->jogar o &knavalbattle; pela rede</link
+>jogar o &i18n-knavalbattle; pela rede</link
 >. </para>
 </listitem>
 </varlistentry>
@@ -545,7 +546,7 @@
 </variablelist>
 
 <para
->O &knavalbattle; possui os itens dos menus <guimenu
+>O &i18n-knavalbattle; possui os itens dos menus <guimenu
 >Configurações</guimenu
 > e <guimenu
 >Ajuda</guimenu
@@ -571,7 +572,7 @@
 </question>
 <answer>
 <para
->Não, não existe sistema de dicas para o &knavalbattle;. </para>
+>Não, não existe sistema de dicas para o &i18n-knavalbattle;. </para>
 </answer>
 </qandaentry>
 
@@ -582,7 +583,7 @@
 </question>
 <answer>
 <para
->Mova o navio para onde deseja posicioná-lo, e então pressione o &RMB; </para>
+>Mova o navio para onde deseja posicioná-lo, e então pressione o &RMB;. </para>
 </answer>
 </qandaentry>
 
@@ -605,7 +606,7 @@
 >Créditos e licença</title>
 
 <para
->&knavalbattle; Copyright 2000-2007</para>
+>Direitos autorais do &knavalbattle; 2000-2007</para>
 
 <itemizedlist>
 <title
