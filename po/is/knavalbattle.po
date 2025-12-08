@@ -3,20 +3,20 @@
 #
 # Pjetur G. Hjaltason <pjetur@pjetur.net>, 2004.
 # Björgvin Ragnarsson <nifgraup@gmail.com>, 2005.
-# Sveinn í Felli <sveinki@nett.is>, 2009, 2011, 2015, 2021, 2022.
+# SPDX-FileCopyrightText: 2009, 2011, 2015, 2021, 2022, 2025 Sveinn í Felli <sveinki@nett.is>
 msgid ""
 msgstr ""
 "Project-Id-Version: kbattleship\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-11-17 14:39+0000\n"
-"PO-Revision-Date: 2022-08-15 13:52+0000\n"
+"PO-Revision-Date: 2025-12-07 08:09+0000\n"
 "Last-Translator: Sveinn í Felli <sv1@fellsnet.is>\n"
 "Language-Team: Icelandic\n"
 "Language: is\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 21.12.3\n"
+"X-Generator: Lokalize 23.08.5\n"
 "Plural-Forms: Plural-Forms: nplurals=2; plural=n != 1;\n"
 "\n"
 "\n"
@@ -287,71 +287,61 @@ msgid "URL of a Naval Battle game server to connect to after startup"
 msgstr "Slóð á Sjóorustuleikjamiðlara sem tengjast ætti eftir ræsingu"
 
 #: mainwindow.cpp:59
-#, fuzzy, kde-format
-#| msgid "&Single Player"
+#, kde-format
 msgctxt "@action"
 msgid "&Single Player"
-msgstr "&Einn spilari"
+msgstr "Einn &spilari"
 
 #: mainwindow.cpp:63
-#, fuzzy, kde-format
-#| msgid "&Host Game..."
+#, kde-format
 msgctxt "@action"
 msgid "&Host Game…"
-msgstr "&Hýsa leik..."
+msgstr "&Hýsa leik…"
 
 #: mainwindow.cpp:67
-#, fuzzy, kde-format
-#| msgid "&Connect to Game..."
+#, kde-format
 msgctxt "@action"
 msgid "&Connect to Game…"
-msgstr "&Tengjast leik..."
+msgstr "&Tengjast leik…"
 
 #: mainwindow.cpp:72
-#, fuzzy, kde-format
-#| msgid "Change Nickname"
+#, kde-format
 msgctxt "@action"
 msgid "Change &Nickname…"
-msgstr "Breyta gælunafni"
+msgstr "Breyta gælu&nafni…"
 
 #: mainwindow.cpp:76
-#, fuzzy, kde-format
-#| msgid "&Play Sounds"
+#, kde-format
 msgctxt "@option:check"
 msgid "Play Sounds"
-msgstr "Spila &hljóð"
+msgstr "Spila hljóð"
 
 #: mainwindow.cpp:81
-#, fuzzy, kde-format
-#| msgid "&Adjacent Ships"
+#, kde-format
 msgctxt "@option:check"
 msgid "&Adjacent Ships"
 msgstr "&Aðliggjandi skip"
 
 #: mainwindow.cpp:86
-#, fuzzy, kde-format
-#| msgid "&Multiple Ships"
+#, kde-format
 msgctxt "@option:check"
 msgid "&Multiple Ships"
 msgstr "&Mörg skip"
 
 #: mainwindow.cpp:91
-#, fuzzy, kde-format
-#| msgid "Show End-of-Game Message"
+#, kde-format
 msgctxt "@option:check"
 msgid "Show End-of-Game Message"
 msgstr "Sýna skilaboð við lok leiks"
 
 #: mainwindow.cpp:96
-#, fuzzy, kde-format
-#| msgid "Show &Left Grid"
+#, kde-format
 msgctxt "@option:check"
 msgid "Show &Left Grid"
 msgstr "Sýna &vinstri möskva"
 
 #: mainwindow.cpp:100
-#, fuzzy, kde-format
-#| msgid "Show &Right Grid"
+#, kde-format
 msgctxt "@option:check"
 msgid "Show &Right Grid"
 msgstr "Sýna hæg&ri möskva"
@@ -377,30 +367,26 @@ msgid "&Port:"
 msgstr "&Gátt:"
 
 #: networkdialog.cpp:116
-#, fuzzy, kde-format
-#| msgid "&Enter server address manually"
+#, kde-format
 msgctxt "@action:button"
 msgid "&Enter Server Address Manually"
 msgstr "S&ettu sjálf(ur) inn vistfang miðlarans"
 
 #: networkdialog.cpp:148
-#, fuzzy, kde-format
-#| msgid "Network Parameters"
+#, kde-format
 msgctxt "@title:window"
 msgid "Network Parameters"
-msgstr "Viðföng nettenginga"
+msgstr "Stillingar nettenginga"
 
 #: networkdialog.cpp:210
-#, fuzzy, kde-format
-#| msgid "Connecting to remote host..."
+#, kde-format
 msgid "Connecting to remote host…"
-msgstr "Tengist fjarlægri tölvu..."
+msgstr "Tengist fjartengdri tölvu…"
 
 #: networkdialog.cpp:217
-#, fuzzy, kde-format
-#| msgid "Waiting for an incoming connection..."
+#, kde-format
 msgid "Waiting for an incoming connection…"
-msgstr "Bið eftir væntanlegri tengingu..."
+msgstr "Bið eftir væntanlegri tengingu…"
 
 #: networkdialog.cpp:236
 #, kde-format
@@ -473,22 +459,19 @@ msgid "You lose. Better luck next time!"
 msgstr "Þú tapaðir. Gangi þér betur næst!"
 
 #: playfield.cpp:209
-#, fuzzy, kde-format
-#| msgid "Change Nickname"
+#, kde-format
 msgctxt "@title:window"
 msgid "Change Nickname"
 msgstr "Breyta gælunafni"
 
 #: playfield.cpp:209
-#, fuzzy, kde-format
-#| msgid "Enter new nickname:"
+#, kde-format
 msgctxt "@label:textbox"
 msgid "Enter new nickname:"
-msgstr "Sláðu inn nýtt gælunafn:"
+msgstr "Settu inn nýtt gælunafn:"
 
 #: playfield.cpp:238
-#, fuzzy, kde-format
-#| msgid "Restart game"
+#, kde-format
 msgctxt "@title:window"
 msgid "Restart Game"
 msgstr "Endurræsa leik"
@@ -527,10 +510,9 @@ msgid "Enemy has shot. Shoot now!"
 msgstr "Andstæðingur hefur skotið. Skjóttu nú!"
 
 #: playfield.cpp:267
-#, fuzzy, kde-format
-#| msgid "Waiting for enemy to shoot..."
+#, kde-format
 msgid "Waiting for enemy to shoot…"
-msgstr "Bíð eftir að andstæðingur skjóti..."
+msgstr "Bíð eftir að andstæðingur skjóti…"
 
 #: playfield.cpp:276
 #, kde-format
@@ -538,16 +520,14 @@ msgid "Ships placed. Now shoot on the enemy field!"
 msgstr "Skipin eru á sínum stað. Skjóttu núna á óvinasvæðið!"
 
 #: playfield.cpp:279
-#, fuzzy, kde-format
-#| msgid "Waiting for other player to start the game..."
+#, kde-format
 msgid "Waiting for other player to start the game…"
-msgstr "Bíð eftir að aðrir leikmenn hefji leikinn..."
+msgstr "Bíð eftir að aðrir leikmenn hefji leikinn"
 
 #: playfield.cpp:283
-#, fuzzy, kde-format
-#| msgid "Waiting for other player to place his ships..."
+#, kde-format
 msgid "Waiting for other player to place his ships…"
-msgstr "Bíð eftir að aðrir leikmenn staðsetji skip..."
+msgstr "Bíð eftir að aðrir leikmenn staðsetji skip…"
 
 #: playfield.cpp:297
 #, kde-format
@@ -560,17 +540,13 @@ msgid "You can't place your remaining ships."
 msgstr "Þú getur ekki komið fyrir þeim skipum sem eftir eru."
 
 #: playfield.cpp:304
-#, fuzzy, kde-format
-#| msgctxt "@action"
-#| msgid "Restart"
+#, kde-format
 msgctxt "@action:button"
 msgid "Restart"
 msgstr "Byrja aftur"
 
 #: playfield.cpp:305
-#, fuzzy, kde-format
-#| msgctxt "@action"
-#| msgid "Abort"
+#, kde-format
 msgctxt "@action:button"
 msgid "Abort"
 msgstr "Hætta"
@@ -585,29 +561,25 @@ msgstr ""
 "skipum fyrir eða hættu við leikinn"
 
 #: playfield.cpp:308
-#, fuzzy, kde-format
-#| msgid "Restart placing ships"
+#, kde-format
 msgctxt "@title:window"
 msgid "Restart Placing Ships"
 msgstr "Byrja aftur að koma skipum fyrir"
 
 #: simplemenu.cpp:40
-#, fuzzy, kde-format
-#| msgid "Single Player"
+#, kde-format
 msgctxt "@action:button"
 msgid "Single Player"
 msgstr "Einn spilari"
 
 #: simplemenu.cpp:41
-#, fuzzy, kde-format
-#| msgid "Host Network Game"
+#, kde-format
 msgctxt "@action:button"
 msgid "Host Network Game"
 msgstr "Hýsa netspilunarleik"
 
 #: simplemenu.cpp:42
-#, fuzzy, kde-format
-#| msgid "Connect to Network Game"
+#, kde-format
 msgctxt "@action:button"
 msgid "Connect to Network Game"
 msgstr "Tengjast netspilunarleik"
