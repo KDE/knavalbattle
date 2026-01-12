@@ -43,7 +43,7 @@ msgstr "Ordinador"
 #: knavalbattle.kcfg:9
 #, kde-format
 msgid "Default hostname for multiplayer games."
-msgstr "Amfitrió predeterminat per a les partides multijugador."
+msgstr "Nom de l'amfitrió predeterminat per a les partides multijugador."
 
 #. i18n: ectx: label, entry (Port), group (network)
 #: knavalbattle.kcfg:13
