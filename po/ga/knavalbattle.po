@@ -280,39 +280,34 @@ msgid "URL of a Naval Battle game server to connect to after startup"
 msgstr "URL de fhreastalaí a gceanglófar leis ag am tosaithe"
 
 #: mainwindow.cpp:59
-#, fuzzy, kde-format
-#| msgid "&Single Player"
+#, kde-format
 msgctxt "@action"
 msgid "&Single Player"
-msgstr "Imreoir &Aonair"
+msgstr ""
 
 #: mainwindow.cpp:63
-#, fuzzy, kde-format
-#| msgid "&Host Game..."
+#, kde-format
 msgctxt "@action"
 msgid "&Host Game…"
-msgstr "Ó&stáil Cluiche..."
+msgstr ""
 
 #: mainwindow.cpp:67
-#, fuzzy, kde-format
-#| msgid "&Connect to Game..."
+#, kde-format
 msgctxt "@action"
 msgid "&Connect to Game…"
-msgstr "&Ceangail le Cluiche..."
+msgstr ""
 
 #: mainwindow.cpp:72
-#, fuzzy, kde-format
-#| msgid "Change Nickname"
+#, kde-format
 msgctxt "@action"
 msgid "Change &Nickname…"
-msgstr "Athraigh do Leasainm"
+msgstr ""
 
 #: mainwindow.cpp:76
-#, fuzzy, kde-format
-#| msgid "&Play Sounds"
+#, kde-format
 msgctxt "@option:check"
 msgid "Play Sounds"
-msgstr "&Seinn Fuaimeanna"
+msgstr ""
 
 #: mainwindow.cpp:81
 #, kde-format
@@ -327,25 +322,22 @@ msgid "&Multiple Ships"
 msgstr ""
 
 #: mainwindow.cpp:91
-#, fuzzy, kde-format
-#| msgid "Show End-of-Game Message"
+#, kde-format
 msgctxt "@option:check"
 msgid "Show End-of-Game Message"
-msgstr "Taispeáin Teachtaireacht Deireadh-an-Chluiche"
+msgstr ""
 
 #: mainwindow.cpp:96
-#, fuzzy, kde-format
-#| msgid "Show &Left Grid"
+#, kde-format
 msgctxt "@option:check"
 msgid "Show &Left Grid"
-msgstr "Taispeáin Greille Ar &Chlé"
+msgstr ""
 
 #: mainwindow.cpp:100
-#, fuzzy, kde-format
-#| msgid "Show &Right Grid"
+#, kde-format
 msgctxt "@option:check"
 msgid "Show &Right Grid"
-msgstr "Taispeáin Greille Ar &Dheis"
+msgstr ""
 
 #: networkdialog.cpp:61
 #, kde-format
@@ -369,30 +361,26 @@ msgid "&Port:"
 msgstr "&Port:"
 
 #: networkdialog.cpp:116
-#, fuzzy, kde-format
-#| msgid "&Enter server address manually"
+#, kde-format
 msgctxt "@action:button"
 msgid "&Enter Server Address Manually"
-msgstr "&Iontráil seoladh an fhreastalaí de láimh"
+msgstr ""
 
 #: networkdialog.cpp:148
-#, fuzzy, kde-format
-#| msgid "Network Parameters"
+#, kde-format
 msgctxt "@title:window"
 msgid "Network Parameters"
-msgstr "Paraiméadair Líonra"
+msgstr ""
 
 #: networkdialog.cpp:210
-#, fuzzy, kde-format
-#| msgid "Connecting to remote host..."
+#, kde-format
 msgid "Connecting to remote host…"
-msgstr "Ag dul i dteagmháil leis an gcianóstach..."
+msgstr ""
 
 #: networkdialog.cpp:217
-#, fuzzy, kde-format
-#| msgid "Waiting for an incoming connection..."
+#, kde-format
 msgid "Waiting for an incoming connection…"
-msgstr "Ag feitheamh le ceangal isteach..."
+msgstr ""
 
 #: networkdialog.cpp:236
 #, kde-format
@@ -410,10 +398,9 @@ msgid ", "
 msgstr ""
 
 #: networkentity.cpp:288
-#, fuzzy, kde-format
-#| msgid "You cannot place the ship here."
+#, kde-format
 msgid "You can place ships adjacent to each other"
-msgstr "Ní féidir leat long a shuí anseo."
+msgstr ""
 
 #: networkentity.cpp:291
 #, kde-format
@@ -461,31 +448,27 @@ msgid "You lose."
 msgstr "Chaill tú."
 
 #: playfield.cpp:199
-#, fuzzy, kde-format
-#| msgid "You lose. Try harder next time!"
+#, kde-format
 msgid "You lose. Better luck next time!"
-msgstr "Chaill tú. Déan do dhícheall an chéad uair eile!"
+msgstr ""
 
 #: playfield.cpp:209
-#, fuzzy, kde-format
-#| msgid "Change Nickname"
+#, kde-format
 msgctxt "@title:window"
 msgid "Change Nickname"
-msgstr "Athraigh do Leasainm"
+msgstr ""
 
 #: playfield.cpp:209
-#, fuzzy, kde-format
-#| msgid "Enter new nickname:"
+#, kde-format
 msgctxt "@label:textbox"
 msgid "Enter new nickname:"
-msgstr "Iontráil leasainm nua:"
+msgstr ""
 
 #: playfield.cpp:238
-#, fuzzy, kde-format
-#| msgid "Restart game"
+#, kde-format
 msgctxt "@title:window"
 msgid "Restart Game"
-msgstr "Atosaigh an cluiche"
+msgstr ""
 
 #: playfield.cpp:239
 #, kde-format
@@ -505,19 +488,12 @@ msgid "Reject"
 msgstr ""
 
 #: playfield.cpp:250
-#, fuzzy, kde-format
-#| msgid ""
-#| "Your opponent is using a pre-KDE4 version of Naval Battle. Note that, "
-#| "according to the rules enforced by old clients, ships cannot be placed "
-#| "adjacent to one another."
+#, kde-format
 msgid ""
 "Your opponent is using a pre-KDE4 version of Naval Battle. Note that, "
 "according to the rules enforced by old clients, ships cannot be placed "
 "adjacent to one another and only one ship of each size is allowed."
 msgstr ""
-"Tá do chéile comhraic ag baint úsáid as leagan KBattleship níos sine ná "
-"KDE4.  De réir na rialacha a chuir na seanchliaint i bhfeidhm, ní "
-"cheadaítear longa a shuí go díreach in aice lena chéile."
 
 #: playfield.cpp:263
 #, kde-format
@@ -525,10 +501,9 @@ msgid "Enemy has shot. Shoot now!"
 msgstr "Chaith an namhaid urchar. Caith anois!"
 
 #: playfield.cpp:267
-#, fuzzy, kde-format
-#| msgid "Waiting for enemy to shoot..."
+#, kde-format
 msgid "Waiting for enemy to shoot…"
-msgstr "Ag feitheamh le hurchar ón namhaid..."
+msgstr ""
 
 #: playfield.cpp:276
 #, kde-format
@@ -536,24 +511,19 @@ msgid "Ships placed. Now shoot on the enemy field!"
 msgstr "Cuireadh na longa. Caith urchar anois!"
 
 #: playfield.cpp:279
-#, fuzzy, kde-format
-#| msgid "Waiting for other player to start the game..."
+#, kde-format
 msgid "Waiting for other player to start the game…"
-msgstr "Ag feitheamh leis an imreoir eile an cluiche a thosú..."
+msgstr ""
 
 #: playfield.cpp:283
-#, fuzzy, kde-format
-#| msgid "Waiting for other player to place his ships..."
+#, kde-format
 msgid "Waiting for other player to place his ships…"
-msgstr "Ag feitheamh leis an imreoir eile a chuid long a shuí..."
+msgstr ""
 
 #: playfield.cpp:297
-#, fuzzy, kde-format
-#| msgid "Place your ships. Use the right mouse button to rotate them."
+#, kde-format
 msgid "Place your %1 ships. Use the right mouse button to rotate them."
 msgstr ""
-"Cuir do chuid long síos.  Úsáid an cnaipe luiche ar dheis chun na longa a "
-"rothlú."
 
 #: playfield.cpp:303
 #, kde-format
@@ -561,11 +531,10 @@ msgid "You can't place your remaining ships."
 msgstr ""
 
 #: playfield.cpp:304
-#, fuzzy, kde-format
-#| msgid "Restart game"
+#, kde-format
 msgctxt "@action:button"
 msgid "Restart"
-msgstr "Atosaigh an cluiche"
+msgstr ""
 
 #: playfield.cpp:305
 #, kde-format
@@ -587,141 +556,24 @@ msgid "Restart Placing Ships"
 msgstr ""
 
 #: simplemenu.cpp:40
-#, fuzzy, kde-format
-#| msgid "Single Player"
+#, kde-format
 msgctxt "@action:button"
 msgid "Single Player"
-msgstr "Imreoir Aonair"
+msgstr ""
 
 #: simplemenu.cpp:41
-#, fuzzy, kde-format
-#| msgid "Host Network Game"
+#, kde-format
 msgctxt "@action:button"
 msgid "Host Network Game"
-msgstr "Óstáil Cluiche Líonra"
+msgstr ""
 
 #: simplemenu.cpp:42
-#, fuzzy, kde-format
-#| msgid "Connect to Network Game"
+#, kde-format
 msgctxt "@action:button"
 msgid "Connect to Network Game"
-msgstr "Ceangail le Cluiche Líonra"
+msgstr ""
 
 #: simplemenu.cpp:132 simplemenu.cpp:149
 #, kde-format
 msgid "Remote player"
 msgstr "Imreoir cianda"
-
-#~ msgid "Change &Nickname..."
-#~ msgstr "Athraigh do Leasai&nm..."
-
-#~ msgid "Game difficulty."
-#~ msgstr "Deacracht an chluiche."
-
-#~ msgid "KBattleship"
-#~ msgstr "KBattleship"
-
-#~ msgid "Single player"
-#~ msgstr "Imreoir aonair"
-
-#~ msgid "&Game"
-#~ msgstr "&Cluiche"
-
-#~ msgid "&Settings"
-#~ msgstr "&Socruithe"
-
-#~ msgid "Main page"
-#~ msgstr "Príomhleathanach"
-
-#~ msgid "Shots:"
-#~ msgstr "Urchair:"
-
-#~ msgid "     Player 1: %1     "
-#~ msgstr "     Imreoir 1: %1     "
-
-#~ msgid "     Player 2: %1     "
-#~ msgstr "     Imreoir 2: %1     "
-
-#~ msgid "Ready"
-#~ msgstr "Réidh"
-
-#~ msgid "&Start Server..."
-#~ msgstr "To&saigh an Freastalaí..."
-
-#~ msgid "S&ingle Player..."
-#~ msgstr "&Imreoir Aonair..."
-
-#~ msgid "&Enemy Info"
-#~ msgstr "&Eolas faoin Namhaid"
-
-#~ msgid "Hide Grid"
-#~ msgstr "Folaigh Greille"
-
-#~ msgid "Sending Message..."
-#~ msgstr "Teachtaireacht á Seoladh..."
-
-#~ msgid "You won the game :)"
-#~ msgstr "Bhí an bua agat :)"
-
-#~ msgid "Do you want to restart the game?"
-#~ msgstr "An bhfuil fonn ort an chluiche a atosú?"
-
-#~ msgid "Do Not Restart"
-#~ msgstr "Ná hAtosaigh"
-
-#~ msgid "Water"
-#~ msgstr "Uisce"
-
-#~ msgid "Do Not Ask"
-#~ msgstr "Ná Fiafraigh"
-
-#~ msgid "&Stop server"
-#~ msgstr "&Stad an freastalaí"
-
-#~ msgid "Dis&connect from server"
-#~ msgstr "Bris an nas&c leis an fhreastalaí"
-
-#~ msgid "Start Game"
-#~ msgstr "Tosaigh Cluiche"
-
-#~ msgid "Nick name:"
-#~ msgstr "Leasainm:"
-
-#~ msgid "Enter a message here"
-#~ msgstr "Iontráil teachtaireacht anseo"
-
-#~ msgid "Press here to send the message"
-#~ msgstr "Brúigh anseo chun an teachtaireacht a sheoladh"
-
-#~ msgid "&Send"
-#~ msgstr "&Seol"
-
-#~ msgid "&Server:"
-#~ msgstr "Frea&stalaí:"
-
-#~ msgid "Client version:"
-#~ msgstr "Leagan Cliaint:"
-
-#~ msgid "Protocol version:"
-#~ msgstr "Leagan an phrótacail:"
-
-#~ msgid "PV"
-#~ msgstr "PV"
-
-#~ msgid "CI"
-#~ msgstr "CI"
-
-#~ msgid "&Game name:"
-#~ msgstr "Ainm &cluiche:"
-
-#~ msgid "0"
-#~ msgstr "0"
-
-#~ msgid ":"
-#~ msgstr ":"
-
-#~ msgid "Shows all shots"
-#~ msgstr "Taispeáin gach urchar"
-
-#~ msgid "Chat Widget"
-#~ msgstr "Giuirléid Chomhrá"
