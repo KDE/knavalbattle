@@ -594,6 +594,3 @@ msgstr "Connecta amb una partida de xarxa"
 #, kde-format
 msgid "Remote player"
 msgstr "Jugador remot"
-
-#~ msgid "Change &Nickname..."
-#~ msgstr "Canvia el &sobrenom..."
