@@ -175,7 +175,7 @@ msgstr "Riccardo Iaconelli"
 #: main.cpp:46
 #, kde-format
 msgid "Welcome screen"
-msgstr "شاشة مرحبا"
+msgstr "شاشة مرحبًا"
 
 #: main.cpp:47
 #, kde-format
