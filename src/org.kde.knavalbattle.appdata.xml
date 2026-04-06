@@ -22,7 +22,7 @@
   <name xml:lang="et">Naval Battle</name>
   <name xml:lang="eu">Itsas-bataila</name>
   <name xml:lang="fi">Meritaistelu</name>
-  <name xml:lang="fr">Naval Battle</name>
+  <name xml:lang="fr">Bataille navale</name>
   <name xml:lang="gl">Batalla naval</name>
   <name xml:lang="he">קרב ימי</name>
   <name xml:lang="hu">Tengeri csata</name>
@@ -66,7 +66,7 @@
   <summary xml:lang="et">Laevade pommitamise mäng</summary>
   <summary xml:lang="eu">Bataila-ontzi jokoa</summary>
   <summary xml:lang="fi">Meritaistelupeli</summary>
-  <summary xml:lang="fr">Jeu de touché-coulé</summary>
+  <summary xml:lang="fr">Jeu de bataille navale</summary>
   <summary xml:lang="gl">Xogo de afundir barcos</summary>
   <summary xml:lang="he">משחק ספינות מלחמה</summary>
   <summary xml:lang="hu">Torpedó játék</summary>
@@ -114,7 +114,7 @@
     <p xml:lang="et">Naval Battle on laevade uputamise mäng. Laevad seatakse merd kujutavale mänguväljakule. Mängijad ründavad kordamööda vastase laevu, teadmata, kuhu täpselt on need asetatud. Kes esimesena kõik vastase laevad hävitab, on mängu võitnud.</p>
     <p xml:lang="eu">Itsas-bataila ontziak hondoratzeko joko bat da. Ontziak itsasoa irudikatzen duen taula batean kokatzen dira. Jokalariek elkarren ontziak jotzen saiatzen dira aurkariaren ontziak non kokatuta dauden jakin gabe. Aurkariaren ontzi guztiak suntsitzen dituen aurreneko jokalariak irabazten du.</p>
     <p xml:lang="fi">Meritaistelu on laivanopetuspeli. Laivat sijoitetaan merta edustavalle laudalle. Pelaajat yrittävät vuoroon osua toistensa laivoihin tietämättä niiden sijaintia. Pelaaja, joka ensimmäisenä upottaa toisen kaikki laivat, voittaa pelin.</p>
-    <p xml:lang="fr">Naval Battle est un jeu de touché-coulé. Les navires sont placés sur une grille qui représente la mer. Les joueurs essaient chacun leur tour de toucher les vaisseaux de leur adversaire sans savoir où ils sont situés. Le premier joueur à détruire la totalité de la flotte adverse gagne la partie.</p>
+    <p xml:lang="fr">Naval Battle est un jeu de bataille navale. Les navires sont placés sur une grille qui représente la mer. Les joueurs essaient chacun leur tour de toucher les vaisseaux de leur adversaire sans savoir où ils sont situés. Le premier joueur à détruire la totalité de la flotte adverse gagne la partie.</p>
     <p xml:lang="gl">Batalla naval é un xogo de afundir barcos. Os barcos colócanse nun taboleiro que representa o mar. Cada xogador intenta afundir os barcos do outro sen saber onde están colocados. O primeiro xogador que destrúe a armada completa do outro gaña a partida.</p>
     <p xml:lang="he">קרב ימי הוא משחק הטבעת ספינות. הספינות מוצבות על לוח שמייצג את הים. השחקנים מנסים לפגוע בספינותיהם זה של זה בתורות מבלי לדעת מה מיקומן. השחקן הראשון שמשמיד את כל הספינות מנצח במשחק.</p>
     <p xml:lang="hu">A Tengeri csata egy hajóelsüllyesztős játék. A hajók a tengert ábrázoló táblán helyezkednek el. A játékosok felváltva próbálják eltalálni egymás hajóit anélkül, hogy tudnák, hol vannak elhelyezve. A játékot az nyeri, aki először pusztítja el az összes hajót.</p>
