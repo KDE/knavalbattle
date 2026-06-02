@@ -8,24 +8,25 @@ msgstr ""
 "Project-Id-Version: kbattleship\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-11-17 11:50+0000\n"
-"PO-Revision-Date: 2013-09-08 07:05+0900\n"
-"Last-Translator: Gheyret Kenji <gheyret@gmail.com>\n"
+"PO-Revision-Date: 2026-05-31 19:07-0400\n"
+"Last-Translator: Abduqadir Abliz <sahranbay@gmail.com>\n"
 "Language-Team: Uyghur Computer Science Association <UKIJ@yahoogroups.com>\n"
 "Language: ug\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Poedit 3.9\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr "ئابدۇقادىر ئابلىز, غەيرەت كەنجى"
+msgstr "ئابدۇقادىر ئابلىز، غەيرەت كەنجى"
 
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
-msgstr "sahran.ug@gmail.com,  gheyret@gmail.com"
+msgstr "sahranbay@gmail.com, gheyret@gmail.com"
 
 #: controller.cpp:50
 #, kde-format
@@ -54,7 +55,7 @@ msgstr ""
 #: knavalbattle.kcfg:22
 #, kde-format
 msgid "Whether sound effects should be played."
-msgstr "ئاۋاز ئۈنۈمى قويۇلسۇنمۇ."
+msgstr "ئاۋاز ئۈنۈمىنى ياڭرىتامدۇ يوق."
 
 #. i18n: ectx: label, entry (AdjacentShips), group (general)
 #: knavalbattle.kcfg:26
@@ -95,17 +96,17 @@ msgstr ""
 #: main.cpp:38
 #, kde-format
 msgid "Paolo Capriotti"
-msgstr "Paolo Capriotti"
+msgstr ""
 
 #: main.cpp:38
 #, kde-format
 msgid "Current maintainer"
-msgstr "نۆۋەتتىكى مەسئۇلى"
+msgstr "نۆۋەتتىكى ئاسرىغۇچى"
 
 #: main.cpp:39
 #, kde-format
 msgid "Nikolas Zimmermann"
-msgstr "Nikolas Zimmermann"
+msgstr ""
 
 #: main.cpp:39
 #, kde-format
@@ -125,7 +126,7 @@ msgstr ""
 #: main.cpp:41
 #, kde-format
 msgid "Kevin Krammer"
-msgstr "Kevin Krammer"
+msgstr ""
 
 #: main.cpp:41
 #, kde-format
@@ -135,7 +136,7 @@ msgstr "كومپيۇتېر ئويۇنچىسى"
 #: main.cpp:43
 #, kde-format
 msgid "Johann Ollivier Lapeyre"
-msgstr "Johann Ollivier Lapeyre"
+msgstr ""
 
 #: main.cpp:43
 #, kde-format
@@ -155,7 +156,7 @@ msgstr "تەگلىك"
 #: main.cpp:45
 #, kde-format
 msgid "Robert Wadley"
-msgstr "Robert Wadley"
+msgstr ""
 
 #: main.cpp:45
 #, kde-format
@@ -165,7 +166,7 @@ msgstr ""
 #: main.cpp:46
 #, kde-format
 msgid "Riccardo Iaconelli"
-msgstr "Riccardo Iaconelli"
+msgstr ""
 
 #: main.cpp:46
 #, kde-format
@@ -235,12 +236,12 @@ msgstr ""
 #: main.cpp:53
 #, kde-format
 msgid "John Tapsell"
-msgstr "John Tapsell"
+msgstr ""
 
 #: main.cpp:54
 #, kde-format
 msgid "Inge Wallin"
-msgstr "Inge Wallin"
+msgstr ""
 
 #: main.cpp:54
 #, kde-format
@@ -250,7 +251,7 @@ msgstr ""
 #: main.cpp:55
 #, kde-format
 msgid "Jakub Stachowski"
-msgstr "Jakub Stachowski"
+msgstr ""
 
 #: main.cpp:55
 #, kde-format
@@ -284,11 +285,10 @@ msgid "&Single Player"
 msgstr ""
 
 #: mainwindow.cpp:63
-#, fuzzy, kde-format
-#| msgid "&Hostname:"
+#, kde-format
 msgctxt "@action"
 msgid "&Host Game…"
-msgstr "كومپيۇتېر ئاتى(&H):"
+msgstr ""
 
 #: mainwindow.cpp:67
 #, kde-format
@@ -297,18 +297,16 @@ msgid "&Connect to Game…"
 msgstr ""
 
 #: mainwindow.cpp:72
-#, fuzzy, kde-format
-#| msgid "&Nickname:"
+#, kde-format
 msgctxt "@action"
 msgid "Change &Nickname…"
-msgstr "لەقىمى(&N):"
+msgstr ""
 
 #: mainwindow.cpp:76
-#, fuzzy, kde-format
-#| msgid "&Play Sounds"
+#, kde-format
 msgctxt "@option:check"
 msgid "Play Sounds"
-msgstr "ئاۋاز قوي(&P)"
+msgstr ""
 
 #: mainwindow.cpp:81
 #, kde-format
@@ -395,7 +393,7 @@ msgstr ""
 #: networkentity.cpp:195
 #, kde-format
 msgid ", "
-msgstr ""
+msgstr "، "
 
 #: networkentity.cpp:288
 #, kde-format
@@ -453,11 +451,10 @@ msgid "You lose. Better luck next time!"
 msgstr ""
 
 #: playfield.cpp:209
-#, fuzzy, kde-format
-#| msgid "&Nickname:"
+#, kde-format
 msgctxt "@title:window"
 msgid "Change Nickname"
-msgstr "لەقىمى(&N):"
+msgstr ""
 
 #: playfield.cpp:209
 #, kde-format
@@ -469,7 +466,7 @@ msgstr ""
 #, kde-format
 msgctxt "@title:window"
 msgid "Restart Game"
-msgstr ""
+msgstr "ئويۇننى قايتا باشلاش"
 
 #: playfield.cpp:239
 #, kde-format
@@ -480,13 +477,13 @@ msgstr ""
 #, kde-format
 msgctxt "@action:button"
 msgid "Accept"
-msgstr ""
+msgstr "قوشۇل"
 
 #: playfield.cpp:241
 #, kde-format
 msgctxt "@action:button"
 msgid "Reject"
-msgstr ""
+msgstr "رەت قىل"
 
 #: playfield.cpp:250
 #, kde-format
@@ -535,13 +532,13 @@ msgstr ""
 #, kde-format
 msgctxt "@action:button"
 msgid "Restart"
-msgstr ""
+msgstr "قايتا قوزغات"
 
 #: playfield.cpp:305
 #, kde-format
 msgctxt "@action:button"
 msgid "Abort"
-msgstr ""
+msgstr "توختات"
 
 #: playfield.cpp:307
 #, kde-format
