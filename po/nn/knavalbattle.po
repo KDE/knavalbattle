@@ -1,5 +1,6 @@
 # Translation of knavalbattle to Norwegian Nynorsk
 #
+# Karl Ove Hufthammer <karl@huftis.org>, 2007, 2008, 2009, 2016, 2017, 2020, 2022, 2024, 2026.
 msgid ""
 msgstr ""
 "Project-Id-Version: kbattleship\n"
