@@ -138,9 +138,7 @@
 </screenshot>
 
 <para
->&i18n-knavalbattle; ist ein <quote
->Schiffe versenken</quote
->-Spiel von &kde;. Alle Schiffe werden auf dem Spielfeld - dem Meer - angeordnet. Die Spieler versuchen die gegnerischen Schiffe, deren Lage auf dem Spielfeld Sie nicht kennen, abwechselnd mit Schüssen zu treffen. Sieger ist, wer als erster alle Schiffe des Gegners versenkt hat. </para>
+>&i18n-knavalbattle; ist ein „Schiffe versenken“-Spiel von &kde;. Alle Schiffe werden auf dem Spielfeld – dem Meer – angeordnet. Die Spieler versuchen die gegnerischen Schiffe, deren Lage auf dem Spielfeld Sie nicht kennen, abwechselnd mit Schüssen zu treffen. Sieger ist, wer als erster alle Schiffe des Gegners versenkt hat. </para>
 </chapter>
 
 <chapter id="howtoplay">
@@ -171,7 +169,7 @@
 ><guimenu
 >Spiel</guimenu
 ><guimenuitem
->Netzwerkspiel ausrichten ...</guimenuitem
+>Netzwerkspiel ausrichten …</guimenuitem
 ></menuchoice
 > wählt. Es öffnet sich ein Dialog, um <guilabel
 >Spitzname:</guilabel
@@ -181,7 +179,7 @@
 
 <note>
 <para
->Beachten Sie, dass alle Mitspieler den gleichen Port einstellen müssen, wenn Sie einen anderen als den vordefinierten Port benutzen.</para>
+>Beachten Sie, dass alle Mitspieler den gleichen Port einstellen müssen, wenn Sie einen anderen als den vordefinierten Port verwenden.</para>
 </note>
 
 <para
@@ -191,7 +189,7 @@
 ><guimenu
 >Spiel</guimenu
 ><guimenuitem
->Mit Netzwerkspiel verbinden ...</guimenuitem
+>Mit Netzwerkspiel verbinden …</guimenuitem
 ></menuchoice
 > wählen. Wieder wird ein <guilabel
 >Spitzname:</guilabel
@@ -221,7 +219,7 @@
 ><guimenu
 >Spiel</guimenu
 > <guimenuitem
->Spiel neu starten ...</guimenuitem
+>Spiel neu starten</guimenuitem
 ></menuchoice
 > oder mit der Taste <keycap
 >F5</keycap
@@ -386,7 +384,7 @@
 ><guimenu
 >Spiel</guimenu
 > <guimenuitem
->Netzwerkspiel leiten ..</guimenuitem
+>Netzwerkspiel ausrichten …</guimenuitem
 > </menuchoice>
 </term>
 <listitem>
@@ -403,7 +401,7 @@
 ><guimenu
 >Spiel</guimenu
 > <guimenuitem
->Mit Netzwerkspiel verbinden ...</guimenuitem
+>Mit Netzwerkspiel verbinden …</guimenuitem
 > </menuchoice>
 </term>
 <listitem>
@@ -443,7 +441,7 @@
 ><guimenu
 >Einstellungen</guimenu
 > <guimenuitem
->Spitzname ändern ...</guimenuitem
+>Spitznamen ändern …</guimenuitem
 > </menuchoice>
 </term>
 <listitem>
@@ -543,7 +541,7 @@
 >Mittel</guimenuitem
 >, <guimenuitem
 >Schwierig</guimenuitem
->) wirkt sich nur in Spielen gegen den Rechner aus. In höheren Schwierigkeitsgraden benutzt die KI eine bessere Strategie für das Schießen und die Anordnung der Schiffe.</para>
+>) wirkt sich nur in Spielen gegen den Rechner aus. In höheren Schwierigkeitsgraden verwendet die KI eine bessere Strategie für das Schießen und die Anordnung der Schiffe.</para>
 </listitem>
 </varlistentry>
 
