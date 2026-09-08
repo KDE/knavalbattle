@@ -149,7 +149,7 @@ msgstr "Daniel Molkentin"
 #: main.cpp:40
 #, kde-format
 msgid "Dialog Stuff, Client/Server"
-msgstr "Boîtes de dialogue, architecture client / serveur"
+msgstr "Boites de dialogue, architecture client / serveur"
 
 #: main.cpp:41
 #, kde-format
