@@ -2,14 +2,14 @@
 # Copyright (C) 2007 This_file_is_part_of_KDE
 # This file is distributed under the same license as the kdegames package.
 # Myong-sung Kim <xfuncrushx@gmail.com>, 2007.
-# SPDX-FileCopyrightText: 2011, 2013, 2014, 2015, 2019, 2020, 2022, 2024 Shinjo Park <kde@peremen.name>
+# SPDX-FileCopyrightText: 2011, 2013, 2014, 2015, 2019, 2020, 2022, 2024, 2026 Shinjo Park <kde@peremen.name>
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: kdegames\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-11-17 11:50+0000\n"
-"PO-Revision-Date: 2024-08-19 23:39+0200\n"
+"PO-Revision-Date: 2026-10-05 21:52+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
 "Language: ko\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Lokalize 23.08.5\n"
+"X-Generator: Lokalize 25.12.3\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -335,13 +335,13 @@ msgstr "게임 끝 메시지 표시"
 #, kde-format
 msgctxt "@option:check"
 msgid "Show &Left Grid"
-msgstr "왼쪽 모눈 표시(&L)"
+msgstr "왼쪽 격자 표시(&L)"
 
 #: mainwindow.cpp:100
 #, kde-format
 msgctxt "@option:check"
 msgid "Show &Right Grid"
-msgstr "오른쪽 모눈 표시(&R)"
+msgstr "오른쪽 격자 표시(&R)"
 
 #: networkdialog.cpp:61
 #, kde-format
