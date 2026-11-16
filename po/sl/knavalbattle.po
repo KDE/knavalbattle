@@ -2,7 +2,7 @@
 # Translation of kbattleship.po to Slovenian
 # SLOVENIAN TRANSLATION OF KBATTLESHIP.
 # Copyright (C) 2001, 2003, 2004, 2005, 2006, 2007 Free Software Foundation, Inc.
-# $Id: knavalbattle.po 1723087 2025-11-17 12:44:32Z scripty $
+# $Id$
 # $Source$
 #
 # Roman Maurer <roman.maurer@amis.net>, 2001.
