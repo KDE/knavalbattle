@@ -1,5 +1,5 @@
 # translation of kbattleship.po to
-# Version: $Revision: 1723076 $
+# Version: $Revision$
 # Copyright (C) YEAR Free Software Fundation, Inc.
 # Michal Rudolf <mrudolf@kdewebdev.org>, 2002, 2003, 2004, 2005.
 # tazdzioch <tazdzioch@o2.pl>, 2007.
