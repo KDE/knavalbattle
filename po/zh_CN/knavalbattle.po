@@ -535,7 +535,7 @@ msgstr "无法放置剩余船只。"
 #, kde-format
 msgctxt "@action:button"
 msgid "Restart"
-msgstr "重启启动"
+msgstr "重新开始"
 
 #: playfield.cpp:305
 #, kde-format
