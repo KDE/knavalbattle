@@ -9,6 +9,8 @@
 #include "sea.h"
 #include "settings.h"
 
+#include <QSet>
+
 BattleField::BattleField(Sea* parent, const Coord& size, const bool allow_adjacent_ships)
 : QObject(parent)
 , m_size(size)
